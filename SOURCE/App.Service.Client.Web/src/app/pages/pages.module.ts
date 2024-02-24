@@ -26,6 +26,8 @@ import { WidgetModule } from '../shared/widget/widget.module';
 import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
 import { DashboardsModule } from "./dashboards/dashboards.module";
 
+
+
 @NgModule({
   declarations: [
     DashboardComponent
