@@ -12,15 +12,14 @@
     <TypeScriptConfiguration Remove="src\app\pages\module01\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Documentation\angular\Upgrade\" />
-    <Folder Include="Documentation\theme\" />
-    <Folder Include="src\app\custom\apps\architecture\" />
+    <Folder Include="src\app\custom\apps\architecture\modules\qualities\" />
+    <Folder Include="src\app\custom\apps\architecture\modules\principles\" />
+    <Folder Include="src\app\custom\apps\demo\models\" />
     <Folder Include="src\app\custom\apps\demo\services\" />
     <Folder Include="src\app\custom\apps\demo\ui\" />
-    <Folder Include="src\app\custom\apps\spikes\services\" />
+    <Folder Include="src\app\custom\apps\template\ui\" />
     <Folder Include="src\app\custom\common\ui\dashboard\" />
-    <Folder Include="src\app\custom\common\services\" />
-    <Folder Include="src\app\custom\common\ui\search\" />
+    <Folder Include="src\app\custom\common\ui\search\browse\" />
     <Folder Include="src\assets\custom\" />
   </ItemGroup>
 </Project>

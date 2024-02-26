@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  custom: {
+    diagnostics: {
+      // 0=Verbose, 1=Info, 2=Warn, 3=Error, 4=No logging 
+      level: 1
+    },
+    service: {
+      baseUrl: 'http://localhost:4202/'
+    },
+  },  production: false,
   defaultauth: 'fackbackend',
   firebaseConfig: {
     apiKey: '',

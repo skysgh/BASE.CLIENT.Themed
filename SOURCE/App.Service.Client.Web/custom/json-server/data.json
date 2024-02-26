@@ -1,0 +1,269 @@
+{
+  "spikes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Spike.Foo",
+      "description": "...some desc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Spike.Bar",
+      "description": "...whatever..."
+    }
+  ],
+  "subSpikes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "parentFk": "00000000-0000-0000-0000-000000000001",
+      "title": "SubSpike.Foo.Foo",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "parentFk": "00000000-0000-0000-0000-000000000001",
+      "title": "SubSpike.Foo.Bar",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "parentFk": "00000000-0000-0000-0000-000000000002",
+      "title": "SubSpike.Bar.Foo",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "parentFk": "00000000-0000-0000-0000-000000000002",
+      "title": "SubSpike.Bar.Bar",
+      "description": "..."
+    }
+  ],
+
+  "templateItems": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Foo",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Bar",
+      "description": "..."
+    }
+  ],
+  "templateSubItems": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "parentFk": "00000000-0000-0000-0000-000000000001",
+      "title": "SubFoo.Foo",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "parentFk": "00000000-0000-0000-0000-000000000001",
+      "title": "SubFoo.Bar",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "parentFk": "00000000-0000-0000-0000-000000000002",
+      "title": "SubBar.Foo",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "parentFk": "00000000-0000-0000-0000-000000000002",
+      "title": "SubBar.Bar",
+      "description": "..."
+    }
+  ],
+  "values": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "honesty",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "forthrightness",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "consistency",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "title": "trustworthiness",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "title": "inclusive",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "title": "constructive",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "title": "creative",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "title": "inexpensive",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000009",
+      "title": "profitable",
+      "description": "..."
+    }
+  ],
+  "principleTypes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "business",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "enterprise",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "delivery",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "title": "security",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "title": "interoperability",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "title": "operability",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "title": "maintainability",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "title": "design",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000009",
+      "title": "development",
+      "description": "..."
+    }
+  ],
+  "principles": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "Security-first",
+      "description": "Ensuring what users entrust to the system remains safe"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "API-first",
+      "description": "Ensuring the system is interoperable and uses the CPU closest to consumption."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "Accessible-first",
+      "description": "Ensuring the most people can use the system."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "Open-first",
+      "description": "Ensuring the most people are enabled to access the system's data."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "Future-first",
+      "description": "Ensuring the design is not narrowly focused on today's problems forgetting what could be done if there were no problems to focus on today."
+    }
+  ],
+  "qualityTypes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25010",
+      "description": "Sytem Qualities"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25012",
+      "description": "Sytem Data Qualities"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25022",
+      "description": "Sytem User Experience Qualities"
+    }
+  ],
+  "qualityCategories": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "typeFk": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25010/Functionality",
+      "description": "Qualities of Functionality"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "typeFk": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25010/Usability",
+      "description": "How usable is the system."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "typeFk": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25010/Security",
+      "description": "How secure is the system."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "typeFk": "00000000-0000-0000-0000-000000000001",
+      "title": "etc.",
+      "description": "etc..."
+    }
+  ],
+  "qualities": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "categoryFk": "00000000-0000-0000-0000-000000000001",
+      "title": "THe solution's system(s) MUST..etc.",
+      "description": "etc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "categoryFk": "00000000-0000-0000-0000-000000000001",
+      "title": "THe solution's system(s) MUST..etc.",
+      "description": "etc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "categoryFk": "00000000-0000-0000-0000-000000000002",
+      "title": "THe solution's system(s) MUST..etc.",
+      "description": "etc..."
+    }
+
+  ]
+}

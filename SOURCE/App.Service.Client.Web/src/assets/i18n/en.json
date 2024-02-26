@@ -7,9 +7,17 @@
   "MODULES": {
     "ID": "Modules!!!",
     "TITLE": "Modules",
+    "SPIKE": {
+      "ID": "Spikes",
+      "TITLE": "Spikes"
+    },
+    "TEMPLATE": {
+      "ID": "Templates",
+      "TITLE": "Templates"
+    },
     "DEMO": {
-      "ID": "Demo",
-      "TITLE": "Demo"
+      "ID": "Demos",
+      "TITLE": "Demos"
     },
     "ARCHITECTURE": {
       "ID": "Architecture",
@@ -148,9 +156,6 @@
         "TWOCOLUMN": "Two Column",
         "HOVERED": "Hovered"
       }
-    },
-    "PAGES": {
-      "TEXT": "Pages"
     },
     "AUTHENTICATION": {
       "TEXT": "Authentication",
