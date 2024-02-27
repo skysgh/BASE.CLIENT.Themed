@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from "@angular/platform-browser";
 
 
 @Component({
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 })
 
 export class CustomAppsRouteComponent {
+
+  constructor(private titleService: Title) {
+    // Set the desired title for your page
+    this.titleService.setTitle("Machine Brains, Inc. BASE");
+  }
 }

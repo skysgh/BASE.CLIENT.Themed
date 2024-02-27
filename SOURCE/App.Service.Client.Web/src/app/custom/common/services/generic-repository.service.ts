@@ -41,9 +41,9 @@ export abstract class GenericRepositoryService<Type> {
   }
 
   // HttpClient API get() method => Fetch entitys list
-  getAll(): Observable<Type> {
+  getAll(page:number=0): Observable<Type> {
     return this.http
-      .get<Type>(this.endpointUrl)
+      .get<Type>(this.endpointUrl + `?_page=${page}&_per_page=20`)
       .pipe(retry(1), catchError(this.handleError));
   }
   // HttpClient API get() method => Fetch entity

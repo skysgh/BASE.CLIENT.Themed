@@ -22,6 +22,7 @@ THe solution is developed over a commercial theme.
 The theme is called *"Velzon"*, sourced from *Theme Forest*:
 * Landing page: https://themeforest.net/item/velzon-aspnet-core-admin-dashboard-template/36077495
 * Preview page: https://preview.themeforest.net/item/velzon-aspnet-core-admin-dashboard-template/full_screen_preview/36077495
+* Example: https://themesbrand.com/velzon/html/minimal/dashboard-crm.html
 * Admin page: https://velzon.themesbrand.com/user-dashboard
   * Use this page to download a more appropriate package for Angular only.
 

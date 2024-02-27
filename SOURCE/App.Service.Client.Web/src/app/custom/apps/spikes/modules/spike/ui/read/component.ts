@@ -1,5 +1,8 @@
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+
 // Import Common:
 import { DiagnosticsService } from '../../../../../../common/services/diagnostics.service';
 import { ExampleService } from '../../../../../../common/services/example.service';
@@ -7,6 +10,7 @@ import { ExampleService } from '../../../../../../common/services/example.servic
 import { SpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -17,24 +21,54 @@ import { Spike } from '../../../../models/spike.model';
 
 export class SpikesSpikeReadComponent implements OnInit {
 
-  public data?: Spike[] = [];
+  public data? : Spike;
+
 
   constructor(
+    //Observable of the matrix params:
+    private route: ActivatedRoute,
+    private router: Router,
+
     private diagnosticsService: DiagnosticsService,
     private exampleService: ExampleService,
     private repositoryService: SpikeSpikesRepositoryService,
   ) {
     this.diagnosticsService.info("Constructor");
-
-    var a = exampleService.someField;
-    this.diagnosticsService.info(a);
-
-    //this.data : any=[];//[{ title: 'Ebony' }, { title: 'Chiho' }];
   }
 
 
   ngOnInit(): void {
     this.diagnosticsService.info("Component OnInit");
+
+    this.route.params.subscribe(params => {
+      this.diagnosticsService.info("params ready");
+      this.diagnosticsService.info('id: ' + params['id']);
+      this.repositoryService.get(params['id']).subscribe(x => {
+        this.diagnosticsService.info('got X: ' + x.title);
+        this.data = x
+      });
+    });
+
+    //var id = this.route.snapshot.paramMap.get('id')!;
+
+    //this.route.paramMap.pipe(
+    //  switchMap((params: ParamMap) => {
+    //    var id = params.get('id');
+    //    this.data = this.repositoryService.get(params.get('id'));
+    //  }
+    //);
+
+    
+    //var data = this.repositoryService.get(id);
+
+
+
+    //var id = params.get('id');
+
+  //  this.data = this.route.paramMap.pipe(
+  //    switchMap((params: ParamMap) =>
+  //      this.service.getHero(params.get('id')!))
+  //  );
   }
 
   public DoSomething() {

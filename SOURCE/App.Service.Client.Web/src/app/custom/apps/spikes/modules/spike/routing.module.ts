@@ -12,17 +12,20 @@ import { SpikesSpikeEditComponent } from './ui/edit/component';
 import { SpikesSpikeRouteComponent } from './ui/_route/component';
 
 const routes: Routes = [
-  {
-    path: 'spike',
-    component: SpikesSpikeRouteComponent,
-    children: [
-      { path: 'browse', component: SpikesSpikeBrowseComponent },
+  //{
+    //path: 'spike',
+    //component: SpikesSpikeRouteComponent,
+    //children: [
+      { path: '', component: SpikesSpikeBrowseComponent },
+      { path: ':page', component: SpikesSpikeBrowseComponent },
       { path: 'view/:id', component: SpikesSpikeReadComponent },
       { path: 'edit/:id', component: SpikesSpikeEditComponent },
-      { path: '', redirectTo: 'browse', pathMatch: 'prefix' }
-    ]
-    },
-  { path: '', redirectTo: 'spike', pathMatch: 'prefix' }
+      { path: 'read:/id', redirectTo: 'view/:id', pathMatch: 'prefix' },
+      { path: 'browse', redirectTo: '', pathMatch: 'prefix' },
+      { path: 'list', redirectTo: '', pathMatch: 'prefix' }
+  //  ]
+  //  },
+ // { path: '', redirectTo: 'spike', pathMatch: 'prefix' }
 ];
 
 

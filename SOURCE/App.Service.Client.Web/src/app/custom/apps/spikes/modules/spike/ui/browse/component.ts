@@ -4,6 +4,7 @@ import { DiagnosticsService } from '../../../../../../common/services/diagnostic
 import { SpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
 // Models:
 import { Spike } from '../../../../models/spike.model';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,9 +14,11 @@ import { Spike } from '../../../../models/spike.model';
 })
 export class SpikesSpikeBrowseComponent implements OnInit {
 
+  public page:number = 1;
   public data?: Spike[] = [];
 
   constructor(
+    private route: ActivatedRoute,
     private diagnosticsService: DiagnosticsService,
     private repositoryService: SpikeSpikesRepositoryService
   ) {
@@ -26,8 +29,17 @@ export class SpikesSpikeBrowseComponent implements OnInit {
     this.diagnosticsService.info("Component OnInit");
     // Load list of elements:
     // TODO page it.
-    this.repositoryService
-      .getAll()
-      .subscribe((x: any) => { this.data = x; });
+
+
+      this.route.params.subscribe(params => {
+        this.diagnosticsService.info("params ready");
+        this.page = params['page'];
+        this.diagnosticsService.info('page: ' + params['page']);
+        this.repositoryService.getAll(params['page']).subscribe((x:any) => {
+          this.diagnosticsService.info('got X: ' + x);
+          this.data = x
+        });
+      });
+
   }
 }

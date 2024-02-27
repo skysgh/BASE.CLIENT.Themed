@@ -1,25 +1,18 @@
+<div *ngIf="data">
+  <span>{{data.title}}</span>
+</div>
 
-<ul>
-  <li *ngFor="let x of data">{{x.title}}</li>
-</ul>
-
-
-<a class="button"
-   routerLink="/edit"
-   routerLinkActive="activebutton"
-   ariaCurrentWhenActive="page">
-  Edit
-</a>
 
 
 <button type="button"
-        routerLink="/edit"
+        routerLink="/browse"
         class="btn btn-primary waves-effect waves-light">
   Return
 </button>
 
 <button type="button"
-        routerLink="/edit"
+        [routerLink]="['/edit',data.id]"
+        [skipLocationChange]="true"
         class="btn btn-outline-secondary waves-effect waves-light">
   Edit
 </button>
