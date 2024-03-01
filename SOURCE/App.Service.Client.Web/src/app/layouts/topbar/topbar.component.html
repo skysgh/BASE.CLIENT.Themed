@@ -383,8 +383,9 @@
                                                             <img src="assets/images/svg/bell.svg" class="img-fluid" alt="user-pic">
                                                         </div>
                                                         <div class="text-center pb-5 mt-2">
-                                                            <h6 class="fs-18 fw-semibold lh-base">Hey! You have no any
-                                                                notifications </h6>
+                                                          <h6 class="fs-18 fw-semibold lh-base">
+                                                            {{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.NOTIFICATIONS.MSG_NO_NEW_MESSAGES' | translate}}
+                                                          </h6>
                                                         </div>
                                                     </div>
                                                 </ngx-simplebar>
@@ -392,9 +393,11 @@
                                         </ng-template>
                                     </li>
                                     <li [ngbNavItem]="2">
-                                        <a ngbNavLink>
-                                            Messages
-                                        </a>
+                                      <a ngbNavLink>
+                                        <span>
+                                          {{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.NOTIFICATIONS.MESSAGES' | translate}}
+                                        </span>
+                                      </a>
                                         <ng-template ngbNavContent>
                                             <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab" role="tabpanel">
                                                 <ngx-simplebar style="max-height: 300px;">
@@ -443,17 +446,18 @@
                                         </ng-template>
                                     </li>
                                     <li [ngbNavItem]="3">
-                                        <a ngbNavLink>
-                                            Alerts
-                                        </a>
+                                      <a ngbNavLink>
+                                        {{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.NOTIFICATIONS.ALERTS' | translate}}
+                                      </a>
                                         <ng-template ngbNavContent>
                                             <div class="tab-pane p-4" id="alerts-tab" role="tabpanel" aria-labelledby="alerts-tab">
                                                 <div class="w-25 w-sm-50 pt-3 mx-auto">
                                                     <img src="assets/images/svg/bell.svg" class="img-fluid" alt="user-pic">
                                                 </div>
                                                 <div class="text-center pb-5 mt-2">
-                                                    <h6 class="fs-18 fw-semibold lh-base">Hey! You have no any
-                                                        notifications </h6>
+                                                  <h6 class="fs-18 fw-semibold lh-base">
+                                                    {{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.NOTIFICATIONS.MSG_NO_NEW_ALERTS' | translate}}
+                                                  </h6>
                                                 </div>
                                             </div>
                                         </ng-template>
@@ -492,16 +496,16 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome Anna!</h6>
-                        <a class="dropdown-item" routerLink="/pages/profile"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-                        <a class="dropdown-item" routerLink="/apps/chat"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
-                        <a class="dropdown-item" routerLink="/tasks/kanban"><i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Taskboard</span></a>
-                        <a class="dropdown-item" routerLink="/pages/faqs"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
+                      <h6 class="dropdown-header">{{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.WELCOME' | translate}} Anna!</h6>
+                        <a class="dropdown-item" routerLink="/pages/profile"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.PROFILE' | translate}}</span></a>
+                        <a class="dropdown-item" routerLink="/apps/chat"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.MESSAGES' | translate}}</span></a>
+                        <a class="dropdown-item" routerLink="/tasks/kanban"><i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.TASKS' | translate}}</span></a>
+                        <a class="dropdown-item" routerLink="/pages/faqs"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.HELP' | translate}}</span></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" routerLink="/pages/profile"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$5971.67</b></span></a>
-                        <a class="dropdown-item" routerLink="/pages/profile"><span class="badge bg-success-subtle text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
-                        <a class="dropdown-item" routerLink="/auth/lockscreen/basic"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-                        <a class="dropdown-item" href="javascript: void(0);" (click)="logout()"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                        <a class="dropdown-item" routerLink="/pages/profile"><span class="badge bg-success-subtle text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.SETTINGS' | translate}}</span></a>
+                        <a class="dropdown-item" routerLink="/auth/lockscreen/basic"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.LOCK' | translate}}</span></a>
+                        <a class="dropdown-item" href="javascript: void(0);" (click)="logout()"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">{{ 'CUSTOM.CORE.FRAME.CONTEXT.USER.LOGOUT' | translate}}</span></a>
                     </div>
                 </div>
             </div>

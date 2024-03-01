@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-local": "json-server --port=4202 --routes=custom/json-server/routes.json custom/json-server/data.json & ng serve ",
+    "start-local": "json-server --port=4202 --routes=_custom/json-server/routes.json _custom/json-server/data.json & ng serve ",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "json-server": "json-server --port=4202 --routes=custom/json-server/routes.json custom/json-server/data.json"
+    "json-server": "json-server --port=4202 --routes=_custom/json-server/routes.json _custom/json-server/data.json"
   },
   "private": true,
   "dependencies": {

@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
+//import { Component } from '@angular/core';
 
 
-@Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
-})
+//@Component({
+//  selector: 'app-dashboard',
+//  templateUrl: './dashboard.component.html',
+//  styleUrls: ['./dashboard.component.scss']
+//})
 
-/**
- * Ecommerce Component
- */
-export class DashboardComponent  {
+///**
+// * Ecommerce Component
+// */
+//export class DashboardComponent  {
 
-  // bread crumb items
-  breadCrumbItems!: Array<{}>;
+//  // bread crumb items
+//  breadCrumbItems!: Array<{}>;
  
 
-}
+//}

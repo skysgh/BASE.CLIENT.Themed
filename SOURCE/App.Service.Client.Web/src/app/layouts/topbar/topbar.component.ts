@@ -1,3 +1,5 @@
+//import { listLang } from '../../../_custom/common/settings/constants/languages';
+
 import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { EventService } from '../../core/services/event.service';
@@ -13,10 +15,11 @@ import { TokenStorageService } from '../../core/services/token-storage.service';
 import { CookieService } from 'ngx-cookie-service';
 import { LanguageService } from '../../core/services/language.service';
 import { TranslateService } from '@ngx-translate/core';
-import { allNotification, messages } from './data'
+//import { allNotification, messages } from './data'
 import { CartModel } from './topbar.model';
 import { cartData } from './data';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationService } from '../../../_custom/common/services/notification.service';
 
 @Component({
   selector: 'app-topbar',
@@ -44,7 +47,9 @@ export class TopbarComponent implements OnInit {
   @ViewChild('removenotification') removenotification !: TemplateRef<any>;
   notifyId: any;
 
-  constructor(@Inject(DOCUMENT) private document: any, private eventService: EventService, public languageService: LanguageService, private modalService: NgbModal,
+  constructor(@Inject(DOCUMENT) private document: any,
+    private notificationService : NotificationService,
+    private eventService: EventService, public languageService: LanguageService, private modalService: NgbModal,
     public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService, private authFackservice: AuthfakeauthenticationService,
     private router: Router, private TokenStorageService: TokenStorageService) { }
 
@@ -63,10 +68,11 @@ export class TopbarComponent implements OnInit {
     }
 
     // Fetch Data
-    this.allnotifications = allNotification;
+    this.allnotifications = this.notificationService.getAll();
+    this.messages = this.notificationService.getMessages();
 
-    this.messages = messages;
     this.cartData = cartData;
+
     this.cart_length = this.cartData.length;
     this.cartData.forEach((item) => {
       var item_price = item.quantity * item.price
