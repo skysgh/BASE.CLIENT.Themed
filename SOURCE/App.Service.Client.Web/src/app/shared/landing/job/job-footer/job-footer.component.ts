@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { System } from '../../../../../_custom/common/models/system.model';
+import { SystemService } from '../../../../../_custom/common/services/system.service';
 
 @Component({
   selector: 'app-job-footer',
@@ -8,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class JobFooterComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
-  constructor() { }
+  system: System;
+
+  constructor(systemService: SystemService) {
+    this.system = systemService.system;
+  }
 
   ngOnInit(): void {
   }

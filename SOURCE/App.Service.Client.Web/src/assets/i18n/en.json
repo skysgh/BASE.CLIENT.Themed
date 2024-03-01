@@ -37,21 +37,20 @@
         }
       }
     },
-    "MODULES": {
+    "EXTENSIONS": {
       "ID": "Modules!!!",
       "TITLE": "Modules",
       "AUTH": {
         "COMMON": {
-
-        },
-        "LOGIN": {
-          "TITLE": "Welcome Back!",
           "EMAIL": "Email",
           "PASSWORD": "Password",
           "FORGOT?": "Forgot?",
-          "REMEMBER_ME":"Remember me?",
+          "REMEMBER_ME": "Remember me?",
           "SIGNIN": "Sign In",
           "SIGNINWITH": "Sign in with"
+        },
+        "LOGIN": {
+          "TITLE": "Welcome Back!"
         }
       },
       "SPIKE": {

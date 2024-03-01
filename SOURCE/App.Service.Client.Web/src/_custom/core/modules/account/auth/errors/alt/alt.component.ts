@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from '../../../../../../common/services/system.service';
+import { System } from '../../../../../../common/models/system.model';
 
 @Component({
   selector: 'app-alt',
@@ -11,7 +13,10 @@ import { Component, OnInit } from '@angular/core';
  */
 export class AltComponent implements OnInit {
 
-  constructor() { }
+  system?: System;
+  constructor(systemService: SystemService) {
+    this.system = systemService.system;
+  }
 
   ngOnInit(): void {
   }

@@ -24,6 +24,6 @@
     <Folder Include="src\assets\custom\" />
     <Folder Include="src\_custom\common\settings\navigation\" />
     <Folder Include="src\_custom\core\modules\account\auth\pass-reset\" />
-    <Folder Include="src\_custom\pages\" />
+    <Folder Include="src\_custom\core\pages\" />
   </ItemGroup>
 </Project>

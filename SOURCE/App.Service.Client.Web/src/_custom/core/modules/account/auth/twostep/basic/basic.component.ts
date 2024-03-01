@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from '../../../../../../common/services/system.service';
+import { System } from '../../../../../../common/models/system.model';
 
 @Component({
   selector: 'app-basic',
@@ -14,7 +16,11 @@ export class BasicComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
 
-  constructor() { }
+  public system?: System;
+
+  constructor(private systemService: SystemService) {
+    this.system = this.systemService.system;
+  }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SystemService } from '../../../../../../common/services/system.service';
+import { System } from '../../../../../../common/models/system.model';
 
 @Component({
   selector: 'app-basic',
@@ -20,8 +22,10 @@ export class BasicComponent implements OnInit {
   returnUrl!: string;
   // set the current year
   year: number = new Date().getFullYear();
-
-  constructor(private formBuilder: FormBuilder) { }
+  system?: System;
+  constructor(private formBuilder: FormBuilder,systemService : SystemService) {
+    this.system = systemService.system;
+}
 
   ngOnInit(): void {
     /**

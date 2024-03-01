@@ -7,6 +7,8 @@ import { AuthenticationService } from '../../../../../app/core/services/auth.ser
 import { UserProfileService } from '../../../../../app/core/services/user.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { SystemService } from '../../../../common/services/system.service';
+import { System } from '../../../../common/models/system.model';
 
 @Component({
   selector: 'app-register',
@@ -27,9 +29,15 @@ export class RegisterComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
 
+  system: System;
+
   constructor(private formBuilder: FormBuilder, private router: Router,
     private authenticationService: AuthenticationService,
-    private userService: UserProfileService) { }
+    private userService: UserProfileService,
+  private systemService : SystemService) {
+
+    this.system = this.systemService.system;
+  }
 
   ngOnInit(): void {
     /**

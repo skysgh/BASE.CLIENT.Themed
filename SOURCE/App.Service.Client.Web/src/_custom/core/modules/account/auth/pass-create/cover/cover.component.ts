@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SystemService } from '../../../../../../common/services/system.service';
+import { System } from '../../../../../../common/models/system.model';
 
 @Component({
   selector: 'app-cover',
@@ -21,10 +23,13 @@ export class CoverComponent implements OnInit {
   returnUrl!: string;
   // set the current year
   year: number = new Date().getFullYear();
+  system?: System;
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, systemService:SystemService) {
+    this.system = systemService.system;
+}
 
   ngOnInit(): void {
     /**

@@ -11,6 +11,7 @@ import { ToastService } from './toast-service';
 import { TitleService } from '../../../../common/services/title.service';
 import { SystemService } from '../../../../common/services/system.service';
 import { TranslateService } from '@ngx-translate/core';
+import { System } from '../../../../common/models/system.model';
 
 @Component({
   selector: 'app-login',
@@ -36,11 +37,13 @@ export class LoginComponent implements OnInit {
   returnUrl!: string;
   // set the current year
   year: number = new Date().getFullYear();
-
+  system: System; 
   constructor(private titleService: TitleService, private systemService: SystemService, public translate: TranslateService, private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router,
     private authFackservice: AuthfakeauthenticationService, private route: ActivatedRoute, public toastService: ToastService) {
 
     translate.setDefaultLang('en');
+
+    this.system = this.systemService.system;
 
      this.sponsorTitle = systemService.system.sponsor.title;
     //

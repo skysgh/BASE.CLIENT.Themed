@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 // Data Get
 import { findjob } from './data';
+import { System } from '../../../../../_custom/common/models/system.model';
+import { SystemService } from '../../../../../_custom/common/services/system.service';
 
 @Component({
   selector: 'app-findjobs',
@@ -11,8 +13,11 @@ import { findjob } from './data';
 export class FindjobsComponent implements OnInit {
 
   findjobs: any;
+  system: System;
 
-  constructor() { }
+  constructor(systemService: SystemService) {
+    this.system = systemService.system;
+  }
 
   ngOnInit(): void {
     // Fetch Data

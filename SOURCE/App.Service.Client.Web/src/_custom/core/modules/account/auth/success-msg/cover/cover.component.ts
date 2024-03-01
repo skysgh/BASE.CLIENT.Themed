@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from '../../../../../../common/services/system.service';
+import { System } from '../../../../../../common/models/system.model';
 
 @Component({
   selector: 'app-cover',
@@ -16,7 +18,11 @@ export class CoverComponent implements OnInit {
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
-  constructor() { }
+  system: System;
+
+  constructor(private systemService: SystemService) {
+    this.system = this.systemService.system;
+}
 
   ngOnInit(): void {
   }

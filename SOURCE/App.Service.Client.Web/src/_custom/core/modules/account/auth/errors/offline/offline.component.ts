@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { System } from '../../../../../../common/models/system.model';
+import { SystemService } from '../../../../../../common/services/system.service';
 
 @Component({
   selector: 'app-offline',
@@ -11,7 +13,10 @@ import { Component, OnInit } from '@angular/core';
  */
 export class OfflineComponent implements OnInit {
 
-  constructor() { }
+  system?: System;
+  constructor(systemService: SystemService) {
+    this.system = systemService.system;
+  }
 
   ngOnInit(): void {
   }
