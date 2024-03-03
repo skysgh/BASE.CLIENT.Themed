@@ -41,8 +41,11 @@
           <div class="row">
               <div class="col-lg-12">
                   <div class="text-center">
-                      <p class="mb-0 text-muted">
-                        {{year}} © {{system?.title || ''}} - Developed by {{system?.developer?.title || 'Undefined, Inc.'}}
+                    <p class="mb-0 text-muted">
+                      {{year}} © {{system?.title || ''}}
+                      -
+                      {{'BASE.SHARED.CREDITS.DEVELOPED_BY' | translate }}
+                      {{system?.developer?.title || 'Undefined, Inc.'}}
                     </p>
                   </div>
               </div>

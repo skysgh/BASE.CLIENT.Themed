@@ -7,6 +7,15 @@
 
   "BASE": {
     "SHARED": {
+      "CREDITS": {
+        "THANK_YOU": "Thank you",
+        "THANK_YOU_FOR_USING": "Thank you for using",
+        "SPONSORED_BY": "Made available by",
+        "DISTRIBUTED_BY": "Distributed by",
+        "DEVELOPED_BY": "Developed by",
+        "USED_BY": "Used by",
+        "LOVED_BY": "Loved by"
+      },
       "QUANTITY": {
         "ALL": "All",
         "NONE": "None"
@@ -22,6 +31,10 @@
         "NEW": "New",
         "LEGACY": "Legacy",
         "REMOVED": "Removed"
+      },
+      "STATUS_UPDATES": {
+        "YOU_ARE_LOGGING_OUT": "You are logging out",
+        "YOU_ARE_LOGGED_OUT": "You are logged out"
       },
       "PROMPTS": {
         "CONFIRMATION_TITLE": "Confirmation",

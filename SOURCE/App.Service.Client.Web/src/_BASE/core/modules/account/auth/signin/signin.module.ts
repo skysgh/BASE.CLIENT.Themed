@@ -15,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CoverComponent
   ],
   imports: [
+    TranslateModule,
     CommonModule,
     TranslateModule,
     NgbCarouselModule,

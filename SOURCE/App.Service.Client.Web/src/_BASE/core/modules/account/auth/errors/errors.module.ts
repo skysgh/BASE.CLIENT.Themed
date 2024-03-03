@@ -11,6 +11,7 @@ import { BasicComponent } from './basic/basic.component';
 import { CoverComponent } from './cover/cover.component';
 import { AltComponent } from './alt/alt.component';
 import { Page500Component } from './page500/page500.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { Page500Component } from './page500/page500.component';
     Page500Component
   ],
   imports: [
+    TranslateModule,
     CommonModule,
     Error404RoutingModule
   ],

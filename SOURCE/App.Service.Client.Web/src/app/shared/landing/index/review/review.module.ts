@@ -3,4 +3,3 @@ export interface clientLogoModel {
     title: string;
     subTitle: string;
   }
-  

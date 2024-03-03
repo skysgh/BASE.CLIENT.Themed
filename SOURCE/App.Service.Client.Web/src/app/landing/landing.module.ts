@@ -12,6 +12,7 @@ import { LandingRoutingModule } from "./landing-routing.module";
 import { SharedModule } from '../shared/shared.module';
 import { NftComponent } from './nft/nft.component';
 import { JobComponent } from './job/job.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { JobComponent } from './job/job.component';
   ],
   imports: [
     CommonModule,
+    TranslateModule,
     NgbCarouselModule,
     LandingRoutingModule,
     SharedModule,

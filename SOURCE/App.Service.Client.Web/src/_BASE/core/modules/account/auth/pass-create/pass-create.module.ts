@@ -7,6 +7,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PassCreateRoutingModule } from "./pass-create-routing.module";
 import { BasicComponent } from './basic/basic.component';
 import { CoverComponent } from './cover/cover.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CoverComponent } from './cover/cover.component';
     CoverComponent
   ],
   imports: [
+    TranslateModule,
     CommonModule,
     NgbCarouselModule,
     ReactiveFormsModule,

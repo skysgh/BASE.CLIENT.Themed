@@ -43,11 +43,11 @@ import lottie from 'lottie-web';
   ],
   imports: [
     CommonModule,
+    TranslateModule,
     RouterModule,
     NgbDropdownModule,
     NgbNavModule,
     SimplebarAngularModule,
-    TranslateModule,
     FormsModule,
     ReactiveFormsModule,
     NgbCollapseModule,

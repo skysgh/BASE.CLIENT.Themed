@@ -40,6 +40,7 @@ import { JobFooterComponent } from './landing/job/job-footer/job-footer.componen
 import { JobcategoriesComponent } from './landing/job/jobcategories/jobcategories.component';
 import { ProgressComponent } from './landing/job/progress/progress.component';
 import { LandingScrollspyDirective } from './landingscrollspy.directive';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { LandingScrollspyDirective } from './landingscrollspy.directive';
     NgbDropdownModule,
     SlickCarouselModule,
     CountUpModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   exports: [BreadcrumbsComponent,
     ClientLogoComponent,

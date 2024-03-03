@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
      this.sponsorTitle = systemService.system.sponsor.title;
     //
     this.productTitle = systemService.system.title;
-    this.productDescription = systemService.system.description;
+    this.productDescription = systemService.system?.description;
 
 
     // Set the desired title for your page

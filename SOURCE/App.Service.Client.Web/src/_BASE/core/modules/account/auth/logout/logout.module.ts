@@ -11,6 +11,7 @@ import lottie from 'lottie-web';
 import { LogoutRoutingModule } from './logout-routing.module';
 import { BasicComponent } from './basic/basic.component';
 import { CoverComponent } from './cover/cover.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CoverComponent } from './cover/cover.component';
     CoverComponent
   ],
   imports: [
+    TranslateModule,
     CommonModule,
     NgbCarouselModule,
     ReactiveFormsModule,

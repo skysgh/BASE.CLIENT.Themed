@@ -8,10 +8,8 @@
                         <img src="assets/images/logo-light.png" alt="logo light" height="17">
                     </div>
                     <div class="mt-4 fs-13">
-                        <p>Premium Multipurpose Admin & Dashboard Template</p>
-                        <p class="ff-secondary">You can build any type of web application like eCommerce, CRM, CMS,
-                            Project
-                            management apps, Admin Panels, etc using Velzon.</p>
+                        <p>{{system?.description}}</p>
+                        <p class="ff-secondary">{{system?.purpose}}</p>
                     </div>
                 </div>
             </div>
@@ -60,7 +58,9 @@
 
                 <div>
                   <p class="copy-rights mb-0">
-                                            {{year}} © {{system?.title || ''}} - Developed by {{system?.developer?.title || 'Undefined, Inc.'}}
+                    {{year}} © {{system?.title || ''}} -
+                    {{'BASE.SHARED.CREDITS.DEVELOPED_BY' | translate }}
+                    {{system?.developer?.title || 'Undefined, Inc.'}}
                   </p>
                 </div>
             </div>

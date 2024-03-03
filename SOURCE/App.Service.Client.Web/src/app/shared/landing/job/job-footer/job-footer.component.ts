@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { System } from '../../../../../_BASE/shared/models/system.model';
 import { SystemService } from '../../../../../_BASE/shared/services/system.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-job-footer',
@@ -12,7 +13,7 @@ export class JobFooterComponent implements OnInit {
   year: number = new Date().getFullYear();
   system: System;
 
-  constructor(systemService: SystemService) {
+  constructor(systemService: SystemService, private translateService: TranslateService) {
     this.system = systemService.system;
   }
 

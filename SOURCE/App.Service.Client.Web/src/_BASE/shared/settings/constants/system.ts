@@ -3,6 +3,7 @@ import { System } from "../../models/system.model";
 export const system : System = {
   "title": "BASE",
   "description": "Base API Support Environment",
+  "purpose":"Provide actionable oversight over large systems of organisations.",
   "sponsor": {
     "title": "Ministry Of Technology",
     "description": "...",
