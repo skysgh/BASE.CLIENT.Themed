@@ -1,4 +1,4 @@
-//import { listLang } from '../../../_custom/common/settings/constants/languages';
+//import { listLang } from '../../../_BASE/shared/settings/constants/languages';
 
 import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
@@ -19,7 +19,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { CartModel } from './topbar.model';
 import { cartData } from './data';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationService } from '../../../_custom/common/services/notification.service';
+import { NotificationService } from '../../../_BASE/shared/services/notification.service';
 
 @Component({
   selector: 'app-topbar',

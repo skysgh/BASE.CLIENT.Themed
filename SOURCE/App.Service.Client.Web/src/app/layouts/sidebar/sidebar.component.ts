@@ -3,7 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 //import { MENU } from './menu';
-import { MENU } from '../../../_custom/common/settings/navigation/menu';
+import { MENU } from '../../../_BASE/core/navigation/menu';
 
 import { MenuItem } from './menu.model';
 import { environment } from 'src/environments/environment';

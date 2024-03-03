@@ -1,388 +1,525 @@
 {
-  "STANDARD": {
-  },
   "HEADER": {
     "MORE": {
       "TEXT": "More"
     }
   },
 
-  "CUSTOM": {
+  "BASE": {
+    "SHARED": {
+      "QUANTITY": {
+        "ALL": "All",
+        "NONE": "None"
+      },
+      "OUTCOMES": {
+        "RESULT": "Result",
+        "SUCCESS": "Success",
+        "FAILED": "Failed"
+      },
+      "STATUS": {
+        "DRAFT": "Draft",
+        "IN_PROGRESS": "In Progress",
+        "NEW": "New",
+        "LEGACY": "Legacy",
+        "REMOVED": "Removed"
+      },
+      "PROMPTS": {
+        "CONFIRMATION_TITLE": "Confirmation",
+        "CONFIRMATION_INSTRUCTIONS": "Please confirm before proceeding"
+      },
+      "ACTIONS": {
+        "UNDO": "Undo",
+        "REVERT": "Revert",
+        "OK": "Ok",
+        "CANCEL": "Cancel",
+        "CLOSE": "Close",
+        "BACK": "Back",
+        "ADD": "Add",
+        "NEW": "New",
+        "VIEW": "View",
+        "UPDATE": "Update",
+        "EDIT": "Edit",
+        "SELECT": "Select",
+        "CHOOSE": "Choose",
+        "DELETE": "Delete",
+        "RETURN": "Return",
+        "REMOVE": "Remove",
+        "REVIEW": "Review",
+        "COMMENT": "Comment",
+        "APPROVE": "Approve",
+        "ENDORSE": "Endorse",
+        "DECLINE": "Decline",
+        "APPLY": "Apply",
+        "INVITE": "Invite",
+        "SEARCH": "Search",
+        "SEARCH_INSTRUCTIONS": "Search...",
+        "LOCK": "Lock",
+        "UNLOCK": "Unlock",
+        "LOGOUT": "Unlock"
+      },
+      "HEADERS": {
+        "TITLE": "Title",
+        "DESCRIPTION": "Description",
+        "ACTIONS": "Action"
+      },
+      "USER": {
+        "TITLE": "User",
+        "PROFILE": "Profile",
+        "PROFILE_SETTINGS": "Settings"
+      },
+      "PERSON": {
+        "ID": "Identifier",
+        "IDENTIFIER": "Enter the person's identifier",
+        "DOB": "DOB",
+        "DOB_INSTRUCTIONS": "Enter the date of birth",
+        "SEX": "Sex",
+        "SEX_INSTRUCTIONS": "Enter the sex at birth",
+        "IDENTITY": {
+          "ID": "Context Identifier",
+          "IDENTIFIER": "Enter a unique context identifier",
+          "NAMES": {
+            "PREFIX": "Prefix",
+            "PREFIX_INSTRUCTIONS": "Provide a Title (Mr, Mrs, Dr., ...)",
+            "PREFIX_EXAMPLE": "Dr.",
+            "PREFIX_ERROR_01": "A title or prefix is required.",
+            "PREFIX_ERROR_02": "The provided title or prefix can't be validated.",
+            "GIVEN": "Given Name",
+            "GIVEN_INSTRUCTIONS": "Provide a first/given name",
+            "GIVEN_EXAMPLE": "John",
+            "GIVEN_ERROR_01": "A given name is required.",
+            "GIVEN_ERROR_02": "The provided given name given can't be validated.",
+            "MIDDLE": "Given Middle Name",
+            "MIDDLE_INSTRUCTIONS": "Provide given middle name(s)",
+            "MIDDLE_EXAMPLE": "Martin",
+            "MIDDLE_ERROR_01": "A middle given name are required.",
+            "MIDDLE_ERROR_02": "The provided middle given name can't be validated.",
+            "MIDDLE_INITIALS": "Middle Initials",
+            "MIDDLE_INITIALS_INSTRUCTIONS": "Provide middle initial(s).",
+            "MIDDLE_INITIALS_EXAMPLE": "M.",
+            "MIDDLE_INITIALS_ERROR_01": "Middle initial(s) are required.",
+            "MIDDLE_INITIALS_ERROR_02": "The provided middle initials(s) can't be validated.",
+            "GIVENS": "Given Name(s)",
+            "GIVENS_INSTRUCTIONS": "Provide given name(s).",
+            "GIVENS_EXAMPLE": "John Mark",
+            "GIVENS_ERROR_01": "A given name is required.",
+            "GIVENS_ERROR_02": "The provided given name(s) can't be validated.",
+            "SURNAME": "Surname",
+            "SURNAME_INSTRUCTIONS": "Provide a suname",
+            "SURNAME_EXAMPLE": "Smith",
+            "SURNAME_ERROR_01": "A surname is required.",
+            "SURNAME_ERROR_02": "The provided surname can't be validated."
+          },
+          "PRONOUNS": "Pronouns",
+          "PRONOUNS_INSTRUCTIONS": "Provide preferred pronouns",
+          "PRONOUNS_EXAMPLE": "He/Him",
+          "PRONOUNS_ERROR_01": "Preferred pronouns are required.",
+          "PRONOUNS_ERROR_02": "The provided pronoun(s) given can't be validated.",
+          "AVATAR": "Avatar",
+          "AVATAR_INSTRUCTIONS": "Provide an avatar",
+          "AVATAR_EXAMPLE": "hero.png",
+          "AVATAR_ERROR_01": "An avatar is required.",
+          "AVATAR_ERROR_02": "The provided avatar could not be validated.",
+          "BIO": "Bio",
+          "BIO_INSTRUCTIONS": "Provide a summary introductory bio/description",
+          "BIO_EXAMPLE": "E.g., something concise, precise, pertinent about this identity...",
+          "BIO_ERROR_01": "A bio is required.",
+          "BIO_ERROR_02": "The provided bio could not be validated.",
+          "ROLE": "Role",
+          "ROLE_INSTRUCTIONS": "Provide a contextual role",
+          "ROLE_EXAMPLE": "Contributor",
+          "ROLE_ERROR_01": "A role is required.",
+          "ROLE_ERROR_02": "The provided role could not be validated.",
+          "GENDER": "Gender",
+          "GENDER_INSTRUCTIONS": "Provide this identity's gender orientation",
+          "GENDER_EXAMPLE": "Male",
+          "GENDER_ERROR_01": "An gender is required.",
+          "GENDER_ERROR_02": "The provided gender could not be validated."
+        }
+      },
+      "PLACE": {
+        "LOCATION": {
+          "COORDINATES": "Coordinates",
+          "COORDINATES_INSTRUCTIONS": "Provide a longitude/latitude coordinate",
+          "COORDINATES_ERROR_01": "A longitude/latitude coordinates is required.",
+          "COORDINATES_ERROR_02": "The provided coordinates could not be validated.",
+          "LONGITUDE": "Longitude",
+          "LONGITUDE_INSTRUCTIONS": "Provide a longitude",
+          "LONGITUDE_ERROR_01": "An east/west longitude is required.",
+          "LONGITUDE_ERROR_02": "The provided longitude could not be validated.",
+          "LATITUDE": "Latitude",
+          "LATITUDE_INSTRUCTIONS": "Provide a latitude",
+          "LATITUDE_ERROR_01": "A latitude is required.",
+          "LATITUDE_ERROR_02": "The provided latitude could not be validated."
+        }
+      },
+      "CHANNEL": {
+        "POSTAL": "Postal Address",
+        "EMAIL": "Email Address",
+        "PHONE": "Phone Number",
+        "SOCIAL": {
+          "X": "X Handle"
+        }
+      },
+      "POSTAL_ADDRESS": {
+        "UNIT": "Unit",
+        "UNIT_EXAMPLE": "2B",
+        "UNIT_INSTRUCTIONS": "Provide an apartment, Unit, etc. if any",
+        "STREET": "Street",
+        "STREET_EXAMPLE": "123 Collins",
+        "STREET_INSTRUCTIONS": "Provide a street address",
+        "CITY": "City",
+        "CITY_EXAMPLE": "Villars",
+        "CITY_INSTRUCTIONS": "Provide a city, town, etc.",
+        "STATE": "State",
+        "STATE_EXAMPLE": "Vaud",
+        "STATE_INSTRUCTIONS": "Provide a state, region, etc.",
+        "POSTAL_CODE": "Postal Code",
+        "POSTAL_CODE_EXAMPLE": "6301",
+        "POSTAL_CODE_INSTRUCTIONS": "Provide a postal code, zip, etc.",
+        "COUNTRY": "Country",
+        "COUNTRY_EXAMPLE": "Switzerland",
+        "COUNTRY_INSTRUCTIONS": "Provide a country, kingdom, etc."
+      },
+      "COMMERCE": {
+        "PRODUCTS": "Products",
+        "PRODUCT_DETAILS": "Product Details",
+        "CREATE_PRODUCT": "Create Product",
+        "ORDERS": "Orders",
+        "ORDER_DETAILS": "Order Details",
+        "SELLERS": "Sellers",
+        "SELLER_DETAILS": "Seller Details",
+        "CUSTOMERS": "Customers",
+        "CUSTOMER_DETAILS": "Customer Details",
+        "CLIENTS": "Clients",
+        "CLIENT_DETAILS": "Client Details",
+        "SHOW_NOW": "Shop now",
+        "MY_CART": "My cart",
+        "SHOPPING_CART": "Shopping Cart",
+        "EMPTY_CART": "Cart is empty",
+        "ITEMS": "Item(s)",
+        "QUANTITY": "Quantity",
+        "CHECKOUT": "Checkout",
+        "PRICE": "Price",
+        "BALANCE": "Balance",
+        "TAX": "Tax",
+        "SHIPPING": "Shipping",
+        "TOTAL": "Total"
+      },
+      "SEARCH": {
+        "INSTRUCTIONS": "Search...",
+        "VIEW_ALL_RESULTS": "View all results",
+        "RECENT_SEARCHES": "Recent Searches"
+      },
+
+      "NOTIFICATIONS": {
+        "TITLE": "Notifications",
+        "NOTIFICATIONS": "Notifications",
+        "MESSAGES": "Messages",
+        "ALERTS": "Alerts",
+        "UNREAD_MESSAGES": "Unread messages",
+        "UNREAD_MESSAGES2": "unread messages",
+        "VIEW_ALL": "View all notifications",
+        "ALL_MESSAGES": "All Messages",
+        "VIEW_ALL_MESSAGES": "View all messages",
+        "NO ALERTS": "No alerts",
+        "NO_NOTIFICATIONS": "No notifications",
+        "NO_NEW_MESSAGES": "No new messages.",
+        "NO_NEW_ALERTS": "No new alerts."
+      }
+
+
+    },
     "CORE": {
-      "FRAME": {
-        "CONTEXT": {
-          "SYSTEM": {
-          },
-          "TENANCY": {
-
-          },
-          "USER": {
-            "WELCOME": "Hi",
-            "PROFILE": "Profile",
-            "MESSAGES": "Messages",
-            "TASKS": "Tasks",
-            "HELP": "Help",
-            "SETTINGS": "Settings",
-            "LOCK": "Lock",
-            "LOGOUT": "Log out",
-            "NOTIFICATIONS": {
-              "NEW": "New",
-              "ALL": "All",
-              "MESSAGES": "Messages",
-              "ALERTS": "Alerts",
-              "MSG_NO_NEW_MESSAGES": "You have no new messages.",
-              "MSG_NO_NEW_ALERTS": "You have no new alerts."
+      "AREAS": {
+        "FRAME": {
+          "FORMAT": {
+            "TITLE": "Layouts",
+            "DESCRIPTION": "...",
+            "OPTIONS": {
+              "HORIZONTAL": "Horizontal",
+              "DETACHED": "Detached",
+              "TWOCOLUMN": "Two Column",
+              "HOVERED": "Hovered"
             }
+          },
+          "CONTEXT": {
+            "_COMMENTS": "Layout frame area for showing context of system, tenancy, account at top, navigation, footer for status",
+            "TITLE": "Contex",
+            "DESCRIPTION": "...",
+            "SYSTEM": {
+              "TITLE": "System",
+              "DESCRIPTION": "..."
+            },
+            "TENANCY": {
+              "TITLE": "Tenancy",
+              "DESCRIPTION": "..."
+            },
+            "NAVIGATION": {
+              "_COMMENTS": "Labels for menu area",
+              "TITLE": "Navigation",
+              "DESCRIPTION": "..."
+            },
+            "USER": {
+              "_COMMENTS": "Labels for user area",
+              "TITLE": "User",
+              "DESCRIPTION": "...",
+              "WELCOME": "Hi",
+              "PROFILE": "Profile",
+              "MESSAGES": "Messages",
+              "TASKS": "Tasks",
+              "HELP": "Help",
+              "SETTINGS": "Settings",
+              "NOTIFICATIONS": {
+                "NEW": "New",
+                "ALL": "All"
+              }
+            }
+          },
+          "STATUS": {
+            "_COMMENTS": "For Status area of frame, if any.",
+            "TITLE": "Status",
+            "DESCRIPTION": "..."
+          },
+          "CONTENT": {
+            "_COMMENTS": "For Main content area of frame, if any. Probably nothing ever.",
+            "TITLE": "Content",
+            "DESCRIPTION": "..."
           }
-        }
-      }
-    },
-    "EXTENSIONS": {
-      "ID": "Modules!!!",
-      "TITLE": "Modules",
-      "AUTH": {
-        "COMMON": {
-          "EMAIL": "Email",
-          "PASSWORD": "Password",
-          "FORGOT?": "Forgot?",
-          "REMEMBER_ME": "Remember me?",
-          "SIGNIN": "Sign In",
-          "SIGNINWITH": "Sign in with"
         },
-        "LOGIN": {
-          "TITLE": "Welcome Back!"
-        }
-      },
-      "SPIKE": {
-        "ID": "Spikes",
-        "TITLE": "Spikes"
-      },
-      "TEMPLATE": {
-        "ID": "Templates",
-        "TITLE": "Templates"
-      },
-      "DEMO": {
-        "ID": "Demos",
-        "TITLE": "Demos"
-      },
-      "ARCHITECTURE": {
-        "ID": "Architecture",
-        "TITLE": "Architecture",
-        "MODULES": {
-          "VALUES": {
-            "ID": "Values",
-            "TITLE": "Values"
-          },
-          "PRINCIPLES": {
-            "ID": "Principles",
-            "TITLE": "Principles"
-          },
-          "QUALITIES": {
-            "ID": "Qualities",
-            "TITLE": "Qualities"
-          },
-          "PATTERNS": {
-            "ID": "Patterns",
-            "TITLE": "Patterns"
-          }
-        }
-      },
-      "PEOPLE": {
-        "ID": "People",
-        "TITLE": "People"
-      },
-      "PRODUCTS": {
-        "ID": "Products",
-        "TITLE": "Products"
-      },
-      "PLACES": {
-        "ID": "Places",
-        "TITLE": "Places"
-      },
-      "PROGRESS": {
-        "ID": "Progress",
-        "TITLE": "Progress"
-      }
-    },
-
-    "MENUITEMS": {
-      "MENU": {
-        "TEXT": "MENU"
-      },
-      "DASHBOARD": {
-        "TEXT": "Dashboards.@.",
-        "BADGE": "New",
-        "LIST": {
-          "ANALYTICS": "Analytics",
-          "CRM": "CRM",
-          "ECOMMERCE": "Ecommerce",
-          "CRYPTO": "Crypto",
-          "PROJECTS": "Projects",
-          "NFT": "NFT",
-          "JOB": "Job"
-        }
-      },
-      "APPS": {
-        "TEXT": "Apps",
-        "LIST": {
-          "CALENDAR": "Calendar",
-          "MAINCALENDAR": "Main Calendar!",
-          "MONTHGRID": "Month Grid",
-          "CHAT": "Chat",
-          "EMAIL": "Email",
-          "MAILBOX": "Mailbox",
-          "MAILTEMPLATES": "Email Templates",
-          "BASICACTION": "Basic Action",
-          "ECOMMERCEACTION": "Ecommerce Action",
-          "ECOMMERCE": "Ecommerce",
-          "PRODUCTS": "Products",
-          "PRODUCTDETAILS": "Product Details",
-          "CREATEPRODUCT": "Create Product",
-          "ORDERS": "Orders",
-          "ORDERDETAILS": "Order Details",
-          "CUSTOMERS": "Customers",
-          "SHOPPINGCART": "Shopping Cart",
-          "CHECKOUT": "Checkout",
-          "SELLERS": "Sellers",
-          "SELLERDETAILS": "Seller Details",
-          "PROJECTS": "Projects",
-          "LIST": "List",
-          "OVERVIEW": "Overview",
-          "CREATEPROJECT": "Create Project",
-          "TASK": "Tasks",
-          "KANBANBOARD": "Kanban Board",
-          "LISTVIEW": "List View",
-          "TASKDETAILS": "Task Details",
-          "CRM": "CRM",
-          "CONTACTS": "Contacts",
-          "COMPANIES": "Companies",
-          "DEALS": "Deals",
-          "LEADS": "Leads",
-          "CRYPTO": "Crypto",
-          "TRANSACTIONS": "Transactions",
-          "BUY&SELL": "Buy & Sell",
-          "MYWALLET": "My Wallet",
-          "ICOLIST": "ICO List",
-          "KYCAPPLICATION": "KYC Application",
-          "INVOICES": "Invoices",
-          "DETAILS": "Details",
-          "CREATEINVOICE": "Create Invoice",
-          "SUPPORTTICKETS": "Support Tickets",
-          "TICKETDETAILS": "Ticket Details",
-          "NFTMARKETPLACE": "NFT Marketplace",
-          "MARKETPLACE": "Marketplace",
-          "EXPLORENOW": "Explore Now",
-          "LIVEAUCTION": "Live Auction",
-          "ITEMDETAILS": "Item Details",
-          "COLLECTIONS": "Collections",
-          "CREATORS": "Creators",
-          "RANKING": "Ranking",
-          "WALLETCONNECT": "Wallet Connect",
-          "CREATENFT": "Create NFT",
-          "FILEMANAGER": "File Manager",
-          "TODO": "To Do",
-          "JOBS": "Jobs",
-          "STATISTICS": "Statistics",
-          "JOBLISTS": "Job Lists",
-          "GRID": "Grid",
-          "CANDIDATELISTS": "Candidate Lists",
-          "GRIDVIEW": "Grid View",
-          "APPLICATION": "Application",
-          "NEWJOB": "New Job",
-          "COMPANIESLIST": "Companies List",
-          "JOBCATEGORIES": "Job Categories",
-          "APIKEY": "API Key"
-        }
-      },
-      "LAYOUTS": {
-        "TEXT": "Layouts",
-        "LIST": {
-          "HORIZONTAL": "Horizontal",
-          "DETACHED": "Detached",
-          "TWOCOLUMN": "Two Column",
-          "HOVERED": "Hovered"
-        }
-      },
-      "AUTHENTICATION": {
-        "TEXT": "Authentication",
-        "LIST": {
-          "BASIC": "Basic",
-          "COVER": "Cover",
-          "SIGNIN": "Sign In",
-          "SIGNUP": "Sign Up",
-          "PASSWORDRESET": "Password Reset",
-          "PASSWORDCREATE": "Password Create",
-          "LOCKSCREEN": "Lock Screen",
-          "LOGOUT": "Logout",
-          "SUCCESSMESSAGE": "Success Message",
-          "TWOSTEPVERIFICATION": "Two Step Verification",
-          "ERRORS": "Errors",
-          "404BASIC": "404 Basic",
-          "404COVER": "404 Cover",
-          "404ALT": "404 Alt",
-          "500": "500",
-          "OFFLINE": "Offline Page"
-        }
-      },
-      "PAGES": {
-        "TEXT": "Pages",
-        "LIST": {
+        "TODO": {
           "STARTER": "Starter",
           "PROFILE": "Profile",
           "SIMPLEPAGE": "Simple Page",
           "SETTINGS": "Settings",
           "TEAM": "Team",
           "TIMELINE": "Timeline",
-          "FAQS": "FAQs",
-          "PRICING": "Pricing",
-          "GALLERY": "Gallery",
           "MAINTENANCE": "Maintenance",
           "COMINGSOON": "Coming Soon",
           "SITEMAP": "Sitemap",
-          "SEARCHRESULTS": "Search Results",
-          "PRIVACYPOLICY": "Privacy Policy",
-          "TERMS&CONDITIONS": "Term & Conditions"
-        }
-      },
-      "LANDING": {
-        "TEXT": "Landing",
-        "LIST": {
-          "ONEPAGE": "One Page",
-          "NFTLANDING": "NFT Landing",
-          "JOB": "Job"
-        }
-      },
-      "COMPONENTS": {
-        "TEXT": "Components"
-      },
-      "BASEUI": {
-        "TEXT": "Base UI",
-        "LIST": {
-          "ALERTS": "Alerts",
-          "BADGES": "Badges",
-          "BUTTONS": "Buttons",
-          "COLORS": "Colors",
-          "CARDS": "Cards",
-          "CAROUSEL": "Carousel",
-          "DROPDOWNS": "Dropdowns",
-          "GRID": "Grid",
-          "IMAGES": "Images",
-          "TABS": "Tabs",
-          "ACCORDION&COLLAPSE": "Accordion & Collapse",
-          "MODALS": "Modals",
-          "OFFCANVAS": "Offcanvas",
-          "PLACEHOLDERS": "Placeholders",
-          "PROGRESS": "Progress",
-          "NOTIFICATIONS": "Notifications",
-          "MEDIAOBJECT": "Media object",
-          "EMBEDVIDEO": "Embed Video",
-          "TYPOGRAPHY": "Typography",
-          "LISTS": "Lists",
-          "LINKS": "Links",
-          "GENERAL": "General",
-          "RIBBONS": "Ribbons",
-          "UTILITIES": "Utilities"
-        }
-      },
-      "ADVANCEUI": {
-        "TEXT": "Advance UI",
-        "LIST": {
-          "SWEETALERTS": "Sweet Alerts",
-          "NESTABLELIST": "Nestable List",
-          "SCROLLBAR": "Scrollbar",
-          "ANIMATION": "Animation",
-          "TOUR": "Tour",
-          "SWIPERSLIDER": "Swiper Slider",
-          "RATTINGS": "Ratings",
-          "HIGHLIGHT": "Highlight",
-          "SCROLLSPY": "ScrollSpy"
-        }
-      },
-      "WIDGETS": {
-        "TEXT": "Widgets"
-      },
-      "FORMS": {
-        "TEXT": "Forms",
-        "LIST": {
-          "BASICELEMENTS": "Basic Elements",
-          "FORMSELECT": "Form Select",
-          "CHECKBOXS&RADIOS": "Checkboxs & Radios",
-          "PICKERS": "Pickers",
-          "INPUTMASKS": "Input Masks",
-          "ADVANCED": "Advanced",
-          "RANGESLIDER": "Range Slider",
-          "VALIDATION": "Validation",
-          "WIZARD": "Wizard",
-          "EDITORS": "Editors",
-          "FILEUPLOADS": "File Uploads",
-          "FORMLAYOUTS": "Form Layouts"
-        }
-      },
-      "TABLES": {
-        "TEXT": "Tables",
-        "LIST": {
-          "BASICTABLES": "Basic Tables",
-          "GRIDJS": "Grid Js",
-          "LISTJS": "List Js",
-          "DATATABLES": "Datatables"
-        }
-      },
-      "CHARTS": {
-        "TEXT": "Charts",
-        "LIST": {
-          "APEXCHARTS": "Apexcharts",
-          "LINE": "Line",
-          "AREA": "Area",
-          "COLUMN": "Column",
-          "BAR": "Bar",
-          "MIXED": "Mixed",
-          "TIMELINE": "Timeline",
-          "RANGEAREA": "Range Area",
-          "FUNNEL": "Funnel",
-          "CANDLSTICK": "Candlstick",
-          "BOXPLOT": "Boxplot",
-          "BUBBLE": "Bubble",
-          "SCATTER": "Scatter",
-          "HEATMAP": "Heatmap",
-          "TREEMAP": "Treemap",
-          "PIE": "Pie",
-          "RADIALBAR": "Radialbar",
-          "RADAR": "Radar",
-          "POLARAREA": "Polar Area",
-          "CHARTJS": "Chartjs",
-          "ECHARTS": "Echarts"
-        }
-      },
-      "ICONS": {
-        "TEXT": "Icons",
-        "LIST": {
-          "REMIX": "Remix",
-          "BOXICONS": "Boxicons",
-          "MATERIALDESIGN": "Material Design",
-          "LINEAWESOME": "Line Awesome",
-          "FEATHER": "Feather",
-          "CRYPTOSVG": "Crypto SVG"
-        }
-      },
-      "MAPS": {
-        "TEXT": "Maps",
-        "LIST": {
-          "GOOGLE": "Google",
-          "VECTOR": "Vector",
-          "LEAFLET": "Leaflet"
-        }
-      },
-      "MULTILEVEL": {
-        "TEXT": "Multi Level",
-        "LIST": {
-          "LEVEL1": {
-            "1": "Level 1.1",
-            "2": "Level 1.2",
-            "LEVEL2": {
-              "1": "Level 2.1",
-              "2": "Level 2.2"
+          "SEARCHRESULTS": "Search Results"
+        },
+        "INFORMATION": {
+          "MENU": {
+            "TITLE": "Information",
+            "DESCRIPTION": "..."
+          },
+          "PRIVACY_POLICY": {
+            "MENU": {
+              "TITLE": "Privacy Policy"
+            }
+          },
+          "TERMS_AND_CONDITIONS": {
+            "MENU": {
+              "TITLE": "Terms & Conditions"
+            }
+          },
+          "FAQS": {
+            "MENU": {
+              "TITLE": "FAQs"
+            }
+          },
+          "CORRECTIONS": {
+            "MENU": {
+              "TITLE": "Corrections"
+            }
+          },
+          "SUPPORT": {
+            "MENU": {
+              "TITLE": "Support"
+            }
+          },
+          "PRICING": {
+            "MENU": {
+              "TITLE": "Pricing"
+            }
+          },
+          "GALLERY": {
+            "MENU": {
+              "TITLE": "Gallery"
             }
           }
+        },
+        "LANDING": {
+          "_COMMENTS": "Publicly accessible full size landing pages.",
+          "TITLE": "Landing",
+          "DESCRIPTION": "...",
+          "OPTIONS": {
+            "ONEPAGE": "One Page",
+            "JOB": "Job"
+          }
+        },
+        "AUTHENTICATION": {
+          "TITLE": "Authentication",
+          "DESCRIPTION": "...",
+          "LIST": {
+            "BASIC": "Basic",
+            "COVER": "Cover",
+            "SIGNIN": "Sign In",
+            "SIGNUP": "Sign Up",
+            "PASSWORDRESET": "Password Reset",
+            "PASSWORDCREATE": "Password Create",
+            "LOCKSCREEN": "Lock Screen",
+            "LOGOUT": "Logout",
+            "SUCCESSMESSAGE": "Success Message",
+            "TWOSTEPVERIFICATION": "Two Step Verification",
+            "ERRORS": "Errors",
+            "404BASIC": "404 Basic",
+            "404COVER": "404 Cover",
+            "404ALT": "404 Alt",
+            "500": "500",
+            "OFFLINE": "Offline Page"
+          },
+          "SHARED": {
+            "WELCOME": "Welcome!",
+            "WELCOME_BACK": "Welcome Back!",
+            "SIGN_UP": "Sign Up",
+            "SIGN_UP_WITH": "Sign up with",
+            "SIGN_IN": "Sign In",
+            "SIGN_IN_WITH": "Sign in with",
+            "USERNAME": "User name",
+            "USERNAME_INSTRUCTIONS": "Enter your username",
+            "EMAIL": "Email",
+            "EMAIL_INSTRUCTIONS": "Enter an email address",
+            "EMAIL_ERROR_01": "Email is required",
+            "EMAIL_ERROR_02": "Email has unrecognised format",
+            "PASSWORD": "Password",
+            "PASSWORD_INSTRUCTIONS": "Enter your password",
+            "PASSWORD_ERROR_01": "Password is required",
+            "FORGOT?": "Forgot?",
+            "REMEMBER_ME": "Remember me?",
+            "DONT_HAVE_AN_ACCOUNT?": "Don't yet have an account?"
+
+          },
+          "SPECIFIC": {
+            "SIGNIN": {
+            }
+          }
+        },
+        "DASHBOARD": {
+          "TITLE": "Dashboard",
+          "DESCRIPTION": "..."
+        },
+        "SEARCH": {
+          "MENU": {
+            "TITLE": "Search"
+          }
+        },
+        "SETTINGS": {
+          "MENU": {
+            "TITLE": "Settings"
+          },
+          "SYSTEM": {
+            "MENU": {
+              "TITLE": "System"
+            }
+          },
+          "TENANCY": {
+            "MENU": {
+              "TITLE": "Tenancy"
+            }
+          },
+          "GROUP": {
+            "MENU": {
+              "TITLE": "Group"
+            }
+          },
+          "USER": {
+            "MENU": {
+              "TITLE": "User"
+            }
+          }
+      }
+      }
+    },
+    "APPLETS": {
+      "MENU": {
+        "TITLE": "Apps",
+        "DESCRIPTON": "Hosted Applications"
+      },
+      "SPIKE": {
+        "MENU": {
+          "TITLE": "Spikes",
+          "DESCRIPTION": "..."
+        }
+      },
+      "TEMPLATE": {
+        "MENU": {
+          "TITLE": "Templates",
+          "DESCRIPTION": "..."
+        }
+      },
+      "DEMO": {
+        "MENU": {
+          "TITLE": "Demos",
+          "DESCRIPTION": "..."
+        }
+      },
+      "ARCHITECTURE": {
+        "MENU": {
+          "TITLE": "Architecture",
+          "DESCRIPTION": "..."
+        },
+        "MODULES": {
+          "VALUES": {
+            "MENU": {
+              "TITLE": "Values",
+              "DESCRIPTION": "..."
+            }
+          },
+          "PRINCIPLES": {
+            "MENU": {
+              "TITLE": "Principles",
+              "DESCRIPTION": "..."
+            }
+          },
+          "QUALITIES": {
+            "MENU": {
+              "TITLE": "Qualities",
+              "DESCRIPTION": "..."
+            }
+          },
+          "PATTERNS": {
+            "MENU": {
+              "TITLE": "Patterns",
+              "DESCRIPTION": "..."
+            }
+          }
+        }
+      },
+      "PRODUCTS": {
+        "MENU": {
+          "TITLE": "Products",
+          "DESCRIPTION": "..."
+        }
+      },
+      "PEOPLE": {
+        "MENU": {
+          "TITLE": "People",
+          "DESCRIPTION": "..."
+        }
+      },
+      "PLACES": {
+        "MENU": {
+          "TITLE": "Places",
+          "DESCRIPTION": "..."
+        }
+      },
+      "PARTICIPATION": {
+        "MENU": {
+          "TITLE": "Participation",
+          "DESCRIPTION": "..."
+        }
+      },
+      "PROGRESS": {
+        "MENU": {
+          "TITLE": "Progress",
+          "DESCRIPTION": "..."
+        }
+      },
+      "ACCOMPLISHMENTS": {
+        "MENU": {
+          "TITLE": "Accomplisments",
+          "DESCRIPTION": "..."
         }
       }
     }

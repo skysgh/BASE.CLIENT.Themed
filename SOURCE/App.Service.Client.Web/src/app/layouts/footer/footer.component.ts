@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemService } from '../../../_custom/common/services/system.service';
-import { SystemSettingsService } from '../../../_custom/common/services/system-settings.service';
-import { System } from '../../../_custom/common/models/system.model';
+import { SystemService } from '../../../_BASE/shared/services/system.service';
+import { SystemSettingsService } from '../../../_BASE/shared/services/system-settings.service';
+import { System } from '../../../_BASE/shared/models/system.model';
 
 @Component({
   selector: 'app-footer',

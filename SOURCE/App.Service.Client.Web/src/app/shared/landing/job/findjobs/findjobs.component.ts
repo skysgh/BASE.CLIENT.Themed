@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 // Data Get
 import { findjob } from './data';
-import { System } from '../../../../../_custom/common/models/system.model';
-import { SystemService } from '../../../../../_custom/common/services/system.service';
+import { System } from '../../../../../_BASE/shared/models/system.model';
+import { SystemService } from '../../../../../_BASE/shared/services/system.service';
 
 @Component({
   selector: 'app-findjobs',

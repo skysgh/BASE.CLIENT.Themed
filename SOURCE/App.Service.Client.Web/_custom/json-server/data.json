@@ -1,4 +1,64 @@
 {
+  "encodingTypes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "HTML",
+      "description": "...some desc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Markdown",
+      "description": "...some desc..."
+    }
+  ],
+  "statementTypes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Privacy Statement",
+      "description": "...some desc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Data Use Statement",
+      "description": "...some desc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "User Tracking Statement",
+      "description": "...some desc..."
+    }
+  ],
+  "statements": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "typeId": "00000000-0000-0000-0000-000000000001",
+      "encodingTypeId": "00000000-0000-0000-0000-000000000001",
+      "languageCode": "en",
+      "issuedUtc": "2023-04-23T18:25:43.511Z",
+      "title": "Privacy Statement",
+      "text": "...some desc..."
+    }
+  ],
+  "agreementTypes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Terms and Conditions",
+      "languageCode": "en",
+      "issuedUtc": "2023-04-23T18:25:43.511Z",
+      "text": "...some desc..."
+    }
+  ],
+  "agreements": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "typeId": "00000000-0000-0000-0000-000000000001",
+      "encodingTypeId": "00000000-0000-0000-0000-000000000001",
+      "languageCode": "en",
+      "issuedUtc": "2023-04-23T18:25:43.511Z",
+      "title": "Privacy Statement",
+      "text": "...some desc..."
+    }
+  ],
   "spikes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -269,7 +329,7 @@
   "notifications": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
-      "from":  "AliExpress",
+      "from": "AliExpress",
       "title": "Your Drone reward is ready!",
       "message": "Blah blah blah...",
       "icon": "bx-badge-check",
@@ -289,7 +349,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
-      "from":  "Daemon",
+      "from": "Daemon",
       "title": "You have received new messages in the conversation",
       "icon": "bx-badge-check",
       "time": "2 hrs ago",
@@ -308,5 +368,4 @@
     }
 
   ]
-
 }

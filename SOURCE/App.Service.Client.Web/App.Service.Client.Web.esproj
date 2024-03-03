@@ -11,19 +11,14 @@
     <None Remove="src\app\account\**" />
     <None Remove="src\app\custom\**" />
     <None Remove="src\app\pages\module01\**" />
-    <None Remove="src\_custom\apps\dashboard\**" />
+    <None Remove="src\_custom\**" />
     <TypeScriptConfiguration Remove="src\app\account\**" />
     <TypeScriptConfiguration Remove="src\app\custom\**" />
     <TypeScriptConfiguration Remove="src\app\pages\module01\**" />
-    <TypeScriptConfiguration Remove="src\_custom\apps\dashboard\**" />
+    <TypeScriptConfiguration Remove="src\_custom\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\_custom\common\models\base\" />
-    <Folder Include="src\_custom\common\data\" />
-    <Folder Include="src\_custom\common\ui\public\services\" />
     <Folder Include="src\assets\custom\" />
-    <Folder Include="src\_custom\common\settings\navigation\" />
-    <Folder Include="src\_custom\core\modules\account\auth\pass-reset\" />
-    <Folder Include="src\_custom\core\pages\" />
+    <Folder Include="src\_BASE\core\models\base\" />
   </ItemGroup>
 </Project>
