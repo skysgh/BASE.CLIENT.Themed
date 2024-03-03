@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-  import { AppRoutingModule } from '../_BASE/core/modules/_app/app-routing.module';
+//  import { AppRoutingModule } from '../_BASE/core/modules/_app/app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LayoutsModule } from "./layouts/layouts.module";
@@ -63,7 +63,7 @@ if (environment.defaultauth === 'firebase') {
     BrowserAnimationsModule,
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule,
+    //AppRoutingModule,
     LayoutsModule,
     //PagesModule
   ],

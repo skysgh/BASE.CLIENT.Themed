@@ -409,36 +409,44 @@
           }
         },
         "DASHBOARD": {
-          "TITLE": "Dashboard",
-          "DESCRIPTION": "..."
-        },
+          "MENU": {
+            "TITLE": "Dashboard",
+            "DESCRIPTION": "..."
+          }
+          },
         "SEARCH": {
           "MENU": {
-            "TITLE": "Search"
+            "TITLE": "Search",
+            "DESCRIPTION": "..."
           }
         },
         "SETTINGS": {
           "MENU": {
-            "TITLE": "Settings"
+            "TITLE": "Settings",
+            "DESCRIPTION": "..."
           },
           "SYSTEM": {
             "MENU": {
-              "TITLE": "System"
+              "TITLE": "System",
+              "DESCRIPTION": "..."
             }
           },
           "TENANCY": {
             "MENU": {
-              "TITLE": "Tenancy"
+              "TITLE": "Tenancy",
+              "DESCRIPTION": "..."
             }
           },
           "GROUP": {
             "MENU": {
-              "TITLE": "Group"
+              "TITLE": "Group",
+              "DESCRIPTION": "..."
             }
           },
           "USER": {
             "MENU": {
-              "TITLE": "User"
+              "TITLE": "User",
+              "DESCRIPTION": "..."
             }
           }
       }
