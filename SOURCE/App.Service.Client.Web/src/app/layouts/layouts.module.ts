@@ -12,7 +12,7 @@ import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 
 // Component pages
-import { LayoutComponent } from './layout.component';
+import { AppLayoutComponent } from './layout.component';
 import { VerticalComponent } from './vertical/vertical.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -30,7 +30,7 @@ import lottie from 'lottie-web';
 
 @NgModule({
   declarations: [
-    LayoutComponent,
+    AppLayoutComponent,
     VerticalComponent,
     TopbarComponent,
     SidebarComponent,

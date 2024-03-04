@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IndexComponent } from './index/index.component';
+import { IndexComponent } from './index/component';
 
 import {
   NgbCarouselModule, NgbTooltipModule, NgbCollapseModule
@@ -8,16 +8,14 @@ import {
 
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
-import { LandingRoutingModule } from "./landing-routing.module";
-import { SharedModule } from '../shared/shared.module';
-import { NftComponent } from './nft/nft.component';
-import { JobComponent } from './job/job.component';
+import { LandingRoutingModule } from "./routing.module";
+import { SharedModule } from '../../../../app/shared/shared.module';
+import { JobComponent } from './job/component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
     IndexComponent,
-    NftComponent,
     JobComponent
   ],
   imports: [
@@ -31,4 +29,4 @@ import { TranslateModule } from '@ngx-translate/core';
     ScrollToModule.forRoot(),
   ]
 })
-export class LandingModule { }
+export class BaseCoreLandingModule { }

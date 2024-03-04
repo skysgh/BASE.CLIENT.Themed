@@ -11,10 +11,16 @@
     <None Remove="src\app\account\**" />
     <None Remove="src\app\custom\**" />
     <None Remove="src\app\pages\module01\**" />
+    <None Remove="src\_BASE\core\modules\pages\information\models\**" />
+    <None Remove="src\_BASE\core\modules\pages\information\services\**" />
+    <None Remove="src\_BASE\core\modules\pages\landing\**" />
     <None Remove="src\_custom\**" />
     <TypeScriptConfiguration Remove="src\app\account\**" />
     <TypeScriptConfiguration Remove="src\app\custom\**" />
     <TypeScriptConfiguration Remove="src\app\pages\module01\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\information\models\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\information\services\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\landing\**" />
     <TypeScriptConfiguration Remove="src\_custom\**" />
   </ItemGroup>
   <ItemGroup>

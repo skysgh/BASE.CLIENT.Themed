@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 
-import { SystemService } from '../../../shared/services/system.service';
-import { TitleService } from '../../../shared/services/title.service';
-
+import { TitleService } from '../../../../shared/services/title.service';
+import { SystemService } from '../../../../shared/services/system.service';
 
 @Component({
-  selector: 'apps-route',
+  selector: 'app-root',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
+export class AppROComponent {
 
-export class BaseAppsRouteComponent {
-
+  public readonly title: string;
   constructor(private titleService: TitleService, systemService: SystemService) {
-    // Set the desired title for your page
+    this.title = systemService.system.title;
     this.titleService.set(`${systemService.system.sponsor.title}  ${systemService.system.title}`);
   }
 }

@@ -15,7 +15,7 @@ import { Store } from '@ngrx/store';
 /**
  * Layout Component
  */
-export class LayoutComponent implements OnInit {
+export class AppLayoutComponent implements OnInit {
 
   layoutType!: string;
 

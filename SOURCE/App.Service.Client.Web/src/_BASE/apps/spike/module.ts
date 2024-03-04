@@ -35,22 +35,23 @@ import { TranslateModule} from '@ngx-translate/core';
       // we're basically saying load a control from this module,
       // which happens to be a router-output, and into that
       // load the module for specific group of views:
-      {
-        path: 'spike', component: SpikeRouteOutletComponent,
-        //loadChildren: () => import('./modules/spike/module').then(m => m.SpikeSpikesModule), /*canActivate: [AuthGuard]*/
-        children:
-          [
-            { path: '', component: SpikeSpikesBrowseComponent },
-            { path: 'browse', redirectTo: '', pathMatch: 'prefix' },
-            { path: 'list', redirectTo: '', pathMatch: 'prefix' },
+      //{
+      //  //path: 'spike', component: SpikeRouteOutletComponent,
+        ////loadChildren: () => import('./modules/spike/module').then(m => m.SpikeSpikesModule), /*canActivate: [AuthGuard]*/
+        //children:
+        //  [
+            { path: 'spikes', component: SpikeSpikesBrowseComponent },
+            { path: 'browse', redirectTo: 'spikes', pathMatch: 'prefix' },
+            { path: 'list', redirectTo: 'spikes', pathMatch: 'prefix' },
             { path: ':id', component: SpikeSpikesReadComponent },
             { path: 'view/:id', redirectTo: ':id', pathMatch: 'prefix' },
             //    { path: 'read/:id', redirectTo: ':id', pathMatch: 'prefix' },
-            { path: 'edit/:id', component: SpikeSpikesEditComponent }
-          ]
-      },
-      // Until there are other entities:
-      { path: '', redirectTo: 'spike', pathMatch: 'prefix' },
+            { path: 'edit/:id', component: SpikeSpikesEditComponent },
+            { path: '', redirectTo:'spikes', pathMatch:'prefix'}
+    //      ]
+    //  },
+    //  // Until there are other entities:
+    //  { path: '', redirectTo: 'spike', pathMatch: 'prefix' },
       ]
     ),
     // Import classes within the above specified import files.

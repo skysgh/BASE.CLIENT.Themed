@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemService } from '../../../../../shared/services/system.service';
-import { System } from '../../../../../shared/models/system.model';
+import { SystemService } from '../../../../../../shared/services/system.service';
+import { System } from '../../../../../../shared/models/system.model';
 import { TranslateService } from '@ngx-translate/core';
-import { DiagnosticsService } from '../../../../../shared/services/diagnostics.service';
+import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
 
 @Component({
   selector: 'app-core-pages-terms-conditions',

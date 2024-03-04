@@ -1,3 +1,6 @@
+// This is the base module for
+// applications.
+
 // NOTE:
 // REferenced from src/app-routing.module.ts
 // which lazy loads it with `LayoutComponent`
@@ -14,8 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomCommonModule } from "../shared/custom-common.module";
 
 // Module specific:
-import { CustomAppsRoutingModule } from "./routing.module";
-import { CustomAppsRouteComponent } from "./ui/_route/component";
+//import { CustomAppsRoutingModule } from "./routing.module";
+import { BaseAppsRouteComponent } from "./ui/_route/component";
+import { RouterModule, Routes } from '@angular/router';
+import { BaseAppsRoutingModule } from './routing.module';
+
+
 
 
 @NgModule({
@@ -27,18 +34,20 @@ import { CustomAppsRouteComponent } from "./ui/_route/component";
     // Custom specific:
     CustomCommonModule,
     // Module specific:
-    CustomAppsRoutingModule
+    BaseAppsRoutingModule
     // No components
   ],
-
+  exports: [
+    RouterModule
+  ],
   declarations: [
     // define what Components belong to this Module (i.e., are not `standalone`)
-    CustomAppsRouteComponent
+    BaseAppsRouteComponent
   ],
   providers: [
     // declare services to dependency inject into constructors.
   ]
 })
-export class CustomAppsModule { }
+export class BaseAppsModule { }
 
 

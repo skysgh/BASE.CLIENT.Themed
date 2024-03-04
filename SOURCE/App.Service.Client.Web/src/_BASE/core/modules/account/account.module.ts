@@ -31,4 +31,4 @@ import { LoginComponent } from './login/login.component';
     NgbToastModule
   ]
 })
-export class AccountModule { }
+export class BaseAccountModule { }

@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Import template:
-import { BreadcrumbsComponent } from '../../../app/shared/breadcrumbs/breadcrumbs.component';
-import { SharedModule } from '../../../app/shared/shared.module';
+import { BreadcrumbsComponent } from '../../../../app/shared/breadcrumbs/breadcrumbs.component';
+import { SharedModule } from '../../../../app/shared/shared.module';
 // Import  Base.Common.Models:
 
 // Import  Base.Common.Services:
@@ -18,14 +18,15 @@ import { SharedModule } from '../../../app/shared/shared.module';
 // Import Module specific.services:
 // import { SpikeSpikesRepositoryService } from "./services/spike-repository.service"
 // Import Module specific.components:
-import { BaseInformationRouteOutletComponent } from './ui/_routeoutlet/component';
+import { BaseCorePagesROComponent } from './ui/_routeoutlet/component';
+import { BaseInformationPrivacyPolicyComponent } from './information/ui/privacy/component';
+import { BaseInformationTermsAndConditionsComponent } from './information/ui/terms_conditions/component';
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
 
 @NgModule({
   imports: [
-
     TranslateModule,
     RouterModule.forChild(
       [
@@ -41,16 +42,16 @@ import { BaseInformationRouteOutletComponent } from './ui/_routeoutlet/component
         // Admittedly in he case of information, their simplicity doesn't
         // warant a module for each, but out of habit I *think* I prefer paying
         // a rigour price early, in case I manouverability later.
-        { path: '', component: BasePagesRouterOutletComponent },
+        { path: '', component: BaseInformationTermsAndConditionsComponent },
         { path: 'landing', component: BaseInformationPrivacyPolicyComponent },
-        { path: 'information', component: BaseInformationTermsAndConditionsComponent },
+        { path: 'information', redirectTo :'' },
+        
       ]
     ),
     // Import classes within the above specified import files.
     //Ag specific:
     CommonModule,
     FormsModule,
-
     SharedModule
     // Module specific:
     //SpikeRoutingModule,
@@ -61,17 +62,11 @@ import { BaseInformationRouteOutletComponent } from './ui/_routeoutlet/component
   ],
   declarations: [
     // define what Components belong to this Module (i.e., are not `standalone`)
-    BaseInformationRouteOutletComponent,
-    // Spike Components:
-    BaseInformationPrivacyPolicyComponent
-    //BreadcrumbsComponent
-
+  BaseCorePagesROComponent 
 
   ],
   providers: [
     // declare services to dependency inject into constructors.
-  //  SpikeSpikesRepositoryService,
-  //  SpikeSubSpikesRepositoryService
   ]
 })
-export class BasePagesInformationModule { }
+export class BaseCorePagesModule { }
