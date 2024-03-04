@@ -25,16 +25,16 @@ export class BaseAppsSpikeSpikesEditComponent implements OnInit {
     this.diagnosticsService.info("Constructor");
   }
 
-    ngOnInit(): void {
-      this.diagnosticsService.info("Component OnInit");
+  ngOnInit(): void {
+    this.diagnosticsService.info("Component OnInit");
 
-      this.route.params.subscribe(params => {
-        this.diagnosticsService.info("params ready");
-        this.diagnosticsService.info('id: ' + params['id']);
-        this.repositoryService.get(params['id']).subscribe(x => {
-          this.diagnosticsService.info('got X: ' + x.title);
-          this.data = x
-        });
+    this.route.params.subscribe(params => {
+      this.diagnosticsService.info("params ready");
+      this.diagnosticsService.info('id: ' + params['id']);
+      this.repositoryService.get(params['id']).subscribe(x => {
+        this.diagnosticsService.info('got X: ' + x.title);
+        this.data = x
       });
+    });
   }
 }

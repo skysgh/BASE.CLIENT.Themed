@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-base-core-landing-index',
+  selector: 'app-base-core-landing-pricing',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 /**
  * Index Component
  */
-export class BaseCoreLandingIndexComponent  {
+export class BaseCoreLandingPricingComponent  {
 
  
 
