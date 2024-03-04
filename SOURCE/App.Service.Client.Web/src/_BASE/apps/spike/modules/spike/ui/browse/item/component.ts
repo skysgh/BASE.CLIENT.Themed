@@ -5,12 +5,12 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
-  selector: 'app-apps-spike-spike-browse-item',
+  selector: 'app-base-apps-spike-spikes-browse-item',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 
-export class SpikeSpikesBrowseItemComponent {
+export class BaseAppsSpikeSpikesBrowseItemComponent {
 
   @Input()
   data: any;

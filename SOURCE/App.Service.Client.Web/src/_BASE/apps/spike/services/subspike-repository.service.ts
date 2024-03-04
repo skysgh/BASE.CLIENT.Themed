@@ -8,7 +8,7 @@ import { ErrorService } from "../../../shared/services/error.service";
 import { SubSpike } from "../models/subspike.model";
 
 @Injectable()
-export class SpikeSubSpikesRepositoryService
+export class BaseAppsSpikeSubSpikesRepositoryService
   extends GenericRepositoryService<SubSpike> {
 
   constructor(

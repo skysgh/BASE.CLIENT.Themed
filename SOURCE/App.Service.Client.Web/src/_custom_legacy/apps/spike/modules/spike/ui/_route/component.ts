@@ -8,12 +8,12 @@ import { SpikeSpikesRepositoryService } from '../../../../services/spike-reposit
 
 
 @Component({
-  selector: 'app-apps-spike-spikes-route',
+  selector: 'app-base-apps-spike-spikes-route',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 
-export class SpikeSpikesRouteComponent implements OnInit {
+export class BaseAppsSpikeSpikesRouteComponent implements OnInit {
 
   constructor(
     private diagnosticsService: DiagnosticsService,

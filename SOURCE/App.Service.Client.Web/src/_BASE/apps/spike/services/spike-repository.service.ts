@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class SpikeSpikesRepositoryService
+export class BaseAppsSpikeSpikesRepositoryService
   extends GenericRepositoryService<Spike> {
 
   constructor(

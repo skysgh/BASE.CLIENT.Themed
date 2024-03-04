@@ -8,11 +8,11 @@ import { SubSpike } from '../../../../models/subspike.model';
 
 
 @Component({
-  selector: 'app-apps-spikes-subspike-browse',
+  selector: 'app-base-apps-spike-subspikes-browse',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class SpikesSubSpikeBrowseComponent implements OnInit {
+export class BaseAppsSpikesSubSpikeBrowseComponent implements OnInit {
 
   public page: number = 1;
   public data?: SubSpike[] = [];

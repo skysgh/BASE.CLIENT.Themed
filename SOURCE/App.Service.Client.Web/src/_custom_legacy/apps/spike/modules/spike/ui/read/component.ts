@@ -14,12 +14,12 @@ import { Observable } from 'rxjs';
 
 
 @Component({
-  selector: 'app-apps-spike-spikes-read',
+  selector: 'app-base-apps-spike-spikes-read',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 
-export class SpikeSpikesReadComponent implements OnInit {
+export class BaseAppsSpikeSpikesReadComponent implements OnInit {
 
   public data?: Spike;
 

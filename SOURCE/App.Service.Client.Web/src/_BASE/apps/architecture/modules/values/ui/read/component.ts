@@ -7,12 +7,12 @@ import { Value } from '../../../../models/value.model';
 
 
 @Component({
-  selector: 'app-apps-architecture-value-read',
+  selector: 'app-base-apps-architecture-value-read',
   templateUrl: './spike-read.component.html',
   styleUrls: ['./spike-read.component.scss']
 })
 
-export class ArchitectureValuesReadComponent implements OnInit {
+export class ArchitectureBaseValuesReadComponent implements OnInit {
 
   public data? : Value[] = [];
 

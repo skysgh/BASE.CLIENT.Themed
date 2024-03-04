@@ -10,12 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // .. services:
 import { SpikeSpikesRepositoryService } from "./services/spike-repository.service"
 // ..components:
-import { SpikeRouteOutletComponent } from './ui/_route/component';
-import { SpikeSpikesBrowseComponent } from './modules/spike/ui/browse/component';
-import { SpikeSpikesReadComponent } from './modules/spike/ui/read/component';
-import { SpikeSpikesEditComponent } from './modules/spike/ui/edit/component';
+import { BaseAppsSpikeRouteOutletComponent } from './ui/_route/component';
+import { BaseAppsSpikeSpikesBrowseComponent } from './modules/spike/ui/browse/component';
+import { BaseAppsSpikeSpikesReadComponent } from './modules/spike/ui/read/component';
+import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/component';
 //
-import { SpikesSubSpikeBrowseComponent } from './modules/subSpike/ui/browse/component';
+import { BaseAppsSpikesSubSpikeBrowseComponent } from './modules/subSpike/ui/browse/component';
 import { SpikeSubSpikesRepositoryService } from './services/subspike-repository.service';
 import { RouterModule } from '@angular/router';
 
@@ -34,17 +34,17 @@ import { RouterModule } from '@angular/router';
       // which happens to be a router-output, and into that
       // load the module for specific group of views:
       {
-        path: 'spike', component: SpikeRouteOutletComponent,
-        //loadChildren: () => import('./modules/spike/module').then(m => m.SpikeSpikesModule), /*canActivate: [AuthGuard]*/
+          path: 'spike', component: BaseAppsSpikeRouteOutletComponent,
+          /*canActivate: [AuthGuard]*/
         children:
           [
-            { path: '', component: SpikeSpikesBrowseComponent },
+            { path: '', component: BaseAppsSpikeSpikesBrowseComponent },
             { path: 'browse', redirectTo: '', pathMatch: 'prefix' },
             { path: 'list', redirectTo: '', pathMatch: 'prefix' },
-            { path: ':id', component: SpikeSpikesReadComponent },
+            { path: ':id', component: BaseAppsSpikeSpikesReadComponent },
             { path: 'view/:id', redirectTo: ':id', pathMatch: 'prefix' },
             //    { path: 'read/:id', redirectTo: ':id', pathMatch: 'prefix' },
-            { path: 'edit/:id', component: SpikeSpikesEditComponent }
+            { path: 'edit/:id', component: BaseAppsSpikeSpikesEditComponent }
           ]
       },
       // Until there are other entities:
@@ -64,13 +64,13 @@ import { RouterModule } from '@angular/router';
   ],
   declarations: [
     // define what Components belong to this Module (i.e., are not `standalone`)
-    SpikeRouteOutletComponent,
+    BaseAppsSpikeRouteOutletComponent,
     // Spike Components:
-    SpikeSpikesBrowseComponent,
-    SpikeSpikesReadComponent,
-    SpikeSpikesEditComponent,
+    BaseAppsSpikeSpikesBrowseComponent,
+    BaseAppsSpikeSpikesReadComponent,
+    BaseAppsSpikeSpikesEditComponent,
     // SubSpike Components:
-    SpikesSubSpikeBrowseComponent
+    BaseAppsSpikesSubSpikeBrowseComponent
   ],
   providers: [
     // declare services to dependency inject into constructors.

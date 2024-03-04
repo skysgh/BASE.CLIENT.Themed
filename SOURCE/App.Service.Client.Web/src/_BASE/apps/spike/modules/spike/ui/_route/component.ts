@@ -4,23 +4,23 @@ import { Component, OnInit } from '@angular/core';
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
 import { ExampleService } from '../../../../../../shared/services/example.service';
 // Import Module:
-import { SpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
+import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
 import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
-  selector: 'app-apps-spike-spikes-route',
+  selector: 'app-base-apps-spike-spikes-route',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 
-export class SpikeSpikesRouteComponent implements OnInit {
+export class BaseAppsSpikeSpikesRouteComponent implements OnInit {
 
   constructor(
     private translate: TranslateService,
     private diagnosticsService: DiagnosticsService,
     private exampleService: ExampleService,
-    private spikeRepositoryService: SpikeSpikesRepositoryService,
+    private spikeRepositoryService: BaseAppsSpikeSpikesRepositoryService,
   ) {
     
   }

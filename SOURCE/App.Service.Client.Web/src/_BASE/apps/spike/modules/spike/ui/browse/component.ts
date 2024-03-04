@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
-import { SpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
+import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
 // Models:
 import { Spike } from '../../../../models/spike.model';
 import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-apps-spike-spikes-browse',
+  selector: 'app-base-apps-spike-spikes-browse',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class SpikeSpikesBrowseComponent implements OnInit {
+export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
 
   public page:number = 1;
   public data?: Spike[] = [];
@@ -20,7 +20,7 @@ export class SpikeSpikesBrowseComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private diagnosticsService: DiagnosticsService,
-    private repositoryService: SpikeSpikesRepositoryService
+    private repositoryService: BaseAppsSpikeSpikesRepositoryService
   ) {
     this.diagnosticsService.info("Constructor");
   }

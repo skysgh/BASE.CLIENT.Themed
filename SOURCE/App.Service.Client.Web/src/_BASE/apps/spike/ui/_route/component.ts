@@ -6,12 +6,12 @@ import { DiagnosticsService } from '../../../../shared/services/diagnostics.serv
 
 
 @Component({
-  selector: 'app-apps-spikes-route',
+  selector: 'app-base-apps-spikes-route',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 
-export class SpikeRouteOutletComponent implements OnInit {
+export class BaseAppsSpikeRouteOutletComponent implements OnInit {
 
   constructor(
     private diagnosticsService: DiagnosticsService

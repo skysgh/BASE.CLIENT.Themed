@@ -9,11 +9,11 @@ import { Spike } from '../../../../models/spike.model';
 
 
 @Component({
-  selector: 'app-apps-spike-spikes-edit',
+  selector: 'app-base-apps-spike-spikes-edit',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class SpikeSpikesEditComponent implements OnInit {
+export class BaseAppsSpikeSpikesEditComponent implements OnInit {
 
   public data?: Spike;
 

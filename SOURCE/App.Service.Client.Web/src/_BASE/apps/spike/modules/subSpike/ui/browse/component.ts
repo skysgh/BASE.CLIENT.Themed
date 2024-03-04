@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
-import { SpikeSubSpikesRepositoryService } from '../../../../services/subspike-repository.service';
+import { BaseAppsSpikeSubSpikesRepositoryService } from '../../../../services/subspike-repository.service';
 // Models:
 import { ActivatedRoute } from '@angular/router';
 import { SubSpike } from '../../../../models/subspike.model';
@@ -9,11 +9,11 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
-  selector: 'app-apps-spikes-subspike-browse',
+  selector: 'app-base-apps-spike-subspikes-browse',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class SpikesSubSpikeBrowseComponent implements OnInit {
+export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
 
   public page: number = 1;
   public data?: SubSpike[] = [];
@@ -22,7 +22,7 @@ export class SpikesSubSpikeBrowseComponent implements OnInit {
     private route: ActivatedRoute,
     private translate: TranslateService,
     private diagnosticsService: DiagnosticsService,
-    private repositoryService: SpikeSubSpikesRepositoryService
+    private repositoryService: BaseAppsSpikeSubSpikesRepositoryService
   ) {
     this.diagnosticsService.info("SubSpike:Constructor");
   }

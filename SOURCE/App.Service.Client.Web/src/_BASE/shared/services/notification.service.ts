@@ -1,11 +1,14 @@
 // Import dependencies:
 import { Injectable } from '@angular/core';
 
-// Describe the service:
+// Injectable Service, available everywhere
+// as asingleton:
 @Injectable({ providedIn: 'root' })
-
-// Injectable service to describe current environment
 export class NotificationService {
+
+  // TODO:
+  // Note: when moved to a service,
+  // will get images from 'assets/images/users'
 
   private allNotifications = [
     {

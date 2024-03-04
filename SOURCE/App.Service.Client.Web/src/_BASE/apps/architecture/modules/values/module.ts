@@ -37,4 +37,4 @@ import { ArchitectureValuesEditComponent } from "./ui/edit/component";
     ArchitectureValuesRepositoryService
   ]
 })
-export class ArchitectureValuesModule { }
+export class BaseAppsArchitectureValuesModule { }

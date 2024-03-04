@@ -7,7 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
 import { ExampleService } from '../../../../../../shared/services/example.service';
 // Import Module:
-import { SpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
+import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
 import { Observable } from 'rxjs';
@@ -15,12 +15,12 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
-  selector: 'app-apps-spike-spikes-read',
+  selector: 'app-base-apps-spike-spikes-read',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 
-export class SpikeSpikesReadComponent implements OnInit {
+export class BaseAppsSpikeSpikesReadComponent implements OnInit {
 
   public data?: Spike;
 
@@ -34,7 +34,7 @@ export class SpikeSpikesReadComponent implements OnInit {
 
     private diagnosticsService: DiagnosticsService,
     private exampleService: ExampleService,
-    private repositoryService: SpikeSpikesRepositoryService,
+    private repositoryService: BaseAppsSpikeSpikesRepositoryService,
   ) {
     this.diagnosticsService.info("Constructor");
   }

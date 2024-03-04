@@ -21,10 +21,18 @@ const routes: Routes = [
   // Which has routing, and therefore will point to that module's appropriate control
   // which may be another router (it is in this case).
 
-  { path: 'spike', loadChildren: () => import('./spike/module').then(m => m.SpikeModule) },
-  { path: '', redirectTo:'spike' , pathMatch:'prefix' },
+  { path: 'spike', loadChildren: () => import('./spike/module').then(m => m.BaseAppsSpikeModule) }
+  // others applets
+  //{ path: 'architecture', loadChildren: () => import('./architecture/module').then(m => m.ArchitectureModule) },
+  //{ path: 'people', loadChildren: () => import('./people/module').then(m => m.BaseAppsPeopleModule) },
+  //{ path: 'products', loadChildren: () => import('./products/module').then(m => m.BaseAppsProductsModule) },
+  //{ path: 'places', loadChildren: () => import('./places/module').then(m => m.BaseAppsPlacesModule) },
+  //{ path: 'participations', loadChildren: () => import('./places/module').then(m => m.BaseAppsParticipationsModule) },
+  //{ path: 'assessments', loadChildren: () => import('./places/module').then(m => m.BaseAppsAssessmentsModule) },
+  //{ path: 'progress', loadChildren: () => import('./places/module').then(m => m.BaseAppsProgressModule) },
+  //{ path: 'achievements', loadChildren: () => import('./places/module').then(m => m.BaseAppsAchievementsModule) },
+  // THere is no default app (it would be parent that would default to 'index' page. )
 
-  //{ path: 'architecture', component: AppsRouteComponent, loadChildren: () => import('./architecture/module').then(m => m.ArchitectureModule) },
 ];
 
 

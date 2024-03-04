@@ -3,18 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 // Import Common:
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
-import { SpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
+import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
 import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
-  selector: 'app-apps-spike-spikes-edit',
+  selector: 'app-base-apps-spike-spikes-edit',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class SpikeSpikesEditComponent implements OnInit {
+export class BaseAppsSpikeSpikesEditComponent implements OnInit {
 
   public data?: Spike;
 
@@ -22,7 +22,7 @@ export class SpikeSpikesEditComponent implements OnInit {
     private translate: TranslateService,
     private route: ActivatedRoute,
     private diagnosticsService: DiagnosticsService,
-    private repositoryService: SpikeSpikesRepositoryService,
+    private repositoryService: BaseAppsSpikeSpikesRepositoryService,
   ) {
     this.diagnosticsService.info("Constructor");
   }

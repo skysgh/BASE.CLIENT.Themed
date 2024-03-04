@@ -8,11 +8,11 @@ import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-apps-spike-spikes-browse',
+  selector: 'app-base-apps-spike-spikes-browse',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class SpikeSpikesBrowseComponent implements OnInit {
+export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
 
   public page:number = 1;
   public data?: Spike[] = [];

@@ -10,11 +10,11 @@ import { Value } from '../../../../models/value.model';
 
 
 @Component({
-  selector: 'app-apps-architecture-values-browse',
+  selector: 'app-base-apps-architecture-values-browse',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class ArchitectureValuesBrowseComponent implements OnInit {
+export class BaseAppsArchitectureValuesBrowseComponent implements OnInit {
 
 
   public data?: Value[] = [];
