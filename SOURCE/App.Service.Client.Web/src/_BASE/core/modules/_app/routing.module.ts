@@ -22,14 +22,15 @@ const routes: Routes = [
   // the AppROComponent. They also don't need to be gaurded - they're public access.
   { path: '', loadChildren: () => import('../landing/module').then(m => m.BaseCoreLandingModule)},
   { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BaseCorePagesModule) },
-  // But apps, is more complex and is wrapped in the AppLayout frame first
-  // and it is guarded.
+  // But apps, is more complex:
+  // Is is wrapped in the AppLayout frame first.
+  // And it is Guarded.
   { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
 //  { path: 'settings', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
   // This again goes in the main AppROContainer with no prior framing:
   { path: 'auth', loadChildren: () => import('../account/account.module').then(m => m.BaseAccountModule) },
   // specifies what is default:
-  { path: 'landing', redirectTo: '', pathMatch: 'prefix' }   
+  { path: 'landing', redirectTo: '', pathMatch: 'full' }   
 ];
 
 @NgModule({

@@ -11,6 +11,26 @@
       "description": "...some desc..."
     }
   ],
+  "languageCodes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "English",
+      "description": "English language",
+      "languageCode": "en"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "M`aori",
+      "description": "The M`aori language",
+      "languageCode": "mi"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "French",
+      "description": "French language",
+      "languageCode": "fr"
+    }
+  ],
   "statementTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -162,7 +182,7 @@
       "title": "Corporate",
       "description": "...some desc...",
       "price": "12.99"
-    }
+    },
     {
       "id": "00000000-0000-0000-0000-000000000004",
       "title": "Enterprise",
@@ -247,6 +267,51 @@
     {
       "pricingFk": "00000000-0000-0000-0000-000000000001",
       "userFk": "00000000-0000-0000-0000-000000000001"
+    }
+  ],
+  "licenses": {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "title": "License",
+    "version": "0.1"
+  },
+  "licenseAssignments": {
+    "licenseId": "00000000-0000-0000-0000-000000000001",
+    "UserId": "00000000-0000-0000-0000-000000000001"
+  },
+
+
+  "productCarts": [
+    {
+      "personId": "00000000-0000-0000-0000-000000000001",
+      "productId": "00000000-0000-0000-0000-000000000001"
+    }
+  ],
+  "productTypes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Type A",
+      "description": "blah...blah..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Type B",
+      "description": "blah...blah..."
+    }
+  ],
+  "products": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Clown T-Shirt",
+      "description": "blah...blah...",
+      "price": "14.99",
+      "currency": "USD"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Red Beach Ball",
+      "description": "blah...blah...",
+      "price": "7.99",
+      "currency": "USD"
     }
   ],
 

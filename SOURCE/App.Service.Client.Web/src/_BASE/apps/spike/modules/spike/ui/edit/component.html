@@ -47,13 +47,13 @@
     <div class="col-12">
       <div class="text-end">
         <button type="button"
-                [routerLink]="['../../view', data.id]"
+                [routerLink]="['../view', data.id]"
                 class="btn btn-primary waves-effect waves-light">
           {{'BASE.SHARED.ACTIONS.SAVE' | translate}}
         </button>
 
         <button type="button"
-                routerLink="/"
+                routerLink="../browse"
                 class="btn btn-outline-secondary waves-effect waves-light">
           {{'BASE.SHARED.ACTIONS.CANCEL' | translate}}
         </button>

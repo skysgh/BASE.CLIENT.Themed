@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
-import { BaseAppsSpikeSubSpikesRepositoryService } from '../../../../services/subspike-repository.service';
+import { BaseAppsSpikeSubSpikesRepositoryService } from '../../../../services/repositories/subspike-repository.service';
 // Models:
 import { ActivatedRoute } from '@angular/router';
 import { SubSpike } from '../../../../models/subspike.model';

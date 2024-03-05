@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EventService } from '../core/services/event.service';
+import { EventService } from '../../_BASE/shared/services/services/event.service';
 
 // Store
 import { RootReducerState } from '../store';

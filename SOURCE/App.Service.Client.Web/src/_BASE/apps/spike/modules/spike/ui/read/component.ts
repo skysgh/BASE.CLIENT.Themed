@@ -7,7 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
 import { ExampleService } from '../../../../../../shared/services/example.service';
 // Import Module:
-import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
+import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
 import { Observable } from 'rxjs';

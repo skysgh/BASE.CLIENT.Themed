@@ -18,6 +18,8 @@ export class EnvironmentService {
     this.systemEnvironment = environment;
   }
 
+  public isJsonServerContext: boolean = true;
+
   public getDebugLevel() {
     return environment.custom.diagnostics.level;
     return 0;

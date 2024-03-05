@@ -11,15 +11,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Import Module specific dependencies:
 //import { SpikeRoutingModule } from "./routing.module";
 // .. services:
-import { BaseAppsSpikeSpikesRepositoryService } from "./services/spike-repository.service"
+import { BaseAppsSpikeSpikesRepositoryService } from "./services/repositories/spike-repository.service"
 // ..components:
 import { BaseAppsSpikeRouteOutletComponent } from './ui/_route/component';
 import { BaseAppsSpikeSpikesBrowseComponent } from './modules/spike/ui/browse/component';
 import { BaseAppsSpikeSpikesReadComponent } from './modules/spike/ui/read/component';
 import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/component';
-//
+// 
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
-import { BaseAppsSpikeSubSpikesRepositoryService } from './services/subspike-repository.service';
+import { BaseAppsSpikeSubSpikesRepositoryService } from './services/repositories/subspike-repository.service';
 
 // ...submodules:
 // NO mention, as it is late loaded by routes:
@@ -44,10 +44,10 @@ import { BaseAppsSpikeSubSpikesRepositoryService } from './services/subspike-rep
             { path: 'spikes', component: BaseAppsSpikeSpikesBrowseComponent },
             { path: 'browse', redirectTo: 'spikes', pathMatch: 'prefix' },
             { path: 'list', redirectTo: 'spikes', pathMatch: 'prefix' },
-        { path: ':id', component: BaseAppsSpikeSpikesReadComponent },
+            { path: ':id', component: BaseAppsSpikeSpikesReadComponent },
             { path: 'view/:id', redirectTo: ':id', pathMatch: 'prefix' },
             //    { path: 'read/:id', redirectTo: ':id', pathMatch: 'prefix' },
-        { path: 'edit/:id', component: BaseAppsSpikeSpikesEditComponent },
+            { path: 'edit/:id', component: BaseAppsSpikeSpikesEditComponent },
             { path: '', redirectTo:'spikes', pathMatch:'prefix'}
     //      ]
     //  },

@@ -2,18 +2,18 @@
 
 import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { EventService } from '../../core/services/event.service';
+import { EventService } from '../../../_BASE/shared/services/services/event.service';
 
 //Logout
 import { environment } from '../../../environments/environment';
-import { AuthenticationService } from '../../core/services/auth.service';
-import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
+import { AuthenticationService } from '../../../_BASE/shared/services/services/auth.service';
+import { AuthfakeauthenticationService } from '../../../_BASE/shared/services/services/authfake.service';
 import { Router } from '@angular/router';
-import { TokenStorageService } from '../../core/services/token-storage.service';
+import { TokenStorageService } from '../../../_BASE/shared/services/services/token-storage.service';
 
 // Language
 import { CookieService } from 'ngx-cookie-service';
-import { LanguageService } from '../../core/services/language.service';
+import { LanguageService } from '../../../_BASE/shared/services/services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 //import { allNotification, messages } from './data'
 import { CartModel } from './topbar.model';

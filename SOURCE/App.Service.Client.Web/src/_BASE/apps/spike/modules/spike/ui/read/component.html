@@ -5,13 +5,13 @@
   <p></p>
 
   <button type="button"
-          routerLink="/browse"
+          routerLink="../browse"
           class="btn btn-primary waves-effect waves-light">
     {{'BASE.SHARED.ACTIONS.RETURN' | translate}}
   </button>
 
   <button type="button"
-          [routerLink]="['/edit',data.id]"
+          [routerLink]="['../edit',data.id]"
           [skipLocationChange]="true"
           class="btn btn-outline-secondary waves-effect waves-light">
     {{'BASE.SHARED.ACTIONS.UPDATE' | translate}}

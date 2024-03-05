@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 // Import Common:
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
-import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
+import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
 import { TranslateService } from '@ngx-translate/core';

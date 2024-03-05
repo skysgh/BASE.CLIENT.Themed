@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
-import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
+import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Models:
 import { Spike } from '../../../../models/spike.model';
 import { ActivatedRoute } from '@angular/router';

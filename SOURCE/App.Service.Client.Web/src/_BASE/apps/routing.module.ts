@@ -10,6 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 // Module specific components:
 import { BaseAppsRouteComponent } from "./ui/_route/component";
 import { TranslateService } from '@ngx-translate/core';
+import { AppBaseErrorsModule } from '../core/errors/module';
 
 
 //import { BasePagesInformationModule } from '../base/pages/information/module';
@@ -21,7 +22,7 @@ const routes: Routes = [
   // Which has routing, and therefore will point to that module's appropriate control
   // which may be another router (it is in this case).
 
-  { path: 'spike', loadChildren: () => import('./spike/module').then(m => m.BaseAppsSpikeModule) }
+  { path: 'spike', loadChildren: () => import('./spike/module').then(m => m.BaseAppsSpikeModule) , pathMatch:'prefix'},
   // others applets
   //{ path: 'architecture', loadChildren: () => import('./architecture/module').then(m => m.ArchitectureModule) },
   //{ path: 'people', loadChildren: () => import('./people/module').then(m => m.BaseAppsPeopleModule) },
@@ -31,7 +32,9 @@ const routes: Routes = [
   //{ path: 'assessments', loadChildren: () => import('./places/module').then(m => m.BaseAppsAssessmentsModule) },
   //{ path: 'progress', loadChildren: () => import('./places/module').then(m => m.BaseAppsProgressModule) },
   //{ path: 'achievements', loadChildren: () => import('./places/module').then(m => m.BaseAppsAchievementsModule) },
+  { path: '', redirectTo:'spike', pathMatch: 'prefix' }
   // THere is no default app (it would be parent that would default to 'index' page. )
+  //{ path: '**'  ,   }
 
 ];
 

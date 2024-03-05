@@ -12,7 +12,7 @@
 //  //{ providedIn: ' root ' }
 //)
 ////Define:
-//export class SpikeRepositoryService extends GenericRepositoryService<Spike> {
+//export class SpikeRepositoryService extends GenericRepositoryServiceBase<Spike> {
 //  //TODO: Awful hard encoding:
 //  private apiUrl = 'https://api.example.com/users';
 

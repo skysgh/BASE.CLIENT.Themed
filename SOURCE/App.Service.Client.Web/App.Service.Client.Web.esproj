@@ -26,5 +26,6 @@
   <ItemGroup>
     <Folder Include="src\assets\custom\" />
     <Folder Include="src\_BASE\core\models\base\" />
+    <Folder Include="src\_BASE\shared\maps\" />
   </ItemGroup>
 </Project>

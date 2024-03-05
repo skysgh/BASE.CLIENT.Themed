@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../core/services/event.service';
+import { EventService } from '../../../_BASE/shared/services/services/event.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { getSidebarSize } from 'src/app/store/layouts/layout-selector';
 import { RootReducerState } from 'src/app/store';

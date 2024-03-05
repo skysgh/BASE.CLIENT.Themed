@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 @Injectable({ providedIn: 'root' })
-export class ToastService {
+export class TranslationService {
 
   public constructor(private translate: TranslateService) {
     

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
 import { ExampleService } from '../../../../../../shared/services/example.service';
 // Import Module:
-import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
+import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 import { TranslateService } from '@ngx-translate/core';
 
 

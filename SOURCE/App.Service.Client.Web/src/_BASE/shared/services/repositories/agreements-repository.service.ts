@@ -1,5 +1,5 @@
 //import { env } from "process";
-import { GenericRepositoryService } from "../../../shared/services/repositories/generic-repository.service";
+import { GenericRepositoryServiceBase } from "./generic-repository.service.base";
 import { DiagnosticsService } from "../../../shared/services/diagnostics.service";
 import { EnvironmentService } from "../../../shared/services/environment.service";
 import { ErrorService } from "../../../shared/services/error.service";
@@ -8,18 +8,21 @@ import { Injectable } from "@angular/core";
 
 // import models:
 import { Agreement } from "../../../core/models/agreement.model";
+import { TypeService } from "../type.service";
 
 
 @Injectable()
 export class NotificationsRepositoryService
-  extends GenericRepositoryService<Agreement> {
+  extends GenericRepositoryServiceBase<Agreement> {
 
   constructor(
+    typeService: TypeService,
     environmentService: EnvironmentService,
     diagnosticsService: DiagnosticsService,
     errorService: ErrorService,
     httpClient: HttpClient) {
     super(
+      typeService,
       environmentService,
       diagnosticsService,
       errorService,

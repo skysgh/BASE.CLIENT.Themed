@@ -8,6 +8,7 @@ import { ReferenceData } from '../../models/reference-item.model';
 import { EnvironmentService } from '../environment.service';
 import { DiagnosticsService } from '../diagnostics.service';
 import { ErrorService } from '../error.service';
+import { TypeService } from '../../../../_BASE/shared/services/type.service';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
@@ -18,7 +19,7 @@ import { ErrorService } from '../error.service';
   // References:
   // https://betterprogramming.pub/a-generic-http-service-approach-for-angular-applications-a7bd8ff6a068
   // https://www.positronx.io/angular-httpclient-http-service/
-export abstract class GenericRepositoryService<Type> {
+export abstract class GenericRepositoryServiceBase<Type> {
 
   // Define Properties:
   private endpointUrl: string;
@@ -30,6 +31,7 @@ export abstract class GenericRepositoryService<Type> {
   };
   //
   constructor(
+    typeService: TypeService,
     private environmentService: EnvironmentService,
     private diagnosticsService: DiagnosticsService,
     private errorService: ErrorService,

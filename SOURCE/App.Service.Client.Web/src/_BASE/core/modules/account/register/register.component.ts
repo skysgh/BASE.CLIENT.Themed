@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Register Auth
 
-import { AuthenticationService } from '../../../../../app/core/services/auth.service';
-import { UserProfileService } from '../../../../../app/core/services/user.service';
+import { AuthenticationService } from '../../../../shared/services/services/auth.service';
+import { UserProfileService } from '../../../../shared/services/services/user.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { SystemService } from '../../../../shared/services/system.service';

@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 // Login Auth
 import { environment } from '../../../../../environments/environment';
-import { AuthenticationService } from '../../../../../app/core/services/auth.service';
-import { AuthfakeauthenticationService } from '../../../../../app/core/services/authfake.service';
-import { first } from 'rxjs/operators';
-import { ToastService } from './toast-service';
+import { AuthenticationService } from '../../../../shared/services/services/auth.service';
+import { AuthfakeauthenticationService } from '../../../../shared/services/services/authfake.service';
 import { TitleService } from '../../../../shared/services/title.service';
 import { SystemService } from '../../../../shared/services/system.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastService } from '../../../../shared/services/toast.service';
+
 import { System } from '../../../../shared/models/system.model';
 
 @Component({
