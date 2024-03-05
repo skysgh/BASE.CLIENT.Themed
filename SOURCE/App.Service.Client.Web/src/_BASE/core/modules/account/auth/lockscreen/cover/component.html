@@ -14,7 +14,8 @@
                                     <div class="position-relative h-100 d-flex flex-column">
                                         <div class="mb-4">
                                             <a routerLink="/" class="d-block">
-                                                <img src="assets/images/logo-light.png" alt="" height="18">
+                                                <img src="assets/images/logo-light.png"
+                                                     alt="" height="18">
                                             </a>
                                         </div>
                                         <div class="mt-auto">
@@ -26,21 +27,23 @@
                                                 <ng-template ngbSlide>
                                                     <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
-                                                            <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                                            <p class="fs-15 fst-italic">
+                                                              " TODO: Quote #1... "
+                                                          </p>
                                                         </div>
                                                     </div>
                                                 </ng-template>
                                                 <ng-template ngbSlide>
                                                     <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
-                                                            <p class="fs-15 fst-italic">" The theme is really great with an amazing customer support."</p>
+                                                            <p class="fs-15 fst-italic">" TODO: Quote #2"</p>
                                                         </div>
                                                     </div>
                                                 </ng-template>
                                                 <ng-template ngbSlide>
                                                     <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
-                                                            <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                                            <p class="fs-15 fst-italic">" TODO: Quote #3 "</p>
                                                         </div>
                                                     </div>
                                                 </ng-template>
@@ -55,34 +58,53 @@
                             <div class="col-lg-6">
                                 <div class="p-lg-5 p-4">
                                     <div>
-                                        <h5 class="text-primary">Lock Screen</h5>
-                                        <p class="text-muted">Enter your password to unlock the screen!</p>
+                                        <h5 class="text-primary">
+                                      {{'BASE.SHARED.MISC.LOCK_SCREEN_TITLE'|translate}}</h5>
+                                        <p class="text-muted">
+                                      {{'BASE.SHARED.AUTHENTICATION.PASSWORD_INSTRUCTIONS'|translate}}
+                                        </p>
                                     </div>
                                     <div class="user-thumb text-center">
-                                        <img src="assets/images/users/avatar-1.jpg" class="rounded-circle img-thumbnail avatar-lg" alt="thumbnail">
+                                        <img src="assets/images/users/avatar-1.jpg"
+                                             class="rounded-circle img-thumbnail avatar-lg" alt="thumbnail">
                                         <h5 class="mt-3">Anna Adame</h5>
                                     </div>
 
                                     <div class="mt-4">
                                         <form [formGroup]="lockscreenForm" (ngSubmit)="onSubmit()">
                                             <div class="mb-3">
-                                                <label class="form-label" for="userpassword">Password</label>
-                                                <input type="password" class="form-control" id="userpassword" placeholder="Enter password" required formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                                              <label class="form-label" for="userpassword">
+                                                {{'BASE.SHARED.AUTHENTICATION.PASSWORD'|translate}}
+                                              </label>
+                                                <input type="password" class="form-control"
+                                                       id="userpassword"
+                                                       placeholder="{{'BASE.SHARED.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
+                                                       required formControlName="password"
+                                                       [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                                                 @if(submitted && f['password'].errors){
                                                 <div class="invalid-feedback" align="left">
                                                     @if(f['password'].errors['required']){
-                                                    <div>Password is required</div>
+                                                  <div>{{'BASE.SHARED.AUTHENTICATION.PASSWORD_ERROR_01'|translate}}</div>
                                                     }
                                                 </div>}
                                             </div>
                                             <div class="mb-2 mt-4">
-                                                <button class="btn btn-success w-100" type="submit">Unlock</button>
+                                              <button class="btn btn-success w-100"
+                                                      type="submit">
+                                                {{'BASE.SHARED.ACTIONS.UNLOCK'|translate}}
+                                              </button>
                                             </div>
                                         </form><!-- end form -->
                                     </div>
 
                                     <div class="mt-5 text-center">
-                                        <p class="mb-0">Not you ? return <a routerLink="/auth/signin/cover" class="fw-semibold text-primary text-decoration-underline"> Signin</a></p>
+                                        <p class="mb-0">
+                                          {{'BASE.SHARED.MISC.NOT_YOU?'| translate}}
+                                          <a routerLink="/auth/signin/cover"
+                                             class="fw-semibold text-primary text-decoration-underline">
+                                            {{'BASE.SHARED.ACTIONS.SIGN_IN'|translate}}
+                                          </a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

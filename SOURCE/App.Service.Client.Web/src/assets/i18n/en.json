@@ -7,6 +7,41 @@
 
   "BASE": {
     "SHARED": {
+      "SITE": {
+        "LOCATIONS": {
+          "HOME": "Home",
+          "DASHBOARD": "Dashboard",
+          "TERMS_OF_USE":"Terms of Use"
+        }
+      },
+      "MISC": {
+        "UNLOCK_INSTRUCTIONS": "Enter your password to unlock the screen!",
+        "LOCK_SCREEN_TITLE": "Lock Screen",
+        "NOT_YOU?": "Not you?",
+        "WAIT_I_REMEMBER_MY_PASSWORD": "Wait, I remember my password...",
+        "ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS": "Enter your email and instructions will be sent to you!",
+        "SEND_EMAILED_INSTRUCTIONS": "Send Reset Link",
+        "SUCCESS": "Success!",
+        "SUCCESS_DESCRIPTION": "That was a small successs :-)",
+        "ALREADY_HAVE_AN_ACCOUNT?": "Already have an account?",
+        "PLEASE_ENTER_THE_CODE_SENT_TO": "Please enter the 4 digit code sent to",
+        "DIDNT_RECEIVE_CODE?": "Didn't receive a code?",
+        "CHECK_YOUR_EMAIL": "Check your Email"
+
+      },
+      "ERRORS": {
+        "OOPS!": "Oops!",
+        "SORRY": "Sorry",
+        "ERROR_500_DESCRIPTION": "Server Error 500. We're not exactly sure what happened, but our servers say something is wrong.",
+        "PAGE_NOT_FOUND": "Page not found.",
+        "PAGE_NOT_AVAIABLE": "Page not available.",
+        "PAGE_NOT_DISPLAYABLE": "Page not displayable.",
+        "PAGE_NOT_FOUND_DESCRIPTION": "The page you are looking for not available!.",
+        "SORRY_PAGE_NOT_FOUND": "Sorry - page not found.",
+        "WE_ARE_OFFLINE": "Offline",
+        "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS": "We can't show you this images because you aren't, connected to the internet.",
+        "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS2": "When you’re back online try again"
+      },
       "GREETINGS": {
         "HI": "Hi",
         "HI!": "Hi!",
@@ -59,7 +94,9 @@
         "CONFIRMATION_INSTRUCTIONS": "Please confirm before proceeding"
       },
       "ACTIONS": {
+        "REFRESH": "Refresh",
         "SIGN_UP": "Sign Up",
+        "SIGN_UP_DESCRIPTION": "Get yourself a free acount",
         "SIGN_UP_WITH": "Sign Up With",
         "SIGN_IN": "Sign In",
         "SIGN_IN_WITH": "Sign In With",
@@ -78,7 +115,7 @@
         "NEW": "New",
         "VIEW": "View",
         "UPDATE": "Update",
-        "SAVE":"Save",
+        "SAVE": "Save",
         "EDIT": "Edit",
         "SELECT": "Select",
         "CHOOSE": "Choose",
@@ -93,7 +130,10 @@
         "APPLY": "Apply",
         "INVITE": "Invite",
         "SEARCH": "Search",
-        "SEARCH_INSTRUCTIONS": "Search..."
+        "SEARCH_INSTRUCTIONS": "Search...",
+        "GOTO": "Go to",
+        "CONFIRM": "Confirm",
+        "RESEND": "Resend"
       },
       "HEADERS": {
         "TITLE": "Title",
@@ -174,23 +214,33 @@
           "GENDER_ERROR_02": "The provided gender could not be validated."
         }
       },
-      "PLACES": {
-        "LOCATIONS": {
-          "COORDINATES": "Coordinates",
-          "COORDINATES_INSTRUCTIONS": "Provide a longitude/latitude coordinate",
-          "COORDINATES_ERROR_01": "A longitude/latitude coordinates is required.",
-          "COORDINATES_ERROR_02": "The provided coordinates could not be validated.",
-          "LONGITUDE": "Longitude",
-          "LONGITUDE_INSTRUCTIONS": "Provide a longitude",
-          "LONGITUDE_ERROR_01": "An east/west longitude is required.",
-          "LONGITUDE_ERROR_02": "The provided longitude could not be validated.",
-          "LATITUDE": "Latitude",
-          "LATITUDE_INSTRUCTIONS": "Provide a latitude",
-          "LATITUDE_ERROR_01": "A latitude is required.",
-          "LATITUDE_ERROR_02": "The provided latitude could not be validated."
+      "LOCATIONS": {
+        "COORDINATES": "Coordinates",
+        "COORDINATES_INSTRUCTIONS": "Provide a longitude/latitude coordinate",
+        "COORDINATES_ERROR_01": "A longitude/latitude coordinates is required.",
+        "COORDINATES_ERROR_02": "The provided coordinates could not be validated.",
+        "LONGITUDE": "Longitude",
+        "LONGITUDE_INSTRUCTIONS": "Provide a longitude",
+        "LONGITUDE_ERROR_01": "An east/west longitude is required.",
+        "LONGITUDE_ERROR_02": "The provided longitude could not be validated.",
+        "LATITUDE": "Latitude",
+        "LATITUDE_INSTRUCTIONS": "Provide a latitude",
+        "LATITUDE_ERROR_01": "A latitude is required.",
+        "LATITUDE_ERROR_02": "The provided latitude could not be validated."
+      },
+      "POSITION": {
+        "RELATIVE": {
+          "_PREVIOUS": "previous",
+          "_NEXT": "next",
+          "_BELOW": "below",
+          "_ABOVE": "above",
+          "_TO_THE_LEFT": "to the left",
+          "_TO_THE_RIGHT": "to the right"
         }
       },
       "CHANNELS": {
+        "TITLE": "Channels",
+        "DESCRIPTION": "Communication channels",
         "POSTAL": {
           "TITLE": "Postal Address",
           "ADDRESS": {
@@ -231,6 +281,61 @@
           "MASTADON": "Address"
         }
       },
+      "AUTHENTICATION": {
+        "TITLE": "Authentication",
+        "DESCRIPTION": "...",
+        "BY_REGISTERING": "By registering, you agree to the",
+        "TASK": {
+          "BASIC": "Basic",
+          "COVER": "Cover",
+          "SIGNIN": "Sign In",
+          "SIGNUP": "Sign Up",
+          "PASSWORDRESET": "Password Reset",
+          "PASSWORD_RESET_INSTRUCTIONS": "Reset your password",
+          "PASSWORDCREATE": "Password Create",
+          "LOCKSCREEN": "Lock Screen",
+          "LOGOUT": "Logout",
+          "SUCCESSMESSAGE": "Success Message",
+          "TWOSTEPVERIFICATION": "Two Step Verification",
+          "ERRORS": "Errors",
+          "404BASIC": "404 Basic",
+          "404COVER": "404 Cover",
+          "404ALT": "404 Alt",
+          "500": "500",
+          "OFFLINE": "Offline Page"
+        },
+        "USERNAME": "User name",
+        "USERNAME_INSTRUCTIONS": "Enter your username",
+        "USERNAME_PLACEHOLDER": "Enter your username",
+        "USERNAME_ERROR_01": "A username is required",
+        "USERNAME_ERROR_02": "Username format unrecognised",
+        "EMAIL": "Email",
+        "EMAIL_INSTRUCTIONS": "Enter an email address",
+        "EMAIL_PLACEHOLDER": "Enter an email address",
+        "EMAIL_ERROR_01": "Email is required",
+        "EMAIL_ERROR_02": "Email has unrecognised format",
+        "EMAIL_CONFIRMATION": "Confirm email",
+        "EMAIL_CONFIRMATION_INSTRUCTIONS": "Confirm email",
+        "EMAIL_CONFIRMATION_PLACEHOLDER": "Enter an email address",
+        "EMAIL_CONFIRMATION_ERROR_01": "Email is required",
+        "EMAIL_CONFIRMATION_ERROR_02": "Email has unrecognised format",
+        "PASSWORD": "Password",
+        "PASSWORD_INSTRUCTIONS": "Enter your password",
+        "PASSWORD_PLACEHOLDER": "Enter your password",
+        "PASSWORD_ERROR_01": "Password is required",
+        "PASSWORD_ERROR_02": "Password is required to be complex.",
+        "PASSWORD_ERROR_02_DETAILS": "Atleast 8 characters, etc.",
+        "PASSWORD_CONFIRMATION": "Password",
+        "PASSWORD_CONFIRMATION_INSTRUCTIONS": "Enter your password again",
+        "PASSWORD_CONFIRMATION_PLACEHOLDER": "Enter your password again",
+        "PASSWORD_CONFIRMATION_ERROR_01": "Password is required",
+        "PASSWORD_CONFIRMATION_ERROR_02": "Password is required to be complex.",
+        "PASSWORD_CONFIRMATION_ERROR_02_DETAILS": "Atleast 8 characters, etc.",
+        "FORGOT?": "Forgot?",
+        "REMEMBER_ME?": "Remember me?",
+        "REMEMBER_ME_INSTRUCTIONS": "(Across sessions, even after the browser is closed)",
+        "DONT_HAVE_AN_ACCOUNT?": "Don't yet have an account?"
+      },
       "COMMERCE": {
         "PRODUCTS": "Products",
         "PRODUCT_DETAILS": "Product Details",
@@ -256,6 +361,14 @@
         "SHIPPING": "Shipping",
         "TOTAL": "Total"
       },
+      "SALES": {
+        "LEADS": "Leads",
+        "FORCASTS": "Forcasts",
+        "CONVERSIONS": "Conversions",
+        "SALES": "Sales",
+        "REVENUE": "Revenue",
+        "PROFIT": "Profit"
+      },
       "SEARCH": {
         "INSTRUCTIONS": "Search...",
         "VIEW_ALL_RESULTS": "View all results",
@@ -276,17 +389,6 @@
         "NO_NOTIFICATIONS": "No notifications",
         "NO_NEW_MESSAGES": "No new messages.",
         "NO_NEW_ALERTS": "No new alerts."
-      },
-      "POSITION": {
-        "RELATIVE": {
-          "_PREVIOUS": "previous",
-          "_NEXT": "next",
-          "_BELOW": "below",
-          "_ABOVE": "above",
-          "_TO_THE_LEFT": "to the left",
-          "_TO_THE_RIGHT": "to the right"
-        }
-
       }
     },
     "CORE": {
@@ -338,7 +440,11 @@
           "STATUS": {
             "_COMMENTS": "For Status area of frame, if any.",
             "TITLE": "Status",
-            "DESCRIPTION": "..."
+            "DESCRIPTION": "...",
+            "PENDING": "Pending",
+            "LOST": "Lost",
+            "ABANDONED": "Abandoned",
+            "CLOSED": "Closed"
           },
           "CONTENT": {
             "_COMMENTS": "For Main content area of frame, if any. Probably nothing ever.",
@@ -406,47 +512,6 @@
           "OPTIONS": {
             "ONEPAGE": "One Page",
             "JOB": "Job"
-          }
-        },
-        "AUTHENTICATION": {
-          "TITLE": "Authentication",
-          "DESCRIPTION": "...",
-          "LIST": {
-            "BASIC": "Basic",
-            "COVER": "Cover",
-            "SIGNIN": "Sign In",
-            "SIGNUP": "Sign Up",
-            "PASSWORDRESET": "Password Reset",
-            "PASSWORDCREATE": "Password Create",
-            "LOCKSCREEN": "Lock Screen",
-            "LOGOUT": "Logout",
-            "SUCCESSMESSAGE": "Success Message",
-            "TWOSTEPVERIFICATION": "Two Step Verification",
-            "ERRORS": "Errors",
-            "404BASIC": "404 Basic",
-            "404COVER": "404 Cover",
-            "404ALT": "404 Alt",
-            "500": "500",
-            "OFFLINE": "Offline Page"
-          },
-          "SHARED": {
-            "USERNAME": "User name",
-            "USERNAME_INSTRUCTIONS": "Enter your username",
-            "EMAIL": "Email",
-            "EMAIL_INSTRUCTIONS": "Enter an email address",
-            "EMAIL_ERROR_01": "Email is required",
-            "EMAIL_ERROR_02": "Email has unrecognised format",
-            "PASSWORD": "Password",
-            "PASSWORD_INSTRUCTIONS": "Enter your password",
-            "PASSWORD_ERROR_01": "Password is required",
-            "FORGOT?": "Forgot?",
-            "REMEMBER_ME": "Remember me?",
-            "DONT_HAVE_AN_ACCOUNT?": "Don't yet have an account?"
-
-          },
-          "SPECIFIC": {
-            "SIGNIN": {
-            }
           }
         },
         "DASHBOARD": {

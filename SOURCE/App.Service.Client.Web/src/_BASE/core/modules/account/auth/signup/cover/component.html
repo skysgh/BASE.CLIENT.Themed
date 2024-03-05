@@ -14,7 +14,8 @@
                                   <div class="position-relative h-100 d-flex flex-column">
                                       <div class="mb-4">
                                           <a routerLink="/" class="d-block">
-                                              <img src="assets/images/logo-light.png" alt="" height="18">
+                                              <img src="assets/images/logo-light.png"
+                                                   alt="" height="18">
                                           </a>
                                       </div>
                                       <div class="mt-auto">
@@ -26,21 +27,21 @@
                                             <ng-template ngbSlide>
                                               <div class="carousel-inner text-center text-white pb-5">
                                                 <div class="carousel-item active">
-                                                  <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                                  <p class="fs-15 fst-italic">" TODO: Quote #1 "</p>
                                                 </div>
                                               </div>
                                             </ng-template>
                                             <ng-template ngbSlide>
                                               <div class="carousel-inner text-center text-white pb-5">
                                                 <div class="carousel-item active">
-                                                  <p class="fs-15 fst-italic">" The theme is really great with an amazing customer support."</p>
+                                                  <p class="fs-15 fst-italic">" TODO: Quote #2 "</p>
                                                 </div>
                                               </div>
                                             </ng-template>
                                             <ng-template ngbSlide>
                                               <div class="carousel-inner text-center text-white pb-5">
                                                 <div class="carousel-item active">
-                                                    <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                                    <p class="fs-15 fst-italic">" TODO: Quote #3 "</p>
                                                   </div>
                                                 </div>
                                             </ng-template>
@@ -55,36 +56,52 @@
                           <div class="col-lg-6">
                               <div class="p-lg-5 p-4">
                                   <div>
-                                      <h5 class="text-primary">Register Account</h5>
-                                      <p class="text-muted">Get your free account now.</p>
+                                      <h5 class="text-primary">{{'BASE.SHARED.AUTHENTICATION.TASK.SIGN_UP'|translate}}</h5>
+                                      <p class="text-muted">{{'BASE.SHARED.AUTHENTICATION.TASK.SIGN_UP_INSTRUCTIONS'|translate}}</p>
                                   </div>
 
                                   <div class="mt-4">
                                     <form [formGroup]="SignupForm" (ngSubmit)="onSubmit()">
 
                                         <div class="mb-3">
-                                            <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" id="useremail" placeholder="Enter email address" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                                          <label for="useremail" class="form-label">
+                                            {{'BASE.SHARED.AUTHENTICATION.EMAIL'|translate}}
+                                            <span class="text-danger">*</span>
+                                          </label>
+                                            <input type="email" class="form-control"
+                                                   id="useremail"
+                                                   placeholder="{{'BASE.SHARED.AUTHENTICATION.EMAIL_PLACEHOLDER'|translate}}"
+                                                   required
+                                                   formControlName="email"
+                                                   [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
                                             <div class="invalid-feedback">
-                                                Please enter email
+                                              {{'BASE.SHARED.AUTHENTICATION.EMAIL_INSTRUCTIONS'|translate}}
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+                                          <label for="username" class="form-label">{{'BASE.SHARED.FORMS.FIELDS.USERNAME_INSTRUCTIONS'|translate}} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="username" placeholder="{{'BASE.SHARED.FORMS.FIELDS.USERNAME_PLACEHOLDER'|translate}}" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                                             <div class="invalid-feedback">
-                                                Please enter username
+                                              {{'BASE.SHARED.FORMS.FIELDS.USERNAME_INSTRUCTIONS'|translate}}
                                             </div>
                                         </div>
 
                                         <div class="mb-3">
-                                          <label for="userpassword" class="form-label">Password <span class="text-danger">*</span></label>
+                                          <label for="userpassword" class="form-label">{{'BASE.SHARED.AUTHENTICATION.PASSWORD'|translate}}<span class="text-danger">*</span></label>
                                           <div class="position-relative auth-pass-inputgroup">
-                                            <input [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
-                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
+                                            <input [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5 password-input"
+                                                   placeholder="{{'BASE.SHARED.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
+                                                   id="password-input"
+                                                   aria-describedby="passwordInput"
+                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                                   required
+                                                   formControlName="password"
+                                                   [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"
+                                                                                                                                                                                           [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
                                             }" (click)="toggleFieldTextType()"></i></button>
                                             <div class="invalid-feedback">
-                                                Please enter password
+                                              {{'BASE.SHARED.AUTHENTICATION.PASSWORD_INSTRUCTIONS'|translate}}
                                             </div>
                                           </div>
                                         </div>

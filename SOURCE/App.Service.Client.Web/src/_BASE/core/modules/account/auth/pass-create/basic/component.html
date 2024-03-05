@@ -41,38 +41,75 @@
                             <div class="p-2">
                                 <form [formGroup]="passresetForm" (ngSubmit)="onSubmit()">
                                     <div class="mb-3">
-                                        <label class="form-label" for="password-input">Password</label>
+                                      <label class="form-label" for="password-input">
+                                      {{'BASE.SHARED.AUTHENTICATION.PASSWORD'|translate}}
+                                      </label>
                                         <div class="position-relative auth-pass-inputgroup">
-                                            <input [type]="passwordField ? 'text' : 'password'" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
-                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField
-                                            }" (click)="togglepasswordField()"></i></button>
+                                            <input [type]="passwordField ? 'text' : 'password'"
+                                                   class="form-control pe-5 password-input"
+                                                   placeholder="{{'BASE.SHARED.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
+                                                   id="password-input"
+                                                   aria-describedby="passwordInput"
+                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                                   required
+                                                   formControlName="password"
+                                                   [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                    type="button"
+                                                    id="password-addon">
+                                          <i class="ri-eye-fill align-middle"
+                                             [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField}" (click)="togglepasswordField()">
+                                            </i>
+                                            </button>
                                             @if(submitted && f['password'].errors){
                                             <div class="invalid-feedback">
                                                 @if(f['password'].errors['required']){
-                                                <span>Password is
-                                                    required</span>}
+                                              <span>
+                                                {{'BASE.SHARED.AUTHENTICATION.PASSWORD_ERROR_01'|translate}}
+                                              </span>}
                                             </div>}
                                         </div>
-                                        <div id="passwordInput" class="form-text">Must be at least 8 characters.</div>
+                                        <div id="passwordInput"
+                                             class="form-text">
+                                          {{'BASE.SHARED.AUTHENTICATION.PASSWORD_ERROR_02_DETAILS'|translate}}
+                                        </div>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="confirm-password-input">Confirm Password</label>
+                                      <label class="form-label"
+                                             for="confirm-password-input">
+                                        {{'BASE.SHARED.AUTHENTICATION.PASSWORD_CONFIRMATION_INSTRUCTIONS'|translate}}
+                                      </label>
                                         <div class="position-relative auth-pass-inputgroup mb-3">
-                                            <input [type]="confirmField ? 'text' : 'password'" class="form-control pe-5 password-input" placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirm-password-input" required formControlName="cpassword" [ngClass]="{ 'is-invalid': submitted && f['cpassword'].errors }">
-                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="confirm-password-input"><i class="ri-eye-fill align-middle" [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField
-                                            }" (click)="toggleconfirmField()"></i></button>
+                                            <input [type]="confirmField ? 'text' : 'password'"
+                                                   class="form-control pe-5 password-input"
+                                                   placeholder="{{'BASE.SHARED.AUTHENTICATION.PASSWORD_CONFIRMATION_PLACEHOLDER'|translate}}"
+                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                                   id="confirm-password-input"
+                                                   required
+                                                   formControlName="cpassword"
+                                                   [ngClass]="{ 'is-invalid': submitted && f['cpassword'].errors }">
+                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                    type="button"
+                                                    id="confirm-password-input">
+                                          <i class="ri-eye-fill align-middle"
+                                             [ngClass]="{'mdi-eye-off-outline': !passwordField, 'mdi-eye-outline': passwordField}"
+                                             (click)="toggleconfirmField()"></i></button>
                                             @if(submitted && f['cpassword'].errors){
                                             <div class="invalid-feedback">
                                                 @if(f['cpassword'].errors['required']){
-                                                <span>Confirm Password is
-                                                    required</span>}
+                                              <span>
+                                                {{'BASE.SHARED.AUTHENTICATION.PASSWORD_CONFIRMATION_ERROR_01'|translate}}
+                                              </span>}
                                             </div>}
                                         </div>
                                     </div>
 
                                     <div id="password-contain" class="p-3 bg-light mb-2 rounded">
-                                        <h5 class="fs-13">Password must contain:</h5>
+                                      <h5 class="fs-13">
+                                        {{'BASE.SHARED.AUTHENTICATION.PASSWORD_ERROR_02'|translate}}
+                                        :
+                                      </h5>
                                         <p id="pass-length" class="invalid fs-12 mb-2">Minimum <b>8 characters</b></p>
                                         <p id="pass-lower" class="invalid fs-12 mb-2">At <b>lowercase</b> letter (a-z)
                                         </p>
@@ -82,12 +119,18 @@
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                                        <label class="form-check-label" for="auth-remember-check">Remember me</label>
+                                        <input class="form-check-input"
+                                               type="checkbox" value=""
+                                               id="auth-remember-check">
+                                        <label class="form-check-label" for="auth-remember-check">
+                                          {{'BASE.SHARED.AUTHENTICATION.REMEMBER_ME?'|translate}}
+                                        </label>
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="btn btn-success w-100" type="submit">Reset Password</button>
+                                      <button class="btn btn-success w-100" type="submit">
+                                        {{'BASE.SHARED.AUTHENTICATION.PASSWORDRESET'|translate}}
+                                      </button>
                                     </div>
 
                                 </form>
@@ -98,7 +141,13 @@
                     <!-- end card -->
 
                     <div class="mt-4 text-center">
-                        <p class="mb-0">Wait, I remember my password... <a routerLink="/auth/signin/basic" class="fw-semibold text-primary text-decoration-underline"> Click here </a> </p>
+                      <p class="mb-0">
+                        {{'BASE.SHARED.MISC.WAIT_I_REMEMBER_MY_PASSWORD'| translate}}
+                        <a routerLink="/auth/signin/basic"
+                           class="fw-semibold text-primary text-decoration-underline">
+                          {{'BASE.SHARED.ACTIONS.SIGN_IN'| translate}}
+                        </a>
+                      </p>
                     </div>
 
                 </div>

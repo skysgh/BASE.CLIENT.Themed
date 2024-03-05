@@ -35,10 +35,10 @@
                         <div class="card-body p-4">
                           <div class="text-center mt-2">
                             <h5 class="text-primary">
-                              {{'BASE.CORE.AREAS.AUTHENTICATION.SPECIFIC.SIGNUP.TITLE' | translate }}
+                              {{'BASE.SHARED.AUTHENTICATION.SPECIFIC.SIGNUP.TITLE' | translate }}
                             </h5>
                             <p class="text-muted">
-                              {{'BASE.CORE.AREAS.AUTHENTICATION.SPECIFIC.SIGNUP.INSTRUCTIONS' | translate }}
+                              {{'BASE.SHARED.AUTHENTICATION.SPECIFIC.SIGNUP.INSTRUCTIONS' | translate }}
                             </p>
                           </div>
                             <div class="p-2 mt-4">
@@ -46,38 +46,42 @@
 
                                     <div class="mb-3">
                                       <label for="useremail" class="form-label">
-                                        {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.EMAIL' | translate }}
+                                        {{'BASE.SHARED.AUTHENTICATION.EMAIL' | translate }}
                                         <span class="text-danger">*</span>
                                       </label>
                                         <input type="email" class="form-control" id="useremail"
-                                            placeholder="{{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.EMAIL_INSTRUCTIONS' | translate }}" required formControlName="email"
+                                            placeholder="{{'BASE.SHARED.AUTHENTICATION.EMAIL_INSTRUCTIONS' | translate }}"
+                                               required
+                                               formControlName="email"
                                             [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
                                         <div class="invalid-feedback">
-                                          {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.EMAIL_ERROR_01' | translate }}
+                                          {{'BASE.SHARED.AUTHENTICATION.EMAIL_ERROR_01' | translate }}
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                       <label for="username" class="form-label">
-                                        {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.USERNAME' | translate }}
+                                        {{'BASE.SHARED.AUTHENTICATION.USERNAME' | translate }}
                                         <span class="text-danger">*</span>
                                       </label>
                                         <input type="text" class="form-control" id="username"
-                                            placeholder="{{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.USERNAME_INSTRUCTIONS' | translate }}" required formControlName="name"
+                                            placeholder="{{'BASE.SHARED.AUTHENTICATION.USERNAME_INSTRUCTIONS' | translate }}"
+                                               required
+                                               formControlName="name"
                                             [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                                         <div class="invalid-feedback">
-                                          {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.USERNAME_ERROR_01' | translate }}
+                                          {{'BASE.SHARED.AUTHENTICATION.USERNAME_ERROR_01' | translate }}
                                         </div>
                                     </div>
 
                                     <div class="mb-3">
                                       <label for="userpassword" class="form-label">
-                                        {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.PASSWORD' | translate }}
+                                        {{'BASE.SHARED.AUTHENTICATION.PASSWORD' | translate }}
                                         <span class="text-danger">*</span>
                                       </label>
                                         <div class="position-relative auth-pass-inputgroup">
                                             <input [type]="fieldTextType ? 'text' : 'password'"
                                                 class="form-control pe-5 password-input"
-                                                   placeholder="{{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.PASSWORD_INSTRUCTIONS' | translate }}"
+                                                   placeholder="{{'BASE.SHARED.AUTHENTICATION.PASSWORD_INSTRUCTIONS' | translate }}"
                                                 id="password-input" aria-describedby="passwordInput"
                                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
                                                 formControlName="password"
@@ -92,17 +96,17 @@
                                             </i>
                                           </button>
                                             <div class="invalid-feedback">
-                                              {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.PASSWORD_ERROR_01' | translate }}
+                                              {{'BASE.SHARED.AUTHENTICATION.PASSWORD_ERROR_01' | translate }}
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="mb-4">
                                       <p class="mb-0 fs-12 text-muted fst-italic">
-                                        {{'BASE.CORE.AREAS.AUTHENTICATION.SPECIFIC.SIGNUP.AGREE_TO_TERMS_AND_CONDITIONS' | translate }}
+                                        {{'BASE.SHARED.AUTHENTICATION.SPECIFIC.SIGNUP.AGREE_TO_TERMS_AND_CONDITIONS' | translate }}
                                         <a href="javascript:void(0);"
                                            class="text-primary text-decoration-underline fst-normal fw-medium">
-                                          {{'BASE.CORE.AREAS.AUTHENTICATION.SPECIFIC.SIGNUP.TERMS_AND_CONDITIONS' | translate }}
+                                          {{'BASE.SHARED.AUTHENTICATION.SPECIFIC.SIGNUP.TERMS_AND_CONDITIONS' | translate }}
                                         </a>
                                       </p>
                                     </div>
@@ -119,14 +123,14 @@
 
                                     <div class="mt-4">
                                       <button class="btn btn-success w-100" type="submit">
-                                        {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.SIGN_UP' | translate }}
+                                        {{'BASE.SHARED.AUTHENTICATION.SIGN_UP' | translate }}
                                       </button>
                                     </div>
 
                                     <div class="mt-4 text-center">
                                         <div class="signin-other-title">
                                           <h5 class="fs-13 mb-4 title text-muted">
-                                            {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.SIGN_UP_WITH' | translate }}
+                                            {{'BASE.SHARED.AUTHENTICATION.SIGN_UP_WITH' | translate }}
                                           </h5>
                                         </div>
 
@@ -155,10 +159,10 @@
 
                     <div class="mt-4 text-center">
                         <p class="mb-0">
-                          {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.ALREADY_HAVE_AN_ACCOUNT?' | translate }}
+                          {{'BASE.SHARED.AUTHENTICATION.ALREADY_HAVE_AN_ACCOUNT?' | translate }}
                           <a routerLink="/auth/signin/basic"
                            class="fw-semibold text-primary text-decoration-underline">
-                          {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.SIGN_IN' | translate }}
+                          {{'BASE.SHARED.AUTHENTICATION.SIGN_IN' | translate }}
                         </a>
                         </p>
                     </div>

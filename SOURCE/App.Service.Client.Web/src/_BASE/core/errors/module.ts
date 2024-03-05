@@ -12,12 +12,14 @@ import { CoverComponent } from './cover/component';
 import { AltComponent } from './alt/component';
 import { Page500Component } from './page500/component';
 import { TranslateModule } from '@ngx-translate/core';
+import { OfflineComponent } from './offline/component';
 
 @NgModule({
   declarations: [
     BasicComponent,
     CoverComponent,
     AltComponent,
+    OfflineComponent,
     Page500Component
   ],
   imports: [

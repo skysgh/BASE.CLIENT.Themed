@@ -33,51 +33,72 @@
 
                         <div class="card-body p-4">
                             <div class="text-center mt-2">
-                                <h5 class="text-primary">Welcome Back !</h5>
-                                <p class="text-muted">Sign in to continue.</p>
+                                <h5 class="text-primary">
+                              {{'BASE.SHARED.GREETINGS.WELCOME_BACK!'}}
+                                </h5>
+                                <p class="text-muted">
+                                  {{'BASE.SHARED.ACTIONS.SIGN_IN_INSTRUCTIONS'}}
+                                </p>
                             </div>
                             <div class="p-2 mt-4">
                                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Enter username" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+                                        <label for="username" class="form-label">
+                                      {{'BASE.SHARED.FORM.FIELDS.USERNAME'|translate}}
+                                        </label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="username"
+                                               placeholder="{{'BASE.SHARED.FORM.FIELDS.PLACEHOLDER'|translate}}"
+                                               formControlName="name"
+                                               [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                                         @if(submitted && f['name'].errors){
                                         <div class="invalid-feedback" align="left">
                                             @if(f['name'].errors['required']){
-                                            <div>Username is required</div>}
+                                          <div>{{'BASE.SHARED.FORM.FIELDS.USERNAME_ERROR_01'|translate}}</div>}
                                         </div>}
                                     </div>
 
                                     <div class="mb-3">
                                         <div class="float-end">
-                                            <a routerLink="/auth/pass-reset/basic" class="text-muted">Forgot password?</a>
+                                          <a routerLink="/auth/pass-reset/basic" class="text-muted">
+                                            {{'BASE.SHARED.AUTHENTICATION.FORGOT?'|translate}}
+                                          </a>
                                         </div>
-                                        <label class="form-label" for="password-input">Password</label>
+                                        <label class="form-label" for="password-input">{{'BASE.SHARED.AUTHENTICATION.PASSWORD'|translate}}</label>
                                         <div class="position-relative auth-pass-inputgroup mb-3">
-                                            <input [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
-                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-input" type="button" id="password-addon"><i class="mdi align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
-                                          }" (click)="toggleFieldTextType()"></i></button>
+                                            <input [type]="fieldTextType ? 'text' : 'password'"
+                                                   class="form-control pe-5 password-input"
+                                                   placeholder="{{'BASE.SHARED.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}" id="password-input"
+                                                   formControlName="password"
+                                                   [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-input"
+                                                    type="button" id="password-addon">
+                                          <i class="mdi align-middle"
+                                                                                                                                                                                           [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
+                                          }" (click)="toggleFieldTextType()"></i>
+                                            </button>
                                             @if(submitted && f['password'].errors){
                                             <div class="invalid-feedback">
                                                 @if(f['password'].errors['required']){
-                                                <span>Password is required</span>}
+                                              <span>{{'BASE.SHARED.AUTHENTICATION.PASSWORD_ERROR_01'|translate}}</span>}
                                             </div>}
                                         </div>
                                     </div>
 
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                                        <label class="form-check-label" for="auth-remember-check">Remember me</label>
+                                        <label class="form-check-label" for="auth-remember-check">{{'BASE.SHARED.AUTHENTICATION.REMEMBER_ME?'|translate}}</label>
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="btn btn-success w-100" type="submit">Sign In</button>
+                                      <button class="btn btn-success w-100" type="submit">{{'BASE.SHARED.ACTIONS_SIGN_IN'|translate}}</button>
                                     </div>
 
                                     <div class="mt-4 text-center">
                                         <div class="signin-other-title">
-                                            <h5 class="fs-13 mb-4 title">Sign In with</h5>
+                                          <h5 class="fs-13 mb-4 title">{{'BASE.SHARED.ACTIONS_SIGN_IN_WITH'|translate}}</h5>
                                         </div>
                                         <div class="d-flex gap-2 justify-content-center">
                                             <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>

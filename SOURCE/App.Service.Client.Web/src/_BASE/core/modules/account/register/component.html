@@ -41,51 +41,73 @@
                                 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 
                                     <div class="mb-3">
-                                        <label for="useremail" class="form-label">Email <span
-                                                class="text-danger">*</span></label>
-                                        <input type="email" class="form-control" id="useremail"
-                                            placeholder="Enter email address" required formControlName="email"
+                                      <label for="useremail"
+                                             class="form-label">
+                                        {{'BASE.SHARED.AUTHENTICATION.EMAIL'|translate}}
+                                        <span class="text-danger">*</span>
+                                      </label>
+                                        <input type="email"
+                                               class="form-control"
+                                               id="useremail"
+                                               placeholder="{{'BASE.SHARED.AUTHENTICATION.EMAIL_PLACEHOLDER'|translate}}"
+                                               required formControlName="email"
                                             [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
                                         <div class="invalid-feedback">
-                                            Please enter email
+                                          {{'BASE.SHARED.AUTHENTICATION.EMAIL_INSTRUCTIONS'|translate}}
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Username <span
-                                                class="text-danger">*</span></label>
+                                      <label for="username" class="form-label">
+                                        {{'BASE.SHARED.AUTHENTICATION.USERNAME'|translate}}
+                                        <span class="text-danger">*</span>
+                                      </label>
                                         <input type="text" class="form-control" id="username"
-                                            placeholder="Enter username" required formControlName="name"
+                                            placeholder="{{'BASE.SHARED.AUTHENTICATION.USERNAME_PLACEHOLDER'|translate}}" required formControlName="name"
                                             [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                                         <div class="invalid-feedback">
-                                            Please enter username
+                                          {{'BASE.SHARED.AUTHENTICATION.USERNAME_INSTRUCTIONS'|translate}}
                                         </div>
                                     </div>
 
                                     <div class="mb-2">
-                                        <label for="userpassword" class="form-label">Password <span
-                                                class="text-danger">*</span></label>
-                                        <input type="password" class="form-control" id="userpassword"
-                                            placeholder="Enter password" required formControlName="password"
+                                      <label for="userpassword"
+                                             class="form-label">
+                                        {{'BASE.SHARED.AUTHENTICATION.PASSWORD'|translate}} <span class="text-danger">*</span>
+                                      </label>
+                                        <input type="password"
+                                               class="form-control"
+                                               id="userpassword"
+                                            placeholder="{{'BASE.SHARED.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
+                                               required
+                                               formControlName="password"
                                             [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                                         <div class="invalid-feedback">
-                                            Please enter password
+                                          {{'BASE.SHARED.AUTHENTICATION.PLACEHOLDER_INSTRUCTIONS'|translate}}
                                         </div>
                                     </div>
 
                                     <div class="mb-4">
-                                        <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the
-                                            Velzon <a href="javascript:void(0);"
-                                                class="text-primary text-decoration-underline fst-normal fw-medium">Terms
-                                                of Use</a></p>
+                                      <p class="mb-0 fs-12 text-muted fst-italic">
+                                        {{'BASE.SHARED.AUTHENTICATION.BY_REGISTERING'|translate}}
+                                        <a href="javascript:void(0);"
+                                           class="text-primary text-decoration-underline fst-normal fw-medium">
+                                          {{'BASE.SHARED.SITE.LOCATIONS.TERMS_OF_USE'|translate}}
+                                        </a>
+                                      </p>
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="btn btn-success w-100" type="submit">Sign Up</button>
+                                        <button class="btn btn-success w-100"
+                                                type="submit">
+                                          {{'BASE.SHARED.ACTIONS.SIGN_UP'|translate}}
+                                        </button>
                                     </div>
 
                                     <div class="mt-4 text-center">
                                         <div class="signin-other-title">
-                                            <h5 class="fs-13 mb-4 title text-muted">Create account with</h5>
+                                          <h5 class="fs-13 mb-4 title text-muted">
+                                            {{'BASE.SHARED.ACTIONS.SIGN_UP_WITH'|translate}}
+                                          </h5>
                                         </div>
 
                                         <div class="d-flex gap-2 justify-content-center">
@@ -112,8 +134,14 @@
                     <!-- end card -->
 
                     <div class="mt-4 text-center">
-                        <p class="mb-0">Already have an account ? <a routerLink="/auth/login"
-                                class="fw-semibold text-primary text-decoration-underline"> Signin </a> </p>
+                      <p class="mb-0">
+                        {{'BASE.SHARED.MISC.ALREADY_HAVE_AN_ACCOUNT?'|translate}}
+                        <a routerLink="/auth/login"
+                           class="fw-semibold text-primary text-decoration-underline">
+                          {{'BASE.SHARED.ACTIONS.SIGN_IN'|translate}}
+
+                        </a>
+                      </p>
                     </div>
 
                 </div>

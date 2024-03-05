@@ -15,7 +15,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class OfflineComponent implements OnInit {
 
   system?: System;
-  constructor(systemService: SystemService, public translate: TranslateService) {
+  constructor(systemService: SystemService,
+          public translate: TranslateService) {
+
     this.system = systemService.system;
   }
 

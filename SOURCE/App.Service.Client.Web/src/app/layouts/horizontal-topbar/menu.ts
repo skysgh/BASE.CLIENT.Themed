@@ -545,18 +545,18 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         id: 56,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.SIGNIN',
+        label: 'MENUITEMS.AUTHENTICATION.TASK.SIGNIN',
         parentId: 49,
         subItems: [
           {
             id: 57,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.BASIC',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.BASIC',
             link: '/',
             parentId: 56
           },
           {
             id: 58,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.COVER',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.COVER',
             link: '/',
             parentId: 56
           },
@@ -564,18 +564,18 @@ export const MENU: MenuItem[] = [
       },
       {
         id: 59,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.SIGNUP',
+        label: 'MENUITEMS.AUTHENTICATION.TASK.SIGNUP',
         parentId: 49,
         subItems: [
           {
             id: 60,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.BASIC',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.BASIC',
             link: '/',
             parentId: 59
           },
           {
             id: 61,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.COVER',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.COVER',
             link: '/',
             parentId: 59
           },
@@ -583,18 +583,18 @@ export const MENU: MenuItem[] = [
       },
       {
         id: 62,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.PASSWORDRESET',
+        label: 'MENUITEMS.AUTHENTICATION.TASK.PASSWORDRESET',
         parentId: 49,
         subItems: [
           {
             id: 63,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.BASIC',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.BASIC',
             link: '/',
             parentId: 62
           },
           {
             id: 64,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.COVER',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.COVER',
             link: '/',
             parentId: 62
           },
@@ -602,18 +602,18 @@ export const MENU: MenuItem[] = [
       },
       {
         id: 62,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.PASSWORDCREATE',
+        label: 'MENUITEMS.AUTHENTICATION.TASK.PASSWORDCREATE',
         parentId: 49,
         subItems: [
           {
             id: 63,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.BASIC',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.BASIC',
             link: '/',
             parentId: 62
           },
           {
             id: 64,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.COVER',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.COVER',
             link: '/',
             parentId: 62
           },
@@ -621,18 +621,18 @@ export const MENU: MenuItem[] = [
       },
       {
         id: 65,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.LOCKSCREEN',
+        label: 'MENUITEMS.AUTHENTICATION.TASK.LOCKSCREEN',
         parentId: 49,
         subItems: [
           {
             id: 66,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.BASIC',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.BASIC',
             link: '/',
             parentId: 65
           },
           {
             id: 67,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.COVER',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.COVER',
             link: '/',
             parentId: 65
           },
@@ -640,18 +640,18 @@ export const MENU: MenuItem[] = [
       },
       {
         id: 68,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.LOGOUT',
+        label: 'MENUITEMS.AUTHENTICATION.TASK.LOGOUT',
         parentId: 49,
         subItems: [
           {
             id: 69,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.BASIC',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.BASIC',
             link: '/',
             parentId: 68
           },
           {
             id: 70,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.COVER',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.COVER',
             link: '/',
             parentId: 68
           },
@@ -659,18 +659,18 @@ export const MENU: MenuItem[] = [
       },
       {
         id: 71,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.SUCCESSMESSAGE',
+        label: 'MENUITEMS.AUTHENTICATION.TASK.SUCCESSMESSAGE',
         parentId: 49,
         subItems: [
           {
             id: 72,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.BASIC',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.BASIC',
             link: '/',
             parentId: 71
           },
           {
             id: 73,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.COVER',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.COVER',
             link: '/',
             parentId: 71
           },
@@ -678,18 +678,18 @@ export const MENU: MenuItem[] = [
       },
       {
         id: 74,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.TWOSTEPVERIFICATION',
+        label: 'MENUITEMS.AUTHENTICATION.TASK.TWOSTEPVERIFICATION',
         parentId: 49,
         subItems: [
           {
             id: 75,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.BASIC',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.BASIC',
             link: '/',
             parentId: 74
           },
           {
             id: 76,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.COVER',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.COVER',
             link: '/',
             parentId: 74
           },
@@ -697,36 +697,36 @@ export const MENU: MenuItem[] = [
       },
       {
         id: 77,
-        label: 'MENUITEMS.AUTHENTICATION.LIST.ERRORS',
+        label: 'MENUITEMS.AUTHENTICATION.TASK.ERRORS',
         parentId: 49,
         subItems: [
           {
             id: 78,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.404BASIC',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.404BASIC',
             link: '/',
             parentId: 77
           },
           {
             id: 79,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.404COVER',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.404COVER',
             link: '/',
             parentId: 77
           },
           {
             id: 80,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.404ALT',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.404ALT',
             link: '/',
             parentId: 77
           },
           {
             id: 81,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.500',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.500',
             link: '/',
             parentId: 77
           },
           {
             id: 81,
-            label: 'MENUITEMS.AUTHENTICATION.LIST.OFFLINE',
+            label: 'MENUITEMS.AUTHENTICATION.TASK.OFFLINE',
             link: '/',
             parentId: 77
           },

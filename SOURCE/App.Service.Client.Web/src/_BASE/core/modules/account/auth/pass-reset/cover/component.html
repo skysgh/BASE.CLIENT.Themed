@@ -14,7 +14,8 @@
                                     <div class="position-relative h-100 d-flex flex-column">
                                         <div class="mb-4">
                                             <a routerLink="/" class="d-block">
-                                                <img src="assets/images/logo-light.png" alt="" height="18">
+                                                <img src="assets/images/logo-light.png"
+                                                     alt="" height="18">
                                             </a>
                                         </div>
                                         <div class="mt-auto">
@@ -26,24 +27,21 @@
                                                 <ng-template ngbSlide>
                                                     <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
-                                                            <p class="fs-15 fst-italic">" Great! Clean code, clean
-                                                                design, easy for customization. Thanks very much! "</p>
+                                                            <p class="fs-15 fst-italic">" TODO: Quote #1 "</p>
                                                         </div>
                                                     </div>
                                                 </ng-template>
                                                 <ng-template ngbSlide>
                                                     <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
-                                                            <p class="fs-15 fst-italic">" The theme is really great with
-                                                                an amazing customer support."</p>
+                                                            <p class="fs-15 fst-italic">"  TODO: Quote #2 "</p>
                                                         </div>
                                                     </div>
                                                 </ng-template>
                                                 <ng-template ngbSlide>
                                                     <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
-                                                            <p class="fs-15 fst-italic">" Great! Clean code, clean
-                                                                design, easy for customization. Thanks very much! "</p>
+                                                            <p class="fs-15 fst-italic">" TODO:Quote #3 "</p>
                                                         </div>
                                                     </div>
                                                 </ng-template>
@@ -57,39 +55,52 @@
 
                             <div class="col-lg-6">
                                 <div class="p-lg-5 p-4">
-                                    <h5 class="text-primary">Forgot Password?</h5>
-                                    <p class="text-muted">Reset password</p>
+                                    <h5 class="text-primary">{{'BASE.SHARED.AUTHENTICATION.FORGOT?'|translate}}</h5>
+                                    <p class="text-muted">{{'BASE.SHARED.ACTIONS.RESET'|translate}}</p>
 
                                     <div class="mt-2 text-center">
-                                        <lord-icon src="https://cdn.lordicon.com/rhvddzym.json" trigger="loop" colors="primary:#00bd9d" class="avatar-xl">
+                                        <lord-icon src="https://cdn.lordicon.com/rhvddzym.json"
+                                                   trigger="loop" colors="primary:#00bd9d"
+                                                   class="avatar-xl">
                                         </lord-icon>
                                     </div>
 
-                                    <div class="alert border-2 bg-body-secondary alert-warning text-center mb-2 mx-2" role="alert">
-                                        Enter your email and instructions will be sent to you!
+                                    <div class="alert border-2 bg-body-secondary alert-warning text-center mb-2 mx-2"
+                                         role="alert">
+                                      {{'BASE.SHARED.MISC.ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS'}}
                                     </div>
                                     <div class="p-2">
                                         <form [formGroup]="passresetForm" (ngSubmit)="onSubmit()">
                                             <div class="mb-4">
                                                 <label class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="email" placeholder="Enter email address" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                                                <input type="email" class="form-control" id="email"
+                                                       placeholder="Enter email address"
+                                                       formControlName="email"
+                                                       [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
                                                 @if(submitted && f['email'].errors){
                                                 <div class="invalid-feedback" align="left">
                                                     @if(f['email'].errors['required']){
-                                                    <div>Email is required</div>}
+                                                    <div>
+                                                  {{'BASE.SHARED.AUTHENTICATION.EMAIL_ERROR_01'|translate}}</div>}
                                                 </div>}
                                             </div>
 
                                             <div class="text-center mt-4">
-                                                <button class="btn btn-success w-100" type="submit">Send Reset
-                                                    Link</button>
+                                              <button class="btn btn-success w-100" type="submit">
+                                                {{'BASE.SHARED.MISC.SEND_EMAILED_INSTRUCTIONS'|translate}}
+                                              </button>
                                             </div>
                                         </form><!-- end form -->
                                     </div>
 
                                     <div class="mt-5 text-center">
-                                        <p class="mb-0">Wait, I remember my password... <a routerLink="/auth/signin/cover" class="fw-semibold text-primary text-decoration-underline"> Click here
-                                            </a> </p>
+                                      <p class="mb-0">
+                                        {{'BASE.SHARED.MISC.WAIT_I_REMEMBER_MY_PASSWORD'|translate}}
+                                        <a routerLink="/auth/signin/cover"
+                                           class="fw-semibold text-primary text-decoration-underline">
+                                          {{'BASE.SHARED.AUTHENTICATION.SIGN_IN'|translate}}
+                                        </a>
+                                      </p>
                                     </div>
                                 </div>
                             </div>

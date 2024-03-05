@@ -14,7 +14,8 @@
                                     <div class="position-relative h-100 d-flex flex-column">
                                         <div class="mb-4">
                                             <a routerLink="/" class="d-block">
-                                                <img src="assets/images/logo-light.png" alt="" height="18">
+                                                <img src="assets/images/logo-light.png" alt=""
+                                                     height="18">
                                             </a>
                                         </div>
                                         <div class="mt-auto">
@@ -27,7 +28,7 @@
                                                     <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
                                                             <p class="fs-15 fst-italic">"
-                                                          " Blah blah...Great! "
+                                                          " TODO:QUOTE 1: Blah blah...Great! "
                                                           </p>
                                                         </div>
                                                     </div>
@@ -36,7 +37,7 @@
                                                     <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
                                                             <p class="fs-15 fst-italic">
-                                                          " Hot digity damn - perfect! "
+                                                          " TODO: QUOTE 2: Hot digity damn - perfect! "
                                                             </p>
                                                         </div>
                                                     </div>
@@ -53,7 +54,7 @@
                                 <div class="p-lg-5 p-4">
                                     <div>
                                       <h5 class="text-primary">
-                                        {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.SIGNIN' | translate }}
+                                        {{'BASE.SHARED.AUTHENTICATION.SIGNIN' | translate }}
                                         &nbsp;
                                       </h5>
                                       <p class="text-muted">
@@ -67,17 +68,17 @@
 
                                             <div class="mb-3">
                                               <label for="username" class="form-label">
-                                                {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.USERNAME' | translate }}&nbsp;
+                                                {{'BASE.SHARED.AUTHENTICATION.USERNAME' | translate }}&nbsp;
                                               </label>
                                                 <input type="text"
                                                        class="form-control"
                                                        id="username"
-                                                       placeholder="{{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.USERNAME_INSTRUCTIONS' | translate }}&nbsp;" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+                                                       placeholder="{{'BASE.SHARED.AUTHENTICATION.USERNAME_INSTRUCTIONS' | translate }}&nbsp;" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                                                 @if(submitted && f['name'].errors){
                                                 <div class="invalid-feedback" align="left">
                                                     @if(f['name'].errors['required']){
                                                   <div>
-                                                    {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.USERNAME_ERROR_01' | translate }}&nbsp;
+                                                    {{'BASE.SHARED.AUTHENTICATION.USERNAME_ERROR_01' | translate }}&nbsp;
                                                   </div>}
                                                 </div>}
                                             </div>
@@ -85,21 +86,28 @@
                                             <div class="mb-3">
                                                 <div class="float-end">
                                                   <a routerLink="/auth/pass-reset/cover" class="text-muted">
-                                                    {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.FORGOT?' | translate }}&nbsp;
+                                                    {{'BASE.SHARED.AUTHENTICATION.FORGOT?' | translate }}&nbsp;
                                                   </a>
                                                 </div>
                                                 <label class="form-label" for="password-input">
-                                                  {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.PASSWORD' | translate }}
+                                                  {{'BASE.SHARED.AUTHENTICATION.PASSWORD' | translate }}
                                                 </label>
                                                 <div class="position-relative auth-pass-inputgroup mb-3">
-                                                    <input [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5 password-input" placeholder="{{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.PASSWORD_INSTRUCTIONS' | translate }}" id="password-input" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
-                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-input" type="button" id="password-addon"><i class="mdi align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
+                                                    <input [type]="fieldTextType ? 'text' : 'password'"
+                                                           class="form-control pe-5 password-input"
+                                                           placeholder="{{'BASE.SHARED.AUTHENTICATION.PASSWORD_INSTRUCTIONS' | translate }}"
+                                                           id="password-input"
+                                                           formControlName="password"
+                                                           [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-input"
+                                                            type="button" id="password-addon">
+                                                  <i class="mdi align-middle" [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType
                                                 }" (click)="toggleFieldTextType()"></i></button>
                                                     @if(submitted && f['password'].errors){
                                                     <div class="invalid-feedback">
                                                         @if(f['password'].errors['required']){
                                                       <span>
-                                                        {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.PASSWORD_ERROR_01' | translate }}
+                                                        {{'BASE.SHARED.AUTHENTICATION.PASSWORD_ERROR_01' | translate }}
                                                         &nbsp;
                                                       </span>}
                                                     </div>}
@@ -107,22 +115,26 @@
                                             </div>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                                                <label class="form-check-label" for="auth-remember-check">
-                                                  {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.REMEMBER_ME' | translate }}&nbsp;
+                                                <input class="form-check-input"
+                                                       type="checkbox" value=""
+                                                       id="auth-remember-check">
+                                                <label class="form-check-label"
+                                                       for="auth-remember-check">
+                                                  {{'BASE.SHARED.AUTHENTICATION.REMEMBER_ME?' | translate }}&nbsp;
                                                 </label>
                                             </div>
 
                                             <div class="mt-4">
-                                              <button class="btn btn-success w-100" type="submit">
-                                                {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.SIGN_IN' | translate }}&nbsp;
+                                              <button class="btn btn-success w-100"
+                                                      type="submit">
+                                                {{'BASE.SHARED.AUTHENTICATION.SIGN_IN' | translate }}&nbsp;
                                               </button>
                                             </div>
 
                                             <div class="mt-4 text-center">
                                                 <div class="signin-other-title">
                                                   <h5 class="fs-13 mb-4 title">
-                                                    {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.SIGN_IN_WITH' | translate }}&nbsp;
+                                                    {{'BASE.SHARED.AUTHENTICATION.SIGN_IN_WITH' | translate }}&nbsp;
                                                   </h5>
                                                 </div>
 
@@ -139,9 +151,9 @@
 
                                     <div class="mt-5 text-center">
                                       <p class="mb-0">
-                                        {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.DONT_HAVE_AN_ACCOUNT?' | translate }}&nbsp;
+                                        {{'BASE.SHARED.AUTHENTICATION.DONT_HAVE_AN_ACCOUNT?' | translate }}&nbsp;
                                         <a routerLink="/auth/signup/cover" class="fw-semibold text-primary text-decoration-underline">
-                                          {{'BASE.CORE.AREAS.AUTHENTICATION.SHARED.SIGN_UP' | translate }}&nbsp;
+                                          {{'BASE.SHARED.AUTHENTICATION.SIGN_UP' | translate }}&nbsp;
                                         </a>
                                       </p>
                                     </div>
