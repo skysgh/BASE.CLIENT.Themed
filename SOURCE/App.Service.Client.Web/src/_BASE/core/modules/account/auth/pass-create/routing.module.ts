@@ -11,7 +11,7 @@ const routes: Routes = [
     component: BasicComponent
   },
   {
-    path: "cover",
+    path:"cover",
     component: CoverComponent
   }
 ];
@@ -20,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SigninRoutingModule { }
+export class PassCreateRoutingModule { }

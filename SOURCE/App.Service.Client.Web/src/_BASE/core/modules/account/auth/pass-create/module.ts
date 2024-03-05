@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BasicComponent } from './basic/component';
-
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Component
-import { SigninRoutingModule } from './signup-routing.module';
+import { PassCreateRoutingModule } from "./routing.module";
+import { BasicComponent } from './basic/component';
 import { CoverComponent } from './cover/component';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -16,12 +15,14 @@ import { TranslateModule } from '@ngx-translate/core';
     CoverComponent
   ],
   imports: [
-    CommonModule,
     TranslateModule,
+    CommonModule,
     NgbCarouselModule,
     ReactiveFormsModule,
     FormsModule,
-    SigninRoutingModule
+    PassCreateRoutingModule
   ]
 })
-export class SignupModule { }
+export class PassCreateModule { 
+  
+}

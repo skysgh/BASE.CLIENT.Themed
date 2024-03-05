@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BasicComponent } from './basic/component';
-
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+// otp module
+import { NgOtpInputModule } from 'ng-otp-input';
+
 // Component
-import { SigninRoutingModule } from './signup-routing.module';
+import { TwoStepRoutingModule } from "./routing.module";
+import { BasicComponent } from './basic/component';
 import { CoverComponent } from './cover/component';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -21,7 +23,8 @@ import { TranslateModule } from '@ngx-translate/core';
     NgbCarouselModule,
     ReactiveFormsModule,
     FormsModule,
-    SigninRoutingModule
+    NgOtpInputModule,
+    TwoStepRoutingModule
   ]
 })
-export class SignupModule { }
+export class TwostepModule { }

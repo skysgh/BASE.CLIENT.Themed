@@ -10,10 +10,10 @@ import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsContainer } from './login/toasts-container.component';
 
 import { AccountRoutingModule } from './account-routing.module';
-import { SigninModule } from "./auth/signin/signin.module";
+import { SigninModule } from "./auth/signin/module";
 import { SignupModule } from "./auth/signup/signup.module";
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/component';
+import { LoginComponent } from './login/component';
 
 @NgModule({
   declarations: [

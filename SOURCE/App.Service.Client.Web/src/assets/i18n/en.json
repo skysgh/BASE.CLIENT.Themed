@@ -7,6 +7,24 @@
 
   "BASE": {
     "SHARED": {
+      "GREETINGS": {
+        "HI": "Hi",
+        "HI!": "Hi!",
+        "WELCOME": "Welcome",
+        "WELCOME!": "Welcome!",
+        "WELCOME_BACK": "Welcome back",
+        "WELCOME_BACK!": "Welcome Back!",
+        "BYE": "Bye",
+        "BYE!": "Bye!",
+        "GOODBYE": "Goodbye",
+        "GOODBYE!": "Goodbye!",
+        "SEE_YOU_AGAIN_SOON": "See you again soon."
+      },
+      "APPRECIATION": {
+        "THANKS": "Thanks",
+        "THANKS!": "Thanks!",
+        "THANK YOU": "Thank you."
+      },
       "CREDITS": {
         "THANK_YOU": "Thank you",
         "THANK_YOU_FOR_USING": "Thank you for using",
@@ -41,6 +59,15 @@
         "CONFIRMATION_INSTRUCTIONS": "Please confirm before proceeding"
       },
       "ACTIONS": {
+        "SIGN_UP": "Sign Up",
+        "SIGN_UP_WITH": "Sign Up With",
+        "SIGN_IN": "Sign In",
+        "SIGN_IN_WITH": "Sign In With",
+        "SIGN_BACK_IN": "Sign In",
+        "SIGN OUT": "Sign Out",
+        "LOCK": "Lock",
+        "UNLOCK": "Unlock",
+        "LOGOUT": "Logout",
         "UNDO": "Undo",
         "REVERT": "Revert",
         "OK": "Ok",
@@ -51,6 +78,7 @@
         "NEW": "New",
         "VIEW": "View",
         "UPDATE": "Update",
+        "SAVE":"Save",
         "EDIT": "Edit",
         "SELECT": "Select",
         "CHOOSE": "Choose",
@@ -65,10 +93,7 @@
         "APPLY": "Apply",
         "INVITE": "Invite",
         "SEARCH": "Search",
-        "SEARCH_INSTRUCTIONS": "Search...",
-        "LOCK": "Lock",
-        "UNLOCK": "Unlock",
-        "LOGOUT": "Unlock"
+        "SEARCH_INSTRUCTIONS": "Search..."
       },
       "HEADERS": {
         "TITLE": "Title",
@@ -80,14 +105,14 @@
         "PROFILE": "Profile",
         "PROFILE_SETTINGS": "Settings"
       },
-      "PERSON": {
+      "PERSONS": {
         "ID": "Identifier",
         "IDENTIFIER": "Enter the person's identifier",
         "DOB": "DOB",
         "DOB_INSTRUCTIONS": "Enter the date of birth",
         "SEX": "Sex",
         "SEX_INSTRUCTIONS": "Enter the sex at birth",
-        "IDENTITY": {
+        "IDENTITIES": {
           "ID": "Context Identifier",
           "IDENTIFIER": "Enter a unique context identifier",
           "NAMES": {
@@ -149,8 +174,8 @@
           "GENDER_ERROR_02": "The provided gender could not be validated."
         }
       },
-      "PLACE": {
-        "LOCATION": {
+      "PLACES": {
+        "LOCATIONS": {
           "COORDINATES": "Coordinates",
           "COORDINATES_INSTRUCTIONS": "Provide a longitude/latitude coordinate",
           "COORDINATES_ERROR_01": "A longitude/latitude coordinates is required.",
@@ -165,33 +190,46 @@
           "LATITUDE_ERROR_02": "The provided latitude could not be validated."
         }
       },
-      "CHANNEL": {
-        "POSTAL": "Postal Address",
-        "EMAIL": "Email Address",
-        "PHONE": "Phone Number",
+      "CHANNELS": {
+        "POSTAL": {
+          "TITLE": "Postal Address",
+          "ADDRESS": {
+            "UNIT": "Unit",
+            "UNIT_EXAMPLE": "2B",
+            "UNIT_INSTRUCTIONS": "Provide an apartment, Unit, etc. if any",
+            "STREET": "Street",
+            "STREET_EXAMPLE": "123 Collins",
+            "STREET_INSTRUCTIONS": "Provide a street address",
+            "CITY": "City",
+            "CITY_EXAMPLE": "Villars",
+            "CITY_INSTRUCTIONS": "Provide a city, town, etc.",
+            "STATE": "State",
+            "STATE_EXAMPLE": "Vaud",
+            "STATE_INSTRUCTIONS": "Provide a state, region, etc.",
+            "POSTAL_CODE": "Postal Code",
+            "POSTAL_CODE_EXAMPLE": "6301",
+            "POSTAL_CODE_INSTRUCTIONS": "Provide a postal code, zip, etc.",
+            "COUNTRY": "Country",
+            "COUNTRY_EXAMPLE": "Switzerland",
+            "COUNTRY_INSTRUCTIONS": "Provide a country, kingdom, etc."
+          }
+        },
+        "EMAIL": {
+          "TITLE": "Email Address"
+        },
+        "PHONE": {
+          "TITLE": "Phone Number",
+          "OPTIONS": {
+            "GENERAL": "Phone",
+            "MOBILE": "Mobile",
+            "FAX": "Fax"
+          }
+        },
         "SOCIAL": {
-          "X": "X Handle"
+          "TITLE": "Social",
+          "X": "Handle",
+          "MASTADON": "Address"
         }
-      },
-      "POSTAL_ADDRESS": {
-        "UNIT": "Unit",
-        "UNIT_EXAMPLE": "2B",
-        "UNIT_INSTRUCTIONS": "Provide an apartment, Unit, etc. if any",
-        "STREET": "Street",
-        "STREET_EXAMPLE": "123 Collins",
-        "STREET_INSTRUCTIONS": "Provide a street address",
-        "CITY": "City",
-        "CITY_EXAMPLE": "Villars",
-        "CITY_INSTRUCTIONS": "Provide a city, town, etc.",
-        "STATE": "State",
-        "STATE_EXAMPLE": "Vaud",
-        "STATE_INSTRUCTIONS": "Provide a state, region, etc.",
-        "POSTAL_CODE": "Postal Code",
-        "POSTAL_CODE_EXAMPLE": "6301",
-        "POSTAL_CODE_INSTRUCTIONS": "Provide a postal code, zip, etc.",
-        "COUNTRY": "Country",
-        "COUNTRY_EXAMPLE": "Switzerland",
-        "COUNTRY_INSTRUCTIONS": "Provide a country, kingdom, etc."
       },
       "COMMERCE": {
         "PRODUCTS": "Products",
@@ -238,9 +276,18 @@
         "NO_NOTIFICATIONS": "No notifications",
         "NO_NEW_MESSAGES": "No new messages.",
         "NO_NEW_ALERTS": "No new alerts."
+      },
+      "POSITION": {
+        "RELATIVE": {
+          "_PREVIOUS": "previous",
+          "_NEXT": "next",
+          "_BELOW": "below",
+          "_ABOVE": "above",
+          "_TO_THE_LEFT": "to the left",
+          "_TO_THE_RIGHT": "to the right"
+        }
+
       }
-
-
     },
     "CORE": {
       "AREAS": {
@@ -383,12 +430,6 @@
             "OFFLINE": "Offline Page"
           },
           "SHARED": {
-            "WELCOME": "Welcome!",
-            "WELCOME_BACK": "Welcome Back!",
-            "SIGN_UP": "Sign Up",
-            "SIGN_UP_WITH": "Sign up with",
-            "SIGN_IN": "Sign In",
-            "SIGN_IN_WITH": "Sign in with",
             "USERNAME": "User name",
             "USERNAME_INSTRUCTIONS": "Enter your username",
             "EMAIL": "Email",
