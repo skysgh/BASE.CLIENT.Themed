@@ -20,6 +20,10 @@ import { CartModel } from './topbar.model';
 import { cartData } from './data';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from '../../../_BASE/shared/services/notification.service';
+import { SystemLanguage } from '../../../_BASE/shared/models/system-languages';
+import { DiagnosticsService } from '../../../_BASE/shared/services/diagnostics.service';
+import { Observable, of } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Component({
   selector: 'app-topbar',
@@ -34,7 +38,7 @@ export class TopbarComponent implements OnInit {
   allnotifications: any
   flagvalue: any;
   valueset: any;
-  countryName: any;
+  languageTitle: any;
   cookieValue: any;
   userData: any;
   cartData!: CartModel[];
@@ -47,39 +51,82 @@ export class TopbarComponent implements OnInit {
   @ViewChild('removenotification') removenotification !: TemplateRef<any>;
   notifyId: any;
 
+  public systemLanguages: Observable<SystemLanguage[]> = of ([]);
+
   constructor(@Inject(DOCUMENT) private document: any,
+    protected diagnosticsService :DiagnosticsService,
     private notificationService : NotificationService,
     private eventService: EventService, public languageService: LanguageService, private modalService: NgbModal,
     public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService, private authFackservice: AuthfakeauthenticationService,
     private router: Router, private TokenStorageService: TokenStorageService) { }
+    
 
   ngOnInit(): void {
-    this.userData = this.TokenStorageService.getUser();
     this.element = document.documentElement;
 
-    // Cookies wise Language set
-    this.cookieValue = this._cookiesService.get('lang');
-    const val = this.listLang.filter(x => x.lang === this.cookieValue);
-    this.countryName = val.map(element => element.text);
-    if (val.length === 0) {
-      if (this.flagvalue === undefined) { this.valueset = 'assets/images/flags/us.svg'; }
-    } else {
-      this.flagvalue = val.map(element => element.flag);
-    }
 
+    this.initUser();
+    this.initLanguages();
+    this.initMessages();
+    this.initCart();
+  }
+
+  private initUser() {
+    this.userData = this.TokenStorageService.getUser();
+  };
+
+  private initLanguages() {
+    // This will take a sec to retrieve:
+    this.languageService
+      .languageDescriptions
+      .subscribe(x => {
+        if (x.length == 0) {
+          this.diagnosticsService.info("...early exit...");
+          return;
+        }
+        // Cookies wise Language set
+        this.cookieValue = this._cookiesService.get('lang') || 'en';
+        this.diagnosticsService.info("cookie value:" + this.cookieValue);
+
+        this.diagnosticsService.info("...processing...");
+        this.diagnosticsService.info("Number of languages is:" + x.length);
+
+        //Get an array of one current language decription:
+        const val = x.filter(x => x.languageCode === this.cookieValue);
+
+
+      if (val.length === 0) {
+        this.valueset = 'assets/images/flags/00.svg'; 
+      } else {
+        this.languageTitle = val.map(x => x.title);
+        this.diagnosticsService.info("languageTitle:" + this.languageTitle);
+        // go through array of 1:
+        // and get it's flag url:
+        this.flagvalue = val.map(x => `assets/images/flags/${x.languageCode}.svg`) || 'assets/images/flags/00.svg';
+      }
+
+        this.diagnosticsService.info("valueset:" + this.valueset);
+        this.diagnosticsService.info("FlagValue:" + this.flagvalue);
+
+        this.systemLanguages = of(x);
+
+    });
+
+  }
+  private initMessages() {
     // Fetch Data
     this.allnotifications = this.notificationService.getAll();
     this.messages = this.notificationService.getMessages();
+  }
 
+  private initCart() {
     this.cartData = cartData;
-
     this.cart_length = this.cartData.length;
     this.cartData.forEach((item) => {
       var item_price = item.quantity * item.price
       this.total += item_price
     });
   }
-
   /**
    * Toggle the menu bar when having mobile screen
    */
@@ -152,29 +199,26 @@ export class TopbarComponent implements OnInit {
         break;
     }
   }
-
-  /***
-   * Language Listing
-   */
-  listLang = [
-    { text: 'English', flag: 'assets/images/flags/us.svg', lang: 'en' },
-    { text: 'Española', flag: 'assets/images/flags/spain.svg', lang: 'es' },
-    { text: 'Deutsche', flag: 'assets/images/flags/germany.svg', lang: 'de' },
-    { text: 'Italiana', flag: 'assets/images/flags/italy.svg', lang: 'it' },
-    { text: 'русский', flag: 'assets/images/flags/russia.svg', lang: 'ru' },
-    { text: '中国人', flag: 'assets/images/flags/china.svg', lang: 'ch' },
-    { text: 'français', flag: 'assets/images/flags/french.svg', lang: 'fr' },
-    { text: 'Arabic', flag: 'assets/images/flags/ar.svg', lang: 'ar' },
-  ];
+  //setLanguageByCode(languageCode: string) {
+  //  const val = this.systemLanguages.pipe(map(x=>x. )).filter(x => x.languageCode === languageCode);
+  //}
 
   /***
    * Language Value Set
    */
-  setLanguage(text: string, lang: string, flag: string) {
-    this.countryName = text;
-    this.flagvalue = flag;
-    this.cookieValue = lang;
-    this.languageService.setLanguage(lang);
+  setLanguage(systemLanguage: SystemLanguage) {
+    if (systemLanguage) {
+      this.languageTitle = systemLanguage.title;
+      this.flagvalue = `assets/images/flags/${systemLanguage.languageCode}.svg`;
+      this.cookieValue = systemLanguage.languageCode ?? 'en';
+      this.languageService.setLanguage(systemLanguage.languageCode ?? 'en');
+    }
+  }
+
+  trackByCountryCode(index: number, item: SystemLanguage) {
+    console.log(item.description);
+    //this.diagnosticsService.info(item.description);
+    return item.languageCode;
   }
 
   /**

@@ -14,22 +14,61 @@
   "languageCodes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
-      "title": "English",
-      "description": "English language",
-      "languageCode": "en"
+      "enabled": true,
+      "title": "NZ English",
+      "description": "Kiwi",
+      "languageCode": "nz",
+      "flagImageId": "nz"
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
-      "title": "M`aori",
-      "description": "The M`aori language",
-      "languageCode": "mi"
+      "enabled": true,
+      "title": "Māori",
+      "description": "NZ Māori",
+      "languageCode": "mi",
+      "flagImageId": "mi"
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
-      "title": "French",
+      "enabled": true,
+      "title": "中国人",
+      "description": "Chinese language",
+      "languageCode": "zh",
+      "flagImageId": "china"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": false,
+      "title": "Francais",
       "description": "French language",
-      "languageCode": "fr"
+      "languageCode": "fr",
+      "flagImageId": "france"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "enabled": false,
+      "title": "Española",
+      "description": "Spanish language",
+      "languageCode": "es",
+      "flagImageId": "spain"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "enabled": false,
+      "title": "Deutsche",
+      "description": "German language",
+      "languageCode": "de",
+      "flagImageId": "germany"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "enabled": false,
+      "title": "Italiana",
+      "description": "Italian language",
+      "languageCode": "it",
+      "flagImageId": "italy"
     }
+
   ],
   "statementTypes": [
     {
@@ -57,6 +96,15 @@
       "issuedUtc": "2023-04-23T18:25:43.511Z",
       "title": "Privacy Statement",
       "text": "...some desc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "typeId": "00000000-0000-0000-0000-000000000001",
+      "encodingTypeId": "00000000-0000-0000-0000-000000000001",
+      "languageCode": "en",
+      "issuedUtc": "2023-02-23T18:25:43.511Z",
+      "title": "Some other Statement",
+      "text": "...some desc..........."
     }
   ],
   "agreementTypes": [
@@ -80,7 +128,39 @@
     }
   ],
 
+  "userQuotes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Great!",
+      "description": "Provides me the oversight I was missing. Great!'",
+      "userFK": null,
+      "languageCode": "en"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Great!",
+      "description": "Could not be more pleased. Thank you.'",
+      "userFK": null,
+      "languageCode": "en"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "Great!",
+      "description": "Thank you: respectful and inclusive while being useful...(in moari).'",
+      "userFK": null,
+      "languageCode": "mi"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Get list of permitted languages",
+      "description": "From server, get list of language options.",
+      "completed": false,
+      "icon": "bx-badge-check"
+    }
 
+  ],
 
   "allNotifications": [
     {

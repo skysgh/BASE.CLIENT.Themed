@@ -17,7 +17,7 @@ export class BasicComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
 
-  public system?: System;
+  public system: System;
 
   constructor(private systemService: SystemService, public translate: TranslateService) {
     this.system = this.systemService.system;

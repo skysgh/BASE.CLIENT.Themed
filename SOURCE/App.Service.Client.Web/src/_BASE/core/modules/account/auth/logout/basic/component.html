@@ -21,7 +21,7 @@
                               <img src="assets/images/logo-light.png" alt="" height="20">
                           </a>
                       </div>
-                      <p class="mt-3 fs-15 fw-medium">{{system?.description}}</p>
+                      <p class="mt-3 fs-15 fw-medium">{{system.description}}</p>
                   </div>
               </div>
           </div>
@@ -40,7 +40,7 @@
                           <div class="mt-4 pt-2">
                             <h5>{{'BASE.SHARED.STATUS_UPDATES.YOU_ARE_LOGGED_OUT' | translate}}</h5>
                               <p class="text-muted">
-                            {{'BASE.SHARED.CREDITS.THANK_YOU_FOR_USING' | translate}} {{system?.title}}
+                            {{'BASE.SHARED.CREDITS.THANK_YOU_FOR_USING' | translate}} {{system.title}}
                               </p>
                               <div class="mt-4">
                                 <a routerLink="/auth/signin/basic"
@@ -58,7 +58,7 @@
               <!-- end col -->
           </div>
           <!-- end row -->
-      </div>
+      </div>s
       <!-- end container -->
   </div>
   <!-- end auth page content -->
@@ -70,10 +70,10 @@
               <div class="col-lg-12">
                   <div class="text-center">
                     <p class="mb-0 text-muted">
-                      {{year}} © {{system?.title || ''}}
+                      {{year}} © {{system.title || ''}}
                       -
                       {{'BASE.SHARED.CREDITS.DEVELOPED_BY' | translate }}
-                      {{system?.developer?.title || 'Undefined, Inc.'}}
+                      {{system.developer.title || 'Undefined, Inc.'}}
                     </p>
                   </div>
               </div>

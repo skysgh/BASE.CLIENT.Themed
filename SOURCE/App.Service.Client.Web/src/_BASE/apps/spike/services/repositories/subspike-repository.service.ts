@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 //import { env } from "process";
-import { GenericRepositoryServiceBase } from "../../../../shared/services/repositories/generic-repository.service.base";
+import { GenericRepositoryServiceBase } from "../../../../shared/services/repositories/base/generic-repository.service.base";
 import { DiagnosticsService } from "../../../../shared/services/diagnostics.service";
 import { EnvironmentService } from "../../../../shared/services/environment.service";
 import { ErrorService } from "../../../../shared/services/error.service";

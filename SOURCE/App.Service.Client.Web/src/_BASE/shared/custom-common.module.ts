@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SystemService } from './services/system.service';
 import { EnvironmentService } from './services/environment.service';
 import { TitleService } from './services/title.service';
+import { SystemLanguagesRepositoryService } from './services/repositories/system.languages.repository.service';
 
 //import Module specific:
 @NgModule({
@@ -22,7 +23,8 @@ import { TitleService } from './services/title.service';
     // define what Services
     SystemService,
     EnvironmentService,
-    TitleService
+    TitleService,
+    SystemLanguagesRepositoryService
   ]
 })
 export class CustomCommonModule { }

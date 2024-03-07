@@ -1,5 +1,5 @@
 //import { env } from "process";
-import { GenericRepositoryServiceBase } from "./generic-repository.service.base";
+import { GenericRepositoryServiceBase } from "./base/generic-repository.service.base";
 import { DiagnosticsService } from "../../../shared/services/diagnostics.service";
 import { EnvironmentService } from "../../../shared/services/environment.service";
 import { ErrorService } from "../../../shared/services/error.service";
@@ -9,7 +9,7 @@ import { TypeService } from "../type.service";
 // import models:
 
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NotificationsRepositoryService
   extends GenericRepositoryServiceBase<Notification> {
 

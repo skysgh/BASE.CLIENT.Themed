@@ -1,5 +1,5 @@
 //import { env } from "process";
-import { GenericRepositoryServiceBase } from "../../../../shared/services/repositories/generic-repository.service.base";
+import { GenericRepositoryServiceBase } from "../../../../shared/services/repositories/base/generic-repository.service.base";
 import { Spike } from "../../models/spike.model";
 import { DiagnosticsService } from "../../../../shared/services/diagnostics.service";
 import { EnvironmentService } from "../../../../shared/services/environment.service";

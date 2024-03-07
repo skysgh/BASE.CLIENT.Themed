@@ -4,11 +4,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 //Import Models:
-import { ReferenceData } from '../../models/reference-item.model';
-import { EnvironmentService } from '../environment.service';
-import { DiagnosticsService } from '../diagnostics.service';
-import { ErrorService } from '../error.service';
-import { TypeService } from '../type.service';
+import { ReferenceData } from '../../../models/reference-item.model';
+import { EnvironmentService } from '../../environment.service';
+import { DiagnosticsService } from '../../diagnostics.service';
+import { ErrorService } from '../../error.service';
+import { TypeService } from '../../type.service';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
@@ -22,37 +22,37 @@ import { TypeService } from '../type.service';
 export abstract class GenericRepositoryServiceBase<Type> {
 
   // Affects how build url variables:
-  private isJsonServer: boolean;
+  protected isJsonServer: boolean;
 
   // Define Properties:
-  private endpointUrl: string;
+  protected endpointUrl: string;
   // Http Options
-  private httpOptions = {
+  protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
   //
   constructor(
-    private typeService: TypeService,
-    private environmentService: EnvironmentService,
-    private diagnosticsService: DiagnosticsService,
-    private errorService: ErrorService,
-    private http: HttpClient,
-    private apiUrlEndpointSuffix: string) {
+    protected typeService: TypeService,
+    protected environmentService: EnvironmentService,
+    protected diagnosticsService: DiagnosticsService,
+    protected errorService: ErrorService,
+    protected http: HttpClient,
+    protected apiUrlEndpointSuffix: string) {
 
     this.endpointUrl = `${environmentService.getRestApiBaseUrl()}${apiUrlEndpointSuffix}`;
     this.isJsonServer = this.environmentService.isJsonServerContext;
   }
 
   // HttpClient API get() method => Fetch entitys list
-  getAll(page: number = 0): Observable<Type> {
+  getAll(page: number = 0): Observable<Type[]> {
     var url : string = this.buildRequestUrl(this.isJsonServer ? `?_page=${page}&_per_page=20` : 'TODO');
     this.diagnosticsService.info(`querying: GET: ${url}`);
 
     var result =
       this.http
-      .get<Type>(url)
+      .get<Type[]>(url)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -160,7 +160,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
     return result;
   }
 
-  private buildRequestUrl(queryArgs:string) : string{
+  protected buildRequestUrl(queryArgs:string) : string{
     return this.endpointUrl + queryArgs;
   }
 
@@ -178,7 +178,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
   //  }),
   //}
   // Error handling
-  private handleError(error: any /*Error*/) {
+  protected handleError(error: any /*Error*/) {
     var errorMessage = this.errorService.report(error);
     
     return throwError(() => {return errorMessage;});

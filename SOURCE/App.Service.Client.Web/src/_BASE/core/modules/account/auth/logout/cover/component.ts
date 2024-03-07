@@ -16,7 +16,7 @@ export class CoverComponent implements OnInit {
 
   // set the current year
   year: number = new Date().getFullYear();
-  system?: System;
+  system: System;
 
   // Carousel navigation arrow show
   showNavigationArrows: any;

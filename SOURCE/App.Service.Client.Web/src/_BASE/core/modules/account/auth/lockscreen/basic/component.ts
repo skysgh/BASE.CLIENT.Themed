@@ -24,7 +24,7 @@ export class BasicComponent implements OnInit {
   returnUrl!: string;
   // set the current year
   year: number = new Date().getFullYear();
-  system?: System;
+  system: System;
 
   constructor(private formBuilder: FormBuilder, systemService: SystemService, public translate: TranslateService) {
     this.system = systemService.system;

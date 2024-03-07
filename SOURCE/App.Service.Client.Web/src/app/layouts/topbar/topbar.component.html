@@ -186,12 +186,21 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
 
-                        <!-- item-->
-                        @for(item of listLang;track $index){
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language py-2" data-lang="eng" (click)="setLanguage(item.text, item.lang, item.flag)" [ngClass]="{'active': cookieValue === item.lang}">
-                            <img src="{{item.flag}}" alt="user-image" class="me-2 rounded" height="18"> <span class="align-middle">{{item.text}}</span>
-                        </a>
-                        }
+                      <ng-container *ngIf="systemLanguages | async as languages">
+                        <ng-container *ngFor="let item of languages ; let i = index; trackBy: trackByCountryCode">
+                          <a href="javascript:void(0);"
+                             class="dropdown-item notify-item language py-2"
+                             data-lang="eng"
+                             (click)="setLanguage(item)"
+                             [ngClass]="{'active': cookieValue === item.languageCode}">
+                            <img [src]="'assets/images/flags/'+item.languageCode +'.svg'"
+                                 alt="user-image"
+                                 class="me-2 rounded"
+                                 height="18">
+                            <span class="align-middle">{{item.title}}</span>
+                          </a>
+                        </ng-container>
+                      </ng-container>
                     </div>
                 </div>
 
