@@ -7,7 +7,7 @@ import { EnvironmentService } from "../environment.service";
 import { ErrorService } from "../error.service";
 import { TypeService } from "../type.service";
 // import models:
-import { SystemLanguage } from "../../models/system-languages";
+import { SystemLanguage } from "../../models/data/system-language";
 import { Observable, catchError, retry } from "rxjs";
 
 

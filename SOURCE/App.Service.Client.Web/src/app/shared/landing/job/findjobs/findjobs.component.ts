@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Data Get
 import { findjob } from './data';
-import { System } from '../../../../../_BASE/shared/models/system.model';
+import { System } from '../../../../../_BASE/shared/models/settings/system';
 import { SystemService } from '../../../../../_BASE/shared/services/system.service';
 
 @Component({

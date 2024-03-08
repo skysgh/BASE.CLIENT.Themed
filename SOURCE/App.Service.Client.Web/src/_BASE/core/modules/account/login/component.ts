@@ -12,7 +12,7 @@ import { SystemService } from '../../../../shared/services/system.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from '../../../../shared/services/toast.service';
 
-import { System } from '../../../../shared/models/system.model';
+import { System } from '../../../../shared/models/settings/system';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-login',

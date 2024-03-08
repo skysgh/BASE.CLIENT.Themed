@@ -1,7 +1,7 @@
 // Import dependencies:
 import { Injectable } from '@angular/core';
-import { system } from '../settings/constants/system';
-import { System } from '../models/system.model';
+import { system } from '../../shared/constants/system';
+import { System } from '../models/settings/system';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 // Import Base.Common.Models:
-import { System } from '../../../../../../shared/models/system.model';
+import { System } from '../../../../../../shared/models/settings/system';
 // Import Base.Common.Services:
 import { SystemService } from '../../../../../../shared/services/system.service';
 import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';

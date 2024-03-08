@@ -24,8 +24,18 @@
     <TypeScriptConfiguration Remove="src\_custom\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="src\_BASE\shared\models\reference-item.model.ts" />
+    <None Remove="src\_BASE\shared\models\search-summary-item.model.ts" />
+    <None Remove="src\_BASE\shared\models\stat.model.ts" />
+    <None Remove="src\_BASE\shared\models\system-languages.ts" />
+    <None Remove="src\_BASE\shared\models\system.model.ts" />
+    <None Remove="src\_BASE\shared\models\systemOrganisation.model.ts" />
+    <None Remove="src\_BASE\shared\models\user-quote.model.ts" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="src\assets\custom\" />
     <Folder Include="src\_BASE\core\models\base\" />
     <Folder Include="src\_BASE\shared\maps\" />
+    <Folder Include="src\_BASE\shared\models\view\" />
   </ItemGroup>
 </Project>

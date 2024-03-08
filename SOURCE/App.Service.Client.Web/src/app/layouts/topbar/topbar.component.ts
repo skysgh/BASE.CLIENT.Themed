@@ -20,7 +20,7 @@ import { CartModel } from './topbar.model';
 import { cartData } from './data';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from '../../../_BASE/shared/services/notification.service';
-import { SystemLanguage } from '../../../_BASE/shared/models/system-languages';
+import { SystemLanguage } from '../../../_BASE/shared/models/data/system-language';
 import { DiagnosticsService } from '../../../_BASE/shared/services/diagnostics.service';
 import { Observable, of } from 'rxjs';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
@@ -98,7 +98,7 @@ export class TopbarComponent implements OnInit {
       if (val.length === 0) {
         this.valueset = 'assets/images/flags/00.svg'; 
       } else {
-        this.languageTitle = val.map(x => x.title);
+        this.languageTitle = val.map(x =>x.title);
         this.diagnosticsService.info("languageTitle:" + this.languageTitle);
         // go through array of 1:
         // and get it's flag url:

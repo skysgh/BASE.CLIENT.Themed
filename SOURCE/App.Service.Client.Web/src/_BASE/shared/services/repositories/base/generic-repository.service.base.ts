@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 //Import Models:
-import { ReferenceData } from '../../../models/reference-item.model';
+import { ReferenceData } from '../../../models/data/reference-item.model';
 import { EnvironmentService } from '../../environment.service';
 import { DiagnosticsService } from '../../diagnostics.service';
 import { ErrorService } from '../../error.service';

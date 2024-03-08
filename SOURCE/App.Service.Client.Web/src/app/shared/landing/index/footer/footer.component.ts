@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { System } from '../../../../../_BASE/shared/models/system.model';
+import { System } from '../../../../../_BASE/shared/models/settings/system';
 import { SystemService } from '../../../../../_BASE/shared/services/system.service';
 import { TranslateService } from '@ngx-translate/core';
 

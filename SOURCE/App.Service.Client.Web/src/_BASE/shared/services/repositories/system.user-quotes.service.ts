@@ -8,7 +8,7 @@ import { ErrorService } from "../error.service";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { TypeService } from "../type.service";
-import { UserQuote } from "../../models/user-quote.model";
+import { UserQuote } from "../../models/data/user-quote.model";
 // import models:
 
 

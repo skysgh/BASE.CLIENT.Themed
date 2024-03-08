@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
-import { System } from '../../../../../../shared/models/system.model';
+import { System } from '../../../../../../shared/models/settings/system';
 import { SystemService } from '../../../../../../shared/services/system.service';
 import { SystemUserQuoteRepositoryService } from '../../../../../../shared/services/repositories/system.user-quotes.service';
 import { User } from '../../../../../../../app/store/Authentication/auth.models';
-import { UserQuote } from '../../../../../../shared/models/user-quote.model';
+import { UserQuote } from '../../../../../../shared/models/data/user-quote.model';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-lockscreen-cover',

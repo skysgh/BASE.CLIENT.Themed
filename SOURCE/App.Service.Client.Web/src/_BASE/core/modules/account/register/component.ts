@@ -8,7 +8,7 @@ import { UserProfileService } from '../../../../shared/services/services/user.se
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { SystemService } from '../../../../shared/services/system.service';
-import { System } from '../../../../shared/models/system.model';
+import { System } from '../../../../shared/models/settings/system';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-register',

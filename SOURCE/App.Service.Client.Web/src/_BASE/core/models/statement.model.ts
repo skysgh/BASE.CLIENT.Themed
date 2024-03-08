@@ -1,5 +1,5 @@
 import { IHasUUID } from "../../shared/models/contracts/IHasUUID"
-import { HasTitleAndDescriptionBase } from "../../shared/models/base/HasTitleAndDescription";
+import { HasTitleAndDescriptionBase } from "../../shared/models/base/HasTitleAndDescriptionBase";
 
 export class Statement extends HasTitleAndDescriptionBase implements IHasUUID {
 
