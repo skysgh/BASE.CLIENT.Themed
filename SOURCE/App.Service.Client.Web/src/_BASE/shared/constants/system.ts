@@ -4,6 +4,7 @@ export const system: System = {
 
   title: "BASE",
   description: "Base API Support Environment",
+
   purpose: "Provide actionable oversight over large systems of organisations.",
 
   distributor: {
@@ -30,16 +31,25 @@ export const system: System = {
     i18n: "assets/l18n",
     images: {
       root: "assets/images/",
-      imagesLogos: "assets/images/logos/",
-      imagesFlags: "assets/images/flags/",
-      imagesClients: "assets/images/clients",
-      imagesBrands:"assets/images/brands/",
-      imagesCompanies: "assets/images/companies/",
-      imagesSvg: "assets/images/svg",
-      imagesSmall: "assets/images/small",
-      imagesUsers: "assets/images/users,"
+      logos: "assets/images/logos/",
+      flags: "assets/images/flags/",
+      clients: "assets/images/clients",
+      brands:"assets/images/brands/",
+      companies: "assets/images/companies/",
+      svg: "assets/images/svg",
+      small: "assets/images/small",
+      users: "assets/images/users,"
     }
+  },
+  urls: {
+    home: "/",
+    privacy: "privacy/terms",
+    dataUse: "privacy/datause",
+    terms: "information/terms",
+    landing: "landing",
+    dashboard: "dashboard",
+    error404: "/",
+    error500: "/"
   }
-
 }
 

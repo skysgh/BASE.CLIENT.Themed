@@ -101,7 +101,7 @@
                                 <!-- item -->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                     <div class="d-flex">
-                                        <img src="assets/images/users/avatar-2.jpg"
+                                        <img src="{{this.system.parts.images.users}}avatar-2.jpg"
                                              class="me-3 rounded-circle avatar-xs"
                                              alt="user-pic">
                                         <div class="flex-grow-1">
@@ -113,7 +113,7 @@
                                 <!-- item -->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                     <div class="d-flex">
-                                        <img src="assets/images/users/avatar-3.jpg"
+                                        <img src="{{this.system.parts.images.users}}avatar-3.jpg"
                                              class="me-3 rounded-circle avatar-xs"
                                              alt="user-pic">
                                         <div class="flex-grow-1">
@@ -125,7 +125,7 @@
                                 <!-- item -->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                     <div class="d-flex">
-                                        <img src="assets/images/users/avatar-5.jpg"
+                                        <img src="{{this.system.parts.images.users}}avatar-5.jpg"
                                              class="me-3 rounded-circle avatar-xs"
                                              alt="user-pic">
                                         <div class="flex-grow-1">
@@ -193,7 +193,7 @@
                              data-lang="eng"
                              (click)="setLanguage(item)"
                              [ngClass]="{'active': cookieValue === item.languageCode}">
-                            <img [src]="'assets/images/flags/'+item.languageCode +'.svg'"
+                            <img [src]="system.parts.images.flags + item.languageCode +'.svg'"
                                  alt="user-image"
                                  class="me-2 rounded"
                                  height="18">
@@ -225,19 +225,19 @@
                             <div class="row g-0">
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="javascript:void(0);">
-                                        <img src="assets/images/brands/github.png" alt="Github">
+                                        <img src="{{system.parts.images.brands}}github.png" alt="Github">
                                         <span>GitHub</span>
                                     </a>
                                 </div>
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="javascript:void(0);">
-                                        <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
+                                        <img src="{{system.parts.images.brands}}bitbucket.png" alt="bitbucket">
                                         <span>Bitbucket</span>
                                     </a>
                                 </div>
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="javascript:void(0);">
-                                        <img src="assets/images/brands/dribbble.png" alt="dribbble">
+                                        <img src="{{system.parts.images.brands}}dribbble.png" alt="dribbble">
                                         <span>Dribbble</span>
                                     </a>
                                 </div>
@@ -246,19 +246,19 @@
                             <div class="row g-0">
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="javascript:void(0);">
-                                        <img src="assets/images/brands/dropbox.png" alt="dropbox">
+                                        <img src="{{system.parts.images.brands}}dropbox.png" alt="dropbox">
                                         <span>Dropbox</span>
                                     </a>
                                 </div>
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="javascript:void(0);">
-                                        <img src="assets/images/brands/mail_chimp.png" alt="mail_chimp">
+                                        <img src="{{system.parts.images.brands}}mail_chimp.png" alt="mail_chimp">
                                         <span>Mail Chimp</span>
                                     </a>
                                 </div>
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="javascript:void(0);">
-                                        <img src="assets/images/brands/slack.png" alt="slack">
+                                        <img src="{{system.parts.images.brands}}slack.png" alt="slack">
                                         <span>Slack</span>
                                     </a>
                                 </div>
@@ -603,7 +603,7 @@
                             aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
                         <span class="d-flex align-items-center">
                             <img class="rounded-circle header-profile-user"
-                                 src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                                 src="{{this.system.parts.images.users}}avatar-1.jpg" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
                               {{userData.first_name}}

@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { System } from '../../../../../_BASE/shared/models/settings/system';
+
 import {status1, status2, status3, status4, status5, status6, status7 } from './data';
 import { ChartType } from './team-members.model';
+import { SystemService } from '../../../../../_BASE/shared/services/system.service';
 
 @Component({
   selector: 'app-team-members',
@@ -33,7 +36,10 @@ export class TeamMembersComponent implements OnInit {
   status6!: ChartType;
   status7!: ChartType;
 
-  constructor() { }
+  system: System;
+  constructor(private systemService: SystemService) {
+    this.system = systemService.system;
+  }
 
   ngOnInit(): void {
     /**

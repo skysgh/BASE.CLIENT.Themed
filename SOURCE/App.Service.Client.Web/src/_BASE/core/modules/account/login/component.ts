@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
       password: ['123456', [Validators.required]],
     });
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = (this.route.snapshot.queryParams['returnUrl'] || '/');
   }
 
   // convenience getter for easy access to form fields
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('toast', 'true');
         sessionStorage.setItem('currentUser', JSON.stringify(data.data));
         sessionStorage.setItem('token', data.token);
-        this.router.navigate(['/']);
+        this.router.navigate([this.returnUrl]);
       } else {
         this.toastService.show(data.data, { classname: 'bg-danger text-white', delay: 15000 });
       }

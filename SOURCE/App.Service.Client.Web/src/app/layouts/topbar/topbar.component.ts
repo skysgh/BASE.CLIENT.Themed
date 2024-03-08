@@ -24,6 +24,10 @@ import { SystemLanguage } from '../../../_BASE/shared/models/data/system-languag
 import { DiagnosticsService } from '../../../_BASE/shared/services/diagnostics.service';
 import { Observable, of } from 'rxjs';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { SystemService } from '../../../_BASE/shared/services/system.service';
+//import { system } from '../../../_BASE/shared/constants/system';
+import { System } from '../../../_BASE/shared/models/settings/system';
+
 
 @Component({
   selector: 'app-topbar',
@@ -53,12 +57,18 @@ export class TopbarComponent implements OnInit {
 
   public systemLanguages: Observable<SystemLanguage[]> = of ([]);
 
+  system: System; 
+
   constructor(@Inject(DOCUMENT) private document: any,
+    private systemService: SystemService, 
     protected diagnosticsService :DiagnosticsService,
     private notificationService : NotificationService,
     private eventService: EventService, public languageService: LanguageService, private modalService: NgbModal,
     public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService, private authFackservice: AuthfakeauthenticationService,
-    private router: Router, private TokenStorageService: TokenStorageService) { }
+    private router: Router, private TokenStorageService: TokenStorageService) {
+
+    this.system = systemService.system;
+  }
     
 
   ngOnInit(): void {
@@ -96,13 +106,13 @@ export class TopbarComponent implements OnInit {
 
 
       if (val.length === 0) {
-        this.valueset = 'assets/images/flags/00.svg'; 
+        this.valueset = this.system.parts.images.flags+'/00.svg'; 
       } else {
         this.languageTitle = val.map(x =>x.title);
         this.diagnosticsService.info("languageTitle:" + this.languageTitle);
         // go through array of 1:
         // and get it's flag url:
-        this.flagvalue = val.map(x => `assets/images/flags/${x.languageCode}.svg`) || 'assets/images/flags/00.svg';
+        this.flagvalue = val.map(x => `${this.system.parts.images.flags}${x.languageCode}.svg`) || `${this.system.parts.images.flags}00.svg`;
       }
 
         this.diagnosticsService.info("valueset:" + this.valueset);
@@ -209,7 +219,7 @@ export class TopbarComponent implements OnInit {
   setLanguage(systemLanguage: SystemLanguage) {
     if (systemLanguage) {
       this.languageTitle = systemLanguage.title;
-      this.flagvalue = `assets/images/flags/${systemLanguage.languageCode}.svg`;
+      this.flagvalue = `${this.system.parts.images.flags}${systemLanguage.languageCode}.svg`;
       this.cookieValue = systemLanguage.languageCode ?? 'en';
       this.languageService.setLanguage(systemLanguage.languageCode ?? 'en');
     }

@@ -1,13 +1,13 @@
 export class SystemPartsImages {
   root: string = "assets/images/";
-  imagesLogos: string = "assets/images/";
-  imagesUsers: string = "assets/images/users/";
-  imagesFlags: string = "assets/images/flags/";
-  imagesBrands: string = "assets/images/brands/";
-  imagesSvg: string = "assets/images/svg/";
-  imagesClients: string = "assets/images/clients/";
-  imagesSmall: string = "assets/images/small/";
-  imagesCompanies: string = "assets/images/companies/";
+  logos: string = "assets/images/";
+  users: string = "assets/images/users/";
+  flags: string = "assets/images/flags/";
+  brands: string = "assets/images/brands/";
+  svg: string = "assets/images/svg/";
+  clients: string = "assets/images/clients/";
+  small: string = "assets/images/small/";
+  companies: string = "assets/images/companies/";
 }
 
 

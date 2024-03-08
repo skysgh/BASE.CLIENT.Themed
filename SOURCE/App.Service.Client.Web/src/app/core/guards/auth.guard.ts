@@ -30,9 +30,9 @@ export class AuthGuard {
             // check if user data is in storage is logged in via API.
             if (sessionStorage.getItem('currentUser')) {
                 return true;
-            }
         }
         // not logged in so redirect to login page with the return url
+            }
         this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
         return false;
     }
