@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
 import { ExampleService } from '../../../../../../shared/services/example.service';
-import { ArchitectureValuesRepositoryService } from '../../../../services/values-repository.service';
+import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
 
 import { Value } from '../../../../models/value.model';
 
@@ -12,30 +12,30 @@ import { Value } from '../../../../models/value.model';
   styleUrls: ['./spike-read.component.scss']
 })
 
-export class ArchitectureBaseValuesReadComponent implements OnInit {
+export class BaseAppsArchitectureValuesReadComponent implements OnInit {
 
   public data? : Value[] = [];
 
   constructor(
-    private diagnosticsService: DiagnosticsService,
+    private diagnosticsTraceService: DiagnosticsTraceService,
     private exampleService: ExampleService,
     private repositoryService: ArchitectureValuesRepositoryService,
     ) {
 
     
-    this.diagnosticsService.info("foo");
+    this.diagnosticsTraceService.info("foo");
     var a = exampleService.someField;
-    this.diagnosticsService.info(a);
+    this.diagnosticsTraceService.info(a);
 
     //this.data : any=[];//[{ title: 'Ebony' }, { title: 'Chiho' }];
   }
   ngOnInit(): void {
     this.repositoryService
-      .getAll()
+      .getPage()
       .subscribe((x:any) => {this.data = x;});
     }
 
   public DoSomething() {
-    this.diagnosticsService.info("blah");
+    this.diagnosticsTraceService.info("blah");
   }
 }

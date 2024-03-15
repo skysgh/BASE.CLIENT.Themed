@@ -1,10 +1,10 @@
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
 // Import Common:
-import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
 // Import Module specific:
 // .. Import Services:
-import { ArchitectureValuesRepositoryService } from '../../../../services/values-repository.service';
+import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
 // ..Import Models:
 import { Value } from '../../../../models/value.model';
 
@@ -20,14 +20,14 @@ export class BaseAppsArchitectureValuesBrowseComponent implements OnInit {
   public data?: Value[] = [];
 
   constructor(
-    private diagnosticsService: DiagnosticsService,
+    private diagnosticsTraceService: DiagnosticsTraceService,
     private repositoryService: ArchitectureValuesRepositoryService
   ) {
   }
 
   ngOnInit(): void {
     this.repositoryService
-      .getAll()
+      .getPage()
       .subscribe((x: any) => { this.data = x; });
   }
 }

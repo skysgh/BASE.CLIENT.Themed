@@ -7,6 +7,8 @@ import { MENU } from '../../../_BASE/core/navigation/menu';
 
 import { MenuItem } from './menu.model';
 import { environment } from 'src/environments/environment';
+import { SystemService } from '../../../_BASE/shared/services/system.service';
+import { System } from '../../../_BASE/shared/constants/contracts/system';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,10 +20,17 @@ export class SidebarComponent implements OnInit {
   menu: any;
   toggle: any = true;
   menuItems: MenuItem[] = [];
+
+  system: System;
+
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
-  constructor(private router: Router, public translate: TranslateService) {
+  constructor(private router: Router, public translate: TranslateService, systemService: SystemService) {
+
+    // Can be either via service, or injecting the constats/settings object:
+    this.system = systemService.system;
+
     translate.setDefaultLang('en');
   }
 

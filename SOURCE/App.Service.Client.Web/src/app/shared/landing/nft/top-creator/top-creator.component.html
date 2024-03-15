@@ -20,7 +20,7 @@
                                 <img src="{{data.img}}" alt="" class="avatar-sm object-fit-cover rounded" />
                             </div>
                             <div class="ms-3 flex-grow-1">
-                                <a routerLink="/pages/profile">
+                                <a routerLink="{{system.navigation.settings.profile}}">
                                     <h5 class="mb-1">{{data.title}}</h5>
                                 </a>
                                 <p class="text-muted mb-0"><i class="mdi mdi-ethereum text-primary fs-14"></i>
@@ -60,10 +60,12 @@
             <!-- end col -->
             <div class="col-sm-auto">
                 <div>
-                    <a href="/marletplace/create" class="btn bg-gradient btn-danger me-1">Create
-                        NFT</a>
-                    <a href="/marletplace/explore" class="btn btn-secondary">Discover
-                        More</a>
+                  <a href="{{system.navigation.products.create}}" class="btn bg-gradient btn-danger me-1">
+                    {{'SYSTEM.SHARED.ACTIONS.CREATE'|translate}}
+                  </a>
+                    <a href="{{system.navigation.products.explore}}" class="btn btn-secondary">
+                        {{'SYSTEM.SHARED.MISC.DISCOVER_MORE'|translate}}
+                    </a>
                 </div>
             </div>
             <!-- end col -->

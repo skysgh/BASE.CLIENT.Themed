@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndexComponent } from './component';
+import { BaseCoreLandingPricingComponent } from './component';
 
 describe('IndexComponent', () => {
-  let component: IndexComponent;
-  let fixture: ComponentFixture<IndexComponent>;
+  let component: BaseCoreLandingPricingComponent;
+  let fixture: ComponentFixture<BaseCoreLandingPricingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IndexComponent ]
+      declarations: [BaseCoreLandingPricingComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IndexComponent);
+    fixture = TestBed.createComponent(BaseCoreLandingPricingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

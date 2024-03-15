@@ -1,7 +1,7 @@
 // Import dependencies:
 import { Injectable } from '@angular/core';
 
-import { DiagnosticsService } from './diagnostics.service';
+import { DiagnosticsTraceService } from './diagnostics.service';
 import { Observable } from 'rxjs';
 import { Job } from '../models/data/job.model';
 import { JobRepositoryService } from './repositories/job.repository.service';
@@ -15,10 +15,10 @@ export class JobService {
 
   }
 
-  public getAll() //: Observable<Job>[]
+  public getPage() //: Observable<Job>[]
   {
     //use the repo
-    this.jobRepositoryService.getAll();
+    this.jobRepositoryService.getPage();
   }
 }
 

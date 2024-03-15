@@ -7,7 +7,7 @@ import { EnvironmentService } from './environment.service';
 @Injectable({ providedIn: 'root' })
 
 // Injectable service to develope diagnostic tracing messages to help diagnose issues.
-export class DiagnosticsService {
+export class DiagnosticsTraceService {
 
   // Debugging Level: skip verbose?
   public debugLevel: number = 1;
@@ -30,7 +30,7 @@ export class DiagnosticsService {
 
   //
   //  ngOnInit(): void {
-  //  this.diagnosticsService.getLog().subscribe(log => {
+  //  this.diagnosticsTraceService.getLog().subscribe(log => {
   //    this.log = log;
   //  });
 

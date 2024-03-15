@@ -2,13 +2,18 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 //import { env } from "process";
 import { GenericRepositoryServiceBase } from "./base/generic-repository.service.base";
-import { DiagnosticsService } from "../diagnostics.service";
+import { DiagnosticsTraceService } from "../diagnostics.service";
 import { EnvironmentService } from "../environment.service";
 import { ErrorService } from "../error.service";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { TypeService } from "../type.service";
 import { UserQuote } from "../../models/data/user-quote.model";
+import { ObjectMappingService } from '../objectMapping.service';
+// Constants:
+import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
+import { SessionStorageService } from '../SessionStorageService';
+import { UrlService } from '../url.service';
 // import models:
 
 
@@ -19,26 +24,33 @@ export class SystemUserQuoteRepositoryService
   constructor(
     typeService: TypeService,
     environmentService: EnvironmentService,
-    diagnosticsService: DiagnosticsService,
+    diagnosticsTraceService: DiagnosticsTraceService,
     errorService: ErrorService,
-    httpClient: HttpClient) {
+    objectMappingService: ObjectMappingService,
+    sessionStorageService: SessionStorageService,
+    urlService: UrlService,
+     httpClient: HttpClient) {
     super(
       typeService,
       environmentService,
-      diagnosticsService,
+      diagnosticsTraceService,
       errorService,
+      objectMappingService,
+      sessionStorageService,
+      urlService,
       httpClient,
-      "userQuotes"
+      SystemQueryEndpoints.userQuotes
+      
     );
   }
-  getAllByLanguageCode(langCode:'en', page: number = 0): Observable<UserQuote> {
+  getPageByLanguageCode(langCode:'en', page: number = 0): Observable<UserQuote> {
     var url: string
       = this.buildRequestUrl(
       this.isJsonServer
         ? `?languageCode ${langCode}&_page=${page}&_per_page=20`
         : 'TODO');
 
-    this.diagnosticsService.info(`querying: GET: ${url}`);
+    this.diagnosticsTraceService.info(`querying: GET: ${url}`);
 
     var result =
       this.http
@@ -48,7 +60,7 @@ export class SystemUserQuoteRepositoryService
           catchError(this.handleError)
         );
 
-    this.diagnosticsService.info(result);
+    this.diagnosticsTraceService.info(result);
     return result;
   }
 

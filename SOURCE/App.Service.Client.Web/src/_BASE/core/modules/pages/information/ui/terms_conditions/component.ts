@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemService } from '../../../../../../shared/services/system.service';
-import { System } from '../../../../../../shared/models/settings/system';
+import { System } from '../../../../../../shared/constants/contracts/system';
 import { TranslateService } from '@ngx-translate/core';
-import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
 
 @Component({
   selector: 'app-core-pages-terms-conditions',
@@ -16,7 +16,7 @@ export class BaseInformationTermsAndConditionsComponent implements OnInit {
 
   system: System;
 
-  constructor(systemService: SystemService,private diagnosticsService:DiagnosticsService, translateService:TranslateService) {
+  constructor(systemService: SystemService,private diagnosticsTraceService:DiagnosticsTraceService, translateService:TranslateService) {
     this.system = systemService.system;
   }
 

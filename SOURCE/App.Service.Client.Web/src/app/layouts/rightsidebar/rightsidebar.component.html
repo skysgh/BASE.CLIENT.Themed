@@ -20,14 +20,14 @@
 <!-- Theme Settings -->
 <ng-template #filtetcontent let-offcanvas>
     <div class="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header">
-        <h5 class="m-0 me-2 text-white">Theme Customizer</h5>
+        <h5 class="m-0 me-2 text-white">{{'BASE.THEMES.CUSTOMISER'|translate}}</h5>
         <button type="button" class="btn-close btn-close-white ms-auto " data-bs-dismiss="offcanvas" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
     </div>
     <div class="offcanvas-body p-0">
         <ngx-simplebar class="h-100">
             <div class="p-4">
-                <h6 class="mb-0 fw-semibold text-uppercase">Layout</h6>
-                <p class="text-muted">Choose your layout</p>
+              <h6 class="mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.LAYOUT'|translate}}</h6>
+                <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'| translate}}: </p>
 
                 <div class="row">
                     <div class="col-4">
@@ -52,7 +52,7 @@
                                 </span>
                             </label>
                         </div>
-                        <h5 class="fs-13 text-center mt-2">Vertical</h5>
+                        <h5 class="fs-13 text-center mt-2">{{'BASE.ORIENTATIONS.VERTICAL'|translate}}</h5>
                     </div>
                     <div class="col-4">
                         <div class="form-check card-radio">
@@ -69,7 +69,7 @@
                                 </span>
                             </label>
                         </div>
-                        <h5 class="fs-13 text-center mt-2">Horizontal</h5>
+                        <h5 class="fs-13 text-center mt-2">{{'BASE.ORIENTATIONS.HORIZONTAL'|translate}}</h5>
                     </div>
                     <div class="col-4">
                         <div class="form-check card-radio">
@@ -133,8 +133,8 @@
 
                 </div>
 
-                <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Color Scheme</h6>
-                <p class="text-muted">Choose Light or Dark Scheme.</p>
+                <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.COLOUR_SCHEME'|translate}}</h6>
+                <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
                 <div class="colorscheme-cardradio">
                     <div class="row">
                         <div class="col-4">
@@ -159,7 +159,7 @@
                                     </span>
                                 </label>
                             </div>
-                            <h5 class="fs-13 text-center mt-2">Light</h5>
+                            <h5 class="fs-13 text-center mt-2">{{'BASE.HUES.LIGHT'|translate}}</h5>
                         </div>
 
                         <div class="col-4">
@@ -184,15 +184,15 @@
                                     </span>
                                 </label>
                             </div>
-                            <h5 class="fs-13 text-center mt-2">Dark</h5>
+                            <h5 class="fs-13 text-center mt-2">{{'BASE.HUES.DARK'|translate}}</h5>
                         </div>
                     </div>
                 </div>
 
                 <ng-template [ngIf]="attribute === 'semibox'">
                     <div id="sidebar-visibility">
-                        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar Visibility</h6>
-                        <p class="text-muted">Choose show or Hidden sidebar.</p>
+                      <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.SIDEBAR_VISIBILITY'|translate}}</h6>
+                        <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
 
                         <div class="row">
                             <div class="col-4">
@@ -241,8 +241,8 @@
 
                 <ng-template [ngIf]="attribute === 'vertical' || attribute === 'horizontal'">
                     <div id="layout-width">
-                        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Layout Width</h6>
-                        <p class="text-muted">Choose Fluid or Boxed layout.</p>
+                      <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.LAYOUT_WIDTH'|translate}}</h6>
+                        <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
 
                         <div class="row">
                             <div class="col-4">
@@ -267,7 +267,7 @@
                                         </span>
                                     </label>
                                 </div>
-                                <h5 class="fs-13 text-center mt-2">Fluid</h5>
+                                <h5 class="fs-13 text-center mt-2">{{'BASE.FLOW.FLUID'|translate}}</h5>
                             </div>
                             <div class="col-4">
                                 <div class="form-check card-radio">
@@ -291,7 +291,7 @@
                                         </span>
                                     </label>
                                 </div>
-                                <h5 class="fs-13 text-center mt-2">Boxed</h5>
+                                <h5 class="fs-13 text-center mt-2">{{'BASE.FLOW.BOXED'|translate}}</h5>
                             </div>
                         </div>
                     </div>
@@ -299,8 +299,8 @@
 
                 <ng-template [ngIf]="attribute === 'vertical' || attribute === 'horizontal' || attribute === 'semibox'">
                     <div id="layout-position">
-                        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Layout Position</h6>
-                        <p class="text-muted">Choose Fixed or Scrollable Layout Position.</p>
+                      <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.LAYOUT_POSITION'|translate}}</h6>
+                        <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
 
                         <div class="btn-group radio" role="group">
                             <input type="radio" class="btn-check" name="data-layout-position" id="layout-position-fixed" value="fixed" [checked]="position === 'fixed'" (change)="changePosition('fixed')">
@@ -312,8 +312,8 @@
                     </div>
                 </ng-template>
 
-                <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Topbar Color</h6>
-                <p class="text-muted">Choose Light or Dark Topbar Color.</p>
+                <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.TOPBAR_COLOUR'|translate}}</h6>
+                <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
 
                 <div class="row">
                     <div class="col-4">
@@ -338,7 +338,7 @@
                                 </span>
                             </label>
                         </div>
-                        <h5 class="fs-13 text-center mt-2">Light</h5>
+                        <h5 class="fs-13 text-center mt-2">{{'BASE.HUES.LIGHT'|translate}}</h5>
                     </div>
                     <div class="col-4">
                         <div class="form-check card-radio">
@@ -362,14 +362,14 @@
                                 </span>
                             </label>
                         </div>
-                        <h5 class="fs-13 text-center mt-2">Dark</h5>
+                        <h5 class="fs-13 text-center mt-2">{{'BASE.HUES.DARK'|translate}}</h5>
                     </div>
                 </div>
 
                 <ng-template [ngIf]="attribute === 'vertical' || attribute === 'semibox'">
                     <div id="sidebar-size">
-                        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar Size</h6>
-                        <p class="text-muted">Choose a size of Sidebar.</p>
+                      <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.SIDEBAR_SIZE'|translate}}</h6>
+                        <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
 
                         <div class="row">
                             <div class="col-4">
@@ -419,7 +419,7 @@
                                         </span>
                                     </label>
                                 </div>
-                                <h5 class="fs-13 text-center mt-2">Compact</h5>
+                                <h5 class="fs-13 text-center mt-2">{{'BASE.SPACING.COMPACT'|translate}} </h5>
                             </div>
 
                             <div class="col-4">
@@ -444,7 +444,7 @@
                                         </span>
                                     </label>
                                 </div>
-                                <h5 class="fs-13 text-center mt-2">Small (Icon View)</h5>
+                                <h5 class="fs-13 text-center mt-2">{{'BASE.SIZE.SMALL'|translate}} (Icon View)</h5>
                             </div>
 
                             <div class="col-4">
@@ -476,8 +476,8 @@
                 </ng-template>
                 <ng-template [ngIf]="attribute === 'vertical'">
                     <div id="sidebar-view">
-                        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar View</h6>
-                        <p class="text-muted">Choose Default or Detached Sidebar view.</p>
+                      <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.SIDEBAR_VIEW'|translate}}</h6>
+                        <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
 
                         <div class="row">
                             <div class="col-4">
@@ -502,7 +502,7 @@
                                         </span>
                                     </label>
                                 </div>
-                                <h5 class="fs-13 text-center mt-2">Default</h5>
+                                <h5 class="fs-13 text-center mt-2">{{'BASE.SIZE.REGULAR'|translate}}</h5>
                             </div>
                             <div class="col-4">
                                 <div class="form-check sidebar-setting card-radio">
@@ -527,15 +527,15 @@
                                         </span>
                                     </label>
                                 </div>
-                                <h5 class="fs-13 text-center mt-2">Detached</h5>
+                                <h5 class="fs-13 text-center mt-2">{{'BASE.CONNECTIONS.DETACHED'|translate}}</h5>
                             </div>
                         </div>
                     </div>
                 </ng-template>
                 <ng-template [ngIf]="attribute === 'vertical' || attribute === 'twocolumn' || attribute === 'semibox'">
                     <div id="sidebar-color">
-                        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar Color</h6>
-                        <p class="text-muted">Choose Ligth or Dark Sidebar Color.</p>
+                      <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.SIDEBAR_COLOUR'|translate}}</h6>
+                        <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
 
                         <div class="row">
                             <div class="col-4">
@@ -560,7 +560,7 @@
                                         </span>
                                     </label>
                                 </div>
-                                <h5 class="fs-13 text-center mt-2">Light</h5>
+                                <h5 class="fs-13 text-center mt-2">{{'BASE.HUES.LIGHT'|translate}}</h5>
                             </div>
                             <div class="col-4">
                                 <div class="form-check sidebar-setting card-radio">
@@ -584,7 +584,7 @@
                                         </span>
                                     </label>
                                 </div>
-                                <h5 class="fs-13 text-center mt-2">Dark</h5>
+                                <h5 class="fs-13 text-center mt-2">{{'BASE.HUES.DARK'|translate}}</h5>
                             </div>
                             <div class="col-4">
                                 <button class="btn btn-link avatar-md w-100 p-0 overflow-hidden border collapsed" id="collapseBgGradient1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBgGradient" aria-expanded="false" aria-controls="collapseBgGradient" (click)="addActive('gradient')">
@@ -605,7 +605,7 @@
                                         </span>
                                     </span>
                                 </button>
-                                <h5 class="fs-13 text-center mt-2">Gradient</h5>
+                                <h5 class="fs-13 text-center mt-2">{{'BASE.HUES.GRADIENT'|translate}}</h5>
                             </div>
                         </div>
 
@@ -640,8 +640,8 @@
                         </div>
 
                         <div id="sidebar-img">
-                            <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar Images</h6>
-                            <p class="text-muted">Choose a image of Sidebar.</p>
+                            <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.THEMES.SIDEBAR_IMAGE'|translate}}</h6>
+                            <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
 
                             <div class="d-flex gap-2 flex-wrap img-switch">
                                 <div class="form-check sidebar-setting card-radio">
@@ -684,8 +684,8 @@
                 </ng-template>
 
                 <div id="preloader-menu">
-                    <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Preloader</h6>
-                    <p class="text-muted">Choose a preloader.</p>
+                    <h6 class="mt-4 mb-0 fw-semibold text-uppercase">{{'BASE.UI.PIECES.PRELOADER'|translate}}</h6>
+                    <p class="text-muted">{{'BASE.ACTIONS.CHOOSE_INSTRUCTIONS'|translate}}:</p>
 
                     <div class="row">
                         <div class="col-4">
@@ -717,7 +717,7 @@
                                     <!-- </div> -->
                                 </label>
                             </div>
-                            <h5 class="fs-13 text-center mt-2">Enable</h5>
+                            <h5 class="fs-13 text-center mt-2">{{'BASE.STATUS.ENABLED'|translate}}</h5>
                         </div>
                         <div class="col-4">
                             <div class="form-check sidebar-setting card-radio">
@@ -741,7 +741,8 @@
                                     </span>
                                 </label>
                             </div>
-                            <h5 class="fs-13 text-center mt-2">Disable</h5>
+
+                            <h5 class="fs-13 text-center mt-2">{{'BASE.STATUS.DISABLED'|translate}}</h5>
                         </div>
                     </div>
 

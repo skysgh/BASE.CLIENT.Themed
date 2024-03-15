@@ -18,14 +18,14 @@
                     <div class="card-body text-center p-4">
                         <div class="avatar-xl mx-auto mb-4 position-relative">
                             <img src="{{data.image}}" alt="" class="img-fluid rounded-circle">
-                            <a href="/mailbox" class="btn btn-success btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
+                            <a href="{{system.navigation.messages}}" class="btn btn-success btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
                                 <div class="avatar-title bg-transparent">
                                     <i class="ri-mail-fill align-bottom"></i>
                                 </div>
                             </a>
                         </div>
                         <!-- end card body -->
-                        <h5 class="mb-1"><a href="/pages/profile" class="text-body">{{data.name}}</a></h5>
+                        <h5 class="mb-1"><a href="{{system.navigation.settings.profile}}" class="text-body">{{data.name}}</a></h5>
                         <p class="text-muted mb-0 ff-secondary">{{data.position}}</p>
                     </div>
                 </div>
@@ -36,7 +36,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="text-center mt-2">
-                    <a href="/pages/team" class="btn btn-primary">View All Members <i class="ri-arrow-right-line ms-1 align-bottom"></i></a>
+                    <a href="{{system.navigation.teams.root}}"
+                       class="btn btn-primary">
+                  View All Members
+                  <i class="ri-arrow-right-line ms-1 align-bottom"></i>
+                    </a>
                 </div>
             </div>
         </div>

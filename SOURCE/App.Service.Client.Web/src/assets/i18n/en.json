@@ -1,654 +1,1605 @@
 {
-  "HEADER": {
-    "MORE": {
-      "TEXT": "More"
-    }
-  },
-
   "BASE": {
-    "SHARED": {
-      "SITE": {
-        "LOCATIONS": {
-          "HOME": "Home",
-          "DASHBOARD": "Dashboard",
-          "TERMS_OF_USE":"Terms of Use"
-        }
-      },
-      "MISC": {
-        "UNLOCK_INSTRUCTIONS": "Enter your password to unlock the screen!",
-        "LOCK_SCREEN_TITLE": "Lock Screen",
-        "NOT_YOU?": "Not you?",
-        "WAIT_I_REMEMBER_MY_PASSWORD": "Wait, I remember my password...",
-        "ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS": "Enter your email and instructions will be sent to you!",
-        "SEND_EMAILED_INSTRUCTIONS": "Send Reset Link",
-        "SUCCESS": "Success!",
-        "SUCCESS_DESCRIPTION": "That was a small successs :-)",
-        "ALREADY_HAVE_AN_ACCOUNT?": "Already have an account?",
-        "PLEASE_ENTER_THE_CODE_SENT_TO": "Please enter the 4 digit code sent to",
-        "DIDNT_RECEIVE_CODE?": "Didn't receive a code?",
-        "CHECK_YOUR_EMAIL": "Check your Email"
-
-      },
-      "ERRORS": {
-        "OOPS!": "Oops!",
-        "SORRY": "Sorry",
-        "ERROR_500_DESCRIPTION": "Server Error 500. We're not exactly sure what happened, but our servers say something is wrong.",
-        "PAGE_NOT_FOUND": "Page not found.",
-        "PAGE_NOT_AVAIABLE": "Page not available.",
-        "PAGE_NOT_DISPLAYABLE": "Page not displayable.",
-        "PAGE_NOT_FOUND_DESCRIPTION": "The page you are looking for not available!.",
-        "SORRY_PAGE_NOT_FOUND": "Sorry - page not found.",
-        "WE_ARE_OFFLINE": "Offline",
-        "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS": "We can't show you this images because you aren't, connected to the internet.",
-        "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS2": "When you’re back online try again"
-      },
-      "GREETINGS": {
-        "HI": "Hi",
-        "HI!": "Hi!",
-        "WELCOME": "Welcome",
-        "WELCOME!": "Welcome!",
-        "WELCOME_BACK": "Welcome back",
-        "WELCOME_BACK!": "Welcome Back!",
-        "BYE": "Bye",
-        "BYE!": "Bye!",
-        "GOODBYE": "Goodbye",
-        "GOODBYE!": "Goodbye!",
-        "SEE_YOU_AGAIN_SOON": "See you again soon."
-      },
-      "APPRECIATION": {
-        "THANKS": "Thanks",
-        "THANKS!": "Thanks!",
-        "THANK YOU": "Thank you."
-      },
-      "CREDITS": {
-        "THANK_YOU": "Thank you",
-        "THANK_YOU_FOR_USING": "Thank you for using",
-        "SPONSORED_BY": "Made available by",
-        "DISTRIBUTED_BY": "Distributed by",
-        "DEVELOPED_BY": "Developed by",
-        "USED_BY": "Used by",
-        "LOVED_BY": "Loved by"
-      },
-      "QUANTITY": {
-        "ALL": "All",
-        "NONE": "None"
-      },
-      "OUTCOMES": {
-        "RESULT": "Result",
-        "SUCCESS": "Success",
-        "FAILED": "Failed"
-      },
-      "STATUS": {
-        "DRAFT": "Draft",
-        "IN_PROGRESS": "In Progress",
-        "NEW": "New",
-        "LEGACY": "Legacy",
-        "REMOVED": "Removed"
-      },
-      "STATUS_UPDATES": {
-        "YOU_ARE_LOGGING_OUT": "You are logging out",
-        "YOU_ARE_LOGGED_OUT": "You are logged out"
-      },
-      "PROMPTS": {
-        "CONFIRMATION_TITLE": "Confirmation",
-        "CONFIRMATION_INSTRUCTIONS": "Please confirm before proceeding"
-      },
-      "ACTIONS": {
-        "REFRESH": "Refresh",
-        "SIGN_UP": "Sign Up",
-        "SIGN_UP_DESCRIPTION": "Get yourself a free acount",
-        "SIGN_UP_WITH": "Sign Up With",
-        "SIGN_IN": "Sign In",
-        "SIGN_IN_WITH": "Sign In With",
-        "SIGN_BACK_IN": "Sign In",
-        "SIGN OUT": "Sign Out",
-        "LOCK": "Lock",
-        "UNLOCK": "Unlock",
+    "ACCESS_LEVELS": {
+      "__COMMENTS": "See also ROLES and COMMERCE/ROLES.",
+      "TITLE": "Access Level",
+      "TITLES": "Access Levels",
+      "DESCRIPTION": "...",
+      "ENDORSING": "Endorsing",
+      "ACCOUNTABLE": "Accountable",
+      "APPROVING": "Approving",
+      "MANAGING": "Managing",
+      "RESPONSIBLE": "Responsible",
+      "CONSULTED": "Consulted",
+      "INFORMED": "Informed",
+      "IGNORED": "Ignored",
+      "EXCLUDED": "Excluded"
+    },
+    "ACCOMPLISHMENTS": {
+      "__COMMENTS": ".See OBSERVATIONS, ASSESSMENTS, PROGRESS",
+      "TITLE": "Accomplisment",
+      "TITLES": "Accomplisments",
+      "DESCRIPTION": "..."
+    },
+    "ACTIONS": {
+      "ADD": "Add",
+      "APPLY": "Apply",
+      "APPROVE": "Approve",
+      "BACK": "Back",
+      "CANCEL": "Cancel",
+      "CHOOSE": "Choose",
+      "CHOOSE_INSTRUCTIONS": "Choose one",
+      "CLOSE": "Close",
+      "COMMENT": "Comment",
+      "CONFIRM": "Confirm",
+      "DECLINE": "Decline",
+      "DELETE": "Delete",
+      "DISABLE": "Disable",
+      "EDIT": "Edit",
+      "ENABLE": "Enable",
+      "ENDORSE": "Endorse",
+      "GO": "Go",
+      "GOTO": "Go to",
+      "INVITE": "Invite",
+      "LOCK": "Lock",
+      "LOGOUT": "Logout",
+      "NEW": "New",
+      "OK": "Ok",
+      "REFRESH": "Refresh",
+      "RESEND": "Resend",
+      "RETURN": "Return",
+      "REMOVE": "Remove",
+      "REVERT": "Revert",
+      "REVIEW": "Review",
+      "SAVE": "Save",
+      "SEARCH": "Search",
+      "SELECT": "Select",
+      "SEARCH_INSTRUCTIONS": "Search...",
+      "SEND": "Send",
+      "SIGN_UP": "Sign Up",
+      "SIGN_UP_DESCRIPTION": "Get yourself a free acount",
+      "SIGN_UP_WITH": "Sign Up With",
+      "SIGN_IN": "Sign In",
+      "SIGN_IN_WITH": "Sign In With",
+      "SIGN_BACK_IN": "Sign In",
+      "SIGN OUT": "Sign Out",
+      "UNDO": "Undo",
+      "UNLOCK": "Unlock",
+      "UPDATE": "Update",
+      "VIEW": "View",
+      "VIEW_ALL": "View All"
+    },
+    "AGREEMENTS": {
+      "__COMMENTS": ".See also CONTRACTS",
+      "TITLE": "Agreement",
+      "TITLES": "Agreements",
+      "DESCRIPTION": "...",
+      "TERMS_AND_CONDITIONS": "Terms & Conditions"
+    },
+    "ALERTS": {
+      "__COMMENTS": "Are System Alerts. See NOTIFICATIONS and MESSAGES.",
+      "TITLE": "Alert",
+      "TITLES": "Alerts",
+      "DESCRIPTION": "...",
+      "ALL": "All",
+      "READ": "Read",
+      "UNREAD": "Unread",
+      "NONE": "None",
+      "NO_NEW": "No New Alerts"
+    },
+    "ANALYSIS": {
+      "__COMMENTS": "See also DIAGNOSTICS, REPORTS",
+      "TITLE": "Analysis",
+      "TITLES": "Analyses",
+      "DESCRIPTION": "..."
+    },
+    "APPOINTMENTS": {
+      "__COMMENTS": "See SCHEDULING, TASKS, PROJECTS areas.",
+      "TITLE": "Appointment",
+      "TITLES": "Appointments",
+      "DESCRIPTION": "..."
+    },
+    "APPRECIATIONS": {
+      "__COMMENTS": "See CREDITS, GREETINGS, DEPARTURES",
+      "TITLE": "Appreciation",
+      "TITLES": "Appreciations",
+      "DESCRIPTION": "...",
+      "THANKS": "Thanks",
+      "THANKS!": "Thanks!",
+      "THANK YOU": "Thank you",
+      "THANK_YOU_FOR_USING_": "Thank you for using_"
+    },
+    "APPS": {
+      "__COMMENTS": "",
+      "TITLE": "App",
+      "TITLES": "Apps",
+      "DESCRIPTION": "..."
+    },
+    "AREAS": {
+      "__COMMENTS": "",
+      "TITLE": "Area",
+      "TITLES": "Areas",
+      "DESCRIPTION": "..."
+    },
+    "ARITHMETICS": {
+      "__COMMENTS": "See LOGIC.",
+      "TITLE": "Operation",
+      "TITLES": "Operations",
+      "DESCRIPTION": "...",
+      "ADD": "Add",
+      "ADDED": "Added",
+      "REMOVE": "Remove",
+      "REMOVED": "Removed",
+      "SUBTRACT": "Subtract",
+      "SUBTRACT_FROM": "Subtract from",
+      "SUBTRACTED": "Subtracted",
+      "SUBTRACTED_FROM": "Subtracted from",
+      "DIVIDER": "Divider",
+      "DIVIDED_BY": "Divided by",
+      "MULTIPLIER": "Multiplier",
+      "MULTIPLIED_BY": "Divided by"
+    },
+    "ASSESSMENTS": {
+      "__COMMENTS": ".See OBSERVATIONS, PROGRESS, ACCOMPLISHMENTS",
+      "TITLE": "Asessment",
+      "TITLES": "Assessments",
+      "DESCRIPTION": "..."
+    },
+    "ASSISTANCE": {
+      "__COMMENTS": "See HELP and SUPPORT",
+      "TITLE": "Assistance",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "AUTHENTICATION": {
+      "__COMMENTS": "",
+      "TITLE": "Authentication",
+      "TITLES": "Authentications",
+      "DESCRIPTION": "...",
+      "BY_REGISTERING": "By registering, you agree to the",
+      "TASK": {
+        "BASIC": "Basic",
+        "COVER": "Cover",
+        "SIGNIN": "Sign In",
+        "SIGNUP": "Sign Up",
+        "PASSWORDRESET": "Password Reset",
+        "PASSWORD_RESET_INSTRUCTIONS": "Reset your password",
+        "PASSWORDCREATE": "Password Create",
+        "LOCKSCREEN": "Lock Screen",
         "LOGOUT": "Logout",
-        "UNDO": "Undo",
-        "REVERT": "Revert",
-        "OK": "Ok",
-        "CANCEL": "Cancel",
-        "CLOSE": "Close",
-        "BACK": "Back",
-        "ADD": "Add",
-        "NEW": "New",
-        "VIEW": "View",
-        "UPDATE": "Update",
-        "SAVE": "Save",
-        "EDIT": "Edit",
-        "SELECT": "Select",
-        "CHOOSE": "Choose",
-        "DELETE": "Delete",
-        "RETURN": "Return",
-        "REMOVE": "Remove",
-        "REVIEW": "Review",
-        "COMMENT": "Comment",
-        "APPROVE": "Approve",
-        "ENDORSE": "Endorse",
-        "DECLINE": "Decline",
-        "APPLY": "Apply",
-        "INVITE": "Invite",
-        "SEARCH": "Search",
-        "SEARCH_INSTRUCTIONS": "Search...",
-        "GOTO": "Go to",
-        "CONFIRM": "Confirm",
-        "RESEND": "Resend"
+        "SUCCESSMESSAGE": "Success Message",
+        "TWOSTEPVERIFICATION": "Two Step Verification"
       },
-      "HEADERS": {
-        "TITLE": "Title",
-        "DESCRIPTION": "Description",
-        "ACTIONS": "Action"
+      "USERNAME": "User name",
+      "USERNAME_INSTRUCTIONS": "Enter your username",
+      "USERNAME_PLACEHOLDER": "Enter your username",
+      "USERNAME_ERROR_01": "A username is required",
+      "USERNAME_ERROR_02": "Username format unrecognised",
+      "EMAIL": "Email",
+      "EMAIL_INSTRUCTIONS": "Enter an email address",
+      "EMAIL_PLACEHOLDER": "Enter an email address",
+      "EMAIL_ERROR_01": "Email is required",
+      "EMAIL_ERROR_02": "Email has unrecognised format",
+      "EMAIL_CONFIRMATION": "Confirm email",
+      "EMAIL_CONFIRMATION_INSTRUCTIONS": "Confirm email",
+      "EMAIL_CONFIRMATION_PLACEHOLDER": "Enter an email address",
+      "EMAIL_CONFIRMATION_ERROR_01": "Email is required",
+      "EMAIL_CONFIRMATION_ERROR_02": "Email has unrecognised format",
+      "PASSWORD": "Password",
+      "PASSWORD_INSTRUCTIONS": "Enter your password",
+      "PASSWORD_PLACEHOLDER": "Enter your password",
+      "PASSWORD_ERROR_01": "Password is required",
+      "PASSWORD_ERROR_02": "Password is required to be complex.",
+      "PASSWORD_ERROR_02_DETAILS": "Atleast 8 characters, etc.",
+      "PASSWORD_CONFIRMATION": "Password",
+      "PASSWORD_CONFIRMATION_INSTRUCTIONS": "Enter your password again",
+      "PASSWORD_CONFIRMATION_PLACEHOLDER": "Enter your password again",
+      "PASSWORD_CONFIRMATION_ERROR_01": "Password is required",
+      "PASSWORD_CONFIRMATION_ERROR_02": "Password is required to be complex.",
+      "PASSWORD_CONFIRMATION_ERROR_02_DETAILS": "Atleast 8 characters, etc.",
+      "FORGOT?": "Forgot?",
+      "REMEMBER_ME?": "Remember me?",
+      "REMEMBER_ME_INSTRUCTIONS": "(Across sessions, even after the browser is closed)",
+      "DONT_HAVE_AN_ACCOUNT?": "Don't yet have an account?"
+    },
+    "CALENDER": {
+      "__COMMENTS": "Avoid. Prefer using APPOINTMENTS.",
+      "TITLE": "Calendar",
+      "TITLES": "Calendars",
+      "DESCRIPTION": "..."
+    },
+    "CHANNELS": {
+      "__COMMENTS": "",
+      "TITLE": "Channel",
+      "TITLES": "Channels",
+      "DESCRIPTION": "Communication channels",
+      "POSTAL": {
+        "TITLE": "Postal Address"
       },
-      "USER": {
-        "TITLE": "User",
-        "PROFILE": "Profile",
-        "PROFILE_SETTINGS": "Settings"
+      "EMAIL": {
+        "TITLE": "Email Address"
       },
-      "PERSONS": {
-        "ID": "Identifier",
-        "IDENTIFIER": "Enter the person's identifier",
-        "DOB": "DOB",
-        "DOB_INSTRUCTIONS": "Enter the date of birth",
-        "SEX": "Sex",
-        "SEX_INSTRUCTIONS": "Enter the sex at birth",
-        "IDENTITIES": {
-          "ID": "Context Identifier",
-          "IDENTIFIER": "Enter a unique context identifier",
-          "NAMES": {
-            "PREFIX": "Prefix",
-            "PREFIX_INSTRUCTIONS": "Provide a Title (Mr, Mrs, Dr., ...)",
-            "PREFIX_EXAMPLE": "Dr.",
-            "PREFIX_ERROR_01": "A title or prefix is required.",
-            "PREFIX_ERROR_02": "The provided title or prefix can't be validated.",
-            "GIVEN": "Given Name",
-            "GIVEN_INSTRUCTIONS": "Provide a first/given name",
-            "GIVEN_EXAMPLE": "John",
-            "GIVEN_ERROR_01": "A given name is required.",
-            "GIVEN_ERROR_02": "The provided given name given can't be validated.",
-            "MIDDLE": "Given Middle Name",
-            "MIDDLE_INSTRUCTIONS": "Provide given middle name(s)",
-            "MIDDLE_EXAMPLE": "Martin",
-            "MIDDLE_ERROR_01": "A middle given name are required.",
-            "MIDDLE_ERROR_02": "The provided middle given name can't be validated.",
-            "MIDDLE_INITIALS": "Middle Initials",
-            "MIDDLE_INITIALS_INSTRUCTIONS": "Provide middle initial(s).",
-            "MIDDLE_INITIALS_EXAMPLE": "M.",
-            "MIDDLE_INITIALS_ERROR_01": "Middle initial(s) are required.",
-            "MIDDLE_INITIALS_ERROR_02": "The provided middle initials(s) can't be validated.",
-            "GIVENS": "Given Name(s)",
-            "GIVENS_INSTRUCTIONS": "Provide given name(s).",
-            "GIVENS_EXAMPLE": "John Mark",
-            "GIVENS_ERROR_01": "A given name is required.",
-            "GIVENS_ERROR_02": "The provided given name(s) can't be validated.",
-            "SURNAME": "Surname",
-            "SURNAME_INSTRUCTIONS": "Provide a suname",
-            "SURNAME_EXAMPLE": "Smith",
-            "SURNAME_ERROR_01": "A surname is required.",
-            "SURNAME_ERROR_02": "The provided surname can't be validated."
-          },
-          "PRONOUNS": "Pronouns",
-          "PRONOUNS_INSTRUCTIONS": "Provide preferred pronouns",
-          "PRONOUNS_EXAMPLE": "He/Him",
-          "PRONOUNS_ERROR_01": "Preferred pronouns are required.",
-          "PRONOUNS_ERROR_02": "The provided pronoun(s) given can't be validated.",
-          "AVATAR": "Avatar",
-          "AVATAR_INSTRUCTIONS": "Provide an avatar",
-          "AVATAR_EXAMPLE": "hero.png",
-          "AVATAR_ERROR_01": "An avatar is required.",
-          "AVATAR_ERROR_02": "The provided avatar could not be validated.",
-          "BIO": "Bio",
-          "BIO_INSTRUCTIONS": "Provide a summary introductory bio/description",
-          "BIO_EXAMPLE": "E.g., something concise, precise, pertinent about this identity...",
-          "BIO_ERROR_01": "A bio is required.",
-          "BIO_ERROR_02": "The provided bio could not be validated.",
-          "ROLE": "Role",
-          "ROLE_INSTRUCTIONS": "Provide a contextual role",
-          "ROLE_EXAMPLE": "Contributor",
-          "ROLE_ERROR_01": "A role is required.",
-          "ROLE_ERROR_02": "The provided role could not be validated.",
-          "GENDER": "Gender",
-          "GENDER_INSTRUCTIONS": "Provide this identity's gender orientation",
-          "GENDER_EXAMPLE": "Male",
-          "GENDER_ERROR_01": "An gender is required.",
-          "GENDER_ERROR_02": "The provided gender could not be validated."
+      "PHONE": {
+        "TITLE": "Phone Number",
+        "OPTIONS": {
+          "GENERAL": "Phone",
+          "MOBILE": "Mobile",
+          "FAX": "Fax"
         }
       },
-      "LOCATIONS": {
-        "COORDINATES": "Coordinates",
-        "COORDINATES_INSTRUCTIONS": "Provide a longitude/latitude coordinate",
-        "COORDINATES_ERROR_01": "A longitude/latitude coordinates is required.",
-        "COORDINATES_ERROR_02": "The provided coordinates could not be validated.",
-        "LONGITUDE": "Longitude",
-        "LONGITUDE_INSTRUCTIONS": "Provide a longitude",
-        "LONGITUDE_ERROR_01": "An east/west longitude is required.",
-        "LONGITUDE_ERROR_02": "The provided longitude could not be validated.",
-        "LATITUDE": "Latitude",
-        "LATITUDE_INSTRUCTIONS": "Provide a latitude",
-        "LATITUDE_ERROR_01": "A latitude is required.",
-        "LATITUDE_ERROR_02": "The provided latitude could not be validated."
-      },
-      "POSITION": {
-        "RELATIVE": {
-          "_PREVIOUS": "previous",
-          "_NEXT": "next",
-          "_BELOW": "below",
-          "_ABOVE": "above",
-          "_TO_THE_LEFT": "to the left",
-          "_TO_THE_RIGHT": "to the right"
-        }
-      },
-      "CHANNELS": {
-        "TITLE": "Channels",
-        "DESCRIPTION": "Communication channels",
-        "POSTAL": {
-          "TITLE": "Postal Address",
-          "ADDRESS": {
-            "UNIT": "Unit",
-            "UNIT_EXAMPLE": "2B",
-            "UNIT_INSTRUCTIONS": "Provide an apartment, Unit, etc. if any",
-            "STREET": "Street",
-            "STREET_EXAMPLE": "123 Collins",
-            "STREET_INSTRUCTIONS": "Provide a street address",
-            "CITY": "City",
-            "CITY_EXAMPLE": "Villars",
-            "CITY_INSTRUCTIONS": "Provide a city, town, etc.",
-            "STATE": "State",
-            "STATE_EXAMPLE": "Vaud",
-            "STATE_INSTRUCTIONS": "Provide a state, region, etc.",
-            "POSTAL_CODE": "Postal Code",
-            "POSTAL_CODE_EXAMPLE": "6301",
-            "POSTAL_CODE_INSTRUCTIONS": "Provide a postal code, zip, etc.",
-            "COUNTRY": "Country",
-            "COUNTRY_EXAMPLE": "Switzerland",
-            "COUNTRY_INSTRUCTIONS": "Provide a country, kingdom, etc."
-          }
-        },
-        "EMAIL": {
-          "TITLE": "Email Address"
-        },
-        "PHONE": {
-          "TITLE": "Phone Number",
-          "OPTIONS": {
-            "GENERAL": "Phone",
-            "MOBILE": "Mobile",
-            "FAX": "Fax"
-          }
-        },
-        "SOCIAL": {
-          "TITLE": "Social",
-          "X": "Handle",
-          "MASTADON": "Address"
-        }
-      },
-      "AUTHENTICATION": {
-        "TITLE": "Authentication",
-        "DESCRIPTION": "...",
-        "BY_REGISTERING": "By registering, you agree to the",
-        "TASK": {
-          "BASIC": "Basic",
-          "COVER": "Cover",
-          "SIGNIN": "Sign In",
-          "SIGNUP": "Sign Up",
-          "PASSWORDRESET": "Password Reset",
-          "PASSWORD_RESET_INSTRUCTIONS": "Reset your password",
-          "PASSWORDCREATE": "Password Create",
-          "LOCKSCREEN": "Lock Screen",
-          "LOGOUT": "Logout",
-          "SUCCESSMESSAGE": "Success Message",
-          "TWOSTEPVERIFICATION": "Two Step Verification",
-          "ERRORS": "Errors",
-          "404BASIC": "404 Basic",
-          "404COVER": "404 Cover",
-          "404ALT": "404 Alt",
-          "500": "500",
-          "OFFLINE": "Offline Page"
-        },
-        "USERNAME": "User name",
-        "USERNAME_INSTRUCTIONS": "Enter your username",
-        "USERNAME_PLACEHOLDER": "Enter your username",
-        "USERNAME_ERROR_01": "A username is required",
-        "USERNAME_ERROR_02": "Username format unrecognised",
-        "EMAIL": "Email",
-        "EMAIL_INSTRUCTIONS": "Enter an email address",
-        "EMAIL_PLACEHOLDER": "Enter an email address",
-        "EMAIL_ERROR_01": "Email is required",
-        "EMAIL_ERROR_02": "Email has unrecognised format",
-        "EMAIL_CONFIRMATION": "Confirm email",
-        "EMAIL_CONFIRMATION_INSTRUCTIONS": "Confirm email",
-        "EMAIL_CONFIRMATION_PLACEHOLDER": "Enter an email address",
-        "EMAIL_CONFIRMATION_ERROR_01": "Email is required",
-        "EMAIL_CONFIRMATION_ERROR_02": "Email has unrecognised format",
-        "PASSWORD": "Password",
-        "PASSWORD_INSTRUCTIONS": "Enter your password",
-        "PASSWORD_PLACEHOLDER": "Enter your password",
-        "PASSWORD_ERROR_01": "Password is required",
-        "PASSWORD_ERROR_02": "Password is required to be complex.",
-        "PASSWORD_ERROR_02_DETAILS": "Atleast 8 characters, etc.",
-        "PASSWORD_CONFIRMATION": "Password",
-        "PASSWORD_CONFIRMATION_INSTRUCTIONS": "Enter your password again",
-        "PASSWORD_CONFIRMATION_PLACEHOLDER": "Enter your password again",
-        "PASSWORD_CONFIRMATION_ERROR_01": "Password is required",
-        "PASSWORD_CONFIRMATION_ERROR_02": "Password is required to be complex.",
-        "PASSWORD_CONFIRMATION_ERROR_02_DETAILS": "Atleast 8 characters, etc.",
-        "FORGOT?": "Forgot?",
-        "REMEMBER_ME?": "Remember me?",
-        "REMEMBER_ME_INSTRUCTIONS": "(Across sessions, even after the browser is closed)",
-        "DONT_HAVE_AN_ACCOUNT?": "Don't yet have an account?"
-      },
-      "COMMERCE": {
-        "PRODUCTS": "Products",
-        "PRODUCT_DETAILS": "Product Details",
-        "CREATE_PRODUCT": "Create Product",
-        "ORDERS": "Orders",
-        "ORDER_DETAILS": "Order Details",
+      "SOCIAL": {
+        "TITLE": "Social",
+        "X": "Handle",
+        "MASTADON": "Address"
+      }
+    },
+    "CHAT": {
+      "__COMMENTS": "WARNING: Avoid. Plenty of other tools for this. See MESSAGES Area.",
+      "TITLE": "Chat",
+      "TITLES": "Chats",
+      "DESCRIPTION": "Real time communication between system users."
+    },
+    "COLOURS": {
+      "__COMMENTS": "See HUES.",
+      "TITLE": "Colour",
+      "TITLES": "Colours",
+      "DESCRIPTION": "...",
+      "BLACK": "Black",
+      "RED": "Red",
+      "ORANGE": "Orange",
+      "YELLOW": "Yellow",
+      "GREEN": "Green",
+      "MAGENTA": "Magenta",
+      "BLUE": "Blue",
+      "INDIGO": "Indigo",
+      "VIOLET": "Violet",
+      "GREY": "Grey",
+      "WHITE": "White"
+    },
+    "COMING_SOON": {
+      "TITLE": "Comming Soon",
+      "TITLES": "N/A",
+      "DESCRIPTION": "New features are currently in the works..."
+    },
+    "COMMERCE": {
+      "__COMMENTS": "See FINANCE",
+      "TITLE": "Commerce",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "PRODUCTS": "Products",
+      "ORDERS": "Orders",
+      "ROLES": {
+        "__COMMENTS": "Roles specific to Commerce. See ACESSLEVELS.",
+        "SUPPLIER": "Supplier",
+        "SUPPLIERS": "Suppliers",
+        "VENDOR": "Vendor",
+        "VENDORS": "Vendors",
+        "BROKER": "Broker",
+        "BROKERS": "Brokers",
+        "PROCURER": "Procurer",
+        "PROCURERS": "Procurers",
+        "SPONSOR": "Sponsor",
+        "SPONSORS": "Sponsors",
         "SELLERS": "Sellers",
-        "SELLER_DETAILS": "Seller Details",
         "CUSTOMERS": "Customers",
-        "CUSTOMER_DETAILS": "Customer Details",
-        "CLIENTS": "Clients",
-        "CLIENT_DETAILS": "Client Details",
-        "SHOW_NOW": "Shop now",
-        "MY_CART": "My cart",
-        "SHOPPING_CART": "Shopping Cart",
-        "EMPTY_CART": "Cart is empty",
-        "ITEMS": "Item(s)",
-        "QUANTITY": "Quantity",
-        "CHECKOUT": "Checkout",
-        "PRICE": "Price",
-        "BALANCE": "Balance",
-        "TAX": "Tax",
-        "SHIPPING": "Shipping",
-        "TOTAL": "Total"
+        "CLIENTS": "Clients"
       },
       "SALES": {
-        "LEADS": "Leads",
-        "FORCASTS": "Forcasts",
-        "CONVERSIONS": "Conversions",
-        "SALES": "Sales",
-        "REVENUE": "Revenue",
-        "PROFIT": "Profit"
+        "LEAD": "Lead",
+        "FORCAST": "Forcast",
+        "CONVERSION": "Conversion",
+        "AMOUNT": "Amount",
+        "CREDIT": "Credit",
+        "BALANCE": "Balance",
+        "PURCHASE_ORDER": "Purchase Order",
+        "INVOICE": "Invoice",
+        "BILL": "Bill",
+        "RECEIPT": "Receipt",
+        "SALES RECEIPT": "Sales Receipt",
+        "TRANSACTION": "Transaction",
+        "REFUND": "Refund"
       },
-      "SEARCH": {
-        "INSTRUCTIONS": "Search...",
-        "VIEW_ALL_RESULTS": "View all results",
-        "RECENT_SEARCHES": "Recent Searches"
-      },
-
-      "NOTIFICATIONS": {
-        "TITLE": "Notifications",
-        "NOTIFICATIONS": "Notifications",
-        "MESSAGES": "Messages",
-        "ALERTS": "Alerts",
-        "UNREAD_MESSAGES": "Unread messages",
-        "UNREAD_MESSAGES2": "unread messages",
-        "VIEW_ALL": "View all notifications",
-        "ALL_MESSAGES": "All Messages",
-        "VIEW_ALL_MESSAGES": "View all messages",
-        "NO ALERTS": "No alerts",
-        "NO_NOTIFICATIONS": "No notifications",
-        "NO_NEW_MESSAGES": "No new messages.",
-        "NO_NEW_ALERTS": "No new alerts."
+      "TRANSACTIONS": {
+        "__COMMENTS": "Diffferent forms of Transations",
+        "TITLE": "Transaction",
+        "TITLES": "Transactions",
+        "DESCRIPTION": "...",
+        "GIFT": "Gift",
+        "TRIAL": "Trial",
+        "SUBSCRIPTION": "Subscription",
+        "LEASE": "Lease",
+        "SALE": "Sale"
       }
     },
-    "CORE": {
+    "COMMERCE2": {
+      "__COMMENTS": "",
+      "TITLE": "Commmerce",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "PRODUCTS": "Products",
+      "PRODUCT_DETAILS": "Product Details",
+      "CREATE_PRODUCT": "Create Product",
+      "ORDERS": "Orders",
+      "ORDER_DETAILS": "Order Details",
+      "SELLERS": "Sellers",
+      "SELLER_DETAILS": "Seller Details",
+      "CUSTOMERS": "Customers",
+      "CUSTOMER_DETAILS": "Customer Details",
+      "CLIENTS": "Clients",
+      "CLIENT_DETAILS": "Client Details"
+    },
+    "CONFIRMATIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Confirmation",
+      "TITLES": "Confirmations",
+      "DESCRIPTION": "Please confirm",
+      "INSTRUCTIONS": "Please confirm before proceeding"
+    },
+    "CONNECTIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Connection",
+      "TITLES": "Connections",
+      "DESCRIPTION": "...",
+      "ATTACHED": "Attached",
+      "DETACHED": "Detached"
+    },
+    "CONTENTS": {
+      "__COMMENTS": "Can be used to show Messages - empty, etc.",
+      "TITLE": "Content",
+      "TITLES": "Contents",
+      "DESCRIPTION": "...",
+      "EMPTY": "Empty",
+      "NEARLY_EMPTY": "Nearly empty",
+      "HALF_EMPTY": "Half empty",
+      "HALF_FULL": "Half full",
+      "NEARLY_FULL": "Nearly full",
+      "FULL": "Full"
+    },
+    "CONTEXT": {
+      "__COMMENTS": "Often displayed as part of the Layout frame. See STATUS area.See also POSITIONS, LOCATIONS.",
+      "TITLE": "Context",
+      "TITLES": "Contexts",
+      "DESCRIPTION": "Current context: user, account, system."
+    },
+    "CONTRACTS": {
+      "__COMMENTS": "See also AGREEMENTS and DISCLOSURES.",
+      "TITLE": "Contract",
+      "TITLES": "Contracts",
+      "DESCRIPTION": "...",
+      "SALES_CONTRACT": "Sales Contract",
+      "SUBSCRIPTION": "Subscription"
+    },
+    "COPYRIGHT": {
+      "__COMMENTS": "",
+      "TITLE": "Copyright",
+      "TITLES": "Copyrights",
+      "DESCRIPTION": "..."
+    },
+    "COPYRIGHT_STATEMENTS": {
+      "__COMMENTS": "",
+      "TITLE": "Copyright Statement",
+      "TITLES": "Copyright Statements",
+      "DESCRIPTION": "..."
+    },
+    "CORRECTIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Correction",
+      "TITLES": "Corrections",
+      "DESCRIPTION": "..."
+    },
+    "CREDITS": {
+      "__COMMENTS": "See APPRCIATIONS, GREETINGS, DEPARTURES",
+      "TITLE": "Credit",
+      "TITLES": "Credits",
+      "DESCRIPTION": "...",
+      "SPONSORED_BY_": "Made available by",
+      "DISTRIBUTED_BY_": "Distributed by",
+      "DEVELOPED_BY_": "Developed by",
+      "MADE_BY_": "Made by",
+      "USED_BY_": "Used by",
+      "LOVED_BY_": "Loved by"
+    },
+    "DASHBOARDS": {
+      "__COMMENTS": "",
+      "TITLE": "Dashboard",
+      "TITLES": "Dashboards",
+      "DESCRIPTION": "..."
+    },
+    "DATA_POLICY": {
+      "__COMMENTS": "",
+      "TITLE": "Data Policy",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "DAY": {
+      "__COMMENTS": "",
+      "TITLE": "Day",
+      "TITLES": "Days",
+      "DESCRIPTION": "...",
+      "MONDAY": "Monday",
+      "TUESDAY": "Tuesday",
+      "WEDNESDAY": "Wednesday",
+      "THURSDAY": "Thursday",
+      "FRIDAY": "Friday",
+      "SATURDAY": "Saturday",
+      "SUNDAY": "Sunday,"
+    },
+    "DEMO": {
+      "__COMMENTS": "",
+      "TITLE": "Demo",
+      "TITLES": "Demos",
+      "DESCRIPTION": "..."
+    },
+    "DEPARTURES": {
+      "__COMMENTS": "See GREETINGS",
+      "TITLE": "Departure",
+      "TITLES": "Departures",
+      "DESCRIPTION": "...",
+      "BYE": "Bye",
+      "BYE!": "Bye!",
+      "GOODBYE": "Goodbye",
+      "GOODBYE!": "Goodbye!",
+      "SEE_YOU_AGAIN_SOON": "See you again soon."
+    },
+    "DIAGNOSTICS": {
+      "__COMMENTS": "See also ANALYSIS, REPORTS",
+      "TITLE": "Diagnostics",
+      "TITLES": "Diagnostics",
+      "DESCRIPTION": "..."
+    },
+    "DIRECTIONS": {
+      "__COMMENTS": "See also POSITIONS.",
+      "TITLE": "Direction",
+      "TITLES": "Directions",
+      "DESCRIPTION": "...",
+      "UP": "Up",
+      "DOWN": "Down",
+      "LEFT": "Left",
+      "RIGHT": "Right"
+    },
+    "DISCLOSURES": {
+      "__COMMENTS": "See AGREEMENTS and CONTRACTS.",
+      "TITLE": "Disclosure",
+      "TITLES": "Disclosures",
+      "DESCRIPTION": "...",
+      "PRIVACY_POLICIES": "Privacy Policies",
+      "DATA_USE": "Data Use",
+      "TRACKING": "Tracking"
+    },
+    "DOMAINS": {
+      "__COMMENTS": "Terms specific to distinct Domains.",
+      "TITLE": "Domain",
+      "TITLES": "Domains",
+      "DESCRIPTION": "...",
+      "EDUCATION": {
+        "__COMMENTS": "Terms specific to the Domain of Education.",
+        "PEOPLE": {
+          "PRINCIPAL": "Principal",
+          "TEACHER": "Teacher",
+          "ASSISTANT_TEACHER": "Assistant Teacher",
+          "NURSE": "Nurse"
+        },
+        "PLACES": {
+          "COL": "CoL",
+          "Community of Schools": "Community of Schools",
+          "SCHOOL": "School",
+          "CLASSROOM": "Classroom",
+          "LEARNER": "Learner",
+          "STUDENT": "Student",
+          "EARLY LEARNING": "Early Learning"
+        },
+        "ACTIONS": {
+          "LEAD": "Lead",
+          "ADMINISTER": "Administer",
+          "TEACH": "Teach",
+          "STUDY": "Study"
+        }
+      },
+      "GOVERNMENT": {
+        "__COMMENTS": "",
+        "TITLE": "Government",
+        "TITLES": "Governments",
+        "DESCRIPTION": "...",
+        "ENTITIES": {
+          "BILL": "Bill",
+          "LAW": "Law",
+          "REGULATION": "Regulation",
+          "BYLAW": "Bylaw",
+          "ABATEMENT": "Abatement"
+        },
+        "ACTIONS": {
+          "PROPOSE": "Propose",
+          "ENACT": "Enact",
+          "PASS": "Pass",
+          "RESCIND": "Rescind"
+        }
+      }
+    },
+    "ENROLLMENT": {
+      "__COMMENTS": "See PARTICIPATION, SUBSCRIPTION",
+      "TITLE": "Enrollment",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "ENTITIES": {
+      "__COMMENTS": "The primary elements of change: PEOPLE, PLACES, PRODUCTS, etc.",
+      "TITLE": "Entity",
+      "TITLES": "Entities",
+      "DESCRIPTION": "...",
+      "PRODUCT": "Product",
+      "PRODUCTS": "Products",
+      "PERSON": "Person",
+      "PEOPLE": "People",
+      "PLACE": "Place",
+      "PLACES": "Places"
+    },
+    "ERRORS": {
+      "500": {
+        "TITLE": "Server Error 500.",
+        "DESCRIPTION": "We're not exactly sure what happened, but our servers say something is wrong."
+      },
+      "__COMMENTS": "",
+      "TITLE": "Error",
+      "TITLES": "Errors",
+      "DESCRIPTION": "...",
+      "OOPS!": "Oops!",
+      "SORRY": "Sorry",
+      "ERROR_500_DESCRIPTION": "Server Error 500. We're not exactly sure what happened, but our servers say something is wrong.",
+      "PAGE_NOT_FOUND": "Page not found.",
+      "PAGE_NOT_AVAIABLE": "Page not available.",
+      "PAGE_NOT_DISPLAYABLE": "Page not displayable.",
+      "PAGE_NOT_FOUND_DESCRIPTION": "The page you are looking for not available!.",
+      "SORRY_PAGE_NOT_FOUND": "Sorry - page not found.",
+      "WE_ARE_OFFLINE": "Offline",
+      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS": "We can't show you this images because you aren't, connected to the internet.",
+      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS2": "When you’re back online try again",
+      "ERRORS": "Errors",
+      "404BASIC": "404 Basic",
+      "404COVER": "404 Cover",
+      "404ALT": "404 Alt",
+      "OFFLINE": "Offline Page"
+    },
+    "EXAMPLES": {
+      "__COMMENTS": "",
+      "TITLE": "Example",
+      "TITLES": "Examples",
+      "DESCRIPTION": "..."
+    },
+    "FAQS": {
+      "__COMMENTS": "",
+      "TITLE": "FAQ",
+      "TITLES": "FAQs",
+      "DESCRIPTION": "..."
+    },
+    "FINANCE": {
+      "_COMMMENTS": "See COMMERCE.",
+      "TITLE": "Finance",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "BALANCE": "Balance",
+      "DEBIT": "Debit",
+      "CREDIT": "Credit",
+      "TRANSFER": "Transfer",
+      "DEBT": "Debt",
+      "INTEREST": "Interest",
+      "PROFIT": "Profit",
+      "LOSS": "Loss",
+      "CURRENT_POSITION": "Current Position"
+    },
+    "FLOW": {
+      "__COMMENTS": "Relates to LAYOUT.",
+      "TITLE": "Flow",
+      "TITLES": "Flows",
+      "DESCRIPTION": "...",
+      "FLUID": "Fluid",
+      "BOXED": "Boxed"
+    },
+    "GREETINGS": {
+      "__COMMENTS": "See APPRECIATIONS, DEPARTURES",
+      "TITLE": "Greeting",
+      "TITLES": "Greetings",
+      "DESCRIPTION": "...",
+      "HI": "Hi",
+      "HI_": "Hi",
+      "HI!": "Hi!",
+      "WELCOME": "Welcome",
+      "WELCOME_": "Welcome",
+      "WELCOME!": "Welcome!",
+      "WELCOME_BACK": "Welcome back",
+      "WELCOME_BACK_": "Welcome back",
+      "WELCOME_BACK!": "Welcome Back!"
+    },
+    "GROUPS": {
+      "__COMMENTS": "Groups one belongs to.",
+      "TITLE": "Group",
+      "TITLES": "Groups",
+      "DESCRIPTION": "..."
+    },
+    "HEADERS": {
+      "__COMMENTS": "",
+      "TITLE": "Header",
+      "TITLES": "Headers",
+      "DESCRIPTION": "Description",
+      "ENABLED": "Enabled",
+      "DETAILS": "Details",
+      "VALUE": "Value",
+      "ACTIONS": "Action(s)"
+    },
+    "HELP": {
+      "__COMMENTS": "Compare with SUPPORT & ASSISTANCE (by others).",
+      "TITLE": "Help",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Self-Help."
+    },
+    "HOME": {
+      "__COMMENTS": "",
+      "TITLE": "Home",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...is where the heart is."
+    },
+    "HUES": {
+      "__COMMENTS": "",
+      "TITLE": "Hue",
+      "TITLES": "Hues",
+      "DESCRIPTION": "...",
+      "DARK": "Dark",
+      "GRADIENT": "Gradient",
+      "LIGHT": "Light"
+    },
+    "INFORMATION": {
+      "__COMMENTS": "Publicly accessible Pages (Pricing, FAQs, Policies, Terms, etc.). See INFORMATION and PAGES Area.",
+      "TITLE": "Information",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Publicly accessible information pages"
+    },
+    "INFRASTRUCTURE": {
+      "__COMMENTS": "",
+      "TITLE": "Infrastructure",
+      "TITLES": "Infrastructures",
+      "DESCRIPTION": "...",
+      "WIFI": "Wifi",
+      "ROUTER": "Router",
+      "HUB": "Hub",
+      "WAF": "WAF",
+      "DMZ": "DMZ",
+      "FIREWALL": "Firewall",
+      "NETWORK": "Network",
+      "SYSTEM": "System",
+      "TIER": "Tier",
+      "DEVICE": "Device",
+      "SERVICE": "Service",
+      "SERVICE_CLIENT": "Service Client",
+      "SERVICE_AGENT": "Service Agent",
+      "SCHEDULER": "Scheduler",
+      "BROWSER": "Browser"
+    },
+    "INVITATIONS": {
+      "__COMMENTS": "TODO: Application, Acceptance, Invitation, Acceptance....",
+      "TITLE": "Invitation",
+      "TITLES": "Invitations",
+      "DESCRIPTION": "..."
+    },
+    "LANDING": {
+      "__COMMENTS": "Publicly accessible Pages as landing pages from Advertisements/sources. See PAGES and INFORMATION Area.",
+      "TITLE": "Landing",
+      "TITLES": "Landings",
+      "DESCRIPTION": "Publicly accessible landing pages"
+    },
+    "LAYOUTS": {
+      "__COMMENTS": "Regarding the layout of site parts.",
+      "TITLE": "Layout",
+      "TITLES": "Layouts",
+      "DESCRIPTION": "...",
+      "LAYOUT": "Layout",
+      "LAYOUTS": "Layouts",
+      "OPTIONS": {
+        "HORIZONTAL": "Horizontal",
+        "DETACHED": "Detached",
+        "TWOCOLUMN": "Two Column",
+        "HOVERED": "Hovered"
+      }
+    },
+    "LOCATIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Location",
+      "TITLES": "Locations",
+      "DESCRIPTION": "...",
+      "ALTITUDE": "Altitude",
+      "ORIENTATION": "Orientation",
+      "COORDINATES": "Coordinates",
+      "COORDINATES_INSTRUCTIONS": "Provide a longitude/latitude coordinate",
+      "COORDINATES_ERROR_01": "A longitude/latitude coordinates is required.",
+      "COORDINATES_ERROR_02": "The provided coordinates could not be validated.",
+      "LONGITUDE": "Longitude",
+      "LONGITUDE_INSTRUCTIONS": "Provide a longitude",
+      "LONGITUDE_ERROR_01": "An east/west longitude is required.",
+      "LONGITUDE_ERROR_02": "The provided longitude could not be validated.",
+      "LATITUDE": "Latitude",
+      "LATITUDE_INSTRUCTIONS": "Provide a latitude",
+      "LATITUDE_ERROR_01": "A latitude is required.",
+      "LATITUDE_ERROR_02": "The provided latitude could not be validated."
+    },
+    "LOGIC": {
+      "__COMMENTS": "See ARITHMETICS",
+      "TITLE": "Logic",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "GROUP": "Group",
+      "SUBGROUP": "Subgroup",
+      "NOT": "Not",
+      "EXCLUDES": "Excludes",
+      "INCLUDES": "Includes",
+      "OVERLAPS": "Overlaps",
+      "AND": "And",
+      "_AND": "and",
+      "OR": "Or",
+      "_OR": "or",
+      "ELSE": "Else",
+      "_ELSE": "else"
+    },
+    "MAINTENANCE": {
+      "__COMMENTS": "",
+      "TITLE": "Maintenance",
+      "TITLES": "N/A",
+      "DESCRIPTION": "When the service is next planned to be taken down to add new features..."
+    },
+    "MEMBERS": {
+      "__COMMENTS": "",
+      "TITLE": "Member",
+      "TITLES": "Members",
+      "DESCRIPTION": "..."
+    },
+    "MESSAGES": {
+      "__COMMENTS": "See also NOTIFICATIONS Area.",
+      "TITLE": "Message",
+      "TITLES": "Messages",
+      "DESCRIPTION": "Messages between Users",
+      "NONE": "None",
+      "NO_NEW": "No New Messages",
+      "ALL": "All",
+      "READ": "Read",
+      "UNREAD": "Unread",
+      "HEADERS": "Headers",
+      "PRIORITY": "Priority",
+      "IMPORTANCE": "Importance",
+      "SENT": "Sent",
+      "RECEIVED": "Received",
+      "SENT_AT_": "Sent at",
+      "RECEIVED_AT_": "Received at",
+      "SENT_BY": "Sent by",
+      "FROM": "From",
+      "TO": "To",
+      "SUBJECT": "Subject",
+      "BODY": "Body",
+      "ATTACHMENTS": "Attachments"
+    },
+    "MONTHS": {
+      "__COMMENTS": "See also DAY, TIME.",
+      "TITLE": "Month",
+      "TITLES": "Months",
+      "DESCRIPTION": "...",
+      "JANUARY": "January",
+      "FEBRUARY": "February",
+      "MARCH": "March",
+      "APRIL": "April",
+      "MAY": "May",
+      "JUNE": "June",
+      "JULY": "July",
+      "AUGUST": "August",
+      "SEPTEMBER": "September",
+      "OCTOBER": "October",
+      "NOVEMBER": "November",
+      "DECEMBER": "December"
+    },
+    "NAVIGATION": {
+      "__COMMENTS": "An aspect of the CONTEXT area.",
+      "TITLE": "Navigation",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "NOTIFICATIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Notification",
+      "TITLES": "Notifications",
+      "DESCRIPTION": "...",
+      "NO_NEW": "No New Notifications",
+      "NONE": "None",
+      "ALL": "All",
+      "UNREAD": "Unread",
+      "READ": "Read"
+    },
+    "OBSERVATIONS": {
+      "__COMMENTS": "See ASSESSMENTS, PROGRESS, ACHIEVEMENTS",
+      "TITLE": "Observation",
+      "TITLES": "Observations",
+      "DESCRIPTION": "..."
+    },
+    "OPENINGS": {
+      "__COMMENTS": "",
+      "TITLE": "Opening",
+      "TITLES": "Openings",
+      "DESCRIPTION": "Opportunities to work here."
+    },
+    "ORGANISATION": {
+      "__COMMENTS": "Units to organise People, Products, etc.",
+      "TITLE": "Organisations",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "TENANCY": "Account",
+      "TENANCY_INSTRUCTIONS": "Please provide the account name:",
+      "TENANCY_PLACEHOLDER": "Account Title",
+      "ACCOUNT": "Account",
+      "ACCOUNT_INSTRUCTIONS": "Please provide the account name:",
+      "ACCOUNT_PLACEHOLDER": "Account Title",
+      "OU": "O.U.",
+      "ORGANISATION_UNIT": "Organisational Unit",
+      "ORGANITATION_UNIT_INSTRUCTIONS": "Please provide the organisation unit name:",
+      "ORGANISATION_UNIT_PLACEHOLDER": "O.U...",
+      "DEPT": "Dept",
+      "DEPT_PLACEHOLDER": "Dept...",
+      "DEPARTMENT": "Department",
+      "DEPARTMENT_INSTRUCTIONS": "Please provide the department name:",
+      "DEPARTMENT_PLACEHOLDER": "Department...",
+      "GROUPS": "Groups",
+      "GROUPS_INSTRUCTIONS": "Please provide group names:",
+      "GROUPS_PLACEHOLDER": "Groups Names...",
+      "GROUP": "Group",
+      "GROUP_INSTRUCTIONS": "Please provide the group name:",
+      "GROUP_PLACEHOLDER": "Group Title",
+      "FOLDER": "Folder",
+      "FOLDER_INSTRUCTIONS": "Please provide the folder name:",
+      "FOLDER_PLACEHOLDER": "Folder Name...",
+      "FOLDERS": "Folders",
+      "FOLDERS_INSTRUCTIONS": "Please provide folder names:",
+      "FOLDERS_PLACEHOLDER": "Folder Names...",
+      "FILE": "File",
+      "FILE_INSTRUCTIONS": "Please provide the file name:",
+      "FILE_PLACEHOLDER": "File Name...",
+      "FILES_INSTRUCTIONS": "Please provide file names:",
+      "FILES": "Files",
+      "FILES_PLACEHOLDER": "File Names...",
+      "CATEGORY": "Category",
+      "CATEGORY_INSTRUCTIONS": "Please provide the category:",
+      "CATEGORY_PLACEHOLDER": "Category...",
+      "CATEGORIES": "Categories",
+      "CATEGORIES_INSTRUCTIONS": "Please provide categories:",
+      "CATEGORIES_PLACEHOLDER": "Categories..."
+    },
+    "ORIENTATIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Orientation",
+      "TITLES": "Orientations",
+      "DESCRIPTION": "...",
+      "HORIZONTAL": "Horizontal",
+      "VERTICAL": "Vertical"
+    },
+    "OUTCOMES": {
+      "__COMMENTS": "The essence of a system. See STATUS",
+      "TITLE": "Outcome",
+      "TITLES": "Outcomes",
+      "DESCRIPTION": "...",
+      "RESULT": "Result",
+      "SUCCESS": "Success",
+      "IMPROVED": "Improved",
+      "FAILED": "Failed"
+    },
+    "PATTERNS": {
+      "__COMMENTS": "",
+      "TITLE": "Patterns",
+      "TITLES": "Patterns",
+      "DESCRIPTION": "..."
+    },
+    "PARTICIPATION": {
+      "__COMMENTS": "See ENROLLMENT, SUBSCRIPTION",
+      "TITLE": "Participation",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PAGES": {
+      "__COMMENTS": "Pages restricted to authenticated Users. See INFORMATION and LANDING Areas",
+      "TITLE": "Page",
+      "TITLES": "Pages",
+      "DESCRIPTION": "Pages restricted to permitted users"
+    },
+    "PEOPLE": {
+      "TITLE": "Person",
+      "TITLES": "People",
+      "DESCRIPTION": "...",
+      "__COMMENTS": "See PERSONS"
+    },
+    "PERMISSIONS": {
+      "__COMMENTS": "Permissions are Added/Removed from ACCESS_LEVELS",
+      "TITLE": "Permission",
+      "TITLES": "Permissions",
+      "DESCRIPTION": "...",
+      "PERMITTED": "Permitted"
+    },
+    "PERSONS": {
+      "__COMMENTS": "",
+      "TITLE": "Person",
+      "TITLES": "Persons",
+      "DESCRIPTION": "...",
+      "ID": "Identifier",
+      "IDENTIFIER": "Enter the person's identifier",
+      "BODY": {
+        "DOB": "DOB",
+        "DOB_INSTRUCTIONS": "Enter the date of birth",
+        "DOB_PLACEHOLDER": "Year, Month, Day...",
+        "SEX": "Sex",
+        "SEX_INSTRUCTIONS": "Enter the sex at birth",
+        "SEX_PLACEHOLDER": "Male/Female/Other...",
+        "HEIGHT": "Height",
+        "HEIGHT_INSTRUCTIONS": "Enter the height.",
+        "HEIGHT_PLACEHOLDER": "Height in cm..."
+      },
+      "IDENTITIES": {
+        "__COMMENTS": "A PERSON has at least one IDENTITY",
+        "TITLE": "Identity",
+        "TITLES": "Identities",
+        "DESCRIPTION": "...",
+        "ID": "Context Identifier",
+        "IDENTIFIER": "Enter a unique context identifier",
+        "NAMES": {
+          "TITLE": "Names",
+          "PREFIX": "Prefix",
+          "PREFIX_INSTRUCTIONS": "Provide a Title (Mr, Mrs, Dr., ...)",
+          "PREFIX_EXAMPLE": "Dr.",
+          "PREFIX_ERROR_01": "A title or prefix is required.",
+          "PREFIX_ERROR_02": "The provided title or prefix can't be validated.",
+          "GIVEN": "Given Name",
+          "GIVEN_INSTRUCTIONS": "Provide a first/given name",
+          "GIVEN_EXAMPLE": "John",
+          "GIVEN_ERROR_01": "A given name is required.",
+          "GIVEN_ERROR_02": "The provided given name given can't be validated.",
+          "MIDDLE": "Given Middle Name",
+          "MIDDLE_INSTRUCTIONS": "Provide given middle name(s)",
+          "MIDDLE_EXAMPLE": "Martin",
+          "MIDDLE_ERROR_01": "A middle given name are required.",
+          "MIDDLE_ERROR_02": "The provided middle given name can't be validated.",
+          "MIDDLE_INITIALS": "Middle Initials",
+          "MIDDLE_INITIALS_INSTRUCTIONS": "Provide middle initial(s).",
+          "MIDDLE_INITIALS_EXAMPLE": "M.",
+          "MIDDLE_INITIALS_ERROR_01": "Middle initial(s) are required.",
+          "MIDDLE_INITIALS_ERROR_02": "The provided middle initials(s) can't be validated.",
+          "GIVENS": "Given Name(s)",
+          "GIVENS_INSTRUCTIONS": "Provide given name(s).",
+          "GIVENS_EXAMPLE": "John Mark",
+          "GIVENS_ERROR_01": "A given name is required.",
+          "GIVENS_ERROR_02": "The provided given name(s) can't be validated.",
+          "SURNAME": "Surname",
+          "SURNAME_INSTRUCTIONS": "Provide a suname",
+          "SURNAME_EXAMPLE": "Smith",
+          "SURNAME_ERROR_01": "A surname is required.",
+          "SURNAME_ERROR_02": "The provided surname can't be validated."
+        },
+        "PRONOUNS": "Pronouns",
+        "PRONOUNS_INSTRUCTIONS": "Provide preferred pronouns",
+        "PRONOUNS_EXAMPLE": "He/Him",
+        "PRONOUNS_ERROR_01": "Preferred pronouns are required.",
+        "PRONOUNS_ERROR_02": "The provided pronoun(s) given can't be validated.",
+        "AVATAR": "Avatar",
+        "AVATAR_INSTRUCTIONS": "Provide an avatar",
+        "AVATAR_EXAMPLE": "hero.png",
+        "AVATAR_ERROR_01": "An avatar is required.",
+        "AVATAR_ERROR_02": "The provided avatar could not be validated.",
+        "BIO": "Bio",
+        "BIO_INSTRUCTIONS": "Provide a summary introductory bio/description",
+        "BIO_EXAMPLE": "E.g., something concise, precise, pertinent about this identity...",
+        "BIO_ERROR_01": "A bio is required.",
+        "BIO_ERROR_02": "The provided bio could not be validated.",
+        "ROLE": "Role",
+        "ROLE_INSTRUCTIONS": "Provide a contextual role",
+        "ROLE_EXAMPLE": "Contributor",
+        "ROLE_ERROR_01": "A role is required.",
+        "ROLE_ERROR_02": "The provided role could not be validated.",
+        "GENDER": "Gender",
+        "GENDER_INSTRUCTIONS": "Provide this identity's gender orientation",
+        "GENDER_EXAMPLE": "Male",
+        "GENDER_ERROR_01": "An gender is required.",
+        "GENDER_ERROR_02": "The provided gender could not be validated."
+      }
+    },
+    "PLACES": {
+      "__COMMENTS": "See LOCATION.",
+      "TITLE": "Place",
+      "TITLES": "Places",
+      "DESCRIPTION": "...",
+      "HOME": "Home",
+      "WORK": "Work"
+    },
+    "POLICIES": {
+      "__COMMENTS": "See PRINCIPLES.",
+      "TITLE": "Policy",
+      "TITLES": "Policies",
+      "DESCRIPTION": "..."
+    },
+    "POSITIONS": {
+      "__COMMENTS": "See also DIRECTIONS and SEQUENCE.",
+      "TITLE": "Position",
+      "TITLES": "Positions",
+      "DESCRIPTION": "...",
+      "RELATIVE": {
+        "TITLE": "Relative",
+        "_PREVIOUS": "previous",
+        "_NEXT": "next",
+        "_BELOW": "below",
+        "_ABOVE": "above",
+        "_TO_THE_LEFT": "to the left",
+        "_TO_THE_RIGHT": "to the right",
+        "INSIDE": "Inside",
+        "OUTSIDE": "Outside",
+        "ON_TOP": "On top",
+        "BELOW": "Below"
+      },
+      "ABSOLUTE": {
+        "TITLE": "Absolute",
+        "FIRST": "First",
+        "SECOND": "Second",
+        "THIRD": "Third",
+        "SECOND_TO_LAST": "Second to last",
+        "LAST": "Last"
+      }
+    },
+    "POSTAL_ADDRESS": {
+      "__COMMENTS": "",
+      "TITLE": "Postal Address",
+      "TITLES": "Postal Addresses",
+      "DESCRIPTION": "...",
+      "UNIT": "Unit",
+      "UNIT_EXAMPLE": "2B",
+      "UNIT_INSTRUCTIONS": "Provide an apartment, Unit, etc. if any",
+      "STREET": "Street",
+      "STREET_EXAMPLE": "123 Collins",
+      "STREET_INSTRUCTIONS": "Provide a street address",
+      "CITY": "City",
+      "CITY_EXAMPLE": "Villars",
+      "CITY_INSTRUCTIONS": "Provide a city, town, etc.",
+      "STATE": "State",
+      "STATE_EXAMPLE": "Vaud",
+      "STATE_INSTRUCTIONS": "Provide a state, region, etc.",
+      "POSTAL_CODE": "Postal Code",
+      "POSTAL_CODE_EXAMPLE": "6301",
+      "POSTAL_CODE_INSTRUCTIONS": "Provide a postal code, zip, etc.",
+      "COUNTRY": "Country",
+      "COUNTRY_EXAMPLE": "Switzerland",
+      "COUNTRY_INSTRUCTIONS": "Provide a country, kingdom, etc."
+    },
+    "PRICING": {
+      "__COMMENTS": "",
+      "TITLE": "Pricing",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PRINCIPLES": {
+      "__COMMENTS": "",
+      "TITLE": "Principle",
+      "TITLES": "Principles",
+      "DESCRIPTION": "..."
+    },
+    "PRIVACY_POLICIES": {
+      "__COMMENTS": "",
+      "TITLE": "Privacy Policy",
+      "TITLES": "Privacy Policies",
+      "DESCRIPTION": "..."
+    },
+    "PRIVACY_STATEMENT": {
+      "__COMMENTS": "",
+      "TITLE": "Privacy Statement",
+      "TITLES": "Privacy Statements",
+      "DESCRIPTION": "..."
+    },
+    "PRODUCTS": {
+      "__COMMENTS": "",
+      "TITLE": "Product",
+      "TITLES": "Products",
+      "DESCRIPTION": "..."
+    },
+    "PROFILE": {
+      "__COMMENTS": "Current User Preferences. Not the same as (System) SETTINGS",
+      "TITLE": "Profile",
+      "TITLES": "Profiles",
+      "DESCRIPTION": "..."
+    },
+    "PROGRESS": {
+      "__COMMENTS": "",
+      "TITLE": "Progress",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PROJECTS": {
+      "__COMMENTS": "See TASKS, SCHEDULE area.",
+      "TITLE": "Project",
+      "TITLES": "Projects",
+      "DESCRIPTION": "..."
+    },
+    "PROMPTS": {
+      "__COMMENTS": "",
+      "TITLE": "Prompt",
+      "TITLES": "Prompts",
+      "DESCRIPTION": "..."
+    },
+    "QUANTITIES": {
+      "__COMMENTS": "See also CONTENTS.",
+      "TITLE": "Quantity",
+      "TITLES": "Quantities",
+      "DESCRIPTION": "...",
+      "ALL": "All",
+      "MOST": "Most",
+      "SOME": "Some",
+      "NONE": "None"
+    },
+    "QUALITIES": {
+      "__COMMENTS": "",
+      "TITLE": "Quality",
+      "TITLES": "Qualities",
+      "DESCRIPTION": "...",
+      "SECURE": "Secure",
+      "CONFIDENTIAL": "Confidential",
+      "AUDITED": "Audited",
+      "AVAILABLE": "Available",
+      "USABLE": "Usable",
+      "PERFORMANT": "Performant",
+      "ECONOMIC": "Economic",
+      "RESPONSIVE": "Responsive",
+      "MAINTAINABLE": "Maintainable",
+      "UNDERSTANDABLE": "Understandable",
+      "ANALYSABLE": "Analysable",
+      "ENHANCEABLE": "Enhanceable"
+    },
+    "REPORTS": {
+      "__COMMENTS": "",
+      "TITLE": "Template",
+      "TITLES": "Templates",
+      "DESCRIPTION": "..."
+    },
+    "RESPONSIBILITIES": {
+      "__COMMENTS": "Users Get PERMISSIONS after accepting associated RESPONSIBILITIES",
+      "TITLE": "Responsibility",
+      "TITLES": "Responsibilities",
+      "DESCRIPTION": "...",
+      "RESPONSIBLE": "Responsible",
+      "RESPONSIBILITY": "Responsibility",
+      "RESPONSIBILITIES": "Responsibilities"
+    },
+    "ROLES": {
+      "__COMMENTS": "See also ACCESS_LEVELS, PERMISSIONS",
+      "TITLE": "Role",
+      "TITLES": "Roles",
+      "DESCRIPTION": "..."
+    },
+    "SCHEDULING": {
+      "__COMMENTS": "See PROJECTS, TASKS area.",
+      "TITLE": "Scheduling",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "SEARCH": {
+      "__COMMENTS": "See also POSITIONS.",
+      "TITLE": "Search",
+      "TITLES": "Searches",
+      "DESCRIPTION": "...",
+      "INSTRUCTIONS": "Provide search criteria:",
+      "PLACEHOLDER": "Search...",
+      "VIEW_ALL_RESULTS": "View all results",
+      "RECENT_SEARCHES": "Recent Searches"
+    },
+    "SEARCH_RESULTS": {
+      "__COMMENTS": "",
+      "TITLE": "Search Result",
+      "TITLES": "Search Results",
+      "DESCRIPTION": "..."
+    },
+    "SEQUENCES": {
+      "__COMMENTS": "See also POSITIONS.",
+      "TITLE": "Sequence",
+      "TITLES": "Sequences",
+      "DESCRIPTION": "...",
+      "PREPARE": "Prepare",
+      "BEGIN": "Begin",
+      "WAIT": "Wait",
+      "CONTINUE": "Continue",
+      "STOP": "Stop",
+      "END": "End"
+    },
+    "SETTINGS": {
+      "__COMMENTS": "System (generally Account-specific) Settings. See difference with PROFILE.",
+      "TITLE": "Setting",
+      "TITLES": "Settings",
+      "DESCRIPTION": "..."
+    },
+    "SHIPPING": {
+      "__COMMENTS": "See also COMMERCE/SHOPPING.",
+      "TITLE": "Shipping",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "STANDARD": "Standard",
+      "EXPEDITED": "Expedited",
+      "URBAN": "Urban",
+      "RURAL": "Rural"
+    },
+    "SIGHT": {
+      "__COMMENTS": "",
+      "TITLE": "Sight",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "UNSEEN": "Unseen",
+      "UNREAD": "Unread",
+      "VIEW": "View",
+      "SEEN": "Seen",
+      "READ": "Read"
+    },
+    "SITE": {
+      "__COMMENTS": "See SITE at higher level."
+    },
+    "SHOPPING": {
+      "__COMMENTS": "",
+      "TITLE": "Shop",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "EMPTY": "Empty",
+      "CART": "Cart",
+      "SHOPPING_CART": "Shopping Cart",
+      "ITEMS": "Item(s)",
+      "CATEGORY": "Category",
+      "PRICE": "Price",
+      "QUANTITY": "Quantity",
+      "SUBTOTAL": "Subtotal",
+      "DISCOUNTED": "Discounted",
+      "DISCOUNT": "Discount",
+      "DISCOUNTS": "Discounts",
+      "TAX": "Tax",
+      "SHIPPING": "Shipping",
+      "COMMISSION": "Commission",
+      "PROCESSING_FEE": "Processing fee",
+      "RESTOCKING_FEE": "Restocking fee",
+      "TOTAL": "Total",
+      "CHECKOUT": "Checkout",
+      "REVENUE": "Revenue",
+      "PROFIT": "Profit"
+    },
+    "SITEMAP": {
+      "__COMMENTS": "",
+      "TITLE": "Site Map",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Where we are."
+    },
+    "SIZE": {
+      "__COMMENTS": "",
+      "TITLE": "Size",
+      "TITLES": "Sizes",
+      "DESCRIPTION": "...",
+      "XTRA_SMALL": "Extra Small",
+      "SMALL": "Small",
+      "MEDIUM": "Medium",
+      "REGULAR": "Regular",
+      "LARGE": "Large",
+      "XTRA_LARGE": "Xtra Large"
+    },
+    "SPACING": {
+      "__COMMENTS": "",
+      "TITLE": "Spacing",
+      "TITLES": "Spacing",
+      "DESCRIPTION": "...",
+      "COMPACT": "Compact",
+      "REGULAR": "Regular",
+      "TIGHT": "Tight"
+    },
+    "STATES": {
+      "__COMMENTS": "Progression of generic state of records and resources, towards delivering OUTCOMES.",
+      "TITLE": "State",
+      "TITLES": "States",
+      "DESCRIPTION": "...",
+      "DRAFT": "Drafted",
+      "IN_PROGRESS": "In Progress",
+      "ABANDONED": "Abandoned",
+      "REJECTED": "Rejected",
+      "APPROVED": "Approved",
+      "PUBLISHED": "Published",
+      "ENDORSED": "Endorsed",
+      "REMOVED": "Removed",
+      "RETIRED": "Retired",
+      "LEGACY": "Legacy"
+    },
+    "STATUS": {
+      "__COMMENTS": "Often displayed as part of the Layout frame. See CONTEXT Area.",
+      "TITLE": "Status",
+      "TITLES": "Statuses",
+      "DESCRIPTION": "Current state of last operation, account, system.",
+      "NEW": "New",
+      "ENABLED": "Enabled",
+      "DISABLED": "Disabled",
+      "PENDING": "Pending",
+      "LOST": "Lost",
+      "ABANDONED": "Abandoned",
+      "CLOSED": "Closed"
+    },
+    "STATUS_UPDATES": {
+      "__COMMENTS": "",
+      "TITLE": "Status Update",
+      "TITLES": "Status Updates",
+      "DESCRIPTION": "...",
+      "YOU_ARE_LOGGING_OUT": "You are logging out",
+      "YOU_ARE_LOGGED_OUT": "You are logged out"
+    },
+    "SUBSCRIPTIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Subscription",
+      "TITLES": "Subscriptions",
+      "DESCRIPTION": "..."
+    },
+    "SUPPORT": {
+      "__COMMENTS": "Compare with [self] HELP. See ASSISTANCE",
+      "TITLE": "Support",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Assistance"
+    },
+    "SYSTEMS": {
+      "__COMMENTS": "Generally a subset of the SETTINGS Area.",
+      "TITLE": "System",
+      "TITLES": "Systems",
+      "DESCRIPTION": "..."
+    },
+    "TASKS": {
+      "__COMMENTS": "See PROJECTS area.",
+      "TITLE": "Task",
+      "TITLES": "Tasks",
+      "DESCRIPTION": "Description",
+      "TITLE_INSTRUCTIONS": "",
+      "TITLE_PLACEHOLDER": "",
+      "DESCRIPTION_INSTRUCTIONS": "",
+      "DESCRIPTION_PLACEHOLDER": "",
+      "DEPENDS_ON": "Depends On",
+      "DEPENDS_ON_INSTRUCTIONS": "",
+      "DEPENDS_ON_PLACEHOLDER": "",
+      "ASSIGNED_TO": "Assigned To",
+      "ASSIGNED_TO_INSTRUCTIONS": "",
+      "ASSIGNED_TO_PLACEHOLDER": "",
+      "PRIORITY": "Priority",
+      "PRIORITY_INSTRUCTIONS": "",
+      "PRIORITY_PLACEHOLDER": "",
+      "DUE_DATE": "Due Date",
+      "DUE_DATE_INSTRUCTIONS": "",
+      "DUE_DATE_PLACEHOLDER": "",
+      "STATE": "State",
+      "STATE_INSTRUCTIONS": "",
+      "STATE_PLACEHOLDER": "",
+      "PERCENT_COMPLETED": "% Completed",
+      "PERCENT_COMPLETED_INSTRUCTIONS": "",
+      "PERCENT_COMPLETED_PLACEHOLDER": "",
+      "COMPLETED": "Completed",
+      "COMPLETED_INSTRUCTIONS": "",
+      "COMPLETED_PLACEHOLDER": "",
+      "COMPLETED_WHEN": "Completed When",
+      "COMPLETED_WHEN_INSTRUCTIONS": "",
+      "COMPLETED_WHEN_PLACEHOLDER": ""
+    },
+    "TEMPLATE": {
+      "__COMMENTS": "",
+      "TITLE": "Template",
+      "TITLES": "Templates",
+      "DESCRIPTION": "..."
+    },
+    "TENANCIES": {
+      "__COMMENTS": "WARNING: Tenancy is a technical term. Avoid using. Prefer ACCOUNT.",
+      "TITLE": "Tenancy",
+      "TITLES": "Tenancies",
+      "DESCRIPTION": "..."
+    },
+    "TERMS_AND_CONDITIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Terms & Conditions",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "TERMS_OF_USE": {
+      "__COMMENTS": "",
+      "TITLE": "Terms of Use",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Service users are expected to adhere to common behaviour"
+    },
+    "THEMES": {
+      "__COMMENTS": "",
+      "TITLE": "Theme",
+      "TITLES": "Themes",
+      "DESCRIPTION": "...",
+      "CUSTOMISER": "Theme Customiser",
+      "LAYOUT": "Layout",
+      "COLOUR_SCHEME": "Colour Scheme",
+      "LAYOUT_WIDTH": "Layout Width",
+      "LAYOUT_POSITION": "Layout Position",
+      "TOPBAR_COLOUR": "Topbar Colour",
+      "SIDEBAR_SIZE": "Sidebar Size",
+      "SIDEBAR_VIEW": "Sidebar View",
+      "SIDEBAR_IMAGE": "Sidebar Image",
+      "PRELOADER": "Preloader"
+    },
+    "TIME": {
+      "__COMMENTS": "See DATE.",
+      "TITLE": "Time",
+      "TITLES": "Times",
+      "DESCRIPTION": "...",
+      "HOUR": "Hour",
+      "HOURS": "Hours",
+      "MINUTE": "Minute",
+      "MINUTES": "Minutes",
+      "SECOND": "Second",
+      "SECONDS": "Seconds",
+      "MORNING": "Morning",
+      "AFTERNOON": "Afternoon"
+    },
+    "TIMELINES": {
+      "__COMMENTS": "",
+      "TITLE": "Timeline",
+      "TITLES": "Timelines",
+      "DESCRIPTION": "Our expected timeline of when we'll be adding features..."
+    },
+    "TRACKING_POLICY": {
+      "__COMMENTS": "",
+      "TITLE": "Tracking Policy",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "TRANSACTION": {
+      "__COMMENTS": "See COMMERCE.",
+      "TITLE": "Transaction",
+      "TITLES": "Transactions",
+      "DESCRIPTION": "...",
+      "DEMONSTRATION": "Demonstration",
+      "GIFT": "Gift",
+      "TRIAL": "Trial",
+      "SUBSCRIPTION": "Subscription",
+      "LEASE": "Lease",
+      "SALE": "Sale"
+    },
+    "UI": {
+      "__COMMENTS": "",
+      "TITLE": "UI",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "PIECES": {
+        "WINDOW": "Window",
+        "MENU": "Menu",
+        "SCROLLBAR": "Scroll bar",
+        "POINTER": "Pointer",
+        "SITE": "Site",
+        "PRELOADER": "Preloader",
+        "FRAME": "Frame",
+        "PAGE": "Page",
+        "HEADER": "Header",
+        "BACKGROUND": "Background",
+        "STYLESHEET": "Stylesheet",
+        "SCRIPT": "Script",
+        "MARGIN": "Margin",
+        "BORDER": "Border",
+        "PADDING": "Padding",
+        "BODY": "Body",
+        "AREA": "Area",
+        "WIZARD": "Wizard",
+        "TABS": "Tab",
+        "DIALOG": "Dialog",
+        "FORM": "Form",
+        "TABLE": "Table",
+        "GRID": "Grid",
+        "LABEL": "Label",
+        "PROMPT": "Prompt",
+        "PLACEHOLDER": "Placeholder",
+        "CANVAS": "Canvas",
+        "SELECTION": "Selection",
+        "DROPDOWN": "Dropdown",
+        "TEXTFIELD": "Text field",
+        "FIELD": "Field",
+        "BUTTON": "Button",
+        "ALERT": "Alert",
+        "ICON": "Icon",
+        "SHORTCUT": "Shortcut",
+        "BADGE": "Badge",
+        "COLOUR": "Colour",
+        "FONT": "Font",
+        "BOLD": "Bold",
+        "IMAGE": "Image",
+        "UNDERLINED": "Underlined",
+        "ITALIC": "Italic",
+        "FOREGROUND": "Foreground",
+        "LAYER": "Layer",
+        "FILTER": "Filter",
+        "TRANSFORMATION": "Transformation",
+        "LINE": "Line",
+        "POINT": "Point",
+        "PROGRESS_INDICATOR": "Progress indicator",
+        "WAIT_INDICATOR": "Wait indicator"
+      },
+      "ACTIONS": {
+        "HOVER": "Hover",
+        "HOLD": "Hold",
+        "PRESS": "Press",
+        "CLICK": "Click",
+        "DOUBLE_CLICK": "Double click",
+        "SWIPE": "Swipe",
+        "DRAG": "Move",
+        "MOVE": "Move",
+        "DROP": "Drop"
+      }
+    },
+    "USERS": {
+      "__COMMENTS": "",
+      "TITLE": "User",
+      "TITLES": "Users",
+      "DESCRIPTION": "..."
+    },
+    "VALUES": {
+      "__COMMENTS": "",
+      "TITLE": "Value",
+      "TITLES": "Values",
+      "DESCRIPTION": "..."
+    },
+    "VALIDATION": {
+      "__COMMENTS": "",
+      "TITLE": "Validation",
+      "TITLES": "Validations",
+      "DESCRIPTION": "...",
+      "REQUIRED": "Required.",
+      "TOO_SHORT": "Too short",
+      "TOO_LONG": "Too long",
+      "TOO_SIMPLE": "Too simple",
+      "TOO_LITTLE": "Too little",
+      "TOO_MUCH": "Too much",
+      "INCORRECT_FORMAT": "Incorrect format"
+    },
+    "WELCOME": {
+      "__COMMENTS": "Authenticated users home page. See DASHBOARD.",
+      "TITLE": "Welcome",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "WORK": {
+      "__COMMENTS": "Investment into changing STATUS of Resources and Records to deliver OUTCOMES.",
+      "TITLE": "Work",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "EFFORT": "Effort",
+      "SKILL": "Skill",
+      "ASSESSMENT": "Assessment",
+      "PROGRESS": "Progress",
+      "IMPROVEMENT": "Improvement"
+    },
+    "MISC": {
+      "__COMMENTS": "",
+      "TITLE": "Misc",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "PAC": "Patterns arts &amp; culture",
+      "DISCOVER_ITEMS": "Discover Items",
+      "HOW_TO_SETUP": "How to Setup",
+      "UNLOCK_INSTRUCTIONS": "Enter your password to unlock the screen!",
+      "LOCK_SCREEN_TITLE": "Lock Screen",
+      "NOT_YOU?": "Not you?",
+      "WAIT_I_REMEMBER_MY_PASSWORD": "Wait, I remember my password...",
+      "ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS": "Enter your email and instructions will be sent to you!",
+      "SEND_EMAILED_INSTRUCTIONS": "Send Reset Link",
+      "SUCCESS": "Success!",
+      "SUCCESS_DESCRIPTION": "That was a small successs :-)",
+      "ALREADY_HAVE_AN_ACCOUNT?": "Already have an account?",
+      "PLEASE_ENTER_THE_CODE_SENT_TO": "Please enter the 4 digit code sent to",
+      "DIDNT_RECEIVE_CODE?": "Didn't receive a code?",
+      "CHECK_YOUR_EMAIL": "Check your Email"
+    }
+  },
+  "APPS": {
+    "__COMMENTS": "",
+    "TITLE": "App",
+    "TITLES": "Apps",
+    "DESCRIPTION": "...",
+    "SPIKE": {
+      "TITLE": "Spike",
+      "DESCRIPTION": "...",
       "AREAS": {
-        "FRAME": {
-          "FORMAT": {
-            "TITLE": "Layouts",
-            "DESCRIPTION": "...",
-            "OPTIONS": {
-              "HORIZONTAL": "Horizontal",
-              "DETACHED": "Detached",
-              "TWOCOLUMN": "Two Column",
-              "HOVERED": "Hovered"
-            }
-          },
-          "CONTEXT": {
-            "_COMMENTS": "Layout frame area for showing context of system, tenancy, account at top, navigation, footer for status",
-            "TITLE": "Contex",
-            "DESCRIPTION": "...",
-            "SYSTEM": {
-              "TITLE": "System",
-              "DESCRIPTION": "..."
-            },
-            "TENANCY": {
-              "TITLE": "Tenancy",
-              "DESCRIPTION": "..."
-            },
-            "NAVIGATION": {
-              "_COMMENTS": "Labels for menu area",
-              "TITLE": "Navigation",
-              "DESCRIPTION": "..."
-            },
-            "USER": {
-              "_COMMENTS": "Labels for user area",
-              "TITLE": "User",
-              "DESCRIPTION": "...",
-              "WELCOME": "Hi",
-              "PROFILE": "Profile",
-              "MESSAGES": "Messages",
-              "TASKS": "Tasks",
-              "HELP": "Help",
-              "SETTINGS": "Settings",
-              "NOTIFICATIONS": {
-                "NEW": "New",
-                "ALL": "All"
-              }
-            }
-          },
-          "STATUS": {
-            "_COMMENTS": "For Status area of frame, if any.",
-            "TITLE": "Status",
-            "DESCRIPTION": "...",
-            "PENDING": "Pending",
-            "LOST": "Lost",
-            "ABANDONED": "Abandoned",
-            "CLOSED": "Closed"
-          },
-          "CONTENT": {
-            "_COMMENTS": "For Main content area of frame, if any. Probably nothing ever.",
-            "TITLE": "Content",
-            "DESCRIPTION": "..."
-          }
-        },
-        "TODO": {
-          "STARTER": "Starter",
-          "PROFILE": "Profile",
-          "SIMPLEPAGE": "Simple Page",
-          "SETTINGS": "Settings",
-          "TEAM": "Team",
-          "TIMELINE": "Timeline",
-          "MAINTENANCE": "Maintenance",
-          "COMINGSOON": "Coming Soon",
-          "SITEMAP": "Sitemap",
-          "SEARCHRESULTS": "Search Results"
-        },
-        "INFORMATION": {
-          "MENU": {
-            "TITLE": "Information",
-            "DESCRIPTION": "..."
-          },
-          "PRIVACY_POLICY": {
-            "MENU": {
-              "TITLE": "Privacy Policy"
-            }
-          },
-          "TERMS_AND_CONDITIONS": {
-            "MENU": {
-              "TITLE": "Terms & Conditions"
-            }
-          },
-          "FAQS": {
-            "MENU": {
-              "TITLE": "FAQs"
-            }
-          },
-          "CORRECTIONS": {
-            "MENU": {
-              "TITLE": "Corrections"
-            }
-          },
-          "SUPPORT": {
-            "MENU": {
-              "TITLE": "Support"
-            }
-          },
-          "PRICING": {
-            "MENU": {
-              "TITLE": "Pricing"
-            }
-          },
-          "GALLERY": {
-            "MENU": {
-              "TITLE": "Gallery"
-            }
-          }
-        },
-        "LANDING": {
-          "_COMMENTS": "Publicly accessible full size landing pages.",
-          "TITLE": "Landing",
-          "DESCRIPTION": "...",
-          "OPTIONS": {
-            "ONEPAGE": "One Page",
-            "JOB": "Job"
-          }
-        },
-        "DASHBOARD": {
-          "MENU": {
-            "TITLE": "Dashboard",
-            "DESCRIPTION": "..."
-          }
-          },
-        "SEARCH": {
-          "MENU": {
-            "TITLE": "Search",
-            "DESCRIPTION": "..."
-          }
-        },
-        "SETTINGS": {
-          "MENU": {
-            "TITLE": "Settings",
-            "DESCRIPTION": "..."
-          },
-          "SYSTEM": {
-            "MENU": {
-              "TITLE": "System",
-              "DESCRIPTION": "..."
-            }
-          },
-          "TENANCY": {
-            "MENU": {
-              "TITLE": "Tenancy",
-              "DESCRIPTION": "..."
-            }
-          },
-          "GROUP": {
-            "MENU": {
-              "TITLE": "Group",
-              "DESCRIPTION": "..."
-            }
-          },
-          "USER": {
-            "MENU": {
-              "TITLE": "User",
-              "DESCRIPTION": "..."
-            }
-          }
-      }
+        "SPIKE": "Spike",
+        "SUBSPIKE": "Subspikes"
       }
     },
-    "APPLETS": {
-      "MENU": {
-        "TITLE": "Apps",
-        "DESCRIPTON": "Hosted Applications"
-      },
-      "SPIKE": {
-        "MENU": {
-          "TITLE": "Spikes",
-          "DESCRIPTION": "..."
-        }
-      },
-      "TEMPLATE": {
-        "MENU": {
-          "TITLE": "Templates",
-          "DESCRIPTION": "..."
-        }
-      },
-      "DEMO": {
-        "MENU": {
-          "TITLE": "Demos",
-          "DESCRIPTION": "..."
-        }
-      },
-      "ARCHITECTURE": {
-        "MENU": {
-          "TITLE": "Architecture",
-          "DESCRIPTION": "..."
-        },
-        "MODULES": {
-          "VALUES": {
-            "MENU": {
-              "TITLE": "Values",
-              "DESCRIPTION": "..."
-            }
-          },
-          "PRINCIPLES": {
-            "MENU": {
-              "TITLE": "Principles",
-              "DESCRIPTION": "..."
-            }
-          },
-          "QUALITIES": {
-            "MENU": {
-              "TITLE": "Qualities",
-              "DESCRIPTION": "..."
-            }
-          },
-          "PATTERNS": {
-            "MENU": {
-              "TITLE": "Patterns",
-              "DESCRIPTION": "..."
-            }
-          }
-        }
-      },
-      "PRODUCTS": {
-        "MENU": {
-          "TITLE": "Products",
-          "DESCRIPTION": "..."
-        }
-      },
-      "PEOPLE": {
-        "MENU": {
-          "TITLE": "People",
-          "DESCRIPTION": "..."
-        }
-      },
-      "PLACES": {
-        "MENU": {
-          "TITLE": "Places",
-          "DESCRIPTION": "..."
-        }
-      },
-      "PARTICIPATION": {
-        "MENU": {
-          "TITLE": "Participation",
-          "DESCRIPTION": "..."
-        }
-      },
-      "PROGRESS": {
-        "MENU": {
-          "TITLE": "Progress",
-          "DESCRIPTION": "..."
-        }
-      },
-      "ACCOMPLISHMENTS": {
-        "MENU": {
-          "TITLE": "Accomplisments",
-          "DESCRIPTION": "..."
-        }
-      }
+    "ARCHITECTURE": {
+      "TITLE": "Architecture",
+      "DESCRIPTION": "..."
     }
   }
 }

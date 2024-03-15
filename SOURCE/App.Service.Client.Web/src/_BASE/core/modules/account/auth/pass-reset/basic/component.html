@@ -33,8 +33,8 @@
 
                         <div class="card-body p-4">
                             <div class="text-center mt-2">
-                              <h5 class="text-primary">{{'BASE.SHARED.ACTIONS.FORGOT?'}}</h5>
-                              <p class="text-muted">{{'BASE.SHARED.AUTHENTICATION.TASK.PASSWORD_RESET_INSTRUCTIONS'}}</p>
+                              <h5 class="text-primary">{{'BASE.ACTIONS.FORGOT?'}}</h5>
+                              <p class="text-muted">{{'BASE.AUTHENTICATION.TASK.PASSWORD_RESET_INSTRUCTIONS'}}</p>
                                 <lord-icon src="https://cdn.lordicon.com/rhvddzym.json"
                                            trigger="loop"
                                            colors="primary:#00bd9d"
@@ -44,7 +44,7 @@
 
                             <div class="alert border-2 bg-body-secondary alert-warning text-center mb-2 mx-2"
                                  role="alert">
-                              {{'BASE.SHARED.MISC.ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS'|translate}}
+                              {{'BASE.MISC.ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS'|translate}}
                             </div>
                             <div class="p-2">
                                 <form [formGroup]="passresetForm" (ngSubmit)="onSubmit()">
@@ -52,18 +52,18 @@
                                         <label class="form-label">Email</label>
                                         <input type="email" class="form-control"
                                                id="email"
-                                               placeholder="{{'BASE.SHARED.AUTHENTICATION.EMAIL_PLACEHOLDER' | translate}}"
+                                               placeholder="{{'BASE.AUTHENTICATION.EMAIL_PLACEHOLDER' | translate}}"
                                                formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
                                         @if(submitted && f['email'].errors){
                                         <div class="invalid-feedback" align="left">
                                             @if(f['email'].errors['required']){
-                                          <div>{{'BASE.SHARED.AUTHENTICATION.EMAIL_ERROR_01' | translate}}</div>}
+                                          <div>{{'BASE.AUTHENTICATION.EMAIL_ERROR_01' | translate}}</div>}
                                         </div>}
                                     </div>
 
                                     <div class="text-center mt-4">
                                       <button class="btn btn-success w-100" type="submit">
-                                        {{'BASE.SHARED.MISC.SEND_EMAILED_INSTRUCTIONS' | translate}}
+                                        {{'BASE.MISC.SEND_EMAILED_INSTRUCTIONS' | translate}}
                                         
                                       </button>
                                     </div>
@@ -76,10 +76,10 @@
 
                     <div class="mt-4 text-center">
                       <p class="mb-0">
-                        {{'BASE.SHARED.MISC.WAIT_I_REMEMBER_MY_PASSWORD'|translate}}
+                        {{'BASE.MISC.WAIT_I_REMEMBER_MY_PASSWORD'|translate}}
                         <a routerLink="/auth/signin/basic"
                            class="fw-semibold text-primary text-decoration-underline">
-                          {{'BASE.SHARED.ACTIONS.SIGN_IN'|translate}}
+                          {{'BASE.ACTIONS.SIGN_IN'|translate}}
                         </a>
                       </p>
                     </div>
@@ -101,7 +101,7 @@
                       <p class="mb-0 text-muted">
                         {{year}} © {{system?.title || ''}}
                         -
-                        {{'BASE.SHARED.CREDITS.DEVELOPED_BY' | translate }}
+                        {{'BASE.CREDITS.DEVELOPED_BY_' | translate }}
                         {{system?.developer?.title || 'Undefined, Inc.'}}
                       </p>
                     </div>

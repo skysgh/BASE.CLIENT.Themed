@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemService } from '../../../../../_BASE/shared/services/system.service';
 
-import { System } from '../../../../../_BASE/shared/models/settings/system';
+import { System } from '../../../../../_BASE/shared/constants/contracts/system';
 
 @Component({
   selector: 'app-progress',
@@ -11,6 +11,8 @@ import { System } from '../../../../../_BASE/shared/models/settings/system';
 export class ProgressComponent implements OnInit {
   system: System;
   constructor(systemService: SystemService) {
+
+    // Can be either via service, or injecting the constats/settings object:
     this.system = systemService.system;
   }
 

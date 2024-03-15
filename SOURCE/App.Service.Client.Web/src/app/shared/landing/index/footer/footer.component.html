@@ -31,11 +31,10 @@
                         <h5 class="text-white mb-0">Apps Pages</h5>
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
-                                <li><a href="/pages/pricing">Calendar</a></li>
-                                <li><a href="/mailbox">Mailbox</a></li>
+                                <li><a href="/pages/pricing">{{system.navigation.scheduling}}</a></li>
+                                <li><a href="/{{system.navigation.messages}}">Mailbox</a></li>
                                 <li><a href="/chat">Chat</a></li>
-                                <li><a href="/crm/deals">Deals</a></li>
-                                <li><a href="/apps/tasks">Tasks</a></li>
+                                <li><a href="{{system.navigation.tasks}}">Tasks</a></li>
                             </ul>
                         </div>
                     </div>
@@ -43,8 +42,8 @@
                         <h5 class="text-white mb-0">Support</h5>
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
-                                <li><a href="/pages/faqs">FAQ</a></li>
-                                <li><a href="/pages/faqs">Contact</a></li>
+                                <li><a href="{{system.navigation.public.faq}}">FAQ</a></li>
+                                <li><a href="{{system.navigation.public.contactUs}}">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -59,7 +58,7 @@
                 <div>
                   <p class="copy-rights mb-0">
                     {{year}} © {{system.title || ''}} -
-                    {{'BASE.SHARED.CREDITS.DEVELOPED_BY' | translate }}
+                    {{'BASE.CREDITS.DEVELOPED_BY_' | translate }}
                     {{system.developer.title || 'Undefined, Inc.'}}
                   </p>
                 </div>

@@ -1,12 +1,20 @@
+import { IHasBinaryState } from "../contracts/IHasBinaryState";
+import { IHasEnabled } from "../contracts/IHasEnabled";
+import { IHasImageId } from "../contracts/IHasImageId";
+import { IHasTitleAndDescription } from "../contracts/IHasTitleAndDescription";
+import { IHasTypeFK } from "../contracts/IHasTypeFK";
+import { IHasUUID } from "../contracts/IHasUUID";
 import { ReferenceDataBase } from "./base/ReferenceDataBase";
 
-/***
- * Model for Notifications
- * rendered at least in the layout frame's topbar.
- */
-export class Notification extends ReferenceDataBase {
+export class SystemNotification
+  extends ReferenceDataBase
+  implements IHasUUID, IHasEnabled, IHasTypeFK, IHasBinaryState, IHasImageId, IHasTitleAndDescription {
   // has id, title, description
-  public typeFK: any; //ref of NotificationType
+
+  public typeFK: any; //ref of MessageType
+
+  public state: boolean = true;
+
   /**
    * Foreign Key to the sender user's FK.
    */
@@ -16,18 +24,9 @@ export class Notification extends ReferenceDataBase {
    */
   public receiverFK: any;
   /**
-   * The name of the class for rendering an icon beside
-   * the message.
-   */
-  public iconLibId?: string;
-  /**
    * TODO: consider that over time more icon libs may
    * be added, requiring multiple iconLibs.
    */
-  public iconClassId?: string;
-  /**
-   * The name of the class for rendering an icon beside
-   * the message.
-   */
-  public userImageId?: string;
+  public imageId: string = "";
+
 }

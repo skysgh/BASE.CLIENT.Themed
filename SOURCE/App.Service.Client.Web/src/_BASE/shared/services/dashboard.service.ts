@@ -1,12 +1,24 @@
 // Import dependencies:
 import { Injectable } from '@angular/core';
-import { Stat } from '../models/stat.model';
+import { Stat } from '../models/data/stat.model';
+import { DiagnosticsTraceService } from './diagnostics.service';
+import { DashboardRepositoryService } from './repositories/dashboard.repositoryService';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
 
 // Injectable service to describe current environment
 export class DashboardService {
+
+  public constructor(
+    private diagnosticsTraceService: DiagnosticsTraceService,
+    private dashboardRepositoryService: DashboardRepositoryService) {
+
+    }
+
+  getSummaries() {
+    return this.summaries;
+  }
 
   public summaries: Stat[] = [
     {
@@ -61,9 +73,6 @@ export class DashboardService {
   ];
 
 
-  getSummaries() {
-    return this.summaries;
-  }
 }
 
 

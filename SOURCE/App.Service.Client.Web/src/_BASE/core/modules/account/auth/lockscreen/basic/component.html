@@ -35,11 +35,11 @@
                             <div class="text-center mt-2">
                                 <h5 class="text-primary">Lock Screen</h5>
                                 <p class="text-muted">
-                                  {{'BASE.SHARED.MISC.UNLOCK_INSTRUCTIONS'|translate}}
+                                  {{'BASE.MISC.UNLOCK_INSTRUCTIONS'|translate}}
                                 </p>
                             </div>
                             <div class="user-thumb text-center">
-                                <img src="{{system.parts.images.users}}avatar-1.jpg"
+                                <img src="{{system.sources.images.temp.users}}avatar-1.jpg"
                                      class="rounded-circle img-thumbnail avatar-lg" alt="thumbnail">
                                 <h5 class="mt-3">Anna Adame</h5>
                             </div>
@@ -47,19 +47,19 @@
                                 <form [formGroup]="lockscreenForm" (ngSubmit)="onSubmit()">
                                     <div class="mb-3">
                                         <label class="form-label" for="userpassword">
-                                      {{'BASE.SHARED.AUTHENTICATION.PASSWORD'|translate}}
+                                      {{'BASE.AUTHENTICATION.PASSWORD'|translate}}
                                         </label>
                                         <input type="password"
                                                class="form-control"
                                                id="userpassword"
-                                               placeholder="{{'BASE.SHARED.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
+                                               placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
                                                required
                                                formControlName="password"
                                                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                                         @if(submitted && f['password'].errors){
                                         <div class="invalid-feedback" align="left">
                                             @if(f['password'].errors['required']){
-                                          <div>{{'BASE.SHARED.AUTHENTICATION.PASSWORD_ERROR_01'|translate}}</div>
+                                          <div>{{'BASE.AUTHENTICATION.PASSWORD_ERROR_01'|translate}}</div>
                                             }
                                         </div>
                                         }
@@ -77,9 +77,9 @@
 
                     <div class="mt-4 text-center">
                       <p class="mb-0">
-                        {{'BASE.SHARED.MISC.NOT_YOU?'| translate}}
+                        {{'BASE.MISC.NOT_YOU?'| translate}}
                         <a routerLink="/auth/signin/basic" class="fw-semibold text-primary text-decoration-underline">
-                        {{'BASE.SHARED.ACTIONS.SIGN_IN'| translate}}
+                        {{'BASE.ACTIONS.SIGN_IN'| translate}}
                         </a>
                       </p>
                     </div>
@@ -101,7 +101,7 @@
                       <p class="mb-0 text-muted">
                         {{year}} © {{system.title || ''}}
                         -
-                        {{'BASE.SHARED.CREDITS.DEVELOPED_BY' | translate }}
+                        {{'BASE.CREDITS.DEVELOPED_BY_' | translate }}
                         {{system.developer.title || 'Undefined, Inc.'}}
                       </p>
                     </div>

@@ -308,6 +308,16 @@
   dependencies:
     tslib "^2.3.0"
 
+"@automapper/classes@^8.8.1":
+  version "8.8.1"
+  resolved "https://registry.npmjs.org/@automapper/classes/-/classes-8.8.1.tgz"
+  integrity sha512-qWP92Vz4z5zGWVXVkoGKmI9PIiAh8uhTBcKpKMmTVwmS1wfOQgj3ceD+A3mlC9ZUTohwvXebS3M30scLaUZmeg==
+
+"@automapper/core@^8.8.1":
+  version "8.8.1"
+  resolved "https://registry.npmjs.org/@automapper/core/-/core-8.8.1.tgz"
+  integrity sha512-VIRULNAImqaTojp8zqhVGVimjxjriawqZWlemooWh5B5tX2XlgA6icPrQBQh+M9wY8IVQipBTOcr338N9lf8RA==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.22.13", "@babel/code-frame@^7.23.4":
   version "7.23.4"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.23.4.tgz"
@@ -3333,6 +3343,11 @@
   integrity sha512-f0KEEe05NvUnat+boPTZ0dgaLZ4SfSouXUgv5noUiefG2ajgKjmETo9ZJyuqsl7dfl2aHlLJUiki6B4ZYldiiw==
   dependencies:
     "@types/node" "*"
+
+"@types/uuid@^9.0.8":
+  version "9.0.8"
+  resolved "https://registry.npmjs.org/@types/uuid/-/uuid-9.0.8.tgz"
+  integrity sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==
 
 "@types/ws@^8.5.5":
   version "8.5.5"
@@ -7568,9 +7583,14 @@ readdirp@~3.6.0:
     picomatch "^2.2.1"
 
 reflect-metadata@^0.1.2:
-  version "0.1.13"
-  resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.13.tgz"
-  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
+  version "0.1.14"
+  resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.14.tgz"
+  integrity sha512-ZhYeb6nRaXCfhnndflDK8qI6ZQ/YcWZCISRAWICW9XYqMUwjZM9Z0DveWX/ABN01oxSHwVxKQmxeYZSsm0jh5A==
+
+reflect-metadata@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.2.1.tgz"
+  integrity sha512-i5lLI6iw9AU3Uu4szRNPPEkomnkjRTaVt9hy/bn5g/oSzekBSMeLZblcjP74AW0vBabqERLLIrz+gR8QYR54Tw==
 
 regenerate-unicode-properties@^10.1.0:
   version "10.1.1"
@@ -8681,6 +8701,11 @@ uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.npmjs.org/uuid/-/uuid-9.0.1.tgz"
+  integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
 
 validate-npm-package-license@^3.0.4:
   version "3.0.4"

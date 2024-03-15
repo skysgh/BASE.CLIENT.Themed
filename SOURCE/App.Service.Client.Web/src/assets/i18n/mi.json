@@ -1,0 +1,1605 @@
+{
+  "BASE": {
+    "ACCESS_LEVELS": {
+      "__COMMENTS": "Tirohia hoki nga ROLES me nga COMMERCE/ROLES.",
+      "TITLE": "Tapa Whakauru",
+      "TITLES": "Ngā Taumahi Whakauru",
+      "DESCRIPTION": "...",
+      "ENDORSING": "Whakapae",
+      "ACCOUNTABLE": "Whakaraupapa",
+      "APPROVING": "Whakaaetia",
+      "MANAGING": "Whakahaere",
+      "RESPONSIBLE": "Whakarite",
+      "CONSULTED": "Whaiwāhitia",
+      "INFORMED": "Whakamōhio",
+      "IGNORED": "Whakapūrea",
+      "EXCLUDED": "Whakakore"
+    },
+    "ACCOMPLISHMENTS": {
+      "__COMMENTS": "Tirohia hoki nga OBSERVATIONS, ASSESSMENTS, PROGRESS",
+      "TITLE": "Mahi Toa",
+      "TITLES": "Ngā Mahi Toa",
+      "DESCRIPTION": "..."
+    },
+    "ACTIONS": {
+      "ADD": "Tāpiri",
+      "APPLY": "Whakamahi",
+      "APPROVE": "Whakaaetia",
+      "BACK": "Hoki",
+      "CANCEL": "Whakakore",
+      "CHOOSE": "Kōwhiri",
+      "CHOOSE_INSTRUCTIONS": "Kōwhiria tētahi",
+      "CLOSE": "Katia",
+      "COMMENT": "Tohaina",
+      "CONFIRM": "Whakaū",
+      "DECLINE": "Whakakahore",
+      "DELETE": "Muku",
+      "DISABLE": "Whakakore",
+      "EDIT": "Whakatika",
+      "ENABLE": "Whakakā",
+      "ENDORSE": "Whakapae",
+      "GO": "Haere",
+      "GOTO": "Haere ki",
+      "INVITE": "Tono",
+      "LOCK": "Kati",
+      "LOGOUT": "Whakatika",
+      "NEW": "Hou",
+      "OK": "Tika",
+      "REFRESH": "Whakahou",
+      "RESEND": "Tukuna anō",
+      "RETURN": "Hoki",
+      "REMOVE": "Tango",
+      "REVERT": "Whakahoki",
+      "REVIEW": "Arotake",
+      "SAVE": "Tiaki",
+      "SEARCH": "Rapu",
+      "SELECT": "Tīpakohia",
+      "SEARCH_INSTRUCTIONS": "Rapuhia...",
+      "SEND": "Tukua",
+      "SIGN_UP": "Wānanga",
+      "SIGN_UP_DESCRIPTION": "Tīmata he kaute tuatahi mōu",
+      "SIGN_UP_WITH": "Wānanga Me",
+      "SIGN_IN": "Takiuru",
+      "SIGN_IN_WITH": "Takiuru Me",
+      "SIGN_BACK_IN": "Takiuru",
+      "SIGN OUT": "Whakatika",
+      "UNDO": "Wetewete",
+      "UNLOCK": "Whakatuwhera",
+      "UPDATE": "Whakahōu",
+      "VIEW": "Tiro",
+      "VIEW_ALL": "Tiro Whakamutunga Katoa"
+    },
+    "AGREEMENTS": {
+      "__COMMENTS": "Tirohia hoki nga CONTRACTS",
+      "TITLE": "Whakaaetanga",
+      "TITLES": "Ngā Whakaaetanga",
+      "DESCRIPTION": "...",
+      "TERMS_AND_CONDITIONS": "Ngā Āhuatanga me ngā Ture"
+    },
+    "ALERTS": {
+      "__COMMENTS": "Ko nga Alert o te Pūnaha. Tirohia nga NOTIFICATIONS me nga MESSAGES.",
+      "TITLE": "Tono",
+      "TITLES": "Ngā Tononga",
+      "DESCRIPTION": "...",
+      "ALL": "Katoa",
+      "READ": "Kua Pānuitia",
+      "UNREAD": "Kāore i te Pānuitia",
+      "NONE": "Kore",
+      "NO_NEW": "Kāore he Tono Hou"
+    },
+    "ANALYSIS": {
+      "__COMMENTS": "Tirohia hoki nga DIAGNOSTICS, REPORTS",
+      "TITLE": "Tātaritanga",
+      "TITLES": "Ngā Tātaritanga",
+      "DESCRIPTION": "..."
+    },
+    "APPOINTMENTS": {
+      "__COMMENTS": "Tirohia nga SCHEDULING, TASKS, PROJECTS areas.",
+      "TITLE": "Rārangi",
+      "TITLES": "Ngā Rārangi",
+      "DESCRIPTION": "..."
+    },
+    "APPRECIATIONS": {
+      "__COMMENTS": "Tirohia nga CREDITS, GREETINGS, DEPARTURES",
+      "TITLE": "Whakamihi",
+      "TITLES": "Ngā Whakamihi",
+      "DESCRIPTION": "...",
+      "THANKS": "Mihi",
+      "THANKS!": "Mihi!",
+      "THANK YOU": "Mihi ki a koe",
+      "THANK_YOU_FOR_USING_": "Mihi ki a koe mo te whakamahi_"
+    },
+    "APPS": {
+      "__COMMENTS": "",
+      "TITLE": "Tangata",
+      "TITLES": "Ngā Tangata",
+      "DESCRIPTION": "..."
+    },
+    "AREAS": {
+      "__COMMENTS": "",
+      "TITLE": "Rohe",
+      "TITLES": "Ngā Rohe",
+      "DESCRIPTION": "..."
+    },
+    "ARITHMETICS": {
+      "__COMMENTS": "Tirohia nga LOGIC.",
+      "TITLE": "Mahinga",
+      "TITLES": "Ngā Mahinga",
+      "DESCRIPTION": "...",
+      "ADD": "Tāpiri",
+      "ADDED": "Tāpiria",
+      "REMOVE": "Tango",
+      "REMOVED": "Tangohia",
+      "SUBTRACT": "Tango",
+      "SUBTRACT_FROM": "Tango i",
+      "SUBTRACTED": "Tangohia",
+      "SUBTRACTED_FROM": "Tangohia i",
+      "DIVIDER": "Hiri",
+      "DIVIDED_BY": "Hiritia e",
+      "MULTIPLIER": "Tātaitanga",
+      "MULTIPLIED_BY": "Hiritia e"
+    },
+    "ASSESSMENTS": {
+      "__COMMENTS": ".Tirohia nga OBSERVATIONS, PROGRESS, ACCOMPLISHMENTS",
+      "TITLE": "Arotake",
+      "TITLES": "Ngā Arotake",
+      "DESCRIPTION": "..."
+    },
+    "ASSISTANCE": {
+      "__COMMENTS": "Tirohia HELP me SUPPORT",
+      "TITLE": "Awhina",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "AUTHENTICATION": {
+      "__COMMENTS": "",
+      "TITLE": "Whakamana",
+      "TITLES": "Ngā Whakamanatanga",
+      "DESCRIPTION": "...",
+      "BY_REGISTERING": "Mā te rēhita, ka whakaae koe ki te",
+      "TASK": {
+        "BASIC": "Pūkete",
+        "COVER": "Whakaoti",
+        "SIGNIN": "Takiuru",
+        "SIGNUP": "Rēhita",
+        "PASSWORDRESET": "Uru i te Kupuhipa",
+        "PASSWORD_RESET_INSTRUCTIONS": "Uru i tō kupuhipa",
+        "PASSWORDCREATE": "Waihanga Kupuhipa",
+        "LOCKSCREEN": "Hiki Pōtitanga",
+        "LOGOUT": "Whakatika",
+        "SUCCESSMESSAGE": "Āhua Rangatira",
+        "TWOSTEPVERIFICATION": "Tūmatawhakarite Tuarua"
+      },
+      "USERNAME": "Ingoa Kaiwhakamahi",
+      "USERNAME_INSTRUCTIONS": "Tāuru i tō ingoa kaiwhakamahi",
+      "USERNAME_PLACEHOLDER": "Tāuru i tō ingoa kaiwhakamahi",
+      "USERNAME_ERROR_01": "Me whai ingoa kaiwhakamahi",
+      "USERNAME_ERROR_02": "Te āhua o te ingoa kaiwhakamahi kāore i te mōhio",
+      "EMAIL": "Īmēra",
+      "EMAIL_INSTRUCTIONS": "Tāuru i tētahi wāhitau īmēra",
+      "EMAIL_PLACEHOLDER": "Tāuru i tētahi wāhitau īmēra",
+      "EMAIL_ERROR_01": "Me whai īmēra",
+      "EMAIL_ERROR_02": "Te īmēra kāore i te āhua mōhio",
+      "EMAIL_CONFIRMATION": "Tāpiritanga īmēra",
+      "EMAIL_CONFIRMATION_INSTRUCTIONS": "Tāpiritanga īmēra",
+      "EMAIL_CONFIRMATION_PLACEHOLDER": "Tāuru i tētahi wāhitau īmēra",
+      "EMAIL_CONFIRMATION_ERROR_01": "Me whai īmēra",
+      "EMAIL_CONFIRMATION_ERROR_02": "Te īmēra kāore i te āhua mōhio",
+      "PASSWORD": "Kupuhipa",
+      "PASSWORD_INSTRUCTIONS": "Tāuru i tō kupuhipa",
+      "PASSWORD_PLACEHOLDER": "Tāuru i tō kupuhipa",
+      "PASSWORD_ERROR_01": "Me whai kupuhipa",
+      "PASSWORD_ERROR_02": "Me whai kupuhipa nā runga i te tūpono.",
+      "PASSWORD_ERROR_02_DETAILS": "Ahakoa 8 ngā pū, etc.",
+      "PASSWORD_CONFIRMATION": "Kupuhipa",
+      "PASSWORD_CONFIRMATION_INSTRUCTIONS": "Tāuru i tō kupuhipa anō",
+      "PASSWORD_CONFIRMATION_PLACEHOLDER": "Tāuru i tō kupuhipa anō",
+      "PASSWORD_CONFIRMATION_ERROR_01": "Me whai kupuhipa",
+      "PASSWORD_CONFIRMATION_ERROR_02": "Me whai kupuhipa nā runga i te tūpono.",
+      "PASSWORD_CONFIRMATION_ERROR_02_DETAILS": "Ahakoa 8 ngā pū, etc.",
+      "FORGOT?": "Kua ware?",
+      "REMEMBER_ME?": "Māku e mahara?",
+      "REMEMBER_ME_INSTRUCTIONS": "(I ngā wāhi, he maha, ahakoa te kati i te kaipāruru)",
+      "DONT_HAVE_AN_ACCOUNT?": "E kore koe e whai kaute anō?"
+    },
+    "CALENDER": {
+      "__COMMENTS": "Ēngari āwangawanga. Kia whiriwhiria te whakamahi i ngā APPOINTMENTS.",
+      "TITLE": "Maramataka",
+      "TITLES": "Ngā Maramataka",
+      "DESCRIPTION": "..."
+    },
+    "CHANNELS": {
+      "__COMMENTS": "",
+      "TITLE": "Kanohi",
+      "TITLES": "Ngā Kanohi",
+      "DESCRIPTION": "Nga ara whakawhiti kōrero",
+      "POSTAL": {
+        "TITLE": "Wāhitau Pōhi"
+      },
+      "EMAIL": {
+        "TITLE": "Wāhitau Īmēra"
+      },
+      "PHONE": {
+        "TITLE": "Nama Waea",
+        "OPTIONS": {
+          "GENERAL": "Waea",
+          "MOBILE": "Waea Pūkoro",
+          "FAX": "Waea Whakaatu"
+        }
+      },
+      "SOCIAL": {
+        "TITLE": "Hapori",
+        "X": "Whakatakoto",
+        "MASTADON": "Wāhitau"
+      }
+    },
+    "CHAT": {
+      "__COMMENTS": "TĪMATATANGA: Whakamāngere. He maha atu atu atu o ngā taputapu mō tēnei. Tirohia ngā Āheinga MESSAGES.",
+      "TITLE": "Kōrero",
+      "TITLES": "Ngā Kōrero",
+      "DESCRIPTION": "Kōrero ā-mahi wātea i waenga i ngā kaiwhakamahi pūnaha."
+    },
+    "COLOURS": {
+      "__COMMENTS": "Tirohia nga HUES.",
+      "TITLE": "Tae",
+      "TITLES": "Ngā Tae",
+      "DESCRIPTION": "...",
+      "BLACK": "Mangu",
+      "RED": "Whero",
+      "ORANGE": "Karaka",
+      "YELLOW": "Kōwhai",
+      "GREEN": "Kākāriki",
+      "MAGENTA": "Māgenta",
+      "BLUE": "Kikorangi",
+      "INDIGO": "Tawhiti",
+      "VIOLET": "Purapura",
+      "GREY": "Kiwikiwi",
+      "WHITE": "Mā"
+    },
+    "COMING_SOON": {
+      "TITLE": "Tāpiri Tērā",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Kei te mahi ngā hua hou e ..."
+    },
+    "COMMERCE": {
+      "__COMMENTS": "Tirohia nga FINANCE",
+      "TITLE": "Hokohoko",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "PRODUCTS": "Hua",
+      "ORDERS": "Tohutoro",
+      "ROLES": {
+        "__COMMENTS": "Ngā rōpu e hāngai ana ki te Hokohoko. Tirohia nga ACESSLEVELS.",
+        "SUPPLIER": "Kaihoahoa",
+        "SUPPLIERS": "Ngā Kaihoahoa",
+        "VENDOR": "Kaituku",
+        "VENDORS": "Ngā Kaituku",
+        "BROKER": "Kaihokohoko",
+        "BROKERS": "Ngā Kaihokohoko",
+        "PROCURER": "Kaiwhiwhi",
+        "PROCURERS": "Ngā Kaiwhiwhi",
+        "SPONSOR": "Kaitiaki",
+        "SPONSORS": "Ngā Kaitiaki",
+        "SELLERS": "Ngā Kaituku",
+        "CUSTOMERS": "Ngā Kiritaki",
+        "CLIENTS": "Ngā Kiritaki"
+      },
+      "SALES": {
+        "LEAD": "Tohu",
+        "FORCAST": "Whakaata",
+        "CONVERSION": "Whakawhiti",
+        "AMOUNT": "Moni",
+        "CREDIT": "Moni Putea",
+        "BALANCE": "Uara",
+        "PURCHASE_ORDER": "Tohutoro Hoko",
+        "INVOICE": "Pukapuka utu",
+        "BILL": "Pukapuka utu",
+        "RECEIPT": "Pukapuka whiwhi",
+        "SALES RECEIPT": "Pukapuka Whiwhi",
+        "TRANSACTION": "Mahinga",
+        "REFUND": "Hurihia"
+      },
+      "TRANSACTIONS": {
+        "__COMMENTS": "Momoi rerekē o ngā Mahi",
+        "TITLE": "Mahinga",
+        "TITLES": "Ngā Mahinga",
+        "DESCRIPTION": "...",
+        "GIFT": "Tino",
+        "TRIAL": "Whakamātau",
+        "SUBSCRIPTION": "Pito",
+        "LEASE": "Tiritahi",
+        "SALE": "Hoko"
+      }
+    },
+    "COMMERCE2": {
+      "__COMMENTS": "",
+      "TITLE": "Hokohoko",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "PRODUCTS": "Hua",
+      "PRODUCT_DETAILS": "Taipitopito Hua",
+      "CREATE_PRODUCT": "Hangahanga Hua",
+      "ORDERS": "Tohutoro",
+      "ORDER_DETAILS": "Taipitopito Tohutoro",
+      "SELLERS": "Ngā Kaituku",
+      "SELLER_DETAILS": "Taipitopito Kaituku",
+      "CUSTOMERS": "Ngā Kiritaki",
+      "CUSTOMER_DETAILS": "Taipitopito Kiritaki",
+      "CLIENTS": "Ngā Kiritaki",
+      "CLIENT_DETAILS": "Taipitopito Kiritaki"
+    },
+    "CONFIRMATIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Whakakī",
+      "TITLES": "Ngā Whakakī",
+      "DESCRIPTION": "Whakakī, tēnā whakauru",
+      "INSTRUCTIONS": "Tēnā whakakī i mua i te haere tonu"
+    },
+    "CONNECTIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Hononga",
+      "TITLES": "Ngā Hononga",
+      "DESCRIPTION": "...",
+      "ATTACHED": "Kua hono",
+      "DETACHED": "Kua wehea"
+    },
+    "CONTENTS": {
+      "__COMMENTS": "Ka whakamahia hei whakaatu i ngā Karere - kore, etc.",
+      "TITLE": "Mea",
+      "TITLES": "Ngā Mea",
+      "DESCRIPTION": "...",
+      "EMPTY": "Kore",
+      "NEARLY_EMPTY": "Tata ki te kore",
+      "HALF_EMPTY": "Nua kore",
+      "HALF_FULL": "Nua pai",
+      "NEARLY_FULL": "Tata ki te pai",
+      "FULL": "Pai"
+    },
+    "CONTEXT": {
+      "__COMMENTS": "Ka whakaaturia tonutia hei wāhi o te Taupā. Tirohia te TĀHAUNGA STATUS. Tirohia hoki ngā TAHAUNGA, WAHI.",
+      "TITLE": "Tūāhua",
+      "TITLES": "Ngā Tūāhua",
+      "DESCRIPTION": "Tūāhua o nāianei: kaiwhakamahi, kaute, pūnaha."
+    },
+    "CONTRACTS": {
+      "__COMMENTS": "Tirohia hoki ngā AGREEMENTS me ngā DISCLOSURES.",
+      "TITLE": "Tiriti",
+      "TITLES": "Ngā Tiriti",
+      "DESCRIPTION": "...",
+      "SALES_CONTRACT": "Tiriti Hoko",
+      "SUBSCRIPTION": "Pito"
+    },
+    "COPYRIGHT": {
+      "__COMMENTS": "",
+      "TITLE": "Tikanga Ōranga",
+      "TITLES": "Ngā Tikanga Ōranga",
+      "DESCRIPTION": "..."
+    },
+    "COPYRIGHT_STATEMENTS": {
+      "__COMMENTS": "",
+      "TITLE": "Whakapuaki Tikanga Ōranga",
+      "TITLES": "Ngā Whakapuaki Tikanga Ōranga",
+      "DESCRIPTION": "..."
+    },
+    "CORRECTIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Whakatika",
+      "TITLES": "Ngā Whakatika",
+      "DESCRIPTION": "..."
+    },
+    "CREDITS": {
+      "__COMMENTS": "Tirohia ngā APPRCIATIONS, GREETINGS, DEPARTURES",
+      "TITLE": "Whiwhinga",
+      "TITLES": "Ngā Whiwhinga",
+      "DESCRIPTION": "...",
+      "SPONSORED_BY_": "Kua waihangahia e",
+      "DISTRIBUTED_BY_": "Kua waihanga e",
+      "DEVELOPED_BY_": "Kua whanake e",
+      "MADE_BY_": "Kua hangaia e",
+      "USED_BY_": "Kua whakamahia e",
+      "LOVED_BY_": "Kua arohaia e"
+    },
+    "DASHBOARDS": {
+      "__COMMENTS": "",
+      "TITLE": "Papa Whakaaturanga",
+      "TITLES": "Ngā Papa Whakaaturanga",
+      "DESCRIPTION": "..."
+    },
+    "DATA_POLICY": {
+      "__COMMENTS": "",
+      "TITLE": "Kaupapa Raraunga",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "DAY": {
+      "__COMMENTS": "",
+      "TITLE": "Rā",
+      "TITLES": "Ngā Rā",
+      "DESCRIPTION": "...",
+      "MONDAY": "Rāhina",
+      "TUESDAY": "Rātū",
+      "WEDNESDAY": "Rāapa",
+      "THURSDAY": "Rāpare",
+      "FRIDAY": "Rāmere",
+      "SATURDAY": "Rāhoroi",
+      "SUNDAY": "Rātapu"
+    },
+    "DEMO": {
+      "__COMMENTS": "",
+      "TITLE": "Whakaaturanga",
+      "TITLES": "Ngā Whakaaturanga",
+      "DESCRIPTION": "..."
+    },
+    "DEPARTURES": {
+      "__COMMENTS": "Tirohia nga GREETINGS",
+      "TITLE": "Haerenga",
+      "TITLES": "Ngā Haerenga",
+      "DESCRIPTION": "...",
+      "BYE": "Haere rā",
+      "BYE!": "Haere rā!",
+      "GOODBYE": "E noho rā",
+      "GOODBYE!": "E noho rā!",
+      "SEE_YOU_AGAIN_SOON": "Ka kite anō"
+    },
+    "DIAGNOSTICS": {
+      "__COMMENTS": "Tirohia hoki ANALYSIS, REPORTS",
+      "TITLE": "Whakawhiti",
+      "TITLES": "Ngā Whakawhiti",
+      "DESCRIPTION": "..."
+    },
+    "DIRECTIONS": {
+      "__COMMENTS": "Tirohia hoki POSITIONS.",
+      "TITLE": "Aronga",
+      "TITLES": "Ngā Aronga",
+      "DESCRIPTION": "...",
+      "UP": "Runga",
+      "DOWN": "Raro",
+      "LEFT": "Maui",
+      "RIGHT": "Matau"
+    },
+    "DISCLOSURES": {
+      "__COMMENTS": "Tirohia AGREEMENTS me ngā CONTRACTS.",
+      "TITLE": "Whakapuaki",
+      "TITLES": "Ngā Whakapuaki",
+      "DESCRIPTION": "...",
+      "PRIVACY_POLICIES": "Kaupapa Whakarārangi",
+      "DATA_USE": "Whakamahi Raraunga",
+      "TRACKING": "Tātari"
+    },
+    "DOMAINS": {
+      "__COMMENTS": "Ngā kupu e pā ana ki ngā Raraunga Tūmataiti.",
+      "TITLE": "Whenua",
+      "TITLES": "Ngā Whenua",
+      "DESCRIPTION": "...",
+      "EDUCATION": {
+        "__COMMENTS": "Ngā kupu e pā ana ki te Whenua o te Mātauranga.",
+        "PEOPLE": {
+          "PRINCIPAL": "Tumuaki",
+          "TEACHER": "Kaiako",
+          "ASSISTANT_TEACHER": "Kaiako Tautoko",
+          "NURSE": "Nāhi"
+        },
+        "PLACES": {
+          "COL": "Kura Tūroa",
+          "Community of Schools": "Hapori o ngā Kura",
+          "SCHOOL": "Kura",
+          "CLASSROOM": "Ruma Akoranga",
+          "LEARNER": "Mātauranga",
+          "STUDENT": "Tauira",
+          "EARLY LEARNING": "Akoranga Mua"
+        },
+        "ACTIONS": {
+          "LEAD": "Arataki",
+          "ADMINISTER": "Whakahaere",
+          "TEACH": "Whakaako",
+          "STUDY": "Ako"
+        }
+      },
+      "GOVERNMENT": {
+        "__COMMENTS": "",
+        "TITLE": "Kāwanatanga",
+        "TITLES": "Ngā Kāwanatanga",
+        "DESCRIPTION": "...",
+        "ENTITIES": {
+          "BILL": "Pire",
+          "LAW": "Ture",
+          "REGULATION": "Ture Tapuhi",
+          "BYLAW": "Ture Kaupapa",
+          "ABATEMENT": "Whakamutunga"
+        },
+        "ACTIONS": {
+          "PROPOSE": "Tautoko",
+          "ENACT": "Whakatinana",
+          "PASS": "Waiho",
+          "RESCIND": "Whakakore"
+        }
+      }
+    },
+    "ENROLLMENT": {
+      "__COMMENTS": "Tirohia te WHAKAEKE, TOHUTOHU",
+      "TITLE": "Whakauru",
+      "TITLES": "Kāore",
+      "DESCRIPTION": "..."
+    },
+    "ENTITIES": {
+      "__COMMENTS": "Ko ngā whāinga matua o te hurihanga: TĀNGATA, WAHI, HĀORA, me ērā atu.",
+      "TITLE": "Taonga",
+      "TITLES": "Taonga",
+      "DESCRIPTION": "...",
+      "PRODUCT": "Mātai",
+      "PRODUCTS": "Ngā Mātai",
+      "PERSON": "Tangata",
+      "PEOPLE": "Ngā Tangata",
+      "PLACE": "Wāhi",
+      "PLACES": "Ngā Wāhi"
+    },
+    "ERRORS": {
+      "500": {
+        "TITLE": "Hapa Rawa Kaituku 500.",
+        "DESCRIPTION": "Kāore mātou i āhua mōhio ki te aha i puta ai, engari kei te whakapae ā mātou tūmau he hapa."
+      },
+      "__COMMENTS": "",
+      "TITLE": "Hapa",
+      "TITLES": "Ngā Hapa",
+      "DESCRIPTION": "...",
+      "OOPS!": "Oho!",
+      "SORRY": "Aroha mai",
+      "ERROR_500_DESCRIPTION": "Hapa Rawa Kaituku 500. Kāore mātou i āhua mōhio ki te aha i puta ai, engari kei te whakapae ā mātou tūmau he hapa.",
+      "PAGE_NOT_FOUND": "Kāore i kitea te Whārangi.",
+      "PAGE_NOT_AVAIABLE": "Kāore te Whārangi e wātea ana.",
+      "PAGE_NOT_DISPLAYABLE": "Kāore e taea te whakaatu i te Whārangi.",
+      "PAGE_NOT_FOUND_DESCRIPTION": "Kāore e kitea te whārangi e rapu ana koe!.",
+      "SORRY_PAGE_NOT_FOUND": "Aroha mai - kāore i kitea te whārangi.",
+      "WE_ARE_OFFLINE": "Koreutu",
+      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS": "Kāore e taea e mātou te whakaatu i ēnei ataahua nā te mea kāore koe e hono, e hono ana ki te ipurangi.",
+      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS2": "Āpiti atu ki te tīmata hōu",
+      "ERRORS": "Ngā Hapa",
+      "404BASIC": "404 Matua",
+      "404COVER": "404 Korowhā",
+      "404ALT": "404 Taha Kē",
+      "OFFLINE": "Whārangi Koreutu"
+    },
+    "EXAMPLES": {
+      "__COMMENTS": "",
+      "TITLE": "Tauira",
+      "TITLES": "Ngā Tauira",
+      "DESCRIPTION": "..."
+    },
+    "FAQS": {
+      "__COMMENTS": "",
+      "TITLE": "Pātai Anō",
+      "TITLES": "Ngā Pātai Anō",
+      "DESCRIPTION": "..."
+    },
+    "FINANCE": {
+      "_COMMMENTS": "Tirohia te HOKO.",
+      "TITLE": "Moni",
+      "TITLES": "Kāore",
+      "DESCRIPTION": "...",
+      "BALANCE": "Utunga",
+      "DEBIT": "Utunga",
+      "CREDIT": "Uara",
+      "TRANSFER": "Whakarerekē",
+      "DEBT": "Pūhara",
+      "INTEREST": "Rawa",
+      "PROFIT": "Kei",
+      "LOSS": "Rawa",
+      "CURRENT_POSITION": "Tūnga Ora"
+    },
+    "FLOW": {
+      "__COMMENTS": "Whai whakaaro ki te LAYOUT.",
+      "TITLE": "Haere",
+      "TITLES": "Haere",
+      "DESCRIPTION": "...",
+      "FLUID": "Waiaroha",
+      "BOXED": "Papa"
+    },
+    "GREETINGS": {
+      "__COMMENTS": "See APPRECIATIONS, DEPARTURES",
+      "TITLE": "Mihi",
+      "TITLES": "Mihi",
+      "DESCRIPTION": "...",
+      "HI": "Kia ora",
+      "HI_": "Kia ora",
+      "HI!": "Kia ora!",
+      "WELCOME": "Nau mai",
+      "WELCOME_": "Nau mai",
+      "WELCOME!": "Nau mai!",
+      "WELCOME_BACK": "Nau mai hoki",
+      "WELCOME_BACK_": "Nau mai hoki",
+      "WELCOME_BACK!": "Nau mai hoki!"
+    },
+    "GROUPS": {
+      "__COMMENTS": "Groups one belongs to.",
+      "TITLE": "Rōpū",
+      "TITLES": "Rōpū",
+      "DESCRIPTION": "..."
+    },
+    "HEADERS": {
+      "__COMMENTS": "",
+      "TITLE": "Pane",
+      "TITLES": "Pane",
+      "DESCRIPTION": "Whakamāramatanga",
+      "ENABLED": "Whakakāhā",
+      "DETAILS": "Taipitopito",
+      "VALUE": "Uara",
+      "ACTIONS": "Mahi"
+    },
+    "HELP": {
+      "__COMMENTS": "Compare with SUPPORT & ASSISTANCE (by others).",
+      "TITLE": "Āwhina",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Āwhina ake."
+    },
+    "HOME": {
+      "__COMMENTS": "",
+      "TITLE": "Kāinga",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...ko te wahi e noho ana te manawa."
+    },
+    "HUES": {
+      "__COMMENTS": "",
+      "TITLE": "Māro",
+      "TITLES": "Māro",
+      "DESCRIPTION": "...",
+      "DARK": "Tūtātahi",
+      "GRADIENT": "Pūtaiao",
+      "LIGHT": "Māmā"
+    },
+    "INFORMATION": {
+      "__COMMENTS": "Publicly accessible Pages (Pricing, FAQs, Policies, Terms, etc.). See INFORMATION and PAGES Area.",
+      "TITLE": "Mōhiohio",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Ngā whārangi mōhiohio e wātea ana ki te whānuitanga"
+    },
+    "INFRASTRUCTURE": {
+      "__COMMENTS": "",
+      "TITLE": "Hanga",
+      "TITLES": "Ngā Hanga",
+      "DESCRIPTION": "...",
+      "WIFI": "Tūnga-kaipuke",
+      "ROUTER": "Kaiwhakahaere",
+      "HUB": "Pū",
+      "WAF": "WAF",
+      "DMZ": "DMZ",
+      "FIREWALL": "Pātūahi",
+      "NETWORK": "Whatunga",
+      "SYSTEM": "Pūnaha",
+      "TIER": "Tīere",
+      "DEVICE": "Pūrere",
+      "SERVICE": "Rangatira",
+      "SERVICE_CLIENT": "Kaihautū Tūnga",
+      "SERVICE_AGENT": "Pūkenga Rangatira",
+      "SCHEDULER": "Kaiwhakarite Wā",
+      "BROWSER": "Pātene"
+    },
+    "INVITATIONS": {
+      "__COMMENTS": "TODO: Application, Acceptance, Invitation, Acceptance....",
+      "TITLE": "Whakakōrero",
+      "TITLES": "Ngā Whakakōrero",
+      "DESCRIPTION": "..."
+    },
+    "LANDING": {
+      "__COMMENTS": "Publicly accessible Pages as landing pages from Advertisements/sources. See PAGES and INFORMATION Area.",
+      "TITLE": "Whakauru",
+      "TITLES": "Ngā Whakauru",
+      "DESCRIPTION": "Ngā whārangi whakauru e wātea ana ki te tāngata"
+    },
+    "LAYOUTS": {
+      "__COMMENTS": "Regarding the layout of site parts.",
+      "TITLE": "Whakatā",
+      "TITLES": "Ngā Whakatā",
+      "DESCRIPTION": "...",
+      "LAYOUT": "Whakatā",
+      "LAYOUTS": "Ngā Whakatā",
+      "OPTIONS": {
+        "HORIZONTAL": "Horomātā",
+        "DETACHED": "Wawe",
+        "TWOCOLUMN": "Rua Tīwae",
+        "HOVERED": "Tapiritanga"
+      }
+    },
+    "LOCATIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Tauwāhi",
+      "TITLES": "Ngā Tauwāhi",
+      "DESCRIPTION": "...",
+      "ALTITUDE": "Tawhiti",
+      "ORIENTATION": "Aronga",
+      "COORDINATES": "Tohutō",
+      "COORDINATES_INSTRUCTIONS": "Tuku tohutō roa/roto",
+      "COORDINATES_ERROR_01": "Me whakauru koe i ngā tohutō roa/roto.",
+      "COORDINATES_ERROR_02": "Kāore i taea te whakapae i ngā tohutō i whakauruhia.",
+      "LONGITUDE": "Roaminga",
+      "LONGITUDE_INSTRUCTIONS": "Tuku roaminga",
+      "LONGITUDE_ERROR_01": "Me whakauru koe i te roa o te raki/raki.",
+      "LONGITUDE_ERROR_02": "Kāore i taea te whakapae i te roaminga i whakauruhia.",
+      "LATITUDE": "Whānui",
+      "LATITUDE_INSTRUCTIONS": "Tuku whānui",
+      "LATITUDE_ERROR_01": "Me whakauru koe i te whānui.",
+      "LATITUDE_ERROR_02": "Kāore i taea te whakapae i te whānui i whakauruhia."
+    },
+    "LOGIC": {
+      "__COMMENTS": "See ARITHMETICS",
+      "TITLE": "Mahinga",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "GROUP": "Rōpū",
+      "SUBGROUP": "Rōpū tino",
+      "NOT": "Kāore",
+      "EXCLUDES": "Katia",
+      "INCLUDES": "Whakauru",
+      "OVERLAPS": "Kahore",
+      "AND": "Me",
+      "_AND": "me",
+      "OR": "Rānei",
+      "_OR": "rānei",
+      "ELSE": "Engari",
+      "_ELSE": "engari"
+    },
+    "MAINTENANCE": {
+      "__COMMENTS": "",
+      "TITLE": "Whakapai",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Whai muri i te wā ka hoatu e whakamahia ana te ratonga kia taea te tāpiri i ngā āhuatanga hou..."
+    },
+    "MEMBERS": {
+      "__COMMENTS": "",
+      "TITLE": "Mema",
+      "TITLES": "Ngā Mema",
+      "DESCRIPTION": "..."
+    },
+    "MESSAGES": {
+      "__COMMENTS": "Tirohia ngā Āhua Pānui ranei.",
+      "TITLE": "Āhua Pānui",
+      "TITLES": "Ngā Āhua Pānui",
+      "DESCRIPTION": "Ngā āhua pānui i waenga i ngā Kaiwhakamahi",
+      "NONE": "Kore",
+      "NO_NEW": "Kore ngā āhua pānui hōu",
+      "ALL": "Katoa",
+      "READ": "Kua pānuitia",
+      "UNREAD": "Kāore i te pānuitia",
+      "HEADERS": "Tūtohinga",
+      "PRIORITY": "Uara Matua",
+      "IMPORTANCE": "Mana nui",
+      "SENT": "Tukuna",
+      "RECEIVED": "Whiwhi",
+      "SENT_AT_": "I tukuna i te",
+      "RECEIVED_AT_": "I whiwhi i te",
+      "SENT_BY": "I tukuna e",
+      "FROM": "Mai i",
+      "TO": "Ki",
+      "SUBJECT": "Kaupapa",
+      "BODY": "Tīaho",
+      "ATTACHMENTS": "Ngā Tātari"
+    },
+    "MONTHS": {
+      "__COMMENTS": "Tirohia hoki ngā Rā, ngā Wā.",
+      "TITLE": "Marama",
+      "TITLES": "Ngā Marama",
+      "DESCRIPTION": "...",
+      "JANUARY": "Kohi-tātea",
+      "FEBRUARY": "Hui-tanguru",
+      "MARCH": "Poutū-te-rangi",
+      "APRIL": "Paenga-whāwhā",
+      "MAY": "Haratua",
+      "JUNE": "Pipiri",
+      "JULY": "Hōngongoi",
+      "AUGUST": "Here-turi-kōkā",
+      "SEPTEMBER": "Mahuru",
+      "OCTOBER": "Whiringa-ā-nuku",
+      "NOVEMBER": "Whiringa-ā-rangi",
+      "DECEMBER": "Hakihea"
+    },
+    "NAVIGATION": {
+      "__COMMENTS": "He āhuatanga o te Āhua Pūwhenua.",
+      "TITLE": "Hāerenga",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "NOTIFICATIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Īmera",
+      "TITLES": "Ngā Īmera",
+      "DESCRIPTION": "...",
+      "NO_NEW": "Kore ngā Īmera Hōu",
+      "NONE": "Kore",
+      "ALL": "Katoa",
+      "UNREAD": "Kāore i te pānuitia",
+      "READ": "Kua pānuitia"
+    },
+    "OBSERVATIONS": {
+      "__COMMENTS": "Tirohia ngā Aromatawai, te Rereke, te Whakatutuki",
+      "TITLE": "Aromatawai",
+      "TITLES": "Ngā Aromatawai",
+      "DESCRIPTION": "..."
+    },
+    "OPENINGS": {
+      "__COMMENTS": "",
+      "TITLE": "Whakatuwhera",
+      "TITLES": "Ngā Whakatuwhera",
+      "DESCRIPTION": "Ngā whakaritenga ki te mahi i konei."
+    },
+    "ORGANISATION": {
+      "__COMMENTS": "Nga Wae Kaitohutohu i te Tangata, ngā Taputapu, me ērā atu.",
+      "TITLE": "Kaitohutohu",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "TENANCY": "Kaiwhakahaere",
+      "TENANCY_INSTRUCTIONS": "Tēnā koa, whakapa mai te ingoa o te kaiwhakahaere:",
+      "TENANCY_PLACEHOLDER": "Taitara Kaiwhakahaere",
+      "ACCOUNT": "Akaunua",
+      "ACCOUNT_INSTRUCTIONS": "Tēnā koa, whakapa mai te ingoa o te akaunua:",
+      "ACCOUNT_PLACEHOLDER": "Taitara Akaunua",
+      "OU": "OU",
+      "ORGANISATION_UNIT": "Tōmua Rōpū",
+      "ORGANITATION_UNIT_INSTRUCTIONS": "Tēnā koa, whakapa mai te ingoa o te tōmua rōpū:",
+      "ORGANISATION_UNIT_PLACEHOLDER": "OU...",
+      "DEPT": "Tari",
+      "DEPT_PLACEHOLDER": "Tari...",
+      "DEPARTMENT": "Tari",
+      "DEPARTMENT_INSTRUCTIONS": "Tēnā koa, whakapa mai te ingoa o te tari:",
+      "DEPARTMENT_PLACEHOLDER": "Tari...",
+      "GROUPS": "Rōpū",
+      "GROUPS_INSTRUCTIONS": "Tēnā koa, whakapa mai ngā ingoa rōpū:",
+      "GROUPS_PLACEHOLDER": "Ngā Ingoa Rōpū...",
+      "GROUP": "Rōpū",
+      "GROUP_INSTRUCTIONS": "Tēnā koa, whakapa mai te ingoa o te rōpū:",
+      "GROUP_PLACEHOLDER": "Taitara Rōpū",
+      "FOLDER": "Pukapuka",
+      "FOLDER_INSTRUCTIONS": "Tēnā koa, whakapa mai te ingoa o te pukapuka:",
+      "FOLDER_PLACEHOLDER": "Ingoa Pukapuka...",
+      "FOLDERS": "Ngā Pukapuka",
+      "FOLDERS_INSTRUCTIONS": "Tēnā koa, whakapa mai ngā ingoa pukapuka:",
+      "FOLDERS_PLACEHOLDER": "Ngā Ingoa Pukapuka...",
+      "FILE": "Kōnae",
+      "FILE_INSTRUCTIONS": "Tēnā koa, whakapa mai te ingoa o te kōnae:",
+      "FILE_PLACEHOLDER": "Ingoa Kōnae...",
+      "FILES_INSTRUCTIONS": "Tēnā koa, whakapa mai ngā ingoa kōnae:",
+      "FILES": "Ngā Kōnae",
+      "FILES_PLACEHOLDER": "Ngā Ingoa Kōnae...",
+      "CATEGORY": "Kāwai",
+      "CATEGORY_INSTRUCTIONS": "Tēnā koa, whakapa mai te kāwai:",
+      "CATEGORY_PLACEHOLDER": "Kāwai...",
+      "CATEGORIES": "Ngā Kāwai",
+      "CATEGORIES_INSTRUCTIONS": "Tēnā koa, whakapa mai ngā kāwai:",
+      "CATEGORIES_PLACEHOLDER": "Ngā Kāwai..."
+    },
+    "ORIENTATIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Tāwhanga",
+      "TITLES": "Ngā Tāwhanga",
+      "DESCRIPTION": "...",
+      "HORIZONTAL": "Horomātā",
+      "VERTICAL": "Tūwāhi"
+    },
+    "OUTCOMES": {
+      "__COMMENTS": "Te āhua o te pūnaha. Tirohia te Tūnga",
+      "TITLE": "Hua",
+      "TITLES": "Ngā Hua",
+      "DESCRIPTION": "...",
+      "RESULT": "Hua",
+      "SUCCESS": "Angitu",
+      "IMPROVED": "Whakapai",
+      "FAILED": "Kua Whakapau"
+    },
+    "PATTERNS": {
+      "__COMMENTS": "",
+      "TITLE": "Tauira",
+      "TITLES": "Ngā Tauira",
+      "DESCRIPTION": "..."
+    },
+    "PARTICIPATION": {
+      "__COMMENTS": "Tirohia te Āwhina, te Rēhita",
+      "TITLE": "Mahi Tahi",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PAGES": {
+      "__COMMENTS": "Ngā Whārangi e āhei ana kia whakamahi ngā Kaiwhakamahi. Tirohia ngā Kaupapa Whakamohorangi me ngā Kaupapa Whakahoahoa",
+      "TITLE": "Whārangi",
+      "TITLES": "Ngā Whārangi",
+      "DESCRIPTION": "Ngā Whārangi e āhei ana kia whakamahi ngā Kaiwhakamahi"
+    },
+    "PEOPLE": {
+      "TITLE": "Tangata",
+      "TITLES": "Ngā Tangata",
+      "DESCRIPTION": "...",
+      "__COMMENTS": "Tirohia te Kāinga"
+    },
+    "PERMISSIONS": {
+      "__COMMENTS": "Ka tāpirihia/ka tangohia ngā Whakaaetanga mai i ngā Whakaurunga",
+      "TITLE": "Whakaaetanga",
+      "TITLES": "Ngā Whakaaetanga",
+      "DESCRIPTION": "...",
+      "PERMITTED": "Kua Whakaaetia"
+    },
+    "PERSONS": {
+      "__COMMENTS": "",
+      "TITLE": "Tangata",
+      "TITLES": "Ngā Tangata",
+      "DESCRIPTION": "...",
+      "ID": "Tohu",
+      "IDENTIFIER": "Whakauru mai i te tohu o te tangata",
+      "BODY": {
+        "DOB": "Huringa",
+        "DOB_INSTRUCTIONS": "Whakauru i te rā whānau",
+        "DOB_PLACEHOLDER": "Tau, Marama, Ra...",
+        "SEX": "Tāne/Wahine",
+        "SEX_INSTRUCTIONS": "Whakauru i te tāne/wahine mai i te whānau",
+        "SEX_PLACEHOLDER": "Tāne/Wahine/Tētahi atu...",
+        "HEIGHT": "Mātotoru",
+        "HEIGHT_INSTRUCTIONS": "Whakauru i te mātotoru",
+        "HEIGHT_PLACEHOLDER": "Mātotoru i roto i ngā santimita..."
+      },
+      "IDENTITIES": {
+        "__COMMENTS": "Ko te tangata he tohu anake",
+        "TITLE": "Tohu",
+        "TITLES": "Ngā Tohu",
+        "DESCRIPTION": "...",
+        "ID": "Tohu āhua",
+        "IDENTIFIER": "Whakauru mai i te tohu āhua wāhi",
+        "NAMES": {
+          "TITLE": "Ingoa",
+          "PREFIX": "Tohu",
+          "PREFIX_INSTRUCTIONS": "Whakauru i tētahi tohu (Mr, Mrs, Dr., ...)",
+          "PREFIX_EXAMPLE": "Dr.",
+          "PREFIX_ERROR_01": "Me whakarite i tētahi tohu rānei.",
+          "PREFIX_ERROR_02": "Kāore e taea te whakapono i te tohu i whakaritea.",
+          "GIVEN": "Ingoa Tā",
+          "GIVEN_INSTRUCTIONS": "Whakauru i tētahi ingoa tuatahi/tā",
+          "GIVEN_EXAMPLE": "Hone",
+          "GIVEN_ERROR_01": "Me whakarite i tētahi ingoa tā.",
+          "GIVEN_ERROR_02": "Kāore e taea te whakapono i te ingoa tā i whakaritea.",
+          "MIDDLE": "Ingoa Tā Waenga",
+          "MIDDLE_INSTRUCTIONS": "Whakauru i ngā ingoa waenga tā",
+          "MIDDLE_EXAMPLE": "Martin",
+          "MIDDLE_ERROR_01": "Me whakarite i ngā ingoa waenga tā.",
+          "MIDDLE_ERROR_02": "Kāore e taea te whakapono i ngā ingoa waenga tā i whakaritea.",
+          "MIDDLE_INITIALS": "Ingoa Tā Waenga",
+          "MIDDLE_INITIALS_INSTRUCTIONS": "Whakauru i ngā waenga tā.",
+          "MIDDLE_INITIALS_EXAMPLE": "M.",
+          "MIDDLE_INITIALS_ERROR_01": "Me whakarite i ngā waenga tā.",
+          "MIDDLE_INITIALS_ERROR_02": "Kāore e taea te whakapono i ngā waenga tā i whakaritea.",
+          "GIVENS": "Ngā Ingoa Tā",
+          "GIVENS_INSTRUCTIONS": "Whakauru i ngā ingoa tā",
+          "GIVENS_EXAMPLE": "Hone Makarini",
+          "GIVENS_ERROR_01": "Me whakarite i tētahi ingoa tā.",
+          "GIVENS_ERROR_02": "Kāore e taea te whakapono i ngā ingoa tā i whakaritea.",
+          "SURNAME": "Ingoa Whānau",
+          "SURNAME_INSTRUCTIONS": "Whakauru i tētahi ingoa whānau",
+          "SURNAME_EXAMPLE": "Hepa",
+          "SURNAME_ERROR_01": "Me whakarite i tētahi ingoa whānau.",
+          "SURNAME_ERROR_02": "Kāore e taea te whakapono i te ingoa whānau i whakaritea."
+        },
+        "PRONOUNS": "Tohu",
+        "PRONOUNS_INSTRUCTIONS": "Whakauru mai i ngā tohu i waihotia",
+        "PRONOUNS_EXAMPLE": "Āna/Ia",
+        "PRONOUNS_ERROR_01": "Me whakarite i ngā tohu i waihotia.",
+        "PRONOUNS_ERROR_02": "Kāore e taea te whakapono i ngā tohu i whakaritea.",
+        "AVATAR": "Avatar",
+        "AVATAR_INSTRUCTIONS": "Whakauru mai i tētahi avatar",
+        "AVATAR_EXAMPLE": "hero.png",
+        "AVATAR_ERROR_01": "Me whakarite i tētahi avatar.",
+        "AVATAR_ERROR_02": "Kāore e taea te whakapono i te avatar i whakaritea.",
+        "BIO": "Bio",
+        "BIO_INSTRUCTIONS": "Whakauru mai i tētahi mōteatea",
+        "BIO_EXAMPLE": "E.g., he mea iti, he mea tino, he mea tika mō tēnei tohu...",
+        "BIO_ERROR_01": "Me whakarite i tētahi mōteatea.",
+        "BIO_ERROR_02": "Kāore e taea te whakapono i te mōteatea i whakaritea.",
+        "ROLE": "Rōpu",
+        "ROLE_INSTRUCTIONS": "Whakauru mai i tētahi rōpu tūmataiti",
+        "ROLE_EXAMPLE": "Kaiwhakarite",
+        "ROLE_ERROR_01": "Me whakarite i tētahi rōpu.",
+        "ROLE_ERROR_02": "Kāore e taea te whakapono i te rōpu i whakaritea.",
+        "GENDER": "Rōpu Tāne/Wahine",
+        "GENDER_INSTRUCTIONS": "Whakauru mai i te rōpu tāne/wahine o tēnei tohu",
+        "GENDER_EXAMPLE": "Tāne",
+        "GENDER_ERROR_01": "Me whakarite i te rōpu.",
+        "GENDER_ERROR_02": "Kāore e taea te whakapono i te rōpu i whakaritea."
+      }
+    },
+    "PLACES": {
+      "__COMMENTS": "Tirohia te Tūnga.",
+      "TITLE": "Wāhi",
+      "TITLES": "Ngā Wāhi",
+      "DESCRIPTION": "...",
+      "HOME": "Kāinga",
+      "WORK": "Mahi"
+    },
+    "POLICIES": {
+      "__COMMENTS": "Tirohia ngā Hōtaka.",
+      "TITLE": "Hōtaka",
+      "TITLES": "Ngā Hōtaka",
+      "DESCRIPTION": "..."
+    },
+    "POSITIONS": {
+      "__COMMENTS": "Tirohia hoki ngā Huarahi me ngā Āhuatanga.",
+      "TITLE": "Tūnga",
+      "TITLES": "Ngā Tūnga",
+      "DESCRIPTION": "...",
+      "RELATIVE": {
+        "TITLE": "Tūnga Takitahi",
+        "_PREVIOUS": "o mua",
+        "_NEXT": "o muri",
+        "_BELOW": "i raro",
+        "_ABOVE": "i runga",
+        "_TO_THE_LEFT": "mauī",
+        "_TO_THE_RIGHT": "tika",
+        "INSIDE": "I roto",
+        "OUTSIDE": "I waho",
+        "ON_TOP": "I runga",
+        "BELOW": "I raro"
+      },
+      "ABSOLUTE": {
+        "TITLE": "Tūnga Mātāmua",
+        "FIRST": "Mātāmua",
+        "SECOND": "Tuarua",
+        "THIRD": "Tuatoru",
+        "SECOND_TO_LAST": "Tuarua ki te Mutunga",
+        "LAST": "Mutunga"
+      }
+    },
+    "POSTAL_ADDRESS": {
+      "__COMMENTS": "",
+      "TITLE": "Wāhitau Poutāpeta",
+      "TITLES": "Ngā Wāhitau Poutāpeta",
+      "DESCRIPTION": "...",
+      "UNIT": "Whare",
+      "UNIT_EXAMPLE": "2B",
+      "UNIT_INSTRUCTIONS": "Whakauru mai i tētahi apa, Whare, mei kē...",
+      "STREET": "Tiriti",
+      "STREET_EXAMPLE": "123 Collins",
+      "STREET_INSTRUCTIONS": "Whakauru mai i tētahi tiriti wāhi",
+      "CITY": "Tāone",
+      "CITY_EXAMPLE": "Villars",
+      "CITY_INSTRUCTIONS": "Whakauru mai i tētahi tāone, kāinga, mei kē...",
+      "STATE": "Whenua",
+      "STATE_EXAMPLE": "Vaud",
+      "STATE_INSTRUCTIONS": "Whakauru mai i tētahi whenua, rohe, mei kē...",
+      "POSTAL_CODE": "Tuhinga Poutāpeta",
+      "POSTAL_CODE_EXAMPLE": "6301",
+      "POSTAL_CODE_INSTRUCTIONS": "Whakauru mai i tētahi tuhinga poutāpeta, tuhinga wāhi, mei kē...",
+      "COUNTRY": "Whenua",
+      "COUNTRY_EXAMPLE": "Switzerland",
+      "COUNTRY_INSTRUCTIONS": "Whakauru mai i tētahi whenua, whenua rānei, mei kē..."
+    },
+    "PRICING": {
+      "__COMMENTS": "",
+      "TITLE": "Utunga",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PRINCIPLES": {
+      "__COMMENTS": "",
+      "TITLE": "Ngā Mātāpono",
+      "TITLES": "Ngā Mātāpono",
+      "DESCRIPTION": "..."
+    },
+    "PRIVACY_POLICIES": {
+      "__COMMENTS": "",
+      "TITLE": "Kaupapa Whakarite",
+      "TITLES": "Ngā Kaupapa Whakarite",
+      "DESCRIPTION": "..."
+    },
+    "PRIVACY_STATEMENT": {
+      "__COMMENTS": "",
+      "TITLE": "Pānuitanga Whakarite",
+      "TITLES": "Ngā Pānuitanga Whakarite",
+      "DESCRIPTION": "..."
+    },
+    "PRODUCTS": {
+      "__COMMENTS": "",
+      "TITLE": "Whanonga",
+      "TITLES": "Ngā Whanonga",
+      "DESCRIPTION": "..."
+    },
+    "PROFILE": {
+      "__COMMENTS": "Ngā Kōwhiringa o te Kaiwhakamahi o Nāianei. Kāore e ōrite ki (Tūmau) NGAHAU",
+      "TITLE": "Kōwae",
+      "TITLES": "Ngā Kōwae",
+      "DESCRIPTION": "..."
+    },
+    "PROGRESS": {
+      "__COMMENTS": "",
+      "TITLE": "Whakatipuranga",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PROJECTS": {
+      "__COMMENTS": "Tirohia ngā Mahi, te Whakarite Wā",
+      "TITLE": "Mahi",
+      "TITLES": "Ngā Mahi",
+      "DESCRIPTION": "..."
+    },
+    "PROMPTS": {
+      "__COMMENTS": "",
+      "TITLE": "Pātene",
+      "TITLES": "Ngā Pātene",
+      "DESCRIPTION": "..."
+    },
+    "QUANTITIES": {
+      "__COMMENTS": "See also CONTENTS.",
+      "TITLE": "Rahi",
+      "TITLES": "Rahinga",
+      "DESCRIPTION": "...",
+      "ALL": "Katoa",
+      "MOST": "Nui",
+      "SOME": "Rahinga",
+      "NONE": "Kore"
+    },
+    "QUALITIES": {
+      "__COMMENTS": "",
+      "TITLE": "Noho",
+      "TITLES": "Noho",
+      "DESCRIPTION": "...",
+      "SECURE": "Haumaru",
+      "CONFIDENTIAL": "Mauria",
+      "AUDITED": "Tātari",
+      "AVAILABLE": "Wātea",
+      "USABLE": "Whakamahinga",
+      "PERFORMANT": "Mahitahi",
+      "ECONOMIC": "Kaitiaki",
+      "RESPONSIVE": "Whakahitanga",
+      "MAINTAINABLE": "Whakaeke",
+      "UNDERSTANDABLE": "Wātea ki te",
+      "ANALYSABLE": "Tātaritanga",
+      "ENHANCEABLE": "Whakapiki"
+    },
+    "REPORTS": {
+      "__COMMENTS": "",
+      "TITLE": "Tauira",
+      "TITLES": "Tauira",
+      "DESCRIPTION": "..."
+    },
+    "RESPONSIBILITIES": {
+      "__COMMENTS": "Users Get PERMISSIONS after accepting associated RESPONSIBILITIES",
+      "TITLE": "Kawenga",
+      "TITLES": "Kawenga",
+      "DESCRIPTION": "...",
+      "RESPONSIBLE": "Kaitautoko",
+      "RESPONSIBILITY": "Kawenga",
+      "RESPONSIBILITIES": "Kawenga"
+    },
+    "ROLES": {
+      "__COMMENTS": "See also ACCESS_LEVELS, PERMISSIONS",
+      "TITLE": "Tūranga",
+      "TITLES": "Tūranga",
+      "DESCRIPTION": "..."
+    },
+    "SCHEDULING": {
+      "__COMMENTS": "See PROJECTS, TASKS area.",
+      "TITLE": "Whakaritenga",
+      "TITLES": "Whakaritenga",
+      "DESCRIPTION": "..."
+    },
+    "SEARCH": {
+      "__COMMENTS": "See also POSITIONS.",
+      "TITLE": "Rapu",
+      "TITLES": "Rapu",
+      "DESCRIPTION": "...",
+      "INSTRUCTIONS": "Whakarato i ngā whiringa rapu:",
+      "PLACEHOLDER": "Rapu...",
+      "VIEW_ALL_RESULTS": "Tiro_nga_huarahi_katoa",
+      "RECENT_SEARCHES": "Tirohia_ngā_Rapunga_Hōu"
+    },
+    "SEARCH_RESULTS": {
+      "__COMMENTS": "",
+      "TITLE": "Rapunga_Rapu",
+      "TITLES": "Rapunga_Rapu",
+      "DESCRIPTION": "..."
+    },
+    "SEQUENCES": {
+      "__COMMENTS": "See also POSITIONS.",
+      "TITLE": "Tino",
+      "TITLES": "Tino",
+      "DESCRIPTION": "...",
+      "PREPARE": "Whakapā",
+      "BEGIN": "Timata",
+      "WAIT": "Tono",
+      "CONTINUE": "Whakamua",
+      "STOP": "Katia",
+      "END": "Mutu"
+    },
+    "SETTINGS": {
+      "__COMMENTS": "System (generally Account-specific) Settings. See difference with PROFILE.",
+      "TITLE": "Whakatū",
+      "TITLES": "Whakatū",
+      "DESCRIPTION": "..."
+    },
+    "SHIPPING": {
+      "__COMMENTS": "See also COMMERCE/SHOPPING.",
+      "TITLE": "Tuku",
+      "TITLES": "Tuku",
+      "DESCRIPTION": "...",
+      "STANDARD": "Tino",
+      "EXPEDITED": "Hoki",
+      "URBAN": "Tāone",
+      "RURAL": "Hapori"
+    },
+    "SIGHT": {
+      "__COMMENTS": "",
+      "TITLE": "Tiro",
+      "TITLES": "Tiro",
+      "DESCRIPTION": "...",
+      "UNSEEN": "Kāore",
+      "UNREAD": "Kāore_ka_kitea",
+      "VIEW": "Tiro",
+      "SEEN": "Kua_kitea",
+      "READ": "Kua_Pānui"
+    },
+    "SITE": {
+      "__COMMENTS": "See SITE at higher level."
+    },
+    "SHOPPING": {
+      "__COMMENTS": "",
+      "TITLE": "Hoko",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "EMPTY": "Empty",
+      "CART": "Kāta",
+      "SHOPPING_CART": "Kāta Hoko",
+      "ITEMS": "Rauemi",
+      "CATEGORY": "Rārangi",
+      "PRICE": "Ura",
+      "QUANTITY": "Rahi",
+      "SUBTOTAL": "Ura kōpaki",
+      "DISCOUNTED": "Whakawaatea",
+      "DISCOUNT": "Whakawaatea",
+      "DISCOUNTS": "Ngā Whakawaatea",
+      "TAX": "Tāke",
+      "SHIPPING": "Tuku",
+      "COMMISSION": "Whakaritenga",
+      "PROCESSING_FEE": "Unga",
+      "RESTOCKING_FEE": "Utanga",
+      "TOTAL": "Te katoa",
+      "CHECKOUT": "Check",
+      "REVENUE": "Hua",
+      "PROFIT": "Hua"
+    },
+    "SITEMAP": {
+      "__COMMENTS": "",
+      "TITLE": "Mahere Tūranga",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Kei whea mātou."
+    },
+    "SIZE": {
+      "__COMMENTS": "",
+      "TITLE": "Rahi",
+      "TITLES": "Rahinga",
+      "DESCRIPTION": "...",
+      "XTRA_SMALL": "Rahi Iti",
+      "SMALL": "Iti",
+      "MEDIUM": "Nui",
+      "REGULAR": "Tino",
+      "LARGE": "Nui",
+      "XTRA_LARGE": "Rahi Nui"
+    },
+    "SPACING": {
+      "__COMMENTS": "",
+      "TITLE": "Whakawhiti",
+      "TITLES": "Whakawhiti",
+      "DESCRIPTION": "...",
+      "COMPACT": "Whakaiti",
+      "REGULAR": "Tino",
+      "TIGHT": "Tau"
+    },
+    "STATES": {
+      "__COMMENTS": "Progression of generic state of records and resources, towards delivering OUTCOMES.",
+      "TITLE": "Tūnga",
+      "TITLES": "Tūnga",
+      "DESCRIPTION": "...",
+      "DRAFT": "Tauira",
+      "IN_PROGRESS": "I Te Mahi",
+      "ABANDONED": "Wakararo",
+      "REJECTED": "Whakakahore",
+      "APPROVED": "Whakaae",
+      "PUBLISHED": "Tuku",
+      "ENDORSED": "Whakapae",
+      "REMOVED": "Whakakore",
+      "RETIRED": "Whakamutua",
+      "LEGACY": "Tuku iho"
+    },
+    "STATUS": {
+      "__COMMENTS": "Often displayed as part of the Layout frame. See CONTEXT Area.",
+      "TITLE": "Tūnga",
+      "TITLES": "Tūnga",
+      "DESCRIPTION": "Current state of last operation, account, system.",
+      "NEW": "Hou",
+      "ENABLED": "Whakahoahoa",
+      "DISABLED": "Whakakore",
+      "PENDING": "Kei te tatari",
+      "LOST": "Kua ngaro",
+      "ABANDONED": "Wakararo",
+      "CLOSED": "Kua Katia"
+    },
+    "STATUS_UPDATES": {
+      "__COMMENTS": "",
+      "TITLE": "Whakahoutanga Tūnga",
+      "TITLES": "Whakahoutanga Tūnga",
+      "DESCRIPTION": "...",
+      "YOU_ARE_LOGGING_OUT": "Kei te whakatūruki koe",
+      "YOU_ARE_LOGGED_OUT": "Kua tūruki koe"
+    },
+    "SUBSCRIPTIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Whakauru",
+      "TITLES": "Whakauru",
+      "DESCRIPTION": "..."
+    },
+    "SUPPORT": {
+      "__COMMENTS": "Compare with [self] HELP. See ASSISTANCE",
+      "TITLE": "Tautoko",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Assistance"
+    },
+    "SYSTEMS": {
+      "__COMMENTS": "Generally a subset of the SETTINGS Area.",
+      "TITLE": "Pūnaha",
+      "TITLES": "Pūnaha",
+      "DESCRIPTION": "..."
+    },
+    "TASKS": {
+      "__COMMENTS": "See PROJECTS area.",
+      "TITLE": "Mahi",
+      "TITLES": "Ngā Mahi",
+      "DESCRIPTION": "Whakamāramatanga",
+      "TITLE_INSTRUCTIONS": "",
+      "TITLE_PLACEHOLDER": "",
+      "DESCRIPTION_INSTRUCTIONS": "",
+      "DESCRIPTION_PLACEHOLDER": "",
+      "DEPENDS_ON": "E āwhina ana ki",
+      "DEPENDS_ON_INSTRUCTIONS": "",
+      "DEPENDS_ON_PLACEHOLDER": "",
+      "ASSIGNED_TO": "Ka whakaritea ki",
+      "ASSIGNED_TO_INSTRUCTIONS": "",
+      "ASSIGNED_TO_PLACEHOLDER": "",
+      "PRIORITY": "Uara nui",
+      "PRIORITY_INSTRUCTIONS": "",
+      "PRIORITY_PLACEHOLDER": "",
+      "DUE_DATE": "Rā Ka mutu",
+      "DUE_DATE_INSTRUCTIONS": "",
+      "DUE_DATE_PLACEHOLDER": "",
+      "STATE": "Tūnga",
+      "STATE_INSTRUCTIONS": "",
+      "STATE_PLACEHOLDER": "",
+      "PERCENT_COMPLETED": "% Kua Whakaoti",
+      "PERCENT_COMPLETED_INSTRUCTIONS": "",
+      "PERCENT_COMPLETED_PLACEHOLDER": "",
+      "COMPLETED": "Kua Whakaoti",
+      "COMPLETED_INSTRUCTIONS": "",
+      "COMPLETED_PLACEHOLDER": "",
+      "COMPLETED_WHEN": "Kua Whakaoti i te wā",
+      "COMPLETED_WHEN_INSTRUCTIONS": "",
+      "COMPLETED_WHEN_PLACEHOLDER": ""
+    },
+    "TEMPLATE": {
+      "__COMMENTS": "",
+      "TITLE": "Tauira",
+      "TITLES": "Ngā Tauira",
+      "DESCRIPTION": "..."
+    },
+    "TENANCIES": {
+      "__COMMENTS": "WARNING: Tenancy is a technical term. Avoid using. Prefer ACCOUNT.",
+      "TITLE": "Kainga",
+      "TITLES": "Ngā Kainga",
+      "DESCRIPTION": "..."
+    },
+    "TERMS_AND_CONDITIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Ngā Ture me ngā Tūtohinga",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "TERMS_OF_USE": {
+      "__COMMENTS": "",
+      "TITLE": "Ngā Ture o te Whakamahi",
+      "TITLES": "N/A",
+      "DESCRIPTION": "Me ngā kaiwhakamahi ratonga e āhua"
+    },
+    "THEMES": {
+      "__COMMENTS": "",
+      "TITLE": "Kaupapa",
+      "TITLES": "Ngā Kaupapa",
+      "DESCRIPTION": "...",
+      "CUSTOMISER": "Whakatika Kaupapa",
+      "LAYOUT": "Rārangi",
+      "COLOUR_SCHEME": "Tātua Tae",
+      "LAYOUT_WIDTH": "Rārangi Rārangi",
+      "LAYOUT_POSITION": "Tūnga Rārangi",
+      "TOPBAR_COLOUR": "Tae Taitara",
+      "SIDEBAR_SIZE": "Rahi Taha",
+      "SIDEBAR_VIEW": "Tirohanga Taha",
+      "SIDEBAR_IMAGE": "Whakaahua Taha",
+      "PRELOADER": "Whakatika Kiriata"
+    },
+    "TIME": {
+      "__COMMENTS": "See DATE.",
+      "TITLE": "Wā",
+      "TITLES": "Ngā Wā",
+      "DESCRIPTION": "...",
+      "HOUR": "Hāora",
+      "HOURS": "Ngā Hāora",
+      "MINUTE": "Miniti",
+      "MINUTES": "Ngā Miniti",
+      "SECOND": "Hēkona",
+      "SECONDS": "Ngā Hēkona",
+      "MORNING": "Ahiahi",
+      "AFTERNOON": "Pō"
+    },
+    "TIMELINES": {
+      "__COMMENTS": "",
+      "TITLE": "Wātaka",
+      "TITLES": "Ngā Wātaka",
+      "DESCRIPTION": "Ā tātou wātaka tūnga me te tāpiri i ngā āhuatanga..."
+    },
+    "TRACKING_POLICY": {
+      "__COMMENTS": "",
+      "TITLE": "Whakamahere Tātari",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "TRANSACTION": {
+      "__COMMENTS": "See COMMERCE.",
+      "TITLE": "Hoko",
+      "TITLES": "Ngā Hoko",
+      "DESCRIPTION": "...",
+      "DEMONSTRATION": "Whakatū",
+      "GIFT": "Hoahoa",
+      "TRIAL": "Whakamārama",
+      "SUBSCRIPTION": "Rārangi",
+      "LEASE": "Hoko",
+      "SALE": "Hoko"
+    },
+    "UI": {
+      "__COMMENTS": "",
+      "TITLE": "UI",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "PIECES": {
+        "WINDOW": "Matapihi",
+        "MENU": "Ripanga",
+        "SCROLLBAR": "Pūhiko",
+        "POINTER": "Tari",
+        "SITE": "Tūranga",
+        "PRELOADER": "Kaiwhakatikatika",
+        "FRAME": "Pouta",
+        "PAGE": "Whārangi",
+        "HEADER": "Pane",
+        "BACKGROUND": "Taumaha",
+        "STYLESHEET": "Tukuene",
+        "SCRIPT": "Kupuwhakamahi",
+        "MARGIN": "Tapawhā",
+        "BORDER": "Tapatoru",
+        "PADDING": "Whakawhā",
+        "BODY": "Tīnana",
+        "AREA": "Rohe",
+        "WIZARD": "Kaitoro",
+        "TABS": "Pane",
+        "DIALOG": "Kōrero",
+        "FORM": "Tauira",
+        "TABLE": "Tēpu",
+        "GRID": "Papa",
+        "LABEL": "Pānui",
+        "PROMPT": "Piritahi",
+        "PLACEHOLDER": "Tapawhā",
+        "CANVAS": "Kowhiti",
+        "SELECTION": "Whiringa",
+        "DROPDOWN": "Tirohanga",
+        "TEXTFIELD": "Waehere Kupu",
+        "FIELD": "Whāinga",
+        "BUTTON": "Pātene",
+        "ALERT": "Tūtohinga",
+        "ICON": "Tohu",
+        "SHORTCUT": "Huarahi Poto",
+        "BADGE": "Hūkete",
+        "COLOUR": "Tae",
+        "FONT": "Pātai",
+        "BOLD": "Hiko",
+        "IMAGE": "Whakaahua",
+        "UNDERLINED": "Mokowhiti",
+        "ITALIC": "Taitara",
+        "FOREGROUND": "Ua",
+        "LAYER": "Rārangi",
+        "FILTER": "Horo",
+        "TRANSFORMATION": "Whakarerekē",
+        "LINE": "Reira",
+        "POINT": "Taurua",
+        "PROGRESS_INDICATOR": "Tūtohinga whakangahau",
+        "WAIT_INDICATOR": "Tūtohinga tatari"
+      },
+      "ACTIONS": {
+        "HOVER": "Kōpiro",
+        "HOLD": "Tikanga",
+        "PRESS": "Pīhi",
+        "CLICK": "Pāwhiri",
+        "DOUBLE_CLICK": "Pāwhiri matapō",
+        "SWIPE": "Tātaki",
+        "DRAG": "Neke",
+        "MOVE": "Neke",
+        "DROP": "Tukunga"
+      }
+    },
+    "USERS": {
+      "__COMMENTS": "",
+      "TITLE": "Kaiwhakamahi",
+      "TITLES": "Ngā Kaiwhakamahi",
+      "DESCRIPTION": "..."
+    },
+    "VALUES": {
+      "__COMMENTS": "",
+      "TITLE": "Uara",
+      "TITLES": "Ngā Uara",
+      "DESCRIPTION": "..."
+    },
+    "VALIDATION": {
+      "__COMMENTS": "",
+      "TITLE": "Whakamātau",
+      "TITLES": "Ngā Whakamātau",
+      "DESCRIPTION": "...",
+      "REQUIRED": "E hiahiatia.",
+      "TOO_SHORT": "He poto rawa",
+      "TOO_LONG": "He roa rawa",
+      "TOO_SIMPLE": "He tata",
+      "TOO_LITTLE": "He iti rawa",
+      "TOO_MUCH": "He nui rawa",
+      "INCORRECT_FORMAT": "Te hōputu hē"
+    },
+    "WELCOME": {
+      "__COMMENTS": "Authenticated users home page. See DASHBOARD.",
+      "TITLE": "Nau mai",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "WORK": {
+      "__COMMENTS": "Investment into changing STATUS of Resources and Records to deliver OUTCOMES.",
+      "TITLE": "Mahi",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "EFFORT": "Whakatupu",
+      "SKILL": "Pūkenga",
+      "ASSESSMENT": "Arotake",
+      "PROGRESS": "Taurapa",
+      "IMPROVEMENT": "Whakapiki"
+    },
+    "MISC": {
+      "__COMMENTS": "",
+      "TITLE": "Iti",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "PAC": "Raranga toi & ahurea",
+      "DISCOVER_ITEMS": "Tīkitia Ngā Mea",
+      "HOW_TO_SETUP": "Me pēhea te tautuhi",
+      "UNLOCK_INSTRUCTIONS": "Tāuru i tō kupuhipa ki te whakakore i te mata!",
+      "LOCK_SCREEN_TITLE": "Mata Kati",
+      "NOT_YOU?": "Ehara koe?",
+      "WAIT_I_REMEMBER_MY_PASSWORD": "Kia tūpato, ka mārama ahau ki tōku kupuhipa ...",
+      "ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS": "Tāuru i tō īmēra, ā ka tukua ngā tūtohinga ki a koe!",
+      "SEND_EMAILED_INSTRUCTIONS": "Tukua Te Taura Tukurua",
+      "SUCCESS": "Angitu!",
+      "SUCCESS_DESCRIPTION": "He iti noa iho tērā āhua angitu :-)",
+      "ALREADY_HAVE_AN_ACCOUNT?": "Kei a koe tētahi pūkete?",
+      "PLEASE_ENTER_THE_CODE_SENT_TO": "Tāuru koa te 4 nākahi kua tukuna ki a koe",
+      "DIDNT_RECEIVE_CODE?": "Kāore koe i whiwhi i te tukutuku?",
+      "CHECK_YOUR_EMAIL": "Tirohia tō īmēra"
+    }
+  },
+  "APPS": {
+    "__COMMENTS": "",
+    "TITLE": "Taupānga",
+    "TITLES": "Ngā Taupānga",
+    "DESCRIPTION": "...",
+    "SPIKE": {
+      "TITLE": "Pīki",
+      "DESCRIPTION": "...",
+      "AREAS": {
+        "SPIKE": "Pīki",
+        "SUBSPIKE": "Ngā Pīki Tīpako"
+      }
+    },
+    "ARCHITECTURE": {
+      "TITLE": "Hanganga",
+      "DESCRIPTION": "..."
+    }
+  }
+}

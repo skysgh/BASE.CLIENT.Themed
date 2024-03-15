@@ -22,7 +22,7 @@ import { BaseAppsRouteComponent } from "./ui/_route/component";
 import { RouterModule, Routes } from '@angular/router';
 import { BaseAppsRoutingModule } from './routing.module';
 import { SystemLanguagesRepositoryService } from '../shared/services/repositories/system.languages.repository.service';
-import { LanguageService } from '../shared/services/services/language.service';
+import { LanguageService } from '../shared/services/language.service';
 
 
 

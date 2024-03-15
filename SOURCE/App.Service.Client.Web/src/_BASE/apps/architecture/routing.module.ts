@@ -4,12 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 // Import Common:
 // ...
 // Import SubModules:
-import { ArchitectureValuesModule } from './modules/values/module';
+import { BaseAppsArchitectureValuesModule } from './modules/values/module';
 
 
 
 const routes: Routes = [
-  { path: 'values', component: ArchitectureValuesModule},
+  { path: 'values', component: BaseAppsArchitectureValuesModule},
   { path: '', redirectTo: 'values/' },
 
 ];

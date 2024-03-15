@@ -1,4 +1,4 @@
-import { ReferenceData } from "../../../shared/models/data/base/reference-item.model";
+import { ReferenceDataBase } from "../../../shared/models/data/base/ReferenceDataBase";
 
-export class PrincipleType extends ReferenceData {
+export class PrincipleType extends ReferenceDataBase {
 }

@@ -1,8 +1,8 @@
 import { IHasParentFK } from "../../../shared/models/contracts/IHasParentFK";
-import { UUIDEntity } from "../../../shared/models/UUIDEntity";
+import { UUIDEntityBase } from "../../../shared/models/data/base/UUIDEntityBase";
 
 // A person can have multiple Identities.
-export class PersonIdentity extends UUIDEntity implements IHasParentFK {
+export class PersonIdentity extends UUIDEntityBase implements IHasParentFK {
   ParentFK?: string; 
 }
 

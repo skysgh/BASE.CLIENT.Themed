@@ -2,5 +2,5 @@ import { IHasUUID } from "../../contracts/IHasUUID";
 
 
 
-export abstract class UUIDEntity implements IHasUUID {
+export abstract class UUIDEntityBase implements IHasUUID {
 }

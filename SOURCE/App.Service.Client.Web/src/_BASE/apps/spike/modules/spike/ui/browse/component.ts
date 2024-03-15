@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
-import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Models:
 import { Spike } from '../../../../models/spike.model';
@@ -19,24 +19,24 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private diagnosticsService: DiagnosticsService,
+    private diagnosticsTraceService: DiagnosticsTraceService,
     private repositoryService: BaseAppsSpikeSpikesRepositoryService
   ) {
-    this.diagnosticsService.info("Constructor");
+    this.diagnosticsTraceService.info("Constructor");
   }
 
   ngOnInit(): void {
-    this.diagnosticsService.info("Component OnInit");
+    this.diagnosticsTraceService.info("Component OnInit");
     // Load list of elements:
     // TODO page it.
 
 
       this.route.queryParams.subscribe(queryParams=> {
-        this.diagnosticsService.info("params ready");
+        this.diagnosticsTraceService.info("params ready");
         this.page = queryParams['page'] | queryParams['pg'] | 1;
-        this.diagnosticsService.info('page: ' + this.page);
-        this.repositoryService.getAll(this.page).subscribe((x:any) => {
-          this.diagnosticsService.info('got X: ' + x);
+        this.diagnosticsTraceService.info('page: ' + this.page);
+        this.repositoryService.getPage(this.page).subscribe((x:any) => {
+          this.diagnosticsTraceService.info('got X: ' + x);
           this.data = x;
         });
       });

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
-import { System } from '../../../../../../shared/models/settings/system';
+import { System } from '../../../../../../shared/constants/contracts/system';
 import { SystemService } from '../../../../../../shared/services/system.service';
 import { SystemUserQuoteRepositoryService } from '../../../../../../shared/services/repositories/system.user-quotes.service';
 import { User } from '../../../../../../../app/store/Authentication/auth.models';
@@ -45,7 +45,7 @@ export class CoverComponent implements OnInit {
   ngOnInit(): void {
     //
     this.systemUserQuotes =
-      this.systemUserQuoteRepositoryService.getAllByLanguageCode('en');
+      this.systemUserQuoteRepositoryService.getPageByLanguageCode('en');
 
     /**
      * Form Validatyion

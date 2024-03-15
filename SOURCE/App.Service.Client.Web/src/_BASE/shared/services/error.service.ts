@@ -1,6 +1,6 @@
 // Import dependencies:
 import { Injectable } from '@angular/core';
-import { DiagnosticsService } from './diagnostics.service';
+import { DiagnosticsTraceService } from './diagnostics.service';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
@@ -10,7 +10,7 @@ import { DiagnosticsService } from './diagnostics.service';
   // Presumably till a new count of zero.
 export class ErrorService{
 
-  constructor(private diagnosticsService: DiagnosticsService) {
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
 
 
   }
@@ -25,7 +25,7 @@ export class ErrorService{
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
 
-    this.diagnosticsService.error(errorMessage);
+    this.diagnosticsTraceService.error(errorMessage);
     //consider whether to alert it?
 
     return errorMessage;

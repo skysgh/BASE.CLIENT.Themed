@@ -1,9 +1,9 @@
-import { UUIDEntity } from "../../../shared/models/UUIDEntity";
+import { UUIDEntityBase } from "../../../shared/models/data/base/UUIDEntityBase";
 import { PersonIdentity } from "./personIdentity";
 
 // There isn't too much to a person bar their projected Identities.
 // That they may associate to different groups.
-export class Person extends UUIDEntity {
+export class Person extends UUIDEntityBase {
 
   PersonIdentities?: PersonIdentity[];
 

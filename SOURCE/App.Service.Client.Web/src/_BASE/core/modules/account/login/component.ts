@@ -5,14 +5,14 @@ import { first } from 'rxjs/operators';
 
 // Login Auth
 import { environment } from '../../../../../environments/environment';
-import { AuthenticationService } from '../../../../shared/services/services/auth.service';
-import { AuthfakeauthenticationService } from '../../../../shared/services/services/authfake.service';
+import { AuthenticationService } from '../../../../shared/services/auth.service';
+import { AuthfakeauthenticationService } from '../../../../shared/services/authfake.service';
 import { TitleService } from '../../../../shared/services/title.service';
 import { SystemService } from '../../../../shared/services/system.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from '../../../../shared/services/toast.service';
 
-import { System } from '../../../../shared/models/settings/system';
+import { System } from '../../../../shared/constants/contracts/system';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-login',

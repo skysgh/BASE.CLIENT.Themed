@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 //
-import { DiagnosticsService } from '../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
 import { DashboardService } from '../../../shared/services/dashboard.service';
 //
 import { StatComponent } from './ui/stat/component';
@@ -32,7 +32,7 @@ import { DashboardComponent } from './ui/component';
   providers: [
     // declare services to dependency inject into constructors.
     // define what Services
-    //DiagnosticsService,
+    //DiagnosticsTraceService,
     DashboardService,
   ]
 })

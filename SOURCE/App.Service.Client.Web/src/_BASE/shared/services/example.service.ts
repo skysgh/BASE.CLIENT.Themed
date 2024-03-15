@@ -1,7 +1,7 @@
 // Import dependencies:
 import { Injectable } from '@angular/core';
 
-import { DiagnosticsService } from './diagnostics.service';
+import { DiagnosticsTraceService } from './diagnostics.service';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
@@ -11,15 +11,15 @@ export class ExampleService {
 
   public someField: string = "hell...";
 
-  constructor(private diagnosticsService: DiagnosticsService) {
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
 
   }
 
   // some method
   public someMethod() {
-    this.diagnosticsService.info("entering someMethod");
+    this.diagnosticsTraceService.info("entering someMethod");
     //do something...
-    this.diagnosticsService.info("exiting someMethod");
+    this.diagnosticsTraceService.info("exiting someMethod");
   }
 
 

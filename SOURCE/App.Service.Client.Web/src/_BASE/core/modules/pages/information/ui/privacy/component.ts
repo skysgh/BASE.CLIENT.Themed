@@ -2,10 +2,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 // Import Base.Common.Models:
-import { System } from '../../../../../../shared/models/settings/system';
+import { System } from '../../../../../../shared/constants/contracts/system';
 // Import Base.Common.Services:
 import { SystemService } from '../../../../../../shared/services/system.service';
-import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class BaseInformationPrivacyPolicyComponent implements OnInit {
 
   system: System;
 
-  constructor(systemService: SystemService,private diagnosticsService:DiagnosticsService, translateService:TranslateService) {
+  constructor(systemService: SystemService,private diagnosticsTraceService:DiagnosticsTraceService, translateService:TranslateService) {
     this.system = systemService.system;
   }
 

@@ -1,32 +1,39 @@
 //import { listLang } from '../../../_BASE/shared/settings/constants/languages';
 
+// Rx:
+import { Observable, of } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+// Ag:
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { EventService } from '../../../_BASE/shared/services/services/event.service';
 
 //Logout
 import { environment } from '../../../environments/environment';
-import { AuthenticationService } from '../../../_BASE/shared/services/services/auth.service';
-import { AuthfakeauthenticationService } from '../../../_BASE/shared/services/services/authfake.service';
+import { AuthenticationService } from '../../../_BASE/shared/services/auth.service';
+import { AuthfakeauthenticationService } from '../../../_BASE/shared/services/authfake.service';
 import { Router } from '@angular/router';
-import { TokenStorageService } from '../../../_BASE/shared/services/services/token-storage.service';
+import { TokenStorageService } from '../../../_BASE/shared/services/token-storage.service';
 
 // Language
 import { CookieService } from 'ngx-cookie-service';
-import { LanguageService } from '../../../_BASE/shared/services/services/language.service';
+import { LanguageService } from '../../../_BASE/shared/services/language.service';
 import { TranslateService } from '@ngx-translate/core';
+
 //import { allNotification, messages } from './data'
 import { CartModel } from './topbar.model';
 import { cartData } from './data';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationService } from '../../../_BASE/shared/services/notification.service';
-import { SystemLanguage } from '../../../_BASE/shared/models/data/system-language';
-import { DiagnosticsService } from '../../../_BASE/shared/services/diagnostics.service';
-import { Observable, of } from 'rxjs';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+//  Base Services:
 import { SystemService } from '../../../_BASE/shared/services/system.service';
-//import { system } from '../../../_BASE/shared/constants/system';
-import { System } from '../../../_BASE/shared/models/settings/system';
+import { SystemNotificationService } from '../../../_BASE/shared/services/notification.service';
+import { DiagnosticsTraceService } from '../../../_BASE/shared/services/diagnostics.service';
+import { EventService } from '../../../_BASE/shared/services/event.service';
+// Base Models:
+import { SystemLanguage } from '../../../_BASE/shared/models/data/system-language';
+// Constants:
+import { System } from '../../../_BASE/shared/constants/contracts/system';
+import { SystemNotification } from '../../../_BASE/shared/models/data/notification.model';
 
 
 @Component({
@@ -39,34 +46,58 @@ export class TopbarComponent implements OnInit {
   element: any;
   mode: string | undefined;
   @Output() mobileMenuButtonClicked = new EventEmitter();
+
+  // NOtificationService lists:
   allnotifications: any
-  flagvalue: any;
-  valueset: any;
-  languageTitle: any;
-  cookieValue: any;
-  userData: any;
-  cartData!: CartModel[];
-  total = 0;
-  cart_length: any = 0;
   totalNotify: number = 0;
   newNotify: number = 0;
   readNotify: number = 0;
-  isDropdownOpen = false;
-  @ViewChild('removenotification') removenotification !: TemplateRef<any>;
   notifyId: any;
 
-  public systemLanguages: Observable<SystemLanguage[]> = of ([]);
+  flagStuff: any= {
+    "flagvalue": '',
+    "valueset":'',
+  }
 
-  system: System; 
+  // Language: stuff:
+  flagvalue: string = '';
+  valueset: string='';
+  languageTitle: string='';
+  cookieValue: any;
+  // Unknown - languages?
+  isDropdownOpen = false;
+  // User
+  userData: any;
+  // Shopping
+  cartData!: CartModel[];
+  total = 0;
+  cart_length: any = 0;
 
-  constructor(@Inject(DOCUMENT) private document: any,
-    private systemService: SystemService, 
-    protected diagnosticsService :DiagnosticsService,
-    private notificationService : NotificationService,
-    private eventService: EventService, public languageService: LanguageService, private modalService: NgbModal,
-    public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService, private authFackservice: AuthfakeauthenticationService,
+  // CHECK:
+  @ViewChild('removenotification') removenotification !: TemplateRef<any>;
+
+  // Exposed properties:
+  system: System;
+  public systemLanguages$: Observable<SystemLanguage[]> = of ([]);
+  public notificationsAll$: Observable<SystemNotification[]> = of([]);
+  public notificationsMessages$: Observable<SystemNotification[]> = of([]);
+  public notificationsAlerts$: Observable<SystemNotification[]> = of([]);
+
+  constructor(@Inject(DOCUMENT)
+    private document: any,
+    systemService: SystemService, 
+    protected diagnosticsTraceService :DiagnosticsTraceService,
+    private systemNotificationService: SystemNotificationService,
+    private eventService: EventService,
+    public languageService: LanguageService,
+    private modalService: NgbModal,
+    public _cookiesService: CookieService,
+    public translate: TranslateService,
+    private authService: AuthenticationService,
+    private authFackservice: AuthfakeauthenticationService,
     private router: Router, private TokenStorageService: TokenStorageService) {
 
+    // Can be either via service, or injecting the constats/settings object:
     this.system = systemService.system;
   }
     
@@ -88,45 +119,62 @@ export class TopbarComponent implements OnInit {
   private initLanguages() {
     // This will take a sec to retrieve:
     this.languageService
-      .languageDescriptions
+      .items$
       .subscribe(x => {
+
         if (x.length == 0) {
-          this.diagnosticsService.info("...early exit...");
+          this.diagnosticsTraceService.info("...early exit...");
           return;
         }
+
         // Cookies wise Language set
         this.cookieValue = this._cookiesService.get('lang') || 'en';
-        this.diagnosticsService.info("cookie value:" + this.cookieValue);
+        this.diagnosticsTraceService.info("cookie value:" + this.cookieValue);
 
-        this.diagnosticsService.info("...processing...");
-        this.diagnosticsService.info("Number of languages is:" + x.length);
+        this.diagnosticsTraceService.info("...processing...");
+        this.diagnosticsTraceService.info("Number of languages is:" + x.length);
 
-        //Get an array of one current language decription:
-        const val = x.filter(x => x.languageCode === this.cookieValue);
+        //Get an array of one, matching current language description:
+        var tmp = x.filter(x => x.languageCode === this.cookieValue);
 
+        if (tmp.length === 0) {
+          // NO match, so can't set to a specific flag. Fallback:
+          this.languageTitle = '...';
+          this.valueset = this.system.sources.images.flags + '/00.svg';
+          this.flagvalue = this.system.sources.images.flags + '/00.svg';
+        } else {
+          //tmp = tmp[0];
+          // Match. So image will be ok.
+          // And we can also set the language title.
+          this.languageTitle = tmp[0].title;
 
-      if (val.length === 0) {
-        this.valueset = this.system.parts.images.flags+'/00.svg'; 
-      } else {
-        this.languageTitle = val.map(x =>x.title);
-        this.diagnosticsService.info("languageTitle:" + this.languageTitle);
-        // go through array of 1:
-        // and get it's flag url:
-        this.flagvalue = val.map(x => `${this.system.parts.images.flags}${x.languageCode}.svg`) || `${this.system.parts.images.flags}00.svg`;
-      }
+          this.diagnosticsTraceService.info("languageTitle:" + this.languageTitle);
+          // go through array of 1:
+          // and get it's flag url:
+          this.flagvalue = `${this.system.sources.images.flags}${tmp[0].languageCode}.svg`;
+        }
+        this.diagnosticsTraceService.info("valueset:" + this.valueset);
+        this.diagnosticsTraceService.info("FlagValue:" + this.flagvalue);
 
-        this.diagnosticsService.info("valueset:" + this.valueset);
-        this.diagnosticsService.info("FlagValue:" + this.flagvalue);
-
-        this.systemLanguages = of(x);
+        this.systemLanguages$ = of(x);
 
     });
 
   }
   private initMessages() {
-    // Fetch Data
-    this.allnotifications = this.notificationService.getAll();
-    this.messages = this.notificationService.getMessages();
+    this.systemNotificationService
+      .mappedItems$
+      .subscribe(x => {
+        // Fetch Data
+        this.notificationsAll$ = of(x) ;
+      });
+
+    this.systemNotificationService
+      .filteredMappedItems$
+      .subscribe(x => {
+        // Fetch Data
+        this.notificationsMessages$ = of(x);
+      });
   }
 
   private initCart() {
@@ -190,6 +238,7 @@ export class TopbarComponent implements OnInit {
     this.modalService.open(content, { centered: true });
   }
 
+
   /**
   * Topbar Light-Dark Mode Change
   */
@@ -219,7 +268,7 @@ export class TopbarComponent implements OnInit {
   setLanguage(systemLanguage: SystemLanguage) {
     if (systemLanguage) {
       this.languageTitle = systemLanguage.title;
-      this.flagvalue = `${this.system.parts.images.flags}${systemLanguage.languageCode}.svg`;
+      this.flagvalue = `${this.system.sources.images.flags}${systemLanguage.languageCode}.svg`;
       this.cookieValue = systemLanguage.languageCode ?? 'en';
       this.languageService.setLanguage(systemLanguage.languageCode ?? 'en');
     }
@@ -227,7 +276,7 @@ export class TopbarComponent implements OnInit {
 
   trackByCountryCode(index: number, item: SystemLanguage) {
     console.log(item.description);
-    //this.diagnosticsService.info(item.description);
+    //this.diagnosticsTraceService.info(item.description);
     return item.languageCode;
   }
 

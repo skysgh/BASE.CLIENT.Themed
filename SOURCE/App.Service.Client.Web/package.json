@@ -1,6 +1,6 @@
 {
-  "name": "velzon",
-  "version": "0.0.0",
+  "name": "BASE",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,6 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "soul": "soul --database=_custom/sqlite/base.db --p=4202",
     "json-server": "json-server --port=4202 --routes=_custom/json-server/routes.json _custom/json-server/data.json"
   },
   "private": true,
@@ -24,6 +25,8 @@
     "@angular/platform-browser-dynamic": "^17.0.4",
     "@angular/router": "^17.0.4",
     "@asymmetrik/ngx-leaflet": "^17.0.0",
+    "@automapper/classes": "^8.8.1",
+    "@automapper/core": "^8.8.1",
     "@ckeditor/ckeditor5-angular": "^7.0.1",
     "@ckeditor/ckeditor5-build-classic": "^40.1.0",
     "@ctrl/ngx-emoji-mart": "^9.2.0",
@@ -47,6 +50,7 @@
     "@types/google.maps": "^3.54.9",
     "@types/jasmine": "^5.1.4",
     "@types/prismjs": "^1.26.3",
+    "@types/uuid": "^9.0.8",
     "angular-feather": "^6.5.0",
     "angular-ng-autocomplete": "^2.0.12",
     "angular-ng-stepper": "^2.0.0",
@@ -93,11 +97,13 @@
     "ngx-slider-v2": "^17.0.0",
     "ngx-ui-switch": "^15.0.0",
     "prismjs": "^1.29.0",
+    "reflect-metadata": "^0.2.1",
     "rxjs": "^7.8.1",
     "simplebar-angular": "^3.2.4",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.10.1",
     "tslib": "^2.6.2",
+    "uuid": "^9.0.1",
     "zone.js": "^0.14.2"
   },
   "devDependencies": {

@@ -1,103 +1,95 @@
 // Import dependencies:
+import { BehaviorSubject, Observable, map, of, switchMap, tap, timer } from 'rxjs';
 import { Injectable } from '@angular/core';
 
+import { DiagnosticsTraceService } from './diagnostics.service';
+import { SystemService } from './system.service';
+import { NotificationsRepositoryService } from './repositories/system.notification.repository.service';
+import { SystemNotification } from '../models/data/notification.model';
+import { ItemsCollectionServiceBase } from './base/itemsCollection.service.base';
+import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
+
+
+
+/**
+ * Service to collect together Messages and Alerts
+ * intended for the current user.
+ */
 // Injectable Service, available everywhere
 // as asingleton:
 @Injectable({ providedIn: 'root' })
-export class NotificationService {
+export class SystemNotificationService extends ItemsCollectionServiceBase<SystemNotification, string, SystemNotification>{
 
-  // TODO:
-  // Note: when moved to a service,
-  // will get images from 'assets/images/users'
+  protected override pollDelayInSeconds: number = 60;
+  protected override itemKeyFieldName = 'id';
 
-  private allNotifications = [
-    {
-      id: 1,
-      "title":"General",
-      desc: "Students running in hallways",
-      icon: "bx-badge-check",
-      time: "Just 30 sec ago",
-      checkboxId: "all-notification-check01",
-      state: false
-    },
-    {
-      id: 2,
-      title: "Angela Bernier ",
-      desc: "School bell still muted? 🔔.",
-      img: "assets/images/users/avatar-2.jpg",
-      icon: "bx-badge-check",
-      time: "48 min ago",
-      checkboxId: "all-notification-check02",
-      state: false
-    },
-    {
-      id: 3,
-      title: "General",
-      desc: "Parents are really mad!",
-      icon: "bx-badge-check",
-      time: "2 hrs ago",
-      checkboxId: "all-notification-check03",
-      state: false
-    },
-    {
-      id: 4,
-      title: "Maureen Gibsons",
-      desc: "Maths results in.",
-      img: "assets/images/users/avatar-8.jpg",
-      icon: "bx-badge-check",
-      time: "4 HRS ago",
-      checkboxId: "all-notification-check04",
-      state: false
-    },
-  ]
 
-  private messages = [
-    {
-      id: 1,
-      avatar: "assets/images/users/avatar-3.jpg",
-      name: "James Lemire",
-      message: "Algebra summer course?",
-      time_ago: "30 min ago",
-      checkboxId: "all-notification-check01",
-      state: false
+  private itemTypeFKA: string = '00000000-0000-0000-0000-000000000001';
+  private itemTypeFKB: string = '00000000-0000-0000-0000-000000000002';
 
-    },
-    {
-      id: 2,
-      avatar: "assets/images/users/avatar-2.jpg",
-      name: "Angela Bernier",
-      message: "Blah blah blah... 🔔.",
-      time_ago: "2 hrs ago",
-      checkboxId: "all-notification-check02",
-      state: false
-    },
-    {
-      id: 3,
-      avatar: "assets/images/users/avatar-6.jpg",
-      name: "Kenneth Brown",
-      message: "Sporting 📃 invoice #12501.",
-      time_ago: "10 hrs ago",
-      checkboxId: "all-notification-check03",
-      state: false
-    },
-    {
-      id: 4,
-      avatar: "assets/images/users/avatar-8.jpg",
-      name: "Maureen Gibson",
-      message: "Called city about the water pipes.",
-      time_ago: "3 days ago",
-      checkboxId: "all-notification-check04",
-      state: false
-    }
-  ];
+  constructor(
+    diagnosticsTraceService: DiagnosticsTraceService,
+    translate: TranslateService,
+    cookieService: CookieService,
+    private notificationsRepositoryService: NotificationsRepositoryService) {
+    //Invoke super constructor, which invokes timer, etc.
+    super(diagnosticsTraceService, translate);
+    // call explicitly (if called by super then repositorySErvice will not yet have been made into a private property...)
+    this.setupTimer();
 
-  public getAll() {
-    return this.allNotifications;
-  }  
-  public getMessages() {
-      return this.messages;
-    }  
+  }
 
+  /**
+ * Abstract method to filter on TVtos.
+ * @param item
+ */
+  protected override filterFor(item: SystemNotification): boolean {
+    // Not much of a filter on this one
+    return (item.typeFK == this.itemTypeFKA);
+  }
+
+  /**
+   * Abstract method to map TDto to TVto.
+   * In many cases it just be a simple case of
+   * TDto being the same as TVto,
+   * in which case it's a simple case of
+   * "return item";
+   * @param item
+   */
+  protected override developMappedObject(item: SystemNotification): SystemNotification {
+    this.diagnosticsTraceService.info("notificationsService.developMappedObject(...)");
+    return item;
+    // In this contrived example, not doing much, just changing type:
+    //return item;
+    // Same thing in this simple case:
+    //  var replacement: SystemNotification = {
+    //    id: item.id,
+    //    enabled: item.enabled,
+    //    imageId: item.imageId,
+    //    title: item.title,
+    //    description: item.description,
+    //  }
+    //  return replacement;
+  }
+
+  /**
+   * Abstract method to invoke the repositoryservice
+   * method of choice to return an array of TDtos
+   */
+  protected InvokeRepository(): Observable<SystemNotification[]> {
+    this.diagnosticsTraceService.info("notificationsService.invokeRepository(...)");
+    return this.notificationsRepositoryService.getPage();
+  }
+
+  /**
+   * Abstract final method for any action
+   * required at the end of the refreshment of the list
+   */
+  protected override handleUpdate(items: SystemNotification[]): void {
+    // do things...
+    this.diagnosticsTraceService.info("notificationsService.handleUpdate(...)");
+  }
 }
 
 

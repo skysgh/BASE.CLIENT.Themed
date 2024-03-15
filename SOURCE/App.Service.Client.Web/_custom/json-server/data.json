@@ -1,5 +1,5 @@
 {
-  "encodingTypes": [
+  "base_encodingTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "HTML",
@@ -11,13 +11,14 @@
       "description": "...some desc..."
     }
   ],
-  "languageCodes": [
+
+  "base_languages": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "enabled": true,
       "title": "NZ English",
       "description": "Kiwi",
-      "languageCode": "nz",
+      "languageCode": "en",
       "flagImageId": "nz"
     },
     {
@@ -70,7 +71,7 @@
     }
 
   ],
-  "statementTypes": [
+  "base_statementTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Privacy Statement",
@@ -87,7 +88,7 @@
       "description": "...some desc..."
     }
   ],
-  "statements": [
+  "base_statements": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "typeId": "00000000-0000-0000-0000-000000000001",
@@ -107,7 +108,7 @@
       "text": "...some desc..........."
     }
   ],
-  "agreementTypes": [
+  "base_agreementTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Terms and Conditions",
@@ -116,7 +117,7 @@
       "text": "...some desc..."
     }
   ],
-  "agreements": [
+  "base_agreements": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "typeId": "00000000-0000-0000-0000-000000000001",
@@ -128,7 +129,7 @@
     }
   ],
 
-  "userQuotes": [
+  "base_userQuotes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Great!",
@@ -151,98 +152,281 @@
       "languageCode": "mi"
     }
   ],
+  "base_systemUsers": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Mr.Jones",
+      "description": "The Janitor",
+      "identityFK": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Mr.Smith",
+      "description": "Principal or Principals",
+      "identityFK": "00000000-0000-0000-0000-000000000002"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "Miss Teal",
+      "description": "Maths teacher",
+      "identityFK": "00000000-0000-0000-0000-000000000003"
+    }
+  ],
+
+  "persons": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "dob": null,
+      "height": 181
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "dob": null,
+      "height": 182
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "dob": null,
+      "height": 183
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "dob": null,
+      "height": 184
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "dob": null,
+      "height": 185
+    }
+  ],
+
+  "personIdentities": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "parentFK": "00000000-0000-0000-0000-000000000001",
+      "genderFK": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "parentFK": "00000000-0000-0000-0000-000000000002",
+      "genderFK": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "parentFK": "00000000-0000-0000-0000-000000000003",
+      "genderFK": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "parentFK": "00000000-0000-0000-0000-000000000004",
+      "genderFK": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "parentFK": "00000000-0000-0000-0000-000000000005",
+      "genderFK": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "parentFK": "00000000-0000-0000-0000-000000000006",
+      "genderFK": "00000000-0000-0000-0000-000000000001"
+    }
+  ],
+
+  "personIdentityNames": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "parentFK": "00000000-0000-0000-0000-000000000001",
+      "givens": "Steve M.",
+      "surname": "Paul"
+    },
+    {
+      "id": "00000000-0000-0000-0001-00000000002",
+      "parentFK": "00000000-0000-0000-0000-000000000002",
+      "givens": "Steve M.",
+      "surname": "Paul"
+    },
+    {
+      "id": "00000000-0000-0000-0002-00000000002",
+      "parentFK": "00000000-0000-0000-0000-000000000002",
+      "givens": "Steve M.",
+      "surname": "Paul"
+    },
+    {
+      "id": "00000000-0000-0000-0000-00000000003",
+      "parentFK": "00000000-0000-0000-0000-000000000003",
+      "givens": "Steve M.",
+      "surname": "Paul"
+    },
+    {
+      "id": "00000000-0000-0000-0000-00000000004",
+      "parentFK": "00000000-0000-0000-0000-000000000004",
+      "givens": "Steve M.",
+      "surname": "Paul"
+    },
+    {
+      "id": "00000000-0000-0000-0000-00000000005",
+      "parentFK": "00000000-0000-0000-0000-000000000005",
+      "givens": "Steve M.",
+      "surname": "Paul"
+    },
+    {
+      "id": "00000000-0000-0000-0000-00000000006",
+      "parentFK": "00000000-0000-0000-0000-000000000006",
+      "givens": "Steve M.",
+      "surname": "Paul"
+    }
+  ],
+
+
   "tasks": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Get list of permitted languages",
       "description": "From server, get list of language options.",
       "completed": false,
-      "icon": "bx-badge-check"
+      "iconId": "bx-badge-check"
     }
-
   ],
 
-  "allNotifications": [
+
+
+
+  "notificationDisplayItem": [
     {
-      "id": 1,
-      "title": "General",
-      "desc": "Students running in hallways",
-      "icon": "bx-badge-check",
+      "id": "00000000-0000-0000-0000-000000000001",
+      "recipientFK": "00000000-0000-0000-0000-000000000001",
+      "iconId": "bx-badge-check",
+      "checkboxId": "all-notification-check01",
+      "time": "Just 30 sec ago",
+      "from": "AliExpress",
+      "subject": "Your Drone reward is ready!",
+      "message": "Blah blah blah...",
+      "state": false
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "from": "AliExpress",
+      "subject": "Your Drone reward is ready!",
+      "message": "Blah blah blah...",
+      "iconId": "bx-badge-check",
       "time": "Just 30 sec ago",
       "checkboxId": "all-notification-check01",
       "state": false
     },
     {
-      "id": 2,
-      "title": "Angela Bernier ",
-      "desc": "School bell still muted? 🔔.",
+      "id": "00000000-0000-0000-0000-000000000002",
+      "from": "Angela Bernier",
+      "subject": "Answered to your comment on the cash flow forecast's graph 🔔.",
       "img": "assets/images/users/avatar-2.jpg",
-      "icon": "bx-badge-check",
+      "iconId": "bx-badge-check",
       "time": "48 min ago",
       "checkboxId": "all-notification-check02",
       "state": false
     },
     {
-      "id": 3,
-      "title": "General",
-      "desc": "Parents are really mad!",
-      "icon": "bx-badge-check",
+      "id": "00000000-0000-0000-0000-000000000003",
+      "from": "Daemon",
+      "subject": "You have received new messages in the conversation",
+      "iconId": "bx-badge-check",
       "time": "2 hrs ago",
       "checkboxId": "all-notification-check03",
       "state": false
     },
     {
-      "id": 4,
-      "title": "Maureen Gibsons",
-      "desc": "Maths results in.",
+      "id": "00000000-0000-0000-0000-000000000004",
+      "from": "Maureen Gibsons",
+      "subject": "We talked about a project on linkedin.",
       "img": "assets/images/users/avatar-8.jpg",
-      "icon": "bx-badge-check",
+      "iconId": "bx-badge-check",
       "time": "4 HRS ago",
       "checkboxId": "all-notification-check04",
       "state": false
     }
+  ],
+
+
+
+  "systemNotifications": [
 
   ],
+
+  "messageTypes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Notifications",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Message",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "Message",
+      "description": "..."
+    }
+  ],
+
+
+
+
+
 
   "messages": [
     {
-      "id": 1,
-      "avatar": "avatar-3.jpg",
-      "name": "James Lemire",
-      "message": "Algebra summer course?",
-      "time_ago": "30 min ago",
-      "checkboxId": "all-notification-check01",
-      "state": false
-
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": false,
+      "typeFK": "00000000-0000-0000-0000-000000000001",
+      "iconId": "bx-badge-check",
+      "imageName": "avatar-1.jpg",
+      "title": "General",
+      "description": "Students running in hallways",
+      "sentUtc": "2023-04-23T18:25:43.511Z",
+      "checkboxId": "all-notification-check01"
     },
     {
-      "id": 2,
-      "avatar": "avatar-2.jpg",
-      "name": "Angela Bernier",
-      "message": "Blah blah blah... 🔔.",
-      "time_ago": "2 hrs ago",
-      "checkboxId": "all-notification-check02",
-      "state": false
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": false,
+      "typeFK": "00000000-0000-0000-0000-000000000001",
+      "iconId": "bx-badge-check",
+      "imageName": "avatar-2.jpg",
+      "title": "Angela Bernier ",
+      "description": "School bell still muted? 🔔.",
+      "sentUtc": "2023-04-23T18:25:43.511Z",
+      "checkboxId": "all-notification-check02"
     },
     {
-      "id": 3,
-      "avatar": "avatar-6.jpg",
-      "name": "Kenneth Brown",
-      "message": "Sporting 📃 invoice #12501.",
-      "time_ago": "10 hrs ago",
-      "checkboxId": "all-notification-check03",
-      "state": false
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": false,
+      "typeFK": "00000000-0000-0000-0000-000000000001",
+      "iconId": "bx-badge-check",
+      "imageName": "avatar-8.jpg",
+      "title": "General",
+      "description": "Parents are really mad!",
+      "sentUtc": "2023-04-23T18:25:43.511Z",
+      "checkboxId": "all-notification-check03"
     },
     {
-      "id": 4,
-      "avatar": "avatar-8.jpg",
-      "name": "Maureen Gibson",
-      "message": "Called city about the water pipes.",
-      "time_ago": "3 days ago",
-      "checkboxId": "all-notification-check04",
-      "state": false
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": false,
+      "typeFK": "00000000-0000-0000-0000-000000000001",
+      "iconId": "bx-badge-check",
+      "imageName": "avatar-8.jpg",
+      "title": "Maureen Gibsons",
+      "description": "Maths results in.",
+      "sentUtc": "2023-04-23T18:25:43.511Z",
+      "checkboxId": "all-notification-check04"
     }
   ],
+
+
+
+
+
+
 
   "pricings": [
     {
@@ -270,6 +454,9 @@
       "price": "30000"
     }
   ],
+
+
+
 
   "pricingfeatures": [
     {
@@ -314,9 +501,6 @@
       "title": "24/7 Support",
       "description": "...some desc..."
     },
-
-
-
     {
       "id": "00000000-0000-0000-0000-000000000031",
       "pricingFK": "00000000-0000-0000-0000-000000000003",
@@ -343,21 +527,39 @@
     }
   ],
 
+
+
+
   "subscriptions": [
     {
       "pricingFk": "00000000-0000-0000-0000-000000000001",
       "userFk": "00000000-0000-0000-0000-000000000001"
     }
   ],
-  "licenses": {
-    "id": "00000000-0000-0000-0000-000000000001",
-    "title": "License",
-    "version": "0.1"
-  },
-  "licenseAssignments": {
-    "licenseId": "00000000-0000-0000-0000-000000000001",
-    "UserId": "00000000-0000-0000-0000-000000000001"
-  },
+
+
+
+
+
+
+
+  "licenses":[
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "License",
+      "version": "0.1"
+    },
+    "licenseAssignments",
+
+    {
+      "licenseId": "00000000-0000-0000-0000-000000000001",
+      "UserId": "00000000-0000-0000-0000-000000000001"
+    }
+  ],
+
+
+
+
 
 
   "productCarts": [
@@ -366,7 +568,12 @@
       "productId": "00000000-0000-0000-0000-000000000001"
     }
   ],
-  "productTypes": [
+
+
+
+
+
+  "productTypes":[
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Type A",
@@ -378,6 +585,11 @@
       "description": "blah...blah..."
     }
   ],
+
+
+
+
+
   "products": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -408,6 +620,15 @@
       "description": "...whatever..."
     }
   ],
+
+
+
+
+
+
+
+
+
   "subSpikes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -447,6 +668,10 @@
       "description": "..."
     }
   ],
+
+
+
+
   "templateSubItems": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -473,6 +698,10 @@
       "description": "..."
     }
   ],
+
+
+
+
   "values": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -520,6 +749,11 @@
       "description": "..."
     }
   ],
+
+
+
+
+
   "principleTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -567,6 +801,10 @@
       "description": "..."
     }
   ],
+
+
+
+
   "principles": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -642,6 +880,11 @@
       "description": "etc..."
     }
   ],
+
+
+
+
+
   "qualities": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -660,48 +903,6 @@
       "categoryFk": "00000000-0000-0000-0000-000000000002",
       "title": "THe solution's system(s) MUST..etc.",
       "description": "etc..."
-    }
-
-  ],
-  "notifications": [
-    {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "from": "AliExpress",
-      "title": "Your Drone reward is ready!",
-      "message": "Blah blah blah...",
-      "icon": "bx-badge-check",
-      "time": "Just 30 sec ago",
-      "checkboxId": "all-notification-check01",
-      "state": false
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "from": "Angela Bernier",
-      "title": "Answered to your comment on the cash flow forecast's graph 🔔.",
-      "img": "assets/images/users/avatar-2.jpg",
-      "icon": "bx-badge-check",
-      "time": "48 min ago",
-      "checkboxId": "all-notification-check02",
-      "state": false
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "from": "Daemon",
-      "title": "You have received new messages in the conversation",
-      "icon": "bx-badge-check",
-      "time": "2 hrs ago",
-      "checkboxId": "all-notification-check03",
-      "state": false
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "from": "Maureen Gibsons",
-      "title": "We talked about a project on linkedin.",
-      "img": "assets/images/users/avatar-8.jpg",
-      "icon": "bx-badge-check",
-      "time": "4 HRS ago",
-      "checkboxId": "all-notification-check04",
-      "state": false
     }
 
   ]

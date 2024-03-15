@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Register Auth
 
-import { AuthenticationService } from '../../../../shared/services/services/auth.service';
-import { UserProfileService } from '../../../../shared/services/services/user.service';
+import { AuthenticationService } from '../../../../shared/services/auth.service';
+import { UserProfileService } from '../../../../shared/services/repositories/user.repository.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { SystemService } from '../../../../shared/services/system.service';
-import { System } from '../../../../shared/models/settings/system';
+import { System } from '../../../../shared/constants/contracts/system';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-register',

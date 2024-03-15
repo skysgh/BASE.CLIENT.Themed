@@ -20,7 +20,7 @@ import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/compon
 // 
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
 import { BaseAppsSpikeSubSpikesRepositoryService } from './services/repositories/subspike-repository.service';
-import { LanguageService } from '../../shared/services/services/language.service';
+import { LanguageService } from '../../shared/services/language.service';
 import { SystemLanguagesRepositoryService } from '../../shared/services/repositories/system.languages.repository.service';
 
 // ...submodules:

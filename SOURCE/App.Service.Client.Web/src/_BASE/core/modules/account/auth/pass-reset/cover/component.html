@@ -55,8 +55,8 @@
 
                             <div class="col-lg-6">
                                 <div class="p-lg-5 p-4">
-                                    <h5 class="text-primary">{{'BASE.SHARED.AUTHENTICATION.FORGOT?'|translate}}</h5>
-                                    <p class="text-muted">{{'BASE.SHARED.ACTIONS.RESET'|translate}}</p>
+                                    <h5 class="text-primary">{{'BASE.AUTHENTICATION.FORGOT?'|translate}}</h5>
+                                    <p class="text-muted">{{'BASE.ACTIONS.RESET'|translate}}</p>
 
                                     <div class="mt-2 text-center">
                                         <lord-icon src="https://cdn.lordicon.com/rhvddzym.json"
@@ -67,7 +67,7 @@
 
                                     <div class="alert border-2 bg-body-secondary alert-warning text-center mb-2 mx-2"
                                          role="alert">
-                                      {{'BASE.SHARED.MISC.ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS'}}
+                                      {{'BASE.MISC.ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS'}}
                                     </div>
                                     <div class="p-2">
                                         <form [formGroup]="passresetForm" (ngSubmit)="onSubmit()">
@@ -81,13 +81,13 @@
                                                 <div class="invalid-feedback" align="left">
                                                     @if(f['email'].errors['required']){
                                                     <div>
-                                                  {{'BASE.SHARED.AUTHENTICATION.EMAIL_ERROR_01'|translate}}</div>}
+                                                  {{'BASE.AUTHENTICATION.EMAIL_ERROR_01'|translate}}</div>}
                                                 </div>}
                                             </div>
 
                                             <div class="text-center mt-4">
                                               <button class="btn btn-success w-100" type="submit">
-                                                {{'BASE.SHARED.MISC.SEND_EMAILED_INSTRUCTIONS'|translate}}
+                                                {{'BASE.MISC.SEND_EMAILED_INSTRUCTIONS'|translate}}
                                               </button>
                                             </div>
                                         </form><!-- end form -->
@@ -95,10 +95,10 @@
 
                                     <div class="mt-5 text-center">
                                       <p class="mb-0">
-                                        {{'BASE.SHARED.MISC.WAIT_I_REMEMBER_MY_PASSWORD'|translate}}
+                                        {{'BASE.MISC.WAIT_I_REMEMBER_MY_PASSWORD'|translate}}
                                         <a routerLink="/auth/signin/cover"
                                            class="fw-semibold text-primary text-decoration-underline">
-                                          {{'BASE.SHARED.AUTHENTICATION.SIGN_IN'|translate}}
+                                          {{'BASE.AUTHENTICATION.SIGN_IN'|translate}}
                                         </a>
                                       </p>
                                     </div>
@@ -128,7 +128,7 @@
                       <p class="mb-0">
                         {{year}} © {{system?.title || ''}}
                         -
-                        {{'BASE.SHARED.CREDITS.DEVELOPED_BY' | translate }}
+                        {{'BASE.CREDITS.DEVELOPED_BY_' | translate }}
                         {{system?.developer?.title || 'Undefined, Inc.'}}
                       </p>
                     </div>

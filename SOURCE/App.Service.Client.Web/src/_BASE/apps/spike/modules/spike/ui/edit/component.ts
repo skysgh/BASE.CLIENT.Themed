@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 // Import Common:
-import { DiagnosticsService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
@@ -21,21 +21,21 @@ export class BaseAppsSpikeSpikesEditComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private route: ActivatedRoute,
-    private diagnosticsService: DiagnosticsService,
+    private diagnosticsTraceService: DiagnosticsTraceService,
     private repositoryService: BaseAppsSpikeSpikesRepositoryService,
   ) {
-    this.diagnosticsService.info("Constructor");
+    this.diagnosticsTraceService.info("Constructor");
   }
 
     ngOnInit(): void {
-      this.diagnosticsService.info("Component OnInit");
+      this.diagnosticsTraceService.info("Component OnInit");
 
       this.route.params.subscribe(params => {
-        this.diagnosticsService.info("params ready");
-        this.diagnosticsService.info('id: ' + params['id']);
+        this.diagnosticsTraceService.info("params ready");
+        this.diagnosticsTraceService.info('id: ' + params['id']);
         this.repositoryService.get(params['id']).subscribe(x => {
-          this.diagnosticsService.info('got X: ' + x.title);
-          this.data = x
+          this.diagnosticsTraceService.info('got X: ' + x!.title);
+          this.data = x!
         });
       });
   }

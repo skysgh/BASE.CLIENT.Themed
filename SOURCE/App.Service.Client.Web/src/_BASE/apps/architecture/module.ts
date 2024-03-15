@@ -7,9 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Module specific:
 import { ArchitectureRoutingModule } from "./routing.module";
-import {ArchitectureValuesRepositoryService } from "./services/values-repository.service"
+//import {ArchitectureValuesRepositoryService } from "./services/values-repository.service"
 //Module specific components:
-import { ArchitectureValuesModule } from "./modules/values/module";
+import { BaseAppsArchitectureValuesModule } from "./modules/values/module";
+import { ArchitectureValuesRepositoryService } from './services/repositories/values-repository.service';
 
 @NgModule({
   imports: [

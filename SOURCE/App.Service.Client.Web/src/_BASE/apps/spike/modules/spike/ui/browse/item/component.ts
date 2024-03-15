@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DiagnosticsService } from '../../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../../shared/services/diagnostics.service';
 import { Spike } from '../../../../../models/spike.model';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -16,6 +16,6 @@ export class BaseAppsSpikeSpikesBrowseItemComponent {
   data: any;
   constructor(
     private translate: TranslateService,
-    private diagnosticsService: DiagnosticsService) {
+    private diagnosticsTraceService: DiagnosticsTraceService) {
   }
 }

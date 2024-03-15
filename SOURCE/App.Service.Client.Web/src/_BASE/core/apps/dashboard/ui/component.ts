@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DiagnosticsService } from '../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
 import { DashboardService } from '../../../../shared/services/dashboard.service';
-import { Stat } from '../../../../shared/models/stat.model';
+import { Stat } from '../../../../shared/models/data/stat.model';
 
 
 
@@ -13,11 +13,11 @@ import { Stat } from '../../../../shared/models/stat.model';
 export class DashboardComponent implements OnInit {
 
   public summaries: Stat[] = [];
-  constructor(private diagnosticsService: DiagnosticsService, private dashboardService: DashboardService) {
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService, private dashboardService: DashboardService) {
   }
   ngOnInit(): void {
-    this.diagnosticsService.info("...dashboard in progress...")
+    this.diagnosticsTraceService.info("...dashboard in progress...")
     this.summaries = this.dashboardService.getSummaries();
-    this.diagnosticsService.info(this.summaries);
+    this.diagnosticsTraceService.info(this.summaries);
     }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { System } from '../../../../../_BASE/shared/models/settings/system';
+import { System } from '../../../../../_BASE/shared/constants/contracts/system';
 
 import {status1, status2, status3, status4, status5, status6, status7 } from './data';
 import { ChartType } from './team-members.model';

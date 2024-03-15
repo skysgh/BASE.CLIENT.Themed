@@ -74,4 +74,8 @@ if (environment.defaultauth === 'firebase') {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  public environment: any;
+
+}

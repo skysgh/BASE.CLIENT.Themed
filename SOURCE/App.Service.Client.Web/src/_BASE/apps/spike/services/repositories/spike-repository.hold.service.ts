@@ -24,7 +24,7 @@
 
 //  }
 
-//  getAll(): Observable<Spike[]> {
+//  getPage(): Observable<Spike[]> {
 //    return this.http.get<Spike[]>(this.apiUrl);
 //  }
 //  getById(id: number): Observable<Spike> {

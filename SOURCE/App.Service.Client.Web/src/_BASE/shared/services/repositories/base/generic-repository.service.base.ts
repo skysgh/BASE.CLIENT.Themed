@@ -1,14 +1,18 @@
 // Import Ag dependencies:
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 //Import Models:
 import { ReferenceData } from '../../../models/data/reference-item.model';
 import { EnvironmentService } from '../../environment.service';
-import { DiagnosticsService } from '../../diagnostics.service';
+import { DiagnosticsTraceService } from '../../diagnostics.service';
 import { ErrorService } from '../../error.service';
 import { TypeService } from '../../type.service';
+import { ObjectMappingService } from '../../objectMapping.service';
+import { SessionService } from '../../session.service';
+import { SessionStorageService } from '../../SessionStorageService';
+import { UrlService } from '../../url.service';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
@@ -26,56 +30,86 @@ export abstract class GenericRepositoryServiceBase<Type> {
 
   // Define Properties:
   protected endpointUrl: string;
-  // Http Options
-  protected httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
-  //
+
+  protected _lastRequest :string = '';
+
+  /**
+   * Note that this base invokes mappingService
+   * to ensure the mapper is created and maps registered
+   * before we perform any repository calls.
+   * 
+   * TODO: I'm not yet sure how it's going to work with late bound modules.
+   * 
+   * @param typeService
+   * @param environmentService
+   * @param diagnosticsTraceService
+   * @param objectMappingService
+   * @param errorService
+   * @param http
+   * @param apiUrlEndpointSuffix
+   */
   constructor(
     protected typeService: TypeService,
     protected environmentService: EnvironmentService,
-    protected diagnosticsService: DiagnosticsService,
+    protected diagnosticsTraceService: DiagnosticsTraceService,
     protected errorService: ErrorService,
+    protected objectMappingService: ObjectMappingService,
+    protected sessionStorageService: SessionStorageService,
+    protected urlService: UrlService,
     protected http: HttpClient,
-    protected apiUrlEndpointSuffix: string) {
-
+    protected apiUrlEndpointSuffix: string,
+  ) {
+    var t = `${environmentService.getRestApiBaseUrl()}${apiUrlEndpointSuffix}`;
     this.endpointUrl = `${environmentService.getRestApiBaseUrl()}${apiUrlEndpointSuffix}`;
     this.isJsonServer = this.environmentService.isJsonServerContext;
   }
 
+  
   // HttpClient API get() method => Fetch entitys list
-  getAll(page: number = 0): Observable<Type[]> {
-    var url : string = this.buildRequestUrl(this.isJsonServer ? `?_page=${page}&_per_page=20` : 'TODO');
-    this.diagnosticsService.info(`querying: GET: ${url}`);
+  public getPage(pageNumber: number = 0): Observable<Type[]> {
+    return this.getPageInternal(pageNumber);
+  }
 
-    var result =
+  protected getPageInternal(pageNumber: number = 0, queryArguments:string = ''): Observable<Type[]> {
+
+    var url = this.buildPagedRequestUrl(pageNumber);
+    this._lastRequest = url;
+
+    this.diagnosticsTraceService.info(`querying: GET: ${url}`);
+
+    var options = this.buildOptions();
+
+    const c = this;
+
+    var result$ =
       this.http
-      .get<Type[]>(url)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
+        .get<Type[]>(url, options)
+        .pipe(
+          map((event: HttpEvent<Type[]>) => {
+            if (event instanceof HttpResponse) {
+              console.log("@C1...")
+              return event.body || []; // Extract the data array from the response
+            } else {
+              console.log("@C2...")
+              return Array.isArray(event) ? event : [];
+              //return (event as Type[]); // Extract the data array from the response
+            }
+          }),
+          retry(1),
+          catchError(c.handleError)
       );
 
-    this.diagnosticsService.info(result);
-    return result;
-  }
-  getAllWithMapper(page: number = 0): Observable<Type> {
-    var url: string = this.buildRequestUrl(this.isJsonServer ? `?_page=${page}&_per_page=20` : 'TODO');
-    this.diagnosticsService.info(`querying: GET: ${url}`);
+    // no point diagnostictracing here (it's just the wrapping observable, not
+    // the results that will return later)
 
-    var result = this.http
-      .get<Type>(url)
-      .pipe(retry(1), catchError(this.handleError));
-
-    this.diagnosticsService.info(result);
-    return result;
+    return result$;
   }
 
-  //getAllWithMappingToClass(page: number = 0): Observable<Type> {
-  //  var url: string = this.buildRequestUrl(this.isJsonServer ? `?_page=${page}&_per_page=20` : 'TODO');
-  //  this.diagnosticsService.info(`querying: GET: ${url}`);
+
+
+  //getPageWithMappingToClass(page: number = 0): Observable<Type> {
+  //  var url: string = this.buildRequestUrl('', this.isJsonServer ? `_page=${page}&_per_page=20` : 'TODO');
+  //  this.diagnosticsTraceService.info(`querying: GET: ${url}`);
 
   //  var result =
   //    this.http.get<Type>(url)
@@ -83,86 +117,253 @@ export abstract class GenericRepositoryServiceBase<Type> {
   //        map(data => this.typeService.create<Type>(data))
   //          .catch(this.handleError));
 
-  //  this.diagnosticsService.info(result);
+  //  this.diagnosticsTraceService.info(result);
   //  return result;
   //}
 
-  getAllWithoutMappingToClass(page: number = 0): Observable<Type> {
-    var url: string = this.buildRequestUrl(this.isJsonServer ? `?_page=${page}&_per_page=20` : 'TODO');
-    this.diagnosticsService.info(`querying: GET: ${url}`);
+//  getPageWithoutMappingToClass(page: number = 0): Observable<Type | null > {
 
-    var result = this.http.get<Type>(url);
-    this.diagnosticsService.info(result);
+//    var url: string = this.buildRequestUrl('', this.isJsonServer ? `_page=${page}&_per_page=20` : 'TODO');
 
-    return result;
-  }
+//    this.diagnosticsTraceService.info(`querying: GET: ${url}`);
 
-  getAllChildren(parentFK: any, page: number = 0): Observable<Type> {
-    var url: string = this.buildRequestUrl(this.isJsonServer ? `?parentFK=${[parentFK]}&_page=${page}&_per_page=20` : 'TODO');
-    this.diagnosticsService.info(`querying: GET: ${url}`);
+//    var options = this.buildOptions();
 
-    var result = this.http
-      .get<Type>(url)
-      .pipe(retry(1), catchError(this.handleError));
-    this.diagnosticsService.info(result);
+//    const c = this;
+
+//    var result$ =
+//      this.http.get<Type>(
+//        url,
+//        options)
+//        .pipe(
+//          map((event: HttpEvent<Type>) => {
+//            if (event instanceof HttpResponse) {
+//              var result = event.body; // Extract the data array from the response
+//              this.diagnosticsTraceService.info(`Response.body:${result}`);
+//              return result;
+//            } else {
+//              throw new Error('Unexpected event type');
+//            }
+//          }),
+//          retry(1),
+////          catchError(c.handleError)
+//        );
+
+//    this.diagnosticsTraceService.info(result$);
+
+//    return result$;
+//  }
+
+  getPageChildren(parentFK: any, page: number = 0): Observable<Type[]> {
+
+    var url: string = this.buildRequestUrl('', this.isJsonServer ? `parentFK=${[parentFK]}&_page=${page}&_per_page=20` : 'TODO');
+
+    this.diagnosticsTraceService.info(`querying: GET: ${url}`);
+
+    var options = this.buildOptions();
+
+    const c = this;
+
+    var result =
+      this.http
+      .get<Type[]>(url, options)
+      .pipe(
+        map((event: HttpEvent<Type[]>) => {
+          if (event instanceof HttpResponse) {
+            return event.body || []; // Extract the data array from the response
+          } else {
+            throw new Error('Unexpected event type');
+          }
+        }),
+
+        retry(1),
+        catchError(c.handleError)
+      );
+    this.diagnosticsTraceService.info(result);
 
     return result;
   }
 
   // HttpClient API get() method => Fetch entity
-  get(id: any): Observable<Type> {
+  get(id: any): Observable<Type|null> {
     var url: string = this.buildRequestUrl(this.isJsonServer ? `/${id}` : 'TODO');
-    this.diagnosticsService.info(`querying: GET: ${url}`);
+    this.diagnosticsTraceService.info(`querying: GET: ${url}`);
 
-    var result =
+    var options = this.buildOptions();
+
+    const c = this;
+
+    var result$ =
       this.http
-        .get<Type>(url)
-        .pipe(retry(1), catchError(this.handleError));
-    this.diagnosticsService.info(result);
-    return result;
+        .get<Type>(
+          url,
+          options)
+        .pipe(
+            map((event: HttpEvent<Type>) => {
+              if (event instanceof HttpResponse) {
+                var result = event.body ; // Extract the data array from the response
+                this.diagnosticsTraceService.info(`Response.body:${result}`);
+                return result;
+              } else {
+                throw new Error('Unexpected event type');
+              }
+            }),
+          retry(1),
+          catchError(c.handleError)
+      );
+
+    this.diagnosticsTraceService.info(result$);
+
+    return result$;
   }
 
   
 
-  // HttpClient API post() method => Create entity
-  create(entity: any): Observable<Type> {
-    var url: string = this.buildRequestUrl(this.isJsonServer ? `` : 'TODO');
-    this.diagnosticsService.info(`querying: POST: ${url}`);
+  //// HttpClient API post() method => Create entity
+  //create(entity: any): Observable<Type|null> {
+  //  var url: string = this.buildRequestUrl(this.isJsonServer ? '' : 'TODO');
+  //  this.diagnosticsTraceService.info(`querying: POST: ${url}`);
 
-    var result =
-      this.http
-      .post<Type>(url, JSON.stringify(entity), this.httpOptions)
-      .pipe(retry(1), catchError(this.handleError));
-    this.diagnosticsService.info(result);
-    return result;
-  }
-  // HttpClient API put() method => Update entity
-  update(id: any, entity: any): Observable<Type> {
-    var url = this.buildRequestUrl('/${id}')
-    this.diagnosticsService.info(`querying: PUT: ${url}`);
-    var result =
-      this.http
-        .put<Type>(url, JSON.stringify(entity), this.httpOptions)
-        .pipe(retry(1), catchError(this.handleError));
+  //  var options = this.buildOptions();
 
-    this.diagnosticsService.info(result);
-    return result;
-  }
-  // HttpClient API delete() method => Delete entity
-  delete(id: any) {
-    var url = this.buildRequestUrl('/${id}')
-    this.diagnosticsService.info(`querying: DELETE: ${url}`);
-    var result =
-      this.http
-      .delete<Type>(url,this.httpOptions)
-      .pipe(retry(1), catchError(this.handleError));
-    this.diagnosticsService.info(result);
-    return result;
+  //  const c = this;
+
+  //  var result$ =
+  //    this.http
+  //      .post<Type>(
+  //        url,
+  //        JSON.stringify(entity),
+  //        options)
+  //      .pipe(
+  //        map((event: HttpEvent<Type>) => {
+  //          if (event instanceof HttpResponse) {
+  //            var result = event.body; // Extract the data array from the response
+  //            this.diagnosticsTraceService.info(`Response.body:${result}`);
+  //            return result;
+  //          } else {
+  //            throw new Error('Unexpected event type');
+  //          }
+  //        }),
+  //        retry(1),
+  //        catchError(c.handleError)
+  //      );
+  //  this.diagnosticsTraceService.info(result$);
+
+  //  return result$;
+  //}
+
+  //// HttpClient API put() method => Update entity
+  //update(id: any, entity: any): Observable<Type|null> {
+  //  var url = this.buildRequestUrl('/${id}')
+  //  this.diagnosticsTraceService.info(`querying: PUT: ${url}`);
+
+  //  var options = this.buildOptions();
+
+  //  const c = this;
+
+  //  var result$ =
+  //    this.http
+  //      .put<Type>(url,
+  //        JSON.stringify(entity),
+  //        options)
+  //      .pipe(
+  //        map((event: HttpEvent<Type>) => {
+  //          if (event instanceof HttpResponse) {
+  //            var result= event.body; // Extract the data array from the response
+  //            this.diagnosticsTraceService.info(`Response.body:${result}`);
+  //            return result;
+  //          } else {
+  //            throw new Error('Unexpected event type');
+  //          }
+  //        }),
+  //        retry(1),
+  //        catchError(c.handleError)
+  //      );
+
+  //  this.diagnosticsTraceService.info(result$);
+
+  //  return result$;
+  //}
+
+
+  //// HttpClient API delete() method => Delete entity
+  //delete(id: any):void  {
+
+  //  var url = this.buildRequestUrl('/${id}')
+
+  //  this.diagnosticsTraceService.info(`querying: DELETE: ${url}`);
+
+  //  var options = this.buildOptions();
+
+  //  const c = this;
+
+  //  var result$ =
+  //    this.http
+  //      .delete<Type>(
+  //        url,
+  //        options)
+  //      .pipe(
+  //        map((event: HttpEvent<Type>) => {
+  //          if (event instanceof HttpResponse) {
+  //            var result = event.body; // Extract the data array from the response
+  //            this.diagnosticsTraceService.info(`Response.body:${result}`);
+  //            return result;
+  //          } else {
+  //            throw new Error('Unexpected event type');
+  //          }
+  //        }),
+  //        retry(1),
+  //        catchError(c.handleError)
+  //      );
+  //  //return result$;
+  //}
+
+  /**
+   * Overrridable method to built a paged query
+   * suitable for getPage.
+   * @param page
+   * @returns
+   */
+  protected buildPagedRequestUrl(page: number, queryArgs:string =''): string {
+    return this.buildRequestUrl('',
+      (this.isJsonServer ? `_page=${page}&_per_page=20` : 'TODO')
+      + (queryArgs ? ('&' + queryArgs) : ''));
   }
 
-  protected buildRequestUrl(queryArgs:string) : string{
-    return this.endpointUrl + queryArgs;
+  //
+  protected buildRequestUrl(suffix: string = '', queryArgs: string = ''): string{
+    return this.urlService.buildUpUrl(this.endpointUrl, suffix, queryArgs);
   }
+
+  protected buildUrl(baseurl: string, suffix?: string, queryArgs?: string): string {
+  let url = baseurl;
+
+  // Append suffix if provided
+  if (suffix !== undefined && suffix !== null) {
+    if (!suffix.startsWith('/')) {
+      url += '/';
+    }
+    if (url.endsWith('/')) {
+      url += suffix.substring(1);
+    } else {
+      url += suffix;
+    }
+  }
+
+  // Append query args if provided
+  if (queryArgs !== undefined && queryArgs !== null) {
+    if (!queryArgs.startsWith('?')) {
+      if (url.indexOf('?') === -1) {
+        url += '?';
+      } else {
+        url += '&';
+      }
+    }
+    url += queryArgs;
+  }
+
+  return url;
+}
 
   //private handleHttpError() {
   //  catchError((error: HttpErrorResponse) => {
@@ -179,8 +380,37 @@ export abstract class GenericRepositoryServiceBase<Type> {
   //}
   // Error handling
   protected handleError(error: any /*Error*/) {
-    var errorMessage = this.errorService.report(error);
+    //var check = this._lastRequest;
+
+    var errorMessage = '';// this.errorService.report(error);
     
     return throwError(() => {return errorMessage;});
+
+
+
+
+
   }
+
+
+
+
+
+
+  protected buildHttpHeaders(): HttpHeaders {
+
+    var bearerToken = this.sessionStorageService.getItem('token');
+
+    let headers = new HttpHeaders();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `Bearer ${bearerToken}`);
+
+    return headers;
+  }
+
+  protected buildOptions(): any {
+    return { headers: this.buildHttpHeaders() };
+  }
+
 }

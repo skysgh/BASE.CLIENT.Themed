@@ -1,6 +1,8 @@
-import { HasSummary } from "./core/SummaryItem";
+//import { HasSummary } from "./core/SummaryItem";
+
+import { SummaryItemBase } from "./base/SummaryItem";
 
 
-export class Stat extends HasSummary {
+export class Stat extends SummaryItemBase {
 }
 

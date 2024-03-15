@@ -6,9 +6,10 @@ import { Product } from "../../apps/education/models/product";
 
 function mapToProduct(item: any):Product{
   return {
-    id: item.id
-    productTypeFk: item.productTypeId,
+    id: item.id,
+    //productTypeFK: item.productTypeId,
     title: item.title,
-    cost: item.price
+    description:"...blah..."
+    //cost: item.price
   }
 }

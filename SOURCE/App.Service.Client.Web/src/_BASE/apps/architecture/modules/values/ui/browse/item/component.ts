@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core';
 
 // Import Module:
-import { DiagnosticsService } from '../../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../../shared/services/diagnostics.service';
 
 import { Value } from '../../../../../models/value.model';
 
@@ -18,6 +18,6 @@ export class ArchitectureValuesBrowseItemComponent {
   @Input()
   data: any;
   constructor(
-    private diagnosticsService: DiagnosticsService) {
+    private diagnosticsTraceService: DiagnosticsTraceService) {
   }
 }

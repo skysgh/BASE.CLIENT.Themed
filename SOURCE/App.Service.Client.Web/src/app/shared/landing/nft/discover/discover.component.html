@@ -4,8 +4,11 @@
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="d-flex align-items-center mb-5">
-                    <h2 class="mb-0 fw-semibold lh-base flex-grow-1">Discover Items</h2>
-                    <a routerLink="/marletplace/explore" class="btn btn-primary">View All <i class="ri-arrow-right-line align-bottom"></i></a>
+                  <h2 class="mb-0 fw-semibold lh-base flex-grow-1">{{'BASE.MISC.DISCOVER_ITEMS'|translate}}</h2>
+                    <a routerLink="{{system.navigation.products.explore}}"
+                       class="btn btn-primary">
+                  {{'BASE.MISC.VIEW_ALL'|translate}}
+                  <i class="ri-arrow-right-line align-bottom"></i></a>
                 </div>
             </div>
         </div><!-- end row -->
@@ -34,9 +37,17 @@
                             </div>
                         </div>
                         <div class="mt-3">
-                            <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> {{data.likes}} </p>
-                            <h5 class="text-success"><i class="mdi mdi-ethereum"></i> {{data.price}} </h5>
-                            <h6 class="fs-16 mb-0"><a routerLink="/marletplace/item-details">Patterns arts &amp; culture</a></h6>
+                            <p class="fw-medium mb-0 float-end">
+                              <i class="mdi mdi-heart text-danger align-middle"></i>
+                              {{data.likes}}
+                            </p>
+                            <h5 class="text-success">
+                          <i class="mdi mdi-ethereum"></i> {{data.price}}
+                            </h5>
+                            <h6 class="fs-16 mb-0"><a routerLink="{{system.navigation.misc.todo}}">
+                              Patterns arts &amp; culture
+                                </a>
+                          </h6>
                         </div>
                     </div>
                 </div>

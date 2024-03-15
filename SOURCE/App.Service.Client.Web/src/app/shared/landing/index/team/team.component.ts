@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import {TeamModel} from './team.module';
 import { Teams } from './data';
+import { SystemService } from '../../../../../_BASE/shared/services/system.service';
+import { System } from '../../../../../_BASE/shared/constants/contracts/system';
 
 @Component({
   selector: 'app-team',
@@ -16,7 +18,12 @@ export class TeamComponent implements OnInit {
 
   Teams!: TeamModel[];
 
-  constructor() { }
+  system: System;
+  constructor(systemService:SystemService) {
+
+    // Can be either via service, or injecting the constats/settings object:
+    this.system = systemService.system;
+}
 
   ngOnInit(): void {
     /**

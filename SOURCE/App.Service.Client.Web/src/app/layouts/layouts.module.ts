@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
-import { LanguageService } from '../../_BASE/shared/services/services/language.service';
+import { LanguageService } from '../../_BASE/shared/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 // Feather Icon

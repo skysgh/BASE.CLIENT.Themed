@@ -1,11 +1,13 @@
 import { Component, ViewChild, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
-import { EventService } from '../../../_BASE/shared/services/services/event.service';
+import { EventService } from '../../../_BASE/shared/services/event.service';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { RootReducerState } from 'src/app/store';
 import { Store } from '@ngrx/store';
 import { initialState } from 'src/app/store/layouts/layout-reducers';
 import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from 'src/app/store/layouts/layout-selector';
 import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from 'src/app/store/layouts/layout-action';
+import { SystemService } from '../../../_BASE/shared/services/system.service';
+import { System } from '../../../_BASE/shared/constants/contracts/system';
 
 @Component({
   selector: 'app-rightsidebar',
@@ -34,7 +36,17 @@ export class RightsidebarComponent implements OnInit {
   @ViewChild('filtetcontent') filtetcontent!: TemplateRef<any>;
   @Output() settingsButtonClicked = new EventEmitter();
 
-  constructor(private eventService: EventService, private offcanvasService: NgbOffcanvas, private store: Store<RootReducerState>) { }
+  system: System;
+  constructor(
+    private eventService: EventService,
+    private offcanvasService: NgbOffcanvas,
+    private store: Store<RootReducerState>,
+    private systemService: SystemService
+  ) {
+
+    // Can be either via service, or injecting the constats/settings object:
+    this.system = systemService.system;
+}
 
   ngOnInit(): void {
     setTimeout(() => {

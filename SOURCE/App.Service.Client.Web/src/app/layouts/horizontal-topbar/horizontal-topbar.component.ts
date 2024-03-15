@@ -7,6 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
+import { SystemService } from '../../../_BASE/shared/services/system.service';
+import { System } from '../../../_BASE/shared/constants/contracts/system';
 
 @Component({
   selector: 'app-horizontal-topbar',
@@ -20,8 +22,12 @@ export class HorizontalTopbarComponent implements OnInit {
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
-  constructor(private router: Router, public translate: TranslateService) {
+  system: System;
+  constructor(private router: Router, public translate: TranslateService, systemService: SystemService) {
     translate.setDefaultLang('en');
+
+    // Can be either via service, or injecting the constats/settings object:
+    this.system = systemService.system;
   }
 
   ngOnInit(): void {

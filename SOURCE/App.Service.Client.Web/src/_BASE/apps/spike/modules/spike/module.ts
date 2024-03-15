@@ -9,7 +9,7 @@
 //import { SpikeSpikesRoutingModule } from "./routing.module";
 //// Entity module specific:
 //// .. services:
-//import { DiagnosticsService } from '../../../../shared/services/diagnostics.service';
+//import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
 //import { SpikeSpikesRepositoryService } from "./../../services/spike-repository.service"
 //// .. components:
 //import { SpikeSpikesBrowseComponent } from "./ui/browse/component";
@@ -42,7 +42,7 @@
 //  ],
 //  providers: [
 //    // declare services to dependency inject into constructors.
-//    DiagnosticsService,
+//    DiagnosticsTraceService,
 //    SpikeSpikesRepositoryService
 //  ]
 //})

@@ -1,7 +1,7 @@
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
 // Import Common:
-import { DiagnosticsService } from '../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
 // Import Module:
 
 
@@ -14,7 +14,7 @@ import { DiagnosticsService } from '../../../../shared/services/diagnostics.serv
 export class BaseAppsSpikeRouteOutletComponent implements OnInit {
 
   constructor(
-    private diagnosticsService: DiagnosticsService
+    private diagnosticsTraceService: DiagnosticsTraceService
   ) {
 
   }

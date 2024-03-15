@@ -6,13 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Common dependencies:
 
 // Module specific
-import { SpikeSpikesRoutingModule } from "./routing.module";
-import {ArchitectureValuesRepositoryService } from "../../services/values-repository.service"
-import { ArchitectureValuesBrowseComponent } from "./ui/browse/component";
+//import { SpikeSpikesRoutingModule } from "./routing.module";
+import { BaseAppsArchitectureValuesBrowseComponent } from "./ui/browse/component";
 import { ArchitectureValuesBrowseItemComponent } from "./ui/browse/item/component";
-import { ArchitectureValuesReadComponent} from "./ui/read/component";
-import { ArchitectureValuesEditComponent } from "./ui/edit/component";
+import { BaseAppsArchitectureValuesReadComponent } from "./ui/read/component";
+import { BaseAppsArchitectureValuesEditComponent } from "./ui/edit/component";
 
+import { ArchitectureValuesRepositoryService } from '../../services/repositories/values-repository.service';
 
 @NgModule({
   imports: [
@@ -21,16 +21,16 @@ import { ArchitectureValuesEditComponent } from "./ui/edit/component";
     CommonModule,
     FormsModule,
     // Module specific:
-    SpikeSpikesRoutingModule
+    //SpikeSpikesRoutingModule
     // No components
   ],
   
   declarations: [
     // define what Components belong to this Module (i.e., are not `standalone`)
-    ArchitectureValuesBrowseComponent,
+    BaseAppsArchitectureValuesBrowseComponent,
     ArchitectureValuesBrowseItemComponent,
-    ArchitectureValuesReadComponent,
-    ArchitectureValuesEditComponent
+    BaseAppsArchitectureValuesReadComponent,
+    BaseAppsArchitectureValuesEditComponent
   ],
   providers: [
     // declare services to dependency inject into constructors.
