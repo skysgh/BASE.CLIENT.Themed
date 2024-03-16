@@ -510,6 +510,7 @@
           "STUDY": "..."
         },
         "TERMS": {
+          "ALUMNI": "...",
           "CURRICULUM": "...",
           "CURRICULA": "...",
           "SYLLABUS": "...",
@@ -558,7 +559,7 @@
         }
       }
     },
-    "ENROLLMENT": {
+    "ENROLLMENTS": {
       "__COMMENTS": "...",
       "TITLE": "...",
       "TITLES": "...",
@@ -614,7 +615,7 @@
       "TITLES": "...",
       "DESCRIPTION": "..."
     },
-    "FINANCE": {
+    "FINANCES": {
       "_COMMMENTS": "...",
       "TITLE": "...",
       "TITLES": "...",
@@ -1030,7 +1031,7 @@
       "TITLES": "...",
       "DESCRIPTION": "..."
     },
-    "PARTICIPATION": {
+    "PARTICIPATIONS": {
       "__COMMENTS": "...",
       "TITLE": "...",
       "TITLES": "...",

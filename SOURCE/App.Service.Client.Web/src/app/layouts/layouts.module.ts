@@ -34,6 +34,7 @@ import { ContextHueComponent } from './topbar/hue/component';
 import { ContextFullScreenComponent } from './topbar/fullscreen/component';
 import { ContextSearchComponent } from './topbar/search/component';
 import { ContextUserComponent } from './topbar/user/component';
+import { ContextMenuHideComponent } from './topbar/menuhide/component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ContextUserComponent } from './topbar/user/component';
     ContextFullScreenComponent,
     ContextSearchComponent,
     ContextUserComponent,
+    ContextMenuHideComponent,
     SidebarComponent,
     FooterComponent,
     RightsidebarComponent,

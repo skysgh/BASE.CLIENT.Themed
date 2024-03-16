@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 //import { MENU } from './menu';
 import { MENU } from '../../../_BASE/core/navigation/menu';
 
-import { MenuItem } from './menu.model';
+import { MenuItem } from '../../../_BASE/shared/models/view/menu.model';
 import { environment } from 'src/environments/environment';
 import { SystemService } from '../../../_BASE/shared/services/system.service';
 import { System } from '../../../_BASE/shared/constants/contracts/system';

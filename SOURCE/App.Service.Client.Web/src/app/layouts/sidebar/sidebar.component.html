@@ -35,16 +35,24 @@
           @for(item of menuItems;track $index){
           <ng-container>
             @if(item.isTitle){
-            <li class="menu-title"><span data-key="t-menu">{{ item.label | translate }}</span></li>
+            <li class="menu-title">
+                @if(item.icon){
+                <i-feather name="{{ item.icon }}" class="icon-dual"></i-feather>
+                }
+            <span data-key="t-menu">{{ item.label | translate }}
+              </span></li>
             }@else {
             <li class="nav-item">
               @if(hasItems(item)){
               <a href="javascript:void(0);" class="nav-link menu-link" [ngClass]="{'has-arrow': !item.badge, 'has-dropdown': item.badge}" data-bs-toggle="collapse" [attr.aria-expanded]="!item.isCollapsed" aria-controls="sidebarDashboards" (click)="toggleItem(item)">
+                @if(item.icon){
                 <i-feather name="{{ item.icon }}" class="icon-dual"></i-feather>
+                }
                 <span class=""> {{ item.label | translate }}</span>
                 @if(item.badge){
-                <span class="badge badge-pill {{item.badge.variant}}">{{item.badge.text
-                  | translate}}</span>
+                <span class="badge badge-pill {{item.badge.variant}}">
+                  {{item.badge.text | translate}}
+                </span>
                 }
               </a>
               <div class="collapse menu-dropdown" #collapse="ngbCollapse" [(ngbCollapse)]="item.isCollapsed">
@@ -53,10 +61,17 @@
                   <li class="nav-item">
                     @if(hasItems(subitem)){
                     <a class="nav-link" href="javascript:void(0);" [attr.data-parent]="subitem.parentId" [attr.aria-expanded]="!subitem.isCollapsed" data-bs-toggle="collapse" (click)="toggleItem(subitem)">
+                      @if(subitem.icon){
+                      <i-feather name="{{ subitem.icon }}" class="icon-dual"></i-feather>
+                      }
                       {{ subitem.label | translate}}
                       @if(subitem.badge){
-                      <span class="badge badge-pill {{subitem.badge.variant}}">{{subitem.badge.text
-                        | translate}}</span>
+                      <span class="badge badge-pill {{subitem.badge.variant}}">
+                        {{
+subitem.badge.text
+                        | translate
+                        }}
+                      </span>
                       }
                     </a>
                     <div class="collapse menu-dropdown sub-menu" #collapse="ngbCollapse" [(ngbCollapse)]="subitem.isCollapsed">
@@ -97,10 +112,14 @@
                     </div>
                     }@else{
                     <a [routerLink]="subitem.link" class="nav-link" [attr.data-parent]="subitem.parentId" (click)="updateActive($event)">
+                      @if(subitem.icon){
+                      <i-feather name="{{ subitem.icon }}" class="icon-dual"></i-feather>
+                      }
                       {{ subitem.label | translate}}
                       @if(subitem.badge){
-                      <span class="badge badge-pill {{subitem.badge.variant}}">{{subitem.badge.text
-                        | translate}}</span>
+                      <span class="badge badge-pill {{subitem.badge.variant}}">
+                        {{subitem.badge.text | translate}}
+                      </span>
                       }
                     </a>
                     }

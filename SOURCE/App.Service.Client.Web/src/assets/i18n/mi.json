@@ -486,55 +486,76 @@
       "TITLES": "Ngā Whenua",
       "DESCRIPTION": "...",
       "EDUCATION": {
-        "__COMMENTS": "Ngā kupu e pā ana ki te Whenua o te Mātauranga.",
-        "PEOPLE": {
-          "PRINCIPAL": "Tumuaki",
+        "__COMMENTS": "Ngā kupu whaiaro ki te Ahumahi o te Mātauranga.",
+        "ROLES": {
+          "PRINCIPALS": "Kaikōwhiri",
+          "PRINCIPAL": "Kaikōwhiri",
+          "ADMINISTRATORS": "Kaitiaki",
+          "ADMINISTRATOR": "Kaitiaki",
           "TEACHER": "Kaiako",
-          "ASSISTANT_TEACHER": "Kaiako Tautoko",
-          "NURSE": "Nāhi"
+          "TEACHERS": "Kaiako",
+          "ASSISTANT_TEACHERS": "Kaiako Āwhina",
+          "ASSISTANT_TEACHER": "Kaiako Āwhina",
+          "CARETAKERS": "Kaitiaki",
+          "CARETAKER": "Kaitiaki",
+          "SPECIALISTS": "Tohunga",
+          "SPECIALIST": "Tohunga",
+          "NURSES": "Nēhi",
+          "NURSE": "Nēhi",
+          "LEARNERS": "Ākonga",
+          "LEARNER": "Ākonga"
         },
         "PLACES": {
-          "COL": "Kura Tūroa",
-          "Community of Schools": "Hapori o ngā Kura",
+          "COL": "RōpūTahi",
+          "Community of Schools": "Rōpūtahi",
           "SCHOOL": "Kura",
-          "CLASSROOM": "Ruma Akoranga",
-          "LEARNER": "Mātauranga",
-          "STUDENT": "Tauira",
-          "EARLY LEARNING": "Akoranga Mua"
+          "CLASSROOM": "Rūma Akoranga",
+          "LEARNER": "Ākonga",
+          "STUDENT": "Ākonga",
+          "EARLY LEARNING": "Akohunga Matamua",
+          "PRIMARY SCHOOL": "Kura Tuatahi",
+          "INTERMEDIATE SCHOOL": "Kura Tuarua",
+          "SECONDARY SCHOOL": "Kura Tuarua"
         },
         "ACTIONS": {
-          "LEAD": "Arataki",
+          "LEAD": "Arahi",
           "ADMINISTER": "Whakahaere",
-          "TEACH": "Whakaako",
+          "TEACH": "Ako",
           "STUDY": "Ako"
         },
         "TERMS": {
-          "CURRICULUM": "Mahere Marautanga",
-          "CURRICULA": "Ngā Mahere Marautanga",
-          "SYLLABUS": "Mātakitaki",
-          "TEACHING_PLAN": "Mahere Whakaako",
-          "TERM": "Kauhau",
-          "COURSE": "Akoranga",
-          "CLASS": "Rūmaki",
-          "LESSON": "Wānanga",
-          "SCHEDULE": "Rārangi Wā",
+          "ALUMNI": "Ākonga tūāwhiorang",
+          "CURRICULUM": "Mahere Ako",
+          "CURRICULA": "Ngā Mahere Ako",
+          "SYLLABUS": "Taumata",
+          "TEACHING_PLAN": "Rautaki Ako",
+          "TERM": "Wāhanga",
+          "COURSE": "Mahi",
+          "CLASS": "Rūma",
+          "LESSON": "Wā",
+          "SCHEDULE": "Mahere Wā",
           "ENROLLMENT": "Whakauru",
-          "ROLL_CALL": "Pānuitanga",
-          "FRAMEWORK": "Kāhui Whakaū",
+          "ROLL_CALL": "Karanga",
+          "FRAMEWORK": "Kāwai",
           "STANDARDISED": "Paerewa",
-          "TEST": "Whakamātautau",
-          "RETEST": "(Whakahōu) Whakamātautau",
-          "OBSERVATION": "Tirohanga",
+          "TEST": "Mahi Whakamātautau",
+          "RETEST": "Whakamātautau Anō",
+          "OBSERVATION": "Whakapā",
           "ASSESSMENT": "Aromatawai",
-          "JUDGEMENT": "Whakatau",
-          "SCORE": "Papa",
-          "GRADE": "Paerewa",
-          "PASS": "Kitea",
-          "FAIL": "Kua Pakaru",
-          "CERTIFICATION": "Whakamana",
-          "GRADUATION": "Whakakapi",
-          "PLD": "Whakapakari Ākonga Matua",
-          "PLD_ACRONYM": "PLD"
+          "JUDGEMENT": "Whakarite",
+          "SCORE": "Tatauranga",
+          "GRADE": "Raihana",
+          "PASS": "Kaha",
+          "FAIL": "Pāheka",
+          "CERTIFICATION": "Whakamanatanga",
+          "GRADUATION": "Whakamutunga",
+          "PLD": "Whakawhanake ā-Matanga",
+          "PLD_ACRONYM": "Whakawhanake ā-Matanga",
+          "FUNDING": "Moni Whakapūmau",
+          "SPONSORED": "Kaitohutohu",
+          "SCHOLARSHIPS": "Karahipi",
+          "SCHOLARSHIP": "Karahipi",
+          "FINANCIALS": "Pūtea"
         }
       },
       "GOVERNMENT": {
@@ -557,7 +578,7 @@
         }
       }
     },
-    "ENROLLMENT": {
+    "ENROLLMENTS": {
       "__COMMENTS": "Tirohia te WHAKAEKE, TOHUTOHU",
       "TITLE": "Whakauru",
       "TITLES": "Kāore",
@@ -634,7 +655,7 @@
       "UNCLE": "Matua",
       "CHILD": "Tamaiti"
     },
-    "FINANCE": {
+    "FINANCES": {
       "_COMMMENTS": "Tirohia te HOKO.",
       "TITLE": "Moni",
       "TITLES": "Kāore",
@@ -1071,7 +1092,7 @@
       "TITLES": "Ngā Tauira",
       "DESCRIPTION": "..."
     },
-    "PARTICIPATION": {
+    "PARTICIPATIONS": {
       "__COMMENTS": "Tirohia te Āwhina, te Rēhita",
       "TITLE": "Mahi Tahi",
       "TITLES": "N/A",

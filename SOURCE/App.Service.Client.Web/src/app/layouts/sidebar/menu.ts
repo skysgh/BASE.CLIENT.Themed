@@ -1,4 +1,4 @@
-import { MenuItem } from './menu.model';
+import { MenuItem } from '../../../_BASE/shared/models/view/menu.model';
 
 export const MENU: MenuItem[] = [
   {

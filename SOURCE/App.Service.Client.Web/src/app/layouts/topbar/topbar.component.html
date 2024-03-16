@@ -23,17 +23,7 @@
             </a>
           </div>
 
-          <button type="button"
-                  class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
-                  id="topnav-hamburger-icon"
-                  (click)="toggleMobileMenu($event)">
-            <span class="hamburger-icon">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </button>
-
+          <app-frame-context-menuhide (mobileMenuButtonClicked)="onMobileMenuButtonClicked()"></app-frame-context-menuhide>
           <!-- App Search-->
           <app-frame-context-search></app-frame-context-search>
 

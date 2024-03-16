@@ -490,14 +490,21 @@
         "ROLES": {
           "PRINCIPALS": "Principals",
           "PRINCIPAL": "Principal",
+          "ADMINISTRATORS": "Administrators",
+          "ADMINISTRATOR": "Administrator",
           "TEACHER": "Teacher",
           "TEACHERS": "Teachers",
+          "ASSISTANT_TEACHERS": "Assistant Teachers",
           "ASSISTANT_TEACHER": "Assistant Teacher",
-          "CARETAKER": "Caretaker",
           "CARETAKERS": "Caretakers",
-          "SPECIALIST": "Specialist",
+          "CARETAKER": "Caretaker",
           "SPECIALISTS": "Specialists",
-          "NURSE": "Nurse"
+          "SPECIALIST": "Specialist",
+          "NURSES": "Nurses",
+          "NURSE": "Nurse",
+
+          "LEARNERS": "Learners",
+          "LEARNER": "Learner"
         },
         "PLACES": {
           "COL": "CoL",
@@ -506,7 +513,10 @@
           "CLASSROOM": "Classroom",
           "LEARNER": "Learner",
           "STUDENT": "Student",
-          "EARLY LEARNING": "Early Learning"
+          "EARLY LEARNING": "Early Learning",
+          "PRIMARY SCHOOL": "Primary School",
+          "INTERMEDIATE SCHOOL": "Intermediate School",
+          "SECONDARY SCHOOL": "Secondary School"
         },
         "ACTIONS": {
           "LEAD": "Lead",
@@ -540,7 +550,12 @@
           "CERTIFICATION": "Certification",
           "GRADUATION": "Graduation",
           "PLD": "Professional Learner Development",
-          "PLD_ACRONYM": "PLD"
+          "PLD_ACRONYM": "PLD",
+          "FUNDING": "Funding",
+          "SPONSORED": "Sponsored",
+          "SCHOLARSHIPS": "Scholarships",
+          "SCHOLARSHIP": "Scholarship",
+          "FINANCIALS": "Financials"
         }
       },
       "GOVERNMENT": {
@@ -563,10 +578,10 @@
         }
       }
     },
-    "ENROLLMENT": {
+    "ENROLLMENTS": {
       "__COMMENTS": "See PARTICIPATION, SUBSCRIPTION",
       "TITLE": "Enrollment",
-      "TITLES": "N/A",
+      "TITLES": "Enrollments",
       "DESCRIPTION": "..."
     },
     "ENTITIES": {
@@ -640,10 +655,10 @@
       "TITLES": "FAQs",
       "DESCRIPTION": "..."
     },
-    "FINANCE": {
+    "FINANCES": {
       "_COMMMENTS": "See COMMERCE.",
       "TITLE": "Finance",
-      "TITLES": "N/A",
+      "TITLES": "Finances",
       "DESCRIPTION": "...",
       "BALANCE": "Balance",
       "DEBIT": "Debit",
@@ -1077,7 +1092,7 @@
       "TITLES": "Patterns",
       "DESCRIPTION": "..."
     },
-    "PARTICIPATION": {
+    "PARTICIPATIONS": {
       "__COMMENTS": "See ENROLLMENT, SUBSCRIPTION",
       "TITLE": "Participation",
       "TITLES": "N/A",

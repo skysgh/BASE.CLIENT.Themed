@@ -1,4 +1,4 @@
-import { MenuItem } from '../../../app/layouts/sidebar/menu.model';
+import { MenuItem } from '../../shared/models/view/menu.model';
 
 
 export const MENU: MenuItem[] =
@@ -77,48 +77,49 @@ export const MENU: MenuItem[] =
         subItems:[
           {
             id: 20321,
-            label: 'BASE.EDUCATION.ROLES.LEARNERS',
+            label: 'BASE.DOMAINS.EDUCATION.ROLES.LEARNERS',
             link: 'places',
             icon: 'map-pin',
             parentId: 20321
           },
           {
             id: 20321,
-            label: 'BASE.EDUCATION.ROLES.CARETAKERS',
+            label: 'BASE.DOMAINS.EDUCATION.ROLES.CARETAKERS',
             link: 'places',
             icon: 'map-pin',
             parentId: 20321
           },
           {
             id: 20322,
-            label: 'BASE.EDUCATION.ROLES.TEACHERS',
+            label: 'BASE.DOMAINS.EDUCATION.ROLES.TEACHERS',
             link: 'places',
             icon: 'map-pin',
             parentId: 20321
           },
           {
             id: 20322,
-            label: 'BASE.EDUCATION.ROLES.ADMINSTRATORS',
+            label: 'BASE.DOMAINS.EDUCATION.ROLES.ADMINSTRATORS',
             link: 'places',
             icon: 'map-pin',
             parentId: 20321
           },
           {
             id: 20322,
-            label: 'BASE.EDUCATION.ROLES.PRINCIPLES',
+            label: 'BASE.DOMAINS.EDUCATION.ROLES.PRINCIPLES',
             link: 'places',
             icon: 'map-pin',
             parentId: 20321
           },
           {
             id: 20322,
-            label: 'BASE.EDUCATION.ROLES.SPECIALISTS',
+            label: 'BASE.DOMAINS.EDUCATION.ROLES.SPECIALISTS',
             link: 'places',
             icon: 'map-pin',
             parentId: 20321
           },
         ]
       },
+
       {
         id: 2033,
         label: 'BASE.PLACES.TITLES',
@@ -128,21 +129,21 @@ export const MENU: MenuItem[] =
       },
       {
         id: 2034,
-        label: 'BASE.ENROLLMENT.TITLE',
+        label: 'BASE.ENROLLMENTS.TITLES',
         link: 'financials',
         icon: 'airplay',
         parentId: 203
       },
       {
         id: 2035,
-        label: 'BASE.FINANCIALS.TITLE',
+        label: 'BASE.FINANCES.TITLES',
         link: 'financials',
         icon: 'airplay',
         parentId: 203
       },
       {
         id: 2036,
-        label: 'BASE.PARTICIPATION.TITLE',
+        label: 'BASE.PARTICIPATIONS.TITLE',
         link: 'participation',
         icon: 'airplay',
         parentId: 203
@@ -167,7 +168,7 @@ export const MENU: MenuItem[] =
         link: 'accomplishments',
         icon: 'airplay',
         parentId: 203
-      }
+      },
     ]
   },
 

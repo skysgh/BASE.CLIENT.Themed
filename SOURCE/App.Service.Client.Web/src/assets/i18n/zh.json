@@ -486,29 +486,45 @@
       "TITLES": "领域",
       "DESCRIPTION": "...",
       "EDUCATION": {
-        "__COMMENTS": "教育领域的特定术语。",
-        "PEOPLE": {
+        "__COMMENTS": "教育領域的特定術語。",
+        "ROLES": {
+          "PRINCIPALS": "校长",
           "PRINCIPAL": "校长",
-          "TEACHER": "教师",
+          "ADMINISTRATORS": "管理员",
+          "ADMINISTRATOR": "管理员",
+          "TEACHER": "老师",
+          "TEACHERS": "老师",
+          "ASSISTANT_TEACHERS": "助教",
           "ASSISTANT_TEACHER": "助教",
-          "NURSE": "护士"
+          "CARETAKERS": "看守人员",
+          "CARETAKER": "看守人员",
+          "SPECIALISTS": "专家",
+          "SPECIALIST": "专家",
+          "NURSES": "护士",
+          "NURSE": "护士",
+          "LEARNERS": "学生",
+          "LEARNER": "学生"
         },
         "PLACES": {
           "COL": "CoL",
           "Community of Schools": "学校社区",
           "SCHOOL": "学校",
           "CLASSROOM": "教室",
-          "LEARNER": "学习者",
+          "LEARNER": "学生",
           "STUDENT": "学生",
-          "EARLY LEARNING": "早期学习"
+          "EARLY LEARNING": "早期学习",
+          "PRIMARY SCHOOL": "小学",
+          "INTERMEDIATE SCHOOL": "初级中学",
+          "SECONDARY SCHOOL": "中学"
         },
         "ACTIONS": {
           "LEAD": "领导",
           "ADMINISTER": "管理",
-          "TEACH": "教学",
+          "TEACH": "教授",
           "STUDY": "学习"
         },
         "TERMS": {
+          "ALUMNI": "校友",
           "CURRICULUM": "课程",
           "CURRICULA": "课程",
           "SYLLABUS": "教学大纲",
@@ -523,18 +539,23 @@
           "FRAMEWORK": "框架",
           "STANDARDISED": "标准化",
           "TEST": "测试",
-          "RETEST": "（重新）测试",
+          "RETEST": "重测",
           "OBSERVATION": "观察",
           "ASSESSMENT": "评估",
           "JUDGEMENT": "判断",
           "SCORE": "分数",
           "GRADE": "等级",
-          "PASS": "及格",
-          "FAIL": "不及格",
+          "PASS": "通过",
+          "FAIL": "失败",
           "CERTIFICATION": "认证",
           "GRADUATION": "毕业",
           "PLD": "专业学习发展",
-          "PLD_ACRONYM": "PLD"
+          "PLD_ACRONYM": "PLD",
+          "FUNDING": "资金",
+          "SPONSORED": "赞助",
+          "SCHOLARSHIPS": "奖学金",
+          "SCHOLARSHIP": "奖学金",
+          "FINANCIALS": "财务"
         }
       },
       "GOVERNMENT": {
@@ -557,7 +578,7 @@
         }
       }
     },
-    "ENROLLMENT": {
+    "ENROLLMENTS": {
       "__COMMENTS": "另见 PARTICIPATION、SUBSCRIPTION",
       "TITLE": "注册",
       "TITLES": "N/A",
@@ -634,10 +655,10 @@
       "TITLES": "常见问题解答",
       "DESCRIPTION": "..."
     },
-    "FINANCE": {
+    "FINANCES": {
       "_COMMMENTS": "参见 COMMERCE。",
-      "TITLE": "财务",
-      "TITLES": "N/A",
+      "TITLE": "金融",
+      "TITLES": "财务",
       "DESCRIPTION": "...",
       "BALANCE": "余额",
       "DEBIT": "借方",
@@ -1071,7 +1092,7 @@
       "TITLES": "模式",
       "DESCRIPTION": "..."
     },
-    "PARTICIPATION": {
+    "PARTICIPATIONS": {
       "__COMMENTS": "参见 ENROLLMENT, SUBSCRIPTION",
       "TITLE": "参与",
       "TITLES": "N/A",

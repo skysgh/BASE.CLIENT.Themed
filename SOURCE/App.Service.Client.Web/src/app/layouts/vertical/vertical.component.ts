@@ -81,7 +81,7 @@ export class VerticalComponent implements OnInit {
   /**
    * On mobile toggle button clicked
    */
-  onToggleMobileMenu() {
+  onMobileMenuButtonClicked() {
     const currentSIdebarSize = document.documentElement.getAttribute("data-sidebar-size");
     if (document.documentElement.clientWidth >= 767) {
       if (currentSIdebarSize == null) {
