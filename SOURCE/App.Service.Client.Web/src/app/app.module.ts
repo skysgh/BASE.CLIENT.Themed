@@ -28,14 +28,22 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { AuthenticationEffects } from './store/Authentication/authentication.effects';
 
+import { CookieService } from 'ngx-cookie-service';
+
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
+
 
 if (environment.defaultauth === 'firebase') {
   initFirebaseBackend(environment.firebaseConfig);
 } else {
   FakeBackendInterceptor;
+}
+
+export function defaultLanguageFactory(cookieService: CookieService): string {
+  const languageCode = cookieService.get('languageCode') || 'en'; // Retrieve language code from cookie, default to 'en'
+  return languageCode;
 }
 
 @NgModule({
@@ -44,7 +52,7 @@ if (environment.defaultauth === 'firebase') {
   ],
   imports: [
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: '',
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
@@ -71,11 +79,22 @@ if (environment.defaultauth === 'firebase') {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
+    { provide: 'defaultLanguageCode', useFactory: defaultLanguageFactory, deps: [CookieService] },
+    CookieService,
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
   public environment: any;
 
+  constructor(private cookieService: CookieService) {
+    // Get the language code from the cookie
+    const languageCode = this.cookieService.get('languageCode')||'en';
+    //TranslateModule.forRoot().providers.push({ provide: 'defaultLanguageCode', useValue: languageCode});
+
+  }
 }
+
+

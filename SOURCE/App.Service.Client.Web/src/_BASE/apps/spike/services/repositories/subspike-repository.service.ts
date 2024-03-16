@@ -13,7 +13,7 @@ import { UrlService } from "../../../../shared/services/url.service";
 
 @Injectable()
 export class BaseAppsSpikeSubSpikesRepositoryService
-  extends GenericRepositoryServiceBase<SubSpike> {
+  extends GenericRepositoryServiceBase<SubSpike,SubSpike> {
 
   constructor(
     typeService: TypeService,
@@ -35,5 +35,26 @@ export class BaseAppsSpikeSubSpikesRepositoryService
       httpClient,
       "subSpikes"
     );
+  }
+
+  /**
+* Map incoming TDto to a TVto more appropriate for the UI.
+* TODO: need to use the proper service to do this kind of work.
+* @param dto
+* @returns
+*/
+  protected override MapObjectTo(dto: SubSpike): SubSpike {
+    //this.objectMappingService.map(dto..., ...);
+    return ((dto as unknown) as SubSpike);
+  }
+  /**
+ * Map TVto back to a TDto more appropriate for saving/updating in a db.
+ * TODO: need to use the proper service to do this kind of work.
+ * @param dto
+ * @returns
+ */
+  protected override MapObjectFrom(vto: SubSpike): SubSpike {
+    //this.objectMappingService.map(dto..., ...);
+    return ((vto as unknown) as SubSpike);
   }
 }

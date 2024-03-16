@@ -17,13 +17,21 @@ import { UrlService } from '../../url.service';
 // Describe the service:
 @Injectable({ providedIn: 'root' })
 
-// Injectable service to provide generic repository services that
-  // wrap calls to the backend service endpoints.
+/**
+* Injectable abstract base for
+* services to provide generic repository services that
+* wrap calls to the backend service endpoints, with the option
+* of mapping the return objects - DTOs from a server API - to
+* something more ready for the front end.
+* An easy example is converting a typeFK to an image name
+* (although leave the pathing to the front end) and so forth.
 
-  // References:
-  // https://betterprogramming.pub/a-generic-http-service-approach-for-angular-applications-a7bd8ff6a068
-  // https://www.positronx.io/angular-httpclient-http-service/
-export abstract class GenericRepositoryServiceBase<Type> {
+* Used some learnings from:
+* https://betterprogramming.pub/a-generic-http-service-approach-for-angular-applications-a7bd8ff6a068
+* https://www.positronx.io/angular-httpclient-http-service/
+ */
+
+export abstract class GenericRepositoryServiceBase<TDto,TVto> {
 
   // Affects how build url variables:
   protected isJsonServer: boolean;
@@ -39,6 +47,8 @@ export abstract class GenericRepositoryServiceBase<Type> {
    * before we perform any repository calls.
    * 
    * TODO: I'm not yet sure how it's going to work with late bound modules.
+   * TODO: not using the mapping service effectively yet.
+   * TODO: I have not tried it yet but maybe could translate DB values too.
    * 
    * @param typeService
    * @param environmentService
@@ -66,11 +76,11 @@ export abstract class GenericRepositoryServiceBase<Type> {
 
   
   // HttpClient API get() method => Fetch entitys list
-  public getPage(pageNumber: number = 0): Observable<Type[]> {
+  public getPage(pageNumber: number = 0): Observable<TDto[]> {
     return this.getPageInternal(pageNumber);
   }
 
-  protected getPageInternal(pageNumber: number = 0, queryArguments:string = ''): Observable<Type[]> {
+  protected getPageInternal(pageNumber: number = 0, queryArguments:string = ''): Observable<TDto[]> {
 
     var url = this.buildPagedRequestUrl(pageNumber);
     this._lastRequest = url;
@@ -83,20 +93,18 @@ export abstract class GenericRepositoryServiceBase<Type> {
 
     var result$ =
       this.http
-        .get<Type[]>(url, options)
+        .get<TDto[]>(url, options)
         .pipe(
-          map((event: HttpEvent<Type[]>) => {
+          map((event: HttpEvent<TDto[]>) => {
             if (event instanceof HttpResponse) {
-              console.log("@C1...")
               return event.body || []; // Extract the data array from the response
             } else {
-              console.log("@C2...")
               return Array.isArray(event) ? event : [];
-              //return (event as Type[]); // Extract the data array from the response
+              //return (event as TDto[]); // Extract the data array from the response
             }
           }),
           retry(1),
-          catchError(c.handleError)
+          catchError((x) => { return this.handleError (x)})
       );
 
     // no point diagnostictracing here (it's just the wrapping observable, not
@@ -107,21 +115,21 @@ export abstract class GenericRepositoryServiceBase<Type> {
 
 
 
-  //getPageWithMappingToClass(page: number = 0): Observable<Type> {
+  //getPageWithMappingToClass(page: number = 0): Observable<TDto> {
   //  var url: string = this.buildRequestUrl('', this.isJsonServer ? `_page=${page}&_per_page=20` : 'TODO');
   //  this.diagnosticsTraceService.info(`querying: GET: ${url}`);
 
   //  var result =
-  //    this.http.get<Type>(url)
+  //    this.http.get<TDto>(url)
   //      .pipe(
-  //        map(data => this.typeService.create<Type>(data))
-  //          .catch(this.handleError));
+  //        map(data => this.typeService.create<TDto>(data))
+  // catchError((x) => { return this.handleError(x) })
 
   //  this.diagnosticsTraceService.info(result);
   //  return result;
   //}
 
-//  getPageWithoutMappingToClass(page: number = 0): Observable<Type | null > {
+//  getPageWithoutMappingToClass(page: number = 0): Observable<TDto | null > {
 
 //    var url: string = this.buildRequestUrl('', this.isJsonServer ? `_page=${page}&_per_page=20` : 'TODO');
 
@@ -132,11 +140,11 @@ export abstract class GenericRepositoryServiceBase<Type> {
 //    const c = this;
 
 //    var result$ =
-//      this.http.get<Type>(
+//      this.http.get<TDto>(
 //        url,
 //        options)
 //        .pipe(
-//          map((event: HttpEvent<Type>) => {
+//          map((event: HttpEvent<TDto>) => {
 //            if (event instanceof HttpResponse) {
 //              var result = event.body; // Extract the data array from the response
 //              this.diagnosticsTraceService.info(`Response.body:${result}`);
@@ -146,7 +154,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
 //            }
 //          }),
 //          retry(1),
-////          catchError(c.handleError)
+//  catchError((x) => { return this.handleError(x) })
 //        );
 
 //    this.diagnosticsTraceService.info(result$);
@@ -154,7 +162,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
 //    return result$;
 //  }
 
-  getPageChildren(parentFK: any, page: number = 0): Observable<Type[]> {
+  getPageChildren(parentFK: any, page: number = 0): Observable<TDto[]> {
 
     var url: string = this.buildRequestUrl('', this.isJsonServer ? `parentFK=${[parentFK]}&_page=${page}&_per_page=20` : 'TODO');
 
@@ -166,9 +174,9 @@ export abstract class GenericRepositoryServiceBase<Type> {
 
     var result =
       this.http
-      .get<Type[]>(url, options)
+      .get<TDto[]>(url, options)
       .pipe(
-        map((event: HttpEvent<Type[]>) => {
+        map((event: HttpEvent<TDto[]>) => {
           if (event instanceof HttpResponse) {
             return event.body || []; // Extract the data array from the response
           } else {
@@ -177,7 +185,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
         }),
 
         retry(1),
-        catchError(c.handleError)
+        catchError((x) => { return this.handleError(x) })
       );
     this.diagnosticsTraceService.info(result);
 
@@ -185,7 +193,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
   }
 
   // HttpClient API get() method => Fetch entity
-  get(id: any): Observable<Type|null> {
+  get(id: any): Observable<TDto|null> {
     var url: string = this.buildRequestUrl(this.isJsonServer ? `/${id}` : 'TODO');
     this.diagnosticsTraceService.info(`querying: GET: ${url}`);
 
@@ -195,11 +203,11 @@ export abstract class GenericRepositoryServiceBase<Type> {
 
     var result$ =
       this.http
-        .get<Type>(
+        .get<TDto>(
           url,
           options)
         .pipe(
-            map((event: HttpEvent<Type>) => {
+            map((event: HttpEvent<TDto>) => {
               if (event instanceof HttpResponse) {
                 var result = event.body ; // Extract the data array from the response
                 this.diagnosticsTraceService.info(`Response.body:${result}`);
@@ -209,7 +217,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
               }
             }),
           retry(1),
-          catchError(c.handleError)
+          catchError((x) => { return this.handleError(x) })
       );
 
     this.diagnosticsTraceService.info(result$);
@@ -220,7 +228,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
   
 
   //// HttpClient API post() method => Create entity
-  //create(entity: any): Observable<Type|null> {
+  //create(entity: any): Observable<TDto|null> {
   //  var url: string = this.buildRequestUrl(this.isJsonServer ? '' : 'TODO');
   //  this.diagnosticsTraceService.info(`querying: POST: ${url}`);
 
@@ -230,12 +238,12 @@ export abstract class GenericRepositoryServiceBase<Type> {
 
   //  var result$ =
   //    this.http
-  //      .post<Type>(
+  //      .post<TDto>(
   //        url,
   //        JSON.stringify(entity),
   //        options)
   //      .pipe(
-  //        map((event: HttpEvent<Type>) => {
+  //        map((event: HttpEvent<TDto>) => {
   //          if (event instanceof HttpResponse) {
   //            var result = event.body; // Extract the data array from the response
   //            this.diagnosticsTraceService.info(`Response.body:${result}`);
@@ -245,7 +253,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
   //          }
   //        }),
   //        retry(1),
-  //        catchError(c.handleError)
+//  catchError((x) => { return this.handleError(x) })
   //      );
   //  this.diagnosticsTraceService.info(result$);
 
@@ -253,7 +261,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
   //}
 
   //// HttpClient API put() method => Update entity
-  //update(id: any, entity: any): Observable<Type|null> {
+  //update(id: any, entity: any): Observable<TDto|null> {
   //  var url = this.buildRequestUrl('/${id}')
   //  this.diagnosticsTraceService.info(`querying: PUT: ${url}`);
 
@@ -263,11 +271,11 @@ export abstract class GenericRepositoryServiceBase<Type> {
 
   //  var result$ =
   //    this.http
-  //      .put<Type>(url,
+  //      .put<TDto>(url,
   //        JSON.stringify(entity),
   //        options)
   //      .pipe(
-  //        map((event: HttpEvent<Type>) => {
+  //        map((event: HttpEvent<TDto>) => {
   //          if (event instanceof HttpResponse) {
   //            var result= event.body; // Extract the data array from the response
   //            this.diagnosticsTraceService.info(`Response.body:${result}`);
@@ -277,7 +285,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
   //          }
   //        }),
   //        retry(1),
-  //        catchError(c.handleError)
+  // catchError((x) => { return this.handleError(x) })
   //      );
 
   //  this.diagnosticsTraceService.info(result$);
@@ -299,11 +307,11 @@ export abstract class GenericRepositoryServiceBase<Type> {
 
   //  var result$ =
   //    this.http
-  //      .delete<Type>(
+  //      .delete<TDto>(
   //        url,
   //        options)
   //      .pipe(
-  //        map((event: HttpEvent<Type>) => {
+  //        map((event: HttpEvent<TDto>) => {
   //          if (event instanceof HttpResponse) {
   //            var result = event.body; // Extract the data array from the response
   //            this.diagnosticsTraceService.info(`Response.body:${result}`);
@@ -313,7 +321,7 @@ export abstract class GenericRepositoryServiceBase<Type> {
   //          }
   //        }),
   //        retry(1),
-  //        catchError(c.handleError)
+  // catchError((x) => { return this.handleError(x) })
   //      );
   //  //return result$;
   //}
@@ -412,5 +420,9 @@ export abstract class GenericRepositoryServiceBase<Type> {
   protected buildOptions(): any {
     return { headers: this.buildHttpHeaders() };
   }
+
+
+  protected abstract MapObjectTo(dto: TDto): TVto;
+  protected abstract MapObjectFrom(dto: TVto): TDto;
 
 }

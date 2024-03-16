@@ -42,8 +42,7 @@ export class LoginComponent implements OnInit {
   constructor(private titleService: TitleService, private systemService: SystemService, public translate: TranslateService, private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router,
     private authFackservice: AuthfakeauthenticationService, private route: ActivatedRoute, public toastService: ToastService) {
 
-    translate.setDefaultLang('en');
-
+    
     this.system = this.systemService.system;
 
      this.sponsorTitle = systemService.system.sponsor.title;

@@ -202,6 +202,20 @@
       "REMEMBER_ME_INSTRUCTIONS": "（跨会话，甚至在浏览器关闭后）",
       "DONT_HAVE_AN_ACCOUNT?": "还没有账号？"
     },
+    "BODIES": {
+      "__COMMENTS": "参见PERSON。与IDENTITY相似",
+      "TITLE": "身体",
+      "TITLES": "身体",
+      "DOB": "出生日期",
+      "DOB_INSTRUCTIONS": "输入出生日期",
+      "DOB_PLACEHOLDER": "年、月、日...",
+      "SEX": "性别",
+      "SEX_INSTRUCTIONS": "输入出生时的性别",
+      "SEX_PLACEHOLDER": "男/女/其他...",
+      "HEIGHT": "身高",
+      "HEIGHT_INSTRUCTIONS": "输入身高",
+      "HEIGHT_PLACEHOLDER": "厘米为单位的身高..."
+    },
     "CALENDER": {
       "__COMMENTS": "避免使用。优先使用 APPOINTMENTS。",
       "TITLE": "日历",
@@ -493,6 +507,34 @@
           "ADMINISTER": "管理",
           "TEACH": "教学",
           "STUDY": "学习"
+        },
+        "TERMS": {
+          "CURRICULUM": "课程",
+          "CURRICULA": "课程",
+          "SYLLABUS": "教学大纲",
+          "TEACHING_PLAN": "教学计划",
+          "TERM": "学期",
+          "COURSE": "课程",
+          "CLASS": "班级",
+          "LESSON": "课程",
+          "SCHEDULE": "时间表",
+          "ENROLLMENT": "注册",
+          "ROLL_CALL": "点名",
+          "FRAMEWORK": "框架",
+          "STANDARDISED": "标准化",
+          "TEST": "测试",
+          "RETEST": "（重新）测试",
+          "OBSERVATION": "观察",
+          "ASSESSMENT": "评估",
+          "JUDGEMENT": "判断",
+          "SCORE": "分数",
+          "GRADE": "等级",
+          "PASS": "及格",
+          "FAIL": "不及格",
+          "CERTIFICATION": "认证",
+          "GRADUATION": "毕业",
+          "PLD": "专业学习发展",
+          "PLD_ACRONYM": "PLD"
         }
       },
       "GOVERNMENT": {
@@ -565,6 +607,27 @@
       "TITLES": "示例",
       "DESCRIPTION": "..."
     },
+    "FAMILIES": {
+      "__COMMENTS": "See RELATIONSHIPS",
+      "TITLE": "家庭",
+      "TITLES": "家庭",
+      "DESCRIPTION": "...",
+      "CARETAKER": "照顾者",
+      "RELATED": "相关",
+      "PARENT": "父母",
+      "PARENTS": "父母",
+      "MOTHER": "母亲",
+      "FATHER": "父亲",
+      "SIBLING": "兄弟姐妹",
+      "SISTER": "姐妹",
+      "BROTHER": "兄弟",
+      "COUSIN": "表兄弟姐妹",
+      "GRANDMOTHER": "祖母",
+      "GRANDFATHER": "祖父",
+      "AUNT": "阿姨",
+      "UNCLE": "叔叔",
+      "CHILD": "子女"
+    },
     "FAQS": {
       "__COMMENTS": "",
       "TITLE": "常见问题解答",
@@ -616,14 +679,28 @@
       "DESCRIPTION": "..."
     },
     "HEADERS": {
-      "__COMMENTS": "",
-      "TITLE": "标题",
-      "TITLES": "标题",
-      "DESCRIPTION": "...",
+      "__COMMENTS": "有趣的是，这个组没有标题或描述：实际上需要这些键来说'标题'和'描述'...",
       "ENABLED": "已启用",
-      "DETAILS": "详情",
-      "VALUE": "值",
-      "ACTIONS": "操作"
+      "TITLE": "标题",
+      "DESCRIPTION": "描述",
+      "DETAILS": "细节",
+      "VALUE": "价值",
+      "ACTIONS": "操作(们)"
+    },
+    "HEALTH": {
+      "__COMMENTS": " ",
+      "TITLE": "健康",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "BLOOD_PRESSURE": "血压",
+      "HEART_RATE": "心率",
+      "ILLNESS": "疾病",
+      "MEDICINE": "药品",
+      "MENTAL": "精神",
+      "PHYSICAL": "身体",
+      "PRESCRIPTOIN": "处方",
+      "TEMPERATURE": "温度",
+      "WELL": "健康的"
     },
     "HELP": {
       "__COMMENTS": "与 SUPPORT & ASSISTANCE（他人提供）进行比较。",
@@ -645,6 +722,72 @@
       "DARK": "暗",
       "GRADIENT": "渐变",
       "LIGHT": "亮"
+    },
+    "IDENTITIES": {
+      "__COMMENTS": "一个人至少有一个身份",
+      "TITLE": "身份",
+      "TITLES": "身份",
+      "DESCRIPTION": "...",
+      "ID": "上下文标识符",
+      "IDENTIFIER": "输入唯一的上下文标识符",
+      "NAMES": {
+        "TITLE": "名称",
+        "PREFIX": "前缀",
+        "PREFIX_INSTRUCTIONS": "提供一个称号（先生，夫人，博士等）",
+        "PREFIX_EXAMPLE": "博士",
+        "PREFIX_ERROR_01": "需要一个称号或前缀。",
+        "PREFIX_ERROR_02": "无法验证提供的称号或前缀。",
+        "GIVEN": "名字",
+        "GIVEN_INSTRUCTIONS": "提供名字",
+        "GIVEN_EXAMPLE": "约翰",
+        "GIVEN_ERROR_01": "需要一个名字。",
+        "GIVEN_ERROR_02": "无法验证提供的名字。",
+        "MIDDLE": "中间名",
+        "MIDDLE_INSTRUCTIONS": "提供中间名",
+        "MIDDLE_EXAMPLE": "马丁",
+        "MIDDLE_ERROR_01": "需要一个中间名。",
+        "MIDDLE_ERROR_02": "无法验证提供的中间名。",
+        "MIDDLE_INITIALS": "中间首字母",
+        "MIDDLE_INITIALS_INSTRUCTIONS": "提供中间首字母",
+        "MIDDLE_INITIALS_EXAMPLE": "M.",
+        "MIDDLE_INITIALS_ERROR_01": "需要中间首字母。",
+        "MIDDLE_INITIALS_ERROR_02": "无法验证提供的中间首字母。",
+        "GIVENS": "名字",
+        "GIVENS_INSTRUCTIONS": "提供名字",
+        "GIVENS_EXAMPLE": "约翰马克",
+        "GIVENS_ERROR_01": "需要一个名字。",
+        "GIVENS_ERROR_02": "无法验证提供的名字。",
+        "SURNAME": "姓氏",
+        "SURNAME_INSTRUCTIONS": "提供姓氏",
+        "SURNAME_EXAMPLE": "史密斯",
+        "SURNAME_ERROR_01": "需要一个姓氏。",
+        "SURNAME_ERROR_02": "无法验证提供的姓氏。"
+      },
+      "PRONOUNS": "代词",
+      "PRONOUNS_INSTRUCTIONS": "提供首选代词",
+      "PRONOUNS_EXAMPLE": "他/他",
+      "PRONOUNS_ERROR_01": "需要首选代词。",
+      "PRONOUNS_ERROR_02": "无法验证提供的代词。",
+      "AVATAR": "头像",
+      "AVATAR_INSTRUCTIONS": "提供头像",
+      "AVATAR_EXAMPLE": "hero.png",
+      "AVATAR_ERROR_01": "需要一个头像。",
+      "AVATAR_ERROR_02": "无法验证提供的头像。",
+      "BIO": "简介",
+      "BIO_INSTRUCTIONS": "提供简短的介绍性简介/描述",
+      "BIO_EXAMPLE": "例如，关于此身份的简明，准确，相关的东西...",
+      "BIO_ERROR_01": "需要一个简介。",
+      "BIO_ERROR_02": "无法验证提供的简介。",
+      "ROLE": "角色",
+      "ROLE_INSTRUCTIONS": "提供上下文角色",
+      "ROLE_EXAMPLE": "贡献者",
+      "ROLE_ERROR_01": "需要一个角色。",
+      "ROLE_ERROR_02": "无法验证提供的角色。",
+      "GENDER": "性别",
+      "GENDER_INSTRUCTIONS": "提供此身份的性别方向",
+      "GENDER_EXAMPLE": "男性",
+      "GENDER_ERROR_01": "需要性别。",
+      "GENDER_ERROR_02": "无法验证提供的性别。"
     },
     "INFORMATION": {
       "__COMMENTS": "公开可访问的页面（定价、常见问题解答、政策、条款等）。参见 INFORMATION 和 PAGES 领域。",
@@ -684,6 +827,12 @@
       "TITLE": "着陆页",
       "TITLES": "着陆页",
       "DESCRIPTION": "公开访问的着陆页面"
+    },
+    "ISSUES": {
+      "__COMMENTS": "查看WORK, STATUS .",
+      "TITLE": "问题",
+      "TITLES": "问题",
+      "DESCRIPTION": "已知问题"
     },
     "LAYOUTS": {
       "__COMMENTS": "有关站点部分的布局。",
@@ -743,6 +892,16 @@
       "TITLES": "N/A",
       "DESCRIPTION": "下次计划维护服务以添加新功能的时间..."
     },
+    "MEDIA": {
+      "__COMMENTS": "",
+      "TITLE": "媒体",
+      "TITLES": "多媒体",
+      "DESCRIPTION": "...",
+      "DIMENSIONS": "尺寸",
+      "FILENAME": "文件名",
+      "FORMAT": "格式",
+      "SIZE": "大小"
+    },
     "MEMBERS": {
       "__COMMENTS": "",
       "TITLE": "成员",
@@ -790,6 +949,29 @@
       "OCTOBER": "十月",
       "NOVEMBER": "十一月",
       "DECEMBER": "十二月"
+    },
+    "NATURE": {
+      "__COMMENTS": "參見WEATHER.",
+      "TITLE": "自然",
+      "TITLES": "無",
+      "DESCRIPTION": "...",
+      "URBAN": "城市",
+      "RURAL": "鄉村",
+      "BROOOK": "小溪",
+      "STREAM": "溪流",
+      "STREAMS": "溪流",
+      "RIVER": "河流",
+      "RIVERS": "河流",
+      "TORRENT": "急流",
+      "WATERFALL": "瀑布",
+      "BUSH": "灌木叢",
+      "BUSHES": "灌木叢",
+      "TREE": "樹",
+      "TREES": "樹",
+      "FOREST": "森林",
+      "FIELD": "田地",
+      "PADDOCK": "草地",
+      "BARN": "穀倉"
     },
     "NAVIGATION": {
       "__COMMENTS": "CONTEXT 领域的一个方面。",
@@ -920,84 +1102,7 @@
       "TITLES": "人员",
       "DESCRIPTION": "...",
       "ID": "标识符",
-      "IDENTIFIER": "输入人员的标识符",
-      "BODY": {
-        "DOB": "出生日期",
-        "DOB_INSTRUCTIONS": "输入出生日期",
-        "DOB_PLACEHOLDER": "年，月，日...",
-        "SEX": "性别",
-        "SEX_INSTRUCTIONS": "输入出生时的性别",
-        "SEX_PLACEHOLDER": "男性/女性/其他...",
-        "HEIGHT": "身高",
-        "HEIGHT_INSTRUCTIONS": "输入身高。",
-        "HEIGHT_PLACEHOLDER": "厘米..."
-      },
-      "IDENTITIES": {
-        "__COMMENTS": "一个人至少有一个身份",
-        "TITLE": "身份",
-        "TITLES": "身份",
-        "DESCRIPTION": "...",
-        "ID": "上下文标识符",
-        "IDENTIFIER": "输入唯一的上下文标识符",
-        "NAMES": {
-          "TITLE": "名称",
-          "PREFIX": "前缀",
-          "PREFIX_INSTRUCTIONS": "提供一个称号（先生，夫人，博士等）",
-          "PREFIX_EXAMPLE": "博士",
-          "PREFIX_ERROR_01": "需要一个称号或前缀。",
-          "PREFIX_ERROR_02": "无法验证提供的称号或前缀。",
-          "GIVEN": "名字",
-          "GIVEN_INSTRUCTIONS": "提供名字",
-          "GIVEN_EXAMPLE": "约翰",
-          "GIVEN_ERROR_01": "需要一个名字。",
-          "GIVEN_ERROR_02": "无法验证提供的名字。",
-          "MIDDLE": "中间名",
-          "MIDDLE_INSTRUCTIONS": "提供中间名",
-          "MIDDLE_EXAMPLE": "马丁",
-          "MIDDLE_ERROR_01": "需要一个中间名。",
-          "MIDDLE_ERROR_02": "无法验证提供的中间名。",
-          "MIDDLE_INITIALS": "中间首字母",
-          "MIDDLE_INITIALS_INSTRUCTIONS": "提供中间首字母",
-          "MIDDLE_INITIALS_EXAMPLE": "M.",
-          "MIDDLE_INITIALS_ERROR_01": "需要中间首字母。",
-          "MIDDLE_INITIALS_ERROR_02": "无法验证提供的中间首字母。",
-          "GIVENS": "名字",
-          "GIVENS_INSTRUCTIONS": "提供名字",
-          "GIVENS_EXAMPLE": "约翰马克",
-          "GIVENS_ERROR_01": "需要一个名字。",
-          "GIVENS_ERROR_02": "无法验证提供的名字。",
-          "SURNAME": "姓氏",
-          "SURNAME_INSTRUCTIONS": "提供姓氏",
-          "SURNAME_EXAMPLE": "史密斯",
-          "SURNAME_ERROR_01": "需要一个姓氏。",
-          "SURNAME_ERROR_02": "无法验证提供的姓氏。"
-        },
-        "PRONOUNS": "代词",
-        "PRONOUNS_INSTRUCTIONS": "提供首选代词",
-        "PRONOUNS_EXAMPLE": "他/他",
-        "PRONOUNS_ERROR_01": "需要首选代词。",
-        "PRONOUNS_ERROR_02": "无法验证提供的代词。",
-        "AVATAR": "头像",
-        "AVATAR_INSTRUCTIONS": "提供头像",
-        "AVATAR_EXAMPLE": "hero.png",
-        "AVATAR_ERROR_01": "需要一个头像。",
-        "AVATAR_ERROR_02": "无法验证提供的头像。",
-        "BIO": "简介",
-        "BIO_INSTRUCTIONS": "提供简短的介绍性简介/描述",
-        "BIO_EXAMPLE": "例如，关于此身份的简明，准确，相关的东西...",
-        "BIO_ERROR_01": "需要一个简介。",
-        "BIO_ERROR_02": "无法验证提供的简介。",
-        "ROLE": "角色",
-        "ROLE_INSTRUCTIONS": "提供上下文角色",
-        "ROLE_EXAMPLE": "贡献者",
-        "ROLE_ERROR_01": "需要一个角色。",
-        "ROLE_ERROR_02": "无法验证提供的角色。",
-        "GENDER": "性别",
-        "GENDER_INSTRUCTIONS": "提供此身份的性别方向",
-        "GENDER_EXAMPLE": "男性",
-        "GENDER_ERROR_01": "需要性别。",
-        "GENDER_ERROR_02": "无法验证提供的性别。"
-      }
+      "IDENTIFIER": "输入人员的标识符"
     },
     "PLACES": {
       "__COMMENTS": "参见 LOCATION。",
@@ -1094,7 +1199,7 @@
       "TITLES": "产品",
       "DESCRIPTION": "..."
     },
-    "PROFILE": {
+    "PROFILES": {
       "__COMMENTS": "当前用户偏好。与（系统）设置不同",
       "TITLE": "个人资料",
       "TITLES": "个人资料",
@@ -1146,6 +1251,11 @@
       "ANALYSABLE": "可分析的",
       "ENHANCEABLE": "可增强的"
     },
+    "RELATIONSHIPS": {
+      "__COMMENTS": "See FAMILIES",
+      "TITLE": "关系",
+      "TITLES": "关系"
+    },
     "REPORTS": {
       "__COMMENTS": "",
       "TITLE": "模板",
@@ -1166,6 +1276,26 @@
       "TITLE": "角色",
       "TITLES": "角色",
       "DESCRIPTION": "..."
+    },
+    "RISKS": {
+      "__COMMENTS": "Whai mātauranga i te ISSUES, WORK",
+      "TITLE": "風險",
+      "TITLES": "風險",
+      "DESCRIPTION": "...",
+      "LIKLINESS": {
+        "IMPROBABLE": "不太可能",
+        "UNCERTAIN": "不確定",
+        "PROBABLE": "可能",
+        "ALMOST_CERTAIN": "幾乎肯定",
+        "CERTAIN": "肯定"
+      },
+      "IMPACT": {
+        "NEGLIGEABLE": "微不足道",
+        "LOW": "低",
+        "MODERATE": "中等",
+        "HIGH": "高",
+        "CRITICAL": "關鍵"
+      }
     },
     "SCHEDULING": {
       "__COMMENTS": "另请参阅 PROJECTS、TASKS 领域。",
@@ -1296,6 +1426,7 @@
       "APPROVED": "批准",
       "PUBLISHED": "已发布",
       "ENDORSED": "认可",
+      "MERGED": "合併",
       "REMOVED": "已移除",
       "RETIRED": "退役",
       "LEGACY": "遗留"
@@ -1545,6 +1676,38 @@
       "TOO_MUCH": "太多",
       "INCORRECT_FORMAT": "格式不正确"
     },
+    "VEHICLES": {
+      "__COMMENTS": "參見TRANSPORT.",
+      "TITLE": "車輛",
+      "TITLES": "車輛",
+      "BOAT": "船",
+      "WHEELBARROW": "手推車",
+      "SKATEBOARD": "滑板車",
+      "SCOOTER": "小型摩托車",
+      "BICYCLE": "自行車",
+      "MOTORCYCLE": "摩托車",
+      "CAR": "汽車",
+      "BUS": "公車",
+      "AIRPLANE": "飛機",
+      "FLYING_CAR": "飛行汽車"
+    },
+    "WEATHER": {
+      "__COMMENTS": "...",
+      "TITLE": "天氣",
+      "TITLES": "無",
+      "DESCRIPTION": "...",
+      "SUN": "太陽",
+      "MOON": "月亮",
+      "CLOUDS": "雲",
+      "FOG": "霧",
+      "WIND": "風",
+      "WIND_SPEED": "風速",
+      "RAINFALL": "降雨量",
+      "SUNNY": "晴朗",
+      "CLOUDY": "多雲",
+      "RAINY": "雨天",
+      "FOGGY": "有霧"
+    },
     "WELCOME": {
       "__COMMENTS": "已认证用户的主页。参见仪表板。",
       "TITLE": "欢迎",
@@ -1599,6 +1762,14 @@
     },
     "ARCHITECTURE": {
       "TITLE": "架构",
+      "DESCRIPTION": "..."
+    },
+    "EDUCATION": {
+      "TITLE": "建築",
+      "DESCRIPTION": "..."
+    },
+    "HEALTH": {
+      "TITLE": "健康",
       "DESCRIPTION": "..."
     }
   }

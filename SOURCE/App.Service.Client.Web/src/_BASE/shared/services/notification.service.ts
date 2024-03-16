@@ -19,7 +19,8 @@ import { CookieService } from 'ngx-cookie-service';
 // Injectable Service, available everywhere
 // as asingleton:
 @Injectable({ providedIn: 'root' })
-export class SystemNotificationService extends ItemsCollectionServiceBase<SystemNotification, string, SystemNotification>{
+export class SystemNotificationService
+  extends ItemsCollectionServiceBase<SystemNotification, string, SystemNotification>{
 
   protected override pollDelayInSeconds: number = 60;
   protected override itemKeyFieldName = 'id';
@@ -35,8 +36,11 @@ export class SystemNotificationService extends ItemsCollectionServiceBase<System
     private notificationsRepositoryService: NotificationsRepositoryService) {
     //Invoke super constructor, which invokes timer, etc.
     super(diagnosticsTraceService, translate);
-    // call explicitly (if called by super then repositorySErvice will not yet have been made into a private property...)
-    this.setupTimer();
+
+    // call explicitly from sub class, not super,
+    // as otherwise repositorySErvice will not yet have been made into a private property,
+    // for exampel
+    this.init();
 
   }
 
@@ -46,7 +50,8 @@ export class SystemNotificationService extends ItemsCollectionServiceBase<System
  */
   protected override filterFor(item: SystemNotification): boolean {
     // Not much of a filter on this one
-    return (item.typeFK == this.itemTypeFKA);
+    var result = (item.typeFK == this.itemTypeFKA);
+    return result;
   }
 
   /**
@@ -58,7 +63,6 @@ export class SystemNotificationService extends ItemsCollectionServiceBase<System
    * @param item
    */
   protected override developMappedObject(item: SystemNotification): SystemNotification {
-    this.diagnosticsTraceService.info("notificationsService.developMappedObject(...)");
     return item;
     // In this contrived example, not doing much, just changing type:
     //return item;
@@ -86,9 +90,9 @@ export class SystemNotificationService extends ItemsCollectionServiceBase<System
    * Abstract final method for any action
    * required at the end of the refreshment of the list
    */
-  protected override handleUpdate(items: SystemNotification[]): void {
+  protected override onInitComplete(items: SystemNotification[]): void {
     // do things...
-    this.diagnosticsTraceService.info("notificationsService.handleUpdate(...)");
+    this.diagnosticsTraceService.info("notificationsService.onInitComplete(...)");
   }
 }
 

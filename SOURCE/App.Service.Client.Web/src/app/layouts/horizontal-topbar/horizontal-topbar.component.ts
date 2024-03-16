@@ -24,7 +24,6 @@ export class HorizontalTopbarComponent implements OnInit {
 
   system: System;
   constructor(private router: Router, public translate: TranslateService, systemService: SystemService) {
-    translate.setDefaultLang('en');
 
     // Can be either via service, or injecting the constats/settings object:
     this.system = systemService.system;

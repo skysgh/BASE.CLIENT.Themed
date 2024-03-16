@@ -1,7 +1,8 @@
 import { MenuItem } from '../../../app/layouts/sidebar/menu.model';
 
 
-export const MENU: MenuItem[] = [
+export const MENU: MenuItem[] =
+[
   {
     id: 10,
     label: 'BASE.DASHBOARDS.TITLE',
@@ -11,17 +12,19 @@ export const MENU: MenuItem[] = [
   {
     id: 20,
     label: 'APPS.TITLE',
+    icon:'grid-alt',
     subItems: [
       {
         id: 201,
         label: 'APPS.SPIKE.TITLE',
-        link: 'spike/spike',
+        link: 'spike/spikes',
         parentId: 20
       },
       {
         id: 202,
         label: 'APPS.ARCHITECTURE.TITLE',
         parentId: 20,
+        icon:'building-house',
         subItems: [
           {
             id: 2021,
@@ -41,7 +44,6 @@ export const MENU: MenuItem[] = [
             label: 'BASE.QUALITIES.TITLES',
             link: 'architecture/qualities',
           },
-
           {
             id: 2024,
             parentId: 202,
@@ -49,55 +51,137 @@ export const MENU: MenuItem[] = [
             link: 'architecture/patterns',
           },
         ]
-      },
-      {
-        id: 203,
-        label: 'BASE.PRODUCTS.TITLES',
-        link: 'products',
-        icon: 'package',
-        parentId: 20
-      },
-      {
-        id: 204,
-        label: 'BASE.PEOPLE.TITLES',
-        icon:'users',
-        link: 'people',
-        parentId: 20
-      },
-      {
-        id: 204,
-        label: 'BASE.PLACES.TITLES',
-        link: 'places',
-        icon: 'map-pin',
-        parentId: 20
-      },
-      {
-        id: 205,
-        label: 'BASE.PARTICIPATION.TITLE',
-        link: 'participation',
-        icon: 'airplay',
-        parentId: 20
-      },
-      {
-        id: 206,
-        label: 'BASE.PROGRESS.TITLE',
-        link: 'progress',
-        icon: 'chart',
-        parentId: 20
-      },
-      {
-        id: 207,
-        label: 'BASE.ACCOMPLISHMENTS.TITLES',
-        link: 'accomplishments',
-        icon: 'airplay',
-        parentId: 20
       }
     ]
   },
+
   {
+    id: 203,
+    label: 'APPS.EDUCATION.TITLE',
+    parentId: 20,
+    icon: 'navigation',
+    subItems: [
+      {
+        id: 2031,
+        label: 'BASE.PRODUCTS.TITLES',
+        link: 'products',
+        icon: 'package',
+        parentId: 203
+      },
+      {
+        id: 2032,
+        label: 'BASE.PEOPLE.TITLES',
+        icon: 'users',
+        link: 'people',
+        parentId: 203,
+        subItems:[
+          {
+            id: 20321,
+            label: 'BASE.EDUCATION.ROLES.LEARNERS',
+            link: 'places',
+            icon: 'map-pin',
+            parentId: 20321
+          },
+          {
+            id: 20321,
+            label: 'BASE.EDUCATION.ROLES.CARETAKERS',
+            link: 'places',
+            icon: 'map-pin',
+            parentId: 20321
+          },
+          {
+            id: 20322,
+            label: 'BASE.EDUCATION.ROLES.TEACHERS',
+            link: 'places',
+            icon: 'map-pin',
+            parentId: 20321
+          },
+          {
+            id: 20322,
+            label: 'BASE.EDUCATION.ROLES.ADMINSTRATORS',
+            link: 'places',
+            icon: 'map-pin',
+            parentId: 20321
+          },
+          {
+            id: 20322,
+            label: 'BASE.EDUCATION.ROLES.PRINCIPLES',
+            link: 'places',
+            icon: 'map-pin',
+            parentId: 20321
+          },
+          {
+            id: 20322,
+            label: 'BASE.EDUCATION.ROLES.SPECIALISTS',
+            link: 'places',
+            icon: 'map-pin',
+            parentId: 20321
+          },
+        ]
+      },
+      {
+        id: 2033,
+        label: 'BASE.PLACES.TITLES',
+        link: 'places',
+        icon: 'map-pin',
+        parentId: 203
+      },
+      {
+        id: 2034,
+        label: 'BASE.ENROLLMENT.TITLE',
+        link: 'financials',
+        icon: 'airplay',
+        parentId: 203
+      },
+      {
+        id: 2035,
+        label: 'BASE.FINANCIALS.TITLE',
+        link: 'financials',
+        icon: 'airplay',
+        parentId: 203
+      },
+      {
+        id: 2036,
+        label: 'BASE.PARTICIPATION.TITLE',
+        link: 'participation',
+        icon: 'airplay',
+        parentId: 203
+      },
+      {
+        id: 2037,
+        label: 'BASE.ASSESSMENTS.TITLES',
+        link: 'accomplishments',
+        icon: 'airplay',
+        parentId: 203
+      },
+      {
+        id: 2038,
+        label: 'BASE.PROGRESS.TITLE',
+        link: 'progress',
+        icon: 'chart',
+        parentId: 203
+      },
+      {
+        id: 2039,
+        label: 'BASE.ACCOMPLISHMENTS.TITLES',
+        link: 'accomplishments',
+        icon: 'airplay',
+        parentId: 203
+      }
+    ]
+  },
+
+    {
+      id: 203,
+      label: 'APPS.HEALTH.TITLE',
+      parentId: 20,
+      icon: 'heart'
+    },
+
+    {
     id: 30,
     label: 'BASE.INFORMATION.TITLE',
-    icon: 'grid',
+    icon: 'info',
     subItems: [
       {
         id: 301,
@@ -129,7 +213,7 @@ export const MENU: MenuItem[] = [
   {
     id: 40,
     label: 'BASE.SETTINGS.TITLES',
-    icon: 'command',
+    icon: 'settings',
     subItems: [
       {
         id: 401,

@@ -12,10 +12,11 @@ import { GenericRepositoryServiceBase } from "../base/generic-repository.service
 import { Stat } from "../../../models/data/stat.model";
 import { SystemQueryEndpoints } from "../../../constants/systemQueryEndpoints";
 import { SessionStorageService } from "../../SessionStorageService";
+import { UrlService } from "../../url.service";
 
 @Injectable({ providedIn: 'root' })
 export class SupportTicketsRepositoryService
-  extends GenericRepositoryServiceBase<any> {
+  extends GenericRepositoryServiceBase<any, any> {
 
   constructor(
     typeService: TypeService,
@@ -24,6 +25,7 @@ export class SupportTicketsRepositoryService
     errorService: ErrorService,
     objectMappingService: ObjectMappingService,
     sessionStorageService: SessionStorageService,
+    urlService: UrlService,
     httpClient: HttpClient) {
     super(
       typeService,
@@ -32,8 +34,30 @@ export class SupportTicketsRepositoryService
       errorService,
       objectMappingService,
       sessionStorageService,
+      urlService,
       httpClient,
       SystemQueryEndpoints.transactions
     );
   }
+  /**
+   * Map incoming TDto to a TVto more appropriate for the UI.
+   * TODO: need to use the proper service to do this kind of work.
+   * @param dto
+   * @returns
+   */
+  protected override MapObject(dto: any): any {
+    //this.objectMappingService.map(dto..., ...);
+    return ((dto as unknown) as any);
+  }
+  /**
+ * Map TVto back to a TDto more appropriate for saving/updating in a db.
+ * TODO: need to use the proper service to do this kind of work.
+ * @param dto
+ * @returns
+ */
+  protected override MapObjectFrom(vto: any): any {
+    //this.objectMappingService.map(dto..., ...);
+    return ((vto as unknown) as any);
+  }
+
 }

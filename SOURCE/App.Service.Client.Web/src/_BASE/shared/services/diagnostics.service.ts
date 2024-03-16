@@ -10,7 +10,7 @@ import { EnvironmentService } from './environment.service';
 export class DiagnosticsTraceService {
 
   // Debugging Level: skip verbose?
-  public debugLevel: number = 1;
+  public debugLevel: number = 0; //0=Debug, 1=Verbose, 2=Info and so forth...
   public logLength: number = 50;
 
   private logQueue: string[] = [];
@@ -23,6 +23,7 @@ export class DiagnosticsTraceService {
     this.debugLevel = environmentService.getDebugLevel();
   }
 
+  debug(msg: any) { if (this.debugLevel > -1) { return; }  this.logMsg("DEBUG  :" + msg); console.log  ("DEBUG  : " + msg); }
   verbose(msg: any) { if (this.debugLevel > 0) { return; } this.logMsg("VERBOSE:" + msg); console.log  ("VERBOSE: " + msg); }
   info(msg: any) { if (this.debugLevel > 1) { return; }    this.logMsg("INFO   :" + msg); console.log  ("INFO   : " + msg); }
   warn(msg: any) { if (this.debugLevel > 2) { return; }    this.logMsg("WARN   :" + msg); console.warn ("WARN   : " + msg); }

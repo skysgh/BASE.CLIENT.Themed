@@ -22,17 +22,31 @@ import { HorizontalComponent } from './horizontal/horizontal.component';
 import { HorizontalTopbarComponent } from './horizontal-topbar/horizontal-topbar.component';
 import { TwoColumnComponent } from './two-column/two-column.component';
 import { TwoColumnSidebarComponent } from './two-column-sidebar/two-column-sidebar.component';
+import { LangComponent } from './topbar/lang/language.component';
 
 
 // Load Icons
 import { defineElement } from "@lordicon/element";
 import lottie from 'lottie-web';
+import { ContextNotificationsComponent } from './topbar/notifications/component';
+import { ContextShoppingComponent } from './topbar/shopping/component';
+import { ContextHueComponent } from './topbar/hue/component';
+import { ContextFullScreenComponent } from './topbar/fullscreen/component';
+import { ContextSearchComponent } from './topbar/search/component';
+import { ContextUserComponent } from './topbar/user/component';
 
 @NgModule({
   declarations: [
     AppLayoutComponent,
     VerticalComponent,
     TopbarComponent,
+    LangComponent,
+    ContextNotificationsComponent,
+    ContextShoppingComponent,
+    ContextHueComponent,
+    ContextFullScreenComponent,
+    ContextSearchComponent,
+    ContextUserComponent,
     SidebarComponent,
     FooterComponent,
     RightsidebarComponent,

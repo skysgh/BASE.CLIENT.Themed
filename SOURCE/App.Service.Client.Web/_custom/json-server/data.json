@@ -349,6 +349,54 @@
 
 
   "systemNotifications": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": false,
+      "forUserFK": "00000000-0000-0000-0000-000000000002",
+      "typeFK": "00000000-0000-0000-0000-000000000001",
+      "iconId": "bx-badge-check",
+      "imageName": "avatar-1.jpg",
+      "title": "General",
+      "description": "Students running in hallways",
+      "sentUtc": "2023-04-23T18:25:43.511Z",
+      "checkboxId": "all-notification-check01"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": false,
+      "forUserFK": "00000000-0000-0000-0000-000000000002",
+      "typeFK": "00000000-0000-0000-0000-000000000002",
+      "iconId": "bx-badge-check",
+      "imageName": "avatar-2.jpg",
+      "title": "Angela Bernier ",
+      "description": "School bell still muted? 🔔.",
+      "sentUtc": "2023-04-23T18:25:43.511Z",
+      "checkboxId": "all-notification-check02"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": false,
+      "forUserFK": "00000000-0000-0000-0000-000000000002",
+      "typeFK": "00000000-0000-0000-0000-000000000001",
+      "iconId": "bx-badge-check",
+      "imageName": "avatar-8.jpg",
+      "title": "General",
+      "description": "Parents are really mad!",
+      "sentUtc": "2023-04-23T18:25:43.511Z",
+      "checkboxId": "all-notification-check03"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": false,
+      "forUserFK": "00000000-0000-0000-0000-000000000002",
+      "typeFK": "00000000-0000-0000-0000-000000000002",
+      "iconId": "bx-badge-check",
+      "imageName": "avatar-8.jpg",
+      "title": "Maureen Gibsons",
+      "description": "Maths results in.",
+      "sentUtc": "2023-04-23T18:25:43.511Z",
+      "checkboxId": "all-notification-check04"
+    }
 
   ],
 
@@ -365,7 +413,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
-      "title": "Message",
+      "title": "Alert",
       "description": "..."
     }
   ],

@@ -30,7 +30,6 @@ export class TwoColumnSidebarComponent implements OnInit {
     // Can be either via service, or injecting the constats/settings object:
     this.system = systemService.system;
 
-    translate.setDefaultLang('en');
   }
 
 

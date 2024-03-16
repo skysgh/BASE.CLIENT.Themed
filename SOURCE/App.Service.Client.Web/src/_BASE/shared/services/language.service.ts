@@ -8,6 +8,7 @@ import { SystemLanguage } from '../models/data/system-language';
 import { DiagnosticsTraceService } from './diagnostics.service';
 import { SystemNotification } from '../models/data/notification.model';
 import { ItemsCollectionServiceBase } from './base/itemsCollection.service.base';
+import { TranslationService } from './translation.service';
 
 // Example
 class SystemLanguageVM extends SystemLanguage {
@@ -16,6 +17,7 @@ class SystemLanguageVM extends SystemLanguage {
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService extends ItemsCollectionServiceBase<SystemLanguage, string, SystemLanguage> {
+
 
 
   // Don't poll:
@@ -33,10 +35,14 @@ export class LanguageService extends ItemsCollectionServiceBase<SystemLanguage, 
     translate: TranslateService,
     private cookieService: CookieService,
     private systemLanguagesRepositoryService: SystemLanguagesRepositoryService,
+    private translationService: TranslationService
   ) {
-    super(diagnosticsTraceService,translate);
-    // call explicitly (if called by super then repositorySErvice will not yet have been made into a private property...)
-    this.setupTimer();
+    super(diagnosticsTraceService, translate);
+
+    // call explicitly from sub class, not super,
+    // as otherwise repositorySErvice will not yet have been made into a private property,
+    // for exampel
+    this.init();
   }
 
 
@@ -62,19 +68,22 @@ export class LanguageService extends ItemsCollectionServiceBase<SystemLanguage, 
    * @param item
    */
   protected override developMappedObject(item: SystemLanguage): SystemLanguageVM {
+    // cannot reference this.diagnosticsTraceService
+    // because we are not in the context of this.
+    // Annoying!
     this.diagnosticsTraceService.info("languageService.developMappedObject(...)");
     // In this contrived example, not doing much, just changing type:
     //return item;
     // Same thing in this simple case:
-      var replacement: SystemLanguageVM = {
-        id: item.id,
-        enabled: item.enabled,
-        imageId: item.imageId,
-        title: item.title,
-        description: item.description,
-        languageCode: item.languageCode
-      }
-      return replacement;
+    var replacement: SystemLanguageVM = {
+      id: item.id,
+      enabled: item.enabled,
+      imageId: item.imageId,
+      title: item.title,
+      description: item.description,
+      languageCode: item.languageCode
+    }
+    return replacement;
   }
 
   /**
@@ -90,31 +99,22 @@ export class LanguageService extends ItemsCollectionServiceBase<SystemLanguage, 
    * Abstract final method for any action
    * required at the end of the refreshment of the list
    */
-  protected override handleUpdate(items: SystemLanguage[]): void {
-    this.diagnosticsTraceService.info("languageService.handleUpdate(...)");
+  protected override onInitComplete(items: SystemLanguageVM[]): void {
+    this.diagnosticsTraceService.info("languageService.onInitComplete(...)");
     this.initLanguages(items);
   }
 
 
   // Not sure who calls this:
-  protected initLanguages(items: SystemLanguage[]): void {
-    let browserLang: any;
-
+  protected initLanguages(items: SystemLanguageVM[]): void {
+    this.diagnosticsTraceService.info("languageService.initLanguages(...)");
+ 
     var languageCodes =
       items.map(item => item.languageCode)
         .filter((v): v is string => typeof (v) === 'string');
 
+    this.translationService.initializeTranslator(languageCodes);
 
-    this.translate.addLangs(languageCodes);
-
-    if (this.cookieService.check('lang')) {
-      browserLang = this.cookieService.get('lang');
-    }
-    else {
-      browserLang = this.translate.getBrowserLang();
-    }
-
-    this.translate.use(browserLang);
 
   }
 
@@ -122,9 +122,8 @@ export class LanguageService extends ItemsCollectionServiceBase<SystemLanguage, 
   /***
  * Cookie Language set
  */
-  public setLanguage(lang: any) {
-    this.translate.use(lang);
-    this.cookieService.set('lang', lang);
+  public setLanguage(language: string) {
+    this.translationService.setLanguage(language);
   }
 
 }

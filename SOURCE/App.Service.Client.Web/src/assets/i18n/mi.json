@@ -202,6 +202,20 @@
       "REMEMBER_ME_INSTRUCTIONS": "(I ngā wāhi, he maha, ahakoa te kati i te kaipāruru)",
       "DONT_HAVE_AN_ACCOUNT?": "E kore koe e whai kaute anō?"
     },
+    "BODIES": {
+      "__COMMENTS": "Tirohia te TĀNGATA. He aronga ki te TŪKUINGOA",
+      "TITLE": "Tinana",
+      "TITLES": "Tinana",
+      "DOB": "Rā Whānau",
+      "DOB_INSTRUCTIONS": "Whakauru i te rā whānau",
+      "DOB_PLACEHOLDER": "Tau, Marama, Ra...",
+      "SEX": "Rōpūkū",
+      "SEX_INSTRUCTIONS": "Whakauru i te rōpūkū i te whānau",
+      "SEX_PLACEHOLDER": "Tāne/Wahine/Rerekē...",
+      "HEIGHT": "Uara",
+      "HEIGHT_INSTRUCTIONS": "Whakauru i te uara",
+      "HEIGHT_PLACEHOLDER": "Uara i roto i ngā hēkē..."
+    },
     "CALENDER": {
       "__COMMENTS": "Ēngari āwangawanga. Kia whiriwhiria te whakamahi i ngā APPOINTMENTS.",
       "TITLE": "Maramataka",
@@ -493,6 +507,34 @@
           "ADMINISTER": "Whakahaere",
           "TEACH": "Whakaako",
           "STUDY": "Ako"
+        },
+        "TERMS": {
+          "CURRICULUM": "Mahere Marautanga",
+          "CURRICULA": "Ngā Mahere Marautanga",
+          "SYLLABUS": "Mātakitaki",
+          "TEACHING_PLAN": "Mahere Whakaako",
+          "TERM": "Kauhau",
+          "COURSE": "Akoranga",
+          "CLASS": "Rūmaki",
+          "LESSON": "Wānanga",
+          "SCHEDULE": "Rārangi Wā",
+          "ENROLLMENT": "Whakauru",
+          "ROLL_CALL": "Pānuitanga",
+          "FRAMEWORK": "Kāhui Whakaū",
+          "STANDARDISED": "Paerewa",
+          "TEST": "Whakamātautau",
+          "RETEST": "(Whakahōu) Whakamātautau",
+          "OBSERVATION": "Tirohanga",
+          "ASSESSMENT": "Aromatawai",
+          "JUDGEMENT": "Whakatau",
+          "SCORE": "Papa",
+          "GRADE": "Paerewa",
+          "PASS": "Kitea",
+          "FAIL": "Kua Pakaru",
+          "CERTIFICATION": "Whakamana",
+          "GRADUATION": "Whakakapi",
+          "PLD": "Whakapakari Ākonga Matua",
+          "PLD_ACRONYM": "PLD"
         }
       },
       "GOVERNMENT": {
@@ -571,6 +613,27 @@
       "TITLES": "Ngā Pātai Anō",
       "DESCRIPTION": "..."
     },
+    "FAMILIES": {
+      "__COMMENTS": "See RELATIONSHIPS",
+      "TITLE": "Whānau",
+      "TITLES": "Ngā Whānau",
+      "DESCRIPTION": "...",
+      "CARETAKER": "Kaitiaki",
+      "RELATED": "Whaiwhakaaro",
+      "PARENT": "Matua",
+      "PARENTS": "Ngā Matua",
+      "MOTHER": "Whaea",
+      "FATHER": "Matua",
+      "SIBLING": "Tuakana/Tēina",
+      "SISTER": "Tuahine",
+      "BROTHER": "Tūāhua",
+      "COUSIN": "Tuakana/Tēina",
+      "GRANDMOTHER": "Kuia",
+      "GRANDFATHER": "Koro",
+      "AUNT": "Whaea",
+      "UNCLE": "Matua",
+      "CHILD": "Tamaiti"
+    },
     "FINANCE": {
       "_COMMMENTS": "Tirohia te HOKO.",
       "TITLE": "Moni",
@@ -616,14 +679,28 @@
       "DESCRIPTION": "..."
     },
     "HEADERS": {
-      "__COMMENTS": "",
-      "TITLE": "Pane",
-      "TITLES": "Pane",
-      "DESCRIPTION": "Whakamāramatanga",
-      "ENABLED": "Whakakāhā",
+      "__COMMENTS": "Āwhea rawa, kāore he taitara rānei mō tēnei rōpū: he mea hiahiatia ngā pū tūāhua ki te kī 'Taitara' me te 'Whakaahuatanga'...",
+      "ENABLED": "Whakakāhoretanga",
+      "TITLE": "Taitara",
+      "DESCRIPTION": "Whakaahuatanga",
       "DETAILS": "Taipitopito",
       "VALUE": "Uara",
-      "ACTIONS": "Mahi"
+      "ACTIONS": "Mahi(nga)"
+    },
+    "HEALTH": {
+      "__COMMENTS": " ",
+      "TITLE": "Hauora",
+      "TITLES": "Kāore i āhei",
+      "DESCRIPTION": "...",
+      "BLOOD_PRESSURE": "Pātengi Toto",
+      "HEART_RATE": "Tere Manawa",
+      "ILLNESS": "Mate",
+      "MEDICINE": "Rongoā",
+      "MENTAL": "Hinengaro",
+      "PHYSICAL": "Tinana",
+      "PRESCRIPTOIN": "Tohutohu Rongoā",
+      "TEMPERATURE": "Wera",
+      "WELL": "Whaiaro"
     },
     "HELP": {
       "__COMMENTS": "Compare with SUPPORT & ASSISTANCE (by others).",
@@ -645,6 +722,72 @@
       "DARK": "Tūtātahi",
       "GRADIENT": "Pūtaiao",
       "LIGHT": "Māmā"
+    },
+    "IDENTITIES": {
+      "__COMMENTS": "Ko te tangata he tohu anake",
+      "TITLE": "Tohu",
+      "TITLES": "Ngā Tohu",
+      "DESCRIPTION": "...",
+      "ID": "Tohu āhua",
+      "IDENTIFIER": "Whakauru mai i te tohu āhua wāhi",
+      "NAMES": {
+        "TITLE": "Ingoa",
+        "PREFIX": "Tohu",
+        "PREFIX_INSTRUCTIONS": "Whakauru i tētahi tohu (Mr, Mrs, Dr., ...)",
+        "PREFIX_EXAMPLE": "Dr.",
+        "PREFIX_ERROR_01": "Me whakarite i tētahi tohu rānei.",
+        "PREFIX_ERROR_02": "Kāore e taea te whakapono i te tohu i whakaritea.",
+        "GIVEN": "Ingoa Tā",
+        "GIVEN_INSTRUCTIONS": "Whakauru i tētahi ingoa tuatahi/tā",
+        "GIVEN_EXAMPLE": "Hone",
+        "GIVEN_ERROR_01": "Me whakarite i tētahi ingoa tā.",
+        "GIVEN_ERROR_02": "Kāore e taea te whakapono i te ingoa tā i whakaritea.",
+        "MIDDLE": "Ingoa Tā Waenga",
+        "MIDDLE_INSTRUCTIONS": "Whakauru i ngā ingoa waenga tā",
+        "MIDDLE_EXAMPLE": "Martin",
+        "MIDDLE_ERROR_01": "Me whakarite i ngā ingoa waenga tā.",
+        "MIDDLE_ERROR_02": "Kāore e taea te whakapono i ngā ingoa waenga tā i whakaritea.",
+        "MIDDLE_INITIALS": "Ingoa Tā Waenga",
+        "MIDDLE_INITIALS_INSTRUCTIONS": "Whakauru i ngā waenga tā.",
+        "MIDDLE_INITIALS_EXAMPLE": "M.",
+        "MIDDLE_INITIALS_ERROR_01": "Me whakarite i ngā waenga tā.",
+        "MIDDLE_INITIALS_ERROR_02": "Kāore e taea te whakapono i ngā waenga tā i whakaritea.",
+        "GIVENS": "Ngā Ingoa Tā",
+        "GIVENS_INSTRUCTIONS": "Whakauru i ngā ingoa tā",
+        "GIVENS_EXAMPLE": "Hone Makarini",
+        "GIVENS_ERROR_01": "Me whakarite i tētahi ingoa tā.",
+        "GIVENS_ERROR_02": "Kāore e taea te whakapono i ngā ingoa tā i whakaritea.",
+        "SURNAME": "Ingoa Whānau",
+        "SURNAME_INSTRUCTIONS": "Whakauru i tētahi ingoa whānau",
+        "SURNAME_EXAMPLE": "Hepa",
+        "SURNAME_ERROR_01": "Me whakarite i tētahi ingoa whānau.",
+        "SURNAME_ERROR_02": "Kāore e taea te whakapono i te ingoa whānau i whakaritea."
+      },
+      "PRONOUNS": "Tohu",
+      "PRONOUNS_INSTRUCTIONS": "Whakauru mai i ngā tohu i waihotia",
+      "PRONOUNS_EXAMPLE": "Āna/Ia",
+      "PRONOUNS_ERROR_01": "Me whakarite i ngā tohu i waihotia.",
+      "PRONOUNS_ERROR_02": "Kāore e taea te whakapono i ngā tohu i whakaritea.",
+      "AVATAR": "Avatar",
+      "AVATAR_INSTRUCTIONS": "Whakauru mai i tētahi avatar",
+      "AVATAR_EXAMPLE": "hero.png",
+      "AVATAR_ERROR_01": "Me whakarite i tētahi avatar.",
+      "AVATAR_ERROR_02": "Kāore e taea te whakapono i te avatar i whakaritea.",
+      "BIO": "Bio",
+      "BIO_INSTRUCTIONS": "Whakauru mai i tētahi mōteatea",
+      "BIO_EXAMPLE": "E.g., he mea iti, he mea tino, he mea tika mō tēnei tohu...",
+      "BIO_ERROR_01": "Me whakarite i tētahi mōteatea.",
+      "BIO_ERROR_02": "Kāore e taea te whakapono i te mōteatea i whakaritea.",
+      "ROLE": "Rōpu",
+      "ROLE_INSTRUCTIONS": "Whakauru mai i tētahi rōpu tūmataiti",
+      "ROLE_EXAMPLE": "Kaiwhakarite",
+      "ROLE_ERROR_01": "Me whakarite i tētahi rōpu.",
+      "ROLE_ERROR_02": "Kāore e taea te whakapono i te rōpu i whakaritea.",
+      "GENDER": "Rōpu Tāne/Wahine",
+      "GENDER_INSTRUCTIONS": "Whakauru mai i te rōpu tāne/wahine o tēnei tohu",
+      "GENDER_EXAMPLE": "Tāne",
+      "GENDER_ERROR_01": "Me whakarite i te rōpu.",
+      "GENDER_ERROR_02": "Kāore e taea te whakapono i te rōpu i whakaritea."
     },
     "INFORMATION": {
       "__COMMENTS": "Publicly accessible Pages (Pricing, FAQs, Policies, Terms, etc.). See INFORMATION and PAGES Area.",
@@ -678,6 +821,12 @@
       "TITLE": "Whakakōrero",
       "TITLES": "Ngā Whakakōrero",
       "DESCRIPTION": "..."
+    },
+    "ISSUES": {
+      "__COMMENTS": "Whai mātauranga i te WORK, STATUS .",
+      "TITLE": "問題",
+      "TITLES": "問題",
+      "DESCRIPTION": "Ngā take mohoa"
     },
     "LANDING": {
       "__COMMENTS": "Publicly accessible Pages as landing pages from Advertisements/sources. See PAGES and INFORMATION Area.",
@@ -743,6 +892,16 @@
       "TITLES": "N/A",
       "DESCRIPTION": "Whai muri i te wā ka hoatu e whakamahia ana te ratonga kia taea te tāpiri i ngā āhuatanga hou..."
     },
+    "MEDIA": {
+      "__COMMENTS": "",
+      "TITLE": "Rongoā",
+      "TITLES": "Rongoā",
+      "DESCRIPTION": "...",
+      "DIMENSIONS": "Tauira",
+      "FILENAME": "Ingoa Kōnae",
+      "FORMAT": "Tau",
+      "SIZE": "Rahi"
+    },
     "MEMBERS": {
       "__COMMENTS": "",
       "TITLE": "Mema",
@@ -790,6 +949,29 @@
       "OCTOBER": "Whiringa-ā-nuku",
       "NOVEMBER": "Whiringa-ā-rangi",
       "DECEMBER": "Hakihea"
+    },
+    "NATURE": {
+      "__COMMENTS": "Whai mātauranga i te WEATHER.",
+      "TITLE": "Aio",
+      "TITLES": "Kāore i āhei",
+      "DESCRIPTION": "...",
+      "URBAN": "Taone",
+      "RURAL": "Whenua",
+      "BROOOK": "Waipara",
+      "STREAM": "Awa",
+      "STREAMS": "Awa",
+      "RIVER": "Awa",
+      "RIVERS": "Awa",
+      "TORRENT": "Pūrahu",
+      "WATERFALL": "Wairopi",
+      "BUSH": "Wao",
+      "BUSHES": "Wao",
+      "TREE": "Rākau",
+      "TREES": "Rākau",
+      "FOREST": "Ngahere",
+      "FIELD": "Māra",
+      "PADDOCK": "Ngahere",
+      "BARN": "Pātaka"
     },
     "NAVIGATION": {
       "__COMMENTS": "He āhuatanga o te Āhua Pūwhenua.",
@@ -920,84 +1102,7 @@
       "TITLES": "Ngā Tangata",
       "DESCRIPTION": "...",
       "ID": "Tohu",
-      "IDENTIFIER": "Whakauru mai i te tohu o te tangata",
-      "BODY": {
-        "DOB": "Huringa",
-        "DOB_INSTRUCTIONS": "Whakauru i te rā whānau",
-        "DOB_PLACEHOLDER": "Tau, Marama, Ra...",
-        "SEX": "Tāne/Wahine",
-        "SEX_INSTRUCTIONS": "Whakauru i te tāne/wahine mai i te whānau",
-        "SEX_PLACEHOLDER": "Tāne/Wahine/Tētahi atu...",
-        "HEIGHT": "Mātotoru",
-        "HEIGHT_INSTRUCTIONS": "Whakauru i te mātotoru",
-        "HEIGHT_PLACEHOLDER": "Mātotoru i roto i ngā santimita..."
-      },
-      "IDENTITIES": {
-        "__COMMENTS": "Ko te tangata he tohu anake",
-        "TITLE": "Tohu",
-        "TITLES": "Ngā Tohu",
-        "DESCRIPTION": "...",
-        "ID": "Tohu āhua",
-        "IDENTIFIER": "Whakauru mai i te tohu āhua wāhi",
-        "NAMES": {
-          "TITLE": "Ingoa",
-          "PREFIX": "Tohu",
-          "PREFIX_INSTRUCTIONS": "Whakauru i tētahi tohu (Mr, Mrs, Dr., ...)",
-          "PREFIX_EXAMPLE": "Dr.",
-          "PREFIX_ERROR_01": "Me whakarite i tētahi tohu rānei.",
-          "PREFIX_ERROR_02": "Kāore e taea te whakapono i te tohu i whakaritea.",
-          "GIVEN": "Ingoa Tā",
-          "GIVEN_INSTRUCTIONS": "Whakauru i tētahi ingoa tuatahi/tā",
-          "GIVEN_EXAMPLE": "Hone",
-          "GIVEN_ERROR_01": "Me whakarite i tētahi ingoa tā.",
-          "GIVEN_ERROR_02": "Kāore e taea te whakapono i te ingoa tā i whakaritea.",
-          "MIDDLE": "Ingoa Tā Waenga",
-          "MIDDLE_INSTRUCTIONS": "Whakauru i ngā ingoa waenga tā",
-          "MIDDLE_EXAMPLE": "Martin",
-          "MIDDLE_ERROR_01": "Me whakarite i ngā ingoa waenga tā.",
-          "MIDDLE_ERROR_02": "Kāore e taea te whakapono i ngā ingoa waenga tā i whakaritea.",
-          "MIDDLE_INITIALS": "Ingoa Tā Waenga",
-          "MIDDLE_INITIALS_INSTRUCTIONS": "Whakauru i ngā waenga tā.",
-          "MIDDLE_INITIALS_EXAMPLE": "M.",
-          "MIDDLE_INITIALS_ERROR_01": "Me whakarite i ngā waenga tā.",
-          "MIDDLE_INITIALS_ERROR_02": "Kāore e taea te whakapono i ngā waenga tā i whakaritea.",
-          "GIVENS": "Ngā Ingoa Tā",
-          "GIVENS_INSTRUCTIONS": "Whakauru i ngā ingoa tā",
-          "GIVENS_EXAMPLE": "Hone Makarini",
-          "GIVENS_ERROR_01": "Me whakarite i tētahi ingoa tā.",
-          "GIVENS_ERROR_02": "Kāore e taea te whakapono i ngā ingoa tā i whakaritea.",
-          "SURNAME": "Ingoa Whānau",
-          "SURNAME_INSTRUCTIONS": "Whakauru i tētahi ingoa whānau",
-          "SURNAME_EXAMPLE": "Hepa",
-          "SURNAME_ERROR_01": "Me whakarite i tētahi ingoa whānau.",
-          "SURNAME_ERROR_02": "Kāore e taea te whakapono i te ingoa whānau i whakaritea."
-        },
-        "PRONOUNS": "Tohu",
-        "PRONOUNS_INSTRUCTIONS": "Whakauru mai i ngā tohu i waihotia",
-        "PRONOUNS_EXAMPLE": "Āna/Ia",
-        "PRONOUNS_ERROR_01": "Me whakarite i ngā tohu i waihotia.",
-        "PRONOUNS_ERROR_02": "Kāore e taea te whakapono i ngā tohu i whakaritea.",
-        "AVATAR": "Avatar",
-        "AVATAR_INSTRUCTIONS": "Whakauru mai i tētahi avatar",
-        "AVATAR_EXAMPLE": "hero.png",
-        "AVATAR_ERROR_01": "Me whakarite i tētahi avatar.",
-        "AVATAR_ERROR_02": "Kāore e taea te whakapono i te avatar i whakaritea.",
-        "BIO": "Bio",
-        "BIO_INSTRUCTIONS": "Whakauru mai i tētahi mōteatea",
-        "BIO_EXAMPLE": "E.g., he mea iti, he mea tino, he mea tika mō tēnei tohu...",
-        "BIO_ERROR_01": "Me whakarite i tētahi mōteatea.",
-        "BIO_ERROR_02": "Kāore e taea te whakapono i te mōteatea i whakaritea.",
-        "ROLE": "Rōpu",
-        "ROLE_INSTRUCTIONS": "Whakauru mai i tētahi rōpu tūmataiti",
-        "ROLE_EXAMPLE": "Kaiwhakarite",
-        "ROLE_ERROR_01": "Me whakarite i tētahi rōpu.",
-        "ROLE_ERROR_02": "Kāore e taea te whakapono i te rōpu i whakaritea.",
-        "GENDER": "Rōpu Tāne/Wahine",
-        "GENDER_INSTRUCTIONS": "Whakauru mai i te rōpu tāne/wahine o tēnei tohu",
-        "GENDER_EXAMPLE": "Tāne",
-        "GENDER_ERROR_01": "Me whakarite i te rōpu.",
-        "GENDER_ERROR_02": "Kāore e taea te whakapono i te rōpu i whakaritea."
-      }
+      "IDENTIFIER": "Whakauru mai i te tohu o te tangata"
     },
     "PLACES": {
       "__COMMENTS": "Tirohia te Tūnga.",
@@ -1094,7 +1199,7 @@
       "TITLES": "Ngā Whanonga",
       "DESCRIPTION": "..."
     },
-    "PROFILE": {
+    "PROFILES": {
       "__COMMENTS": "Ngā Kōwhiringa o te Kaiwhakamahi o Nāianei. Kāore e ōrite ki (Tūmau) NGAHAU",
       "TITLE": "Kōwae",
       "TITLES": "Ngā Kōwae",
@@ -1146,6 +1251,11 @@
       "ANALYSABLE": "Tātaritanga",
       "ENHANCEABLE": "Whakapiki"
     },
+    "RELATIONSHIPS": {
+      "__COMMENTS": "See FAMILY",
+      "TITLE": "Whanaungatanga",
+      "TITLES": "Ngā Whanaungatanga"
+    },
     "REPORTS": {
       "__COMMENTS": "",
       "TITLE": "Tauira",
@@ -1160,6 +1270,26 @@
       "RESPONSIBLE": "Kaitautoko",
       "RESPONSIBILITY": "Kawenga",
       "RESPONSIBILITIES": "Kawenga"
+    },
+    "RISKS": {
+      "__COMMENTS": "Whai mātauranga i te ISSUES, WORK",
+      "TITLE": "Whakaruruhau",
+      "TITLES": "Ngā whakaruruhau",
+      "DESCRIPTION": "...",
+      "LIKLINESS": {
+        "IMPROBABLE": "Tāwhawha",
+        "UNCERTAIN": "Takahē",
+        "PROBABLE": "Kitea",
+        "ALMOST_CERTAIN": "Tino Kitea",
+        "CERTAIN": "Whakamiharo"
+      },
+      "IMPACT": {
+        "NEGLIGEABLE": "Matea",
+        "LOW": "Raro",
+        "MODERATE": "Wānui",
+        "HIGH": "Nui",
+        "CRITICAL": "Tino Nui"
+      }
     },
     "ROLES": {
       "__COMMENTS": "See also ACCESS_LEVELS, PERMISSIONS",
@@ -1296,6 +1426,7 @@
       "APPROVED": "Whakaae",
       "PUBLISHED": "Tuku",
       "ENDORSED": "Whakapae",
+      "MERGED": "Whakakotahi",
       "REMOVED": "Whakakore",
       "RETIRED": "Whakamutua",
       "LEGACY": "Tuku iho"
@@ -1545,6 +1676,38 @@
       "TOO_MUCH": "He nui rawa",
       "INCORRECT_FORMAT": "Te hōputu hē"
     },
+    "VEHICLES": {
+      "__COMMENTS": "Whai mātauranga i te TRANSPORT.",
+      "TITLE": "Waka",
+      "TITLES": "Ngā waka",
+      "BOAT": "Waka",
+      "WHEELBARROW": "Whērau",
+      "SKATEBOARD": "Pahi",
+      "SCOOTER": "Scooter",
+      "BICYCLE": "Pahi",
+      "MOTORCYCLE": "Motokā",
+      "CAR": "Motokā",
+      "BUS": "Pahi",
+      "AIRPLANE": "Rererangi",
+      "FLYING_CAR": "Motokā Rererangi"
+    },
+    "WEATHER": {
+      "__COMMENTS": "...",
+      "TITLE": "Āhua āhuarangi",
+      "TITLES": "Kāore i āhei",
+      "DESCRIPTION": "...",
+      "SUN": "Rā",
+      "MOON": "Marama",
+      "CLOUDS": "Māngā",
+      "FOG": "Kohu",
+      "WIND": "Hau",
+      "WIND_SPEED": "Tere Hau",
+      "RAINFALL": "Pūtau",
+      "SUNNY": "Māmā",
+      "CLOUDY": "Papaki",
+      "RAINY": "Ua",
+      "FOGGY": "Hutihuti"
+    },
     "WELCOME": {
       "__COMMENTS": "Authenticated users home page. See DASHBOARD.",
       "TITLE": "Nau mai",
@@ -1599,6 +1762,14 @@
     },
     "ARCHITECTURE": {
       "TITLE": "Hanganga",
+      "DESCRIPTION": "..."
+    },
+    "EDUCATION": {
+      "TITLE": "Whakahoahoa",
+      "DESCRIPTION": "..."
+    },
+    "HEALTH": {
+      "TITLE": "Hauora",
       "DESCRIPTION": "..."
     }
   }

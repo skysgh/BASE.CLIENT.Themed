@@ -5,6 +5,7 @@ import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repos
 // Models:
 import { Spike } from '../../../../models/spike.model';
 import { ActivatedRoute } from '@angular/router';
+import { SummaryItem } from '../../../../../../shared/models/SummaryItem.model';
 
 
 @Component({
@@ -15,7 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
 
   public page:number = 1;
-  public data?: Spike[] = [];
+  public data: Spike[] = [];
+  public summaryItems: Spike[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,8 +40,28 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
         this.repositoryService.getPage(this.page).subscribe((x:any) => {
           this.diagnosticsTraceService.info('got X: ' + x);
           this.data = x;
+          this.summaryItems = x.map(this.mapAway);
         });
       });
 
+  }
+  mapAway(i: Spike) : SummaryItem{
+    var r :SummaryItem = {
+        id: i.id,
+        enabled: true,
+        typeId: '01',
+        type: 'spike',
+        typeImage: 'spike.png',
+        category: 'unset...',
+        title: i.title,
+        description: i.description,
+        more: '',
+        values: {
+            primary: '123',
+            secondary: '456'
+        },
+        actions: {}
+    };
+    return r;
   }
 }

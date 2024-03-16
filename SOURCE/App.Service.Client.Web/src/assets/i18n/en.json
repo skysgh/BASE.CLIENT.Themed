@@ -202,6 +202,20 @@
       "REMEMBER_ME_INSTRUCTIONS": "(Across sessions, even after the browser is closed)",
       "DONT_HAVE_AN_ACCOUNT?": "Don't yet have an account?"
     },
+    "BODIES": {
+      "__COMMENTS": "See PERSON. Parrallel to IDENTITY",
+      "TITLE": "Body",
+      "TITLES": "Bodies",
+      "DOB": "DOB",
+      "DOB_INSTRUCTIONS": "Enter the date of birth",
+      "DOB_PLACEHOLDER": "Year, Month, Day...",
+      "SEX": "Sex",
+      "SEX_INSTRUCTIONS": "Enter the sex at birth",
+      "SEX_PLACEHOLDER": "Male/Female/Other...",
+      "HEIGHT": "Height",
+      "HEIGHT_INSTRUCTIONS": "Enter the height.",
+      "HEIGHT_PLACEHOLDER": "Height in cm..."
+    },
     "CALENDER": {
       "__COMMENTS": "Avoid. Prefer using APPOINTMENTS.",
       "TITLE": "Calendar",
@@ -473,10 +487,16 @@
       "DESCRIPTION": "...",
       "EDUCATION": {
         "__COMMENTS": "Terms specific to the Domain of Education.",
-        "PEOPLE": {
+        "ROLES": {
+          "PRINCIPALS": "Principals",
           "PRINCIPAL": "Principal",
           "TEACHER": "Teacher",
+          "TEACHERS": "Teachers",
           "ASSISTANT_TEACHER": "Assistant Teacher",
+          "CARETAKER": "Caretaker",
+          "CARETAKERS": "Caretakers",
+          "SPECIALIST": "Specialist",
+          "SPECIALISTS": "Specialists",
           "NURSE": "Nurse"
         },
         "PLACES": {
@@ -493,6 +513,34 @@
           "ADMINISTER": "Administer",
           "TEACH": "Teach",
           "STUDY": "Study"
+        },
+        "TERMS": {
+          "CURRICULUM": "Curriculum",
+          "CURRICULA": "Curricula",
+          "SYLLABUS": "Syllabus",
+          "TEACHING_PLAN": "Lesson Plan",
+          "TERM": "Term",
+          "COURSE": "Course",
+          "CLASS": "Class",
+          "LESSON": "Lesson",
+          "SCHEDULE": "Schedule",
+          "ENROLLMENT": "Enrollment",
+          "ROLL_CALL": "Roll Call",
+          "FRAMEWORK": "Framework",
+          "STANDARDISED": "Standardised",
+          "TEST": "Test",
+          "RETEST": "(re)Test",
+          "OBSERVATION": "Observation",
+          "ASSESSMENT": "Assessment",
+          "JUDGEMENT": "Judgement",
+          "SCORE": "Score",
+          "GRADE": "Grade",
+          "PASS": "Pass",
+          "FAIL": "Fail",
+          "CERTIFICATION": "Certification",
+          "GRADUATION": "Graduation",
+          "PLD": "Professional Learner Development",
+          "PLD_ACRONYM": "PLD"
         }
       },
       "GOVERNMENT": {
@@ -565,6 +613,27 @@
       "TITLES": "Examples",
       "DESCRIPTION": "..."
     },
+    "FAMILIES": {
+      "__COMMENTS": "See RELATIONSHIPS",
+      "TITLE": "Family",
+      "TITLES": "Families",
+      "DESCRIPTION": "...",
+      "CARETAKER": "Caretaker",
+      "RELATED": "Related",
+      "PARENT": "Parent",
+      "PARENTS": "Parents",
+      "MOTHER": "Mother",
+      "FATHER": "Father",
+      "SIBLING": "Sibling",
+      "SISTER": "Sister",
+      "BROTHER": "Brother",
+      "COUSIN": "Cousin",
+      "GRANDMOTHER": "GrandMother",
+      "GRANDFATHER": "GrandFather",
+      "AUNT": "Aunt",
+      "UNCLE": "Uncle",
+      "CHILD": "Child"
+    },
     "FAQS": {
       "__COMMENTS": "",
       "TITLE": "FAQ",
@@ -616,14 +685,28 @@
       "DESCRIPTION": "..."
     },
     "HEADERS": {
-      "__COMMENTS": "",
-      "TITLE": "Header",
-      "TITLES": "Headers",
-      "DESCRIPTION": "Description",
+      "__COMMENTS": "Funny enough, this group doesn't have a title/s or Description: the keys are needed to actually say 'Title' and 'Description'...",
       "ENABLED": "Enabled",
+      "TITLE": "Title",
+      "DESCRIPTION": "Description",
       "DETAILS": "Details",
       "VALUE": "Value",
       "ACTIONS": "Action(s)"
+    },
+    "HEALTH": {
+      "__COMMENTS": " ",
+      "TITLE": "Health",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "BLOOD_PRESSURE": "Blood Pressure",
+      "HEART_RATE": "Heart Rate",
+      "ILLNESS": "Illness",
+      "MEDICINE": "Medicine",
+      "MENTAL": "Mental",
+      "PHYSICAL": "Physical",
+      "PRESCRIPTOIN": "Prescription",
+      "TEMPERATURE": "Temperature",
+      "WELL": "Well"
     },
     "HELP": {
       "__COMMENTS": "Compare with SUPPORT & ASSISTANCE (by others).",
@@ -645,6 +728,72 @@
       "DARK": "Dark",
       "GRADIENT": "Gradient",
       "LIGHT": "Light"
+    },
+    "IDENTITIES": {
+      "__COMMENTS": "A PERSON has at least one IDENTITY",
+      "TITLE": "Identity",
+      "TITLES": "Identities",
+      "DESCRIPTION": "...",
+      "ID": "Context Identifier",
+      "IDENTIFIER": "Enter a unique context identifier",
+      "NAMES": {
+        "TITLE": "Names",
+        "PREFIX": "Prefix",
+        "PREFIX_INSTRUCTIONS": "Provide a Title (Mr, Mrs, Dr., ...)",
+        "PREFIX_EXAMPLE": "Dr.",
+        "PREFIX_ERROR_01": "A title or prefix is required.",
+        "PREFIX_ERROR_02": "The provided title or prefix can't be validated.",
+        "GIVEN": "Given Name",
+        "GIVEN_INSTRUCTIONS": "Provide a first/given name",
+        "GIVEN_EXAMPLE": "John",
+        "GIVEN_ERROR_01": "A given name is required.",
+        "GIVEN_ERROR_02": "The provided given name given can't be validated.",
+        "MIDDLE": "Given Middle Name",
+        "MIDDLE_INSTRUCTIONS": "Provide given middle name(s)",
+        "MIDDLE_EXAMPLE": "Martin",
+        "MIDDLE_ERROR_01": "A middle given name are required.",
+        "MIDDLE_ERROR_02": "The provided middle given name can't be validated.",
+        "MIDDLE_INITIALS": "Middle Initials",
+        "MIDDLE_INITIALS_INSTRUCTIONS": "Provide middle initial(s).",
+        "MIDDLE_INITIALS_EXAMPLE": "M.",
+        "MIDDLE_INITIALS_ERROR_01": "Middle initial(s) are required.",
+        "MIDDLE_INITIALS_ERROR_02": "The provided middle initials(s) can't be validated.",
+        "GIVENS": "Given Name(s)",
+        "GIVENS_INSTRUCTIONS": "Provide given name(s).",
+        "GIVENS_EXAMPLE": "John Mark",
+        "GIVENS_ERROR_01": "A given name is required.",
+        "GIVENS_ERROR_02": "The provided given name(s) can't be validated.",
+        "SURNAME": "Surname",
+        "SURNAME_INSTRUCTIONS": "Provide a suname",
+        "SURNAME_EXAMPLE": "Smith",
+        "SURNAME_ERROR_01": "A surname is required.",
+        "SURNAME_ERROR_02": "The provided surname can't be validated."
+      },
+      "PRONOUNS": "Pronouns",
+      "PRONOUNS_INSTRUCTIONS": "Provide preferred pronouns",
+      "PRONOUNS_EXAMPLE": "He/Him",
+      "PRONOUNS_ERROR_01": "Preferred pronouns are required.",
+      "PRONOUNS_ERROR_02": "The provided pronoun(s) given can't be validated.",
+      "AVATAR": "Avatar",
+      "AVATAR_INSTRUCTIONS": "Provide an avatar",
+      "AVATAR_EXAMPLE": "hero.png",
+      "AVATAR_ERROR_01": "An avatar is required.",
+      "AVATAR_ERROR_02": "The provided avatar could not be validated.",
+      "BIO": "Bio",
+      "BIO_INSTRUCTIONS": "Provide a summary introductory bio/description",
+      "BIO_EXAMPLE": "E.g., something concise, precise, pertinent about this identity...",
+      "BIO_ERROR_01": "A bio is required.",
+      "BIO_ERROR_02": "The provided bio could not be validated.",
+      "ROLE": "Role",
+      "ROLE_INSTRUCTIONS": "Provide a contextual role",
+      "ROLE_EXAMPLE": "Contributor",
+      "ROLE_ERROR_01": "A role is required.",
+      "ROLE_ERROR_02": "The provided role could not be validated.",
+      "GENDER": "Gender",
+      "GENDER_INSTRUCTIONS": "Provide this identity's gender orientation",
+      "GENDER_EXAMPLE": "Male",
+      "GENDER_ERROR_01": "An gender is required.",
+      "GENDER_ERROR_02": "The provided gender could not be validated."
     },
     "INFORMATION": {
       "__COMMENTS": "Publicly accessible Pages (Pricing, FAQs, Policies, Terms, etc.). See INFORMATION and PAGES Area.",
@@ -678,6 +827,12 @@
       "TITLE": "Invitation",
       "TITLES": "Invitations",
       "DESCRIPTION": "..."
+    },
+    "ISSUES": {
+      "__COMMENTS": "See WORK, STATUS .",
+      "TITLE": "Issue",
+      "TITLES": "Issues",
+      "DESCRIPTION": "Known issues"
     },
     "LANDING": {
       "__COMMENTS": "Publicly accessible Pages as landing pages from Advertisements/sources. See PAGES and INFORMATION Area.",
@@ -743,6 +898,16 @@
       "TITLES": "N/A",
       "DESCRIPTION": "When the service is next planned to be taken down to add new features..."
     },
+    "MEDIA": {
+      "__COMMENTS": "",
+      "TITLE": "Media",
+      "TITLES": "Medias",
+      "DESCRIPTION": "...",
+      "DIMENSIONS": "Dimensions",
+      "FILENAME": "Filename",
+      "FORMAT": "Format",
+      "SIZE": "Size"
+    },
     "MEMBERS": {
       "__COMMENTS": "",
       "TITLE": "Member",
@@ -790,6 +955,29 @@
       "OCTOBER": "October",
       "NOVEMBER": "November",
       "DECEMBER": "December"
+    },
+    "NATURE": {
+      "__COMMENTS": "See WEATHER.",
+      "TITLE": "Nature",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "URBAN": "Urban",
+      "RURAL": "Rural",
+      "BROOOK": "Brook",
+      "STREAM": "Stream",
+      "STREAMS": "Streams",
+      "RIVER": "River",
+      "RIVERS": "Rivers",
+      "TORRENT": "Torrent",
+      "WATERFALL": "Waterfall",
+      "BUSH": "Bush",
+      "BUSHES": "Bushes",
+      "TREE": "Tree",
+      "TREES": "Trees",
+      "FOREST": "Forest",
+      "FIELD": "Field",
+      "PADDOCK": "Paddock",
+      "BARN": "Barn"
     },
     "NAVIGATION": {
       "__COMMENTS": "An aspect of the CONTEXT area.",
@@ -920,84 +1108,7 @@
       "TITLES": "Persons",
       "DESCRIPTION": "...",
       "ID": "Identifier",
-      "IDENTIFIER": "Enter the person's identifier",
-      "BODY": {
-        "DOB": "DOB",
-        "DOB_INSTRUCTIONS": "Enter the date of birth",
-        "DOB_PLACEHOLDER": "Year, Month, Day...",
-        "SEX": "Sex",
-        "SEX_INSTRUCTIONS": "Enter the sex at birth",
-        "SEX_PLACEHOLDER": "Male/Female/Other...",
-        "HEIGHT": "Height",
-        "HEIGHT_INSTRUCTIONS": "Enter the height.",
-        "HEIGHT_PLACEHOLDER": "Height in cm..."
-      },
-      "IDENTITIES": {
-        "__COMMENTS": "A PERSON has at least one IDENTITY",
-        "TITLE": "Identity",
-        "TITLES": "Identities",
-        "DESCRIPTION": "...",
-        "ID": "Context Identifier",
-        "IDENTIFIER": "Enter a unique context identifier",
-        "NAMES": {
-          "TITLE": "Names",
-          "PREFIX": "Prefix",
-          "PREFIX_INSTRUCTIONS": "Provide a Title (Mr, Mrs, Dr., ...)",
-          "PREFIX_EXAMPLE": "Dr.",
-          "PREFIX_ERROR_01": "A title or prefix is required.",
-          "PREFIX_ERROR_02": "The provided title or prefix can't be validated.",
-          "GIVEN": "Given Name",
-          "GIVEN_INSTRUCTIONS": "Provide a first/given name",
-          "GIVEN_EXAMPLE": "John",
-          "GIVEN_ERROR_01": "A given name is required.",
-          "GIVEN_ERROR_02": "The provided given name given can't be validated.",
-          "MIDDLE": "Given Middle Name",
-          "MIDDLE_INSTRUCTIONS": "Provide given middle name(s)",
-          "MIDDLE_EXAMPLE": "Martin",
-          "MIDDLE_ERROR_01": "A middle given name are required.",
-          "MIDDLE_ERROR_02": "The provided middle given name can't be validated.",
-          "MIDDLE_INITIALS": "Middle Initials",
-          "MIDDLE_INITIALS_INSTRUCTIONS": "Provide middle initial(s).",
-          "MIDDLE_INITIALS_EXAMPLE": "M.",
-          "MIDDLE_INITIALS_ERROR_01": "Middle initial(s) are required.",
-          "MIDDLE_INITIALS_ERROR_02": "The provided middle initials(s) can't be validated.",
-          "GIVENS": "Given Name(s)",
-          "GIVENS_INSTRUCTIONS": "Provide given name(s).",
-          "GIVENS_EXAMPLE": "John Mark",
-          "GIVENS_ERROR_01": "A given name is required.",
-          "GIVENS_ERROR_02": "The provided given name(s) can't be validated.",
-          "SURNAME": "Surname",
-          "SURNAME_INSTRUCTIONS": "Provide a suname",
-          "SURNAME_EXAMPLE": "Smith",
-          "SURNAME_ERROR_01": "A surname is required.",
-          "SURNAME_ERROR_02": "The provided surname can't be validated."
-        },
-        "PRONOUNS": "Pronouns",
-        "PRONOUNS_INSTRUCTIONS": "Provide preferred pronouns",
-        "PRONOUNS_EXAMPLE": "He/Him",
-        "PRONOUNS_ERROR_01": "Preferred pronouns are required.",
-        "PRONOUNS_ERROR_02": "The provided pronoun(s) given can't be validated.",
-        "AVATAR": "Avatar",
-        "AVATAR_INSTRUCTIONS": "Provide an avatar",
-        "AVATAR_EXAMPLE": "hero.png",
-        "AVATAR_ERROR_01": "An avatar is required.",
-        "AVATAR_ERROR_02": "The provided avatar could not be validated.",
-        "BIO": "Bio",
-        "BIO_INSTRUCTIONS": "Provide a summary introductory bio/description",
-        "BIO_EXAMPLE": "E.g., something concise, precise, pertinent about this identity...",
-        "BIO_ERROR_01": "A bio is required.",
-        "BIO_ERROR_02": "The provided bio could not be validated.",
-        "ROLE": "Role",
-        "ROLE_INSTRUCTIONS": "Provide a contextual role",
-        "ROLE_EXAMPLE": "Contributor",
-        "ROLE_ERROR_01": "A role is required.",
-        "ROLE_ERROR_02": "The provided role could not be validated.",
-        "GENDER": "Gender",
-        "GENDER_INSTRUCTIONS": "Provide this identity's gender orientation",
-        "GENDER_EXAMPLE": "Male",
-        "GENDER_ERROR_01": "An gender is required.",
-        "GENDER_ERROR_02": "The provided gender could not be validated."
-      }
+      "IDENTIFIER": "Enter the person's identifier"
     },
     "PLACES": {
       "__COMMENTS": "See LOCATION.",
@@ -1094,7 +1205,7 @@
       "TITLES": "Products",
       "DESCRIPTION": "..."
     },
-    "PROFILE": {
+    "PROFILES": {
       "__COMMENTS": "Current User Preferences. Not the same as (System) SETTINGS",
       "TITLE": "Profile",
       "TITLES": "Profiles",
@@ -1146,6 +1257,11 @@
       "ANALYSABLE": "Analysable",
       "ENHANCEABLE": "Enhanceable"
     },
+    "RELATIONSHIPS": {
+      "__COMMENTS": "See FAMILY",
+      "TITLE": "Relationship",
+      "TITLES": "Relationships"
+    },
     "REPORTS": {
       "__COMMENTS": "",
       "TITLE": "Template",
@@ -1166,6 +1282,26 @@
       "TITLE": "Role",
       "TITLES": "Roles",
       "DESCRIPTION": "..."
+    },
+    "RISKS": {
+      "__COMMENTS": "See ISSUES, WORK",
+      "TITLE": "Risk",
+      "TITLES": "Risks",
+      "DESCRIPTION": "...",
+      "LIKLINESS": {
+        "IMPROBABLE": "Improbable",
+        "UNCERTAIN": "Uncertain",
+        "PROBABLE": "Probable",
+        "ALMOST_CERTAIN": "Almost Certain",
+        "CERTAIN": "Certain"
+      },
+      "IMPACT": {
+        "NEGLIGEABLE": "Negligeable",
+        "LOW": "Low",
+        "MODERATE": "Moderate",
+        "HIGH": "High",
+        "CRITICAL": "Critical"
+      }
     },
     "SCHEDULING": {
       "__COMMENTS": "See PROJECTS, TASKS area.",
@@ -1296,6 +1432,7 @@
       "APPROVED": "Approved",
       "PUBLISHED": "Published",
       "ENDORSED": "Endorsed",
+      "MERGED": "Merged",
       "REMOVED": "Removed",
       "RETIRED": "Retired",
       "LEGACY": "Legacy"
@@ -1545,6 +1682,38 @@
       "TOO_MUCH": "Too much",
       "INCORRECT_FORMAT": "Incorrect format"
     },
+    "VEHICLES": {
+      "__COMMENTS": "See TRANSPORT.",
+      "TITLE": "Vehicle",
+      "TITLES": "Vehicles",
+      "BOAT": "Boat",
+      "WHEELBARROW": "Wheelbarrow",
+      "SKATEBOARD": "Bicycle",
+      "SCOOTER": "Scooter",
+      "BICYCLE": "Bicycle",
+      "MOTORCYCLE": "Motorcycle",
+      "CAR": "Car",
+      "BUS": "Bus",
+      "AIRPLANE": "Airplane",
+      "FLYING_CAR": "Flying Car"
+    },
+    "WEATHER": {
+      "__COMMENTS": "...",
+      "TITLE": "Weather",
+      "TITLES": "N/A",
+      "DESCRIPTION": "...",
+      "SUN": "Sun",
+      "MOON": "Moon",
+      "CLOUDS": "Clouds",
+      "FOG": "Fog",
+      "WIND": "Wind",
+      "WIND_SPEED": "Wind Speed",
+      "RAINFALL": "Rainfall",
+      "SUNNY": "Sunny",
+      "CLOUDY": "Cloudy",
+      "RAINY": "Rainy",
+      "FOGGY": "Foggy"
+    },
     "WELCOME": {
       "__COMMENTS": "Authenticated users home page. See DASHBOARD.",
       "TITLE": "Welcome",
@@ -1594,11 +1763,20 @@
       "DESCRIPTION": "...",
       "AREAS": {
         "SPIKE": "Spike",
+        "s": null,
         "SUBSPIKE": "Subspikes"
       }
     },
     "ARCHITECTURE": {
-      "TITLE": "Architecture",
+      "TITLE": "Architectur e",
+      "DESCRIPTION": "..."
+    },
+    "EDUCATION": {
+      "TITLE": "Education",
+      "DESCRIPTION": "..."
+    },
+    "HEALTH": {
+      "TITLE": "Health",
       "DESCRIPTION": "..."
     }
   }

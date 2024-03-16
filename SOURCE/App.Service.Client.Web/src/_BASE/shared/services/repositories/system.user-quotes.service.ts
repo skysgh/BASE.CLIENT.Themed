@@ -14,12 +14,19 @@ import { ObjectMappingService } from '../objectMapping.service';
 import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
 import { SessionStorageService } from '../SessionStorageService';
 import { UrlService } from '../url.service';
+import { TranslationService } from '../translation.service';
 // import models:
 
+/**
+ * Stateless service to manage interactions with
+ * an API provided by the service
+ * for system user quotes.
+ * Being stateless, ok to have only one instance, so registere in the root:
+ */
 
 @Injectable({ providedIn: 'root' })
 export class SystemUserQuoteRepositoryService
-  extends GenericRepositoryServiceBase<UserQuote> {
+  extends GenericRepositoryServiceBase<UserQuote, UserQuote> {
 
   constructor(
     typeService: TypeService,
@@ -29,6 +36,7 @@ export class SystemUserQuoteRepositoryService
     objectMappingService: ObjectMappingService,
     sessionStorageService: SessionStorageService,
     urlService: UrlService,
+    private translationService: TranslationService,
      httpClient: HttpClient) {
     super(
       typeService,
@@ -43,7 +51,9 @@ export class SystemUserQuoteRepositoryService
       
     );
   }
-  getPageByLanguageCode(langCode:'en', page: number = 0): Observable<UserQuote> {
+  getPageByLanguageCode(langCode: 'en', page: number = 0): Observable<UserQuote> {
+
+
     var url: string
       = this.buildRequestUrl(
       this.isJsonServer
@@ -62,6 +72,26 @@ export class SystemUserQuoteRepositoryService
 
     this.diagnosticsTraceService.info(result);
     return result;
+  }
+  /**
+ * Map incoming TDto to a TVto more appropriate for the UI.
+ * TODO: need to use the proper service to do this kind of work.
+ * @param dto
+ * @returns
+ */
+  protected override MapObjectTo(dto: any): any {
+    //this.objectMappingService.map(dto..., ...);
+    return ((dto as unknown) as any);
+  }
+  /**
+ * Map TVto back to a TDto more appropriate for saving/updating in a db.
+ * TODO: need to use the proper service to do this kind of work.
+ * @param dto
+ * @returns
+ */
+  protected override MapObjectFrom(vto: any): any {
+    //this.objectMappingService.map(dto..., ...);
+    return ((vto as unknown) as any);
   }
 
 }

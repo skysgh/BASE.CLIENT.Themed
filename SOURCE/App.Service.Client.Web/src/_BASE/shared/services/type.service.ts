@@ -14,4 +14,7 @@ export class TypeService {
   hasProperty(obj: unknown, prop: string): obj is { [key: string]: unknown } {
     return typeof obj === 'object' && obj !== null && prop in obj;
   }
+  public getTypeName(instance:any) {
+    return instance.constructor.name; 
+  }
 }
