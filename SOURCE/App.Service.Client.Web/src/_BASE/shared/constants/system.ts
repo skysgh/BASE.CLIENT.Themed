@@ -29,23 +29,30 @@ export const system: System = {
     tel: "+64 21 159 6440"
   },
   sources: {
-    root: "assets/",
-    i18n: "assets/l18n/",
-    images: {
-      root: "assets/images/",
-      logos: "assets/images/logos/",
-      flags: "assets/images/flags/",
-      clients: "assets/images/clients/",
-      brands: "assets/images/brands/",
-      companies: "assets/images/companies/",
-      svg: "assets/images/svg/",
-      small: "assets/images/small/",
-      temp: {
-        users: "assets/images/users/"
+    root: "/",
+    assets: {
+      root: "assets/",
+      i18n: "assets/l18n/",
+      images: {
+        root: "assets/images/",
+        logos: "assets/images/logos/",
+        flags: "assets/images/flags/",
+        clients: "assets/images/clients/",
+        brands: "assets/images/brands/",
+        companies: "assets/images/companies/",
+        svg: "assets/images/svg/",
+        small: "assets/images/small/",
+        temp: {
+          users: "assets/images/users/"
+        }
       }
     }
   },
 
+  configuration: {
+    defaultLanguageCode: 'en',
+    defaultAppName:'spike'
+  },
   navigation: {
     // relative:
     up: "../",

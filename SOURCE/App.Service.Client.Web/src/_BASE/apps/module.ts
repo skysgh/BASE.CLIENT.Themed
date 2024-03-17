@@ -23,6 +23,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BaseAppsRoutingModule } from './routing.module';
 import { SystemLanguagesRepositoryService } from '../shared/services/repositories/system.languages.repository.service';
 import { LanguageService } from '../shared/services/language.service';
+import { DiagnosticsTraceService } from '../shared/services/diagnostics.service';
 
 
 
@@ -52,6 +53,11 @@ import { LanguageService } from '../shared/services/language.service';
     LanguageService
   ]
 })
-export class BaseAppsModule { }
+export class BaseAppsModule {
+
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug("BaseAppsModule.constructor()");
+  }
+}
 
 

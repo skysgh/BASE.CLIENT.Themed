@@ -37,9 +37,33 @@
     <Folder Include="src\app\layouts\topbar\hue\" />
     <Folder Include="src\app\layouts\topbar\user\" />
     <Folder Include="src\assets\custom\" />
-    <Folder Include="src\_BASE\core\apps\search\" />
+    <Folder Include="src\_BASE\core\modules\search\" />
     <Folder Include="src\_BASE\core\models\base\" />
     <Folder Include="src\_BASE\shared\constants\settings\" />
     <Folder Include="src\_BASE\shared\maps\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\_BASE\core\modules\pages\landing\coming-soon\component.html" />
+    <None Include="src\_BASE\core\modules\pages\landing\coming-soon\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\landing\coming-soon\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\coming-soon\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\index\component.html" />
+    <None Include="src\_BASE\core\modules\pages\landing\index\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\landing\index\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\index\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\job\component.html" />
+    <None Include="src\_BASE\core\modules\pages\landing\job\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\landing\job\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\job\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\maintenance\component.html" />
+    <None Include="src\_BASE\core\modules\pages\landing\maintenance\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\landing\maintenance\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\maintenance\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\module.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\pricing\component.html" />
+    <None Include="src\_BASE\core\modules\pages\landing\pricing\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\landing\pricing\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\pricing\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\landing\routing.module.ts" />
   </ItemGroup>
 </Project>

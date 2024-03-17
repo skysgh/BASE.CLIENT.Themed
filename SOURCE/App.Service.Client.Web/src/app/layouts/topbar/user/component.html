@@ -9,7 +9,7 @@
           ngbDropdownToggle>
     <span class="d-flex align-items-center">
       <img class="rounded-circle header-profile-user"
-           src="{{this.system.sources.images.temp.users}}avatar-1.jpg" alt="Header Avatar">
+           src="{{this.system.sources.assets.images.temp.users}}avatar-1.jpg" alt="Header Avatar">
       <span class="text-start ms-xl-2">
         <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
           {{userData.first_name}}
@@ -54,7 +54,7 @@ userData.role
     <a class="dropdown-item"
        routerLink="{{system.navigation.settings.profile}}">
       <i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">{{ 'BASE.FINANCE.BALANCE' | translate}} : <b>$5971.67</b></span>
+      <span class="align-middle">{{ 'BASE.FINANCES.BALANCE' | translate}} : <b>$5971.67</b></span>
     </a>
     <a class="dropdown-item" routerLink="{{system.navigation.settings.profile}}">
       <span class="badge bg-success-subtle text-success mt-1 float-end">

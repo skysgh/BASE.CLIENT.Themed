@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppROComponent } from './component';
+import { SystemService } from '../../../../shared/services/system.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -22,8 +23,9 @@ describe('AppComponent', () => {
 
   it(`should have as title 'velzon'`, () => {
     const fixture = TestBed.createComponent(AppROComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('BASE');
+    const app = fixture.componentInstance
+    // TODO: Make it refer to system settings. 
+    expect(app.browserTitle).toEqual('BASE');
   });
 
   it('should render title', () => {

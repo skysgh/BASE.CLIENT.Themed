@@ -8,11 +8,28 @@ import { SystemService } from '../../../../shared/services/system.service';
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
+/**
+ * Root Component,
+ * defined as the bootstrap component
+ * by AppModule.
+ * 
+ * It just is a Route-Outlet.
+ */
 export class AppROComponent {
 
-  public readonly title: string;
+  //Not really a need to hold it as a property,
+  // but it's done in order to run tests.
+  public readonly browserTitle: string;
+
+  /**
+   * Constructor.
+   * @param titleService
+   * @param systemService
+   */
   constructor(private titleService: TitleService, systemService: SystemService) {
-    this.title = systemService.system.title;
+
+    // Set the Browser's title:
+    this.browserTitle = systemService.system.title;
     this.titleService.set(`${systemService.system.sponsor.title}  ${systemService.system.title}`);
   }
 }

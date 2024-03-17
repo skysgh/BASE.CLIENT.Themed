@@ -5,8 +5,9 @@ import { TranslateService } from '@ngx-translate/core';
 // Menu Pachage
 // import MetisMenu from 'metismenujs';
 
-import { MENU } from './menu';
-import { MenuItem } from './menu.model';
+import { MENU } from '../../../_BASE/core/navigation/menu';
+
+import { IHasMenuItem } from '../../../_BASE/shared/models/contracts/IHasMenuItem';
 import { SystemService } from '../../../_BASE/shared/services/system.service';
 import { System } from '../../../_BASE/shared/constants/contracts/system';
 
@@ -18,7 +19,7 @@ import { System } from '../../../_BASE/shared/constants/contracts/system';
 export class HorizontalTopbarComponent implements OnInit {
 
   menu: any;
-  menuItems: MenuItem[] = [];
+  menuItems: IHasMenuItem[] = [];
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
@@ -142,7 +143,7 @@ export class HorizontalTopbarComponent implements OnInit {
    * Returns true or false if given menu item has child or not
    * @param item menuItem
    */
-  hasItems(item: MenuItem) {
+  hasItems(item: IHasMenuItem) {
     return item.subItems !== undefined ? item.subItems.length > 0 : false;
   }
 

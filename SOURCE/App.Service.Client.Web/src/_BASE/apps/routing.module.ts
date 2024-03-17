@@ -11,10 +11,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { BaseAppsRouteComponent } from "./ui/_route/component";
 import { TranslateService } from '@ngx-translate/core';
 import { AppBaseErrorsModule } from '../core/errors/module';
+import { DiagnosticsTraceService } from '../shared/services/diagnostics.service';
 
+import { System } from '../shared/constants/contracts/system';
 
-//import { BasePagesInformationModule } from '../base/pages/information/module';
-//
 
 const routes: Routes = [
   // We're effectively saying, load this modules component (CustomAppsRouteComponent)
@@ -47,4 +47,8 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class BaseAppsRoutingModule { }
+export class BaseAppsRoutingModule {
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug("BaseAppsRoutingModule.constructor(...)")
+  }
+}

@@ -1,10 +1,14 @@
 import { HasTitleAndDescriptionBase } from "../../models/base/HasTitleAndDescriptionBase";
 import { IHasTitleAndDescription } from "../../models/contracts/IHasTitleAndDescription";
-import { SystemSources} from "./SystemSources";
+import { SystemConfiguration } from "./systemConfiguration";
+import { SystemSources} from "./systemSources";
 import { SystemNavigation } from "./systemNavigation";
 import { SystemOrganisation } from "./systemOrganisation";
 
 
+/**
+ * System Settings for the whole app.
+ */
 export interface System extends IHasTitleAndDescription {
   // Has title, description
   purpose: string;
@@ -14,7 +18,9 @@ export interface System extends IHasTitleAndDescription {
   developer: SystemOrganisation;
 
   environment: any;
-  // 
+  //
+
+  configuration: SystemConfiguration;
   sources: SystemSources;
   // Navigation
   navigation: SystemNavigation /*SystemUrls*/;

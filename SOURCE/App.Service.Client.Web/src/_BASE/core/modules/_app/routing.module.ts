@@ -10,6 +10,7 @@ import { AppLayoutComponent} from '../../../../app/layouts/layout.component';
 
 // Auth
 import { AuthGuard } from '../../../../app/core/guards/auth.guard';
+import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
 
 
 const routes: Routes = [
@@ -20,8 +21,8 @@ const routes: Routes = [
 
   // so pages and landing (and auth, etc.) will be loaded directly within
   // the AppROComponent. They also don't need to be gaurded - they're public access.
-  { path: '', loadChildren: () => import('../landing/module').then(m => m.BaseCoreLandingModule)},
-  { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BaseCorePagesModule) },
+  { path: '', loadChildren: () => import('../pages/landing/module').then(m => m.BaseCoreLandingModule)},
+  { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BasePagesModule) },
   // But apps, is more complex:
   // Is is wrapped in the AppLayout frame first.
   // And it is Guarded.
@@ -39,4 +40,11 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+/**
+ * Routing Module invoked from root AppModule.
+ */
+export class AppRoutingModule {
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug("AppRoutingModule.constructor()");
+  }
+}

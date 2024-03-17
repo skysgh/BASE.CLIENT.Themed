@@ -20,6 +20,7 @@ import { SharedModule } from '../../../../../app/shared/shared.module';
 // Import Module specific.components:
 import { BaseInformationPrivacyPolicyComponent } from './ui/privacy/component';
 import { BaseInformationTermsAndConditionsComponent } from './ui/terms_conditions/component';
+import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
@@ -74,4 +75,13 @@ import { BaseInformationTermsAndConditionsComponent } from './ui/terms_condition
   //  SpikeSubSpikesRepositoryService
   ]
 })
-export class BasePagesInformationModule { }
+/**
+ * Information pages come under pages.
+ * (see BasePagesModule)
+ */
+export class BasePagesInformationModule {
+
+  constructor(private diagnosticsTraceService:DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug("BasePagesInformationModule.constructor(...)")
+  }
+}

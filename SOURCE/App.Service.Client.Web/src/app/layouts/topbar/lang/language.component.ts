@@ -71,8 +71,8 @@ export class LangComponent implements OnInit {
         if (tmp.length === 0) {
           // NO match, so can't set to a specific flag. Fallback:
           this.languageTitle = '...';
-          this.valueset = this.system.sources.images.flags + '/00.svg';
-          this.flagvalue = this.system.sources.images.flags + '/00.svg';
+          this.valueset = this.system.sources.assets.images.flags + '/00.svg';
+          this.flagvalue = this.system.sources.assets.images.flags + '/00.svg';
         } else {
           //tmp = tmp[0];
           // Match. So image will be ok.
@@ -82,7 +82,7 @@ export class LangComponent implements OnInit {
           this.diagnosticsTraceService.info("languageTitle:" + this.languageTitle);
           // go through array of 1:
           // and get it's flag url:
-          this.flagvalue = `${this.system.sources.images.flags}${tmp[0].languageCode}.svg`;
+          this.flagvalue = `${this.system.sources.assets.images.flags}${tmp[0].languageCode}.svg`;
         }
         this.diagnosticsTraceService.info("valueset:" + this.valueset);
         this.diagnosticsTraceService.info("FlagValue:" + this.flagvalue);
@@ -100,7 +100,7 @@ export class LangComponent implements OnInit {
   setLanguage(systemLanguage: SystemLanguage) {
     if (systemLanguage) {
       this.languageTitle = systemLanguage.title;
-      this.flagvalue = `${this.system.sources.images.flags}${systemLanguage.languageCode}.svg`;
+      this.flagvalue = `${this.system.sources.assets.images.flags}${systemLanguage.languageCode}.svg`;
       this.cookieValue = systemLanguage.languageCode ?? 'en';
       this.languageService.setLanguage(systemLanguage.languageCode ?? 'en');
     }

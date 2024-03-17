@@ -21,6 +21,7 @@ import { SharedModule } from '../../../../app/shared/shared.module';
 import { BaseCorePagesROComponent } from './ui/_routeoutlet/component';
 import { BaseInformationPrivacyPolicyComponent } from './information/ui/privacy/component';
 import { BaseInformationTermsAndConditionsComponent } from './information/ui/terms_conditions/component';
+import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
@@ -69,4 +70,9 @@ import { BaseInformationTermsAndConditionsComponent } from './information/ui/ter
     // declare services to dependency inject into constructors.
   ]
 })
-export class BaseCorePagesModule { }
+export class BasePagesModule {
+
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug("BasePagesModule.constructor()");
+  }
+}

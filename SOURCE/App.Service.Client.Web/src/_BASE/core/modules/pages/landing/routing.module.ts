@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BaseCoreLandingIndexComponent } from "./index/component";
 import { BaseCoreLandingJobComponent } from './job/component';
 import { BaseCoreLandingPricingComponent } from './pricing/component';
+import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
 
 const routes: Routes = [
   {path: "",    component: BaseCoreLandingIndexComponent, pathMatch:'prefix'},
@@ -18,4 +19,8 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class BaseCoreLandingRoutingModule { }
+export class BaseCoreLandingRoutingModule {
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug("BaseCoreLandingRoutingModule.constructor()");
+  }
+}

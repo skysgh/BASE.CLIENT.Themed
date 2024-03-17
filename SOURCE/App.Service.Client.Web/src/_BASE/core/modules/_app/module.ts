@@ -32,6 +32,11 @@ import { AuthenticationEffects } from '../../../../app/store/Authentication/auth
 import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from '../../../../app/layouts/layout.component';
 import { CookieService } from 'ngx-cookie-service';
+import { SystemService } from '../../../shared/services/system.service';
+import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
+
+import { system } from '../../../shared/constants/system';
+
 
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader( http, 'assets/i18n/', '.json');
@@ -42,8 +47,8 @@ if (environment.defaultauth === 'firebase') {
 } else {
   FakeBackendInterceptor;
 }
-export function defaultLanguageFactory(cookieService: CookieService): string {
-  const languageCode = cookieService.get('languageCode') || 'en'; // Retrieve language code from cookie, default to 'en'
+export function defaultLanguageCodeFactory(cookieService: CookieService): string {
+  const languageCode = cookieService.get('languageCode') || system.configuration.defaultLanguageCode; // Retrieve language code from cookie, default to 'en'
   return languageCode;
 }
 
@@ -85,15 +90,28 @@ export function defaultLanguageFactory(cookieService: CookieService): string {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
-    { provide: 'defaultLanguage', useFactory: defaultLanguageFactory, deps: [CookieService] },
+    { provide: 'defaultLanguage', useFactory: defaultLanguageCodeFactory, deps: [CookieService] },
     CookieService,
   ],
   bootstrap: [AppROComponent]
 })
+/**
+ * Root AppModule. 
+ */
 export class AppModule {
-  constructor(private cookieService: CookieService) {
+  constructor(
+    private diagnosticsTraceService: DiagnosticsTraceService,
+    private systemService: SystemService,
+    private cookieService: CookieService) {
+
     // Get the language code from the cookie
-    //const languageCode = this.cookieService.get('languageCode') || 'en';
+    this.diagnosticsTraceService.debug("AppModule.constructor()");
+
+    // Get the language code from the cookie,
+    // and if not found, fallback to the configured default:
+    const languageCode = defaultLanguageCodeFactory(cookieService);
+
+
     //TranslateModule.forRoot().providers.push({ provide: 'defaultLanguageCode', useValue: languageCode});
 
   }

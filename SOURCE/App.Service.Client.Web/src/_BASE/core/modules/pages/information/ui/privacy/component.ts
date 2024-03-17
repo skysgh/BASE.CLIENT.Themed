@@ -22,6 +22,9 @@ export class BaseInformationPrivacyPolicyComponent implements OnInit {
 
   constructor(systemService: SystemService,private diagnosticsTraceService:DiagnosticsTraceService, translateService:TranslateService) {
     this.system = systemService.system;
+
+    this.diagnosticsTraceService.debug("BaseInformationPrivacyPolicyComponent.constructor(...)")
+
   }
 
   ngOnInit(): void {

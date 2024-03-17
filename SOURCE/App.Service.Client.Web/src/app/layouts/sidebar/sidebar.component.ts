@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 //import { MENU } from './menu';
 import { MENU } from '../../../_BASE/core/navigation/menu';
 
-import { MenuItem } from '../../../_BASE/shared/models/view/menu.model';
+import { IHasMenuItem } from '../../../_BASE/shared/models/contracts/IHasMenuItem';
 import { environment } from 'src/environments/environment';
 import { SystemService } from '../../../_BASE/shared/services/system.service';
 import { System } from '../../../_BASE/shared/constants/contracts/system';
@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
 
   menu: any;
   toggle: any = true;
-  menuItems: MenuItem[] = [];
+  menuItems: IHasMenuItem[] = [];
 
   system: System;
 
@@ -186,7 +186,7 @@ export class SidebarComponent implements OnInit {
    * Returns true or false if given menu item has child or not
    * @param item menuItem
    */
-  hasItems(item: MenuItem) {
+  hasItems(item: IHasMenuItem) {
     return item.subItems !== undefined ? item.subItems.length > 0 : false;
   }
 

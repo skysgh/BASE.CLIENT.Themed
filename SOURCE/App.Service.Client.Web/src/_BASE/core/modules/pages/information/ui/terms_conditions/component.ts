@@ -18,6 +18,8 @@ export class BaseInformationTermsAndConditionsComponent implements OnInit {
 
   constructor(systemService: SystemService,private diagnosticsTraceService:DiagnosticsTraceService, translateService:TranslateService) {
     this.system = systemService.system;
+
+    this.diagnosticsTraceService.debug("BaseInformationTermsAndConditionsComponent.constructor(...)")
   }
 
   ngOnInit(): void {
