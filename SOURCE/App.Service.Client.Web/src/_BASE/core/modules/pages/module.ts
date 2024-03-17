@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Import template:
-import { BreadcrumbsComponent } from '../../../../app/shared/breadcrumbs/breadcrumbs.component';
+import { BreadcrumbsComponent } from '../../components/breadcrumbs/breadcrumbs.component';
 import { SharedModule } from '../../../../app/shared/shared.module';
 // Import  Base.Common.Models:
 
@@ -19,8 +19,8 @@ import { SharedModule } from '../../../../app/shared/shared.module';
 // import { SpikeSpikesRepositoryService } from "./services/spike-repository.service"
 // Import Module specific.components:
 import { BaseCorePagesROComponent } from './ui/_routeoutlet/component';
-import { BaseInformationPrivacyPolicyComponent } from './information/ui/privacy/component';
-import { BaseInformationTermsAndConditionsComponent } from './information/ui/terms_conditions/component';
+import { BaseInformationPrivacyPolicyComponent } from './public/information/ui/privacy/component';
+import { BaseInformationTermsAndConditionsComponent } from './public/information/ui/terms_conditions/component';
 import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";

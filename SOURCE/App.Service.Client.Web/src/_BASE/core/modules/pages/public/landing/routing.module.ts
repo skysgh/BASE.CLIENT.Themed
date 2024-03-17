@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BaseCoreLandingIndexComponent } from "./index/component";
 import { BaseCoreLandingJobComponent } from './job/component';
 import { BaseCoreLandingPricingComponent } from './pricing/component';
-import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../shared/services/diagnostics.service';
 
 const routes: Routes = [
   {path: "",    component: BaseCoreLandingIndexComponent, pathMatch:'prefix'},

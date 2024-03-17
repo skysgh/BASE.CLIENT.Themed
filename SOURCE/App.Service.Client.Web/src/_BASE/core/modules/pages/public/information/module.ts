@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Import template:
-import { BreadcrumbsComponent } from '../../../../../app/shared/breadcrumbs/breadcrumbs.component';
-import { SharedModule } from '../../../../../app/shared/shared.module';
+import { BreadcrumbsComponent } from '../../../../../../app/shared/breadcrumbs/breadcrumbs.component';
+import { SharedModule } from '../../../../../../app/shared/shared.module';
 // Import  Base.Common.Models:
 
 // Import  Base.Common.Services:
@@ -20,7 +20,7 @@ import { SharedModule } from '../../../../../app/shared/shared.module';
 // Import Module specific.components:
 import { BaseInformationPrivacyPolicyComponent } from './ui/privacy/component';
 import { BaseInformationTermsAndConditionsComponent } from './ui/terms_conditions/component';
-import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../shared/services/diagnostics.service';
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";

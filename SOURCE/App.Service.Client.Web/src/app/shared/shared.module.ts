@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 // Counter
 import { CountUpModule } from 'ngx-countup';
 
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { BreadcrumbsComponent } from './../../_BASE/core/components/breadcrumbs/breadcrumbs.component';
 import { ClientLogoComponent } from './landing/index/client-logo/client-logo.component';
 import { ServicesComponent } from './landing/index/services/services.component';
 import { CollectionComponent } from './landing/index/collection/collection.component';

@@ -21,7 +21,7 @@ const routes: Routes = [
 
   // so pages and landing (and auth, etc.) will be loaded directly within
   // the AppROComponent. They also don't need to be gaurded - they're public access.
-  { path: '', loadChildren: () => import('../pages/landing/module').then(m => m.BaseCoreLandingModule)},
+  { path: '', loadChildren: () => import('../pages/public/landing/module').then(m => m.BasePagesLandingModule)},
   { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BasePagesModule) },
   // But apps, is more complex:
   // Is is wrapped in the AppLayout frame first.

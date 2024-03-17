@@ -9,10 +9,10 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { SharedModule } from '../../../../../app/shared/shared.module';
+import { SharedModule } from '../../../../../../app/shared/shared.module';
 
 //
-import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../shared/services/diagnostics.service';
 // 
 import { BaseCoreLandingRoutingModule } from "./routing.module";
 import { BaseCoreLandingIndexComponent } from './index/component';
@@ -36,7 +36,7 @@ import { BaseCoreLandingPricingComponent } from './pricing/component';
     ScrollToModule.forRoot(),
   ]
 })
-export class BaseCoreLandingModule {
+export class BasePagesLandingModule {
   constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
     diagnosticsTraceService.debug("BaseCoreLandingModule.constructor()");
   }

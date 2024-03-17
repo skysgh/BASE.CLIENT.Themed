@@ -1,19 +1,15 @@
-// Import Ag:
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from '../../../../../../../shared/services/system.service';
+import { System } from '../../../../../../../shared/constants/contracts/system';
 import { TranslateService } from '@ngx-translate/core';
-// Import Base.Common.Models:
-import { System } from '../../../../../../shared/constants/contracts/system';
-// Import Base.Common.Services:
-import { SystemService } from '../../../../../../shared/services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
-
+import { DiagnosticsTraceService } from '../../../../../../../shared/services/diagnostics.service';
 
 @Component({
-  selector: 'app-core-pages-privacy-policy',
+  selector: 'app-core-pages-terms-conditions',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseInformationPrivacyPolicyComponent implements OnInit {
+export class BaseInformationTermsAndConditionsComponent implements OnInit {
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
@@ -23,8 +19,7 @@ export class BaseInformationPrivacyPolicyComponent implements OnInit {
   constructor(systemService: SystemService,private diagnosticsTraceService:DiagnosticsTraceService, translateService:TranslateService) {
     this.system = systemService.system;
 
-    this.diagnosticsTraceService.debug("BaseInformationPrivacyPolicyComponent.constructor(...)")
-
+    this.diagnosticsTraceService.debug("BaseInformationTermsAndConditionsComponent.constructor(...)")
   }
 
   ngOnInit(): void {
@@ -32,7 +27,7 @@ export class BaseInformationPrivacyPolicyComponent implements OnInit {
     this.breadCrumbItems = [
       { label: 'Pages' },
       { label: 'Information' },
-      { label: 'Privacy Policy', active: true }
+      { label: 'Term & Conditions', active: true }
     ];
   }
 }

@@ -11,16 +11,20 @@
     <None Remove="src\app\account\**" />
     <None Remove="src\app\custom\**" />
     <None Remove="src\app\pages\module01\**" />
-    <None Remove="src\_BASE\core\modules\pages\information\models\**" />
-    <None Remove="src\_BASE\core\modules\pages\information\services\**" />
-    <None Remove="src\_BASE\core\modules\pages\landing\**" />
+    <None Remove="src\_BASE\core\modules\pages\public\information\models\**" />
+    <None Remove="src\_BASE\core\modules\pages\public\information\services\**" />
+    <None Remove="src\_BASE\core\modules\pages\public\landing\**" />
+    <None Remove="src\_BASE\core\modules\pages\public\information\models\**" />
+    <None Remove="src\_BASE\core\modules\pages\public\information\services\**" />
     <None Remove="src\_custom\**" />
     <TypeScriptConfiguration Remove="src\app\account\**" />
     <TypeScriptConfiguration Remove="src\app\custom\**" />
     <TypeScriptConfiguration Remove="src\app\pages\module01\**" />
-    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\information\models\**" />
-    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\information\services\**" />
-    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\landing\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\public\information\models\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\public\information\services\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\public\landing\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\public\information\models\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\public\information\services\**" />
     <TypeScriptConfiguration Remove="src\_custom\**" />
   </ItemGroup>
   <ItemGroup>
@@ -34,33 +38,34 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\assets\custom\" />
+    <Folder Include="src\_BASE\core\modules\pages\private\" />
     <Folder Include="src\_BASE\core\modules\search\" />
     <Folder Include="src\_BASE\core\models\base\" />
     <Folder Include="src\_BASE\shared\constants\settings\" />
     <Folder Include="src\_BASE\shared\maps\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\_BASE\core\modules\pages\landing\coming-soon\component.html" />
-    <None Include="src\_BASE\core\modules\pages\landing\coming-soon\component.scss" />
-    <None Include="src\_BASE\core\modules\pages\landing\coming-soon\component.spec.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\coming-soon\component.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\index\component.html" />
-    <None Include="src\_BASE\core\modules\pages\landing\index\component.scss" />
-    <None Include="src\_BASE\core\modules\pages\landing\index\component.spec.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\index\component.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\job\component.html" />
-    <None Include="src\_BASE\core\modules\pages\landing\job\component.scss" />
-    <None Include="src\_BASE\core\modules\pages\landing\job\component.spec.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\job\component.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\maintenance\component.html" />
-    <None Include="src\_BASE\core\modules\pages\landing\maintenance\component.scss" />
-    <None Include="src\_BASE\core\modules\pages\landing\maintenance\component.spec.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\maintenance\component.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\module.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\pricing\component.html" />
-    <None Include="src\_BASE\core\modules\pages\landing\pricing\component.scss" />
-    <None Include="src\_BASE\core\modules\pages\landing\pricing\component.spec.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\pricing\component.ts" />
-    <None Include="src\_BASE\core\modules\pages\landing\routing.module.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\coming-soon\component.html" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\coming-soon\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\coming-soon\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\coming-soon\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\index\component.html" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\index\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\index\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\index\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\job\component.html" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\job\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\job\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\job\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\maintenance\component.html" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\maintenance\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\maintenance\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\maintenance\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\module.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\pricing\component.html" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\pricing\component.scss" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\pricing\component.spec.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\pricing\component.ts" />
+    <None Include="src\_BASE\core\modules\pages\public\landing\routing.module.ts" />
   </ItemGroup>
 </Project>
