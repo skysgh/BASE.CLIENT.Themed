@@ -21,7 +21,7 @@ import { CounterComponent } from './landing/index/counter/counter.component';
 import { WorkProcessComponent } from './landing/index/work-process/work-process.component';
 import { TeamComponent } from './landing/index/team/team.component';
 import { ContactComponent } from './landing/index/contact/contact.component';
-import { FooterComponent } from './landing/index/footer/footer.component';
+import { BaseLayoutFooterComponent } from './landing/index/footer/footer.component';
 import { ScrollspyDirective } from './scrollspy.directive';
 
 // NFT Landing 
@@ -36,7 +36,7 @@ import { TopCreatorComponent } from './landing/nft/top-creator/top-creator.compo
 import { BlogComponent } from './landing/job/blog/blog.component';
 import { CandidateComponent } from './landing/job/candidate/candidate.component';
 import { FindjobsComponent } from './landing/job/findjobs/findjobs.component';
-import { JobFooterComponent } from './landing/job/job-footer/job-footer.component';
+import { JobBaseLayoutFooterComponent } from './landing/job/job-footer/job-footer.component';
 import { JobcategoriesComponent } from './landing/job/jobcategories/jobcategories.component';
 import { ProgressComponent } from './landing/job/progress/progress.component';
 import { LandingScrollspyDirective } from './landingscrollspy.directive';
@@ -57,7 +57,7 @@ import { TranslateModule } from '@ngx-translate/core';
     WorkProcessComponent,
     TeamComponent,
     ContactComponent,
-    FooterComponent,
+    BaseLayoutFooterComponent,
     ScrollspyDirective,
     LandingScrollspyDirective,
     MarketPlaceComponent,
@@ -69,7 +69,7 @@ import { TranslateModule } from '@ngx-translate/core';
     BlogComponent,
     CandidateComponent,
     FindjobsComponent,
-    JobFooterComponent,
+    JobBaseLayoutFooterComponent,
     JobcategoriesComponent,
     ProgressComponent
   ],
@@ -96,7 +96,7 @@ import { TranslateModule } from '@ngx-translate/core';
     WorkProcessComponent,
     TeamComponent,
     ContactComponent,
-    FooterComponent,
+    BaseLayoutFooterComponent,
     ScrollspyDirective,
     LandingScrollspyDirective,
     WalletComponent,
@@ -110,6 +110,6 @@ import { TranslateModule } from '@ngx-translate/core';
     CandidateComponent,
     BlogComponent,
     JobcategoriesComponent,
-    JobFooterComponent]
+    JobBaseLayoutFooterComponent]
 })
 export class SharedModule { }

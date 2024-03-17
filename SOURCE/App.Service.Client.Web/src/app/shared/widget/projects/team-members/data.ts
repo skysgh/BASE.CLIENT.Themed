@@ -1,4 +1,4 @@
-import { ChartType } from './team-members.model';
+import { ChartType } from '../../../../../_BASE/shared/models/contracts/team-members.model';
 
 
 /**

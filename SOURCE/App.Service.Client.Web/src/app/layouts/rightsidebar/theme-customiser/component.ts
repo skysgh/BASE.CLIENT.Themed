@@ -1,81 +1,57 @@
-import { Component, ViewChild, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
-import { EventService } from '../../../_BASE/shared/services/event.service';
-import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
-import { RootReducerState } from 'src/app/store';
+import { Component, Inject, OnInit } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
+import { SystemService } from "../../../../_BASE/shared/services/system.service";
+import { System } from "../../../../_BASE/shared/constants/contracts/system";
+import { EventService } from "../../../../_BASE/shared/services/event.service";
+import { DOCUMENT } from "@angular/common";
 import { Store } from '@ngrx/store';
-import { initialState } from 'src/app/store/layouts/layout-reducers';
-import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from 'src/app/store/layouts/layout-selector';
+import { RootReducerState } from "../../../store";
 import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from 'src/app/store/layouts/layout-action';
-import { SystemService } from '../../../_BASE/shared/services/system.service';
-import { System } from '../../../_BASE/shared/constants/contracts/system';
+import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from 'src/app/store/layouts/layout-selector';
 
 @Component({
-  selector: 'app-rightsidebar',
-  templateUrl: './rightsidebar.component.html',
-  styleUrls: ['./rightsidebar.component.scss']
+  selector: 'app-frame-context-theme-customiser',
+  templateUrl: './component.html',
+  styleUrls: ['./component.scss']
 })
-
-/**
- * Right Sidebar component
- */
-export class RightsidebarComponent implements OnInit {
-  layout: string | undefined;
-  mode: string | undefined;
-  width: string | undefined;
-  position: string | undefined;
-  topbar: string | undefined;
-  size: string | undefined;
-  sidebarView: string | undefined;
-  sidebar: string | undefined;
-  attribute: any;
-  sidebarImage: any;
-  sidebarVisibility: any;
-  preLoader: any;
-  grd: any;
-
-  @ViewChild('filtetcontent') filtetcontent!: TemplateRef<any>;
-  @Output() settingsButtonClicked = new EventEmitter();
+export class BaseLayoutRightSideContextThemeCustomiserComponent implements OnInit {
 
   system: System;
-  constructor(
-    private eventService: EventService,
-    private offcanvasService: NgbOffcanvas,
+
+  mode: string | undefined;
+  element: any = null; //HTMLElement
+
+  attribute: any;
+
+  width: string | undefined;
+  sidebarView: string | undefined;
+  sidebar: string | undefined;
+  sidebarVisibility: any;
+  size: string | undefined;
+  position: string | undefined;
+  topbar: string | undefined;
+  grd: any;
+  sidebarImage: any;
+  preLoader: any;
+
+  constructor(@Inject(DOCUMENT)
+  private document: any,
     private store: Store<RootReducerState>,
-    private systemService: SystemService
+    systemService: SystemService,
+    public translate: TranslateService
   ) {
 
     // Can be either via service, or injecting the constats/settings object:
     this.system = systemService.system;
-}
-
-  ngOnInit(): void {
-    setTimeout(() => {
-      if (this.offcanvasService.hasOpenOffcanvas() == false) {
-        this.openEnd(this.filtetcontent);
-      };
-    }, 1000);
-
-    this.store.select('layout').subscribe((data) => {
-      this.layout = data.LAYOUT;
-      this.mode = data.LAYOUT_MODE;
-      this.width = data.LAYOUT_WIDTH;
-      this.position = data.LAYOUT_POSITION;
-      this.topbar = data.TOPBAR;
-      this.size = data.SIDEBAR_SIZE;
-      this.sidebarView = data.SIDEBAR_VIEW;
-      this.sidebar = data.SIDEBAR_COLOR;
-      this.sidebarImage = data.SIDEBAR_IMAGE;
-      this.preLoader = data.DATA_PRELOADER;
-      this.sidebarVisibility = data.SIDEBAR_VISIBILITY
-    })
   }
 
-  ngAfterViewInit() { }
+  ngOnInit(): void {
+  }
 
   /**
-   * Change the layout onclick
-   * @param layout Change the layout
-   */
+ * Change the layout onclick
+ * @param layout Change the layout
+ */
   changeLayout(layout: string) {
     this.attribute = layout;
     this.store.dispatch(changelayout({ layout }));
@@ -84,61 +60,6 @@ export class RightsidebarComponent implements OnInit {
     })
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
-    }, 100);
-  }
-
-
-  // Add Active Class
-  addActive(grdSidebar: any) {
-    this.grd = grdSidebar;
-    document.documentElement.setAttribute('data-sidebar', grdSidebar)
-    document.getElementById('collapseBgGradient')?.classList.toggle('show');
-    document.getElementById('collapseBgGradient1')?.classList.add('active');
-  }
-
-  // Remove Active Class
-  removeActive() {
-    this.grd = '';
-    document.getElementById('collapseBgGradient1')?.classList.remove('active');
-    document.getElementById('collapseBgGradient')?.classList.remove('show');
-  }
-
-  // When the user clicks on the button, scroll to the top of the document
-  topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
-
-  //  Filter Offcanvas Set
-  openEnd(content: TemplateRef<any>) {
-    this.offcanvasService.open(content, { position: 'end' });
-
-    setTimeout(() => {
-      this.attribute = document.documentElement.getAttribute('data-layout')
-      if (this.attribute == 'vertical') {
-        var vertical = document.getElementById('customizer-layout01') as HTMLInputElement;
-        if (vertical != null) {
-          vertical.setAttribute('checked', 'true');
-        }
-      }
-      if (this.attribute == 'horizontal') {
-        const horizontal = document.getElementById('customizer-layout02');
-        if (horizontal != null) {
-          horizontal.setAttribute('checked', 'true');
-        }
-      }
-      if (this.attribute == 'twocolumn') {
-        const Twocolumn = document.getElementById('customizer-layout03');
-        if (Twocolumn != null) {
-          Twocolumn.setAttribute('checked', 'true');
-        }
-      }
-      if (this.attribute == 'semibox') {
-        const Twocolumn = document.getElementById('customizer-layout04');
-        if (Twocolumn != null) {
-          Twocolumn.setAttribute('checked', 'true');
-        }
-      }
     }, 100);
   }
 
@@ -159,8 +80,6 @@ export class RightsidebarComponent implements OnInit {
       document.documentElement.setAttribute('data-sidebar-visibility', visibility)
     })
   }
-
-
   // Width Change
   changeWidth(layoutWidth: string, size: string) {
     this.width = layoutWidth;
@@ -170,11 +89,7 @@ export class RightsidebarComponent implements OnInit {
       document.documentElement.setAttribute('data-sidebar-size', size)
     })
 
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 100);
   }
-
   // Position Change
   changePosition(layoutPosition: string) {
     this.position = layoutPosition;
@@ -182,8 +97,8 @@ export class RightsidebarComponent implements OnInit {
     this.store.select(getLayoutPosition).subscribe((position) => {
       document.documentElement.setAttribute('data-layout-position', position);
     })
-
   }
+
 
   // Topbar Change
   changeTopColor(topbarColor: string) {
@@ -212,6 +127,7 @@ export class RightsidebarComponent implements OnInit {
     })
   }
 
+
   // Sidebar Color Change
   changeSidebarColor(sidebarColor: string) {
     this.sidebar = sidebarColor;
@@ -221,6 +137,20 @@ export class RightsidebarComponent implements OnInit {
     })
   }
 
+  // Add Active Class
+  addActive(grdSidebar: any) {
+    this.grd = grdSidebar;
+    document.documentElement.setAttribute('data-sidebar', grdSidebar)
+    document.getElementById('collapseBgGradient')?.classList.toggle('show');
+    document.getElementById('collapseBgGradient1')?.classList.add('active');
+  }
+
+  // Remove Active Class
+  removeActive() {
+    this.grd = '';
+    document.getElementById('collapseBgGradient1')?.classList.remove('active');
+    document.getElementById('collapseBgGradient')?.classList.remove('show');
+  }
   // Sidebar Image Change
   changeSidebarImage(sidebarImage: string) {
     this.sidebarImage = sidebarImage;
@@ -246,5 +176,5 @@ export class RightsidebarComponent implements OnInit {
       }, 1000);
     }
   }
-}
 
+}

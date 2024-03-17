@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HorizontalTopbarComponent } from './horizontal-topbar.component';
+import { BaseLayoutHorizontalTopbarComponent } from './horizontal-topbar.component';
 
-describe('HorizontalTopbarComponent', () => {
-  let component: HorizontalTopbarComponent;
-  let fixture: ComponentFixture<HorizontalTopbarComponent>;
+describe('BaseLayoutHorizontalTopbarComponent', () => {
+  let component: BaseLayoutHorizontalTopbarComponent;
+  let fixture: ComponentFixture<BaseLayoutHorizontalTopbarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HorizontalTopbarComponent ]
+      declarations: [ BaseLayoutHorizontalTopbarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HorizontalTopbarComponent);
+    fixture = TestBed.createComponent(BaseLayoutHorizontalTopbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

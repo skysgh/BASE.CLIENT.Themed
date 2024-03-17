@@ -30,7 +30,7 @@ import { SystemNotificationService } from '../../../_BASE/shared/services/notifi
 import { DiagnosticsTraceService } from '../../../_BASE/shared/services/diagnostics.service';
 import { EventService } from '../../../_BASE/shared/services/event.service';
 // Base Models:
-import { SystemLanguage } from '../../../_BASE/shared/models/data/system-language';
+import { SystemLanguage } from '../../../_BASE/shared/models/data/system-language.model';
 // Constants:
 import { System } from '../../../_BASE/shared/constants/contracts/system';
 import { SystemNotification } from '../../../_BASE/shared/models/data/notification.model';
@@ -41,7 +41,7 @@ import { SystemNotification } from '../../../_BASE/shared/models/data/notificati
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss']
 })
-export class TopbarComponent implements OnInit {
+export class BaseLayoutTopBarComponent implements OnInit {
 
   @Output() mobileMenuButtonClicked = new EventEmitter();
 

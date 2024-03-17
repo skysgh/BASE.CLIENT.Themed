@@ -8,9 +8,9 @@ import { EventService } from '../../../_BASE/shared/services/event.service';
 })
 
 /**
- * TwoColumnComponent
+ * BaseLayoutTwoColumnComponent
  */
-export class TwoColumnComponent implements OnInit {
+export class BaseLayoutTwoColumnComponent implements OnInit {
 
   constructor(private eventService: EventService) { }
   isCondensed = false;

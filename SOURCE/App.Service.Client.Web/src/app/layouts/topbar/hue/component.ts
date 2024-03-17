@@ -9,7 +9,7 @@ import { EventService } from "../../../../_BASE/shared/services/event.service";
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class ContextHueComponent implements OnInit {
+export class BaseLayoutTopBarContextHueComponent implements OnInit {
 
   system: System;
 

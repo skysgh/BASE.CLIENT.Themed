@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VerticalComponent } from './vertical.component';
+import { BaseLayoutHorizontalComponent } from './component';
 
-describe('VerticalComponent', () => {
-  let component: VerticalComponent;
-  let fixture: ComponentFixture<VerticalComponent>;
+describe('BaseLayoutHorizontalComponent', () => {
+  let component: BaseLayoutHorizontalComponent;
+  let fixture: ComponentFixture<BaseLayoutHorizontalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VerticalComponent ]
+      declarations: [ BaseLayoutHorizontalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VerticalComponent);
+    fixture = TestBed.createComponent(BaseLayoutHorizontalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

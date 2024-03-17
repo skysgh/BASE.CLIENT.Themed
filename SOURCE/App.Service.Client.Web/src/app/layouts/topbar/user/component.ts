@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class ContextUserComponent implements OnInit {
+export class BaseLayoutTopBarContextUserComponent implements OnInit {
 
   system: System;
 

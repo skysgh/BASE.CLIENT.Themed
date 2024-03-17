@@ -7,10 +7,10 @@ import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-vertical',
-  templateUrl: './vertical.component.html',
-  styleUrls: ['./vertical.component.scss']
+  templateUrl: './component.html',
+  styleUrls: ['./component.scss']
 })
-export class VerticalComponent implements OnInit {
+export class BaseLayoutVerticalComponent implements OnInit {
 
   isCondensed = false;
   getsize: any;

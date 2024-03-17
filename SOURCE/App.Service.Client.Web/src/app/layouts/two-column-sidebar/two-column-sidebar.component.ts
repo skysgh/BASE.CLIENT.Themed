@@ -12,7 +12,7 @@ import { System } from '../../../_BASE/shared/constants/contracts/system';
   templateUrl: './two-column-sidebar.component.html',
   styleUrls: ['./two-column-sidebar.component.scss']
 })
-export class TwoColumnSidebarComponent implements OnInit {
+export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
 
   menu: any;
   toggle: any = true;

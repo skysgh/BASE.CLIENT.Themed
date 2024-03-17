@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 import { SystemLanguagesRepositoryService } from '../repositories/system.languages.repository.service';
 import { DiagnosticsTraceService } from '../diagnostics.service';
-import { GenericRepositoryServiceBase } from '../repositories/base/generic-repository.service.base';
+import { MappedGenericRepositoryServiceBase } from '../repositories/base/mapped-generic-repository.service.base';
 
 /*
 abstract base class 
@@ -50,7 +50,7 @@ export abstract class ItemsCollectionServiceBase<TDto, TKeyType, TVto> {
   constructor(
     protected diagnosticsTraceService: DiagnosticsTraceService ,
     public translate: TranslateService,
-    //protected repositoryService: GenericRepositoryServiceBase<TDto>
+    //protected repositoryService: MappedGenericRepositoryServiceBase<TDto>
   ) {
     this._this = this;
     this._className = this.constructor.name;

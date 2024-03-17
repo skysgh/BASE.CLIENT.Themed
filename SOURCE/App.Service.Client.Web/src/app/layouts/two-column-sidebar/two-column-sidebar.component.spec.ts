@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TwoColumnSidebarComponent } from './two-column-sidebar.component';
+import { BaseLayoutTwoColumnSidebarComponent } from './two-column-sidebar.component';
 
-describe('TwoColumnSidebarComponent', () => {
-  let component: TwoColumnSidebarComponent;
-  let fixture: ComponentFixture<TwoColumnSidebarComponent>;
+describe('BaseLayoutTwoColumnSidebarComponent', () => {
+  let component: BaseLayoutTwoColumnSidebarComponent;
+  let fixture: ComponentFixture<BaseLayoutTwoColumnSidebarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TwoColumnSidebarComponent ]
+      declarations: [ BaseLayoutTwoColumnSidebarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TwoColumnSidebarComponent);
+    fixture = TestBed.createComponent(BaseLayoutTwoColumnSidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

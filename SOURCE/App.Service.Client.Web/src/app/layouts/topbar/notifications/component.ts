@@ -12,7 +12,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class ContextNotificationsComponent implements OnInit {
+export class BaseLayoutTopBarContextNotificationsComponent implements OnInit {
 
   system: System;
 

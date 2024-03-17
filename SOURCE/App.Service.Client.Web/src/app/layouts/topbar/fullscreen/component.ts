@@ -10,7 +10,7 @@ import { DOCUMENT } from "@angular/common";
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class ContextFullScreenComponent implements OnInit {
+export class BaseLayoutTopBarContextFullScreenComponent implements OnInit {
 
   system: System;
 

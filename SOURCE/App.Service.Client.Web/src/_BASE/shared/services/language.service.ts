@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 import { SystemLanguagesRepositoryService } from './repositories/system.languages.repository.service';
-import { SystemLanguage } from '../models/data/system-language';
+import { SystemLanguage } from '../models/data/system-language.model';
 import { DiagnosticsTraceService } from './diagnostics.service';
 import { SystemNotification } from '../models/data/notification.model';
 import { ItemsCollectionServiceBase } from './base/itemsCollection.service.base';

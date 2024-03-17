@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './job-footer.component.html',
   styleUrls: ['./job-footer.component.scss']
 })
-export class JobFooterComponent implements OnInit {
+export class JobBaseLayoutFooterComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
   system: System;

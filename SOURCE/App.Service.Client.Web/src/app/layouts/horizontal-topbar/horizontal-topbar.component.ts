@@ -16,7 +16,7 @@ import { System } from '../../../_BASE/shared/constants/contracts/system';
   templateUrl: './horizontal-topbar.component.html',
   styleUrls: ['./horizontal-topbar.component.scss']
 })
-export class HorizontalTopbarComponent implements OnInit {
+export class BaseLayoutHorizontalTopbarComponent implements OnInit {
 
   menu: any;
   menuItems: IHasMenuItem[] = [];

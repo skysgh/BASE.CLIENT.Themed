@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-horizontal',
-  templateUrl: './horizontal.component.html',
-  styleUrls: ['./horizontal.component.scss']
+  templateUrl: './component.html',
+  styleUrls: ['./component.scss']
 })
 
 /**
  * Horizontal Component
  */
-export class HorizontalComponent implements OnInit {
+export class BaseLayoutHorizontalComponent implements OnInit {
 
   constructor() { }
   isCondensed = false;

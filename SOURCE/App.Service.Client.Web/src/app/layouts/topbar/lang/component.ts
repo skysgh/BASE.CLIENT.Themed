@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 import { LanguageService } from '../../../../_BASE/shared/services/language.service';
 import { SystemService } from "../../../../_BASE/shared/services/system.service";
 import { DiagnosticsTraceService } from "../../../../_BASE/shared/services/diagnostics.service";
-import { SystemLanguage } from '../../../../_BASE/shared/models/data/system-language';
+import { SystemLanguage } from '../../../../_BASE/shared/models/data/system-language.model';
 import { System } from '../../../../_BASE/shared/constants/contracts/system';
 
 
@@ -18,7 +18,7 @@ import { System } from '../../../../_BASE/shared/constants/contracts/system';
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class LangComponent implements OnInit {
+export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
 
 
   system: System;

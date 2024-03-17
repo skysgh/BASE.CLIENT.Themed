@@ -15,6 +15,8 @@ function mapToNotificationVTO(item: SystemNotification): NotificationVTO {
     senderImageName: "avatar-1.jpg",
     checkboxId: "all-notification-check01",
     type: "Something",
+    sender: "Mrs.Smith",
+    state:true,
     sentUtc: new Date("2023-04-23T18:25:43.511Z"),
     subject: item.title,
     summary: item.description ? item.description.substring(0, 100) : '',

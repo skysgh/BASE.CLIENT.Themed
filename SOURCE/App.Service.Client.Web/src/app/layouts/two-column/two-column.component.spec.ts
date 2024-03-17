@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TwoColumnComponent } from './two-column.component';
+import { BaseLayoutTwoColumnComponent } from './two-column.component';
 
-describe('TwoColumnComponent', () => {
-  let component: TwoColumnComponent;
-  let fixture: ComponentFixture<TwoColumnComponent>;
+describe('BaseLayoutTwoColumnComponent', () => {
+  let component: BaseLayoutTwoColumnComponent;
+  let fixture: ComponentFixture<BaseLayoutTwoColumnComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TwoColumnComponent ]
+      declarations: [ BaseLayoutTwoColumnComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TwoColumnComponent);
+    fixture = TestBed.createComponent(BaseLayoutTwoColumnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

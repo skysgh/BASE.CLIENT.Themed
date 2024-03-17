@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 //import { env } from "process";
-import { GenericRepositoryServiceBase } from "../../../../shared/services/repositories/base/generic-repository.service.base";
+import { MappedGenericRepositoryServiceBase } from "../../../../shared/services/repositories/base/mapped-generic-repository.service.base";
 import { DiagnosticsTraceService } from "../../../../shared/services/diagnostics.service";
 import { EnvironmentService } from "../../../../shared/services/environment.service";
 import { ErrorService } from "../../../../shared/services/error.service";
@@ -13,7 +13,7 @@ import { UrlService } from "../../../../shared/services/url.service";
 
 @Injectable()
 export class BaseAppsSpikeSubSpikesRepositoryService
-  extends GenericRepositoryServiceBase<SubSpike,SubSpike> {
+  extends MappedGenericRepositoryServiceBase<SubSpike,SubSpike> {
 
   constructor(
     typeService: TypeService,

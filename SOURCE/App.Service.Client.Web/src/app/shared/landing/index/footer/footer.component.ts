@@ -12,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 /**
  * Footer Component
  */
-export class FooterComponent implements OnInit {
+export class BaseLayoutFooterComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
   system: System;

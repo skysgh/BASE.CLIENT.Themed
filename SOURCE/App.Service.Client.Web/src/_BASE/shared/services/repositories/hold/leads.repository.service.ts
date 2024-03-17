@@ -7,7 +7,7 @@ import { EnvironmentService } from "../../environment.service";
 import { ErrorService } from "../../error.service";
 import { ObjectMappingService } from "../../objectMapping.service";
 import { TypeService } from "../../type.service";
-import { GenericRepositoryServiceBase } from "../base/generic-repository.service.base";
+import { MappedGenericRepositoryServiceBase } from "../base/mapped-generic-repository.service.base";
 //
 import { Stat } from "../../../models/data/stat.model";
 import { SystemQueryEndpoints } from "../../../constants/systemQueryEndpoints";
@@ -16,7 +16,7 @@ import { UrlService } from "../../url.service";
 
 @Injectable({ providedIn: 'root' })
 export class LeadsRepositoryService
-  extends GenericRepositoryServiceBase<any, any> {
+  extends MappedGenericRepositoryServiceBase<any> {
 
   constructor(
     typeService: TypeService,
@@ -38,26 +38,6 @@ export class LeadsRepositoryService
       httpClient,
       SystemQueryEndpoints.transactions
     );
-  }
-  /**
-   * Map incoming TDto to a TVto more appropriate for the UI.
-   * TODO: need to use the proper service to do this kind of work.
-   * @param dto
-   * @returns
-   */
-  protected override MapObjectTo(dto: any): any {
-    //this.objectMappingService.map(dto..., ...);
-    return ((dto as unknown) as any);
-  }
-  /**
- * Map TVto back to a TDto more appropriate for saving/updating in a db.
- * TODO: need to use the proper service to do this kind of work.
- * @param dto
- * @returns
- */
-  protected override MapObjectFrom(vto: any): any {
-    //this.objectMappingService.map(dto..., ...);
-    return ((vto as unknown) as any);
   }
 
 }

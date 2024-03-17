@@ -10,7 +10,7 @@ import { DOCUMENT } from "@angular/common";
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class ContextSearchComponent implements OnInit {
+export class BaseLayoutTopBarContextSearchComponent implements OnInit {
 
   system: System;
 

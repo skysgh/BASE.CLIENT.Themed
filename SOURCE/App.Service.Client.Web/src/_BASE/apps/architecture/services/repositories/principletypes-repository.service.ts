@@ -1,5 +1,5 @@
 //import { env } from "process";
-import { GenericRepositoryServiceBase } from "../../../../shared/services/repositories/base/generic-repository.service.base";
+import { MappedGenericRepositoryServiceBase } from "../../../../shared/services/repositories/base/mapped-generic-repository.service.base";
 import { DiagnosticsTraceService } from "../../../../shared/services/diagnostics.service";
 import { EnvironmentService } from "../../../../shared/services/environment.service";
 import { ErrorService } from "../../../../shared/services/error.service";
@@ -15,7 +15,7 @@ import { UrlService } from "../../../../shared/services/url.service";
 
 @Injectable()
 export class ArchitectureValuesRepositoryService
-  extends GenericRepositoryServiceBase<PrincipleType> {
+  extends MappedGenericRepositoryServiceBase<PrincipleType> {
 
   constructor(
     typeService: TypeService,

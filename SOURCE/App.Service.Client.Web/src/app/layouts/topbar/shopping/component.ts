@@ -13,7 +13,7 @@ import { cartData } from '../data';
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class ContextShoppingComponent implements OnInit {
+export class BaseLayoutTopBarContextShoppingComponent implements OnInit {
 
   system: System;
 

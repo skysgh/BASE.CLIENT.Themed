@@ -15,7 +15,7 @@ import { System } from '../../../_BASE/shared/constants/contracts/system';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class BaseLayoutSidebarComponent implements OnInit {
 
   menu: any;
   toggle: any = true;

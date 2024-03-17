@@ -31,7 +31,7 @@ import { UrlService } from '../../url.service';
 * https://www.positronx.io/angular-httpclient-http-service/
  */
 
-export abstract class GenericRepositoryServiceBase<TDto,TVto> {
+export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
 
   // Affects how build url variables:
   protected isJsonServer: boolean;

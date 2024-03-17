@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RightsidebarComponent } from './rightsidebar.component';
+import { BaseLayoutRightsidebarComponent } from './component';
 
-describe('RightsidebarComponent', () => {
-  let component: RightsidebarComponent;
-  let fixture: ComponentFixture<RightsidebarComponent>;
+describe('BaseLayoutRightsidebarComponent', () => {
+  let component: BaseLayoutRightsidebarComponent;
+  let fixture: ComponentFixture<BaseLayoutRightsidebarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RightsidebarComponent ]
+      declarations: [ BaseLayoutRightsidebarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RightsidebarComponent);
+    fixture = TestBed.createComponent(BaseLayoutRightsidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
