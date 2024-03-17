@@ -33,8 +33,6 @@
     <None Remove="src\_BASE\shared\models\user-quote.model.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app\layouts\topbar\hue\" />
-    <Folder Include="src\app\layouts\topbar\user\" />
     <Folder Include="src\assets\custom\" />
     <Folder Include="src\_BASE\core\modules\search\" />
     <Folder Include="src\_BASE\core\models\base\" />

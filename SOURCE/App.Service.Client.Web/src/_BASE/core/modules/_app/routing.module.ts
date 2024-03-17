@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 import { AppROComponent } from './ui/component';
-import { AppLayoutComponent} from '../../../../app/layouts/layout.component';
+import { AppLayoutComponent} from '../layouts/layout.component';
 
 // Auth
 import { AuthGuard } from '../../../../app/core/guards/auth.guard';

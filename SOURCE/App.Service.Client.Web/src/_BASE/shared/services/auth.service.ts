@@ -7,11 +7,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 // hum...
 import { getFirebaseBackend } from '../../../app/authUtils';
-import { RegisterSuccess, loginFailure, loginSuccess, logout, logoutSuccess } from 'src/app/store/Authentication/authentication.actions';
+import { RegisterSuccess, loginFailure, loginSuccess, logout, logoutSuccess } from 'src/_BASE/core/store/Authentication/authentication.actions';
 // constants:
 import { SystemQueryEndpoints } from "../constants/systemQueryEndpoints";
 // models:
-import { User } from 'src/app/store/Authentication/auth.models';
+import { User } from 'src/_BASE/core/store/Authentication/auth.models';
 
 import { DiagnosticsTraceService } from './diagnostics.service';
 import { ErrorService } from './error.service';

@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './routing.module';
 import { AppROComponent } from './ui/component';
 
-import { LayoutsModule } from "../../../../app/layouts/layouts.module";
+import { LayoutsModule } from "../layouts/layouts.module";
 //import { PagesModule } from "./pages/pages.module";
 
 // Auth
@@ -22,15 +22,15 @@ import { JwtInterceptor } from '../../../../app/core/helpers/jwt.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 // Store
-import { rootReducer } from '../../../../app/store';
+import { rootReducer } from '../../store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
 
-import { AuthenticationEffects } from '../../../../app/store/Authentication/authentication.effects';
+import { AuthenticationEffects } from '../../store/Authentication/authentication.effects';
 import { RouterModule, Routes } from '@angular/router';
-import { AppLayoutComponent } from '../../../../app/layouts/layout.component';
+import { AppLayoutComponent } from '../layouts/layout.component';
 import { CookieService } from 'ngx-cookie-service';
 import { SystemService } from '../../../shared/services/system.service';
 import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';

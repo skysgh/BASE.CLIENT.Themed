@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { System } from '../../../../../../shared/constants/contracts/system';
 import { SystemService } from '../../../../../../shared/services/system.service';
 import { SystemUserQuoteRepositoryService } from '../../../../../../shared/services/repositories/system.user-quotes.service';
-import { User } from '../../../../../../../app/store/Authentication/auth.models';
+import { User } from '../../../../../store/Authentication/auth.models';
 import { UserQuote } from '../../../../../../shared/models/data/user-quote.model';
 
 @Component({
