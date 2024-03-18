@@ -4,7 +4,7 @@
 
 //import { AppComponent } from './app.component';
 
-//import { LayoutsModule } from "./layouts/layouts.module";
+//import { BaseCoreLayoutsModule } from "./layouts/layouts.module";
 ////  import { AppRoutingModule } from '../_BASE/core/modules/_app/app-routing.module';
 ////import { PagesModule } from "./pages/pages.module";
 
@@ -75,7 +75,7 @@
 //    HttpClientModule,
 //    BrowserModule,
 //    //AppRoutingModule,
-//    LayoutsModule,
+//    BaseCoreLayoutsModule,
 //    //PagesModule
 //  ],
 //  providers: [

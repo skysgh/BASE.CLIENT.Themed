@@ -13,10 +13,11 @@ import { Stat } from "../../../models/data/stat.model";
 import { SystemQueryEndpoints } from "../../../constants/systemQueryEndpoints";
 import { SessionStorageService } from "../../SessionStorageService";
 import { UrlService } from "../../url.service";
+import { SimpleGenericRepositoryServiceBase } from "../base/simple-generic-repository-service.base";
 
 @Injectable({ providedIn: 'root' })
 export class LeadsRepositoryService
-  extends MappedGenericRepositoryServiceBase<any> {
+  extends SimpleGenericRepositoryServiceBase<any> {
 
   constructor(
     typeService: TypeService,

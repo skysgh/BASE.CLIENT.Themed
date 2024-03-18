@@ -51,7 +51,7 @@ export const system: System = {
 
   configuration: {
     defaultLanguageCode: 'en',
-    defaultAppName:'spike'
+    defaultAppName: 'spike'
   },
   navigation: {
     // relative:
@@ -65,22 +65,32 @@ export const system: System = {
       error404: "/errors/404",
       error500: "/errors/500",
     },
-    landing: {
-      root: "/landing/",
-    },
-    public: {
-      root: "/information/",
-      privacy: "/information/privacy",
-      dataUse: "/information/datause",
-      terms: "/information/terms",
-      faq: "/information/faq",
-      aboutCompany: "/information/aboutus",
-      aboutProduct: "/information/about",
-      contactUs: "information/contactus",
-      pricing: "information/pricing",
-      timeline: "information/timeline",
-      news: "information/news",
-      sitemap: "information/sitemap"
+    pages: {
+      root: "/pages/",
+      private: {
+        welcome: "/pages/information/welcome",
+      },
+      public: {
+        information: {
+          root: "pages/information/",
+          privacy: "/pages/information/privacy",
+          dataUse: "/pages/information/datause",
+          terms: "/pages/information/terms",
+          faq: "/pages/information/faq",
+          aboutCompany: "/pages/information/aboutus",
+          aboutProduct: "/pages/information/about",
+          contactUs: "/pages/information/contactus",
+          pricing: "/pages/information/pricing",
+          timeline: "/pages/information/timeline",
+          news: "/pages/information/news",
+          sitemap: "/pages/information/sitemap",
+          correction: "/pages/information/correction",
+          support: "/pages/information/support",
+        },
+        landing: {
+          root: "/landing/"
+        },
+      },
     },
     auth: {
       root: "/auth/",
@@ -90,10 +100,6 @@ export const system: System = {
       signout: "/auth/signout/",
       register: "/users/register"
     },
-    pages: {
-      root: "/pages/",
-      welcome: "/pages/welcome",
-    },
     support: {
       root: '/pages/support'
     },
@@ -101,24 +107,76 @@ export const system: System = {
       root: "/settings/",
       system: '/settings/system',
       tenancy: '/settings/system',
-      profile: '/settings/profile',
+      group: '/settings/groups',
+      user: '/settings/profile',
     },
     dashboard: {
       root: "apps/dashboard/"
     },
-    products: {
-      root: "/apps/products/",
-      explore: "/apps/products/",
-      create: "/apps/products/",
-    },
-    places: {
-      root: "/apps/places/",
-    },
-    people: {
-      root: "/apps/people/",
+    apps: {
+      architecture: {
+        root: "apps/architecture/values",
+        values: "apps/architecture/values",
+        qualities: "apps/architecture/qualities",
+        principles: "apps/architecture/principles",
+        patterns: "apps/architecture/patterns"
+      },
+      spikes: {
+        root: "/apps/spikes/",
+        spike: {
+          explore: '/apps/spikes/spike',
+          create: '/apps/spikes/spike',
+          root: '/apps/spikes/spike'
+        },
+        subSpike: {
+          explore: '/apps/subSpikes/spike',
+          create: '/apps/subSpikes/spike',
+          root: '/apps/subSpikes/spike'
+        }
+      },
+      education: {
+        products: {
+          root: "/apps/education/products/",
+          explore: "/apps/education/products/",
+          create: "/apps/education/products/",
+        },
+        places: {
+          root: "/apps/education/places/",
+        },
+        people: {
+          root: "/apps/education/people/",
+          teachers: "/apps/education/people/teachers/",
+          caretakers: "/apps/education/people/caretakers/",
+          administrators: "/apps/education/people/administrators/",
+          principals: "/apps/education/people/principals/",
+          specialists: "/apps/education/people/specialists/",
+          alumni: "/apps/education/people/alumni/"
+        },
+        enrollments: {
+          root: "/apps/education/enrollment"
+        },
+        finances: {
+          root: "/apps/education/finances"
+        },
+        presence: {
+          root: "/apps/education/presence"
+        },
+        participation: {
+          root: "/apps/education/participation"
+        },
+        assessments: {
+          root: "/apps/education/assessments"
+        },
+        progress: {
+          root: "/apps/education/progress"
+        },
+        accomplishments: {
+          root: "/apps/education/accomplishments"
+        }
+      },
     },
     organisations: {
-      root: "/apps/organisations/",
+      root: "/apps/education/organisations/",
     },
     teams: {
       root: "/apps/teams/",

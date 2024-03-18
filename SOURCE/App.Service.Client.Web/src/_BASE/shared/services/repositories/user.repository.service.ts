@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../../../app/core/models/auth.models';
+import { User } from '../../models/misc/auth.models';
 import { SystemService } from '../system.service';
 import { System } from '../../constants/contracts/system';
 

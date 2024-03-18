@@ -1,4 +1,6 @@
 import { IHasMenuItem } from '../../shared/models/contracts/IHasMenuItem';
+// Constants:
+import { system } from '../../shared/constants/system';
 
 
 export const MENU: IHasMenuItem[] =
@@ -20,7 +22,7 @@ export const MENU: IHasMenuItem[] =
           id: 201,
           title: 'APPS.SPIKE.TITLE',
           description: 'APPS.SPIKES.DESCRIPTION',
-          link: 'spike/spikes',
+          link: system.navigation.apps.spikes.root,
           parentId: 20
         },
         {
@@ -35,28 +37,28 @@ export const MENU: IHasMenuItem[] =
               parentId: 202,
               title: 'BASE.VALUES.TITLES',
               description: 'BASE.VALUES.DESCRIPTION',
-              link: 'architecture/values',
+              link: system.navigation.apps.architecture.values,
             },
             {
               id: 2022,
               parentId: 202,
               title: 'BASE.PRINCIPLES.TITLES',
               description: 'BASE.PRINCIPLES.DESCRIPTION',
-              link: 'architecture/principles',
+              link: system.navigation.apps.architecture.principles,
             },
             {
               id: 2023,
               parentId: 202,
               title: 'BASE.QUALITIES.TITLES',
               description: 'BASE.QUALITIES.DESCRIPTION',
-              link: 'architecture/qualities',
+              link: system.navigation.apps.architecture.qualities,
             },
             {
               id: 2024,
               parentId: 202,
               title: 'BASE.PATTERNS.TITLES',
               description: 'BASE.PATTERNS.DESCRIPTION',
-              link: 'architecture/patterns',
+              link: system.navigation.apps.architecture.patterns,
             },
           ]
         }
@@ -74,7 +76,7 @@ export const MENU: IHasMenuItem[] =
           id: 2031,
           title: 'BASE.PRODUCTS.TITLES',
           description: 'APPS.PRODUCTS.DESCRIPTION',
-          link: 'products',
+          link: system.navigation.apps.education.products.root,
           icon: 'package',
           parentId: 203
         },
@@ -83,14 +85,14 @@ export const MENU: IHasMenuItem[] =
           title: 'BASE.PEOPLE.TITLES',
           description: 'APPS.PEOPLE.DESCRIPTION',
           icon: 'users',
-          link: 'people',
+          link: system.navigation.apps.education.people.root,
           parentId: 203,
           subItems: [
             {
               id: 20321,
               title: 'BASE.DOMAINS.EDUCATION.ROLES.LEARNERS',
               description: 'BASE.DOMAINS.EDUCATION.DESCRIPTION',
-              link: 'places',
+              link: system.navigation.apps.education.places.root,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -98,7 +100,7 @@ export const MENU: IHasMenuItem[] =
               id: 20321,
               title: 'BASE.DOMAINS.EDUCATION.ROLES.CARETAKERS',
               description: '...',
-              link: 'places',
+              link: system.navigation.apps.education.people.caretakers,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -106,7 +108,7 @@ export const MENU: IHasMenuItem[] =
               id: 20322,
               title: 'BASE.DOMAINS.EDUCATION.ROLES.TEACHERS',
               description: '...',
-              link: 'places',
+              link: system.navigation.apps.education.people.teachers,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -114,7 +116,7 @@ export const MENU: IHasMenuItem[] =
               id: 20322,
               title: 'BASE.DOMAINS.EDUCATION.ROLES.ADMINISTRATORS',
               description: '...',
-              link: 'places',
+              link: system.navigation.apps.education.people.administrators,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -122,7 +124,7 @@ export const MENU: IHasMenuItem[] =
               id: 20322,
               title: 'BASE.DOMAINS.EDUCATION.ROLES.PRINCIPALS',
               description: '...',
-              link: 'places',
+              link: system.navigation.apps.education.people.principals,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -130,7 +132,7 @@ export const MENU: IHasMenuItem[] =
               id: 20322,
               title: 'BASE.DOMAINS.EDUCATION.ROLES.SPECIALISTS',
               description: '...',
-              link: 'places',
+              link: system.navigation.apps.education.people.specialists,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -139,7 +141,7 @@ export const MENU: IHasMenuItem[] =
               id: 20323,
               title: 'BASE.DOMAINS.EDUCATION.TERMS.ALUMNI',
               description: '...',
-              link: 'places',
+              link: system.navigation.apps.education.people.alumni,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -150,7 +152,7 @@ export const MENU: IHasMenuItem[] =
           id: 2033,
           title: 'BASE.PLACES.TITLES',
           description: '...',
-          link: 'places',
+          link: system.navigation.apps.education.places.root,
           icon: 'map-pin',
           parentId: 203
         },
@@ -158,7 +160,7 @@ export const MENU: IHasMenuItem[] =
           id: 2034,
           title: 'BASE.ENROLLMENTS.TITLES',
           description: '...',
-          link: 'financials',
+          link: system.navigation.apps.education.enrollments.root,
           icon: 'airplay',
           parentId: 203
         },
@@ -166,39 +168,48 @@ export const MENU: IHasMenuItem[] =
           id: 2035,
           title: 'BASE.FINANCES.TITLES',
           description: '...',
-          link: 'financials',
+          link: system.navigation.apps.education.finances.root,
           icon: 'airplay',
           parentId: 203
         },
+
         {
           id: 2036,
-          title: 'BASE.PARTICIPATIONS.TITLE',
+          title: 'BASE.PRESENCE.TITLE',
           description: '...',
-          link: 'participation',
+          link: system.navigation.apps.education.presence.root,
           icon: 'airplay',
           parentId: 203
         },
         {
           id: 2037,
-          title: 'BASE.ASSESSMENTS.TITLES',
+          title: 'BASE.PARTICIPATIONS.TITLE',
           description: '...',
-          link: 'accomplishments',
+          link: system.navigation.apps.education.participation.root,
           icon: 'airplay',
           parentId: 203
         },
         {
           id: 2038,
-          title: 'BASE.PROGRESS.TITLE',
+          title: 'BASE.ASSESSMENTS.TITLES',
           description: '...',
-          link: 'progress',
-          icon: 'chart',
+          link: system.navigation.apps.education.assessments.root,
+          icon: 'airplay',
           parentId: 203
         },
         {
           id: 2039,
+          title: 'BASE.PROGRESS.TITLE',
+          description: '...',
+          link: system.navigation.apps.education.progress.root,
+          icon: 'chart',
+          parentId: 203
+        },
+        {
+          id: 2030,
           title: 'BASE.ACCOMPLISHMENTS.TITLES',
           description: '...',
-          link: 'accomplishments',
+          link: system.navigation.apps.education.accomplishments.root,
           icon: 'airplay',
           parentId: 203
         },
@@ -224,28 +235,28 @@ export const MENU: IHasMenuItem[] =
           parentId: 30,
           title: 'BASE.PRIVACY_POLICIES.TITLE',
           description: '...',
-          link: '/information/privacy',
+          link: system.navigation.pages.public.information.privacy,
         },
         {
           id: 302,
           parentId: 30,
           title: 'BASE.TERMS_AND_CONDITIONS.TITLE',
           description: '...',
-          link: '/information/terms',
+          link: system.navigation.pages.public.information.terms,
         },
         {
           id: 303,
           parentId: 30,
           title: 'BASE.CORRECTIONS.TITLE',
           description: '...',
-          link: '/information/corrections',
+          link: system.navigation.pages.public.information.correction,
         },
         {
           id: 304,
           parentId: 30,
           title: 'BASE.SUPPORT.TITLE',
           description: '...',
-          link: '/information/support'
+          link: system.navigation.pages.public.information.support,
         }
       ]
     },
@@ -261,28 +272,28 @@ export const MENU: IHasMenuItem[] =
           parentId: 40,
           title: 'BASE.SYSTEMS.TITLE',
           description: '...',
-          link: '/settings/system'
+          link: system.navigation.settings.system,
         },
         {
           id: 402,
           parentId: 40,
           title: 'BASE.TENANCIES.TITLES',
           description: '...',
-          link: '/settings/tenancy'
+          link: system.navigation.settings.tenancy,
         },
         {
           id: 403,
           parentId: 40,
           title: 'BASE.GROUPS.TITLES',
           description: '...',
-          link: '/settings/group'
+          link: system.navigation.settings.group,
         },
         {
           id: 404,
           parentId: 40,
           title: 'BASE.USERS.TITLES',
           description: '...',
-          link: '/settings/user'
+          link: system.navigation.settings.user,
         }
       ]
     }

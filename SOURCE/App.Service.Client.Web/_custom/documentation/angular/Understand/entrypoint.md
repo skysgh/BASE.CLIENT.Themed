@@ -51,7 +51,7 @@ Where the first empty path is pointing to
 which was already imported into `AppModule` (`src/app.module.ts`) earlier.
 To do that, it had to import its owning module as well, so notice the earlier
 ```ts
-import { LayoutsModule } from "./layouts/layouts.module";
+import { BaseCoreLayoutsModule } from "./layouts/layouts.module";
 ```
 because it explains somethign that shows up next.
 

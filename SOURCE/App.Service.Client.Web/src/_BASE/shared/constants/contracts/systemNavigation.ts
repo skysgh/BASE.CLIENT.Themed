@@ -11,22 +11,32 @@ export interface SystemNavigation {
     error404: string;
     error500: string;
   },
-  landing: {
+  pages: {
     root: string;
-  },
-  public: {
-    root: string;
-    privacy: string;
-    dataUse: string;
-    terms: string;
-    faq: string;
-    aboutCompany: string;
-    aboutProduct: string;
-    contactUs: string;
-    pricing: string;
-    timeline: string;
-    news: string;
-    sitemap: string;
+    private: {
+      welcome: string;
+    },
+    public: {
+      information: {
+        root: string;
+        privacy: string;
+        dataUse: string;
+        terms: string;
+        faq: string;
+        aboutCompany: string;
+        aboutProduct: string;
+        contactUs: string;
+        pricing: string;
+        timeline: string;
+        news: string;
+        sitemap: string;
+        correction: string;
+        support: string;
+      }
+      landing: {
+        root: string;
+      },
+    }
   },
   auth: {
     root: string;
@@ -36,10 +46,6 @@ export interface SystemNavigation {
     signout: string;
     register: string;
   },
-  pages: {
-    root: string;
-    welcome: string;
-  },
   support: {
     root: string;
   },
@@ -47,21 +53,73 @@ export interface SystemNavigation {
     root: string;
     system: string;
     tenancy: string;
-    profile: string;
+    group: string;
+    user: string;
   },
   dashboard: {
     root: string;
   },
-  products: {
-    explore: string;
-    create: string;
-    root: string;
-  },
-  places: {
-    root: string;
-  },
-  people: {
-    root: string;
+  apps: {
+    architecture: {
+      root: string;
+      values: string;
+      qualities: string;
+      principles: string;
+      patterns: string;
+    },
+    spikes: {
+      root: string;
+      spike: {
+        explore: string;
+        create: string;
+        root: string;
+      },
+      subSpike: {
+        explore: string;
+        create: string;
+        root: string;
+      },
+    }
+    education: {
+      products: {
+        explore: string;
+        create: string;
+        root: string;
+      },
+      places: {
+        root: string;
+      },
+      people: {
+        root: string;
+        caretakers: string;
+        teachers: string;
+        administrators: string;
+        principals: string;
+        specialists: string;
+        alumni: string;
+      },
+      enrollments: {
+        root: string;
+      },
+      finances: {
+        root: string;
+      },
+      participation: {
+        root: string;
+      },
+      presence: {
+        root: string;
+      },
+      assessments: {
+        root: string;
+      }
+      progress: {
+        root: string;
+      },
+      accomplishments: {
+        root: string;
+      }
+    }
   },
   organisations: {
     root: string;

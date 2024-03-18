@@ -85,7 +85,7 @@ import { BaseLayoutFooterComponent } from './footer/footer.component';
   providers: [LanguageService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class LayoutsModule {
+export class BaseCoreLayoutsModule {
   constructor() {
     defineElement(lottie.loadAnimation);
   }

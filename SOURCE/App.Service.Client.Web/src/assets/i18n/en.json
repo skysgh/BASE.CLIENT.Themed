@@ -556,7 +556,8 @@
           "SPONSORED": "Sponsored",
           "SCHOLARSHIPS": "Scholarships",
           "SCHOLARSHIP": "Scholarship",
-          "FINANCIALS": "Financials"
+          "FINANCIALS": "Financials",
+          "FINANCING": "Financing"
         }
       },
       "GOVERNMENT": {
@@ -1087,23 +1088,23 @@
       "IMPROVED": "Improved",
       "FAILED": "Failed"
     },
-    "PATTERNS": {
-      "__COMMENTS": "",
-      "TITLE": "Patterns",
-      "TITLES": "Patterns",
-      "DESCRIPTION": "..."
-    },
-    "PARTICIPATIONS": {
-      "__COMMENTS": "See ENROLLMENT, SUBSCRIPTION",
-      "TITLE": "Participation",
-      "TITLES": "N/A",
-      "DESCRIPTION": "..."
-    },
     "PAGES": {
       "__COMMENTS": "Pages restricted to authenticated Users. See INFORMATION and LANDING Areas",
       "TITLE": "Page",
       "TITLES": "Pages",
       "DESCRIPTION": "Pages restricted to permitted users"
+    },
+    "PARTICIPATIONS": {
+      "__COMMENTS": "See ENROLLMENT, SUBSCRIPTION, PRESENCE",
+      "TITLE": "Participation",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PATTERNS": {
+      "__COMMENTS": "",
+      "TITLE": "Patterns",
+      "TITLES": "Patterns",
+      "DESCRIPTION": "..."
     },
     "PEOPLE": {
       "TITLE": "Person",
@@ -1195,6 +1196,12 @@
       "__COMMENTS": "",
       "TITLE": "Pricing",
       "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PRESENCE": {
+      "__COMMENTS": "See PARTICIPATIONS",
+      "TITLE": "Presence",
+      "TITLES": "Presences",
       "DESCRIPTION": "..."
     },
     "PRINCIPLES": {

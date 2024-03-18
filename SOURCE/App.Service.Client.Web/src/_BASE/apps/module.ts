@@ -20,10 +20,11 @@ import { CustomCommonModule } from "../shared/custom-common.module";
 //import { CustomAppsRoutingModule } from "./routing.module";
 import { BaseAppsRouteComponent } from "./ui/_route/component";
 import { RouterModule, Routes } from '@angular/router';
-import { BaseAppsRoutingModule } from './routing.module';
+import { BaseAppsRoutingModule } from './routing';
 import { SystemLanguagesRepositoryService } from '../shared/services/repositories/system.languages.repository.service';
 import { LanguageService } from '../shared/services/language.service';
 import { DiagnosticsTraceService } from '../shared/services/diagnostics.service';
+//Components:
 
 
 
@@ -45,7 +46,8 @@ import { DiagnosticsTraceService } from '../shared/services/diagnostics.service'
   ],
   declarations: [
     // define what Components belong to this Module (i.e., are not `standalone`)
-    BaseAppsRouteComponent
+    BaseAppsRouteComponent,
+
   ],
   providers: [
     // declare services to dependency inject into constructors.
@@ -54,9 +56,8 @@ import { DiagnosticsTraceService } from '../shared/services/diagnostics.service'
   ]
 })
 export class BaseAppsModule {
-
   constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
-    this.diagnosticsTraceService.debug("BaseAppsModule.constructor()");
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
   }
 }
 

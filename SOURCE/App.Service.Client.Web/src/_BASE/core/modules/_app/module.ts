@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 // Import Template:
-import { AppRoutingModule } from './routing.module';
-import { AppROComponent } from './ui/component';
+import { AppRoutingModule } from './routing';
+import { BaseRouterOutletComponent } from './ui/_routerOutlet/component';
 
-import { LayoutsModule } from "../layouts/layouts.module";
+import { BaseCoreLayoutsModule } from "../layouts/layouts.module";
 //import { PagesModule } from "./pages/pages.module";
 
 // Auth
@@ -14,9 +14,9 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../../../../environments/environment';
 import { initFirebaseBackend } from '../../../../app/authUtils';
-import { FakeBackendInterceptor } from '../../../../app/core/helpers/fake-backend';
-import { ErrorInterceptor } from '../../../../app/core/helpers/error.interceptor';
-import { JwtInterceptor } from '../../../../app/core/helpers/jwt.interceptor';
+import { FakeBackendInterceptor } from '../../helpers/fake-backend';
+import { ErrorInterceptor } from '../../helpers/error.interceptor';
+import { JwtInterceptor } from '../../helpers/jwt.interceptor';
 
 // Language
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -55,7 +55,7 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
 
 @NgModule({
   declarations: [
-    AppROComponent
+    BaseRouterOutletComponent
   ],
   imports: [
 
@@ -80,7 +80,7 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    LayoutsModule
+    BaseCoreLayoutsModule
     //PagesModule
   ],
   exports: [
@@ -93,10 +93,15 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
     { provide: 'defaultLanguage', useFactory: defaultLanguageCodeFactory, deps: [CookieService] },
     CookieService,
   ],
-  bootstrap: [AppROComponent]
+  bootstrap: [BaseRouterOutletComponent]
 })
 /**
- * Root AppModule. 
+ * Root AppModule.
+ * 
+ * Recommendation:
+ * keep it named as the convention (AppModule),
+ * but from here, it calls other modules and components that all start with
+ * 'Base...'
  */
 export class AppModule {
   constructor(

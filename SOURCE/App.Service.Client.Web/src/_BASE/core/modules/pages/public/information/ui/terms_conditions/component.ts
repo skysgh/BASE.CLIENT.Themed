@@ -23,6 +23,8 @@ export class BaseInformationTermsAndConditionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`)
+
     // Configure breadcrumbs:
     this.breadCrumbItems = [
       { label: 'Pages' },

@@ -6,8 +6,9 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Import template:
-import { BreadcrumbsComponent } from '../../../../../../app/shared/breadcrumbs/breadcrumbs.component';
+import { BreadcrumbsComponent } from '../../../../components/breadcrumbs/breadcrumbs.component';
 import { SharedModule } from '../../../../../../app/shared/shared.module';
+
 // Import  Base.Common.Models:
 
 // Import  Base.Common.Services:

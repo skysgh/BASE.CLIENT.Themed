@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from '../../../app/core/models/auth.models';
+import { User } from '../models/misc/auth.models';
 import { DiagnosticsTraceService } from './diagnostics.service';
 
 @Injectable({ providedIn: 'root' })

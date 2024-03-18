@@ -16,6 +16,9 @@
     <None Remove="src\_BASE\core\modules\pages\public\landing\**" />
     <None Remove="src\_BASE\core\modules\pages\public\information\models\**" />
     <None Remove="src\_BASE\core\modules\pages\public\information\services\**" />
+    <None Remove="src\_BASE\core\modules\public\services\**" />
+    <None Remove="src\_BASE\core\modules\search\views\search\browse\**" />
+    <None Remove="src\_BASE\core\modules\search\views\search\browse\**" />
     <None Remove="src\_custom\**" />
     <TypeScriptConfiguration Remove="src\app\account\**" />
     <TypeScriptConfiguration Remove="src\app\custom\**" />
@@ -25,6 +28,9 @@
     <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\public\landing\**" />
     <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\public\information\models\**" />
     <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\public\information\services\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\public\services\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\search\views\search\browse\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\search\views\search\browse\**" />
     <TypeScriptConfiguration Remove="src\_custom\**" />
   </ItemGroup>
   <ItemGroup>
@@ -37,12 +43,15 @@
     <None Remove="src\_BASE\shared\models\user-quote.model.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\app\core\models\" />
     <Folder Include="src\assets\custom\" />
+    <Folder Include="src\_BASE\apps\education\ui\" />
     <Folder Include="src\_BASE\core\modules\pages\private\" />
-    <Folder Include="src\_BASE\core\modules\search\" />
     <Folder Include="src\_BASE\core\models\base\" />
     <Folder Include="src\_BASE\shared\constants\settings\" />
     <Folder Include="src\_BASE\shared\maps\" />
+    <Folder Include="src\_BASE\shared\areas\" />
+    <Folder Include="src\_BASE\shared\ui\view_widgets\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\_BASE\core\modules\pages\public\landing\coming-soon\component.html" />

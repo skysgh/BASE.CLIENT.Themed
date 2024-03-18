@@ -1086,23 +1086,23 @@
       "IMPROVED": "改善",
       "FAILED": "失败"
     },
-    "PATTERNS": {
-      "__COMMENTS": "",
-      "TITLE": "模式",
-      "TITLES": "模式",
-      "DESCRIPTION": "..."
-    },
-    "PARTICIPATIONS": {
-      "__COMMENTS": "参见 ENROLLMENT, SUBSCRIPTION",
-      "TITLE": "参与",
-      "TITLES": "N/A",
-      "DESCRIPTION": "..."
-    },
     "PAGES": {
       "__COMMENTS": "仅限已认证用户访问的页面。参见 INFORMATION 和 LANDING 领域",
       "TITLE": "页面",
       "TITLES": "页面",
       "DESCRIPTION": "仅限授权用户访问的页面"
+    },
+    "PARTICIPATIONS": {
+      "__COMMENTS": "参见 ENROLLMENT, SUBSCRIPTION, PRESENCE",
+      "TITLE": "参与",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PATTERNS": {
+      "__COMMENTS": "",
+      "TITLE": "模式",
+      "TITLES": "模式",
+      "DESCRIPTION": "..."
     },
     "PEOPLE": {
       "TITLE": "人员",
@@ -1189,6 +1189,12 @@
       "COUNTRY": "国家",
       "COUNTRY_EXAMPLE": "瑞士",
       "COUNTRY_INSTRUCTIONS": "提供国家、王国等"
+    },
+    "PRESENCE": {
+      "__COMMENTS": "See PARTICIPATIONS",
+      "TITLE": "TODO",
+      "TITLES": "TODO",
+      "DESCRIPTION": "..."
     },
     "PRICING": {
       "__COMMENTS": "",

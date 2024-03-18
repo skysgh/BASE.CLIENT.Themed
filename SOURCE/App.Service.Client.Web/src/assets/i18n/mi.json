@@ -1086,23 +1086,23 @@
       "IMPROVED": "Whakapai",
       "FAILED": "Kua Whakapau"
     },
-    "PATTERNS": {
-      "__COMMENTS": "",
-      "TITLE": "Tauira",
-      "TITLES": "Ngā Tauira",
-      "DESCRIPTION": "..."
-    },
-    "PARTICIPATIONS": {
-      "__COMMENTS": "Tirohia te Āwhina, te Rēhita",
-      "TITLE": "Mahi Tahi",
-      "TITLES": "N/A",
-      "DESCRIPTION": "..."
-    },
     "PAGES": {
       "__COMMENTS": "Ngā Whārangi e āhei ana kia whakamahi ngā Kaiwhakamahi. Tirohia ngā Kaupapa Whakamohorangi me ngā Kaupapa Whakahoahoa",
       "TITLE": "Whārangi",
       "TITLES": "Ngā Whārangi",
       "DESCRIPTION": "Ngā Whārangi e āhei ana kia whakamahi ngā Kaiwhakamahi"
+    },
+    "PARTICIPATIONS": {
+      "__COMMENTS": "Tirohia te Āwhina, te Rēhita. See PRESENCE",
+      "TITLE": "Mahi Tahi",
+      "TITLES": "N/A",
+      "DESCRIPTION": "..."
+    },
+    "PATTERNS": {
+      "__COMMENTS": "",
+      "TITLE": "Tauira",
+      "TITLES": "Ngā Tauira",
+      "DESCRIPTION": "..."
     },
     "PEOPLE": {
       "TITLE": "Tangata",
@@ -1189,6 +1189,12 @@
       "COUNTRY": "Whenua",
       "COUNTRY_EXAMPLE": "Switzerland",
       "COUNTRY_INSTRUCTIONS": "Whakauru mai i tētahi whenua, whenua rānei, mei kē..."
+    },
+    "PRESENCE": {
+      "__COMMENTS": "See PARTICIPATIONS",
+      "TITLE": "TODO",
+      "TITLES": "TODO",
+      "DESCRIPTION": "..."
     },
     "PRICING": {
       "__COMMENTS": "",

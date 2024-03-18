@@ -1025,7 +1025,7 @@
       "IMPROVED": "...",
       "FAILED": "..."
     },
-    "PATTERNS": {
+    "PAGES": {
       "__COMMENTS": "...",
       "TITLE": "...",
       "TITLES": "...",
@@ -1037,7 +1037,7 @@
       "TITLES": "...",
       "DESCRIPTION": "..."
     },
-    "PAGES": {
+    "PATTERNS": {
       "__COMMENTS": "...",
       "TITLE": "...",
       "TITLES": "...",
@@ -1128,6 +1128,12 @@
       "COUNTRY": "...",
       "COUNTRY_EXAMPLE": "...",
       "COUNTRY_INSTRUCTIONS": "..."
+    },
+    "PRESENCE": {
+      "__COMMENTS": "...",
+      "TITLE": "...",
+      "TITLES": "...",
+      "DESCRIPTION": "..."
     },
     "PRICING": {
       "__COMMENTS": "...",
