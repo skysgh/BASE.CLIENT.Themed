@@ -8,9 +8,9 @@ import { BaseRouterOutletComponent } from './ui/_routerOutlet/component';
 
 import { BaseCoreLayoutsModule } from "../layouts/layouts.module";
 //import { PagesModule } from "./pages/pages.module";
-
+import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 // Auth
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../../../../environments/environment';
 import { initFirebaseBackend } from '../../../../app/authUtils';
@@ -80,8 +80,10 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    BaseCoreLayoutsModule
+    BaseCoreLayoutsModule,
     //PagesModule
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClient }),
   ],
   exports: [
     RouterModule
@@ -92,6 +94,8 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
     { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
     { provide: 'defaultLanguage', useFactory: defaultLanguageCodeFactory, deps: [CookieService] },
     CookieService,
+    provideHttpClient(),
+    provideMarkdown({ loader: HttpClient }),
   ],
   bootstrap: [BaseRouterOutletComponent]
 })

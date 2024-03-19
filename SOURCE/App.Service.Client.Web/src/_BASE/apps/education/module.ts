@@ -19,13 +19,14 @@ import { BaseAppsEducationPresenceComponent } from "./areas/presence/component";
 import { BaseAppsEducationAssessmentsComponent } from "./areas/assessments/component";
 import { BaseAppsEducationProgressComponent } from "./areas/progress/component";
 import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishments/component";
-
+import { BaseCommonComponmentsModule } from "../../core/modules/components/module";
 
 @NgModule({
   imports: [
     // Import classes within the above specified import files.
     // Ag specific:
     CommonModule,
+    BaseCommonComponmentsModule,
     FormsModule,
     // Custom specific:
     CustomCommonModule,
@@ -49,7 +50,6 @@ import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishmen
     BaseAppsEducationAccomplishmentsComponent
   ],
   providers: [
-    // declare services to dependency inject into constructors.
   ]
 })
 export class BaseAppsEducationModule {

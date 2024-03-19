@@ -45,7 +45,8 @@ export const system: System = {
         temp: {
           users: "assets/images/users/"
         }
-      }
+      },
+      markdown:"assets/markdown/"
     }
   },
 

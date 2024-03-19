@@ -38,4 +38,8 @@ export interface SystemAssets {
    */
   images: SystemSourcesImages;
 
+  /**
+   * Where to retrieve imaegs from.
+   */
+  markdown: string;
 }
