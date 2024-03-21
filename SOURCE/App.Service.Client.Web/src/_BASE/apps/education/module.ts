@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { DiagnosticsTraceService } from "../../shared/services/diagnostics.service";
 // Modules:
 import { CustomCommonModule } from "../../shared/custom-common.module";
+import { BaseCommonComponmentsModule } from "../../core/modules/components/module";
 import { BaseAppsEducationRoutingModule } from "./routing";
 // Controls:
 import { BaseAppsEducationProductsComponent } from "./areas/products/component";
@@ -19,7 +20,7 @@ import { BaseAppsEducationPresenceComponent } from "./areas/presence/component";
 import { BaseAppsEducationAssessmentsComponent } from "./areas/assessments/component";
 import { BaseAppsEducationProgressComponent } from "./areas/progress/component";
 import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishments/component";
-import { BaseCommonComponmentsModule } from "../../core/modules/components/module";
+
 
 @NgModule({
   imports: [

@@ -82,6 +82,7 @@
     "ng-apexcharts": "^1.8.0",
     "ng-otp-input": "^1.9.3",
     "ng2-charts": "^5.0.3",
+    "ng2-pdf-viewer": "^10.0.0",
     "ngx-color-picker": "^15.0.0",
     "ngx-cookie-service": "^16.0.1",
     "ngx-countup": "^13.1.0",

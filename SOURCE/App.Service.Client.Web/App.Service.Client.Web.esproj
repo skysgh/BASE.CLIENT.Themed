@@ -46,6 +46,7 @@
     <Folder Include="src\app\core\models\" />
     <Folder Include="src\assets\custom\" />
     <Folder Include="src\_BASE\apps\education\ui\" />
+    <Folder Include="src\_BASE\core\modules\components\sunmaryitemselector\" />
     <Folder Include="src\_BASE\core\modules\pages\private\" />
     <Folder Include="src\_BASE\core\models\base\" />
     <Folder Include="src\_BASE\shared\constants\settings\" />

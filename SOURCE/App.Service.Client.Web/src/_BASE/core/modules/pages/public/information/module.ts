@@ -6,7 +6,9 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Import template:
-import { BreadcrumbsComponent } from '../../../../components/breadcrumbs/breadcrumbs.component';
+import { BreadcrumbsComponent } from '../../../components/breadcrumbs/breadcrumbs.component';
+//
+import { BaseCommonComponmentsModule } from '../../../components/module';
 import { SharedModule } from '../../../../../../app/shared/shared.module';
 
 // Import  Base.Common.Models:
@@ -22,7 +24,6 @@ import { SharedModule } from '../../../../../../app/shared/shared.module';
 import { BaseInformationPrivacyPolicyComponent } from './ui/privacy/component';
 import { BaseInformationTermsAndConditionsComponent } from './ui/terms_conditions/component';
 import { DiagnosticsTraceService } from '../../../../../shared/services/diagnostics.service';
-
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
 
@@ -52,9 +53,8 @@ import { DiagnosticsTraceService } from '../../../../../shared/services/diagnost
     //Ag specific:
     CommonModule,
     FormsModule,
-
-    SharedModule
-    // Module specific:
+    SharedModule,
+    BaseCommonComponmentsModule
     //SpikeRoutingModule,
   ],
   exports: [
@@ -65,10 +65,8 @@ import { DiagnosticsTraceService } from '../../../../../shared/services/diagnost
     // define what Components belong to this Module (i.e., are not `standalone`)
     //BaseInformationRouteOutletComponent,
     // Spike Components:
-    BaseInformationPrivacyPolicyComponent
-    //BreadcrumbsComponent
-
-
+    BaseInformationPrivacyPolicyComponent,
+    BaseInformationTermsAndConditionsComponent
   ],
   providers: [
     // declare services to dependency inject into constructors.
@@ -83,6 +81,6 @@ import { DiagnosticsTraceService } from '../../../../../shared/services/diagnost
 export class BasePagesInformationModule {
 
   constructor(private diagnosticsTraceService:DiagnosticsTraceService) {
-    this.diagnosticsTraceService.debug("BasePagesInformationModule.constructor(...)")
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 }

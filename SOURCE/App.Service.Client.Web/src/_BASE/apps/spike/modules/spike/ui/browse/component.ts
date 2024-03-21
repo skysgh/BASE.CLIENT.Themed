@@ -5,7 +5,7 @@ import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repos
 // Models:
 import { Spike } from '../../../../models/spike.model';
 import { ActivatedRoute } from '@angular/router';
-import { SummaryItem } from '../../../../../../shared/models/SummaryItem.model';
+import { SummaryItemVTO } from '../../../../../../shared/models/SummaryItemVTO.model';
 
 
 @Component({
@@ -45,8 +45,8 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
       });
 
   }
-  mapAway(i: Spike) : SummaryItem{
-    var r :SummaryItem = {
+  mapAway(i: Spike) : SummaryItemVTO{
+    var r :SummaryItemVTO = {
         id: i.id,
         enabled: true,
         typeId: '01',
@@ -56,11 +56,12 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
         title: i.title,
         description: i.description,
         more: '',
-        values: {
-            primary: '123',
-            secondary: '456'
-        },
-        actions: {}
+      values: [
+
+        { title: 'primary', value: '123' },
+        { title: 'seondary', value: '456' }
+      ],
+        operations: []
     };
     return r;
   }

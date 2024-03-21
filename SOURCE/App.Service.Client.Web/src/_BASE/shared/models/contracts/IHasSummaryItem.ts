@@ -7,10 +7,8 @@ export interface IHasSummarItem extends IHasUUID, IHasTitleAndDescription {
   type: string;
   category: string;
 
-  values: {
-    "primary": any
-    "secondary": any
-  }
-  actions: {
-  }
+  values?: { title: string, value: any }[];
+
+  operations?: { title: string, action: string }[];
+
 }

@@ -22,6 +22,8 @@ import { BaseCorePagesROComponent } from './ui/_routeoutlet/component';
 import { BaseInformationPrivacyPolicyComponent } from './public/information/ui/privacy/component';
 import { BaseInformationTermsAndConditionsComponent } from './public/information/ui/terms_conditions/component';
 import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
+import { BasePagesInformationModule } from './public/information/module';
+import { BasePagesLandingModule } from './public/landing/module';
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
@@ -53,7 +55,9 @@ import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.se
     //Ag specific:
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    BasePagesLandingModule,
+    BasePagesInformationModule
     // Module specific:
     //SpikeRoutingModule,
   ],

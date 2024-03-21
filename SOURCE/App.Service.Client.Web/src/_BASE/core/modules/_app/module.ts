@@ -37,7 +37,8 @@ import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.se
 
 import { system } from '../../../shared/constants/system';
 
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { BaseCommonComponmentsModule } from '../components/module';
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader( http, 'assets/i18n/', '.json');
 }
@@ -79,11 +80,14 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
     BrowserAnimationsModule,
     HttpClientModule,
     BrowserModule,
+
     AppRoutingModule,
     BaseCoreLayoutsModule,
     //PagesModule
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
+    PdfViewerModule,
+    BaseCommonComponmentsModule
   ],
   exports: [
     RouterModule

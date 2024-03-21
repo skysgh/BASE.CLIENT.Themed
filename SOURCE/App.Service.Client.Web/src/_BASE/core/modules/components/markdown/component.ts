@@ -4,11 +4,15 @@ import { Component, Input, OnInit} from "@angular/core";
 
 import { DiagnosticsTraceService } from "../../../../shared/services/diagnostics.service";
 
+/**
+ * See: https://jfcere.github.io/ngx-markdown/get-started
+ */
 @Component({
   selector: 'app-base-components-markdown',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
+
 export class BaseComponentsMarkdownComponent implements OnInit {
 
   @Input()
