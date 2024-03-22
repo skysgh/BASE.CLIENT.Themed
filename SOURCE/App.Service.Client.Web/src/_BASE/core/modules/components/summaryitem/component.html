@@ -3,7 +3,9 @@
     <div class="card-header">
 
       <img [src]="summaryItem?.typeImage"
-           alt="Item Image">
+           title="Person"
+           alt="Item Image"
+           >
 
       <span class="float-end text-secondary">
       {{summaryItem?.type}}
@@ -27,7 +29,7 @@
     </div>
     <div>
       <div *ngFor="let value of summaryItem?.values">
-        <p>{{ value }}</p>
+        <p>{{value.title}}: {{ value.value }}</p>
       </div>
     </div>
     <div class="card-footer">

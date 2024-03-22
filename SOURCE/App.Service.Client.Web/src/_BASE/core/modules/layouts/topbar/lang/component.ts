@@ -107,7 +107,6 @@ export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
   }
 
   trackByCountryCode(index: number, item: SystemLanguage) {
-    console.log(item.description);
     //this.diagnosticsTraceService.info(item.description);
     return item.languageCode;
   }

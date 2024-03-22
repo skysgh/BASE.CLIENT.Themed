@@ -5,8 +5,8 @@
 export const environment = {
   custom: {
     diagnostics: {
-      // 0=Verbose, 1=Info, 2=Warn, 3=Error, 4=No logging 
-      level: 1
+      // 5=Debug, 4=Verbose, 3=Info, 2=Warn, 1=Error
+      level: 5
     },
     service: {
       baseUrl: 'http://localhost:4202/'

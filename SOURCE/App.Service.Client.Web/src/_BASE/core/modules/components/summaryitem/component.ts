@@ -20,6 +20,7 @@ export class BaseComponentsSummaryItemComponent implements OnInit {
 
   /**
    *  The operation button clicked
+   * If in a wrapping selector, will bubble up.
   */
   @Output() operationClicked = new EventEmitter<
     { summaryItem: SummaryItemVTO | undefined, action: string }>();

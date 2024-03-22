@@ -16,7 +16,7 @@ export abstract class ItemsCollectionServiceBase<TDto, TKeyType, TVto> {
   protected _this: ItemsCollectionServiceBase<TDto, TKeyType, TVto>;
   protected _className:string;
   // based on knowing this:
-  protected pollDelayInSeconds: number = 0;
+  protected abstract pollDelayInSeconds: number;
   protected abstract itemKeyFieldName: string;
   /**
    * Used to check that the response is not ridiculously large.

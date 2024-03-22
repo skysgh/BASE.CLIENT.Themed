@@ -22,7 +22,6 @@ export class EnvironmentService {
 
   public getDebugLevel() {
     return environment.custom.diagnostics.level;
-    return 0;
   }
   public getApiBaseUrl() : string {
     return environment.custom.service.baseUrl + 'api/';

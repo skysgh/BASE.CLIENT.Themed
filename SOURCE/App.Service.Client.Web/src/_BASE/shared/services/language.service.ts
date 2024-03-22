@@ -64,14 +64,14 @@ export class LanguageService extends ItemsCollectionServiceBase<SystemLanguage, 
    * In many cases it just be a simple case of
    * TDto being the same as TVto,
    * in which case it's a simple case of
-   * "return item";
+`   * "return item";
    * @param item
    */
   protected override developMappedObject(item: SystemLanguage): SystemLanguageVM {
     // cannot reference this.diagnosticsTraceService
     // because we are not in the context of this.
     // Annoying!
-    this.diagnosticsTraceService.info("languageService.developMappedObject(...)");
+    this.diagnosticsTraceService.debug("languageService.developMappedObject(...)");
     // In this contrived example, not doing much, just changing type:
     //return item;
     // Same thing in this simple case:
@@ -100,7 +100,7 @@ export class LanguageService extends ItemsCollectionServiceBase<SystemLanguage, 
    * required at the end of the refreshment of the list
    */
   protected override onInitComplete(items: SystemLanguageVM[]): void {
-    this.diagnosticsTraceService.info("languageService.onInitComplete(...)");
+    this.diagnosticsTraceService.debug("languageService.onInitComplete(...)");
     this.initLanguages(items);
   }
 
