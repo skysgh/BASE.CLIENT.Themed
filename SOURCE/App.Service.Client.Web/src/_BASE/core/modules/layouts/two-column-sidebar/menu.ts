@@ -684,30 +684,6 @@ export const MENU: MenuItem[] = [
         parentId: 49,
         subItems: [
           {
-            id: 78,
-            label: 'MENUITEMS.AUTHENTICATION.TASK.404BASIC',
-            link: '/',
-            parentId: 77
-          },
-          {
-            id: 79,
-            label: 'MENUITEMS.AUTHENTICATION.TASK.404COVER',
-            link: '/',
-            parentId: 77
-          },
-          {
-            id: 80,
-            label: 'MENUITEMS.AUTHENTICATION.TASK.404ALT',
-            link: '/',
-            parentId: 77
-          },
-          {
-            id: 81,
-            label: 'MENUITEMS.AUTHENTICATION.TASK.500',
-            link: '/',
-            parentId: 77
-          },
-          {
             id: 81,
             label: 'MENUITEMS.AUTHENTICATION.TASK.OFFLINE',
             link: '/',

@@ -14,6 +14,8 @@ export class DashboardService {
     private diagnosticsTraceService: DiagnosticsTraceService,
     private dashboardRepositoryService: DashboardRepositoryService) {
 
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
     }
 
   getSummaries() {

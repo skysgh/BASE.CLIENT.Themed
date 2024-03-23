@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 
-import { BaseRouterOutletComponent } from './ui/_routerOutlet/component';
+//import { BaseRouterOutletComponent } from './ui/_routerOutlet/component';
 import { AppLayoutComponent} from '../layouts/layout.component';
 
 // Auth
@@ -23,17 +23,23 @@ const routes: Routes = [
 
   // so pages and landing (and auth, etc.) will be loaded directly within
   // the AppROComponent. They also don't need to be gaurded - they're public access.
-  { path: '', loadChildren: () => import('../pages/public/landing/module').then(m => m.BasePagesLandingModule)},
-  { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BasePagesModule) },
+  { path: '', loadChildren: () => import('../../../apps/home/module').then(m => m.BaseAppsHomeModule) },
+
+  { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BaseCorePagesModule) },
   // But apps, is more complex:
   // Is is wrapped in the AppLayout frame first.
   // And it is Guarded.
   { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
-//  { path: 'settings', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
+  //  { path: 'settings', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
   // This again goes in the main AppROContainer with no prior framing:
   { path: 'auth', loadChildren: () => import('../account/account.module').then(m => m.BaseAccountModule) },
   // specifies what is default:
-  { path: 'landing', redirectTo: '', pathMatch: 'full' }   
+  { path: 'landing', redirectTo: 'pages/landing', pathMatch: 'prefix' },
+  { path: 'information', redirectTo: 'pages/information', pathMatch: 'prefix' },
+  { path: 'errors', loadChildren: () => import('../errors/module').then(m => m.AppBaseErrorsModule) },
+
+  { path: '**', redirectTo: 'errors' }
+
 ];
 
 @NgModule({

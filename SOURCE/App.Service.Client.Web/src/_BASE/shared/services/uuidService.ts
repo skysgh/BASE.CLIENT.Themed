@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { v4 as uuidv4 } from 'uuid';
 import { NIL as NIL_UUID } from 'uuid';
+import { DiagnosticsTraceService } from './diagnostics.service';
 
 
 /**
@@ -17,6 +18,9 @@ import { NIL as NIL_UUID } from 'uuid';
 @Injectable({ providedIn: 'root' })
 export class UUIDService {
 
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+  }
 
   getNullUUID() {
     return NIL_UUID;

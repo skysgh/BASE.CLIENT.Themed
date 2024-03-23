@@ -120,12 +120,7 @@
       "LOGOUT": "Logout",
       "SUCCESSMESSAGE": "Success Message",
       "TWOSTEPVERIFICATION": "Two Step Verification",
-      "ERRORS": "Errors",
-      "404BASIC": "404 Basic",
-      "404COVER": "404 Cover",
-      "404ALT": "404 Alt",
-      "500": "500",
-      "OFFLINE": "Offline Page"
+      "ERRORS": "Errors"
     }
   },
   "STRUCTURE": {

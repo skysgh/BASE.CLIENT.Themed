@@ -32,14 +32,14 @@
 }
 
 .auth-one-bg {
-    background-image: url("../../images/auth-one-bg.jpg");
-    background-position: center;
-    background-size: cover;
+  background-image: url('../../images/themes/#{$cultureCode}/auth-one-bg.jpg');
+  background-position: center;
+  background-size: cover;
 
-    .bg-overlay {
-        background: linear-gradient(to right, darken($primary, 6%), $primary);
-        opacity: 0.9;
-    }
+  .bg-overlay {
+    background: linear-gradient(to right, darken($primary, 6%), $primary);
+    opacity: 0.9;
+  }
 }
 
 .shape {

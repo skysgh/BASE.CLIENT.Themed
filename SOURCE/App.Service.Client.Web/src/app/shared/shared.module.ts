@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 // Counter
 import { CountUpModule } from 'ngx-countup';
 
-import { BreadcrumbsComponent } from './../../_BASE/core/modules/components/breadcrumbs/breadcrumbs.component';
+import { BaseCoreCommonComponentsBreadcrumbsComponent } from './../../_BASE/core/modules/components/breadcrumbs/component';
 import { ClientLogoComponent } from './landing/index/client-logo/client-logo.component';
 import { ServicesComponent } from './landing/index/services/services.component';
 import { CollectionComponent } from './landing/index/collection/collection.component';
@@ -44,7 +44,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
-    BreadcrumbsComponent,
+    BaseCoreCommonComponentsBreadcrumbsComponent,
     ClientLogoComponent,
     ServicesComponent,
     CollectionComponent,
@@ -83,7 +83,7 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule,
     TranslateModule
   ],
-  exports: [BreadcrumbsComponent,
+  exports: [BaseCoreCommonComponentsBreadcrumbsComponent,
     ClientLogoComponent,
     ServicesComponent,
     CollectionComponent,

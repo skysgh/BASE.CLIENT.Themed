@@ -12,7 +12,7 @@ import { JobRepositoryService } from './repositories/job.repository.service';
 export class JobService {
 
   constructor(private jobRepositoryService: JobRepositoryService) {
-
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 
   public getPage() //: Observable<Job>[]

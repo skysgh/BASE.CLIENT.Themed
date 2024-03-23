@@ -13,7 +13,8 @@ export class AuthfakeauthenticationService {
 
   constructor(private diagnosticsTraceService: DiagnosticsTraceService, private http: HttpClient) {
 
-    this.diagnosticsTraceService.info("AuthfakeauthenticationService.constructor()")
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
     this.currentUserSubject =
       new BehaviorSubject<User>(
         JSON.parse(sessionStorage.getItem('currentUser')!));

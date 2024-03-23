@@ -116,12 +116,8 @@
         "LOGOUT": "Disconnettersi",
         "SUCCESSMESSAGE": "Messaggio di successo",
         "TWOSTEPVERIFICATION": "Verifica in due fasi",
-        "ERRORS": "Errori",
-        "404BASIC": "404 Fondamentale",
-        "404COVER": "404 Copertina",
-        "404ALT": "404 Alt",
-        "500": "500",
-        "OFFLINE": "Pagina offline"
+        "ERRORS": "Errori"
+
       }
     },
     "PAGES": {

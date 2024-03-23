@@ -8,6 +8,7 @@ import { DiagnosticsTraceService } from './diagnostics.service';
 export class SessionStorageService {
 
   constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 
   }
 

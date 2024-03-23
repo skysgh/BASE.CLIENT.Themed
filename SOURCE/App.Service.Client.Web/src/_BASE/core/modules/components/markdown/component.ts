@@ -8,19 +8,20 @@ import { DiagnosticsTraceService } from "../../../../shared/services/diagnostics
  * See: https://jfcere.github.io/ngx-markdown/get-started
  */
 @Component({
-  selector: 'app-base-components-markdown',
+  selector: 'app-base-core-common-components-markdown',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 
-export class BaseComponentsMarkdownComponent implements OnInit {
+export class BaseCoreCommonComponentsMarkdownComponent implements OnInit {
 
   @Input()
-  public src: string|undefined =undefined;
+  public src: string|null =null;
 
 
   @Input()
-  public data: string|undefined=undefined;
+  public data: string|null=null;
+
 
   constructor(private diagnosticTraceService: DiagnosticsTraceService) {
     this.diagnosticTraceService.debug(`${this.constructor.name}.construtor()`);

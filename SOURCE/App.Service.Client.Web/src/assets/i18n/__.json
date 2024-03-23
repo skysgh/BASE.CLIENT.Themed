@@ -578,6 +578,11 @@
       "PLACES": "..."
     },
     "ERRORS": {
+      "404": {
+        "ID": "404",
+        "TITLE": "...title...",
+        "DESCRIPTION": "...description..."
+      },
       "500": {
         "TITLE": "...",
         "DESCRIPTION": "..."
@@ -594,14 +599,7 @@
       "PAGE_NOT_DISPLAYABLE": "...",
       "PAGE_NOT_FOUND_DESCRIPTION": "...",
       "SORRY_PAGE_NOT_FOUND": "...",
-      "WE_ARE_OFFLINE": "...",
-      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS": "...",
-      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS2": "...",
-      "ERRORS": "...",
-      "404BASIC": "...",
-      "404COVER": "...",
-      "404ALT": "...",
-      "OFFLINE": "..."
+      "ERRORS": "..."
     },
     "EXAMPLES": {
       "__COMMENTS": "...",

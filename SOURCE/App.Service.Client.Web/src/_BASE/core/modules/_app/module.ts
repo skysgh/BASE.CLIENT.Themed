@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // Import Template:
 import { AppRoutingModule } from './routing';
-import { BaseRouterOutletComponent } from './ui/_routerOutlet/component';
+import { BaseRouterOutletComponent } from './components/_routerOutlet/component';
 
 import { BaseCoreLayoutsModule } from "../layouts/layouts.module";
 //import { PagesModule } from "./pages/pages.module";

@@ -12,6 +12,8 @@ export class TokenStorageService {
   constructor(
     private diagnosticsTraceService: DiagnosticsTraceService,
     private sessionStorageService: SessionStorageService) {
+
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 
   signOut(): void {

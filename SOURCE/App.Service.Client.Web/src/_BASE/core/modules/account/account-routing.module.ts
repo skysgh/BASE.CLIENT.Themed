@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'twostep', loadChildren: () => import('./auth/twostep/module').then(m => m.TwostepModule)
   },
   {
-    path: 'errors', loadChildren: () => import('../../errors/module').then(m => m.AppBaseErrorsModule)
+    path: 'errors', loadChildren: () => import('../errors/module').then(m => m.AppBaseErrorsModule)
   },
   {
     path: "register",

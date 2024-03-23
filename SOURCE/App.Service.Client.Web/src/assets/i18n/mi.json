@@ -613,14 +613,7 @@
       "PAGE_NOT_DISPLAYABLE": "Kāore e taea te whakaatu i te Whārangi.",
       "PAGE_NOT_FOUND_DESCRIPTION": "Kāore e kitea te whārangi e rapu ana koe!.",
       "SORRY_PAGE_NOT_FOUND": "Aroha mai - kāore i kitea te whārangi.",
-      "WE_ARE_OFFLINE": "Koreutu",
-      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS": "Kāore e taea e mātou te whakaatu i ēnei ataahua nā te mea kāore koe e hono, e hono ana ki te ipurangi.",
-      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS2": "Āpiti atu ki te tīmata hōu",
-      "ERRORS": "Ngā Hapa",
-      "404BASIC": "404 Matua",
-      "404COVER": "404 Korowhā",
-      "404ALT": "404 Taha Kē",
-      "OFFLINE": "Whārangi Koreutu"
+      "ERRORS": "Ngā Hapa"
     },
     "EXAMPLES": {
       "__COMMENTS": "",

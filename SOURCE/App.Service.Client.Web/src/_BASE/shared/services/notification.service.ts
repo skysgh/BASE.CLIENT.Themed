@@ -37,6 +37,8 @@ export class SystemNotificationService
     //Invoke super constructor, which invokes timer, etc.
     super(diagnosticsTraceService, translate);
 
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
     // call explicitly from sub class, not super,
     // as otherwise repositorySErvice will not yet have been made into a private property,
     // for exampel

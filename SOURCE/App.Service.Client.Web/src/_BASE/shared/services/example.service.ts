@@ -12,7 +12,7 @@ export class ExampleService {
   public someField: string = "hell...";
 
   constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
-
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 
   // some method

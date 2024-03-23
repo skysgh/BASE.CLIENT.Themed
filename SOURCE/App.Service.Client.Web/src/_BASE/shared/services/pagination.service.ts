@@ -1,5 +1,6 @@
 // pagination.service.ts
 import { Injectable } from '@angular/core';
+import { DiagnosticsTraceService } from './diagnostics.service';
 
 @Injectable({
     providedIn: 'root',
@@ -11,6 +12,9 @@ export class PaginationService {
     startIndex: number = 1;
     endIndex: number = 9;
 
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+  }
     // Pagination
     changePage(alldata: any[]) {
         const startItem = (this.page - 1) * this.pageSize + 1;

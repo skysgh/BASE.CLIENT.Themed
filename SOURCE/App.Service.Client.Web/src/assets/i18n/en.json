@@ -22,6 +22,11 @@
       "DESCRIPTION": "..."
     },
     "ACTIONS": {
+      "__COMMENTS": "",
+      "TITLE": "Action",
+      "TITLES": "Actions",
+      "DESCRIPTION": "...",
+      "ACCEPT": "Accept",
       "ADD": "Add",
       "APPLY": "Apply",
       "APPROVE": "Approve",
@@ -114,6 +119,18 @@
       "TITLE": "App",
       "TITLES": "Apps",
       "DESCRIPTION": "..."
+    },
+    "ARCHITECTURES": {
+      "__COMMENTS": "",
+      "TITLE": "Architecture",
+      "TITLES": "Architectures",
+      "STAKEHOLDERS": "Stakeholders",
+      "VALUES": "Values",
+      "PRINCIPLES": "Principles",
+      "PATTERNS": "Patterns",
+      "QUALITIES": "Qualities",
+      "CAPABILITIES": "Capabilities",
+      "FUNCTIONALITY": "Functionalities"
     },
     "AREAS": {
       "__COMMENTS": "",
@@ -221,6 +238,19 @@
       "TITLE": "Calendar",
       "TITLES": "Calendars",
       "DESCRIPTION": "..."
+    },
+    "CAPABILITIES": {
+      "__COMMENTS": "See STAKEHOLDERS,FUNCTIONALITIES,QUALITIES",
+      "TITLE": "Functionality",
+      "TITLES": "N/A",
+      "DIAGNOSTICS": "Diagnostics",
+      "ERROR_RECORDING": "Error Recording",
+      "SESSION_HANDLING": "Session Handling",
+      "SESSION_OPERATION_AUDITING": "Session Operation Auditing",
+      "USER_MANAGEMENT": "User Management",
+      "USER_GROUP_MANAGEMENT": "User Group Management",
+      "PERMISSIONS_MANAGEMENT": "Permission Management",
+      "USER_GROUP_ROLE_MANAGEMENT": "User Group Role Management"
     },
     "CHANNELS": {
       "__COMMENTS": "",
@@ -488,6 +518,7 @@
       "EDUCATION": {
         "__COMMENTS": "Terms specific to the Domain of Education.",
         "ROLES": {
+          "ALL": "All",
           "PRINCIPALS": "Principals",
           "PRINCIPAL": "Principal",
           "ADMINISTRATORS": "Administrators",
@@ -598,31 +629,342 @@
       "PLACE": "Place",
       "PLACES": "Places"
     },
+
     "ERRORS": {
-      "500": {
-        "TITLE": "Server Error 500.",
-        "DESCRIPTION": "We're not exactly sure what happened, but our servers say something is wrong."
+      "000": {
+        "ID": "000",
+        "TITLE": "Offline",
+        "DESCRIPTION": "Offline. When connected again, we could try again."
       },
+      "100": {
+        "ID": "100",
+        "TITLE": "Continue",
+        "DESCRIPTION": "So far so good."
+      },
+      "102": {
+        "__COMMENTS": "Depracated",
+        "ID": "102",
+        "TITLE": "Processing",
+        "DESCRIPTION": ""
+      },
+      "200": {
+        "ID": "200",
+        "TITLE": "OK",
+        "DESCRIPTION": "The resource was found and returned.",
+        "INSTRUCTIONS": "We're cool."
+      },
+      "201": {
+        "__COMMENTS": "The default response from a POST operation. The 'location' header links to it.",
+        "ID": "201",
+        "TITLE": "Created",
+        "DESCRIPTION": "Resource created.",
+        "INSTRUCTIONS": "THe 'location' provides the url to the newly created resource."
+      },
+      "202": {
+        "__COMMENTS": "Used for batch processing.",
+        "ID": "202",
+        "TITLE": "Accepted",
+        "DESCRIPTION": "Operation request accepted but not prcessed yet."
+      },
+      "203": {
+        "ID": "203",
+        "TITLE": "Non-Authoritative Information",
+        "DESCRIPTION": ""
+      },
+      "204": {
+        "ID": "204",
+        "TITLE": "No Content",
+        "DESCRIPTION": ""
+      },
+      "205": {
+        "ID": "205",
+        "TITLE": "Reset Content",
+        "DESCRIPTION": ""
+      },
+      "206": {
+        "ID": "206",
+        "TITLE": "Partial Content",
+        "DESCRIPTION": ""
+      },
+      "207": {
+        "ID": "207",
+        "TITLE": "Multi-Status",
+        "DESCRIPTION": ""
+      },
+      "208": {
+        "ID": "208",
+        "TITLE": "Already Reported",
+        "DESCRIPTION": ""
+      },
+      "226": {
+        "ID": "226",
+        "TITLE": "IM Used",
+        "DESCRIPTION": ""
+      },
+      "300": {
+        "ID": "300",
+        "TITLE": "Multiple Choices",
+        "DESCRIPTION": ""
+      },
+      "301": {
+        "ID": "301",
+        "TITLE": "Moved Permanently",
+        "DESCRIPTION": ""
+      },
+      "302": {
+        "ID": "302",
+        "TITLE": "Found",
+        "DESCRIPTION": ""
+      },
+      "303": {
+        "ID": "303",
+        "TITLE": "See Other",
+        "DESCRIPTION": ""
+      },
+      "304": {
+        "ID": "304",
+        "TITLE": "Not Notified",
+        "DESCRIPTION": ""
+      },
+      "307": {
+        "ID": "307",
+        "TITLE": "Temporary Redirect",
+        "DESCRIPTION": ""
+      },
+      "308": {
+        "ID": "308",
+        "TITLE": "Permanent Redirect",
+        "DESCRIPTION": ""
+      },
+      "400": {
+        "ID": "400",
+        "TITLE": "Bad Request",
+        "DESCRIPTION": ""
+      },
+      "401": {
+        "ID": "401",
+        "TITLE": "Unauthorised",
+        "DESCRIPTION": "The server doesn't know which user you are.",
+        "INSTRUCTIONS":  "You need to sign up/in first (but there is no guarantee that you will have the required Permission)"
+      },
+      "402": {
+        "TITLE": "Payment Required",
+        "DESCRIPTION": "The operation you requested requires an active up to date service subscription.",
+        "INSTRUCTIONS": "https://www.youtube.com/watch?v=E-P2qL3qkzk"
+      },
+      "403": {
+        "ID": "403",
+        "TITLE": "Forbidden",
+        "DESCRIPTION": "While Authenticated, the user account does not have sufficient permissions to be Authorised to perform this operation.",
+        "INSTRUCTIONS": "Ask a responsible stakeholder to elevate the permissions granted to the user account."
+      },
+      "404": {
+        "ID": "404",
+        "TITLE": "Not Found",
+        "DESCRIPTION": "Resource not found!"
+      },
+      "405": {
+        "ID": "405",
+        "TITLE": "Method Not Allowed",
+        "DESCRIPTION": ""
+      },
+      "406": {
+        "ID": "406",
+        "TITLE": "Method Not Acceptable",
+        "DESCRIPTION": ""
+      },
+      "407": {
+        "ID": "407",
+        "TITLE": "Proxy Authentication Required",
+        "DESCRIPTION": ""
+      },
+      "408": {
+        "ID": "408",
+        "TITLE": "Request Timeout",
+        "DESCRIPTION": "Some network, proxy, device, service needs to hurry up or instruction needs to be smaller...",
+        "INSTRUCTIONS": "It almost never works, but if you must, you could try again."
+      },
+      "409": {
+        "ID": "409",
+        "TITLE": "Conflict",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": "..."
+      },
+      "410": {
+        "ID": "410",
+        "TITLE": "Gone",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": "https://www.youtube.com/watch?v=jr47YisIsz8"
+      },
+      "411": {
+        "ID": "411",
+        "TITLE": "Length Required",
+        "DESCRIPTION": ""
+      },
+      "412": {
+        "ID": "412",
+        "TITLE": "Precondition Failed",
+        "DESCRIPTION": ""
+      },
+      "413": {
+        "ID": "413",
+        "TITLE": "Payload Too Large",
+        "DESCRIPTION": "Just can't digest something that big...",
+        "INSTRUCTIONS": ""
+      },
+      "414": {
+        "ID": "414",
+        "TITLE": "Uri Too Long",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "415": {
+        "ID": "415",
+        "TITLE": "Unsupported Media Type",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "416": {
+        "ID": "416",
+        "TITLE": "Range Not Satisfiable",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "417": {
+        "ID": "427",
+        "TITLE": "Expectation Failed",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "421": {
+        "ID": "421",
+        "TITLE": "Misdirected Request",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "422": {
+        "ID": "422",
+        "TITLE": "Unprocessable Content",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "423": {
+        "ID": "422",
+        "TITLE": "Locked",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "424": {
+        "ID": "424",
+        "TITLE": "Failed Dependency",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "425": {
+        "ID": "425",
+        "TITLE": "Too Early",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "426": {
+        "ID": "426",
+        "TITLE": "Upgrade Required",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "428": {
+        "ID": "428",
+        "TITLE": "Precondition Required",
+        "DESCRIPTION": ""
+      },
+      "429": {
+        "ID": "429",
+        "TITLE": "Too Many Requests",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "431": {
+        "ID": "431",
+        "TITLE": "Request Header Fields Too Large",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "451": {
+        "ID": "451",
+        "TITLE": "Unavailable For Legal Reasons",
+        "DESCRIPTION": "",
+        "INSTRUCTIONS": ""
+      },
+      "500": {
+        "ID": "500",
+        "TITLE": "Internal (Server-Side) Error",
+        "DESCRIPTION": "We're not exactly sure what happened, but our servers say something is wrong.",
+        "INSTRUCTIONS": ""
+      },
+      "501": {
+        "ID": "501",
+        "TITLE": "Not Implemented",
+        "DESCRIPTION": "We're getting there...just not yet.'",
+        "INSTRUCTIONS": ""
+      },
+      "502": {
+        "ID": "502",
+        "TITLE": "Bad Gateway",
+        "DESCRIPTION": ""
+      },
+      "503": {
+        "ID": "503",
+        "TITLE": "Service Unavailable",
+        "DESCRIPTION": ""
+      },
+      "504": {
+        "ID": "504",
+        "TITLE": "Gateway Timeout",
+        "DESCRIPTION": ""
+      },
+      "505": {
+        "ID": "505",
+        "TITLE": "HTTP Version Not Supported",
+        "DESCRIPTION": ""
+      },
+      "506": {
+        "ID": "506",
+        "TITLE": "Variant Also Negotiates",
+        "DESCRIPTION": ""
+      },
+      "507": {
+        "ID": "507",
+        "TITLE": "Insufficient Storage",
+        "DESCRIPTION": ""
+      },
+      "508": {
+        "ID": "508",
+        "TITLE": "Loop Detected",
+        "DESCRIPTION": ""
+      },
+      "510": {
+        "ID": "510",
+        "TITLE": "Not Extended",
+        "DESCRIPTION": ""
+      },
+      "511": {
+        "ID": "011",
+        "TITLE": "Network Authentication Required",
+        "DESCRIPTION": "The client needs to authenticate to gain network access."
+      },
+
       "__COMMENTS": "",
       "TITLE": "Error",
       "TITLES": "Errors",
       "DESCRIPTION": "...",
       "OOPS!": "Oops!",
       "SORRY": "Sorry",
-      "ERROR_500_DESCRIPTION": "Server Error 500. We're not exactly sure what happened, but our servers say something is wrong.",
       "PAGE_NOT_FOUND": "Page not found.",
       "PAGE_NOT_AVAIABLE": "Page not available.",
       "PAGE_NOT_DISPLAYABLE": "Page not displayable.",
       "PAGE_NOT_FOUND_DESCRIPTION": "The page you are looking for not available!.",
       "SORRY_PAGE_NOT_FOUND": "Sorry - page not found.",
-      "WE_ARE_OFFLINE": "Offline",
-      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS": "We can't show you this images because you aren't, connected to the internet.",
-      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS2": "When you’re back online try again",
-      "ERRORS": "Errors",
-      "404BASIC": "404 Basic",
-      "404COVER": "404 Cover",
-      "404ALT": "404 Alt",
-      "OFFLINE": "Offline Page"
+      "ERRORS": "Errors"
     },
     "EXAMPLES": {
       "__COMMENTS": "",
@@ -679,6 +1021,12 @@
       "DESCRIPTION": "...",
       "FLUID": "Fluid",
       "BOXED": "Boxed"
+    },
+    "FUNCTIONALITIES": {
+      "__COMMENTS": "See STAKEHOLDERS, CAPABILITIES, QUALITIES",
+      "TITLE": "Functionality",
+      "TITLES": "Functionalities",
+      "DESCRIPTION": "..."
     },
     "GREETINGS": {
       "__COMMENTS": "See APPRECIATIONS, DEPARTURES",
@@ -1267,18 +1615,48 @@
       "TITLE": "Quality",
       "TITLES": "Qualities",
       "DESCRIPTION": "...",
-      "SECURE": "Secure",
-      "CONFIDENTIAL": "Confidential",
+      "ACCOUNTABLE": "Accountable",
+      "ADAPTABLE": "Adaptable",
+      "ANALYSABLE": "Analysable",
+      "APPROPRIATE": "Appropriate",
       "AUDITED": "Audited",
       "AVAILABLE": "Available",
-      "USABLE": "Usable",
-      "PERFORMANT": "Performant",
+      "COMPATIBLE": "Compatible",
+      "CONFIDENTIAL": "Confidential",
+      "CONFIGURABLE": "Configurable",
+      "CORRECT": "Correct",
       "ECONOMIC": "Economic",
-      "RESPONSIVE": "Responsive",
+      "ENHANCEABLE": "Enhanceable",
+      "FORGIVING": "Forgiving",
+      "FUNCTIONAL": "Functional",
+      "INSTALLABLE": "Installable",
+      "INTEGRITY": "Integrity",
+      "INTEROPERABLE": "Interoperable",
+      "LEARNABLE": "Learnable",
       "MAINTAINABLE": "Maintainable",
+      "MODULAR": "Modular",
+      "MODIFIABLE": "Modifiable",
+      "PERFORMANT": "Performant",
+      "PORTABLE": "Portable",
+      "RESPONSIVE": "Responsive",
+      "RECOVERABLE": "Recoverable",
+      "REPLACEABLE": "Replaceable",
+      "REUSABLE": "Reusable",
+      "SECURE": "Secure",
+      "TESTABLE": "Testable",
       "UNDERSTANDABLE": "Understandable",
-      "ANALYSABLE": "Analysable",
-      "ENHANCEABLE": "Enhanceable"
+      "USABLE": "Usable",
+
+      "FUNCTIONALITY": "Functionality",
+      "PERFORMANCE_EFFICIENCY": "Performance Efficiency",
+      "COMPATIBILTIY": "Compatibility",
+      "INTEROPERABILITY": "Interoperability",
+      "USABILITY": "Usability",
+      "RELIABILITY": "Reliability",
+      "MATURITY": "Maturity",
+      "SECURITY": "Security",
+      "MAINTAINABILITY": "Maintainability",
+      "PORTABILITY": "Portability"
     },
     "RELATIONSHIPS": {
       "__COMMENTS": "See FAMILY",
@@ -1442,6 +1820,21 @@
       "COMPACT": "Compact",
       "REGULAR": "Regular",
       "TIGHT": "Tight"
+    },
+    "STAKEHOLDERS": {
+      "__COMMENTS": "",
+      "TITLE": "Stakeholder",
+      "TITLES": "Stakeholders",
+      "CONSUMER": "Service Consumer",
+      "BUSINESS": "Service Provider",
+      "CUSTOMER_SUPPORT": "Customer Support",
+      "BUSINESS_SUPPORT": "Business Support",
+      "OPERATIONS": "Service Operators",
+      "MAINTAINERS": "System Maintainers",
+      "MONITORERS": "System Monitorers",
+      "QUALITY_ASSURANCE": "Quality Assurance",
+
+      "FUNCTIONALITY": "Functionalities"
     },
     "STATES": {
       "__COMMENTS": "Progression of generic state of records and resources, towards delivering OUTCOMES.",
@@ -1776,31 +2169,32 @@
       "CHECK_YOUR_EMAIL": "Check your Email"
     }
   },
+
   "APPS": {
-    "__COMMENTS": "",
-    "TITLE": "App",
-    "TITLES": "Apps",
-    "DESCRIPTION": "...",
-    "SPIKE": {
-      "TITLE": "Spike",
+      "__COMMENTS": "",
+      "TITLE": "App",
+      "TITLES": "Apps",
       "DESCRIPTION": "...",
-      "AREAS": {
-        "SPIKE": "Spike",
-        "s": null,
-        "SUBSPIKE": "Subspikes"
+      "SPIKE": {
+        "TITLE": "Spike",
+        "DESCRIPTION": "...",
+        "AREAS": {
+          "SPIKE": "Spike",
+          "s": null,
+          "SUBSPIKE": "Subspikes"
+        }
+      },
+      "ARCHITECTURE": {
+        "TITLE": "Architecture",
+        "DESCRIPTION": "..."
+      },
+      "EDUCATION": {
+        "TITLE": "Education",
+        "DESCRIPTION": "..."
+      },
+      "HEALTH": {
+        "TITLE": "Health",
+        "DESCRIPTION": "..."
       }
-    },
-    "ARCHITECTURE": {
-      "TITLE": "Architectur e",
-      "DESCRIPTION": "..."
-    },
-    "EDUCATION": {
-      "TITLE": "Education",
-      "DESCRIPTION": "..."
-    },
-    "HEALTH": {
-      "TITLE": "Health",
-      "DESCRIPTION": "..."
     }
   }
-}

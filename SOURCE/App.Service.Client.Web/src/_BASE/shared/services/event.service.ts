@@ -17,6 +17,7 @@ export class EventService {
 
     private handler = new Subject<Event>();
   constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 
     /**

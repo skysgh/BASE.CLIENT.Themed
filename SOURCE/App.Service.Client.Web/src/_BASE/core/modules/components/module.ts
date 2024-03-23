@@ -4,14 +4,17 @@ import { CommonModule } from '@angular/common';
 import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+// Services:
 import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
 
-import { BaseComponentsMarkdownComponent } from './markdown/component';
-import { BaseComponentsPdfComponent } from './pdf/component';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { BaseComponentsSummaryItemComponent } from './summaryitem/component';
-import { BaseComponentsSummaryItemSelectorComponent } from './sunmaryitemselector/component';
+// Components
+import { BaseCoreCommonComponentsGoogleAnalyticsComponent } from './google-analytics/component';
+import { BaseCoreCommonComponentsGoogleMapsComponent } from './google-maps/component';
+import { BaseCoreCommonComponentsMarkdownComponent } from './markdown/component';
+import { BaseCoreCommonComponentsPdfComponent } from './pdf/component';
+import { BaseCoreCommonComponentsSummaryItemComponent } from './summaryitem/component';
+import { BaseCoreCommonComponentsSummaryItemSelectorComponent } from './sunmaryitemselector/component';
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
@@ -24,17 +27,21 @@ import { BaseComponentsSummaryItemSelectorComponent } from './sunmaryitemselecto
     TranslateModule
   ],
   exports: [
-    BaseComponentsMarkdownComponent,
-    BaseComponentsPdfComponent,
-    BaseComponentsSummaryItemComponent,
-    BaseComponentsSummaryItemSelectorComponent
+    BaseCoreCommonComponentsGoogleAnalyticsComponent,
+    BaseCoreCommonComponentsGoogleMapsComponent,
+    BaseCoreCommonComponentsMarkdownComponent,
+    BaseCoreCommonComponentsPdfComponent,
+    BaseCoreCommonComponentsSummaryItemComponent,
+    BaseCoreCommonComponentsSummaryItemSelectorComponent
   ],
   declarations: [
     // define what Components belong to this Module (i.e., are not `standalone`)
-    BaseComponentsMarkdownComponent,
-    BaseComponentsPdfComponent,
-    BaseComponentsSummaryItemComponent,
-    BaseComponentsSummaryItemSelectorComponent
+    BaseCoreCommonComponentsGoogleAnalyticsComponent,
+    BaseCoreCommonComponentsGoogleMapsComponent,
+    BaseCoreCommonComponentsMarkdownComponent,
+    BaseCoreCommonComponentsPdfComponent,
+    BaseCoreCommonComponentsSummaryItemComponent,
+    BaseCoreCommonComponentsSummaryItemSelectorComponent
   ],
   providers: [
     // declare services to dependency inject into constructors.

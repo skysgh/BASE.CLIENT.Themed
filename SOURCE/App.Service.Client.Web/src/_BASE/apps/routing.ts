@@ -10,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 // Module specific components:
 import { BaseAppsRouteComponent } from "./ui/_route/component";
 import { TranslateService } from '@ngx-translate/core';
-import { AppBaseErrorsModule } from '../core/errors/module';
+import { AppBaseErrorsModule } from '../core/modules/errors/module';
 import { DiagnosticsTraceService } from '../shared/services/diagnostics.service';
 
 import { System } from '../shared/constants/contracts/system';

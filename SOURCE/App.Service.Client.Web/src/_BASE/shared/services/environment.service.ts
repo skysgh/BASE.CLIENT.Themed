@@ -1,6 +1,7 @@
 // Import dependencies:
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { DiagnosticsTraceService } from './diagnostics.service';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
@@ -14,8 +15,9 @@ export class EnvironmentService {
   // From there, can get access to base service url. 
   public systemEnvironment: any;
 
-  constructor() {
+  constructor(/*NEVER: private diagnosticsTraceService:DiagnosticsTraceService*/) {
     this.systemEnvironment = environment;
+    //this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 
   public isJsonServerContext: boolean = true;

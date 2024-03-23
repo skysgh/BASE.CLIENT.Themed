@@ -613,14 +613,7 @@
       "PAGE_NOT_DISPLAYABLE": "页面无法显示。",
       "PAGE_NOT_FOUND_DESCRIPTION": "您所查找的页面不存在！。",
       "SORRY_PAGE_NOT_FOUND": "抱歉 - 页面未找到。",
-      "WE_ARE_OFFLINE": "离线",
-      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS": "我们无法显示这些图片，因为您未连接到互联网。",
-      "WE_ARE_OFFLINE_IMAGE_INSTRUCTIONS2": "当您恢复在线状态后，请重试",
-      "ERRORS": "错误",
-      "404BASIC": "404 基本",
-      "404COVER": "404 封面",
-      "404ALT": "404 替代",
-      "OFFLINE": "离线页面"
+      "ERRORS": "错误"
     },
     "EXAMPLES": {
       "__COMMENTS": "",

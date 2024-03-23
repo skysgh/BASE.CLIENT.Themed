@@ -71,25 +71,33 @@ export const system: System = {
       private: {
         welcome: "/pages/information/welcome",
       },
+
       public: {
         information: {
           root: "pages/information/",
+          index: "pages/information/index",
           privacy: "/pages/information/privacy",
           dataUse: "/pages/information/datause",
           terms: "/pages/information/terms",
           faq: "/pages/information/faq",
           aboutCompany: "/pages/information/aboutus",
           aboutProduct: "/pages/information/about",
-          contactUs: "/pages/information/contactus",
+          contact: "/pages/information/contact",
           pricing: "/pages/information/pricing",
           timeline: "/pages/information/timeline",
           news: "/pages/information/news",
           sitemap: "/pages/information/sitemap",
-          correction: "/pages/information/correction",
+          corrections: "/pages/information/corrections",
           support: "/pages/information/support",
         },
+
         landing: {
-          root: "/landing/"
+          root: "/landing/",
+          index: "/landing/index",
+          comingSoon:"/landing/coming-soon",
+          opportunities: "/landing/opportunities",
+          pricing: "/landing/pricing",
+          maintenance: "/landing/maintenance"
         },
       },
     },
@@ -146,6 +154,8 @@ export const system: System = {
         },
         people: {
           root: "/apps/education/people/",
+          all: "/apps/education/people/all",
+          learners: "/apps/education/people/learners",
           teachers: "/apps/education/people/teachers/",
           caretakers: "/apps/education/people/caretakers/",
           administrators: "/apps/education/people/administrators/",
@@ -207,6 +217,15 @@ export const system: System = {
     misc: {
       todo: "/"
     }
+  },
+  keys: {
+    GoogleAPIs: '',
+    GoogleAnalytics: '',
+    GoogleMaps: 'AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE'
+    
+  },
+  localisation: {
+    cultureCode: 'en'
   }
 }
 

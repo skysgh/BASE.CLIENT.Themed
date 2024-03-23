@@ -17,7 +17,7 @@ Named follows the following pattern: `<component-name>.component{.ext}`.
 
 // Decorating Directive that binds the class with its view:
 @Component({
-  selector: 'base-demo-foobar'
+  selector: 'app-base-demo-foobar'
   templateUrl: './base-demo-foobar.component.html'
   styleUrls : './base-demo-foobar.component.scss'
   // An array of the components, directives, and packages that your template references
@@ -57,7 +57,7 @@ Second section of code is for describing the component's and it's 3 basic things
 
 ```
 @Component({
-  selector: 'base-demo-foobar'
+  selector: 'app-base-demo-foobar'
   templateUrl: './base-demo-foobar.component.html'
   styleUrls : './base-demo-foobar.component.scss'
 })

@@ -7,7 +7,7 @@ import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseComponentsSummaryItemSelectorComponent {
+export class BaseCoreCommonComponentsSummaryItemSelectorComponent {
 
   
   @Input() // Adjust the duration as needed
@@ -99,7 +99,7 @@ export class BaseComponentsSummaryItemSelectorComponent {
   public clearPressTimer(event:MouseEvent) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.clearPressTimer(item)`);
     clearTimeout(this.pressTimer);
-    event.stopPropagation();
+    //No...best it doesn't stop it: event.stopPropagation();
   }
 
   // Handle multiple item selection by holding down
@@ -120,7 +120,7 @@ export class BaseComponentsSummaryItemSelectorComponent {
 
   // Handle operation click
   onOperationClick(event: MouseEvent, item: SummaryItemVTO, operation: string) {
-    event.stopPropagation(); // Prevent event bubbling
+    //event.stopPropagation(); // Prevent event bubbling
     this.operationClicked.emit({ item, operation });
 
     

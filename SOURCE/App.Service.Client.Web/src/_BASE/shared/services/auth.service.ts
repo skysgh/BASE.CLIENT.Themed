@@ -42,8 +42,11 @@ export class AuthenticationService {
     private sessionStorageService: SessionStorageService,
     private errorService: ErrorService,
 
+
     private http: HttpClient,
     private store: Store) {
+
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 
     var user = JSON.parse(this.sessionStorageService.getItem('currentUser')!);
     this.currentUserSubject = new BehaviorSubject<User>(user);

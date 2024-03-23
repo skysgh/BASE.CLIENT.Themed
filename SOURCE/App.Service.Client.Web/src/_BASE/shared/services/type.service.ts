@@ -1,7 +1,14 @@
 import { Injectable } from "@angular/core";
+import { DiagnosticsTraceService } from "./diagnostics.service";
 
 @Injectable({ providedIn: 'root' })
 export class TypeService {
+
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
+  }
+
   create<T>(type: (new () => T)): T {
     return new type();
   }

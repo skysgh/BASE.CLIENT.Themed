@@ -1,9 +1,15 @@
 import { Injectable } from "@angular/core";
 import { ignore } from "@automapper/core";
+import { DiagnosticsTraceService } from "./diagnostics.service";
 
 
 @Injectable({ providedIn: 'root' })
 export class UrlService {
+
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
+  }
 
   public buildPageUrl(...parts: string[]): string {
     return this.buildUrl(true, ...parts);

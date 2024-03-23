@@ -39,6 +39,8 @@ export class LanguageService extends ItemsCollectionServiceBase<SystemLanguage, 
   ) {
     super(diagnosticsTraceService, translate);
 
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
     // call explicitly from sub class, not super,
     // as otherwise repositorySErvice will not yet have been made into a private property,
     // for exampel

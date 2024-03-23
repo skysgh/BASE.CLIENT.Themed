@@ -4,11 +4,11 @@ import { DiagnosticsTraceService } from "../../../../shared/services/diagnostics
 
 
 @Component({
-  selector: 'app-search-summaryitem',
+  selector: 'app-base-core-common-components-summaryitem',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseComponentsSummaryItemComponent implements OnInit {
+export class BaseCoreCommonComponentsSummaryItemComponent implements OnInit {
 
   /**
    * The exposed property to provide a SummaryItem

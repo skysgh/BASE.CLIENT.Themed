@@ -68,8 +68,15 @@
       "description": "Italian language",
       "languageCode": "it",
       "flagImageId": "italy"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "enabled": true,
+      "title": "Gagana Samoa",
+      "description": "Samoan language",
+      "languageCode": "ws",
+      "flagImageId": "ws"
     }
-
   ],
   "base_statementTypes": [
     {

@@ -86,13 +86,21 @@ export const MENU: IHasMenuItem[] =
           description: 'APPS.PEOPLE.DESCRIPTION',
           icon: 'users',
           link: system.navigation.apps.education.people.root,
-          parentId: 203,
+          parentId: 203, 
           subItems: [
+            {
+              id: 20321,
+              title: 'BASE.DOMAINS.EDUCATION.ROLES.ALL',
+              description: 'BASE.DOMAINS.EDUCATION.DESCRIPTION',
+              link: system.navigation.apps.education.people.root,
+              icon: 'map-pin',
+              parentId: 20321
+            },
             {
               id: 20321,
               title: 'BASE.DOMAINS.EDUCATION.ROLES.LEARNERS',
               description: 'BASE.DOMAINS.EDUCATION.DESCRIPTION',
-              link: system.navigation.apps.education.places.root,
+              link: system.navigation.apps.education.people.learners,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -249,7 +257,7 @@ export const MENU: IHasMenuItem[] =
           parentId: 30,
           title: 'BASE.CORRECTIONS.TITLE',
           description: '...',
-          link: system.navigation.pages.public.information.correction,
+          link: system.navigation.pages.public.information.corrections,
         },
         {
           id: 304,

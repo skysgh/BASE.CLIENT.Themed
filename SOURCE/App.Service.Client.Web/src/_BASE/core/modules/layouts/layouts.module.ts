@@ -26,7 +26,7 @@ import lottie from 'lottie-web';
 
 // Top side:
 import { BaseLayoutTopBarComponent } from './topbar/topbar.component';
-import { BaseLayoutTopBarContextLanguageComponent } from './topbar/lang/component';
+import { BaseLayoutTopBarContextLanguageComponent } from './topbar/language/component';
 import { BaseLayoutTopBarContextNotificationsComponent } from './topbar/notifications/component';
 import { BaseLayoutTopBarContextShoppingComponent } from './topbar/shopping/component';
 import { BaseLayoutTopBarContextHueComponent } from './topbar/hue/component';

@@ -23,7 +23,7 @@ export class ObjectMappingService {
   mapper: Mapper = mapper;
 
   constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
-
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 
   /**

@@ -118,12 +118,7 @@
         "LOGOUT": "登出",
         "SUCCESSMESSAGE": "成功讯息",
         "TWOSTEPVERIFICATION": "两步验证",
-        "ERRORS": "错误",
-        "404BASIC": "404 基本款",
-        "404COVER": "404封面",
-        "404ALT": "第404章",
-        "500": "500",
-        "OFFLINE": "离线页面"
+        "ERRORS": "错误"
       }
     },
     "PAGES": {

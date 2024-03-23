@@ -1,5 +1,6 @@
 // Import dependencies:
 import { Injectable } from '@angular/core';
+import { DiagnosticsTraceService } from './diagnostics.service';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
@@ -8,6 +9,7 @@ import { Injectable } from '@angular/core';
   // (ie service provider who funded the development by a developer)
 export class SponsorService {
   private title: string = "Some Corp";  
-  constructor(){
+  constructor(private diagnosticsTraceService: DiagnosticsTraceService){
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 }

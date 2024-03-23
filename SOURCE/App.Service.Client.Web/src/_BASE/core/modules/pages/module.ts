@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Import template:
-import { BreadcrumbsComponent } from '../../modules/components/breadcrumbs/breadcrumbs.component';
+import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../modules/components/breadcrumbs/component';
 import { SharedModule } from '../../../../app/shared/shared.module';
 // Import  Base.Common.Models:
 
@@ -18,12 +18,10 @@ import { SharedModule } from '../../../../app/shared/shared.module';
 // Import Module specific.services:
 // import { SpikeSpikesRepositoryService } from "./services/spike-repository.service"
 // Import Module specific.components:
-import { BaseCorePagesROComponent } from './ui/_routeoutlet/component';
-import { BaseInformationPrivacyPolicyComponent } from './public/information/ui/privacy/component';
-import { BaseInformationTermsAndConditionsComponent } from './public/information/ui/terms_conditions/component';
+import { BaseCorePagesROComponent } from './components/_routeoutlet/component';
 import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
-import { BasePagesInformationModule } from './public/information/module';
-import { BasePagesLandingModule } from './public/landing/module';
+import { BaseCorePagesInformationModule } from './information/module';
+import { BaseCorePagesLandingModule } from './landing/module';
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
@@ -45,10 +43,8 @@ import { BasePagesLandingModule } from './public/landing/module';
         // Admittedly in he case of information, their simplicity doesn't
         // warant a module for each, but out of habit I *think* I prefer paying
         // a rigour price early, in case I manouverability later.
-        { path: '', component: BaseInformationTermsAndConditionsComponent },
-        { path: 'landing', component: BaseInformationPrivacyPolicyComponent },
-        { path: 'information', redirectTo :'' },
-        
+        { path: 'information', loadChildren: () => import('./information/module').then(m => m.BaseCorePagesInformationModule) },
+        { path: 'landing', loadChildren: () => import('./landing/module').then(m => m.BaseCorePagesLandingModule) },
       ]
     ),
     // Import classes within the above specified import files.
@@ -56,8 +52,8 @@ import { BasePagesLandingModule } from './public/landing/module';
     CommonModule,
     FormsModule,
     SharedModule,
-    BasePagesLandingModule,
-    BasePagesInformationModule
+    BaseCorePagesLandingModule,
+    BaseCorePagesInformationModule
     // Module specific:
     //SpikeRoutingModule,
   ],
@@ -74,7 +70,7 @@ import { BasePagesLandingModule } from './public/landing/module';
     // declare services to dependency inject into constructors.
   ]
 })
-export class BasePagesModule {
+export class BaseCorePagesModule {
 
   constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
     this.diagnosticsTraceService.debug("BasePagesModule.constructor()");

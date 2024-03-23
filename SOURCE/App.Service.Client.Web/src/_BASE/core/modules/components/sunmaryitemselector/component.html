@@ -8,7 +8,7 @@
        (mouseleave)="clearPressTimer($event)"
        class="summary-item">
 
-    <app-search-summaryitem [summaryItem]="item"></app-search-summaryitem>
+    <app-base-core-common-components-summaryitem [summaryItem]="item"></app-base-core-common-components-summaryitem>
 
     <span *ngIf="selectedItems.includes(item)" class="selected">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"

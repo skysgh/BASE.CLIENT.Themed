@@ -116,12 +116,8 @@
         "LOGOUT": "Se déconnecter",
         "SUCCESSMESSAGE": "Message de réussite",
         "TWOSTEPVERIFICATION": "Vérification en deux étapes",
-        "ERRORS": "les erreurs",
-        "404BASIC": "404 de base",
-        "404COVER": "404 Couverture",
-        "404ALT": "404 Autre",
-        "500": "500",
-        "OFFLINE": "Hors ligne"
+        "ERRORS": "les erreurs"
+
       }
     },
     "PAGES": {

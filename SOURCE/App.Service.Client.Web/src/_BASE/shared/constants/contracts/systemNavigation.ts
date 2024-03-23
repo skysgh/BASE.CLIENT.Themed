@@ -1,4 +1,3 @@
-
 export interface SystemNavigation {
   // relative:
   up: string;
@@ -16,25 +15,33 @@ export interface SystemNavigation {
     private: {
       welcome: string;
     },
+
     public: {
       information: {
         root: string;
+        index: string;
         privacy: string;
         dataUse: string;
         terms: string;
         faq: string;
         aboutCompany: string;
         aboutProduct: string;
-        contactUs: string;
+        contact: string;
+
         pricing: string;
         timeline: string;
         news: string;
         sitemap: string;
-        correction: string;
+        corrections: string;
         support: string;
       }
       landing: {
         root: string;
+        index: string;
+        comingSoon: string;
+        pricing: string;
+        maintenance: string;
+        opportunities: string;
       },
     }
   },
@@ -91,6 +98,8 @@ export interface SystemNavigation {
       },
       people: {
         root: string;
+        all: string;
+        learners: string;
         caretakers: string;
         teachers: string;
         administrators: string;
