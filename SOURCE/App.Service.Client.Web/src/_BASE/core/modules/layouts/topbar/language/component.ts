@@ -29,8 +29,9 @@ export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
   // Language: stuff:
   activeLanguageCode:string = '';
   flagvalue: string = '';
-  valueset: string = '';
+  //valueset: string = '';
   languageTitle: string = '';
+
   constructor(
     systemService: SystemService,
     protected diagnosticsTraceService: DiagnosticsTraceService,
@@ -68,24 +69,8 @@ export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
         //Get an array of one, matching current language description:
         var tmp = list.filter(i => i.languageCode === this.activeLanguageCode);
 
-        if (tmp.length === 0) {
-          // NO match, so can't set to a specific flag. Fallback:
-          this.languageTitle = '...';
-          this.valueset = this.system.sources.assets.images.flags + '/00.svg';
-          this.flagvalue = this.system.sources.assets.images.flags + '/00.svg';
-        } else {
-          //tmp = tmp[0];
-          // Match. So image will be ok.
-          // And we can also set the language title.
-          this.languageTitle = tmp[0].title;
+        this.setLanguage(tmp.length?tmp[0]:undefined, false);
 
-          this.diagnosticsTraceService.info("languageTitle:" + this.languageTitle);
-          // go through array of 1:
-          // and get it's flag url:
-          this.flagvalue = `${this.system.sources.assets.images.flags}${tmp[0].languageCode}.svg`;
-        }
-        this.diagnosticsTraceService.info("valueset:" + this.valueset);
-        this.diagnosticsTraceService.info("FlagValue:" + this.flagvalue);
 
         this.systemLanguages$ = of(list);
 
@@ -97,12 +82,19 @@ export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
   /***
  * Language Value Set
  */
-  setLanguage(systemLanguage: SystemLanguage) {
+  setLanguage(systemLanguage?: SystemLanguage, setLanguage:boolean=true) {
+    // Same logic really, except for setting language.
     if (systemLanguage) {
       this.languageTitle = systemLanguage.title;
       this.flagvalue = `${this.system.sources.assets.images.flags}${systemLanguage.languageCode}.svg`;
 
-      this.translationService.setLanguage(systemLanguage.languageCode!);
+      if (setLanguage) {
+        this.translationService.setLanguage(systemLanguage.languageCode!);
+      }
+      this.activeLanguageCode = systemLanguage.languageCode;
+    }else {
+      this.languageTitle = '...';
+      this.flagvalue = this.system.sources.assets.images.flags + '/00.svg';
     }
   }
 
