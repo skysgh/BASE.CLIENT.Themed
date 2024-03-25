@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 // Configuration:
-import { System } from '../../../../shared/constants/contracts/system';
+import { System } from '../../../constants/contracts/system';
 // Services:
-import { SystemService } from '../../../../shared/services/system.service';
+import { SystemService } from '../../../services/system.service';
 
 @Component({
   selector: 'app-base-core-errors-500-todo',

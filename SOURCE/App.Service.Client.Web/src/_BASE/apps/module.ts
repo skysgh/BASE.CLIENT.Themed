@@ -14,16 +14,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Other dependencies:
-import { CustomCommonModule } from "../shared/custom-common.module";
+import { BaseCoreCommonModule } from "../core/modules/common/module";
 
 // Module specific:
 //import { CustomAppsRoutingModule } from "./routing.module";
 import { BaseAppsRouteComponent } from "./ui/_route/component";
 import { RouterModule, Routes } from '@angular/router';
 import { BaseAppsRoutingModule } from './routing';
-import { SystemLanguagesRepositoryService } from '../shared/services/repositories/system.languages.repository.service';
-import { LanguageService } from '../shared/services/language.service';
-import { DiagnosticsTraceService } from '../shared/services/diagnostics.service';
+import { SystemLanguagesRepositoryService } from '../core/services/repositories/system.languages.repository.service';
+import { LanguageService } from '../core/services/language.service';
+import { DiagnosticsTraceService } from '../core/services/diagnostics.service';
 //Components:
 
 
@@ -36,7 +36,7 @@ import { DiagnosticsTraceService } from '../shared/services/diagnostics.service'
     CommonModule,
     FormsModule,
     // Custom specific:
-    CustomCommonModule,
+   // BaseCoreCommonModule,
     // Module specific:
     BaseAppsRoutingModule
     // No components

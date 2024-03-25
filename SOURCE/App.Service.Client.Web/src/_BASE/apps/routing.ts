@@ -10,10 +10,10 @@ import { TranslateModule } from '@ngx-translate/core';
 // Module specific components:
 import { BaseAppsRouteComponent } from "./ui/_route/component";
 import { TranslateService } from '@ngx-translate/core';
-import { AppBaseErrorsModule } from '../core/modules/errors/module';
-import { DiagnosticsTraceService } from '../shared/services/diagnostics.service';
+import { AppBaseCoreErrorsModule } from '../core/modules/errors/module';
+import { DiagnosticsTraceService } from '../core/services/diagnostics.service';
 
-import { System } from '../shared/constants/contracts/system';
+import { System } from '../core/constants/contracts/system';
 
 
 const routes: Routes = [
@@ -44,7 +44,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
   exports: [RouterModule]
 })

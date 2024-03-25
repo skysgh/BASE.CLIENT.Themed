@@ -1,9 +1,9 @@
 // Contracts:
-import { IHasUUID } from "../../../shared/models/contracts/IHasUUID";
-import { IHasTitleAndDescription } from "../../../shared/models/contracts/IHasTitleAndDescription";
+import { IHasUUID } from "../../../core/models/contracts/IHasUUID";
+import { IHasTitleAndDescription } from "../../../core/models/contracts/IHasTitleAndDescription";
 // Related entities:
 import { PrincipleType } from "./principle-type.model";
-import { HasTitleAndDescriptionBase } from "../../../shared/models/base/HasTitleAndDescriptionBase";
+import { HasTitleAndDescriptionBase } from "../../../core/models/base/HasTitleAndDescriptionBase";
 
 export class Principle extends HasTitleAndDescriptionBase implements IHasUUID, IHasTitleAndDescription {
   public id?: string;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 
 @Component({
   selector: 'app-common-search-read',

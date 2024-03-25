@@ -6,7 +6,7 @@ import { defineElement } from "@lordicon/element";
 import lottie from 'lottie-web';
 
 // Services:
-import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../services/diagnostics.service';
 // MOdules:
 import { TranslateModule } from '@ngx-translate/core';
 import { AppBaseErrorsRoutingModule } from "./routing";
@@ -16,7 +16,7 @@ import { BaseErrors404CoverComponent } from './404/cover/component';
 import { BaseErrors404AltComponent } from './404/alt/component';
 import { BaseErrors500TodoComponent } from './500/component';
 import { BaseErrorsOfflineComponent } from './000/offline/component';
-import { TranslationService } from '../../../shared/services/translation.service';
+import { TranslationService } from '../../services/translation.service';
 
 @NgModule({
   declarations: [
@@ -27,13 +27,13 @@ import { TranslationService } from '../../../shared/services/translation.service
     BaseErrors500TodoComponent
   ],
   imports: [
-    TranslateModule,
+    TranslateModule.forChild(),
     CommonModule,
     AppBaseErrorsRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppBaseErrorsModule {
+export class AppBaseCoreErrorsModule {
 
   constructor(private diagnosticsTraceService: DiagnosticsTraceService, private translationService: TranslationService) {
 

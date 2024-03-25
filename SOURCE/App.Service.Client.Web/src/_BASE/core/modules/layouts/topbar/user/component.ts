@@ -1,12 +1,12 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { SystemService } from "../../../../../shared/services/system.service";
-import { System } from "../../../../../shared/constants/contracts/system";
-import { EventService } from "../../../../../shared/services/event.service";
+import { SystemService } from "../../../../services/system.service";
+import { System } from "../../../../constants/contracts/system";
+import { EventService } from "../../../../services/event.service";
 import { DOCUMENT } from "@angular/common";
-import { AuthenticationService } from "../../../../../shared/services/auth.service";
-import { AuthfakeauthenticationService } from "../../../../../shared/services/authfake.service";
-import { TokenStorageService } from '../../../../../shared/services/token-storage.service';
+import { AuthenticationService } from "../../../../services/auth.service";
+import { AuthfakeauthenticationService } from "../../../../services/authfake.service";
+import { TokenStorageService } from '../../../../services/token-storage.service';
 import { Router } from '@angular/router';
 
 @Component({

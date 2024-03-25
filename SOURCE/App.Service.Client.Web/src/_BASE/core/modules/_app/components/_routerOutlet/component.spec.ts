@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BaseRouterOutletComponent } from './component';
-import { SystemService } from '../../../../../shared/services/system.service';
+import { SystemService } from '../../../../services/system.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

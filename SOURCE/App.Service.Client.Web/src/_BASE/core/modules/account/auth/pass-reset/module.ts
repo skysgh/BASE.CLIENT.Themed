@@ -8,10 +8,11 @@ import { defineElement } from "@lordicon/element";
 import lottie from 'lottie-web';
 
 // Component
-import { PassResetRoutingModule } from "./routing.module";
+import { PassResetRoutingModule } from "./routing";
 import { BasicComponent } from './basic/component';
 import { CoverComponent } from './cover/component';
 import { TranslateModule } from '@ngx-translate/core';
+import { BaseCoreCommonComponentsModule } from '../../../common/components/module';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,10 @@ import { TranslateModule } from '@ngx-translate/core';
     CoverComponent
   ],
   imports: [
-    TranslateModule,
     CommonModule,
+    TranslateModule.forChild(),
+    BaseCoreCommonComponentsModule,
+
     NgbCarouselModule,
     ReactiveFormsModule,
     FormsModule,

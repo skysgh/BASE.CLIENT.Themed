@@ -4,10 +4,11 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Component
-import { LockScreenRoutingModule } from "./routing.module";
+import { LockScreenRoutingModule } from "./routing";
 import { BasicComponent } from './basic/component';
 import { CoverComponent } from './cover/component';
 import { TranslateModule } from '@ngx-translate/core';
+import { BaseCoreCommonComponentsModule } from '../../../common/components/module';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,10 @@ import { TranslateModule } from '@ngx-translate/core';
     CoverComponent
   ],
   imports: [
-    TranslateModule,
     CommonModule,
+    TranslateModule.forChild(),
+    BaseCoreCommonComponentsModule,
+
     NgbCarouselModule,
     ReactiveFormsModule,
     FormsModule,

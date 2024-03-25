@@ -3,10 +3,10 @@ import { Component, OnInit } from "@angular/core";
 // Etc.
 import { TranslateService } from "@ngx-translate/core";
 // Constants:
-import { System } from "../../../../shared/constants/contracts/system";
+import { System } from "../../../../core/constants/contracts/system";
 // Services:
-import { SystemService } from "../../../../shared/services/system.service";
-import { DiagnosticsTraceService } from "../../../../shared/services/diagnostics.service";
+import { SystemService } from "../../../../core/services/system.service";
+import { DiagnosticsTraceService } from "../../../../core/services/diagnostics.service";
 
 @Component({
   selector: 'app-base-apps-education-places',

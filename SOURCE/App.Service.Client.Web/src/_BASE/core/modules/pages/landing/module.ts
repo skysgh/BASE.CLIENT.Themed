@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import {
-  NgbCarouselModule, NgbTooltipModule, NgbCollapseModule
+  NgbCarouselModule, NgbTooltipModule, NgbCollapseModule, NgbNavModule, NgbAccordionModule, NgbDropdownModule
 } from '@ng-bootstrap/ng-bootstrap';
 
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { SharedModule } from '../../../../../app/shared/shared.module';
+import { SharedModule } from '../../../../../app/shared/module';
 
 //
-import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
 // 
 //import { BaseCorePagesLandingRoutingModule } from "./routing";
 
@@ -22,21 +22,30 @@ import { BaseCorePagesLandingIndexComponent } from './index/component';
 import { BaseCorePagesLandingMaintenanceComponent } from './maintenance/component';
 import { BaseCorePagesLandingOpportunitiesComponent } from './opportunities/component';
 import { BaseCorePagesLandingPricingComponent } from './pricing/component';
-import { BaseCommonComponmentsModule } from '../../components/module';
+import { BaseCoreCommonComponentsModule } from '../../common/components/module';
 import { BaseCoreLandingRoutingModule } from './routing';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+
+
+
+
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-    TranslateModule,
+    TranslateModule.forChild(),
+    NgbNavModule,
+    NgbAccordionModule,
+    NgbDropdownModule,
     NgbCarouselModule,
     SharedModule,
     NgbTooltipModule,
     NgbCollapseModule,
     ScrollToModule.forRoot(),
-    BaseCommonComponmentsModule,
-    BaseCoreLandingRoutingModule
+    BaseCoreCommonComponentsModule,
+    BaseCoreLandingRoutingModule,
+        SlickCarouselModule,
+
   ],
   declarations: [
     BaseCorePagesLandingComingSoonComponent,

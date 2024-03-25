@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
 // Import Module:
 
 

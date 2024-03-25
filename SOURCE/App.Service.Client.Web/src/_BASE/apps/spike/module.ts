@@ -20,8 +20,10 @@ import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/compon
 // 
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
 import { BaseAppsSpikeSubSpikesRepositoryService } from './services/repositories/subspike-repository.service';
-import { LanguageService } from '../../shared/services/language.service';
-import { SystemLanguagesRepositoryService } from '../../shared/services/repositories/system.languages.repository.service';
+import { LanguageService } from '../../core/services/language.service';
+import { SystemLanguagesRepositoryService } from '../../core/services/repositories/system.languages.repository.service';
+import { BaseCoreCommonModule } from '../../core/modules/common/module';
+import { BaseCoreCommonComponentsModule } from '../../core/modules/common/components/module';
 
 // ...submodules:
 // NO mention, as it is late loaded by routes:
@@ -32,7 +34,8 @@ import { SystemLanguagesRepositoryService } from '../../shared/services/reposito
 
 @NgModule({
   imports: [
-    TranslateModule,
+    CommonModule,
+    TranslateModule.forChild(),
     RouterModule.forChild(
       [
       // we're basically saying load a control from this module,
@@ -59,10 +62,11 @@ import { SystemLanguagesRepositoryService } from '../../shared/services/reposito
     ),
     // Import classes within the above specified import files.
     //Ag specific:
-    CommonModule,
     FormsModule,
     // Module specific:
     //SpikeRoutingModule,
+    BaseCoreCommonModule,
+    BaseCoreCommonComponentsModule,
   ],
   exports: [
     // Not sure why doing this:

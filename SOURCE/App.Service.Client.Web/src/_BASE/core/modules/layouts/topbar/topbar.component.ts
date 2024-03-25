@@ -11,29 +11,29 @@ import { DOCUMENT } from '@angular/common';
 
 //Logout
 import { environment } from '../../../../../environments/environment';
-import { AuthenticationService } from '../../../../shared/services/auth.service';
-import { AuthfakeauthenticationService } from '../../../../shared/services/authfake.service';
+import { AuthenticationService } from '../../../services/auth.service';
+import { AuthfakeauthenticationService } from '../../../services/authfake.service';
 import { Router } from '@angular/router';
-import { TokenStorageService } from '../../../../shared/services/token-storage.service';
+import { TokenStorageService } from '../../../services/token-storage.service';
 
 // Language
 import { CookieService } from 'ngx-cookie-service';
-import { LanguageService } from '../../../../shared/services/language.service';
+import { LanguageService } from '../../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 
 //import { allNotification, messages } from './data'
 //import { CartModel } from './topbar.model';
 //import { cartData } from './data';
 //  Base Services:
-import { SystemService } from '../../../../shared/services/system.service';
-import { SystemNotificationService } from '../../../../shared/services/notification.service';
-import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
-import { EventService } from '../../../../shared/services/event.service';
+import { SystemService } from '../../../services/system.service';
+import { SystemNotificationService } from '../../../services/notification.service';
+import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
+import { EventService } from '../../../services/event.service';
 // Base Models:
-import { SystemLanguage } from '../../../../shared/models/data/system-language.model';
+import { SystemLanguage } from '../../../models/data/system-language.model';
 // Constants:
-import { System } from '../../../../shared/constants/contracts/system';
-import { SystemNotification } from '../../../../shared/models/data/notification.model';
+import { System } from '../../../constants/contracts/system';
+import { SystemNotification } from '../../../models/data/notification.model';
 
 
 @Component({

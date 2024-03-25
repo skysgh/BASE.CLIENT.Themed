@@ -1,4 +1,4 @@
-import { ReferenceData } from "../../../shared/models/data/reference-item.model";
+import { ReferenceData } from "../../../core/models/data/reference-item.model";
 import { PlaceType } from "./placeType";
 
 // A **raw** model for interoperability

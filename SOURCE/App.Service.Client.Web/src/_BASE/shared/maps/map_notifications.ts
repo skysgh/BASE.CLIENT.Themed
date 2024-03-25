@@ -1,5 +1,5 @@
-import { SystemNotification } from "../models/data/notification.model";
-import { NotificationVTO } from "../models/view/NotificationVTO";
+import { SystemNotification } from "../../core/models/data/notification.model";
+import { NotificationVTO } from "../../core/models/view/NotificationVTO";
 
 // use to pass this callback to a map method:
 // eg:

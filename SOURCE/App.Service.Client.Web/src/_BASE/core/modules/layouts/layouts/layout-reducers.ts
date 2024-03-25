@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { changeMode, changeLayoutWidth, changeLayoutPosition, changeTopbar, changeDataPreloader, changeSidebarColor, changeSidebarSize, changelayout, changeSidebarImage, changeSidebarView, changeSidebarVisibility } from "./layout-action";
-import { LAYOUT_WIDTH_TYPES, LAYOUT_POSITION_TYPES, LAYOUT_TOPBAR_COLOR_TYPES, PERLOADER_TYPES, LAYOUT_TYPES, LAYOUT_MODE, SIDEBAR_COLOR, SIDEBAR_IMAGE, SIDEBAR_VIEW, SIDEBAR_SIZE, SIDEBAR_VISIBILITY } from '../../../../shared/constants/layout';
+import { LAYOUT_WIDTH_TYPES, LAYOUT_POSITION_TYPES, LAYOUT_TOPBAR_COLOR_TYPES, PERLOADER_TYPES, LAYOUT_TYPES, LAYOUT_MODE, SIDEBAR_COLOR, SIDEBAR_IMAGE, SIDEBAR_VIEW, SIDEBAR_SIZE, SIDEBAR_VISIBILITY } from '../../../constants/layout';
 
 export interface LayoutState {
     LAYOUT: string;

@@ -1,6 +1,6 @@
-import { SystemNotification } from "./models/data/notification.model";
-import { NotificationVTO } from "./models/view/NotificationVTO";
-import { ObjectMappingService } from "./services/objectMapping.service";
+import { SystemNotification } from "../core/models/data/notification.model";
+import { NotificationVTO } from "../core/models/view/NotificationVTO";
+import { ObjectMappingService } from "../core/services/objectMapping.service";
 
 class InitialiseMapsService{
 

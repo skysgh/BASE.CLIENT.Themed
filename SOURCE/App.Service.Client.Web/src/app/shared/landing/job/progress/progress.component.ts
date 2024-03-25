@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemService } from '../../../../../_BASE/shared/services/system.service';
+import { SystemService } from '../../../../../_BASE/core/services/system.service';
 
-import { System } from '../../../../../_BASE/shared/constants/contracts/system';
+import { System } from '../../../../../_BASE/core/constants/contracts/system';
 
 @Component({
   selector: 'app-progress',

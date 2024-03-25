@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
 import { BaseAppsSpikeSubSpikesRepositoryService } from '../../../../services/repositories/subspike-repository.service';
 // Models:
 import { ActivatedRoute } from '@angular/router';

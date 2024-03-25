@@ -1,4 +1,4 @@
-import { ReferenceDataBase } from "../../shared/models/data/base/ReferenceDataBase";
+import { ReferenceDataBase } from "./data/base/ReferenceDataBase";
 
 
 // A Generic item in a REference Data list

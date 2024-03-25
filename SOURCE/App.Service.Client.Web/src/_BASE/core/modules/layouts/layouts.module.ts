@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
-import { LanguageService } from '../../../shared/services/language.service';
+import { LanguageService } from '../../services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 // Feather Icon
@@ -16,7 +16,7 @@ import { AppLayoutComponent } from './layout.component';
 import { BaseLayoutVerticalComponent } from './vertical/component';
 import { BaseLayoutSidebarComponent } from './sidebar/sidebar.component';
 import { BaseLayoutHorizontalComponent } from './horizontal/component';
-import { BaseLayoutHorizontalTopbarComponent } from './horizontal-topbar/horizontal-topbar.component';
+import { BaseLayoutHorizontalTopbarComponent } from './horizontal-topbar/component';
 import { BaseLayoutTwoColumnComponent } from './two-column/two-column.component';
 import { BaseLayoutTwoColumnSidebarComponent } from './two-column-sidebar/two-column-sidebar.component';
 
@@ -41,7 +41,8 @@ import { BaseLayoutRightsidebarComponent } from './rightsidebar/component';
 import { BaseLayoutRightSideContextThemeCustomiserComponent } from './rightsidebar/theme-customiser/component';
 
 // Footer:
-import { BaseLayoutFooterComponent } from './footer/footer.component';
+import { BaseLayoutFooterComponent } from './footer/component';
+import { BaseCoreCommonComponentsModule } from '../common/components/module';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { BaseLayoutFooterComponent } from './footer/footer.component';
   ],
   imports: [
     CommonModule,
-    TranslateModule,
+    TranslateModule.forChild(),
+    BaseCoreCommonComponentsModule,
     RouterModule,
     NgbDropdownModule,
     NgbNavModule,

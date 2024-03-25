@@ -1,8 +1,8 @@
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
-import { ExampleService } from '../../../../../../shared/services/example.service';
+import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { ExampleService } from '../../../../../../core/services/example.service';
 // Import Module:
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 import { TranslateService } from '@ngx-translate/core';

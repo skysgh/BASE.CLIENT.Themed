@@ -4,8 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
-import { SystemService } from '../../../../shared/services/system.service';
-import { System } from '../../../../shared/constants/contracts/system';
+import { SystemService } from '../../../services/system.service';
+import { System } from '../../../constants/contracts/system';
 
 @Component({
   selector: 'app-two-column-sidebar',

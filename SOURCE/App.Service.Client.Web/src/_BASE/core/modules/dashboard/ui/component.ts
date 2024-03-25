@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
-import { DashboardService } from '../../../../shared/services/dashboard.service';
-import { Stat } from '../../../../shared/models/data/stat.model';
+import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
+import { DashboardService } from '../../../services/dashboard.service';
+import { Stat } from '../../../models/data/stat.model';
 
 
 

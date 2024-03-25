@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 // Auth Services
-import { AuthenticationService } from '../../../_BASE/shared/services/auth.service';
-import { AuthfakeauthenticationService } from '../../../_BASE/shared/services/authfake.service';
+import { AuthenticationService } from '../services/auth.service';
+import { AuthfakeauthenticationService } from '../services/authfake.service';
 import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })

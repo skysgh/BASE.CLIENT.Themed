@@ -1,9 +1,9 @@
 import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { SystemService } from "../../../../../shared/services/system.service";
-import { System } from "../../../../../shared/constants/contracts/system";
-import { SystemNotificationService } from "../../../../../shared/services/notification.service";
-import { SystemNotification } from "../../../../../shared/models/data/notification.model";
+import { SystemService } from "../../../../services/system.service";
+import { System } from "../../../../constants/contracts/system";
+import { SystemNotificationService } from "../../../../services/notification.service";
+import { SystemNotification } from "../../../../models/data/notification.model";
 import { Observable, of } from "rxjs";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 

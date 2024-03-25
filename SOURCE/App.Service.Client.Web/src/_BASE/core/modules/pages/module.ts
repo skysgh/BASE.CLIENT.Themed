@@ -6,8 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Import template:
-import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../modules/components/breadcrumbs/component';
-import { SharedModule } from '../../../../app/shared/shared.module';
+import { SharedModule } from '../../../../app/shared/module';
 // Import  Base.Common.Models:
 
 // Import  Base.Common.Services:
@@ -19,16 +18,20 @@ import { SharedModule } from '../../../../app/shared/shared.module';
 // import { SpikeSpikesRepositoryService } from "./services/spike-repository.service"
 // Import Module specific.components:
 import { BaseCorePagesROComponent } from './components/_routeoutlet/component';
-import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../services/diagnostics.service';
+import { BaseCoreCommonModule } from '../common/module';
 import { BaseCorePagesInformationModule } from './information/module';
 import { BaseCorePagesLandingModule } from './landing/module';
+//import { BaseLayoutFooterComponent } from '../layouts/footer/component';
+
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
 
 @NgModule({
   imports: [
-    TranslateModule,
+    CommonModule,
+    TranslateModule.forChild(),
     RouterModule.forChild(
       [
         // We're basically saying that
@@ -49,21 +52,28 @@ import { BaseCorePagesLandingModule } from './landing/module';
     ),
     // Import classes within the above specified import files.
     //Ag specific:
-    CommonModule,
     FormsModule,
     SharedModule,
+    BaseCoreCommonModule,
     BaseCorePagesLandingModule,
     BaseCorePagesInformationModule
     // Module specific:
     //SpikeRoutingModule,
+
+
   ],
   exports: [
     // Not sure why doing this:
-    RouterModule
+    RouterModule,
+
+    //BaseLayoutFooterComponent,
+
   ],
   declarations: [
     // define what Components belong to this Module (i.e., are not `standalone`)
-  BaseCorePagesROComponent 
+  BaseCorePagesROComponent,
+
+    //BaseLayoutFooterComponent,
 
   ],
   providers: [

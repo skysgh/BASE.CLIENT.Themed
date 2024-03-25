@@ -5,10 +5,10 @@ import { TranslateService } from '@ngx-translate/core';
 //import { MENU } from './menu';
 import { MENU } from '../../../../core/navigation/menu';
 
-import { IHasMenuItem } from '../../../../shared/models/contracts/IHasMenuItem';
+import { IHasMenuItem } from '../../../models/contracts/IHasMenuItem';
 import { environment } from 'src/environments/environment';
-import { SystemService } from '../../../../shared/services/system.service';
-import { System } from '../../../../shared/constants/contracts/system';
+import { SystemService } from '../../../services/system.service';
+import { System } from '../../../constants/contracts/system';
 
 @Component({
   selector: 'app-sidebar',

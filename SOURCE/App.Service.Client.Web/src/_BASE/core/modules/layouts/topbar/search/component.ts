@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { SystemService } from "../../../../../shared/services/system.service";
-import { System } from "../../../../../shared/constants/contracts/system";
-import { EventService } from "../../../../../shared/services/event.service";
+import { SystemService } from "../../../../services/system.service";
+import { System } from "../../../../constants/contracts/system";
+import { EventService } from "../../../../services/event.service";
 import { DOCUMENT } from "@angular/common";
 
 @Component({

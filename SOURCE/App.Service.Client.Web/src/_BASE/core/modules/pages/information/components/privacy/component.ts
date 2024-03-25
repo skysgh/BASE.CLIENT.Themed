@@ -2,13 +2,13 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 // Import Base.Common.Models:
-import { System } from '../../../../../../shared/constants/contracts/system';
+import { System } from '../../../../../constants/contracts/system';
 // Import Base.Common.Services:
-import { SystemService } from '../../../../../../shared/services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
+import { SystemService } from '../../../../../services/system.service';
+import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, filter, map, of, throwError } from 'rxjs';
-import { TranslationService } from '../../../../../../shared/services/translation.service';
+import { TranslationService } from '../../../../../services/translation.service';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
 
   constructor(
     protected http: HttpClient,
-    private translateService: TranslateService,
+    public translate: TranslateService,
     private systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     private translationService: TranslationService
@@ -59,6 +59,7 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
     this.http.get(url, { responseType: 'text' })
       .pipe(
         map((result: string) => {
+          this.diagnosticsTraceService.debug(`${this.constructor.name}.getMarkdown(...)...returned.`);
           // Further process the fetched markdown content here (add translations, etc.)
           return this.processMarkdown(result||'');
         }), catchError(error => {
@@ -70,6 +71,7 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
       .subscribe((r2: string) => {
         
         if (r2 != null) {
+          this.diagnosticsTraceService.debug(`setting $markdown to:\n${r2}`);
           this.markdown$ = of(r2||'');
         }
       }
@@ -77,8 +79,10 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
   }
 
   private processMarkdown(markdown: string): string {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.processMarkdown(...)...`);
     // Extract keys wrapped in {{...}} from the markdown content
     var keys :string[] = this.extractKeys(markdown);
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.processMarkdown(...): keys found:${keys.length}`);
 
     // Replace variables in the markdown content
     var result :string = this.replaceVariables(markdown, keys);
@@ -99,9 +103,11 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
   }
 
   private replaceVariables(markdown: string, keys: string[]): string {
-    this.translateService.addLangs(['en']);
-    this.translateService.setDefaultLang('en');
+    this.translate.addLangs(['en']);
+    this.translate.setDefaultLang('en');
 
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.replaceVariables(...)`);
+    var result :string = markdown;
     // Replace variables in the markdown content
     keys.forEach(key => {
       var value:any
@@ -113,10 +119,11 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
       }
       if (value !== undefined) {
         const regex = new RegExp(`{{\\s*${key}\\s*}}`, 'g');
-        markdown = markdown.replace(regex, value);
+        result = result.replace(regex, value);
       }
     });
-    return markdown;
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.replaceVariables(...)result: ${result}`);
+    return result;
   }
 
   private getValueFromObject(obj: any, key: string): any {
@@ -129,6 +136,7 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
         break;
       }
     }
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.getValueFromObject(...) ${key}:${value}`);
     return value;
   }
 }

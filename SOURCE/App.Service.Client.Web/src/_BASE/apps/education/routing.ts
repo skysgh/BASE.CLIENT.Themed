@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { DiagnosticsTraceService } from '../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../core/services/diagnostics.service';
 import { BaseAppsEducationProductsComponent } from './areas/products/component';
 import { BaseAppsEducationPlacesComponent } from './areas/places/component';
 import { BaseAppsEducationPeopleComponent } from './areas/people/component';
@@ -35,7 +35,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
   exports: [
     RouterModule

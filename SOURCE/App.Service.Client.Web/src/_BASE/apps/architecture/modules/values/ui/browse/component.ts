@@ -1,7 +1,7 @@
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
 // Import Module specific:
 // .. Import Services:
 import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';

@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 //
-import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
-import { DashboardService } from '../../../shared/services/dashboard.service';
+import { DiagnosticsTraceService } from '../../services/diagnostics.service';
+import { DashboardService } from '../../services/dashboard.service';
 //
 import { StatComponent } from './ui/stat/component';
 import { DashboardComponent } from './ui/component';
@@ -36,4 +36,4 @@ import { DashboardComponent } from './ui/component';
     DashboardService,
   ]
 })
-export class AppsDashboardModule { }
+export class AppBaseCoreDashboardModule { }

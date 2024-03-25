@@ -7,8 +7,8 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { AuthenticationService } from '../../shared/services/auth.service';
-import { AuthfakeauthenticationService } from '../../shared/services/authfake.service';
+import { AuthenticationService } from '../services/auth.service';
+import { AuthfakeauthenticationService } from '../services/authfake.service';
 import { environment } from '../../../environments/environment';
 
 @Injectable()

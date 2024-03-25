@@ -3,12 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Register Auth
 
-import { AuthenticationService } from '../../../../shared/services/auth.service';
-import { UserProfileService } from '../../../../shared/services/repositories/user.repository.service';
+import { AuthenticationService } from '../../../services/auth.service';
+import { UserProfileService } from '../../../services/repositories/user.repository.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { SystemService } from '../../../../shared/services/system.service';
-import { System } from '../../../../shared/constants/contracts/system';
+import { SystemService } from '../../../services/system.service';
+import { System } from '../../../constants/contracts/system';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-register',
@@ -31,7 +32,9 @@ export class RegisterComponent implements OnInit {
 
   system: System;
 
-  constructor(private formBuilder: FormBuilder, private router: Router,
+  constructor(
+    public translate: TranslateService,
+    private formBuilder: FormBuilder, private router: Router,
     private authenticationService: AuthenticationService,
     private userService: UserProfileService,
   private systemService : SystemService) {

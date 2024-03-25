@@ -32,13 +32,14 @@ import { AuthenticationEffects } from '../../store/Authentication/authentication
 import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from '../layouts/layout.component';
 import { CookieService } from 'ngx-cookie-service';
-import { SystemService } from '../../../shared/services/system.service';
-import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
+import { SystemService } from '../../services/system.service';
+import { DiagnosticsTraceService } from '../../services/diagnostics.service';
 
-import { system } from '../../../shared/constants/system';
+import { system } from '../../constants/system';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { BaseCommonComponmentsModule } from '../components/module';
+import { BaseCoreCommonModule } from '../common/module';
+import { BaseCoreCommonComponentsModule } from '../common/components/module';
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader( http, 'assets/i18n/', '.json');
 }
@@ -61,7 +62,7 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
   imports: [
 
     TranslateModule.forRoot({
-      defaultLanguage: '__',
+      defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
@@ -80,14 +81,13 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
     BrowserAnimationsModule,
     HttpClientModule,
     BrowserModule,
-
     AppRoutingModule,
+    MarkdownModule.forRoot({ loader: HttpClient }),
+    //PdfViewerModule,
+    BaseCoreCommonModule,
+    BaseCoreCommonComponentsModule,
     BaseCoreLayoutsModule,
     //PagesModule
-    HttpClientModule,
-    MarkdownModule.forRoot({ loader: HttpClient }),
-    PdfViewerModule,
-    BaseCommonComponmentsModule
   ],
   exports: [
     RouterModule

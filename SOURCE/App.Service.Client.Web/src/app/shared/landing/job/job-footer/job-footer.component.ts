@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { System } from '../../../../../_BASE/shared/constants/contracts/system';
-import { SystemService } from '../../../../../_BASE/shared/services/system.service';
+import { System } from '../../../../../_BASE/core/constants/contracts/system';
+import { SystemService } from '../../../../../_BASE/core/services/system.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class JobBaseLayoutFooterComponent implements OnInit {
   year: number = new Date().getFullYear();
   system: System;
 
-  constructor(systemService: SystemService, private translateService: TranslateService) {
+  constructor(systemService: SystemService, public translate: TranslateService) {
 
     // Can be either via service, or injecting the constats/settings object:
     this.system = systemService.system;

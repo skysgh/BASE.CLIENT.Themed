@@ -1,6 +1,6 @@
-import { IHasMenuItem } from '../../shared/models/contracts/IHasMenuItem';
+import { IHasMenuItem } from '../models/contracts/IHasMenuItem';
 // Constants:
-import { system } from '../../shared/constants/system';
+import { system } from '../constants/system';
 
 
 export const MENU: IHasMenuItem[] =

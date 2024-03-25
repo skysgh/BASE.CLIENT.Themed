@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BaseCorePagesLandingIndexComponent } from "./index/component";
 import { BaseCorePagesLandingPricingComponent } from './pricing/component';
 import { BaseCorePagesLandingOpportunitiesComponent } from './opportunities/component';
-import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
 import { BaseCorePagesLandingMaintenanceComponent } from './maintenance/component';
 import { BaseCorePagesLandingComingSoonComponent } from './coming-soon/component';
 

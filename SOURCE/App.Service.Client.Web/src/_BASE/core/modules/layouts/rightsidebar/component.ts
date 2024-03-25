@@ -1,13 +1,13 @@
 import { Component, ViewChild, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
-import { EventService } from '../../../../shared/services/event.service';
+import { EventService } from '../../../services/event.service';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { RootReducerState } from '../../../store';
 import { Store } from '@ngrx/store';
 import { initialState } from '../layouts/layout-reducers';
 import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from '../layouts/layout-selector';
 import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from '../layouts/layout-action';
-import { SystemService } from '../../../../shared/services/system.service';
-import { System } from '../../../../shared/constants/contracts/system';
+import { SystemService } from '../../../services/system.service';
+import { System } from '../../../constants/contracts/system';
 
 @Component({
   selector: 'app-rightsidebar',

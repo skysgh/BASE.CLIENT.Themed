@@ -41,4 +41,4 @@
 //  exports: [RouterModule]
 //})
 
-//export class SpikesRoutingModule { }
+//export class BaseAppsSpikeRoutingModule { }

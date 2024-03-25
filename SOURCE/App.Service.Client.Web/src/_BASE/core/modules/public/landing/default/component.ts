@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
-import { DiagnosticsTraceService } from '../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
 
 //import { SpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
 // Models:

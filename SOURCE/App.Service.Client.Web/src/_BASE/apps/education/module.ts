@@ -4,10 +4,10 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 // Services:
-import { DiagnosticsTraceService } from "../../shared/services/diagnostics.service";
+import { DiagnosticsTraceService } from "../../core/services/diagnostics.service";
 // Modules:
-import { CustomCommonModule } from "../../shared/custom-common.module";
-import { BaseCommonComponmentsModule } from "../../core/modules/components/module";
+import { BaseCoreCommonModule } from "../../core/modules/common/module";
+import { BaseCoreCommonComponentsModule } from "../../core/modules/common/components/module";
 import { BaseAppsEducationRoutingModule } from "./routing";
 // Controls:
 import { BaseAppsEducationProductsComponent } from "./areas/products/component";
@@ -27,10 +27,9 @@ import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishmen
     // Import classes within the above specified import files.
     // Ag specific:
     CommonModule,
-    BaseCommonComponmentsModule,
     FormsModule,
     // Custom specific:
-    CustomCommonModule,
+    BaseCoreCommonComponentsModule,
     // Module specific:
     BaseAppsEducationRoutingModule
     // No components

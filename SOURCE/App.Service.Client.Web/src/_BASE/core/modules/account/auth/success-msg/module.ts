@@ -4,10 +4,11 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Component
-import { SuccessMsgRoutingModule } from "./routing.module";
+import { SuccessMsgRoutingModule } from "./routing";
 import { CoverComponent } from './cover/component';
 import { BasicComponent } from './basic/component';
 import { TranslateModule } from '@ngx-translate/core';
+import { BaseCoreCommonComponentsModule } from '../../../common/components/module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   imports: [
     CommonModule,
-    TranslateModule,
+    TranslateModule.forChild(),
+    BaseCoreCommonComponentsModule,
+
     NgbCarouselModule,
     ReactiveFormsModule,
     FormsModule,

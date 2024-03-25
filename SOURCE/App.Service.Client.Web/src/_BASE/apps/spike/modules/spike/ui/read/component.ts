@@ -4,8 +4,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
-import { ExampleService } from '../../../../../../shared/services/example.service';
+import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { ExampleService } from '../../../../../../core/services/example.service';
 // Import Module:
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Import Models:

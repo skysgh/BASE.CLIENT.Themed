@@ -1,6 +1,6 @@
 import { Component, TemplateRef } from '@angular/core';
 
-import { ToastService } from '../../../../shared/services/toast.service';
+import { ToastService } from '../../../services/toast.service';
 
 
 @Component({

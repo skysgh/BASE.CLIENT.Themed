@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';

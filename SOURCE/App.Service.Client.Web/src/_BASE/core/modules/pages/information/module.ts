@@ -5,13 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 // Services:
-import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
 
 //Import template:
-import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../components/breadcrumbs/component';
+import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../common/components/breadcrumbs/component';
 //
-import { BaseCommonComponmentsModule } from '../../components/module';
-import { SharedModule } from '../../../../../app/shared/shared.module';
+import { BaseCoreCommonComponentsModule } from '../../common/components/module';
+import { SharedModule } from '../../../../../app/shared/module';
 
 // Import  Base.Common.Models:
 
@@ -34,8 +34,8 @@ import { BaseCorePagesInformationContactComponent } from './components/contact/c
 
 @NgModule({
   imports: [
-
-    TranslateModule,
+    CommonModule,
+    TranslateModule.forChild(),
     RouterModule.forChild(
       [
         // we're basically saying load:
@@ -60,11 +60,9 @@ import { BaseCorePagesInformationContactComponent } from './components/contact/c
     ),
     // Import classes within the above specified import files.
     //Ag specific:
-    CommonModule,
-    RouterModule,
     FormsModule,
     SharedModule,
-    BaseCommonComponmentsModule
+    BaseCoreCommonComponentsModule
     //SpikeRoutingModule,
   ],
   exports: [

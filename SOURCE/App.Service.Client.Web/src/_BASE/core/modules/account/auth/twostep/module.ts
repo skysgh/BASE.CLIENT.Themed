@@ -7,10 +7,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgOtpInputModule } from 'ng-otp-input';
 
 // Component
-import { TwoStepRoutingModule } from "./routing.module";
+import { TwoStepRoutingModule } from "./routing";
 import { BasicComponent } from './basic/component';
 import { CoverComponent } from './cover/component';
 import { TranslateModule } from '@ngx-translate/core';
+import { BaseCoreCommonComponentsModule } from '../../../common/components/module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   imports: [
     CommonModule,
-    TranslateModule,
+    TranslateModule.forChild(),
+    BaseCoreCommonComponentsModule,
     NgbCarouselModule,
     ReactiveFormsModule,
     FormsModule,

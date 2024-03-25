@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SystemService } from '../../../../../../shared/services/system.service';
-import { System } from '../../../../../../shared/constants/contracts/system';
+import { SystemService } from '../../../../../services/system.service';
+import { System } from '../../../../../constants/contracts/system';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

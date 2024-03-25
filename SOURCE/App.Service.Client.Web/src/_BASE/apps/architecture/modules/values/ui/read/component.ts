@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
-import { ExampleService } from '../../../../../../shared/services/example.service';
+import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { ExampleService } from '../../../../../../core/services/example.service';
 import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
 
 import { Value } from '../../../../models/value.model';

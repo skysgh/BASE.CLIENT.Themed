@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SystemService } from '../../../../../../shared/services/system.service';
-import { System } from '../../../../../../shared/constants/contracts/system';
+import { SystemService } from '../../../../../services/system.service';
+import { System } from '../../../../../constants/contracts/system';
 import { TranslateService } from '@ngx-translate/core';
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 
 @Component({
   selector: 'app-base-core-pages-information-terms',
@@ -18,6 +18,7 @@ export class BaseCorePagesInformationTermsComponent implements OnInit {
 
   @Input()
   public replacements :{ [key: string]: string }|undefined;
+
   constructor(
     systemService: SystemService,
     private diagnosticsTraceService:
@@ -25,7 +26,7 @@ export class BaseCorePagesInformationTermsComponent implements OnInit {
     translateService: TranslateService) {
     this.system = systemService.system;
 
-    this.diagnosticsTraceService.debug("BaseInformationTermsAndConditionsComponent.constructor(...)")
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 
     // Note that tokens are not wrapped in the {{...}}
     // that must be on to find them:

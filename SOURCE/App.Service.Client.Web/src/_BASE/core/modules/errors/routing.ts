@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Services:
-import { DiagnosticsTraceService } from '../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../services/diagnostics.service';
 
 // Components
 import { BaseErrorsOfflineComponent } from "./000/offline/component";

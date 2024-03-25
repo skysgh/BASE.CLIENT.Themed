@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemService } from '../../../../../../shared/services/system.service';
-import { System } from '../../../../../../shared/constants/contracts/system';
+import { SystemService } from '../../../../../services/system.service';
+import { System } from '../../../../../constants/contracts/system';
 import { TranslateService } from '@ngx-translate/core';
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
+import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 
 @Component({
   selector: 'app-base-core-pages-information-index',

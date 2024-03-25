@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { SystemService } from "../../../../../shared/services/system.service";
-import { System } from "../../../../../shared/constants/contracts/system";
+import { SystemService } from "../../../../services/system.service";
+import { System } from "../../../../constants/contracts/system";
 
 @Component({
   selector: 'app-frame-context-logo',

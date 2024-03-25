@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { TitleService } from '../../../../../shared/services/title.service';
-import { SystemService } from '../../../../../shared/services/system.service';
+import { TitleService } from '../../../../services/title.service';
+import { SystemService } from '../../../../services/system.service';
 
 @Component({
   selector: 'app-root',

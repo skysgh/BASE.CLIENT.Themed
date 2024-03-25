@@ -2,16 +2,16 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 //import { env } from "process";
-import { MappedGenericRepositoryServiceBase } from "../../../../shared/services/repositories/base/mapped-generic-repository.service.base";
-import { DiagnosticsTraceService } from "../../../../shared/services/diagnostics.service";
-import { EnvironmentService } from "../../../../shared/services/environment.service";
-import { ErrorService } from "../../../../shared/services/error.service";
-import { TypeService } from "../../../../shared/services/type.service";
+import { MappedGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/mapped-generic-repository.service.base";
+import { DiagnosticsTraceService } from "../../../../core/services/diagnostics.service";
+import { EnvironmentService } from "../../../../core/services/environment.service";
+import { ErrorService } from "../../../../core/services/error.service";
+import { TypeService } from "../../../../core/services/type.service";
 // import models:
 import { Principle } from "../../models/principle.model";
-import { SessionStorageService } from "../../../../shared/services/SessionStorageService";
-import { ObjectMappingService } from "../../../../shared/services/objectMapping.service";
-import { UrlService } from "../../../../shared/services/url.service";
+import { SessionStorageService } from "../../../../core/services/SessionStorageService";
+import { ObjectMappingService } from "../../../../core/services/objectMapping.service";
+import { UrlService } from "../../../../core/services/url.service";
 
 
 @Injectable()

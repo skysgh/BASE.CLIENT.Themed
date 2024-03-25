@@ -5,11 +5,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from "@angular/core";
 
 // Language
-import { LanguageService } from '../../../../../shared/services/language.service';
-import { SystemService } from "../../../../../shared/services/system.service";
-import { DiagnosticsTraceService } from "../../../../../shared/services/diagnostics.service";
-import { SystemLanguage } from '../../../../../shared/models/data/system-language.model';
-import { System } from '../../../../../shared/constants/contracts/system';
+import { LanguageService } from '../../../../services/language.service';
+import { SystemService } from "../../../../services/system.service";
+import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
+import { SystemLanguage } from '../../../../models/data/system-language.model';
+import { System } from '../../../../constants/contracts/system';
 
 
 
