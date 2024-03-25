@@ -6,6 +6,9 @@ import { SystemService } from '../../../../../services/system.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 import { System } from '../../../../../constants/contracts/system';
+import { CapabilitiesVTO } from '../../../../../models/view/base-capabilities';
+import { Observable, of } from 'rxjs';
+import { SystemCapabilitiesRepositoryService } from '../../../../../services/repositories/system-capabilities.service';
 
 
 @Component({
@@ -19,13 +22,16 @@ import { System } from '../../../../../constants/contracts/system';
  */
 export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
 
-  Services!: servicesModel[];
+
+  capabilities$: Observable<CapabilitiesVTO[]> = of([]);
 
   system: System;
 
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    protected capabilitiesRepositoryService: SystemCapabilitiesRepositoryService
+    ) {
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
@@ -41,8 +47,12 @@ export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
    /**
  * User grid data fetches
  */
-    private _fetchData() {
-      this.Services = Services;
+  private _fetchData() {
+    this.capabilitiesRepositoryService
+      .getPage()
+      .subscribe(x => {
+        this.capabilities$ = of(x)
+      });
     }
 
 }

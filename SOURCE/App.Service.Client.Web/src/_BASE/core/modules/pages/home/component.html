@@ -33,10 +33,10 @@
                  href="javascript:void(0);">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [ngClass]="{'active':currentSection === 'services'}" [ngxScrollTo]="'#services'" href="javascript:void(0);">Services</a>
+              <a class="nav-link" [ngClass]="{'active':currentSection === 'services'}" [ngxScrollTo]="'#services'" href="javascript:void(0);">{{'BASE.CAPABILITIES.TITLES'|translate}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [ngClass]="{'active':currentSection === 'features'}" [ngxScrollTo]="'#features'" href="javascript:void(0);">Features</a>
+              <a class="nav-link" [ngClass]="{'active':currentSection === 'features'}" [ngxScrollTo]="'#features'" href="javascript:void(0);">{{'BASE.FEATURES.TITLES'|translate}}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" [ngClass]="{'active':currentSection === 'plans'}" [ngxScrollTo]="'#plans'" href="javascript:void(0);">Plans</a>
@@ -45,19 +45,20 @@
               <a class="nav-link" [ngClass]="{'active':currentSection === 'reviews'}" [ngxScrollTo]="'#reviews'" href="javascript:void(0);">Reviews</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [ngClass]="{'active':currentSection === 'team'}" [ngxScrollTo]="'#team'" href="javascript:void(0);">Team</a>
+              <a class="nav-link" [ngClass]="{'active':currentSection === 'team'}" [ngxScrollTo]="'#team'" href="javascript:void(0);">{{'BASE.TEAMS.TITLE'|translate}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [ngClass]="{'active':currentSection === 'contact'}" [ngxScrollTo]="'#contact'" href="javascript:void(0);">Contact</a>
+              <a class="nav-link" [ngClass]="{'active':currentSection === 'contact'}" [ngxScrollTo]="'#contact'" href="javascript:void(0);">{{'BASE.CONTACTS.TITLE'|translate}}</a>
             </li>
           </ul>
 
           <div class="">
             <a routerLink="/signin/basic" class="btn btn-link fw-medium text-decoration-none text-body">
-              Sign
-              in
+              {{'BASE.ACTIONS.SIGN_IN'|translate}}
             </a>
-            <a routerLink="/signup/basic" class="btn btn-primary">Sign Up</a>
+            <a routerLink="/signup/basic" class="btn btn-primary">
+              {{'BASE.ACTIONS.SIGN_UP'|translate}}
+            </a>
           </div>
         </div>
 
@@ -75,8 +76,7 @@
                 {{'CUSTOM.SITE.HOME.TITLE'|translate}}
                 <br/>
                 <span class="text-secondary">
-                  {{system.title | translate
-                }}
+                  {{'CUSTOM.SITE.HOME.DESCRIPTION'|translate}}
                 </span>
               </h1>
               <p class="lead text-muted lh-base">

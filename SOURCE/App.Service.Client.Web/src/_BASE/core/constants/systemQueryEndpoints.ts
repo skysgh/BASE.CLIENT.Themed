@@ -6,6 +6,8 @@ export const SystemQueryEndpoints = {
   // Auth Api
   AUTH_API: "https://api-node.themesbrand.website/auth/",
 
+  base_capabilities:'base_capabilities',
+  team:'base_team',
   base_languages: "base_languages",
   systemNotifications: "systemNotifications",
   agreements: "agreements",

@@ -3,12 +3,17 @@
     "SITE": {
       "HOME": {
         "TITLE": "BASE",
-        "DESCRIPTION": "The better way to deliver valued change:",
+        "DESCRIPTION": "The better way to deliver value.",
         "MORE": "..."
       },
       "TRUSTED": {
         "TITLE": "TRUSTED",
         "DESCRIPTION": "Trusted by the best:",
+        "MORE": "..."
+      },
+      "CAPABILTIES": {
+        "TITLE": "Capabilities",
+        "DESCRIPTION": "Anytime, Anywhere, Any Device - have deeper understanding of your whole service.",
         "MORE": "..."
       },
       "FEATURES": {
@@ -270,8 +275,8 @@
     },
     "CAPABILITIES": {
       "__COMMENTS": "See STAKEHOLDERS,FUNCTIONALITIES,QUALITIES",
-      "TITLE": "Functionality",
-      "TITLES": "N/A",
+      "TITLE": "Capability",
+      "TITLES": "Capabilities",
       "DIAGNOSTICS": "Diagnostics",
       "ERROR_RECORDING": "Error Recording",
       "SESSION_HANDLING": "Session Handling",
@@ -415,6 +420,14 @@
       "DESCRIPTION": "...",
       "ATTACHED": "Attached",
       "DETACHED": "Detached"
+    },
+    "CONTACTS": {
+      "__COMMENTS": "",
+      "TITLE": "Contact",
+      "TITLES": "Contacts",
+      "DESCRIPTION": "...",
+      "GET_IN_TOUCH": "Get In Touch",
+      "GET_IN_TOUCH_WITH_US": "Get in touch with us"
     },
     "CONTENTS": {
       "__COMMENTS": "Can be used to show Messages - empty, etc.",
@@ -1026,6 +1039,12 @@
       "__COMMENTS": "",
       "TITLE": "FAQ",
       "TITLES": "FAQs",
+      "DESCRIPTION": "..."
+    },
+    "FEATURES": {
+      "__COMMENTS": "",
+      "TITLE": "Feature",
+      "TITLES": "Features",
       "DESCRIPTION": "..."
     },
     "FINANCES": {
@@ -1980,6 +1999,12 @@
       "COMPLETED_WHEN": "Completed When",
       "COMPLETED_WHEN_INSTRUCTIONS": "",
       "COMPLETED_WHEN_PLACEHOLDER": ""
+    },
+    "TEAMS": {
+      "__COMMENTS": "See PERSONS",
+      "TITLE": "Team",
+      "TITLES": "Teams",
+      "DESCRIPTION": "..."
     },
     "TEMPLATE": {
       "__COMMENTS": "",

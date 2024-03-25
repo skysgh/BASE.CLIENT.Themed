@@ -269,16 +269,14 @@
       "embargoFk": "00000000-0000-0000-0000-000000000003",
       "title": "Sudan",
       "description": "...",
-      "range": "41.95.2.48.0-41.95.2.48.255",
-
+      "range": "41.95.2.48.0-41.95.2.48.255"
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
       "embargoFk": "00000000-0000-0000-0000-000000000002",
       "title": "Iraq Reconstruction",
       "description": "...",
-      "range": "40.77.167.5",
-      "range": "37.238.125.0-37.238.125.25"
+      "range": "40.77.167.5"
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
@@ -305,6 +303,143 @@
       "description": "...some desc..."
     }
   ],
+
+
+
+  "base_team": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "title": "Mark Rumble",
+      "description": "...",
+      "role": "Fearless Leader",
+      "imageName": "avatar-2.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "title": "Russell Brand",
+      "description": "...",
+      "role": "Project Manager",
+      "imageName": "avatar-3.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "Sandy England",
+      "description": "...",
+      "role": "Enterprise Architect",
+      "imageName": "avatar-10.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": true,
+      "title": "Sky Crow",
+      "description": "...",
+      "role": "Digital Dreamer",
+      "imageName": "avatar-8.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "enabled": true,
+      "description": "...",
+      "title": "M.A. D. Lady",
+      "role": "Advisor",
+      "imageName": "avatar-5.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "enabled": true,
+      "title": "Margot Chaplin",
+      "description": "...",
+      "role": "Sector Advisor",
+      "imageName": "avatar-4.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "enabled": true,
+      "title": "Mel Atonine",
+      "description": "...",
+      "role": "Commie",
+      "imageName": "avatar-6.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "enabled": true,
+      "title": "Matt Dubad",
+      "description": "...",
+      "role": "DevOops Specialist",
+      "imageName": "avatar-7.jpg"
+    }
+  ],
+
+  "base_capabilities": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "title": "Purpose",
+      "description": "Define valuable Purposes people can own.",
+      "iconId": "ri-pencil-ruler-2-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "title": "Projects",
+      "description": "Develop projects to coordinate delivery.",
+      "iconId": " ri-flag-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "People",
+      "description": "Help people find each to collaborate.",
+      "iconId": " ri-user-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": true,
+      "title": "Groups",
+      "description": "Develop Groups of any size and shape for them to work together.",
+      "iconId": "ri-group-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": true,
+      "title": "Places",
+      "description": "Provide spaces for them to cowork together in person.",
+      "iconId": "ri-map-pin-2-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "enabled": true,
+      "iconId": "ri-book-open-line",
+      "title": "Products",
+      "description": "Find and/or create and deliver new resources."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "enabled": true,
+      "iconId": " ri-line-chart-line",
+      "title": "Progress",
+      "description": "Assess and track progress."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "enabled": true,
+      "iconId": " ri-award-line",
+      "title": "Achieve",
+      "description": "With the right tool, it becomes so much easier."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "enabled": true,
+      "title": "Improve",
+      "description": "With Insights, improve the process and make Achieving even easier.",
+      "iconId": "ri-recycle-line"
+    }
+  ],
+
+
   "base_statements": [
     {
       "id": "00000000-0000-0000-0000-000000000001",

@@ -7,6 +7,6 @@
 
 
 export interface IHasImageName {
-    imageName?: string;
+    imageName: string;
 }
 
