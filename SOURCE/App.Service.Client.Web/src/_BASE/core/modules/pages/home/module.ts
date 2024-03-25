@@ -10,17 +10,17 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { BaseAppsPagesInformationIndexComponent } from './component';
 // Import  Base.Common.Models:
-import { BaseAppsPagesLandingIndexClientLogoComponent } from './components/client-logo/component';
+import { BaseAppsPagesLandingIndexClientsComponent } from './components/clients/component';
 import { BaseAppsPagesLandingIndexCollectionComponent } from './components/collection/component';
 import { BaseAppsPagesLandingIndexContactComponent } from './components/contact/component';
 import { BaseAppsPagesLandingIndexCounterComponent } from './components/counter/component';
 import { BaseAppsPagesLandingIndexCtaComponent } from './components/cta/component';
-import { BaseAppsPagesLandingIndexDesignedComponent } from './components/designed/component';
+import { BaseAppsPagesLandingIndexDesignedComponent } from './components/features/component';
 import { BaseAppsPagesLandingIndexFaqsComponent } from './components/faqs/component';
 import { BaseAppsPagesLandingIndexFooterComponent } from './components/footer/component';
 import { BaseAppsPagesLandingIndexPlanComponent } from './components/plan/component';
 import { BaseAppsPagesLandingIndexReviewComponent } from './components/review/component';
-import { BaseAppsPagesLandingIndexServicesComponent } from './components/services/component';
+import { BaseAppsPagesLandingIndexCapabilitiesComponent } from './components/capabilities/component';
 import { BaseAppsPagesLandingIndexTeamComponent } from './components/team/component';
 import { BaseAppsPagesLandingIndexWorkProcessComponent } from './components/work-process/component';
 
@@ -87,7 +87,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     // Not sure why doing this:
     RouterModule,
     //
-  //  BaseAppsPagesLandingIndexClientLogoComponent,
+  //  BaseAppsPagesLandingIndexClientsComponent,
   //  BaseAppsPagesLandingIndexCollectionComponent,
   //  BaseAppsPagesLandingIndexContactComponent,
   //  BaseAppsPagesLandingIndexCounterComponent,
@@ -97,7 +97,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
   //  BaseAppsPagesLandingIndexFooterComponent,
   //  BaseAppsPagesLandingIndexPlanComponent,
   //  BaseAppsPagesLandingIndexReviewComponent,
-  //  BaseAppsPagesLandingIndexServicesComponent,
+  //  BaseAppsPagesLandingIndexCapabilitiesComponent,
   //  BaseAppsPagesLandingIndexTeamComponent,
   //  BaseAppsPagesLandingIndexWorkProcessComponent
   ],
@@ -106,8 +106,8 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     // define what Components belong to this Module (i.e., are not `standalone`)
     BaseAppsPagesInformationIndexComponent,
 
-    BaseAppsPagesLandingIndexClientLogoComponent,
-    BaseAppsPagesLandingIndexServicesComponent,
+    BaseAppsPagesLandingIndexClientsComponent,
+    BaseAppsPagesLandingIndexCapabilitiesComponent,
     BaseAppsPagesLandingIndexCollectionComponent,
     BaseAppsPagesLandingIndexCtaComponent,
     BaseAppsPagesLandingIndexDesignedComponent,

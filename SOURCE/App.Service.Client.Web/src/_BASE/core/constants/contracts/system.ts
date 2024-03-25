@@ -5,7 +5,7 @@ import { SystemSources} from "./systemSources";
 import { SystemNavigation } from "./systemNavigation";
 import { SystemOrganisation } from "./systemOrganisation";
 import { SystemKeys } from "./systemKeys";
-import { SystemLocalisation } from "./SystemLocalisation";
+//import { SystemLocalisation } from "./SystemLocalisation";
 
 
 /**
@@ -27,5 +27,5 @@ export interface System extends IHasTitleAndDescription {
   // Navigation
   navigation: SystemNavigation /*SystemUrls*/;
   keys: SystemKeys;
-  localisation: SystemLocalisation;
+  //localisation: SystemLocalisation;
 }

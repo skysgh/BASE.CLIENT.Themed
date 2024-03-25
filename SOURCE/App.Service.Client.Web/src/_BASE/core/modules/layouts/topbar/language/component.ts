@@ -10,6 +10,7 @@ import { SystemService } from "../../../../services/system.service";
 import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
 import { SystemLanguage } from '../../../../models/data/system-language.model';
 import { System } from '../../../../constants/contracts/system';
+import { TranslationService } from '../../../../services/translation.service';
 
 
 
@@ -26,15 +27,16 @@ export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
   public systemLanguages$: Observable<SystemLanguage[]> = of([]);
 
   // Language: stuff:
+  activeLanguageCode:string = '';
   flagvalue: string = '';
   valueset: string = '';
   languageTitle: string = '';
-  cookieValue: any;
   constructor(
     systemService: SystemService,
     protected diagnosticsTraceService: DiagnosticsTraceService,
     public languageService: LanguageService,
     public translate: TranslateService,
+    public translationService: TranslationService,
     public _cookiesService: CookieService) {
 
     // Can be either via service, or injecting the constats/settings object:
@@ -52,22 +54,19 @@ export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
     // This will take a sec to retrieve:
     this.languageService
       .items$
-      .subscribe(x => {
+      .subscribe(list => {
 
-        if (x.length == 0) {
+        if (list.length == 0) {
           this.diagnosticsTraceService.info("...early exit...");
           return;
         }
+        this.diagnosticsTraceService.info("Number of languages is:" + list.length);
 
+        this.activeLanguageCode = this.translationService.getDefaultLanguageCode();
         // Cookies wise Language set
-        this.cookieValue = this._cookiesService.get('lang') || 'en';
-        this.diagnosticsTraceService.info("cookie value:" + this.cookieValue);
-
-        this.diagnosticsTraceService.info("...processing...");
-        this.diagnosticsTraceService.info("Number of languages is:" + x.length);
 
         //Get an array of one, matching current language description:
-        var tmp = x.filter(x => x.languageCode === this.cookieValue);
+        var tmp = list.filter(i => i.languageCode === this.activeLanguageCode);
 
         if (tmp.length === 0) {
           // NO match, so can't set to a specific flag. Fallback:
@@ -88,7 +87,7 @@ export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
         this.diagnosticsTraceService.info("valueset:" + this.valueset);
         this.diagnosticsTraceService.info("FlagValue:" + this.flagvalue);
 
-        this.systemLanguages$ = of(x);
+        this.systemLanguages$ = of(list);
 
       });
 
@@ -102,8 +101,8 @@ export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
     if (systemLanguage) {
       this.languageTitle = systemLanguage.title;
       this.flagvalue = `${this.system.sources.assets.images.flags}${systemLanguage.languageCode}.svg`;
-      this.cookieValue = systemLanguage.languageCode ?? 'en';
-      this.languageService.setLanguage(systemLanguage.languageCode ?? 'en');
+
+      this.translationService.setLanguage(systemLanguage.languageCode!);
     }
   }
 

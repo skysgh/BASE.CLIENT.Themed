@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
 
+  private C_LANG: string = 'lang';
+
   // Hack: small chance they got to a 404 before they got anywhere:
   private previouslySetDefaultLanguage? : string;
   public constructor(
@@ -44,19 +46,15 @@ export class TranslationService {
 
   }
 
-  public initialiseTranslatorsCurrentLanguage() {
-    let languageCode: any;
-    if (this.cookieService.check('lang')) {
-      languageCode = this.cookieService.get('lang');
-    }
-    else {
-      languageCode = this.translate.getBrowserLang();
-    }
+  public initialiseTranslatorsCurrentLanguage(): string{
+    var languageCode = this.getDefaultLanguageCode();
+
     if (languageCode != this.previouslySetDefaultLanguage) {
       this.translate.use(languageCode);
       this.previouslySetDefaultLanguage = languageCode;
-      this.systemService.system.localisation.cultureCode = languageCode;
+      this.systemService.system.configuration.defaultLanguageCode = languageCode;
     }
+    return languageCode;
   }
 
   public setLanguage(lang: string) {
@@ -66,5 +64,19 @@ export class TranslationService {
   }
   public instant(key: string): string {
     return this.translate.instant(key);
+  }
+
+
+  public getDefaultLanguageCode(): string {
+  let languageCode: any;
+  if (this.cookieService.check(this.C_LANG)) {
+    languageCode = this.cookieService.get(this.C_LANG);
+  }
+  else {
+    languageCode = this.translate.getBrowserLang(); // which is same as: navigator.language;//  
+  }
+  languageCode = languageCode || this.systemService.system.configuration.defaultLanguageCode;
+
+  return languageCode;
   }
 }

@@ -1,4 +1,4 @@
 
-export interface SystemLocalisation {
-    cultureCode: string;
-}
+//export interface SystemLocalisation {
+//    cultureCode: string;
+//}

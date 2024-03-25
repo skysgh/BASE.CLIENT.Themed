@@ -52,7 +52,7 @@ export class SystemUserQuoteRepositoryService
       
     );
   }
-  getPageByLanguageCode(langCode: 'en', page: number = 0): Observable<UserQuote> {
+  getPageByLanguageCode(langCode:string, page: number = 0): Observable<UserQuote> {
 
 
     var url: string

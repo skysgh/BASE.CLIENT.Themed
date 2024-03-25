@@ -10,6 +10,6 @@ import { IHasLanguageCode } from "../contracts/IHasLanguageCode";
 export class SystemLanguage extends ReferenceDataBase
   implements IHasEnabled, IHasTitleAndDescription, IHasLanguageCode, IHasImageId {
   //public userFK: any;
-  public languageCode?: string;
+  public languageCode: string='';
   public imageId?: string;
 }

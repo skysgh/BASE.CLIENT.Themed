@@ -1,35 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 
-import {clientLogoModel} from './client-logo.model';
-import { ClientLogo } from './data';
-import { TranslateService } from '@ngx-translate/core';
+import {servicesModel} from './services.model';
+import { Services } from './data';
 import { SystemService } from '../../../../../services/system.service';
+import { TranslateService } from '@ngx-translate/core';
 import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 import { System } from '../../../../../constants/contracts/system';
 
+
 @Component({
-  selector: 'app-base-core-pages-landing-index-client-logo',
+  selector: 'app-base-core-pages-landing-index-capabilities',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 
 /**
- * ClientLogoComponent
+ * Services Component
  */
-export class BaseAppsPagesLandingIndexClientLogoComponent implements OnInit {
+export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
+
+  Services!: servicesModel[];
 
   system: System;
 
-  constructor(
-    systemService: SystemService,
+  constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translateService: TranslateService) {
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
-  } 
-
-  ClientLogo!: clientLogoModel[];
+  }
 
   ngOnInit(): void {
     /**
@@ -38,23 +38,11 @@ export class BaseAppsPagesLandingIndexClientLogoComponent implements OnInit {
      this._fetchData();
   }
 
-  /**
+   /**
  * User grid data fetches
  */
-   private _fetchData() {
-    this.ClientLogo = ClientLogo;
-  }
-
-  /**
-   * Swiper Responsive setting
-   */
-  public Responsive= {
-    infinite: true,
-    slidesToShow: 4,
-    autoplay: true,
-    dots: true,
-    arrows: false
-  };
-
+    private _fetchData() {
+      this.Services = Services;
+    }
 
 }

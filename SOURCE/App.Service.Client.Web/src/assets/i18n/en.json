@@ -1,6 +1,16 @@
 {
   "CUSTOM": {
     "SITE": {
+      "HOME": {
+        "TITLE": "BASE",
+        "DESCRIPTION": "The better way to deliver valued change:",
+        "MORE": "..."
+      },
+      "TRUSTED": {
+        "TITLE": "TRUSTED",
+        "DESCRIPTION": "Trusted by the best:",
+        "MORE": "..."
+      },
       "FEATURES": {
         "TITLE": "Features",
         "DESCRIPTION": "Insights over the whole thing...",
@@ -1275,6 +1285,12 @@
       "_OR": "or",
       "ELSE": "Else",
       "_ELSE": "else"
+    },
+    "LOGO": {
+      "__COMMENTS": "",
+      "TITLE": "Logo",
+      "TITLES": "Logos",
+      "DESCRIPTION": ""
     },
     "MAINTENANCE": {
       "__COMMENTS": "",

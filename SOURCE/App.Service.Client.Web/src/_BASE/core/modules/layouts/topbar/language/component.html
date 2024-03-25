@@ -25,7 +25,7 @@
            class="dropdown-item notify-item language py-2"
            data-lang="eng"
            (click)="setLanguage(item)"
-           [ngClass]="{'active': cookieValue === item.languageCode}">
+           [ngClass]="{'active': activeLanguageCode === item.languageCode}">
           <img [src]="system.sources.assets.images.flags + item.languageCode +'.svg'"
                alt="user-image"
                class="me-2 rounded"

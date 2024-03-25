@@ -224,9 +224,6 @@ export const system: System = {
     GoogleAnalytics: '',
     GoogleMaps: 'AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE'
     
-  },
-  localisation: {
-    cultureCode: 'en'
   }
 }
 

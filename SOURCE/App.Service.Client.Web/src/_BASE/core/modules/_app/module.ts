@@ -40,6 +40,7 @@ import { system } from '../../constants/system';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { BaseCoreCommonModule } from '../common/module';
 import { BaseCoreCommonComponentsModule } from '../common/components/module';
+import { TranslationService } from '../../services/translation.service';
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader( http, 'assets/i18n/', '.json');
 }
@@ -49,10 +50,7 @@ if (environment.defaultauth === 'firebase') {
 } else {
   FakeBackendInterceptor;
 }
-export function defaultLanguageCodeFactory(cookieService: CookieService): string {
-  const languageCode = cookieService.get('languageCode') || system.configuration.defaultLanguageCode; // Retrieve language code from cookie, default to 'en'
-  return languageCode;
-}
+
 
 
 @NgModule({
@@ -62,7 +60,7 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
   imports: [
 
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
+      defaultLanguage: getLanguageCode(),
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
@@ -96,7 +94,6 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
-    { provide: 'defaultLanguage', useFactory: defaultLanguageCodeFactory, deps: [CookieService] },
     CookieService,
     provideHttpClient(),
     provideMarkdown({ loader: HttpClient }),
@@ -114,18 +111,28 @@ export function defaultLanguageCodeFactory(cookieService: CookieService): string
 export class AppModule {
   constructor(
     private diagnosticsTraceService: DiagnosticsTraceService,
-    private systemService: SystemService,
-    private cookieService: CookieService) {
+    private translationService: TranslationService,
+    private systemService: SystemService) {
 
     // Get the language code from the cookie
     this.diagnosticsTraceService.debug("AppModule.constructor()");
 
-    // Get the language code from the cookie,
-    // and if not found, fallback to the configured default:
-    const languageCode = defaultLanguageCodeFactory(cookieService);
-
-
-    //TranslateModule.forRoot().providers.push({ provide: 'defaultLanguageCode', useValue: languageCode});
 
   }
+
+}
+
+function getLanguageCode() {
+  const C_LANG = 'lang';
+
+  var languageCookie:(string|undefined) = document.cookie
+    .split(';')
+    .map(cookie => cookie.trim())
+    .find(cookie => cookie.startsWith(C_LANG + '='));
+  if (languageCookie) {
+    // Extract the language value after "lang="
+    languageCookie = languageCookie.substring(C_LANG.length+1); // "lang=".length = 5
+  }
+  var result = (languageCookie || navigator.language || system.configuration.defaultLanguageCode).split('-')[0];
+  return result;
 }

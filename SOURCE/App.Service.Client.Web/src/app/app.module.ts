@@ -33,9 +33,6 @@
 //// BASE Services:
 //import { DiagnosticsTraceService } from '../_BASE/shared/services/diagnostics.service';
 
-//export function createTranslateLoader(http: HttpClient): any {
-//  return new TranslateHttpLoader(http, system.sources.assets.i18n, '.json');
-//}
 
 
 //if (environment.defaultauth === 'firebase') {
@@ -44,6 +41,9 @@
 //  FakeBackendInterceptor;
 //}
 
+//export function createTranslateLoader(http: HttpClient): any {
+//  return new TranslateHttpLoader(http, system.sources.assets.i18n, '.json');
+//}
 //export function defaultLanguageFactory(cookieService: CookieService): string {
 //  const languageCode = cookieService.get('languageCode') || 'en'; // Retrieve language code from cookie, default to 'en'
 //  return languageCode;

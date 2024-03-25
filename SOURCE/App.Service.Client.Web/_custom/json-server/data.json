@@ -1,4 +1,5 @@
 {
+
   "base_encodingTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -78,6 +79,215 @@
       "flagImageId": "ws"
     }
   ],
+  "base_embargos": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "title": "UN 1991",
+      "description": "Iraq"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "title": "UN 2003",
+      "description": "Iraq Reconstruction"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "UN 2004",
+      "description": "DRC, Kimberley Process, Sudan"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": true,
+      "title": "UN 2007",
+      "description": "Al Qaida and Taliban"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "enabled": true,
+      "title": "UN 2008",
+      "description": "Lebanon"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "enabled": true,
+      "title": "UN 2010",
+      "description": "Eritrea"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "enabled": true,
+      "title": "UN 2011",
+      "description": "Libya"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "enabled": true,
+      "title": "UN 2012",
+      "description": "Guinea-Bissau"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000009",
+      "enabled": true,
+      "title": "UN 2014",
+      "description": "Central African Republic, Yemen"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000010",
+      "enabled": true,
+      "title": "UN 2015",
+      "description": "South Sudan, Syria Cultural Property"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000011",
+      "enabled": true,
+      "title": "UN 2016",
+      "description": "Iran"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000012",
+      "enabled": true,
+      "title": "UN 2017",
+      "description": "North Korea"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000013",
+      "enabled": true,
+      "title": "UN 2018",
+      "description": "Mali, Libya, Somalia"
+    }
+  ],
+  "base_countries_excluded": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "embargoFk": "00000000-0000-0000-0000-000000000013",
+      "title": "Mali",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000013",
+      "title": "Libya",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000013",
+      "title": "Somalia",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000012",
+      "title": "North Korea",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000011",
+      "title": "Iran",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000010",
+      "title": "South SUdan",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000010",
+      "title": "Syria Cultural Property",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000009",
+      "title": "Central African Republic",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000009",
+      "title": "Yemen",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000008",
+      "title": "Guinea-Bissau",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000007",
+      "title": "Libya",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000006",
+      "title": "Eritrea",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000005",
+      "title": "Lebanon",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000004",
+      "title": "Al Qaida",
+      "description": "...",
+      "range": "...see https://lite.ip2location.com/afghanistan-ip-address-ranges"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000004",
+      "title": "Taliban",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000003",
+      "title": "Democratic Republic of the Congo",
+      "description": "...",
+      "range": "41.243.3.0 - 41.243.4.255"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000003",
+      "title": "Kimberley Process",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000003",
+      "title": "Sudan",
+      "description": "...",
+      "range": "41.95.2.48.0-41.95.2.48.255",
+
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000002",
+      "title": "Iraq Reconstruction",
+      "description": "...",
+      "range": "40.77.167.5",
+      "range": "37.238.125.0-37.238.125.25"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "embargoFk": "00000000-0000-0000-0000-000000000001",
+      "title": "Iraq",
+      "description": "...",
+      "range": "40.77.167.5"
+    }
+  ],
   "base_statementTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -115,6 +325,8 @@
       "text": "...some desc..........."
     }
   ],
+
+
   "base_agreementTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -598,7 +810,7 @@
 
 
 
-  "licenses":[
+  "licenses": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "License",
@@ -628,7 +840,7 @@
 
 
 
-  "productTypes":[
+  "productTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Type A",

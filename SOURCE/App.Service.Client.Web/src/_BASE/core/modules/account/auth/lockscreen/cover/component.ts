@@ -45,7 +45,7 @@ export class CoverComponent implements OnInit {
   ngOnInit(): void {
     //
     this.systemUserQuotes =
-      this.systemUserQuoteRepositoryService.getPageByLanguageCode('en');
+      this.systemUserQuoteRepositoryService.getPageByLanguageCode(this.system.configuration.defaultLanguageCode);
 
     /**
      * Form Validatyion
