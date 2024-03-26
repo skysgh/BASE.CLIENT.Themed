@@ -66,6 +66,7 @@ export interface SystemNavigation {
   },
   dashboard: {
     root: string;
+    main: string;
   },
   apps: {
     architecture: {

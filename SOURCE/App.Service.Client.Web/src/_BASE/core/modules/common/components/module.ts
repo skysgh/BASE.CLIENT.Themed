@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { CountUpModule } from 'ngx-countup';
 import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 // Services:
@@ -21,6 +22,9 @@ import { BaseCoreCommonComponentsSummaryItemSelectorComponent } from './sunmaryi
 import { BaseCoreCommonComponentsFooterBComponent } from './footers/footerB/component';
 import { BaseCoreCommonComponentsFooterAComponent } from './footers/footerA/component';
 import { BaseCoreCommonComponentsFooterCComponent } from './footers/footerC/component';
+import { BaseCoreCommonComponentTopBarLanguageComponent } from './language/component';
+import { BaseCommonComponentsStatsOneComponent } from './stats/one/component';
+
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
@@ -34,6 +38,8 @@ import { BaseCoreCommonComponentsFooterCComponent } from './footers/footerC/comp
     NgbDropdownModule,
     MarkdownModule.forChild(),
     PdfViewerModule,
+    //for at least Stats/One:
+    CountUpModule
   ],
   declarations: [
     // define what Components belong to this Module (i.e., are not `standalone`)
@@ -41,24 +47,30 @@ import { BaseCoreCommonComponentsFooterCComponent } from './footers/footerC/comp
     BaseCoreCommonComponentsFooterBComponent,
     BaseCoreCommonComponentsFooterCComponent,
     BaseCoreCommonComponentsBreadcrumbsComponent,
+    BaseCoreCommonComponentTopBarLanguageComponent,
     BaseCoreCommonComponentsGoogleAnalyticsComponent,
     BaseCoreCommonComponentsGoogleMapsComponent,
     BaseCoreCommonComponentsMarkdownComponent,
     BaseCoreCommonComponentsPdfComponent,
     BaseCoreCommonComponentsSummaryItemComponent,
-    BaseCoreCommonComponentsSummaryItemSelectorComponent
+    BaseCoreCommonComponentsSummaryItemSelectorComponent,
+    //
+    BaseCommonComponentsStatsOneComponent
   ],
   exports: [
     BaseCoreCommonComponentsFooterAComponent,
     BaseCoreCommonComponentsFooterBComponent,
     BaseCoreCommonComponentsFooterCComponent,
     BaseCoreCommonComponentsBreadcrumbsComponent,
+    BaseCoreCommonComponentTopBarLanguageComponent,
     BaseCoreCommonComponentsGoogleAnalyticsComponent,
     BaseCoreCommonComponentsGoogleMapsComponent,
     BaseCoreCommonComponentsMarkdownComponent,
     BaseCoreCommonComponentsPdfComponent,
     BaseCoreCommonComponentsSummaryItemComponent,
-    BaseCoreCommonComponentsSummaryItemSelectorComponent
+    BaseCoreCommonComponentsSummaryItemSelectorComponent,
+    //
+    BaseCommonComponentsStatsOneComponent
   ],
   providers: [
     // declare services to dependency inject into constructors.

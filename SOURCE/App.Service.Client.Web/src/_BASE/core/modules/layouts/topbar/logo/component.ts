@@ -4,11 +4,11 @@ import { SystemService } from "../../../../services/system.service";
 import { System } from "../../../../constants/contracts/system";
 
 @Component({
-  selector: 'app-frame-context-logo',
+  selector: 'app-base-common-components-topbar-languagelogo',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseLayoutTopBarContextLogoComponent implements OnInit {
+export class BaseCoreCommonComponentTopBarLogoComponent implements OnInit {
 
   system: System;
 

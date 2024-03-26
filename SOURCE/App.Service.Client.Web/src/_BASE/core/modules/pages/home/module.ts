@@ -34,30 +34,14 @@ import { LandingScrollspyDirective } from '../../common/landingscrollspy.directi
 import { ScrollspyDirective } from '../../common/scrollspy.directive';
 import { BaseCoreCommonComponentsModule } from '../../common/components/module';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { BaseCoreHomeRoutingModule } from './routes';
 //NO: import { ScrollspyDirective } from '../../common/scrollspy.directive';
 //import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 @NgModule({
   imports: [
     TranslateModule.forChild(),
-    RouterModule.forChild(
-      [
-        // We're basically saying that
-        // parent module (base.module) associated 'page'
-        // to a a routeroutlet containing component it managed,
-        // and into it loaded this module.
-        // This module then provided no further router-outlets, just pages
-        // within its resposibility, such that
-        // 'base/pages/' or 'base/pages/layout' loads a router-controller
-        // it manages, and within that, loads deeper module.
-        // Note:
-        // Admittedly in he case of information, their simplicity doesn't
-        // warant a module for each, but out of habit I *think* I prefer paying
-        // a rigour price early, in case I manouverability later.
-        { path: '', component: BaseAppsPagesInformationIndexComponent },
-        { path: 'index', redirectTo: '', pathMatch: 'prefix' }
-      ]
-    ),
+    BaseCoreHomeRoutingModule,
     // Import classes within the above specified import files.
     //Ag specific:
     CommonModule,

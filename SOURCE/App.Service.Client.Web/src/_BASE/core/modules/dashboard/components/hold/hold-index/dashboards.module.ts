@@ -50,4 +50,4 @@
 //    ReactiveFormsModule
 //  ]
 //})
-//export class DashboardsModule { }
+//export class BaseCoreDashboardsModule { }

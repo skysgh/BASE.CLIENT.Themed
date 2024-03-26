@@ -5,11 +5,11 @@ import { System } from "../../../../constants/contracts/system";
 import { EventService } from "../../../../services/event.service";
 
 @Component({
-  selector: 'app-frame-context-hue',
+  selector: 'app-base-common-components-topbar-languagehue',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseLayoutTopBarContextHueComponent implements OnInit {
+export class BaseCoreCommonComponentTopBarHueComponent implements OnInit {
 
   system: System;
 

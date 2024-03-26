@@ -26,15 +26,15 @@ import lottie from 'lottie-web';
 
 // Top side:
 import { BaseLayoutTopBarComponent } from './topbar/topbar.component';
-import { BaseLayoutTopBarContextLanguageComponent } from './topbar/language/component';
-import { BaseLayoutTopBarContextNotificationsComponent } from './topbar/notifications/component';
-import { BaseLayoutTopBarContextShoppingComponent } from './topbar/shopping/component';
-import { BaseLayoutTopBarContextHueComponent } from './topbar/hue/component';
-import { BaseLayoutTopBarContextFullScreenComponent } from './topbar/fullscreen/component';
-import { BaseLayoutTopBarContextSearchComponent } from './topbar/search/component';
-import { BaseLayoutTopBarContextUserComponent } from './topbar/user/component';
-import { BaseLayoutTopBarContextMenuHideComponent } from './topbar/menuhide/component';
-import { BaseLayoutTopBarContextLogoComponent } from './topbar/logo/component';
+//import { BaseCoreCommonComponentTopBarLanguageComponent } from './topbar/language/component';
+import { BaseCoreCommonComponentTopBarNotificationsComponent } from './topbar/notifications/component';
+import { BaseCoreCommonComponentTopBarShoppingComponent } from './topbar/shopping/component';
+import { BaseCoreCommonComponentTopBarHueComponent } from './topbar/hue/component';
+import { BaseCoreCommonComponentTopBarFullScreenComponent } from './topbar/fullscreen/component';
+import { BaseCoreCommonComponentTopBarSearchComponent } from './topbar/search/component';
+import { BaseCoreCommonComponentTopBarUserComponent } from './topbar/user/component';
+import { BaseCoreCommonComponentTopBarMenuHideComponent } from './topbar/menuhide/component';
+import { BaseCoreCommonComponentTopBarLogoComponent } from './topbar/logo/component';
 
 // Right side:
 import { BaseLayoutRightsidebarComponent } from './rightsidebar/component';
@@ -51,15 +51,15 @@ import { BaseCoreCommonComponentsModule } from '../common/components/module';
     BaseLayoutVerticalComponent,
     // TopBar:
     BaseLayoutTopBarComponent,
-    BaseLayoutTopBarContextLanguageComponent,
-    BaseLayoutTopBarContextNotificationsComponent,
-    BaseLayoutTopBarContextLogoComponent,
-    BaseLayoutTopBarContextShoppingComponent,
-    BaseLayoutTopBarContextHueComponent,
-    BaseLayoutTopBarContextFullScreenComponent,
-    BaseLayoutTopBarContextSearchComponent,
-    BaseLayoutTopBarContextUserComponent,
-    BaseLayoutTopBarContextMenuHideComponent,
+    //BaseCoreCommonComponentTopBarLanguageComponent,
+    BaseCoreCommonComponentTopBarNotificationsComponent,
+    BaseCoreCommonComponentTopBarLogoComponent,
+    BaseCoreCommonComponentTopBarShoppingComponent,
+    BaseCoreCommonComponentTopBarHueComponent,
+    BaseCoreCommonComponentTopBarFullScreenComponent,
+    BaseCoreCommonComponentTopBarSearchComponent,
+    BaseCoreCommonComponentTopBarUserComponent,
+    BaseCoreCommonComponentTopBarMenuHideComponent,
     // Right:
     BaseLayoutRightSideContextThemeCustomiserComponent,
     BaseLayoutSidebarComponent,

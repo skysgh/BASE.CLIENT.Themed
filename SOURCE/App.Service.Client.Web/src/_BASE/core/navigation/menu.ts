@@ -10,7 +10,7 @@ export const MENU: IHasMenuItem[] =
       title: 'BASE.DASHBOARDS.TITLE',
       description: 'BASE.DASHBOARD.DESCRIPTION',
       icon: 'home',
-      link: 'dashboard',
+      link: system.navigation.dashboard.root,
     },
     {
       id: 20,

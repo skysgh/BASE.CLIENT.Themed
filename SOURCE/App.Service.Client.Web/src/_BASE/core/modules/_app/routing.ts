@@ -25,6 +25,8 @@ const routes: Routes = [
   //// the AppROComponent. They also don't need to be gaurded - they're public access.
   { path: '', loadChildren: () => import('../pages/home/module').then(m => m.BaseCoreHomeModule) },
 
+  { path: 'dashboards', component: AppLayoutComponent, loadChildren: () => import('../dashboard/module').then(m => m.BaseCoreDashboardsModule), canActivate: [AuthGuard] },
+
   { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BaseCorePagesModule) },
   //// But apps, is more complex:
   //// Is is wrapped in the AppLayout frame first.

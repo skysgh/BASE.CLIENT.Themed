@@ -15,11 +15,11 @@ import { TranslationService } from '../../../../services/translation.service';
 
 
 @Component({
-  selector: 'app-frame-context-language',
+  selector: 'app-base-common-components-topbar-languagelanguage',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseLayoutTopBarContextLanguageComponent implements OnInit {
+export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
 
 
   system: System;

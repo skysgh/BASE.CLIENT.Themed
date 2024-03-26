@@ -121,7 +121,8 @@ export const system: System = {
       user: '/settings/profile',
     },
     dashboard: {
-      root: "apps/dashboard/"
+      root: "/dashboards",
+      main: "/dashboards/main"
     },
     apps: {
       architecture: {

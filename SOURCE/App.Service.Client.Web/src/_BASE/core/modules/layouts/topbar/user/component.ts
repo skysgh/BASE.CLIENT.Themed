@@ -10,11 +10,11 @@ import { TokenStorageService } from '../../../../services/token-storage.service'
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-frame-context-user',
+  selector: 'app-base-common-components-topbar-languageuser',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseLayoutTopBarContextUserComponent implements OnInit {
+export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
 
   system: System;
 

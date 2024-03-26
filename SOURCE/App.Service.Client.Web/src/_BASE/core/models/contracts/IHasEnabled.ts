@@ -1,3 +1,4 @@
+
 /**
  * Contract for models that
  * require indicating whether the entry

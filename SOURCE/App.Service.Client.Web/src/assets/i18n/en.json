@@ -49,10 +49,22 @@
       "IGNORED": "Ignored",
       "EXCLUDED": "Excluded"
     },
+    "ACCEPTANCES": {
+      "__COMMENTS": ".See APPLICATIONS, INVITATIONS, APPROVALS",
+      "TITLE": "Acceptance",
+      "TITLES": "Acceptances",
+      "DESCRIPTION": "..."
+    },
     "ACCOMPLISHMENTS": {
-      "__COMMENTS": ".See OBSERVATIONS, ASSESSMENTS, PROGRESS",
+      "__COMMENTS": ".See OBSERVATIONS, ASSESSMENTS, PROGRESS, ACHIEVEMENTS",
       "TITLE": "Accomplisment",
       "TITLES": "Accomplisments",
+      "DESCRIPTION": "..."
+    },
+    "ACHIEVEMENTS": {
+      "__COMMENTS": ".See OBSERVATIONS, ASSESSMENTS, PROGRESS, ACCOMPLISHMENTS",
+      "TITLE": "Achievement",
+      "TITLES": "Achievements",
       "DESCRIPTION": "..."
     },
     "ACTIONS": {
@@ -108,6 +120,18 @@
       "VIEW": "View",
       "VIEW_ALL": "View All"
     },
+    "AGES": {
+      "__COMMENTS": ".See NUMBERS",
+      "TITLE": "Age",
+      "TITLES": "Ages",
+      "DESCRIPTION": "...",
+      "INFANT": "Infant",
+      "ADOLESCENT": "Adolescent",
+      "YOUTH": "Youth",
+      "YOUNG_ADULT": "Young Adult",
+      "ADULT": "Adult",
+      "SENIOR": "Senior"
+    },
     "AGREEMENTS": {
       "__COMMENTS": ".See also CONTRACTS",
       "TITLE": "Agreement",
@@ -132,6 +156,12 @@
       "TITLES": "Analyses",
       "DESCRIPTION": "..."
     },
+    "APPLICATIONS": {
+      "__COMMENTS": "See INVITATIONS, ACCEPTANCES.",
+      "TITLE": "Application",
+      "TITLES": "Applications",
+      "DESCRIPTION": "..."
+    },
     "APPOINTMENTS": {
       "__COMMENTS": "See SCHEDULING, TASKS, PROJECTS areas.",
       "TITLE": "Appointment",
@@ -139,7 +169,7 @@
       "DESCRIPTION": "..."
     },
     "APPRECIATIONS": {
-      "__COMMENTS": "See CREDITS, GREETINGS, DEPARTURES",
+      "__COMMENTS": "See CREDITS, GREETINGS, DEPARTURES, LIKES",
       "TITLE": "Appreciation",
       "TITLES": "Appreciations",
       "DESCRIPTION": "...",
@@ -147,6 +177,12 @@
       "THANKS!": "Thanks!",
       "THANK YOU": "Thank you",
       "THANK_YOU_FOR_USING_": "Thank you for using_"
+    },
+    "APPROVALS": {
+      "__COMMENTS": "See APPLICATIONS, INVITATIONS, APPROVALS",
+      "TITLE": "Approval",
+      "TITLES": "Approvals",
+      "DESCRIPTION": "..."
     },
     "APPS": {
       "__COMMENTS": "",
@@ -310,6 +346,18 @@
         "X": "Handle",
         "MASTADON": "Address"
       }
+    },
+    "CHARTS": {
+      "__COMMENTS": "",
+      "TITLE": "Chart",
+      "TITLES": "Charts",
+      "DESCRIPTION": "",
+      "LINE": "Line",
+      "BAR": "Bar",
+      "PIE": "Pie",
+      "RADAR": "Radar",
+      "PLOT": "Plot",
+      "GRAPH": "Graph"
     },
     "CHAT": {
       "__COMMENTS": "WARNING: Avoid. Plenty of other tools for this. See MESSAGES Area.",
@@ -1127,10 +1175,10 @@
       "TITLES": "N/A",
       "DESCRIPTION": "Self-Help."
     },
-    "HOME": {
+    "HOMES": {
       "__COMMENTS": "",
       "TITLE": "Home",
-      "TITLES": "N/A",
+      "TITLES": "Homes",
       "DESCRIPTION": "...is where the heart is."
     },
     "HUES": {
@@ -1236,13 +1284,13 @@
       "BROWSER": "Browser"
     },
     "INVITATIONS": {
-      "__COMMENTS": "TODO: Application, Acceptance, Invitation, Acceptance....",
+      "__COMMENTS": "TODO: APPLICATIONS, INVITATIONS, ACCEPTANCES",
       "TITLE": "Invitation",
       "TITLES": "Invitations",
       "DESCRIPTION": "..."
     },
     "ISSUES": {
-      "__COMMENTS": "See WORK, STATUS .",
+      "__COMMENTS": "See WORK, STATUS, SUGGESTIONS, PROPOSALS.",
       "TITLE": "Issue",
       "TITLES": "Issues",
       "DESCRIPTION": "Known issues"
@@ -1266,6 +1314,14 @@
         "TWOCOLUMN": "Two Column",
         "HOVERED": "Hovered"
       }
+    },
+    "LIKES": {
+      "__COMMENTS": "See APPRECIATION",
+      "TITLE": "Like",
+      "TITLES": "Likes",
+      "DESCRIPTION": "...",
+      "DISLIKE": "Dislike",
+      "DISLIKES": "Dislikes"
     },
     "LOCATIONS": {
       "__COMMENTS": "",
@@ -1415,6 +1471,43 @@
       "UNREAD": "Unread",
       "READ": "Read"
     },
+    "NUMBERS": {
+      "__COMMENTS": "See POSITIONS",
+      "TITLE": "Number",
+      "TITLES": "Numbers",
+      "ONE": "One",
+      "TWO": "Two",
+      "THREE": "Three",
+      "FOUR": "Four",
+      "FIVE": "Five",
+      "SIX": "Six",
+      "SEVEN": "Seven",
+      "EIGHT": "Eight",
+      "NINE": "Nine",
+      "TEN": "Ten",
+      "ELEVEN": "Eleven",
+      "TWELVE": "Twelve",
+      "THIRTEEN": "Thirteen",
+      "FOURTEEN": "Fourteen",
+      "FIFTEEN": "Fifteen",
+      "SIXTEEN": "Sixteen",
+      "SEVENTEEN": "Seventeen",
+      "EIGHTEEN": "Eighteen",
+      "NINETEEN": "Nineteen",
+      "TWENTY": "Twenty",
+      "THIRTY": "Thirty",
+      "FORTY": "Forty",
+      "FIFTY": "Fifty",
+      "SIXTY": "Sixty",
+      "SEVENTY": "Seventy",
+      "EIGHTY": "Eighty",
+      "NINETY": "Ninety",
+      "HUNDRED": "Hundred",
+      "THOUSAND": "Thousand",
+      "MILLION": "Million",
+      "BILLION": "Billion",
+      "TRILLION": "Trillion"
+    },
     "OBSERVATIONS": {
       "__COMMENTS": "See ASSESSMENTS, PROGRESS, ACHIEVEMENTS",
       "TITLE": "Observation",
@@ -1537,6 +1630,12 @@
       "HOME": "Home",
       "WORK": "Work"
     },
+    "PLANS": {
+      "__COMMENTS": "See PRICES, SUBSCRIPTIONS",
+      "TITLE": "Plan",
+      "TITLES": "Plans",
+      "DESCRIPTION": "..."
+    },
     "POLICIES": {
       "__COMMENTS": "See PRINCIPLES.",
       "TITLE": "Policy",
@@ -1594,11 +1693,20 @@
       "COUNTRY_EXAMPLE": "Switzerland",
       "COUNTRY_INSTRUCTIONS": "Provide a country, kingdom, etc."
     },
+    "PRICES": {
+      "__COMMENTS": "See PRICING, PLANS, SUBSCRIPTIONS",
+      "TITLE": "Price",
+      "TITLES": "Prices",
+      "DESCRIPTION": "..."
+    },
     "PRICING": {
-      "__COMMENTS": "See SCHEDULING",
+      "__COMMENTS": "See PRICES, PLANS, SUBSCRIPTIONS",
       "TITLE": "Pricing",
       "TITLES": "N/A",
-      "DESCRIPTION": "..."
+      "DESCRIPTION": "...",
+      "LESS_THAN_A_DRIP_COFFEE": "Less than a drip coffee.",
+      "LESS_THAN_A_BUS_RIDE": "Less than a drip coffee."
+
     },
     "PRESENCE": {
       "__COMMENTS": "See PARTICIPATIONS",
@@ -1652,6 +1760,12 @@
       "__COMMENTS": "",
       "TITLE": "Prompt",
       "TITLES": "Prompts",
+      "DESCRIPTION": "..."
+    },
+    "PROPOSALS": {
+      "__COMMENTS": "See ISSUES, SUGGESTIONS",
+      "TITLE": "PROPOSAL",
+      "TITLES": "PROPOSALS",
       "DESCRIPTION": "..."
     },
     "QUANTITIES": {
@@ -1732,10 +1846,10 @@
       "RESPONSIBILITY": "Responsibility",
       "RESPONSIBILITIES": "Responsibilities"
     },
-    "ROLES": {
-      "__COMMENTS": "See also ACCESS_LEVELS, PERMISSIONS",
-      "TITLE": "Role",
-      "TITLES": "Roles",
+    "REVIEWS": {
+      "__COMMENTS": "",
+      "TITLE": "Review",
+      "TITLES": "Reviews",
       "DESCRIPTION": "..."
     },
     "RISKS": {
@@ -1757,6 +1871,12 @@
         "HIGH": "High",
         "CRITICAL": "Critical"
       }
+    },
+    "ROLES": {
+      "__COMMENTS": "See also ACCESS_LEVELS, PERMISSIONS",
+      "TITLE": "Role",
+      "TITLES": "Roles",
+      "DESCRIPTION": "..."
     },
     "SCHEDULING": {
       "__COMMENTS": "See PROJECTS, TASKS area.",
@@ -1954,6 +2074,12 @@
         }
       }
     },
+    "SUGGESTIONS": {
+      "__COMMENTS": "See ISSUES, PROPOSALS",
+      "TITLE": "Suggestion",
+      "TITLES": "Suggestion",
+      "DESCRIPTION": "..."
+    },
     "SUPPORT": {
       "__COMMENTS": "Compare with [self] HELP. See ASSISTANCE",
       "TITLE": "Support",
@@ -1967,7 +2093,7 @@
       "DESCRIPTION": "..."
     },
     "TASKS": {
-      "__COMMENTS": "See PROJECTS area.",
+      "__COMMENTS": "See TODOS, PROJECTS area.",
       "TITLE": "Task",
       "TITLES": "Tasks",
       "DESCRIPTION": "Description",
@@ -2065,6 +2191,12 @@
       "TITLE": "Timeline",
       "TITLES": "Timelines",
       "DESCRIPTION": "Our expected timeline of when we'll be adding features..."
+    },
+    "TODOS": {
+      "__COMMENTS": "See TASKS, ISSUES, SUGGESTIONS",
+      "TITLE": "Todo",
+      "TITLES": "Todos",
+      "DESCRIPTION": "..."
     },
     "TRACKING_POLICY": {
       "__COMMENTS": "",

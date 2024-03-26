@@ -6,11 +6,11 @@ import { EventService } from "../../../../services/event.service";
 import { DOCUMENT } from "@angular/common";
 
 @Component({
-  selector: 'app-frame-context-search',
+  selector: 'app-base-common-components-topbar-languagesearch',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseLayoutTopBarContextSearchComponent implements OnInit {
+export class BaseCoreCommonComponentTopBarSearchComponent implements OnInit {
 
   system: System;
 

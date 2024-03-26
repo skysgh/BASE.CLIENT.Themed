@@ -11,6 +11,7 @@
     <None Remove="src\app\account\**" />
     <None Remove="src\app\custom\**" />
     <None Remove="src\app\pages\module01\**" />
+    <None Remove="src\_BASE\core\modules\dashboard\components\hold\**" />
     <None Remove="src\_BASE\core\modules\pages\information\models\**" />
     <None Remove="src\_BASE\core\modules\pages\information\services\**" />
     <None Remove="src\_BASE\core\modules\pages\information\models\**" />
@@ -25,6 +26,7 @@
     <TypeScriptConfiguration Remove="src\app\account\**" />
     <TypeScriptConfiguration Remove="src\app\custom\**" />
     <TypeScriptConfiguration Remove="src\app\pages\module01\**" />
+    <TypeScriptConfiguration Remove="src\_BASE\core\modules\dashboard\components\hold\**" />
     <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\information\models\**" />
     <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\information\services\**" />
     <TypeScriptConfiguration Remove="src\_BASE\core\modules\pages\information\models\**" />
@@ -45,6 +47,9 @@
     <Folder Include="src\assets\pdf\ws\" />
     <Folder Include="src\_BASE\apps\education\ui\" />
     <Folder Include="src\_BASE\core\data\immutable\" />
+    <Folder Include="src\_BASE\core\modules\common\components\stats\two\" />
+    <Folder Include="src\_BASE\core\modules\common\widgets\" />
+    <Folder Include="src\_BASE\core\modules\dashboard\components\index\" />
     <Folder Include="src\_BASE\core\modules\errors\400\" />
     <Folder Include="src\_BASE\core\modules\layouts\common\" />
     <Folder Include="src\_BASE\core\modules\pages\information\components\index\" />

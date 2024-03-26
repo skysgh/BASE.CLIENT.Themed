@@ -8,11 +8,11 @@ import { Observable, of } from "rxjs";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'app-frame-context-notifications',
+  selector: 'app-base-common-components-topbar-languagenotifications',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseLayoutTopBarContextNotificationsComponent implements OnInit {
+export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnInit {
 
   system: System;
 

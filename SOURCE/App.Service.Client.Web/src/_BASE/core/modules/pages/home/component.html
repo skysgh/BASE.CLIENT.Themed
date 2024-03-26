@@ -5,10 +5,10 @@
          (window:scroll)="windowScroll()">
       <div class="container">
         <a class="navbar-brand" routerLink="/">
-          <img src="assets/images/logo-dark.png"
+          <img src="assets/images/logos/logo-dark.png"
                class="card-logo card-logo-dark"
                alt="logo dark" height="17">
-          <img src="assets/images/logo-light.png"
+          <img src="assets/images/logos/logo-light.png"
                class="card-logo card-logo-light"
                alt="logo light"
                height="17">
@@ -30,7 +30,7 @@
               <a class="nav-link active"
                  [ngClass]="{'active':currentSection === 'hero'}"
                  [ngxScrollTo]="'#hero'"
-                 href="javascript:void(0);">Home</a>
+                 href="javascript:void(0);">{{'BASE.HOMES.TITLES'|translate}}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" [ngClass]="{'active':currentSection === 'services'}" [ngxScrollTo]="'#services'" href="javascript:void(0);">{{'BASE.CAPABILITIES.TITLES'|translate}}</a>
@@ -39,10 +39,10 @@
               <a class="nav-link" [ngClass]="{'active':currentSection === 'features'}" [ngxScrollTo]="'#features'" href="javascript:void(0);">{{'BASE.FEATURES.TITLES'|translate}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [ngClass]="{'active':currentSection === 'plans'}" [ngxScrollTo]="'#plans'" href="javascript:void(0);">Plans</a>
+              <a class="nav-link" [ngClass]="{'active':currentSection === 'plans'}" [ngxScrollTo]="'#plans'" href="javascript:void(0);">{{'BASE.PLANS.TITLE'|translate}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [ngClass]="{'active':currentSection === 'reviews'}" [ngxScrollTo]="'#reviews'" href="javascript:void(0);">Reviews</a>
+              <a class="nav-link" [ngClass]="{'active':currentSection === 'reviews'}" [ngxScrollTo]="'#reviews'" href="javascript:void(0);">{{'BASE.REVIEWS.TITLE'|translate}}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" [ngClass]="{'active':currentSection === 'team'}" [ngxScrollTo]="'#team'" href="javascript:void(0);">{{'BASE.TEAMS.TITLE'|translate}}</a>
@@ -52,6 +52,8 @@
             </li>
           </ul>
 
+          <app-base-common-components-topbar-languagelanguage></app-base-common-components-topbar-languagelanguage>
+
           <div class="">
             <a routerLink="/signin/basic" class="btn btn-link fw-medium text-decoration-none text-body">
               {{'BASE.ACTIONS.SIGN_IN'|translate}}
@@ -60,11 +62,15 @@
               {{'BASE.ACTIONS.SIGN_UP'|translate}}
             </a>
           </div>
+
         </div>
 
       </div>
     </nav>
     <!-- end navbar -->
+
+
+
     <!-- start hero section -->
     <section class="section pb-0 hero-section" id="hero">
       <div class="bg-overlay bg-overlay-pattern"></div>

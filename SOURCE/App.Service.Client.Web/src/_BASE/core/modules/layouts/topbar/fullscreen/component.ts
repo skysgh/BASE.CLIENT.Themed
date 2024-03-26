@@ -6,11 +6,11 @@ import { EventService } from "../../../../services/event.service";
 import { DOCUMENT } from "@angular/common";
 
 @Component({
-  selector: 'app-frame-context-fullscreen',
+  selector: 'app-base-common-components-topbar-languagefullscreen',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseLayoutTopBarContextFullScreenComponent implements OnInit {
+export class BaseCoreCommonComponentTopBarFullScreenComponent implements OnInit {
 
   system: System;
 

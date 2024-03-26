@@ -9,11 +9,11 @@ import { cartData } from '../data';
 
 
 @Component({
-  selector: 'app-frame-context-shopping',
+  selector: 'app-base-common-components-topbar-languageshopping',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseLayoutTopBarContextShoppingComponent implements OnInit {
+export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
 
   system: System;
 

@@ -10,7 +10,7 @@ import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMod
 import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from '../../layouts/layout-selector';
 
 @Component({
-  selector: 'app-frame-context-theme-customiser',
+  selector: 'app-base-common-components-topbar-languagetheme-customiser',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })

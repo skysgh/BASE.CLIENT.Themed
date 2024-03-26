@@ -5,11 +5,11 @@ import { System } from "../../../../constants/contracts/system";
 import { EventService } from "../../../../services/event.service";
 
 @Component({
-  selector: 'app-frame-context-menuhide',
+  selector: 'app-base-common-components-topbar-languagemenuhide',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseLayoutTopBarContextMenuHideComponent implements OnInit {
+export class BaseCoreCommonComponentTopBarMenuHideComponent implements OnInit {
 
   system: System;
 

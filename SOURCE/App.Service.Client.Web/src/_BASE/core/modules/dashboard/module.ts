@@ -3,37 +3,34 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 //
-import { DiagnosticsTraceService } from '../../services/diagnostics.service';
 import { DashboardService } from '../../services/dashboard.service';
+import { BaseCoreDashboardsIndexComponent } from './components/index/component';
+import { BaseCoreCommonComponentsModule } from '../common/components/module';
+import { BaseCoreDashboardsRouterModule } from './routes';
 //
-import { StatComponent } from './ui/stat/component';
-import { DashboardComponent } from './ui/component';
+//import { StatComponent } from './hold/stat/component';
+//import { DashboardComponent } from './ui/component';
 
 //import Module specific:
 @NgModule({
   imports: [
-      RouterModule.forChild(
-        [
-          {
-            path: '', component: DashboardComponent
-          }
-        ]),
-          // Import classes within the above specified import files.
+    // Import classes within the above specified import files.
     // Ag specific:
     CommonModule,
     // Module specific:
-    // No components
+    BaseCoreCommonComponentsModule,
+    // Routes
+    BaseCoreDashboardsRouterModule,
   ],
 
   declarations: [
-    StatComponent,
-    DashboardComponent,
+    BaseCoreDashboardsIndexComponent,
   ],
   providers: [
     // declare services to dependency inject into constructors.
     // define what Services
     //DiagnosticsTraceService,
-    DashboardService,
+    DashboardService
   ]
 })
-export class AppBaseCoreDashboardModule { }
+export class BaseCoreDashboardsModule { }
