@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClientLogoComponent } from './component';
+import { BaseAppsPagesLandingIndexClientsComponent } from './component';
 
 describe('ClientLogoComponent', () => {
-  let component: ClientLogoComponent;
-  let fixture: ComponentFixture<ClientLogoComponent>;
+  let component: BaseAppsPagesLandingIndexClientsComponent;
+  let fixture: ComponentFixture<BaseAppsPagesLandingIndexClientsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClientLogoComponent ]
+      declarations: [BaseAppsPagesLandingIndexClientsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClientLogoComponent);
+    fixture = TestBed.createComponent(BaseAppsPagesLandingIndexClientsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

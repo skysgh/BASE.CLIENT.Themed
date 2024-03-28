@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BaseInformationTermsAndConditionsComponent } from './component';
+import { BaseCorePagesInformationTermsComponent } from './component';
 
 describe('TermsConditionComponent', () => {
-  let component: BaseInformationTermsAndConditionsComponent;
-  let fixture: ComponentFixture<BaseInformationTermsAndConditionsComponent>;
+  let component: BaseCorePagesInformationTermsComponent;
+  let fixture: ComponentFixture<BaseCorePagesInformationTermsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BaseInformationTermsAndConditionsComponent ]
+      declarations: [BaseCorePagesInformationTermsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BaseInformationTermsAndConditionsComponent);
+    fixture = TestBed.createComponent(BaseCorePagesInformationTermsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

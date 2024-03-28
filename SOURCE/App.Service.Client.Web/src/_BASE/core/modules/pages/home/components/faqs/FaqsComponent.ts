@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemService } from '../../../../../../shared/services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../shared/services/diagnostics.service';
+import { TranslateService } from '@ngx-translate/core';
+import { SystemService } from '../../../../../services/system.service';
+import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 
 
 @Component({
@@ -20,5 +21,8 @@ export class FaqsComponent implements OnInit {
         this.system = systemService.system;
 
         this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
+    }
+    ngOnInit(): void {
+        throw new Error('Method not implemented.');
     }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProcessModel } from './process.model';
-import { SystemService } from '../../../../../../shared/services/system.service';
 import { TranslateService } from '@ngx-translate/core';
+import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
+import { SystemService } from '../../../../../services/system.service';
 
 
 @Component({
@@ -20,8 +21,11 @@ export class WorkProcessComponent implements OnInit {
     constructor(systemService: SystemService,
         private diagnosticsTraceService: DiagnosticsTraceService,
         public translate: TranslateService) {
-        this.system = systemService.system;
+        //this.system = systemService.system;
 
         this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
+    }
+    ngOnInit(): void {
+        throw new Error('Method not implemented.');
     }
 }

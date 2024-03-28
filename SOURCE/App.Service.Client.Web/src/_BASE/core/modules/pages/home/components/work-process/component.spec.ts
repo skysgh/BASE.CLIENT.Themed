@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WorkProcessComponent } from './component';
+import { BaseAppsPagesLandingIndexWorkProcessComponent } from './component';
 
-describe('WorkProcessComponent', () => {
-  let component: WorkProcessComponent;
-  let fixture: ComponentFixture<WorkProcessComponent>;
+describe('BaseAppsPagesLandingIndexWorkProcessComponent', () => {
+  let component: BaseAppsPagesLandingIndexWorkProcessComponent;
+  let fixture: ComponentFixture<BaseAppsPagesLandingIndexWorkProcessComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WorkProcessComponent ]
+      declarations: [ BaseAppsPagesLandingIndexWorkProcessComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WorkProcessComponent);
+    fixture = TestBed.createComponent(BaseAppsPagesLandingIndexWorkProcessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

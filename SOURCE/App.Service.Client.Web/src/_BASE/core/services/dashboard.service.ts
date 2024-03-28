@@ -25,57 +25,62 @@ export class DashboardService {
   }
 
 
-  private statsData: StatOneVTO[] = [{
+  private statsData: StatOneVTO[] = [
+    {
     enabled:true,
     title: 'Schools',
     description:'...',
+    iconId: 'bx bxs-school',
     value: 5871,
-    iconId: 'ri-space-ship-line',
+    decimalPlaces:0,
     prefix: undefined,
-    changeDirection: +1,
     suffix: undefined,
-
-  }, {
+    changeDirection: +1
+    },
+    {
     enabled:true,
     title: 'Learners',
     description: '...',
-    value: 789.4,
     iconId: 'ri-exchange-dollar-line',
-    changeDirection: +1,
+    value: 789.4,
+    decimalPlaces: 0,
     prefix: '',
-    suffix: 'k'
-
+    suffix: 'k',
+    changeDirection: +1
     },
     {
-      enabled:true,
-    title: 'Enrollments',
-    description:'',
-      iconId: 'ri-pulse-line',
-    value: 89.89,
-      changeDirection: -1,
-    prefix:'',
-    suffix: '%'
+      enabled: true,
+      title: 'Enrollments',
+      description: '',
+      iconId: 'bx bx-user-check',
+      value: 89.89,
+      decimalPlaces: 2,
+      prefix: '',
+      suffix: '%',
+      changeDirection: -1
     },
     {
       enabled:true,
       title: 'Attendance',
-    description:'',
-      iconId: 'ri-trophy-line',
+      description:'',
+      iconId: 'bx bx-bell',
+      value: 56.23,
+      decimalPlaces: 2,
       prefix: '',
-    value: 56.23,
       suffix: '%',
-    changeDirection: -1
-  }, {
+      changeDirection: -1
+    },
+    {
       enabled: true,
-    title: 'ANNUAL DEALS',
+      title: 'Graduating',
       description: '',
-      iconId: 'ri-service-line',
+      iconId: 'ri-trophy-line',
+      value: 2659,
+      decimalPlaces: 2,
       prefix: '',
-    value: 2659,
       suffix: '',
-      changeDirection: -1,
-
-  }
+      changeDirection: -1
+    }
   ];
 
 

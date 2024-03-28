@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CounterComponent } from './component';
+import { BaseAppsPagesLandingIndexCounterComponent } from './component';
 
 describe('CounterComponent', () => {
-  let component: CounterComponent;
-  let fixture: ComponentFixture<CounterComponent>;
+  let component: BaseAppsPagesLandingIndexCounterComponent;
+  let fixture: ComponentFixture<BaseAppsPagesLandingIndexCounterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CounterComponent ]
+      declarations: [BaseAppsPagesLandingIndexCounterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CounterComponent);
+    fixture = TestBed.createComponent(BaseAppsPagesLandingIndexCounterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BaseLayoutFooterComponent } from './component';
+import { BaseAppsPagesLandingIndexFooterComponent } from './component';
 
 describe('BaseLayoutFooterComponent', () => {
-  let component: BaseLayoutFooterComponent;
-  let fixture: ComponentFixture<BaseLayoutFooterComponent>;
+  let component: BaseAppsPagesLandingIndexFooterComponent;
+  let fixture: ComponentFixture<BaseAppsPagesLandingIndexFooterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BaseLayoutFooterComponent ]
+      declarations: [BaseAppsPagesLandingIndexFooterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BaseLayoutFooterComponent);
+    fixture = TestBed.createComponent(BaseAppsPagesLandingIndexFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

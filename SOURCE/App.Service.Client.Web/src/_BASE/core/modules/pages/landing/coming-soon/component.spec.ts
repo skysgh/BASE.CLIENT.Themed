@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComingSoonComponent } from './component';
+import { BaseCorePagesLandingComingSoonComponent } from './component';
 
 describe('ComingSoonComponent', () => {
-  let component: ComingSoonComponent;
-  let fixture: ComponentFixture<ComingSoonComponent>;
+  let component: BaseCorePagesLandingComingSoonComponent;
+  let fixture: ComponentFixture<BaseCorePagesLandingComingSoonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ComingSoonComponent ]
+      declarations: [BaseCorePagesLandingComingSoonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ComingSoonComponent);
+    fixture = TestBed.createComponent(BaseCorePagesLandingComingSoonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

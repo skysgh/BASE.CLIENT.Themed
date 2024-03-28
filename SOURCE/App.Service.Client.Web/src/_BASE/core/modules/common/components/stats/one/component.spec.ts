@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrmStatComponent } from './component';
+import { BaseCommonComponentsStatsOneComponent } from './component';
 
 describe('CrmStatComponent', () => {
-  let component: CrmStatComponent;
-  let fixture: ComponentFixture<CrmStatComponent>;
+  let component: BaseCommonComponentsStatsOneComponent;
+  let fixture: ComponentFixture<BaseCommonComponentsStatsOneComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CrmStatComponent ]
+      declarations: [BaseCommonComponentsStatsOneComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrmStatComponent);
+    fixture = TestBed.createComponent(BaseCommonComponentsStatsOneComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

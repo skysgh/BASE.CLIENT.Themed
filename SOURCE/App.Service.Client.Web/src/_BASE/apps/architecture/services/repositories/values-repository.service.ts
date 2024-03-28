@@ -11,11 +11,12 @@ import { TypeService } from "../../../../core/services/type.service";
 import { SessionStorageService } from "../../../../core/services/SessionStorageService";
 import { ObjectMappingService } from "../../../../core/services/objectMapping.service";
 import { UrlService } from "../../../../core/services/url.service";
+import { SimpleGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/simple-generic-repository-service.base";
 
 
 @Injectable()
 export class ArchitectureValuesRepositoryService
-  extends MappedGenericRepositoryServiceBase<Value> {
+  extends SimpleGenericRepositoryServiceBase<Value> {
 
   constructor(
     typeService: TypeService,

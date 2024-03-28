@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OfflineComponent } from './component';
+import { BaseErrorsOfflineComponent } from './component';
 
-describe('OfflineComponent', () => {
-  let component: OfflineComponent;
-  let fixture: ComponentFixture<OfflineComponent>;
+describe('BaseErrorsOfflineComponent', () => {
+  let component: BaseErrorsOfflineComponent;
+  let fixture: ComponentFixture<BaseErrorsOfflineComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OfflineComponent ]
+      declarations: [BaseErrorsOfflineComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OfflineComponent);
+    fixture = TestBed.createComponent(BaseErrorsOfflineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,7 +4,7 @@ import { circle, latLng, tileLayer } from 'leaflet';
 
 import { ChartType } from '../../../../models/contracts/dashboard.model';
 import { BestSelling, Recentelling, TopSelling, statData } from 'src/app/core/data';
-import { ToastService } from '../../../../services/toast.service';
+import { ToastService } from '../../../../../services/toast.service';
 
 @Component({
   selector: 'app-dashboard',

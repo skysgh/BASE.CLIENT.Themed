@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CtaComponent } from './component';
+import { BaseAppsPagesLandingIndexCtaComponent } from './component';
 
-describe('CtaComponent', () => {
-  let component: CtaComponent;
-  let fixture: ComponentFixture<CtaComponent>;
+describe('BaseAppsPagesLandingIndexCtaComponent', () => {
+  let component: BaseAppsPagesLandingIndexCtaComponent;
+  let fixture: ComponentFixture<BaseAppsPagesLandingIndexCtaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CtaComponent ]
+      declarations: [BaseAppsPagesLandingIndexCtaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CtaComponent);
+    fixture = TestBed.createComponent(BaseAppsPagesLandingIndexCtaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

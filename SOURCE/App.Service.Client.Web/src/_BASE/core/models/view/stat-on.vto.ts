@@ -9,6 +9,7 @@ export class StatOneVTO extends IconBasedReferenceDataBase implements IHasValue 
   public value: any;
   public suffix: string | undefined;
   public changeDirection : number = 0;
+  public decimalPlaces: number = 0;
 
 
 }

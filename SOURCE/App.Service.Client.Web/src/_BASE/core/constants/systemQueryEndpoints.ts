@@ -13,6 +13,9 @@ export const SystemQueryEndpoints = {
   agreements: "agreements",
   jobs: "jobs",
   notificaitons: "notifications",
+
+  stats: 'base_stats',
+
   userQuotes: "userQuotes",
 
       // Products Api
@@ -49,4 +52,5 @@ export const SystemQueryEndpoints = {
   leads: `apps/leads`,
 
   transactions: `apps/transactions`
+
 };

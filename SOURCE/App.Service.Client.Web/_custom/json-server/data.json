@@ -1,4 +1,63 @@
 {
+  "base_stats": [
+    [
+      {
+        "enabled": true,
+        "title": "Providers",
+        "description": "...",
+        "iconId": "bx bxs-school",
+        "value": 5871,
+        "decimalPlaces": 0,
+        "prefix": "undefined",
+        "suffix": "undefined",
+        "changeDirection": "+1"
+      },
+      {
+        "enabled": true,
+        "title": "Learners",
+        "description": "...",
+        "iconId": "las la-child",
+        "value": 789.4,
+        "decimalPlaces": 0,
+        "prefix": "",
+        "suffix": "k",
+        "changeDirection": "+1"
+      },
+      {
+        "enabled": true,
+        "title": "Enrollments",
+        "description": "",
+        "iconId": "bx bx-user-check",
+        "value": 89.89,
+        "decimalPlaces": 2,
+        "prefix": "",
+        "suffix": "%",
+        "changeDirection": -1
+      },
+      {
+        "enabled": true,
+        "title": "Attendance",
+        "description": "",
+        "iconId": "bx bx-bell",
+        "value": 56.23,
+        "decimalPlaces": 2,
+        "prefix": "",
+        "suffix": "%",
+        "changeDirection": -1
+      },
+      {
+        "enabled": true,
+        "title": "Graduating",
+        "description": "",
+        "iconId": "ri-trophy-line",
+        "value": 2659,
+        "decimalPlaces": 2,
+        "prefix": "",
+        "suffix": "",
+        "changeDirection": -1
+      }
+    ]
+  ],
 
   "base_encodingTypes": [
     {

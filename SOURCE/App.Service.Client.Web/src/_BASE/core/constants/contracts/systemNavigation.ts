@@ -162,6 +162,6 @@ export interface SystemNavigation {
   },
   misc: {
     todo: string;
-  }
+  },
 }
 
