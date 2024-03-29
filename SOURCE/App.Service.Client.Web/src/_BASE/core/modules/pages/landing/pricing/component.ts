@@ -1,16 +1,15 @@
-//
+// Ag:
 import { Component, OnInit } from '@angular/core';
+// Etc:
 import { NgbNavModule, NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-//
 import { TranslateService } from '@ngx-translate/core';
-//
-import { System } from '../../../../constants/contracts/system';
-// 
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
 import { SystemService } from '../../../../services/system.service';
-
+// Models:
 import { MonthlyPlanModel, YearlyPlanModel } from '../../../../models/pricing.models';
-
 import { MonthlyPlan, YearlyPlan } from '../../../../data/fake/pricing.data';
 
 
@@ -25,7 +24,7 @@ import { MonthlyPlan, YearlyPlan } from '../../../../data/fake/pricing.data';
  */
 export class BaseCorePagesLandingPricingComponent implements OnInit {
 
-  system: System;
+  system = importedSystemConst;
 
   breadCrumbItems!: Array<{}>;
   MonthlyPlan!: MonthlyPlanModel[];

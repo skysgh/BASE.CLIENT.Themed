@@ -1,8 +1,12 @@
+// Ag:
 import { Component } from '@angular/core';
+// Misc:
+import { TranslateService } from '@ngx-translate/core';
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { SystemService } from '../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
-import { TranslateService } from '@ngx-translate/core';
-import { System } from '../../../../constants/contracts/system';
 
 @Component({
   selector: 'app-base-core-pages-landing-opportunities',
@@ -11,7 +15,7 @@ import { System } from '../../../../constants/contracts/system';
 })
 export class BaseCorePagesLandingOpportunitiesComponent  {
 
-  system: System;
+  system = importedSystemConst;
 
   constructor(
     systemService: SystemService,

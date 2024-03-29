@@ -1,8 +1,13 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SystemService } from '../../../../../services/system.service';
-import { System } from '../../../../../constants/contracts/system';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
+// Constants:
+import { system as importedSystemConst } from '../../../../../../core/constants/system';
+// Services:
+import { SystemService } from '../../../../../services/system.service';
+
 
 @Component({
   selector: 'app-base-core-modules-account_auth-pass-reset-basic',
@@ -23,7 +28,7 @@ export class BasicComponent implements OnInit {
   returnUrl!: string;
   // set the current year
   year: number = new Date().getFullYear();
-  system?: System;
+  system = importedSystemConst;
   constructor(private formBuilder: FormBuilder, systemService: SystemService, public translate: TranslateService) {
     this.system = systemService.system;
 }

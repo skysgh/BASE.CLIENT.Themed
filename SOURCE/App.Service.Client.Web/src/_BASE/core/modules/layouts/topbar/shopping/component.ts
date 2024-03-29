@@ -1,7 +1,12 @@
+// Ag:
 import { Component, OnInit } from "@angular/core";
+// Etc:
 import { TranslateService } from "@ngx-translate/core";
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { SystemService } from "../../../../services/system.service";
-import { System } from "../../../../constants/contracts/system";
+// Models:
 import { CartModel } from "../../models/topbar.model";
 
 //Shit tmp data
@@ -15,7 +20,7 @@ import { cartData } from '../data';
 })
 export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
 
-  system: System;
+  system = importedSystemConst;
 
   // Shopping
   cartData!: CartModel[];

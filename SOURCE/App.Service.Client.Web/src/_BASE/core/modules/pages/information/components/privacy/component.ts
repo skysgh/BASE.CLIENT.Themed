@@ -1,13 +1,14 @@
 // Import Ag:
 import { Component, OnInit, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+// 
+import { BehaviorSubject, Observable, catchError, filter, map, of, throwError } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-// Import Base.Common.Models:
-import { System } from '../../../../../constants/contracts/system';
-// Import Base.Common.Services:
+// Constants:
+import { system as importedSystemConst } from '../../../../../constants/system';
+// Services:
 import { SystemService } from '../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, catchError, filter, map, of, throwError } from 'rxjs';
 import { TranslationService } from '../../../../../services/translation.service';
 
 
@@ -21,7 +22,7 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-  system: System;
+  system = importedSystemConst;
 
   @Output()
   public markdown$: Observable<string|null> = of(null);

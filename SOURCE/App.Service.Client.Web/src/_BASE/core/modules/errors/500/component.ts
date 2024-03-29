@@ -1,7 +1,9 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
-// Configuration:
-import { System } from '../../../constants/contracts/system';
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
 // Services:
 import { SystemService } from '../../../services/system.service';
 
@@ -16,7 +18,7 @@ import { SystemService } from '../../../services/system.service';
  */
 export class BaseErrors500TodoComponent implements OnInit {
 
-  system?: System;
+  system = importedSystemConst;
   constructor(private systemService: SystemService, public translate: TranslateService) {
     this.system = systemService.system;
   }

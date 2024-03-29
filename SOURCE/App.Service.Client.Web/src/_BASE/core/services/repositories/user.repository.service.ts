@@ -1,8 +1,12 @@
+// Ag:
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../models/misc/auth.models';
+// Constants:
+import { system as importedSystemConst } from '../../constants/system';
+// Services:
 import { SystemService } from '../system.service';
-import { System } from '../../constants/contracts/system';
+// Models/Data:
+import { User } from '../../models/misc/auth.models';
 
 /**
  * Stateless service to manage interactions with
@@ -12,10 +16,8 @@ import { System } from '../../constants/contracts/system';
  */
 @Injectable({ providedIn: 'root' })
 export class UserProfileService {
-  system: System;
+  public system = importedSystemConst;;
   constructor(private http: HttpClient, systemService: SystemService) {
-
-    this.system = systemService.system;
 
   }
     /***

@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 // Etc.
 import { TranslateService } from "@ngx-translate/core";
 // Constants:
-import { System } from "../../../../../constants/contracts/system";
+import { system as importedSystemConst } from '../../../../../constants/system';
 // Services:
 import { SystemService } from "../../../../../services/system.service";
 import { DiagnosticsTraceService } from "../../../../../services/diagnostics.service";
@@ -18,7 +18,7 @@ export class BaseCorePagesInformationSupportComponent implements OnInit {
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-  system: System;
+  system = importedSystemConst;
 
   constructor(systemService: SystemService, private diagnosticsTraceService: DiagnosticsTraceService, translateService: TranslateService) {
     this.system = systemService.system;

@@ -1,9 +1,13 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
-
-// Data Get
-import { findjob } from './data';
-import { System } from '../../../../../_BASE/core/constants/contracts/system';
+// Etc:
+//
+// Constants:
+import { system as importedSystemConst } from '../../../../../_BASE/core/constants/system';
+// Services:
 import { SystemService } from '../../../../../_BASE/core/services/system.service';
+// Data/Model
+import { findjob } from './data';
 
 @Component({
   selector: 'app-findjobs',
@@ -13,7 +17,7 @@ import { SystemService } from '../../../../../_BASE/core/services/system.service
 export class FindjobsComponent implements OnInit {
 
   findjobs: any;
-  system: System;
+  system = importedSystemConst;
 
   constructor(systemService: SystemService) {
 

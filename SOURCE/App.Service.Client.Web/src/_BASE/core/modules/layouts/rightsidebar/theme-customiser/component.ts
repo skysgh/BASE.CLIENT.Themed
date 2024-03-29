@@ -1,10 +1,15 @@
+// Ag:
 import { Component, Inject, OnInit } from "@angular/core";
-import { TranslateService } from "@ngx-translate/core";
-import { SystemService } from "../../../../services/system.service";
-import { System } from "../../../../constants/contracts/system";
-import { EventService } from "../../../../services/event.service";
 import { DOCUMENT } from "@angular/common";
+// Etc:
 import { Store } from '@ngrx/store';
+import { TranslateService } from "@ngx-translate/core";
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
+import { SystemService } from "../../../../services/system.service";
+import { EventService } from "../../../../services/event.service";
+// More:
 import { RootReducerState } from "../../../../store";
 import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from '../../layouts/layout-action';
 import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from '../../layouts/layout-selector';
@@ -16,7 +21,7 @@ import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPre
 })
 export class BaseLayoutRightSideContextThemeCustomiserComponent implements OnInit {
 
-  system: System;
+  system = importedSystemConst;
 
   mode: string | undefined;
   element: any = null; //HTMLElement

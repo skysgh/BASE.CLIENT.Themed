@@ -1,7 +1,10 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
-import { SystemService } from '../../../../services/system.service';
-import { System } from '../../../../constants/contracts/system';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+import { SystemService } from '../../../../services/system.service';
 
 @Component({
   selector: 'app-base-core-errors-cover',
@@ -14,7 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
  */
 export class BaseErrors404CoverComponent implements OnInit {
 
-  system?: System;
+  system = importedSystemConst;
   constructor(systemService: SystemService, public translate: TranslateService) {
     this.system = systemService.system;
   }

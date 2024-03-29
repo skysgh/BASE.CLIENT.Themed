@@ -1,15 +1,17 @@
-//
+// Ag:
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+// Etc:
 //
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
+// Services:
 import { DiagnosticsTraceService } from "../../diagnostics.service";
 import { EnvironmentService } from "../../environment.service";
 import { ErrorService } from "../../error.service";
 import { ObjectMappingService } from "../../objectMapping.service";
 import { TypeService } from "../../type.service";
 import { MappedGenericRepositoryServiceBase } from "../base/mapped-generic-repository.service.base";
-//
-import { SystemQueryEndpoints } from "../../../constants/systemQueryEndpoints";
 import { SessionStorageService } from "../../SessionStorageService";
 import { UrlService } from "../../url.service";
 import { SimpleGenericRepositoryServiceBase } from "../base/simple-generic-repository-service.base";
@@ -36,7 +38,7 @@ export class TicketsRepositoryService
       sessionStorageService,
       urlService,
       httpClient,
-      SystemQueryEndpoints.transactions
+      importedSystemConst.apis.transactions
     );
   }
 

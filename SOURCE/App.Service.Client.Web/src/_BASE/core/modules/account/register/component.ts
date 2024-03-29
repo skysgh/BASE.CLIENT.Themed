@@ -1,15 +1,17 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-// Register Auth
-
+import { Router } from '@angular/router';
+// Etc:
+import { first } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
+// Services:
 import { AuthenticationService } from '../../../services/auth.service';
 import { UserProfileService } from '../../../services/repositories/user.repository.service';
-import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { SystemService } from '../../../services/system.service';
-import { System } from '../../../constants/contracts/system';
-import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-base-core-modules-account_auth-register',
@@ -22,6 +24,8 @@ import { TranslateService } from '@ngx-translate/core';
  */
 export class RegisterComponent implements OnInit {
 
+  system = importedSystemConst;
+
   // Login Form
   signupForm!: FormGroup;
   submitted = false;
@@ -30,7 +34,6 @@ export class RegisterComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
 
-  system: System;
 
   constructor(
     public translate: TranslateService,
@@ -70,7 +73,7 @@ export class RegisterComponent implements OnInit {
       (data: any) => {
       this.successmsg = true;
       if (this.successmsg) {
-        this.router.navigate(['/auth/login']);
+        this.router.navigate([this.system.navigation.auth.login]);
       }
     },
     (error: any) => {
@@ -98,7 +101,7 @@ export class RegisterComponent implements OnInit {
     //         (data: any) => {
     //           this.successmsg = true;
     //           if (this.successmsg) {
-    //             this.router.navigate(['/auth/login']);
+    //             this.router.navigate([this.system.navigation.auth.login]);
     //           }
     //         },
     //         (error: any) => {

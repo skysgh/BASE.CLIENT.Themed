@@ -52,7 +52,7 @@ export class TranslationService {
     if (languageCode != this.previouslySetDefaultLanguage) {
       this.translate.use(languageCode);
       this.previouslySetDefaultLanguage = languageCode;
-      this.systemService.system.configuration.defaultLanguageCode = languageCode;
+      this.systemService.system.dynamic.configuration.defaultLanguageCode = languageCode;
     }
     return languageCode;
   }
@@ -75,7 +75,7 @@ export class TranslationService {
   else {
     languageCode = this.translate.getBrowserLang(); // which is same as: navigator.language;//  
   }
-  languageCode = languageCode || this.systemService.system.configuration.defaultLanguageCode;
+  languageCode = languageCode || this.systemService.system.dynamic.configuration.defaultLanguageCode;
 
   return languageCode;
   }

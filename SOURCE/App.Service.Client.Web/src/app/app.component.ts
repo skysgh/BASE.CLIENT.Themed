@@ -23,7 +23,7 @@
 //  constructor(private diagnosticsTraceService: DiagnosticsTraceService, private titleService: TitleService, systemService: SystemService) {
 //    this.diagnosticsTraceService.debug("AppComponent.constructor()")
 //    // Set the page's title
-//    var pageTitle: string = `${systemService.system.sponsor.title}  ${systemService.system.title}`;
+//    var pageTitle: string = `${systemService.system.dynamic.sponsor.title}  ${systemService.system.title}`;
 //    this.diagnosticsTraceService.debug(`Setting page title: '${pageTitle}'`);
 //    this.titleService.set(pageTitle);
 //  }

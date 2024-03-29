@@ -1,18 +1,18 @@
+// Etc:
 import { Observable, catchError, retry } from "rxjs";
-
+// Angular:
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-
+// Constants:
+import { system as importedSystemConst } from '../../constants/system';
+// Services:
 import { MappedGenericRepositoryServiceBase } from "./base/mapped-generic-repository.service.base";
 import { DiagnosticsTraceService } from "../diagnostics.service";
 import { EnvironmentService } from "../environment.service";
 import { ErrorService } from "../error.service";
-
 import { TypeService } from "../type.service";
 import { SystemNotification } from "../../models/data/notification.model";
 import { ObjectMappingService } from "../objectMapping.service";
-// Constants:
-import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
 import { SessionStorageService } from "../SessionStorageService";
 import { UrlService } from "../url.service";
 import { SimpleGenericRepositoryServiceBase } from "./base/simple-generic-repository-service.base";
@@ -47,7 +47,7 @@ export class NotificationsRepositoryService
       sessionStorageService,
       urlService,
       httpClient,
-      SystemQueryEndpoints.systemNotifications
+      importedSystemConst.apis.systemNotifications
     );
   }
 

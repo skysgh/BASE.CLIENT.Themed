@@ -1,10 +1,14 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+//Etc:
 import { TranslateService } from '@ngx-translate/core';
-
-import { System } from '../../../../../constants/contracts/system';
+// Constants:
+import { system as importedSystemConst } from '../../../../../constants/system';
+// Services
 import { SystemService } from '../../../../../services/system.service';
 import { SystemUserQuoteRepositoryService } from '../../../../../services/repositories/system.user-quotes.service';
+// Models/Data:
 import { User } from '../../../../../store/Authentication/auth.models';
 import { UserQuote } from '../../../../../models/data/user-quote.model';
 
@@ -27,7 +31,7 @@ export class CoverComponent implements OnInit {
   returnUrl!: string;
   // set the current year
   year: number = new Date().getFullYear();
-  system: System;
+  system = importedSystemConst;
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
@@ -45,7 +49,7 @@ export class CoverComponent implements OnInit {
   ngOnInit(): void {
     //
     this.systemUserQuotes =
-      this.systemUserQuoteRepositoryService.getPageByLanguageCode(this.system.configuration.defaultLanguageCode);
+      this.systemUserQuoteRepositoryService.getPageByLanguageCode(this.system.dynamic.configuration.defaultLanguageCode);
 
     /**
      * Form Validatyion

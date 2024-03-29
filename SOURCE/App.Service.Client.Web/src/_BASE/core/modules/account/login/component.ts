@@ -1,18 +1,24 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+// Etc:
 import { first } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+
+// Const:
+import { system as importedSystemConst } from '../../../constants/system';
 
 // Login Auth
-import { environment } from '../../../../../environments/environment';
+//import { environment } from '../../../../../environments/environment';
 import { AuthenticationService } from '../../../services/auth.service';
 import { AuthfakeauthenticationService } from '../../../services/authfake.service';
 import { TitleService } from '../../../services/title.service';
 import { SystemService } from '../../../services/system.service';
-import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from '../../../services/toast.service';
 
-import { System } from '../../../constants/contracts/system';
+// Constants:
+//
 
 @Component({
   selector: 'app-base-core-modules-account_auth-login',
@@ -38,17 +44,17 @@ export class LoginComponent implements OnInit {
   returnUrl!: string;
   // set the current year
   year: number = new Date().getFullYear();
-  system: System; 
+  system = importedSystemConst; 
   constructor(private titleService: TitleService, private systemService: SystemService, public translate: TranslateService, private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router,
     private authFackservice: AuthfakeauthenticationService, private route: ActivatedRoute, public toastService: ToastService) {
 
     
     this.system = this.systemService.system;
 
-     this.sponsorTitle = systemService.system.sponsor.title;
+     this.sponsorTitle = systemService.system.dynamic.sponsor.title;
     //
     this.productTitle = systemService.system.title;
-    this.productDescription = systemService.system?.description;
+    this.productDescription = systemService.system.description;
 
 
     // Set the desired title for your page
@@ -56,13 +62,13 @@ export class LoginComponent implements OnInit {
 
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate([this.system.navigation.home]);
     }
   }
 
   ngOnInit(): void {
     if (sessionStorage.getItem('currentUser')) {
-      this.router.navigate(['/']);
+      this.router.navigate([this.system.navigation.home]);
     }
     /**
      * Form Validatyion
@@ -102,14 +108,14 @@ export class LoginComponent implements OnInit {
     // } else {
     //   if (environment.defaultauth === 'firebase') {
     //     this.authenticationService.login(this.f['email'].value, this.f['password'].value).then((res: any) => {
-    //       this.router.navigate(['/']);
+    //       this.router.navigate([this.system.navigation.home]);
     //     })
     //       .catch(error => {
     //         this.error = error ? error : '';
     //       });
     //   } else {
     //     this.authFackservice.login(this.f['email'].value, this.f['password'].value).pipe(first()).subscribe(data => {
-    //           this.router.navigate(['/']);
+    //           this.router.navigate([this.system.navigation.home]);
     //         },
     //         error => {
     //           this.error = error ? error : '';

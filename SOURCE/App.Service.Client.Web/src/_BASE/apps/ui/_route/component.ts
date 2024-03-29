@@ -14,6 +14,6 @@ export class BaseAppsRouteComponent {
 
   constructor(private titleService: TitleService, systemService: SystemService) {
     // Set the desired title for your page
-    this.titleService.set(`${systemService.system.sponsor.title}  ${systemService.system.title}`);
+    this.titleService.set(`${systemService.system.dynamic.sponsor.title}  ${systemService.system.title}`);
   }
 }

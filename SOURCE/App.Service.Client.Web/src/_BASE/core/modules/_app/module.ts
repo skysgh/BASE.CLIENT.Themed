@@ -133,6 +133,6 @@ function getLanguageCode() {
     // Extract the language value after "lang="
     languageCookie = languageCookie.substring(C_LANG.length+1); // "lang=".length = 5
   }
-  var result = (languageCookie || navigator.language || system.configuration.defaultLanguageCode).split('-')[0];
+  var result = (languageCookie || navigator.language || system.dynamic.configuration.defaultLanguageCode).split('-')[0];
   return result;
 }

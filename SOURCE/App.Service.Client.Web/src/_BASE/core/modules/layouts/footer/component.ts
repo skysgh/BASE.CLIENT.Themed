@@ -1,7 +1,10 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
+// Services
 import { SystemService } from '../../../services/system.service';
 import { SystemSettingsService } from '../../../services/system-settings.service';
-import { System } from '../../../constants/contracts/system';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -13,7 +16,7 @@ export class BaseLayoutFooterComponent implements OnInit {
 
   // set the currenr year
   year: number = new Date().getFullYear();
-  system: System;
+  system = importedSystemConst;
 
   constructor(systemService: SystemService, public translate: TranslateService) {
     this.system = systemService.system;

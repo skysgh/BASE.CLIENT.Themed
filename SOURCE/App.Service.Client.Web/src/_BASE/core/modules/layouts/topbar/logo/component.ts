@@ -1,7 +1,11 @@
+// Ag:
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+// Etc:
 import { TranslateService } from "@ngx-translate/core";
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { SystemService } from "../../../../services/system.service";
-import { System } from "../../../../constants/contracts/system";
 
 @Component({
   selector: 'app-base-common-components-topbar-languagelogo',
@@ -10,7 +14,7 @@ import { System } from "../../../../constants/contracts/system";
 })
 export class BaseCoreCommonComponentTopBarLogoComponent implements OnInit {
 
-  system: System;
+  system = importedSystemConst;
 
 
   constructor(

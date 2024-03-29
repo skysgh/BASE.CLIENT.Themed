@@ -60,7 +60,7 @@ constructor(private router: Router) { }
 
 btnClick= function () {
         this.router.navigateByUrl('/user');
-		//equiv to:this.router.navigate(['/user']);
+		//equiv to:this.router.navigate([this.system.navigation.user]);
 };
 
 
@@ -93,9 +93,9 @@ You use routerLink, passing it an array of parts:
 ## Navigate:
 // Inject Router into your component
 // Inject ActivatedRoute into your component. This will allow the route to be done related to the current url
-this._router.navigate(['user',user.id], {relativeTo: this._activatedRoute})
+this._router.navigate([this.system.navigation.user,user.id], {relativeTo: this._activatedRoute})
 Another:
-this.router.navigate(['/products', productId]);
+this.router.navigate([this.system.navigation.products, productId]);
 
 ## NavigateByUrl:
 

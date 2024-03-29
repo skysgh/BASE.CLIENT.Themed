@@ -1,7 +1,11 @@
+// Ag:
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+// Etc:
 import { TranslateService } from "@ngx-translate/core";
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { SystemService } from "../../../../services/system.service";
-import { System } from "../../../../constants/contracts/system";
 import { EventService } from "../../../../services/event.service";
 
 @Component({
@@ -11,7 +15,7 @@ import { EventService } from "../../../../services/event.service";
 })
 export class BaseCoreCommonComponentTopBarMenuHideComponent implements OnInit {
 
-  system: System;
+  system = importedSystemConst;
 
   //mode: string | undefined;
   @Output() mobileMenuButtonClicked = new EventEmitter();

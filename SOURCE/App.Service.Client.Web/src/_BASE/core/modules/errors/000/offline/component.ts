@@ -1,9 +1,10 @@
-//
+// Ag:
 import { Component, OnInit } from '@angular/core';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
-//
-import { System } from '../../../../constants/contracts/system';
-// 
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { SystemService } from '../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
 
@@ -18,7 +19,7 @@ import { DiagnosticsTraceService } from '../../../../services/diagnostics.servic
  */
 export class BaseErrorsOfflineComponent implements OnInit {
 
-  system: System;
+  system = importedSystemConst;
   constructor(private diagnosticsTraceService: DiagnosticsTraceService,
     systemService: SystemService,
     public translate: TranslateService) {

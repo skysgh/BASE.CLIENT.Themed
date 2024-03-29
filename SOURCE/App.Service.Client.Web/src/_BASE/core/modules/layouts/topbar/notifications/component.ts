@@ -1,11 +1,15 @@
+// Ag:
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
+// Etc:
+import { Observable, of } from "rxjs";
 import { TranslateService } from "@ngx-translate/core";
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { SystemService } from "../../../../services/system.service";
-import { System } from "../../../../constants/contracts/system";
 import { SystemNotificationService } from "../../../../services/notification.service";
 import { SystemNotification } from "../../../../models/data/notification.model";
-import { Observable, of } from "rxjs";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-base-common-components-topbar-languagenotifications',
@@ -14,7 +18,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 })
 export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnInit {
 
-  system: System;
+  system = importedSystemConst;
 
   messages: any
 

@@ -30,6 +30,6 @@ export class BaseRouterOutletComponent {
 
     // Set the Browser's title:
     this.browserTitle = systemService.system.title;
-    this.titleService.set(`${systemService.system.sponsor.title}  ${systemService.system.title}`);
+    this.titleService.set(`${systemService.system.dynamic.sponsor.title}  ${systemService.system.title}`);
   }
 }

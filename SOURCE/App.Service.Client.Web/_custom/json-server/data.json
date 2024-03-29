@@ -1,4 +1,62 @@
 {
+  "base_system_endorsements": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "title": "About time",
+      "description": "Waited 10 years for this.",
+      "by": "Stuart W.",
+      "role": "CDO, MO[R]E, Inc."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "title": "Finally have the tool",
+      "description": "Custom software, like this one -- specific to need -- *always* beats configured COTS in terms of consumer satisfaction.",
+      "by": "Iona H.",
+      "role": "CEO, Future of Ed"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "Gobsmacked",
+      "description": "WHy didn't we do this sooner?!?!",
+      "by": "Sally C.S.",
+      "role": "Teacher, Everywhere Middle School."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": true,
+      "title": "Hate It",
+      "description": "Gartner's doesn't mention it! There are *way* more expensive solutions for us to try first.",
+      "by": "Martin R.",
+      "role": "Martin & Co."
+    }
+  ],
+  "base_service_workprocess": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "iconId": "ri-quill-pen-line",
+      "title": "Tell us what you need",
+      "description": "The profession and the employer and your desire to make your mark."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "iconId": "ri-user-follow-line",
+      "title": "Get free quotes",
+      "description": "The most important aspect of beauty was, therefore, an inherent part."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "iconId": "ri-book-mark-line",
+      "title": "Deliver high quality product",
+      "description": "We quickly learn to fear and thus automatically avoid potentially."
+    }
+  ],
+
   "base_stats": [
     [
       {

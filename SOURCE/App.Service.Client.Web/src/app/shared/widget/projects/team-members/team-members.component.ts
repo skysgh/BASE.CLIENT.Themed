@@ -1,10 +1,14 @@
+// Ag:
 import { Component, OnInit, Input } from '@angular/core';
-
-import { System } from '../../../../../_BASE/core/constants/contracts/system';
-
-import {status1, status2, status3, status4, status5, status6, status7 } from './data';
-import { ChartType } from '../../../../../_BASE/core/models/contracts/team-members.model';
+// Etc:
+// 
+// Const:
+import { system as importedSystemConst } from '../../../../../_BASE/core/constants/system';
+// Services:
 import { SystemService } from '../../../../../_BASE/core/services/system.service';
+// Models/Data:
+import { ChartType } from '../../../../../_BASE/core/models/contracts/team-members.model';
+import { status1, status2, status3, status4, status5, status6, status7 } from './data';
 
 @Component({
   selector: 'app-team-members',
@@ -36,7 +40,7 @@ export class TeamMembersComponent implements OnInit {
   status6!: ChartType;
   status7!: ChartType;
 
-  system: System;
+  system = importedSystemConst;
   constructor(private systemService: SystemService) {
     this.system = systemService.system;
   }

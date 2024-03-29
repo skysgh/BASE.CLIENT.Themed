@@ -1,5 +1,11 @@
+// Ag:
+// Etc:
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
+
+// Constants:
+import { system as importedSystemConst } from '../../constants/system';
+// Services:
 //import { env } from "process";
 import { MappedGenericRepositoryServiceBase } from "./base/mapped-generic-repository.service.base";
 import { DiagnosticsTraceService } from "../diagnostics.service";
@@ -8,14 +14,13 @@ import { ErrorService } from "../error.service";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { TypeService } from "../type.service";
-import { UserQuote } from "../../models/data/user-quote.model";
 import { ObjectMappingService } from '../objectMapping.service';
-// Constants:
-import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
 import { SessionStorageService } from '../SessionStorageService';
 import { UrlService } from '../url.service';
 import { TranslationService } from '../translation.service';
 import { SimpleGenericRepositoryServiceBase } from './base/simple-generic-repository-service.base';
+// Models/Data:
+import { UserQuote } from "../../models/data/user-quote.model";
 import { TeamVTO } from '../../models/view/team.vto';
 import { CapabilitiesVTO } from '../../models/view/base-capabilities';
 // import models:
@@ -50,7 +55,7 @@ export class SystemCapabilitiesRepositoryService
       sessionStorageService,
       urlService,
       httpClient,
-      SystemQueryEndpoints.base_capabilities
+      importedSystemConst.apis.base_capabilities
 
     );
   }

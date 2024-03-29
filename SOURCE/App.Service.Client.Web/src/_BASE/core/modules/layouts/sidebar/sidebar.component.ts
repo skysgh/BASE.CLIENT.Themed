@@ -1,14 +1,17 @@
+// Ag:
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
 
 //import { MENU } from './menu';
 import { MENU } from '../../../../core/navigation/menu';
 
 import { IHasMenuItem } from '../../../models/contracts/IHasMenuItem';
-import { environment } from 'src/environments/environment';
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
+// Services:
 import { SystemService } from '../../../services/system.service';
-import { System } from '../../../constants/contracts/system';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,7 +24,7 @@ export class BaseLayoutSidebarComponent implements OnInit {
   toggle: any = true;
   menuItems: IHasMenuItem[] = [];
 
-  system: System;
+  system = importedSystemConst;
 
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
@@ -137,7 +140,7 @@ export class BaseLayoutSidebarComponent implements OnInit {
   initActiveMenu() {
     let pathName = window.location.pathname;
     // Check if the application is running in production
-    if (environment.production) {
+    if (this.system.environment.production) {
       // Modify pathName for production build
       pathName = pathName.replace('/velzon/angular/minimal', '');
     }
@@ -151,7 +154,7 @@ export class BaseLayoutSidebarComponent implements OnInit {
       this.removeActivation(activeItems);
 
       let matchingMenuItem = items.find((x: any) => {
-        if (environment.production) {
+        if (this.system.environment.production) {
           let path = x.pathname
           path = path.replace('/velzon/angular/minimal', '');
           return path === pathName;

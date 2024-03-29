@@ -27,7 +27,7 @@ export class BaseCoreCommonComponentsGoogleAnalyticsComponent implements OnInit 
       return;
     }
     const script = this.renderer.createElement('script');
-    var key = this.systemService.system.keys.GoogleAnalytics;
+    var key = this.systemService.system.integration.keys.GoogleAnalytics;
     script.src = `https://www.google-analytics.com/analytics.js?key=${key}`;
     script.async = true;
     script.defer = true;

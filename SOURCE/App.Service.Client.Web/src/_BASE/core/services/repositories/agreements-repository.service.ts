@@ -6,15 +6,16 @@ import { ErrorService } from "../error.service";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-// import models:
-import { Agreement } from "../../models/agreement.model";
+// Constants:
+import { system as importedSystemConst } from '../../constants/system';
+// Services:
 import { TypeService } from "../type.service";
 import { ObjectMappingService } from "../objectMapping.service";
-// Constants:
-import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
 import { SessionStorageService } from "../SessionStorageService";
 import { UrlService } from "../url.service";
 import { SimpleGenericRepositoryServiceBase } from "./base/simple-generic-repository-service.base";
+// Models/Data:
+import { Agreement } from "../../models/agreement.model";
 
 
 /**
@@ -46,7 +47,7 @@ export class AgreementsRepositoryService
       urlService,
       httpClient,
       // Constants:
-      SystemQueryEndpoints.agreements
+      importedSystemConst.apis.agreements
     );
   }
 }

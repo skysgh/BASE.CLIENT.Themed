@@ -1,11 +1,15 @@
+// Ag:
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
-
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
+// Services:
+import { SystemService } from '../../../services/system.service';
+// Models:
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
-import { SystemService } from '../../../services/system.service';
-import { System } from '../../../constants/contracts/system';
 
 @Component({
   selector: 'app-two-column-sidebar',
@@ -18,7 +22,7 @@ export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
   toggle: any = true;
   menuItems: MenuItem[] = [];
 
-  system: System;
+  system = importedSystemConst;
 
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();

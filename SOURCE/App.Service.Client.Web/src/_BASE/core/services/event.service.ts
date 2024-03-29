@@ -1,6 +1,11 @@
+// Ag:
 import { Injectable } from '@angular/core';
+// Etc:
 import { Subject, Subscription } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
+// Cosntants:
+//
+// Services:
 import { DiagnosticsTraceService } from './diagnostics.service';
 
 interface Event {

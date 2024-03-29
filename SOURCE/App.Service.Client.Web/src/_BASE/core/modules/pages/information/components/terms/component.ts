@@ -1,6 +1,9 @@
+// Ag:
 import { Component, Input, OnInit } from '@angular/core';
+// Constants:
+import { system as importedSystemConst } from '../../../../../constants/system';
+// Services:
 import { SystemService } from '../../../../../services/system.service';
-import { System } from '../../../../../constants/contracts/system';
 import { TranslateService } from '@ngx-translate/core';
 import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 
@@ -14,7 +17,7 @@ export class BaseCorePagesInformationTermsComponent implements OnInit {
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-  system: System;
+  system = importedSystemConst;
 
   @Input()
   public replacements :{ [key: string]: string }|undefined;
@@ -35,8 +38,8 @@ export class BaseCorePagesInformationTermsComponent implements OnInit {
     //{
     //  'system.title': this.system.title,
     //  'system.description': this.system.description,
-    //  'system.sponsor.title': this.system.sponsor.title,
-    //  'system.developer.title': this.system.developer.title,
+    //  'system.dynamic.sponsor.title': this.system.dynamic.sponsor.title,
+    //  'system.dynamic.developer.title': this.system.dynamic.developer.title,
     //}
 
   }

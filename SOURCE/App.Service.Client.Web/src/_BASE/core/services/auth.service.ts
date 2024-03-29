@@ -1,23 +1,23 @@
+// Etc:
 import { catchError, map } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-//
 import { Store } from '@ngrx/store';
-//
+// Ag:
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 // hum...
 import { getFirebaseBackend } from '../../../app/authUtils';
 import { RegisterSuccess, loginFailure, loginSuccess, logout, logoutSuccess } from 'src/_BASE/core/store/Authentication/authentication.actions';
-// constants:
-import { SystemQueryEndpoints } from "../constants/systemQueryEndpoints";
-// models:
-import { User } from 'src/_BASE/core/store/Authentication/auth.models';
-
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
 import { DiagnosticsTraceService } from './diagnostics.service';
 import { ErrorService } from './error.service';
 import { SessionStorageService } from './SessionStorageService';
+// models:
+import { User } from 'src/_BASE/core/store/Authentication/auth.models';
 
-const AUTH_API = SystemQueryEndpoints.AUTH_API;
+const AUTH_API = importedSystemConst.apis.AUTH_API;
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

@@ -1,7 +1,12 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
+// Etc:
+// 
+// Constants:
+import { system as importedSystemConst } from '../../../../../_BASE/core/constants/system';
+// Services:
 import { SystemService } from '../../../../../_BASE/core/services/system.service';
 
-import { System } from '../../../../../_BASE/core/constants/contracts/system';
 
 @Component({
   selector: 'app-progress',
@@ -9,7 +14,7 @@ import { System } from '../../../../../_BASE/core/constants/contracts/system';
   styleUrls: ['./progress.component.scss']
 })
 export class ProgressComponent implements OnInit {
-  system: System;
+  system = importedSystemConst;
   constructor(systemService: SystemService) {
 
     // Can be either via service, or injecting the constats/settings object:

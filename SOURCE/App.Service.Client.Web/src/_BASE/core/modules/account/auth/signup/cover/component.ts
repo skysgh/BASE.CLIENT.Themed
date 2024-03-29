@@ -1,8 +1,12 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { System } from '../../../../../constants/contracts/system';
-import { SystemService } from '../../../../../services/system.service';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
+// Constants:
+import { system as importedSystemConst } from '../../../../../../core/constants/system';
+// Services:
+import { SystemService } from '../../../../../services/system.service';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-signup-cover',
@@ -20,7 +24,7 @@ export class CoverComponent implements OnInit {
   submitted = false;
   // set the current year
   year: number = new Date().getFullYear();
-  system?: System;
+  system = importedSystemConst;
   // Carousel navigation arrow show
   showNavigationArrows: any;
   fieldTextType!: boolean;

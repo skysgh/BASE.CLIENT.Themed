@@ -13,6 +13,8 @@
 //import { Message } from "../../models/data/message.model";
 //import { ObjectMappingService } from "../objectMapping.service";
 //// Constants:
+// Constants:
+//import { system as importedSystemConst } from '../../../constants/system';
 //import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
 //// import models:
 
@@ -41,7 +43,7 @@
 //      errorService,
 //      objectMappingService,
 //      httpClient,
-//      SystemQueryEndpoints.systemNotifications
+//      importedSystemConst.apis.systemNotifications
 //    );
 //  }
 

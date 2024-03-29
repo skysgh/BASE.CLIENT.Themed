@@ -6,23 +6,24 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Import template:
-//import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../modules/components/breadcrumbs/component';
+//import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../modules/components/components/breadcrumbs/component';
 
-import { BaseAppsPagesInformationIndexComponent } from './component';
+import { BaseAppsPagesInformationIndexComponent } from './components/component';
 // Import  Base.Common.Models:
-import { BaseAppsPagesLandingIndexClientsComponent } from './components/clients/component';
-import { BaseAppsPagesLandingIndexCollectionComponent } from './components/collection/component';
-import { BaseAppsPagesLandingIndexContactComponent } from './components/contact/component';
-import { BaseAppsPagesLandingIndexCounterComponent } from './components/counter/component';
-import { BaseAppsPagesLandingIndexCtaComponent } from './components/cta/component';
-import { BaseAppsPagesLandingIndexDesignedComponent } from './components/features/component';
-import { BaseAppsPagesLandingIndexFaqsComponent } from './components/faqs/component';
-import { BaseAppsPagesLandingIndexFooterComponent } from './components/footer/component';
-import { BaseAppsPagesLandingIndexPlanComponent } from './components/plan/component';
-import { BaseAppsPagesLandingIndexReviewComponent } from './components/review/component';
-import { BaseAppsPagesLandingIndexCapabilitiesComponent } from './components/capabilities/component';
-import { BaseAppsPagesLandingIndexTeamComponent } from './components/team/component';
-import { BaseAppsPagesLandingIndexWorkProcessComponent } from './components/work-process/component';
+import { BaseAppsPagesLandingIndexDemosComponent } from './components/components/demos/component';
+import { BaseAppsPagesLandingIndexClientsComponent } from './components/components/clients/component';
+import { BaseAppsPagesLandingIndexCollectionComponent } from './components/components/collection/component';
+import { BaseAppsPagesLandingIndexContactComponent } from './components/components/contact/component';
+import { BaseAppsPagesLandingIndexCounterComponent } from './components/components/counter/component';
+import { BaseAppsPagesLandingIndexCtaComponent } from './components/components/cta/component';
+import { BaseAppsPagesLandingIndexDesignedComponent } from './components/components/features/component';
+import { BaseAppsPagesLandingIndexFaqsComponent } from './components/components/faqs/component';
+import { BaseAppsPagesLandingIndexFooterComponent } from './components/components/footer/component';
+import { BaseAppsPagesLandingIndexPlanComponent } from './components/components/plan/component';
+import { BaseAppsPagesLandingIndexReviewComponent } from './components/components/review/component';
+import { BaseAppsPagesLandingIndexCapabilitiesComponent } from './components/components/capabilities/component';
+import { BaseAppsPagesLandingIndexTeamComponent } from './components/components/team/component';
+import { BaseAppsPagesLandingIndexWorkProcessComponent } from './components/components/work-process/component';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SharedModule } from '../../../../../app/shared/module';
@@ -35,6 +36,8 @@ import { ScrollspyDirective } from '../../common/scrollspy.directive';
 import { BaseCoreCommonComponentsModule } from '../../common/components/module';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { BaseCoreHomeRoutingModule } from './routes';
+import { BaseAppsPagesLandingIndexHeaderComponent } from './components/components/header/component';
+import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/components/scrollBackToTop/component';
 //NO: import { ScrollspyDirective } from '../../common/scrollspy.directive';
 //import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
@@ -89,7 +92,9 @@ import { BaseCoreHomeRoutingModule } from './routes';
     //NO: ScrollspyDirective,
     // define what Components belong to this Module (i.e., are not `standalone`)
     BaseAppsPagesInformationIndexComponent,
+    BaseAppsPagesLandingIndexHeaderComponent,
 
+    BaseAppsPagesLandingIndexDemosComponent,
     BaseAppsPagesLandingIndexClientsComponent,
     BaseAppsPagesLandingIndexCapabilitiesComponent,
     BaseAppsPagesLandingIndexCollectionComponent,
@@ -103,6 +108,7 @@ import { BaseCoreHomeRoutingModule } from './routes';
     BaseAppsPagesLandingIndexWorkProcessComponent,
     BaseAppsPagesLandingIndexTeamComponent,
     BaseAppsPagesLandingIndexContactComponent,
+    BaseAppsPagesLandingIndexScrollBackToTopComponent,
   ],
   providers: [
     // declare services to dependency inject into constructors.

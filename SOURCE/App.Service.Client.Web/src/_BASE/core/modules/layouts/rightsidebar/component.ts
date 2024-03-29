@@ -1,13 +1,18 @@
+// Ag:
 import { Component, ViewChild, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
-import { EventService } from '../../../services/event.service';
-import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
-import { RootReducerState } from '../../../store';
+// Etc:
 import { Store } from '@ngrx/store';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
+//
+import { SystemService } from '../../../services/system.service';
+import { EventService } from '../../../services/event.service';
+import { RootReducerState } from '../../../store';
+// More:
 import { initialState } from '../layouts/layout-reducers';
 import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from '../layouts/layout-selector';
 import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from '../layouts/layout-action';
-import { SystemService } from '../../../services/system.service';
-import { System } from '../../../constants/contracts/system';
 
 @Component({
   selector: 'app-rightsidebar',
@@ -36,7 +41,7 @@ export class BaseLayoutRightsidebarComponent implements OnInit {
   @ViewChild('filtetcontent') filtetcontent!: TemplateRef<any>;
   @Output() settingsButtonClicked = new EventEmitter();
 
-  system: System;
+  system = importedSystemConst;
   constructor(
     private eventService: EventService,
     private offcanvasService: NgbOffcanvas,

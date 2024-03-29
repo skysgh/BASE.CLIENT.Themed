@@ -1,7 +1,7 @@
 // Import dependencies:
 import { Injectable } from '@angular/core';
-import { system } from "../constants/system";
-import { System } from '../constants/contracts/system';
+
+import { system as importedSystemConst } from "../constants/system";
 
 
 // Describe the service:
@@ -11,9 +11,8 @@ export class SystemService {
   // Expose public property of
   // system environment.
   // From there, can get access to base service url. 
-  public system : System;
+  public system = importedSystemConst;;
 
   constructor() {
-    this.system = system;
   }
 }

@@ -1,8 +1,12 @@
-import { Component, OnInit} from '@angular/core';
+// Ag:
+import { Component, OnInit } from '@angular/core';
+// Etc:
+import { TranslateService } from '@ngx-translate/core';
+// Constants:
+import { system as importedSystemConst } from '../../../../../constants/system';
+// Services:
 import { SystemService } from '../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
-import { TranslateService } from '@ngx-translate/core';
-import { System } from '../../../../../constants/contracts/system';
 
 @Component({
   selector: 'app-base-common-components-footer-a',
@@ -11,7 +15,7 @@ import { System } from '../../../../../constants/contracts/system';
 })
 export class BaseCoreCommonComponentsFooterAComponent implements OnInit {
 
-  public system: System;
+  public system = importedSystemConst;
 
   public year: number = new Date().getFullYear();
 

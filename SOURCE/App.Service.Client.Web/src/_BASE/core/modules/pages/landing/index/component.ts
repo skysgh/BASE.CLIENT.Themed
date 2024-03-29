@@ -1,12 +1,13 @@
-//
+// Ag:
 import { Component } from '@angular/core';
 //
 import { TranslateService } from '@ngx-translate/core';
-//
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { SystemService } from '../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
 //
-import { System } from '../../../../constants/contracts/system';
 
 @Component({
   selector: 'app-base-core-pages-landing-index',
@@ -19,7 +20,7 @@ import { System } from '../../../../constants/contracts/system';
  */
 export class BaseCorePagesLandingIndexComponent  {
 
-  system: System;
+  system = importedSystemConst;
 
   constructor(
     systemService: SystemService,

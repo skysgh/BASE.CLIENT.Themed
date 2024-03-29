@@ -1,13 +1,17 @@
+// Ag:
 import { Component, Inject, OnInit } from "@angular/core";
-import { TranslateService } from "@ngx-translate/core";
-import { SystemService } from "../../../../services/system.service";
-import { System } from "../../../../constants/contracts/system";
-import { EventService } from "../../../../services/event.service";
 import { DOCUMENT } from "@angular/common";
+import { Router } from '@angular/router';
+// Etc:
+import { TranslateService } from "@ngx-translate/core";
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// SErvices:
+import { SystemService } from "../../../../services/system.service";
+import { EventService } from "../../../../services/event.service";
 import { AuthenticationService } from "../../../../services/auth.service";
 import { AuthfakeauthenticationService } from "../../../../services/authfake.service";
 import { TokenStorageService } from '../../../../services/token-storage.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-base-common-components-topbar-languageuser',
@@ -16,7 +20,7 @@ import { Router } from '@angular/router';
 })
 export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
 
-  system: System;
+  system = importedSystemConst;
 
 
   userData: any;
@@ -49,7 +53,7 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
  */
   logout() {
     this.authService.logout();
-    this.router.navigate(['/auth/login']);
+    this.router.navigate([this.system.navigation.auth.login]);
   }
 
 }

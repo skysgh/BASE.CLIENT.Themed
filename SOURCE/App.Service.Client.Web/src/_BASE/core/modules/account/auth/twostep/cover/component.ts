@@ -1,5 +1,10 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
-import { System } from '../../../../../constants/contracts/system';
+// Misc:
+// 
+// Constants:
+import { system as importedSystemConst } from '../../../../../constants/system';
+// Services:
 import { SystemService } from '../../../../../services/system.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -16,7 +21,7 @@ export class CoverComponent implements OnInit {
 
   // set the current year
   year: number = new Date().getFullYear();
-  system: System;
+  system = importedSystemConst;
 
   // Carousel navigation arrow show
   showNavigationArrows: any;

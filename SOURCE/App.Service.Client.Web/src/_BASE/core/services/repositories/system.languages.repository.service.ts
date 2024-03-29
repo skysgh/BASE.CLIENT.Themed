@@ -3,6 +3,9 @@ import { Observable, catchError, retry } from "rxjs";
 //Ag:
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+// Constants:
+import { system as importedSystemConst } from '../../constants/system';
+// Services:
 //import { env } from "process";
 import { MappedGenericRepositoryServiceBase } from "./base/mapped-generic-repository.service.base";
 import { DiagnosticsTraceService } from "../diagnostics.service";
@@ -11,12 +14,11 @@ import { ErrorService } from "../error.service";
 import { TypeService } from "../type.service";
 import { SessionStorageService } from "../SessionStorageService";
 import { UrlService } from "../url.service";
-// import models:
-import { SystemLanguage } from "../../models/data/system-language.model";
-import { ObjectMappingService } from "../objectMapping.service";
-// Constants:
-import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
 import { SimpleGenericRepositoryServiceBase } from "./base/simple-generic-repository-service.base";
+import { ObjectMappingService } from "../objectMapping.service";
+// Models/Data:
+import { SystemLanguage } from "../../models/data/system-language.model";
+// Constants:
 
 /**
  * Stateless service to manage interactions with
@@ -47,7 +49,7 @@ export class SystemLanguagesRepositoryService
       sessionStorageService,
       urlService,
       httpClient,
-      SystemQueryEndpoints.base_languages
+      importedSystemConst.apis.base_languages
     );
   }
 

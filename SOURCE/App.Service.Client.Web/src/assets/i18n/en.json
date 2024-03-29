@@ -624,11 +624,11 @@
       "__COMMENTS": "",
       "SINGULAR": "Contact",
       "PLURAL": "Contacts",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "We are here to help",
       "TODO": "To Contact",
       "DOING": "Contacting",
       "DONE": "Contacted",
-      "GET_IN_TOUCH": "Get In Touch",
+      "INSTRUCTIONS": "Get In Touch",
       "GET_IN_TOUCH_WITH_US": "Get in touch with us"
     },
     "CONTENTS": {
@@ -3322,30 +3322,20 @@
         "DESCRIPTION": "The better way to deliver value.",
         "MORE": ""
       },
-      "TRUSTED": {
-        "TITLE": "Trusted",
-        "DESCRIPTION": "Trusted by the best:",
-        "MORE": ""
-      },
       "CAPABILTIES": {
         "TITLE": "Capabilities",
         "DESCRIPTION": "Anytime, Anywhere, Any Device - have deeper understanding of your whole service.",
         "MORE": ""
       },
       "FEATURES": {
-        "TRUST": "Features",
+        "TITLE": "Features",
         "DESCRIPTION": "Insights over the whole thing...",
         "MORE": "Anytime, Anywhere, from any device, have insights into the whole system at any level."
       },
       "TEAM": {
-        "SINGULAR": "The Team",
+        "TITLE": "The Team",
         "DESCRIPTION": "Some of the core team that is behind the automation that has your back.",
         "MORE": "Many of us have worked together on delivering several successful projects over many years."
-      },
-      "CONTACT": {
-        "SINGULAR": "Get In Touch",
-        "DESCRIPTION": "We're looking forward to helping you get control of the information you need to make insightful decisions that add value.",
-        "MORE": "What else is there to say?"
       }
     }
   }

@@ -3,10 +3,11 @@ import { Component, OnInit } from "@angular/core";
 // Etc.
 import { TranslateService } from "@ngx-translate/core";
 // Constants:
-import { System } from "../../../../core/constants/contracts/system";
+import { system as importedSystemConst } from '../../../../core/constants/system';
 // Services:
 import { SystemService } from "../../../../core/services/system.service";
 import { DiagnosticsTraceService } from "../../../../core/services/diagnostics.service";
+// Models/Data:
 import { SummaryItemVTO } from "../../../../core/models/SummaryItemVTO.model";
 
 @Component({
@@ -19,7 +20,7 @@ export class BaseAppsEducationPeopleComponent implements OnInit {
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-  system: System;
+  system = importedSystemConst;
 
   damnit: SummaryItemVTO[] =
     [

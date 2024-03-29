@@ -1,6 +1,9 @@
+// Ag:
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BaseAppsPagesInformationIndexComponent } from './component';
+// Etc:
+import { BaseAppsPagesInformationIndexComponent } from './components/component';
+
 
 const routes: Routes = [
   // We're basically saying that

@@ -10,6 +10,7 @@ import { LandingScrollspyDirective } from './landingscrollspy.directive';
 import { NgbAccordionModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { TranslateModule } from '@ngx-translate/core';
+import { SystemEndorsementRepositoryService } from '../../services/repositories/system-endorsements.repository.service';
 //import { ScrollspyDirective } from './scrollspy.directive';
 
 //import Module specific:
@@ -24,7 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
     NgbNavModule,
     NgbAccordionModule,
     NgbDropdownModule,
-    SlickCarouselModule,
+    SlickCarouselModule
   ],
 
   declarations: [
@@ -32,11 +33,12 @@ import { TranslateModule } from '@ngx-translate/core';
     LandingScrollspyDirective,
 ],
   providers: [
-
+    SystemEndorsementRepositoryService
   ],
-  "exports": [
+  exports: [
     LandingScrollspyDirective,
     ScrollspyDirective
+
   ]
 })
 export class BaseCoreCommonModule { }

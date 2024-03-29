@@ -5,15 +5,17 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-
-// Module specific components:
-import { BaseAppsRouteComponent } from "./ui/_route/component";
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
-import { AppBaseCoreErrorsModule } from '../core/modules/errors/module';
+import { TranslateModule } from '@ngx-translate/core';
+// Constants:
+import { system as importedSystemConst } from '../core/constants/system';
+// Services:
 import { DiagnosticsTraceService } from '../core/services/diagnostics.service';
-
-import { System } from '../core/constants/contracts/system';
+// Modules:
+import { AppBaseCoreErrorsModule } from '../core/modules/errors/module';
+// Components:
+import { BaseAppsRouteComponent } from "./ui/_route/component";
 
 
 const routes: Routes = [

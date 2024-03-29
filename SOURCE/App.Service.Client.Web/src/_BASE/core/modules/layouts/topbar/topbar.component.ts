@@ -5,21 +5,22 @@ import { Observable, of } from 'rxjs';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 // Ag:
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+// Etc:
+import { CookieService } from 'ngx-cookie-service';
+import { TranslateService } from '@ngx-translate/core';
+
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
 
 //Logout
-import { environment } from '../../../../../environments/environment';
+//import { environment } from '../../../../../environments/environment';
 import { AuthenticationService } from '../../../services/auth.service';
 import { AuthfakeauthenticationService } from '../../../services/authfake.service';
-import { Router } from '@angular/router';
 import { TokenStorageService } from '../../../services/token-storage.service';
-
-// Language
-import { CookieService } from 'ngx-cookie-service';
 import { LanguageService } from '../../../services/language.service';
-import { TranslateService } from '@ngx-translate/core';
 
 //import { allNotification, messages } from './data'
 //import { CartModel } from './topbar.model';
@@ -31,8 +32,7 @@ import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
 import { EventService } from '../../../services/event.service';
 // Base Models:
 import { SystemLanguage } from '../../../models/data/system-language.model';
-// Constants:
-import { System } from '../../../constants/contracts/system';
+//
 import { SystemNotification } from '../../../models/data/notification.model';
 
 
@@ -46,7 +46,7 @@ export class BaseLayoutTopBarComponent implements OnInit {
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
   isDropdownOpen = false;
-  system: System;
+  system = importedSystemConst;
 
   constructor(@Inject(DOCUMENT)
     private document: any,

@@ -1,15 +1,17 @@
+// Ag:
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
-
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
+//
+import { SystemService } from '../../../services/system.service';
 // Menu Pachage
 // import MetisMenu from 'metismenujs';
-
+// Models/Data:
 import { MENU } from '../../../navigation/menu';
-
 import { IHasMenuItem } from '../../../models/contracts/IHasMenuItem';
-import { SystemService } from '../../../services/system.service';
-import { System } from '../../../constants/contracts/system';
 
 @Component({
   selector: 'app-horizontal-topbar',
@@ -23,7 +25,7 @@ export class BaseLayoutHorizontalTopbarComponent implements OnInit {
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
-  system: System;
+  system = importedSystemConst;
   constructor(private router: Router, public translate: TranslateService, systemService: SystemService) {
 
     // Can be either via service, or injecting the constats/settings object:

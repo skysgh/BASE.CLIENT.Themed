@@ -8,12 +8,14 @@ import { ErrorService } from "../error.service";
 import { ObjectMappingService } from "../objectMapping.service";
 import { TypeService } from "../type.service";
 import { MappedGenericRepositoryServiceBase } from "./base/mapped-generic-repository.service.base";
-//
-import { Stat } from "../../models/data/stat.model";
-import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
+// Constants:
+import { system as importedSystemConst } from '../../constants/system';
+// Services:
 import { SessionStorageService } from "../SessionStorageService";
 import { UrlService } from "../url.service";
 import { SimpleGenericRepositoryServiceBase } from "./base/simple-generic-repository-service.base";
+// Models/Data:
+import { Stat } from "../../models/data/stat.model";
 
 /**
  * Stateless service to manage interactions with
@@ -44,7 +46,7 @@ export class DashboardRepositoryService
       urlService,
       httpClient,
   
-      SystemQueryEndpoints.systemNotifications
+      importedSystemConst.apis.systemNotifications
     );
   }
 

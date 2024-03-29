@@ -1,15 +1,17 @@
+// Ag:
+import { Component, OnInit } from "@angular/core";
+// Etc:
 import { Observable, of } from 'rxjs';
-
 import { CookieService } from 'ngx-cookie-service';
 import { TranslateService } from '@ngx-translate/core';
-import { Component, OnInit } from "@angular/core";
 
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
 // Language
 import { LanguageService } from '../../../../services/language.service';
 import { SystemService } from "../../../../services/system.service";
 import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
 import { SystemLanguage } from '../../../../models/data/system-language.model';
-import { System } from '../../../../constants/contracts/system';
 import { TranslationService } from '../../../../services/translation.service';
 
 
@@ -22,7 +24,7 @@ import { TranslationService } from '../../../../services/translation.service';
 export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
 
 
-  system: System;
+  system = importedSystemConst;
 
   public systemLanguages$: Observable<SystemLanguage[]> = of([]);
 

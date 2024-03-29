@@ -1,4 +1,12 @@
-export const SystemQueryEndpoints = {
+// Constants:
+import { environment as importedEnvironmentConst } from '../../../../src/environments/environment';
+
+
+export const systemQueryEndpoints = {
+
+  baseUrl: importedEnvironmentConst.custom.service.baseUrl + 'api/',
+
+  baseRestUrl: importedEnvironmentConst.custom.service.baseUrl + 'api/' + 'rest/',
 
   // Api Calling
   API_URL: 'https://api-node.themesbrand.website/',
@@ -17,6 +25,8 @@ export const SystemQueryEndpoints = {
   stats: 'base_stats',
 
   userQuotes: "userQuotes",
+
+  systemEndorsements: "base_system_endorsements",
 
       // Products Api
   products: 'apps/products/',

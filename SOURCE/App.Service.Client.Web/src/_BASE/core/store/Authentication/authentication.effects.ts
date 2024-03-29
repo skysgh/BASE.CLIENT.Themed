@@ -5,10 +5,14 @@ import { from, of } from 'rxjs';
 import { AuthenticationService } from '../../services/auth.service';
 import { login, loginSuccess, loginFailure, logout, logoutSuccess, Register} from './authentication.actions';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+//import { environment } from 'src/environments/environment';
+// Const:
+import { system as importedSystemConst } from '../../constants/system';
 
 @Injectable()
 export class AuthenticationEffects {
+
+  system = importedSystemConst;
 
   Register$ = createEffect(() =>
     this.actions$.pipe(
@@ -16,7 +20,7 @@ export class AuthenticationEffects {
       exhaustMap(({ email, first_name, password }) =>
         this.AuthenticationService.register(email, first_name, password).pipe(
           map((user) => {
-            this.router.navigate(['/auth/login']);
+            this.router.navigate([this.system.navigation.auth.login]);
             return loginSuccess({ user });
           }),
           catchError((error) => of(loginFailure({ error })))
@@ -29,20 +33,20 @@ export class AuthenticationEffects {
   this.actions$.pipe(
     ofType(login),
     exhaustMap(({ email, password }) => {
-      if (environment.defaultauth === "fakebackend") {
+      if (this.system.environment.defaultauth === "fakebackend") {
         return this.AuthenticationService.login(email, password).pipe(
           map((user) => {
             if (user.status === 'success') {
               sessionStorage.setItem('toast', 'true');
               sessionStorage.setItem('currentUser', JSON.stringify(user.data));
               sessionStorage.setItem('token', user.token);
-              this.router.navigate(['/']);
+              this.router.navigate([this.system.navigation.home]);
             }
             return loginSuccess({ user });
           }),
           catchError((error) => of(loginFailure({ error })), // Closing parenthesis added here
         ));
-      } else if (environment.defaultauth === "firebase") {
+      } else if (this.system.environment.defaultauth === "firebase") {
         return of(); // Return an observable, even if it's empty
       } else {
         return of(); // Return an observable, even if it's empty

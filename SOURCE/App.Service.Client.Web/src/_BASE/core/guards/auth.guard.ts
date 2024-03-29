@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
+// Const:
+import { system as importedSystemConst } from '../constants/system';
+
 // Auth Services
 import { AuthenticationService } from '../services/auth.service';
 import { AuthfakeauthenticationService } from '../services/authfake.service';
@@ -8,6 +11,8 @@ import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard {
+
+  system = importedSystemConst;
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
@@ -33,7 +38,7 @@ export class AuthGuard {
         }
         // not logged in so redirect to login page with the return url
             }
-        this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
+        this.router.navigate([this.system.navigation.auth.login], { queryParams: { returnUrl: state.url } });
         return false;
     }
 }

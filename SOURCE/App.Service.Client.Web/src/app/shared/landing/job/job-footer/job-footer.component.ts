@@ -1,7 +1,11 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
-import { System } from '../../../../../_BASE/core/constants/contracts/system';
-import { SystemService } from '../../../../../_BASE/core/services/system.service';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
+// Const:
+import { system as importedSystemConst } from '../../../../../_BASE/core/constants/system';
+// Services:
+import { SystemService } from '../../../../../_BASE/core/services/system.service';
 
 @Component({
   selector: 'app-job-footer',
@@ -11,7 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class JobBaseLayoutFooterComponent implements OnInit {
   // set the current year
   year: number = new Date().getFullYear();
-  system: System;
+  system = importedSystemConst;
 
   constructor(systemService: SystemService, public translate: TranslateService) {
 

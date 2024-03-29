@@ -1,8 +1,9 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
-//Constants:
-import { System } from '../../../../constants/contracts/system';
-
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
 //Services:
 import { SystemService } from '../../../../services/system.service';
 
@@ -19,7 +20,7 @@ export class BaseErrors404BasicComponent implements OnInit {
 
   // set the current year
   year: number = new Date().getFullYear();
-  system: System;
+  system = importedSystemConst;
   constructor(systemService: SystemService, public translate: TranslateService) {
     this.system = systemService.system;
   }

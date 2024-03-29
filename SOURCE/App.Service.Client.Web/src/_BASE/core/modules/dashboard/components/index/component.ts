@@ -1,9 +1,14 @@
+// Ag:
 import { Component, OnInit } from '@angular/core';
+// Etc:
 import { Observable, of } from 'rxjs';
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { SystemService } from '../../../../services/system.service';
-import { System } from '../../../../constants/contracts/system';
 import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
 import { DashboardService } from '../../../../services/dashboard.service';
+// Models/Data:
 import { StatOneVTO } from '../../../../models/view/stat-on.vto';
 
 @Component({
@@ -15,7 +20,7 @@ export class BaseCoreDashboardsIndexComponent implements OnInit {
 
   stats$: Observable<StatOneVTO[]> = of([]);
 
-  system: System;
+  system = importedSystemConst;
 
   constructor(
     private systemService: SystemService,

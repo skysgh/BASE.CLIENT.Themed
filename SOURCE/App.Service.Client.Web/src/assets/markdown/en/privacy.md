@@ -1,6 +1,6 @@
 ##### Privacy Policy
 
-At {{system.sponsor.title}}, one of our main priorities is the privacy of our visitors. 
+At {{system.dynamic.sponsor.title}}, one of our main priorities is the privacy of our visitors. 
 
 This Privacy Policy document contains types of information that
 is collected and recorded by Website Name and how we use it.

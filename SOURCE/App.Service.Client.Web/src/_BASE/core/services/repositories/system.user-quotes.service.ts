@@ -1,17 +1,20 @@
+// Ag:
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+// Etc:
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
+// Constants:
+import { system as importedSystemConst } from '../../constants/system';
+// Services:
 //import { env } from "process";
 import { MappedGenericRepositoryServiceBase } from "./base/mapped-generic-repository.service.base";
 import { DiagnosticsTraceService } from "../diagnostics.service";
 import { EnvironmentService } from "../environment.service";
 import { ErrorService } from "../error.service";
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
 import { TypeService } from "../type.service";
 import { UserQuote } from "../../models/data/user-quote.model";
 import { ObjectMappingService } from '../objectMapping.service';
-// Constants:
-import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
 import { SessionStorageService } from '../SessionStorageService';
 import { UrlService } from '../url.service';
 import { TranslationService } from '../translation.service';
@@ -48,7 +51,7 @@ export class SystemUserQuoteRepositoryService
       sessionStorageService,
       urlService,
       httpClient,
-      SystemQueryEndpoints.userQuotes
+      importedSystemConst.apis.userQuotes
       
     );
   }
