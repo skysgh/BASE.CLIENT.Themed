@@ -1,30 +1,7 @@
 /**
  * Monthly Price
  */
-const PlanType = [
-  {
-    id: '00000000-00000000-00000000-00000001',
-    title: 'Free',
-    description: 'As the birds and bees.'
-  },
-  {
-    id: '00000000-00000000-00000000-00000002',
-    title: 'Daily',
-    description: 'Every day, less than a coffee. Probably even just the cup.'
-  },
-  {
-    id: '00000000-00000000-00000000-00000003',
-    title: 'Monthly',
-    description: 'Pay as you go.'
-  },
-  {
-    id: '00000000-00000000-00000000-00000004',
-    title: 'Yearly',
-    description: 'Get uninteruptible service, AND 2 months for free.'
-
-  }
-]
-const PlanSize = [
+const system_PriceSize = [
   {
     id: '00000000-00000000-00000000-00000001',
     title: 'Single',

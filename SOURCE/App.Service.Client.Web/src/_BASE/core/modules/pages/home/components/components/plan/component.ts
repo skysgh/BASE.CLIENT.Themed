@@ -10,6 +10,8 @@ import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.
 // Models:
 import { MonthlyPlanModel, AnnualPlanModel } from './plan.model';
 import { MonthlyPlan, AnnualPlan } from './data';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-plan',
@@ -27,6 +29,7 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
   AnnualPlan!: AnnualPlanModel[];
 
   system = importedSystemConst;
+  sectionsInfo = importedSectionsInfo;
 
   constructor(
     systemService: SystemService,

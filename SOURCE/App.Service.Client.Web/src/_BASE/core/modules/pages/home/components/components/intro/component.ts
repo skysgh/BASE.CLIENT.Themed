@@ -1,5 +1,5 @@
 // Ag:
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 // Etc:
 import { TranslateService } from '@ngx-translate/core';
 // Constants:
@@ -7,25 +7,31 @@ import { system as importedSystemConst } from '../../../../../../constants/syste
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 @Component({
-  selector: 'app-base-core-pages-landing-index-collection',
+  selector: 'app-base-core-pages-landing-index-demos',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 
+
 /**
- * Collection Component
+ * Footer Component
  */
-export class BaseAppsPagesLandingIndexCollectionComponent implements OnInit {
+export class BaseAppsPagesLandingIndexDemosComponent implements OnInit {
 
-  system = importedSystemConst;
+  system = importedSystemConst;;
+  sectionsInfo = importedSectionsInfo;
 
-  constructor(
-    systemService: SystemService,
+  showNavigationArrows: any;
+  showNavigationIndicators: any;
+
+  constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
-    public translateService: TranslateService) {
-    this.system = systemService.system;
+    public translate: TranslateService) {
+    //this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }

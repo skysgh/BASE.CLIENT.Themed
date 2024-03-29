@@ -39,7 +39,11 @@
                             </div>
                             <div class="pt-4">
                               <h2>
-                                <sup><small>$</small></sup>{{data.rate}} <span class="fs-13 text-muted">/Month</span>
+                                <sup><small>$</small></sup>
+                                {{data.rate}}
+                              <span class="fs-13 text-muted">
+                                /{{'BASE.DATES.MONTHS.SINGULAR'  | translate}}
+                              </span>
                               </h2>
                             </div>
                             <hr class="my-4 text-muted">
@@ -51,7 +55,7 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.members}}</b> Members
+                                      Upto <b>{{data.members}}</b> {{'BASE.DATES.MEMBERS.PLURAL' | translate }}
                                     </div>
                                   </div>
                                 </li>
@@ -61,7 +65,7 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.partners}}</b> Partners
+                                      Upto <b>{{data.partners}}</b> {{'BASE.DATES.MEMBERS.PARTNERS'}}
                                     </div>
                                   </div>
                                 </li>
@@ -71,7 +75,7 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.groups}}</b> Groups
+                                      Upto <b>{{data.groups}}</b> {{'BASE.DATES.GROUPS.PLURAL' | translate}}
                                     </div>
                                   </div>
                                 </li>
@@ -81,7 +85,7 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.projects}}</b> Projects
+                                      Upto <b>{{data.projects}}</b> {{'BASE.DATES.PROJECTS.PLURAL' | translate}}
                                     </div>
                                   </div>
                                 </li>
@@ -91,7 +95,7 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.resources}}</b> Resources
+                                      Upto <b>{{data.resources}}</b> {{'BASE.DATES.RESOURCES.PLURAL' | translate}}
                                     </div>
                                   </div>
                                 </li>
@@ -128,7 +132,10 @@
                                 </li>
                               </ul>
                               <div class="mt-4">
-                                <a href="javascript:void(0);" class="btn btn-{{data.planButtonClassname}} w-100 waves-effect waves-light">{{data.plan}}</a>
+                                <a href="javascript:void(0);"
+                                   class="btn btn-{{data.planButtonClassname}} w-100 waves-effect waves-light">
+                                {{data.plan}}
+                                </a>
                               </div>
                             </div>
                           </div>

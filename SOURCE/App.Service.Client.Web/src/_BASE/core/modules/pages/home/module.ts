@@ -10,20 +10,20 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { BaseAppsPagesInformationIndexComponent } from './components/component';
 // Import  Base.Common.Models:
-import { BaseAppsPagesLandingIndexDemosComponent } from './components/components/demos/component';
+import { BaseAppsPagesLandingIndexDemosComponent } from './components/components/intro/component';
 import { BaseAppsPagesLandingIndexClientsComponent } from './components/components/clients/component';
-import { BaseAppsPagesLandingIndexCollectionComponent } from './components/components/collection/component';
+import { BaseAppsPagesLandingIndexFeaturesComponent } from './components/components/features/component';
 import { BaseAppsPagesLandingIndexContactComponent } from './components/components/contact/component';
 import { BaseAppsPagesLandingIndexCounterComponent } from './components/components/counter/component';
 import { BaseAppsPagesLandingIndexCtaComponent } from './components/components/cta/component';
-import { BaseAppsPagesLandingIndexDesignedComponent } from './components/components/features/component';
+import { BaseAppsPagesLandingIndexDesignedComponent } from './components/components/designed/component';
 import { BaseAppsPagesLandingIndexFaqsComponent } from './components/components/faqs/component';
 import { BaseAppsPagesLandingIndexFooterComponent } from './components/components/footer/component';
 import { BaseAppsPagesLandingIndexPlanComponent } from './components/components/plan/component';
-import { BaseAppsPagesLandingIndexReviewComponent } from './components/components/review/component';
+import { BaseAppsPagesLandingIndexReviewComponent } from './components/components/endorsements/component';
 import { BaseAppsPagesLandingIndexCapabilitiesComponent } from './components/components/capabilities/component';
 import { BaseAppsPagesLandingIndexTeamComponent } from './components/components/team/component';
-import { BaseAppsPagesLandingIndexWorkProcessComponent } from './components/components/work-process/component';
+import { BaseAppsPagesLandingIndexWorkProcessComponent } from './components/components/process/component';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SharedModule } from '../../../../../app/shared/module';
@@ -97,7 +97,9 @@ import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/
     BaseAppsPagesLandingIndexDemosComponent,
     BaseAppsPagesLandingIndexClientsComponent,
     BaseAppsPagesLandingIndexCapabilitiesComponent,
-    BaseAppsPagesLandingIndexCollectionComponent,
+    BaseAppsPagesLandingIndexFeaturesComponent,
+    BaseAppsPagesLandingIndexDesignedComponent,
+    //BaseAppsPagesLandingIndexFeaturesComponent,
     BaseAppsPagesLandingIndexCtaComponent,
     BaseAppsPagesLandingIndexDesignedComponent,
     BaseAppsPagesLandingIndexPlanComponent,

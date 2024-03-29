@@ -356,6 +356,15 @@
       "REMEMBER_ME_INSTRUCTIONS": "(Across sessions, even after the browser is closed)",
       "DONT_HAVE_AN_ACCOUNT?": "Don't yet have an account?"
     },
+    "BILLS": {
+      "__COMMENTS": "See RECEIPTS",
+      "SINGULAR": "Bill",
+      "PLURAL": "Bills",
+      "DESCRIPTION": "",
+      "TODO": "To Bill",
+      "DOING": "Billing",
+      "DONE": "Billed"
+    },
     "BODIES": {
       "__COMMENTS": "See PERSON. Parrallel to IDENTITY. See NAMES",
       "SINGULAR": "Body",
@@ -417,7 +426,6 @@
     },
     "BROKER": {
       "__COMMENTS": "See BUYERS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
-      "__DESC": "",
       "SINGULAR": "Broker",
       "PLURAL": "Brokers",
       "DESCRIPTION": "",
@@ -514,7 +522,6 @@
     },
     "CLIENTS": {
       "__COMMENTS": "See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
-      "__DESC": "",
       "SINGULAR": "Client",
       "PLURAL": "Clients",
       "DESCRIPTION": "",
@@ -648,10 +655,9 @@
     },
     "CONTEXT": {
       "__COMMENTS": "Often displayed as part of the Layout frame. See STATUS area.See also POSITIONS, LOCATIONS.",
-      "__DESC": "Current context: user, account, system.",
       "SINGULAR": "Context",
       "PLURAL": "Contexts",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Current context: user, account, system.",
       "TODO": "To put into context",
       "DOING": "Putting into context",
       "DONE": "Contextualised"
@@ -715,7 +721,6 @@
     },
     "CUSTOMERS": {
       "__COMMENTS": "See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
-      "__DESC": "",
       "SINGULAR": "Customer",
       "PLURAL": "Customers",
       "DESCRIPTION": "",
@@ -1510,7 +1515,7 @@
       "__COMMENTS": "Groups one belongs to.",
       "SINGULAR": "Group",
       "PLURAL": "Groups",
-      "__DESCRIPTION": "",
+      "DESCRIPTION": "",
       "TODO": "To Group",
       "DOING": "Grouping",
       "DONE": "Grouped"
@@ -1642,10 +1647,9 @@
     },
     "INFORMATION": {
       "__COMMENTS": "Publicly accessible Pages (Pricing, FAQs, Policies, Terms, etc.). See INFORMATION and PAGES Area.",
-      "__DESC": "Publicly accessible information pages",
       "SINGULAR": "Information",
       "PLURAL": "N/A",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Publicly accessible information pages",
       "TODO": "To Inform",
       "DOING": "Informing",
       "DONE": "Informed"
@@ -1683,12 +1687,20 @@
       "DOING": "Inviting",
       "DONE": "Invited"
     },
+    "INVOICES": {
+      "__COMMENTS": "See PURCHASEORDERS, BILLS, RECEIPTS",
+      "SINGULAR": "Invoice",
+      "PLURAL": "Invoices",
+      "DESCRIPTION": "",
+      "TODO": "To Invoice",
+      "DOING": "Invoicing",
+      "DONE": "Invoiced"
+    },
     "ISSUES": {
       "__COMMENTS": "See WORK, STATUS, SUGGESTIONS, PROPOSALS.",
-      "__DESC": "Known issues",
       "SINGULAR": "Issue",
       "PLURAL": "Issues",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Known issues",
       "TODO": "To raise",
       "DOING": "Raising an issue",
       "DONE": "Issue was raised"
@@ -1704,10 +1716,9 @@
     },
     "LANDING": {
       "__COMMENTS": "Publicly accessible Pages as landing pages from Advertisements/sources. See PAGES and INFORMATION Area.",
-      "__DESC": "Publicly accessible landing pages",
       "SINGULAR": "Landing",
       "PLURAL": "Landings",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Publicly accessible landing pages",
       "TODO": "To Land",
       "DOING": "Landing",
       "DONE": "Landed"
@@ -1728,6 +1739,15 @@
         "TWOCOLUMN": "Two Column",
         "HOVERED": "Hovered"
       }
+    },
+    "LAWS": {
+      "__COMMENTS": "See REGULATIONS",
+      "SINGULAR": "Law",
+      "PLURAL": "Laws",
+      "DESCRIPTION": "",
+      "TODO": "N/A",
+      "DOING": "N/A",
+      "DONE": "N/A"
     },
     "LIKES": {
       "__COMMENTS": "See APPRECIATION, DISLIKES",
@@ -1807,10 +1827,9 @@
     },
     "MAINTENANCE": {
       "__COMMENTS": "",
-      "__DESC": "When the service is next planned to be taken down to add new features...",
       "SINGULAR": "Maintenance",
       "PLURAL": "N/A",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "When the service is next planned to be taken down to add new features...",
       "TODO": "To Maintain",
       "DOING": "Maintaining",
       "DONE": "Maintained"
@@ -1848,10 +1867,9 @@
     },
     "MESSAGES": {
       "__COMMENTS": "See also NOTIFICATIONS, ALERT, EMAIL.",
-      "__DESC": "Messages between Users",
       "SINGULAR": "Message",
       "PLURAL": "Messages",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Messages between Users",
       "TODO": "To Message",
       "DOING": "Messaging",
       "DONE": "Messaged",
@@ -2044,17 +2062,15 @@
     },
     "OPENINGS": {
       "__COMMENTS": "",
-      "__DESC": "Opportunities to work here.",
       "SINGULAR": "Opening",
       "PLURAL": "Openings",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Opportunities to work here.",
       "TODO": "To Open",
       "DOING": "Opening",
       "DONE": "Opened"
     },
     "OPERATIONS": {
       "__COMMENTS": "See MAINTAINANCE",
-      "__DESC": "",
       "SINGULAR": "Operate",
       "PLURAL": "Operates",
       "DESCRIPTION": "",
@@ -2064,7 +2080,6 @@
     },
     "ORDERS": {
       "__COMMENTS": "See CUSTOMERS, CLIENTS",
-      "__DESC": "",
       "SINGULAR": "Order",
       "PLURAL": "Orders",
       "DESCRIPTION": "",
@@ -2144,10 +2159,9 @@
     },
     "PAGES": {
       "__COMMENTS": "Pages restricted to authenticated Users. See INFORMATION and LANDING Areas",
-      "__DESC": "Pages restricted to permitted users",
       "SINGULAR": "Page",
       "PLURAL": "Pages",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Pages restricted to permitted users",
       "TODO": "To Page",
       "DOING": "Paging",
       "DONE": "[Paged?]"
@@ -2218,7 +2232,7 @@
       "DONE": "Planned"
     },
     "POLICIES": {
-      "__COMMENTS": "See PRINCIPLES, DISCLOSURES, STATEMENTS.",
+      "__COMMENTS": "See PRINCIPLES, DISCLOSURES, STATEMENTS, REGULATIONS, LAWS.",
       "SINGULAR": "Policy",
       "PLURAL": "Policies",
       "DESCRIPTION": "",
@@ -2323,7 +2337,6 @@
     },
     "PROCURE": {
       "__COMMENTS": "See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
-      "__DESC": "",
       "SINGULAR": "Procure",
       "PLURAL": "Procurers",
       "DESCRIPTION": "",
@@ -2385,6 +2398,15 @@
       "TODO": "To Propose",
       "DOING": "Proposing",
       "DONE": "Proposed"
+    },
+    "PURCHASEORDERS": {
+      "__COMMENTS": "See INVOICES, BILLS, RECEIPTS",
+      "SINGULAR": "Purchase Order",
+      "PLURAL": "Purchase Orders",
+      "DESCRIPTION": "",
+      "TODO": "To order",
+      "DOING": "Ordering",
+      "DONE": "Ordered"
     },
     "QUANTITIES": {
       "__COMMENTS": "See also CONTENTS.",
@@ -2458,6 +2480,15 @@
       "DOING": "Reading",
       "DONE": "Read"
     },
+    "RECEIPTS": {
+      "__COMMENTS": "See BILLS, INVOICES",
+      "SINGULAR": "Bill",
+      "PLURAL": "Bills",
+      "DESCRIPTION": "",
+      "TODO": "To Bill",
+      "DOING": "Billing",
+      "DONE": "Billed"
+    },
     "RECOMMENDATIONS": {
       "__COMMENTS": "See APPROVALS, ENDORSEMENTS",
       "SINGULAR": "Recommendation",
@@ -2471,6 +2502,15 @@
       "__COMMENTS": "",
       "SINGULAR": "Reference Data",
       "PLURAL": "Reference Data",
+      "DESCRIPTION": "",
+      "TODO": "N/A",
+      "DOING": "N/A",
+      "DONE": "N/A"
+    },
+    "REGULATIONS": {
+      "__COMMENTS": "See LAWS, POLICIES",
+      "SINGULAR": "Regulation",
+      "PLURAL": "Regulations",
       "DESCRIPTION": "",
       "TODO": "N/A",
       "DOING": "N/A",
@@ -2619,7 +2659,6 @@
     },
     "SELLERS": {
       "__COMMENTS": "See BUYERS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS",
-      "__DESC": "",
       "SINGULAR": "Vendor",
       "PLURAL": "Vendors",
       "DESCRIPTION": "",
@@ -2627,16 +2666,6 @@
       "DOING": "Selling",
       "DONE": "Sold",
       "DETAILS": "Seller's Details"
-    },
-    "SPONSOR": {
-      "__COMMENTS": "See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
-      "__DESC": "",
-      "SINGULAR": "Sponsor",
-      "PLURAL": "Sponsors",
-      "DESCRIPTION": "",
-      "TODO": "To Sponsor",
-      "DOING": "Sponsoring",
-      "DONE": "Sponsored"
     },
     "SEQUENCES": {
       "__COMMENTS": "See also POSITIONS.",
@@ -2689,8 +2718,14 @@
       "SEEN": "Seen",
       "READ": "Read"
     },
-    "SITE": {
-      "__COMMENTS": "See SITE at higher level."
+    "SITES": {
+      "__COMMENTS": "See SITE at higher level.",
+      "SINGULAR": "Site",
+      "PLURAL": "Sites",
+      "DESCRIPTION": "",
+      "TODO": "N/A",
+      "DOING": "N/A",
+      "DONE": "N/A"
     },
     "SHOPPING": {
       "__COMMENTS": "",
@@ -2723,10 +2758,9 @@
     },
     "SITEMAPS": {
       "__COMMENTS": "",
-      "__DESC": "Where we are.",
       "SINGULAR": "Site Map",
       "PLURAL": "Site Maps",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Where you are.",
       "TODO": "N/A",
       "DOING": "N/A",
       "DONE": "N/A"
@@ -2775,6 +2809,15 @@
       "COMPACT": "Compact",
       "REGULAR": "Regular",
       "TIGHT": "Tight"
+    },
+    "SPONSORS": {
+      "__COMMENTS": "See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
+      "SINGULAR": "Sponsor",
+      "PLURAL": "Sponsors",
+      "DESCRIPTION": "",
+      "TODO": "To Sponsor",
+      "DOING": "Sponsoring",
+      "DONE": "Sponsored"
     },
     "STAKEHOLDERS": {
       "__COMMENTS": "",
@@ -2839,10 +2882,9 @@
     },
     "STATUS": {
       "__COMMENTS": "Often displayed as part of the Layout frame. See CONTEXT Area.",
-      "__DESC": "Current state of last operation, account, system.",
       "SINGULAR": "Status",
       "PLURAL": "Statuses",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Current state of last operation, account, system.",
       "TODO": "N/A",
       "DOING": "N/A",
       "DONE": "N/A",
@@ -2886,20 +2928,18 @@
     },
     "SUPPORT": {
       "__COMMENTS": "Compare with [self] HELP. See ASSISTANCE, OPERATIONS, MAINTAINANCE, ROLES",
-      "__DESC": "Assistance",
       "SINGULAR": "Support",
       "PLURAL": "N/A",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Assistance",
       "TODO": "To Support",
       "DOING": "Supporting",
       "DONE": "Supported"
     },
     "SUPPLIERS": {
       "__COMMENTS": "See PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS",
-      "__DESC": "Suppliers",
       "SINGULAR": "Supplier",
       "PLURAL": "Suppliers",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Suppliers",
       "TODO": "To Supply",
       "DOING": "Supplying",
       "DONE": "Supplied"
@@ -2924,13 +2964,12 @@
     },
     "TASKS": {
       "__COMMENTS": "See TODOS, PROJECTS area.",
-      "__DESC": "Description",
       "SINGULAR": "Task",
       "PLURAL": "Tasks",
       "TODO": "To Do",
       "DOING": "Doing",
       "DONE": "Done",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Tasks to accomplish projects",
       "TITLE_INSTRUCTIONS": "",
       "TITLE_PLACEHOLDER": "",
       "DESCRIPTION_INSTRUCTIONS": "",
@@ -3005,10 +3044,9 @@
     },
     "TERMS_OF_USE": {
       "__COMMENTS": "See STATEMENTS, POLICIES, CONTRACTS",
-      "__DESC": "Service users are expected to adhere to common behaviour",
       "SINGULAR": "Terms of Use",
       "PLURAL": "N/A",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Service users are expected to adhere to common behaviour",
       "TODO": "N/A",
       "DOING": "N/A",
       "DONE": "N/A"
@@ -3051,10 +3089,9 @@
     },
     "TIMELINES": {
       "__COMMENTS": "",
-      "__DESC": "Our expected timeline of when we'll be adding features...",
       "SINGULAR": "Timeline",
       "PLURAL": "Timelines",
-      "DESCRIPTION": "",
+      "DESCRIPTION": "Our expected timeline of when we'll be adding features...",
       "TODO": "N/A",
       "DOING": "N/A",
       "DONE": "N/A"
@@ -3222,7 +3259,6 @@
     },
     "VENDORS": {
       "__COMMENTS": "See BUYERS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS",
-      "__DESC": "",
       "SINGULAR": "Vendor",
       "PLURAL": "Vendors",
       "DESCRIPTION": "",
@@ -3317,25 +3353,45 @@
   },
   "CUSTOM": {
     "SITE": {
-      "HOME": {
-        "TITLE": "BASE",
-        "DESCRIPTION": "The better way to deliver value.",
-        "MORE": ""
-      },
-      "CAPABILTIES": {
-        "TITLE": "Capabilities",
-        "DESCRIPTION": "Anytime, Anywhere, Any Device - have deeper understanding of your whole service.",
-        "MORE": ""
-      },
-      "FEATURES": {
-        "TITLE": "Features",
-        "DESCRIPTION": "Insights over the whole thing...",
-        "MORE": "Anytime, Anywhere, from any device, have insights into the whole system at any level."
-      },
-      "TEAM": {
-        "TITLE": "The Team",
-        "DESCRIPTION": "Some of the core team that is behind the automation that has your back.",
-        "MORE": "Many of us have worked together on delivering several successful projects over many years."
+      "PAGES": {
+        "INTRO": {
+          "TITLE": "BASE",
+          "DESCRIPTION": "The better way to build value.",
+          "MORE": ""
+        },
+        "CAPABILITIES": {
+          "TITLE": "Capabilities",
+          "DESCRIPTION": "Anytime, Anywhere, Any Device - have a deeper understanding of your whole service.",
+          "MORE": "",
+          "PEOPLE_TITLE": "People",
+          "PEOPLE_DESCRIPTION": "Organise and enable people...",
+          "GROUPS_TITLE": "Groups",
+          "GROUPS_DESCRIPTION": "...in manageable groups...",
+          "PARTICIPATION_TITLE": "Participate",
+          "PARTICIPATION_DESCRIPTION": "...to participate...",
+          "PRESENCE_TITLE": "Presence",
+          "PRESENCE_DESCRIPTION": "...remotely or in person...",
+          "PLACES_TITLE": "Places",
+          "PLACES_DESCRIPTION": "...at any available location...",
+          "PROGRESS_TITLE": "Progression",
+          "PROGRESS_DESCRIPTION": "...to progress...",
+          "PRODUCTS_TITLE": "Products",
+          "PRODUCTS_DESCRIPTION": "...through curriculum meterial...",
+          "PLANS_TITLE": "Plans",
+          "PLANS_DESCRIPTION": "...according to plan...",
+          "ACHIEVEMENT_TITLE": "Achievements",
+          "ACHIEVEMENT_DESCRIPTION": "...towards lifelong valued achievements."
+        },
+        "FEATURES": {
+          "TITLE": "Features",
+          "DESCRIPTION": "Insights over the whole thing...",
+          "MORE": "Anytime, Anywhere, from any device, have insights into the whole system at any level."
+        },
+        "TEAM": {
+          "TITLE": "The Team",
+          "DESCRIPTION": "Some of the core team that is behind the automation that has your back.",
+          "MORE": "Many of us have worked together on delivering several successful projects over many years."
+        }
       }
     }
   }

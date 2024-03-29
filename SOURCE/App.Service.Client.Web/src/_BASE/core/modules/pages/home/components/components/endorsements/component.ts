@@ -7,12 +7,12 @@ import { system as importedSystemConst } from '../../../../../../constants/syste
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
-// Models:
-import { clientLogoModel } from './review.model';
-import { ClientLogo } from './data';
 import { SystemEndorsementRepositoryService } from '../../../../../../services/repositories/system-endorsements.repository.service';
+// Models:
 import { Observable, of } from 'rxjs';
 import { SystemEndorsement } from '../../../../../../models/data/systemEndorsement.model';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 
 @Component({
@@ -26,9 +26,9 @@ import { SystemEndorsement } from '../../../../../../models/data/systemEndorseme
  */
 export class BaseAppsPagesLandingIndexReviewComponent implements OnInit {
 
-  ClientLogo!: clientLogoModel[];
 
   system = importedSystemConst;
+  sectionsInfo = importedSectionsInfo;
 
 
   reviews$: Observable<SystemEndorsement[]> = of([]);

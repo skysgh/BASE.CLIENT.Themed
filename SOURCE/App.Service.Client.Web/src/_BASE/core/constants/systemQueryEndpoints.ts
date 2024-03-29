@@ -27,6 +27,8 @@ export const systemQueryEndpoints = {
   userQuotes: "userQuotes",
 
   systemEndorsements: "base_system_endorsements",
+  systemFaqsCategories: "base_system_faqs_categories",
+  systemFaqs: "base_system_faqs",
 
       // Products Api
   products: 'apps/products/',

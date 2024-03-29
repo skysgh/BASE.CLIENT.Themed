@@ -11,6 +11,9 @@ import { NgbAccordionModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstr
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { TranslateModule } from '@ngx-translate/core';
 import { SystemEndorsementRepositoryService } from '../../services/repositories/system-endorsements.repository.service';
+import { matchesProperty } from 'lodash';
+import { EnabledPipe } from './pipes/enabled.pipe';
+import { MatchesPipe } from './pipes/matches.pipe';
 //import { ScrollspyDirective } from './scrollspy.directive';
 
 //import Module specific:
@@ -31,13 +34,18 @@ import { SystemEndorsementRepositoryService } from '../../services/repositories/
   declarations: [
     ScrollspyDirective,
     LandingScrollspyDirective,
+
+    EnabledPipe,
+    MatchesPipe
 ],
   providers: [
-    SystemEndorsementRepositoryService
+    SystemEndorsementRepositoryService,
   ],
   exports: [
     LandingScrollspyDirective,
-    ScrollspyDirective
+    ScrollspyDirective,
+    EnabledPipe,
+    MatchesPipe
 
   ]
 })

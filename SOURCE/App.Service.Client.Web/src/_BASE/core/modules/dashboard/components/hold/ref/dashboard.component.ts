@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { circle, latLng, tileLayer } from 'leaflet';
 
-import { ChartType } from '../../../../models/contracts/dashboard.model';
+import { ChartType } from '../../../../../models/contracts/dashboard.model';
 import { BestSelling, Recentelling, TopSelling, statData } from 'src/app/core/data';
 import { ToastService } from '../../../../../services/toast.service';
 

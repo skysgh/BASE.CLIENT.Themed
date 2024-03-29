@@ -7,6 +7,8 @@ import { system as importedSystemConst } from '../../../../../../constants/syste
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-contact',
@@ -20,6 +22,7 @@ import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.
 export class BaseAppsPagesLandingIndexContactComponent implements OnInit {
 
   system = importedSystemConst;
+  sectionsInfo = importedSectionsInfo;
 
   constructor(
     systemService: SystemService,

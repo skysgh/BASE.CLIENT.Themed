@@ -13,6 +13,8 @@ import { SystemTeamRepositoryService } from '../../../../../../services/reposito
 import { TeamModel } from './team.model';
 import { Teams } from './data';
 import { TeamVTO } from '../../../../../../models/view/team.vto';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-team',
@@ -30,6 +32,7 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
   team$: Observable<TeamVTO[]> = of([]);
 
   system = importedSystemConst;
+  sectionsInfo = importedSectionsInfo;
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translateService: TranslateService,

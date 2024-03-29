@@ -37,43 +37,50 @@
       <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
         <li class="nav-item">
           <a class="nav-link active"
-             [ngClass]="{'active':sectionId === 'hero'}"
-             [ngxScrollTo]="'#hero'"
+             [ngClass]="{'active':sectionId === sectionsInfo.intro.id}"
+             [ngxScrollTo]="'#'+sectionsInfo.intro.id"
              href="javascript:void(0);">{{'BASE.HOMES.SINGULAR'|translate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === 'services'}"
-             [ngxScrollTo]="'#services'"
+             [ngClass]="{'active':sectionId === sectionsInfo.capabilities.id}"
+             [ngxScrollTo]="'#'+sectionsInfo.capabilities.id"
              href="javascript:void(0);">{{'BASE.CAPABILITIES.PLURAL'|translate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === 'features'}"
-             [ngxScrollTo]="'#features'"
+             [ngClass]="{'active':sectionId === sectionsInfo.features.id}"
+             [ngxScrollTo]="'#'+sectionsInfo.features.id"
              href="javascript:void(0);">{{'BASE.FEATURES.PLURAL'|translate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === 'plans'}" [ngxScrollTo]="'#plans'"
+             [ngClass]="{'active':sectionId === sectionsInfo.plans.id}"
+             [ngxScrollTo]="'#'+sectionsInfo.plans.id"
              href="javascript:void(0);">{{'BASE.PLANS.PLURAL'|translate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === 'reviews'}"
-             [ngxScrollTo]="'#reviews'"
+             [ngClass]="{'active':sectionId === sectionsInfo.endorsements.id}"
+             [ngxScrollTo]="'#'+sectionsInfo.endorsements.id"
              href="javascript:void(0);">{{'BASE.REVIEWS.PLURAL'|translate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === 'team'}"
-             [ngxScrollTo]="'#team'"
+             [ngClass]="{'active':sectionId === sectionsInfo.faqs.id}"
+             [ngxScrollTo]="'#'+sectionsInfo.faqs.id"
+             href="javascript:void(0);">{{'BASE.FAQS.PLURAL'|translate}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [ngClass]="{'active':sectionId === sectionsInfo.team.id}"
+             [ngxScrollTo]="'#'+sectionsInfo.team.id"
              href="javascript:void(0);">{{'BASE.TEAMS.SINGULAR'|translate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === 'contact'}"
-             [ngxScrollTo]="'#contact'"
+             [ngClass]="{'active':sectionId === sectionsInfo.contact.id}"
+             [ngxScrollTo]="'#'+sectionsInfo.contact.id"
              href="javascript:void(0);">{{'BASE.CONTACTS.SINGULAR'|translate}}</a>
         </li>
       </ul>

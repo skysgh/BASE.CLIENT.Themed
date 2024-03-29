@@ -7,6 +7,8 @@ import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from './sectionsInfo.data';
 
 @Component({
   selector: 'app-apps-home-home',
@@ -21,6 +23,7 @@ export class BaseAppsPagesInformationIndexComponent implements OnInit {
   breadCrumbItems!: Array<{}>;
 
   system = importedSystemConst;
+  sectionsInfo = importedSectionsInfo;
 
 
   constructor(systemService: SystemService,

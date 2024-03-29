@@ -10,6 +10,7 @@ import { systemSponsor } from "./system.sponsor";
 import { systemDeveloper } from "./system.developer";
 import { SystemDynamic } from "./contracts/system.dynamics";
 import { systemQueryEndpoints } from "./systemQueryEndpoints";
+import { systemStats } from "./system.stats";
 
 /**
  * NOTE: note that type created is defined 'as const' on
@@ -33,6 +34,9 @@ export const system /*: System*/ = {
   integration: systemIntegrations,
 
   apis: systemQueryEndpoints,
+
+  stats: systemStats,
+
   get dynamic(): SystemDynamic {
     var result: SystemDynamic = {
       distributor: systemDistributor,

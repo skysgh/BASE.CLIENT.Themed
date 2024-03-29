@@ -10,6 +10,8 @@ import { system as importedSystemConst } from '../../../../../../constants/syste
 //
 import { SystemService } from '../../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-work-process',
@@ -23,6 +25,7 @@ import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.
 export class BaseAppsPagesLandingIndexWorkProcessComponent implements OnInit {
 
   system = importedSystemConst;
+  sectionsInfo = importedSectionsInfo;
 
   Process!: ProcessModel[];
   

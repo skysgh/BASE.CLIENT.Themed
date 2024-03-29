@@ -1,10 +1,12 @@
  <!-- start contact -->
- <section class="section" id="contact">
+ <section class="section" [id]="sectionsInfo.contact.id">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="text-center mb-5">
-                  <h3 class="mb-3 fw-semibold">{{'BASE.CONTACTS.INSTRUCTIONS'|translate}}</h3>
+                  <h3 class="mb-3 fw-semibold">
+                  {{'BASE.CONTACTS.INSTRUCTIONS'|translate}}
+                  </h3>
                   <p class="text-muted mb-4 ff-secondary">
                     {{'CUSTOM.SITE.CONTACT.DESCRIPTION'|translate}}
                   </p>
@@ -17,17 +19,29 @@
             <div class="col-lg-4">
                 <div>
                     <div class="mt-4">
-                        <h5 class="fs-13 text-muted text-uppercase">Office Address 1:</h5>
-                        <div class="ff-secondary fw-semibold">4461 Cedar Street Moro, <br/>AR 72368</div>
+                        <h5 class="fs-13 text-muted text-uppercase">Sponsor:</h5>
+                        <div class="ff-secondary fw-semibold">
+                          {{system.dynamic.sponsor.channels?.postal?.street}},<br />
+                          {{system.dynamic.sponsor.channels?.postal?.city}},<br />
+                          {{system.dynamic.sponsor.channels?.postal?.region}}
+                          {{system.dynamic.sponsor.channels?.postal?.code}}<br />
+                          {{system.dynamic.sponsor.channels?.postal?.country}}
+                        </div>
                     </div>
                     <div class="mt-4">
-                        <h5 class="fs-13 text-muted text-uppercase">Office Address 2:</h5>
-                        <div class="ff-secondary fw-semibold">2467 Swick Hill Street <br />New Orleans, LA</div>
-                    </div>
-                    <div class="mt-4">
-                        <h5 class="fs-13 text-muted text-uppercase">Working Hours:</h5>
-                        <div class="ff-secondary fw-semibold">9:00am to 6:00pm</div>
-                    </div>
+                        <h5 class="fs-13 text-muted text-uppercase">Technical:</h5>
+                        <div class="ff-secondary fw-semibold">
+                          {{system.dynamic.developer.channels?.postal?.street}},<br />
+                          {{system.dynamic.developer.channels?.postal?.city}}<br/>
+                          {{system.dynamic.sponsor.channels?.postal?.region}}
+                          {{system.dynamic.developer.channels?.postal?.code}}<br />
+                          {{system.dynamic.developer.channels?.postal?.country}}
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="fs-13 text-muted text-uppercase">Working Hours:</h5>
+                            <div class="ff-secondary fw-semibold">9:00am to 6:00pm</div>
+                        </div>
+                     </div> 
                 </div>
             </div>
             <!-- end col -->

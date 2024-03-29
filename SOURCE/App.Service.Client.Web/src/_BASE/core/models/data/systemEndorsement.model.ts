@@ -7,3 +7,7 @@ export class SystemEndorsement extends ReferenceDataBase
   public by: string = '';
   public role: string = '';
 }
+
+export class SystemFaq extends ReferenceDataBase {
+  public categoryId: string = '';
+}

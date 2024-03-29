@@ -14,6 +14,8 @@ import { SystemCapabilitiesRepositoryService } from '../../../../../../services/
 // Models:
 import { servicesModel } from './services.model';
 import { Services } from './data';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 
 @Component({
@@ -31,6 +33,7 @@ export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
   capabilities$: Observable<CapabilitiesVTO[]> = of([]);
 
   system = importedSystemConst;
+  sectionsInfo = importedSectionsInfo;
 
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,

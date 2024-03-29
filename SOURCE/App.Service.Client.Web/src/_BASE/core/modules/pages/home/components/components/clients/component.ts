@@ -10,6 +10,8 @@ import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.
 // Models:
 import { clientLogoModel } from './client-logo.model';
 import { ClientLogo } from './data';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 
 @Component({
@@ -24,6 +26,7 @@ import { ClientLogo } from './data';
 export class BaseAppsPagesLandingIndexClientsComponent implements OnInit {
 
   system = importedSystemConst;
+  sectionsInfo = importedSectionsInfo;
 
   constructor(
     systemService: SystemService,

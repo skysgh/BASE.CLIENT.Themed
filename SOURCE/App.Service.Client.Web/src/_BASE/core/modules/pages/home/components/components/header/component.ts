@@ -7,6 +7,9 @@ import { system as importedSystemConst } from '../../../../../../constants/syste
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+// Data/Models:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+
 
 @Component({
   selector: 'app-base-core-pages-landing-index-header',
@@ -19,14 +22,15 @@ import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.
  * Footer Component
  */
 export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
-  // set the current year
-  year: number = new Date().getFullYear();
+
+
   system = importedSystemConst;
+  sectionsInfo = importedSectionsInfo;
 
   // CHanging this (by the parent body div wrapper)
   // changes the style of the button.
   @Input()
-  sectionId: string = 'home';
+  sectionId: string = this.sectionsInfo.intro.id;
 
 
   // Event Emitter:

@@ -55,6 +55,8 @@
     <Folder Include="src\_BASE\core\modules\pages\information\components\index\" />
     <Folder Include="src\_BASE\core\modules\pages\information\NewFolder\" />
     <Folder Include="src\_BASE\core\constants\settings\" />
+    <Folder Include="src\_BASE\core\modules\pages\business_ops\" />
+    <Folder Include="src\_BASE\core\modules\pages\operations\" />
     <Folder Include="src\_BASE\shared\maps\" />
     <Folder Include="src\_BASE\shared\areas\" />
     <Folder Include="src\_BASE\shared\ui\view_widgets\" />
