@@ -24,6 +24,10 @@ import { BaseCoreCommonComponentsFooterAComponent } from './footers/footerA/comp
 import { BaseCoreCommonComponentsFooterCComponent } from './footers/footerC/component';
 import { BaseCoreCommonComponentTopBarLanguageComponent } from './language/component';
 import { BaseCommonComponentsStatsOneComponent } from './stats/one/component';
+import { BaseCoreCommonComponentsSignUpInComponent } from './signupin/component';
+import { RouterModule } from '@angular/router';
+import { BaseCoreCommonComponentsFooterOComponent } from './footers/footerO/component';
+import { BaseCoreCommonComponentsSocialMediaLinksComponent } from './socialmedialinks/component';
 
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
@@ -32,6 +36,7 @@ import { BaseCommonComponentsStatsOneComponent } from './stats/one/component';
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     TranslateModule.forChild(),
     NgbNavModule,
     NgbAccordionModule,
@@ -43,6 +48,11 @@ import { BaseCommonComponentsStatsOneComponent } from './stats/one/component';
   ],
   declarations: [
     // define what Components belong to this Module (i.e., are not `standalone`)
+
+    
+
+    BaseCoreCommonComponentsSocialMediaLinksComponent,
+    BaseCoreCommonComponentsFooterOComponent,
     BaseCoreCommonComponentsFooterAComponent,
     BaseCoreCommonComponentsFooterBComponent,
     BaseCoreCommonComponentsFooterCComponent,
@@ -55,9 +65,12 @@ import { BaseCommonComponentsStatsOneComponent } from './stats/one/component';
     BaseCoreCommonComponentsSummaryItemComponent,
     BaseCoreCommonComponentsSummaryItemSelectorComponent,
     //
-    BaseCommonComponentsStatsOneComponent
+    BaseCommonComponentsStatsOneComponent,
+    BaseCoreCommonComponentsSignUpInComponent
   ],
   exports: [
+    BaseCoreCommonComponentsSocialMediaLinksComponent,
+    BaseCoreCommonComponentsFooterOComponent,
     BaseCoreCommonComponentsFooterAComponent,
     BaseCoreCommonComponentsFooterBComponent,
     BaseCoreCommonComponentsFooterCComponent,
@@ -69,6 +82,8 @@ import { BaseCommonComponentsStatsOneComponent } from './stats/one/component';
     BaseCoreCommonComponentsPdfComponent,
     BaseCoreCommonComponentsSummaryItemComponent,
     BaseCoreCommonComponentsSummaryItemSelectorComponent,
+    //
+    BaseCoreCommonComponentsSignUpInComponent,
     //
     BaseCommonComponentsStatsOneComponent
   ],

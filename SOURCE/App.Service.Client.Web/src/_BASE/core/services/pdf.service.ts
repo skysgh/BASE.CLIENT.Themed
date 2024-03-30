@@ -1,10 +1,20 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// Rx:
 import { Observable, from, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { DiagnosticsTraceService } from './diagnostics.service';
-import { Search } from 'angular-feather/icons';
+// Ag:
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+// Etc:
 import { PDFDocument } from 'pdf-lib';
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
+import { DiagnosticsTraceService } from './diagnostics.service';
+// Models:
+//
+// Unknown:
+import { Search } from 'angular-feather/icons';
+
 @Injectable({
   providedIn: 'root'
 })

@@ -7,6 +7,11 @@ import { system as importedSystemConst } from '../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
+// Models:
+//
+// Data:
+//
+
 
 @Component({
   selector: 'app-base-common-components-footer-a',
@@ -14,8 +19,8 @@ import { DiagnosticsTraceService } from '../../../../../services/diagnostics.ser
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsFooterAComponent implements OnInit {
-
-  public system = importedSystemConst;
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
   public year: number = new Date().getFullYear();
 

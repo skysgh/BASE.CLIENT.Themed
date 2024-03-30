@@ -13,7 +13,7 @@ import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../../../../environments/environment';
-import { initFirebaseBackend } from '../../../../app/authUtils';
+import { initFirebaseBackend } from '../../utilities/authUtils';
 import { FakeBackendInterceptor } from '../../helpers/fake-backend';
 import { ErrorInterceptor } from '../../helpers/error.interceptor';
 import { JwtInterceptor } from '../../helpers/jwt.interceptor';

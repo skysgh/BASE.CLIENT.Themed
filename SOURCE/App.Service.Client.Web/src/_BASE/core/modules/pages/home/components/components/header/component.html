@@ -47,18 +47,12 @@
              [ngxScrollTo]="'#'+sectionsInfo.capabilities.id"
              href="javascript:void(0);">{{'BASE.CAPABILITIES.PLURAL'|translate}}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link"
-             [ngClass]="{'active':sectionId === sectionsInfo.features.id}"
-             [ngxScrollTo]="'#'+sectionsInfo.features.id"
-             href="javascript:void(0);">{{'BASE.FEATURES.PLURAL'|translate}}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"
-             [ngClass]="{'active':sectionId === sectionsInfo.plans.id}"
-             [ngxScrollTo]="'#'+sectionsInfo.plans.id"
-             href="javascript:void(0);">{{'BASE.PLANS.PLURAL'|translate}}</a>
-        </li>
+        <!--<li class="nav-item">
+    <a class="nav-link"
+       [ngClass]="{'active':sectionId === sectionsInfo.features.id}"
+       [ngxScrollTo]="'#'+sectionsInfo.features.id"
+       href="javascript:void(0);">{{'BASE.FEATURES.PLURAL'|translate}}</a>
+  </li>-->
         <li class="nav-item">
           <a class="nav-link"
              [ngClass]="{'active':sectionId === sectionsInfo.endorsements.id}"
@@ -70,6 +64,12 @@
              [ngClass]="{'active':sectionId === sectionsInfo.faqs.id}"
              [ngxScrollTo]="'#'+sectionsInfo.faqs.id"
              href="javascript:void(0);">{{'BASE.FAQS.PLURAL'|translate}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [ngClass]="{'active':sectionId === sectionsInfo.plans.id}"
+             [ngxScrollTo]="'#'+sectionsInfo.plans.id"
+             href="javascript:void(0);">{{'BASE.PLANS.PLURAL'|translate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"

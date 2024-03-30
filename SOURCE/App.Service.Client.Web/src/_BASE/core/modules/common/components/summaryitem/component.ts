@@ -1,7 +1,15 @@
+// Ag:
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { SummaryItemVTO } from "../../../../models/SummaryItemVTO.model";
+// Etc:
+//
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
-
+// Models:
+import { SummaryItemVTO } from "../../../../models/SummaryItemVTO.model";
+// Data:
+//
 
 @Component({
   selector: 'app-base-core-common-components-summaryitem',
@@ -9,6 +17,8 @@ import { DiagnosticsTraceService } from "../../../../services/diagnostics.servic
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsSummaryItemComponent implements OnInit {
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
   /**
    * The exposed property to provide a SummaryItem

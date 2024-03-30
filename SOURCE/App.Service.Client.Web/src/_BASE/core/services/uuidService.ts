@@ -1,10 +1,17 @@
-
+// Rx:
+//
+// Ag:
 import { Injectable } from '@angular/core';
-
+// Etc:
+//
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
+import { DiagnosticsTraceService } from './diagnostics.service';
+// Models:
 import { v4 as uuidv4 } from 'uuid';
 import { NIL as NIL_UUID } from 'uuid';
-import { DiagnosticsTraceService } from './diagnostics.service';
-
+// Data:
 
 /**
  * Root registered injectable service

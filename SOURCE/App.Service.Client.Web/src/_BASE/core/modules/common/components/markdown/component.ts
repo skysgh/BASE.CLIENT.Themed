@@ -1,8 +1,17 @@
-
+// Rx:
+//
+// Ag:
 import { Component, Input, OnInit} from "@angular/core";
+// Etc:
 //import { MarkdownService } from 'ngx-markdown';
-
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
+// Models:
+//
+// Data:
+//
 
 /**
  * See: https://jfcere.github.io/ngx-markdown/get-started
@@ -14,6 +23,8 @@ import { DiagnosticsTraceService } from "../../../../services/diagnostics.servic
 })
 
 export class BaseCoreCommonComponentsMarkdownComponent implements OnInit {
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
   @Input()
   public src: string|null =null;

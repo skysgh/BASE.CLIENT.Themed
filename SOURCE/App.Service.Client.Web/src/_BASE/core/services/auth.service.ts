@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 // hum...
-import { getFirebaseBackend } from '../../../app/authUtils';
+import { getFirebaseBackend } from '../utilities/authUtils';
 import { RegisterSuccess, loginFailure, loginSuccess, logout, logoutSuccess } from 'src/_BASE/core/store/Authentication/authentication.actions';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';

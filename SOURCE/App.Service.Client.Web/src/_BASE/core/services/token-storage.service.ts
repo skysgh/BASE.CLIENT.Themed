@@ -1,6 +1,18 @@
+// Rx:
+//
+// Ag:
 import { Injectable } from '@angular/core';
+// Etc:
+//
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
 import { DiagnosticsTraceService } from './diagnostics.service';
 import { SessionStorageService } from './SessionStorageService';
+// Models:
+//
+// Data:
+//
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'currentUser';

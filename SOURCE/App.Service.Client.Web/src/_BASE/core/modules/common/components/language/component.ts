@@ -1,10 +1,10 @@
+// Rx:
+import { Observable, of } from 'rxjs';
 // Ag:
 import { Component, OnInit } from "@angular/core";
 // Etc:
-import { Observable, of } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { TranslateService } from '@ngx-translate/core';
-
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
 // Language
@@ -13,7 +13,7 @@ import { SystemService } from "../../../../services/system.service";
 import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
 import { SystemLanguage } from '../../../../models/data/system-language.model';
 import { TranslationService } from '../../../../services/translation.service';
-
+// Models:
 
 
 @Component({
@@ -22,8 +22,7 @@ import { TranslationService } from '../../../../services/translation.service';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
-
-
+  // make system/env config accessible by markup:
   system = importedSystemConst;
 
   public systemLanguages$: Observable<SystemLanguage[]> = of([]);

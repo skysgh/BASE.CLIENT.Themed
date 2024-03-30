@@ -1,5 +1,17 @@
+// Rx:
+//
+// Ag:
 import { Injectable } from "@angular/core";
+// Etc:
+//
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
 import { DiagnosticsTraceService } from "./diagnostics.service";
+// Models:
+//
+// Data:
+//
 
 @Injectable({ providedIn: 'root' })
 export class TypeService {

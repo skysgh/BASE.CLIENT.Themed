@@ -1,10 +1,18 @@
-
-import { Component, Input, OnDestroy, OnInit, Output} from "@angular/core";
+// Rx:
+import { Subscription } from "rxjs";
+// Ag:
+import { Component, Input, OnDestroy, OnInit, Output } from "@angular/core";
+// Etc:
 //import { MarkdownService } from 'ngx-markdown';
-
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
 import { PdfService } from "../../../../services/pdf.service";
-import { Subscription } from "rxjs";
+// Models:
+//
+// Data:
+//
 
 /**
  * See: https://www.npmjs.com/package/ng2-pdf-viewer
@@ -15,6 +23,8 @@ import { Subscription } from "rxjs";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsPdfComponent implements OnInit, OnDestroy {
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
   @Input("src")
   public src: string | undefined = undefined;

@@ -5,46 +5,56 @@
       "SINGULAR": "Access",
       "PLURAL": "Accessess",
       "DESCRIPTION": "List Access Permissions",
-      "TODO": "To Access",
-      "DOING": "Accessing",
-      "DONE": "Accessed"
+      "COMMAND": "Access",
+      "FUTURE": "To Access",
+      "PRESENT": "Accessing",
+      "PAST": "Accessed"
     },
     "ACCEPTANCES": {
       "__COMMENTS": ".See RECOMMENDATIONS, APPLICATIONS, INVITATIONS, APPROVALS",
       "SINGULAR": "Acceptance",
       "PLURAL": "Acceptances",
       "DESCRIPTION": "List Acceptances of Role Invitation",
-      "TODO": "To Accept",
-      "DOING": "Accepting",
-      "DONE": "Accepted"
+      "COMMAND": "Accept",
+      "FUTURE": "To Accept",
+      "PRESENT": "Accepting",
+      "PAST": "Accepted"
     },
     "ACCOMPLISHMENTS": {
       "__COMMENTS": ".See OBSERVATIONS, SCORES, ASSESSMENTS, PROGRESS, JUDGEMENTS ACHIEVEMENTS. Note that ACCOMPLISHMENTS are smaller (for tasks) compared to ACHIEVEMENTS",
       "SINGULAR": "Accomplisment",
       "PLURAL": "Accomplisments",
       "DESCRIPTION": "List Accomplishments",
-      "TODO": "To Accomplish",
-      "DOING": "Accomplishing",
-      "DONE": "Accomplished"
+      "COMMAND": "Accomplish",
+      "FUTURE": "To Accomplish",
+      "PRESENT": "Accomplishing",
+      "PAST": "Accomplished"
     },
     "ACHIEVEMENTS": {
       "__COMMENTS": ".See OBSERVATIONS, ASSESSMENTS, PROGRESS, ACCOMPLISHMENTS. NOTE that Achievements are bigger (ie exams) than ACCOMPLISHMENTS",
       "SINGULAR": "Achievement",
       "PLURAL": "Achievements",
       "DESCRIPTION": "List Achievements",
-      "TODO": "To Achieve",
-      "DOING": "Achieving",
-      "DONE": "Achieved"
+      "COMMAND": "Achieve",
+      "FUTURE": "To Achieve",
+      "PRESENT": "Achieving",
+      "PAST": "Achieved"
     },
     "ACTIONS": {
       "__COMMENTS": "",
       "SINGULAR": "Action",
       "PLURAL": "Actions",
       "DESCRIPTION": "List Available Actions",
-      "TODO": "To Action",
-      "DOING": "Actioning",
-      "DONE": "Actioned",
-      "-----": "-----",
+      "COMMAND": "Action",
+      "FUTURE": "To Action",
+      "PRESENT": "Actioning",
+      "PAST": "Actioned",
+      "----1": "-----",
+      "BY": "By",
+      "FROM": "From",
+      "FOR": "For",
+      "TO": "To",
+      "----2": "-----",
       "ACCEPT": "Accept",
       "ADD": "Add",
       "APPLY": "Apply",
@@ -135,14 +145,25 @@
         "STUDY": "Study"
       }
     },
+    "ADDITION": {
+      "__COMMENTS": ".See NUMBERS, ARITHMETIC, SUBTRACT, MULTIPLY, DIVIDE",
+      "SINGULAR": "Addition",
+      "PLURAL": "Additions",
+      "DESCRIPTION": "",
+      "COMMAND": "Add",
+      "FUTURE": "To Add",
+      "PRESENT": "Adding",
+      "PAST": "Added"
+    },
     "AGES": {
       "__COMMENTS": ".See NUMBERS",
       "SINGULAR": "Age",
       "PLURAL": "Ages",
       "DESCRIPTION": "List Ages",
-      "TODO": "To Age",
-      "DOING": "Aging",
-      "DONE": "Aged",
+      "COMMAND": "Age",
+      "FUTURE": "To Age",
+      "PRESENT": "Aging",
+      "PAST": "Aged",
       "INFANT": "Infant",
       "ADOLESCENT": "Adolescent",
       "YOUTH": "Youth",
@@ -155,9 +176,10 @@
       "SINGULAR": "Agreement",
       "PLURAL": "Agreements",
       "DESCRIPTION": "List Agreements",
-      "TODO": "To Agree",
-      "DOING": "Agreeing",
-      "DONE": "Agreed",
+      "COMMAND": "Agree",
+      "FUTURE": "To Agree",
+      "PRESENT": "Agreeing",
+      "PAST": "Agreed",
       "TERMS_AND_CONDITIONS": "Terms & Conditions"
     },
     "ALERTS": {
@@ -165,45 +187,50 @@
       "SINGULAR": "Alert",
       "PLURAL": "Alerts",
       "DESCRIPTION": "List Alerts",
-      "TODO": "To Alert",
-      "DOING": "Alerting",
-      "DONE": "Alerted"
+      "COMMAND": "Alert",
+      "FUTURE": "To Alert",
+      "PRESENT": "Alerting",
+      "PAST": "Alerted"
     },
     "ANALYSIS": {
       "__COMMENTS": "See also DIAGNOSTICS, REPORTS",
       "SINGULAR": "Analysis",
       "PLURAL": "Analyses",
       "DESCRIPTION": "List Analyses",
-      "TODO": "To Analyse",
-      "DOING": "Analysing",
-      "DONE": "Analysed"
+      "COMMAND": "Analyse",
+      "FUTURE": "To Analyse",
+      "PRESENT": "Analysing",
+      "PAST": "Analysed"
     },
     "APPLICATIONS": {
       "__COMMENTS": "See INVITATIONS, ACCEPTANCES.",
       "SINGULAR": "Application",
       "PLURAL": "Applications",
       "DESCRIPTION": "List Applications",
-      "TODO": "To Apply",
-      "DOING": "Applying",
-      "DONE": "Applied"
+      "COMMAND": "Apply",
+      "FUTURE": "To Apply",
+      "PRESENT": "Applying",
+      "PAST": "Applied"
     },
     "APPOINTMENTS": {
       "__COMMENTS": "See SCHEDULING, CALENDAR, TASKS, PROJECTS areas.",
       "SINGULAR": "Appointment",
       "PLURAL": "Appointments",
       "DESCRIPTION": "List Appointments",
-      "TODO": "To Meet",
-      "DOING": "Meeting",
-      "DONE": "Met"
+      "COMMAND": "Meet",
+      "FUTURE": "To Meet",
+      "PRESENT": "Meeting",
+      "PAST": "Met"
     },
     "APPRECIATIONS": {
       "__COMMENTS": "See CREDITS, GREETINGS, DEPARTURES, LIKES",
       "SINGULAR": "Appreciation",
       "PLURAL": "Appreciations",
       "DESCRIPTION": "List Appreciations",
-      "TODO": "To Appreciate",
-      "DOING": "Appreciating",
-      "DONE": "Appreciated",
+      "COMMAND": "Appreciate",
+      "FUTURE": "To Appreciate",
+      "PRESENT": "Appreciating",
+      "PAST": "Appreciated",
       "THANKS": "Thanks",
       "THANKS!": "Thanks!",
       "THANK YOU": "Thank you",
@@ -214,56 +241,60 @@
       "SINGULAR": "Approval",
       "PLURAL": "Approvals",
       "DESCRIPTION": "",
-      "TODO": "To Approve",
-      "DOING": "Approving",
-      "DONE": "Approved"
+      "COMMAND": "Approve",
+      "FUTURE": "To Approve",
+      "PRESENT": "Approving",
+      "PAST": "Approved"
     },
     "APPS": {
       "__COMMENTS": "",
       "SINGULAR": "App",
       "PLURAL": "Apps",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "COMMAND": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "ARCHITECTURES": {
       "__COMMENTS": "See DESIGN",
       "SINGULAR": "Architecture",
       "PLURAL": "Architectures",
       "DESCRIPTION": "",
-      "TODO": "To Architect",
-      "DOING": "Architecting",
-      "DONE": "Architected"
+      "COMMAND": "Architect",
+      "FUTURE": "To Architect",
+      "PRESENT": "Architecting",
+      "PAST": "Architected"
     },
     "AREAS": {
       "__COMMENTS": "",
       "SINGULAR": "Area",
       "PLURAL": "Areas",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "COMMAND": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "ARITHMETICS": {
-      "__COMMENTS": "See LOGIC.",
+      "__COMMENTS": "See LOGIC, CALCULATIONS",
       "SINGULAR": "Operation",
       "PLURAL": "Operations",
       "DESCRIPTION": "",
-      "TODO": "To Calculate",
-      "DOING": "Calculating",
-      "DONE": "Calculated",
-      "ADD": "Add",
-      "ADDED": "Added",
+      "COMMAND": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
+      "ADD": "[See ADDITION]",
       "REMOVE": "Remove",
       "REMOVED": "Removed",
-      "SUBTRACT": "Subtract",
+      "SUBTRACT": "[See SUBTRACTION]",
       "SUBTRACT_FROM": "Subtract from",
       "SUBTRACTED": "Subtracted",
       "SUBTRACTED_FROM": "Subtracted from",
-      "DIVIDER": "Divider",
+      "DIVIDER": "[See DIVISION]",
       "DIVIDED_BY": "Divided by",
-      "MULTIPLIER": "Multiplier",
+      "MULTIPLIER": "[See MULTIPLICATION]",
       "MULTIPLIED_BY": "Divided by"
     },
     "ARRIVALS": {
@@ -271,45 +302,45 @@
       "SINGULAR": "Tae",
       "PLURAL": "Tae",
       "DESCRIPTION": "",
-      "TODO": "Ki te Tae",
-      "DOING": "Tae ana",
-      "DONE": "Kua Tae"
+      "FUTURE": "Ki te Tae",
+      "PRESENT": "Tae ana",
+      "PAST": "Kua Tae"
     },
     "ASSESSMENTS": {
       "__COMMENTS": ".See OBSERVATIONS, PROGRESS, ACCOMPLISHMENTS, SCORES, ENROLLMENTS, JUDGEMENTS",
       "SINGULAR": "Arotake",
       "PLURAL": "Arotake",
       "DESCRIPTION": "",
-      "TODO": "Ki te Arotake",
-      "DOING": "Arotakenga",
-      "DONE": "Kua Arotakea"
+      "FUTURE": "Ki te Arotake",
+      "PRESENT": "Arotakenga",
+      "PAST": "Kua Arotakea"
     },
     "ASSISTANCE": {
       "__COMMENTS": "See HELP and SUPPORT",
       "SINGULAR": "Āwhina",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "Ki te Āwhina",
-      "DOING": "Āwhina ana",
-      "DONE": "Kua Āwhinatia"
+      "FUTURE": "Ki te Āwhina",
+      "PRESENT": "Āwhina ana",
+      "PAST": "Kua Āwhinatia"
     },
     "ATTENDANCES": {
       "__COMMENTS": "See EDUCATION, ENROLMENTS, OBSERVATIONS, SCORES, ASSESSMENTS, JUDGEMENTS",
       "SINGULAR": "Tae",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "Ki te Haere",
-      "DOING": "Haere ana",
-      "DONE": "Kua Haere"
+      "FUTURE": "Ki te Haere",
+      "PRESENT": "Haere ana",
+      "PAST": "Kua Haere"
     },
     "AUTHENTICATION": {
       "__COMMENTS": "",
       "SINGULAR": "Whakamana",
       "PLURAL": "Whakamana",
       "DESCRIPTION": "",
-      "TODO": "Ki te Whakamana",
-      "DOING": "Whakamanatanga",
-      "DONE": "Kua Whakamanatia",
+      "FUTURE": "Ki te Whakamana",
+      "PRESENT": "Whakamanatanga",
+      "PAST": "Kua Whakamanatia",
       "BY_REGISTERING": "By registering, you agree to the",
       "TASK": {
         "BASIC": "Basic",
@@ -356,23 +387,32 @@
       "REMEMBER_ME_INSTRUCTIONS": "(Across sessions, even after the browser is closed)",
       "DONT_HAVE_AN_ACCOUNT?": "Don't yet have an account?"
     },
+    "AVAILABLE": {
+      "__COMMENTS": "See UNAVAILABLE",
+      "SINGULAR": "Available",
+      "PLURAL": "N/A",
+      "DESCRIPTION": "",
+      "FUTURE": "Will be available",
+      "PRESENT": "Is Available",
+      "PAST": "Was Available"
+    },
     "BILLS": {
       "__COMMENTS": "See RECEIPTS",
       "SINGULAR": "Bill",
       "PLURAL": "Bills",
       "DESCRIPTION": "",
-      "TODO": "To Bill",
-      "DOING": "Billing",
-      "DONE": "Billed"
+      "FUTURE": "To Bill",
+      "PRESENT": "Billing",
+      "PAST": "Billed"
     },
     "BODIES": {
       "__COMMENTS": "See PERSON. Parrallel to IDENTITY. See NAMES",
       "SINGULAR": "Body",
       "PLURAL": "Bodies",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "PARTS": {
         "__COMMENTS": "",
         "SINGULAR": "Part",
@@ -429,27 +469,36 @@
       "SINGULAR": "Broker",
       "PLURAL": "Brokers",
       "DESCRIPTION": "",
-      "TODO": "To Broker",
-      "DOING": "Brokering",
-      "DONE": "Brokered"
+      "FUTURE": "To Broker",
+      "PRESENT": "Brokering",
+      "PAST": "Brokered"
+    },
+    "CALCULATIONS": {
+      "__COMMENTS": "See ARITHMETICS",
+      "SINGULAR": "Calculation",
+      "PLURAL": "Calculations",
+      "COMMAND": "Calculate",
+      "FUTURE": "To Calculate",
+      "PRESENT": "Calculating",
+      "PAST": "Calculated"
     },
     "CALENDER": {
       "__COMMENTS": "Avoid. Prefer using APPOINTMENTS. See NOTES, TASKS, SCHEDULING, PROJECTS",
       "SINGULAR": "Calendar",
       "PLURAL": "Calendars",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "CAPABILITIES": {
       "__COMMENTS": "See STAKEHOLDERS,FUNCTIONALITIES,QUALITIES",
       "SINGULAR": "Capability",
       "PLURAL": "Capabilities",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "DIAGNOSTICS": "Diagnostics",
       "ERROR_RECORDING": "Error Recording",
       "SESSION_HANDLING": "Session Handling",
@@ -464,37 +513,22 @@
       "SINGULAR": "Channel",
       "PLURAL": "Channels",
       "DESCRIPTION": "Communication channels",
-      "TODO": "To Contact",
-      "DOING": "Contacting",
-      "DONE": "Contacted",
-      "POSTAL": {
-        "SINGULAR": "Postal Address"
-      },
-      "EMAIL": {
-        "SINGULAR": "Email Address"
-      },
-      "PHONE": {
-        "SINGULAR": "Phone Number",
-        "OPTIONS": {
-          "GENERAL": "Phone",
-          "MOBILE": "Mobile",
-          "FAX": "Fax"
-        }
-      },
-      "SOCIAL": {
-        "SINGULAR": "Social",
-        "X": "Handle",
-        "MASTADON": "Address"
-      }
+      "FUTURE": "To Contact",
+      "PRESENT": "Contacting",
+      "PAST": "Contacted",
+      "POSTAL": "[See POSTAL_ADDRESSES]",
+      "EMAIL": "[See EMAILS]",
+      "PHONE": "[See PHONES]",
+      "SOCIAL": "[See SOCIALMEDIA]"
     },
     "CHARTS": {
       "__COMMENTS": "",
       "SINGULAR": "Chart",
       "PLURAL": "Charts",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "Charting",
-      "DONE": "Charted",
+      "FUTURE": "N/A",
+      "PRESENT": "Charting",
+      "PAST": "Charted",
       "LINE": "Line",
       "BAR": "Bar",
       "PIE": "Pie",
@@ -506,9 +540,9 @@
       "__COMMENTS": "WARNING: Avoid. Plenty of other tools for this. See MESSAGES Area.",
       "SINGULAR": "Chat",
       "PLURAL": "Chats",
-      "TODO": "Chat",
-      "DOING": "Chatting",
-      "DONE": "Chatted",
+      "FUTURE": "Chat",
+      "PRESENT": "Chatting",
+      "PAST": "Chatted",
       "DESCRIPTION": "Real time communication between system users."
     },
     "CLASSIFICTIONS": {
@@ -516,18 +550,18 @@
       "SINGULAR": "Classification",
       "PLURAL": "Classifications",
       "DESCRIPTION": "",
-      "TODO": "To Classify",
-      "DOING": "Classifying",
-      "DONE": "Classified"
+      "FUTURE": "To Classify",
+      "PRESENT": "Classifying",
+      "PAST": "Classified"
     },
     "CLIENTS": {
       "__COMMENTS": "See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
       "SINGULAR": "Client",
       "PLURAL": "Clients",
       "DESCRIPTION": "",
-      "TODO": "To Buy",
-      "DOING": "Buying",
-      "DONE": "Bought",
+      "FUTURE": "To Buy",
+      "PRESENT": "Buying",
+      "PAST": "Bought",
       "DETAILS": "Client Details"
     },
     "CODE": {
@@ -535,27 +569,27 @@
       "SINGULAR": "Code",
       "PLURAL": "Code",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "CODESETS": {
       "__COMMENTS": "",
       "SINGULAR": "Code sets",
       "PLURAL": "Code",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "COLOURS": {
       "__COMMENTS": "See HUES.",
       "SINGULAR": "Colour",
       "PLURAL": "Colours",
       "DESCRIPTION": "",
-      "TODO": "To Colour",
-      "DOING": "Colouring",
-      "DONE": "Coloured",
+      "FUTURE": "To Colour",
+      "PRESENT": "Colouring",
+      "PAST": "Coloured",
       "BLACK": "Black",
       "RED": "Red",
       "ORANGE": "Orange",
@@ -568,23 +602,33 @@
       "GREY": "Grey",
       "WHITE": "White"
     },
+    "COOKIES": {
+      "__COMMENTS": "See STATEMENTS, POLICIES,PRIVACIES",
+      "SINGULAR": "Cookie",
+      "PLURAL": "Cookies",
+      "DESCRIPTION": "",
+      "COMMAND": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
+    },
     "COMING_SOON": {
       "__COMMENTS": "See ARRIVALS",
       "SINGULAR": "Comming Soon",
       "PLURAL": "N/A",
       "DESCRIPTION": "New features are currently in the works...",
-      "TODO": "To Come",
-      "DOING": "Coming",
-      "DONE": "Came"
+      "FUTURE": "To Come",
+      "PRESENT": "Coming",
+      "PAST": "Came"
     },
     "COMMERCE": {
       "__COMMENTS": "See FINANCE, SALES,TRANSACTION",
       "SINGULAR": "Commerce",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "PRODUCTS": "Products",
       "ORDERS": "Orders"
     },
@@ -593,9 +637,9 @@
       "SINGULAR": "Confirmation",
       "PLURAL": "Confirmations",
       "DESCRIPTION": "Please confirm",
-      "TODO": "To Confirm",
-      "DOING": "Confirming",
-      "DONE": "Confirmed",
+      "FUTURE": "To Confirm",
+      "PRESENT": "Confirming",
+      "PAST": "Confirmed",
       "INSTRUCTIONS": "Please confirm before proceeding"
     },
     "CONNECTIONS": {
@@ -603,9 +647,9 @@
       "SINGULAR": "Connection",
       "PLURAL": "Connections",
       "DESCRIPTION": "",
-      "TODO": "To Connect",
-      "DOING": "Connecting",
-      "DONE": "Connected",
+      "FUTURE": "To Connect",
+      "PRESENT": "Connecting",
+      "PAST": "Connected",
       "ATTACHED": "Attached",
       "DETACHED": "Detached"
     },
@@ -614,38 +658,38 @@
       "SINGULAR": "Consent",
       "PLURAL": "Consents",
       "DESCRIPTION": "",
-      "TODO": "To Consent",
-      "DOING": "Consenting",
-      "DONE": "Consented"
+      "FUTURE": "To Consent",
+      "PRESENT": "Consenting",
+      "PAST": "Consented"
     },
     "CONSULTS": {
       "__COMMENTS": "See ROLES",
       "SINGULAR": "Consult",
       "PLURAL": "Consults",
       "DESCRIPTION": "",
-      "TODO": "To Consult",
-      "DOING": "Consulting",
-      "DONE": "Consulted"
+      "FUTURE": "To Consult",
+      "PRESENT": "Consulting",
+      "PAST": "Consulted"
     },
     "CONTACTS": {
       "__COMMENTS": "",
       "SINGULAR": "Contact",
       "PLURAL": "Contacts",
       "DESCRIPTION": "We are here to help",
-      "TODO": "To Contact",
-      "DOING": "Contacting",
-      "DONE": "Contacted",
-      "INSTRUCTIONS": "Get In Touch",
-      "GET_IN_TOUCH_WITH_US": "Get in touch with us"
+      "FUTURE": "To Contact",
+      "PRESENT": "Contacting",
+      "PAST": "Contacted",
+      "INSTRUCTIONS": "Contact Us",
+      "INSTRUCTIONS_Casual": "Get In Touch"
     },
     "CONTENTS": {
       "__COMMENTS": "Can be used to show Messages - empty, etc.",
       "SINGULAR": "Content",
       "PLURAL": "Contents",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "EMPTY": "Empty",
       "NEARLY_EMPTY": "Nearly empty",
       "HALF_EMPTY": "Half empty",
@@ -658,18 +702,18 @@
       "SINGULAR": "Context",
       "PLURAL": "Contexts",
       "DESCRIPTION": "Current context: user, account, system.",
-      "TODO": "To put into context",
-      "DOING": "Putting into context",
-      "DONE": "Contextualised"
+      "FUTURE": "To put into context",
+      "PRESENT": "Putting into context",
+      "PAST": "Contextualised"
     },
     "CONTRACTS": {
       "__COMMENTS": "See also STATEMENTS, DISCLOSURES, TERMS & CONDITIONS, POLICIES, AGREEMENTS, SUBSCRIPTIONS.",
       "SINGULAR": "Contract",
       "PLURAL": "Contracts",
       "DESCRIPTION": "",
-      "TODO": "To Contract",
-      "DOING": "Contracting",
-      "DONE": "Contracted",
+      "FUTURE": "To Contract",
+      "PRESENT": "Contracting",
+      "PAST": "Contracted",
       "SALES": {
         "SINGULAR": "Sales Contract"
       },
@@ -682,36 +726,36 @@
       "SINGULAR": "Copyright",
       "PLURAL": "Copyrights",
       "DESCRIPTION": "",
-      "TODO": "To Copyright",
-      "DOING": "Copyrighting",
-      "DONE": "Copyrighted"
+      "FUTURE": "To Copyright",
+      "PRESENT": "Copyrighting",
+      "PAST": "Copyrighted"
     },
     "CORRECTIONS": {
       "__COMMENTS": "",
       "SINGULAR": "Correction",
       "PLURAL": "Corrections",
       "DESCRIPTION": "",
-      "TODO": "To Correct",
-      "DOING": "Correcting",
-      "DONE": "Corrected"
+      "FUTURE": "To Correct",
+      "PRESENT": "Correcting",
+      "PAST": "Corrected"
     },
     "CREATIONS": {
       "__COMMENTS": "",
       "SINGULAR": "Creation",
       "PLURAL": "Creations",
       "DESCRIPTION": "",
-      "TODO": "To Create",
-      "DOING": "Creating",
-      "DONE": "Created"
+      "FUTURE": "To Create",
+      "PRESENT": "Creating",
+      "PAST": "Created"
     },
     "CREDITS": {
       "__COMMENTS": "See APPRCIATIONS, GREETINGS, DEPARTURES",
       "SINGULAR": "Credit",
       "PLURAL": "Credits",
       "DESCRIPTION": "",
-      "TODO": "To Credit",
-      "DOING": "Giving credit to",
-      "DONE": "Credited",
+      "FUTURE": "To Credit",
+      "PRESENT": "Giving credit to",
+      "PAST": "Credited",
       "SPONSORED_BY_": "Made available by",
       "DISTRIBUTED_BY_": "Distributed by",
       "DEVELOPED_BY_": "Developed by",
@@ -724,9 +768,9 @@
       "SINGULAR": "Customer",
       "PLURAL": "Customers",
       "DESCRIPTION": "",
-      "TODO": "To Buy",
-      "DOING": "Buying",
-      "DONE": "Bought",
+      "FUTURE": "To Buy",
+      "PRESENT": "Buying",
+      "PAST": "Bought",
       "DETAILS": "Customer Details"
     },
     "DASHBOARDS": {
@@ -734,18 +778,18 @@
       "SINGULAR": "Dashboard",
       "PLURAL": "Dashboards",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "DAY": {
       "__COMMENTS": "",
       "SINGULAR": "Day",
       "PLURAL": "Days",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "MONDAY": "Monday",
       "TUESDAY": "Tuesday",
       "WEDNESDAY": "Wednesday",
@@ -759,27 +803,27 @@
       "SINGULAR": "Demo",
       "PLURAL": "Demos",
       "DESCRIPTION": "",
-      "TODO": "To Demo",
-      "DOING": "Demoing",
-      "DONE": "Demo'ed"
+      "FUTURE": "To Demo",
+      "PRESENT": "Demoing",
+      "PAST": "Demo'ed"
     },
     "DEMOGRAPHICS": {
       "__COMMENTS": "",
       "SINGULAR": "Demographic",
       "PLURAL": "Demographics",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "DEPARTURES": {
       "__COMMENTS": "See GREETINGS",
       "SINGULAR": "Departure",
       "PLURAL": "Departures",
       "DESCRIPTION": "",
-      "TODO": "To Depart",
-      "DOING": "Departing",
-      "DONE": "Departing",
+      "FUTURE": "To Depart",
+      "PRESENT": "Departing",
+      "PAST": "Departing",
       "BYE": "Bye",
       "BYE!": "Bye!",
       "GOODBYE": "Goodbye",
@@ -791,36 +835,54 @@
       "SINGULAR": "Design",
       "PLURAL": "Designs",
       "DESCRIPTION": "",
-      "TODO": "To Design",
-      "DOING": "Designing",
-      "DONE": "Designed"
+      "FUTURE": "To Design",
+      "PRESENT": "Designing",
+      "PAST": "Designed"
     },
     "DETAILS": {
       "__COMMENTS": "See ARCHITECTURES, PRODUCT",
       "SINGULAR": "Detail",
       "PLURAL": "Details",
       "DESCRIPTION": "",
-      "TODO": "To Detail",
-      "DOING": "Detailing",
-      "DONE": "Detailed"
+      "FUTURE": "To Detail",
+      "PRESENT": "Detailing",
+      "PAST": "Detailed"
+    },
+    "DEVELOP": {
+      "__COMMENTS": "See BUILD",
+      "SINGULAR": "Develop",
+      "PLURAL": "Develops",
+      "DESCRIPTION": "",
+      "FUTURE": "To Develop",
+      "PRESENT": "Developing",
+      "PAST": "Developed"
+    },
+    "DEVELOPERS": {
+      "__COMMENTS": "See SPONSORS, STAKEHOLDERS",
+      "SINGULAR": "Developer",
+      "PLURAL": "Developers",
+      "DESCRIPTION": "",
+      "FUTURE": "To Develop",
+      "PRESENT": "Developing",
+      "PAST": "Developed"
     },
     "DIAGNOSTICS": {
       "__COMMENTS": "See also ANALYSIS, REPORTS",
       "SINGULAR": "Diagnostics",
       "PLURAL": "Diagnostics",
       "DESCRIPTION": "",
-      "TODO": "To Diagnose",
-      "DOING": "Diagnosing",
-      "DONE": "Diagnosed"
+      "FUTURE": "To Diagnose",
+      "PRESENT": "Diagnosing",
+      "PAST": "Diagnosed"
     },
     "DIRECTIONS": {
       "__COMMENTS": "See also POSITIONS.",
       "SINGULAR": "Direction",
       "PLURAL": "Directions",
       "DESCRIPTION": "",
-      "TODO": "To Direct",
-      "DOING": "Directing",
-      "DONE": "Directed",
+      "FUTURE": "To Direct",
+      "PRESENT": "Directing",
+      "PAST": "Directed",
       "UP": "Up",
       "DOWN": "Down",
       "LEFT": "Left",
@@ -831,43 +893,62 @@
       "SINGULAR": "Disclosure",
       "PLURAL": "Disclosures",
       "DESCRIPTION": "",
-      "TODO": "To Disclose",
-      "DOING": "Disclosing",
-      "DONE": "Disclosed"
+      "FUTURE": "To Disclose",
+      "PRESENT": "Disclosing",
+      "PAST": "Disclosed"
+    },
+    "DISCOUNTS": {
+      "__COMMENTS": "See PRICES, SHOPPING",
+      "SINGULAR": "Discount",
+      "PLURAL": "Discounts",
+      "DESCRIPTION": "",
+      "FUTURE": "To Discount",
+      "PRESENT": "Discounting",
+      "PAST": "Discounted"
     },
     "DISLIKES": {
       "__COMMENTS": "See APPRECIATION, LIKES",
       "SINGULAR": "Dislike",
       "PLURAL": "Dislikes",
       "DESCRIPTION": "",
-      "TODO": "To Dislike",
-      "DOING": "Disliking",
-      "DONE": "Disliked"
+      "FUTURE": "To Dislike",
+      "PRESENT": "Disliking",
+      "PAST": "Disliked"
+    },
+    "DIVISION": {
+      "__COMMENTS": ".See NUMBERS, ARITHMETIC, ADDITION, SUBTRACTION, MULTIPLICATION",
+      "SINGULAR": "Division",
+      "PLURAL": "Divisions",
+      "DESCRIPTION": "",
+      "COMMAND": "Divide",
+      "FUTURE": "To Divide",
+      "PRESENT": "Dividinging",
+      "PAST": "DIvided"
     },
     "DOMAINS": {
       "__COMMENTS": "Terms specific to distinct Domains.",
       "SINGULAR": "Domain",
       "PLURAL": "Domains",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "EDUCATION": {
       "__COMMENTS": "See DOMAIN, LEARN, SCORE, ASSESS, ENROLMENTS, ATTEND",
       "SINGULAR": "Education",
       "PLURAL": "Educations",
       "DESCRIPTION": "",
-      "TODO": "To Educate",
-      "DOING": "Educating",
-      "DONE": "Educated",
+      "FUTURE": "To Educate",
+      "PRESENT": "Educating",
+      "PAST": "Educated",
       "ROLES": {
         "SINGULAR": "Role",
         "PLURAL": "Roles",
         "DESCRIPTION": "",
-        "TODO": "N/A",
-        "DOING": "N/A",
-        "DONE": "N/A",
+        "FUTURE": "N/A",
+        "PRESENT": "N/A",
+        "PAST": "N/A",
         "ALL": "All",
         "PRINCIPALS": "Principals",
         "PRINCIPAL": "Principal",
@@ -890,9 +971,9 @@
         "SINGULAR": "Place",
         "PLURAL": "Places",
         "DESCRIPTION": "",
-        "TODO": "N/A",
-        "DOING": "N/A",
-        "DONE": "N/A",
+        "FUTURE": "N/A",
+        "PRESENT": "N/A",
+        "PAST": "N/A",
         "COL": "CoL",
         "COMMUNITY_OF_SCHOOLS": "Community of Schools",
         "SCHOOL": "School",
@@ -908,9 +989,9 @@
         "SINGULAR": "Term",
         "PLURAL": "Terms",
         "DESCRIPTION": "",
-        "TODO": "N/A",
-        "DOING": "N/A",
-        "DONE": "N/A",
+        "FUTURE": "N/A",
+        "PRESENT": "N/A",
+        "PAST": "N/A",
         "ALUMNI": "Alumni",
         "ASSESSMENT": "Assessment",
         "ATTENDANCE": "Attendance",
@@ -960,36 +1041,39 @@
       "SINGULAR": "Email",
       "PLURAL": "Emails",
       "DESCRIPTION": "",
-      "TODO": "To Email",
-      "DOING": "Emailing",
-      "DONE": "Emailed"
+      "FUTURE": "To Email",
+      "PRESENT": "Emailing",
+      "PAST": "Emailed",
+      "INSTRUCTIONS": "Please provide a valid email",
+      "PLACEHOLDER": "Email",
+      "PLACEHOLDER_REQUIRED": "Email*"
     },
     "ENDORSEMENTS": {
       "__COMMENTS": "See RECOMMENDATIONS",
       "SINGULAR": "Endorsement",
       "PLURAL": "Endorsements",
       "DESCRIPTION": "",
-      "TODO": "To Endorse",
-      "DOING": "Endorsing",
-      "DONE": "Endorsed"
+      "FUTURE": "To Endorse",
+      "PRESENT": "Endorsing",
+      "PAST": "Endorsed"
     },
     "ENROLLMENTS": {
       "__COMMENTS": "See PARTICIPATION, SUBSCRIPTION",
       "SINGULAR": "Enrollment",
       "PLURAL": "Enrollments",
       "DESCRIPTION": "",
-      "TODO": "To Enroll",
-      "DOING": "Enrolling",
-      "DONE": "Enrolled"
+      "FUTURE": "To Enroll",
+      "PRESENT": "Enrolling",
+      "PAST": "Enrolled"
     },
     "ENTITIES": {
       "__COMMENTS": "The primary elements of change: PEOPLE, PLACES, PRODUCTS, etc.",
       "SINGULAR": "Entity",
       "PLURAL": "Entities",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "ERRORS": {
       "100": {
@@ -1352,9 +1436,9 @@
       "SINGLE": "Error",
       "PLURAL": "Errors",
       "DESCRIPTION": "",
-      "TODO": "To Error",
-      "DOING": "Erroring",
-      "DONE": "Errored",
+      "FUTURE": "To Error",
+      "PRESENT": "Erroring",
+      "PAST": "Errored",
       "OOPS!": "Oops!",
       "SORRY": "Sorry"
     },
@@ -1363,36 +1447,36 @@
       "SINGULAR": "Evidence",
       "PLURAL": "Evidences",
       "DESCRIPTION": "",
-      "TODO": "To Evidence",
-      "DOING": "Evidencing",
-      "DONE": "Evidenced"
+      "FUTURE": "To Evidence",
+      "PRESENT": "Evidencing",
+      "PAST": "Evidenced"
     },
     "EXAMPLES": {
       "__COMMENTS": "",
       "SINGULAR": "Example",
       "PLURAL": "Examples",
       "DESCRIPTION": "",
-      "TODO": "To Demonstrate",
-      "DOING": "Demonstrating",
-      "DONE": "Demonstrated"
+      "FUTURE": "To Demonstrate",
+      "PRESENT": "Demonstrating",
+      "PAST": "Demonstrated"
     },
     "EXCLUDES": {
       "__COMMENTS": "See IGNORES",
       "SINGULAR": "Exclude",
       "PLURAL": "Excludes",
       "DESCRIPTION": "",
-      "TODO": "To Exclude",
-      "DOING": "Excluding",
-      "DONE": "Excluded"
+      "FUTURE": "To Exclude",
+      "PRESENT": "Excluding",
+      "PAST": "Excluded"
     },
     "FAMILIES": {
       "__COMMENTS": "See RELATIONSHIPS",
       "SINGULAR": "Family",
       "PLURAL": "Families",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "CARETAKER": "Caretaker",
       "RELATED": "Related",
       "PARENT": "Parent",
@@ -1414,27 +1498,27 @@
       "SINGULAR": "FAQ",
       "PLURAL": "FAQs",
       "DESCRIPTION": "",
-      "TODO": "To Question",
-      "DOING": "Questioining",
-      "DONE": "Questioned"
+      "FUTURE": "To Question",
+      "PRESENT": "Questioining",
+      "PAST": "Questioned"
     },
     "FEATURES": {
       "__COMMENTS": "",
       "SINGULAR": "Feature",
       "PLURAL": "Features",
       "DESCRIPTION": "",
-      "TODO": "To Feature",
-      "DOING": "Featuring",
-      "DONE": "Featured"
+      "FUTURE": "To Feature",
+      "PRESENT": "Featuring",
+      "PAST": "Featured"
     },
     "FINANCES": {
       "__COMMMENTS": "See COMMERCE, SALES.",
-      "TODO": "To Finance",
+      "FUTURE": "To Finance",
       "SINGULAR": "Finance",
       "PLURAL": "Finances",
       "DESCRIPTION": "",
-      "DOING": "Financing",
-      "DONE": "Financed",
+      "PRESENT": "Financing",
+      "PAST": "Financed",
       "BALANCE": "Balance",
       "DEBIT": "Debit",
       "CREDIT": "Credit",
@@ -1450,18 +1534,18 @@
       "SINGULAR": "Finding",
       "PLURAL": "Findings",
       "DESCRIPTION": "",
-      "TODO": "To Find",
-      "DOING": "Finding",
-      "DONE": "Found"
+      "FUTURE": "To Find",
+      "PRESENT": "Finding",
+      "PAST": "Found"
     },
     "FLOW": {
       "__COMMENTS": "Relates to LAYOUT.",
       "SINGULAR": "Flow",
       "PLURAL": "Flows",
       "DESCRIPTION": "",
-      "TODO": "To Flow",
-      "DOING": "Flowing",
-      "DONE": "Flowed",
+      "FUTURE": "To Flow",
+      "PRESENT": "Flowing",
+      "PAST": "Flowed",
       "FLUID": "Fluid",
       "BOXED": "Boxed"
     },
@@ -1470,18 +1554,18 @@
       "SINGULAR": "Functionality",
       "PLURAL": "Functionalities",
       "DESCRIPTION": "",
-      "TODO": "To Function",
-      "DOING": "Functioning",
-      "DONE": "Functioned"
+      "FUTURE": "To Function",
+      "PRESENT": "Functioning",
+      "PAST": "Functioned"
     },
     "GOVERNMENT": {
       "__COMMENTS": "",
       "SINGULAR": "Government",
       "PLURAL": "Governments",
       "DESCRIPTION": "",
-      "TODO": "To Govern",
-      "DOING": "Governing",
-      "DONE": "Governed",
+      "FUTURE": "To Govern",
+      "PRESENT": "Governing",
+      "PAST": "Governed",
       "ENTITIES": {
         "SINGULAR": "Entity",
         "PLURAL": "Entities",
@@ -1498,9 +1582,9 @@
       "SINGULAR": "Greeting",
       "PLURAL": "Greetings",
       "DESCRIPTION": "",
-      "TODO": "To Greet",
-      "DOING": "Greeting",
-      "DONE": "Greeted",
+      "FUTURE": "To Greet",
+      "PRESENT": "Greeting",
+      "PAST": "Greeted",
       "HI": "Hi",
       "HI_": "Hi",
       "HI!": "Hi!",
@@ -1516,9 +1600,9 @@
       "SINGULAR": "Group",
       "PLURAL": "Groups",
       "DESCRIPTION": "",
-      "TODO": "To Group",
-      "DOING": "Grouping",
-      "DONE": "Grouped"
+      "FUTURE": "To Group",
+      "PRESENT": "Grouping",
+      "PAST": "Grouped"
     },
     "HEADERS": {
       "__COMMENTS": "Funny enough, this group doesn't have a title/s or Description: the keys are needed to actually say 'Title' and 'Description'...",
@@ -1526,9 +1610,9 @@
       "SINGULAR": "Title",
       "PLURAL": "Header",
       "DESCRIPTION": "Description",
-      "TODO": "To Head",
-      "DOING": "Heading",
-      "DONE": "Headed",
+      "FUTURE": "To Head",
+      "PRESENT": "Heading",
+      "PAST": "Headed",
       "CHANGE": "",
       "DETAILS": "Details",
       "VALUE": "Value",
@@ -1539,9 +1623,9 @@
       "SINGULAR": "Health",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "BLOOD_PRESSURE": "Blood Pressure",
       "HEART_RATE": "Heart Rate",
       "ILLNESS": "Illness",
@@ -1557,27 +1641,27 @@
       "SINGULAR": "Help",
       "PLURAL": "N/A",
       "DESCRIPTION": "Find Self-Help Assistance",
-      "TODO": "To Help",
-      "DOING": "Helping",
-      "DONE": "Helped"
+      "FUTURE": "To Help",
+      "PRESENT": "Helping",
+      "PAST": "Helped"
     },
     "HOMES": {
       "__COMMENTS": "See DASHBOARDS, FAQS, SUPPORT",
       "SINGULAR": "Home",
       "PLURAL": "Homes",
       "DESCRIPTION": "is where the heart is!",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "HUES": {
       "__COMMENTS": "",
       "SINGULAR": "Hue",
       "PLURAL": "Hues",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "DARK": "Dark",
       "GRADIENT": "Gradient",
       "LIGHT": "Light"
@@ -1588,9 +1672,9 @@
       "SINGULAR": "Identity",
       "PLURAL": "Identities",
       "DESCRIPTION": "",
-      "TODO": "To Identify",
-      "DOING": "Identifying",
-      "DONE": "Identified",
+      "FUTURE": "To Identify",
+      "PRESENT": "Identifying",
+      "PAST": "Identified",
       "FORMFIELDS": {
         "ID": "Context Identifier",
         "NAMES": "See NAMES",
@@ -1627,18 +1711,18 @@
       "SINGULAR": "Ignore",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Ignore",
-      "DOING": "Ignoring",
-      "DONE": "Ignored"
+      "FUTURE": "To Ignore",
+      "PRESENT": "Ignoring",
+      "PAST": "Ignored"
     },
     "IMPACT": {
       "__COMMENTS": "",
       "SINGULAR": "Impact",
       "PLURAL": "Impacts",
       "DESCRIPTION": "",
-      "TODO": "To Impact",
-      "DOING": "Impacting",
-      "DONE": "Impacted",
+      "FUTURE": "To Impact",
+      "PRESENT": "Impacting",
+      "PAST": "Impacted",
       "NEGLIGEABLE": "Negligeable",
       "LOW": "Low",
       "MODERATE": "Moderate",
@@ -1650,18 +1734,18 @@
       "SINGULAR": "Information",
       "PLURAL": "N/A",
       "DESCRIPTION": "Publicly accessible information pages",
-      "TODO": "To Inform",
-      "DOING": "Informing",
-      "DONE": "Informed"
+      "FUTURE": "To Inform",
+      "PRESENT": "Informing",
+      "PAST": "Informed"
     },
     "INFRASTRUCTURE": {
       "__COMMENTS": "",
       "SINGULAR": "Infrastructure",
       "PLURAL": "Infrastructures",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "WIFI": "Wifi",
       "ROUTER": "Router",
       "HUB": "Hub",
@@ -1678,59 +1762,68 @@
       "SCHEDULER": "Scheduler",
       "BROWSER": "Browser"
     },
+    "INTERESTS": {
+      "__COMMENTS": "See SYSTEMS, ORGANISATIONS, PERSONS",
+      "SINGULAR": "Interest",
+      "PLURAL": "Interests",
+      "DESCRIPTION": "",
+      "FUTURE": "To Interest",
+      "PRESENT": "Interesting",
+      "PAST": "Interested"
+    },
     "INVITATIONS": {
       "__COMMENTS": "TODO: CONSENTS, RECOMMENDATIONS, APPLICATIONS, INVITATIONS, ACCEPTANCES",
       "SINGULAR": "Invitation",
       "PLURAL": "Invitations",
       "DESCRIPTION": "",
-      "TODO": "To Invite",
-      "DOING": "Inviting",
-      "DONE": "Invited"
+      "FUTURE": "To Invite",
+      "PRESENT": "Inviting",
+      "PAST": "Invited"
     },
     "INVOICES": {
       "__COMMENTS": "See PURCHASEORDERS, BILLS, RECEIPTS",
       "SINGULAR": "Invoice",
       "PLURAL": "Invoices",
       "DESCRIPTION": "",
-      "TODO": "To Invoice",
-      "DOING": "Invoicing",
-      "DONE": "Invoiced"
+      "FUTURE": "To Invoice",
+      "PRESENT": "Invoicing",
+      "PAST": "Invoiced"
     },
     "ISSUES": {
       "__COMMENTS": "See WORK, STATUS, SUGGESTIONS, PROPOSALS.",
       "SINGULAR": "Issue",
       "PLURAL": "Issues",
       "DESCRIPTION": "Known issues",
-      "TODO": "To raise",
-      "DOING": "Raising an issue",
-      "DONE": "Issue was raised"
+      "FUTURE": "To raise",
+      "PRESENT": "Raising an issue",
+      "PAST": "Issue was raised"
     },
     "JUDGEMENTS": {
       "__COMMENTS": "See EVIDENCE, OBSERVATIONS, EVALUATIONS,ASSESSMENTS,JUDGEMENTS",
       "SINGULAR": "Judgement",
       "PLURAL": "Judgements",
       "DESCRIPTION": "",
-      "TODO": "To Judge",
-      "DOING": "Judging",
-      "DONE": "Judged"
+      "FUTURE": "To Judge",
+      "PRESENT": "Judging",
+      "PAST": "Judged"
     },
     "LANDING": {
       "__COMMENTS": "Publicly accessible Pages as landing pages from Advertisements/sources. See PAGES and INFORMATION Area.",
       "SINGULAR": "Landing",
       "PLURAL": "Landings",
       "DESCRIPTION": "Publicly accessible landing pages",
-      "TODO": "To Land",
-      "DOING": "Landing",
-      "DONE": "Landed"
+      "FUTURE": "To Land",
+      "PRESENT": "Landing",
+      "PAST": "Landed"
     },
     "LAYOUTS": {
       "__COMMENTS": "Regarding the layout of site parts.",
       "SINGULAR": "Layout",
       "PLURAL": "Layouts",
       "DESCRIPTION": "",
-      "TODO": "To lay out",
-      "DOING": "Laying out",
-      "DONE": "Laid out",
+      "FUTURE": "To lay out",
+      "PRESENT": "Laying out",
+      "PAST": "Laid out",
       "LAYOUT": "Layout",
       "LAYOUTS": "Layouts",
       "OPTIONS": {
@@ -1745,27 +1838,27 @@
       "SINGULAR": "Law",
       "PLURAL": "Laws",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "LIKES": {
       "__COMMENTS": "See APPRECIATION, DISLIKES",
       "SINGULAR": "Like",
       "PLURAL": "Likes",
       "DESCRIPTION": "",
-      "TODO": "To Like",
-      "DOING": "Liking",
-      "DONE": "Liked"
+      "FUTURE": "To Like",
+      "PRESENT": "Liking",
+      "PAST": "Liked"
     },
     "LIKLINESS": {
       "__COMMENTS": "See RISK, IMPACT",
       "SINGULAR": "Likeliness",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "IMPROBABLE": "Improbable",
       "UNCERTAIN": "Uncertain",
       "PROBABLE": "Probable",
@@ -1777,9 +1870,9 @@
       "SINGULAR": "Location",
       "PLURAL": "Locations",
       "DESCRIPTION": "",
-      "TODO": "To Locate",
-      "DOING": "Locating",
-      "DONE": "Located",
+      "FUTURE": "To Locate",
+      "PRESENT": "Locating",
+      "PAST": "Located",
       "ALTITUDE": "Altitude",
       "ORIENTATION": "Orientation",
       "COORDINATES": "Coordinates",
@@ -1796,13 +1889,13 @@
       "LATITUDE_ERROR_02": "The provided latitude could not be validated."
     },
     "LOGIC": {
-      "__COMMENTS": "See ARITHMETICS",
+      "__COMMENTS": "See ARITHMETICS, CALCULATIONS",
       "SINGULAR": "Logic",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "GROUP": "Group",
       "SUBGROUP": "Subgroup",
       "NOT": "Not",
@@ -1821,36 +1914,45 @@
       "SINGULAR": "Logo",
       "PLURAL": "Logos",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
+    },
+    "MAINTAINERS": {
+      "__COMMENTS": "See OPERATORS, MONITORERS",
+      "SINGULAR": "Maintain",
+      "PLURAL": "N/A",
+      "DESCRIPTION": "When the service is next planned to be taken down to add new features...",
+      "FUTURE": "To Maintain",
+      "PRESENT": "Maintaining",
+      "PAST": "Maintained"
     },
     "MAINTENANCE": {
       "__COMMENTS": "",
       "SINGULAR": "Maintenance",
       "PLURAL": "N/A",
       "DESCRIPTION": "When the service is next planned to be taken down to add new features...",
-      "TODO": "To Maintain",
-      "DOING": "Maintaining",
-      "DONE": "Maintained"
+      "FUTURE": "To Maintain",
+      "PRESENT": "Maintaining",
+      "PAST": "Maintained"
     },
     "MANAGEMENT": {
       "__COMMENTS": "",
       "SINGULAR": "Management",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Manage",
-      "DOING": "Managing",
-      "DONE": "Managed"
+      "FUTURE": "To Manage",
+      "PRESENT": "Managing",
+      "PAST": "Managed"
     },
     "MEDIA": {
       "__COMMENTS": "",
       "SINGULAR": "Media",
       "PLURAL": "Medias",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "DIMENSIONS": "Dimensions",
       "FILENAME": "Filename",
       "FORMAT": "Format",
@@ -1861,18 +1963,21 @@
       "SINGULAR": "Member",
       "PLURAL": "Members",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "MESSAGES": {
-      "__COMMENTS": "See also NOTIFICATIONS, ALERT, EMAIL.",
+      "__COMMENTS": "See also NOTIFICATIONS, ALERTS, EMAILS, SUBJECTS.",
       "SINGULAR": "Message",
       "PLURAL": "Messages",
       "DESCRIPTION": "Messages between Users",
-      "TODO": "To Message",
-      "DOING": "Messaging",
-      "DONE": "Messaged",
+      "FUTURE": "To Message",
+      "PRESENT": "Messaging",
+      "PAST": "Messaged",
+      "INSTRUCTIONS": "Please provide the message text",
+      "PLACEHOLDER": "Message...",
+      "PLACEHOLDER_REQUIRED": "Message*",
       "NONE": "None",
       "NO_NEW": "No New Messages",
       "ALL": "All",
@@ -1892,14 +1997,23 @@
       "BODY": "Body",
       "ATTACHMENTS": "Attachments"
     },
+    "MONITORERS": {
+      "__COMMENTS": "See SUPPORTERS, OPERATORS, MAINTAINERS",
+      "SINGULAR": "Monitor",
+      "PLURAL": "N/A",
+      "DESCRIPTION": "",
+      "FUTURE": "To Monitor",
+      "PRESENT": "Monitoring",
+      "PAST": "Monitored"
+    },
     "MONTHS": {
       "__COMMENTS": "See also DAY, TIME.",
       "SINGULAR": "Month",
       "PLURAL": "Months",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "JANUARY": "January",
       "FEBRUARY": "February",
       "MARCH": "March",
@@ -1913,15 +2027,28 @@
       "NOVEMBER": "November",
       "DECEMBER": "December"
     },
+    "MULTIPLICATION": {
+      "__COMMENTS": ".See NUMBERS, ARITHMETIC, ADDITION, SUBTRACTION, DIVIDE",
+      "SINGULAR": "Multiplication",
+      "PLURAL": "Multiplications",
+      "DESCRIPTION": "",
+      "COMMAND": "Multiply",
+      "FUTURE": "To Multiply",
+      "PRESENT": "Multiplying",
+      "PAST": "Multiplied"
+    },
     "NAMES": {
       "__COMMENTS": "See PERSON, IDENTITY.",
       "SINGULAR": "Names",
       "PLURAL": "Names",
       "DESCRIPTION": "",
-      "TODO": "To Name",
-      "DOING": "Naming",
-      "DONE": "Named",
+      "FUTURE": "To Name",
+      "PRESENT": "Naming",
+      "PAST": "Named",
       "PREFIX": "Prefix",
+      "INSTRUCTIONS": "A name please",
+      "PLACEHOLDER": "Name",
+      "PLACEHOLDER_REQUIRED": "Name*",
       "PREFIX_INSTRUCTIONS": "Provide a Title (Mr, Mrs, Dr., ...)",
       "PREFIX_EXAMPLE": "Dr.",
       "PREFIX_ERROR_01": "A title or prefix is required.",
@@ -1950,16 +2077,19 @@
       "SURNAME_INSTRUCTIONS": "Provide a suname",
       "SURNAME_EXAMPLE": "Smith",
       "SURNAME_ERROR_01": "A surname is required.",
-      "SURNAME_ERROR_02": "The provided surname can't be validated."
+      "SURNAME_ERROR_02": "The provided surname can't be validated.",
+      "SUFFIX": "Suffix",
+      "SUFFIX_INSTRUCTIONS": "...",
+      "SUFFIX_PLACEHOLDER": "Suffix"
     },
     "NATURE": {
       "__COMMENTS": "See WEATHER.",
       "SINGULAR": "Nature",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "URBAN": "Urban",
       "RURAL": "Rural",
       "BROOOK": "Brook",
@@ -1983,18 +2113,20 @@
       "SINGULAR": "Navigation",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Navigate",
-      "DOING": "Navigating",
-      "DONE": "Navigated"
+      "FUTURE": "To Navigate",
+      "PRESENT": "Navigating",
+      "PAST": "Navigated"
     },
     "NOTIFICATIONS": {
       "__COMMENTS": "See ALERTS, MESSAGES, EMAILS",
       "SINGULAR": "Notification",
       "PLURAL": "Notifications",
       "DESCRIPTION": "",
-      "TODO": "To Notify",
-      "DOING": "Notifying",
-      "DONE": "Notified",
+      "FUTURE": "To Notify",
+      "PRESENT": "Notifying",
+      "PAST": "Notified",
+      "INSTRUCTIONS": "...",
+      "PLACEHOLDER": "...",
       "NO_NEW": "No New Notifications",
       "NONE": "None",
       "ALL": "See QUANTITIES",
@@ -2006,18 +2138,18 @@
       "SINGULAR": "Note",
       "PLURAL": "Notes",
       "DESCRIPTION": "",
-      "TODO": "To Note",
-      "DOING": "Noting",
-      "DONE": "Noted"
+      "FUTURE": "To Note",
+      "PRESENT": "Noting",
+      "PAST": "Noted"
     },
     "NUMBERS": {
       "__COMMENTS": "See POSITIONS",
       "SINGULAR": "Number",
       "PLURAL": "Numbers",
       "DESCRIPTION": "",
-      "TODO": "To Count",
-      "DOING": "Counting",
-      "DONE": "Counted",
+      "FUTURE": "To Count",
+      "PRESENT": "Counting",
+      "PAST": "Counted",
       "ONE": "One",
       "TWO": "Two",
       "THREE": "Three",
@@ -2056,36 +2188,36 @@
       "SINGULAR": "Observation",
       "PLURAL": "Observations",
       "DESCRIPTION": "",
-      "TODO": "To Observe",
-      "DOING": "Observing",
-      "DONE": "Observed"
+      "FUTURE": "To Observe",
+      "PRESENT": "Observing",
+      "PAST": "Observed"
     },
     "OPENINGS": {
       "__COMMENTS": "",
       "SINGULAR": "Opening",
       "PLURAL": "Openings",
       "DESCRIPTION": "Opportunities to work here.",
-      "TODO": "To Open",
-      "DOING": "Opening",
-      "DONE": "Opened"
+      "FUTURE": "To Open",
+      "PRESENT": "Opening",
+      "PAST": "Opened"
     },
     "OPERATIONS": {
       "__COMMENTS": "See MAINTAINANCE",
       "SINGULAR": "Operate",
       "PLURAL": "Operates",
       "DESCRIPTION": "",
-      "TODO": "To Operate",
-      "DOING": "Operating",
-      "DONE": "Operated"
+      "FUTURE": "To Operate",
+      "PRESENT": "Operating",
+      "PAST": "Operated"
     },
     "ORDERS": {
       "__COMMENTS": "See CUSTOMERS, CLIENTS",
       "SINGULAR": "Order",
       "PLURAL": "Orders",
       "DESCRIPTION": "",
-      "TODO": "To Order",
-      "DOING": "Ordering",
-      "DONE": "Ordered",
+      "FUTURE": "To Order",
+      "PRESENT": "Ordering",
+      "PAST": "Ordered",
       "DETAILS": "Order Details"
     },
     "ORGANISATIONS": {
@@ -2093,9 +2225,9 @@
       "SINGULAR": "Organisation",
       "PLURAL": "Organisations",
       "DESCRIPTION": "",
-      "TODO": "To Organise",
-      "DOING": "Organising",
-      "DONE": "Organised",
+      "FUTURE": "To Organise",
+      "PRESENT": "Organising",
+      "PAST": "Organised",
       "ACCOUNT": "Account",
       "ACCOUNT_INSTRUCTIONS": "Please provide the account name:",
       "ACCOUNT_PLACEHOLDER": "Account Title",
@@ -2138,9 +2270,9 @@
       "SINGULAR": "Orientation",
       "PLURAL": "Orientations",
       "DESCRIPTION": "",
-      "TODO": "To Orient",
-      "DOING": "Orienting",
-      "DONE": "Oriented",
+      "FUTURE": "To Orient",
+      "PRESENT": "Orienting",
+      "PAST": "Oriented",
       "HORIZONTAL": "Horizontal",
       "VERTICAL": "Vertical"
     },
@@ -2149,9 +2281,9 @@
       "SINGULAR": "Outcome",
       "PLURAL": "Outcomes",
       "DESCRIPTION": "",
-      "TODO": "To N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "To N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "RESULT": "Result",
       "SUCCESS": "Success",
       "IMPROVED": "Improved",
@@ -2162,63 +2294,72 @@
       "SINGULAR": "Page",
       "PLURAL": "Pages",
       "DESCRIPTION": "Pages restricted to permitted users",
-      "TODO": "To Page",
-      "DOING": "Paging",
-      "DONE": "[Paged?]"
+      "FUTURE": "To Page",
+      "PRESENT": "Paging",
+      "PAST": "[Paged?]"
     },
     "PARTICIPATIONS": {
       "__COMMENTS": "See ENROLLMENT, SUBSCRIPTION, PRESENCE",
       "SINGULAR": "Participation",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Participate",
-      "DOING": "Participating",
-      "DONE": "Participated"
+      "FUTURE": "To Participate",
+      "PRESENT": "Participating",
+      "PAST": "Participated"
     },
     "PATTERNS": {
       "__COMMENTS": "",
       "SINGULAR": "Pattern",
       "PLURAL": "Patterns",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "PEOPLE": {
       "__COMMENTS": "See PERSONS",
       "SINGULAR": "Person",
       "PLURAL": "People",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "PERMISSIONS": {
       "__COMMENTS": "Permissions are Added/Removed from ACCESS_LEVELS",
       "SINGULAR": "Permission",
       "PLURAL": "Permissions",
       "DESCRIPTION": "",
-      "TODO": "To Permit",
-      "DOING": "Permitting",
-      "DONE": "Permitted"
+      "FUTURE": "To Permit",
+      "PRESENT": "Permitting",
+      "PAST": "Permitted"
     },
     "PERSONS": {
       "__COMMENTS": "",
       "SINGULAR": "Person",
       "PLURAL": "Persons",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
+    },
+    "PHONE": {
+      "__COMMENTS": "",
+      "SINGULAR": "Phone",
+      "PLURAL": "Phones",
+      "DESCRIPTION": "",
+      "FUTURE": "To Phone",
+      "PRESENT": "Phoning",
+      "PAST": "Phoned"
     },
     "PLACES": {
       "__COMMENTS": "See LOCATION.",
       "SINGULAR": "Place",
       "PLURAL": "Places",
       "DESCRIPTION": "",
-      "TODO": "To Place",
-      "DOING": "Placing",
-      "DONE": "Placed",
+      "FUTURE": "To Place",
+      "PRESENT": "Placing",
+      "PAST": "Placed",
       "HOME": "Home",
       "WORK": "Work"
     },
@@ -2226,37 +2367,33 @@
       "__COMMENTS": "See PRICES, SUBSCRIPTIONS",
       "SINGULAR": "Plan",
       "PLURAL": "Plans",
-      "DESCRIPTION": "",
-      "TODO": "To Plan",
-      "DOING": "Planning",
-      "DONE": "Planned"
+      "DESCRIPTION": "The service is available under different plans.",
+      "INSTRUCTIONS": "Choose the plan right for you",
+      "MORE": "Straight forward, simple, flexible pricing. No hidden surprises.",
+      "FUTURE": "To Plan",
+      "PRESENT": "Planning",
+      "PAST": "Planned"
     },
     "POLICIES": {
       "__COMMENTS": "See PRINCIPLES, DISCLOSURES, STATEMENTS, REGULATIONS, LAWS.",
       "SINGULAR": "Policy",
       "PLURAL": "Policies",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
-      "TRACKING": {
-        "SINGULAR": "Tracking Policy"
-      },
-      "PRIVACY": {
-        "SINGULAR": "Privacy Policy"
-      },
-      "DATA": {
-        "SINGULAR": "Data Use Policy"
-      }
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
+      "TRACKING": "Tracking Policy",
+      "PRIVACY": "Privacy Policy",
+      "DATA_USE": "Data Use Policy"
     },
     "POSITIONS": {
       "__COMMENTS": "See also DIRECTIONS and SEQUENCE.",
       "SINGULAR": "Position",
       "PLURAL": "Positions",
       "DESCRIPTION": "",
-      "TODO": "To Position",
-      "DOING": "Positioning",
-      "DONE": "Positioned",
+      "FUTURE": "To Position",
+      "PRESENT": "Positioning",
+      "PAST": "Positioned",
       "RELATIVE": {
         "SINGULAR": "Relative",
         "DESCRIPTION": "",
@@ -2281,14 +2418,14 @@
         "LAST": "Last"
       }
     },
-    "POSTAL_ADDRESS": {
+    "POSTAL_ADDRESSES": {
       "__COMMENTS": "",
       "SINGULAR": "Postal Address",
       "PLURAL": "Postal Addresses",
       "DESCRIPTION": "",
-      "TODO": "To Mail",
-      "DOING": "Mailing",
-      "DONE": "Mailed",
+      "FUTURE": "To Mail",
+      "PRESENT": "Mailing",
+      "PAST": "Mailed",
       "UNIT": "Unit",
       "UNIT_EXAMPLE": "2B",
       "UNIT_INSTRUCTIONS": "Provide an apartment, Unit, etc. if any",
@@ -2313,45 +2450,55 @@
       "SINGULAR": "Price",
       "PLURAL": "Prices",
       "DESCRIPTION": "",
-      "TODO": "To Price",
-      "DOING": "Pricing",
-      "DONE": "Priced"
+      "FUTURE": "To Price",
+      "PRESENT": "Pricing",
+      "PAST": "Priced"
     },
     "PRESENCE": {
       "__COMMENTS": "See PARTICIPATIONS",
       "SINGULAR": "Presence",
       "PLURAL": "Presences",
       "DESCRIPTION": "",
-      "TODO": "To be present",
-      "DOING": "Is present",
-      "DONE": "Was present"
+      "FUTURE": "To be present",
+      "PRESENT": "Is present",
+      "PAST": "Was present"
     },
     "PRINCIPLES": {
       "__COMMENTS": "",
       "SINGULAR": "Principle",
       "PLURAL": "Principles",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
+    },
+    "PRIVACIES": {
+      "__COMMENTS": "See STATEMENTS, POLICIES",
+      "SINGULAR": "Privacy",
+      "PLURAL": "Privacies",
+      "DESCRIPTION": "",
+      "COMMAND": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "PROCURE": {
       "__COMMENTS": "See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
       "SINGULAR": "Procure",
       "PLURAL": "Procurers",
       "DESCRIPTION": "",
-      "TODO": "To Procure",
-      "DOING": "Procuring",
-      "DONE": "Procured"
+      "FUTURE": "To Procure",
+      "PRESENT": "Procuring",
+      "PAST": "Procured"
     },
     "PRODUCTS": {
       "__COMMENTS": "",
       "SINGULAR": "Product",
       "PLURAL": "Products",
       "DESCRIPTION": "",
-      "TODO": "To Produce",
-      "DOING": "Producing",
-      "DONE": "Produced",
+      "FUTURE": "To Produce",
+      "PRESENT": "Producing",
+      "PAST": "Produced",
       "PRODUCT_DETAILS": "Product Details"
     },
     "PROFILES": {
@@ -2359,76 +2506,78 @@
       "SINGULAR": "Profile",
       "PLURAL": "Profiles",
       "DESCRIPTION": "",
-      "TODO": "To Profile",
-      "DOING": "Profiling",
-      "DONE": "Profiled"
+      "FUTURE": "To Profile",
+      "PRESENT": "Profiling",
+      "PAST": "Profiled"
     },
     "PROGRESS": {
       "__COMMENTS": "See ACTIONS. A 'corp' bullshit word for DOING.",
       "SINGULAR": "Progress",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Progress",
-      "DOING": "Progressing",
-      "DONE": "Progressed"
+      "FUTURE": "To Progress",
+      "PRESENT": "Progressing",
+      "PAST": "Progressed"
     },
     "PROJECTS": {
       "__COMMENTS": "See TASKS, SCHEDULE area.",
       "SINGULAR": "Project",
       "PLURAL": "Projects",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "PROMPTS": {
       "__COMMENTS": "",
       "SINGULAR": "Prompt",
       "PLURAL": "Prompts",
       "DESCRIPTION": "",
-      "TODO": "To Prompt",
-      "DOING": "Prompting",
-      "DONE": "Prompted"
+      "FUTURE": "To Prompt",
+      "PRESENT": "Prompting",
+      "PAST": "Prompted"
     },
     "PROPOSALS": {
       "__COMMENTS": "See ISSUES, SUGGESTIONS",
       "SINGULAR": "PROPOSAL",
       "PLURAL": "PROPOSALS",
       "DESCRIPTION": "",
-      "TODO": "To Propose",
-      "DOING": "Proposing",
-      "DONE": "Proposed"
+      "FUTURE": "To Propose",
+      "PRESENT": "Proposing",
+      "PAST": "Proposed"
     },
     "PURCHASEORDERS": {
       "__COMMENTS": "See INVOICES, BILLS, RECEIPTS",
       "SINGULAR": "Purchase Order",
       "PLURAL": "Purchase Orders",
       "DESCRIPTION": "",
-      "TODO": "To order",
-      "DOING": "Ordering",
-      "DONE": "Ordered"
+      "FUTURE": "To order",
+      "PRESENT": "Ordering",
+      "PAST": "Ordered"
     },
     "QUANTITIES": {
       "__COMMENTS": "See also CONTENTS.",
       "SINGULAR": "Quantity",
       "PLURAL": "Quantities",
       "DESCRIPTION": "",
-      "TODO": "To Quantify",
-      "DOING": "Quantifying",
-      "DONE": "Quantified",
+      "FUTURE": "To Quantify",
+      "PRESENT": "Quantifying",
+      "PAST": "Quantified",
       "ALL": "All",
       "MOST": "Most",
       "SOME": "Some",
-      "NONE": "None"
+      "NONE": "None",
+      "UP_TO": "Up to",
+      "UNLIMITED": "Unlimited"
     },
     "QUALITIES": {
       "__COMMENTS": "",
       "SINGULAR": "Quality",
       "PLURAL": "Qualities",
       "DESCRIPTION": "",
-      "TODO": "To Qualify",
-      "DOING": "Qualifying",
-      "DONE": "Qualified",
+      "FUTURE": "To Qualify",
+      "PRESENT": "Qualifying",
+      "PAST": "Qualified",
       "ACCOUNTABLE": "Accountable",
       "ADAPTABLE": "Adaptable",
       "ANALYSABLE": "Analysable",
@@ -2476,72 +2625,92 @@
       "SINGULAR": "[Read]",
       "PLURAL": "[Readings]",
       "DESCRIPTION": "",
-      "TODO": "To Read",
-      "DOING": "Reading",
-      "DONE": "Read"
+      "FUTURE": "To Read",
+      "PRESENT": "Reading",
+      "PAST": "Read"
     },
     "RECEIPTS": {
       "__COMMENTS": "See BILLS, INVOICES",
       "SINGULAR": "Bill",
       "PLURAL": "Bills",
       "DESCRIPTION": "",
-      "TODO": "To Bill",
-      "DOING": "Billing",
-      "DONE": "Billed"
+      "FUTURE": "To Bill",
+      "PRESENT": "Billing",
+      "PAST": "Billed"
     },
     "RECOMMENDATIONS": {
       "__COMMENTS": "See APPROVALS, ENDORSEMENTS",
       "SINGULAR": "Recommendation",
       "PLURAL": "Recommendations",
       "DESCRIPTION": "",
-      "TODO": "To Recommend",
-      "DOING": "Recommending",
-      "DONE": "Recommended"
+      "FUTURE": "To Recommend",
+      "PRESENT": "Recommending",
+      "PAST": "Recommended"
     },
     "REFERENCE_DATA": {
       "__COMMENTS": "",
       "SINGULAR": "Reference Data",
       "PLURAL": "Reference Data",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
+    },
+    "REGIONS": {
+      "__COMMENTS": "See SYSTEMS, ",
+      "SINGULAR": "Region",
+      "PLURAL": "Regions",
+      "DESCRIPTION": "",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "REGULATIONS": {
       "__COMMENTS": "See LAWS, POLICIES",
       "SINGULAR": "Regulation",
       "PLURAL": "Regulations",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "RELATIONSHIPS": {
       "__COMMENTS": "See FAMILY",
       "SINGULAR": "Relationship",
       "PLURAL": "Relationships",
       "DESCRIPTION": "",
-      "TODO": "To Relate",
-      "DOING": "Relating",
-      "DONE": "Related"
+      "FUTURE": "To Relate",
+      "PRESENT": "Relating",
+      "PAST": "Related"
+    },
+    "REMOVAL": {
+      "__COMMENTS": "See SUBTRACTION",
+      "SINGULAR": "Removal",
+      "PLURAL": "Removals",
+      "DESCRIPTION": "",
+      "FUTURE": "To Remove",
+      "PRESENT": "Removing",
+      "PAST": "Removed",
+      "FROM": "Removed From",
+      "BY": "Removed By"
     },
     "REPORTS": {
       "__COMMENTS": "",
       "SINGULAR": "Template",
       "PLURAL": "Templates",
       "DESCRIPTION": "",
-      "TODO": "To Report",
-      "DOING": "Reporting",
-      "DONE": "Reported"
+      "FUTURE": "To Report",
+      "PRESENT": "Reporting",
+      "PAST": "Reported"
     },
     "RESPONSIBILITIES": {
       "__COMMENTS": "Users Get PERMISSIONS after accepting associated RESPONSIBILITIES",
       "SINGULAR": "Responsibility",
       "PLURAL": "Responsibilities",
       "DESCRIPTION": "",
-      "TODO": "To Be Reposible For",
-      "DOING": "Being Responsible For",
-      "DONE": "Was Responsible For",
+      "FUTURE": "To Be Reposible For",
+      "PRESENT": "Being Responsible For",
+      "PAST": "Was Responsible For",
       "RESPONSIBLE": "Responsible",
       "RESPONSIBILITY": "Responsibility",
       "RESPONSIBILITIES": "Responsibilities"
@@ -2551,18 +2720,18 @@
       "SINGULAR": "Review",
       "PLURAL": "Reviews",
       "DESCRIPTION": "",
-      "TODO": "To Review",
-      "DOING": "Reviewing",
-      "DONE": "Reviewed"
+      "FUTURE": "To Review",
+      "PRESENT": "Reviewing",
+      "PAST": "Reviewed"
     },
     "RISKS": {
       "__COMMENTS": "See ISSUES, WORK",
       "SINGULAR": "Risk",
       "PLURAL": "Risks",
       "DESCRIPTION": "",
-      "TODO": "To Risk",
-      "DOING": "Risking",
-      "DONE": "Risked",
+      "FUTURE": "To Risk",
+      "PRESENT": "Risking",
+      "PAST": "Risked",
       "LIKLINESS": "See LIKLINESS",
       "IMPACT": "See IMPACT"
     },
@@ -2571,17 +2740,17 @@
       "SINGULAR": "Role",
       "PLURAL": "Roles",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "SALES": {
       "__COMMENTS": "See COMMERCE, TRANSACTIONS",
       "SINGULAR": "Sale",
       "PLURAL": "Sales",
       "DESCRIPTION": "",
-      "DOING": "Selling",
-      "DONE": "Sold",
+      "PRESENT": "Selling",
+      "PAST": "Sold",
       "LEAD": "Lead",
       "FORCAST": "Forcast",
       "CONVERSION": "Conversion",
@@ -2593,25 +2762,30 @@
       "BILL": "Bill",
       "RECEIPT": "Receipt",
       "SALES RECEIPT": "Sales Receipt",
-      "REFUND": "Refund"
+      "REFUND": "Refund",
+      "BUY_NOW": "Buy Now",
+      "SUBSCRIBE_NOW": "Subscribe Now",
+      "START_TODAY": "Start Today",
+      "NO_REASON_TO_WAIT": "No good reason to put it off..."
+
     },
     "SAILING": {
       "__COMMENTS": "See also DRIVING, SHIPPING",
       "SINGULAR": "Sail",
       "PLURAL": "Sails",
       "DESCRIPTION": "",
-      "TODO": "To Sail",
-      "DOING": "Sailing",
-      "DONE": "Sailed"
+      "FUTURE": "To Sail",
+      "PRESENT": "Sailing",
+      "PAST": "Sailed"
     },
     "SCHEDULING": {
       "__COMMENTS": "See PROJECTS, TASKS, APPOINTMENTS, CALENDARS area.",
       "SINGULAR": "Scheduling",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Schedule",
-      "DOING": "Scheduling",
-      "DONE": "Scheduled",
+      "FUTURE": "To Schedule",
+      "PRESENT": "Scheduling",
+      "PAST": "Scheduled",
       "DAILY": "Daily",
       "WEEKLY": "Weekly",
       "MONTHLY": "Monthly",
@@ -2622,18 +2796,18 @@
       "SINGULAR": "Score",
       "PLURAL": "Scores",
       "DESCRIPTION": "",
-      "TODO": "To Score",
-      "DOING": "Scoring",
-      "DONE": "Scored"
+      "FUTURE": "To Score",
+      "PRESENT": "Scoring",
+      "PAST": "Scored"
     },
     "SEARCHES": {
       "__COMMENTS": "See also POSITIONS, FINDS.",
       "SINGULAR": "Search",
       "PLURAL": "Searches",
       "DESCRIPTION": "",
-      "TODO": "To Search",
-      "DOING": "Searching",
-      "DONE": "Schearched",
+      "FUTURE": "To Search",
+      "PRESENT": "Searching",
+      "PAST": "Schearched",
       "INSTRUCTIONS": "Provide search criteria:",
       "PLACEHOLDER": "Search...",
       "VIEW_ALL_RESULTS": "View all results",
@@ -2644,27 +2818,27 @@
       "SINGULAR": "Search Result",
       "PLURAL": "Search Results",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "SEE": {
       "__COMMENTS": "See SIGHT",
       "SINGULAR": "See",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To See",
-      "DOING": "Seeing",
-      "DONE": "Saw"
+      "FUTURE": "To See",
+      "PRESENT": "Seeing",
+      "PAST": "Saw"
     },
     "SELLERS": {
       "__COMMENTS": "See BUYERS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS",
       "SINGULAR": "Vendor",
       "PLURAL": "Vendors",
       "DESCRIPTION": "",
-      "TODO": "To Sell",
-      "DOING": "Selling",
-      "DONE": "Sold",
+      "FUTURE": "To Sell",
+      "PRESENT": "Selling",
+      "PAST": "Sold",
       "DETAILS": "Seller's Details"
     },
     "SEQUENCES": {
@@ -2672,9 +2846,9 @@
       "SINGULAR": "Sequence",
       "PLURAL": "Sequences",
       "DESCRIPTION": "",
-      "TODO": "To Sequence",
-      "DOING": "Sequencing",
-      "DONE": "Sequenced",
+      "FUTURE": "To Sequence",
+      "PRESENT": "Sequencing",
+      "PAST": "Sequenced",
       "PREPARE": "Prepare",
       "BEGIN": "Begin",
       "WAIT": "Wait",
@@ -2687,18 +2861,18 @@
       "SINGULAR": "Setting",
       "PLURAL": "Settings",
       "DESCRIPTION": "",
-      "TODO": "To Set",
-      "DOING": "Setting",
-      "DONE": "Set"
+      "FUTURE": "To Set",
+      "PRESENT": "Setting",
+      "PAST": "Set"
     },
     "SHIPPING": {
       "__COMMENTS": "See also COMMERCE/SHOPPING, SAILS, DRIVING.",
       "SINGULAR": "Shipping",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Ship",
-      "DOING": "Shipping",
-      "DONE": "Shipped",
+      "FUTURE": "To Ship",
+      "PRESENT": "Shipping",
+      "PAST": "Shipped",
       "STANDARD": "Standard",
       "EXPEDITED": "Expedited",
       "URBAN": "Urban",
@@ -2709,9 +2883,9 @@
       "SINGULAR": "Sight",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Sight",
-      "DOING": "Sighting",
-      "DONE": "Sighted",
+      "FUTURE": "To Sight",
+      "PRESENT": "Sighting",
+      "PAST": "Sighted",
       "UNSEEN": "Unseen",
       "UNREAD": "Unread",
       "VIEW": "View",
@@ -2723,18 +2897,18 @@
       "SINGULAR": "Site",
       "PLURAL": "Sites",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "SHOPPING": {
       "__COMMENTS": "",
       "SINGULAR": "Shop",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Shop",
-      "DOING": "Shopping",
-      "DONE": "Shopped",
+      "FUTURE": "To Shop",
+      "PRESENT": "Shopping",
+      "PAST": "Shopped",
       "EMPTY": "Empty",
       "CART": "Cart",
       "SHOPPING_CART": "Shopping Cart",
@@ -2743,9 +2917,6 @@
       "PRICE": "Price",
       "QUANTITY": "Quantity",
       "SUBTOTAL": "Subtotal",
-      "DISCOUNTED": "Discounted",
-      "DISCOUNT": "Discount",
-      "DISCOUNTS": "Discounts",
       "TAX": "Tax",
       "SHIPPING": "Shipping",
       "COMMISSION": "Commission",
@@ -2761,18 +2932,18 @@
       "SINGULAR": "Site Map",
       "PLURAL": "Site Maps",
       "DESCRIPTION": "Where you are.",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "SIZES": {
-      "__COMMENTS": "See SUBSCRIPTIONS",
+      "__COMMENTS": "See QUANTITIES, SUBSCRIPTIONS",
       "SINGULAR": "Size",
       "PLURAL": "Sizes",
       "DESCRIPTION": "",
-      "TODO": "To Size",
-      "DOING": "Sizing",
-      "DONE": "Sized",
+      "FUTURE": "To Size",
+      "PRESENT": "Sizing",
+      "PAST": "Sized",
       "XTRA_SMALL": "Extra Small",
       "XTRA_SMALL_ALT1": "Scout",
       "XTRA_SMALL_ALT2": "Hans Solo",
@@ -2798,69 +2969,79 @@
       "UNLIMITED_ALT1": "Unstoppable",
       "UNLIMITED_ALT2": "Unstoppable"
     },
+    "SOCIALMEDIA": {
+      "__COMMENTS": "",
+      "SINGULAR": "Social Media",
+      "PLURAL": "Social Media",
+      "DESCRIPTION": "",
+      "FUTURE": "To Space",
+      "PRESENT": "Spacing",
+      "PAST": "Spaced",
+      "LINKEDIN": "LinkedIn",
+      "X": "Handle",
+      "MASTADON": "Address",
+      "INSTAGRAM": "Instagram"
+    },
     "SPACING": {
       "__COMMENTS": "",
       "SINGULAR": "Spacing",
       "PLURAL": "Spacing",
       "DESCRIPTION": "",
-      "TODO": "To Space",
-      "DOING": "Spacing",
-      "DONE": "Spaced",
+      "FUTURE": "To Space",
+      "PRESENT": "Spacing",
+      "PAST": "Spaced",
       "COMPACT": "Compact",
       "REGULAR": "Regular",
       "TIGHT": "Tight"
     },
     "SPONSORS": {
-      "__COMMENTS": "See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
+      "__COMMENTS": "See DEVELOPERS, BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS",
       "SINGULAR": "Sponsor",
       "PLURAL": "Sponsors",
       "DESCRIPTION": "",
-      "TODO": "To Sponsor",
-      "DOING": "Sponsoring",
-      "DONE": "Sponsored"
+      "FUTURE": "To Sponsor",
+      "PRESENT": "Sponsoring",
+      "PAST": "Sponsored"
     },
     "STAKEHOLDERS": {
       "__COMMENTS": "",
       "SINGULAR": "Stakeholder",
       "PLURAL": "Stakeholders",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "CONSUMER": "Service Consumer",
       "BUSINESS": "Service Provider",
       "CUSTOMER_SUPPORT": "Customer Support",
       "BUSINESS_SUPPORT": "Business Support",
       "OPERATIONS": "Service Operators",
-      "MAINTAINERS": "System Maintainers",
       "MONITORERS": "System Monitorers",
       "QUALITY_ASSURANCE": "Quality Assurance",
       "FUNCTIONALITY": "Functionalities"
     },
-    "STATEMENT": {
-      "__COMMENTS": "See POLICIES.",
+    "STATEMENTS": {
+      "__COMMENTS": "See TERMS, POLICIES",
       "SINGULAR": "Statement",
       "PLURAL": "Statements",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "PRIVACY": {
-        "SINGULAR": "Privacy Statement",
-        "PLURAL": "Privacy Statements"
+        "SHORT": "Privacy",
+        "TITLE": "Privacy Statement"
       },
-      "COPYRIGHT": {
-        "SINGULAR": "Copyright Statement",
-        "PLURAL": "Copyright Statements"
-      }
+      "PRIVACY": "Privacy Statement",
+      "COOKIE": "Cookie Statement"
     },
     "STATES": {
       "__COMMENTS": "Progression of generic state of records and resources, towards delivering OUTCOMES.",
       "SINGULAR": "State",
       "PLURAL": "States",
       "DESCRIPTION": "",
-      "TODO": "To Change",
-      "DOING": "Changing",
-      "DONE": "Changed",
+      "FUTURE": "To Change",
+      "PRESENT": "Changing",
+      "PAST": "Changed",
       "DRAFTED": "Drafted",
       "EXCLUDED": "Excluded",
       "IGNORED": "Ignored",
@@ -2885,9 +3066,9 @@
       "SINGULAR": "Status",
       "PLURAL": "Statuses",
       "DESCRIPTION": "Current state of last operation, account, system.",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "NEW": "New",
       "ENABLED": "Enabled",
       "DISABLED": "Disabled",
@@ -2901,74 +3082,105 @@
       "SINGULAR": "Status Update",
       "PLURAL": "Status Updates",
       "DESCRIPTION": "",
-      "TODO": "To Update",
-      "DOING": "Updating",
-      "DONE": "Updated",
+      "FUTURE": "To Update",
+      "PRESENT": "Updating",
+      "PAST": "Updated",
       "YOU_ARE_LOGGING_OUT": "You are logging out",
       "YOU_ARE_LOGGED_OUT": "You are logged out"
+    },
+    "SUBJECTS": {
+      "__COMMENTS": "See MESSAGES, NOTIFICATIONS, ALERTS,  MESSAGES",
+      "SINGULAR": "Subject",
+      "PLURAL": "Subjects",
+      "DESCRIPTION": "",
+      "FUTURE": "To Subject",
+      "PRESENT": "Subjecting",
+      "PAST": "Subjected",
+      "INSTRUCTIONS": "Please provide a Subject",
+      "PLACEHOLDER": "Subject...",
+      "PLACEHOLDER_REQUIRED": "Subject*..."
     },
     "SUBSCRIPTIONS": {
       "__COMMENTS": "See SIZES",
       "SINGULAR": "Subscription",
       "PLURAL": "Subscriptions",
       "DESCRIPTION": "",
-      "TODO": "To Subscribe",
-      "DOING": "Subscribing",
-      "DONE": "Subscribed",
+      "FUTURE": "To Subscribe",
+      "PRESENT": "Subscribing",
+      "PAST": "Subscribed",
       "SIZING": "[See SIZES]"
+    },
+    "SUBTRACTION": {
+      "__COMMENTS": ".See NUMBERS, ARITHMETIC, ADDITION, MULTIPLY, DIVIDE",
+      "SINGULAR": "Subtraction",
+      "PLURAL": "Subtractions",
+      "DESCRIPTION": "",
+      "COMMAND": "Subtract",
+      "FUTURE": "To Subtract",
+      "PRESENT": "Subtracting",
+      "PAST": "Subtracted"
     },
     "SUGGESTIONS": {
       "__COMMENTS": "See ISSUES, PROPOSALS",
       "SINGULAR": "Suggestion",
       "PLURAL": "Suggestion",
       "DESCRIPTION": "",
-      "TODO": "To Suggest",
-      "DOING": "Suggesting",
-      "DONE": "Suggested"
+      "FUTURE": "To Suggest",
+      "PRESENT": "Suggesting",
+      "PAST": "Suggested"
     },
     "SUPPORT": {
       "__COMMENTS": "Compare with [self] HELP. See ASSISTANCE, OPERATIONS, MAINTAINANCE, ROLES",
       "SINGULAR": "Support",
       "PLURAL": "N/A",
       "DESCRIPTION": "Assistance",
-      "TODO": "To Support",
-      "DOING": "Supporting",
-      "DONE": "Supported"
+      "FUTURE": "To Support",
+      "PRESENT": "Supporting",
+      "PAST": "Supported"
+    },
+    "SUPPORTERS": {
+      "__COMMENTS": "See OPERATORS, MONITORERS, MAINTAINERS",
+      "SINGULAR": "Support",
+      "PLURAL": "N/A",
+      "DESCRIPTION": "",
+      "FUTURE": "To Support",
+      "PRESENT": "Supporting",
+      "PAST": "Supported"
     },
     "SUPPLIERS": {
       "__COMMENTS": "See PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS",
       "SINGULAR": "Supplier",
       "PLURAL": "Suppliers",
       "DESCRIPTION": "Suppliers",
-      "TODO": "To Supply",
-      "DOING": "Supplying",
-      "DONE": "Supplied"
+      "FUTURE": "To Supply",
+      "PRESENT": "Supplying",
+      "PAST": "Supplied"
     },
     "SYSTEMS": {
       "__COMMENTS": "Generally a subset of the SETTINGS Area.",
       "SINGULAR": "System",
       "PLURAL": "Systems",
       "DESCRIPTION": "",
-      "TODO": "To systematize",
-      "DOING": "Systematizing",
-      "DONE": "Systematized"
+      "FUTURE": "To systematize",
+      "PRESENT": "Systematizing",
+      "PAST": "Systematized"
     },
     "TAGS": {
       "__COMMENTS": "See CLASSIFICATIONS, ORGANISATIONS.",
       "SINGULAR": "System",
       "PLURAL": "Systems",
       "DESCRIPTION": "",
-      "TODO": "To Tag",
-      "DOING": "Tagging",
-      "DONE": "Tagged"
+      "FUTURE": "To Tag",
+      "PRESENT": "Tagging",
+      "PAST": "Tagged"
     },
     "TASKS": {
       "__COMMENTS": "See TODOS, PROJECTS area.",
       "SINGULAR": "Task",
       "PLURAL": "Tasks",
-      "TODO": "To Do",
-      "DOING": "Doing",
-      "DONE": "Done",
+      "FUTURE": "To Do",
+      "PRESENT": "Doing",
+      "PAST": "Done",
       "DESCRIPTION": "Tasks to accomplish projects",
       "TITLE_INSTRUCTIONS": "",
       "TITLE_PLACEHOLDER": "",
@@ -3007,58 +3219,52 @@
       "SINGULAR": "Team",
       "PLURAL": "Teams",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "TEMPLATE": {
       "__COMMENTS": "",
       "SINGULAR": "Template",
       "PLURAL": "Templates",
       "DESCRIPTION": "",
-      "TODO": "To Template",
-      "DOING": "Templating",
-      "DONE": "Templated"
+      "FUTURE": "To Template",
+      "PRESENT": "Templating",
+      "PAST": "Templated"
     },
     "TENANCIES": {
       "__COMMENTS": "WARNING: Tenancy is a technical term. Avoid using. Prefer ACCOUNT.",
       "SINGULAR": "Tenancy",
       "PLURAL": "Tenancies",
       "DESCRIPTION": "",
-      "TODO": "To Tenant",
-      "DOING": "Tenanting",
-      "DONE": "Tenanted",
+      "FUTURE": "To Tenant",
+      "PRESENT": "Tenanting",
+      "PAST": "Tenanted",
       "FIELDS": {
         "TENANCY_INSTRUCTIONS": "Please provide the account name:",
         "TENANCY_PLACEHOLDER": "Account Title"
       }
     },
-    "TERMS_AND_CONDITIONS": {
-      "__COMMENTS": "See STATEMENTS, POLICIES, CONTRACTS",
-      "SINGULAR": "Terms & Conditions",
-      "PLURAL": "N/A",
+    "TERMS": {
+      "__COMMENTS": "See STATEMENTS, POLICIES, CONTRACTS, DISCLOSURES",
+      "SINGULAR": "",
+      "PLURAL": "Terms",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
-    },
-    "TERMS_OF_USE": {
-      "__COMMENTS": "See STATEMENTS, POLICIES, CONTRACTS",
-      "SINGULAR": "Terms of Use",
-      "PLURAL": "N/A",
-      "DESCRIPTION": "Service users are expected to adhere to common behaviour",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
+      "TERMS_AND_CONDITIONS": "Terms And Conditions",
+      "TERMS_OF_USE": "Terms Of Use",
+      "TERMS_OF_SERVICE": "Terms Of Service"
     },
     "THEMES": {
       "__COMMENTS": "",
       "SINGULAR": "Theme",
       "PLURAL": "Themes",
       "DESCRIPTION": "",
-      "TODO": "To Theme",
-      "DOING": "Theming",
-      "DONE": "Themed",
+      "FUTURE": "To Theme",
+      "PRESENT": "Theming",
+      "PAST": "Themed",
       "CUSTOMISER": "Theme Customiser",
       "LAYOUT": "Layout",
       "COLOUR_SCHEME": "Colour Scheme",
@@ -3070,14 +3276,16 @@
       "SIDEBAR_IMAGE": "Sidebar Image",
       "PRELOADER": "Preloader"
     },
-    "TIME": {
+    "TIMES": {
+      "247": "24/7",
+      "925": "9am to 5pm",
       "__COMMENTS": "See DATE.",
       "SINGULAR": "Time",
       "PLURAL": "Times",
       "DESCRIPTION": "",
-      "TODO": "To Time",
-      "DOING": "Timing",
-      "DONE": "Timed",
+      "FUTURE": "To Time",
+      "PRESENT": "Timing",
+      "PAST": "Timed",
       "HOUR": "Hour",
       "HOURS": "Hours",
       "MINUTE": "Minute",
@@ -3085,25 +3293,30 @@
       "SECOND": "Second",
       "SECONDS": "Seconds",
       "MORNING": "Morning",
-      "AFTERNOON": "Afternoon"
+      "AFTERNOON": "Afternoon",
+      "AM": "am",
+      "PM": "pm",
+      "WORKING_HOURS": "Working Hours",
+      "HOURS_AVAILABLE": "Hours Available",
+      "EVERY_DAY": "Every day"
     },
     "TIMELINES": {
       "__COMMENTS": "",
       "SINGULAR": "Timeline",
       "PLURAL": "Timelines",
       "DESCRIPTION": "Our expected timeline of when we'll be adding features...",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "TODOS": {
       "__COMMENTS": "See TASKS, ISSUES, SUGGESTIONS",
       "SINGULAR": "Todo",
       "PLURAL": "Todos",
       "DESCRIPTION": "",
-      "TODO": "To Do",
-      "DOING": "Doing",
-      "DONE": "Done"
+      "FUTURE": "To Do",
+      "PRESENT": "Doing",
+      "PAST": "Done"
     },
     "TRANSACTIONS": {
       "__COMMENTS": "See COMMERCE.",
@@ -3111,9 +3324,9 @@
       "PLURAL": "Transactions",
       "DESCRIPTION": "",
       "DEMONSTRATION": "Demonstration",
-      "TODO": "To Transact",
-      "DOING": "Transacting",
-      "DONE": "Transacted",
+      "FUTURE": "To Transact",
+      "PRESENT": "Transacting",
+      "PAST": "Transacted",
       "GIFT": "Gift",
       "TRIAL": "Trial",
       "SUBSCRIPTION": "Subscription",
@@ -3125,18 +3338,18 @@
       "SINGULAR": "Trust",
       "PLURAL": "N/A",
       "DESCRIPTION": "Trusted by",
-      "TODO": "To Trust",
-      "DOING": "Trusting",
-      "DONE": "Trusted"
+      "FUTURE": "To Trust",
+      "PRESENT": "Trusting",
+      "PAST": "Trusted"
     },
     "UI": {
       "__COMMENTS": "",
       "SINGULAR": "UI",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "ELEMENTS": {
         "SINGULAR": "",
         "PLURAL": "",
@@ -3198,27 +3411,27 @@
       "SINGULAR": "User",
       "PLURAL": "Users",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A"
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "VALUES": {
       "__COMMENTS": "",
       "SINGULAR": "Value",
       "PLURAL": "Values",
       "DESCRIPTION": "",
-      "TODO": "To Value",
-      "DOING": "Valuing",
-      "DONE": "Valued"
+      "FUTURE": "To Value",
+      "PRESENT": "Valuing",
+      "PAST": "Valued"
     },
     "VALIDATION": {
       "__COMMENTS": "See EVALUATIONS",
       "SINGULAR": "Validation",
       "PLURAL": "Validations",
       "DESCRIPTION": "",
-      "TODO": "Validating",
-      "DOING": "Validating",
-      "DONE": "Validated",
+      "FUTURE": "Validating",
+      "PRESENT": "Validating",
+      "PAST": "Validated",
       "REQUIRED": "Required.",
       "TOO_SHORT": "Too short",
       "TOO_LONG": "Too long",
@@ -3232,9 +3445,9 @@
       "SINGULAR": "View",
       "PLURAL": "Views",
       "DESCRIPTION": "",
-      "TODO": "To View",
-      "DOING": "Viewing",
-      "DONE": "Viewed",
+      "FUTURE": "To View",
+      "PRESENT": "Viewing",
+      "PAST": "Viewed",
       "VIEW": "View",
       "VIEW_ALL": "View All"
     },
@@ -3243,9 +3456,9 @@
       "SINGULAR": "Vehicle",
       "PLURAL": "Vehicles",
       "DESCRIPTION": "",
-      "TODO": "To Drive",
-      "DOING": "Driving",
-      "DONE": "Drove",
+      "FUTURE": "To Drive",
+      "PRESENT": "Driving",
+      "PAST": "Drove",
       "BOAT": "Boat",
       "WHEELBARROW": "Wheelbarrow",
       "SKATEBOARD": "Bicycle",
@@ -3262,18 +3475,27 @@
       "SINGULAR": "Vendor",
       "PLURAL": "Vendors",
       "DESCRIPTION": "",
-      "TODO": "To Sell",
-      "DOING": "Selling",
-      "DONE": "Sold"
+      "FUTURE": "To Sell",
+      "PRESENT": "Selling",
+      "PAST": "Sold"
+    },
+    "UNAVAILABLE": {
+      "__COMMENTS": "See AVAILABLE",
+      "SINGULAR": "Unavailable",
+      "PLURAL": "N/A",
+      "DESCRIPTION": "",
+      "FUTURE": "Will be unavailable",
+      "PRESENT": "Is Unavailable",
+      "PAST": "Was Unavailable"
     },
     "WEATHER": {
       "__COMMENTS": "",
       "SINGULAR": "Weather",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "N/A",
-      "DOING": "N/A",
-      "DONE": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A",
       "SUN": "Sun",
       "MOON": "Moon",
       "CLOUDS": "Clouds",
@@ -3291,18 +3513,18 @@
       "SINGULAR": "Welcome",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Welcome",
-      "DOING": "Welcoming",
-      "DONE": "Welcomed"
+      "FUTURE": "To Welcome",
+      "PRESENT": "Welcoming",
+      "PAST": "Welcomed"
     },
     "WORK": {
       "__COMMENTS": "Investment into changing STATUS of Resources and Records to deliver OUTCOMES.",
       "SINGULAR": "Work",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
-      "TODO": "To Work",
-      "DOING": "Working",
-      "DONE": "Worked",
+      "FUTURE": "To Work",
+      "PRESENT": "Working",
+      "PAST": "Worked",
       "EFFORT": "Effort",
       "SKILL": "Skill",
       "ASSESSMENT": "Assessment",
@@ -3331,68 +3553,89 @@
       "CHECK_YOUR_EMAIL": "Check your Email"
     }
   },
-  "APPS": {
-    "DESCRIPTION": "",
-    "SPIKE": {
-      "SINGULAR": "Spike",
-      "PLURAL": "Spikes",
-      "DESCRIPTION": ""
+    "APPS": {
+      "DESCRIPTION": "",
+      "SPIKE": {
+        "SINGULAR": "Spike",
+        "PLURAL": "Spikes",
+        "DESCRIPTION": ""
+      },
+      "ARCHITECTURE": {
+        "SINGULAR": "Architecture",
+        "DESCRIPTION": ""
+      },
+      "EDUCATION": {
+        "SINGULAR": "Education",
+        "DESCRIPTION": ""
+      },
+      "HEALTH": {
+        "SINGULAR": "Health",
+        "DESCRIPTION": ""
+      }
     },
-    "ARCHITECTURE": {
-      "SINGULAR": "Architecture",
-      "DESCRIPTION": ""
-    },
-    "EDUCATION": {
-      "SINGULAR": "Education",
-      "DESCRIPTION": ""
-    },
-    "HEALTH": {
-      "SINGULAR": "Health",
-      "DESCRIPTION": ""
-    }
-  },
-  "CUSTOM": {
-    "SITE": {
-      "PAGES": {
-        "INTRO": {
-          "TITLE": "BASE",
-          "DESCRIPTION": "The better way to build value.",
-          "MORE": ""
-        },
-        "CAPABILITIES": {
-          "TITLE": "Capabilities",
-          "DESCRIPTION": "Anytime, Anywhere, Any Device - have a deeper understanding of your whole service.",
-          "MORE": "",
-          "PEOPLE_TITLE": "People",
-          "PEOPLE_DESCRIPTION": "Organise and enable people...",
-          "GROUPS_TITLE": "Groups",
-          "GROUPS_DESCRIPTION": "...in manageable groups...",
-          "PARTICIPATION_TITLE": "Participate",
-          "PARTICIPATION_DESCRIPTION": "...to participate...",
-          "PRESENCE_TITLE": "Presence",
-          "PRESENCE_DESCRIPTION": "...remotely or in person...",
-          "PLACES_TITLE": "Places",
-          "PLACES_DESCRIPTION": "...at any available location...",
-          "PROGRESS_TITLE": "Progression",
-          "PROGRESS_DESCRIPTION": "...to progress...",
-          "PRODUCTS_TITLE": "Products",
-          "PRODUCTS_DESCRIPTION": "...through curriculum meterial...",
-          "PLANS_TITLE": "Plans",
-          "PLANS_DESCRIPTION": "...according to plan...",
-          "ACHIEVEMENT_TITLE": "Achievements",
-          "ACHIEVEMENT_DESCRIPTION": "...towards lifelong valued achievements."
-        },
-        "FEATURES": {
-          "TITLE": "Features",
-          "DESCRIPTION": "Insights over the whole thing...",
-          "MORE": "Anytime, Anywhere, from any device, have insights into the whole system at any level."
-        },
-        "TEAM": {
-          "TITLE": "The Team",
-          "DESCRIPTION": "Some of the core team that is behind the automation that has your back.",
-          "MORE": "Many of us have worked together on delivering several successful projects over many years."
+    "CUSTOM": {
+      "SITE": {
+        "HOME": {
+          "INTRO": {
+            "TITLE": "BASE",
+            "DESCRIPTION": "The better way to build value.",
+            "MORE": ""
+          },
+          "CAPABILITIES": {
+            "TITLE": "Capabilities",
+            "DESCRIPTION": "Anytime, Anywhere, Any Device - have a deeper understanding of your whole service.",
+            "MORE": "",
+            "PEOPLE_TITLE": "People",
+            "PEOPLE_DESCRIPTION": "Organise and enable people...",
+            "GROUPS_TITLE": "Groups",
+            "GROUPS_DESCRIPTION": "...in manageable groups...",
+            "PARTICIPATION_TITLE": "Participate",
+            "PARTICIPATION_DESCRIPTION": "...to participate...",
+            "PRESENCE_TITLE": "Presence",
+            "PRESENCE_DESCRIPTION": "...remotely or in person...",
+            "PLACES_TITLE": "Places",
+            "PLACES_DESCRIPTION": "...at any available location...",
+            "PROGRESS_TITLE": "Progression",
+            "PROGRESS_DESCRIPTION": "...to progress...",
+            "PRODUCTS_TITLE": "Products",
+            "PRODUCTS_DESCRIPTION": "...through curriculum meterial...",
+            "PLANS_TITLE": "Plans",
+            "PLANS_DESCRIPTION": "...according to plan...",
+            "ACHIEVEMENT_TITLE": "Achievements",
+            "ACHIEVEMENT_DESCRIPTION": "...towards lifelong valued achievements."
+          },
+          "FEATURES": {
+            "TITLE": "Features",
+            "DESCRIPTION": "....",
+            "MORE": "....",
+            "MORE_INFO": "...."
+          },
+          "DASHBOARDS": {
+            "TITLE": "Dashboards",
+            "DESCRIPTION": "We've developed dashboards to sprovide you the right level information depending on your needs: the whole system, just one org, one group, or one person."
+          },
+          "ENDORSEMENTS": {
+            "TITLE": "But DON'T Take Our Word For It!",
+            "DESCRIPTION": "Take instead the perspective of other's who have used it first!"
+          },
+          "FAQS": {
+            "TITLE": "Frequently Asked Questions",
+            "DESCRIPTION": "The following are the most common questions. Have more? We have more answers."
+          },
+          "PLANS": {
+            "TITLE": "Choose the Plan that's right for you!",
+            "DESCRIPTION": "Straight forward, flexible, inexpensive plans for every situation."
+          },
+          "TEAM": {
+            "TITLE": "The Team",
+            "DESCRIPTION": "Some of the core team that is behind the automation that has your back.",
+            "MORE": "Many of us have worked together on delivering several successful projects over many years."
+          },
+          "CONTACT": {
+            "TITLE": "Contact Us",
+            "DESCRIPTION": "We're eager to help you to meet your objectives with our services."
+          }
         }
       }
     }
   }
-}

@@ -29,6 +29,7 @@ import { BaseCorePagesInformationCorrectionsComponent } from './components/corre
 import { BaseCorePagesInformationSupportComponent } from './components/support/component';
 import { BaseCorePagesInformationIndexComponent } from './components/index/component';
 import { BaseCorePagesInformationContactComponent } from './components/contact/component';
+import { BaseAppsPagesLandingIndexHeaderComponent } from './components/index/components/header/component';
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
 
@@ -73,6 +74,7 @@ import { BaseCorePagesInformationContactComponent } from './components/contact/c
     // define what Components belong to this Module (i.e., are not `standalone`)
     //BaseInformationRouteOutletComponent,
     // Spike Components:
+    BaseAppsPagesLandingIndexHeaderComponent,
     BaseCorePagesInformationIndexComponent,
     BaseCorePagesInformationContactComponent,
     BaseCorePagesInformationCorrectionsComponent,

@@ -1,14 +1,19 @@
-// Import dependencies:
+// Rx:
 import { BehaviorSubject, Observable, map, of, switchMap, tap, timer } from 'rxjs';
+// Ag:
 import { Injectable } from '@angular/core';
-
+// Etc:
+import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
+import { ItemsCollectionServiceBase } from './base/itemsCollection.service.base';
 import { DiagnosticsTraceService } from './diagnostics.service';
 import { SystemService } from './system.service';
 import { NotificationsRepositoryService } from './repositories/system.notification.repository.service';
+// Models:
 import { SystemNotification } from '../models/data/notification.model';
-import { ItemsCollectionServiceBase } from './base/itemsCollection.service.base';
-import { TranslateService } from '@ngx-translate/core';
-import { CookieService } from 'ngx-cookie-service';
 
 
 

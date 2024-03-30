@@ -1,8 +1,17 @@
-// Import dependencies:
+// Rx:
+//
+// Ag:
 import { Injectable } from '@angular/core';
-
-import { system as importedSystemConst } from "../constants/system";
-
+// Etc:
+//
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
+//
+// Model:
+//
+// Data:
+//
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })

@@ -1,7 +1,14 @@
-// Import dependencies:
+// Rx:
 import { BehaviorSubject, Observable } from 'rxjs';
+// Ag:
 import { Injectable } from '@angular/core';
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
 import { EnvironmentService } from './environment.service';
+// Model:
+//
+// Data:
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })

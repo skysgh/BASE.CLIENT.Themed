@@ -1,6 +1,16 @@
+// Rx:
+//
+// Ag:
 import { Component, OnInit, Renderer2 } from '@angular/core';
+// Etc:
+//
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { SystemService } from '../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
+// Models:
+// Data:
 
 @Component({
   selector: 'app-base-common-components-google-analytics',
@@ -8,6 +18,8 @@ import { DiagnosticsTraceService } from '../../../../services/diagnostics.servic
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsGoogleAnalyticsComponent implements OnInit {
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
 
   public load: boolean = true;

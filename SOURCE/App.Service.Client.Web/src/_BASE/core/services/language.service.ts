@@ -1,14 +1,23 @@
+// Rx:
 import { Observable, BehaviorSubject, of, timer } from 'rxjs';
-import { tap , map, switchMap} from 'rxjs/operators';
+import { tap, map, switchMap } from 'rxjs/operators';
+// Ag:
 import { Injectable } from '@angular/core';
+// Etc:
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
-import { SystemLanguagesRepositoryService } from './repositories/system.languages.repository.service';
-import { SystemLanguage } from '../models/data/system-language.model';
-import { DiagnosticsTraceService } from './diagnostics.service';
-import { SystemNotification } from '../models/data/notification.model';
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
 import { ItemsCollectionServiceBase } from './base/itemsCollection.service.base';
+import { SystemLanguagesRepositoryService } from './repositories/system.languages.repository.service';
 import { TranslationService } from './translation.service';
+import { DiagnosticsTraceService } from './diagnostics.service';
+// Models:
+import { SystemLanguage } from '../models/data/system-language.model';
+import { SystemNotification } from '../models/data/notification.model';
+// Data:
+//
 
 // Example
 class SystemLanguageVM extends SystemLanguage {

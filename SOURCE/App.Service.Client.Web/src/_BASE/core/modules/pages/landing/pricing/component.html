@@ -55,7 +55,8 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.members}}</b> {{'BASE.DATES.MEMBERS.PLURAL' | translate }}
+                                      {{'BASE.DATES.QUANTITIES.UPTO' | translate}}
+                                      <b>{{data.members}}</b> {{'BASE.DATES.MEMBERS.PLURAL' | translate }}
                                     </div>
                                   </div>
                                 </li>
@@ -65,7 +66,8 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.partners}}</b> {{'BASE.DATES.MEMBERS.PARTNERS'}}
+                                      {{'BASE.DATES.QUANTITIES.UPTO' | translate}}
+                                      <b>{{data.partners}}</b> {{'BASE.DATES.MEMBERS.PARTNERS' | translate}}
                                     </div>
                                   </div>
                                 </li>
@@ -75,7 +77,8 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.groups}}</b> {{'BASE.DATES.GROUPS.PLURAL' | translate}}
+                                      {{'BASE.DATES.QUANTITIES.UPTO' | translate}}
+                                      <b>{{data.groups}}</b> {{'BASE.DATES.GROUPS.PLURAL' | translate}}
                                     </div>
                                   </div>
                                 </li>
@@ -85,7 +88,8 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.projects}}</b> {{'BASE.DATES.PROJECTS.PLURAL' | translate}}
+                                      {{'BASE.DATES.QUANTITIES.UPTO' | translate}}
+                                      <b>{{data.projects}}</b> {{'BASE.DATES.PROJECTS.PLURAL' | translate}}
                                     </div>
                                   </div>
                                 </li>
@@ -95,7 +99,8 @@
                                       <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Upto <b>{{data.resources}}</b> {{'BASE.DATES.RESOURCES.PLURAL' | translate}}
+                                      {{'BASE.DATES.QUANTITIES.UPTO' | translate}}
+                                      <b>{{data.resources}}</b> {{'BASE.DATES.RESOURCES.PLURAL' | translate}}
                                     </div>
                                   </div>
                                 </li>
@@ -106,7 +111,7 @@
                                       <i class="ri-{{data.supportClassSymbol}}-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <b>24/7</b> Support
+                                      <b>{{'BASE.TIME.247'|translate }}</b> {{'BASE.SUPPORT.SINGULAR'|translate }}
                                     </div>
                                   </div>
                                 </li>
@@ -116,7 +121,8 @@
                                       <i class="ri-{{data.storageClassSymbol}}-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <b>Unlimited</b> Storage
+                                      <b>{{'BASE.DATES.QUANTITIES.UNLIMITED' | translate}}</b>
+                                      {{'BASE.STORAGE.SINGULAR' | translate}}
                                     </div>
                                   </div>
                                 </li>
@@ -126,7 +132,7 @@
                                       <i class="ri-{{data.domainClassSymbol}}-circle-fill fs-15 align-middle"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      Domain
+                                      {{'BASE.DOMAINS.SINGULAR' | translate}}
                                     </div>
                                   </div>
                                 </li>
@@ -150,7 +156,11 @@
           <li [ngbNavItem]="2" class="nav-item">
             <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
               {{'BASE.SCHEDULING.YEARLY'|translate}}
-              <span class="badge bg-success">(Discounted)</span>
+              <span class="badge bg-success">
+                (
+                {{'BASE.DISCOUNTS.PAST' | translate}}
+                )
+              </span>
             </a>
             <ng-template ngbNavContent>
  

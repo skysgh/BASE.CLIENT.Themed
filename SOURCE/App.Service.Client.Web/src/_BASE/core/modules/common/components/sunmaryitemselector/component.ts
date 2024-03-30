@@ -1,13 +1,23 @@
+// Rx:
+//
+// Ag:
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { SummaryItemVTO } from '../../../../models/SummaryItemVTO.model';
+// Constants:
+import { system as importedSystemConst } from '../../../../constants/system';
+// Services:
 import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
-
+// Models:
+import { SummaryItemVTO } from '../../../../models/SummaryItemVTO.model';
+// Data:
+//
 @Component({
   selector: 'app-base-common-components-summaryitem-selector',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsSummaryItemSelectorComponent {
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
   
   @Input() // Adjust the duration as needed

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProcessModel } from './process.model';
 import { TranslateService } from '@ngx-translate/core';
-import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
-import { SystemService } from '../../../../../services/system.service';
+import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+import { SystemService } from '../../../../../../services/system.service';
 
 
 @Component({

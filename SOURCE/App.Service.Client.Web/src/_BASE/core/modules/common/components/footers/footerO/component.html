@@ -26,7 +26,8 @@
     - Facebook, Pinterest, linkedin, instagram, youtube...
 TODO:
  -->
-<footer class="custom-footer bg-dark py-5 position-relative" [id]="sectionsInfo.footer.id">
+<!-- [id]="sectionsInfo.footer.id" -->
+<footer class="custom-footer bg-dark py-5 position-relative">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 mt-4">
@@ -40,6 +41,7 @@ TODO:
           </div>
         </div>
       </div>
+
 
       <div class="col-lg-7 ms-lg-auto">
         <div class="row">
@@ -85,7 +87,7 @@ TODO:
         <div>
           <p class="copy-rights mb-0">
             {{system.dynamic.copyrights.year}} © {{system.title || ''}} -
-            {{'BASE.CREDITS.DEVELOPED_BY_' }} | translate
+            {{'BASE.CREDITS.DEVELOPED_BY_' | translate }}
             {{system.dynamic.developer.title || 'Undefined, Inc.'}}
           </p>
         </div>
@@ -93,43 +95,7 @@ TODO:
       <!-- SOCIAL: -->
       <div class="col-sm-6">
         <div class="text-sm-end mt-3 mt-sm-0">
-          <ul class="list-inline mb-0 footer-social-link">
-            <li class="list-inline-item">
-              <a href="javascript: void(0);" class="avatar-xs d-block">
-                <div class="avatar-title rounded-circle">
-                  <i class="ri-facebook-fill"></i>
-                </div>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="javascript: void(0);" class="avatar-xs d-block">
-                <div class="avatar-title rounded-circle">
-                  <i class="ri-github-fill"></i>
-                </div>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="javascript: void(0);" class="avatar-xs d-block">
-                <div class="avatar-title rounded-circle">
-                  <i class="ri-linkedin-fill"></i>
-                </div>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="javascript: void(0);" class="avatar-xs d-block">
-                <div class="avatar-title rounded-circle">
-                  <i class="ri-google-fill"></i>
-                </div>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="javascript: void(0);" class="avatar-xs d-block">
-                <div class="avatar-title rounded-circle">
-                  <i class="ri-dribbble-line"></i>
-                </div>
-              </a>
-            </li>
-          </ul>
+          <app-base-core-common-components-socialmedialinks></app-base-core-common-components-socialmedialinks>
         </div>
       </div>
     </div>

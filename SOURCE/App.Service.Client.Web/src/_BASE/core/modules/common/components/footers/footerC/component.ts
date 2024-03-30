@@ -1,3 +1,5 @@
+// Rx:
+//
 // Ag:
 import { Component, OnInit } from '@angular/core';
 // Constants:
@@ -6,7 +8,10 @@ import { system as importedSystemConst } from '../../../../../constants/system';
 import { SystemService } from '../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 import { TranslateService } from '@ngx-translate/core';
-
+// Models:
+//
+// Data:
+//
 
 @Component({
   selector: 'app-base-common-components-footer-c',
@@ -15,8 +20,8 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsFooterCComponent implements OnInit {
-
-  private system = importedSystemConst;
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
   public year: number = new Date().getFullYear();
 

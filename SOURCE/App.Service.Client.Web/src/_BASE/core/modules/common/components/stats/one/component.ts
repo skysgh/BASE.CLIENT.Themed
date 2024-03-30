@@ -1,4 +1,14 @@
+// Rx:
+//
+// Ag:
 import { Component, OnInit, Input } from '@angular/core';
+// Etc:
+//
+// Constants:
+import { system as importedSystemConst } from '../../../../../constants/system';
+// Services:
+//
+// Models:
 import { StatOneVTO } from '../../../../../models/view/stat-on.vto';
 
 /**
@@ -12,6 +22,8 @@ import { StatOneVTO } from '../../../../../models/view/stat-on.vto';
   styleUrls: ['./component.scss']
 })
 export class BaseCommonComponentsStatsOneComponent implements OnInit {
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
   @Input()
   public stats: StatOneVTO | undefined;

@@ -1,12 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+// Rx:
 import { Observable, of } from 'rxjs';
+// Ag:
+import { Component, OnInit } from '@angular/core';
+// Etc:
+//
+// Constants:
+import { system as importedSystemConst } from '../../../../../constants/system';
+// Services:
 import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
 import { SystemService } from '../../../../../services/system.service';
-import { System } from '../../../../../constants/contracts/system';
 import { DashboardService } from '../../../../../services/dashboard.service';
+// Models:
 import { Stat } from '../../../../../models/data/stat.model';
 import { StatOneVTO } from '../../../../../models/view/stat-on.vto';
-
+// Data:
 
 
 @Component({
@@ -15,10 +22,11 @@ import { StatOneVTO } from '../../../../../models/view/stat-on.vto';
   styleUrls: ['./component.scss']
 })
 export class DashboardComponent implements OnInit {
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
   public summaries$: Observable<StatOneVTO[]> = of([]);
 
-  system: System;
 
   constructor(
     private systemService: SystemService,

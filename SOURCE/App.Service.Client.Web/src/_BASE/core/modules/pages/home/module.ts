@@ -5,7 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-//Import template:
+// Etc:
+//import { JsonFormsModule } from '@jsonforms/angular';
+//import { JsonFormsAngularMaterialModule } from '@jsonforms/angular-material';//Import template:
+
 //import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../modules/components/components/breadcrumbs/component';
 
 import { BaseAppsPagesInformationIndexComponent } from './components/component';
@@ -18,7 +21,6 @@ import { BaseAppsPagesLandingIndexCounterComponent } from './components/componen
 import { BaseAppsPagesLandingIndexCtaComponent } from './components/components/cta/component';
 import { BaseAppsPagesLandingIndexDesignedComponent } from './components/components/designed/component';
 import { BaseAppsPagesLandingIndexFaqsComponent } from './components/components/faqs/component';
-import { BaseAppsPagesLandingIndexFooterComponent } from './components/components/footer/component';
 import { BaseAppsPagesLandingIndexPlanComponent } from './components/components/plan/component';
 import { BaseAppsPagesLandingIndexReviewComponent } from './components/components/endorsements/component';
 import { BaseAppsPagesLandingIndexCapabilitiesComponent } from './components/components/capabilities/component';
@@ -50,6 +52,7 @@ import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/
     CommonModule,
     FormsModule,
     SharedModule,
+    BaseCoreCommonModule,
     // Module specific:
     //ScrollToModule,
     //SlickCarouselModule,
@@ -64,6 +67,7 @@ import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/
     NgbCollapseModule,
     SlickCarouselModule,
     CountUpModule,
+    //WidgetLibraryModule // Include WidgetLibraryModule here
   //  LandingScrollspyDirective,
     //  ScrollspyDirective
   ScrollToModule.forRoot()
@@ -104,7 +108,6 @@ import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/
     BaseAppsPagesLandingIndexDesignedComponent,
     BaseAppsPagesLandingIndexPlanComponent,
     BaseAppsPagesLandingIndexFaqsComponent,
-    BaseAppsPagesLandingIndexFooterComponent,
     BaseAppsPagesLandingIndexReviewComponent,
     BaseAppsPagesLandingIndexCounterComponent,
     BaseAppsPagesLandingIndexWorkProcessComponent,

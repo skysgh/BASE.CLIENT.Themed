@@ -1,10 +1,17 @@
+// Rx:
+//
+// Ag:
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+// Etc:
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
 import { DiagnosticsTraceService } from './diagnostics.service';
 import { SystemService } from './system.service';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({ providedIn: 'root' })

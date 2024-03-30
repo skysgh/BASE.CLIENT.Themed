@@ -1,16 +1,25 @@
-// Import dependencies:
+// Rx:
+import { Observable, of } from 'rxjs';
+// Ag:
 import { Injectable } from '@angular/core';
-import { Stat } from '../models/data/stat.model';
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+// Services:
 import { DiagnosticsTraceService } from './diagnostics.service';
 import { DashboardRepositoryService } from './repositories/dashboard.repositoryService';
-import { Observable, of } from 'rxjs';
+// Models:
+import { Stat } from '../models/data/stat.model';
 import { StatOneVTO } from '../models/view/stat-on.vto';
+// Data:
+// 
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
 
 // Injectable service to describe current environment
 export class DashboardService {
+  // make system/env config accessible by markup:
+  system = importedSystemConst;
 
   public constructor(
     private diagnosticsTraceService: DiagnosticsTraceService,
