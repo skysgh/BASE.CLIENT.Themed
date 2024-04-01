@@ -30,6 +30,8 @@ import { ToastService } from '../../../services/toast.service';
  * Login Component
  */
 export class LoginComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   // system settings
   sponsorTitle?: string;
@@ -42,14 +44,10 @@ export class LoginComponent implements OnInit {
   fieldTextType!: boolean;
   error = '';
   returnUrl!: string;
-  // set the current year
-  year: number = new Date().getFullYear();
-  system = importedSystemConst; 
   constructor(private titleService: TitleService, private systemService: SystemService, public translate: TranslateService, private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router,
     private authFackservice: AuthfakeauthenticationService, private route: ActivatedRoute, public toastService: ToastService) {
-
-    
-    this.system = this.systemService.system;
+    // Make system/env variables avaiable to view template:
+    //this.system = this.systemService.system;
 
      this.sponsorTitle = systemService.system.dynamic.sponsor.title;
     //

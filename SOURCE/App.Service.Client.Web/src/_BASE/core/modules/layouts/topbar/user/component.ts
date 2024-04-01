@@ -19,7 +19,7 @@ import { TokenStorageService } from '../../../../services/token-storage.service'
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
 
@@ -35,9 +35,8 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
     private TokenStorageService: TokenStorageService,
     private router: Router
   ) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 
   ngOnInit(): void {

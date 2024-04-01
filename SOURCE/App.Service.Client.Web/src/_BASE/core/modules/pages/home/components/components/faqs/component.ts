@@ -23,8 +23,9 @@ import { SystemFaq } from '../../../../../../models/data/systemEndorsement.model
  * Faqs Component
  */
 export class BaseAppsPagesLandingIndexFaqsComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
+
   sectionsInfo = importedSectionsInfo;
 
   faqs$: Observable<SystemFaq[]> = of([]);
@@ -33,7 +34,7 @@ export class BaseAppsPagesLandingIndexFaqsComponent implements OnInit {
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translate: TranslateService,
     private systemFaqsRepositoryService: SystemFaqsRepositoryService) {
-    this.system = systemService.system;
+//    this.system = systemService.system;
     
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   } 

@@ -22,7 +22,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
  * Bread Crumbs Component
  */
 export class BaseCoreCommonComponentsBreadcrumbsComponent implements OnInit {
-  // make system/env config accessible by markup:
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   @Input() title: string | undefined;

@@ -18,11 +18,11 @@ import { TranslationService } from '../../../../../services/translation.service'
   styleUrls: ['./component.scss']
 })
 export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
-
-  system = importedSystemConst;
 
   @Output()
   public markdown$: Observable<string|null> = of(null);
@@ -34,12 +34,12 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
     private diagnosticsTraceService: DiagnosticsTraceService,
     private translationService: TranslationService
   ) {
-
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 
-    var url: string = `${this.system.sources.assets.markdown}en/privacy.md`;
+    var url: string = `${this.system.sources.assets.public.dynamic.services.files.markdown}en/privacy.md`;
 
     this.getMarkdown(url);
 

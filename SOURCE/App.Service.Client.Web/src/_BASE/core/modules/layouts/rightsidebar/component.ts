@@ -24,6 +24,9 @@ import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMod
  * Right Sidebar component
  */
 export class BaseLayoutRightsidebarComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
+
   layout: string | undefined;
   mode: string | undefined;
   width: string | undefined;
@@ -41,7 +44,6 @@ export class BaseLayoutRightsidebarComponent implements OnInit {
   @ViewChild('filtetcontent') filtetcontent!: TemplateRef<any>;
   @Output() settingsButtonClicked = new EventEmitter();
 
-  system = importedSystemConst;
   constructor(
     private eventService: EventService,
     private offcanvasService: NgbOffcanvas,
@@ -50,7 +52,7 @@ export class BaseLayoutRightsidebarComponent implements OnInit {
   ) {
 
     // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    //this.system = systemService.system;
 }
 
   ngOnInit(): void {

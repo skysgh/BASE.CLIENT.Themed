@@ -18,16 +18,15 @@ import { SystemService } from '../../../../../services/system.service';
  * Logout Cover Component
  */
 export class CoverComponent implements OnInit {
-
-  // set the current year
-  year: number = new Date().getFullYear();
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
   constructor(systemService: SystemService, public translate: TranslateService) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 }
 
   ngOnInit(): void {

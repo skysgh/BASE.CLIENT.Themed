@@ -42,7 +42,7 @@
 //}
 
 //export function createTranslateLoader(http: HttpClient): any {
-//  return new TranslateHttpLoader(http, system.sources.assets.i18n, '.json');
+//  return new TranslateHttpLoader(http, system.sources.assets.public.static.default.i18n, '.json');
 //}
 //export function defaultLanguageFactory(cookieService: CookieService): string {
 //  const languageCode = cookieService.get('languageCode') || 'en'; // Retrieve language code from cookie, default to 'en'

@@ -20,7 +20,7 @@ import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPre
   styleUrls: ['./component.scss']
 })
 export class BaseLayoutRightSideContextThemeCustomiserComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   mode: string | undefined;
@@ -45,9 +45,8 @@ export class BaseLayoutRightSideContextThemeCustomiserComponent implements OnIni
     systemService: SystemService,
     public translate: TranslateService
   ) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 
   ngOnInit(): void {

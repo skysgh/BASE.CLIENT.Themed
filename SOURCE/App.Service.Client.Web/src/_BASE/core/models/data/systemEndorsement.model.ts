@@ -1,6 +1,6 @@
-import { ReferenceDataBase } from "./base/ReferenceDataBase";
+import { HasUntenantedEnabledTitleAndDescriptionBase } from "../base/HasUntenantedEnabledTitleAndDescriptionBase";
 
-export class SystemEndorsement extends ReferenceDataBase
+export class SystemEndorsement extends HasUntenantedEnabledTitleAndDescriptionBase
   //implements IHasEnabled, IHasTitleAndDescription, IHasLanguageCode, IHasImageId
 {
   //public userFK: any;
@@ -8,6 +8,6 @@ export class SystemEndorsement extends ReferenceDataBase
   public role: string = '';
 }
 
-export class SystemFaq extends ReferenceDataBase {
+export class SystemFaq extends HasUntenantedEnabledTitleAndDescriptionBase {
   public categoryId: string = '';
 }

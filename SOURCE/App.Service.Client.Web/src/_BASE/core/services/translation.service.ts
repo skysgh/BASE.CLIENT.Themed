@@ -35,7 +35,7 @@ export class TranslationService {
     return
     new TranslateHttpLoader(
       http,
-      this.systemService.system.sources.assets.i18n,
+      this.systemService.system.sources.assets.public.static.default.i18n,
       '.json');
   }
 

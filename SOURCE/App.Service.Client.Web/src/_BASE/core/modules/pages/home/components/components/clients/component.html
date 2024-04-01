@@ -14,7 +14,7 @@
                             @for (data of ClientLogo; track $index) {
                             <div class="swiper-slide" ngxSlickItem>
                                 <div class="client-images">
-                                    <img src="{{data.image}}" alt="client-img" class="mx-auto img-fluid d-block">
+                                    <img src="{{this.system.sources.assets.public.static.services.images.pages.home.trustedby}}{{data.image}}" alt="client-img" class="mx-auto img-fluid d-block">
                                 </div>
                             </div>}
                         </ngx-slick-carousel>

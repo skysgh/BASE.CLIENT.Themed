@@ -18,7 +18,7 @@ import { DiagnosticsTraceService } from "../../../../services/diagnostics.servic
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsSignUpInComponent implements OnInit, OnDestroy {
-  // make system/env config accessible by markup:
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
 

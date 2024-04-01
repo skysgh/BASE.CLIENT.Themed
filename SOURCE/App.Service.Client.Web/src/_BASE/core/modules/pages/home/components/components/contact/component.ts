@@ -25,7 +25,7 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
  * Contact Component
  */
 export class BaseAppsPagesLandingIndexContactComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
@@ -36,6 +36,7 @@ export class BaseAppsPagesLandingIndexContactComponent implements OnInit {
     systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translateService: TranslateService) {
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

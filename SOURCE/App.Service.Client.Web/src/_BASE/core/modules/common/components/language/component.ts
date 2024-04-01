@@ -22,7 +22,7 @@ import { TranslationService } from '../../../../services/translation.service';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
-  // make system/env config accessible by markup:
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   public systemLanguages$: Observable<SystemLanguage[]> = of([]);
@@ -41,10 +41,11 @@ export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
     public translationService: TranslationService,
     public _cookiesService: CookieService) {
 
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.initLanguages();
+
   }
 
   ngOnInit(): void {
@@ -87,7 +88,7 @@ export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
     // Same logic really, except for setting language.
     if (systemLanguage) {
       this.languageTitle = systemLanguage.title;
-      this.flagvalue = `${this.system.sources.assets.images.flags}${systemLanguage.languageCode}.svg`;
+      this.flagvalue = `${this.system.sources.assets.public.static.default.images.flags}${systemLanguage.languageCode}.svg`;
 
       if (setLanguage) {
         this.translationService.setLanguage(systemLanguage.languageCode!);
@@ -95,7 +96,7 @@ export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
       this.activeLanguageCode = systemLanguage.languageCode;
     }else {
       this.languageTitle = '...';
-      this.flagvalue = this.system.sources.assets.images.flags + '/00.svg';
+      this.flagvalue = this.system.sources.assets.public.static.default.images.flags + '/00.svg';
     }
   }
 

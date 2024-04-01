@@ -1,6 +1,6 @@
-import { HasTitleAndDescriptionBase } from "../../base/HasTitleAndDescriptionBase";
+import { HasTenantedEnabledTitleAndDescriptionBase } from "../../base/HasTenantedEnabledTitleAndDescriptionBase";
 
-export abstract class SummaryItemBase extends HasTitleAndDescriptionBase{
+export abstract class SummaryItemBase extends HasTenantedEnabledTitleAndDescriptionBase{
 
   public iconId: string = '';
   public values: { key: string, value: any }[] = [];

@@ -23,7 +23,7 @@ import { PdfService } from "../../../../services/pdf.service";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsPdfComponent implements OnInit, OnDestroy {
-  // make system/env config accessible by markup:
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   @Input("src")

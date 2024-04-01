@@ -1,16 +1,16 @@
+import { HasTenantedEnabledTitleAndDescriptionBase } from "../base/HasTenantedEnabledTitleAndDescriptionBase";
 import { IHasEnabled } from "../contracts/IHasEnabled";
 import { IHasImageId } from "../contracts/IHasImageId";
 import { IHasTitleAndDescription } from "../contracts/IHasTitleAndDescription";
 import { IHasTypeFK } from "../contracts/IHasTypeFK";
 import { IHasUUID } from "../contracts/IHasUUID";
-import { ReferenceDataBase } from "./base/ReferenceDataBase";
 
 /***
  * Model for Notifications
  * rendered at least in the layout frame's topbar.
  */
 export class Message
-  extends ReferenceDataBase
+  extends HasTenantedEnabledTitleAndDescriptionBase
   implements IHasUUID,IHasEnabled, IHasTypeFK, IHasImageId, IHasTitleAndDescription {
   // has id, title, description
 

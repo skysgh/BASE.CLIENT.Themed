@@ -17,13 +17,14 @@ import { TranslateService } from '@ngx-translate/core';
  * Maintenance Component
  */
 export class BaseCorePagesLandingMaintenanceComponent  {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   constructor(
     systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translate: TranslateService) {
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

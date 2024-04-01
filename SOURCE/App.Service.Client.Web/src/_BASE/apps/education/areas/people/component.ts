@@ -16,21 +16,21 @@ import { SummaryItemVTO } from "../../../../core/models/SummaryItemVTO.model";
   styleUrls: ['./component.scss']
 })
 export class BaseAppsEducationPeopleComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
-
-  system = importedSystemConst;
 
   damnit: SummaryItemVTO[] =
     [
 
 {
-  id: 1,
+        id: '00000000-0000-0000-0000-000000000001',
   enabled: true,
-  typeId: '01',
+        typeId: '00000000-0000-0000-0000-000000000001',
   type: 'spike',
-  typeImage: 'assets/images/types/person.png',
+  typeImage: '//assets/_BASE/public/dynamic/userdata/images/recordtypes/person.png',
   category: 'unset...',
   title: "titles...",
   description: "foo description",
@@ -43,11 +43,11 @@ export class BaseAppsEducationPeopleComponent implements OnInit {
   operations: []
 },
       {
-        id: 2,
+        id: '00000000-0000-0000-0000-000000000002',
         enabled: true,
-        typeId: '02',
+        typeId: '00000000-0000-0000-0000-000000000002',
         type: 'spike',
-        typeImage: 'assets/images/types/groups.png',
+        typeImage: '//assets/_BASE/public/dynamic/userdata/images/recordtypes/groups.png',
         category: 'unset...',
         title: "titles 2...",
         description: "bar description",
@@ -63,7 +63,8 @@ export class BaseAppsEducationPeopleComponent implements OnInit {
     ];
 
   constructor(systemService: SystemService, private diagnosticsTraceService: DiagnosticsTraceService, translateService: TranslateService) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 

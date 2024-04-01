@@ -42,11 +42,12 @@ import { SystemNotification } from '../../../models/data/notification.model';
   styleUrls: ['./topbar.component.scss']
 })
 export class BaseLayoutTopBarComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
   isDropdownOpen = false;
-  system = importedSystemConst;
 
   constructor(@Inject(DOCUMENT)
     private document: any,
@@ -63,9 +64,8 @@ export class BaseLayoutTopBarComponent implements OnInit {
     private router: Router,
     private TokenStorageService: TokenStorageService
   ) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
     
 

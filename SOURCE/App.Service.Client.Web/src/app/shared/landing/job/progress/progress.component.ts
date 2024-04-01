@@ -14,11 +14,11 @@ import { SystemService } from '../../../../../_BASE/core/services/system.service
   styleUrls: ['./progress.component.scss']
 })
 export class ProgressComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
   constructor(systemService: SystemService) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 
   ngOnInit(): void {

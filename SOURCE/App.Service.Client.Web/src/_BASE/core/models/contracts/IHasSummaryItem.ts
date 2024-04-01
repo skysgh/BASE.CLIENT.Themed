@@ -1,7 +1,7 @@
 import { IHasUUID } from "./IHasUUID";
 import { IHasTitleAndDescription } from "./IHasTitleAndDescription";
 
-export interface IHasSummarItem extends IHasUUID, IHasTitleAndDescription {
+export interface IHasSummaryItem extends IHasUUID, IHasTitleAndDescription {
   typeId: string;
   typeImage: string;
   type: string;

@@ -16,7 +16,7 @@ export class NotificationVTO {
     public state: boolean = true;
 
     public sender: string = '';
-  public senderImageName: string = ''; //"assets/images/users/avatar-2.jpg",
+  public senderImageName: string = ''; //"{{system.sources.assets.private.dynamic.userdata.images.users}}avatar-2.jpg",
     public iconId: string = '';
   public checkboxId: string = ''; //"all-notification-check02"
 

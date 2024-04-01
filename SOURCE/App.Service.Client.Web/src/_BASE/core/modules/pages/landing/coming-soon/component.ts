@@ -20,12 +20,13 @@ import { DiagnosticsTraceService } from '../../../../services/diagnostics.servic
  * ComingSoon Component
  */
 export class BaseCorePagesLandingComingSoonComponent  {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translate: TranslateService) {
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

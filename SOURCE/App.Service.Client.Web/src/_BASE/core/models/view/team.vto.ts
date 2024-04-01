@@ -1,5 +1,4 @@
-import { ImageBasedReferenceDataBase } from "../data/base/ImageBasedReferenceDataBase";
-import { ReferenceDataBase } from "../data/base/ReferenceDataBase";
+import { HasImageNameBasedTenantedReferenceDataBase } from "../base/HasImageNameBasedTenantedReferenceDataBase";
 
 
 //  {
@@ -7,6 +6,7 @@ import { ReferenceDataBase } from "../data/base/ReferenceDataBase";
 //    state: false
 //  },
 
-export class TeamVTO extends ImageBasedReferenceDataBase {
+
+export class TeamVTO extends HasImageNameBasedTenantedReferenceDataBase {
   public role: string = '';
 }

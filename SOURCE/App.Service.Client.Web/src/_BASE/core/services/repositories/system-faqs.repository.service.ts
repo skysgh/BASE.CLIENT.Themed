@@ -27,7 +27,7 @@ import { SystemEndorsement, SystemFaq } from "../../models/data/systemEndorsemen
 
 export class SystemFaqsRepositoryService
   extends SimpleGenericRepositoryServiceBase<SystemFaq> {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   constructor(
@@ -50,5 +50,7 @@ export class SystemFaqsRepositoryService
       httpClient,
       importedSystemConst.apis.systemFaqs
     );
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 }

@@ -17,12 +17,13 @@ import { MenuItem } from './menu.model';
   styleUrls: ['./two-column-sidebar.component.scss']
 })
 export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   menu: any;
   toggle: any = true;
   menuItems: MenuItem[] = [];
 
-  system = importedSystemConst;
 
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
@@ -30,9 +31,8 @@ export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
   constructor(private router: Router, public translate: TranslateService,
     systemService: SystemService
   ) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
   }
 

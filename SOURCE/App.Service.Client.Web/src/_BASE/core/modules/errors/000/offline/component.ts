@@ -18,15 +18,17 @@ import { DiagnosticsTraceService } from '../../../../services/diagnostics.servic
  * Offline Component
  */
 export class BaseErrorsOfflineComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
   constructor(private diagnosticsTraceService: DiagnosticsTraceService,
     systemService: SystemService,
     public translate: TranslateService) {
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
 
-    this.system = systemService.system;
+
   }
 
   ngOnInit(): void {

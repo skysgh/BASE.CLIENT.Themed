@@ -8,10 +8,14 @@ import { system as importedSystemConst } from '../../../../../../constants/syste
 import { SystemService } from '../../../../../../services/system.service';
 import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
 // Models:
-import { MonthlyPlanModel, AnnualPlanModel } from './plan.model';
-import { MonthlyPlan, AnnualPlan } from './data';
-// Data/Models:
+import { YearlyPlanModel } from '../../../../../../models/pricing.models';
+import { MonthlyPlanModel } from "src/_BASE/core/models/MonthlyPlanModel";
+// Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+import { MonthlyPlan, YearlyPlan } from '../../../../../../data/fake/pricing.data';
+import { AnnualPlanModel } from './plan.model';
+import { AnnualPlan } from './data';
+
 
 @Component({
   selector: 'app-base-core-pages-landing-index-plan',
@@ -26,8 +30,10 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
 
 
   MonthlyPlan!: MonthlyPlanModel[];
+
   AnnualPlan!: AnnualPlanModel[];
 
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
@@ -35,7 +41,8 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
     systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translateService: TranslateService) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 
@@ -48,6 +55,11 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
       item.setAttribute('style','display:none')
     })
   }
+
+
+
+
+
 
    // Chat Data Fetch
    private _fetchData() {

@@ -23,7 +23,7 @@ import { SystemService } from '../../../services/system.service';
  * Register Component
  */
 export class RegisterComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   // Login Form
@@ -31,8 +31,6 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   successmsg = false;
   error = '';
-  // set the current year
-  year: number = new Date().getFullYear();
 
 
   constructor(
@@ -42,7 +40,8 @@ export class RegisterComponent implements OnInit {
     private userService: UserProfileService,
   private systemService : SystemService) {
 
-    this.system = this.systemService.system;
+    // Make system/env variables avaiable to view template:
+    //this.system = this.systemService.system;
   }
 
   ngOnInit(): void {

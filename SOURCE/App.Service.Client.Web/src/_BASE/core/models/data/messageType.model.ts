@@ -1,4 +1,4 @@
-import { ReferenceDataBase } from "./base/ReferenceDataBase";
+import { HasTenantedReferenceDataBase } from "../base/HasTenantedReferenceDataBase";
 import { IHasEnabled } from "../contracts/IHasEnabled";
 
 /**
@@ -6,7 +6,7 @@ import { IHasEnabled } from "../contracts/IHasEnabled";
  * Examples might include [User]Message, [system]Alert
  * for example. 
  */
-export class MessageType extends ReferenceDataBase
+export class MessageType extends HasTenantedReferenceDataBase
 {
   // has id, title, description
 }

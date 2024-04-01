@@ -26,7 +26,7 @@ import { ObjectMappingService } from "../objectMapping.service";
 
 export class JobRepositoryService
   extends SimpleGenericRepositoryServiceBase<Job> {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;;
 
   constructor(
@@ -49,5 +49,7 @@ export class JobRepositoryService
       httpClient,
       importedSystemConst.apis.jobs
     );
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 }

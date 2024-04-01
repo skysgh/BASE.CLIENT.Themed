@@ -1,23 +1,22 @@
 const ClientLogo = [
     {
-      image: 'assets/images/clients/amazon.svg',
+      image: 'amazon.svg',
     },
     {
-      image: 'assets/images/clients/walmart.svg',
+      image: 'walmart.svg',
     },
     {
-      image: 'assets/images/clients/lenovo.svg',
+      image: 'lenovo.svg',
     },
     {
-      image: 'assets/images/clients/paypal.svg',
+      image: 'paypal.svg',
     },
     {
-      image: 'assets/images/clients/shopify.svg',
+      image: 'shopify.svg',
     },
     {
-      image: 'assets/images/clients/verizon.svg',
+      image: 'verizon.svg',
     },
   ];
   
   export { ClientLogo };
-  

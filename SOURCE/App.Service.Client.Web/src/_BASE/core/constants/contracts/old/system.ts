@@ -1,4 +1,4 @@
-//import { HasTitleAndDescriptionBase } from "../../models/base/HasTitleAndDescriptionBase";
+//import { HasTenantedTitleAndDescriptionBase } from "../../models/base/HasTenantedTitleAndDescriptionBase";
 //import { IHasTitleAndDescription } from "../../models/contracts/IHasTitleAndDescription";
 ////import { SystemConfiguration } from "./old/system.configuration";
 ////import { SystemAssets} from "./old/system.assets";

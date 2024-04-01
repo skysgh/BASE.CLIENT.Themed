@@ -4,7 +4,6 @@ import { HttpClient, HttpEvent, HttpHeaders, HttpResponse } from '@angular/commo
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError,map } from 'rxjs/operators';
 //Import Models:
-import { ReferenceData } from '../../../models/data/reference-item.model';
 import { EnvironmentService } from '../../environment.service';
 import { DiagnosticsTraceService } from '../../diagnostics.service';
 import { ErrorService } from '../../error.service';

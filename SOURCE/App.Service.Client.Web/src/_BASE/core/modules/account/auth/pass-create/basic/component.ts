@@ -18,6 +18,8 @@ import { SystemService } from '../../../../../services/system.service';
  * Basic Component
  */
 export class BasicComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
    // Login Form
    passresetForm!: FormGroup;
@@ -26,12 +28,10 @@ export class BasicComponent implements OnInit {
    confirmField!: boolean;
    error = '';
    returnUrl!: string;
-   // set the current year
-   year: number = new Date().getFullYear();
-  system = importedSystemConst;
  
   constructor(private formBuilder: FormBuilder, systemService: SystemService, public translate: TranslateService) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
  
    ngOnInit(): void {

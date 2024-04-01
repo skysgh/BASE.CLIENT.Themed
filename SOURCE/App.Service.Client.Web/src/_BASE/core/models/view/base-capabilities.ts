@@ -5,9 +5,9 @@
 //    state: false
 //  },
 
-import { IconBasedReferenceDataBase } from "../data/base/ImageBasedReferenceDataBase"
+import { HasImageIdBasedTenantedReferenceDataBase } from "../base/HasImageIdBasedTenantedReferenceDataBase";
 
-export class CapabilitiesVTO extends IconBasedReferenceDataBase {
+export class SystemCapabilitiesVTO extends HasImageIdBasedTenantedReferenceDataBase {
 
 }
 

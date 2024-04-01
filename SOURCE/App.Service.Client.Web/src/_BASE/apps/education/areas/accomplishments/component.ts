@@ -14,14 +14,15 @@ import { DiagnosticsTraceService } from "../../../../core/services/diagnostics.s
   styleUrls: ['./component.scss']
 })
 export class BaseAppsEducationAccomplishmentsComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-  system = importedSystemConst;
-
   constructor(systemService: SystemService, private diagnosticsTraceService: DiagnosticsTraceService, translateService: TranslateService) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 

@@ -22,6 +22,8 @@ import { UserQuote } from '../../../../../models/data/user-quote.model';
  * Lock Screen Cover Component
  */
 export class CoverComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   // Login Form
   lockscreenForm!: FormGroup;
@@ -29,9 +31,6 @@ export class CoverComponent implements OnInit {
   submitted = false;
   error = '';
   returnUrl!: string;
-  // set the current year
-  year: number = new Date().getFullYear();
-  system = importedSystemConst;
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
@@ -43,7 +42,8 @@ export class CoverComponent implements OnInit {
     public translate: TranslateService,
     private systemUserQuoteRepositoryService : SystemUserQuoteRepositoryService
   ) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
-import { ReferenceDataBase } from "./base/ReferenceDataBase";
+import { HasTenantedReferenceDataBase } from "../base/HasTenantedReferenceDataBase";
 
 
-export class JobSkill extends ReferenceDataBase {
+export class JobSkill extends HasTenantedReferenceDataBase{
 }

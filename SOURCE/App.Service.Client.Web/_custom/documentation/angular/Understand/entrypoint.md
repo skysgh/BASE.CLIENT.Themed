@@ -15,7 +15,7 @@ The code of the page is
   <!-- <base href="/velzon/angular/minimal-rtl/"> -->
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="{{system.sources.assets.public.static.services.images}}favicon.ico">
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE"></script>
 </head>
 ```

@@ -16,11 +16,12 @@ export class BaseCorePagesInformationIndexComponent implements OnInit {
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   constructor(systemService: SystemService, private diagnosticsTraceService: DiagnosticsTraceService, translateService: TranslateService) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }

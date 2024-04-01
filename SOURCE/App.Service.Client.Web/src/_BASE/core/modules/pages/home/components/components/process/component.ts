@@ -23,7 +23,7 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
  * WorkProcess Component
  */
 export class BaseAppsPagesLandingIndexWorkProcessComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
@@ -32,6 +32,7 @@ export class BaseAppsPagesLandingIndexWorkProcessComponent implements OnInit {
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translateService: TranslateService) {
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

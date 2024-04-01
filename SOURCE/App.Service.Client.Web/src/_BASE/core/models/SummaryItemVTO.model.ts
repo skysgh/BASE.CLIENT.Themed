@@ -1,8 +1,10 @@
-import { IHasSummarItem } from "./contracts/IHasSummaryItem";
-import { ReferenceDataBase } from "./data/base/ReferenceDataBase";
+import { HasUntenantedEnabledTitleAndDescriptionBase } from "./base/HasUntenantedEnabledTitleAndDescriptionBase";
+import { IHasSummaryItem } from "./contracts/IHasSummaryItem";
 
 
-export class SummaryItemVTO extends ReferenceDataBase implements IHasSummarItem {
+export class SummaryItemVTO extends HasUntenantedEnabledTitleAndDescriptionBase
+  implements IHasSummaryItem {
+
   typeId: string = '';
   typeImage: string = '';
 

@@ -19,17 +19,17 @@ import { IHasMenuItem } from '../../../models/contracts/IHasMenuItem';
   styleUrls: ['./component.scss']
 })
 export class BaseLayoutHorizontalTopbarComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   menu: any;
   menuItems: IHasMenuItem[] = [];
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
-  system = importedSystemConst;
   constructor(private router: Router, public translate: TranslateService, systemService: SystemService) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 
   ngOnInit(): void {

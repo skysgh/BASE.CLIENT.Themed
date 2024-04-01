@@ -50,7 +50,7 @@ $border-style-mixing: double, dashed, groove, outset, ridge, dotted, inset;
 
 // Background pattern
 .bg-pattern {
-    background: url("../../images/modal-bg.png") $modal-content-bg;
+  background: url("#{$theme_images_root}modal/modal-bg.png") $modal-content-bg;
 }
 
 // Fixed minimum width

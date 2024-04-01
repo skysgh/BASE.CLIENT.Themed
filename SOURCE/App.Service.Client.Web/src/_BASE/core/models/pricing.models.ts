@@ -1,35 +1,11 @@
 import { IHasPlanDetails } from "./contracts/IHasPlanDetails";
-import { IHasIconId } from "./contracts/IHasIconId";
-import { IHasIconIdentifier } from "./contracts/IHasIconIdentifier";
 import { IHasMonthlyRate } from "./contracts/IHasMonthlyRate";
 import { IHasRate } from "./contracts/IHasRate";
 import { IHasTitleAndDescription } from "./contracts/IHasTitleAndDescription";
 import { IHasUUID } from "./contracts/IHasUUID";
 import { IHasYearlyPrice } from "./contracts/IHasYearlyPrice";
+import { IHasImageId } from "./contracts/IHasImageId";
 
-
-/**
- * Monthly Plan
- */
-export interface MonthlyPlanModel
-  extends
-  IHasUUID,
-  IHasTitleAndDescription,
-  IHasIconIdentifier,
-  IHasMonthlyRate,
-  IHasPlanDetails {
-
-  ribbon?: any;
-  plan?: any
-
-  supportClass?: any;
-  supportClassSymbol?: any;
-  storageClass?: any;
-  storageClassSymbol?: any;
-  domainClass?: any;
-  domainClassSymbol?: any;
-  planButtonClassname?: any;
-}
 
 /**
  * Yearly Plan
@@ -37,7 +13,7 @@ export interface MonthlyPlanModel
 export interface YearlyPlanModel
   extends IHasUUID,
   IHasTitleAndDescription,
-  IHasIconIdentifier,
+  IHasImageId,
   IHasMonthlyRate,
   IHasYearlyPrice,
   IHasPlanDetails {
@@ -57,7 +33,7 @@ export interface YearlyPlanModel
 /**
  * Choose Plan
  */
-export interface PricingModel extends IHasUUID, IHasTitleAndDescription, IHasIconId,IHasRate {
+export interface PricingModel extends IHasUUID, IHasTitleAndDescription, IHasImageId,IHasRate {
   ribbon: any,
 
 

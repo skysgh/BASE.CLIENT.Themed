@@ -14,13 +14,14 @@ import { DiagnosticsTraceService } from "../../../../../services/diagnostics.ser
   styleUrls: ['./component.scss']
 })
 export class BaseCorePagesInformationContactComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-  system = importedSystemConst;
-
   constructor(systemService: SystemService, private diagnosticsTraceService: DiagnosticsTraceService, translateService: TranslateService) {
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

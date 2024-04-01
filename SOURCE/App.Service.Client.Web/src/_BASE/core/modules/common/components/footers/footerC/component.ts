@@ -20,17 +20,16 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsFooterCComponent implements OnInit {
-  // make system/env config accessible by markup:
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
-
-  public year: number = new Date().getFullYear();
 
   constructor(public translate: TranslateService,
               private systemService: SystemService,
               private diagnosticsTraceService: DiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.construtor()`);
 
-    this.system = this.systemService.system;
+    // Make system/env variables avaiable to view template:
+    //this.system = this.systemService.system;
   }
 
   ngOnInit(): void {

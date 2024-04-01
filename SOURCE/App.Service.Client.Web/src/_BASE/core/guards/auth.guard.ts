@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
     constructor(
         private router: Router,

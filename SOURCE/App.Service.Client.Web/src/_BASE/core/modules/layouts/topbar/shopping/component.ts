@@ -19,7 +19,7 @@ import { cartData } from '../data';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   // Shopping
@@ -31,8 +31,8 @@ export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
     systemService: SystemService,
     public translate: TranslateService) {
 
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 
   ngOnInit(): void {

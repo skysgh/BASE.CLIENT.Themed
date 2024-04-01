@@ -16,9 +16,11 @@ import { User } from '../../models/misc/auth.models';
  */
 @Injectable({ providedIn: 'root' })
 export class UserProfileService {
+  // Make system/env variables avaiable to view template:
   public system = importedSystemConst;;
   constructor(private http: HttpClient, systemService: SystemService) {
-
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
     /***
      * Get All Usera

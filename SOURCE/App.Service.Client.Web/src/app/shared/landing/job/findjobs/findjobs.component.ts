@@ -15,14 +15,14 @@ import { findjob } from './data';
   styleUrls: ['./findjobs.component.scss']
 })
 export class FindjobsComponent implements OnInit {
-
-  findjobs: any;
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
-  constructor(systemService: SystemService) {
+  findjobs: any;
 
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+  constructor(systemService: SystemService) {
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 
   ngOnInit(): void {

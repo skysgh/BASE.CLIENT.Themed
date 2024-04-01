@@ -24,16 +24,17 @@ import { DiagnosticsTraceService } from '../../../../../services/diagnostics.ser
  * Footer Component
  */
 export class BaseCoreCommonComponentsFooterOComponent implements OnInit {
-  // make system/env config accessible by markup:
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   //sectionsInfo = importedSectionsInfo;
 
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
-    public translate: TranslateService) {
-
-    this.system = systemService.system;
+    public translate: TranslateService)
+  {
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }

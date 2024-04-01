@@ -38,7 +38,7 @@ export class JobService {
 //const findjob = [
 //  {
 //    id: '1',
-//    logo: 'assets/images/companies/img-3.png',
+//    logo: '//assets/_BASE/public/dynamic/userdata/images/companies/img-3.png',
 //    name: 'UI/UX designer',
 //    comapny: 'Nesta Technologies',
 //    location: 'USA',
@@ -48,7 +48,7 @@ export class JobService {
 //  },
 //  {
 //    id: '2',
-//    logo: 'assets/images/companies/img-2.png',
+//    logo: '//assets/_BASE/public/dynamic/userdata/images/companies/img-2.png',
 //    name: 'Product Sales Specialist',
 //    comapny: 'Digitech Galaxy',
 //    location: 'Spain',
@@ -58,7 +58,7 @@ export class JobService {
 //  },
 //  {
 //    id: '3',
-//    logo: 'assets/images/companies/img-4.png',
+//    logo: '//assets/_BASE/public/dynamic/userdata/images/companies/img-4.png',
 //    name: 'Marketing Director',
 //    comapny: 'Meta4Systems',
 //    location: 'Sweden',
@@ -68,7 +68,7 @@ export class JobService {
 //  },
 //  {
 //    id: '4',
-//    logo: 'assets/images/companies/img-9.png',
+//    logo: '//assets/_BASE/public/dynamic/userdata/images/companies/img-9.png',
 //    name: 'Product Designer',
 //    comapny: 'Themesbrand',
 //    location: 'USA',
@@ -78,7 +78,7 @@ export class JobService {
 //  },
 //  {
 //    id: '5',
-//    logo: 'assets/images/companies/img-1.png',
+//    logo: '//assets/_BASE/public/dynamic/userdata/images/companies/img-1.png',
 //    name: 'Project Manager',
 //    comapny: 'Syntyce Solutions',
 //    location: 'Germany',
@@ -88,7 +88,7 @@ export class JobService {
 //  },
 //  {
 //    id: '6',
-//    logo: 'assets/images/companies/img-7.png',
+//    logo: '//assets/_BASE/public/dynamic/userdata/images/companies/img-7.png',
 //    name: 'Business Associate',
 //    comapny: 'Nesta Technologies',
 //    location: 'USA',
@@ -98,7 +98,7 @@ export class JobService {
 //  },
 //  {
 //    id: '7',
-//    logo: 'assets/images/companies/img-8.png',
+//    logo: '//assets/_BASE/public/dynamic/userdata/images/companies/img-8.png',
 //    name: 'Recruiting Coordinator',
 //    comapny: 'Zoetic Fashion',
 //    location: 'Namibia',
@@ -108,7 +108,7 @@ export class JobService {
 //  },
 //  {
 //    id: '8',
-//    logo: 'assets/images/companies/img-5.png',
+//    logo: '//assets/_BASE/public/dynamic/userdata/images/companies/img-5.png',
 //    name: 'Customs officer',
 //    comapny: 'Nesta Technologies',
 //    location: 'USA',

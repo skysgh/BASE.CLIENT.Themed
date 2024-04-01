@@ -17,10 +17,11 @@ import { StatOneVTO } from '../../../../models/view/stat-on.vto';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreDashboardsIndexComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   stats$: Observable<StatOneVTO[]> = of([]);
 
-  system = importedSystemConst;
 
   constructor(
     private systemService: SystemService,
@@ -29,7 +30,8 @@ export class BaseCoreDashboardsIndexComponent implements OnInit {
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor`);
 
-    this.system = this.systemService.system;
+    // Make system/env variables avaiable to view template:
+    //this.system = this.systemService.system;
   }
 
   ngOnInit(): void {

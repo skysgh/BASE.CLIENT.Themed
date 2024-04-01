@@ -14,7 +14,7 @@ import { DiagnosticsTraceService } from '../../../../services/diagnostics.servic
   styleUrls: ['./component.scss']
 })
 export class BaseCorePagesLandingOpportunitiesComponent  {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   constructor(
@@ -22,7 +22,8 @@ export class BaseCorePagesLandingOpportunitiesComponent  {
       private diagnosticsTraceService:
       DiagnosticsTraceService,
       public translate: TranslateService) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }

@@ -1,5 +1,5 @@
-import { HasTitleAndDescriptionBase } from "../base/HasTitleAndDescriptionBase";
-import { IHasReferenceData } from "../contracts/IHasReferenceData";
+import { HasTenantedTitleAndDescriptionBase } from "../base/HasTenantedTitleAndDescriptionBase";
+import { IHasTenantedReferenceData } from "../contracts/IHasTenantedReferenceData";
 
 import { IHasUUID } from "../contracts/IHasUUID";
 
@@ -8,9 +8,9 @@ import { IHasUUID } from "../contracts/IHasUUID";
 // Note that Service should return list in the
 // order desired displayed (ie ,that MRU items)
 // were put at top, before padding with remainder.
-export class ReferenceData
-  extends HasTitleAndDescriptionBase
-  implements IHasUUID, IHasReferenceData {
+export class TenanReferenceData
+  extends HasTenantedTitleAndDescriptionBase
+  implements IHasUUID, IHasTenantedReferenceData {
   public id?: any;
 }
 

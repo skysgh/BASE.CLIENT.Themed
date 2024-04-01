@@ -16,13 +16,8 @@ import { DiagnosticsTraceService } from './diagnostics.service';
 // Models:
 import { SystemLanguage } from '../models/data/system-language.model';
 import { SystemNotification } from '../models/data/notification.model';
-// Data:
-//
+import { SystemLanguageVM } from './SystemLanguageVM';
 
-// Example
-class SystemLanguageVM extends SystemLanguage {
-
-}
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService extends ItemsCollectionServiceBase<SystemLanguage, string, SystemLanguage> {

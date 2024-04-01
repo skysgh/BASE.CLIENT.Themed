@@ -22,7 +22,7 @@ import { SimpleGenericRepositoryServiceBase } from './base/simple-generic-reposi
 // Models/Data:
 import { UserQuote } from "../../models/data/user-quote.model";
 import { TeamVTO } from '../../models/view/team.vto';
-import { CapabilitiesVTO } from '../../models/view/base-capabilities';
+import { SystemCapabilitiesVTO } from '../../models/view/base-capabilities';
 // import models:
 
 /**
@@ -34,7 +34,7 @@ import { CapabilitiesVTO } from '../../models/view/base-capabilities';
 
 @Injectable({ providedIn: 'root' })
 export class SystemCapabilitiesRepositoryService
-  extends SimpleGenericRepositoryServiceBase<CapabilitiesVTO> {
+  extends SimpleGenericRepositoryServiceBase<SystemCapabilitiesVTO> {
 
   constructor(
     typeService: TypeService,

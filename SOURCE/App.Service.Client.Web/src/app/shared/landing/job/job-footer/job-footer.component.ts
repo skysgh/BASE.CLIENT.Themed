@@ -13,14 +13,13 @@ import { SystemService } from '../../../../../_BASE/core/services/system.service
   styleUrls: ['./job-footer.component.scss']
 })
 export class JobBaseLayoutFooterComponent implements OnInit {
-  // set the current year
-  year: number = new Date().getFullYear();
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   constructor(systemService: SystemService, public translate: TranslateService) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
+    
   }
 
   ngOnInit(): void {

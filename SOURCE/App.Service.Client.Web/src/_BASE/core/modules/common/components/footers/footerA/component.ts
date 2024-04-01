@@ -19,18 +19,16 @@ import { DiagnosticsTraceService } from '../../../../../services/diagnostics.ser
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsFooterAComponent implements OnInit {
-  // make system/env config accessible by markup:
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
-
-  public year: number = new Date().getFullYear();
 
   constructor(private systemService: SystemService,
               translate : TranslateService,
               private diagnosticsTraceService: DiagnosticsTraceService) {
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
-
-    this.system = this.systemService.system;
+    // Make system/env variables avaiable to view template:
+    //this.system = this.systemService.system;
 
   }
 

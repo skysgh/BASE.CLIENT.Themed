@@ -18,24 +18,25 @@ import { DiagnosticsTraceService } from './diagnostics.service';
 
 // Injectable service to describe current environment
 export class EnvironmentService {
-
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;;
 
-  // Expose public property of
-  // system environment.
-  // From there, can get access to base service url. 
-  public environment: any;
+  //// Expose public property of
+  //// system environment.
+  //// From there, can get access to base service url. 
+  //public environment: any;
 
   constructor(/*NEVER: private diagnosticsTraceService:DiagnosticsTraceService*/) {
-    this.environment = importedSystemConst.environment;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
+    //this.environment = importedSystemConst.environment;
     //this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 
   public isJsonServerContext: boolean = true;
 
   public getDebugLevel() {
-    return this.environment.custom.diagnostics.level;
+    return this.system.environment.custom.diagnostics.level;
   }
   public getApiBaseUrl() : string {
     return this.system.apis.baseUrl;

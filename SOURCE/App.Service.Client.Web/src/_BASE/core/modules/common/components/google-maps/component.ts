@@ -20,7 +20,7 @@ import { DiagnosticsTraceService } from '../../../../services/diagnostics.servic
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsGoogleMapsComponent implements OnInit {
-  // make system/env config accessible by markup:
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   public load: boolean = true;

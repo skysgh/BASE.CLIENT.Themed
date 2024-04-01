@@ -32,7 +32,7 @@
 }
 
 .auth-one-bg {
-  background-image: url('../../images/themes/#{$cultureCode}/auth-one-bg.jpg');
+  background-image: url('#{$theme_images_root}/authentication/#{$cultureCode}/auth-one-bg.jpg');
   background-position: center;
   background-size: cover;
 
@@ -99,19 +99,19 @@
 // Auth cover
 
 .auth-bg-cover {
-    background: $auth-bg-cover;
+  background: $auth-bg-cover;
 
-    >.bg-overlay {
-        background-image: url("../../images/cover-pattern.png");
-        background-position: center;
-        background-size: cover;
-        opacity: 1;
-        background-color: transparent;
-    }
+  > .bg-overlay {
+    background-image: url("#{$theme_images_root}authentication/cover-pattern.png");
+    background-position: center;
+    background-size: cover;
+    opacity: 1;
+    background-color: transparent;
+  }
 
-    .footer {
-        color: rgba($white, .5);
-    }
+  .footer {
+    color: rgba($white, .5);
+  }
 }
 
 //passowrd validations 

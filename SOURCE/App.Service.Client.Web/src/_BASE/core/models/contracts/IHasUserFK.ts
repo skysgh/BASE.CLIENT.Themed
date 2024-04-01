@@ -12,6 +12,10 @@
  * and passed through multiple generations.
  */
 export interface IHasUserFK {
+
+  /**
+   * FK to the id of a SystemUser entity.
+   */
   userFK: any;
 }
 

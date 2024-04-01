@@ -9,7 +9,7 @@ import { SystemService } from '../../../../../../services/system.service';
 import { system as importedSystemConst } from '../../../../../../constants/system';//
 // Services:
 import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
-import { CapabilitiesVTO } from '../../../../../../models/view/base-capabilities';
+import { SystemCapabilitiesVTO } from '../../../../../../models/view/base-capabilities';
 import { SystemCapabilitiesRepositoryService } from '../../../../../../services/repositories/system-capabilities.service';
 // Models:
 import { servicesModel } from './services.model';
@@ -30,8 +30,9 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
 
 
-  capabilities$: Observable<CapabilitiesVTO[]> = of([]);
+  capabilities$: Observable<SystemCapabilitiesVTO[]> = of([]);
 
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
@@ -40,6 +41,7 @@ export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
     public translateService: TranslateService,
     protected capabilitiesRepositoryService: SystemCapabilitiesRepositoryService
     ) {
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

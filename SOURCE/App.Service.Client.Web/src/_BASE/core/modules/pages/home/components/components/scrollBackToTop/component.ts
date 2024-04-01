@@ -21,13 +21,14 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
  * Footer Component
  */
 export class BaseAppsPagesLandingIndexScrollBackToTopComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translate: TranslateService) {
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

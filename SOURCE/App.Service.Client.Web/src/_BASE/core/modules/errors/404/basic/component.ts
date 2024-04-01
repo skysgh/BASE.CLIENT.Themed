@@ -17,12 +17,12 @@ import { SystemService } from '../../../../services/system.service';
  * 404 Basic Component
  */
 export class BaseErrors404BasicComponent implements OnInit {
-
-  // set the current year
-  year: number = new Date().getFullYear();
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
+
   constructor(systemService: SystemService, public translate: TranslateService) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 
   ngOnInit(): void {

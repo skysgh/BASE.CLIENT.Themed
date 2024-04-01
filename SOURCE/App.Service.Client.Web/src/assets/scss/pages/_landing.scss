@@ -138,11 +138,11 @@
 }
 
 .bg-overlay-pattern {
-    background-image: url("../../images/landing/bg-pattern.png");
-    background-color: transparent;
-    background-position: center;
-    background-size: cover;
-    opacity: 0.2;
+  background-image: url("#{$theme_images_root}landing/bg-pattern.png");
+  background-color: transparent;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.2;
 }
 
 .demo-carousel {

@@ -58,25 +58,25 @@
 
 
 .tasks {
-    min-height: 180px;
-    position: relative;
+  min-height: 180px;
+  position: relative;
 
-    &.noTask {
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            height: 180px;
-            width: 270px;
-            margin: 0 auto;
-            background-image: url('../../images/file.png');
-            background-size: cover;
-            background-position: center;
-        }
+  &.noTask {
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 180px;
+      width: 270px;
+      margin: 0 auto;
+      background-image: url('#{$theme_images_root}kanban/file.png');
+      background-size: cover;
+      background-position: center;
     }
+  }
 }
 
 #tasksList {

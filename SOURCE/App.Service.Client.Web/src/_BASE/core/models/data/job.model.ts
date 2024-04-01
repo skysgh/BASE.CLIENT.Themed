@@ -1,8 +1,11 @@
+import { HasTenantedEnabledTitleAndDescriptionBase } from "../base/HasTenantedEnabledTitleAndDescriptionBase";
 import { IHasImageName } from "../contracts/IHasImageName";
 import { IHasTypeFK } from "../contracts/IHasTypeFK";
-import { ReferenceDataBase } from "./base/ReferenceDataBase";
 
-export class Job extends ReferenceDataBase implements IHasImageName, IHasTypeFK {
+export class Job extends HasTenantedEnabledTitleAndDescriptionBase
+  implements
+  IHasImageName,
+  IHasTypeFK {
   // Has Id, enabled, title, description
   public company: string = '';
   public imageName: string='';

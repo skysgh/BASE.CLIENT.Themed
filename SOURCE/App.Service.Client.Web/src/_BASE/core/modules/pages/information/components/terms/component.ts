@@ -13,11 +13,11 @@ import { DiagnosticsTraceService } from '../../../../../services/diagnostics.ser
   styleUrls: ['./component.scss']
 })
 export class BaseCorePagesInformationTermsComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
-
-  system = importedSystemConst;
 
   @Input()
   public replacements :{ [key: string]: string }|undefined;
@@ -27,6 +27,7 @@ export class BaseCorePagesInformationTermsComponent implements OnInit {
     private diagnosticsTraceService:
       DiagnosticsTraceService,
     translateService: TranslateService) {
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)

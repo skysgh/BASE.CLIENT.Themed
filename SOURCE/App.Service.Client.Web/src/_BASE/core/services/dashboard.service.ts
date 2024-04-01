@@ -24,6 +24,8 @@ export class DashboardService {
   public constructor(
     private diagnosticsTraceService: DiagnosticsTraceService,
     private dashboardRepositoryService: DashboardRepositoryService) {
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 
@@ -36,10 +38,12 @@ export class DashboardService {
 
   private statsData: StatOneVTO[] = [
     {
-    enabled:true,
+      id:'TODO',
+      tenancyId: 'TODO',
+      enabled: true,
     title: 'Schools',
-    description:'...',
-    iconId: 'bx bxs-school',
+      description: '...',
+      imageId: 'bx bxs-school',
     value: 5871,
     decimalPlaces:0,
     prefix: undefined,
@@ -47,10 +51,12 @@ export class DashboardService {
     changeDirection: +1
     },
     {
+      id: 'TODO',
+      tenancyId: 'TODO',
     enabled:true,
     title: 'Learners',
     description: '...',
-    iconId: 'ri-exchange-dollar-line',
+    imageId: 'ri-exchange-dollar-line',
     value: 789.4,
     decimalPlaces: 0,
     prefix: '',
@@ -58,10 +64,12 @@ export class DashboardService {
     changeDirection: +1
     },
     {
+      id: 'TODO',
+      tenancyId: 'TODO',
       enabled: true,
       title: 'Enrollments',
       description: '',
-      iconId: 'bx bx-user-check',
+      imageId: 'bx bx-user-check',
       value: 89.89,
       decimalPlaces: 2,
       prefix: '',
@@ -69,10 +77,12 @@ export class DashboardService {
       changeDirection: -1
     },
     {
+      id: 'TODO',
+      tenancyId: 'TODO',
       enabled:true,
       title: 'Attendance',
       description:'',
-      iconId: 'bx bx-bell',
+      imageId: 'bx bx-bell',
       value: 56.23,
       decimalPlaces: 2,
       prefix: '',
@@ -80,10 +90,12 @@ export class DashboardService {
       changeDirection: -1
     },
     {
+      id: 'TODO',
+      tenancyId: 'TODO',
       enabled: true,
       title: 'Graduating',
       description: '',
-      iconId: 'ri-trophy-line',
+      imageId: 'ri-trophy-line',
       value: 2659,
       decimalPlaces: 2,
       prefix: '',
@@ -96,6 +108,9 @@ export class DashboardService {
 
   public summariesData: Stat[] = [
     {
+      id: 'TODO',
+      tenancyId: 'TODO',
+      enabled:true,
       title: 'TOTAL EARNINGS',
       description: 'View net earnings',
       iconId: 'bx-dollar-circle',
@@ -115,6 +130,9 @@ export class DashboardService {
       ]
     },
     {
+      id: 'TODO',
+      tenancyId: 'TODO',
+      enabled: true,
       title: 'ORDERS',
       description: 'View all orders',
       iconId: 'bx-shopping-bag',
@@ -125,6 +143,9 @@ export class DashboardService {
       ]
     },
     {
+      id: 'TODO',
+      tenancyId: 'TODO',
+      enabled: true,
       title: 'CUSTOMERS',
       description: 'See details',
       iconId: 'bx-user-circle',
@@ -135,6 +156,9 @@ export class DashboardService {
       ]
     },
     {
+      id: 'TODO',
+      tenancyId: 'TODO',
+      enabled: true,
       title: 'MY BALANCE',
       description: 'Withdraw money',
       iconId: 'bx-wallet',

@@ -15,6 +15,7 @@
 // * Faqs Component
 // */
 //export class FaqsComponent implements OnInit {
+//  // Make system/env variables avaiable to view template:
 
 //    constructor(systemService: SystemService,
 //        private diagnosticsTraceService: DiagnosticsTraceService,

@@ -16,21 +16,21 @@ import { sectionsInfo as importedSectionsInfo } from './sectionsInfo.data';
   styleUrls: ['./component.scss']
 })
 export class BaseAppsPagesInformationIndexComponent implements OnInit {
+  // Make system/env variables avaiable to view template:
+  system = importedSystemConst;
 
   sectionId: string ='';
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-  system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
 
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     translateService: TranslateService) {
-
-
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

@@ -31,18 +31,20 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
 
   team$: Observable<TeamVTO[]> = of([]);
 
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translateService: TranslateService,
     protected systemTeamRepositoryService :SystemTeamRepositoryService  ) {
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 
 
-    // Can be either via service, or injecting the constats/settings object:
+    // Make system/env variables avaiable to view template:
     this.system = systemService.system;
   }
 

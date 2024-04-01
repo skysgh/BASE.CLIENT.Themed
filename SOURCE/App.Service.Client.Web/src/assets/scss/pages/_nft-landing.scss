@@ -80,14 +80,15 @@
 
 //
 .nft-hero {
-    background-image: url('../../images/nft/bg-home.jpg');
-    background-size: cover;
-    background-position: bottom;
-    padding: 222px 0 150px 0;
-    .bg-overlay {
-        background-color: #05175f;
-        opacity: 0.85;
-    }
+  background-image: url('#{$theme_images_root}nft/bg-home.jpg');
+  background-size: cover;
+  background-position: bottom;
+  padding: 222px 0 150px 0;
+
+  .bg-overlay {
+    background-color: #05175f;
+    opacity: 0.85;
+  }
 }
 
 #explorecard-list {

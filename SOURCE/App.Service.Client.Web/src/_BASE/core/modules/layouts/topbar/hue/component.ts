@@ -14,7 +14,7 @@ import { EventService } from "../../../../services/event.service";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarHueComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   mode: string | undefined;
@@ -24,9 +24,8 @@ export class BaseCoreCommonComponentTopBarHueComponent implements OnInit {
     public translate: TranslateService,
     private eventService: EventService
 ) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 
   ngOnInit(): void {

@@ -133,8 +133,8 @@
 //nft dashboard
 
 .bg-marketplace {
-    background-image: url(../../images/nft/marketplace.png);
-    background-size: cover;
+  background-image: url("#{$theme_images_root}nft/marketplace.png");
+  background-size: cover;
 }
 
 .dash-countdown {

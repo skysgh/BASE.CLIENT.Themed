@@ -1,13 +1,13 @@
+import { HasTenantedEnabledTitleAndDescriptionBase } from "../base/HasTenantedEnabledTitleAndDescriptionBase";
 import { IHasBinaryState } from "../contracts/IHasBinaryState";
 import { IHasEnabled } from "../contracts/IHasEnabled";
 import { IHasImageId } from "../contracts/IHasImageId";
 import { IHasTitleAndDescription } from "../contracts/IHasTitleAndDescription";
 import { IHasTypeFK } from "../contracts/IHasTypeFK";
 import { IHasUUID } from "../contracts/IHasUUID";
-import { ReferenceDataBase } from "./base/ReferenceDataBase";
 
 export class SystemNotification
-  extends ReferenceDataBase
+  extends HasTenantedEnabledTitleAndDescriptionBase
   implements IHasUUID, IHasEnabled, IHasTypeFK, IHasBinaryState, IHasImageId, IHasTitleAndDescription {
   // has id, title, description
 

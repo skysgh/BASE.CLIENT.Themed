@@ -22,7 +22,7 @@ import { StatOneVTO } from '../../../../../models/view/stat-on.vto';
   styleUrls: ['./component.scss']
 })
 export class BaseCommonComponentsStatsOneComponent implements OnInit {
-  // make system/env config accessible by markup:
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   @Input()

@@ -1,3 +1,6 @@
+/** Contract for a
+ * single VTO MenuItem
+ */
 export interface IHasMenuItem {
   id: number;
   parentId?: number,

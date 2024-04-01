@@ -1,8 +1,8 @@
 import { IHasUUID } from "../../../core/models/contracts/IHasUUID";
 import { IHasTitleAndDescription} from "../../../core/models/contracts/IHasTitleAndDescription";
-import { HasTitleAndDescriptionBase } from "../../../core/models/base/HasTitleAndDescriptionBase";
+import { HasTenantedTitleAndDescriptionBase } from "../../../core/models/base/HasTenantedTitleAndDescriptionBase";
 
-export class Value extends HasTitleAndDescriptionBase implements IHasUUID, IHasTitleAndDescription{
+export class Value extends HasTenantedTitleAndDescriptionBase implements IHasUUID, IHasTitleAndDescription{
   public id?: string;
 
 }

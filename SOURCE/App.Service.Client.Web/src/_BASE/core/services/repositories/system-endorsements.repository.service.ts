@@ -27,7 +27,7 @@ import { SystemEndorsement } from "../../models/data/systemEndorsement.model";
 
 export class SystemEndorsementRepositoryService
   extends SimpleGenericRepositoryServiceBase<SystemEndorsement> {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   constructor(
@@ -50,5 +50,7 @@ export class SystemEndorsementRepositoryService
       httpClient,
       importedSystemConst.apis.systemEndorsements
     );
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 }

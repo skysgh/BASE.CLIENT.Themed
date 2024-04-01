@@ -22,7 +22,7 @@ import { SystemService } from '../../../../../../../services/system.service';
  * Footer Component
  */
 export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
   //sectionsInfo = importedSectionsInfo;
 
@@ -41,7 +41,8 @@ export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
   constructor(systemService: SystemService,
     private diagnosticsTraceService: DiagnosticsTraceService,
     public translate: TranslateService) {
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 

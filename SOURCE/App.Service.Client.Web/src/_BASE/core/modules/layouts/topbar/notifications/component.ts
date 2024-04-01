@@ -17,7 +17,7 @@ import { SystemNotification } from "../../../../models/data/notification.model";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnInit {
-
+  // Make system/env variables avaiable to view template:
   system = importedSystemConst;
 
   messages: any
@@ -41,9 +41,8 @@ export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnIn
     public translate: TranslateService,
     private systemNotificationService: SystemNotificationService,
     private modalService: NgbModal) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    this.system = systemService.system;
+    // Make system/env variables avaiable to view template (via const or service):
+    // this.system = systemService.system;
   }
 
 
