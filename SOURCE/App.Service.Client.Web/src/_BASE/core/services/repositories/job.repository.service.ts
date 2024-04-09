@@ -4,17 +4,11 @@ import { HttpClient } from "@angular/common/http";
 // Constants:
 import { system as importedSystemConst } from '../../constants/system';
 // Services:
-import { MappedGenericRepositoryServiceBase } from "./base/mapped-generic-repository.service.base";
-import { DiagnosticsTraceService } from "../diagnostics.service";
-import { EnvironmentService } from "../environment.service";
-import { ErrorService } from "../error.service";
-import { TypeService } from "../type.service";
-import { SessionStorageService } from "../SessionStorageService";
-import { UrlService } from "../url.service";
+//import { MappedGenericRepositoryServiceBase } from "./base/mapped-generic-repository.service.base";
 import { SimpleGenericRepositoryServiceBase } from "./base/simple-generic-repository-service.base";
-// Data/Models:
+import { RepositoryStandardServicesPackage } from "./base/_standard-repository-services-package";
+//Models:
 import { Job } from "../../models/data/job.model";
-import { ObjectMappingService } from "../objectMapping.service";
 
 /**
  * Stateless service to manage interactions with
@@ -26,30 +20,18 @@ import { ObjectMappingService } from "../objectMapping.service";
 
 export class JobRepositoryService
   extends SimpleGenericRepositoryServiceBase<Job> {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;;
+  // Make system/env variables avaiable to class & view template:
+  // already defined in superclass: public system = importedSystemConst;
 
   constructor(
-    typeService: TypeService,
-    environmentService: EnvironmentService,
-    diagnosticsTraceService: DiagnosticsTraceService,
-    errorService: ErrorService,
-    objectMappingService: ObjectMappingService,
-    sessionStorageService: SessionStorageService,
-    urlService: UrlService,
-     httpClient: HttpClient) {
+    repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
+    httpClient: HttpClient) {
     super(
-      typeService,
-      environmentService,
-      diagnosticsTraceService,
-      errorService,
-      objectMappingService,
-      sessionStorageService,
-      urlService,
+      repositoryStandardServicesPackage,
       httpClient,
-      importedSystemConst.apis.jobs
+      importedSystemConst.apis.base.service.jobs
     );
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
   }
 }

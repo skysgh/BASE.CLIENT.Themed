@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { DiagnosticsTraceService } from './diagnostics.service';
+import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 // Models:
 //
 // Data:
@@ -16,13 +16,16 @@ import { DiagnosticsTraceService } from './diagnostics.service';
     providedIn: 'root',
 })
 export class PaginationService {
-    pageSize: any = 8;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
+
+  pageSize: any = 8;
     page: any = 1;
     direction: any = 'asc';
     startIndex: number = 1;
     endIndex: number = 9;
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
     // Pagination

@@ -19,8 +19,8 @@ import { SystemService } from '../../../../../services/system.service';
  * Cover Component
  */
 export class CoverComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   // Login Form
   loginForm!: FormGroup;
@@ -32,7 +32,7 @@ export class CoverComponent implements OnInit {
   showNavigationArrows: any;
 
   constructor(private formBuilder: FormBuilder, private systemService: SystemService, public translate: TranslateService) {
-    // Make system/env variables avaiable to view template:
+    // Make system/env variables avaiable to class & view template:
     // this.system = this.systemService.system;
   }
 

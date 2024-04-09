@@ -1,40 +1,35 @@
+// Rx:
+// ..
+// Ag:
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-//import { env } from "process";
+// Constants:
+import { system as importedSystemConst } from '../../../../core/constants/system';
+// Services:
 import { MappedGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/mapped-generic-repository.service.base";
-import { DiagnosticsTraceService } from "../../../../core/services/diagnostics.service";
-import { EnvironmentService } from "../../../../core/services/environment.service";
-import { ErrorService } from "../../../../core/services/error.service";
+import { RepositoryStandardServicesPackage } from "../../../../core/services/repositories/base/_standard-repository-services-package";
+// Models:
 import { SubSpike } from "../../models/subspike.model";
-import { TypeService } from "../../../../core/services/type.service";
-import { SessionStorageService } from "../../../../core/services/SessionStorageService";
-import { ObjectMappingService } from "../../../../core/services/objectMapping.service";
-import { UrlService } from "../../../../core/services/url.service";
+
 
 @Injectable()
 export class BaseAppsSpikeSubSpikesRepositoryService
   extends MappedGenericRepositoryServiceBase<SubSpike,SubSpike> {
+  // Make system/env variables avaiable to class & view template:
+  // already defined in superclass: public system = importedSystemConst;
 
   constructor(
-    typeService: TypeService,
-    environmentService: EnvironmentService,
-    diagnosticsTraceService: DiagnosticsTraceService,
-    errorService: ErrorService,
-    objectMappingService: ObjectMappingService,
-    sessionStorageService: SessionStorageService,
-    urlService: UrlService,
+    repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
     httpClient: HttpClient) {
     super(
-      typeService,
-      environmentService,
-      diagnosticsTraceService,
-      errorService,
-      objectMappingService,
-      sessionStorageService,
-      urlService,
+      repositoryStandardServicesPackage,
       httpClient,
+    // Constants:
       "subSpikes"
     );
+
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
   }
 
   /**

@@ -1,7 +1,7 @@
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 // Import Module specific:
 // .. Import Services:
 import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
@@ -20,7 +20,7 @@ export class BaseAppsArchitectureValuesBrowseComponent implements OnInit {
   public data?: Value[] = [];
 
   constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private repositoryService: ArchitectureValuesRepositoryService
   ) {
   }

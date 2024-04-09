@@ -7,7 +7,7 @@ import { Component, Input, OnDestroy, OnInit, Output } from "@angular/core";
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
-import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
+import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
 // Models:
 //
 // Data:
@@ -21,12 +21,12 @@ import { DiagnosticsTraceService } from "../../../../services/diagnostics.servic
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsSocialMediaLinksComponent implements OnInit, OnDestroy {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
 
   constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
   ) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
 

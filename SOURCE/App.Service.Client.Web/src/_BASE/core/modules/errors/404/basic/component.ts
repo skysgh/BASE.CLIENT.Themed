@@ -17,11 +17,11 @@ import { SystemService } from '../../../../services/system.service';
  * 404 Basic Component
  */
 export class BaseErrors404BasicComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   constructor(systemService: SystemService, public translate: TranslateService) {
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
   }
 

@@ -19,8 +19,8 @@ import { SystemService } from '../../../services/system.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class BaseLayoutSidebarComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   menu: any;
   toggle: any = true;

@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { ExampleService } from '../../../../../../core/services/example.service';
 // Import Module:
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
@@ -32,7 +32,7 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
 
     private translate: TranslateService,
 
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private exampleService: ExampleService,
     private repositoryService: BaseAppsSpikeSpikesRepositoryService,
   ) {
@@ -46,7 +46,7 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.diagnosticsTraceService.info(`params ready. id:${params['id']}`);
 
-      this.repositoryService.get(params['id']).subscribe(x => {
+      this.repositoryService.getSingle(params['id']).subscribe(x => {
         this.diagnosticsTraceService.info('got X: ' + x!.title);
         this.data = x!
       });
@@ -57,7 +57,7 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
     //this.route.paramMap.pipe(
     //  switchMap((params: ParamMap) => {
     //    var id = params.get('id');
-    //    this.data = this.repositoryService.get(params.get('id'));
+    //    this.data = this.repositoryService.getSingle(params.get('id'));
     //  }
     //);
 

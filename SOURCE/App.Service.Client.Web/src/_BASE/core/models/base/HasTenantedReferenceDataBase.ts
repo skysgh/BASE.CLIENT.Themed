@@ -3,10 +3,14 @@ import { HasTenantedEnabledTitleAndDescriptionBase } from "./HasTenantedEnabledT
 /**
  * Abstract base class for Classification/ReferenceData items.
  *
- * Implements IHasUUID, IHasEnabled, IHasReferenceData
+ * Implements:
+ * 
+ * IHasUUID,
+ * IHasTenantId
+ * IHasEnabled,
+ * IHasReferenceData
  */
 export abstract class HasTenantedReferenceDataBase
   extends HasTenantedEnabledTitleAndDescriptionBase {
-
 }
 

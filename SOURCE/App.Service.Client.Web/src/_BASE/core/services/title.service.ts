@@ -9,7 +9,7 @@ import { Title } from "@angular/platform-browser";
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { DiagnosticsTraceService } from "./diagnostics.service";
+import { SystemDiagnosticsTraceService } from "./system.diagnostics-trace.service";
 // Models:
 //
 // Data:
@@ -20,7 +20,9 @@ import { DiagnosticsTraceService } from "./diagnostics.service";
 
 // Injectable service to describe current environment
 export class TitleService {
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService, private title: Title) {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService, private title: Title) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
  
   }

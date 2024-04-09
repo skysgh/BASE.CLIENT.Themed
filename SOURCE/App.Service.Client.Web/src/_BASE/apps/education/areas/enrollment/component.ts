@@ -6,7 +6,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { system as importedSystemConst } from '../../../../core/constants/system';
 // Services:
 import { SystemService } from "../../../../core/services/system.service";
-import { DiagnosticsTraceService } from "../../../../core/services/diagnostics.service";
+import { SystemDiagnosticsTraceService } from "../../../../core/services/system.diagnostics-trace.service";
 
 @Component({
   selector: 'app-base-apps-education-enrollment',
@@ -15,13 +15,13 @@ import { DiagnosticsTraceService } from "../../../../core/services/diagnostics.s
 })
 export class BaseAppsEducationEnrollmentComponent implements OnInit {
   // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  public system = importedSystemConst;
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
 
-  constructor(systemService: SystemService, private diagnosticsTraceService: DiagnosticsTraceService, translateService: TranslateService) {
+  constructor(systemService: SystemService, private diagnosticsTraceService: SystemDiagnosticsTraceService, translateService: TranslateService) {
     // Make system/env variables avaiable to view template (via const or service):
     // this.system = systemService.system;
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { DiagnosticsTraceService } from '../../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../core/services/system.diagnostics-trace.service';
 import { BaseAppsEducationProductsComponent } from './areas/products/component';
 import { BaseAppsEducationPlacesComponent } from './areas/places/component';
 import { BaseAppsEducationPeopleComponent } from './areas/people/component';
@@ -43,7 +43,7 @@ const routes: Routes = [
 })
 
 export class BaseAppsEducationRoutingModule {
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
   }
 }

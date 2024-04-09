@@ -19,8 +19,8 @@ import { cartData } from '../data';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   // Shopping
   cartData!: CartModel[];

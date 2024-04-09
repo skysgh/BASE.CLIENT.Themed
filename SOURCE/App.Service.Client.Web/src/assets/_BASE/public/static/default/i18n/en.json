@@ -190,7 +190,8 @@
       "COMMAND": "Alert",
       "FUTURE": "To Alert",
       "PRESENT": "Alerting",
-      "PAST": "Alerted"
+      "PAST": "Alerted",
+      "NO_NEW": "No New Alerts"
     },
     "ANALYSIS": {
       "__COMMENTS": "See also DIAGNOSTICS, REPORTS",
@@ -610,7 +611,10 @@
       "COMMAND": "N/A",
       "FUTURE": "N/A",
       "PRESENT": "N/A",
-      "PAST": "N/A"
+      "PAST": "N/A",
+      "DISCLOSURE": "This site requires cookies to function as intended.",
+      "IMPLICIT_AGREEMENT": "By continuing to use this site you are agreeing to their use.",
+      "FOR_MORE_INFO_": "For an explanation as to how and why they are used, review this site's"
     },
     "COMING_SOON": {
       "__COMMENTS": "See ARRIVALS",
@@ -782,8 +786,8 @@
       "PRESENT": "N/A",
       "PAST": "N/A"
     },
-    "DAY": {
-      "__COMMENTS": "",
+    "DAYS": {
+      "__COMMENTS": "See also WEEKS, MONTHS, YEARS",
       "SINGULAR": "Day",
       "PLURAL": "Days",
       "DESCRIPTION": "",
@@ -1609,6 +1613,7 @@
       "ENABLED": "Enabled",
       "SINGULAR": "Title",
       "PLURAL": "Header",
+      "TITLE": "Title",
       "DESCRIPTION": "Description",
       "FUTURE": "To Head",
       "PRESENT": "Heading",
@@ -1643,7 +1648,8 @@
       "DESCRIPTION": "Find Self-Help Assistance",
       "FUTURE": "To Help",
       "PRESENT": "Helping",
-      "PAST": "Helped"
+      "PAST": "Helped",
+      "CENTER": "Help Center"
     },
     "HOMES": {
       "__COMMENTS": "See DASHBOARDS, FAQS, SUPPORT",
@@ -2015,7 +2021,7 @@
       "PAST": "Monitored"
     },
     "MONTHS": {
-      "__COMMENTS": "See also DAY, TIME.",
+      "__COMMENTS": "See also TIME, DAYS, WEEKS, YEARS.",
       "SINGULAR": "Month",
       "PLURAL": "Months",
       "DESCRIPTION": "",
@@ -2383,13 +2389,14 @@
       "PAST": "Planned"
     },
     "POLICIES": {
-      "__COMMENTS": "See PRINCIPLES, DISCLOSURES, STATEMENTS, REGULATIONS, LAWS.",
+      "__COMMENTS": "See PRINCIPLES, DISCLOSURES, STATEMENTS, REGULATIONS, LAWS. One makes available and links to a Statement About one's Policy.",
       "SINGULAR": "Policy",
       "PLURAL": "Policies",
       "DESCRIPTION": "",
       "FUTURE": "N/A",
       "PRESENT": "N/A",
       "PAST": "N/A",
+      "COOKIE": "Cookie Policy",
       "TRACKING": "Tracking Policy",
       "PRIVACY": "Privacy Policy",
       "DATA_USE": "Data Use Policy"
@@ -2481,7 +2488,7 @@
       "PAST": "N/A"
     },
     "PRIVACIES": {
-      "__COMMENTS": "See STATEMENTS, POLICIES",
+      "__COMMENTS": "See STATEMENTS, POLICIES, COOKIES",
       "SINGULAR": "Privacy",
       "PLURAL": "Privacies",
       "DESCRIPTION": "",
@@ -2773,9 +2780,11 @@
       "REFUND": "Refund",
       "BUY_NOW": "Buy Now",
       "SUBSCRIBE_NOW": "Subscribe Now",
+      "GET_STARTED": "Get Started",
       "START_TODAY": "Start Today",
-      "NO_REASON_TO_WAIT": "No good reason to put it off..."
-
+      "NO_REASON_TO_WAIT": "No good reason to put it off...",
+      "SAVE": "Save",
+      "SAVE!": "Save!"
     },
     "SAILING": {
       "__COMMENTS": "See also DRIVING, SHIPPING",
@@ -2797,7 +2806,8 @@
       "DAILY": "Daily",
       "WEEKLY": "Weekly",
       "MONTHLY": "Monthly",
-      "YEARLY": "Yearly"
+      "YEARLY": "Yearly",
+      "ANNUAL": "Annual"
     },
     "SCORES": {
       "__COMMENTS": "See also EDUCATION, EVIDENCES, OBSERVATIONS, ASSESSMENTS, JUDGEMENTS.",
@@ -2873,6 +2883,18 @@
       "PRESENT": "Setting",
       "PAST": "Set"
     },
+    "SETUPS": {
+      "__COMMENTS": "See CONFIGURATION",
+      "SINGULAR": "Setup",
+      "PLURAL": "Setups",
+      "DESCRIPTION": "",
+      "FUTURE": "To Setup",
+      "PRESENT": "Setting",
+      "PAST": "Setup",
+      "HOW_TO_SETUP": "How to Setup"
+    },
+
+
     "SHIPPING": {
       "__COMMENTS": "See also COMMERCE/SHOPPING, SAILS, DRIVING.",
       "SINGULAR": "Shipping",
@@ -3029,17 +3051,15 @@
       "FUNCTIONALITY": "Functionalities"
     },
     "STATEMENTS": {
-      "__COMMENTS": "See TERMS, POLICIES",
+      "__COMMENTS": "See TERMS, POLICIES, COOKIES. IMPORTANT: One makes available and links to a Statement About one's Policy.'",
       "SINGULAR": "Statement",
       "PLURAL": "Statements",
       "FUTURE": "N/A",
       "PRESENT": "N/A",
       "PAST": "N/A",
-      "PRIVACY": {
-        "SHORT": "Privacy",
-        "TITLE": "Privacy Statement"
-      },
-      "COOKIE": "Cookie Statement"
+      "PRIVACY": "Privacy Statement",
+      "COOKIE": "Cookie Statement",
+      "DATA_USE": "Data Use Statement"
     },
     "STATES": {
       "__COMMENTS": "Progression of generic state of records and resources, towards delivering OUTCOMES.",
@@ -3228,7 +3248,8 @@
       "DESCRIPTION": "",
       "FUTURE": "N/A",
       "PRESENT": "N/A",
-      "PAST": "N/A"
+      "PAST": "N/A",
+      "THE_TEAM": "The Team"
     },
     "TEMPLATE": {
       "__COMMENTS": "",
@@ -3515,6 +3536,17 @@
       "RAINY": "Rainy",
       "FOGGY": "Foggy"
     },
+    "WEEKS": {
+      "__COMMENTS": "See also MONTHS,YEARS",
+      "SINGULAR": "Week",
+      "PLURAL": "Weeks",
+      "DESCRIPTION": "",
+      "COMMAND": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
+    },
+
     "WELCOME": {
       "__COMMENTS": "Authenticated users home page. See DASHBOARD.",
       "SINGULAR": "Welcome",
@@ -3537,6 +3569,16 @@
       "ASSESSMENT": "Assessment",
       "PROGRESS": "Progress",
       "IMPROVEMENT": "Improvement"
+    },
+    "YEARS": {
+      "__COMMENTS": "See also WEEKS, MONTHS",
+      "SINGULAR": "Year",
+      "PLURAL": "Years",
+      "DESCRIPTION": "",
+      "COMMAND": "N/A",
+      "FUTURE": "N/A",
+      "PRESENT": "N/A",
+      "PAST": "N/A"
     },
     "MISC": {
       "__COMMENTS": "",
@@ -3592,24 +3634,50 @@
             "TITLE": "Capabilities",
             "DESCRIPTION": "Anytime, Anywhere, Any Device - have a deeper understanding of your whole service.",
             "MORE": "",
-            "PEOPLE_TITLE": "People",
-            "PEOPLE_DESCRIPTION": "Organise and enable people...",
-            "GROUPS_TITLE": "Groups",
-            "GROUPS_DESCRIPTION": "...in manageable groups...",
-            "PARTICIPATION_TITLE": "Participate",
-            "PARTICIPATION_DESCRIPTION": "...to participate...",
-            "PRESENCE_TITLE": "Presence",
-            "PRESENCE_DESCRIPTION": "...remotely or in person...",
-            "PLACES_TITLE": "Places",
-            "PLACES_DESCRIPTION": "...at any available location...",
-            "PROGRESS_TITLE": "Progression",
-            "PROGRESS_DESCRIPTION": "...to progress...",
-            "PRODUCTS_TITLE": "Products",
-            "PRODUCTS_DESCRIPTION": "...through curriculum meterial...",
-            "PLANS_TITLE": "Plans",
-            "PLANS_DESCRIPTION": "...according to plan...",
-            "ACHIEVEMENT_TITLE": "Achievements",
-            "ACHIEVEMENT_DESCRIPTION": "...towards lifelong valued achievements."
+            "PURPOSE": {
+              "TITLE": "Purpose",
+              "DESCRIPTION": "Define objectives..."
+            },
+            "PROJECTS": {
+              "TITLE": "Projects",
+              "DESCRIPTION": "Develop projects to reach them..."
+            },
+            "PEOPLE": {
+              "TITLE": "People",
+              "DESCRIPTION": "...by enabling people..."
+            },
+            "GROUPS": {
+              "TITLE": "Groups",
+              "DESCRIPTION": "...organised in manageable groups..."
+            },
+            "PLACES": {
+              "TITLE": "Places",
+              "DESCRIPTION": "...using available locations..."
+            },
+            "PARTICIPATION": {
+              "TITLE": "Participation",
+              "DESCRIPTION": "...participating..."
+            },
+            "PRESENCE": {
+              "TITLE": "Presence",
+              "DESCRIPTION": "...remotely or in person..."
+            },
+            "PROGRESS": {
+              "TITLE": "Progression",
+              "DESCRIPTION": "...progressing..."
+            },
+            "PRODUCTS": {
+              "TITLE": "Products",
+              "DESCRIPTION": "...through curriculum meterial..."
+            },
+            "PLANS": {
+              "TITLE": "Plans",
+              "DESCRIPTION": "...according to plan..."
+            },
+            "ACHIEVEMENTS": {
+              "TITLE": "Achievements",
+              "DESCRIPTION": "...towards lifelong valued achievements."
+            }
           },
           "FEATURES": {
             "TITLE": "Features",
@@ -3618,8 +3686,8 @@
             "MORE_INFO": "...."
           },
           "DASHBOARDS": {
-            "TITLE": "Dashboards",
-            "DESCRIPTION": "We've developed dashboards to sprovide you the right level information depending on your needs: the whole system, just one org, one group, or one person."
+            "TITLE": "Features",
+            "DESCRIPTION": "We've developed features to enable users of any age, in any size org, in their preferred language..."
           },
           "ENDORSEMENTS": {
             "TITLE": "Don't Take Our Word For It...",
@@ -3630,7 +3698,7 @@
             "DESCRIPTION": "The following are the most common questions. Have more? We have more answers."
           },
           "PLANS": {
-            "TITLE": "Choose the Plan that's right for you!",
+            "TITLE": "Choose the plan that's right for you!",
             "DESCRIPTION": "Straight forward, flexible, inexpensive plans for every situation."
           },
           "TEAM": {

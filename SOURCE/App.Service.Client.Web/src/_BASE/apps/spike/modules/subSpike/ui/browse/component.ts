@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
-import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { BaseAppsSpikeSubSpikesRepositoryService } from '../../../../services/repositories/subspike-repository.service';
 // Models:
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +21,7 @@ export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private translate: TranslateService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private repositoryService: BaseAppsSpikeSubSpikesRepositoryService
   ) {
     this.diagnosticsTraceService.info("SubSpike:Constructor");
@@ -36,7 +36,7 @@ export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.diagnosticsTraceService.info("params ready2");
       this.diagnosticsTraceService.info('id2: ' + params['id']);
-      this.repositoryService.getPageChildren(params['id']).subscribe((x:any) => {
+      this.repositoryService.getPageAdChildrenOf(params['id']).subscribe((x:any) => {
         this.diagnosticsTraceService.info('got Y: ' + x.title);
         this.data = x
       });

@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { system as importedSystemConst } from '../../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
 
 
   constructor(systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     public translate: TranslateService) {
     // Make system/env variables avaiable to view template (via const or service):
     // this.system = systemService.system;

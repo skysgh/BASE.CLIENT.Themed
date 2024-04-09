@@ -4,3 +4,5 @@ export const systemConfiguration : SystemConfiguration = {
   defaultLanguageCode: 'en',
   defaultAppName: 'spike'
 }
+
+

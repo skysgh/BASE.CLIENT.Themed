@@ -6,9 +6,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { system as importedSystemConst } from '../../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+import { Observable, of } from 'rxjs';
+import { ServiceFeature } from '../../../../../../models/data/service-features.model';
+import { ServiceFeaturesService } from '../../../../../../services/services/service-features.service';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-designed',
@@ -20,21 +23,32 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
  * Designed Component
  */
 export class BaseAppsPagesLandingIndexDesignedComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
+  public features$: Observable<ServiceFeature[]> = of([]);
+
   constructor(systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
-    public translateService: TranslateService) {
-    // Make system/env variables avaiable to view template:
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
+    public translateService: TranslateService,
+    protected serviceFeaturesService: ServiceFeaturesService) {
+    // Make system/env variables avaiable to class & view template:
     this.system = systemService.system;
 
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
+
+    this._fetchData();
+
   } 
 
   ngOnInit(): void {
+  }
+
+  // Chat Data Fetch
+  private _fetchData() {
+    this.features$ = this.serviceFeaturesService.items$;
   }
 
 }

@@ -9,8 +9,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { system as importedSystemConst } from '../../../constants/system';
 // Services:
 import { AuthenticationService } from '../../../services/auth.service';
-import { UserProfileService } from '../../../services/repositories/user.repository.service';
 import { SystemService } from '../../../services/system.service';
+import { UserProfileService } from '../../../services/system/repositories/system-user.repository.service';
 
 
 @Component({
@@ -23,8 +23,8 @@ import { SystemService } from '../../../services/system.service';
  * Register Component
  */
 export class RegisterComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   // Login Form
   signupForm!: FormGroup;
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     private userService: UserProfileService,
   private systemService : SystemService) {
 
-    // Make system/env variables avaiable to view template:
+    // Make system/env variables avaiable to class & view template:
     //this.system = this.systemService.system;
   }
 

@@ -17,8 +17,8 @@ import { SystemService } from '../../../services/system.service';
  * Page500 Component
  */
 export class BaseErrors500TodoComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
   constructor(private systemService: SystemService, public translate: TranslateService) {
     // Make system/env variables avaiable to view template (via const or service):
     // this.system = systemService.system;

@@ -6,10 +6,10 @@ import { Observable, of } from 'rxjs';
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
-import { DashboardService } from '../../../../services/dashboard.service';
+import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
+import { DashboardService } from '../../../../services/service.dashboard.service';
 // Models/Data:
-import { StatOneVTO } from '../../../../models/view/stat-on.vto';
+import { StatOneVTO } from '../../../../models/view/stat-one.vto';
 
 @Component({
   selector: 'base-core-dashboard-index',
@@ -17,20 +17,20 @@ import { StatOneVTO } from '../../../../models/view/stat-on.vto';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreDashboardsIndexComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   stats$: Observable<StatOneVTO[]> = of([]);
 
 
   constructor(
     private systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private dashboardService: DashboardService) {
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor`);
 
-    // Make system/env variables avaiable to view template:
+    // Make system/env variables avaiable to class & view template:
     //this.system = this.systemService.system;
   }
 

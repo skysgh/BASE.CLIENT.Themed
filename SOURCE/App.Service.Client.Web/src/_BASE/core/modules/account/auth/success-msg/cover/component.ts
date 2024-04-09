@@ -17,14 +17,14 @@ import { SystemService } from '../../../../../services/system.service';
  * Success Msg Cover Component
  */
 export class CoverComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
  
   constructor(private systemService: SystemService, public translate: TranslateService) {
-    // Make system/env variables avaiable to view template:
+    // Make system/env variables avaiable to class & view template:
     //this.system = this.systemService.system;
 }
 

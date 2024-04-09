@@ -1,12 +1,19 @@
-import { IHasEnabled } from "./IHasEnabled";
 import { IHasUntenantedEnabledTitleAndDescription } from "./IHasUntenantedEnabledTitleAndDescription";
 import { IHasTenancyId } from "./IHasTenancyId";
-import { IHasTitleAndDescription } from "./IHasTitleAndDescription";
-import { IHasUntenantedReferenceData } from "./IHasUntenantedReferenceData";
 
 
-
+/**
+ * Implements
+ * 
+ * IHasTenancyId,
+ * IHasUUID,
+ * IHasEnabled,
+ * IHasTitleAndDescription
+ */
 export interface IHasTenantedEnabledTitleAndDescription
-  extends IHasTenancyId,
-  IHasUntenantedEnabledTitleAndDescription {
+  extends
+  IHasTenancyId,
+  IHasUntenantedEnabledTitleAndDescription
+{
 }
+

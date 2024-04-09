@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 // Services:
-import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../services/system.diagnostics-trace.service';
 
 //Import template:
 import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../common/components/breadcrumbs/component';
@@ -94,7 +94,7 @@ import { BaseAppsPagesLandingIndexHeaderComponent } from './components/index/com
  */
 export class BaseCorePagesInformationModule {
 
-  constructor(private diagnosticsTraceService:DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService:SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 }

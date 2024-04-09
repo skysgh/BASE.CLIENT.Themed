@@ -6,13 +6,16 @@ import { TranslateService } from '@ngx-translate/core';
 import { system as importedSystemConst } from '../../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
 // Models:
-import { clientLogoModel } from './client-logo.model';
-import { ClientLogo } from './data';
+//import { ClientLogo } from './data';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+import { ServiceTrustedByService } from '../../../../../../services/service.trusted-by.service';
+import { ServiceTrustedByVTO } from '../../../../../../models/view/service.trustedByVTO';
+import { Observable, of } from 'rxjs';
 
+import {  Responsive as importedResponsive} from './settings';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-client-logo',
@@ -25,45 +28,48 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
  */
 export class BaseAppsPagesLandingIndexClientsComponent implements OnInit {
   // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  public system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
+  // Configuration for ngx-slick-carousel:
+  carouselConfiguration = importedResponsive;
+
+  // Define an observable:
+  public list$: Observable<ServiceTrustedByVTO[]> = of([]);
 
   constructor(
     systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
-    public translateService: TranslateService) {
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
+    public translateService: TranslateService,
+    private serviceTrustedByService: ServiceTrustedByService
+  ) {
     // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
-  } 
 
-  ClientLogo!: clientLogoModel[];
+    this.initList();
+  }
 
   ngOnInit(): void {
-    /**
-     * fetches data
-     */
-     this._fetchData();
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`)
   }
 
-  /**
- * User grid data fetches
- */
-   private _fetchData() {
-    this.ClientLogo = ClientLogo;
+
+
+  
+  private initList() {
+    
+    this.serviceTrustedByService 
+      .items$
+      .subscribe(list => {
+        if (list.length == 0) {
+          this.diagnosticsTraceService.warn("...early exit...");
+          return;
+        }
+        this.list$ = of(list)
+      });
   }
 
-  /**
-   * Swiper Responsive setting
-   */
-  public Responsive= {
-    infinite: true,
-    slidesToShow: 4,
-    autoplay: true,
-    dots: true,
-    arrows: false
-  };
 
 
 }

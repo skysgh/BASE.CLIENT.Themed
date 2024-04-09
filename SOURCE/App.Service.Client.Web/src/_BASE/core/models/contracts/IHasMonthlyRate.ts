@@ -1,6 +1,8 @@
 /**
- * See IHasYearlyPrice
+ * See IHasYearlyRate
+ *
+ * Used by ServicePricingPlan
  */
 export interface IHasMonthlyRate {
-    rate: number;
+    monthlyRate: number;
 }

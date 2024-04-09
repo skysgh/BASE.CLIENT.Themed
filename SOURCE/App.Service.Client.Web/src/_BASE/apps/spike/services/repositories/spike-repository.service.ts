@@ -1,39 +1,31 @@
-//import { env } from "process";
-import { MappedGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/mapped-generic-repository.service.base";
-import { Spike } from "../../models/spike.model";
-import { DiagnosticsTraceService } from "../../../../core/services/diagnostics.service";
-import { EnvironmentService } from "../../../../core/services/environment.service";
-import { ErrorService } from "../../../../core/services/error.service";
+// Rx:
+//
+// Ag:
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { TypeService } from "../../../../core/services/type.service";
-import { ObjectMappingService } from "../../../../core/services/objectMapping.service";
-import { SessionStorageService } from "../../../../core/services/SessionStorageService";
-import { UrlService } from "../../../../core/services/url.service";
-//import { Session } from "inspector";
+// Constants:
+import { system as importedSystemConst } from '../../../../core/constants/system';
+// Services:
+import { MappedGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/mapped-generic-repository.service.base";
+// Models:
+import { Spike } from "../../models/spike.model";
+import { RepositoryStandardServicesPackage } from "../../../../core/services/repositories/base/_standard-repository-services-package";
 
 @Injectable()
 export class BaseAppsSpikeSpikesRepositoryService
   extends MappedGenericRepositoryServiceBase<Spike,Spike> {
+  // Make system/env variables avaiable to class & view template:
+  // already inherited: public system = importedSystemConst;
+
+
 
   constructor(
-    typeService: TypeService,
-    environmentService: EnvironmentService,
-    diagnosticsTraceService: DiagnosticsTraceService,
-    errorService: ErrorService,
-    objectMappingService: ObjectMappingService,
-    sessionStorageService: SessionStorageService,
-    urlService: UrlService,
+    repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
     httpClient: HttpClient) {
     super(
-      typeService,
-      environmentService,
-      diagnosticsTraceService,
-      errorService,
-      objectMappingService,
-      sessionStorageService,
-      urlService,
+      repositoryStandardServicesPackage,
       httpClient,
+    // Constants:
       "spikes"
     );
   }

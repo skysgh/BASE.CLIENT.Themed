@@ -4,7 +4,11 @@ import { IHasEnabled } from "./IHasEnabled";
 import { IHasFromToUtc } from "./IHasFromToUtc";
 
 /** Contract for simple, ReferenceData items.
- * Implements IHasUUID, IHasEnabled, and IHasTitleAndDescription.
+ * Implements
+ * IHasUUID,
+ * IHasEnabled,
+ * IHasFromToUtc,
+ * IHasTitleAndDescription.
  *
  * Note:
  * (see IHasEnabledReferenceData).
@@ -19,7 +23,8 @@ import { IHasFromToUtc } from "./IHasFromToUtc";
  */
 
 export interface IHasUntenantedReferenceData
-  extends IHasUUID,
+  extends
+  IHasUUID,
   IHasEnabled,
   IHasFromToUtc,
   IHasTitleAndDescription {

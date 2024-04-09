@@ -6,11 +6,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { system as importedSystemConst } from '../../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
-import { SystemEndorsementRepositoryService } from '../../../../../../services/repositories/system-endorsements.repository.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
+import { SystemEndorsementRepositoryService } from '../../../../../../services/services/repositories/service-endorsements.repository.service';
 // Models:
 import { Observable, of } from 'rxjs';
-import { SystemEndorsement } from '../../../../../../models/data/systemEndorsement.model';
+import { ServiceEndorsementMAYBE } from '../../../../../../models/data/service-endorsement.model';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
@@ -25,19 +25,19 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
  * Review Component
  */
 export class BaseAppsPagesLandingIndexReviewComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
 
-  reviews$: Observable<SystemEndorsement[]> = of([]);
+  reviews$: Observable<ServiceEndorsementMAYBE[]> = of([]);
 
   constructor(systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     public translateService: TranslateService,
     private systemEndorsementRepositoryService: SystemEndorsementRepositoryService
 ) {
-    // Make system/env variables avaiable to view template:
+    // Make system/env variables avaiable to class & view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

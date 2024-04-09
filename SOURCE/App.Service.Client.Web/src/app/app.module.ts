@@ -31,7 +31,7 @@
 //import { environment } from '../environments/environment';
 //import { system } from '../_BASE/shared/constants/system'
 //// BASE Services:
-//import { DiagnosticsTraceService } from '../_BASE/shared/services/diagnostics.service';
+//import { DiagnosticsTraceService } from '../_BASE/shared/services/system.diagnostics-trace.service';
 
 
 

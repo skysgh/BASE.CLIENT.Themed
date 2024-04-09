@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
-import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 // Models:
 import { SummaryItemVTO } from '../../../../models/SummaryItemVTO.model';
 // Data:
@@ -16,8 +16,8 @@ import { SummaryItemVTO } from '../../../../models/SummaryItemVTO.model';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsSummaryItemSelectorComponent {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   
   @Input() // Adjust the duration as needed
@@ -47,7 +47,7 @@ export class BaseCoreCommonComponentsSummaryItemSelectorComponent {
   /** Constructor
    * @param diagnosticsTraceService
    */
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
   }
 

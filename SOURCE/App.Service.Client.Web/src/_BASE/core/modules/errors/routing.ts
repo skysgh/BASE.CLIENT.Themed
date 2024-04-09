@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Services:
-import { DiagnosticsTraceService } from '../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../services/system.diagnostics-trace.service';
 
 // Components
 import { BaseErrorsOfflineComponent } from "./000/offline/component";
@@ -53,7 +53,7 @@ const routes: Routes = [
 export class AppBaseErrorsRoutingModule {
 
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
   }
 }

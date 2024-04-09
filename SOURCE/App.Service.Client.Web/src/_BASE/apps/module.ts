@@ -21,9 +21,9 @@ import { BaseCoreCommonModule } from "../core/modules/common/module";
 import { BaseAppsRouteComponent } from "./ui/_route/component";
 import { RouterModule, Routes } from '@angular/router';
 import { BaseAppsRoutingModule } from './routing';
-import { SystemLanguagesRepositoryService } from '../core/services/repositories/system.languages.repository.service';
-import { LanguageService } from '../core/services/language.service';
-import { DiagnosticsTraceService } from '../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../core/services/system.diagnostics-trace.service';
+import { ServiceLanguagesRepositoryService } from '../core/services/services/repositories/service-languages.repository.service';
+import { ServiceLanguagesService } from '../core/services/service.languages.service';
 //Components:
 
 
@@ -51,12 +51,12 @@ import { DiagnosticsTraceService } from '../core/services/diagnostics.service';
   ],
   providers: [
     // declare services to dependency inject into constructors.
-    SystemLanguagesRepositoryService,
-    LanguageService
+    ServiceLanguagesRepositoryService,
+    ServiceLanguagesService
   ]
 })
 export class BaseAppsModule {
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
   }
 }

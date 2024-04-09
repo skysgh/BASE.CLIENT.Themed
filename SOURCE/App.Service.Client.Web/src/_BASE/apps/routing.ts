@@ -11,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../core/constants/system';
 // Services:
-import { DiagnosticsTraceService } from '../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../core/services/system.diagnostics-trace.service';
 // Modules:
 import { AppBaseCoreErrorsModule } from '../core/modules/errors/module';
 // Components:
@@ -52,7 +52,7 @@ const routes: Routes = [
 })
 
 export class BaseAppsRoutingModule {
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
   }
 }

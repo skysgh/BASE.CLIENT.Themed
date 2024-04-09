@@ -7,8 +7,8 @@ import { Component, Input, OnDestroy, OnInit, Output } from "@angular/core";
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
-import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
-import { PdfService } from "../../../../services/pdf.service";
+import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
+import { PdfService } from "../../../../services/infrastructure/pdf.service";
 // Models:
 //
 // Data:
@@ -23,8 +23,8 @@ import { PdfService } from "../../../../services/pdf.service";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsPdfComponent implements OnInit, OnDestroy {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   @Input("src")
   public src: string | undefined = undefined;
@@ -67,7 +67,7 @@ export class BaseCoreCommonComponentsPdfComponent implements OnInit, OnDestroy {
   private pdfSubscription: Subscription|undefined;
 
   constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private pdfService: PdfService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
 

@@ -1,51 +1,64 @@
 {
-  "base_system_pricing_options": [
-    {
-      "id": "00000000-00000000-00000000-00000001",
-      "title": "Single",
-      "description": ""
-    },
-    {
-      "id": "00000000-00000000-00000000-00000002",
-      "title": "Small",
-      "description": "For small, tight, teams ready to take on the world."
-
-    },
-    {
-      "id": "00000000-00000000-00000000-00000003",
-      "title": "Medium",
-      "description": "For smooth running teams."
-
-    },
-    {
-      "id": "00000000-00000000-00000000-00000004",
-      "title": "Enterprise",
-      "description": "For unignorable organisations."
-
-    },
-    {
-      "id": "00000000-00000000-00000000-00000005",
-      "title": "Unlimited",
-      "description": "For uninteruptible service (AND 2 months every year free!)."
-    }
-  ],
-  "base_system_faqs_categories": [
+  "base_system_Services": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "title": "Default",
+      "description": "...some desc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "title": "Demo",
+      "description": "...some desc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "MOE Demo",
+      "description": "...some desc..."
+    }
+  ],
+
+  "base_service_TrustedBy": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "MOE",
+      "description": "Ministry of Edukation",
+      "imageName": "moe.png"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "TEC",
+      "description": "Tertuary Education Club",
+      "imageName": "tec.png"
+    }
+  ],
+
+  "base_service_FaqCategories": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "General Questions",
       "description": ""
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "Privacy & Security",
       "description": ""
     }
   ],
-  "base_system_faqs": [
+  "base_service_Faqs": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "categoryId": "00000000-0000-0000-0000-000000000001",
       "title": "How to invite users to join your groups",
@@ -53,6 +66,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "categoryId": "00000000-0000-0000-0000-000000000001",
       "title": "How do I set up a school, or classroom?",
@@ -60,6 +74,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "categoryId": "00000000-0000-0000-0000-000000000001",
       "title": "How do I peeople in roles?",
@@ -67,6 +82,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000004",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "categoryId": "00000000-0000-0000-0000-000000000002",
       "title": "How secure is this system?",
@@ -74,6 +90,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000005",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "categoryId": "00000000-0000-0000-0000-000000000002",
       "title": "How private is my data?",
@@ -81,6 +98,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000006",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "categoryId": "00000000-0000-0000-0000-000000000002",
       "title": "What if I lose access to my email account?",
@@ -88,9 +106,10 @@
     }
   ],
 
-  "base_system_endorsements": [
+  "base_service_UserEndorsements": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "About time",
       "description": "Waited 10 years for this.",
@@ -99,6 +118,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "Finally have the tool",
       "description": "Custom software, like this one -- specific to need -- *always* beats configured COTS in terms of consumer satisfaction.",
@@ -107,6 +127,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "Gobsmacked",
       "description": "WHy didn't we do this sooner?!?!",
@@ -115,6 +136,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000004",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "Hate It",
       "description": "Gartner's doesn't mention it! There are *way* more expensive solutions for us to try first.",
@@ -122,48 +144,55 @@
       "role": "Martin & Co."
     }
   ],
-  "base_service_workprocess": [
+  "base_service_Workprocess": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "enabled": true,
-      "iconId": "ri-quill-pen-line",
+      "imageId": "ri-quill-pen-line",
       "title": "Tell us what you need",
       "description": "The profession and the employer and your desire to make your mark."
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "enabled": true,
-      "iconId": "ri-user-follow-line",
+      "imageId": "ri-user-follow-line",
       "title": "Get free quotes",
       "description": "The most important aspect of beauty was, therefore, an inherent part."
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "enabled": true,
-      "iconId": "ri-book-mark-line",
+      "imageId": "ri-book-mark-line",
       "title": "Deliver high quality product",
       "description": "We quickly learn to fear and thus automatically avoid potentially."
     }
   ],
 
-  "base_stats": [
+  "base_service_stats": [
     [
       {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
         "enabled": true,
         "title": "Providers",
         "description": "...",
-        "iconId": "bx bxs-school",
+        "imageId": "bx bxs-school",
         "value": 5871,
         "decimalPlaces": 0,
-        "prefix": "undefined",
-        "suffix": "undefined",
+        "prefix": "",
+        "suffix": "",
         "changeDirection": "+1"
       },
       {
+        "id": "00000000-0000-0000-0000-000000000002",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
         "enabled": true,
         "title": "Learners",
         "description": "...",
-        "iconId": "las la-child",
+        "imageId": "las la-child",
         "value": 789.4,
         "decimalPlaces": 0,
         "prefix": "",
@@ -171,10 +200,12 @@
         "changeDirection": "+1"
       },
       {
+        "id": "00000000-0000-0000-0000-000000000003",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
         "enabled": true,
         "title": "Enrollments",
         "description": "",
-        "iconId": "bx bx-user-check",
+        "imageId": "bx bx-user-check",
         "value": 89.89,
         "decimalPlaces": 2,
         "prefix": "",
@@ -182,10 +213,12 @@
         "changeDirection": -1
       },
       {
+        "id": "00000000-0000-0000-0000-000000000004",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
         "enabled": true,
         "title": "Attendance",
         "description": "",
-        "iconId": "bx bx-bell",
+        "imageId": "bx bx-bell",
         "value": 56.23,
         "decimalPlaces": 2,
         "prefix": "",
@@ -193,10 +226,12 @@
         "changeDirection": -1
       },
       {
+        "id": "00000000-0000-0000-0000-000000000005",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
         "enabled": true,
         "title": "Graduating",
         "description": "",
-        "iconId": "ri-trophy-line",
+        "imageId": "ri-trophy-line",
         "value": 2659,
         "decimalPlaces": 2,
         "prefix": "",
@@ -206,22 +241,25 @@
     ]
   ],
 
-  "base_encodingTypes": [
+  "base_service_TextMediaEncodingTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "title": "HTML",
       "description": "...some desc..."
     },
     {
       "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "title": "Markdown",
       "description": "...some desc..."
     }
   ],
 
-  "base_languages": [
+  "base_service_Languages": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "NZ English",
       "description": "Kiwi",
@@ -230,6 +268,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "Māori",
       "description": "NZ Māori",
@@ -238,6 +277,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "中国人",
       "description": "Chinese language",
@@ -246,6 +286,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000004",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": false,
       "title": "Francais",
       "description": "French language",
@@ -254,6 +295,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000005",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": false,
       "title": "Española",
       "description": "Spanish language",
@@ -262,6 +304,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000006",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": false,
       "title": "Deutsche",
       "description": "German language",
@@ -270,6 +313,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000007",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": false,
       "title": "Italiana",
       "description": "Italian language",
@@ -278,6 +322,7 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000007",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
       "title": "Gagana Samoa",
       "description": "Samoan language",
@@ -285,7 +330,7 @@
       "flagImageId": "ws"
     }
   ],
-  "base_embargos": [
+  "base_system_Embargos": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "enabled": true,
@@ -365,7 +410,7 @@
       "description": "Mali, Libya, Somalia"
     }
   ],
-  "base_countries_excluded": [
+  "base_System_CountriesExcluded": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "embargoFk": "00000000-0000-0000-0000-000000000013",
@@ -379,140 +424,145 @@
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000003",
       "embargoFk": "00000000-0000-0000-0000-000000000013",
       "title": "Somalia",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000004",
       "embargoFk": "00000000-0000-0000-0000-000000000012",
       "title": "North Korea",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000005",
       "embargoFk": "00000000-0000-0000-0000-000000000011",
       "title": "Iran",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000006",
       "embargoFk": "00000000-0000-0000-0000-000000000010",
       "title": "South SUdan",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000007",
       "embargoFk": "00000000-0000-0000-0000-000000000010",
       "title": "Syria Cultural Property",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000008",
       "embargoFk": "00000000-0000-0000-0000-000000000009",
       "title": "Central African Republic",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000009",
       "embargoFk": "00000000-0000-0000-0000-000000000009",
       "title": "Yemen",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000010",
       "embargoFk": "00000000-0000-0000-0000-000000000008",
       "title": "Guinea-Bissau",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000011",
       "embargoFk": "00000000-0000-0000-0000-000000000007",
       "title": "Libya",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000012",
       "embargoFk": "00000000-0000-0000-0000-000000000006",
       "title": "Eritrea",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000013",
       "embargoFk": "00000000-0000-0000-0000-000000000005",
       "title": "Lebanon",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000014",
       "embargoFk": "00000000-0000-0000-0000-000000000004",
       "title": "Al Qaida",
       "description": "...",
       "range": "...see https://lite.ip2location.com/afghanistan-ip-address-ranges"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000015",
       "embargoFk": "00000000-0000-0000-0000-000000000004",
       "title": "Taliban",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000016",
       "embargoFk": "00000000-0000-0000-0000-000000000003",
       "title": "Democratic Republic of the Congo",
       "description": "...",
       "range": "41.243.3.0 - 41.243.4.255"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000017",
       "embargoFk": "00000000-0000-0000-0000-000000000003",
       "title": "Kimberley Process",
       "description": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000018",
       "embargoFk": "00000000-0000-0000-0000-000000000003",
       "title": "Sudan",
       "description": "...",
       "range": "41.95.2.48.0-41.95.2.48.255"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000019",
       "embargoFk": "00000000-0000-0000-0000-000000000002",
       "title": "Iraq Reconstruction",
       "description": "...",
       "range": "40.77.167.5"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
+      "id": "00000000-0000-0000-0000-000000000020",
       "embargoFk": "00000000-0000-0000-0000-000000000001",
       "title": "Iraq",
       "description": "...",
       "range": "40.77.167.5"
     }
   ],
-  "base_statementTypes": [
+  "base_system_ExcludedIPRanges": {
+    "id": "00000000-0000-0000-0000-000000000020",
+    "excludedCountryId": "00000000-0000-0000-0000-000000000020",
+    "range": "41.95.2.48.0-41.95.2.48.255"
+  },
+  "base_system_StatementTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
-      "title": "Privacy Statement",
+      "title": "Privacy",
       "description": "...some desc..."
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
-      "title": "Data Use Statement",
+      "title": "Data Use",
       "description": "...some desc..."
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
-      "title": "User Tracking Statement",
+      "title": "Tracking",
       "description": "...some desc..."
     }
   ],
 
 
 
-  "base_team": [
+  "base_service_DeliveryTeamMembers": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "enabled": true,
@@ -579,74 +629,74 @@
     }
   ],
 
-  "base_capabilities": [
+  "base_service_Capabilities": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "enabled": true,
-      "title": "Purpose",
-      "description": "Define valuable Purposes people can own.",
-      "iconId": "ri-pencil-ruler-2-line"
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PURPOSE.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PURPOSE.DESCRIPTION",
+      "imageId": "ri-pencil-ruler-2-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
       "enabled": true,
-      "title": "Projects",
-      "description": "Develop projects to coordinate delivery.",
-      "iconId": " ri-flag-line"
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PROJECTS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PROJECTS.DESCRIPTION",
+      "imageId": " ri-flag-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
-      "title": "People",
-      "description": "Help people find each to collaborate.",
-      "iconId": " ri-user-line"
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PEOPLE.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PEOPLE.DESCRIPTION",
+      "imageId": " ri-user-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000004",
       "enabled": true,
-      "title": "Groups",
-      "description": "Develop Groups of any size and shape for them to work together.",
-      "iconId": "ri-group-line"
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.GROUPS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.GROUPS.DESCRIPTION",
+      "imageId": "ri-group-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000004",
       "enabled": true,
-      "title": "Places",
-      "description": "Provide spaces for them to cowork together in person.",
-      "iconId": "ri-map-pin-2-line"
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PLACES.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PLACES.DESCRIPTION",
+      "imageId": "ri-map-pin-2-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000005",
       "enabled": true,
-      "iconId": "ri-book-open-line",
-      "title": "Products",
-      "description": "Find and/or create and deliver new resources."
+      "imageId": " ri-line-chart-line",
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PROGRESS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PRODUCTS.DESCRIPTION"
     },
     {
       "id": "00000000-0000-0000-0000-000000000006",
       "enabled": true,
-      "iconId": " ri-line-chart-line",
-      "title": "Progress",
-      "description": "Assess and track progress."
+      "imageId": "ri-book-open-line",
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PRODUCTS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PRODUCTS.DESCRIPTION"
     },
     {
       "id": "00000000-0000-0000-0000-000000000007",
       "enabled": true,
-      "iconId": " ri-award-line",
-      "title": "Achieve",
-      "description": "With the right tool, it becomes so much easier."
+      "imageId": " ri-award-line",
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PLANS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PLANS.DESCRIPTION"
     },
     {
       "id": "00000000-0000-0000-0000-000000000008",
       "enabled": true,
-      "title": "Improve",
-      "description": "With Insights, improve the process and make Achieving even easier.",
-      "iconId": "ri-recycle-line"
+      "imageId": "ri-recycle-line",
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.ACHIEVEMENTS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.ACHIEVEMENTS.DESCRIPTION"
     }
   ],
 
 
-  "base_statements": [
+  "base_service_Statements": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "typeId": "00000000-0000-0000-0000-000000000001",
@@ -689,7 +739,7 @@
     }
   ],
 
-  "base_userQuotes": [
+  "base_service_Endorsements": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Great!",
@@ -712,7 +762,7 @@
       "languageCode": "mi"
     }
   ],
-  "base_systemUsers": [
+  "base_system_Users": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Mr.Jones",
@@ -733,7 +783,7 @@
     }
   ],
 
-  "persons": [
+  "app_persons": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "dob": null,
@@ -761,7 +811,7 @@
     }
   ],
 
-  "personIdentities": [
+  "app_personIdentities": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "parentFK": "00000000-0000-0000-0000-000000000001",
@@ -794,7 +844,7 @@
     }
   ],
 
-  "personIdentityNames": [
+  "app_personIdentityNames": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "parentFK": "00000000-0000-0000-0000-000000000001",
@@ -840,24 +890,24 @@
   ],
 
 
-  "tasks": [
+  "todo_tasks": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Get list of permitted languages",
       "description": "From server, get list of language options.",
       "completed": false,
-      "iconId": "bx-badge-check"
+      "imageId": "bx-badge-check"
     }
   ],
 
 
 
 
-  "notificationDisplayItem": [
+  "todo_notificationDisplayItem": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "recipientFK": "00000000-0000-0000-0000-000000000001",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "checkboxId": "all-notification-check01",
       "time": "Just 30 sec ago",
       "from": "AliExpress",
@@ -870,7 +920,7 @@
       "from": "AliExpress",
       "subject": "Your Drone reward is ready!",
       "message": "Blah blah blah...",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "time": "Just 30 sec ago",
       "checkboxId": "all-notification-check01",
       "state": false
@@ -880,7 +930,7 @@
       "from": "Angela Bernier",
       "subject": "Answered to your comment on the cash flow forecast's graph 🔔.",
       "img": "{{system.sources.assets.private.dynamic.userdata.images.users}}avatar-2.jpg",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "time": "48 min ago",
       "checkboxId": "all-notification-check02",
       "state": false
@@ -889,7 +939,7 @@
       "id": "00000000-0000-0000-0000-000000000003",
       "from": "Daemon",
       "subject": "You have received new messages in the conversation",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "time": "2 hrs ago",
       "checkboxId": "all-notification-check03",
       "state": false
@@ -899,7 +949,7 @@
       "from": "Maureen Gibsons",
       "subject": "We talked about a project on linkedin.",
       "img": "{{system.sources.assets.private.dynamic.userdata.images.users}}avatar-8.jpg",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "time": "4 HRS ago",
       "checkboxId": "all-notification-check04",
       "state": false
@@ -908,13 +958,13 @@
 
 
 
-  "systemNotifications": [
+  "base_service_Notifications": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "enabled": false,
       "forUserFK": "00000000-0000-0000-0000-000000000002",
       "typeFK": "00000000-0000-0000-0000-000000000001",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "imageName": "avatar-1.jpg",
       "title": "General",
       "description": "Students running in hallways",
@@ -926,7 +976,7 @@
       "enabled": false,
       "forUserFK": "00000000-0000-0000-0000-000000000002",
       "typeFK": "00000000-0000-0000-0000-000000000002",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "imageName": "avatar-2.jpg",
       "title": "Angela Bernier ",
       "description": "School bell still muted? 🔔.",
@@ -938,7 +988,7 @@
       "enabled": false,
       "forUserFK": "00000000-0000-0000-0000-000000000002",
       "typeFK": "00000000-0000-0000-0000-000000000001",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "imageName": "avatar-8.jpg",
       "title": "General",
       "description": "Parents are really mad!",
@@ -950,7 +1000,7 @@
       "enabled": false,
       "forUserFK": "00000000-0000-0000-0000-000000000002",
       "typeFK": "00000000-0000-0000-0000-000000000002",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "imageName": "avatar-8.jpg",
       "title": "Maureen Gibsons",
       "description": "Maths results in.",
@@ -960,7 +1010,7 @@
 
   ],
 
-  "messageTypes": [
+  "todo_MessageTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Notifications",
@@ -983,12 +1033,12 @@
 
 
 
-  "messages": [
+  "todo_Messages": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "enabled": false,
       "typeFK": "00000000-0000-0000-0000-000000000001",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "imageName": "avatar-1.jpg",
       "title": "General",
       "description": "Students running in hallways",
@@ -999,7 +1049,7 @@
       "id": "00000000-0000-0000-0000-000000000002",
       "enabled": false,
       "typeFK": "00000000-0000-0000-0000-000000000001",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "imageName": "avatar-2.jpg",
       "title": "Angela Bernier ",
       "description": "School bell still muted? 🔔.",
@@ -1010,7 +1060,7 @@
       "id": "00000000-0000-0000-0000-000000000003",
       "enabled": false,
       "typeFK": "00000000-0000-0000-0000-000000000001",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "imageName": "avatar-8.jpg",
       "title": "General",
       "description": "Parents are really mad!",
@@ -1021,7 +1071,7 @@
       "id": "00000000-0000-0000-0000-000000000004",
       "enabled": false,
       "typeFK": "00000000-0000-0000-0000-000000000001",
-      "iconId": "bx-badge-check",
+      "imageId": "bx-badge-check",
       "imageName": "avatar-8.jpg",
       "title": "Maureen Gibsons",
       "description": "Maths results in.",
@@ -1030,106 +1080,253 @@
     }
   ],
 
-
-
-
-
-
-
-  "pricings": [
+  "base_service_Features": [
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "title": "Starter",
-      "description": "...some desc...",
-      "price": "1.00"
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "id": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Dashboards",
+      "description": "for the right level of insight.",
+      "imageName": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "title": "Professional",
-      "description": "...some desc...",
-      "price": "9.99"
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "id": "00000000-00000000-00000000-00000002",
+      "enabled": true,
+      "title": "Available in local languages",
+      "description": "English, Māori, Samoan, Tonga, Chinese, Indian...",
+      "imageName": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "title": "Corporate",
-      "description": "...some desc...",
-      "price": "12.99"
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "id": "00000000-00000000-00000000-00000003",
+      "enabled": true,
+      "title": "Device & Platform independent",
+      "description": "Anytime, anywhere, any device",
+      "imageName": "..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "title": "Enterprise",
-      "description": "...some desc...",
-      "price": "30000"
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "id": "00000000-00000000-00000000-00000004",
+      "enabled": true,
+      "title": "Government Secure",
+      "description": "Encryted, Encrypted, Encrypted.",
+      "imageName": "..."
+    },
+    {
+      "serviceId": "00000000-00000000-00000000-00000005",
+      "id": "00000000-00000000-00000000-00000005",
+      "enabled": true,
+      "title": "Scalable",
+      "description": "Ready for the whole sector...",
+      "imageName": "..."
     }
   ],
 
-
-
-
-  "pricingfeatures": [
+  "base_service_PricingPlans": [
     {
-      "id": "00000000-0000-0000-0000-000000000012",
+      "id": "00000000-00000000-00000000-00000001",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Single",
+      "description": "For opportunity scouts, creating paths before all others.",
+      "monthlyRate": "4.99",
+      "yearlyRate": "49.99",
+
+      "members": 3,
+      "groups": 3,
+      "projects": 3,
+      "products": 3
+    },
+    {
+      "id": "00000000-00000000-00000000-00000002",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Small",
+      "description": "For small & tight teams, ready to take on the world.",
+      "monthlyRate": "9.99",
+      "yearlyRate": "99.99"
+    },
+    {
+      "id": "00000000-00000000-00000000-00000003",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Medium",
+      "description": "For teams optimising the opportunities they've already found.",
+      "monthlyRate": "29.99",
+      "yearlyRate": "299.99"
+
+    },
+    {
+      "id": "00000000-00000000-00000000-00000004",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Enterprise",
+      "description": "For unignorable organisations that shape our world.",
+      "monthlyRate": "199.99",
+      "yearlyRate": "1999.99"
+
+    },
+    {
+      "id": "00000000-00000000-00000000-00000005",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Unlimited",
+      "description": "For uninteruptible service (AND 2 months every year free!).",
+      "monthlyRate": "499.99",
+      "yearlyRate": "4999.99"
+    }
+  ],
+  "base_service_PricingPlanFeatures": [
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "title": "Projects",
+      "description": "For achieving outcomes."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "title": "Groups",
+      "description": "For grouping Persons"
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "Users",
+      "description": "For enabling service Users."
+    }
+  ],
+
+  "base_service_PricingPlanFeaturesAllocation": [
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000001",
       "pricingFK": "00000000-0000-0000-0000-000000000001",
-      "title": "1 Projects",
+      "enabled": true,
+      "offered": true,
+      "title": "3 Projects",
       "description": "...some desc..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000013",
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": true,
       "pricingFK": "00000000-0000-0000-0000-000000000001",
-      "title": "100 People",
-      "description": "...some desc..."
+      "title": "15 Groups",
+      "description": "Group users, suppliers"
     },
     {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "id": "00000000-0000-0000-0000-000000000014",
       "pricingFK": "00000000-0000-0000-0000-000000000001",
-      "title": "24/7 Support",
+      "enabled": true,
+      "offered": true,
+      "title": "300 Users",
       "description": "...some desc..."
     },
     {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000014",
+      "pricingFK": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "offered": false,
+      "title": "Unlimited Storage",
+      "description": "(but nobody's runout yet!)"
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000014",
+      "pricingFK": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "offered": false,
+      "title": "24/7 Support",
+      "description": "We're open office hours!"
+    },
+
+
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "id": "00000000-0000-0000-0000-000000000021",
       "pricingFK": "00000000-0000-0000-0000-000000000002",
-      "title": "1 Domain",
-      "description": "...some desc..."
+      "enabled": true,
+      "offered": true,
+      "title": "6 Projects",
+      "description": "Take on more as you grow!"
     },
     {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "id": "00000000-0000-0000-0000-000000000022",
       "pricingFK": "00000000-0000-0000-0000-000000000002",
-      "title": "3 Projects",
-      "description": "...some desc..."
+      "enabled": true,
+      "offered": true,
+      "title": "30 Groups",
+      "description": "Group providers, potentials, users"
     },
     {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "id": "00000000-0000-0000-0000-000000000023",
       "pricingFK": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": true,
       "title": "300 People",
       "description": "...some desc..."
     },
     {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "id": "00000000-0000-0000-0000-000000000024",
       "pricingFK": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": "fale",
+      "title": "Unlimited Storage",
+      "description": "...some desc..."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000024",
+      "pricingFK": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": "fale",
       "title": "24/7 Support",
       "description": "...some desc..."
     },
     {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "id": "00000000-0000-0000-0000-000000000031",
       "pricingFK": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "offered": true,
       "title": "1 Domain",
       "description": "...some desc..."
     },
     {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "id": "00000000-0000-0000-0000-000000000032",
       "pricingFK": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "offered": true,
       "title": "3 Projects",
       "description": "...some desc..."
     },
     {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "id": "00000000-0000-0000-0000-000000000033",
       "pricingFK": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "offered": true,
       "title": "300 People",
       "description": "...some desc..."
     },
     {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
       "id": "00000000-0000-0000-0000-000000000034",
       "pricingFK": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "offered": true,
       "title": "24/7 Support",
       "description": "...some desc..."
     }
@@ -1138,7 +1335,7 @@
 
 
 
-  "subscriptions": [
+  "todo_subscriptions": [
     {
       "pricingFk": "00000000-0000-0000-0000-000000000001",
       "userFk": "00000000-0000-0000-0000-000000000001"
@@ -1151,7 +1348,7 @@
 
 
 
-  "licenses": [
+  "todo_licenses": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "License",
@@ -1170,7 +1367,7 @@
 
 
 
-  "productCarts": [
+  "base_service_ProductCarts": [
     {
       "personId": "00000000-0000-0000-0000-000000000001",
       "productId": "00000000-0000-0000-0000-000000000001"
@@ -1181,7 +1378,7 @@
 
 
 
-  "productTypes": [
+  "base_service_ProductTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Type A",
@@ -1198,7 +1395,7 @@
 
 
 
-  "products": [
+  "base_service_Products": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Clown T-Shirt",
@@ -1216,7 +1413,7 @@
   ],
 
 
-  "spikes": [
+  "app_spike_Spikes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Spike.Foo",
@@ -1237,7 +1434,7 @@
 
 
 
-  "subSpikes": [
+  "app_spike_SubSpikes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "parentFK": "00000000-0000-0000-0000-000000000001",
@@ -1264,7 +1461,7 @@
     }
   ],
 
-  "templateItems": [
+  "todo_templateItems": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Foo",
@@ -1280,7 +1477,7 @@
 
 
 
-  "templateSubItems": [
+  "todo_templateSubItems": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "parentFK": "00000000-0000-0000-0000-000000000001",
@@ -1310,7 +1507,7 @@
 
 
 
-  "values": [
+  "app_architecture_Values": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "honesty",
@@ -1362,7 +1559,7 @@
 
 
 
-  "principleTypes": [
+  "app_architecture_PrincipleTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "business",
@@ -1413,7 +1610,7 @@
 
 
 
-  "principles": [
+  "app_architecture_Principles": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "typeFk": "00000000-0000-0000-0000-000000000008",
@@ -1445,7 +1642,7 @@
       "description": "Ensuring the design is not narrowly focused on today's problems forgetting what could be done if there were no problems to focus on today."
     }
   ],
-  "qualityTypes": [
+  "app_architecture_QualityTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "ISO-25010",
@@ -1462,7 +1659,7 @@
       "description": "Sytem User Experience Qualities"
     }
   ],
-  "qualityCategories": [
+  "app_architecture_QualityCategories": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "typeFk": "00000000-0000-0000-0000-000000000001",
@@ -1493,7 +1690,7 @@
 
 
 
-  "qualities": [
+  "app_architecture_Qualities": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "categoryFk": "00000000-0000-0000-0000-000000000001",

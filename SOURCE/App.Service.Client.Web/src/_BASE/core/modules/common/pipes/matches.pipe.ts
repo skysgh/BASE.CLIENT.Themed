@@ -12,7 +12,7 @@ import { system as importedSystemConst } from '../../../constants/system';
 })
 export class MatchesPipe implements PipeTransform {
   // make system/env config accessible by markup:
-  system = importedSystemConst;
+  public system = importedSystemConst;
 
   transform(items: any[]|null, propertyName: string, propertyValue: any): any[] |null{
     if (!items || !propertyName || propertyValue === undefined) {

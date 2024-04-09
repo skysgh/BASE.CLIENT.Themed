@@ -1,27 +1,33 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// Rx:
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from '../models/misc/auth.models';
+// Ag:
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 // Services:
-import { DiagnosticsTraceService } from './diagnostics.service';
+import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
+// Models:
+import { User } from '../models/misc/auth.models';
+// Data:
 
 
 @Injectable({ providedIn: 'root' })
 export class AuthfakeauthenticationService {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService, private http: HttpClient) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService, private http: HttpClient) {
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 
     this.currentUserSubject =
       new BehaviorSubject<User>(
-        JSON.parse(sessionStorage.getItem('currentUser')!));
+        JSON.parse(sessionStorage.getItem(this.system.storage.system.currentUser)!));
 
     this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -30,9 +36,9 @@ export class AuthfakeauthenticationService {
      * current user
      */
     public get currentUserValue(): User {
-      this.diagnosticsTraceService.info("AuthfakeauthenticationService.currentUserValue()")
+      this.diagnosticsTraceService.debug("AuthfakeauthenticationService.currentUserValue()")
       var result = this.currentUserSubject.value;
-      this.diagnosticsTraceService.info(`...: ${result}`);
+      this.diagnosticsTraceService.debug(`...: ${result}`);
       return result;
     }
 
@@ -42,7 +48,7 @@ export class AuthfakeauthenticationService {
      * @param password password of user
      */
     login(email: string, password: string) {
-      this.diagnosticsTraceService.info(`AuthfakeauthenticationService.login('${email}', pwd...)`)
+      this.diagnosticsTraceService.debug(`${this.constructor.name }.login('${email}', pwd...)`)
 
         return this.http.post<any>(`/users/authenticate`, { email, password })
 
@@ -50,7 +56,7 @@ export class AuthfakeauthenticationService {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    sessionStorage.setItem('currentUser', JSON.stringify(user));
+                  sessionStorage.setItem(this.system.storage.system.currentUser, JSON.stringify(user));
 
                   this.currentUserSubject.next(user);
                 }
@@ -62,8 +68,8 @@ export class AuthfakeauthenticationService {
      * Logout the user
      */
     logout() {
-        // remove user from local storage to log user out
-        sessionStorage.removeItem('currentUser');
+      // remove user from local storage to log user out
+      sessionStorage.removeItem(this.system.storage.system.currentUser);
         this.currentUserSubject.next(null!);
     }
 }

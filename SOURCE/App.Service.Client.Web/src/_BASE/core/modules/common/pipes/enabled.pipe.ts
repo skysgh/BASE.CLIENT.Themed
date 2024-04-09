@@ -11,7 +11,7 @@ import { system as importedSystemConst } from '../../../constants/system';
 @Pipe({ name: 'enabled', pure: false })
 export class EnabledPipe implements PipeTransform {
   // make system/env config accessible by markup:
-  system = importedSystemConst;
+  public system = importedSystemConst;
 
   transform(items: any[]): any {
     if (!items) {

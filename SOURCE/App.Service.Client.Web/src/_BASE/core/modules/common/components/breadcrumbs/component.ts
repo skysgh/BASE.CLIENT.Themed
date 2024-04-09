@@ -6,6 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
 //
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
+import { TranslateService } from '@ngx-translate/core';
+import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 // Services:
 //
 // Models:
@@ -23,7 +25,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
  */
 export class BaseCoreCommonComponentsBreadcrumbsComponent implements OnInit {
   // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  public system = importedSystemConst;
 
   @Input() title: string | undefined;
   @Input() description: string | undefined;
@@ -34,9 +36,13 @@ export class BaseCoreCommonComponentsBreadcrumbsComponent implements OnInit {
     label?: string;
   }>;
 
-  constructor() { }
+  constructor(translate: TranslateService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
+ }
 
   ngOnInit(): void {
-  }
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`);
+}
 
 }

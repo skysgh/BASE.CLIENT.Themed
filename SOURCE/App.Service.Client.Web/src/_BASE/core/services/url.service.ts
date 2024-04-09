@@ -7,7 +7,8 @@ import { ignore } from "@automapper/core";
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { DiagnosticsTraceService } from "./diagnostics.service";
+import { SystemDiagnosticsTraceService } from "./system.diagnostics-trace.service";
+import { IHasStringKeyValue } from "../models/contracts/IHasStringKeyValue";
 // Models:
 //
 // Data:
@@ -15,8 +16,10 @@ import { DiagnosticsTraceService } from "./diagnostics.service";
 
 @Injectable({ providedIn: 'root' })
 export class UrlService {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 
   }
@@ -75,6 +78,40 @@ export class UrlService {
     }
 
     return url;
+  }
+
+
+  /**
+   * Helper method to associate key/values modifiers
+   * to given resource url.
+   * 
+   * Adds `?` and/or `&` divider characters as required.
+   *
+   * 
+   * @param url
+   * @param queryArgs
+   * @returns
+   */
+  public appendQueryArgs(url: string, queryArgs: IHasStringKeyValue[] | null, matchChar:string='='): string {
+
+    // Append query args if provided
+    if (queryArgs == undefined || queryArgs == null || queryArgs?.length == 0) {
+      return url;
+    }
+    let result = url;
+    //TODO: there is a small option that items have been added before, in which case it would be &
+    const pos = result.indexOf('?');
+
+    let divider: string =
+      (pos == -1)
+        ? '?'
+        : (pos == result.length - 1) ? '' : '&';
+
+    for (let x of queryArgs) {
+      result += `${divider}${x.key}${matchChar}${x.value}`;
+      divider = '&';
+    }
+    return result;
   }
 
 }

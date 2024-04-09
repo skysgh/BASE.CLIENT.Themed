@@ -1,8 +1,8 @@
 //import { Component, OnInit } from '@angular/core';
 //import { TranslateService } from '@ngx-translate/core';
 //import { SystemService } from '../../../../../../services/system.service';
-//import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
-//import { SystemFaqsRepositoryService } from '../../../../../../services/repositories/system-faqs.repository.service';
+//import { DiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
+//import { ServiceFaqsRepositoryService } from '../../../../../../services/repositories/service-faqs.repository.service';
 
 
 //@Component({

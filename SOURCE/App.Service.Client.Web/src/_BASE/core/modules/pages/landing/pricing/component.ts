@@ -6,13 +6,14 @@ import { TranslateService } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
-import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 import { SystemService } from '../../../../services/system.service';
 // Models:
-import { YearlyPlanModel } from '../../../../models/pricing.models';
-import { MonthlyPlanModel } from "src/_BASE/core/models/MonthlyPlanModel";
+import { ServicePricingPlan } from "src/_BASE/core/models/data/service-pricing-plan.model";
+import { ServicePricingPlansService } from '../../../../services/services/service-pricingplans.service';
+import { Observable, of } from 'rxjs';
 // Data:
-import { MonthlyPlan, YearlyPlan } from '../../../../data/fake/pricing.data';
+//import { MonthlyPlan, YearlyPlan } from '../../../../data/fake/pricing.data';
 
 
 @Component({
@@ -25,19 +26,23 @@ import { MonthlyPlan, YearlyPlan } from '../../../../data/fake/pricing.data';
  * Index Component
  */
 export class BaseCorePagesLandingPricingComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   breadCrumbItems!: Array<{}>;
-  MonthlyPlan!: MonthlyPlanModel[];
-  YearlyPlan!: YearlyPlanModel[];
+
+
+  public monthlyPlans$: Observable<ServicePricingPlan[]> = of([]);
+  public yearlyPlans$: Observable<ServicePricingPlan[]> = of([]);
 
 
   constructor(
     systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
-    public translate: TranslateService) {
-    // Make system/env variables avaiable to view template (via const or service):
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
+    public translate: TranslateService,
+    private servicePricingPlansService: ServicePricingPlansService
+  ) {
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
@@ -49,6 +54,7 @@ export class BaseCorePagesLandingPricingComponent implements OnInit {
       { label: 'Pages' },
       { label: 'Pricing', active: true }
     ];
+
 
   }
 
@@ -70,8 +76,8 @@ export class BaseCorePagesLandingPricingComponent implements OnInit {
 
   // Chat Data Fetch
   private _fetchData() {
-    this.MonthlyPlan = MonthlyPlan;
-    this.YearlyPlan = YearlyPlan;
+    this.monthlyPlans$ = this.servicePricingPlansService.mappedItems$;
+    this.yearlyPlans$ = this.servicePricingPlansService.filteredNotMappedItems$;
   }
 
 }

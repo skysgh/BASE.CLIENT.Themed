@@ -5,7 +5,7 @@
 //// Import app-module specific model:
 //import { Spike } from '../models/spike.model';
 //// Import services:
-//import { SystemSettingsService } from '../../../shared/services/system-settings.service';
+//import { SystemSettingsService } from '../../../shared/services/service-settings.service';
 
 ////Decorate:
 //@Injectable(

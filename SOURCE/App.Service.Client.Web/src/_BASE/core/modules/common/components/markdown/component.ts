@@ -7,7 +7,7 @@ import { Component, Input, OnInit} from "@angular/core";
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
-import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
+import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
 // Models:
 //
 // Data:
@@ -23,8 +23,8 @@ import { DiagnosticsTraceService } from "../../../../services/diagnostics.servic
 })
 
 export class BaseCoreCommonComponentsMarkdownComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   @Input()
   public src: string|null =null;
@@ -34,7 +34,7 @@ export class BaseCoreCommonComponentsMarkdownComponent implements OnInit {
   public data: string|null=null;
 
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
   }
 

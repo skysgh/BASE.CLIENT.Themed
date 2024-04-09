@@ -1,11 +1,17 @@
-import { Injectable } from '@angular/core';
-import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
+// Rx:
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
+// Ag:
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
 
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
     constructor() { }
 
@@ -86,7 +92,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 // save new user
                 newUser.id = users.length + 1;
                 users.push(newUser);
-                sessionStorage.setItem('users', JSON.stringify(users));
+              sessionStorage.setItem(this.system.storage.system.users, JSON.stringify(users));
 
                 // respond 200 OK
                 return of(new HttpResponse({ status: 200 }));
@@ -106,7 +112,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         if (user.id === id) {
                             // delete user
                             users.splice(i, 1);
-                            sessionStorage.setItem('users', JSON.stringify(users));
+                          sessionStorage.setItem(this.system.storage.system.users, JSON.stringify(users));
                             break;
                         }
                     }

@@ -20,6 +20,7 @@ export const systemNavigation = {
       information: {
         root: "pages/information/",
         index: "pages/information/index",
+        cookie: "pages/information/cookie",
         privacy: "/pages/information/privacy",
         dataUse: "/pages/information/datause",
         terms: "/pages/information/terms",

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { DiagnosticsTraceService } from './diagnostics.service';
+import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 // Models:
 import { v4 as uuidv4 } from 'uuid';
 import { NIL as NIL_UUID } from 'uuid';
@@ -24,8 +24,10 @@ import { NIL as NIL_UUID } from 'uuid';
 
 @Injectable({ providedIn: 'root' })
 export class UUIDService {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 

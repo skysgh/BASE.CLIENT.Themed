@@ -8,14 +8,14 @@ import { SystemService } from '../../../../../../services/system.service';
 // Constants:
 import { system as importedSystemConst } from '../../../../../../constants/system';//
 // Services:
-import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
-import { SystemCapabilitiesVTO } from '../../../../../../models/view/base-capabilities';
-import { SystemCapabilitiesRepositoryService } from '../../../../../../services/repositories/system-capabilities.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
+import { SystemCapabilitiesVTO } from '../../../../../../models/view/system-capabilities.vto.model';
 // Models:
 import { servicesModel } from './services.model';
 import { Services } from './data';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+import { SystemCapabilitiesRepositoryService } from '../../../../../../services/services/repositories/service-capabilities.service';
 
 
 @Component({
@@ -32,16 +32,16 @@ export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
 
   capabilities$: Observable<SystemCapabilitiesVTO[]> = of([]);
 
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
   constructor(systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     public translateService: TranslateService,
     protected capabilitiesRepositoryService: SystemCapabilitiesRepositoryService
     ) {
-    // Make system/env variables avaiable to view template:
+    // Make system/env variables avaiable to class & view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

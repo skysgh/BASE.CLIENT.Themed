@@ -11,9 +11,9 @@ import { RegisterSuccess, loginFailure, loginSuccess, logout, logoutSuccess } fr
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { DiagnosticsTraceService } from './diagnostics.service';
-import { ErrorService } from './error.service';
-import { SessionStorageService } from './SessionStorageService';
+import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
+import { SystemErrorService } from './system.error.service';
+import { SessionStorageService } from './infrastructure/SessionStorageService';
 // models:
 import { User } from 'src/_BASE/core/store/Authentication/auth.models';
 
@@ -30,6 +30,8 @@ const httpOptions = {
  * Auth-service Component
  */
 export class AuthenticationService {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
     user!: User;
     currentUserValue: any;
@@ -38,9 +40,9 @@ export class AuthenticationService {
     // public currentUser: Observable<User>;
 
   constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private sessionStorageService: SessionStorageService,
-    private errorService: ErrorService,
+    private errorService: SystemErrorService,
 
 
     private http: HttpClient,
@@ -48,7 +50,7 @@ export class AuthenticationService {
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 
-    var user = JSON.parse(this.sessionStorageService.getItem('currentUser')!);
+    var user = JSON.parse(this.sessionStorageService.getItem(this.system.storage.system.currentUser)!);
     this.currentUserSubject = new BehaviorSubject<User>(user);
 
     // this.currentUser = this.currentUserSubject.asObservable();
@@ -60,7 +62,7 @@ export class AuthenticationService {
      * @param password password
      */
   register(email: string, first_name: string, password: string) {
-      this.diagnosticsTraceService.info(`authService.register(email:'${email}', password: ...)`)
+    this.diagnosticsTraceService.info(`${this.constructor.name }.register(email:'${email}', password: ...)`)
         // return getFirebaseBackend()!.registerUser(email, password).then((response: any) => {
         //     const user = response;
         //     return user;
@@ -79,7 +81,7 @@ export class AuthenticationService {
             }),
             catchError((error: any) => {
                 const errorMessage = 'Login failed'; // Customize the error message as needed
-                this.diagnosticsTraceService.info(`...failed.`);
+                this.diagnosticsTraceService.warn(`...failed.`);
                 this.store.dispatch(loginFailure({ error: errorMessage }));
                 return throwError(errorMessage);
             })
@@ -92,7 +94,7 @@ export class AuthenticationService {
      * @param password password of user
      */
     login(email: string, password: string) {
-      this.diagnosticsTraceService.info(`authService.login(email:'${email}', password: ...)`)
+      this.diagnosticsTraceService.info(`${this.constructor.name }.login(email:'${email}', password: ...)`)
         // return getFirebaseBackend()!.loginUser(email, password).then((response: any) => {
         //     const user = response;
         //     return user;
@@ -107,7 +109,7 @@ export class AuthenticationService {
                 return user;
             }),
             catchError((error: any) => {
-                this.diagnosticsTraceService.info(`...failed.`);
+                this.diagnosticsTraceService.warn(`...failed.`);
                 const errorMessage = 'Login failed'; // Customize the error message as needed
                 return throwError(errorMessage);
             })
@@ -125,12 +127,12 @@ export class AuthenticationService {
      * Logout the user
      */
     logout() {
-      this.diagnosticsTraceService.info(`authService.logout()`);
+      this.diagnosticsTraceService.info(`${this.constructor.name }.logout()`);
         this.store.dispatch(logout());
         // logout the user
         // return getFirebaseBackend()!.logout();
-        sessionStorage.removeItem('currentUser');
-        sessionStorage.removeItem('token');
+      sessionStorage.removeItem(this.system.storage.system.currentUser);
+      sessionStorage.removeItem(this.system.storage.system.token);
         this.currentUserSubject.next(null!);
 
         return of(undefined).pipe(
@@ -144,7 +146,7 @@ export class AuthenticationService {
      * @param email email
      */
     resetPassword(email: string) {
-      this.diagnosticsTraceService.info(`authService.resetPassword(email:'${email}')`);
+      this.diagnosticsTraceService.debug(`${this.constructor.name }.resetPassword(email:'${email}')`);
       return getFirebaseBackend()!
         .forgetPassword(email).then((response: any) => {
             const message = response.data;

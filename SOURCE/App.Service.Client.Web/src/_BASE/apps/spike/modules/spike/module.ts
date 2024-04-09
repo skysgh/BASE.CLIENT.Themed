@@ -9,7 +9,7 @@
 //import { SpikeSpikesRoutingModule } from "./routing.module";
 //// Entity module specific:
 //// .. services:
-//import { DiagnosticsTraceService } from '../../../../shared/services/diagnostics.service';
+//import { DiagnosticsTraceService } from '../../../../shared/services/system.diagnostics-trace.service';
 //import { SpikeSpikesRepositoryService } from "./../../services/spike-repository.service"
 //// .. components:
 //import { SpikeSpikesBrowseComponent } from "./ui/browse/component";

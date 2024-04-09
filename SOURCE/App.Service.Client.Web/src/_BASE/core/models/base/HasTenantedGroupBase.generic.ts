@@ -5,6 +5,13 @@ import { HasTenantedReferenceDataBase } from "./HasTenantedReferenceDataBase";
  * An abstract Base Group.
  * Used by SystemAccount, etc.
  *
+ * Implements:
+ * 
+ * IHasUUID,
+ * IHasTenantId,
+ * IHasEnabled,
+ * IHasTitleAndDescription
+ * 
  * Note:
  * Right now it's just a logical unit, not adding
  * properties or methods. But probably requires a GroupType

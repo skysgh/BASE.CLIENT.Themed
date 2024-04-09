@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
 
 @Component({
   selector: 'app-common-search-read',
@@ -8,7 +8,7 @@ import { DiagnosticsTraceService } from '../../../../../services/diagnostics.ser
 })
 
 export class SearchContainerReadComponent {
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.info("SearchContainerRead Initialised");
   }
 }

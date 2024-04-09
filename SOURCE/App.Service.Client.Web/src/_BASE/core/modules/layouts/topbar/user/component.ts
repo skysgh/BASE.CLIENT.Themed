@@ -8,10 +8,10 @@ import { TranslateService } from "@ngx-translate/core";
 import { system as importedSystemConst } from '../../../../constants/system';
 // SErvices:
 import { SystemService } from "../../../../services/system.service";
-import { EventService } from "../../../../services/event.service";
 import { AuthenticationService } from "../../../../services/auth.service";
 import { AuthfakeauthenticationService } from "../../../../services/authfake.service";
 import { TokenStorageService } from '../../../../services/token-storage.service';
+import { EventService } from "../../../../services/infrastructure/event.service";
 
 @Component({
   selector: 'app-base-common-components-topbar-languageuser',
@@ -19,8 +19,8 @@ import { TokenStorageService } from '../../../../services/token-storage.service'
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
 
   userData: any;

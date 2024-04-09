@@ -6,11 +6,11 @@ import { TranslateService } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../../constants/system';
 // Services
+import { ServiceUserEndorsementsRepositoryService } from '../../../../../services/services/repositories/service-user-endorsements.service';
 import { SystemService } from '../../../../../services/system.service';
-import { SystemUserQuoteRepositoryService } from '../../../../../services/repositories/system.user-quotes.service';
 // Models/Data:
 import { User } from '../../../../../store/Authentication/auth.models';
-import { UserQuote } from '../../../../../models/data/user-quote.model';
+import { ServiceUserQuote } from '../../../../../models/data/service-user-quote.model';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-lockscreen-cover',
@@ -22,8 +22,8 @@ import { UserQuote } from '../../../../../models/data/user-quote.model';
  * Lock Screen Cover Component
  */
 export class CoverComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   // Login Form
   lockscreenForm!: FormGroup;
@@ -40,16 +40,16 @@ export class CoverComponent implements OnInit {
     private formBuilder: FormBuilder,
     systemService: SystemService,
     public translate: TranslateService,
-    private systemUserQuoteRepositoryService : SystemUserQuoteRepositoryService
+    private systemUserEndorsementsRepositoryService : ServiceUserEndorsementsRepositoryService
   ) {
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
 }
 
   ngOnInit(): void {
     //
     this.systemUserQuotes =
-      this.systemUserQuoteRepositoryService.getPageByLanguageCode(this.system.dynamic.configuration.defaultLanguageCode);
+      this.systemUserEndorsementsRepositoryService.getPage();
 
     /**
      * Form Validatyion

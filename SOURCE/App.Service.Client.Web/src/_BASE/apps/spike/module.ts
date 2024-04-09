@@ -20,10 +20,10 @@ import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/compon
 // 
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
 import { BaseAppsSpikeSubSpikesRepositoryService } from './services/repositories/subspike-repository.service';
-import { LanguageService } from '../../core/services/language.service';
-import { SystemLanguagesRepositoryService } from '../../core/services/repositories/system.languages.repository.service';
 import { BaseCoreCommonModule } from '../../core/modules/common/module';
 import { BaseCoreCommonComponentsModule } from '../../core/modules/common/components/module';
+import { ServiceLanguagesRepositoryService } from '../../core/services/services/repositories/service-languages.repository.service';
+import { ServiceLanguagesService } from '../../core/services/service.languages.service';
 
 // ...submodules:
 // NO mention, as it is late loaded by routes:
@@ -86,8 +86,8 @@ import { BaseCoreCommonComponentsModule } from '../../core/modules/common/compon
     // declare services to dependency inject into constructors.
     BaseAppsSpikeSpikesRepositoryService,
     BaseAppsSpikeSubSpikesRepositoryService,
-    LanguageService,
-    SystemLanguagesRepositoryService
+    ServiceLanguagesService,
+    ServiceLanguagesRepositoryService
   ]
 })
 export class BaseAppsSpikeModule { }

@@ -7,6 +7,12 @@ import { HasUUIDEntityBase } from "./HasUUIDEntityBase";
  * Contract for entities that have title and description (ie most)
  * but not necessarily a data entry, so leaves it up to implementor
  * to define Id type.
+ *
+ * Implements:
+ * 
+ * IHasUUID
+ * IHasEnabled
+ * IHasTitleAndDescription
  */
 
 export abstract class
@@ -38,3 +44,5 @@ export abstract class
      */
     public description!: string;
 }
+
+

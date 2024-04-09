@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../../services/event.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { getSidebarSize } from '../../layouts/layouts/layout-selector';
 import { RootReducerState } from '../../../store';
 import { Store } from '@ngrx/store';
+import { EventService } from '../../../services/infrastructure/event.service';
 
 @Component({
   selector: 'app-vertical',

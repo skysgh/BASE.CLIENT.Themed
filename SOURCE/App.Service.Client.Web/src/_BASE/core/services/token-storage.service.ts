@@ -7,22 +7,25 @@ import { Injectable } from '@angular/core';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { DiagnosticsTraceService } from './diagnostics.service';
-import { SessionStorageService } from './SessionStorageService';
+import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
+import { SessionStorageService } from './infrastructure/SessionStorageService';
 // Models:
 //
 // Data:
 //
 
-const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'currentUser';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TokenStorageService {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
+
+
   constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private sessionStorageService: SessionStorageService) {
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
@@ -35,28 +38,28 @@ export class TokenStorageService {
 
   public saveToken(token: string): void {
     this.diagnosticsTraceService.info(`tokenStorageService.saveToken('${token}')`);
-    this.sessionStorageService.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+    this.sessionStorageService.removeItem(this.system.storage.system.authToken);
+    window.sessionStorage.setItem(this.system.storage.system.authToken, token);
   }
 
   public getToken(): string | null {
     this.diagnosticsTraceService.info("tokenStorageService.getToken()");
-    var result = this.sessionStorageService.getItem('token');
+    var result = this.sessionStorageService.getItem(this.system.storage.system.token);
     this.diagnosticsTraceService.info(`found: '${result}'`);
     return result;
 }
 
   public saveUser(user: any): void {
     this.diagnosticsTraceService.info("tokenStorageService.saveUser()");
-    this.sessionStorageService.removeItem(USER_KEY);
+    this.sessionStorageService.removeItem(this.system.storage.system.currentUser);
     var text = JSON.stringify(user);
-    this.sessionStorageService.setItem(USER_KEY, text);
+    this.sessionStorageService.setItem(this.system.storage.system.currentUser, text);
     this.diagnosticsTraceService.info(`saved: '${text}'`);
   }
 
   public getUser(): any {
     this.diagnosticsTraceService.info("tokenStorageService.getUser()");
-    const text = this.sessionStorageService.getItem(USER_KEY);
+    const text = this.sessionStorageService.getItem(this.system.storage.system.currentUser);
     this.diagnosticsTraceService.info(`found: '${text}'`);
     if (text) {
       var result = JSON.parse(text);

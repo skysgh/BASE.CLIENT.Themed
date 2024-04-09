@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { system as importedSystemConst } from '../../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
@@ -20,14 +20,14 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
  * Cta Component
  */
 export class BaseAppsPagesLandingIndexCtaComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
   constructor(systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     public translateService: TranslateService) {
-    // Make system/env variables avaiable to view template:
+    // Make system/env variables avaiable to class & view template:
     this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

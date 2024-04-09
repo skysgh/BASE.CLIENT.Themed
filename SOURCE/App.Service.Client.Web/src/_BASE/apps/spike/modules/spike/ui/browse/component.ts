@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
-import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Models:
 import { Spike } from '../../../../models/spike.model';
@@ -21,7 +21,7 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private repositoryService: BaseAppsSpikeSpikesRepositoryService
   ) {
     this.diagnosticsTraceService.info("Constructor");

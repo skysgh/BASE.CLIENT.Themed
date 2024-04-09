@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services
-import { DiagnosticsTraceService } from './diagnostics.service';
+import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 import { JobRepositoryService } from './repositories/job.repository.service';
 // Models:
 import { Job } from '../models/data/job.model';
@@ -18,9 +18,11 @@ import { Job } from '../models/data/job.model';
 @Injectable({ providedIn: 'root' })
 // Injectable service to describe current environment
 export class JobService {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private jobRepositoryService: JobRepositoryService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }

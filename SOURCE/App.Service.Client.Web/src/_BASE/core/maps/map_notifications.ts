@@ -1,4 +1,4 @@
-import { SystemNotification } from "../../core/models/data/notification.model";
+import { ServiceNotification } from "../../core/models/data/service-notification.model";
 import { NotificationVTO } from "../../core/models/view/NotificationVTO";
 
 // use to pass this callback to a map method:
@@ -7,7 +7,7 @@ import { NotificationVTO } from "../../core/models/view/NotificationVTO";
 
 
 //Should be using Automapper...
-function mapToNotificationVTO(item: SystemNotification): NotificationVTO {
+function mapToNotificationVTO(item: ServiceNotification): NotificationVTO {
 
   var result : NotificationVTO = {
     id: item.id,

@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { system as importedSystemConst } from '../../../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../../services/system.diagnostics-trace.service';
 // Data/Models:
 //import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
@@ -22,14 +22,14 @@ import { DiagnosticsTraceService } from '../../../../../../../services/diagnosti
  * Footer Component
  */
 export class BaseAppsPagesLandingIndexFooterComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
   //sectionsInfo = importedSectionsInfo;
 
   constructor(systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     public translate: TranslateService) {
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

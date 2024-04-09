@@ -7,7 +7,7 @@ import { system as importedSystemConst } from '../../../../../_BASE/core/constan
 // Services:
 import { SystemService } from '../../../../../_BASE/core/services/system.service';
 // Models/Data:
-import { ChartType } from '../../../../../_BASE/core/models/contracts/team-members.model';
+import { ChartTypeVTO } from '../../../../../_BASE/core/models/view/chart-type.vto.model';
 import { status1, status2, status3, status4, status5, status6, status7 } from './data';
 
 @Component({
@@ -21,7 +21,7 @@ import { status1, status2, status3, status4, status5, status6, status7 } from '.
  */
 export class TeamMembersComponent implements OnInit {
   // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  public system = importedSystemConst;
 
   // Team Members
   @Input() TeamMembers: Array<{
@@ -34,13 +34,13 @@ export class TeamMembersComponent implements OnInit {
     };
   }> | undefined;
 
-  status1!: ChartType;
-  status2!: ChartType;
-  status3!: ChartType;
-  status4!: ChartType;
-  status5!: ChartType;
-  status6!: ChartType;
-  status7!: ChartType;
+  status1!: ChartTypeVTO;
+  status2!: ChartTypeVTO;
+  status3!: ChartTypeVTO;
+  status4!: ChartTypeVTO;
+  status5!: ChartTypeVTO;
+  status6!: ChartTypeVTO;
+  status7!: ChartTypeVTO;
 
   constructor(private systemService: SystemService) {
     // Make system/env variables avaiable to view template:

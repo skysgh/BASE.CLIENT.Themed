@@ -121,7 +121,10 @@ export const systemAssets = {
               sidebars: "/assets/_BASE/public/dynamic/services/images/backgrounds/sidebars/",
               tops: "/assets/_BASE/public/dynamic/services/backgrounds/tops/"
             },
-            logos: "/assets/_BASE/public/dynamic/services/images/logos/"
+            logos: "/assets/_BASE/public/dynamic/services/images/logos/",
+            /** uploaded images of companies that trust this service*/
+            trustedBy: "/assets/_BASE/public/dynamic/services/images/trustedBy/",
+
           },
         },
 

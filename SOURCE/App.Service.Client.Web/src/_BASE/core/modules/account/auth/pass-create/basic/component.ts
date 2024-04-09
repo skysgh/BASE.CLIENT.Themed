@@ -18,8 +18,8 @@ import { SystemService } from '../../../../../services/system.service';
  * Basic Component
  */
 export class BasicComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
    // Login Form
    passresetForm!: FormGroup;
@@ -30,7 +30,7 @@ export class BasicComponent implements OnInit {
    returnUrl!: string;
  
   constructor(private formBuilder: FormBuilder, systemService: SystemService, public translate: TranslateService) {
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
   }
  

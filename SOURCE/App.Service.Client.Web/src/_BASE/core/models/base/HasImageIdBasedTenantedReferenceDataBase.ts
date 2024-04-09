@@ -21,3 +21,5 @@ export abstract class HasImageIdBasedTenantedReferenceDataBase
     public imageId: string = '';
 
 }
+
+

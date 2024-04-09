@@ -7,13 +7,11 @@ import { Observable, of } from 'rxjs';
 import { system as importedSystemConst } from '../../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
-import { SystemTeamRepositoryService } from '../../../../../../services/repositories/system-team.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
+import { ServiceDeliveryTeamMemberRepositoryService } from '../../../../../../services/services/repositories/service-delivery-team-members.repository.service';
 // Models
-import { TeamModel } from './team.model';
-import { Teams } from './data';
-import { TeamVTO } from '../../../../../../models/view/team.vto';
-// Data/Models:
+import { ServiceDeliveryTeamMemberVTO } from '../../../../../../models/view/service-delivery-team-member.vto.model';
+// Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 @Component({
@@ -29,15 +27,15 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
 
   //Teams!: TeamModel[];
 
-  team$: Observable<TeamVTO[]> = of([]);
+  team$: Observable<ServiceDeliveryTeamMemberVTO[]> = of([]);
 
   // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  public system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
   constructor(systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     public translateService: TranslateService,
-    protected systemTeamRepositoryService :SystemTeamRepositoryService  ) {
+    protected systemTeamRepositoryService :ServiceDeliveryTeamMemberRepositoryService  ) {
     // Make system/env variables avaiable to view template:
     this.system = systemService.system;
 

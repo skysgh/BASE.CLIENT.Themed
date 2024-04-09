@@ -1,9 +1,12 @@
-// Import Ag:
+// Ag:
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+// Etc:
 import { TranslateModule } from '@ngx-translate/core';
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
 
 // Etc:
 //import { JsonFormsModule } from '@jsonforms/angular';
@@ -17,7 +20,7 @@ import { BaseAppsPagesLandingIndexDemosComponent } from './components/components
 import { BaseAppsPagesLandingIndexClientsComponent } from './components/components/clients/component';
 import { BaseAppsPagesLandingIndexFeaturesComponent } from './components/components/features/component';
 import { BaseAppsPagesLandingIndexContactComponent } from './components/components/contact/component';
-import { BaseAppsPagesLandingIndexCounterComponent } from './components/components/counter/component';
+import { BaseAppsPagesLandingIndexStatsComponent } from './components/components/stats/component';
 import { BaseAppsPagesLandingIndexCtaComponent } from './components/components/cta/component';
 import { BaseAppsPagesLandingIndexDesignedComponent } from './components/components/designed/component';
 import { BaseAppsPagesLandingIndexFaqsComponent } from './components/components/faqs/component';
@@ -29,7 +32,7 @@ import { BaseAppsPagesLandingIndexWorkProcessComponent } from './components/comp
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SharedModule } from '../../../../../app/shared/module';
-import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../services/system.diagnostics-trace.service';
 import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CountUpModule } from 'ngx-countup';
 import { BaseCoreCommonModule } from '../../common/module';
@@ -109,7 +112,7 @@ import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/
     BaseAppsPagesLandingIndexPlanComponent,
     BaseAppsPagesLandingIndexFaqsComponent,
     BaseAppsPagesLandingIndexReviewComponent,
-    BaseAppsPagesLandingIndexCounterComponent,
+    BaseAppsPagesLandingIndexStatsComponent,
     BaseAppsPagesLandingIndexWorkProcessComponent,
     BaseAppsPagesLandingIndexTeamComponent,
     BaseAppsPagesLandingIndexContactComponent,
@@ -120,8 +123,10 @@ import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/
   ]
 })
 export class BaseCoreHomeModule {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
   }
 }

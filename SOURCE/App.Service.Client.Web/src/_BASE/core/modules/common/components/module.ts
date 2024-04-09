@@ -1,15 +1,19 @@
 // Import Ag:
-import { NgbAccordionModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-
+// Etc:
 import { TranslateModule } from '@ngx-translate/core';
 import { CountUpModule } from 'ngx-countup';
 import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+// Bootstrap:
+import { NgbAccordionModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+// Constants:
+import { system as importedSystemConst } from '../../../constants/system';
 // Services:
-import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../services/system.diagnostics-trace.service';
 
 // Components
 import { BaseCoreCommonComponentsBreadcrumbsComponent } from './breadcrumbs/component';
@@ -25,9 +29,9 @@ import { BaseCoreCommonComponentsFooterCComponent } from './footers/footerC/comp
 import { BaseCoreCommonComponentTopBarLanguageComponent } from './language/component';
 import { BaseCommonComponentsStatsOneComponent } from './stats/one/component';
 import { BaseCoreCommonComponentsSignUpInComponent } from './signupin/component';
-import { RouterModule } from '@angular/router';
 import { BaseCoreCommonComponentsFooterOComponent } from './footers/footerO/component';
 import { BaseCoreCommonComponentsSocialMediaLinksComponent } from './socialmedialinks/component';
+import { BaseCoreCommonComponentsCookieAlertSimpleComponent } from './cookieAlertSimple/component';
 
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
@@ -50,7 +54,7 @@ import { BaseCoreCommonComponentsSocialMediaLinksComponent } from './socialmedia
     // define what Components belong to this Module (i.e., are not `standalone`)
 
     
-
+    BaseCoreCommonComponentsCookieAlertSimpleComponent,
     BaseCoreCommonComponentsSocialMediaLinksComponent,
     BaseCoreCommonComponentsFooterOComponent,
     BaseCoreCommonComponentsFooterAComponent,
@@ -69,6 +73,7 @@ import { BaseCoreCommonComponentsSocialMediaLinksComponent } from './socialmedia
     BaseCoreCommonComponentsSignUpInComponent
   ],
   exports: [
+    BaseCoreCommonComponentsCookieAlertSimpleComponent,
     BaseCoreCommonComponentsSocialMediaLinksComponent,
     BaseCoreCommonComponentsFooterOComponent,
     BaseCoreCommonComponentsFooterAComponent,
@@ -94,8 +99,9 @@ import { BaseCoreCommonComponentsSocialMediaLinksComponent } from './socialmedia
   ]
 })
 export class BaseCoreCommonComponentsModule {
-
-  constructor(private diagnosticsTraceService:DiagnosticsTraceService) {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
+  constructor(private diagnosticsTraceService:SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
   }
 

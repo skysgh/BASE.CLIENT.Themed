@@ -10,3 +10,4 @@ export interface IHasBinaryState {
   state: boolean
 }
 
+

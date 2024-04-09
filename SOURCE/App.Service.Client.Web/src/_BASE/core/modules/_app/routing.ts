@@ -10,7 +10,7 @@ import { AppLayoutComponent} from '../layouts/layout.component';
 
 // Auth
 import { AuthGuard } from '../../guards/auth.guard';
-import { DiagnosticsTraceService } from '../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../services/system.diagnostics-trace.service';
 // Constants:
 import { system } from '../../constants/system';
 
@@ -54,7 +54,7 @@ const routes: Routes = [
  * Routing Module invoked from root AppModule.
  */
 export class AppRoutingModule {
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug("AppRoutingModule.constructor()");
   }
 }

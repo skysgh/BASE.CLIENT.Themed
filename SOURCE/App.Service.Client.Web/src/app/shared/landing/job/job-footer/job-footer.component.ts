@@ -13,11 +13,11 @@ import { SystemService } from '../../../../../_BASE/core/services/system.service
   styleUrls: ['./job-footer.component.scss']
 })
 export class JobBaseLayoutFooterComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   constructor(systemService: SystemService, public translate: TranslateService) {
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
     
   }

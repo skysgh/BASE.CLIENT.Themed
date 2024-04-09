@@ -1,15 +1,15 @@
 //import { env } from "process";
 import { MappedGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/mapped-generic-repository.service.base";
-import { DiagnosticsTraceService } from "../../../../core/services/diagnostics.service";
-import { EnvironmentService } from "../../../../core/services/environment.service";
-import { ErrorService } from "../../../../core/services/error.service";
+import { SystemDiagnosticsTraceService } from "../../../../core/services/system.diagnostics-trace.service";
+import { SystemEnvironmentService } from "../../../../core/services/system.environment.service";
+import { SystemErrorService } from "../../../../core/services/system.error.service";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 // import models:
 import { PrincipleType } from "../../models/principle-type.model";
 import { TypeService } from "../../../../core/services/type.service";
-import { SessionStorageService } from "../../../../core/services/SessionStorageService";
-import { ObjectMappingService } from "../../../../core/services/objectMapping.service";
+import { SessionStorageService } from "../../../../core/services/infrastructure/SessionStorageService";
+import { ObjectMappingService } from "../../../../core/services/infrastructure/objectMapping.service";
 import { UrlService } from "../../../../core/services/url.service";
 import { SimpleGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/simple-generic-repository-service.base";
 
@@ -20,9 +20,9 @@ export class ArchitectureValuesRepositoryService
 
   constructor(
     typeService: TypeService,
-    environmentService: EnvironmentService,
-    diagnosticsTraceService: DiagnosticsTraceService,
-    errorService: ErrorService,
+    environmentService: SystemEnvironmentService,
+    diagnosticsTraceService: SystemDiagnosticsTraceService,
+    errorService: SystemErrorService,
     objectMappingService: ObjectMappingService,
     sessionStorageService: SessionStorageService,
     urlService: UrlService,

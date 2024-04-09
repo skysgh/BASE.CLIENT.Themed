@@ -8,10 +8,10 @@ import { TranslateService } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
 // Language
-import { LanguageService } from '../../../../services/language.service';
+import { ServiceLanguagesService } from '../../../../services/service.languages.service';
 import { SystemService } from "../../../../services/system.service";
-import { DiagnosticsTraceService } from "../../../../services/diagnostics.service";
-import { SystemLanguage } from '../../../../models/data/system-language.model';
+import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
+import { ServiceLanguage } from '../../../../models/data/service-language.model';
 import { TranslationService } from '../../../../services/translation.service';
 // Models:
 
@@ -22,10 +22,10 @@ import { TranslationService } from '../../../../services/translation.service';
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
-  public systemLanguages$: Observable<SystemLanguage[]> = of([]);
+  public systemLanguages$: Observable<ServiceLanguage[]> = of([]);
 
   // Language: stuff:
   activeLanguageCode:string = '';
@@ -35,13 +35,13 @@ export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
 
   constructor(
     systemService: SystemService,
-    protected diagnosticsTraceService: DiagnosticsTraceService,
-    public languageService: LanguageService,
+    protected diagnosticsTraceService: SystemDiagnosticsTraceService,
+    public languageService: ServiceLanguagesService,
     public translate: TranslateService,
     public translationService: TranslationService,
     public _cookiesService: CookieService) {
 
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
 
     this.initLanguages();
@@ -84,7 +84,7 @@ export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
   /***
  * Language Value Set
  */
-  setLanguage(systemLanguage?: SystemLanguage, setLanguage:boolean=true) {
+  setLanguage(systemLanguage?: ServiceLanguage, setLanguage:boolean=true) {
     // Same logic really, except for setting language.
     if (systemLanguage) {
       this.languageTitle = systemLanguage.title;
@@ -100,7 +100,7 @@ export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
     }
   }
 
-  trackByCountryCode(index: number, item: SystemLanguage) {
+  trackByCountryCode(index: number, item: ServiceLanguage) {
     //this.diagnosticsTraceService.info(item.description);
     return item.languageCode;
   }

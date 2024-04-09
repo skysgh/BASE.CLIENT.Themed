@@ -8,7 +8,6 @@ import { TranslateService } from "@ngx-translate/core";
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemService } from "../../../../services/system.service";
-import { EventService } from "../../../../services/event.service";
 // More:
 import { RootReducerState } from "../../../../store";
 import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from '../../layouts/layout-action';
@@ -20,8 +19,8 @@ import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPre
   styleUrls: ['./component.scss']
 })
 export class BaseLayoutRightSideContextThemeCustomiserComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   mode: string | undefined;
   element: any = null; //HTMLElement
@@ -45,7 +44,7 @@ export class BaseLayoutRightSideContextThemeCustomiserComponent implements OnIni
     systemService: SystemService,
     public translate: TranslateService
   ) {
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
   }
 

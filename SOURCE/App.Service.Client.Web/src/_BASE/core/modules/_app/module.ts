@@ -33,7 +33,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from '../layouts/layout.component';
 import { CookieService } from 'ngx-cookie-service';
 import { SystemService } from '../../services/system.service';
-import { DiagnosticsTraceService } from '../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../services/system.diagnostics-trace.service';
 
 import { system } from '../../constants/system';
 
@@ -111,7 +111,7 @@ if (environment.defaultauth === 'firebase') {
  */
 export class AppModule {
   constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private translationService: TranslationService,
     private systemService: SystemService) {
 

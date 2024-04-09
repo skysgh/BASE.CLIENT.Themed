@@ -1,12 +1,13 @@
-import { IHasEnabled } from "./IHasEnabled";
-import { IHasFromToUtc } from "./IHasFromToUtc";
 import { IHasTenancyId } from "./IHasTenancyId";
-import { IHasTitleAndDescription } from "./IHasTitleAndDescription";
-import { IHasUUID } from "./IHasUUID";
 import { IHasUntenantedReferenceData } from "./IHasUntenantedReferenceData";
 
 /** Contract for simple, ReferenceData items.
- * Implements IHasUUID, IHasTenancyId, IHasEnabled, and IHasTitleAndDescription.
+ * Implements:
+ * IHasUUID,
+ * IHasTenancyId,
+ * IHasEnabled,
+ * IHasFromToUtc,
+ * IHasTitleAndDescription.
  *
  * Note:
  * (see IHasEnabledReferenceData).
@@ -21,10 +22,9 @@ import { IHasUntenantedReferenceData } from "./IHasUntenantedReferenceData";
  */
 
 export interface IHasTenantedReferenceData
-  extends 
-  IHasUUID,
+  extends
   IHasTenancyId,
-  IHasEnabled,
-  IHasFromToUtc,
-  IHasTitleAndDescription {
+  IHasUntenantedReferenceData {
 }
+
+

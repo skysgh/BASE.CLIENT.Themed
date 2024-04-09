@@ -7,7 +7,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemService } from "../../../../services/system.service";
-import { EventService } from "../../../../services/event.service";
+import { EventService } from "../../../../services/infrastructure/event.service";
 
 @Component({
   selector: 'app-base-common-components-topbar-languagesearch',
@@ -15,8 +15,8 @@ import { EventService } from "../../../../services/event.service";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarSearchComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   mode: string | undefined;
   element: any = null; //HTMLElement

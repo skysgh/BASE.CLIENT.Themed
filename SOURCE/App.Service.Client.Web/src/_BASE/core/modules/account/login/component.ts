@@ -30,8 +30,8 @@ import { ToastService } from '../../../services/toast.service';
  * Login Component
  */
 export class LoginComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   // system settings
   sponsorTitle?: string;
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   returnUrl!: string;
   constructor(private titleService: TitleService, private systemService: SystemService, public translate: TranslateService, private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router,
     private authFackservice: AuthfakeauthenticationService, private route: ActivatedRoute, public toastService: ToastService) {
-    // Make system/env variables avaiable to view template:
+    // Make system/env variables avaiable to class & view template:
     //this.system = this.systemService.system;
 
      this.sponsorTitle = systemService.system.dynamic.sponsor.title;
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('currentUser')) {
+    if (sessionStorage.getItem(this.system.storage.system.currentUser)) {
       this.router.navigate([this.system.navigation.home]);
     }
     /**
@@ -91,9 +91,9 @@ export class LoginComponent implements OnInit {
     // Login Api
     this.authenticationService.login(this.f['email'].value, this.f['password'].value).subscribe((data: any) => {
       if (data.status == 'success') {
-        sessionStorage.setItem('toast', 'true');
-        sessionStorage.setItem('currentUser', JSON.stringify(data.data));
-        sessionStorage.setItem('token', data.token);
+        sessionStorage.setItem(this.system.storage.system.toast, 'true');
+        sessionStorage.setItem(this.system.storage.system.currentUser, JSON.stringify(data.data));
+        sessionStorage.setItem(this.system.storage.system.token, data.token);
         this.router.navigate([this.returnUrl]);
       } else {
         this.toastService.show(data.data, { classname: 'bg-danger text-white', delay: 15000 });

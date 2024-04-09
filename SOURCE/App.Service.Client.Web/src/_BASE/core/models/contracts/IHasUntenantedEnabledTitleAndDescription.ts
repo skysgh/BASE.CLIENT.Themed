@@ -1,9 +1,19 @@
 import { IHasEnabled } from "./IHasEnabled";
-import { IHasTenantedEnabledTitleAndDescription } from "./IHasTenantedEnabledTitleAndDescription";
 import { IHasTitleAndDescription } from "./IHasTitleAndDescription";
 import { IHasUUID } from "./IHasUUID";
 
+/**
+ * Contract.
+ * 
+ * implements:
+ * IHasUUID,
+ * IHasEnabled
+ * IHasTitleAndDescription
+ */
 export interface IHasUntenantedEnabledTitleAndDescription
-  extends IHasUUID, IHasEnabled, IHasTitleAndDescription {
+  extends
+  IHasUUID,
+  IHasEnabled,
+  IHasTitleAndDescription {
 }
 

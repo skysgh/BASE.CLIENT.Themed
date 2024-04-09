@@ -6,7 +6,7 @@ import { defineElement } from "@lordicon/element";
 import lottie from 'lottie-web';
 
 // Services:
-import { DiagnosticsTraceService } from '../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../services/system.diagnostics-trace.service';
 // MOdules:
 import { TranslateModule } from '@ngx-translate/core';
 import { AppBaseErrorsRoutingModule } from "./routing";
@@ -35,7 +35,7 @@ import { TranslationService } from '../../services/translation.service';
 })
 export class AppBaseCoreErrorsModule {
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService, private translationService: TranslationService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService, private translationService: TranslationService) {
 
     translationService.initialiseTranslatorsCurrentLanguage();
 

@@ -18,7 +18,7 @@ import { SharedModule } from '../../../../app/shared/module';
 // import { SpikeSpikesRepositoryService } from "./services/spike-repository.service"
 // Import Module specific.components:
 import { BaseCorePagesROComponent } from './components/_routeoutlet/component';
-import { DiagnosticsTraceService } from '../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../services/system.diagnostics-trace.service';
 import { BaseCoreCommonModule } from '../common/module';
 import { BaseCorePagesInformationModule } from './information/module';
 import { BaseCorePagesLandingModule } from './landing/module';
@@ -82,7 +82,7 @@ import { BaseCorePagesLandingModule } from './landing/module';
 })
 export class BaseCorePagesModule {
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug("BasePagesModule.constructor()");
   }
 }

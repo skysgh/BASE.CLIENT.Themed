@@ -9,7 +9,7 @@ import { system as importedSystemConst } from '../../../../../constants/system';
 // Services:
 //
 // Models:
-import { StatOneVTO } from '../../../../../models/view/stat-on.vto';
+import { StatOneVTO } from '../../../../../models/view/stat-one.vto';
 
 /**
  * Used on dashboard to show a box with current stats in it.
@@ -22,8 +22,8 @@ import { StatOneVTO } from '../../../../../models/view/stat-on.vto';
   styleUrls: ['./component.scss']
 })
 export class BaseCommonComponentsStatsOneComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   @Input()
   public stats: StatOneVTO | undefined;

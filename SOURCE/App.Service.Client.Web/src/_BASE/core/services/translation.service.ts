@@ -10,19 +10,21 @@ import { CookieService } from 'ngx-cookie-service';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { DiagnosticsTraceService } from './diagnostics.service';
+import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 import { SystemService } from './system.service';
 
 
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   private C_LANG: string = 'lang';
 
   // Hack: small chance they got to a 404 before they got anywhere:
   private previouslySetDefaultLanguage? : string;
   public constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private systemService: SystemService,
     private translate: TranslateService,
     private cookieService: CookieService,

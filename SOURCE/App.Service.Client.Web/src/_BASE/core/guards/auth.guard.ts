@@ -1,3 +1,4 @@
+// Ag:
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
@@ -11,8 +12,8 @@ import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
@@ -33,7 +34,7 @@ export class AuthGuard {
                 return true;
             }
             // check if user data is in storage is logged in via API.
-            if (sessionStorage.getItem('currentUser')) {
+          if (sessionStorage.getItem(this.system.storage.system.currentUser)) {
                 return true;
         }
         // not logged in so redirect to login page with the return url

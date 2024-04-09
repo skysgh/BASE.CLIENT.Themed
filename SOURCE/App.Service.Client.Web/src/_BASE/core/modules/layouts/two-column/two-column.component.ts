@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../../services/event.service';
+import { EventService } from '../../../services/infrastructure/event.service';
 
 @Component({
   selector: 'app-two-column',

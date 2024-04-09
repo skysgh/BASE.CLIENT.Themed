@@ -13,8 +13,8 @@ import { SystemService } from "../../../../services/system.service";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarLogoComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
 
   constructor(

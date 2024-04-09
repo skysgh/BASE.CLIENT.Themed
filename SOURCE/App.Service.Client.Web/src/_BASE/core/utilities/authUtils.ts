@@ -2,7 +2,12 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
+// Constants:
+import { system as importedSystemConst } from '../constants/system';
+
 class FirebaseAuthBackend {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
     constructor(firebaseConfig: any) {
         if (firebaseConfig) {
@@ -10,7 +15,7 @@ class FirebaseAuthBackend {
             firebase.initializeApp(firebaseConfig);
             firebase.auth().onAuthStateChanged((user: any) => {
                 if (user) {
-                    sessionStorage.setItem('authUser', JSON.stringify(user));
+                  sessionStorage.setItem(this.system.storage.system.authUser, JSON.stringify(user));
                 } else {
                     sessionStorage.removeItem('authUser');
                 }

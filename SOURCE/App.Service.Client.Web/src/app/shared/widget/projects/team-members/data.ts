@@ -1,10 +1,10 @@
-import { ChartType } from '../../../../../_BASE/core/models/contracts/team-members.model';
+import { ChartTypeVTO } from '../../../../../_BASE/core/models/view/chart-type.vto.model';
 
 
 /**
  *  Status1
  */
- const status1: ChartType = {
+ const status1: ChartTypeVTO = {
     series: [50],       
     chart: {
         type: 'radialBar',
@@ -37,7 +37,7 @@ import { ChartType } from '../../../../../_BASE/core/models/contracts/team-membe
 /**
  *  Status2
  */
- const status2: ChartType = {
+ const status2: ChartTypeVTO = {
     series: [45],       
     chart: {
         type: 'radialBar',
@@ -70,7 +70,7 @@ import { ChartType } from '../../../../../_BASE/core/models/contracts/team-membe
 /**
  *  Status3
  */
- const status3: ChartType = {
+ const status3: ChartTypeVTO = {
     series: [75],       
     chart: {
         type: 'radialBar',
@@ -103,7 +103,7 @@ import { ChartType } from '../../../../../_BASE/core/models/contracts/team-membe
 /**
  *  Status4
  */
- const status4: ChartType = {
+ const status4: ChartTypeVTO = {
     series: [25],       
     chart: {
         type: 'radialBar',
@@ -136,7 +136,7 @@ import { ChartType } from '../../../../../_BASE/core/models/contracts/team-membe
 /**
  *  Status5
  */
- const status5: ChartType = {
+ const status5: ChartTypeVTO = {
     series: [60],       
     chart: {
         type: 'radialBar',
@@ -169,7 +169,7 @@ import { ChartType } from '../../../../../_BASE/core/models/contracts/team-membe
 /**
  *  Status6
  */
- const status6: ChartType = {
+ const status6: ChartTypeVTO = {
     series: [85],       
     chart: {
         type: 'radialBar',
@@ -202,7 +202,7 @@ import { ChartType } from '../../../../../_BASE/core/models/contracts/team-membe
 /**
  *  Status7
  */
- const status7: ChartType = {
+ const status7: ChartTypeVTO = {
     series: [70],       
     chart: {
         type: 'radialBar',

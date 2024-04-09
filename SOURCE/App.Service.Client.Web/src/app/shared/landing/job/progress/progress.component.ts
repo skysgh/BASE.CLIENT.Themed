@@ -15,7 +15,7 @@ import { SystemService } from '../../../../../_BASE/core/services/system.service
 })
 export class ProgressComponent implements OnInit {
   // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  public system = importedSystemConst;
   constructor(systemService: SystemService) {
     // Make system/env variables avaiable to view template (via const or service):
     // this.system = systemService.system;

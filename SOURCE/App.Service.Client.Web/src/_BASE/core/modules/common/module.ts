@@ -1,16 +1,12 @@
 // Ag dependencies:
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SystemService } from '../../services/system.service';
-import { EnvironmentService } from '../../services/environment.service';
-import { TitleService } from '../../services/title.service';
-import { SystemLanguagesRepositoryService } from '../../services/repositories/system.languages.repository.service';
 import { ScrollspyDirective } from './scrollspy.directive';
 import { LandingScrollspyDirective } from './landingscrollspy.directive';
 import { NgbAccordionModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { TranslateModule } from '@ngx-translate/core';
-import { SystemEndorsementRepositoryService } from '../../services/repositories/system-endorsements.repository.service';
+import { SystemEndorsementRepositoryService } from '../../services/services/repositories/service-endorsements.repository.service';
 import { matchesProperty } from 'lodash';
 import { EnabledPipe } from './pipes/enabled.pipe';
 import { MatchesPipe } from './pipes/matches.pipe';

@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { system as importedSystemConst } from '../../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
@@ -22,11 +22,11 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
  */
 export class BaseAppsPagesLandingIndexScrollBackToTopComponent implements OnInit {
   // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  public system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
   constructor(systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     public translate: TranslateService) {
     // Make system/env variables avaiable to view template:
     this.system = systemService.system;

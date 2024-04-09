@@ -19,8 +19,8 @@ import { IHasMenuItem } from '../../../models/contracts/IHasMenuItem';
   styleUrls: ['./component.scss']
 })
 export class BaseLayoutHorizontalTopbarComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   menu: any;
   menuItems: IHasMenuItem[] = [];

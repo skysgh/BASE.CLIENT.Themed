@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 // Services:
-import { DiagnosticsTraceService } from "../../core/services/diagnostics.service";
+import { SystemDiagnosticsTraceService } from "../../core/services/system.diagnostics-trace.service";
 // Modules:
 import { BaseCoreCommonModule } from "../../core/modules/common/module";
 import { BaseCoreCommonComponentsModule } from "../../core/modules/common/components/module";
@@ -53,7 +53,7 @@ import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishmen
   ]
 })
 export class BaseAppsEducationModule {
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
   }
 }

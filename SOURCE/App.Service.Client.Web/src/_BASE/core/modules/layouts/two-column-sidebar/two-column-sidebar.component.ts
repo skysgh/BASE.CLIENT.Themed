@@ -17,8 +17,8 @@ import { MenuItem } from './menu.model';
   styleUrls: ['./two-column-sidebar.component.scss']
 })
 export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   menu: any;
   toggle: any = true;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 import { SystemService } from '../../../../services/system.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class BaseCorePagesLandingFaqsComponent implements OnInit {
 
   constructor(
     systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     public translate: TranslateService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }

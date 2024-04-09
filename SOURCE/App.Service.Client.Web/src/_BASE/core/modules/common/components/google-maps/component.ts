@@ -8,7 +8,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 // Models:
 //
 // Data:
@@ -20,14 +20,14 @@ import { DiagnosticsTraceService } from '../../../../services/diagnostics.servic
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsGoogleMapsComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   public load: boolean = true;
 
   constructor(
     private systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private renderer: Renderer2) {
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);

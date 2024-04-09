@@ -20,21 +20,18 @@ import { system as importedSystemConst } from '../../../constants/system';
 import { AuthenticationService } from '../../../services/auth.service';
 import { AuthfakeauthenticationService } from '../../../services/authfake.service';
 import { TokenStorageService } from '../../../services/token-storage.service';
-import { LanguageService } from '../../../services/language.service';
 
 //import { allNotification, messages } from './data'
 //import { CartModel } from './topbar.model';
 //import { cartData } from './data';
 //  Base Services:
 import { SystemService } from '../../../services/system.service';
-import { SystemNotificationService } from '../../../services/notification.service';
-import { DiagnosticsTraceService } from '../../../services/diagnostics.service';
-import { EventService } from '../../../services/event.service';
+import { SystemDiagnosticsTraceService } from '../../../services/system.diagnostics-trace.service';
 // Base Models:
-import { SystemLanguage } from '../../../models/data/system-language.model';
-//
-import { SystemNotification } from '../../../models/data/notification.model';
-
+import { ServiceLanguage } from '../../../models/data/service-language.model';
+import { ServiceNotification } from '../../../models/data/service-notification.model';
+import { EventService } from '../../../services/infrastructure/event.service';
+// Data:
 
 @Component({
   selector: 'app-topbar',
@@ -42,8 +39,8 @@ import { SystemNotification } from '../../../models/data/notification.model';
   styleUrls: ['./topbar.component.scss']
 })
 export class BaseLayoutTopBarComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
@@ -52,10 +49,10 @@ export class BaseLayoutTopBarComponent implements OnInit {
   constructor(@Inject(DOCUMENT)
     private document: any,
     systemService: SystemService, 
-    protected diagnosticsTraceService :DiagnosticsTraceService,
-    //private systemNotificationService: SystemNotificationService,
+    protected diagnosticsTraceService :SystemDiagnosticsTraceService,
+    //private serviceNotificationsService: serviceNotificationsService,
     private eventService: EventService,
-    public languageService: LanguageService,
+    //public languageService: LanguageService,
     private modalService: NgbModal,
     public _cookiesService: CookieService,
     public translate: TranslateService,

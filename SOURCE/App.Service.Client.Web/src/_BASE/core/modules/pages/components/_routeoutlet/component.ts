@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 // Import Module:
 
 
@@ -15,7 +15,7 @@ import { DiagnosticsTraceService } from '../../../../services/diagnostics.servic
 export class BaseCorePagesROComponent implements OnInit {
 
   constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService
+    private diagnosticsTraceService: SystemDiagnosticsTraceService
   ) {
 
   }

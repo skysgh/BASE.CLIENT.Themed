@@ -16,6 +16,14 @@ import { HasTenantedReferenceDataBase } from "./HasTenantedReferenceDataBase";
  * have an icon, stock image, or font glyph asset
  * that can be referenced.
  * In such cases, the field should contain an Image Name (filename+ext).
+ *
+ * Implements:
+ * 
+ * IHasUUID,
+ * IHasTenantId
+ * IHasEnabled,
+ * IHasReferenceData,
+ * IHasImageName
  */
 export abstract class HasImageNameBasedTenantedReferenceDataBase
   extends HasTenantedReferenceDataBase

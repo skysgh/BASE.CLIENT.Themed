@@ -1,6 +1,8 @@
 
 /**
  * Contract for items that are specific to a single tenacy.
+ *
+ * See IHasServiceId
  */
 export interface IHasTenancyId {
   /**
@@ -8,3 +10,4 @@ export interface IHasTenancyId {
    */
   tenancyId: string;
 }
+

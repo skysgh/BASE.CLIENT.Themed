@@ -18,8 +18,8 @@ import { SystemService } from '../../../../../services/system.service';
  * Signup Cover Component
  */
 export class CoverComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   // Login Form
   SignupForm!: FormGroup;
@@ -29,7 +29,7 @@ export class CoverComponent implements OnInit {
   fieldTextType!: boolean;
 
   constructor(private formBuilder: FormBuilder, systemService: SystemService, public translate: TranslateService) {
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
   }
 

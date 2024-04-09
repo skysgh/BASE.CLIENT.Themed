@@ -1,6 +1,11 @@
 /**
- * Price or Yearly
+ * Yearly Rate
+ *
+ * See IHasMonthlyRate
+ * 
+ * Used by ServicePricingPlan
  */
-export interface IHasYearlyPrice {
-    price: number;
+export interface IHasYearlyRate {
+    yearlyRate: number;
 }
+

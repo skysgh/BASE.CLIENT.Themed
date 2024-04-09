@@ -1,7 +1,7 @@
 //import { Component } from '@angular/core';
 //import { TitleService } from '../_BASE/shared/services/title.service';
 //import { SystemService } from '../_BASE/shared/services/system.service';
-//import { DiagnosticsTraceService } from '../_BASE/shared/services/diagnostics.service';
+//import { DiagnosticsTraceService } from '../_BASE/shared/services/system.diagnostics-trace.service';
 
 
 //@Component({

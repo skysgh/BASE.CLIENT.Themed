@@ -8,8 +8,8 @@ import { TranslateService } from "@ngx-translate/core";
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemService } from "../../../../services/system.service";
-import { SystemNotificationService } from "../../../../services/notification.service";
-import { SystemNotification } from "../../../../models/data/notification.model";
+import { ServiceNotification } from "../../../../models/data/service-notification.model";
+import { ServiceNotificationsService } from "../../../../services/service.notification.service";
 
 @Component({
   selector: 'app-base-common-components-topbar-languagenotifications',
@@ -17,8 +17,8 @@ import { SystemNotification } from "../../../../models/data/notification.model";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   messages: any
 
@@ -32,14 +32,14 @@ export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnIn
   notifyId: any;
 
 
-  public notificationsAll$: Observable<SystemNotification[]> = of([]);
-  public notificationsMessages$: Observable<SystemNotification[]> = of([]);
-  public notificationsAlerts$: Observable<SystemNotification[]> = of([]);
+  public notificationsAll$: Observable<ServiceNotification[]> = of([]);
+  public notificationsMessages$: Observable<ServiceNotification[]> = of([]);
+  public notificationsAlerts$: Observable<ServiceNotification[]> = of([]);
 
   constructor(
     systemService: SystemService,
     public translate: TranslateService,
-    private systemNotificationService: SystemNotificationService,
+    private serviceNotificationsService: ServiceNotificationsService,
     private modalService: NgbModal) {
     // Make system/env variables avaiable to view template (via const or service):
     // this.system = systemService.system;
@@ -55,14 +55,14 @@ export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnIn
   }
 
   private initMessages() {
-    this.systemNotificationService
+    this.serviceNotificationsService
       .mappedItems$
       .subscribe(x => {
         // Fetch Data
         this.notificationsAll$ = of(x);
       });
 
-    this.systemNotificationService
+    this.serviceNotificationsService
       .filteredMappedItems$
       .subscribe(x => {
         // Fetch Data

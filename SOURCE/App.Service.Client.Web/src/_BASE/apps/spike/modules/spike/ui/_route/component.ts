@@ -1,7 +1,7 @@
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { ExampleService } from '../../../../../../core/services/example.service';
 // Import Module:
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
@@ -18,7 +18,7 @@ export class BaseAppsSpikeSpikesRouteComponent implements OnInit {
 
   constructor(
     private translate: TranslateService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private exampleService: ExampleService,
     private spikeRepositoryService: BaseAppsSpikeSpikesRepositoryService,
   ) {

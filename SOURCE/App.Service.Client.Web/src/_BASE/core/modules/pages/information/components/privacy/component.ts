@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { system as importedSystemConst } from '../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
 import { TranslationService } from '../../../../../services/translation.service';
 
 
@@ -18,8 +18,8 @@ import { TranslationService } from '../../../../../services/translation.service'
   styleUrls: ['./component.scss']
 })
 export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
@@ -31,10 +31,10 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
     protected http: HttpClient,
     public translate: TranslateService,
     private systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private translationService: TranslationService
   ) {
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)

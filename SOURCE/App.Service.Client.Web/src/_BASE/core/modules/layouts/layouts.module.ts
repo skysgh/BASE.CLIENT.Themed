@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
-import { LanguageService } from '../../services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 // Feather Icon
@@ -43,6 +42,7 @@ import { BaseLayoutRightSideContextThemeCustomiserComponent } from './rightsideb
 // Footer:
 import { BaseLayoutFooterComponent } from './footer/component';
 import { BaseCoreCommonComponentsModule } from '../common/components/module';
+import { ServiceLanguagesService } from '../../services/service.languages.service';
 
 @NgModule({
   declarations: [
@@ -84,7 +84,7 @@ import { BaseCoreCommonComponentsModule } from '../common/components/module';
     NgbCollapseModule,
     FeatherModule.pick(allIcons),
   ],
-  providers: [LanguageService],
+  providers: [ServiceLanguagesService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class BaseCoreLayoutsModule {

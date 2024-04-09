@@ -11,7 +11,8 @@ import { systemDeveloper } from "./system.developer";
 import { SystemDynamic } from "./contracts/system.dynamics";
 import { systemQueryEndpoints } from "./systemQueryEndpoints";
 import { systemStats } from "./system.stats";
-
+import { SystemService } from "./system.service";
+import { systemStorage } from "./system.storage";
 /**
  * NOTE: note that type created is defined 'as const' on
  * tail of instance.
@@ -37,13 +38,17 @@ export const system /*: System*/ = {
 
   stats: systemStats,
 
+  storage: systemStorage,
+
   get dynamic(): SystemDynamic {
     var result: SystemDynamic = {
       distributor: systemDistributor,
       sponsor: systemSponsor,
       developer: systemDeveloper,
       copyrights: systemCopyrights,
-      configuration: systemConfiguration
+      configuration: systemConfiguration,
+      service: SystemService,
+
     };
     return result;
   }

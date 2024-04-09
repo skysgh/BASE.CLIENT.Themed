@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { DiagnosticsTraceService } from '../../../../../services/diagnostics.ser
 
 export class SearchContainerEditComponent {
 
-  constructor(private diagnosticsTraceService: DiagnosticsTraceService) {
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.info("SearchContainerEdit Initialised");
   }
 }

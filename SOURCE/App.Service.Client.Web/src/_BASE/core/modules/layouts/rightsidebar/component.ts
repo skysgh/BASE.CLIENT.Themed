@@ -7,12 +7,12 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { system as importedSystemConst } from '../../../constants/system';
 //
 import { SystemService } from '../../../services/system.service';
-import { EventService } from '../../../services/event.service';
 import { RootReducerState } from '../../../store';
 // More:
 import { initialState } from '../layouts/layout-reducers';
 import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from '../layouts/layout-selector';
 import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from '../layouts/layout-action';
+import { EventService } from '../../../services/infrastructure/event.service';
 
 @Component({
   selector: 'app-rightsidebar',
@@ -24,8 +24,8 @@ import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMod
  * Right Sidebar component
  */
 export class BaseLayoutRightsidebarComponent implements OnInit {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   layout: string | undefined;
   mode: string | undefined;

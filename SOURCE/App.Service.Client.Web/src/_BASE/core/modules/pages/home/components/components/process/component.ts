@@ -9,7 +9,7 @@ import { Process } from './data';
 import { system as importedSystemConst } from '../../../../../../constants/system';
 //
 import { SystemService } from '../../../../../../services/system.service';
-import { DiagnosticsTraceService } from '../../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
@@ -24,13 +24,13 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
  */
 export class BaseAppsPagesLandingIndexWorkProcessComponent implements OnInit {
   // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  public system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
   Process!: ProcessModel[];
   
   constructor(systemService: SystemService,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     public translateService: TranslateService) {
     // Make system/env variables avaiable to view template:
     this.system = systemService.system;

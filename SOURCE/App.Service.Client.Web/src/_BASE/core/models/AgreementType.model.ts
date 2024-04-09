@@ -1,4 +1,4 @@
-import { ReferenceDataBase } from "./data/base/ReferenceDataBase";
+import { HasUntenantedReferenceDataBase } from "./base/HasUntenantedReferenceDataBase.1";
 
-export class AgreementType extends ReferenceDataBase {
+export class ServiceAgreementType extends HasUntenantedReferenceDataBase {
 }

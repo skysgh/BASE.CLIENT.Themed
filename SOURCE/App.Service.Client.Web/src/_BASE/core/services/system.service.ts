@@ -16,11 +16,11 @@ import { system as importedSystemConst } from '../constants/system';
 // Describe the service:
 @Injectable({ providedIn: 'root' })
 export class SystemService {
-  // Make system/env variables avaiable to view template:
-  public system = importedSystemConst;;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   constructor() {
-    // Make system/env variables avaiable to view template (via const or service):
+    // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;
   }
 }

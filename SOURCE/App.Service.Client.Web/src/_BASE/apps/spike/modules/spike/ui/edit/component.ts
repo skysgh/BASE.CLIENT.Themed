@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 // Import Common:
-import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
@@ -21,7 +21,7 @@ export class BaseAppsSpikeSpikesEditComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private route: ActivatedRoute,
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private repositoryService: BaseAppsSpikeSpikesRepositoryService,
   ) {
     this.diagnosticsTraceService.info("Constructor");
@@ -33,7 +33,7 @@ export class BaseAppsSpikeSpikesEditComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.diagnosticsTraceService.info("params ready");
         this.diagnosticsTraceService.info('id: ' + params['id']);
-        this.repositoryService.get(params['id']).subscribe(x => {
+        this.repositoryService.getSingle(params['id']).subscribe(x => {
           this.diagnosticsTraceService.info('got X: ' + x!.title);
           this.data = x!
         });

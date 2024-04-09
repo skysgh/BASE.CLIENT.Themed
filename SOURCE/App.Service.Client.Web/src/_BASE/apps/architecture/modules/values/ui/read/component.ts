@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DiagnosticsTraceService } from '../../../../../../core/services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { ExampleService } from '../../../../../../core/services/example.service';
 import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
 
@@ -17,7 +17,7 @@ export class BaseAppsArchitectureValuesReadComponent implements OnInit {
   public data? : Value[] = [];
 
   constructor(
-    private diagnosticsTraceService: DiagnosticsTraceService,
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private exampleService: ExampleService,
     private repositoryService: ArchitectureValuesRepositoryService,
     ) {

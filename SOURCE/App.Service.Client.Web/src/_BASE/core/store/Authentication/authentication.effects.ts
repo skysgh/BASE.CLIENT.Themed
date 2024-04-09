@@ -11,8 +11,8 @@ import { system as importedSystemConst } from '../../constants/system';
 
 @Injectable()
 export class AuthenticationEffects {
-  // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
 
   Register$ = createEffect(() =>
     this.actions$.pipe(
@@ -37,9 +37,9 @@ export class AuthenticationEffects {
         return this.AuthenticationService.login(email, password).pipe(
           map((user) => {
             if (user.status === 'success') {
-              sessionStorage.setItem('toast', 'true');
-              sessionStorage.setItem('currentUser', JSON.stringify(user.data));
-              sessionStorage.setItem('token', user.token);
+              sessionStorage.setItem(this.system.storage.system.toast, 'true');
+              sessionStorage.setItem(this.system.storage.system.currentUser, JSON.stringify(user.data));
+              sessionStorage.setItem(this.system.storage.system.token, user.token);
               this.router.navigate([this.system.navigation.home]);
             }
             return loginSuccess({ user });

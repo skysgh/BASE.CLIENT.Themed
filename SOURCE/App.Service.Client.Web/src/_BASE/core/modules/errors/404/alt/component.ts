@@ -18,7 +18,7 @@ import { SystemService } from '../../../../services/system.service';
  */
 export class BaseErrors404AltComponent implements OnInit {
   // Make system/env variables avaiable to view template:
-  system = importedSystemConst;
+  public system = importedSystemConst;
   constructor(systemService: SystemService, public translate: TranslateService) {
   }
 
