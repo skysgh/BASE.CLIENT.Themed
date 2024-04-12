@@ -33,6 +33,7 @@ jobs:
           output_location: "dist/base/browser" # Built app content directory - optional
         env:  # Put a node version on the following line
           NODE_VERSION: 20.11.0
+          YARN_VERSION: 1.22.18
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
