@@ -1,0 +1,72 @@
+
+
+      <!-- start review -->
+      <section class="section" [id]="sectionsInfo.endorsements.id">
+        <div class="bg-overlay bg-overlay-pattern"></div>
+        <div class="container">
+
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="text-center mb-5">
+                <h3 class="mb-3 fw-semibold">
+                  {{'CUSTOM.SITE.HOME.ENDORSEMENTS.TITLE'|translate}}
+                </h3>
+                <p class="text-muted mb-4 ff-secondary">
+                  {{'CUSTOM.SITE.HOME.ENDORSEMENTS.DESCRIPTION'|translate}}
+                </p>
+                </div>
+              </div>
+            </div>
+          
+
+
+
+                <div class="row justify-content-center  bg-primary">
+                  <div class="col-lg-10">
+                    <div class="text-center">
+                      <div>
+                        <i class="ri-double-quotes-l text-success display-3"></i>
+                      </div>
+                      <h4 class="text-white mb-5">
+                        <span class="text-success">19k</span>
+                        + Satisfied clients
+                      </h4>
+
+                      <!-- Swiper -->
+                      <div class="swiper navigation-swiper rounded testimonial-slider" dir="ltr">
+                        <ngx-slick-carousel class="carousel" [config]="review">
+                          <ng-container *ngIf="reviews$ | async as reviews">
+
+                            @for (review of reviews; track $index) {
+                            <div class="swiper-slide" ngxSlickItem>
+                              <div class="row justify-content-center g-0">
+                                <div class="col-10">
+                                  <div class="text-white-50">
+                                    <h3>{{review.title}}</h3>
+                                    <p class="fs-20 ff-secondary mb-4">
+                                      "{{review.description}}"
+                                    </p>
+
+                                    <div>
+                                      <h5 class="text-white">{{review.by}}</h5>
+                                      <p>{{review.role}}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>}
+
+                          </ng-container>
+                          <!-- end slide -->
+                        </ngx-slick-carousel>
+                      </div>
+                      <!-- end slider -->
+                    </div>
+                  </div>
+                  <!-- end col -->
+                </div>
+                <!-- end row -->
+              </div>
+              <!-- end container -->
+</section>
+      <!-- end review -->

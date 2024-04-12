@@ -1,0 +1,165 @@
+<!-- start plan -->
+<section class="section bg-light" [id]="sectionsInfo.plans.id">
+    <div class="bg-overlay bg-overlay-pattern"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center mb-5">
+                    <h3 class="mb-3 fw-semibold">
+                      {{'CUSTOM.SITE.HOME.PLANS.TITLE'|translate}}
+                    </h3>
+                    <p class="text-muted mb-4">
+                      {{'CUSTOM.SITE.HOME.PLANS.DESCRIPTION'|translate}}
+                    </p>
+
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div>
+                            <h5 class="fs-14 mb-0">Month</h5>
+                        </div>
+                        <div class="form-check form-switch fs-20 ms-3 " (click)="flipView()">
+                            <input class="form-check-input" type="checkbox" id="plan-switch">
+                            <label class="form-check-label" for="plan-switch"></label>
+                        </div>
+                        <div>
+                            <h5 class="fs-14 mb-0">
+                              {{'BASE.SCHEDULING.ANNUAL'|translate}}
+                          <span class="badge bg-success-subtle text-success">
+                              {{'BASE.SALES.SAVE'|translate}}
+                          </span>
+                          </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+        <div class="row gy-4">
+          <ng-container *ngIf="monthlyPlans$ | async as monthlyPlans">
+            <ng-container *ngFor="let item of monthlyPlans ; let i = index;">
+
+              <div class="col-lg-4">
+
+                <div class="card plan-box mb-0">
+                  <div class="card-body p-4 m-2">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-grow-1">
+                        <h5 class="mb-1 fw-semibold">{{item.title}}</h5>
+                        <p class="text-muted mb-0">{{item.description}}</p>
+                      </div>
+                      <div class="avatar-sm">
+                        <div class="avatar-title bg-light rounded-circle text-primary">
+                          <i class="ri-book-mark-line fs-20"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="py-4 text-center">
+                      <h1 class="month" style="display:block">
+                        <sup><small>$</small></sup>
+                        <span class="ff-secondary fw-bold">{{item.monthlyRate}}</span>
+                        <span class="fs-13 text-muted">
+                        /
+                        {{'BASE.MONTHS.SINGULAR'|translate}}</span>
+                      </h1>
+                      <h1 class="annual" style="display:none">
+                        <sup><small>$</small></sup>
+                        <span class="ff-secondary fw-bold">{{item.yearlyRate}}</span>
+                        <span class="fs-13 text-muted">
+                          /
+                          {{'BASE.YEARS.SINGULAR'|translate}}
+                        </span>
+                      </h1>
+                    </div>
+
+                    <div>
+                      <ul class="list-unstyled text-muted vstack gap-3 ff-secondary">
+                        <li>
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 text-success me-1">
+                              <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              Upto <b>3</b> Projects
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 text-success me-1">
+                              <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              Upto <b>299</b> Customers
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 text-success me-1">
+                              <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              Scalable Bandwidth
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 text-success me-1">
+                              <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              <b>5</b> Somethings...
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 text-danger me-1">
+                              <i class="ri-close-circle-fill fs-15 align-middle"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              <b>24/7</b> Support
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 text-danger me-1">
+                              <i class="ri-close-circle-fill fs-15 align-middle"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              <b>Unlimited</b> Somethings...
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 text-danger me-1">
+                              <i class="ri-close-circle-fill fs-15 align-middle"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              Other Somethings...
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="mt-4">
+                        <a href="javascript:void(0);" class="btn btn-soft-success w-100">
+                          {{'BASE.SALES.GET_STARTED'|translate}}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </ng-container>
+            </ng-container>
+              <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end plan -->
