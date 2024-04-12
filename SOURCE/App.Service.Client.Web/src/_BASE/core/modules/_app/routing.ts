@@ -23,22 +23,23 @@ const routes: Routes = [
 
   //// so pages and landing (and auth, etc.) will be loaded directly within
   //// the AppROComponent. They also don't need to be gaurded - they're public access.
-  { path: '', loadChildren: () => import('../pages/home/module').then(m => m.BaseCoreHomeModule) },
 
   { path: 'dashboards', component: AppLayoutComponent, loadChildren: () => import('../dashboard/module').then(m => m.BaseCoreDashboardsModule), canActivate: [AuthGuard] },
 
-  { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BaseCorePagesModule) },
+
   //// But apps, is more complex:
   //// Is is wrapped in the AppLayout frame first.
   //// And it is Guarded.
+  { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BaseCorePagesModule) },
   { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
   ////  { path: 'settings', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
   //// This again goes in the main AppROContainer with no prior framing:
-  { path: 'auth', loadChildren: () => import('../account/module').then(m => m.BaseCoreAccountModule) },
   //// specifies what is default:
   { path: 'landing', redirectTo: 'pages/landing', pathMatch: 'prefix' },
   { path: 'information', redirectTo: 'pages/information', pathMatch: 'prefix' },
+  { path: 'auth', loadChildren: () => import('../account/module').then(m => m.BaseCoreAccountModule) },
   { path: 'errors', loadChildren: () => import('../errors/module').then(m => m.AppBaseCoreErrorsModule) },
+  { path: '', redirectTo: 'pages', pathMatch:'full' },
 
   { path: '**', redirectTo: 'errors' }
 

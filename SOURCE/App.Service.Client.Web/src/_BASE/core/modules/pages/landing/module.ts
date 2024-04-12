@@ -25,6 +25,7 @@ import { BaseCorePagesLandingPricingComponent } from './pricing/component';
 import { BaseCoreCommonComponentsModule } from '../../common/components/module';
 import { BaseCoreLandingRoutingModule } from './routing';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { BaseCoreHomeModule } from './home/module';
 
 
 
@@ -44,7 +45,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     ScrollToModule.forRoot(),
     BaseCoreCommonComponentsModule,
     BaseCoreLandingRoutingModule,
-        SlickCarouselModule,
+    BaseCoreHomeModule,
+    SlickCarouselModule,
 
   ],
   declarations: [
@@ -57,7 +59,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 })
 export class BaseCorePagesLandingModule {
   constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
-    diagnosticsTraceService.debug("BaseCoreLandingModule.constructor()");
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }

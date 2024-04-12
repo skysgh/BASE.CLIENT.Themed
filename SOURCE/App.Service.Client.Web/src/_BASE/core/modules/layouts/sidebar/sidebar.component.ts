@@ -141,7 +141,7 @@ export class BaseLayoutSidebarComponent implements OnInit {
     // Check if the application is running in production
     if (this.system.environment.production) {
       // Modify pathName for production build
-      pathName = pathName.replace('/velzon/angular/minimal', '');
+      pathName = pathName.replace('/base/angular/minimal', '');
     }
 
     const active = this.findMenuItem(pathName, this.menuItems)
@@ -155,7 +155,7 @@ export class BaseLayoutSidebarComponent implements OnInit {
       let matchingMenuItem = items.find((x: any) => {
         if (this.system.environment.production) {
           let path = x.pathname
-          path = path.replace('/velzon/angular/minimal', '');
+          path = path.replace('/base/angular/minimal', '');
           return path === pathName;
         } else {
           return x.pathname === pathName;

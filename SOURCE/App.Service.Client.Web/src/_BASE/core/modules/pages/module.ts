@@ -46,8 +46,8 @@ import { BaseCorePagesLandingModule } from './landing/module';
         // Admittedly in he case of information, their simplicity doesn't
         // warant a module for each, but out of habit I *think* I prefer paying
         // a rigour price early, in case I manouverability later.
-        { path: 'information', loadChildren: () => import('./information/module').then(m => m.BaseCorePagesInformationModule) },
         { path: 'landing', loadChildren: () => import('./landing/module').then(m => m.BaseCorePagesLandingModule) },
+        { path: 'information', loadChildren: () => import('./information/module').then(m => m.BaseCorePagesInformationModule) },
       ]
     ),
     // Import classes within the above specified import files.

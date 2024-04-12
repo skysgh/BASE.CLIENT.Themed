@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "velzon": {
+    "base": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/velzon",
+            "outputPath": "
+              base",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -139,10 +140,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "velzon:build:production"
+              "buildTarget": "base:build:production"
             },
             "development": {
-              "buildTarget": "velzon:build:development"
+              "buildTarget": "base:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -150,7 +151,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "velzon:build"
+            "buildTarget": "base:build"
           }
         },
         "test": {

@@ -10,9 +10,9 @@ The code of the page is
 
 <head>
   <meta charset="utf-8">
-  <title>Velzon - Angular 17 Responsive Admin Dashboard Template</title>
-  <!-- <base href="/velzon/angular/minimal/"> -->
-  <!-- <base href="/velzon/angular/minimal-rtl/"> -->
+  <title>Base - Angular 17 Responsive Admin Dashboard Template</title>
+  <!-- <base href="/base/angular/minimal/"> -->
+  <!-- <base href="/base/angular/minimal-rtl/"> -->
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="{{system.sources.assets.public.static.services.images}}favicon.ico">

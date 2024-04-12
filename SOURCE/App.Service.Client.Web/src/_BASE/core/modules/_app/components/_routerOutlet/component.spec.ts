@@ -21,7 +21,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'velzon'`, () => {
+  it(`should have as title 'base'`, () => {
     const fixture = TestBed.createComponent(BaseRouterOutletComponent);
     const app = fixture.componentInstance
     // TODO: Make it refer to system settings. 
@@ -32,6 +32,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(BaseRouterOutletComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('velzon app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('base is running!');
   });
 });
