@@ -139,7 +139,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
   public getPageAdChildrenOf(
     parentFK: string,
     page: number = 0,
-    parentFKFieldName: string | null = null): Observable<TDto[]> {
+    parentFKFieldName: string | undefined=undefined): Observable<TDto[]> {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.getPageChildren()`);
 
     if (!parentFKFieldName || parentFKFieldName.length == 0) {
@@ -325,7 +325,12 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
  * @param queryArgs
  * @returns
  */
-  protected buildEnabledFKPagedRequestUrl(fkValue: string, fkPropertyName: string, page: number = 1, enabled: boolean = true,   queryArgs: IHasStringKeyValue[] | null = null): string {
+  protected buildEnabledFKPagedRequestUrl(
+    fkValue: string,
+    fkPropertyName: string,
+    page: number = 1,
+    enabled: boolean = true,
+    queryArgs: IHasStringKeyValue[] | null = null): string {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.buildEnabledFKPagedRequestUrl()`);
 
     var result = this.endpointUrl;// this.buildRequestUrl('', null, queryArgs);

@@ -9,13 +9,13 @@ export const environment = {
       level: 5
     },
     service: {
+      baseUrl: 'http://localhost:4202/',
+
       // type is 'soul','json-server' or '.net.core'
       // and have to run 'npm run soul', 'npm run json-server' or start the .net.core service.
       // it changes the way query endpoints are built in systemQueryEndpoints.cs
       type: 'json-server',
-      baseUrl: 'http://localhost:4202/'
-    },
-
+    }
   },
   production: false,
   defaultauth: 'fackbackend',

@@ -1,13 +1,13 @@
 export interface SystemDbStorageFieldNames {
-    id: string;
-    fKSuffix: string;
-    timestamp: string;
-    enabled: string;
-    fromUtc: string;
+  id: string;
+  fKSuffix: string;
+  timestamp: string;
+  enabled: string;
+  fromUtc: string;
   toUtc: string;
   stateFK: string;
-    serviceFK: string;
-    tenancyFK: string;
+  serviceFK: string;
+  tenancyFK: string;
   parentFK: string;
   title: string;
   description: string;
