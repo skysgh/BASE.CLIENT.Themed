@@ -13,6 +13,7 @@ export const environment = {
       type: 'json-server',
     }
   },
+  production: true,
   defaultauth: 'fackbackend',
   firebaseConfig: {
     apiKey: '',
