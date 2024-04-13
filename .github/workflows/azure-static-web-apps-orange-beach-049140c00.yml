@@ -34,6 +34,7 @@ jobs:
         env:  # Put a node version on the following line
           NODE_VERSION: 20.11.0
           YARN_VERSION: 1.22.18
+          CI: false
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
