@@ -9,13 +9,13 @@ import { CookieService } from 'ngx-cookie-service';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { MappedItemsCollectionServiceBase } from './base/mappedItemsCollection.service.base';
 import { ServiceLanguagesRepositoryService } from './services/repositories/service-languages.repository.service';
 import { TranslationService } from './translation.service';
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 // Models:
 import { ServiceLanguage } from '../models/data/service-language.model';
-import { SystemLanguageVM } from '../models/service-LanguageVM';
+import { SystemLanguageVM } from '../models/service-Language.vto.model';
+import { MappedItemsCollectionServiceBase } from './base/mapped-items-collection.service.base';
 
 
 /** Service invoked from toolbar

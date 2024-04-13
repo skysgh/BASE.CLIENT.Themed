@@ -9,7 +9,7 @@ import { systemDistributor } from "./system.distributor";
 import { systemSponsor } from "./system.sponsor";
 import { systemDeveloper } from "./system.developer";
 import { SystemDynamic } from "./contracts/system.dynamics";
-import { systemQueryEndpoints } from "./systemQueryEndpoints";
+import { systemQueryEndpoints } from "./system-query-endpoints";
 import { systemStats } from "./system.stats";
 import { SystemService } from "./system.service";
 import { systemStorage } from "./system.storage";

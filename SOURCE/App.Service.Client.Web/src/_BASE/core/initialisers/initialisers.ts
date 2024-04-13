@@ -1,5 +1,5 @@
 import { ServiceNotification } from "../models/data/service-notification.model";
-import { NotificationVTO } from "../models/view/NotificationVTO";
+import { NotificationVTO } from "../models/view/notification.vto.model";
 import { ObjectMappingService } from "../services/objectMapping.service";
 
 class InitialiseMapsService{

@@ -8,12 +8,12 @@ import { TranslateService } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../../constants/system';
 // Services:
-import { MappedItemsCollectionServiceBase } from '../base/mappedItemsCollection.service.base';
+import { MappedItemsCollectionServiceBase } from '../base/mapped-items-collection.service.base';
 import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.service';
 import { SystemPricingPlanRepositoryService } from './repositories/service-pricingplan.repository.service';
 // Models:
 import { ServicePricingPlan } from '../../models/data/service-pricing-plan.model';
-import { ServicePricingPlanVTO } from '../../models/service.pricingplan-vto.model';
+import { ServicePricingPlanVTO } from '../../models/service.pricingplan.vto.model';
 
 // Models:
 

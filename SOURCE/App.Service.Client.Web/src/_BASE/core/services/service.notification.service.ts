@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { MappedItemsCollectionServiceBase } from './base/mappedItemsCollection.service.base';
+import { MappedItemsCollectionServiceBase } from './base/mapped-items-collection.service.base';
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 import { SystemService } from './system.service';
 import { NotificationsRepositoryService } from './services/repositories/service-notification.repository.service';

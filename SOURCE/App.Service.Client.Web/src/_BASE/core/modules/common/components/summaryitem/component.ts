@@ -7,7 +7,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
 // Models:
-import { SummaryItemVTO } from "../../../../models/SummaryItemVTO.model";
+import { SummaryItemVTO } from "../../../../models/SummaryItem.vto.model";
 // Data:
 //
 

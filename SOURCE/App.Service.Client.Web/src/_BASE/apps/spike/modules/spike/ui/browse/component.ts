@@ -5,7 +5,7 @@ import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repos
 // Models:
 import { Spike } from '../../../../models/spike.model';
 import { ActivatedRoute } from '@angular/router';
-import { SummaryItemVTO } from '../../../../../../core/models/SummaryItemVTO.model';
+import { SummaryItemVTO } from '../../../../../../core/models/SummaryItem.vto.model';
 
 
 @Component({

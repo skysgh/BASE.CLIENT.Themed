@@ -1,4 +1,4 @@
-import { SystemDbStorageFieldNames } from "./system.storage.db.fieldNames";
+import { SystemDbStorageFieldNames } from "./system.storage.db.fieldnames";
 export interface SystemDbStorage {
     defaultFieldNames: SystemDbStorageFieldNames;
 }

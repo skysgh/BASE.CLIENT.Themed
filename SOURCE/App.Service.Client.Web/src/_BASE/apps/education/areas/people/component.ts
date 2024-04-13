@@ -8,7 +8,7 @@ import { system as importedSystemConst } from '../../../../core/constants/system
 import { SystemService } from "../../../../core/services/system.service";
 import { SystemDiagnosticsTraceService } from "../../../../core/services/system.diagnostics-trace.service";
 // Models/Data:
-import { SummaryItemVTO } from "../../../../core/models/SummaryItemVTO.model";
+import { SummaryItemVTO } from "../../../../core/models/SummaryItem.vto.model";
 
 @Component({
   selector: 'app-base-apps-education-people',

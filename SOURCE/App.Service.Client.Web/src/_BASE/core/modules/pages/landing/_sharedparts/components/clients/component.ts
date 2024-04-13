@@ -12,7 +12,7 @@ import { SystemDiagnosticsTraceService } from '../../../../../../services/system
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ServiceTrustedByService } from '../../../../../../services/service.trusted-by.service';
-import { ServiceTrustedByVTO } from '../../../../../../models/view/service.trustedByVTO';
+import { ServiceTrustedByVTO } from '../../../../../../models/view/service.trusted-by.vto.model';
 import { Observable, of } from 'rxjs';
 
 import {  Responsive as importedResponsive} from './settings';

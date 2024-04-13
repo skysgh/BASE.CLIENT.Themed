@@ -1,5 +1,5 @@
 import { ServiceNotification } from "../../core/models/data/service-notification.model";
-import { NotificationVTO } from "../../core/models/view/NotificationVTO";
+import { NotificationVTO } from "../models/view/notification.vto.model";
 
 // use to pass this callback to a map method:
 // eg:

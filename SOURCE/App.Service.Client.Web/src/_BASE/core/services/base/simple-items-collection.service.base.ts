@@ -3,7 +3,7 @@ import { tap , map, switchMap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.service';
-import { MappedItemsCollectionServiceBase } from './mappedItemsCollection.service.base';
+import { MappedItemsCollectionServiceBase } from './mapped-items-collection.service.base';
 
 /*
 abstract base class for

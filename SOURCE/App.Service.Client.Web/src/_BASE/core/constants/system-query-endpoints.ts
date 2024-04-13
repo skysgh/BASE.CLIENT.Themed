@@ -1,5 +1,5 @@
 // Constants:
-import { environment as importedEnvironmentConst } from '../../../../src/environments/environment';
+import { environment as importedEnvironmentConst } from '../../../environments/environment';
 
 
 

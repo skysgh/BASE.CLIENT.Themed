@@ -9,12 +9,12 @@ import { CookieService } from 'ngx-cookie-service';
 // Constants:
 import { system as importedSystemConst } from '../../constants/system';
 // Services:
-import { MappedItemsCollectionServiceBase } from '../base/mappedItemsCollection.service.base';
+import { MappedItemsCollectionServiceBase } from '../base/mapped-items-collection.service.base';
 import { TranslationService } from '../translation.service';
 import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.service';
 // Models:
 import { ServicePricingPlan } from '../../models/data/service-pricing-plan.model';
-import { ServicePricingPlanVTO } from '../../models/service.pricingplan-vto.model';
+import { ServicePricingPlanVTO } from '../../models/service.pricingplan.vto.model';
 import { SystemPricingPlanRepositoryService } from './repositories/service-pricingplan.repository.service';
 import { ServiceFeature } from '../../models/data/service-features.model';
 import { ServiceFeaturesRepositoryService } from './repositories/service-features.repository.service';

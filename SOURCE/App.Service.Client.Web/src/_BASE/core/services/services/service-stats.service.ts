@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../../constants/system';
 // Services:
-import { MappedItemsCollectionServiceBase } from '../base/mappedItemsCollection.service.base';
+import { MappedItemsCollectionServiceBase } from '../base/mapped-items-collection.service.base';
 import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.service';
 // Models:
 import { ServiceStatsRepositoryService } from './repositories/service-stats.repository.service';

@@ -83,7 +83,7 @@ export abstract class MappedItemsCollectionServiceBase<TDto, TKeyType, TVto> {
   // a repo to return results.
   // So it's a double observable if you will.
   constructor(
-    protected diagnosticsTraceService: SystemDiagnosticsTraceService ,
+    public diagnosticsTraceService: SystemDiagnosticsTraceService ,
     public translate: TranslateService
   ) {
     this._this = this;

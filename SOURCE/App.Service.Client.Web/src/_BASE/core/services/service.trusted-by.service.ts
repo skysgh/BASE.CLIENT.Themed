@@ -9,11 +9,11 @@ import { CookieService } from 'ngx-cookie-service';
 // Constants:
 import { system as importedSystemConst } from '../constants/system';
 // Services:
-import { MappedItemsCollectionServiceBase } from './base/mappedItemsCollection.service.base';
+import { MappedItemsCollectionServiceBase } from './base/mapped-items-collection.service.base';
 import { TranslationService } from './translation.service';
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 import { ServiceTrustedBy } from '../models/data/service-trustedby.model';
-import { ServiceTrustedByVTO } from '../models/view/service.trustedByVTO';
+import { ServiceTrustedByVTO } from '../models/view/service.trusted-by.vto.model';
 import { SystemTrustedByRepositoryService } from './services/repositories/service-trustedby.repository.service';
 // Models:
 
