@@ -31,6 +31,8 @@ jobs:
           app_location: "/SOURCE/App.Service.Client.Web" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "dist/base" # Built app content directory - optional
+        env:
+          NODE_VERSION: 20.11.0
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
