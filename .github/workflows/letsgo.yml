@@ -30,10 +30,7 @@ jobs:
     steps:
       # Checkout code from *lib* repo
       # to a directory parallel to this repo's code
-      - name: Say Hello
-        run: echo "Hi" 
-
-      - name: Check Env Var
+      - name: Show Environment Info
         run: echo ${{env.REPO_NAME_SRC}}
 
       # Checkout code from *lib* repo
@@ -94,9 +91,9 @@ jobs:
           echo ""
           echo "Repo Branch"
           echo "=================="
-          echo "Repo.Scr.........: '${{env.REPO_NAME_SRC}}'"
+          echo "Repo.Scr.........: '${GITHUB_REPOSITORY}'"
           echo "Branch.Name......: '${{env.BRANCH}}'"
-          echo "Branch.REf.......: '${GITHUB_REF}'"
+          echo "Branch.Ref.......: '${GITHUB_REF}'"
           echo "Branch.Number....: '${{env.BRANCH_ID}}'"
           echo ""
           echo "Env"
@@ -117,8 +114,10 @@ jobs:
         run: |
   
 
-      - name: Login to Azure
-        run: |
+      - name: Azure Login using Action
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.FUCK_A_DUCK }}
 
       - name: Ensure Resource Group(s)
         run: |
