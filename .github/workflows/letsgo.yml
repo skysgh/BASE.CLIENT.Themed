@@ -55,15 +55,20 @@ jobs:
       - name: Determine Deployment Environment
         run: |
           if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
+            echo "Setting environment to 'Dev Test (DT)'."
+            echo "Setting Environment to 'DT'."
             export ENVIRONMENT_NAME='Dev Test'
             export ENVIRONMENT_ID='DT'
           elif [[ ${{ github.ref }} == 'refs/heads/release' ]]; then
-            echo "Setting deployment environment to production."
+            echo "Setting environment to 'Prod (PR)'."
             export ENVIRONMENT_NAME='Production'
             export ENVIRONMENT_ID='PR'
           echo "Setting deployment environment to staging."
+            echo "Setting environment to 'Prod (PR)'."
             export DEPLOYMENT_ENV='staging'
+            export ENVIRONMENT_ID='BT'
           else
+            echo "Setting environment to 'Build Test (BT)'."
             export ENVIRONMENT_NAME='Build Test'
             export ENVIRONMENT_ID='BT'
           fi
@@ -82,6 +87,8 @@ jobs:
           echo "Env.Id: '${{env.ENVIRONMENT_ID}}'"
 
           echo "Azure.Cred: '${{env.AZURE_CREDENTIAL_SECRET}}'"
+          echo "Azure.Cred2: '${{secrets.FUCK_A_DUCK}}'"
+          echo "Azure.Cred2: '${{secrets.GITHUB_TOKEN}}'"
           echo "Azure.Location.1: '${{env.AZURE_LOCATION_1}}'"
           echo "Azure.Location.2: '${{env.AZURE_LOCATION_2}}'"
           echo "Azure.Location.3: '${{env.AZURE_LOCATION_3}}'"
