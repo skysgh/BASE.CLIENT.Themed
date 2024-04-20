@@ -41,15 +41,16 @@ jobs:
       - name: Checkout Library Repo
         uses: actions/checkout@v2
         with:
-          repository: REPO_NAME_LIB
+          repository: ${{env.REPO_NAME_LIB}}
           path: '../DeploymentLib'
 
-      # Checkout code from *this* repo
-      # without giving directory, so default:
-      - name: Checkout Project Repo
-        uses: actions/checkout@v2
-        with:
-          repository: REPO_NAME_SRC
+    #   Already done.
+    #   # Checkout code from *this* repo
+    #   # without giving directory, so default:
+    #   - name: Checkout Project Repo
+    #     uses: actions/checkout@v2
+    #     with:
+    #       repository: REPO_NAME_SRC
   
       - name: Determine Deployment Environment
         run: |
