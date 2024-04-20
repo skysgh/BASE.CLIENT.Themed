@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ${{env.REPO_NAME_LIB}}
-          path: '../DeploymentLib'
+          path: './DeploymentLib'
 
     #   Already done.
     #   # Checkout code from *this* repo
