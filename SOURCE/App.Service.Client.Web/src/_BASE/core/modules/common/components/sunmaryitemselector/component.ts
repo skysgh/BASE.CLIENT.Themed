@@ -8,6 +8,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
 import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 // Models:
 import { SummaryItemVTO } from '../../../../models/SummaryItem.vto.model';
+import { ViewModel } from './vm';
 // Data:
 //
 @Component({
@@ -18,6 +19,10 @@ import { SummaryItemVTO } from '../../../../models/SummaryItem.vto.model';
 export class BaseCoreCommonComponentsSummaryItemSelectorComponent {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   
   @Input() // Adjust the duration as needed

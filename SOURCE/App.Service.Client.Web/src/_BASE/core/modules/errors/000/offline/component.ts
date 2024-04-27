@@ -7,6 +7,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-errors-offline',
@@ -20,6 +21,10 @@ import { SystemDiagnosticsTraceService } from '../../../../services/system.diagn
 export class BaseErrorsOfflineComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
   constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService,
     systemService: SystemService,
     public translate: TranslateService) {

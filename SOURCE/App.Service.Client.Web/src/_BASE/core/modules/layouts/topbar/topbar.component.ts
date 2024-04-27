@@ -31,6 +31,7 @@ import { SystemDiagnosticsTraceService } from '../../../services/system.diagnost
 import { ServiceLanguage } from '../../../models/data/service-language.model';
 import { ServiceNotification } from '../../../models/data/service-notification.model';
 import { EventService } from '../../../services/infrastructure/event.service';
+import { ViewModel } from './vm';
 // Data:
 
 @Component({
@@ -41,6 +42,9 @@ import { EventService } from '../../../services/infrastructure/event.service';
 export class BaseLayoutTopBarComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   @Output() mobileMenuButtonClicked = new EventEmitter();
 

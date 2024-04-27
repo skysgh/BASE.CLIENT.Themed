@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../../_BASE/core/constants/system';
+import { ViewModel } from './vm';
 
 
 @Component({
@@ -14,6 +15,11 @@ import { system as importedSystemConst } from '../../../../../_BASE/core/constan
 export class BlogComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   constructor() {
     // Make system/env variables avaiable to view template (via singleton or service):

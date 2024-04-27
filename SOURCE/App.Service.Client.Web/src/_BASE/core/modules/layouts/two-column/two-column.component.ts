@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../../services/infrastructure/event.service';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-two-column',
@@ -11,6 +12,9 @@ import { EventService } from '../../../services/infrastructure/event.service';
  * BaseLayoutTwoColumnComponent
  */
 export class BaseLayoutTwoColumnComponent implements OnInit {
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   constructor(private eventService: EventService) { }
   isCondensed = false;

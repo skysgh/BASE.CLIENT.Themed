@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // Import Common:
 import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
+import { ViewModel } from './vm';
 // Import Module:
 
 
@@ -13,6 +14,9 @@ import { SystemDiagnosticsTraceService } from '../../../../services/system.diagn
 })
 
 export class BaseCorePagesROComponent implements OnInit {
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   constructor(
     private diagnosticsTraceService: SystemDiagnosticsTraceService

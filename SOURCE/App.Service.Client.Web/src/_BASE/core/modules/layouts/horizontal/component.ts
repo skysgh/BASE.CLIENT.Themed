@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewModel } from '../vm';
 
 @Component({
   selector: 'app-horizontal',
@@ -10,6 +11,10 @@ import { Component, OnInit } from '@angular/core';
  * Horizontal Component
  */
 export class BaseLayoutHorizontalComponent implements OnInit {
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   constructor() { }
   isCondensed = false;

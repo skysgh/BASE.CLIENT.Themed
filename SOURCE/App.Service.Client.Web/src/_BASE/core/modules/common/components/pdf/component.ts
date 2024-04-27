@@ -9,6 +9,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
 import { PdfService } from "../../../../services/infrastructure/pdf.service";
+import { ViewModel } from "./vm";
 // Models:
 //
 // Data:
@@ -25,6 +26,10 @@ import { PdfService } from "../../../../services/infrastructure/pdf.service";
 export class BaseCoreCommonComponentsPdfComponent implements OnInit, OnDestroy {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   @Input("src")
   public src: string | undefined = undefined;

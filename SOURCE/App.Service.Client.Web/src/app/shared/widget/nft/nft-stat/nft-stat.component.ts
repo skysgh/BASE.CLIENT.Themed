@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-nft-stat',
@@ -10,6 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
  * Nft-Stat Component
  */
 export class NftStatComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   @Input() icon: string | undefined;
   @Input() title: string | undefined;

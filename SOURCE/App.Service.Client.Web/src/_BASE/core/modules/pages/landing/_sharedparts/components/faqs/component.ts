@@ -14,6 +14,7 @@ import { ServiceFaqsRepositoryService } from '../../../../../../services/service
 import { ServiceFaq } from '../../../../../../models/data/service-faq.model';
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+import { ViewModel } from './vm';
 
 
 @Component({
@@ -28,6 +29,11 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 export class BaseAppsPagesLandingIndexFaqsComponent implements OnInit {
   // Make system/env variables avaiable to view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   sectionsInfo = importedSectionsInfo;
 

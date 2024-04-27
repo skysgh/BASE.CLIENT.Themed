@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-currencies',
@@ -10,6 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
  * Currencies Component
  */
 export class CurrenciesComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
    // Currencies data
    @Input() Currencies: Array<{

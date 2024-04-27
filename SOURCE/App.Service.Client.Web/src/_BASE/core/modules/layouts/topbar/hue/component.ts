@@ -7,6 +7,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemService } from "../../../../services/system.service";
 import { EventService } from "../../../../services/infrastructure/event.service";
+import { ViewModel } from "../vm";
 
 @Component({
   selector: 'app-base-common-components-topbar-languagehue',
@@ -16,6 +17,10 @@ import { EventService } from "../../../../services/infrastructure/event.service"
 export class BaseCoreCommonComponentTopBarHueComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   mode: string | undefined;
 

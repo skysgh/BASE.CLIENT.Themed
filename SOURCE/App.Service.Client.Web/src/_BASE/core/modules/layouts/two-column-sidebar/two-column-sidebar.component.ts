@@ -10,6 +10,7 @@ import { SystemService } from '../../../services/system.service';
 // Models:
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-two-column-sidebar',
@@ -19,6 +20,9 @@ import { MenuItem } from './menu.model';
 export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   menu: any;
   toggle: any = true;

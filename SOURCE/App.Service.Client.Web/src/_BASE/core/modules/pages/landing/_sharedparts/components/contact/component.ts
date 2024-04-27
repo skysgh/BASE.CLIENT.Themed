@@ -11,6 +11,7 @@ import { SystemDiagnosticsTraceService } from '../../../../../../services/system
 //
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+import { ViewModel } from './vm';
 
 //import { formData as fd } from './form.json';
 
@@ -27,6 +28,11 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 export class BaseAppsPagesLandingIndexContactComponent implements OnInit {
   // Make system/env variables avaiable to view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
   sectionsInfo = importedSectionsInfo;
 
   @Output()

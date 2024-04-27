@@ -10,6 +10,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
 import { SystemService } from "../../../../services/system.service";
 import { ServiceNotification } from "../../../../models/data/service-notification.model";
 import { ServiceNotificationsService } from "../../../../services/service.notification.service";
+import { ViewModel } from "../vm";
 
 @Component({
   selector: 'app-base-common-components-topbar-languagenotifications',
@@ -19,6 +20,10 @@ import { ServiceNotificationsService } from "../../../../services/service.notifi
 export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   messages: any
 

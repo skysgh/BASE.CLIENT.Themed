@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { system as importedSystemConst } from '../../../../constants/system';
 import { TranslateService } from '@ngx-translate/core';
 import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
+import { ViewModel } from './vm';
 // Services:
 //
 // Models:
@@ -26,6 +27,10 @@ import { SystemDiagnosticsTraceService } from '../../../../services/system.diagn
 export class BaseCoreCommonComponentsBreadcrumbsComponent implements OnInit {
   // Make system/env variables avaiable to view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   @Input() title: string | undefined;
   @Input() description: string | undefined;

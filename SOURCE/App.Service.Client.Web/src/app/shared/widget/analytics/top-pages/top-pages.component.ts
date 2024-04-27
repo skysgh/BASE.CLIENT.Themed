@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-top-pages',
@@ -10,6 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
  * Top Pages Component
  */
 export class TopPagesComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   // Top Selling data
   @Input() TopPages: Array<{

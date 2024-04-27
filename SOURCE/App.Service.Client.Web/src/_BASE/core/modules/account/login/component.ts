@@ -16,6 +16,7 @@ import { AuthfakeauthenticationService } from '../../../services/authfake.servic
 import { TitleService } from '../../../services/title.service';
 import { SystemService } from '../../../services/system.service';
 import { ToastService } from '../../../services/toast.service';
+import { ViewModel } from './vm';
 
 // Constants:
 //
@@ -32,6 +33,10 @@ import { ToastService } from '../../../services/toast.service';
 export class LoginComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   // system settings
   sponsorTitle?: string;

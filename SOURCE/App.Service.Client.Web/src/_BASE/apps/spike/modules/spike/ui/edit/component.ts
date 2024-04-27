@@ -7,6 +7,7 @@ import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repos
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
 import { TranslateService } from '@ngx-translate/core';
+import { ViewModel } from './vm';
 
 
 @Component({
@@ -16,6 +17,10 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class BaseAppsSpikeSpikesEditComponent implements OnInit {
 
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+
+  // TODO: Move these variables into it:
   public data?: Spike;
 
   constructor(

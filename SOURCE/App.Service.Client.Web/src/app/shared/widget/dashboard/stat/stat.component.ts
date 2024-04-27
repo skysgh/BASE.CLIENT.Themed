@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-stat',
@@ -6,6 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./stat.component.scss']
 })
 export class StatComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   @Input() title: string | undefined;
   @Input() value: any | undefined;

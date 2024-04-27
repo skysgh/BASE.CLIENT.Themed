@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-closing-deals',
@@ -10,6 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
  * Closing Deals Component
  */
 export class ClosingDealsComponent implements OnInit {
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   // Closing Deals
   @Input() ClosingDeals: Array<{

@@ -9,6 +9,7 @@ import { SystemService } from '../../../../../../services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-features',
@@ -22,6 +23,11 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 export class BaseAppsPagesLandingIndexFeaturesComponent implements OnInit {
   // Make system/env variables avaiable to view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
   sectionsInfo = importedSectionsInfo;
 
   constructor(

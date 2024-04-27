@@ -8,6 +8,7 @@ import { Component, Input, OnDestroy, OnInit, Output } from "@angular/core";
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
+import { ViewModel } from "./vm";
 
 /**
  * See: https://www.npmjs.com/package/ng2-pdf-viewer
@@ -21,6 +22,10 @@ export class BaseCoreCommonComponentsSignUpInComponent implements OnInit, OnDest
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
 
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   constructor(
     private diagnosticsTraceService: SystemDiagnosticsTraceService,

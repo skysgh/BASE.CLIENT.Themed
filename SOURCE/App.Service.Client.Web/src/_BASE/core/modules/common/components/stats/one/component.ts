@@ -10,6 +10,7 @@ import { system as importedSystemConst } from '../../../../../constants/system';
 //
 // Models:
 import { StatOneVTO } from '../../../../../models/view/stat-one.vto';
+import { ViewModel } from './vm';
 
 /**
  * Used on dashboard to show a box with current stats in it.
@@ -24,6 +25,10 @@ import { StatOneVTO } from '../../../../../models/view/stat-one.vto';
 export class BaseCommonComponentsStatsOneComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   @Input()
   public stats: StatOneVTO | undefined;

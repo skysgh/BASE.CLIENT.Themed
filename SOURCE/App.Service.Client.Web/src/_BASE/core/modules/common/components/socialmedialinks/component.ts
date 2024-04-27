@@ -8,6 +8,7 @@ import { Component, Input, OnDestroy, OnInit, Output } from "@angular/core";
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
+import { ViewModel } from "./vm";
 // Models:
 //
 // Data:
@@ -23,6 +24,10 @@ import { SystemDiagnosticsTraceService } from "../../../../services/system.diagn
 export class BaseCoreCommonComponentsSocialMediaLinksComponent implements OnInit, OnDestroy {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
 
   constructor(

@@ -10,6 +10,7 @@ import { system as importedSystemConst } from '../../../../../constants/system';
 import { SystemService } from '../../../../../services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
 import { TranslationService } from '../../../../../services/translation.service';
+import { ViewModel } from './vm';
 
 
 @Component({
@@ -20,6 +21,11 @@ import { TranslationService } from '../../../../../services/translation.service'
 export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;

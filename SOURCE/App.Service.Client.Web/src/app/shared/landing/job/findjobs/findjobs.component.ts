@@ -8,6 +8,7 @@ import { system as importedSystemConst } from '../../../../../_BASE/core/constan
 import { SystemService } from '../../../../../_BASE/core/services/system.service';
 // Data/Model
 import { findjob } from './data';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-findjobs',
@@ -17,6 +18,11 @@ import { findjob } from './data';
 export class FindjobsComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   findjobs: any;
 

@@ -13,6 +13,7 @@ import { ServiceDeliveryTeamMemberRepositoryService } from '../../../../../../se
 import { ServiceDeliveryTeamMemberVTO } from '../../../../../../models/view/service-delivery-team-member.vto.model';
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-team',
@@ -31,6 +32,11 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
 
   // Make system/env variables avaiable to view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
   sectionsInfo = importedSectionsInfo;
   constructor(systemService: SystemService,
     private diagnosticsTraceService: SystemDiagnosticsTraceService,

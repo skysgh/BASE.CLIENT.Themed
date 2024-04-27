@@ -7,6 +7,7 @@ import { system as importedSystemConst } from '../../../../../../constants/syste
 // Services:
 import { SystemService } from '../../../../../../services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
+import { ViewModel } from './vm';
 
 
 @Component({
@@ -20,6 +21,11 @@ import { SystemDiagnosticsTraceService } from '../../../../../../services/system
  * Footer Component
  */
 export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   @Input() currentSection: string='home';
   @Output() sectionChange = new EventEmitter<string>();

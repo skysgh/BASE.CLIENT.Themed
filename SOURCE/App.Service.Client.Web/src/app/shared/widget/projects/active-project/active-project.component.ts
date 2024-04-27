@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-active-project',
@@ -10,6 +11,12 @@ import { Component, OnInit, Input } from '@angular/core';
  * Active Project Component
  */
 export class ActiveProjectComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   // Upcoming Activities
   @Input() ActiveProjects: Array<{

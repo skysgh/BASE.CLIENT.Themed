@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
+import { ViewModel } from './vm';
 
 //import { SpikeSpikesRepositoryService } from '../../../../services/spike-repository.service';
 // Models:
@@ -14,6 +15,11 @@ import { SystemDiagnosticsTraceService } from '../../../../services/system.diagn
   styleUrls: ['./component.scss']
 })
 export class AppPublicLandingDefaultComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
 
   ngOnInit(): void {

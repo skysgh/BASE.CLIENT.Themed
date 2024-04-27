@@ -6,6 +6,7 @@ import { system as importedSystemConst } from '../../../../../constants/system';
 import { SystemService } from '../../../../../services/system.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-pages-information-index',
@@ -14,11 +15,15 @@ import { SystemDiagnosticsTraceService } from '../../../../../services/system.di
 })
 export class BaseCorePagesInformationIndexComponent implements OnInit {
 
-  // bread crumb items
-  breadCrumbItems!: Array<{}>;
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
 
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
+  // bread crumb items
+  breadCrumbItems!: Array<{}>;
   constructor(systemService: SystemService, private diagnosticsTraceService: SystemDiagnosticsTraceService, translateService: TranslateService) {
     // Make system/env variables avaiable to view template (via singleton or service):
     // this.system = systemService.system;

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-top-selling',
@@ -6,6 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./top-selling.component.scss']
 })
 export class TopSellingComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   // Top Selling data
   @Input() TopSelling: Array<{

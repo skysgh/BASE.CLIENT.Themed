@@ -9,6 +9,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
+import { ViewModel } from './vm';
 // Models:
 // Data:
 
@@ -20,6 +21,10 @@ import { SystemDiagnosticsTraceService } from '../../../../services/system.diagn
 export class BaseCoreCommonComponentsGoogleAnalyticsComponent implements OnInit {
   // make system/env config accessible by markup:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
 
   public load: boolean = true;

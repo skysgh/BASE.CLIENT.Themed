@@ -12,6 +12,7 @@ import { SystemService } from '../../../../services/system.service';
 import { ServicePricingPlan } from "src/_BASE/core/models/data/service-pricing-plan.model";
 import { ServicePricingPlansService } from '../../../../services/services/service-pricingplans.service';
 import { Observable, of } from 'rxjs';
+import { ViewModel } from './vm';
 // Data:
 //import { MonthlyPlan, YearlyPlan } from '../../../../data/fake/pricing.data';
 
@@ -28,6 +29,9 @@ import { Observable, of } from 'rxjs';
 export class BaseCorePagesLandingPricingComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   breadCrumbItems!: Array<{}>;
 

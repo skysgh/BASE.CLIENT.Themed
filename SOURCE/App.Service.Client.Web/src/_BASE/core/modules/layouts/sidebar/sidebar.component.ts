@@ -12,6 +12,7 @@ import { IHasMenuItem } from '../../../models/contracts/IHasMenuItem';
 import { system as importedSystemConst } from '../../../constants/system';
 // Services:
 import { SystemService } from '../../../services/system.service';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,6 +22,9 @@ import { SystemService } from '../../../services/system.service';
 export class BaseLayoutSidebarComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   menu: any;
   toggle: any = true;

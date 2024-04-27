@@ -6,6 +6,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
 import { SystemService } from '../../../../services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-pages-landing-maintenance',
@@ -19,6 +20,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class BaseCorePagesLandingMaintenanceComponent  {
   // Make system/env variables avaiable to view template:
   public system = importedSystemConst;
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   constructor(
     systemService: SystemService,

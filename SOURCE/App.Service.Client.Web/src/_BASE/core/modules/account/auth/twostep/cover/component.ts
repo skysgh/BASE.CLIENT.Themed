@@ -7,6 +7,7 @@ import { system as importedSystemConst } from '../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../services/system.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-twostep-cover',
@@ -20,6 +21,10 @@ import { TranslateService } from '@ngx-translate/core';
 export class CoverComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   // Carousel navigation arrow show
   showNavigationArrows: any;

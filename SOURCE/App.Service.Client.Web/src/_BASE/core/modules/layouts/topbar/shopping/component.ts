@@ -11,6 +11,7 @@ import { CartModel } from "../../models/topbar.model";
 
 //Shit tmp data
 import { cartData } from '../data';
+import { ViewModel } from "../vm";
 
 
 @Component({
@@ -21,6 +22,10 @@ import { cartData } from '../data';
 export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   // Shopping
   cartData!: CartModel[];

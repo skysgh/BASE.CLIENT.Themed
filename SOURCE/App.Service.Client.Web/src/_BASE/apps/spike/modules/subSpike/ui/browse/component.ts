@@ -6,6 +6,7 @@ import { BaseAppsSpikeSubSpikesRepositoryService } from '../../../../services/re
 import { ActivatedRoute } from '@angular/router';
 import { SubSpike } from '../../../../models/subspike.model';
 import { TranslateService } from '@ngx-translate/core';
+import { ViewModel } from './vm';
 
 
 @Component({
@@ -15,6 +16,10 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
 
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+
+  // TODO: Move these variables into it:
   public page: number = 1;
   public data?: SubSpike[] = [];
 

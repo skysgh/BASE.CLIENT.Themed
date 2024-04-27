@@ -9,6 +9,7 @@ import { SystemService } from '../../../../../services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from './sectionsInfo.data';
+import { ViewModel } from '../vm';
 
 @Component({
   selector: 'app-apps-home-home',
@@ -19,6 +20,11 @@ import { sectionsInfo as importedSectionsInfo } from './sectionsInfo.data';
 export class BaseAppsPagesInformationIndexComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   sectionId: string ='';
 

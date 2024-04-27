@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-analatics-stat',
@@ -10,6 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
  * Analatics stat Component
  */
 export class AnalaticsStatComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   @Input() title: string | undefined;
   @Input() value: any | undefined;

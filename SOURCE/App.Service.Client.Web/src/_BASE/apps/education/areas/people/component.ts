@@ -9,6 +9,7 @@ import { SystemService } from "../../../../core/services/system.service";
 import { SystemDiagnosticsTraceService } from "../../../../core/services/system.diagnostics-trace.service";
 // Models/Data:
 import { SummaryItemVTO } from "../../../../core/models/SummaryItem.vto.model";
+import { ViewModel } from "./vm";
 
 @Component({
   selector: 'app-base-apps-education-people',
@@ -18,6 +19,10 @@ import { SummaryItemVTO } from "../../../../core/models/SummaryItem.vto.model";
 export class BaseAppsEducationPeopleComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;

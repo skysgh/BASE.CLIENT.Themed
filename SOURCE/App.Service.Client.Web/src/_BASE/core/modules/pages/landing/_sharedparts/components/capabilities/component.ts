@@ -16,6 +16,7 @@ import { Services } from './data';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { SystemCapabilitiesRepositoryService } from '../../../../../../services/services/repositories/service-capabilities.service';
+import { ViewModel } from './vm';
 
 
 @Component({
@@ -28,12 +29,17 @@ import { SystemCapabilitiesRepositoryService } from '../../../../../../services/
  * Services Component
  */
 export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
+  // Make system/env variables avaiable to class & view template:
+  public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
 
   capabilities$: Observable<SystemCapabilitiesVTO[]> = of([]);
 
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
   sectionsInfo = importedSectionsInfo;
 
   constructor(systemService: SystemService,

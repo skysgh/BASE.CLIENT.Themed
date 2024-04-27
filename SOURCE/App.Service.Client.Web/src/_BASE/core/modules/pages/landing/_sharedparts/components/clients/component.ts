@@ -16,6 +16,7 @@ import { ServiceTrustedByVTO } from '../../../../../../models/view/service.trust
 import { Observable, of } from 'rxjs';
 
 import {  Responsive as importedResponsive} from './settings';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-client-logo',
@@ -29,6 +30,11 @@ import {  Responsive as importedResponsive} from './settings';
 export class BaseAppsPagesLandingIndexClientsComponent implements OnInit {
   // Make system/env variables avaiable to view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
   sectionsInfo = importedSectionsInfo;
   // Configuration for ngx-slick-carousel:
   carouselConfiguration = importedResponsive;

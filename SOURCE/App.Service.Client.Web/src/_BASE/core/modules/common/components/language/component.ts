@@ -13,6 +13,7 @@ import { SystemService } from "../../../../services/system.service";
 import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
 import { ServiceLanguage } from '../../../../models/data/service-language.model';
 import { TranslationService } from '../../../../services/translation.service';
+import { ViewModel } from './vm';
 // Models:
 
 
@@ -24,6 +25,10 @@ import { TranslationService } from '../../../../services/translation.service';
 export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   public systemLanguages$: Observable<ServiceLanguage[]> = of([]);
 

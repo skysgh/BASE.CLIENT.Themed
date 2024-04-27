@@ -6,6 +6,7 @@ import { system as importedSystemConst } from '../../../constants/system';
 import { SystemService } from '../../../services/system.service';
 import { SystemSettingsService } from '../../../services/service-settings.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-footer',
@@ -15,6 +16,10 @@ import { TranslateService } from '@ngx-translate/core';
 export class BaseLayoutFooterComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+
+  // TODO: Move these variables into it.
 
   constructor(systemService: SystemService, public translate: TranslateService) {
     // Make system/env variables avaiable to view template (via singleton or service):

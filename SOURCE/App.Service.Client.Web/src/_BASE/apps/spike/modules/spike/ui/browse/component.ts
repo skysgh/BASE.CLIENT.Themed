@@ -6,6 +6,7 @@ import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repos
 import { Spike } from '../../../../models/spike.model';
 import { ActivatedRoute } from '@angular/router';
 import { SummaryItemVTO } from '../../../../../../core/models/SummaryItem.vto.model';
+import { ViewModel } from './vm';
 
 
 @Component({
@@ -15,6 +16,10 @@ import { SummaryItemVTO } from '../../../../../../core/models/SummaryItem.vto.mo
 })
 export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
 
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+
+  // TODO: Move these variables into it:
   public page:number = 1;
   public data: Spike[] = [];
   public summaryItems: Spike[] = [];

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { candidates } from './data';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-candidate',
@@ -8,6 +9,11 @@ import { candidates } from './data';
   styleUrls: ['./component.scss']
 })
 export class CandidateComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   candidates: any;
 

@@ -10,6 +10,7 @@ import { SystemDiagnosticsTraceService } from '../../../../services/system.diagn
 import { DashboardService } from '../../../../services/service.dashboard.service';
 // Models/Data:
 import { StatOneVTO } from '../../../../models/view/stat-one.vto';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'base-core-dashboard-index',
@@ -19,6 +20,10 @@ import { StatOneVTO } from '../../../../models/view/stat-one.vto';
 export class BaseCoreDashboardsIndexComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   stats$: Observable<StatOneVTO[]> = of([]);
 

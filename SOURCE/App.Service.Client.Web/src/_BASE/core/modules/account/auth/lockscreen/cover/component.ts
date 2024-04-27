@@ -11,6 +11,7 @@ import { SystemService } from '../../../../../services/system.service';
 // Models/Data:
 import { User } from '../../../../../store/Authentication/auth.models';
 import { ServiceUserQuote } from '../../../../../models/data/service-user-quote.model';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-lockscreen-cover',
@@ -24,6 +25,10 @@ import { ServiceUserQuote } from '../../../../../models/data/service-user-quote.
 export class CoverComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   // Login Form
   lockscreenForm!: FormGroup;

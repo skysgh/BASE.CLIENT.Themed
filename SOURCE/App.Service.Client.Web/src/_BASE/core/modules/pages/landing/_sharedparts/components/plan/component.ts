@@ -15,6 +15,7 @@ import { ServicePricingPlan } from "src/_BASE/core/models/data/service-pricing-p
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { error } from 'jquery';
+import { ViewModel } from './vm';
 
 
 
@@ -35,6 +36,11 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
 
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
   sectionsInfo = importedSectionsInfo;
 
   constructor(

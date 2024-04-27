@@ -11,6 +11,7 @@ import { system as importedSystemConst } from '../../../constants/system';
 import { AuthenticationService } from '../../../services/auth.service';
 import { SystemService } from '../../../services/system.service';
 import { UserProfileService } from '../../../services/system/repositories/system-user.repository.service';
+import { ViewModel } from './vm';
 
 
 @Component({
@@ -25,6 +26,10 @@ import { UserProfileService } from '../../../services/system/repositories/system
 export class RegisterComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   // Login Form
   signupForm!: FormGroup;

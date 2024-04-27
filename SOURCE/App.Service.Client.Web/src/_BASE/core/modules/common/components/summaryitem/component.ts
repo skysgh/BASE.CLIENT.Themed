@@ -8,6 +8,7 @@ import { system as importedSystemConst } from '../../../../constants/system';
 import { SystemDiagnosticsTraceService } from "../../../../services/system.diagnostics-trace.service";
 // Models:
 import { SummaryItemVTO } from "../../../../models/SummaryItem.vto.model";
+import { ViewModel } from "./vm";
 // Data:
 //
 
@@ -19,6 +20,10 @@ import { SummaryItemVTO } from "../../../../models/SummaryItem.vto.model";
 export class BaseCoreCommonComponentsSummaryItemComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   /**
    * The exposed property to provide a SummaryItem

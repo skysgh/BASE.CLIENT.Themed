@@ -12,6 +12,7 @@ import { SystemService } from '../../../services/system.service';
 // Models/Data:
 import { MENU } from '../../../navigation/menu';
 import { IHasMenuItem } from '../../../models/contracts/IHasMenuItem';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-horizontal-topbar',
@@ -21,6 +22,9 @@ import { IHasMenuItem } from '../../../models/contracts/IHasMenuItem';
 export class BaseLayoutHorizontalTopbarComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   menu: any;
   menuItems: IHasMenuItem[] = [];

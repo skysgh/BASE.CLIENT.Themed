@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-recent-orders',
@@ -6,6 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./recent-orders.component.scss']
 })
 export class RecentOrdersComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
    // Recent Orders data
    @Input() RecentSelling: Array<{

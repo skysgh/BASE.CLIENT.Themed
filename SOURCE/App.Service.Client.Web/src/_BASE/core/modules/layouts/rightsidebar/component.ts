@@ -13,6 +13,7 @@ import { initialState } from '../layouts/layout-reducers';
 import { getLayoutMode, getLayoutPosition, getLayoutTheme, getLayoutWith, getPreloader, getSidebarColor, getSidebarImage, getSidebarSize, getSidebarView, getSidebarVisibilitye, getTopbarColor } from '../layouts/layout-selector';
 import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMode, changeSidebarColor, changeSidebarImage, changeSidebarSize, changeSidebarView, changeSidebarVisibility, changeTopbar, changelayout } from '../layouts/layout-action';
 import { EventService } from '../../../services/infrastructure/event.service';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-rightsidebar',
@@ -26,6 +27,9 @@ import { EventService } from '../../../services/infrastructure/event.service';
 export class BaseLayoutRightsidebarComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   layout: string | undefined;
   mode: string | undefined;

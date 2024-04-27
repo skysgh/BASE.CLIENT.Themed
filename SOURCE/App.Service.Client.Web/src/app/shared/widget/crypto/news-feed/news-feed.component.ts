@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-news-feed',
@@ -10,6 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
  * News Feed Component
  */
 export class NewsFeedComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
    // News Feed
    @Input() NewsFeed: Array<{

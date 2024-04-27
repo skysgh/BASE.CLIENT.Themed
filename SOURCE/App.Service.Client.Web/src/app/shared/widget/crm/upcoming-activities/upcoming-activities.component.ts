@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-upcoming-activities',
@@ -10,6 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
  * Upcoming Activites Component
  */
 export class UpcomingActivitiesComponent implements OnInit {
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   // Upcoming Activities
   @Input() UpcomingActivities: Array<{

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-top-performers',
@@ -10,6 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
  * Top Perfomers Component
  */
 export class TopPerformersComponent implements OnInit {
+
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   // Top Perfomers
   @Input() TopPerformers: Array<{

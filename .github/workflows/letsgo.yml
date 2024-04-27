@@ -22,8 +22,11 @@ jobs:
       # DEFINE REPO CONSTANTS
       REPO_NAME_LIB: 'skysgh/resources.deployments.lib'
       REPO_NAME_SRC: $GITHUB_REPOSITORY
-      # AZURE INFO:
+      # AZURE CREDENTIALS INFO:
       AZURE_CREDENTIAL_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      AZURE_OIDC_CLIENT_ID: 'fux.....'
+      AZURE_OIDC_SUBSCRIPTION_ID: 'fux.....'
+      # AZURE RESOURCES INFO:
       AZURE_LOCATION_1: 'centralaustralia'
       AZURE_LOCATION_2: 'southeastasia'
       AZURE_LOCATION_3: 'global'
@@ -108,17 +111,31 @@ jobs:
           echo "Azure.Location.1.: '${{env.AZURE_LOCATION_1}}'"
           echo "Azure.Location.2.: '${{env.AZURE_LOCATION_2}}'"
           echo "Azure.Location.3.: '${{env.AZURE_LOCATION_3}}'"
-
-
-      - name: Setup Variables
-        run: |
-  
-
-      - name: Azure Login using Action
+      - name: "Build JSON Fragment"
+        CustomFieldJson: |
+                      [
+                      {
+                     "FieldName": "uw_firm",
+                     "FieldValue" :"NULL" 
+                      },
+                      {
+                      "FieldName": "uw_type",
+                      "FieldValue" :"Delegated"
+                      }
+                     ]
+      - name: Azure Login using Action - S
         uses: azure/login@v1
         with:
           creds: ${{ secrets.FUCK_A_DUCK }}
 
+      - name: Azure Login using Action - OIDC
+        uses: azure/login@v1
+        with:
+          client-id: ${{ env.AZURE_OIDC_CLIENT_ID }}
+          subscription-id: ${{ env.AZURE_OIDC_SUBSCRIPTION_ID }}
+          tenant-id: ${{ env.AZURE_OIDC_TENANT_ID }}
+          creds: ${{ secrets.FUCK_A_DUCK }}
+  
       - name: Ensure Resource Group(s)
         run: |
           # Your deployment commands here

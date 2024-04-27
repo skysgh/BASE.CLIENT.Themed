@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 // Import Common:
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
+import { ViewModel } from './vm';
 // Import Module:
 
 
@@ -12,6 +13,10 @@ import { SystemDiagnosticsTraceService } from '../../../../core/services/system.
 })
 
 export class BaseAppsSpikeRouteOutletComponent implements OnInit {
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+
+  // TODO: Move these variables into it.
 
   constructor(
     private diagnosticsTraceService: SystemDiagnosticsTraceService

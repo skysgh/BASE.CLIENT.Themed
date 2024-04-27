@@ -9,6 +9,7 @@ import { system as importedSystemConst } from '../../../../../constants/system';
 // Services:
 import { SystemService } from '../../../../../services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
+import { ViewModel } from './vm';
 // Data/Models:
 //import { sectionsInfo as importedSectionsInfo } from '../sectionsInfo.data';
 
@@ -26,6 +27,10 @@ import { SystemDiagnosticsTraceService } from '../../../../../services/system.di
 export class BaseCoreCommonComponentsFooterOComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   //sectionsInfo = importedSectionsInfo;
 

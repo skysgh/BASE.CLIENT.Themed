@@ -4,6 +4,7 @@ import { getSidebarSize } from '../../layouts/layouts/layout-selector';
 import { RootReducerState } from '../../../store';
 import { Store } from '@ngrx/store';
 import { EventService } from '../../../services/infrastructure/event.service';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-vertical',
@@ -11,6 +12,9 @@ import { EventService } from '../../../services/infrastructure/event.service';
   styleUrls: ['./component.scss']
 })
 export class BaseLayoutVerticalComponent implements OnInit {
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   isCondensed = false;
   getsize: any;

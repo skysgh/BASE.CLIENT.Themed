@@ -9,6 +9,7 @@ import { SystemService } from '../../../../../_BASE/core/services/system.service
 // Models/Data:
 import { ChartTypeVTO } from '../../../../../_BASE/core/models/view/chart-type.vto.model';
 import { status1, status2, status3, status4, status5, status6, status7 } from './data';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-team-members',
@@ -22,6 +23,11 @@ import { status1, status2, status3, status4, status5, status6, status7 } from '.
 export class TeamMembersComponent implements OnInit {
   // Make system/env variables avaiable to view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   // Team Members
   @Input() TeamMembers: Array<{

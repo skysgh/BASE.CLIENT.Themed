@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 // Store
 import { RootReducerState } from '../../store';
 import { Store } from '@ngrx/store';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-layout',
@@ -15,6 +16,9 @@ import { Store } from '@ngrx/store';
  * Layout Component
  */
 export class AppLayoutComponent implements OnInit {
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
 
   layoutType!: string;
 

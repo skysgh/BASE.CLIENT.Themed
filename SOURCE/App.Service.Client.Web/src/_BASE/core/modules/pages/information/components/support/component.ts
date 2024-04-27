@@ -7,6 +7,7 @@ import { system as importedSystemConst } from '../../../../../constants/system';
 // Services:
 import { SystemService } from "../../../../../services/system.service";
 import { SystemDiagnosticsTraceService } from "../../../../../services/system.diagnostics-trace.service";
+import { ViewModel } from "./vm";
 
 @Component({
   selector: 'app-base-core-pages-information-support',
@@ -16,6 +17,11 @@ import { SystemDiagnosticsTraceService } from "../../../../../services/system.di
 export class BaseCorePagesInformationSupportComponent implements OnInit {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;

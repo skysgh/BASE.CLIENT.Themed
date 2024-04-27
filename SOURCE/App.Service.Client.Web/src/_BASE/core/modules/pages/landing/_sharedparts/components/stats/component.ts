@@ -15,6 +15,7 @@ import { ServiceStat } from '../../../../../../models/data/service-stat.model';
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ServiceStatsService } from '../../../../../../services/services/service-stats.service';
 import { ServiceStatVTO } from '../../../../../../models/view/service-stat.vto.model';
+import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-stats',
@@ -28,6 +29,11 @@ import { ServiceStatVTO } from '../../../../../../models/view/service-stat.vto.m
 export class BaseAppsPagesLandingIndexStatsComponent implements OnInit {
   // Make system/env variables avaiable to view template:
   public system = importedSystemConst;
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
   sectionsInfo = importedSectionsInfo;
 
   /**
