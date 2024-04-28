@@ -30,6 +30,13 @@ jobs:
       AZURE_LOCATION_1: 'centralaustralia'
       AZURE_LOCATION_2: 'southeastasia'
       AZURE_LOCATION_3: 'global'
+      CustomFieldJson: |
+        {
+          "subscriptionId": ${{env.REPO_NAME_SRC}},
+          "tenantId" :"NULL",
+          "clientId" :"NULL",
+          "clientSecret":"NULL"
+        },
     steps:
       # Checkout code from *lib* repo
       # to a directory parallel to this repo's code
@@ -52,29 +59,20 @@ jobs:
     #     with:
     #       repository: ${{env.REPO_NAME_SRC}}
   
-      - name: Determine Deployment Environment
+      - name: Determine Deployment Context
         run: |
-          if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
-            echo "Setting environment to 'Dev Test (DT)'."
-            echo "Setting Environment to 'DT'."
-            export ENVIRONMENT_NAME='Dev Test'
-            export ENVIRONMENT_ID='DT'
-          elif [[ ${{ github.ref }} == 'refs/heads/release' ]]; then
+          if [[ ${{ github.ref }} == 'refs/heads/release' ]]; then
             echo "Setting environment to 'Prod (PR)'."
-            export ENVIRONMENT_NAME='Production'
-            export ENVIRONMENT_ID='PR'
-          echo "Setting deployment environment to staging."
-            echo "Setting environment to 'Prod (PR)'."
-            export DEPLOYMENT_ENV='staging'
-            export ENVIRONMENT_ID='BT'
+            export GITHUB_ENV='PR'
           else
-            echo "Setting environment to 'Build Test (BT)'."
-            export ENVIRONMENT_NAME='Build Test'
-            export ENVIRONMENT_ID='BT'
+            echo "Setting environment to 'Non Prod (NP)'."
+            export GITHUB_ENV='NP'
           fi
+          export AZURE_ENTRA_CREDS = ${{secrets.AZURE_ENTRA_APP_CLIENT_CREDS}}
 
       # Checkout code from *lib* repo
       # to a directory parallel to this repo's code
+      
       - name: "Summarise Context Before Starting"
         run: |
           echo "Actor"
@@ -94,35 +92,28 @@ jobs:
           echo ""
           echo "Repo Branch"
           echo "=================="
-          echo "Repo.Scr.........: '${GITHUB_REPOSITORY}'"
+          echo "Repo.Scr.........: '${{env.GITHUB_REPOSITORY}}'"
           echo "Branch.Name......: '${{env.BRANCH}}'"
-          echo "Branch.Ref.......: '${GITHUB_REF}'"
+          echo "Branch.Ref.......: '${{github.GITHUB_REF}}'"
           echo "Branch.Number....: '${{env.BRANCH_ID}}'"
           echo ""
           echo "Env"
-          echo "=================="
+          echo "======================"
           echo "Env.Name.........: '${{env.ENVIRONMENT_NAME}}'"
           echo "Env.Id...........: '${{env.ENVIRONMENT_ID}}'"
           echo ""
+          echo "Entra"
+          echo "======================"
+          echo "Entra.TenantId.......: '${{secrets.GITHUB_TOKEN}}'"
+          echo "Entra.AppClientId....: '${{secrets.GITHUB_TOKEN}}'"
+          echo "Entra.AppClient Creds: '${{env.AZURE_ENTRA_CREDS}}'"
+          echo ""
           echo "Azure"
-          echo "=================="
-          echo "Azure.Cred2......: '${{secrets.FUCK_A_DUCK}}'"
-          echo "Azure.Cred2......: '${{secrets.GITHUB_TOKEN}}'"
-          echo "Azure.Location.1.: '${{env.AZURE_LOCATION_1}}'"
-          echo "Azure.Location.2.: '${{env.AZURE_LOCATION_2}}'"
-          echo "Azure.Location.3.: '${{env.AZURE_LOCATION_3}}'"
-      - name: "Build JSON Fragment"
-        CustomFieldJson: |
-                      [
-                      {
-                     "FieldName": "uw_firm",
-                     "FieldValue" :"NULL" 
-                      },
-                      {
-                      "FieldName": "uw_type",
-                      "FieldValue" :"Delegated"
-                      }
-                     ]
+          echo "======================"
+          echo "Azure.SubscriptionId.: '${{secrets.GITHUB_TOKEN}}'"
+          echo "Azure.Location.1.....: '${{env.AZURE_LOCATION_1}}'"
+          echo "Azure.Location.2.....: '${{env.AZURE_LOCATION_2}}'"
+          echo "Azure.Location.3.....: '${{env.AZURE_LOCATION_3}}'"
       - name: Azure Login using Action - S
         uses: azure/login@v1
         with:
