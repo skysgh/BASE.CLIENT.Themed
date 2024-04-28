@@ -30,13 +30,6 @@ jobs:
       AZURE_LOCATION_1: 'centralaustralia'
       AZURE_LOCATION_2: 'southeastasia'
       AZURE_LOCATION_3: 'global'
-      CustomFieldJson: |
-        {
-          "subscriptionId": ${{env.REPO_NAME_SRC}},
-          "tenantId" :"NULL",
-          "clientId" :"NULL",
-          "clientSecret":"NULL"
-        },
     steps:
       # Checkout code from *lib* repo
       # to a directory parallel to this repo's code
@@ -92,15 +85,15 @@ jobs:
           echo ""
           echo "Repo Branch"
           echo "=================="
-          echo "Repo.Scr.........: '${{env.GITHUB_REPOSITORY}}'"
-          echo "Branch.Name......: '${{env.BRANCH}}'"
-          echo "Branch.Ref.......: '${{github.GITHUB_REF}}'"
-          echo "Branch.Number....: '${{env.BRANCH_ID}}'"
+          echo "Repo.Scr.............: '${{env.GITHUB_REPOSITORY}}'"
+          echo "Branch.Name..........: '${{env.BRANCH}}'"
+          echo "Branch.Ref...........: '${{github.GITHUB_REF}}'"
+          echo "Branch.Number........: '${{env.BRANCH_ID}}'"
           echo ""
           echo "Env"
           echo "======================"
-          echo "Env.Name.........: '${{env.ENVIRONMENT_NAME}}'"
-          echo "Env.Id...........: '${{env.ENVIRONMENT_ID}}'"
+          echo "Env.Name.............: '${{env.ENVIRONMENT_NAME}}'"
+          echo "Env.Id...............: '${{env.ENVIRONMENT_ID}}'"
           echo ""
           echo "Entra"
           echo "======================"
