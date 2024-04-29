@@ -82,9 +82,9 @@ jobs:
           echo "Azure"
           echo "======================"
           echo "Azure.SubscriptionId.: '${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}'"
-          echo "Azure.Location.1.....: '${{ env.AZURE_LOCATION_1_ID }}'"
-          echo "Azure.Location.2.....: '${{ env.AZURE_LOCATION_2_ID }}'"
-          echo "Azure.Location.3.....: '${{ env.AZURE_LOCATION_3_ID }}'"
+          echo "Azure.Location.1.....: '${{ vars.AZURE_LOCATION_1_ID }}'"
+          echo "Azure.Location.2.....: '${{ vars.AZURE_LOCATION_2_ID }}'"
+          echo "Azure.Location.3.....: '${{ vars.AZURE_LOCATION_3_ID }}'"
           echo " "
           echo "Entra"
           echo "======================"
@@ -114,7 +114,7 @@ jobs:
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           template: ./resource-group.bicep
-          parameters: "resourceGroupName=${{ env.RG_NAME }} resourceGroupLocation={{$env.AZURE_LOCATION_1_ID }}"
+          parameters: "resourceGroupName=${{ env.RG_NAME }} resourceGroupLocation={{$vars.AZURE_LOCATION_1_ID }}"
           failOnStdErr: false
 
       - name: Ensure Static WebSite Resource
