@@ -111,6 +111,7 @@ jobs:
       - name: Ensure Resource Group(s)
         uses: azure/arm-deploy@v1
         with:
+          scope: subscription
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           template: ./resource-group.bicep
