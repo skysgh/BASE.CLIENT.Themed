@@ -1,5 +1,3 @@
-targetScope='subscription'
-
 param projectName string
 param environmentId string
 
