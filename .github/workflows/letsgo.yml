@@ -25,10 +25,10 @@ jobs:
       ENVIRONMENT_ID: ${{vars.ENVIRONMENT_ID}}  
       # DEFINE REPO CONSTANTS
       # AZURE CREDENTIALS INFO:
-      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      ENTRA_APP_CLIENT_ID: ${{ secrets.ENTRA_APP_CLIENT_ID }}
-      ENTRA_APP_CLIENT_SECRET: ${{ secrets.ENTRA_APP_CLIENT_SECRET }}
-      AZURE_ENTRA_APP_CLIENT_SECRET: ${{ secrets.ENTRA_APP_CLIENT_SECRET }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
+      ENTRA_APP_CLIENT_ID: ${{ secrets.NP_ENTRA_APP_CLIENT_ID }}
+      ENTRA_APP_CLIENT_SECRET: ${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}
+      AZURE_ENTRA_APP_CLIENT_CRED: ${{ secrets.NP_ENTRA_APP_CLIENT_CREDS }}
 
       # AZURE RESOURCES INFO:
       AZURE_LOCATION_1: 'centralaustralia'
@@ -106,6 +106,7 @@ jobs:
           echo "Entra.AppClientId....: '${{ secrets.NP_ENTRA_CLIENT_ID }}'"
           echo "Entra.AppClientSecret: '${{ secrets.NP_ENTRA_CLIENT_SECRET }}'"
           echo "Entra.AppClient Creds: '${{ secrets.NP_AZURE_ENTRA_CLIENT_CREDS }}'"
+          echo ".....................: '${{ secrets.AZURE_ENTRA_APP_CLIENT_CRED }}'"
           echo ""
 
       # Checkout code from *lib* repo
