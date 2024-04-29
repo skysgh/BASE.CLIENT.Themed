@@ -13,19 +13,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
+      # REPO #1 (SRC) INFO
+      REPO_NAME_SRC: $GITHUB_REPOSITORY
+      # REPO #2 (LIB) INFO (FOR REUSEABLE PIPELINE RESOURCES)
+      REPO_NAME_LIB: 'skysgh/resources.deployments.lib'
       # BRANCH INFO
       BRANCH: ${{ github.ref }}
       BRANCH_ID: '000'
       # ENVIRONMANT INFO: it's either BT, DT, ST, UT, IT, TR, PP, PR
-      ENVIRONMENT_NAME: 'Build Test'
-      ENVIRONMENT_ID: 'BT' # Default to 'BT' 
+      ENVIRONMENT_ID: ${{vars.ENVIRONMENT_ID}}  
       # DEFINE REPO CONSTANTS
-      REPO_NAME_LIB: 'skysgh/resources.deployments.lib'
-      REPO_NAME_SRC: $GITHUB_REPOSITORY
       # AZURE CREDENTIALS INFO:
-      AZURE_CREDENTIAL_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-      AZURE_OIDC_CLIENT_ID: 'fux.....'
-      AZURE_OIDC_SUBSCRIPTION_ID: 'fux.....'
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ENTRA_APP_CLIENT_ID: ${{ secrets.ENTRA_APP_CLIENT_ID }}
+      ENTRA_APP_CLIENT_SECRET: ${{ secrets.ENTRA_APP_CLIENT_SECRET }}
+      AZURE_ENTRA_APP_CLIENT_SECRET: ${{ secrets.ENTRA_APP_CLIENT_SECRET }}
+
       # AZURE RESOURCES INFO:
       AZURE_LOCATION_1: 'centralaustralia'
       AZURE_LOCATION_2: 'southeastasia'
@@ -70,18 +73,18 @@ jobs:
         run: |
           echo "Actor"
           echo "Initiator"
-          echo "=================="
-          echo "Actor............: '${GITHUB_ACTOR}'"
-          echo "Event............: '${GITHUB_EVENT_NAME}'"
+          echo "======================"
+          echo "Actor................: '${GITHUB_ACTOR}'"
+          echo "Event................: '${GITHUB_EVENT_NAME}'"
           echo ""
           echo "Directories"
-          echo "=================="
-          echo "Home.............: '${HOME}'"
-          echo "Workspace........: '${GITHUB_WORKSPACE}'"
+          echo "======================"
+          echo "Home.................: '${HOME}'"
+          echo "Workspace............: '${GITHUB_WORKSPACE}'"
           echo ""
           echo "Libraries"
-          echo "=================="
-          echo "Repo.Lib..........: '${{env.REPO_NAME_LIB}}'"
+          echo "======================"
+          echo "Repo.Lib.............: '${{env.REPO_NAME_LIB}}'"
           echo ""
           echo "Repo Branch"
           echo "=================="
@@ -95,31 +98,25 @@ jobs:
           echo "Env.Name.............: '${{env.ENVIRONMENT_NAME}}'"
           echo "Env.Id...............: '${{env.ENVIRONMENT_ID}}'"
           echo ""
-          echo "Entra"
-          echo "======================"
-          echo "Entra.TenantId.......: '${{secrets.GITHUB_TOKEN}}'"
-          echo "Entra.AppClientId....: '${{secrets.GITHUB_TOKEN}}'"
-          echo "Entra.AppClient Creds: '${{env.AZURE_ENTRA_CREDS}}'"
-          echo ""
           echo "Azure"
           echo "======================"
-          echo "Azure.SubscriptionId.: '${{secrets.GITHUB_TOKEN}}'"
+          echo "Azure.SubscriptionId.: '${{secrets.NP_AZURE_SUBSCRIPTION_ID}}'"
           echo "Azure.Location.1.....: '${{env.AZURE_LOCATION_1}}'"
           echo "Azure.Location.2.....: '${{env.AZURE_LOCATION_2}}'"
           echo "Azure.Location.3.....: '${{env.AZURE_LOCATION_3}}'"
+          echo ""
+          echo "Entra"
+          echo "======================"
+          echo "Entra.TenantId.......: '${{secrets.NP_ENTRA_TENANT_ID}}'"
+          echo "Entra.AppClientId....: '${{secrets.NP_ENTRA_CLIENT_ID}}'"
+          echo "Entra.AppClientSecret: '${{secrets.NP_ENTRA_CLIENT_SECRET}}'"
+          echo "Entra.AppClient Creds: '${{secrets.NP_AZURE_ENTRA_CLIENT_CREDS}}'"
+          echo ""
       - name: Azure Login using Action - S
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.FUCK_A_DUCK }}
-
-      - name: Azure Login using Action - OIDC
-        uses: azure/login@v1
-        with:
-          client-id: ${{ env.AZURE_OIDC_CLIENT_ID }}
-          subscription-id: ${{ env.AZURE_OIDC_SUBSCRIPTION_ID }}
-          tenant-id: ${{ env.AZURE_OIDC_TENANT_ID }}
-          creds: ${{ secrets.FUCK_A_DUCK }}
-  
+          creds: ${{ secrets.NP_AZURE_ENTRA_CLIENT_CREDS} }} 
+ 
       - name: Ensure Resource Group(s)
         run: |
           # Your deployment commands here
