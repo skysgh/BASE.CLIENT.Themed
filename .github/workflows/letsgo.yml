@@ -112,6 +112,7 @@ jobs:
         uses: azure/arm-deploy@v1
         with:
           scope: subscription
+          region: ${{ vars.AZURE_LOCATION_1_ID }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           template: ./resource-group.bicep
