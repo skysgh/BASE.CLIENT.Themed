@@ -12,6 +12,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: NP
     env:
       # REPO #1 (SRC) INFO
       REPO_NAME_SRC: $GITHUB_REPOSITORY
