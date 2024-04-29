@@ -115,7 +115,7 @@ jobs:
           region: ${{ vars.AZURE_LOCATION_1_ID }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
-          template: "../../.github/workflows/resource-group.bicep"
+          template: ".github/workflows/resource-group.bicep"
           parameters: "resourceGroupName=${{ env.RG_NAME }} resourceGroupLocation=${{ vars.AZURE_LOCATION_1_ID }}"
           failOnStdErr: false
 
