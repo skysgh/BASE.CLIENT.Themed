@@ -115,7 +115,7 @@ jobs:
       - name: Azure Login using Action - S
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.NP_AZURE_ENTRA_CLIENT_CREDS} }} 
+          creds: ${{ secrets.NP_AZURE_ENTRA_CLIENT_CREDS}} 
  
       - name: Ensure Resource Group(s)
         run: |
