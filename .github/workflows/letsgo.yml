@@ -122,6 +122,18 @@ jobs:
           parameters: "resourceGroupName=${{ env.RG_NAME }} resourceGroupLocation=${{ vars.AZURE_LOCATION_1_ID }}"
           failOnStdErr: false
 
+
+      - name: Run Flow
+        uses: azure/arm-deploy@v1
+        with:
+          scope: subscription
+          region: ${{ vars.AZURE_LOCATION_1_ID }}
+          subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
+          #resourceGroupName: ${{ env.RG_NAME }}
+          template: ".github/workflows/myflow.bicep"
+          parameters: "projectName=${{ env.RG_NAME }}WOW resourceLocation=${{ vars.AZURE_LOCATION_1_ID }}"
+          failOnStdErr: false
+
       - name: Ensure Static WebSite Resource
         run: |
           # Your deployment commands here
