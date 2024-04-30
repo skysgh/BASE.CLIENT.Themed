@@ -28,8 +28,8 @@ module rgModule 'resource-group.bicep' = {
   // name: '${deployment().name}'
   name: '${deployment().name}_X0'
   params: {
-    resourceGroupName: '${projectName}_${environmentId}'
-    resourceGroupLocation: resourceLocation
+    resourceName: '${projectName}_${environmentId}'
+    resourceLocation: resourceLocation
   }
 }
 
