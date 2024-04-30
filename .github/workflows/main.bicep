@@ -50,7 +50,7 @@ resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 // id: rgModule.outputs.resourceId
 
 module swaModule 'static-web-app.bicep' = {
-  dependsOn: [rgModule] // Specify a dependency on the rgModule
+  dependsOn: [rg1] // Specify a dependency on the rgModule
   name: '${deployment().name}_swa'
   scope: rg1
   // scope: rgResourceId
