@@ -20,8 +20,12 @@ param resourceLocation string = 'australiacentral'
 @allowed([ 'global'])
 param resourceLocation3 string = 'global'
 
+@description("Options are 'Free' and 'Standard'. Default is 'Free'.")
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
+
+@description("The branch within the repository. Default is 'main'.")
+param repositoryBranch string = 'main'
 
 
 module rgModule 'resource-group.bicep' = {
