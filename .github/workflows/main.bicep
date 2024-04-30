@@ -33,7 +33,7 @@ param repositoryBranch string = 'main'
 module rgModule 'resource-group.bicep' = {
   name: deployment().name
   // Don't knnow if this needed at this level?
-  scope='subscription'
+  scope: 'subscription'
   params: {
     resourceName: '${projectName}_${environmentId}'
     resourceLocation: resourceLocation
