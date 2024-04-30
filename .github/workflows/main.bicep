@@ -1,5 +1,4 @@
-// Don't knnow if this needed at this level?
-targetScope='subscription'
+
 
 @description('The name used to build resources. e.g.: \'BASE\'')
 param projectName string
@@ -33,6 +32,8 @@ param repositoryBranch string = 'main'
 
 module rgModule 'resource-group.bicep' = {
   name: deployment().name
+  // Don't knnow if this needed at this level?
+  // targetScope='subscription'
   params: {
     resourceName: '${projectName}_${environmentId}'
     resourceLocation: resourceLocation
