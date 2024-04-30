@@ -1,33 +1,33 @@
 // Don't knnow if this needed at this level?
 targetScope='subscription'
 
-@description("The name used to build resources. e.g.: 'BASE'")
+@description('The name used to build resources. e.g.: \'BASE\'')
 param projectName string
 
-@description("The id of the environment, to append to the name of resource groups. e.g.: 'BT'")
+@description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
 @allowed([ 'BT','DT','ST','UT','IT','PR'])
 param environmentId string
 
-@description("The lowercase identifier of where to build the resource Group. Default is 'australiacentral'.")
+@description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
 param resourceLocation string = 'australiacentral'
 
-// @description("The lowercase identifier of where to build the resource Group if resourceLocation is not available. Default is ' southeastasia'.")
+// @description('The lowercase identifier of where to build the resource Group if resourceLocation is not available. Default is \'southeastasia\'.')
 // @allowed([ 'southeastasia'])
 // param resourceLocation2 string = 'southeastasia'
 
-@description("The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is 'global'.")
+@description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'global'])
 param resourceLocation3 string = 'global'
 
-@description("Options are 'Free' and 'Standard'. Default is 'Free'.")
+@description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 
-@description("URL for the repository of the static site.")
+@description('URL for the repository of the static site.')
 repositoryUrl string = ''
 
-@description("The branch within the repository. Default is 'main'.")
+@description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
 
 
