@@ -4,7 +4,6 @@ targetScope='subscription'
 @description("The name used to build resources. e.g.: 'BASE'")
 param projectName string
 
-
 @description("The id of the environment, to append to the name of resource groups. e.g.: 'BT'")
 @allowed([ 'BT','DT','ST','UT','IT','PR'])
 param environmentId string
@@ -43,7 +42,7 @@ module swaModule 'static-web-app.bicep' = {
   params: {
     scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceGroupName) // Specify the resource group as the scope
-    resourceName: '${projectName}_${environmentId}'
+    resourceName: '${projectName}'
     resourceLocation: resourceLocation
   }
 }
