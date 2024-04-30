@@ -31,20 +31,20 @@ param outputLocation string = './output'
 param appBuildCommand string = ''
 
 @description('A custom command to run during deployment of the Azure Functions API application.')
-apiBuildCommand string = ''
+param apiBuildCommand string = ''
 
 
 @description('Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).')
-isPrivate string = false
+param isPrivate string = false
 
 @description('URL for the repository of the static site.')
-repositoryUrl string = ''
+param repositoryUrl string = ''
 
 @description('The target branch in the repository.')
-repositoryBranch string = ''
+param repositoryBranch string = ''
 
 @description('A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.')
-repositoryToken string = ''
+param repositoryToken string = ''
 
 
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
