@@ -2,7 +2,7 @@
 // https://learn.microsoft.com/en-us/azure/templates/microsoft.web/staticsites?pivots=deployment-language-bicep
 
 // Resources are part of a parent resource group:
-targetScope='resourcegroup'
+targetScope='resourceGroup'
 
 
 @description("Required. The name of the resource Group.")
