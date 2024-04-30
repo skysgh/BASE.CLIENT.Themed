@@ -12,9 +12,9 @@ param environmentId string
 @allowed([ 'australiacentral'])
 param resourceLocation string = 'australiacentral'
 
-@description("The lowercase identifier of where to build the resource Group if resourceLocation is not available. Default is ' southeastasia'.")
-@allowed([ 'southeastasia'])
-param resourceLocation2 string = 'southeastasia'
+// @description("The lowercase identifier of where to build the resource Group if resourceLocation is not available. Default is ' southeastasia'.")
+// @allowed([ 'southeastasia'])
+// param resourceLocation2 string = 'southeastasia'
 
 @description("The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is 'global'.")
 @allowed([ 'global'])
@@ -42,7 +42,7 @@ module swaModule 'static-web-app.bicep' = {
   params: {
     scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceGroupName) // Specify the resource group as the scope
-    resourceName: '${projectName}'
+    resourceName: projectName
     resourceLocation: resourceLocation3
     sku: resourceSku
   }
