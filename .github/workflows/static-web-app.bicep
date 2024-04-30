@@ -40,12 +40,11 @@ isPrivate string = false
 @description("URL for the repository of the static site.")
 repositoryUrl string = ''
 
-@description("A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.")
-repositoryToken string = ''
-
 @description("The target branch in the repository.")
 repositoryBranch string = ''
 
+@description("A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.")
+repositoryToken string = ''
 
 
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
