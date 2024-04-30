@@ -44,6 +44,7 @@ module rgModule 'resource-group.bicep' = {
 // id: rgModule.outputs.resourceId
 
 module swaModule 'static-web-app.bicep' = {
+  dependsOn: [rgModule] // Specify a dependency on the rgModule
   name: deployment().name
     scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
