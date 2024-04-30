@@ -27,23 +27,23 @@ param apiLocation string = ""
 param outputLocation string = './output'
 
 
-@description("A custom command to run during deployment of the static content application.")
+@description('A custom command to run during deployment of the static content application.')
 param appBuildCommand string = ''
 
-@description("A custom command to run during deployment of the Azure Functions API application.")
+@description('A custom command to run during deployment of the Azure Functions API application.')
 apiBuildCommand string = ''
 
 
-@description("	Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).")
+@description('Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).')
 isPrivate string = false
 
-@description("URL for the repository of the static site.")
+@description('URL for the repository of the static site.')
 repositoryUrl string = ''
 
-@description("The target branch in the repository.")
+@description('The target branch in the repository.')
 repositoryBranch string = ''
 
-@description("A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.")
+@description('A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.')
 repositoryToken string = ''
 
 
