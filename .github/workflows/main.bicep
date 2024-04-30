@@ -32,7 +32,7 @@ param repositoryBranch string = 'main'
 
 
 module rgModule 'resource-group.bicep' = {
-  // name: deployment().name
+  name: deployment().name
   params: {
     resourceName: '${projectName}_${environmentId}'
     resourceLocation: resourceLocation
@@ -43,11 +43,11 @@ module rgModule 'resource-group.bicep' = {
 // id: rgModule.outputs.resourceId
 
 module swaModule 'static-web-app.bicep' = {
-  // name: deployment().name
+  name: deployment().name
   scope: resourceGroup(resourceGroupName)
   params: {
     scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
-    // alt way: scope: resourceGroup(rgModule.outputs.resourceGroupName) // Specify the resource group as the scope
+    // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
     resourceName: projectName
     resourceLocation: resourceLocation3
     sku: resourceSku
