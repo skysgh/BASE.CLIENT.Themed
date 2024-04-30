@@ -24,6 +24,9 @@ param resourceLocation3 string = 'global'
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 
+@description("URL for the repository of the static site.")
+repositoryUrl string = ''
+
 @description("The branch within the repository. Default is 'main'.")
 param repositoryBranch string = 'main'
 
@@ -48,5 +51,7 @@ module swaModule 'static-web-app.bicep' = {
     resourceName: projectName
     resourceLocation: resourceLocation3
     sku: resourceSku
+    repositoryUrl: repositoryUrl
+    repositoryBranch: repositoryBranch
   }
 }
