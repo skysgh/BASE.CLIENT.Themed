@@ -18,10 +18,10 @@ param resourceLocation string = 'global'
 param resourceSku string = 'Free'
 
 @description('The path to the app source code relative to the root of the repository. Probably sonmething like \'SRC/\' or similar.')
-param appLocation string = "/"
+param appLocation string = '/'
 
 @description('The path to the api source code relative to the root of the repository.')
-param apiLocation string = ""
+param apiLocation string = ''
 
 @description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
 param outputLocation string = './output'
