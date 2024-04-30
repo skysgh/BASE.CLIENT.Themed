@@ -25,7 +25,7 @@ param resourceLocation3 string = 'global'
 param resourceSku string = 'Free'
 
 @description('URL for the repository of the static site.')
-repositoryUrl string = ''
+param repositoryUrl string = ''
 
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
