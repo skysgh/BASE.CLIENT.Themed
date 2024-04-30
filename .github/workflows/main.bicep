@@ -18,8 +18,8 @@ param resourceLocation string = 'australiacentral'
 // param resourceLocation2 string = 'southeastasia'
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
-@allowed([ 'global'])
-param resourceLocation3 string = 'global'
+@allowed([ 'eastasia'])
+param resourceLocation3 string = 'eastasia'
 
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
