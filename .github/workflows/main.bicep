@@ -29,6 +29,7 @@ param repositoryUrl string = ''
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
 
+var rgResourceId = rgModule.outputs.resourceId
 
 module rgModule 'resource-group.bicep' = {
   name: deployment().name
@@ -46,7 +47,8 @@ module rgModule 'resource-group.bicep' = {
 module swaModule 'static-web-app.bicep' = {
   dependsOn: [rgModule] // Specify a dependency on the rgModule
   name: deployment().name
-    scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
+scope: rgResourceId
+   // scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
   params: {
     resourceName: projectName
