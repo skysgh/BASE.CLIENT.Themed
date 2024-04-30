@@ -130,7 +130,7 @@ jobs:
           region: ${{ vars.AZURE_LOCATION_1_ID }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
-          template: ".github/workflows/myflow2.bicep"
+          template: ".github/workflows/main.bicep"
           parameters: "projectName=${{ env.RG_NAME }}WOW environmentId=FT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }}"
           failOnStdErr: false
 
