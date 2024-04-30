@@ -1,10 +1,10 @@
 // Resources Groups are part of the general subscription
 targetScope='subscription'
 
-@description("Required. The name of the resource Group.")
+@description('Required. The name of the resource Group.')
 param resourceName string
 
-@description("The lowercase identifier of where to build the resource Group. Default is 'australiacentral'.")
+@description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 // will allow more later.
 @allowed([ 'australiacentral'])
 param resourceLocation string = 'australiacentral'
