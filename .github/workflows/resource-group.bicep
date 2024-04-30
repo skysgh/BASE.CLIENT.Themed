@@ -14,3 +14,6 @@ resource newRG 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: resourceName
   location: resourceLocation
 }
+
+
+output resourceId string = newRG.id
