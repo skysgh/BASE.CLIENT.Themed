@@ -10,10 +10,11 @@ param resourceName string
 param resourceLocation string = 'australiacentral'
 
 
+// Creating new resource groups take a little bit of time
 resource newRG 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: resourceName
   location: resourceLocation
 }
 
-
+// return the id of the newly created resource:
 output resourceId string = newRG.id
