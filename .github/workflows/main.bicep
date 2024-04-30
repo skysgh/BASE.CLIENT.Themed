@@ -44,13 +44,13 @@ module rgModule 'resource-group.bicep' = {
 
 module swaModule 'static-web-app.bicep' = {
   name: deployment().name
-  scope: resourceGroup(rgModule.outputs.resourceName)
+
   params: {
     scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
     resourceName: projectName
     resourceLocation: resourceLocation3
-    sku: resourceSku
+    resourceSku: resourceSku
     repositoryUrl: repositoryUrl
     repositoryBranch: repositoryBranch
   }
