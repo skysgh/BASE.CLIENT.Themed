@@ -18,7 +18,7 @@ param resourceLocation string = 'global'
 param resourceSku string = 'Free'
 
 @description('The path to the app source code relative to the root of the repository. Probably sonmething like \'SRC/\' or similar.')
-paran appLocation string = "/"
+param appLocation string = "/"
 
 @description('The path to the api source code relative to the root of the repository.')
 param apiLocation string = ""
