@@ -101,7 +101,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     // provider: 'string'
     // publicNetworkAccess: 'string'
     repositoryToken: repositoryToken
-    //repositoryUrl: repositoryUrl
+    repositoryUrl: repositoryUrl
     // stagingEnvironmentPolicy: 'string'
     // templateProperties: {
     //  description: 'string'
