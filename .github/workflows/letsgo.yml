@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: NP
     env:
+      # PROJECT NAME which is basis of resource names.
+      RG_NAME: 'BASALT'
       # REPO #1 (SRC) INFO
       REPO_NAME_SRC: $GITHUB_REPOSITORY
       # REPO #2 (LIB) INFO (FOR REUSEABLE PIPELINE RESOURCES)
@@ -31,7 +33,6 @@ jobs:
       ENTRA_APP_CLIENT_SECRET: ${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}
       AZURE_ENTRA_APP_CLIENT_CRED: | 
         ${{ secrets.NP_ENTRA_APP_CLIENT_CREDS }}
-      RG_NAME: 'BASIN'
     steps:
       # Checkout code from *lib* repo
       # to a directory parallel to this repo's code
@@ -131,7 +132,7 @@ jobs:
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           template: ".github/workflows/main.bicep"
-          parameters: "projectName=${{ env.RG_NAME }}WOW environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }}"
+          parameters: "projectName=${{ env.projectName }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }}"
           failOnStdErr: false
 
       - name: Ensure Static WebSite Resource
