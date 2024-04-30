@@ -110,16 +110,16 @@ jobs:
         with:
           creds: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
  
-      - name: Ensure Resource Group(s)
-        uses: azure/arm-deploy@v1
-        with:
-          scope: subscription
-          region: ${{ vars.AZURE_LOCATION_1_ID }}
-          subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
-          #resourceGroupName: ${{ env.RG_NAME }}
-          template: ".github/workflows/resource-group.bicep"
-          parameters: "resourceGroupName=${{ env.RG_NAME }} resourceGroupLocation=${{ vars.AZURE_LOCATION_1_ID }}"
-          failOnStdErr: false
+#      - name: Ensure Resource Group(s)
+#        uses: azure/arm-deploy@v1
+#        with:
+#          scope: subscription
+#          region: ${{ vars.AZURE_LOCATION_1_ID }}
+#          subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
+#          #resourceGroupName: ${{ env.RG_NAME }}
+#          template: ".github/workflows/resource-group.bicep"
+#          parameters: "resourceGroupName=${{ env.RG_NAME }} resourceGroupLocation=${{ vars.AZURE_LOCATION_1_ID }}"
+#          failOnStdErr: false
 
 
       - name: Run Flow
