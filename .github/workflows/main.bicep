@@ -1,4 +1,6 @@
 
+// Resources Groups are part of the general subscription
+targetScope='subscription'
 
 @description('The name used to build resources. e.g.: \'BASE\'')
 param projectName string
@@ -29,17 +31,20 @@ param repositoryUrl string = ''
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
 
-//var rgResourceId = rgModule.outputs.resourceId
-
-module rgModule 'resource-group.bicep' = {
-  name: '${deployment().name}_rg'
-  // Don't knnow if this needed at this level?
-  scope: subscription()
-  params: {
-    resourceName: '${projectName}_${environmentId}'
-    resourceLocation: resourceLocation
-  }
+resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+    name: '${projectName}_${environmentId}'
+    location: resourceLocation
 }
+
+// module rgModule 'resource-group.bicep' = {
+//  name: '${deployment().name}_rg'
+//  // Don't knnow if this needed at this level?
+//  scope: subscription()
+//  params: {
+//    resourceName: '${projectName}_${environmentId}'
+//    resourceLocation: resourceLocation
+//  }
+// }
 
 // could pick up the output id from before as:
 // id: rgModule.outputs.resourceId
@@ -47,7 +52,7 @@ module rgModule 'resource-group.bicep' = {
 module swaModule 'static-web-app.bicep' = {
   dependsOn: [rgModule] // Specify a dependency on the rgModule
   name: '${deployment().name}_swa'
-  scope: rgModule
+  scope: rg1
   // scope: rgResourceId
    // scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
