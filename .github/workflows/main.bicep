@@ -25,11 +25,11 @@ param resourceLocation3 string = 'eastasia'
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 
-@description('URL for the repository of the static site.')
-param repositoryUrl string = ''
+// @description('URL for the repository of the static site.')
+// param repositoryUrl string = ''
 
-@description('The branch within the repository. Default is \'main\'.')
-param repositoryBranch string = 'main'
+// @description('The branch within the repository. Default is \'main\'.')
+// param repositoryBranch string = 'main'
 
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     name: '${projectName}_${environmentId}'
@@ -60,7 +60,7 @@ module swaModule 'static-web-app.bicep' = {
     resourceName: projectName
     resourceLocation: resourceLocation3
     resourceSku: resourceSku
-    repositoryUrl: repositoryUrl
-    repositoryBranch: repositoryBranch
+   // repositoryUrl: repositoryUrl
+    //repositoryBranch: repositoryBranch
   }
 }
