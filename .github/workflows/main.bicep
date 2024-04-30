@@ -21,7 +21,7 @@ param resourceLocation2 string = 'southeastasia'
 param resourceLocation3 string = 'global'
 
 @allowed([ 'Free', 'Standard' ])
-param sku string = 'Free'
+param resourceSku string = 'Free'
 
 
 module rgModule 'resource-group.bicep' = {
@@ -44,6 +44,6 @@ module swaModule 'static-web-app.bicep' = {
     // alt way: scope: resourceGroup(rgModule.outputs.resourceGroupName) // Specify the resource group as the scope
     resourceName: '${projectName}'
     resourceLocation: resourceLocation3
-    sku = sku
+    sku: resourceSku
   }
 }
