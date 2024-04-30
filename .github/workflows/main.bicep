@@ -43,6 +43,7 @@ module swaModule 'static-web-app.bicep' = {
     scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceGroupName) // Specify the resource group as the scope
     resourceName: '${projectName}'
-    resourceLocation: resourceLocation
+    resourceLocation: resourceLocation3
+    sku = sku
   }
 }
