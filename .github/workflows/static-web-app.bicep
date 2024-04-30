@@ -10,8 +10,8 @@ param resourceName string
 
 // ie, can't be: 'resourceGroup().location'
 @description('SWAs are deployed globally, so there really is no option.')
-@allowed([ 'global'])
-param resourceLocation string = 'global'
+@allowed([ 'centralus', 'eastus2', 'eastasia', 'westeurope', 'westus2' ])
+param resourceLocation string = 'eastasia'
 
 @description('The SKU to use.')
 @allowed([ 'Free', 'Standard' ])
