@@ -44,7 +44,7 @@ module rgModule 'resource-group.bicep' = {
 
 module swaModule 'static-web-app.bicep' = {
   name: deployment().name
-  scope: resourceGroup(resourceGroupName)
+  scope: resourceGroup(rgModule.outputs.resourceName)
   params: {
     scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
