@@ -32,7 +32,7 @@ param repositoryBranch string = 'main'
 var rgResourceId = rgModule.outputs.resourceId
 
 module rgModule 'resource-group.bicep' = {
-  name: deployment().name
+  name: '${deployment().name}_rg'
   // Don't knnow if this needed at this level?
   scope: subscription()
   params: {
@@ -46,8 +46,9 @@ module rgModule 'resource-group.bicep' = {
 
 module swaModule 'static-web-app.bicep' = {
   dependsOn: [rgModule] // Specify a dependency on the rgModule
-  name: deployment().name
-scope: rgResourceId
+  name: '${deployment().name}_swa'
+  scope: rgModule
+  // scope: rgResourceId
    // scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
   params: {
