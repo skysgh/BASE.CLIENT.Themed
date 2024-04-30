@@ -5,25 +5,25 @@
 targetScope='resourceGroup'
 
 
-@description("Required. The name of the resource.Tip: usually there is only one resource, set the same as the project name, with only the name of the Resource Group being different per Environment.")
+@description('Required. The name of the resource.Tip: usually there is only one resource, set the same as the project name, with only the name of the Resource Group being different per Environment.')
 param resourceName string
 
 // ie, can't be: 'resourceGroup().location'
-@description("SWAs are deployed globally, so there really is no option.")
+@description('SWAs are deployed globally, so there really is no option.')
 @allowed([ 'global'])
 param resourceLocation string = 'global'
 
-@description("The SKU to use.")
+@description('The SKU to use.')
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 
-@description("The path to the app source code relative to the root of the repository. Probably sonmething like 'SRC/' or similar.")
+@description('The path to the app source code relative to the root of the repository. Probably sonmething like \'SRC/\' or similar.')
 paran appLocation string = "/"
 
-@description("The path to the api source code relative to the root of the repository.")
+@description('The path to the api source code relative to the root of the repository.')
 param apiLocation string = ""
 
-@description("The output path of the app after building the app source code found in 'appLocation'. For an angular app that might be something like 'dist/xxx/' ")
+@description('The output path of the app after building the app source code found in 'appLocation'. For an angular app that might be something like \'dist/xxx/\' ')
 param outputLocation string = './output'
 
 
