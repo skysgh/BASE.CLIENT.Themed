@@ -29,7 +29,7 @@ param repositoryUrl string = ''
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
 
-var rgResourceId = rgModule.outputs.resourceId
+//var rgResourceId = rgModule.outputs.resourceId
 
 module rgModule 'resource-group.bicep' = {
   name: '${deployment().name}_rg'
