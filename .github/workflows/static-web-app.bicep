@@ -43,7 +43,7 @@ param repositoryUrl string = ''
 @description('The target branch in the repository.')
 param repositoryBranch string = ''
 
-@description('A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.')
+@description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets.')
 param repositoryToken string = ''
 
 
