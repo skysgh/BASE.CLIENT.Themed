@@ -34,8 +34,8 @@ param appBuildCommand string = ''
 param apiBuildCommand string = ''
 
 
-@description('Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).')
-param isPrivate string = false
+// @description('Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).')
+// param isPrivate string = false
 
 @description('URL for the repository of the static site.')
 param repositoryUrl string = ''
@@ -100,7 +100,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     // enterpriseGradeCdnStatus: 'string'
     // provider: 'string'
     // publicNetworkAccess: 'string'
-    // repositoryToken: repositoryToken
+    repositoryToken: repositoryToken
     //repositoryUrl: repositoryUrl
     // stagingEnvironmentPolicy: 'string'
     // templateProperties: {
