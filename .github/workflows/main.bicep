@@ -42,7 +42,8 @@ param outputLocation string = 'dist/base'
 param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
 
 @description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets. e.g.: use secrets.GITHUB_TOKEN')
-param repositoryToken securestring = ''
+@secure()
+param repositoryToken string = ''
 
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
