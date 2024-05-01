@@ -47,6 +47,9 @@ param repositoryBranch string = 'main'
 @secure()
 param repositoryToken string = null
 
+var dummyUse = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
+
+
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   name: resourceName
   location: resourceLocation
@@ -84,8 +87,14 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   //  userAssignedIdentities: {}
   //}
   properties: {
+
     // allowConfigFileUpdates: bool
-    branch: repositoryBranch
+    // Source Code Repository:
+    // repositoryUrl: repositoryUrl
+    // repositoryToken: repositoryToken
+    // branch: repositoryBranch
+
+    // Build Properties
     buildProperties: {
       apiLocation: apiLocation
       // appArtifactLocation: 'string'
@@ -99,9 +108,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     }
     // enterpriseGradeCdnStatus: 'string'
     // provider: 'string'
-    publicNetworkAccess: 'Enabled'
-    repositoryToken: repositoryToken
-    repositoryUrl: repositoryUrl
+g
     // stagingEnvironmentPolicy: 'string'
     // templateProperties: {
     //  description: 'string'
@@ -110,6 +117,9 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     //  repositoryName: 'string'
     //  templateRepositoryUrl: 'string'
     // }
+
+    // access 
+    publicNetworkAccess: 'Enabled'
   }
 }
 
