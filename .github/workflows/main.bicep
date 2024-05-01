@@ -29,7 +29,6 @@ param resourceSku string = 'Free'
 param repositoryToken string = ''
 
 @description('Location of app source code in repo')
-@allowed([ 'Free', 'Standard' ])
 param appLocation string = '/SOURCE/App.Service.Client.Web'
 
 @description('The path to the api source code relative to the root of the repository.')
