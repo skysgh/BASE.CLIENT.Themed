@@ -96,19 +96,23 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
 
     // Build Properties
     buildProperties: {
+      // The path to the app code sections within the repository.
       apiLocation: apiLocation
-      // appArtifactLocation: 'string'
+      appLocation: appLocation
+
+      // the code compilation commands:
       apiBuildCommand: apiBuildCommand
       appBuildCommand: appBuildCommand
-      // The path to the app code within the repository.
-      appLocation: appLocation
-      // githubActionSecretNameOverride: 'string'
+
+      // Location of compiled code:
       outputLocation: outputLocation
+
+      // githubActionSecretNameOverride: 'string'
       // skipGithubActionWorkflowGeneration: bool
     }
     // enterpriseGradeCdnStatus: 'string'
     // provider: 'string'
-g
+
     // stagingEnvironmentPolicy: 'string'
     // templateProperties: {
     //  description: 'string'
