@@ -38,7 +38,7 @@ param apiBuildCommand string = ''
 // param isPrivate string = false
 
 @description('URL for the repository of the static site.')
-param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
+param repositoryUrl string
 
 @description('The target branch in the repository.')
 param repositoryBranch string = 'main'
