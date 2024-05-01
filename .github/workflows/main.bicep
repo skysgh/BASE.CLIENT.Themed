@@ -43,10 +43,12 @@ param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.The
 
 @description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets. e.g.: use secrets.GITHUB_TOKEN')
 @secure()
-param repositoryToken string = null
+param repositoryToken string
 
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
+
+var dummyUse = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
 
 // Make the Repo first (I tried foa a while to make it into 
 // a module, but could not get the name of the resource that was created
@@ -82,9 +84,9 @@ module swaModule 'static-web-app.bicep' = {
     resourceSku: resourceSku
 
     // Source Code Repository:
-    repositoryUrl: repositoryUrl
-    repositoryBranch: repositoryBranch
-    repositoryToken: repositoryToken
+    // repositoryUrl: repositoryUrl
+    // repositoryBranch: repositoryBranch
+    // repositoryToken: repositoryToken
 
     // Source Code:
     appLocation: appLocation
