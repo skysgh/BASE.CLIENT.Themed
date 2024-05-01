@@ -25,8 +25,6 @@ param resourceLocation3 string = 'eastasia'
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 
-@description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets. e.g.: use secrets.GITHUB_TOKEN')
-param repositoryToken string = ''
 
 @description('Location of app source code in repo')
 param appLocation string = '/SOURCE/App.Service.Client.Web'
@@ -43,9 +41,14 @@ param outputLocation string = 'dist/base'
 @description('URL for the repository of the static site.')
 param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
 
+@description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets. e.g.: use secrets.GITHUB_TOKEN')
+param repositoryToken securestring = ''
+
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
 
+// Make the Repo first (I tried foa a while to make it into 
+// a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     name: '${projectName}_${environmentId}'
     location: resourceLocation
