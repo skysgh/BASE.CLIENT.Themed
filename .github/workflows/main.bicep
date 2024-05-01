@@ -25,6 +25,8 @@ param resourceLocation3 string = 'eastasia'
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 
+@description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets. e.g.: use secrets.GITHUB_TOKEN')
+param repositoryToken string = ''
 
 @description('Location of app source code in repo')
 @allowed([ 'Free', 'Standard' ])
@@ -71,6 +73,7 @@ module swaModule 'static-web-app.bicep' = {
     resourceSku: resourceSku
    // repositoryUrl: repositoryUrl
     //repositoryBranch: repositoryBranch
+    //repositoryToken: repositoryToken
     appLocation = appLocation
     outputLocation = outputLocation
   }
