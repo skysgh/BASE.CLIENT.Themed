@@ -41,7 +41,7 @@ param appBuildCommand string = 'npm run build'
 param outputLocation string = 'dist/base'
 
 @description('URL for the repository of the static site.')
-param repositoryUrl string = ''
+param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
 
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
