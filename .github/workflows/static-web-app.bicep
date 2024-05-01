@@ -45,7 +45,7 @@ param repositoryBranch string = 'main'
 
 @description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets.')
 @secure()
-param repositoryToken string = ''
+param repositoryToken string = null
 
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   name: resourceName
