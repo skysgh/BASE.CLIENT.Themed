@@ -34,14 +34,17 @@ param appLocation string = '/SOURCE/App.Service.Client.Web'
 @description('The path to the api source code relative to the root of the repository.')
 param apiLocation string = ''
 
+@description('A custom command to run during deployment of the static content application.e.g. \'npm run build\'')
+param appBuildCommand string = 'npm run build'
+
 @description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
 param outputLocation string = 'dist/base'
 
-// @description('URL for the repository of the static site.')
-// param repositoryUrl string = ''
+@description('URL for the repository of the static site.')
+param repositoryUrl string = ''
 
-// @description('The branch within the repository. Default is \'main\'.')
-// param repositoryBranch string = 'main'
+@description('The branch within the repository. Default is \'main\'.')
+param repositoryBranch string = 'main'
 
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     name: '${projectName}_${environmentId}'
@@ -72,11 +75,15 @@ module swaModule 'static-web-app.bicep' = {
     resourceName: projectName
     resourceLocation: resourceLocation3
     resourceSku: resourceSku
-   // repositoryUrl: repositoryUrl
-    //repositoryBranch: repositoryBranch
+    
+    repositoryUrl: repositoryUrl
+    repositoryBranch: repositoryBranch
     repositoryToken: repositoryToken
+    
     appLocation: appLocation
+    appBuildCommand:appBuildCommand
     apiLocation: apiLocation
+    
     outputLocation: outputLocation
   }
 }
