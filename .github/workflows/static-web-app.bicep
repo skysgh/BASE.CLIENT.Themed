@@ -28,7 +28,7 @@ param outputLocation string = './output'
 
 
 @description('A custom command to run during deployment of the static content application.')
-param appBuildCommand string = ''
+param appBuildCommand string = 'npm run build'
 
 @description('A custom command to run during deployment of the Azure Functions API application.')
 param apiBuildCommand string = ''
@@ -99,7 +99,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     }
     // enterpriseGradeCdnStatus: 'string'
     // provider: 'string'
-    // publicNetworkAccess: 'string'
+    publicNetworkAccess: 'Enabled'
     repositoryToken: repositoryToken
     repositoryUrl: repositoryUrl
     // stagingEnvironmentPolicy: 'string'
