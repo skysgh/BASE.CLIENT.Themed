@@ -132,7 +132,7 @@ jobs:
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           template: ".github/workflows/main.bicep"
-          parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }}"
+          parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryToken=${{secrets.GITHUB_TOKEN}}"
           failOnStdErr: false
 
       - name: Ensure Static WebSite Resource
