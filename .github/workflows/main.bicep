@@ -25,6 +25,15 @@ param resourceLocation3 string = 'eastasia'
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 
+
+@description('Location of app source code in repo')
+@allowed([ 'Free', 'Standard' ])
+param appLocation string = '/SOURCE/App.Service.Client.Web'
+
+
+@description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
+param outputLocation string = 'dist/base'
+
 // @description('URL for the repository of the static site.')
 // param repositoryUrl string = ''
 
@@ -62,5 +71,7 @@ module swaModule 'static-web-app.bicep' = {
     resourceSku: resourceSku
    // repositoryUrl: repositoryUrl
     //repositoryBranch: repositoryBranch
+    appLocation = appLocation
+    outputLocation = outputLocation
   }
 }
