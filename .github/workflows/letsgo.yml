@@ -1,4 +1,4 @@
-name: Deploy to Environment
+Nname: Deploy to Environment
 
 # Triggers, on specific branches
 on:
@@ -16,7 +16,7 @@ jobs:
     environment: NP
     env:
       # PROJECT NAME which is basis of resource names.
-      RG_NAME: 'BASALT'
+      PROJECT_NAME: 'BASALT'
       # REPO #1 (SRC) INFO
       REPO_NAME_SRC: $GITHUB_REPOSITORY
       # REPO #2 (LIB) INFO (FOR REUSEABLE PIPELINE RESOURCES)
@@ -132,7 +132,7 @@ jobs:
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           template: ".github/workflows/main.bicep"
-          parameters: "projectName=${{ env.projectName }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }}"
+          parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }}"
           failOnStdErr: false
 
       - name: Ensure Static WebSite Resource
