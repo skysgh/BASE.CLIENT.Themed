@@ -32,6 +32,8 @@ param repositoryToken string = ''
 @allowed([ 'Free', 'Standard' ])
 param appLocation string = '/SOURCE/App.Service.Client.Web'
 
+@description('The path to the api source code relative to the root of the repository.')
+param apiLocation string = ''
 
 @description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
 param outputLocation string = 'dist/base'
@@ -74,7 +76,8 @@ module swaModule 'static-web-app.bicep' = {
    // repositoryUrl: repositoryUrl
     //repositoryBranch: repositoryBranch
     //repositoryToken: repositoryToken
-    appLocation = appLocation
-    outputLocation = outputLocation
+    appLocation: appLocation
+    apiLocation: apiLocation
+    outputLocation: outputLocation
   }
 }
