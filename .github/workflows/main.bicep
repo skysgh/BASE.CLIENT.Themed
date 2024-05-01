@@ -75,7 +75,7 @@ module swaModule 'static-web-app.bicep' = {
     resourceSku: resourceSku
    // repositoryUrl: repositoryUrl
     //repositoryBranch: repositoryBranch
-    //repositoryToken: repositoryToken
+    repositoryToken: repositoryToken
     appLocation: appLocation
     apiLocation: apiLocation
     outputLocation: outputLocation
