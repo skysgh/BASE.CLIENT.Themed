@@ -38,10 +38,10 @@ param apiBuildCommand string = ''
 // param isPrivate string = false
 
 @description('URL for the repository of the static site.')
-param repositoryUrl string = ''
+param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
 
 @description('The target branch in the repository.')
-param repositoryBranch string = ''
+param repositoryBranch string = 'main'
 
 @description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets.')
 param repositoryToken string = ''
