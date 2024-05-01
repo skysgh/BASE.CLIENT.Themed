@@ -43,7 +43,7 @@ param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.The
 
 @description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets. e.g.: use secrets.GITHUB_TOKEN')
 @secure()
-param repositoryToken string = ''
+param repositoryToken string = null
 
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
@@ -76,18 +76,22 @@ module swaModule 'static-web-app.bicep' = {
    // scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
   params: {
+    // SWA:
     resourceName: projectName
     resourceLocation: resourceLocation3
     resourceSku: resourceSku
-    
+
+    // Source Code Repository:
     repositoryUrl: repositoryUrl
     repositoryBranch: repositoryBranch
     repositoryToken: repositoryToken
-    
+
+    // Source Code:
     appLocation: appLocation
     appBuildCommand:appBuildCommand
     apiLocation: apiLocation
-    
+
+    // Runtime:
     outputLocation: outputLocation
   }
 }
