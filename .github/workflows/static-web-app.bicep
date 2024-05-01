@@ -27,8 +27,8 @@ param apiLocation string = ''
 param outputLocation string = './output'
 
 
-@description('A custom command to run during deployment of the static content application.')
-param appBuildCommand string = 'npm run build'
+@description('A custom command to run during deployment of the static content application.e.g. \'npm run build\'')
+param appBuildCommand string = ''
 
 @description('A custom command to run during deployment of the Azure Functions API application.')
 param apiBuildCommand string = ''
