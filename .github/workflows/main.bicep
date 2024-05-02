@@ -91,7 +91,7 @@ module swaModule 'static-web-app.bicep' = {
 
     // Source Code:
     appLocation: appLocation
-    appBuildCommand:appBuildCommand
+    appBuildCommand: appBuildCommand
     apiLocation: apiLocation
 
     // Runtime:
