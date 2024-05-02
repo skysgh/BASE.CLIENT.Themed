@@ -44,8 +44,8 @@ param repositoryUrl string = ''
 param repositoryBranch string = 'main'
 
 @description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets.')
-// @secure() // can't provide a default value if marked secure.
-param repositoryToken string = ''
+@secure() // can't provide a default value if marked secure.
+param repositoryToken string
 
 // Make a dummy var to create a fake need, so that I don't have to comment out the params
 var dummyRepoSynopsis = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
@@ -91,9 +91,9 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
 
     // allowConfigFileUpdates: bool
     // Source Code Repository:
-    // repositoryUrl: repositoryUrl
-    // repositoryToken: repositoryToken
-    // branch: repositoryBranch
+     repositoryUrl: repositoryUrl
+     repositoryToken: repositoryToken
+     branch: repositoryBranch
 
     // Build Properties
     buildProperties: {
