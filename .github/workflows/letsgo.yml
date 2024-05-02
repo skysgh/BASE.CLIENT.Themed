@@ -18,7 +18,7 @@ jobs:
       # PROJECT NAME which is basis of resource names.
       PROJECT_NAME: 'BASALT'
       # REPO #1 (SRC) INFO
-      REPO_NAME_SRC: ${{env.GITHUB_REPOSITORY}}
+      REPO_NAME_SRC: ${{ github.repository }}
       # REPO #2 (LIB) INFO (FOR REUSEABLE PIPELINE RESOURCES)
       REPO_NAME_LIB: 'skysgh/resources.deployments.lib'
       # BRANCH INFO
