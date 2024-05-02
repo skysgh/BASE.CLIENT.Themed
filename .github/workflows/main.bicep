@@ -1,8 +1,8 @@
 
-// Resources Groups are part of the general subscription
+@description('The name used to build resources. e.g.: \'BASE\'')
 targetScope='subscription'
 
-@description('The name used to build resources. e.g.: \'BASE\'')
+// Resources Groups are part of the general subscription
 param projectName string
 
 @description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
@@ -36,7 +36,7 @@ param apiLocation string = ''
 param appBuildCommand string = 'npm run build'
 
 @description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
-param outputLocation string = 'dist/base'
+param outputLocation string = 'dist/base/browser'
 
 @description('URL for the repository of the static site.')
 param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
