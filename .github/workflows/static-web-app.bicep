@@ -44,7 +44,7 @@ param repositoryUrl string
 param repositoryBranch string = 'main'
 
 @description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets.')
-@secure()
+// @secure() // can't provide a default value if marked secure.
 param repositoryToken string = null
 
 var dummyUse = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
