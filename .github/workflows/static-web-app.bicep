@@ -38,14 +38,14 @@ param apiBuildCommand string = ''
 // param isPrivate string = false
 
 @description('URL for the repository of the static site.')
-param repositoryUrl string
+param repositoryUrl string = ''
 
 @description('The target branch in the repository.')
 param repositoryBranch string = 'main'
 
 @description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets.')
 // @secure() // can't provide a default value if marked secure.
-param repositoryToken string = null
+param repositoryToken string = ''
 
 var dummyRepoSynopsis = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
 
