@@ -47,6 +47,7 @@ param repositoryBranch string = 'main'
 // @secure() // can't provide a default value if marked secure.
 param repositoryToken string = ''
 
+// Make a dummy var to create a fake need, so that I don't have to comment out the params
 var dummyRepoSynopsis = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
 
 
@@ -133,4 +134,5 @@ output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
 
+// crewate a fake use for the dummy var
 output repositorySummary = dummyRepoSynopsis 
