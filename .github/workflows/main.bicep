@@ -36,7 +36,7 @@ param apiLocation string = ''
 param appBuildCommand string = 'npm run build'
 
 @description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
-param outputLocation string = 'dist/base/browser'
+param outputLocation string = 'dist/base'
 
 @description('URL for the repository of the static site.')
 param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
