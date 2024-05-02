@@ -48,6 +48,7 @@ param repositoryToken string
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
 
+// Make a dummy var to create a fake need, so that I don't have to comment out the params
 var dummyRepoSynopsis = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
 
 // Make the Repo first (I tried foa a while to make it into 
@@ -84,9 +85,9 @@ module swaModule 'static-web-app.bicep' = {
     resourceSku: resourceSku
 
     // Source Code Repository:
-    // repositoryUrl: repositoryUrl
-    // repositoryBranch: repositoryBranch
-    // repositoryToken: repositoryToken
+    repositoryUrl: repositoryUrl
+    repositoryBranch: repositoryBranch
+    repositoryToken: repositoryToken
 
     // Source Code:
     appLocation: appLocation
@@ -99,5 +100,5 @@ module swaModule 'static-web-app.bicep' = {
 }
 
 
-
+// Create a fake use for the dummary var:
 output repositorySummary = dummyRepoSynopsis 
