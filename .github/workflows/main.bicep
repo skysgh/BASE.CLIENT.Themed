@@ -101,4 +101,4 @@ module swaModule 'static-web-app.bicep' = {
 
 
 // Create a fake use for the dummary var:
-output repositorySummary = dummyRepoSynopsis 
+output repositorySummary string = dummyRepoSynopsis 
