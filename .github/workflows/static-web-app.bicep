@@ -132,3 +132,5 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
 output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
+
+output repositorySummary = dummyVar 
