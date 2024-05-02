@@ -74,6 +74,7 @@ jobs:
           echo "Branch.Name..........: '${{env.BRANCH}}'"
           echo "Branch.Ref...........: '${{github.GITHUB_REF}}'"
           echo "Branch.Number........: '${{env.BRANCH_ID}}'"
+          echo "Token................: '${{env.GITHUB_TOKEN}}'"
           echo " "
           echo "Env"
           echo "======================"
