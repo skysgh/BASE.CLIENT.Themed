@@ -33,6 +33,8 @@ jobs:
       ENTRA_APP_CLIENT_SECRET: ${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}
       AZURE_ENTRA_APP_CLIENT_CRED: | 
         ${{ secrets.NP_ENTRA_APP_CLIENT_CREDS }}
+      NODE_VERSION: 20.11.0
+
     steps:
       # Checkout code from *lib* repo
       # to a directory parallel to this repo's code
