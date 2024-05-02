@@ -47,7 +47,7 @@ param repositoryBranch string = 'main'
 // @secure() // can't provide a default value if marked secure.
 param repositoryToken string = null
 
-var dummyUse = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
+var dummyRepoSynopsis = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
 
 
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
@@ -133,4 +133,4 @@ output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
 
-output repositorySummary = dummyVar 
+output repositorySummary = dummyRepoSynopsis 
