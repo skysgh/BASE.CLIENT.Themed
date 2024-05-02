@@ -146,7 +146,9 @@ jobs:
           # Your deployment commands here
 
       - name: Compile source code
+        shell: pwsh
         run: |
+          Get-ChildItem -Path .\*.* -Recurse -Force
 
       - name: Take offline
         run: |
