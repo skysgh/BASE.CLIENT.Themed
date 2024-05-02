@@ -48,7 +48,7 @@ param repositoryToken string
 @description('The branch within the repository. Default is \'main\'.')
 param repositoryBranch string = 'main'
 
-var dummyUse = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
+var dummyRepoSynopsis = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
 
 // Make the Repo first (I tried foa a while to make it into 
 // a module, but could not get the name of the resource that was created
@@ -97,3 +97,7 @@ module swaModule 'static-web-app.bicep' = {
     outputLocation: outputLocation
   }
 }
+
+
+
+output repositorySummary = dummyRepoSynopsis 
