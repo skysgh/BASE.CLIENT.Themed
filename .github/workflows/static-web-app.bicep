@@ -98,11 +98,11 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     // Build Properties
     buildProperties: {
       // The path to the app code sections within the repository.
-      apiLocation: apiLocation
+      // apiLocation: apiLocation
       appLocation: appLocation
 
       // the code compilation commands:
-      apiBuildCommand: apiBuildCommand
+      // apiBuildCommand: apiBuildCommand
       appBuildCommand: appBuildCommand
 
       // Location of compiled code:
