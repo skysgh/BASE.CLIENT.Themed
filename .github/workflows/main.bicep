@@ -1,8 +1,8 @@
 
-@description('The name used to build resources. e.g.: \'BASE\'')
 targetScope='subscription'
 
 // Resources Groups are part of the general subscription
+@description('The name used to build resources. e.g.: \'BASE\'')
 param projectName string
 
 @description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
