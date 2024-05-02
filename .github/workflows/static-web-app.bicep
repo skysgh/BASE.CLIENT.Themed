@@ -102,7 +102,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
       appLocation: appLocation
 
       // the code compilation commands:
-      // apiBuildCommand: apiBuildCommand
+      apiBuildCommand: apiBuildCommand
       appBuildCommand: appBuildCommand
 
       // Location of compiled code:
