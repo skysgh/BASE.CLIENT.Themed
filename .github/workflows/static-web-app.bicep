@@ -135,4 +135,4 @@ output resourceId string = resource.id
 output resourceName string = resource.name
 
 // crewate a fake use for the dummy var
-output repositorySummary = dummyRepoSynopsis 
+output repositorySummary string = dummyRepoSynopsis 
