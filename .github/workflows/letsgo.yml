@@ -133,12 +133,12 @@ jobs:
       - name: NPM - Download the libraries
         run: |
           # Download libraries
-          npm install --prefix "${{ github.repository }}/SOURCE/App.Service.Client.Web/"
+          npm install --prefix "SOURCE/App.Service.Client.Web/"
 
       - name: NPM - Build the application
         run: |
           # Build, Compile, Package:
-          npm run --prefix "${{ github.repository }}/SOURCE/App.Service.Client.Web/" build
+          npm run --prefix "SOURCE/App.Service.Client.Web/" build
 
 #      - name: NPM - Find the path to index.html
 #      shell: pwsh
@@ -151,8 +151,7 @@ jobs:
       - name: View Dist folder
         shell: pwsh
         run: |
-          echo "${{ github.repository }}/*.*" 
-          Get-ChildItem -Path "${{ github.repository }}/dist/*.*" -Recurse -Force
+          Get-ChildItem -Path "dist/*.*" -Recurse -Force
           
 
       - name: Run Flow
