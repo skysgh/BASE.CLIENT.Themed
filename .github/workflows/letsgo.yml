@@ -144,7 +144,7 @@ jobs:
       - name: Ensure Static WebSite Resource
         run: |
           # Your deployment commands here
-          npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" run build
+          npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
           
 
       - name: Compile source code
