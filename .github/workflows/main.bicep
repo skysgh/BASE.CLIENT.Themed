@@ -95,7 +95,7 @@ module swaModule 'static-web-app.bicep' = {
     apiLocation: apiLocation
 
     // Runtime:
-    outputLocation: outputLocation
+    outputLocation: '${outputLocation}/${appLocation}'
   }
 }
 
