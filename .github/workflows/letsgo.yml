@@ -144,11 +144,14 @@ jobs:
       - name: Ensure Static WebSite Resource
         run: |
           # Your deployment commands here
+          npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" run build
+          
 
       - name: Compile source code
         shell: pwsh
         run: |
           Get-ChildItem -Path .\*.* -Recurse -Force
+          
 
       - name: Take offline
         run: |
