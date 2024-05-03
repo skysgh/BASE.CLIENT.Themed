@@ -134,17 +134,17 @@ jobs:
       - name: NPM - Download the libraries
         run: |
           # Download libraries
-          npm install --prefix "{{ $env.PROJECT_SUBDIR }}"
+          npm install --prefix "{$PROJECT_SUBDIR}"
 
       - name: NPM - Build the application
         run: |
           # Build, Compile, Package:
-          npm run --prefix "${{ env.PROJECT_SUBDIR }}" build
+          npm run --prefix "${PROJECT_SUBDIR}" build
 
       - name: View Dist folder
         shell: pwsh
         run: |
-          Get-ChildItem -Path "${{ env.PROJECT_SUBDIR }}.*" -Recurse -Force
+          Get-ChildItem -Path "${PROJECT_SUBDIR}/dist/*.*" -Recurse -Force
           
 # /home/runner/work/BASE.Jump.Dev.Client.Themed/BASE.Jump.Dev.Client.Themed/SOURCE/App.Service.Client.Web/dist/
       - name: Run Flow
