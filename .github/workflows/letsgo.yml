@@ -133,18 +133,18 @@ jobs:
       - name: NPM - Download the libraries
         run: |
           # Download libraries
-          npm install --prefix "${{ GITHUB_WORKSPACE }}/SOURCE/App.Service.Client.Web/"
+          npm install --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/"
 
       - name: NPM - Build the application
         run: |
           # Build, Compile, Package:
-          npm run --prefix "${{ GITHUB_WORKSPACE }}/SOURCE/App.Service.Client.Web/" build
+          npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
 
       - name: NPM - Find the path to index.html
         shell: pwsh
         run: |
           # Find the index.html
-          Get-ChildItem -Path "${{ GITHUB_WORKSPACE }}/SOURCE/App.Service.Client.Web/" -Filter index.html -Recurse -ErrorAction SilentlyContinue -Force
+          Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" -Filter index.html -Recurse -ErrorAction SilentlyContinue -Force
 
 
       - name: Run Flow
