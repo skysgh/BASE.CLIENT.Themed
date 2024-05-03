@@ -1,6 +1,8 @@
 
 targetScope='subscription'
 
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 // Resources Groups are part of the general subscription
 @description('The name used to build resources. e.g.: \'BASE\'')
 param projectName string
@@ -24,19 +26,8 @@ param resourceLocation3 string = 'eastasia'
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
-
-
-@description('Location of app source code in repo')
-param appLocation string = ''
-
-@description('The path to the api source code relative to the root of the repository.')
-param apiLocation string = ''
-
-@description('A custom command to run during deployment of the static content application.e.g. \'npm run build\'')
-param appBuildCommand string = 'npm run build'
-
-@description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
-param outputLocation string = ''
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 
 @description('URL for the repository of the static site.')
 param repositoryUrl string 
@@ -50,7 +41,21 @@ param repositoryBranch string = 'main'
 
 // Make a dummy var to create a fake need, so that I don't have to comment out the params
 var dummyRepoSynopsis = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+@description('Location of app source code in repo')
+param appLocation string = ''
 
+@description('The path to the api source code relative to the root of the repository.')
+param apiLocation string = ''
+
+@description('A custom command to run during deployment of the static content application.e.g. \'npm run build\'')
+param appBuildCommand string = 'npm run build'
+
+@description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
+param outputLocation string = ''
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 // Make the Repo first (I tried foa a while to make it into 
 // a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
