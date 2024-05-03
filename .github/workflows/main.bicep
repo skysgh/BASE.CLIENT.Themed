@@ -27,7 +27,7 @@ param resourceSku string = 'Free'
 
 
 @description('Location of app source code in repo')
-param appLocation string = '/SOURCE/App.Service.Client.Web'
+param appLocation string = ''
 
 @description('The path to the api source code relative to the root of the repository.')
 param apiLocation string = ''
@@ -36,10 +36,10 @@ param apiLocation string = ''
 param appBuildCommand string = 'npm run build'
 
 @description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
-param outputLocation string = 'dist/base'
+param outputLocation string = ''
 
 @description('URL for the repository of the static site.')
-param repositoryUrl string = 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
+param repositoryUrl string 
 
 @description('A user\'s github repository token. This is used to setup the Github Actions workflow file and API secrets. e.g.: use secrets.GITHUB_TOKEN')
 @secure()
