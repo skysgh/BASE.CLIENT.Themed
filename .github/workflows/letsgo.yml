@@ -140,7 +140,7 @@ jobs:
           # Build, Compile, Package:
           npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
 
-      - name: NPM - Build the application
+      - name: NPM - Find the path to index.html
         shell: pwsh
         run: |
           # Find the index.html
