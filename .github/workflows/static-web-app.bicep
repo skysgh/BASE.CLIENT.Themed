@@ -23,8 +23,8 @@ param appLocation string = '/'
 @description('The path to the api source code relative to the root of the repository.')
 param apiLocation string = ''
 
-@description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
-param outputLocation string = './output'
+@description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx\' ')
+param outputLocation string = './dist/xxx'
 
 
 @description('A custom command to run during deployment of the static content application.e.g. \'npm run build\'')
