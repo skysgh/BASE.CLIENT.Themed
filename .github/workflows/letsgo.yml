@@ -130,6 +130,22 @@ jobs:
 #          failOnStdErr: false
 
 
+      - name: NPM - Download the libraries
+        run: |
+          # Download libraries
+          npm install --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/"
+
+      - name: NPM - Build the application
+        run: |
+          # Build, Compile, Package:
+          npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
+
+      - name: NPM - Build the application
+        run: |
+          # Find the index.html
+          Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" -Filter index.html -Recurse -ErrorAction SilentlyContinue -Force
+
+
       - name: Run Flow
         uses: azure/arm-deploy@v1
         with:
@@ -141,15 +157,6 @@ jobs:
           parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryToken=${{secrets.GITHUB_TOKEN}}"
           failOnStdErr: false
 
-      - name: NPM - Download the libraries
-        run: |
-          # Your deployment commands here
-          npm install --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/"
-
-      - name: NPM - Build the application
-        run: |
-          # Your deployment commands here
-          npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
           
 
 #      - name: Compile source code
