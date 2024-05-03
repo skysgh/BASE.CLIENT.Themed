@@ -36,6 +36,7 @@ jobs:
       NODE_VERSION: 20.11.0
       ACTIONS_STEP_DEBUG: 'true'
       ACTIONS_RUNNER_DEBUG: 'true'
+      PROJECT_SUBDIR: 'SOURCE/App.Service.Client.Web/'
 
     steps:
       # Checkout code from *lib* repo
@@ -133,27 +134,19 @@ jobs:
       - name: NPM - Download the libraries
         run: |
           # Download libraries
-          npm install --prefix "SOURCE/App.Service.Client.Web/"
+          npm install --prefix "{{ $env.PROJECT_SUBDIR }}"
 
       - name: NPM - Build the application
         run: |
           # Build, Compile, Package:
-          npm run --prefix "SOURCE/App.Service.Client.Web/" build
-
-#      - name: NPM - Find the path to index.html
-#      shell: pwsh
-#        run: |
-#          # Find the index.html
-#         $x = Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" -Filter index.html -Recurse -ErrorAction SilentlyContinue -Force
-#          echo $x
-
+          npm run --prefix "${{ env.PROJECT_SUBDIR }}" build
 
       - name: View Dist folder
         shell: pwsh
         run: |
-          Get-ChildItem -Path "*.*" -Recurse -Force
+          Get-ChildItem -Path "${{ env.PROJECT_SUBDIR }}.*" -Recurse -Force
           
-
+# /home/runner/work/BASE.Jump.Dev.Client.Themed/BASE.Jump.Dev.Client.Themed/SOURCE/App.Service.Client.Web/dist/
       - name: Run Flow
         uses: azure/arm-deploy@v1
         with:
@@ -162,7 +155,7 @@ jobs:
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           template: ".github/workflows/main.bicep"
-          parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryToken=${{secrets.GITHUB_TOKEN}}"
+          parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryUrl='https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git' repositoryToken=${{secrets.GITHUB_TOKEN}} appLocation=${{env.PROJECT_SUBDIR}} outputLocation='dist/base'" 
           failOnStdErr: false
 
           
