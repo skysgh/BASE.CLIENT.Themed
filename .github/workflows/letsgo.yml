@@ -144,7 +144,7 @@ jobs:
       - name: View Dist folder
         shell: pwsh
         run: |
-          Get-ChildItem -Path "${PROJECT_SUBDIR}/dist/*.*" -Recurse -Force
+          Get-ChildItem -Path "${{PROJECT_SUBDIR}}/dist/*.*" -Recurse -Force
           
 # /home/runner/work/BASE.Jump.Dev.Client.Themed/BASE.Jump.Dev.Client.Themed/SOURCE/App.Service.Client.Web/dist/
       - name: Run Flow
