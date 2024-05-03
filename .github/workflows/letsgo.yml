@@ -144,8 +144,8 @@ jobs:
         shell: pwsh
         run: |
           # Find the index.html
-          Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" -Filter index.html -Recurse -ErrorAction SilentlyContinue -Force
-
+          $x = Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" -Filter index.html -Recurse -ErrorAction SilentlyContinue -Force
+          echo $x
 
       - name: Run Flow
         uses: azure/arm-deploy@v1
