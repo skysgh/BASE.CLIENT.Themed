@@ -151,8 +151,8 @@ jobs:
       - name: View Dist folder
         shell: pwsh
         run: |
-          echo "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/*.*" 
-          Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/*.*" -Recurse -Force
+          echo "${GITHUB_WORKSPACE}/*.*" 
+          Get-ChildItem -Path "${GITHUB_WORKSPACE}/dist/*.*" -Recurse -Force
           
 
       - name: Run Flow
