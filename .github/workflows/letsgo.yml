@@ -134,7 +134,7 @@ jobs:
       - name: NPM - Download the libraries
         run: |
           # Download libraries
-          npm install --prefix {$PROJECT_SUBDIR}
+          npm install --prefix ${PROJECT_SUBDIR}
 
       - name: NPM - Build the application
         run: |
