@@ -140,12 +140,19 @@ jobs:
           # Build, Compile, Package:
           npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
 
-      - name: NPM - Find the path to index.html
+#      - name: NPM - Find the path to index.html
+#      shell: pwsh
+#        run: |
+#          # Find the index.html
+#         $x = Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" -Filter index.html -Recurse -ErrorAction SilentlyContinue -Force
+#          echo $x
+
+
+      - name: View Dist folder
         shell: pwsh
         run: |
-          # Find the index.html
-          $x = Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" -Filter index.html -Recurse -ErrorAction SilentlyContinue -Force
-          echo $x
+          Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/dist/*.*" -Recurse -Force
+          
 
       - name: Run Flow
         uses: azure/arm-deploy@v1
