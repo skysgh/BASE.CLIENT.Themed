@@ -152,10 +152,10 @@ jobs:
           npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
           
 
-      - name: Compile source code
-        shell: pwsh
-        run: |
-          Get-ChildItem -Path .\*.* -Recurse -Force
+#      - name: Compile source code
+#        shell: pwsh
+#        run: |
+#          Get-ChildItem -Path .\*.* -Recurse -Force
           
 
       - name: Take offline
