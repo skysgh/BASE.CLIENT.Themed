@@ -151,7 +151,7 @@ jobs:
       - name: View Dist folder
         shell: pwsh
         run: |
-          Get-ChildItem -Path "dist/*.*" -Recurse -Force
+          Get-ChildItem -Path "*.*" -Recurse -Force
           
 
       - name: Run Flow
