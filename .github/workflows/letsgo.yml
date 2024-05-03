@@ -149,7 +149,7 @@ jobs:
       - name: NPM - Build the application
         run: |
           # Your deployment commands here
-          npm build --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" 
+          npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
           
 
 #      - name: Compile source code
