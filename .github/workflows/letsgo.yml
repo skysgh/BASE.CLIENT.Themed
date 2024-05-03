@@ -141,15 +141,15 @@ jobs:
           parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryToken=${{secrets.GITHUB_TOKEN}}"
           failOnStdErr: false
 
-      - name: Ensure Static WebSite Resource
+      - name: NPM - Download the libraries
         run: |
           # Your deployment commands here
           npm install --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/"
 
-      - name: Ensure Static WebSite Resource
+      - name: NPM - Build the application
         run: |
           # Your deployment commands here
-          npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
+          npm build --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" 
           
 
 #      - name: Compile source code
