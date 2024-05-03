@@ -141,6 +141,7 @@ jobs:
           npm run --prefix "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" build
 
       - name: NPM - Build the application
+        shell: pwsh
         run: |
           # Find the index.html
           Get-ChildItem -Path "${GITHUB_WORKSPACE}/SOURCE/App.Service.Client.Web/" -Filter index.html -Recurse -ErrorAction SilentlyContinue -Force
