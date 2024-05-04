@@ -8,7 +8,7 @@ targetScope='subscription'
 param projectName string
 
 @description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
-@allowed([ 'BT','DT','ST','UT','IT','PR'])
+@allowed([ 'NP',   'BT','DT','ST','UT','IT','PR'])
 param environmentId string
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
