@@ -63,7 +63,6 @@ jobs:
           echo "======================"
           echo "Syntax a.............: '${PROJECT_SUBDIR}'"
           echo "Syntax b.............: '${{env.PROJECT_SUBDIR}}'"
-          echo "Syntax c.............: '${{PROJECT_SUBDIR}}'"
           echo "Initiator"
           echo "======================"
           echo "Actor................: '${GITHUB_ACTOR}'"
