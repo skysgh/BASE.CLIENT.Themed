@@ -167,12 +167,14 @@ jobs:
           template: ".github/workflows/main.bicep"
           # parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryUrl=https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git repositoryToken=${{secrets.GITHUB_TOKEN}} appBuildCommand='npm install && npm run build' appLocation=${{env.PROJECT_SUBDIR}} outputLocation=${{env.PROJECT_SUBDIR}}/dist/base   "
             # ".github/workflows/main.bicepparam" 
+
+            # # "${{ secrets.GITHUB_TOKEN }}"
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
             environmentId="BT"
             resourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
             repositoryUrl="https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git"
-            repositoryToken="${{ secrets.GITHUB_TOKEN }}"
+            repositoryToken= ${{secrets.GH_REPO_TOKEN}}
             appBuildCommand="npm install && npm run build"
             appLocation="${{ env.PROJECT_SUBDIR }}"
             outputLocation="${{ env.PROJECT_SUBDIR }}/dist/base"
