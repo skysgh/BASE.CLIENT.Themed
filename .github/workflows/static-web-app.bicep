@@ -92,7 +92,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     // Source Code Repository:
      // provider: 'GitHub'
      repositoryUrl: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
-     repositoryToken: repositoryToken
+     // repositoryToken: repositoryToken
      branch: repositoryBranch
 
     // Build Properties
