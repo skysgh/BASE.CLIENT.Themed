@@ -88,12 +88,11 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   //  userAssignedIdentities: {}
   //}
   properties: {
-
     // allowConfigFileUpdates: bool
     // Source Code Repository:
      // provider: 'GitHub'
      repositoryUrl: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
-     repositoryToken: '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' // repositoryToken
+     repositoryToken: repositoryToken 
      branch: repositoryBranch
 
     // Build Properties
