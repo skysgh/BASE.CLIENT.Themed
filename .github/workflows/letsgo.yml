@@ -1,4 +1,4 @@
-gname: Deploy to Environment
+name: Deploy to Environment
 
 # Triggers, on specific branches
 on:
