@@ -19,6 +19,7 @@ jobs:
       PROJECT_NAME: 'BASIC'
       PROJECT_CODE_NAME: 'base'
       # REPO #1 (SRC) INFO
+      REPO_SITE: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
       REPO_NAME_SRC: ${{ github.repository }}
       # REPO #2 (LIB) INFO (FOR REUSEABLE PIPELINE RESOURCES)
       REPO_NAME_LIB: 'skysgh/resources.deployments.lib'
@@ -202,7 +203,7 @@ jobs:
             projectName="${{ env.PROJECT_NAME }}"
             environmentId="BT"
             resourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
-            repositoryUrl="https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git"
+            repositoryUrl="${{ env.REPO_SITE }}"
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             appBuildCommand="npm install && npm run build"
             appLocation="${{ env.PROJECT_SUBDIR }}"
