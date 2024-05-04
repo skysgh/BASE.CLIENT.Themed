@@ -91,7 +91,8 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
 
     // allowConfigFileUpdates: bool
     // Source Code Repository:
-     repositoryUrl: repositoryUrl
+     provider: 'GitHub'
+     repositoryUrl: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
      repositoryToken: repositoryToken
      branch: repositoryBranch
 
@@ -112,7 +113,6 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
       // skipGithubActionWorkflowGeneration: bool
     }
     // enterpriseGradeCdnStatus: 'string'
-    // provider: 'string'
 
     // stagingEnvironmentPolicy: 'string'
     // templateProperties: {
