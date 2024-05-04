@@ -159,7 +159,8 @@ jobs:
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           template: ".github/workflows/main.bicep"
-          parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryUrl=https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git repositoryToken=${{secrets.GITHUB_TOKEN}} appBuildCommand='npm install && npm run build' appLocation=${{env.PROJECT_SUBDIR}} outputLocation=${{env.PROJECT_SUBDIR}}/dist/base   " 
+          # parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryUrl=https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git repositoryToken=${{secrets.GITHUB_TOKEN}} appBuildCommand='npm install && npm run build' appLocation=${{env.PROJECT_SUBDIR}} outputLocation=${{env.PROJECT_SUBDIR}}/dist/base   "
+          parameters: "./main.parameters.bicep"
           failOnStdErr: false
 
           
