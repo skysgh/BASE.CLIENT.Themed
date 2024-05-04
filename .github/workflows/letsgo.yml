@@ -169,12 +169,13 @@ jobs:
             # ".github/workflows/main.bicepparam" 
 
             # # "${{ secrets.GITHUB_TOKEN }}"
+            # ${{secrets.GH_REPO_TOKEN}}
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
             environmentId="BT"
             resourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
             repositoryUrl="https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git"
-            repositoryToken="${{secrets.GH_REPO_TOKEN}}"
+            repositoryToken="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"
             appBuildCommand="npm install && npm run build"
             appLocation="${{ env.PROJECT_SUBDIR }}"
             outputLocation="${{ env.PROJECT_SUBDIR }}/dist/base"
