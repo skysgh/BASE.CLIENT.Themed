@@ -137,7 +137,7 @@ jobs:
       - name: View contents of compiled Dist folder
         shell: pwsh
         run: |
-          Get-ChildItem -Path '${PROJECT_SUBDIR}/dist/*.*' -Recurse -Force
+          Get-ChildItem -Path "${{env.PROJECT_SUBDIR}}/dist/*.*" -Recurse -Force
 
 
       # Login to Azure, in order to manipulate remote resources
