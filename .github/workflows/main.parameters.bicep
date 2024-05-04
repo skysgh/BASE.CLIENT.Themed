@@ -1,13 +1,10 @@
 using './main.bicep'
 
-param exampleString = 'test string'
-param exampleInt = 2 + 2
-param exampleBool = true
-param exampleArray = [
-  'value 1'
-  'value 2'
-]
-param exampleObject = {
-  property1: 'value 1'
-  property2: 'value 2'
-}
+projectName=BASALT 
+environmentId=BT 
+resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} 
+repositoryUrl=https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git 
+repositoryToken=${{secrets.GITHUB_TOKEN}} 
+appBuildCommand='npm install && npm run build' 
+appLocation=${{env.PROJECT_SUBDIR}} 
+outputLocation=${{env.PROJECT_SUBDIR}}/dist/base
