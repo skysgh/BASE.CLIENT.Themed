@@ -16,7 +16,7 @@ jobs:
     environment: NP
     env:
       # PROJECT NAME which is basis of resource names.
-      PROJECT_NAME: 'BASALT'
+      PROJECT_NAME: 'BASIC'
       # REPO #1 (SRC) INFO
       REPO_NAME_SRC: ${{ github.repository }}
       # REPO #2 (LIB) INFO (FOR REUSEABLE PIPELINE RESOURCES)
