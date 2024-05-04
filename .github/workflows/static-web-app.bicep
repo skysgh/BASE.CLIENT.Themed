@@ -92,7 +92,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     // allowConfigFileUpdates: bool
     // Source Code Repository:
      repositoryUrl: repositoryUrl
-     //repositoryToken: repositoryToken
+     repositoryToken: repositoryToken
      branch: repositoryBranch
 
     // Build Properties
