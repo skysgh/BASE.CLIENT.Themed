@@ -168,14 +168,14 @@ jobs:
           # parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryUrl=https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git repositoryToken=${{secrets.GITHUB_TOKEN}} appBuildCommand='npm install && npm run build' appLocation=${{env.PROJECT_SUBDIR}} outputLocation=${{env.PROJECT_SUBDIR}}/dist/base   "
             # ".github/workflows/main.bicepparam" 
           parameters: |
-            projectName='${{ env.PROJECT_NAME }}'
-            environmentId='BT'
-            resourceLocation='${{ vars.AZURE_LOCATION_1_ID }}'
-            repositoryUrl=https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git
-            repositoryToken='${{ secrets.GITHUB_TOKEN }}'
+            projectName="${{ env.PROJECT_NAME }}"
+            environmentId="BT"
+            resourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
+            repositoryUrl="https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git"
+            repositoryToken="${{ secrets.GITHUB_TOKEN }}"
             appBuildCommand="npm install && npm run build"
-            appLocation='${{ env.PROJECT_SUBDIR }}'
-            outputLocation='${{ env.PROJECT_SUBDIR }}/dist/base'
+            appLocation="${{ env.PROJECT_SUBDIR }}"
+            outputLocation="${{ env.PROJECT_SUBDIR }}/dist/base"
           failOnStdErr: false
 
           
