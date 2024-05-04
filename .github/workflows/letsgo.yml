@@ -112,13 +112,6 @@ jobs:
           repository: ${{env.REPO_NAME_LIB}}
           path: './DeploymentLib'
 
-          
-      # Login to Azure:
-      - name: Azure Login using Action
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
- 
 #      - name: Ensure Resource Group(s)
 #        uses: azure/arm-deploy@v1
 #        with:
@@ -131,20 +124,27 @@ jobs:
 #          failOnStdErr: false
 
 
-      - name: NPM - Download the libraries
+      - name: NPM - Download library of actions/yaml/etc. that can be used to build artefacts
         run: |
           # Download libraries
           npm install --prefix ${PROJECT_SUBDIR}
 
-      - name: NPM - Build the application
+      - name: NPM - Build the application (Note that we are still on runner, not target swa...)
         run: |
           # Build, Compile, Package:
           npm run --prefix ${PROJECT_SUBDIR} build
 
- #     - name: View Dist folder
- #       shell: pwsh
- #       run: |
-  #        Get-ChildItem -Path "${PROJECT_SUBDIR}/dist/*.*" -Recurse -Force
+      - name: View contents of compiled Dist folder
+        shell: pwsh
+        run: |
+          Get-ChildItem -Path "${PROJECT_SUBDIR}/dist/*.*" -Recurse -Force
+
+
+      # Login to Azure, in order to manipulate remote resources
+      - name: Azure Login using Action
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
           
 # /home/runner/work/BASE.Jump.Dev.Client.Themed/BASE.Jump.Dev.Client.Themed/SOURCE/App.Service.Client.Web/dist/
       - name: Run Flow
@@ -159,17 +159,10 @@ jobs:
           failOnStdErr: false
 
           
-
-#      - name: Compile source code
-#        shell: pwsh
-#        run: |
-#          Get-ChildItem -Path .\*.* -Recurse -Force
-          
-
       - name: Take offline
         run: |
 
-      - name: Deploy source code
+      - name: Move Compiled code to remote SWA directory? How?
         run: |
 
       - name: Wake
