@@ -157,7 +157,7 @@ jobs:
           creds: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
           
 # /home/runner/work/BASE.Jump.Dev.Client.Themed/BASE.Jump.Dev.Client.Themed/SOURCE/App.Service.Client.Web/dist/
-      - name: Run Flow
+      - name: Run main bicep file (creating RG & SWA)
         uses: azure/arm-deploy@v1
         with:
           scope: subscription
