@@ -204,13 +204,13 @@ jobs:
 
             # # "${{ secrets.GITHUB_TOKEN }}"
             # ${{secrets.GH_REPO_TOKEN}}
+            # appBuildCommand="npm install && npm run build"
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
             environmentId="BT"
             resourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
             repositoryUrl="${{ env.REPO_SITE }}"
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
-            appBuildCommand="npm install && npm run build"
             appLocation="${{ env.PROJECT_SUBDIR }}"
             outputLocation="${{ env.PROJECT_SUBDIR }}/dist/${{env.PROJECT_CODE_NAME}}"
           failOnStdErr: false
