@@ -211,6 +211,6 @@ jobs:
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             appLocation="${{ env.PROJECT_SUBDIR }}"
             appBuildCommand="npm install && npm run build"
-            outputLocation="${{ env.PROJECT_SUBDIR }}/dist/${{env.PROJECT_CODE_NAME}}"
+            outputLocation="dist/${{env.PROJECT_CODE_NAME}}"
           failOnStdErr: false
           
