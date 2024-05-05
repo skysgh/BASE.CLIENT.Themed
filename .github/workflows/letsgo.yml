@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: NP
     env:
+      # IMPORTANT:
+      # PAT expires Expires on Tue, Dec 31 2024.
+
       # PROJECT NAME which is basis of resource names.
       PROJECT_NAME: 'BASIC'
       PROJECT_CODE_NAME: 'base'
