@@ -92,7 +92,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     // Source Code Repository:
      // provider: 'GitHub'
      repositoryUrl: repositoryUrl
-     repositoryToken: repositoryToken
+     repositoryToken: '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' //repositoryToken
      branch: repositoryBranch
 
     // Build Properties
