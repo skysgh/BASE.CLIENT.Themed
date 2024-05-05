@@ -166,10 +166,10 @@ jobs:
 #          failOnStdErr: false
 
 
-#      - name: NPM - Download library of actions/yaml/etc. that can be used to build artefacts
-#        run: |
-#          # Download libraries
-#          npm install --prefix ${PROJECT_SUBDIR}
+      - name: NPM - Download library of actions/yaml/etc. that can be used to build artefacts
+        run: |
+          # Download libraries
+          npm install --prefix ${PROJECT_SUBDIR}
 
       - name: NPM - Build the application (Note that we are still on runner, not target swa...)
         run: |
