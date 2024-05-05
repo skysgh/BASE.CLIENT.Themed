@@ -19,7 +19,7 @@ jobs:
       # PAT expires Expires on Tue, Dec 31 2024.
 
       # PROJECT NAME which is basis of resource names.
-      PROJECT_NAME: 'BASIC'
+      PROJECT_NAME: 'BASE'
       PROJECT_CODE_NAME: 'base'
       # REPO #1 (SRC) INFO
       REPO_SITE: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
