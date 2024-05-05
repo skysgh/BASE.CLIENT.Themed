@@ -94,13 +94,16 @@ module swaModule 'static-web-app.bicep' = {
     repositoryBranch: repositoryBranch
     repositoryToken: repositoryToken
 
-    // Source Code:
+    // Source Code (Front end):
     appLocation: appLocation
     appBuildCommand: appBuildCommand
+
+    // Transpiled result for Runtime:
+    outputLocation: outputLocation
+
+    // Source Code (back end):
     apiLocation: apiLocation
 
-    // Runtime:
-    outputLocation: outputLocation
   }
 }
 
