@@ -205,6 +205,8 @@ jobs:
             # # "${{ secrets.GITHUB_TOKEN }}"
             # ${{secrets.GH_REPO_TOKEN}}
             # appBuildCommand="npm install && npm run build"
+            #             outputLocation="${{ env.PROJECT_SUBDIR }}/dist/${{env.PROJECT_CODE_NAME}}"
+
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
             environmentId="BT"
@@ -212,6 +214,6 @@ jobs:
             repositoryUrl="${{ env.REPO_SITE }}"
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             appLocation="${{ env.PROJECT_SUBDIR }}"
-            outputLocation="${{ env.PROJECT_SUBDIR }}/dist/${{env.PROJECT_CODE_NAME}}"
+            outputLocation="${{ env.PROJECT_SUBDIR }}"
           failOnStdErr: false
           
