@@ -62,6 +62,7 @@ resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     name: '${projectName}_${environmentId}'
     location: resourceLocation
 }
+//output swaUrl string = rg1.outputs.resourceUrl
 
 // module rgModule 'resource-group.bicep' = {
 //  name: '${deployment().name}_rg'
@@ -106,6 +107,9 @@ module swaModule 'static-web-app.bicep' = {
 
   }
 }
+// Get the Url of the created SWA:
+// the invoking yaml file can get its hand on this using:
+output swaUrl string = swaModule.outputs.resourceUrl
 
 // Create a fake use for the dummary var:
 output repositorySummary string = dummyRepoSynopsis 
