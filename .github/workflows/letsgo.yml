@@ -113,10 +113,10 @@ jobs:
           echo "Entra.AppClient Creds: '${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS }}'"
           echo " "
 
-      # Checkout this repo:
-      # onto runner (not target SWA...)
-      - name: Checkout Repo
-        uses: actions/checkout@v4
+#      # Checkout this repo:
+#      # onto runner (not target SWA...)
+#      - name: Checkout Repo
+#        uses: actions/checkout@v4
       
       # Checkout code from *lib* repo
       # to a directory parallel to this repo's code
@@ -171,10 +171,10 @@ jobs:
           # Download libraries
           npm install --prefix ${PROJECT_SUBDIR}
 
-      - name: NPM - Build the application (Note that we are still on runner, not target swa...)
-        run: |
-          # Build, Compile, Package:
-          npm run --prefix ${PROJECT_SUBDIR} build
+ #     - name: NPM - Build the application (Note that we are still on runner, not target swa...)
+ #       run: |
+ #         # Build, Compile, Package:
+ #         npm run --prefix ${PROJECT_SUBDIR} build
 
       #   Not as important as I thought at first as this is iterating 
       #   over Runner (and not target SWA...)
