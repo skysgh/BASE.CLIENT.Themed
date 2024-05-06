@@ -115,14 +115,14 @@ jobs:
           repository: ${{env.REPO_NAME_LIB}}
           path: './DeploymentLib'
 
-    #   # Checkout code from *this* repo
-    #   # onto runner (not target SWA...)
-    #   # without giving directory, so default:
-    #   - name: Checkout this Project's Repo
-    #     uses: actions/checkout@v2
-    #     # Optional to specify repo:
-    #     # with:
-    #     #  repository: ${{env.REPO_NAME_SRC}}
+      # Checkout code from *this* repo
+      # onto runner (not target SWA...)
+      # without giving directory, so default:
+      - name: Checkout this Project's Repo
+        uses: actions/checkout@v2
+       # Optional to specify repo:
+       # with:
+       #  repository: ${{env.REPO_NAME_SRC}}
       
 #      - name: NPM - Download Node packages
 #        run: |
