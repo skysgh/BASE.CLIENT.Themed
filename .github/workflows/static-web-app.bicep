@@ -133,5 +133,10 @@ output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
 
+// Url to website where it is deployed:
+// can be accessed from a parent module invoking this module using:
+//output swaUrl string = swaModule.outputs.resourceUrl
+output resourceUrl string = resource.properties.defaultHostname
+
 // crewate a fake use for the dummy var
 output repositorySummary string = dummyRepoSynopsis 
