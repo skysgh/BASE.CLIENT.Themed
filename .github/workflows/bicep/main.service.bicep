@@ -1,7 +1,15 @@
 @description('The name of the project. This informs automation of naming of resource groups, services, etc.')
-param projectName string;
-@allowed ('NP','BT', 'DT','ST','UT','IT','PP',PR')
+param projectName string
+
+@description('The name of this project's service. This informs automation of naming of resource groups, services, etc.')
+param projectServiceName string
+
+@description('The name of the project environment. This informs automation of naming of resource groups, services, etc.')
+@allowed ('NP','BT', 'DT','ST','UT','IT','PP','TR','PR')
 param environmentId string;
+
+//@description('The default tags to merge in.')
+//param resourceTags array = []
 
 @description('The default location for resources. ')
 param resourceLocation string;
