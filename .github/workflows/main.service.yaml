@@ -26,6 +26,57 @@ jobs:
       # ==================================================
       - name: "Summarise Context Before Starting"
         run: |
+          echo "::group::Misc"
           echo "{{$env.BAR}}"
+          echo "::endgroup::"
 
+      # ==================================================
+      # Checkout code from *lib* repo
+      # to a directory parallel to this repo's code
+      - name: Checkout Library Repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{env.LIB_REPO_SRC_URL}}
+          path: './DeploymentLib'
+
+      # ==================================================
+      # Checkout code from *this* repo
+      # onto runner (not target SWA...)
+      # without giving directory, so default:
+      - name: Checkout this Project's Repo
+        uses: actions/checkout@v4
+       # Optional to specify repo:
+       # with:
+       #  repository: ${{env.THIS_REPO}}
+
+      # ==================================================
+      # Login to Azure, in order to manipulate remote resources
+      - name: Azure Login, using Action, to enable building resources
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
+          
+      # ==================================================
+      - name: Run main bicep file (creating RG & SWA)
+        uses: azure/arm-deploy@v1
+        with:
+          scope: subscription
+          region: ${{ vars.AZURE_LOCATION_1_ID }}
+          subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
+          #resourceGroupName: ${{ env.RG_NAME }}
+          
+          template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
+            # "${{env.WORKFLOW_BICEP_DIRECTORY}}/${{env.MAIN_BICEP_PARAM_FILENAME}}" 
+          parameters: >
+            projectName="${{ env.PROJECT_NAME }}"
+            projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
+            environmentId="${{ env.PROJECT_ENV_ID}}"
+            groupResourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
+            swaResourceLocation="${{ env.SWA_LOCATION }}" 
+            repositoryUrl="${{ env.SWA_REPO_LANDING_PAGE_URL }}"
+            repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
+            appLocation="${{ env.SWA_ANGULAR_PROJECT_SUBDIR }}"
+            appBuildCommand="${{ env.SWA_ANGULAR_PROJECT_BUILD_COMMAND }}"  
+            outputLocation="dist/${{env.SWA_ANGULAR_PROJECT_NAME}}"
+          failOnStdErr: false
           
