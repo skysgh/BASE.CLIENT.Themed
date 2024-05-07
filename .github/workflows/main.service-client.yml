@@ -29,59 +29,61 @@ jobs:
       # INPUTS:
       # ======================================================================
       # IMPORTANT:
-      # PAT expires Expires on Tue, Dec 31 2024.
 
       # PROJECT NAME which is basis of Azure resource names.
-      PROJECT_NAME: 'BASO'
+      PROJECT_NAME: 'BASE'
       PROJECT_SERVICE: 'CLIENT'
       # ENVIRONMANT INFO: it's either BT, DT, ST, UT, IT, TR, PP, PR
       PROJECT_ENV_ID: 'BT' # ${{vars.PROJECT_ENV_ID}}
       # Angular Code Name (affects where code ends up in dist/xxx)
-      SWA_ANGULAR_PROJECT_NAME: 'base'
-      SWA_ANGULAR_PROJECT_SUBDIR: 'SOURCE/App.Service.Client.Web/'
-      # REPO #1 (SRC) INFO
-      # Important: this is the GitHub SITE url, not the actual Repo
-      # (which still blows me away...the why, is still unclear)
-      SWA_REPO_PAGE_URL: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
+      # ======================================================================
+      # CONFIGURED:REPO:SRC INFO (FOR SWA ANGULAR CODE)
+      SWA_REPO_LANDING_PAGE_URL: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
       SWA_REPO_SRC_URL: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
       SWA_REPO_SRC_BRANCH: 'main'
-      # REPO #2 (LIB) INFO (FOR REUSEABLE PIPELINE RESOURCES)
+      # ======================================================================
+      # CONFIGURED:PROJECT INFO (FOR SWA ANGULAR CODE)
+      SWA_ANGULAR_PROJECT_SUBDIR: 'SOURCE/App.Service.Client.Web/'
+      SWA_ANGULAR_PROJECT_NAME: 'base'
+      SWA_ANGULAR_PROJECT_BUILD_COMMAND: 'npm install && npm run build'
+      # ======================================================================
+      # CONFIGURED:REPO:SRC INFO (FOR SWA ANGULAR CODE)
+      # ======================================================================
+      # CONFIGURED:REPO:LIB INFO (FOR REUSEABLE PIPELINE RESOURCES)
       LIB_REPO_SRC_URL: 'skysgh/resources.deployments.lib'
       # ======================================================================
-      # IMPORTED:
-      # ======================================================================
-      # This Repo, whatever it is:
-      # ======================================================================
-      # IMPORTED:
-      # ======================================================================
-      # AZURE CREDENTIALS INFO:
+      # IMPORTED:GITHUB:AZURE:SUBSCRIPTION INFO
       AZURE_SUBSCRIPTION_ID: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
-      ENTRA_APP_CLIENT_ID: ${{ secrets.NP_ENTRA_APP_CLIENT_ID }}
-      ENTRA_APP_CLIENT_SECRET: ${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}
-      AZURE_ENTRA_APP_CLIENT_CRED: ${{ secrets.NP_ENTRA_APP_CLIENT_CREDS }}
+      # ======================================================================
+      # IMPORTED:GITHUB:AZURE:RESOURCE INFO
       # make it available to params file:
       # see: https://gist.github.com/ausfestivus/04e55c7d80229069bf3bc75870630ec8
       AZURE_LOCATION_1_ID: ${{ vars.AZURE_LOCATION_1_ID }} 
       AZURE_LOCATION_2_ID: ${{ vars.AZURE_LOCATION_2_ID }} #eastasia
       AZURE_LOCATION_3_ID: ${{ vars.AZURE_LOCATION_3_ID }}
       # ======================================================================
-      # SWA SETTINGS:
+      # IMPORTED:GITHUB:ENTRA INFO
+      ENTRA_APP_CLIENT_ID: ${{ secrets.NP_ENTRA_APP_CLIENT_ID }}
+      ENTRA_APP_CLIENT_SECRET: ${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}
+      AZURE_ENTRA_APP_CLIENT_CRED: ${{ secrets.NP_ENTRA_APP_CLIENT_CREDS }}
       # ======================================================================
-      # SWA 
-      SWA_ANGULAR_BUILD_COMMAND: 'npm install && npm run build'
+      # SWA SETTINGS:
       SWA_LOCATION: "eastasia"
       # ======================================================================
-      # CONTEXT:
+      # IMPORTED:CONTEXT:REPO
+      THIS_REPO: ${{ github.repository }}
+      THIS_REPO_BRANCH: ${{ github.ref }}
       # ======================================================================
-      # BRANCH INFO
-      BRANCH: ${{ github.ref }}
+      # IMPORTED:GITHUB:TOKENS
+      # PAT expires Expires on Tue, Dec 31 2024.
+      # ======================================================================
       
       # library artefacts should be in the imported repo,
       # but we are not yet that organised, so it's relative 
       # to this lib
       REPO_LIB_DIR2: ${THIS_DIRECTORY} # REPO_LIB_DIR1
       LIB_BICEP_DIRECTORY: ${REPO_LIB_DIR2}/lib/azure/bicep
-      BRANCH_ID: '000'
+      WORKITEM_ID: '000'
       # DEFINE REPO CONSTANTS
       NODE_VERSION: 20.11.0
       ACTIONS_STEP_DEBUG: 'true'
@@ -90,7 +92,7 @@ jobs:
       # ==================================================
       # print out Inor about source:
       - name: Show Environment Info
-        run: echo ${{env.REPO_NAME_SRC}}
+        run: echo ${{env.THIS_REPO}}
       # ==================================================
       - name: "Summarise Context Before Starting"
         run: |
@@ -122,13 +124,12 @@ jobs:
           echo " "
           
           echo "::group::SWA Repo (Actual)"
-            REPO_NAME_SRC: ${{ github.repository }}
-          echo "Repo.Site............: '${{env.REPO_NAME_SRC}}'"
-          echo "Repo.Site............: '${{env.SWA_REPO_PAGE_URL}}'"
+          echo "Repo.Src.............: '${{env.THIS_REPO}}'"
+          echo "Repo.Site............: '${{env.SWA_REPO_LANDING_PAGE_URL}}'"
           echo "Repo.Scr.............: '${{env.GITHUB_REPOSITORY}}'"
-          echo "Branch.Name..........: '${{env.BRANCH}}'"
+          echo "Branch.Name..........: '${{env.THIS_REPO_BRANCH}}'"
           echo "Branch.Ref...........: '${{github.GITHUB_REF}}'"
-          echo "Branch.Number........: '${{env.BRANCH_ID}}'"
+          echo "Branch.Number........: '${{env.WORKITEM_ID}}'"
           echo "::endgroup::"   
           echo " "
           
@@ -165,7 +166,7 @@ jobs:
           echo "SWA Location.........: '${{env.SWA_LOCATION}}'"
           echo "SWA Project Name.....: '${{env.SWA_ANGULAR_PROJECT_NAME}}'"
           echo "SWA Project SubDir...: '${{env.SWA_ANGULAR_PROJECT_SUBDIR}}' ('${SWA_ANGULAR_PROJECT_SUBDIR}')"
-          echo "SWA Angular Built Cmd: '${{env.SWA_ANGULAR_BUILD_COMMAND}}'"
+          echo "SWA Angular Built Cmd: '${{env.SWA_ANGULAR_PROJECT_BUILD_COMMAND}}'"
           echo "::endgroup::"          
           echo " "
 
@@ -187,7 +188,7 @@ jobs:
         uses: actions/checkout@v2
        # Optional to specify repo:
        # with:
-       #  repository: ${{env.REPO_NAME_SRC}}
+       #  repository: ${{env.THIS_REPO}}
       
       # ==================================================
 #      - name: NPM - Download Node packages
@@ -261,10 +262,10 @@ jobs:
             environmentId="${{ env.PROJECT_ENV_ID}}"
             groupResourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
             swaResourceLocation="${env.SWA_LOCATION }}" 
-            repositoryUrl="${{ env.SWA_REPO_PAGE_URL }}"
+            repositoryUrl="${{ env.SWA_REPO_LANDING_PAGE_URL }}"
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             appLocation="${{ env.SWA_ANGULAR_PROJECT_SUBDIR }}"
-            appBuildCommand="${{ env.SWA_ANGULAR_BUILD_COMMAND }}"  
+            appBuildCommand="${{ env.SWA_ANGULAR_PROJECT_BUILD_COMMAND }}"  
             outputLocation="dist/${{env.SWA_ANGULAR_PROJECT_NAME}}"
           failOnStdErr: false
       # ==================================================
@@ -298,7 +299,7 @@ jobs:
           action: 'upload'
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: '${{env.SWA_ANGULAR_PROJECT_SUBDIR }}' # App source code path
-          api_build_command: '${{env.SWA_ANGULAR_BUILD_COMMAND}}'
+          api_build_command: '${{env.SWA_ANGULAR_PROJECT_BUILD_COMMAND}}'
           output_location: 'dist/${{env.SWA_ANGULAR_PROJECT_NAME}}' 
           # api_location: '' # Api source code path - optional
 
