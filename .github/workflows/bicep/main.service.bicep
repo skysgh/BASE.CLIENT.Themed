@@ -23,8 +23,16 @@ param resourceLocation3 string = resourceLocation2;
 param webAppName string = uniqueString(resourceGroup().id) // Generate unique String for web app name
 
 
-@description('The SKU of the app service plan. ')
-param webAppServicePlanSKU string = 'F1' // The SKU of App Service Plan
+@description('The SKU of the App Service plan. ')
+// Careful. Expensive.  
+// F[1]=1CPU, 1Gb,32bit!!! 60 minutes per day!!! No Custom Domain
+// D[1]=1CPU, 0.5Gb,32bit!!! Custom Domain.
+// B[1,2,3] [1,2,4]CPU, 10GB, 64 bit, Custom Domains, SSL (SNI SSL only), [$55/m,$111/m,$223/m]
+// S[1,2,3]=[1,2,4] CPU,1.75Gb, 50GB, [$73/m,$146/m, $297/m]
+// P[1,2,3]=[1,2,4] CPU,1.75Gb, 250GB, [$223/m,$446/m,$892/m]
+@allowed ('F1','D1','B1','B2', 'S1','S2') // Do not allow as that makes no sense: 'B3','S3','P1','P2','P3'
+param webAppServicePlanSKU string = 'F1'
+
 
 param linuxFxVersion string = 'node|14-lts' // The runtime stack of web app
 
