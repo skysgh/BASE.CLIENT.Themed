@@ -11,7 +11,7 @@ on:
 env:
   # Where to find reusable bicep, etc. files
   THIS_DIRECTORY: '.github/workflows'
-  REPO_LIB_DIR2: '.github/workflows' # REPO_LIB_DIR1
+  LIB_BICEP_DIRECTORY: '.github/workflows//lib/azure/bicep' # REPO_LIB_DIR1
  
 # Running on one runner:      
 jobs:
@@ -83,7 +83,7 @@ jobs:
       # library artefacts should be in the imported repo,
       # but we are not yet that organised, so it's relative 
       # to this lib
-      LIB_BICEP_DIRECTORY: $REPO_LIB_DIR2/lib/azure/bicep
+
       WORKITEM_ID: '000'
       # DEFINE REPO CONSTANTS
       NODE_VERSION: 20.11.0
@@ -99,8 +99,7 @@ jobs:
         run: |
           echo "::group::MISC"
           echo "a................: '${{env.THIS_DIRECTORY}}'"
-          echo "b................: '${{env.REPO_LIB_DIR2}}'"
-          echo "c................: '${{env.LIB_BICEP_DIRECTORY}}'"
+          echo "b................: '${{env.LIB_BICEP_DIRECTORY}}'"
           echo "::endgroup::"          
           echo " "
           
@@ -253,6 +252,7 @@ jobs:
           region: ${{ vars.AZURE_LOCATION_1_ID }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
+          
           template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
             # "${{env.THIS_DIRECTORY}}/${{env.MAIN_BICEP_PARAM_FILENAME}}" 
           parameters: >
