@@ -1,3 +1,10 @@
+// ------------------------------------------------------------
+// Deploys 
+// - a Resource Group,
+// - a static web app, within it
+// Does not:
+// - move source code into it.
+// ------------------------------------------------------------
 
 targetScope='subscription'
 
@@ -13,15 +20,11 @@ param environmentId string
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
-param resourceLocation string = 'australiacentral'
-
-// @description('The lowercase identifier of where to build the resource Group if resourceLocation is not available. Default is \'southeastasia\'.')
-// @allowed([ 'southeastasia'])
-// param resourceLocation2 string = 'southeastasia'
+param resourceGroupLocation string = 'australiacentral'
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'eastasia'])
-param resourceLocation3 string = 'eastasia'
+param swaResourceLocation string = 'eastasia'
 
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
@@ -87,7 +90,7 @@ module swaModule 'static-web-app.bicep' = {
   params: {
     // SWA:
     resourceName: projectName
-    resourceLocation: resourceLocation3
+    resourceLocation: swaResourceLocation
     resourceSku: resourceSku
 
     // Source Code Repository:
