@@ -264,16 +264,15 @@ jobs:
             APIKEY=$(az staticwebapp secrets list --name '${{ env.PROJECT_NAME }}' | jq -r '.properties.apiKey')
             DEFAULTHOSTNAME=$(az staticwebapp show -n '${{ env.PROJECT_NAME }}' | jq -r '.defaultHostname')
             PREVIEW_URL="https://${DEFAULTHOSTNAME/.[1-9]./-${{github.event.pull_request.number }}.${{ env.LOCATION }}.1.}"
-            run: |
-              echo "APIKEY=$APIKEY" >> $GITHUB_OUTPUT
-              echo "DEFAULTHOSTNAME=$DEFAULTHOSTNAME" >> $GITHUB_OUTPUT
-              echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_OUTPUT
+            echo "APIKEY=$APIKEY" >> $GITHUB_OUTPUT
+            echo "DEFAULTHOSTNAME=$DEFAULTHOSTNAME" >> $GITHUB_OUTPUT
+            echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_OUTPUT
 
-              echo "::group::SWA"
-                echo "SWA API Key..........: '${APIKEY}'"
-                echo "SWA Default HostName.: '${DEFAULTHOSTNAME}'"
-                echo "SWA Project SubDir...: '${PREVIEW_URL}'"
-              echo "::endgroup::"    
+            echo "::group::SWA"
+              echo "SWA API Key..........: '${APIKEY}'"
+              echo "SWA Default HostName.: '${DEFAULTHOSTNAME}'"
+              echo "SWA Project SubDir...: '${PREVIEW_URL}'"
+            echo "::endgroup::"    
 
       # ==================================================
       - name: Static Web App - build and deploy
