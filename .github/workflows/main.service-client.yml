@@ -15,56 +15,87 @@ jobs:
     runs-on: ubuntu-latest
     environment: NP
     env:
+      # ======================================================================
+      # INPUTS:
+      # ======================================================================
       # IMPORTANT:
       # PAT expires Expires on Tue, Dec 31 2024.
 
-      # PROJECT NAME which is basis of resource names.
+      # PROJECT NAME which is basis of Azure resource names.
       PROJECT_NAME: 'BASO'
+      # Angular Code Name (affects where code ends up in dist/xxx)
       PROJECT_CODE_NAME: 'base'
+      # ENVIRONMANT INFO: it's either BT, DT, ST, UT, IT, TR, PP, PR
+      ENVIRONMENT_ID: 'BT' # ${{vars.ENVIRONMENT_ID}}
       # REPO #1 (SRC) INFO
+      # Important: this is the GitHub SITE url, not the actual Repo
+      # (which still blows me away...the why, is still unclear)
       REPO_SITE: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
-      REPO_NAME_SRC: ${{ github.repository }}
+      REPO_URL: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
       # REPO #2 (LIB) INFO (FOR REUSEABLE PIPELINE RESOURCES)
       REPO_NAME_LIB: 'skysgh/resources.deployments.lib'
-      # BRANCH INFO
-      BRANCH: ${{ github.ref }}
-      BRANCH_ID: '000'
-      # ENVIRONMANT INFO: it's either BT, DT, ST, UT, IT, TR, PP, PR
-      ENVIRONMENT_ID: ${{vars.ENVIRONMENT_ID}}  
-      # DEFINE REPO CONSTANTS
+      REPO_BRANCH: 'main'
+      PROJECT_SUBDIR: 'SOURCE/App.Service.Client.Web/'
+      # ======================================================================
+      # FIXED:
+      # ======================================================================
+      MAIN_BICEP_FILENAME: 'main.service-client.bicep'
+      MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
+      # ======================================================================
+      # IMPORTED:
+      # ======================================================================
+      # This Repo, whatever it is:
+      REPO_NAME_SRC: ${{ github.repository }}
+      # ======================================================================
+      # IMPORTED:
+      # ======================================================================
       # AZURE CREDENTIALS INFO:
       AZURE_SUBSCRIPTION_ID: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
       ENTRA_APP_CLIENT_ID: ${{ secrets.NP_ENTRA_APP_CLIENT_ID }}
       ENTRA_APP_CLIENT_SECRET: ${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}
-      AZURE_ENTRA_APP_CLIENT_CRED: | 
-        ${{ secrets.NP_ENTRA_APP_CLIENT_CREDS }}
-      NODE_VERSION: 20.11.0
-      ACTIONS_STEP_DEBUG: 'true'
-      ACTIONS_RUNNER_DEBUG: 'true'
-      PROJECT_SUBDIR: 'SOURCE/App.Service.Client.Web/'
+      AZURE_ENTRA_APP_CLIENT_CRED: ${{ secrets.NP_ENTRA_APP_CLIENT_CREDS }}
       # make it available to params file:
       AZURE_LOCATION_1_ID: ${{ vars.AZURE_LOCATION_1_ID }}
       AZURE_LOCATION_2_ID: ${{ vars.AZURE_LOCATION_2_ID }}
       AZURE_LOCATION_3_ID: ${{ vars.AZURE_LOCATION_3_ID }}
+      # ======================================================================
+      # DEFAULTS:
+      # ======================================================================
+      # Where to find reusable bicep, etc. files
+      THIS_DIRECTORY: '.github/workflows'
+      # where imported repo should go
+      REPO_LIB_DIR: "./DeploymentLib"
+      # ======================================================================
+      # CONTEXT:
+      # ======================================================================
+      # BRANCH INFO
+      BRANCH: ${{ github.ref }}
+      
+      # library artefacts should be in the imported repo,
+      # but we are not yet that organised, so it's relative 
+      # to this lib
+      REPO_LIB_DIR2: ${{env.THIS_DIRECTORY}} # REPO_LIB_DIR1
+      LIB_BICEP_DIRECTORY: '${{REPO_LIB_DIR2}}/lib/azure/bicep'
+      BRANCH_ID: '000'
+      # DEFINE REPO CONSTANTS
+      NODE_VERSION: 20.11.0
+      ACTIONS_STEP_DEBUG: 'true'
+      ACTIONS_RUNNER_DEBUG: 'true'
       # SWA 
-      AZURE_SWA_BUILD_COMMAND: 'npm install && npm run build'
+      SWA_ANGULAR_BUILD_COMMAND: 'npm install && npm run build'
+      SWA_ANGULAR_PROJECT_SUBDIR: ${{env.PROJECT_SUBDIR}}
     steps:
-
+      # ==================================================
       # print out Inor about source:
       - name: Show Environment Info
         run: echo ${{env.REPO_NAME_SRC}}
-
-
-
-      
+      # ==================================================
       - name: "Summarise Context Before Starting"
         run: |
-        
-          echo "::group::Settings"
           echo "::group::Misc"
           echo "======================"
-          echo "Syntax a.............: '${PROJECT_SUBDIR}'"
-          echo "Syntax b.............: '${{env.PROJECT_SUBDIR}}'"
+          echo "Syntax a.............: '${SWA_ANGULAR_PROJECT_SUBDIR}'"
+          echo "Syntax b.............: '${{env.SWA_ANGULAR_PROJECT_SUBDIR}}'"
           echo "::endgroup::"          
           echo "::group::Initiator"
           echo "======================"
@@ -108,9 +139,9 @@ jobs:
           echo "Entra.AppClientSecret: '${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}'"
           echo "Entra.AppClient Creds: '${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS }}'"
           echo "::endgroup::"          
-          echo "::endgroup::"          
 
 
+      # ==================================================
       # Checkout code from *lib* repo
       # to a directory parallel to this repo's code
       - name: Checkout Library Repo
@@ -119,6 +150,7 @@ jobs:
           repository: ${{env.REPO_NAME_LIB}}
           path: './DeploymentLib'
 
+      # ==================================================
       # Checkout code from *this* repo
       # onto runner (not target SWA...)
       # without giving directory, so default:
@@ -128,11 +160,13 @@ jobs:
        # with:
        #  repository: ${{env.REPO_NAME_SRC}}
       
+      # ==================================================
 #      - name: NPM - Download Node packages
 #        run: |
 #          # Download libraries
 #          npm install --prefix ${PROJECT_SUBDIR}
 
+      # ==================================================
  #     - name: NPM - Build the application (Note that we are still on runner, not target swa...)
  #       run: |
  #         # Build, Compile, Package:
@@ -140,6 +174,7 @@ jobs:
 
 
 
+      # ==================================================
 #      - name: Build And Deploy SWA using Action
 #        id: builddeploy
 #        uses: Azure/static-web-apps-deploy@v1
@@ -160,11 +195,9 @@ jobs:
 #          output_location: "dist/base" # Built app content directory - optional
 #        env:
 #          NODE_VERSION: 20.11.0
- #         ###### End of Repository/Build Configurations ######
+#          ###### End of Repository/Build Configurations ######
 
-
-
-
+      # ==================================================
 #      NOTE: this has been moved out of yaml.
 #      - name: Ensure Resource Group(s)
 #        uses: azure/arm-deploy@v1
@@ -173,27 +206,18 @@ jobs:
 #          region: ${{ vars.AZURE_LOCATION_1_ID }}
 #          subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
 #          #resourceGroupName: ${{ env.RG_NAME }}
-#          template: ".github/workflows/resource-group.bicep"
-#          parameters: "resourceGroupName=${{ env.RG_NAME }} resourceGroupLocation=${{ vars.AZURE_LOCATION_1_ID }}"
+#          template: "${{LIB_BICEP_DIRECTORY}}/resource-group.bicep"
+#          parameters: ""
 #          failOnStdErr: false
 
-
-
-      #   Not as important as I thought at first as this is iterating 
-      #   over Runner (and not target SWA...)
-      # - name: View contents of compiled Dist folder
-      #   shell: pwsh
-      #   run: |
-      #     Get-ChildItem -Path "${{env.PROJECT_SUBDIR}}/dist/*.*" -Recurse -Force
-
-
+      # ==================================================
       # Login to Azure, in order to manipulate remote resources
-      - name: Azure Login using Action
+      - name: Azure Login, using Action, to enable building resources
         uses: azure/login@v2
         with:
           creds: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
           
-# /home/runner/work/BASE.Jump.Dev.Client.Themed/BASE.Jump.Dev.Client.Themed/SOURCE/App.Service.Client.Web/dist/
+      # ==================================================
       - name: Run main bicep file (creating RG & SWA)
         uses: azure/arm-deploy@v1
         with:
@@ -201,25 +225,20 @@ jobs:
           region: ${{ vars.AZURE_LOCATION_1_ID }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
-          template: ".github/workflows/service-client.bicep"
-          # parameters: "projectName=${{ env.PROJECT_NAME }} environmentId=BT resourceLocation=${{ vars.AZURE_LOCATION_1_ID }} repositoryUrl=https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git repositoryToken=${{secrets.GITHUB_TOKEN}} appBuildCommand='npm install && npm run build' appLocation=${{env.PROJECT_SUBDIR}} outputLocation=${{env.PROJECT_SUBDIR}}/dist/base   "
-            # ".github/workflows/main.bicepparam" 
-
-
+          template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
+            # "${{env.THIS_DIRECTORY}}/${{env.MAIN_BICEP_PARAM_FILENAME}}" 
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
-            environmentId="BT"
+            environmentId="${{ env.ENVIRONMENT_ID}}"
             resourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
             repositoryUrl="${{ env.REPO_SITE }}"
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
-            appLocation="${{ env.PROJECT_SUBDIR }}"
-            appBuildCommand="npm install && npm run build"
+            appLocation="${{ env.SWA_ANGULAR_PROJECT_SUBDIR }}"
+            appBuildCommand="${{ env.SWA_ANGULAR_BUILD_COMMAND }}"  
             outputLocation="dist/${{env.PROJECT_CODE_NAME}}"
           failOnStdErr: false
-          
-
-
-      - name: Static Web App - get API key for deployment and URL
+      # ==================================================
+      - name: Post Static Web App (SWA) Deployment - get API key for deployment and URL
         id: static_web_app_apikey
         uses: azure/CLI@v1
         with:
@@ -239,6 +258,7 @@ jobs:
               echo $PREVIEW_URL
 
 
+      # ==================================================
       - name: Static Web App - build and deploy
         id: static_web_app_build_and_deploy
         uses: Azure/static-web-apps-deploy@v1
@@ -247,8 +267,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: 'upload'
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: '${{env.PROJECT_SUBDIR }}' # App source code path
-          api_build_command: '${{env.AZURE_SWA_BUILD_COMMAND}}'
+          app_location: '${{env.SWA_ANGULAR_PROJECT_SUBDIR }}' # App source code path
+          api_build_command: '${{env.SWA_ANGULAR_BUILD_COMMAND}}'
           # api_location: '' # Api source code path - optional
           output_location: 'dist/${{env.PROJECT_CODE_NAME}}' 
 
