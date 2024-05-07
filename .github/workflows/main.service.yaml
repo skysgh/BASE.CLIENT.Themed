@@ -22,3 +22,10 @@ jobs:
     environment: NP
     env:
       FOO: BAR
+    steps:
+      # ==================================================
+      - name: "Summarise Context Before Starting"
+        run: |
+          echo "{{$env.BAR}}"
+
+          
