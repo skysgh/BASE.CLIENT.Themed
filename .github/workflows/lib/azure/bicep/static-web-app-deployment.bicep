@@ -20,7 +20,7 @@ param environmentId string
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
-param resourceGroupLocation string = 'australiacentral'
+param groupResourceLocation string = 'australiacentral'
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'eastasia'])
@@ -63,24 +63,21 @@ param outputLocation string = ''
 // a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     name: '${projectName}_${environmentId}'
-    location: resourceLocation
+    location: groupResourceLocation
 }
-//output swaUrl string = rg1.outputs.resourceUrl
 
-// module rgModule 'resource-group.bicep' = {
+// module rgModule './resource-group.bicep' = {
 //  name: '${deployment().name}_rg'
 //  // Don't knnow if this needed at this level?
 //  scope: subscription()
 //  params: {
 //    resourceName: '${projectName}_${environmentId}'
-//    resourceLocation: resourceLocation
+//    resourceLocation: groupResourceLocation
 //  }
 // }
 
-// could pick up the output id from before as:
-// id: rgModule.outputs.resourceId
 
-module swaModule 'static-web-app.bicep' = {
+module swaModule './static-web-app.bicep' = {
   //dependsOn: [rg1] // Specify a dependency on the rgModule
   name: '${deployment().name}_swa'
   scope: rg1
