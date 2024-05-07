@@ -51,7 +51,6 @@ jobs:
       # IMPORTED:
       # ======================================================================
       # This Repo, whatever it is:
-      REPO_NAME_SRC: ${{ github.repository }}
       # ======================================================================
       # IMPORTED:
       # ======================================================================
@@ -81,7 +80,7 @@ jobs:
       # but we are not yet that organised, so it's relative 
       # to this lib
       REPO_LIB_DIR2: ${THIS_DIRECTORY} # REPO_LIB_DIR1
-      LIB_BICEP_DIRECTORY: '${REPO_LIB_DIR2}/lib/azure/bicep'
+      LIB_BICEP_DIRECTORY: '${{env.REPO_LIB_DIR2}}/lib/azure/bicep'
       BRANCH_ID: '000'
       # DEFINE REPO CONSTANTS
       NODE_VERSION: 20.11.0
@@ -116,12 +115,6 @@ jobs:
           echo "Project..............: '${PROJECT_NAME}'"
           echo "Environment..........: '${{env.PROJECT_ENV_ID}}'"
           echo "::endgroup::"
-          echo " "
-          echo "::group::Workspace on Runner"
-          echo "Home.................: '${HOME}'"
-          echo "Workspace............: '${GITHUB_WORKSPACE}'"
-          echo "::endgroup::"          
-          echo " "
           
           echo "::group::Libraries"
           echo "Repo.Lib.............: '${{env.LIB_REPO_SRC_URL}}'"
@@ -129,6 +122,8 @@ jobs:
           echo " "
           
           echo "::group::SWA Repo (Actual)"
+            REPO_NAME_SRC: ${{ github.repository }}
+          echo "Repo.Site............: '${{env.REPO_NAME_SRC}}'"
           echo "Repo.Site............: '${{env.SWA_REPO_PAGE_URL}}'"
           echo "Repo.Scr.............: '${{env.GITHUB_REPOSITORY}}'"
           echo "Branch.Name..........: '${{env.BRANCH}}'"
@@ -141,6 +136,13 @@ jobs:
           echo "Token................: '${{secrets.GITHUB_TOKEN}}'"
           echo "PAT..................: '${{secrets.GH_BASE_CLIENT_THEMED}}'"
           echo "::endgroup::"   
+          echo " "
+
+          echo " "
+          echo "::group::Workspace on Runner"
+          echo "Home.................: '${HOME}'"
+          echo "Workspace............: '${GITHUB_WORKSPACE}'"
+          echo "::endgroup::"          
           echo " "
           
           echo "::group::Azure Settings"
