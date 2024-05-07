@@ -22,6 +22,27 @@ jobs:
     environment: NP
     env:
       FOO: BAR
+      # ======================================================================
+      # FIXED (CONTEXT):
+      # ======================================================================
+      # where imported repo should go
+      REPO_LIB_DIR: "./DeploymentLib"
+      # File that this YAML invokes at some point, along with its params
+      MAIN_BICEP_FILENAME: 'dynamic-web-app.bicep'
+      # MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
+      # ======================================================================
+      # INPUTS:
+      # ======================================================================
+      # IMPORTANT:
+
+      # PROJECT NAME which is basis of Azure resource names.
+      PROJECT_NAME: 'BASE'
+      PROJECT_SERVICE_NAME: 'CLIENT'
+      # ENVIRONMANT INFO: it's either BT, DT, ST, UT, IT, TR, PP, PR
+      PROJECT_ENV_ID: 'BT' # ${{vars.PROJECT_ENV_ID}}
+      # Angular Code Name (affects where code ends up in dist/xxx)
+      # ======================================================================
+
     steps:
       # ==================================================
       - name: "Summarise Context Before Starting"
