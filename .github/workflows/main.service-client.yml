@@ -16,6 +16,16 @@ jobs:
     environment: NP
     env:
       # ======================================================================
+      # FIXED (CONTEXT):
+      # ======================================================================
+      # Where to find reusable bicep, etc. files
+      THIS_DIRECTORY: '.github/workflows'
+      # where imported repo should go
+      REPO_LIB_DIR: "./DeploymentLib"
+      # File that this YAML invokes at some point, along with its params
+      MAIN_BICEP_FILENAME: 'main.service-client.bicep'
+      MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
+      # ======================================================================
       # INPUTS:
       # ======================================================================
       # IMPORTANT:
@@ -37,11 +47,6 @@ jobs:
       REPO_BRANCH: 'main'
       PROJECT_SUBDIR: 'SOURCE/App.Service.Client.Web/'
       # ======================================================================
-      # FIXED:
-      # ======================================================================
-      MAIN_BICEP_FILENAME: 'main.service-client.bicep'
-      MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
-      # ======================================================================
       # IMPORTED:
       # ======================================================================
       # This Repo, whatever it is:
@@ -60,13 +65,6 @@ jobs:
       AZURE_LOCATION_2_ID: ${{ vars.AZURE_LOCATION_2_ID }} #eastasia
       AZURE_LOCATION_3_ID: ${{ vars.AZURE_LOCATION_3_ID }}
       AZURE_LOCATION_SWA: "eastasia"
-      # ======================================================================
-      # DEFAULTS:
-      # ======================================================================
-      # Where to find reusable bicep, etc. files
-      THIS_DIRECTORY: '.github/workflows'
-      # where imported repo should go
-      REPO_LIB_DIR: "./DeploymentLib"
       # ======================================================================
       # CONTEXT:
       # ======================================================================
