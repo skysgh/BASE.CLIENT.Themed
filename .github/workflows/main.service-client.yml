@@ -81,8 +81,8 @@ jobs:
       # library artefacts should be in the imported repo,
       # but we are not yet that organised, so it's relative 
       # to this lib
-      REPO_LIB_DIR2: ${{THIS_DIRECTORY}} # REPO_LIB_DIR1
-      LIB_BICEP_DIRECTORY: ${{REPO_LIB_DIR2}}/lib/azure/bicep
+      REPO_LIB_DIR2: $THIS_DIRECTORY # REPO_LIB_DIR1
+      LIB_BICEP_DIRECTORY: $REPO_LIB_DIR2/lib/azure/bicep
       WORKITEM_ID: '000'
       # DEFINE REPO CONSTANTS
       NODE_VERSION: 20.11.0
