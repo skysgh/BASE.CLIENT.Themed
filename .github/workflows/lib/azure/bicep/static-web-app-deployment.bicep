@@ -14,6 +14,10 @@ targetScope='subscription'
 @description('The name used to build resources. e.g.: \'BASE\'')
 param projectName string
 
+@description('The name used to build resources. e.g.: \'CLIENT\'')
+param projectServiceName string = ""
+
+
 @description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
 @allowed([ 'NP',   'BT','DT','ST','UT','IT','PR'])
 param environmentId string
@@ -62,7 +66,7 @@ param outputLocation string = ''
 // Make the Repo first (I tried foa a while to make it into 
 // a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-    name: '${projectName}_${environmentId}'
+    name: '${projectName}_${projectServiceName}_${environmentId}'
     location: groupResourceLocation
 }
 
