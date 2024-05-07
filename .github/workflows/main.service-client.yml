@@ -26,8 +26,8 @@ jobs:
       # where imported repo should go
       REPO_LIB_DIR: "./DeploymentLib"
       # File that this YAML invokes at some point, along with its params
-      MAIN_BICEP_FILENAME: 'main.service-client.bicep'
-      MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
+      MAIN_BICEP_FILENAME: 'static-web-deploymen.bicep'
+      # MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
       # ======================================================================
       # INPUTS:
       # ======================================================================
@@ -254,8 +254,8 @@ jobs:
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           
-          template: "${{ env.WORKFLOW_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
-            # "${{env.THIS_DIRECTORY}}/${{env.MAIN_BICEP_PARAM_FILENAME}}" 
+          template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
+            # "${{env.WORKFLOW_BICEP_DIRECTORY}}/${{env.MAIN_BICEP_PARAM_FILENAME}}" 
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
             environmentId="${{ env.PROJECT_ENV_ID}}"
