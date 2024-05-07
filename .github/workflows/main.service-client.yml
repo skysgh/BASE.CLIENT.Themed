@@ -11,6 +11,7 @@ on:
 env:
   # Where to find reusable bicep, etc. files
   THIS_DIRECTORY: '.github/workflows'
+  WORKFLOW_BICEP_DIRECTORY: '.github/workflows/bicep'
   LIB_BICEP_DIRECTORY: '.github/workflows//lib/azure/bicep' # REPO_LIB_DIR1
  
 # Running on one runner:      
@@ -253,7 +254,7 @@ jobs:
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           #resourceGroupName: ${{ env.RG_NAME }}
           
-          template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
+          template: "${{ env.WORKFLOW_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
             # "${{env.THIS_DIRECTORY}}/${{env.MAIN_BICEP_PARAM_FILENAME}}" 
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
