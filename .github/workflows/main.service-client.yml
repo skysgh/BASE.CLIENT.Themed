@@ -92,36 +92,28 @@ jobs:
       ACTIONS_RUNNER_DEBUG: 'true'
     steps:
       # ==================================================
-      # print out Inor about source:
-      - name: Show Environment Info
-        run: echo ${{env.THIS_REPO}}
-      # ==================================================
       - name: "Summarise Context Before Starting"
         run: |
           echo "::group::MISC"
           echo "a................: '${{env.THIS_DIRECTORY}}'"
           echo "b................: '${{env.LIB_BICEP_DIRECTORY}}'"
           echo "::endgroup::"          
-          echo " "
           
 
           echo "::group::Initiator"
           echo "Actor................: '${{github.actor}}'"
           echo "Event................: '${{github.eventName}}'"
           echo "::endgroup::"          
-          echo " "
           
           echo "::group::Project & Environment"
           echo "Project..............: '${{env.PROJECT_NAME}}'"
           echo "Project Service......: '${{env.PROJECT_SERVICE_NAME}}'"
-          
           echo "Environment..........: '${{env.PROJECT_ENV_ID}}'"
           echo "::endgroup::"
           
           echo "::group::Libraries"
           echo "Repo.Lib.............: '${{env.LIB_REPO_SRC_URL}}'"
           echo "::endgroup::"          
-          echo " "
           
           echo "::group::SWA Repo (Actual)"
           echo "Repo.Src.............: '${{env.THIS_REPO}}'"
@@ -131,20 +123,16 @@ jobs:
           echo "Branch.Ref...........: '${{github.GITHUB_REF}}'"
           echo "Branch.WorkItemNumber: '${{env.WORKITEM_ID}}'"
           echo "::endgroup::"   
-          echo " "
           
           echo "::group::GitHub Accsss Tokens"
           echo "Token................: '${{secrets.GITHUB_TOKEN}}'"
           echo "PAT..................: '${{secrets.GH_BASE_CLIENT_THEMED}}'"
           echo "::endgroup::"   
-          echo " "
 
-          echo " "
           echo "::group::Workspace on Runner"
           echo "Home.................: '${HOME}'"
           echo "Workspace............: '${GITHUB_WORKSPACE}'"
           echo "::endgroup::"          
-          echo " "
           
           echo "::group::Azure Settings"
           echo "Azure.SubscriptionId.: '${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}'"
@@ -152,7 +140,6 @@ jobs:
           echo "Azure.Location.2.....: '${{ env.AZURE_LOCATION_2_ID }}'"
           echo "Azure.Location.3.....: '${{ env.AZURE_LOCATION_3_ID }}'"
           echo "::endgroup::"          
-          echo " "
           
           echo "::group::Azure Entra Settings"
           echo "Entra.TenantId.......: '${{ secrets.NP_ENTRA_TENANT_ID }}'"
@@ -160,7 +147,6 @@ jobs:
           echo "Entra.AppClientSecret: '${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}'"
           echo "Entra.AppClient Creds: '${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS }}'"
           echo "::endgroup::"
-          echo " "
           
           echo "::group::SWA"
           echo "SWA Location.........: '${{env.SWA_LOCATION}}'"
@@ -168,7 +154,6 @@ jobs:
           echo "SWA Project SubDir...: '${{env.SWA_ANGULAR_PROJECT_SUBDIR}}' ('${SWA_ANGULAR_PROJECT_SUBDIR}')"
           echo "SWA Angular Built Cmd: '${{env.SWA_ANGULAR_PROJECT_BUILD_COMMAND}}'"
           echo "::endgroup::"          
-          echo " "
 
 
       # ==================================================
@@ -277,19 +262,18 @@ jobs:
         with:
           inlineScript: |
             APIKEY=$(az staticwebapp secrets list --name '${{ env.PROJECT_NAME }}' | jq -r '.properties.apiKey')
+            DEFAULTHOSTNAME=$(az staticwebapp show -n '${{ env.PROJECT_NAME }}' | jq -r '.defaultHostname')
+            PREVIEW_URL="https://${DEFAULTHOSTNAME/.[1-9]./-${{github.event.pull_request.number }}.${{ env.LOCATION }}.1.}"
             run: |
-              echo "APIKEY=$APIKEY"
               echo "APIKEY=$APIKEY" >> $GITHUB_OUTPUT
-
-              DEFAULTHOSTNAME=$(az staticwebapp show -n '${{ env.PROJECT_NAME }}' | jq -r '.defaultHostname')
               echo "DEFAULTHOSTNAME=$DEFAULTHOSTNAME" >> $GITHUB_OUTPUT
-              echo $DEFAULTHOSTNAME
-              echo ""
-
-              PREVIEW_URL="https://${DEFAULTHOSTNAME/.[1-9]./-${{github.event.pull_request.number }}.${{ env.LOCATION }}.1.}"
               echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_OUTPUT
-              echo $PREVIEW_URL
 
+              echo "::group::SWA"
+                echo "SWA API Key..........: '${{env.APIKEY}}'"
+                echo "SWA Default HostName.: '${{env.DEFAULTHOSTNAME}}'"
+                echo "SWA Project SubDir...: '${{env.PREVIEW_URL}}'"
+              echo "::endgroup::"    
 
       # ==================================================
       - name: Static Web App - build and deploy
