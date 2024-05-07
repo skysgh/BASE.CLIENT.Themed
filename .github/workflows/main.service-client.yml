@@ -80,7 +80,7 @@ jobs:
       # but we are not yet that organised, so it's relative 
       # to this lib
       REPO_LIB_DIR2: ${THIS_DIRECTORY} # REPO_LIB_DIR1
-      LIB_BICEP_DIRECTORY: '${REPO_LIB_DIR2}/lib/azure/bicep'
+      LIB_BICEP_DIRECTORY: ${REPO_LIB_DIR2}/lib/azure/bicep
       BRANCH_ID: '000'
       # DEFINE REPO CONSTANTS
       NODE_VERSION: 20.11.0
@@ -96,13 +96,10 @@ jobs:
         run: |
           echo "::group::MISC"
           echo "a................: '${THIS_DIRECTORY}'"
-          echo "b................: '${REPO_LIB_DIR2}'
-          echo "b................: '${LIB_BICEP_DIRECTORY}'
-          
+          echo "b................: '${REPO_LIB_DIR2}'"
           echo "c................: '${LIB_BICEP_DIRECTORY}'"
           echo "a................: '${{env.THIS_DIRECTORY}}'"
           echo "b................: '${{env.REPO_LIB_DIR2}}'"
-          echo "b................: '${{env.LIB_BICEP_DIRECTORY}}'
           echo "c................: '${{env.LIB_BICEP_DIRECTORY}}'"
           echo "::endgroup::"          
           echo " "
