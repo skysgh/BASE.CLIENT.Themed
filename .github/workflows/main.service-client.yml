@@ -288,4 +288,10 @@ jobs:
           output_location: 'dist/${{env.SWA_ANGULAR_PROJECT_NAME}}' 
           # api_location: '' # Api source code path - optional
 
+      # ==================================================
+      - name: Summarise
+        id: summarise
+        run: |
+          echo "View: https://${env.DEFAULTHOSTNAME}"
+
 
