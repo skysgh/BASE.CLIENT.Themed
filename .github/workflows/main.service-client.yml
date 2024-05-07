@@ -26,7 +26,7 @@ jobs:
       # where imported repo should go
       REPO_LIB_DIR: "./DeploymentLib"
       # File that this YAML invokes at some point, along with its params
-      MAIN_BICEP_FILENAME: 'static-web-deploymen.bicep'
+      MAIN_BICEP_FILENAME: 'static-web-deployment.bicep'
       # MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
       # ======================================================================
       # INPUTS:
