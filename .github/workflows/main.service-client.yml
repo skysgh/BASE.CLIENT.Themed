@@ -292,6 +292,6 @@ jobs:
       - name: Summarise
         id: summarise
         run: |
-          echo "View: https://${env.DEFAULTHOSTNAME}"
+          echo "View: https://${{env.DEFAULTHOSTNAME}}"
 
 
