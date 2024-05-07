@@ -71,7 +71,7 @@ jobs:
       AZURE_ENTRA_APP_CLIENT_CRED: ${{ secrets.NP_ENTRA_APP_CLIENT_CREDS }}
       # ======================================================================
       # SWA SETTINGS:
-      SWA_LOCATION: "eastasia"
+      SWA_LOCATION: 'eastasia'
       # ======================================================================
       # IMPORTED:CONTEXT:REPO
       THIS_REPO: ${{ github.repository }}
