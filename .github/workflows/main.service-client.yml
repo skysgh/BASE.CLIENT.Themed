@@ -33,19 +33,20 @@ jobs:
 
       # PROJECT NAME which is basis of Azure resource names.
       PROJECT_NAME: 'BASO'
-      # Angular Code Name (affects where code ends up in dist/xxx)
-      PROJECT_CODE_NAME: 'base'
+      PROJECT_SERVICE: 'CLIENT'
       # ENVIRONMANT INFO: it's either BT, DT, ST, UT, IT, TR, PP, PR
-      ENVIRONMENT_ID: 'BT' # ${{vars.ENVIRONMENT_ID}}
+      PROJECT_ENV_ID: 'BT' # ${{vars.PROJECT_ENV_ID}}
+      # Angular Code Name (affects where code ends up in dist/xxx)
+      SWA_ANGULAR_PROJECT_NAME: 'base'
+      SWA_ANGULAR_PROJECT_SUBDIR: 'SOURCE/App.Service.Client.Web/'
       # REPO #1 (SRC) INFO
       # Important: this is the GitHub SITE url, not the actual Repo
       # (which still blows me away...the why, is still unclear)
-      REPO_SITE: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
-      REPO_URL: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
+      SWA_REPO_PAGE_URL: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed'
+      SWA_REPO_SRC_URL: 'https://github.com/skysgh/BASE.Jump.Dev.Client.Themed.git'
+      SWA_REPO_SRC_BRANCH: 'main'
       # REPO #2 (LIB) INFO (FOR REUSEABLE PIPELINE RESOURCES)
-      REPO_NAME_LIB: 'skysgh/resources.deployments.lib'
-      REPO_BRANCH: 'main'
-      PROJECT_SUBDIR: 'SOURCE/App.Service.Client.Web/'
+      LIB_REPO_SRC_URL: 'skysgh/resources.deployments.lib'
       # ======================================================================
       # IMPORTED:
       # ======================================================================
@@ -64,7 +65,12 @@ jobs:
       AZURE_LOCATION_1_ID: ${{ vars.AZURE_LOCATION_1_ID }} 
       AZURE_LOCATION_2_ID: ${{ vars.AZURE_LOCATION_2_ID }} #eastasia
       AZURE_LOCATION_3_ID: ${{ vars.AZURE_LOCATION_3_ID }}
-      AZURE_LOCATION_SWA: "eastasia"
+      # ======================================================================
+      # SWA SETTINGS:
+      # ======================================================================
+      # SWA 
+      SWA_ANGULAR_BUILD_COMMAND: 'npm install && npm run build'
+      SWA_LOCATION: "eastasia"
       # ======================================================================
       # CONTEXT:
       # ======================================================================
@@ -81,9 +87,6 @@ jobs:
       NODE_VERSION: 20.11.0
       ACTIONS_STEP_DEBUG: 'true'
       ACTIONS_RUNNER_DEBUG: 'true'
-      # SWA 
-      SWA_ANGULAR_BUILD_COMMAND: 'npm install && npm run build'
-      SWA_ANGULAR_PROJECT_SUBDIR: ${{env.PROJECT_SUBDIR}}
     steps:
       # ==================================================
       # print out Inor about source:
@@ -92,53 +95,66 @@ jobs:
       # ==================================================
       - name: "Summarise Context Before Starting"
         run: |
-          echo "::group::Misc"
-          echo "======================"
-          echo "Syntax a.............: '${SWA_ANGULAR_PROJECT_SUBDIR}'"
-          echo "Syntax b.............: '${{env.SWA_ANGULAR_PROJECT_SUBDIR}}'"
-          echo "::endgroup::"          
           echo "::group::Initiator"
-          echo "======================"
           echo "Actor................: '${GITHUB_ACTOR}'"
           echo "Event................: '${GITHUB_EVENT_NAME}'"
-          echo " "
           echo "::endgroup::"          
+          echo " "
+          
+          echo "::group::Project & Environment"
+          echo "Project..............: '${PROJECT_NAME}'"
+          echo "Environment..........: '${{env.PROJECT_ENV_ID}}'"
+          echo "::endgroup::"
+          echo " "
           echo "::group::Workspace on Runner"
           echo "Home.................: '${HOME}'"
           echo "Workspace............: '${GITHUB_WORKSPACE}'"
-          echo " "
           echo "::endgroup::"          
+          echo " "
+          
           echo "::group::Libraries"
-          echo "Repo.Lib.............: '${{env.REPO_NAME_LIB}}'"
-          echo " "
+          echo "Repo.Lib.............: '${{env.LIB_REPO_SRC_URL}}'"
           echo "::endgroup::"          
-          echo "::group::This Repo"
-          echo "Repo.Site............: '${{env.REPO_SITE}}'"
+          echo " "
+          
+          echo "::group::SWA Repo (Actual)"
+          echo "Repo.Site............: '${{env.SWA_REPO_PAGE_URL}}'"
           echo "Repo.Scr.............: '${{env.GITHUB_REPOSITORY}}'"
           echo "Branch.Name..........: '${{env.BRANCH}}'"
           echo "Branch.Ref...........: '${{github.GITHUB_REF}}'"
           echo "Branch.Number........: '${{env.BRANCH_ID}}'"
+          echo "::endgroup::"   
+          echo " "
+          
+          echo "::group::GitHub Accsss Tokens"
           echo "Token................: '${{secrets.GITHUB_TOKEN}}'"
           echo "PAT..................: '${{secrets.GH_BASE_CLIENT_THEMED}}'"
+          echo "::endgroup::"   
           echo " "
-          echo "::endgroup::"          
-          echo "::group::Environment"
-          echo "Env.Id...............: '${{env.ENVIRONMENT_ID}}'"
-          echo " "
-          echo "::endgroup::"          
+          
           echo "::group::Azure Settings"
           echo "Azure.SubscriptionId.: '${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}'"
           echo "Azure.Location.1.....: '${{ env.AZURE_LOCATION_1_ID }}'"
           echo "Azure.Location.2.....: '${{ env.AZURE_LOCATION_2_ID }}'"
           echo "Azure.Location.3.....: '${{ env.AZURE_LOCATION_3_ID }}'"
-          echo " "
           echo "::endgroup::"          
+          echo " "
+          
           echo "::group::Azure Entra Settings"
           echo "Entra.TenantId.......: '${{ secrets.NP_ENTRA_TENANT_ID }}'"
           echo "Entra.AppClientId....: '${{ secrets.NP_ENTRA_APP_CLIENT_ID }}'"
           echo "Entra.AppClientSecret: '${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}'"
           echo "Entra.AppClient Creds: '${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS }}'"
+          echo "::endgroup::"
+          echo " "
+          
+          echo "::group::SWA"
+          echo "SWA Location.........: '${{env.SWA_LOCATION}}'"
+          echo "SWA Project Name.....: '${{env.SWA_ANGULAR_PROJECT_NAME}}'"
+          echo "SWA Project SubDir...: '${{env.SWA_ANGULAR_PROJECT_SUBDIR}}' ('${SWA_ANGULAR_PROJECT_SUBDIR}')"
+          echo "SWA Angular Built Cmd: '${{env.SWA_ANGULAR_BUILD_COMMAND}}'"
           echo "::endgroup::"          
+          echo " "
 
 
       # ==================================================
@@ -147,7 +163,7 @@ jobs:
       - name: Checkout Library Repo
         uses: actions/checkout@v4
         with:
-          repository: ${{env.REPO_NAME_LIB}}
+          repository: ${{env.LIB_REPO_SRC_URL}}
           path: './DeploymentLib'
 
       # ==================================================
@@ -229,14 +245,14 @@ jobs:
             # "${{env.THIS_DIRECTORY}}/${{env.MAIN_BICEP_PARAM_FILENAME}}" 
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
-            environmentId="${{ env.ENVIRONMENT_ID}}"
+            environmentId="${{ env.PROJECT_ENV_ID}}"
             groupResourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
-            swaResourceLocation="${env.AZURE_LOCATION_SWA }}" 
-            repositoryUrl="${{ env.REPO_SITE }}"
+            swaResourceLocation="${env.SWA_LOCATION }}" 
+            repositoryUrl="${{ env.SWA_REPO_PAGE_URL }}"
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             appLocation="${{ env.SWA_ANGULAR_PROJECT_SUBDIR }}"
             appBuildCommand="${{ env.SWA_ANGULAR_BUILD_COMMAND }}"  
-            outputLocation="dist/${{env.PROJECT_CODE_NAME}}"
+            outputLocation="dist/${{env.SWA_ANGULAR_PROJECT_NAME}}"
           failOnStdErr: false
       # ==================================================
       - name: Post Static Web App (SWA) Deployment - get API key for deployment and URL
@@ -270,7 +286,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: '${{env.SWA_ANGULAR_PROJECT_SUBDIR }}' # App source code path
           api_build_command: '${{env.SWA_ANGULAR_BUILD_COMMAND}}'
+          output_location: 'dist/${{env.SWA_ANGULAR_PROJECT_NAME}}' 
           # api_location: '' # Api source code path - optional
-          output_location: 'dist/${{env.PROJECT_CODE_NAME}}' 
 
 
