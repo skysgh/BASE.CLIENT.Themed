@@ -7,8 +7,12 @@ on:
       - main
       - release
       - develop
-
-
+    
+env:
+  # Where to find reusable bicep, etc. files
+  THIS_DIRECTORY: '.github/workflows'
+  REPO_LIB_DIR2: '.github/workflows' # REPO_LIB_DIR1
+ 
 # Running on one runner:      
 jobs:
   deploy:
@@ -18,8 +22,6 @@ jobs:
       # ======================================================================
       # FIXED (CONTEXT):
       # ======================================================================
-      # Where to find reusable bicep, etc. files
-      THIS_DIRECTORY: '.github/workflows'
       # where imported repo should go
       REPO_LIB_DIR: "./DeploymentLib"
       # File that this YAML invokes at some point, along with its params
@@ -81,8 +83,7 @@ jobs:
       # library artefacts should be in the imported repo,
       # but we are not yet that organised, so it's relative 
       # to this lib
-      REPO_LIB_DIR2: $THIS_DIRECTORY # REPO_LIB_DIR1
-      LIB_BICEP_DIRECTORY: $REPO_LIB_DIR2/lib/azure/bicep
+      LIB_BICEP_DIRECTORY: ${REPO_LIB_DIR2}/lib/azure/bicep
       WORKITEM_ID: '000'
       # DEFINE REPO CONSTANTS
       NODE_VERSION: 20.11.0
