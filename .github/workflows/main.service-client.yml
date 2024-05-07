@@ -98,11 +98,6 @@ jobs:
       - name: "Summarise Context Before Starting"
         run: |
           echo "::group::MISC"
-          echo "a................: '${THIS_DIRECTORY}'"
-          echo "a2................: '${{THIS_DIRECTORY}}'"
-          echo "a3................: '{$THIS_DIRECTORY}'"
-          echo "b................: '${REPO_LIB_DIR2}'"
-          echo "c................: '${LIB_BICEP_DIRECTORY}'"
           echo "a................: '${{env.THIS_DIRECTORY}}'"
           echo "b................: '${{env.REPO_LIB_DIR2}}'"
           echo "c................: '${{env.LIB_BICEP_DIRECTORY}}'"
