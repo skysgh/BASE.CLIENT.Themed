@@ -260,7 +260,7 @@ jobs:
             projectName="${{ env.PROJECT_NAME }}"
             environmentId="${{ env.PROJECT_ENV_ID}}"
             groupResourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
-            swaResourceLocation="${env.SWA_LOCATION }}" 
+            swaResourceLocation="${{ env.SWA_LOCATION }}" 
             repositoryUrl="${{ env.SWA_REPO_LANDING_PAGE_URL }}"
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             appLocation="${{ env.SWA_ANGULAR_PROJECT_SUBDIR }}"
