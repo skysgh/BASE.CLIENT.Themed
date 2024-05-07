@@ -15,7 +15,7 @@ targetScope='subscription'
 param projectName string
 
 @description('The name used to build resources. e.g.: \'CLIENT\'')
-param projectServiceName string = ""
+param projectServiceName string = ''
 
 
 @description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
