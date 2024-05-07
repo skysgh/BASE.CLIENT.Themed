@@ -258,17 +258,21 @@ jobs:
       # ==================================================
       - name: Post Static Web App (SWA) Deployment - get API key for deployment and URL
         id: static_web_app_apikey
-        run: |
-              echo "::group::SWA"
-              APIKEY=$(az staticwebapp secrets list --name '${{ env.PROJECT_NAME }}' | jq -r '.properties.apiKey')
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            APIKEY=$(az staticwebapp secrets list --name '${{ env.PROJECT_NAME }}' | jq -r '.properties.apiKey')
+            DEFAULTHOSTNAME=$(az staticwebapp show -n '${{ env.PROJECT_NAME }}' | jq -r '.defaultHostname')
+            PREVIEW_URL="https://${DEFAULTHOSTNAME/.[1-9]./-${{github.event.pull_request.number }}.${{ env.LOCATION }}.1.}"
+            run: |
               echo "APIKEY=$APIKEY" >> $GITHUB_OUTPUT
-              echo "SWA API Key..........: '${{env.APIKEY}}'"
-              DEFAULTHOSTNAME=$(az staticwebapp show -n '${{ env.PROJECT_NAME }}' | jq -r '.defaultHostname')
               echo "DEFAULTHOSTNAME=$DEFAULTHOSTNAME" >> $GITHUB_OUTPUT
-              echo "SWA Default HostName.: '${{DEFAULTHOSTNAME}}'"
-              PREVIEW_URL="https://${DEFAULTHOSTNAME/.[1-9]./-${{github.event.pull_request.number }}.${{ env.LOCATION }}.1.}"
               echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_OUTPUT
-              echo "SWA Project SubDir...: '${{PREVIEW_URL}}'"
+
+              echo "::group::SWA"
+                echo "SWA API Key..........: '${APIKEY}'"
+                echo "SWA Default HostName.: '${DEFAULTHOSTNAME}'"
+                echo "SWA Project SubDir...: '${PREVIEW_URL}'"
               echo "::endgroup::"    
 
       # ==================================================
