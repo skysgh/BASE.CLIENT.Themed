@@ -55,9 +55,11 @@ jobs:
       ENTRA_APP_CLIENT_SECRET: ${{ secrets.NP_ENTRA_APP_CLIENT_SECRET }}
       AZURE_ENTRA_APP_CLIENT_CRED: ${{ secrets.NP_ENTRA_APP_CLIENT_CREDS }}
       # make it available to params file:
-      AZURE_LOCATION_1_ID: ${{ vars.AZURE_LOCATION_1_ID }}
-      AZURE_LOCATION_2_ID: ${{ vars.AZURE_LOCATION_2_ID }}
+      # see: https://gist.github.com/ausfestivus/04e55c7d80229069bf3bc75870630ec8
+      AZURE_LOCATION_1_ID: ${{ vars.AZURE_LOCATION_1_ID }} 
+      AZURE_LOCATION_2_ID: ${{ vars.AZURE_LOCATION_2_ID }} #eastasia
       AZURE_LOCATION_3_ID: ${{ vars.AZURE_LOCATION_3_ID }}
+      AZURE_LOCATION_SWA: "eastasia"
       # ======================================================================
       # DEFAULTS:
       # ======================================================================
@@ -230,7 +232,8 @@ jobs:
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
             environmentId="${{ env.ENVIRONMENT_ID}}"
-            resourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
+            groupResourceLocation="${{ vars.AZURE_LOCATION_1_ID }}"
+            swaResourceLocation="${env.AZURE_LOCATION_SWA }}" 
             repositoryUrl="${{ env.REPO_SITE }}"
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             appLocation="${{ env.SWA_ANGULAR_PROJECT_SUBDIR }}"
