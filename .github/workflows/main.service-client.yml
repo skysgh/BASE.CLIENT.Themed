@@ -106,13 +106,13 @@ jobs:
           
 
           echo "::group::Initiator"
-          echo "Actor................: '${GITHUB_ACTOR}'"
-          echo "Event................: '${GITHUB_EVENT_NAME}'"
+          echo "Actor................: '${{github.actor}}'"
+          echo "Event................: '${{github.eventName}}'"
           echo "::endgroup::"          
           echo " "
           
           echo "::group::Project & Environment"
-          echo "Project..............: '${PROJECT_NAME}'"
+          echo "Project..............: '${{env.PROJECT_NAME}}'"
           echo "Environment..........: '${{env.PROJECT_ENV_ID}}'"
           echo "::endgroup::"
           
@@ -127,7 +127,7 @@ jobs:
           echo "Repo.Scr.............: '${{env.GITHUB_REPOSITORY}}'"
           echo "Branch.Name..........: '${{env.THIS_REPO_BRANCH}}'"
           echo "Branch.Ref...........: '${{github.GITHUB_REF}}'"
-          echo "Branch.Number........: '${{env.WORKITEM_ID}}'"
+          echo "Branch.WorkItemNumber: '${{env.WORKITEM_ID}}'"
           echo "::endgroup::"   
           echo " "
           
