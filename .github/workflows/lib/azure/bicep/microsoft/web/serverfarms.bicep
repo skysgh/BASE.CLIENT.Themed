@@ -8,6 +8,9 @@ param resourceLocation string;
 @description('Tags to merge in.')
 param resourceTags array = [];
 
+@description('The type of OS.')
+param serverKind string = 'linux';
+
 
 resource symbolicname 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: resourceName
@@ -16,7 +19,7 @@ resource symbolicname 'Microsoft.Web/serverfarms@2022-09-01' = {
 //    tagName1: 'tagValue1'
 //    tagName2: 'tagValue2'
 //  }
-//  sku: {
+  sku: {
 //    capabilities: [
 //      {
 //        name: 'string'
@@ -29,7 +32,7 @@ resource symbolicname 'Microsoft.Web/serverfarms@2022-09-01' = {
 //    locations: [
 //      'string'
 //    ]
-//    name: 'string'
+    name: webAppServicePlanSKU
 //    size: 'string'
 //    skuCapacity: {
 //      default: int
@@ -39,12 +42,12 @@ resource symbolicname 'Microsoft.Web/serverfarms@2022-09-01' = {
 //      scaleType: 'string'
 //    }
 //    tier: 'string'
-//  }
-//  kind: 'string'
+  }
+  kind: serverKind
 //   extendedLocation: {
 //    name: 'string'
 //  }
-//  properties: {
+  properties: {
 //    elasticScaleEnabled: bool
 //    freeOfferExpirationTime: 'string'
 //    hostingEnvironmentProfile: {
@@ -58,7 +61,7 @@ resource symbolicname 'Microsoft.Web/serverfarms@2022-09-01' = {
 //    }
 //    maximumElasticWorkerCount: int
 //    perSiteScaling: bool
-//    reserved: bool
+    reserved: true
 //    spotExpirationTime: 'string'
 //    targetWorkerCount: int
 //    targetWorkerSizeId: int
