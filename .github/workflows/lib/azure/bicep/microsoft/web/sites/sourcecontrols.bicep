@@ -4,9 +4,9 @@
 @description('the unique name of site.')
 param resourceName string 
 
-@description('The id of the resource for the site.')
-// @allowed('')
-param resourceLocationId string
+@description('The id of the resource for the site. NOT USED.')
+// @allowed('') 
+param resourceLocationId string = ''
 
 @description('The Url of the repository containing source code of this site.')
 param repositoryUrl string
@@ -33,3 +33,10 @@ resource srcControls 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
     isManualIntegration: isManualIntegration
   }
 }
+
+
+// return the id (the fully qualitified name) of the newly created resource:
+output resourceId string = resource.id
+
+// return the (short) name of the newly created resource:
+output resourceName string = resource.name
