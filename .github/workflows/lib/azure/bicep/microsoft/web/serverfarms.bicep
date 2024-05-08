@@ -2,13 +2,14 @@
 param resourceName string;
 
 @description('Location of the resource.')
-//@allowed([ ''])
+// @allowed([ ''])
 param resourceLocationId string;
 
 @description('Tags to merge in.')
 param resourceTags array = [];
 
 @description('The type of OS.')
+// @allowed([ ''])
 param serverKind string = 'linux';
 
 
