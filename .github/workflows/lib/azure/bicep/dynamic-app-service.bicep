@@ -48,12 +48,14 @@ resource appServicePlanModule './microsoft/web/serverfarms.bicep' = {
 }
 
 resource appServiceModule './microsoft/web/sites.bicep' = {
+  dependsOn: [appServicePlanModule]
   parentResourceId: appServicePlanModule.outputs.resourceId
   resourceLocation: resourceLocation
   linuxFxVersion: linuxFxVersion
 }
 
 resource srcControls './microsoft/web/sites/sourcecontrol.bicep' = {
+    dependsOn: [appServicePlanModule, appServiceModule]
     name:  '${appServiceModule.outputs.resourceName}/web'
     repositoryUrl: repositoryUrl
     repositoryBranch: repositoryBranch
