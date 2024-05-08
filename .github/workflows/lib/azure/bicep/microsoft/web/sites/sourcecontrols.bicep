@@ -18,7 +18,7 @@ param repositoryBranch string
 param repositoryBranch string
 
 @description('.')
-param isManualIntegration boolean = true
+param isManualIntegration bool = true
 
 
 var partResourceName = '${resourceName}/web'
