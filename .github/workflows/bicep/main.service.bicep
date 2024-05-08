@@ -1,3 +1,6 @@
+// See: Resource definitions here:
+// https://learn.microsoft.com/en-us/azure/templates/microsoft.web/serverfarms?pivots=deployment-language-bicep
+
 @description('The name of the project. This informs automation of naming of resource groups, services, etc.')
 param projectName string
 
@@ -22,6 +25,9 @@ param resourceLocation3 string = resourceLocation2;
 
 param webAppName string = uniqueString(resourceGroup().id) // Generate unique String for web app name
 
+@description('The first fallback default location for resources. ')
+@allowed ('linux')
+param osKind string = 'linux'
 
 @description('The SKU of the App Service plan. ')
 // Careful. Expensive.  
@@ -34,7 +40,11 @@ param webAppName string = uniqueString(resourceGroup().id) // Generate unique St
 param webAppServicePlanSKU string = 'F1'
 
 
+@description('The Function eXtensions for defining the framework.')
+// See: https://github.com/MicrosoftDocs/azure-docs/issues/47749
+@allowed ( 'DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest')
 param linuxFxVersion string = 'node|14-lts' // The runtime stack of web app
+
 
 param location string = resourceGroup().location // Location for all resources
 
@@ -64,13 +74,14 @@ resource appServicePlanModule 'Microsoft.Web/serverfarms@2020-06-01' = {
   sku: {
     name: webAppServicePlanSKU
   }
-  kind: 'linux'
+  kind: osKind
 }
 
 resource appServiceModule 'Microsoft.Web/sites@2020-06-01' = {
   name: defaultResourceName
   location: resourceLocation
   properties: {
+    // Note reference to parent module's properties:
     serverFarmId: appServicePlanModule.id
     siteConfig: {
       linuxFxVersion: linuxFxVersion
@@ -79,6 +90,7 @@ resource appServiceModule 'Microsoft.Web/sites@2020-06-01' = {
 }
 
 resource srcControls 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
+  // Note reference to parent module's properties, using notation appropriate for strings:
   name: '${appServiceModule.name}/web'
   properties: {
     repoUrl: repositoryUrl
