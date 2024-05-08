@@ -9,7 +9,7 @@ param projectName string
 @description('The name used to build resources. e.g.: \'SERVICE\'')
 param projectServiceName string = ''
 
-@allowed ('NP','BT', 'DT','ST','UT','IT','TR','PP',PR')
+@allowed ('NP','BT', 'DT','ST','UT','IT','TR','PP','PR')
 param environmentId string;
 
 @description('The default location for resources. ')
@@ -18,7 +18,10 @@ param resourceLocation string;
 @description('The SKU of the app service plan. ')
 param webAppServicePlanSKU string = 'F1' // The SKU of App Service Plan
 
-param linuxFxVersion string = 'node|14-lts' // The runtime stack of web app
+
+@description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'')
+@allowed(  'DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest')
+param linuxFxVersion string = 'DOTNETCORE|Latest'
 
 param location string = resourceGroup().location // Location for all resources
 
