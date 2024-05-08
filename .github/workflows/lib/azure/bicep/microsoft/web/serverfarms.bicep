@@ -12,7 +12,7 @@ param resourceTags array = [];
 param serverKind string = 'linux';
 
 
-resource symbolicname 'Microsoft.Web/serverfarms@2022-09-01' = {
+resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
 //  tags: {
