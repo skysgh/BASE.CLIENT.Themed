@@ -11,7 +11,7 @@ param resourceLocationId string
 @description('The tags to merge for this resource.')
 param resourceTags array = []
 
-@description('The Function eXtension. Default = \'DOTNETCORE|Latest\'')
+@description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'')
 @allowed(  'DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest')
 param linuxFxVersion string = 'DOTNETCORE|Latest'
 
