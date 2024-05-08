@@ -69,3 +69,10 @@ resource symbolicname 'Microsoft.Web/serverfarms@2022-09-01' = {
 //    zoneRedundant: bool
   }
 }
+
+
+// return the id (the fully qualitified name) of the newly created resource:
+output resourceId string = resource.id
+
+// return the (short) name of the newly created resource:
+output resourceName string = resource.name
