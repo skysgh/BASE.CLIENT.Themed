@@ -13,7 +13,7 @@ param projectServiceName string = ''
 param environmentId string;
 
 @description('The default location for resources. ')
-param resourceLocation string;
+param resourceLocationId string;
 
 @description('The SKU of the app service plan. ')
 param webAppServicePlanSKU string = 'F1' // The SKU of App Service Plan
