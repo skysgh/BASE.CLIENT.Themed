@@ -41,16 +41,9 @@ var resourceGroupName = toUpper('${projectName}_{$environmentId}')
 
 var defaultResourceName = toLower('${projectName}')
 
-resource appServicePlanModule 'Microsoft.Web/serverfarms@2020-06-01' = {
+
+resource appServicePlanModule './microsoft/web/serverfarms.bicep' = {
   name: resourceGroupName
-  location: resourceLocation
-  properties: {
-    reserved: true
-  }
-  sku: {
-    name: webAppServicePlanSKU
-  }
-  kind: 'linux'
 }
 
 resource appServiceModule 'Microsoft.Web/sites@2020-06-01' = {
