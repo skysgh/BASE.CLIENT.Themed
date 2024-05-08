@@ -44,28 +44,18 @@ var defaultResourceName = toLower('${projectName}')
 
 resource appServicePlanModule './microsoft/web/serverfarms.bicep' = {
   name: resourceGroupName
+  resourceLocation: resourceLocation
 }
 
-resource appServiceModule 'Microsoft.Web/sites@2020-06-01' = {
-  name: defaultResourceName
-  location: resourceLocation
-  //
-  properties: {
-    // tie it in by referencing parent servicePlan:
-    serverFarmId: appServicePlanModule.id
-    siteConfig: {
-      linuxFxVersion: linuxFxVersion
-    }
-  }
+resource appServiceModule './microsoft/web/sites.bicep' = {
+  parentResourceId: appServicePlanModule.outputs.resourceId
+  resourceLocation: resourceLocation
+  linuxFxVersion: linuxFxVersion
 }
 
-resource srcControls 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
-  // References parent module:
-  name: '${appServiceModule.name}/web'
-  // 
-  properties: {
-    repoUrl: repositoryUrl
-    branch: repositoryBranch
-    isManualIntegration: true
-  }
+resource srcControls './microsoft/web/sites/sourcecontrol.bicep' = {
+    name:  '${appServiceModule.outputs.resourceName}/web'
+    repositoryUrl: repositoryUrl
+    repositoryBranch: repositoryBranch
 }
+
