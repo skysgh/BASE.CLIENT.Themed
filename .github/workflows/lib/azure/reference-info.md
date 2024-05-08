@@ -84,3 +84,7 @@ Note that not all resources can be developed in all regions.
 'westus3',
 'westusstage',
 'westus2stage',
+
+
+## Resource Name Lengths
+See: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules
