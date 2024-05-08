@@ -3,7 +3,7 @@ param resourceName string;
 
 @description('Location of the resource.')
 //@allowed([ ''])
-param resourceLocation string;
+param resourceLocationId string;
 
 @description('Tags to merge in.')
 param resourceTags array = [];
@@ -14,7 +14,7 @@ param serverKind string = 'linux';
 
 resource symbolicname 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: resourceName
-  location: resourceLocation
+  location: resourceLocationId
 //  tags: {
 //    tagName1: 'tagValue1'
 //    tagName2: 'tagValue2'
