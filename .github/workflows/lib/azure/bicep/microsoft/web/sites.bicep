@@ -11,7 +11,7 @@ param resourceLocationId string
 @description('The tags to merge for this resource.')
 param resourceTags array = []
 
-resource appServiceModule 'Microsoft.Web/sites@2020-06-01' = {
+resource resource 'Microsoft.Web/sites@2020-06-01' = {
   name: resourceName
   location: resourceLocationId
   //
@@ -23,3 +23,10 @@ resource appServiceModule 'Microsoft.Web/sites@2020-06-01' = {
     }
   }
 }
+
+
+// return the id (the fully qualitified name) of the newly created resource:
+output resourceId string = resource.id
+
+// return the (short) name of the newly created resource:
+output resourceName string = resource.name
