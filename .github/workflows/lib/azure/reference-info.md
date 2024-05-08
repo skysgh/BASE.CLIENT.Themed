@@ -86,5 +86,40 @@ Note that not all resources can be developed in all regions.
 'westus2stage',
 
 
-## Resource Name Lengths
+## Param Resource Name Lengths
+Use `@minLength` and `@maxLength`.
+
 See: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules
+
+
+## Param Types
+Types include:
+
+* `string`
+* `int`
+* `bool` (not `boolean`)
+* `object`
+
+See: https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/parameters
+
+## Tag Param ##
+For tags, use `object` as follows:
+
+```
+param tagValues object = {
+  Dept: 'Finance'
+  Environment: 'Production'
+}
+
+```
+
+How to merge Objects:
+
+```
+var newTags: union(
+    commonTags,
+  	{
+    storageTag1: 'storageTag1'
+    storageTag2: 'storageTag2'
+  })
+```
