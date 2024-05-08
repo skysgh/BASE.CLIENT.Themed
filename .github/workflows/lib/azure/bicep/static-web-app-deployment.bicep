@@ -70,7 +70,7 @@ resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     location: groupResourceLocation
 }
 
-// module rgModule './microsoft-resources-resourcegroups.bicep' = {
+// module rgModule './microsoft/resources/resourcegroups.bicep' = {
 //  name: '${deployment().name}_rg'
 //  // Don't knnow if this needed at this level?
 //  scope: subscription()
@@ -81,7 +81,7 @@ resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 // }
 
 
-module swaModule './microsoft-web-staticsites.bicep' = {
+module swaModule './microsoft/web/staticsites.bicep' = {
   //dependsOn: [rg1] // Specify a dependency on the rgModule
   name: '${deployment().name}_swa'
   scope: rg1
