@@ -89,7 +89,7 @@ var useTags = union(resourceTags, defaultTags)
 // a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     name: groupResourceName 
-    scope: subscription()
+    scope: 'subscription'
     location: groupResourceLocationId
     //params: {
       tags: useTags
