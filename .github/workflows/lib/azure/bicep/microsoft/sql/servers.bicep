@@ -17,7 +17,7 @@ param resourceLocation string
 # Concat the pieces together:
 var resourceName = toUpper(concat(projectName,projectServiceName?'_':'',projectServiceName,projectEnvironmentId))
 
-resource symbolicname 'Microsoft.Sql/servers@2023-05-01-preview' = {
+resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
   name: resourceName
   location: resourceLocation
   // tags: resourceTags
@@ -48,3 +48,8 @@ resource symbolicname 'Microsoft.Sql/servers@2023-05-01-preview' = {
     version: 'string'
   }
 }
+
+
+
+// param sink (to not cause error if param is not used):
+output _ = startsWith(concat(), 'z')
