@@ -23,7 +23,7 @@ param isManualIntegration bool = true
 
 var partResourceName = '${resourceName}/web'
 
-resource srcControls 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
+resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
   name: partResourceName
   properties: {
     repoUrl: repositoryUrl
