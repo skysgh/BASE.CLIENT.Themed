@@ -29,10 +29,8 @@ param sqlFarmResourceLocation string = groupResourceLocation // in case in the f
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 // ------------------------------------------------------------
+// 
 // ------------------------------------------------------------
-
-
-// Sort out default name, location and resources.
 var fullName = concat('${projectName},${projectServiceName}?:'_':'',${projectServiceName},'_',${environmentId}');
 var shortName = projectName;
 var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
@@ -40,6 +38,9 @@ var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
 var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
 var defaultTags = {'project':projectName,'service':projectServiceName, 'environment':environmentId}
 var useTags = union(resourceTags, defaultTags)
+// ------------------------------------------------------------
+// 
+// ------------------------------------------------------------
 
 
 resource resourceGroupModule './microsoft/resources/resourcegroups.bicep' = {
