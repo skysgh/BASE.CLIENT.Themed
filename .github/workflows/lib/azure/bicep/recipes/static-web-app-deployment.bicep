@@ -30,7 +30,7 @@ param resourceTags object = {}
 param groupResourceLocation string = 'australiacentral'
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
-@allowed([ 'eastasia'])
+@allowed([ 'centralus', 'eastus2', 'eastasia', 'westeurope', 'westus2' ])
 param swaResourceLocation string = groupResourceLocation // in case in the future one can use the same as the group.
 
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
