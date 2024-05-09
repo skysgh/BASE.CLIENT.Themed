@@ -65,14 +65,22 @@ param appBuildCommand string = 'npm run build'
 @description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
 param outputLocation string = ''
 // ------------------------------------------------------------
-
-var useTags = union(resourceTags, {'project':projectName, 'service':projectServiceName, 'environment': environmentId})
-
+// 
+// ------------------------------------------------------------
+var fullName = concat('${projectName},${projectServiceName}?:'_':'',${projectServiceName},'_',${environmentId}');
+var shortName = projectName;
+var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
+var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
+var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
+var defaultTags = {'project':projectName,'service':projectServiceName, 'environment':environmentId}
+var useTags = union(resourceTags, defaultTags)
+// ------------------------------------------------------------
+// 
 // ------------------------------------------------------------
 // Make the Repo first (I tried foa a while to make it into 
 // a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-    name: '${projectName}_${projectServiceName}_${environmentId}'
+    name: resourceGroupName
     location: groupResourceLocation
     //params: {
       tags: useTags
@@ -84,7 +92,7 @@ resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 //  name: '${deployment().name}_rg'
 //  // Don't knnow if this needed at this level?
 //  params: {
-//    resourceName: '${projectName}_${environmentId}'
+//    resourceName: resourceGroupName
 //    resourceLocation: groupResourceLocation
 //    resourceTags: useTags
 //  }
@@ -100,7 +108,7 @@ module swaModule './microsoft/web/staticsites.bicep' = {
     // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
   params: {
     // SWA:
-    resourceName: projectName
+    resourceName: childResourceName
     resourceLocation: swaResourceLocation
     resourceTags: useTags
     //
@@ -124,8 +132,9 @@ module swaModule './microsoft/web/staticsites.bicep' = {
   }
 }
 
-output resourceId string = swaModule.outputs.resourceId;
-output resourceName string = swaModule.outputs.resourceName;
+output resourceId string = swaModule.outputs.resourceId
+
+output resourceName string = swaModule.outputs.resourceName
 
 // Get the Url of the created SWA:
 // the invoking yaml file can get its hand on this using:
