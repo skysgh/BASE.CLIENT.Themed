@@ -51,7 +51,7 @@ resource resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
   params: {
     resourceName: groupResourceName
     resourceLocationId: groupResourceLocationId
-    resourceTags: resourceTags
+    resourceTags: useTags
   }
 }
 
@@ -63,7 +63,7 @@ resource appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   params: {
     resourceName: parentResourceName
     resourceLocationId: resourceLocationId
-    resourceTags: resourceTags
+    resourceTags: useTags
   }
 }
 
@@ -76,7 +76,7 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
 
     resourceName: childResourceName
     resourceLocationId: resourceLocationId
-    resourceTags: resourceTags
+    resourceTags: useTags
   
     linuxFxVersion: linuxFxVersion
   }
@@ -88,7 +88,7 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   params: {
     resourceName:  '${appSitesModule.outputs.resourceName}/web'
     resourceLocationId: resourceLocationId
-    resourceTags:resourceTags
+    resourceTags: useTags
 
     repositoryUrl: repositoryUrl
     repositoryBranch: repositoryBranch
