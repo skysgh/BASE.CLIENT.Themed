@@ -63,6 +63,8 @@ var useTags = union(resourceTags, defaultTags)
 
 
 module resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
+  name: "XYZ",
+  scope: subscription(),
    // pass parameters:
   params: {
     resourceName: groupResourceName
@@ -75,6 +77,7 @@ module resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
 module appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
   // dependsOn: [resourceGroupModule]
+  name: "BBBB"
   scope: resourceGroupModule.outputs.name 
   params: {
     resourceName: parentResourceName
