@@ -50,8 +50,8 @@ var fullName = concat(
     projectName, 
     projectServiceName ? '_${projectServiceName}':'',
     '_',
-    environmentId);
-var shortName = projectName;
+    environmentId)
+var shortName = projectName
 var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
 var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
 var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
