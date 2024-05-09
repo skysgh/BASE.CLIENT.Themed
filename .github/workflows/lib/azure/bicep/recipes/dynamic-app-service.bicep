@@ -24,7 +24,7 @@ param resourceLocationId string = resourceGroup().location
 @description('The tags for this resource. ')
 param resourceTags object = {}
 
-@description('The SKU of the app service plan. ')
+@description('The app service plan SKU. ')
 param webAppServicePlanSKU string = 'F1' // The SKU of App Service Plan
 
 @description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'')
@@ -78,6 +78,8 @@ resource appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
     resourceName: parentResourceName
     resourceLocationId: resourceLocationId
     resourceTags: resourceTags
+
+    webAppServicePlanSKU: webAppServicePlanSKU
   }
 }
 
@@ -91,7 +93,7 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
     resourceName: childResourceName
     resourceLocationId: resourceLocationId
     resourceTags: resourceTags
-  
+
     linuxFxVersion: linuxFxVersion
   }
 }
