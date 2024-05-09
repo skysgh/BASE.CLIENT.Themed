@@ -1,4 +1,4 @@
-
+targetScope='subscription'
 
 
 // Resources Groups are part of the general subscription
