@@ -23,11 +23,9 @@ resource resource 'Microsoft.Web/sites@2020-06-01' = {
   name: resourceName
   location: resourceLocationId
   tags: resourceTags
-  //
+  
   properties: {
-    // tie it in by referencing parent servicePlan:
     serverFarmId: parentResourceId
-   
     siteConfig: {
       linuxFxVersion: linuxFxVersion
     }
@@ -37,9 +35,10 @@ resource resource 'Microsoft.Web/sites@2020-06-01' = {
 
 // return the id (the fully qualitified name) of the newly created resource:
 output resourceId string = resource.id
+output resourceName string = resource.name
 
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat(''), 'z')
+output _ bool = startsWith('', 'z')
