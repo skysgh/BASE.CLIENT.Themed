@@ -77,4 +77,4 @@ output resourceId string = appSitesModule.outputs.id
 output resourceName string = appSitesModule.outputs.name
 
 // param sink (to not cause error if param is not used):
-output _ = startsWith(concat(), 'z')
+output _ string = startsWith(concat(), 'z')
