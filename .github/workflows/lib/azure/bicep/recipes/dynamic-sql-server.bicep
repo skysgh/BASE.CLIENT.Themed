@@ -34,9 +34,10 @@ param resourceSku string = 'Free'
 // 
 // ------------------------------------------------------------
 var fullName = concat(
-    ${projectName}, 
-    ${projectServiceName} ? '_':'',${projectServiceName},'_',
-    ${environmentId});
+    projectName, 
+    projectServiceName ? '_${projectServiceName}':'',
+    '_',
+    environmentId);
 var shortName = projectName;
 var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
 var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
