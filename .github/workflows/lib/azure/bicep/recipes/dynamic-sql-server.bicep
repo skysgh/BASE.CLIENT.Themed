@@ -1,4 +1,4 @@
-targetScope='subscription'
+//targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
 
 
 // Resources Groups are part of the general subscription
@@ -22,7 +22,7 @@ param resourceTags object = {}
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
-param groupResourceLocationId string 
+param groupResourceLocationId string //NO. Fails most times. = resourceGroup().location
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'eastasia'])
