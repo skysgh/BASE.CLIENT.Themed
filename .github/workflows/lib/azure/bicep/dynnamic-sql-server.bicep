@@ -39,7 +39,7 @@ var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
 var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
 var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
 var defaultTags = {'project':projectName,'service':projectServiceName, 'environment':environmentId}
-var useTags = union(resourceTags, defaultTags);
+var useTags = union(resourceTags, defaultTags)
 
 
 resource resourceGroupModule './microsoft/resources/resourcegroups.bicep' = {
