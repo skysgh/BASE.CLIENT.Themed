@@ -7,7 +7,9 @@ param resourceName string
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 // will allow more later.
 @allowed([ 'australiacentral'])
-param resourceLocation string = 'australiacentral'
+param resourceLocationId string = 'australiacentral'
+
+
 
 
 // Creating new resource groups take a little bit of time
