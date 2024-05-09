@@ -94,4 +94,6 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
 
 output resourceId string = appSitesModule.outputs.id
 output resourceName string = appSitesModule.outputs.name
-output sink = startsWith(concat(), 'z')
+
+// param sink (to not cause error if param is not used):
+output _ = startsWith(concat(), 'z')
