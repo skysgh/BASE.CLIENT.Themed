@@ -1,3 +1,6 @@
+// Scope is parent resourceGroup:
+targetScope='resourceGroup'
+
 @description('Id of parent app Service Plan. eg: \'appServicePlanModule.id\'')
 param parentResourceId string
 
