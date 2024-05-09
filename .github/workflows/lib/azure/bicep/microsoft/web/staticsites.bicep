@@ -52,6 +52,7 @@ param repositoryToken string
 
 // Make a dummy var to create a fake need, so that I don't have to comment out the params
 
+var tmpToken = repositoryToken
 
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   name: resourceName
@@ -140,5 +141,5 @@ output resourceName string = resource.name
 output resourceUrl string = resource.properties.defaultHostname
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${repositoryUrl}-${repositoryBranch}-${repositoryToken}', 'z')
+output _ bool = startsWith('${repositoryUrl}-${repositoryBranch}-${tmpToken}', 'z')
 
