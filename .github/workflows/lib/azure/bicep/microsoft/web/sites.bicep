@@ -12,7 +12,7 @@ param resourceLocationId string
 param resourceTags object = {}
 
 @description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'')
-@allowed(  'DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest')
+@allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
 param linuxFxVersion string = 'DOTNETCORE|Latest'
 
 
