@@ -18,7 +18,7 @@ param repositoryUrl string
 param repositoryBranch string
 
 @description('The folder within repo containing the source code.')
-repositorySourceLocation string = '/'
+param repositorySourceLocation string = '/'
 
 @description('.')
 param isManualIntegration bool = true
