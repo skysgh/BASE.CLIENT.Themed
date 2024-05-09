@@ -17,7 +17,7 @@ param resourceTags object = {}
 param serverKind string = 'linux'
 
 @description('The service plan SKU')
-@allowed('F1','D1','B1','B2','S1','S2')
+@allowed(['F1','D1','B1','B2','S1','S2'])
 param webAppServicePlanSKU string = 'F1'
 
 resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
