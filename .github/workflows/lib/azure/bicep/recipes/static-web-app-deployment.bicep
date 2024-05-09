@@ -87,7 +87,7 @@ var useTags = union(resourceTags, defaultTags)
 // Make the Repo first (I tried foa a while to make it into 
 // a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-    name: resourceGroupName
+    name: groupResourceName
     location: groupResourceLocationId
     //params: {
       tags: useTags
@@ -99,7 +99,7 @@ resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 //  name: '${deployment().name}_rg'
 //  // Don't knnow if this needed at this level?
 //  params: {
-//    resourceName: resourceGroupName
+//    resourceName: groupResourceName
 //    resourceLocationId: groupResourceLocationId
 //    resourceTags: useTags
 //  }
