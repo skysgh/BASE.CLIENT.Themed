@@ -1,3 +1,5 @@
+//targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
+
 // ------------------------------------------------------------
 // Deploys 
 // - a Resource Group,
@@ -6,7 +8,6 @@
 // - move source code into it.
 // ------------------------------------------------------------
 
-targetScope='subscription'
 
 // Resources Groups are part of the general subscription
 @description('Whether to name parent resources (e.g. resourceGroups, serverfarms, etc.) as with service and env names, or the other way around.')
