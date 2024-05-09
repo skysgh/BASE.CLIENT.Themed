@@ -108,6 +108,7 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
 
     repositoryUrl: repositoryUrl
     repositoryBranch: repositoryBranch
+    repositorySourceLocation: repositorySourceLocation
   }
 }
 
