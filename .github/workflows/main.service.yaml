@@ -92,11 +92,11 @@ jobs:
             projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
             environmentId="${{ env.PROJECT_ENV_ID}}"
 
-            resourceLocationId="centralaustralia"
-            groupResourceLocationId="centralaustralia" 
-            serverfarmsResourceLocationId= "centralaustralia"  
-            sitesResourceLocationId= "centralaustralia" 
-            sourcecontrolResourceLocationId = "centralaustralia"
+            resourceLocationId="australiacentral"
+            groupResourceLocationId="australiacentral" 
+            serverfarmsResourceLocationId= "australiacentral"  
+            sitesResourceLocationId= "australiacentral" 
+            sourcecontrolResourceLocationId = "australiacentral"
 
             webAppServicePlanSKU="F1"
             linuxFxVersion="DOTNETCORE|Latest"
