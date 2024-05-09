@@ -53,6 +53,12 @@ param repositoryToken string
 
 var tmpToken = repositoryToken
 
+// param sink (to not cause error if param is not used):
+//output _ bool = startsWith('${repositoryUrl}-${repositoryBranch}-${tmpToken}', 'z')
+var _ = startsWith('${repositoryUrl}-${repositoryBranch}-${tmpToken}', 'z')
+
+
+
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
@@ -139,6 +145,4 @@ output resourceName string = resource.name
 //output swaUrl string = swaModule.outputs.resourceUrl
 output resourceUrl string = resource.properties.defaultHostname
 
-// param sink (to not cause error if param is not used):
-output _ bool = startsWith('${repositoryUrl}-${repositoryBranch}-${tmpToken}', 'z')
 
