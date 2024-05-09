@@ -22,6 +22,9 @@ param projectServiceName string = ''
 @allowed([ 'NP',   'BT','DT','ST','UT','IT','PR'])
 param environmentId string
 
+@description('The tags for this resource. ')
+param resourceTags object = {}
+
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
 param groupResourceLocation string = 'australiacentral'
@@ -62,29 +65,35 @@ param appBuildCommand string = 'npm run build'
 @description('The output path of the app after building the app source code found in \'appLocation\'. For an angular app that might be something like \'dist/xxx/\' ')
 param outputLocation string = ''
 // ------------------------------------------------------------
+
+var useTags = union(resourceTags, {'project':projectName, 'service':projectServiceName, 'environment': environmentId})
+
 // ------------------------------------------------------------
 // Make the Repo first (I tried foa a while to make it into 
 // a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     name: '${projectName}_${projectServiceName}_${environmentId}'
     location: groupResourceLocation
+    tags: useTags
 }
 
 // module rgModule './microsoft/resources/resourcegroups.bicep' = {
+//  scope: subscription()
 //  name: '${deployment().name}_rg'
 //  // Don't knnow if this needed at this level?
-//  scope: subscription()
 //  params: {
 //    resourceName: '${projectName}_${environmentId}'
 //    resourceLocation: groupResourceLocation
+//    resourceTags: useTags
 //  }
 // }
 
 
 module swaModule './microsoft/web/staticsites.bicep' = {
   //dependsOn: [rg1] // Specify a dependency on the rgModule
-  name: '${deployment().name}_swa'
   scope: rg1
+  name: '${deployment().name}_swa'
+  tags: useTags
   // scope: rgResourceId
    // scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
     // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
@@ -92,6 +101,8 @@ module swaModule './microsoft/web/staticsites.bicep' = {
     // SWA:
     resourceName: projectName
     resourceLocation: swaResourceLocation
+    resourceTags: useTags
+    //
     resourceSku: resourceSku
 
     // Source Code Repository:
