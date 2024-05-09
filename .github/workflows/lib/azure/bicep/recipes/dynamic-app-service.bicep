@@ -20,20 +20,29 @@ param projectServiceName string = 'SERVICE'
 @allowed (['NP','BT', 'DT','ST','UT','IT','TR','PP','PR'])
 param environmentId string
 
-@description('The location for this resource. ')
+@description('The location of the parent resource group. ')
 // @allowed(...too long...)
-param resourceLocationId string //NO:= resourceGroup().location
+param groupResourceLocationId string //NO:= resourceGroup().location
+
+@description('The location of the serverFarm.')
+// @allowed(...too long...)
+param serverFarmResourceLocationId string //NO:= resourceGroup().location
+
+@description('The location of the server within the serverfarm. ')
+// @allowed(...too long...)
+param siteResourceLocationId string //NO:= resourceGroup().location
+
 
 @description('The tags for this resource. ')
 param resourceTags object = {}
 
-@description('The app service plan SKU. ')
+@description('The app service plan SKU. F1,D1,B1,B2,S1,S2')
 @allowed(['F1','D1','B1','B2','S1','S2'])
-param webAppServicePlanSKU string = 'F1' // The SKU of App Service Plan
+param webAppServicePlanSKU string
 
-@description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'')
+@description('The Function eXtension to define the runtime stack. Consider using \'DOTNETCORE|Latest\'')
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
-param linuxFxVersion string = 'DOTNETCORE|Latest'
+param linuxFxVersion string
 
 @description('The url to the repository to be deployed to the Server. ')
 param repositoryUrl string
@@ -68,8 +77,9 @@ module resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
    // pass parameters:
   params: {
     resourceName: groupResourceName
-    resourceLocationId: resourceLocationId
+    resourceLocationId: groupResourceLocationId
     resourceTags: useTags
+
   }
 }
 
@@ -81,7 +91,7 @@ module appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   scope: resourceGroup(groupResourceName) 
   params: {
     resourceName: parentResourceName
-    resourceLocationId: resourceLocationId
+    resourceLocationId: serverResourceLocationId
     resourceTags: useTags
 
     webAppServicePlanSKU: webAppServicePlanSKU
@@ -96,7 +106,7 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
   scope: resourceGroup(groupResourceName)
   params: {
     parentResourceId: appServicePlanModule.outputs.resourceId
-
+    //resourceLocationId: serverResourceLocationId
     resourceName: childResourceName
     resourceLocationId: resourceLocationId
     resourceTags: useTags
