@@ -30,11 +30,11 @@ param groupResourceLocationId string = resourceLocationId //NO:= resourceGroup()
 
 @description('The location of the serverFarm.')
 // @allowed(...too long...)
-param serverFarmsResourceLocationId string  = groupResourceLocationId //NO:= resourceGroup().location
+param serverfarmsResourceLocationId string  = groupResourceLocationId //NO:= resourceGroup().location
 
 @description('The location of the server within the serverfarm. ')
 // @allowed(...too long...)
-param sitesResourceLocationId string = serverFarmsResourceLocationId //NO:= resourceGroup().location
+param sitesResourceLocationId string = serverfarmsResourceLocationId //NO:= resourceGroup().location
 
 
 @description('The location of the server within the serverfarm. ')
