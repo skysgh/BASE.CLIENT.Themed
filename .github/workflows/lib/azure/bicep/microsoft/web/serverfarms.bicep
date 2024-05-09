@@ -1,3 +1,6 @@
+// Scope is parent resourceGroup:
+targetScope='resourceGroup'
+
 // Resource that is required to be set up before
 // instantiating (and associating to it) a 
 // server
