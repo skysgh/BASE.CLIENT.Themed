@@ -140,5 +140,5 @@ output resourceName string = resource.name
 output resourceUrl string = resource.properties.defaultHostname
 
 // param sink (to not cause error if param is not used):
-output _ string = startsWith(concat(repositoryUrl, repositoryBranch, repositoryToken), 'z')
+output _ bool = startsWith(concat(repositoryUrl, repositoryBranch, repositoryToken), 'z')
 
