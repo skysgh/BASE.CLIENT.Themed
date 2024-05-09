@@ -139,10 +139,6 @@ output resourceName string = resource.name
 //output swaUrl string = swaModule.outputs.resourceUrl
 output resourceUrl string = resource.properties.defaultHostname
 
-// crewate a fake use for the dummy var
-output repositorySummary string = dummyRepoSynopsis 
-
-
 // param sink (to not cause error if param is not used):
 output _ = startsWith(concat(repositoryUrl, repositoryBranch, repositoryToken), 'z')
 
