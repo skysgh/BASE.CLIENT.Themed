@@ -66,9 +66,9 @@ jobs:
       # without giving directory, so default:
       - name: Checkout this Project's Repo
         uses: actions/checkout@v4
-       # Optional to specify repo:
-       # with:
-       #  repository: ${{env.THIS_REPO}}
+        # Optional to specify repo:
+        # with:
+        #  repository: ${{env.THIS_REPO}}
 
       # ==================================================
       # Login to Azure, in order to manipulate remote resources
@@ -113,5 +113,3 @@ jobs:
 
           failOnStdErr: false
           
-
-
