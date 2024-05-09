@@ -13,6 +13,9 @@ param resourceName string
 @allowed([ 'centralus', 'eastus2', 'eastasia', 'westeurope', 'westus2' ])
 param resourceLocationId string = 'eastasia'
 
+@description('The tags for this resource. ')
+param resourceTags object = {}
+
 @description('The SKU to use.')
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
@@ -54,10 +57,8 @@ var dummyRepoSynopsis = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
-  // tags: {
-  //  tagName1: 'tagValue1'
-  //  tagName2: 'tagValue2'
-  //}
+  resourceTags: resourceTags
+
   sku: {
     // capabilities: [
     //  {
