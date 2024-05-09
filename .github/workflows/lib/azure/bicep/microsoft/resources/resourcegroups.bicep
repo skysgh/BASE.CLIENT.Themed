@@ -20,4 +20,5 @@ resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
-
+// param sink (to not cause error if param is not used):
+output _ string = startsWith(concat(), 'z')
