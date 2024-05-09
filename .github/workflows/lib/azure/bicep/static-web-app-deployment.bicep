@@ -123,6 +123,10 @@ module swaModule './microsoft/web/staticsites.bicep' = {
 
   }
 }
+
+output resourceId string = swaModule.outputs.resourceId;
+output resourceName string = swaModule.outputs.resourceName;
+
 // Get the Url of the created SWA:
 // the invoking yaml file can get its hand on this using:
 output swaUrl string = swaModule.outputs.resourceUrl
