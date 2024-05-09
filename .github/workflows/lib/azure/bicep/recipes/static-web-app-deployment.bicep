@@ -19,7 +19,7 @@ param projectServiceName string = ''
 
 
 @description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
-@allowed([ 'NP',   'BT','DT','ST','UT','IT','PR'])
+@allowed([ 'NP',   'BT','DT','ST','UT','IT','PP','TR','PR'])
 param environmentId string
 
 @description('The tags for this resource. ')
