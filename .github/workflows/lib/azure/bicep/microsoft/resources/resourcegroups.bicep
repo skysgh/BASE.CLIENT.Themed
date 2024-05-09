@@ -9,13 +9,15 @@ param resourceName string
 @allowed([ 'australiacentral'])
 param resourceLocationId string = 'australiacentral'
 
-
+@description('Tags to merge in.')
+param resourceTags object = {}
 
 
 // Creating new resource groups take a little bit of time
 resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: resourceName
   location: resourceLocation
+  tags: resourceTags
 }
 
 // return the id (the fully qualitified name) of the newly created resource:
