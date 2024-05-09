@@ -25,6 +25,7 @@ param resourceLocationId string = resourceGroup().location
 param resourceTags object = {}
 
 @description('The app service plan SKU. ')
+@allowed('F1','D1','B1','B2','S1','S2')
 param webAppServicePlanSKU string = 'F1' // The SKU of App Service Plan
 
 @description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'')
