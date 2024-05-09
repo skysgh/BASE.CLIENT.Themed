@@ -10,7 +10,7 @@ param resourceName string;
 param resourceLocationId string;
 
 @description('Tags to merge in.')
-param resourceTags array = [];
+param resourceTags object = {}
 
 @description('The type of OS.')
 // @allowed([ ''])
@@ -20,10 +20,7 @@ param serverKind string = 'linux';
 resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
-//  tags: {
-//    tagName1: 'tagValue1'
-//    tagName2: 'tagValue2'
-//  }
+  tags: resourceTags
   sku: {
 //    capabilities: [
 //      {
