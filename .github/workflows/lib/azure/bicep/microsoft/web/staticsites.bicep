@@ -56,7 +56,7 @@ param repositoryToken string
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
-  resourceTags: resourceTags
+  tags: resourceTags
 
   sku: {
     // capabilities: [
