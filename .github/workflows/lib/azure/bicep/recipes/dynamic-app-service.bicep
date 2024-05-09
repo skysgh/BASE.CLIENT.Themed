@@ -48,7 +48,7 @@ param repositorySourceLocation string = '/'
 // ------------------------------------------------------------
 var fullName = concat(
     projectName, 
-    projectServiceName ? '_${projectServiceName}':'',
+    empty(projectServiceName) ? '':'_${projectServiceName}',
     '_',
     environmentId)
 var shortName = projectName
