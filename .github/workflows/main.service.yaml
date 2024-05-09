@@ -78,7 +78,7 @@ jobs:
           creds: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
           
       # ==================================================
-      - name: Run main bicep file (creating RG & SWA)
+      - name: Run main bicep file (creating RG & WEB APP SERVER, SQL SERVER, etc.)
         uses: azure/arm-deploy@v1
         with:
           scope: subscription
