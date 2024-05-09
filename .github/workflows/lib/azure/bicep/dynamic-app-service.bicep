@@ -73,7 +73,7 @@ resource appServicePlanModule './microsoft/web/serverfarms.bicep' = {
   }
 }
 
-resource appServiceModule './microsoft/web/sites.bicep' = {
+module appSitesModule './microsoft/web/sites.bicep' = {
   // should be implied: 
   // dependsOn: [appServicePlanModule]
   // pass parameters:
@@ -88,11 +88,11 @@ resource appServiceModule './microsoft/web/sites.bicep' = {
   }
 }
 
-resource srcControls './microsoft/web/sites/sourcecontrols.bicep' = {
+module srcControlsModule './microsoft/web/sites/sourcecontrols.bicep' = {
   // dependsOn: 
-  // [appServicePlanModule, appServiceModule]
+  // [appServicePlanModule, appSitesModule]
   params: {
-    resourceName:  '${appServiceModule.outputs.resourceName}/web'
+    resourceName:  '${appSitesModule.outputs.resourceName}/web'
     resourceLocationId: resourceLocationId
     resourceTags:resourceTags
 
@@ -101,3 +101,5 @@ resource srcControls './microsoft/web/sites/sourcecontrols.bicep' = {
   }
 }
 
+output resourceId  = appSitesModule.outputs.id
+output resourceName  = appSitesModule.outputs.name
