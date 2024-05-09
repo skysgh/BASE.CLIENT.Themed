@@ -36,7 +36,7 @@ jobs:
       # IMPORTANT:
 
       # PROJECT NAME which is basis of Azure resource names.
-      PROJECT_NAME: 'BASE'
+      PROJECT_NAME: 'SERVICE'
       PROJECT_SERVICE_NAME: 'CLIENT'
       # ENVIRONMANT INFO: it's either BT, DT, ST, UT, IT, TR, PP, PR
       PROJECT_ENV_ID: 'BT' # ${{vars.PROJECT_ENV_ID}}
