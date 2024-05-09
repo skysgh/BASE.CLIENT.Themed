@@ -16,7 +16,7 @@ param resourceTags object = {}
 // Creating new resource groups take a little bit of time
 resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: resourceName
-  location: resourceLocation
+  location: resourceLocationId
   tags: resourceTags
 }
 
