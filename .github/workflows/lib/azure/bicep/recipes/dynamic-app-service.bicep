@@ -1,6 +1,7 @@
 // NO. It stops resourceLocation().location from working: 
 // targetScope='subscription'
-targetScope='resourceGroup'
+// NO:targetScope='resourceGroup'
+// targetScope='subscription'
 
 // ------------------------------------------------------------
 // ------------------------------------------------------------
