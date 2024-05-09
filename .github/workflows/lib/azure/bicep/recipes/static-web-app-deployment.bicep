@@ -79,7 +79,7 @@ var shortName = projectName
 var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
 var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
 var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
-var defaultTags = {'project': projectName,'service': projectServiceName, 'environment': environmentId}
+var defaultTags = {'project': '${projectName}','service': '${projectServiceName}', 'environment': '${environmentId}'}
 var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
 // 
