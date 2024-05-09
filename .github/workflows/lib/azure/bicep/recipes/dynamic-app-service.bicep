@@ -26,7 +26,7 @@ param resourceLocationId string //NO:= resourceGroup().location
 
 @description('The location of the parent resource group. ')
 // @allowed(...too long...)
-param groupResourceLocationId string = groupResourceLocationId //NO:= resourceGroup().location
+param groupResourceLocationId string = resourceLocationId //NO:= resourceGroup().location
 
 @description('The location of the serverFarm.')
 // @allowed(...too long...)
