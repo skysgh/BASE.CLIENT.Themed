@@ -81,7 +81,7 @@ resource appServiceModule './microsoft/web/sites.bicep' = {
   linuxFxVersion: linuxFxVersion
 }
 
-resource srcControls './microsoft/web/sites/sourcecontrol.bicep' = {
+resource srcControls './microsoft/web/sites/sourcecontrols.bicep' = {
     dependsOn: [appServicePlanModule, appServiceModule]
     
     name:  '${appServiceModule.outputs.resourceName}/web'
