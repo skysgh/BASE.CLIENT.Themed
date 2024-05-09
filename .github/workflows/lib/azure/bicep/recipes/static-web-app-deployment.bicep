@@ -1,6 +1,6 @@
 //targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
 // put back in (so that resourceGroup resource can be developed, as unlike a module, it cannot have scope as a property):
-//targetScope='subscription'
+targetScope='subscription'
 // ------------------------------------------------------------
 // Deploys 
 // - a Resource Group,
