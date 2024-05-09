@@ -26,23 +26,23 @@ param resourceLocationId string //NO:= resourceGroup().location
 
 @description('The location of the parent resource group. ')
 // @allowed(...too long...)
-param groupResourceLocationId string = resourceLocationId //NO:= resourceGroup().location
+//NO:= resourceGroup().location
+param groupResourceLocationId string = resourceLocationId 
 
 @description('The location of the serverFarm.')
 // @allowed(...too long...)
-param serverfarmsResourceLocationId string  = groupResourceLocationId //NO:= resourceGroup().location
+//NO:= resourceGroup().location
+param serverfarmsResourceLocationId string  = groupResourceLocationId 
 
 @description('The location of the server within the serverfarm. ')
 // @allowed(...too long...)
-param sitesResourceLocationId string = serverfarmsResourceLocationId //NO:= resourceGroup().location
-
+//NO:= resourceGroup().location
+param sitesResourceLocationId string = serverfarmsResourceLocationId 
 
 @description('The location of the server within the serverfarm. ')
 // @allowed(...too long...)
-param sourcecontrolsResourceLocationId string = sitesResourceLocationId //NO:= resourceGroup().location
-
-
-
+//NO:= resourceGroup().location
+param sourcecontrolsResourceLocationId string = sitesResourceLocationId 
 
 @description('The tags for this resource. ')
 param resourceTags object = {}
@@ -145,4 +145,4 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
 output resourceId string = appSitesModule.outputs.resourceId
 output resourceName string = appSitesModule.outputs.resourceName
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat('${resourceLocationId}'), 'z')
+output _ bool = startsWith('${resourceLocationId}', 'z')
