@@ -84,14 +84,8 @@ jobs:
           scope: subscription
           region: ${{ vars.AZURE_LOCATION_1_ID }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
-          #resourceGroupName: ${{ env.RG_NAME }}
           
           template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
-          # "${{env.WORKFLOW_BICEP_DIRECTORY}}/${{env.MAIN_BICEP_PARAM_FILENAME}}" 
-          #       groupResourceLocationId="centralaustralia" # "${{ vars.AZURE_LOCATION_1_ID }}"
-          # appLocation="${{ env.SWA_ANGULAR_PROJECT_SUBDIR }}"
-          # appBuildCommand="${{ env.SWA_ANGULAR_PROJECT_BUILD_COMMAND }}"  
-          # outputLocation="dist/${{env.SWA_ANGULAR_PROJECT_NAME}}"
 
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
