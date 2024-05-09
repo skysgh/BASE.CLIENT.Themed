@@ -75,7 +75,7 @@ var shortName = projectName;
 var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
 var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
 var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
-var defaultTags = {'project':projectName,'service':projectServiceName, 'environment':environmentId}
+var defaultTags = {'project': projectName,'service': projectServiceName, 'environment': environmentId}
 var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
 // 
@@ -107,12 +107,12 @@ module swaModule '../microsoft/web/staticsites.bicep' = {
   scope: rg1
   name: '${deployment().name}_swa'
   // scope: rgResourceId
-   // scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
-    // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
+  // scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
+  // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
   params: {
     // SWA:
     resourceName: childResourceName
-    resourceLocation: swaResourceLocation
+    resourceLocationId: swaResourceLocation
     resourceTags: useTags
     //
     resourceSku: resourceSku
@@ -147,4 +147,4 @@ output swaUrl string = swaModule.outputs.resourceUrl
 output repositorySummary string = dummyRepoSynopsis 
 
 // param sink (to not cause error if param is not used):
-output _ = startsWith(concat(), 'z')
+output _ = startsWith(concat("groupResourceName,parentResourceName), 'z')
