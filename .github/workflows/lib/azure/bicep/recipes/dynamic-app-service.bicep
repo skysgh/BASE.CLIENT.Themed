@@ -117,9 +117,9 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
   scope: resourceGroup(groupResourceName)
   params: {
     parentResourceId: appServicePlanModule.outputs.resourceId
-    //resourceLocationId: sitesResourceLocationId
+
     resourceName: childResourceName
-    resourceLocationId: resourceLocationId
+    resourceLocationId: sitesResourceLocationId
     resourceTags: useTags
 
     linuxFxVersion: linuxFxVersion
