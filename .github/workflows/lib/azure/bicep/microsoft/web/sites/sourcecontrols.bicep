@@ -17,17 +17,20 @@ param repositoryUrl string
 @description('The Branch of the repository containing source code of this site.')
 param repositoryBranch string
 
-@description('The Branch of the repository containing source code of this site.')
-param repositoryBranch string
+@description('The folder within repo containing the source code.')
+repositorySourceLocation string = '/'
 
 @description('.')
 param isManualIntegration bool = true
 
 
-var partResourceName = '${resourceName}/web'
+var useResourceName = '${resourceName}/web'
 
 resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
-  name: partResourceName
+  name: useResourceName
+  // location: resourceLocationId
+  // tags: useTags
+
   properties: {
     repoUrl: repositoryUrl
     branch: repositoryBranch
