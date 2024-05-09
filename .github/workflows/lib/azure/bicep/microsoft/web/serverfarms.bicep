@@ -83,4 +83,4 @@ output resourceId string = resource.id
 output resourceName string = resource.name
 
 // param sink (to not cause error if param is not used):
-output _ = startsWith(concat(), 'z')
+output _ string = startsWith(concat(), 'z')
