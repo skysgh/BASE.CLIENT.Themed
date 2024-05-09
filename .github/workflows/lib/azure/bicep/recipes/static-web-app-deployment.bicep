@@ -1,5 +1,6 @@
 //targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
-
+// put back in (so that resourceGroup resource can be developed, as unlike a module, it cannot have scope as a property):
+//targetScope='subscription'
 // ------------------------------------------------------------
 // Deploys 
 // - a Resource Group,
@@ -31,7 +32,7 @@ param resourceTags object = {}
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
-param groupResourceLocationId string
+param groupResourceLocationId string // = NO!:resourceGroup().location
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'centralus', 'eastus2', 'eastasia', 'westeurope', 'westus2' ])
@@ -89,7 +90,7 @@ var useTags = union(resourceTags, defaultTags)
 // a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     name: groupResourceName 
-    scope: 'subscription'
+    // NOT ALLOWED on resource: scope: 'subscription'
     location: groupResourceLocationId
     //params: {
       tags: useTags
