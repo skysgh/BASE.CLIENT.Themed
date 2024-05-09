@@ -144,5 +144,5 @@ output repositorySummary string = dummyRepoSynopsis
 
 
 // param sink (to not cause error if param is not used):
-output _ = startsWith(concat(repositoryUrl,repositoryBranch,repositoryToken), 'z')
+output _ = startsWith(concat(repositoryUrl, repositoryBranch, repositoryToken), 'z')
 
