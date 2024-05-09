@@ -108,8 +108,8 @@ resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 
 module swaModule '../microsoft/web/staticsites.bicep' = {
   //dependsOn: [rg1] // Specify a dependency on the rgModule
-  scope: rg1
   name: '${deployment().name}_swa'
+  scope: rg1
   // scope: rgResourceId
   // scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
   // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
