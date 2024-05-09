@@ -94,7 +94,13 @@ jobs:
             environmentId="${{ env.PROJECT_ENV_ID}}"
             
             groupResourceLocationId="centralaustralia" // "${{ vars.AZURE_LOCATION_1_ID }}"
-            siteResourceLocationId= "centralaustralia" // 
+            serverfarmsResourceLocationId= "centralaustralia" // 
+            sitesResourceLocationId= "centralaustralia" // 
+            sourcecontrolResourceLocationId = "centralaustralia"
+
+
+
+
 
             webAppServicePlanSKU="F1"
             linuxFxVersion="DOTNETCORE|Latest"
@@ -108,3 +114,6 @@ jobs:
             # appLocation="${{ env.SWA_ANGULAR_PROJECT_SUBDIR }}"
             # appBuildCommand="${{ env.SWA_ANGULAR_PROJECT_BUILD_COMMAND }}"  
             # outputLocation="dist/${{env.SWA_ANGULAR_PROJECT_NAME}}"
+
+
+
