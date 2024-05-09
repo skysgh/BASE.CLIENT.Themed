@@ -39,7 +39,7 @@ param sitesResourceLocationId string = serverfarmsResourceLocationId //NO:= reso
 
 @description('The location of the server within the serverfarm. ')
 // @allowed(...too long...)
-param sourcecontrolResourceLocationId string = sitesResourceLocationId //NO:= resourceGroup().location
+param sourcecontrolsResourceLocationId string = sitesResourceLocationId //NO:= resourceGroup().location
 
 
 
