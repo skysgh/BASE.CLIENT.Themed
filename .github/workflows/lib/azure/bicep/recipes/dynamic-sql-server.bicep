@@ -19,11 +19,13 @@ param resourceTags object = {}
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
-param groupResourceLocation string = 'australiacentral'
+param groupResourceLocationId string 
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'eastasia'])
-param sqlFarmResourceLocation string = groupResourceLocation // in case in the future one can use the same as the group.
+param sqlFarmResourceLocationId string  // in case in the future one can use the same as the group.
+
+//param resourceLocationId string
 
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
@@ -62,36 +64,8 @@ resource appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   scope: resourceGroupModule.outputs.name 
   params: {
     resourceName: parentResourceName
-    resourceLocationId: resourceLocationId
+    resourceLocationId: sqlFarmResourceLocationId
     resourceTags: useTags
-  }
-}
-
-module appSitesModule '../microsoft/web/sites.bicep' = {
-  // should be implied: 
-  // dependsOn: [appServicePlanModule]
-  // pass parameters:
-  params: {
-    parentResourceId: appServicePlanModule.outputs.resourceId
-
-    resourceName: childResourceName
-    resourceLocationId: resourceLocationId
-    resourceTags: useTags
-  
-    linuxFxVersion: linuxFxVersion
-  }
-}
-
-module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
-  // dependsOn: 
-  // [appServicePlanModule, appSitesModule]
-  params: {
-    resourceName:  '${appSitesModule.outputs.resourceName}/web'
-    resourceLocationId: resourceLocationId
-    resourceTags: useTags
-
-    repositoryUrl: repositoryUrl
-    repositoryBranch: repositoryBranch
   }
 }
 
