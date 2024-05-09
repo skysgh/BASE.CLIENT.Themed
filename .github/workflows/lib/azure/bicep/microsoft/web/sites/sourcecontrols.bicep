@@ -30,7 +30,7 @@ var useTags = union(resourceTags,{})
 resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
   name: useResourceName
   // location: resourceLocationId
-  tags: useTags
+  // does not exist: tags: useTags
 
   properties: {
     repoUrl: repositoryUrl
@@ -49,4 +49,4 @@ output resourceId string = resource.id
 output resourceName string = resource.name
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat(resourceLocationId, repositorySourceLocation), 'z')
+output _ bool = startsWith(concat(resourceLocationId, repositorySourceLocation, useTags), 'z')
