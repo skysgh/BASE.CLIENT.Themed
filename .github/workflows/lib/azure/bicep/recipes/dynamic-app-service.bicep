@@ -22,15 +22,26 @@ param environmentId string
 
 @description('The location of the parent resource group. ')
 // @allowed(...too long...)
-param groupResourceLocationId string //NO:= resourceGroup().location
+param resourceLocationId string //NO:= resourceGroup().location
+
+@description('The location of the parent resource group. ')
+// @allowed(...too long...)
+param groupResourceLocationId string = groupResourceLocationId //NO:= resourceGroup().location
 
 @description('The location of the serverFarm.')
 // @allowed(...too long...)
-param serverFarmResourceLocationId string //NO:= resourceGroup().location
+param serverFarmsResourceLocationId string  = groupResourceLocationId //NO:= resourceGroup().location
 
 @description('The location of the server within the serverfarm. ')
 // @allowed(...too long...)
-param siteResourceLocationId string //NO:= resourceGroup().location
+param sitesResourceLocationId string = serverFarmsResourceLocationId //NO:= resourceGroup().location
+
+
+@description('The location of the server within the serverfarm. ')
+// @allowed(...too long...)
+param sourcecontrolResourceLocationId string = sitesResourceLocationId //NO:= resourceGroup().location
+
+
 
 
 @description('The tags for this resource. ')
@@ -91,7 +102,7 @@ module appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   scope: resourceGroup(groupResourceName) 
   params: {
     resourceName: parentResourceName
-    resourceLocationId: serverResourceLocationId
+    resourceLocationId: serverfarmsResourceLocationId
     resourceTags: useTags
 
     webAppServicePlanSKU: webAppServicePlanSKU
@@ -106,7 +117,7 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
   scope: resourceGroup(groupResourceName)
   params: {
     parentResourceId: appServicePlanModule.outputs.resourceId
-    //resourceLocationId: serverResourceLocationId
+    //resourceLocationId: sitesResourceLocationId
     resourceName: childResourceName
     resourceLocationId: resourceLocationId
     resourceTags: useTags
@@ -122,7 +133,7 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   scope: resourceGroup(groupResourceName) 
   params: {
     resourceName:  '${appSitesModule.outputs.resourceName}/web'
-    resourceLocationId: resourceLocationId
+    resourceLocationId: sourcecontrolsResourceLocationId
     resourceTags: useTags
 
     repositoryUrl: repositoryUrl
