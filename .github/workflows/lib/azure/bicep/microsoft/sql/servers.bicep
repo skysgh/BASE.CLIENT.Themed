@@ -1,3 +1,6 @@
+// Scope is parent resourceGroup:
+targetScope='resourceGroup'
+
 @description('The name of the project. This informs automation of naming of resource groups, services, etc.')
 param projectName string;
 
