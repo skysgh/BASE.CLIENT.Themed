@@ -3,11 +3,11 @@
 // server
 
 @description('The name for the resource (serverFarms). IMPORTANT: Note that it may have one or more nested servers under it. ')
-param resourceName string;
+param resourceName string
 
 @description('Location of the resource.')
 // @allowed([ ''])
-param resourceLocationId string;
+param resourceLocationId string
 
 @description('Tags to merge in.')
 param resourceTags object = {}
