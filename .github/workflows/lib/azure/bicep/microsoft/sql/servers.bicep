@@ -5,7 +5,7 @@ param projectName string;
 param projectServiceName string
 
 @description('The name of the project environment. This informs automation of naming of resource groups, services, etc.')
-@allowed ('NP','BT', 'DT','ST','UT','IT','PP','TR','PR')
+@allowed (['NP','BT', 'DT','ST','UT','IT','PP','TR','PR'])
 param projectEnvironmentId string
 
 //@description('The default tags to merge in.')
