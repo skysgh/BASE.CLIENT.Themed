@@ -41,9 +41,6 @@ param repositoryBranch string = 'main'
 @description('The folder within the repository that contains the source code of the service. ')
 param repositorySourceLocation string = '/'
 
-var appServicePlanName = toLower('AppServicePlan-${webAppName}')
-var webSiteName = toLower('wapp-${webAppName}')
-
 
 
 // ------------------------------------------------------------
