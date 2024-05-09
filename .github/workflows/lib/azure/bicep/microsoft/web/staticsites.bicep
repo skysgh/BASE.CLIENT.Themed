@@ -4,7 +4,6 @@
 // Resources are part of a parent resource group:
 targetScope='resourceGroup'
 
-
 @description('Required. The name of the resource.Tip: usually there is only one resource, set the same as the project name, with only the name of the Resource Group being different per Environment.')
 param resourceName string
 
