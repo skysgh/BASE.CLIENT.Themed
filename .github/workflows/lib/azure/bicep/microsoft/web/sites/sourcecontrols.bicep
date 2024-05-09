@@ -25,7 +25,7 @@ param isManualIntegration bool = true
 
 
 var useResourceName = '${resourceName}/web'
-var useTags: union(resourceTags,{})
+var useTags = union(resourceTags,{})
 
 resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
   name: useResourceName
