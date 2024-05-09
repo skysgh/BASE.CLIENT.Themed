@@ -35,7 +35,6 @@ resource resource 'Microsoft.Web/sites@2020-06-01' = {
 
 // return the id (the fully qualitified name) of the newly created resource:
 output resourceId string = resource.id
-output resourceName string = resource.name
 
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
