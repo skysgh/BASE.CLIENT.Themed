@@ -88,15 +88,16 @@ jobs:
           
           template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
             # "${{env.WORKFLOW_BICEP_DIRECTORY}}/${{env.MAIN_BICEP_PARAM_FILENAME}}" 
+            #       groupResourceLocationId="centralaustralia" # "${{ vars.AZURE_LOCATION_1_ID }}"
           parameters: >
             projectName="${{ env.PROJECT_NAME }}"
             projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
             environmentId="${{ env.PROJECT_ENV_ID}}"
 
             resourceLocationId="centralaustralia"
-            groupResourceLocationId="centralaustralia" // "${{ vars.AZURE_LOCATION_1_ID }}"
-            serverfarmsResourceLocationId= "centralaustralia" // 
-            sitesResourceLocationId= "centralaustralia" // 
+            groupResourceLocationId="centralaustralia" # "${{ vars.AZURE_LOCATION_1_ID }}"
+            serverfarmsResourceLocationId= "centralaustralia"  
+            sitesResourceLocationId= "centralaustralia" 
             sourcecontrolResourceLocationId = "centralaustralia"
 
 
