@@ -14,7 +14,7 @@ param projectName string
 @description('The project service name. Name used to build resources. e.g.: \'SERVICE\'')
 param projectServiceName string = 'SERVICE'
 
-@allowed ('NP','BT', 'DT','ST','UT','IT','TR','PP','PR')
+@allowed (['NP','BT', 'DT','ST','UT','IT','TR','PP','PR'])
 param environmentId string
 
 @description('The location for this resource. ')
@@ -25,11 +25,11 @@ param resourceLocationId string = resourceGroup().location
 param resourceTags object = {}
 
 @description('The app service plan SKU. ')
-@allowed('F1','D1','B1','B2','S1','S2')
+@allowed(['F1','D1','B1','B2','S1','S2'])
 param webAppServicePlanSKU string = 'F1' // The SKU of App Service Plan
 
 @description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'')
-@allowed('DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest')
+@allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
 param linuxFxVersion string = 'DOTNETCORE|Latest'
 
 @description('The url to the repository to be deployed to the Server. ')
