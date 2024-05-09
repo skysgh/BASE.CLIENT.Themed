@@ -14,8 +14,10 @@ param resourceTags object = {}
 
 @description('The type of OS.')
 // @allowed([ ''])
-param serverKind string = 'linux';
+param serverKind string = 'linux'
 
+@description('The service plan SKU')
+param webAppServicePlanSKU string = 'F1'
 
 resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: resourceName
