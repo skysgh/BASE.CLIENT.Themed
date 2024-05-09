@@ -8,6 +8,9 @@ param resourceName string
 // @allowed('') 
 param resourceLocationId string = ''
 
+@description('The tags for this resource. ')
+param resourceTags object = {}
+
 @description('The Url of the repository containing source code of this site.')
 param repositoryUrl string
 
