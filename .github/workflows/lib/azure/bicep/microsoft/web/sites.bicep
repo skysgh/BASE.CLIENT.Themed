@@ -1,5 +1,5 @@
 @description('Id of parent app Service Plan. eg: \'appServicePlanModule.id\'')
-param parentResourceId string;
+param parentResourceId string
 
 @description('the unique name of this site (often is PROJECTNAME + a unique number).')
 param resourceName string
