@@ -1,7 +1,7 @@
 // NO. It stops resourceLocation().location from working: 
 // targetScope='subscription'
 // NO:targetScope='resourceGroup'
-// targetScope='subscription'
+targetScope='subscription'
 
 // ------------------------------------------------------------
 // ------------------------------------------------------------
@@ -22,7 +22,7 @@ param environmentId string
 
 @description('The location for this resource. ')
 // @allowed(...too long...)
-param resourceLocationId string = resourceGroup().location
+param resourceLocationId string //NO:= resourceGroup().location
 
 @description('The tags for this resource. ')
 param resourceTags object = {}
