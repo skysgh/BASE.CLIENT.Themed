@@ -48,4 +48,4 @@ output resourceId string = resource.id
 output resourceName string = resource.name
 
 // param sink (to not cause error if param is not used):
-output _ string = startsWith(concat(repositorySourceLocation), 'z')
+output _ bool = startsWith(concat(repositorySourceLocation), 'z')
