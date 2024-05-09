@@ -68,7 +68,7 @@ module appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
   // dependsOn: [resourceGroupModule]
   name: 'YYY'
-  scope: resourceGroupModule.outputs.name 
+  scope: resourceGroupModule
   params: {
     resourceName: parentResourceName
     resourceLocationId: sqlFarmResourceLocationId
