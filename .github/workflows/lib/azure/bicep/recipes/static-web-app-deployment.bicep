@@ -142,3 +142,6 @@ output swaUrl string = swaModule.outputs.resourceUrl
 
 // Create a fake use for the dummary var:
 output repositorySummary string = dummyRepoSynopsis 
+
+// param sink (to not cause error if param is not used):
+output _ = startsWith(concat(), 'z')
