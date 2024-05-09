@@ -42,22 +42,24 @@ param repositorySourceLocation string = '/'
 var appServicePlanName = toLower('AppServicePlan-${webAppName}')
 var webSiteName = toLower('wapp-${webAppName}')
 
+
+
 // Sort out default name, location and resources.
 var fullName = concat('${projectName},${projectServiceName}?:'_':'',${projectServiceName},'_',${environmentId}');
 var shortName = projectName;
-var parentResourceName = toUpper(parentNameIsLonger?fullName:shortName)
-var childResourceName = toUpper(parentNameIsLonger?shortName:fullName)
+var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
+var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
+var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
 var defaultTags = {'project':projectName,'service':projectServiceName, 'environment':environmentId}
 var useTags = union(resourceTags, defaultTags);
-
 
 
 resource resourceGroupModule './microsoft/resources/resourcegroups.bicep' = {
    // pass parameters:
   params: {
-    resourceName: parentResourceName
+    resourceName: groupResourceName
     resourceLocationId: resourceLocationId
-    resourceTags:resourceTags
+    resourceTags: resourceTags
   }
 }
 
@@ -69,7 +71,7 @@ resource appServicePlanModule './microsoft/web/serverfarms.bicep' = {
   params: {
     resourceName: parentResourceName
     resourceLocationId: resourceLocationId
-    resourceTags:resourceTags
+    resourceTags: resourceTags
   }
 }
 
@@ -82,7 +84,7 @@ module appSitesModule './microsoft/web/sites.bicep' = {
 
     resourceName: childResourceName
     resourceLocationId: resourceLocationId
-    resourceTags:resourceTags
+    resourceTags: resourceTags
   
     linuxFxVersion: linuxFxVersion
   }
@@ -94,7 +96,7 @@ module srcControlsModule './microsoft/web/sites/sourcecontrols.bicep' = {
   params: {
     resourceName:  '${appSitesModule.outputs.resourceName}/web'
     resourceLocationId: resourceLocationId
-    resourceTags:resourceTags
+    resourceTags: resourceTags
 
     repositoryUrl: repositoryUrl
     repositoryBranch: repositoryBranch
