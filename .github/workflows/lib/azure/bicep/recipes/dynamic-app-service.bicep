@@ -77,8 +77,8 @@ module resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
 module appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
   // dependsOn: [resourceGroupModule]
-  name: 'BBBB'
-  scope: resourceGroupModule.outputs.name 
+  name: 'BBBBBB'
+  scope: resourceGroupModule.name 
   params: {
     resourceName: parentResourceName
     resourceLocationId: resourceLocationId
@@ -92,8 +92,8 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
   // should be implied: 
   // dependsOn: [appServicePlanModule]
   // pass parameters:
-  name: 'BBBB'
-  scope: resourceGroup() 
+  name: 'BBBBA'
+  scope: appServicePlanModule.name
   params: {
     parentResourceId: appServicePlanModule.outputs.resourceId
 
@@ -107,7 +107,9 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
 
 module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   // dependsOn: 
-  // [appServicePlanModule, appSitesModule]
+  // [appSitesModule]
+  name: 'BBBB'
+  scope: appSitesModule.name 
   params: {
     resourceName:  '${appSitesModule.outputs.resourceName}/web'
     resourceLocationId: resourceLocationId
