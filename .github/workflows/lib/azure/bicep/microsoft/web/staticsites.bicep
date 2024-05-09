@@ -51,7 +51,6 @@ param repositoryBranch string = 'main'
 param repositoryToken string
 
 // Make a dummy var to create a fake need, so that I don't have to comment out the params
-var dummyRepoSynopsis = '${repositoryUrl}-${repositoryBranch}-${repositoryToken}'
 
 
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
@@ -142,3 +141,8 @@ output resourceUrl string = resource.properties.defaultHostname
 
 // crewate a fake use for the dummy var
 output repositorySummary string = dummyRepoSynopsis 
+
+
+// param sink (to not cause error if param is not used):
+output _ = startsWith(concat(repositoryUrl,repositoryBranch,repositoryToken), 'z')
+
