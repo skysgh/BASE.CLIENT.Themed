@@ -50,6 +50,11 @@ resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
 }
 
 
+// return the id (the fully qualitified name) of the newly created resource:
+output resourceId string = resource.id
+
+// return the (short) name of the newly created resource:
+output resourceName string = resource.name
 
 // param sink (to not cause error if param is not used):
 output _ = startsWith(concat(), 'z')
