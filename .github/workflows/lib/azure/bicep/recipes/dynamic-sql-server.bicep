@@ -55,7 +55,7 @@ var useTags = union(resourceTags, defaultTags)
 module resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
    // pass parameters:
   name: 'rgX'
-  scope:subscription(),
+  scope:subscription()
   params: {
     resourceName: groupResourceName
     resourceLocationId: groupResourceLocationId
