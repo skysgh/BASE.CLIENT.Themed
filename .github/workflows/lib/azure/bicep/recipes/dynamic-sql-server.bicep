@@ -38,7 +38,7 @@ param resourceSku string = 'Free'
 // ------------------------------------------------------------
 var fullName = concat(
     projectName, 
-    projectServiceName ? '_${projectServiceName}':'',
+    empty(projectServiceName) ? '':'_${projectServiceName}',
     '_',
     environmentId)
 var shortName = projectName
