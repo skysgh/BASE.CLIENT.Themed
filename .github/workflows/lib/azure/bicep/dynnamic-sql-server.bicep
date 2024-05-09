@@ -30,3 +30,66 @@ param sqlFarmResourceLocation string = groupResourceLocation // in case in the f
 param resourceSku string = 'Free'
 // ------------------------------------------------------------
 // ------------------------------------------------------------
+
+
+// Sort out default name, location and resources.
+var fullName = concat('${projectName},${projectServiceName}?:'_':'',${projectServiceName},'_',${environmentId}');
+var shortName = projectName;
+var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
+var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
+var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
+var defaultTags = {'project':projectName,'service':projectServiceName, 'environment':environmentId}
+var useTags = union(resourceTags, defaultTags);
+
+
+resource resourceGroupModule './microsoft/resources/resourcegroups.bicep' = {
+   // pass parameters:
+  params: {
+    resourceName: groupResourceName
+    resourceLocationId: groupResourceLocationId
+    resourceTags: resourceTags
+  }
+}
+
+
+resource appServicePlanModule './microsoft/web/serverfarms.bicep' = {
+  // should be implied: 
+  // dependsOn: [resourceGroupModule]
+  scope: resourceGroupModule.outputs.name 
+  params: {
+    resourceName: parentResourceName
+    resourceLocationId: resourceLocationId
+    resourceTags: resourceTags
+  }
+}
+
+module appSitesModule './microsoft/web/sites.bicep' = {
+  // should be implied: 
+  // dependsOn: [appServicePlanModule]
+  // pass parameters:
+  params: {
+    parentResourceId: appServicePlanModule.outputs.resourceId
+
+    resourceName: childResourceName
+    resourceLocationId: resourceLocationId
+    resourceTags: resourceTags
+  
+    linuxFxVersion: linuxFxVersion
+  }
+}
+
+module srcControlsModule './microsoft/web/sites/sourcecontrols.bicep' = {
+  // dependsOn: 
+  // [appServicePlanModule, appSitesModule]
+  params: {
+    resourceName:  '${appSitesModule.outputs.resourceName}/web'
+    resourceLocationId: resourceLocationId
+    resourceTags:resourceTags
+
+    repositoryUrl: repositoryUrl
+    repositoryBranch: repositoryBranch
+  }
+}
+
+output resourceId string = appSitesModule.outputs.id
+output resourceName string = appSitesModule.outputs.name
