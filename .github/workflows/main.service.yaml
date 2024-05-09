@@ -92,7 +92,8 @@ jobs:
             projectName="${{ env.PROJECT_NAME }}"
             projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
             environmentId="${{ env.PROJECT_ENV_ID}}"
-            
+
+            resourceLocationId="centralaustralia"
             groupResourceLocationId="centralaustralia" // "${{ vars.AZURE_LOCATION_1_ID }}"
             serverfarmsResourceLocationId= "centralaustralia" // 
             sitesResourceLocationId= "centralaustralia" // 
