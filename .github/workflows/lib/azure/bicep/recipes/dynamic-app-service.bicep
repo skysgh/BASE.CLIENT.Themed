@@ -123,7 +123,7 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   }
 }
 
-output resourceId string = appSitesModule.outputs.id
-output resourceName string = appSitesModule.outputs.name
+output resourceId string = appSitesModule.outputs.resourceId
+output resourceName string = appSitesModule.outputs.resourceName
 // param sink (to not cause error if param is not used):
 output _ bool = startsWith(concat(''), 'z')
