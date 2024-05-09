@@ -27,11 +27,11 @@ param resourceTags object = {}
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
-param groupResourceLocation string
+param groupResourceLocationId string
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'centralus', 'eastus2', 'eastasia', 'westeurope', 'westus2' ])
-param swaResourceLocation string // in case in the future one can use the same as the group.
+param swaResourceLocationId string // in case in the future one can use the same as the group.
 
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
@@ -84,7 +84,7 @@ var useTags = union(resourceTags, defaultTags)
 // a module, but could not get the name of the resource that was created
 resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
     name: resourceGroupName
-    location: groupResourceLocation
+    location: groupResourceLocationId
     //params: {
       tags: useTags
     //}
@@ -96,7 +96,7 @@ resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 //  // Don't knnow if this needed at this level?
 //  params: {
 //    resourceName: resourceGroupName
-//    resourceLocation: groupResourceLocation
+//    resourceLocationId: groupResourceLocationId
 //    resourceTags: useTags
 //  }
 // }
@@ -112,7 +112,7 @@ module swaModule '../microsoft/web/staticsites.bicep' = {
   params: {
     // SWA:
     resourceName: childResourceName
-    resourceLocationId: swaResourceLocation
+    resourceLocationId: swaResourceLocationId
     resourceTags: useTags
     //
     resourceSku: resourceSku
