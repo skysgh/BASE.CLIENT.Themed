@@ -43,7 +43,7 @@ var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
 
 
-resource resourceGroupModule './microsoft/resources/resourcegroups.bicep' = {
+resource resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
    // pass parameters:
   params: {
     resourceName: groupResourceName
@@ -53,7 +53,7 @@ resource resourceGroupModule './microsoft/resources/resourcegroups.bicep' = {
 }
 
 
-resource appServicePlanModule './microsoft/web/serverfarms.bicep' = {
+resource appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
   // dependsOn: [resourceGroupModule]
   scope: resourceGroupModule.outputs.name 
@@ -64,7 +64,7 @@ resource appServicePlanModule './microsoft/web/serverfarms.bicep' = {
   }
 }
 
-module appSitesModule './microsoft/web/sites.bicep' = {
+module appSitesModule '../microsoft/web/sites.bicep' = {
   // should be implied: 
   // dependsOn: [appServicePlanModule]
   // pass parameters:
@@ -79,7 +79,7 @@ module appSitesModule './microsoft/web/sites.bicep' = {
   }
 }
 
-module srcControlsModule './microsoft/web/sites/sourcecontrols.bicep' = {
+module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   // dependsOn: 
   // [appServicePlanModule, appSitesModule]
   params: {
