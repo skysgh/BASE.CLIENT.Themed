@@ -54,42 +54,50 @@ var useTags = union(resourceTags, defaultTags);
 
 resource resourceGroupModule './microsoft/resources/resourcegroups.bicep' = {
    // pass parameters:
-   resourceName: parentResourceName
-   resourceLocationId: resourceLocationId
-   resourceTags:resourceTags
+  params: {
+    resourceName: parentResourceName
+    resourceLocationId: resourceLocationId
+    resourceTags:resourceTags
+  }
 }
 
 
 resource appServicePlanModule './microsoft/web/serverfarms.bicep' = {
-  // should be implied: dependsOn: [resourceGroupModule]
+  // should be implied: 
+  // dependsOn: [resourceGroupModule]
   scope: resourceGroupModule.outputs.name 
-  // pass parameters:
-  resourceName: parentResourceName
-  resourceLocationId: resourceLocationId
-  resourceTags:resourceTags
+  params: {
+    resourceName: parentResourceName
+    resourceLocationId: resourceLocationId
+    resourceTags:resourceTags
+  }
 }
 
 resource appServiceModule './microsoft/web/sites.bicep' = {
-  // should be implied: dependsOn: [appServicePlanModule]
+  // should be implied: 
+  // dependsOn: [appServicePlanModule]
   // pass parameters:
-  parentResourceId: appServicePlanModule.outputs.resourceId
+  params: {
+    parentResourceId: appServicePlanModule.outputs.resourceId
 
-  resourceName: childResourceName
-  resourceLocationId: resourceLocationId
-  resourceTags:resourceTags
+    resourceName: childResourceName
+    resourceLocationId: resourceLocationId
+    resourceTags:resourceTags
   
-  linuxFxVersion: linuxFxVersion
+    linuxFxVersion: linuxFxVersion
+  }
 }
 
 resource srcControls './microsoft/web/sites/sourcecontrols.bicep' = {
-    dependsOn: [appServicePlanModule, appServiceModule]
-    
-    name:  '${appServiceModule.outputs.resourceName}/web'
-
-    // resourceLocationId: resourceLocationId
-    // resourceTags:resourceTags
+  // dependsOn: 
+  // [appServicePlanModule, appServiceModule]
+  params: {
+    resourceName:  '${appServiceModule.outputs.resourceName}/web'
+    resourceLocationId: resourceLocationId
+    resourceTags:resourceTags
 
     repositoryUrl: repositoryUrl
     repositoryBranch: repositoryBranch
+  }
 }
 
