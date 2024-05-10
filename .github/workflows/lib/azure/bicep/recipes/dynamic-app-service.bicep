@@ -135,7 +135,7 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   // dependsOn: 
   // [appSitesModule]
   name: 'BBBB'
-  scope: resourceGroup(subscription(),groupResourceName) 
+  scope: resourceGroup(groupResourceName) 
   params: {
     resourceName:  '${appSitesModule.outputs.resourceName}/web'
     resourceLocationId: sourcecontrolsResourceLocationId
