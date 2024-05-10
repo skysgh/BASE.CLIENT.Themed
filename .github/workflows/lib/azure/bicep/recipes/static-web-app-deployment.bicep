@@ -20,13 +20,13 @@ param projectName string
 @description('The name used to build resources. e.g.: \'CLIENT\'')
 param projectServiceName string = ''
 
-
 @description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
 @allowed([ 'NP',   'BT','DT','ST','UT','IT','PP','TR','PR'])
 param environmentId string
-
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 @description('The tags for this resource. ')
-param resourceTags object = {}
+param resourceTags object = sharedSettings.defaultTags
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
@@ -35,7 +35,8 @@ param groupResourceLocationId string // = NO!:resourceGroup().location
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'centralus', 'eastus2', 'eastasia', 'westeurope', 'westus2' ])
 param swaResourceLocationId string // in case in the future one can use the same as the group.
-
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
