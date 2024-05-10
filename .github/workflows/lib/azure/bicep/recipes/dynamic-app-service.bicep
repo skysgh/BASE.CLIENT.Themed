@@ -103,7 +103,7 @@ module appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
   // dependsOn: [resourceGroupModule]
   name: 'BBBBBB'
-  scope: resourceGroup(subscription(),groupResourceName) 
+  scope: resourceGroup(groupResourceName) 
   params: {
     resourceName: parentResourceName
     resourceLocationId: serverfarmsResourceLocationId
@@ -118,11 +118,11 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
   dependsOn: [appServicePlanModule]
   // pass parameters:
   name: 'BBBBA'
-  scope: resourceGroup(subscription(),groupResourceName)
+  scope: resourceGroup(groupResourceName)
   params: {
     parentResourceId: appServicePlanModule.outputs.resourceId
 
-    resourceName: concat( childResourceName, uniqueString( resourceGroup(subscription(),groupResourceName).id ) )
+    resourceName: concat( childResourceName, uniqueString( resourceGroup(subscription().id,groupResourceName).id ) )
 
     resourceLocationId: sitesResourceLocationId
     resourceTags: useTags
