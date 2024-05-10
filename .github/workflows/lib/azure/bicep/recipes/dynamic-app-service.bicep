@@ -19,8 +19,9 @@ param environmentId string
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 @description('The tags for this resource. ')
-param resourceTags object = sharedSettings.defaultTags
-
+param resourceTags object = {}
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 @description('The location of the parent resource group. ')
 // @allowed(...too long...)
 param resourceLocationId string //NO:= resourceGroup().location
@@ -48,7 +49,7 @@ param sourcecontrolsResourceLocationId string = sitesResourceLocationId
 // ------------------------------------------------------------
 @description('The app service plan SKU. F1,D1,B1,B2,S1,S2')
 @allowed(['F1','D1','B1','B2','S1','S2'])
-param webAppServicePlanSKU string = sharedSettings.defaultSKUs.appPlans
+param webAppServicePlanSKU string = 'F1'
 
 
 
