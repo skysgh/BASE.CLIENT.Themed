@@ -2,7 +2,10 @@
   "namingConventions": {
     "parentNameIsLonger": true
   },
-  "defaultTags":{}
+  "defaultTags":{},
+  "defaultSKUs":{
+    "staticWebApps":"Free"
+  }
 }
 
 
