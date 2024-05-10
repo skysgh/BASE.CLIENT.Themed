@@ -1,3 +1,5 @@
+var sharedSettings = loadJsonContent('../variables/shared.json')
+
 //targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
 // put back in (so that resourceGroup resource can be developed, as unlike a module, it cannot have scope as a property):
 targetScope='subscription'
@@ -9,10 +11,6 @@ targetScope='subscription'
 // - move source code into it.
 // ------------------------------------------------------------
 
-
-// Resources Groups are part of the general subscription
-@description('Whether to name parent resources (e.g. resourceGroups, serverfarms, etc.) as with service and env names, or the other way around.')
-param parentNameIsLonger bool = true
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 // Resources Groups are part of the general subscription
