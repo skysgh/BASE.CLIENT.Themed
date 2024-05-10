@@ -87,6 +87,7 @@ var useTags = union(resourceTags, defaultTags)
 // 
 // ------------------------------------------------------------
 
+var mockName = resourceGroupsModule.outputs.resourceName
 
 module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   name:  '${deployment().name}_resourcegroups_module'
@@ -105,7 +106,7 @@ module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
   dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_serverfarms_module'
-  scope: resourceGroup() 
+  scope: resourceGroup(mockName) 
   params: {
     resourceName: parentResourceName
     resourceLocationId: serverfarmsResourceLocationId
@@ -120,7 +121,7 @@ module sitesModule '../microsoft/web/sites.bicep' = {
   dependsOn: [serverFarmsModule]
   // pass parameters:
   name:  '${deployment().name}_sites_module'
-  scope: resourceGroup()
+  scope: resourceGroup(mockName)
   params: {
     parentResourceId: serverFarmsModule.outputs.resourceId
 
