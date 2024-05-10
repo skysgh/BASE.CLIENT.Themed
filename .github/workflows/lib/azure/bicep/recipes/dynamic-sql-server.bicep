@@ -51,9 +51,9 @@ var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
 
 
-module resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
+module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
    // pass parameters:
-  name: 'resourceGroup_module'
+  name: 'resourceGroups_module'
   scope:subscription()
   params: {
     resourceName: groupResourceName
@@ -63,7 +63,7 @@ module resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
 }
 
 
-module appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
+module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
   // dependsOn: [resourceGroupModule]
   name: 'appServicePlan_module'
@@ -75,8 +75,8 @@ module appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
   }
 }
 
-output resourceId string = appSitesModule.outputs.id
-output resourceName string = appSitesModule.outputs.name
+output resourceId string = serverFarmsModule.outputs.id
+output resourceName string = serverFarmsModule.outputs.name
 
 // param sink (to not cause error if param is not used):
 output _ bool = startsWith(concat(''), 'z')
