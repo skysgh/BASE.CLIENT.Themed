@@ -8,9 +8,6 @@ targetScope='subscription'
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 
-// Resources Groups are part of the general subscription
-@description('Whether to name parent resources (e.g. resourceGroups, serverfarms, etc.) as with service and env names, or the other way around.')
-param parentNameIsLonger bool = true
 
 // Resources Groups are part of the general subscription
 @description('The project name. This informs automation of naming of resource groups, services, etc. e.g.: \'BASE\'')
