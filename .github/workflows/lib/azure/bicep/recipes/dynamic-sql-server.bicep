@@ -17,8 +17,9 @@ param environmentId string
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 @description('The tags for this resource. ')
-param resourceTags object = sharedSettings.defaultTags
-
+param resourceTags object = {}
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
 param groupResourceLocationId string //NO. Fails most times. = resourceGroup().location
@@ -26,15 +27,12 @@ param groupResourceLocationId string //NO. Fails most times. = resourceGroup().l
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'eastasia'])
 param sqlFarmResourceLocationId string  // in case in the future one can use the same as the group.
-
-//param resourceLocationId string
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 // ------------------------------------------------------------
-// 
 // ------------------------------------------------------------
 var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
 var fullName = '${projectName}${tmp}${environmentId}' 
@@ -46,7 +44,6 @@ var childResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLo
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
-// 
 // ------------------------------------------------------------
 
 
