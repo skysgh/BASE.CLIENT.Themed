@@ -48,7 +48,9 @@ param sourcecontrolsResourceLocationId string = sitesResourceLocationId
 // ------------------------------------------------------------
 @description('The app service plan SKU. F1,D1,B1,B2,S1,S2')
 @allowed(['F1','D1','B1','B2','S1','S2'])
-param webAppServicePlanSKU string
+param webAppServicePlanSKU string = sharedSettings.defaultSKUs.appPlans
+
+
 
 @description('The Function eXtension to define the runtime stack. Consider using \'DOTNETCORE|Latest\'')
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
