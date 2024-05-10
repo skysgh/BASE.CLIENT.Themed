@@ -105,7 +105,7 @@ module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
   // dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_serverfarms_module'
-  scope: resourceGroup() 
+  scope: resourceGroup(groupResourceName) 
   params: {
     resourceName: parentResourceName
     resourceLocationId: serverfarmsResourceLocationId
