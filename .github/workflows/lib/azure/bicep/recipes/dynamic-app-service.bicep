@@ -91,7 +91,7 @@ var mockName = resourceGroupsModule.outputs.resourceName
 
 module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   name:  '${deployment().name}_resourcegroups_module'
-  scope: resourceGroup()
+  scope: subscription()
    // pass parameters:
   params: {
     resourceName: groupResourceName
