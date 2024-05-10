@@ -19,7 +19,7 @@ param environmentId string
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 @description('The tags for this resource. ')
-param resourceTags object = {}
+param resourceTags object = sharedSettings.defaultTags
 
 @description('The location of the parent resource group. ')
 // @allowed(...too long...)
