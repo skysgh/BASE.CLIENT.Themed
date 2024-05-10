@@ -1,14 +1,12 @@
 var sharedSettings = loadJsonContent('../settings/shared.json')
-
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 // NO. It stops resourceLocation().location from working: 
 // targetScope='subscription'
 // NO:targetScope='resourceGroup'
 targetScope='subscription'
-
 // ------------------------------------------------------------
 // ------------------------------------------------------------
-
-
 // Resources Groups are part of the general subscription
 @description('The project name. This informs automation of naming of resource groups, services, etc. e.g.: \'BASE\'')
 param projectName string
@@ -18,6 +16,10 @@ param projectServiceName string = 'SERVICE'
 
 @allowed (['NP','BT', 'DT','ST','UT','IT','TR','PP','PR'])
 param environmentId string
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+@description('The tags for this resource. ')
+param resourceTags object = {}
 
 @description('The location of the parent resource group. ')
 // @allowed(...too long...)
@@ -42,10 +44,8 @@ param sitesResourceLocationId string = serverfarmsResourceLocationId
 // @allowed(...too long...)
 //NO:= resourceGroup().location
 param sourcecontrolsResourceLocationId string = sitesResourceLocationId 
-
-@description('The tags for this resource. ')
-param resourceTags object = {}
-
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 @description('The app service plan SKU. F1,D1,B1,B2,S1,S2')
 @allowed(['F1','D1','B1','B2','S1','S2'])
 param webAppServicePlanSKU string
