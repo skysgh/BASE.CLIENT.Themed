@@ -4,7 +4,7 @@
   },
   "defaultTags":{},
   "defaultSKUs":{
-    "staticWebApps":"Free"
+    "staticWebApps":"Free",
     "appPlans":"F1"
   }
 }
