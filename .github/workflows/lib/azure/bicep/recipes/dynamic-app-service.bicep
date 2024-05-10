@@ -75,6 +75,7 @@ param repositorySourceLocation string = '/'
 var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
 var fullName = '${projectName}${tmp}${environmentId}' 
 var shortName = projectName
+var uniqueSuffix = uniqueString(resourceGroup().id)
 var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
 var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
 var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
@@ -121,7 +122,7 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
   params: {
     parentResourceId: appServicePlanModule.outputs.resourceId
 
-    resourceName: childResourceName
+    resourceName: "${childResourceName}-${uniqueSuffix}"
     resourceLocationId: sitesResourceLocationId
     resourceTags: useTags
 
