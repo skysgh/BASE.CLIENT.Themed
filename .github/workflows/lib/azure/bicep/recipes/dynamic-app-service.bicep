@@ -87,8 +87,6 @@ var useTags = union(resourceTags, defaultTags)
 // 
 // ------------------------------------------------------------
 
-var mockName = resourceGroupsModule.outputs.resourceName
-
 module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   name:  '${deployment().name}_resourcegroups_module'
   scope: subscription()
@@ -106,7 +104,7 @@ module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
   dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_serverfarms_module'
-  scope: resourceGroup(mockName) 
+  scope: resourceGroup(groupResourceName) 
   params: {
     resourceName: parentResourceName
     resourceLocationId: serverfarmsResourceLocationId
@@ -121,7 +119,7 @@ module sitesModule '../microsoft/web/sites.bicep' = {
   dependsOn: [serverFarmsModule]
   // pass parameters:
   name:  '${deployment().name}_sites_module'
-  scope: resourceGroup(mockName)
+  scope: resourceGroup(groupResourceName) 
   params: {
     parentResourceId: serverFarmsModule.outputs.resourceId
 
@@ -138,6 +136,7 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   // dependsOn: 
   // [appSitesModule]
   name:  '${deployment().name}_sites_sourcecontrols_module'
+  scope: resourceGroup(groupResourceName) 
   // child resources don't use 'scope', they use 'parent':
   parent: sitesModule  
   params: {
