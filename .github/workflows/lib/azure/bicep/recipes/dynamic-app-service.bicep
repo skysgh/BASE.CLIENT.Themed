@@ -103,7 +103,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
 
 module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
-  // dependsOn: [resourceGroupsModule]
+  dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_serverfarms_module'
   scope: resourceGroupsModule 
   params: {
