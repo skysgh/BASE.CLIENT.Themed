@@ -39,9 +39,10 @@ param resourceSku string = 'Free'
 var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
 var fullName = '${projectName}${tmp}${environmentId}' 
 var shortName = projectName
-var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
-var parentResourceName = toUpper(parentNameIsLonger? fullName : shortName)
-var childResourceName = toUpper(parentNameIsLonger? shortName : fullName)
+
+var groupResourceName =  toUpper(sharedVariables.parentNameIsLonger ?  fullName : shortName)
+var parentResourceName = toUpper(sharedVariables.parentNameIsLonger ? fullName : shortName)
+var childResourceName =  toUpper(sharedVariables.parentNameIsLonger ? shortName : fullName)
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
