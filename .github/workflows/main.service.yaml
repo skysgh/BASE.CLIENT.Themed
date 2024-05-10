@@ -102,6 +102,7 @@ jobs:
             linuxFxVersion="DOTNETCORE|Latest"
 
             repositoryUrl="${{ env.SWA_REPO_LANDING_PAGE_URL }}"
+            repositoryBranch='main'
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             repositorySourceLocation="/"
 
