@@ -120,11 +120,11 @@ module sitesModule '../microsoft/web/sites.bicep' = {
   dependsOn: [serverFarmsModule]
   // pass parameters:
   name:  '${deployment().name}_sites_module'
-  scope: resourceGroup()
+  scope: resourceGroup(groupResourceName) 
   params: {
     parentResourceId: serverFarmsModule.outputs.resourceId
 
-    resourceName: '${childResourceName}${uniqueString( resourceGroupId(subscription().id,groupResourceName) )}')
+    resourceName: '${childResourceName}${uniqueString( resourceGroup(groupResourceName)) }')
 
     resourceLocationId: sitesResourceLocationId
     resourceTags: useTags
