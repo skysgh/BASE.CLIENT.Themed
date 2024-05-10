@@ -91,16 +91,13 @@ jobs:
             projectName="${{ env.PROJECT_NAME }}"
             projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
             environmentId="${{ env.PROJECT_ENV_ID}}"
-
             resourceLocationId="australiacentral"
             groupResourceLocationId="australiacentral" 
             serverfarmsResourceLocationId="australiacentral"  
             sitesResourceLocationId="australiacentral" 
             sourcecontrolsResourceLocationId="australiacentral"
-
             webAppServicePlanSKU="F1"
             linuxFxVersion="DOTNETCORE|Latest"
-
             repositoryUrl="https://todo"
             repositoryBranch='main'
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
