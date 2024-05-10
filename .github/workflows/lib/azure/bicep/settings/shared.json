@@ -1,7 +1,8 @@
 {
   "namingConventions": {
     "parentNameIsLonger": true
-  }
+  },
+  "defaultTags":{}
 }
 
 
