@@ -101,7 +101,7 @@ jobs:
             webAppServicePlanSKU="F1"
             linuxFxVersion="DOTNETCORE|Latest"
 
-            repositoryUrl="${{ env.SWA_REPO_LANDING_PAGE_URL }}"
+            repositoryUrl="https://todo"
             repositoryBranch='main'
             repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             repositorySourceLocation="/"
