@@ -84,31 +84,31 @@ var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
 // Make the Repo first (I tried foa a while to make it into 
 // a module, but could not get the name of the resource that was created
-resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-    name: groupResourceName 
-    // NOT ALLOWED on resource: scope: 'subscription'
-    location: groupResourceLocationId
-    //params: {
-      tags: useTags
-    //}
-}
-
-// module rgModule '../microsoft/resources/resourcegroups.bicep' = {
-//  scope: subscription()
-// name:  '${deployment().name}_resourcegroups_module'
-//  // Don't knnow if this needed at this level?
-//  params: {
-//    resourceName: groupResourceName
-//    resourceLocationId: groupResourceLocationId
-//    resourceTags: useTags
-//  }
+// resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+//     name: groupResourceName 
+//     // NOT ALLOWED on resource: scope: 'subscription'
+//     location: groupResourceLocationId
+//     //params: {
+//       tags: useTags
+//     //}
 // }
+
+ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
+  scope: subscription()
+  name:  '${deployment().name}_resourcegroups_module'
+  // Don't knnow if this needed at this level?
+  params: {
+    resourceName: groupResourceName
+    resourceLocationId: groupResourceLocationId
+    resourceTags: useTags
+  }
+}
 
 
 module swaModule '../microsoft/web/staticsites.bicep' = {
   //dependsOn: [rg1] // Specify a dependency on the rgModule
   name:  '${deployment().name}_staticsites_module'
-  scope: rg1
+  scope: resourceGroupsModule
   // scope: rgResourceId
   // scope: resourceGroup(subscription().id, rgModule.outputs.resourceId)
   // alt way: scope: resourceGroup(rgModule.outputs.resourceName) // Specify the resource group as the scope
