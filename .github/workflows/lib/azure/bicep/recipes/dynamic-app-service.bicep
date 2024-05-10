@@ -137,7 +137,8 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   // dependsOn: 
   // [appSitesModule]
   name:  '${deployment().name}_sites_sourcecontrols_module'
-  scope: sitesModule  
+  // child resources don't use 'scope', they use 'parent':
+  parent: sitesModule  
   params: {
     resourceName:  '${sitesModule.outputs.resourceName}/web'
     resourceLocationId: sourcecontrolsResourceLocationId
