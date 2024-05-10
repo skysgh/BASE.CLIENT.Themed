@@ -123,6 +123,7 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
     parentResourceId: appServicePlanModule.outputs.resourceId
 
     resourceName: concat( childResourceName, uniqueString(resourceGroup().id) )
+
     resourceLocationId: sitesResourceLocationId
     resourceTags: useTags
 
