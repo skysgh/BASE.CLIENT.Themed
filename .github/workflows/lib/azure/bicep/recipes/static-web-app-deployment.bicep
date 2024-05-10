@@ -26,7 +26,7 @@ param environmentId string
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 @description('The tags for this resource. ')
-param resourceTags object = sharedSettings.defaultTags
+param resourceTags object = {}
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
@@ -39,7 +39,7 @@ param swaResourceLocationId string // in case in the future one can use the same
 // ------------------------------------------------------------
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
-param resourceSku string = sharedSettings.defaultSKUs.staticWebApps
+param resourceSku string = 'Free'
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 
