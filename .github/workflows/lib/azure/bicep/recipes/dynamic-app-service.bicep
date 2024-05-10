@@ -72,7 +72,7 @@ param repositorySourceLocation string = '/'
 // ------------------------------------------------------------
 // 
 // ------------------------------------------------------------
-var tmp = empty(projectServiceName) ? '':'_${projectServiceName}'
+var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
 var fullName = '${projectName}${tmp}${environmentId}' 
 var shortName = projectName
 var groupResourceName = toUpper(parentNameIsLonger?  fullName : shortName)
