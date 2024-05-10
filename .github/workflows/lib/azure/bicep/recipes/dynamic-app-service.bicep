@@ -88,8 +88,8 @@ var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
 
 
-module resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
-  name: 'resourceGroup_module'
+module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
+  name: 'resourceGroups_module'
   scope: subscription()
    // pass parameters:
   params: {
@@ -103,8 +103,8 @@ module resourceGroupModule '../microsoft/resources/resourcegroups.bicep' = {
 
 module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
-  // dependsOn: [resourceGroupModule]
-  name: 'appServicePlan_module'
+  // dependsOn: [resourceGroupsModule]
+  name: 'serverFarms_module'
   scope: resourceGroup(groupResourceName) 
   params: {
     resourceName: parentResourceName
@@ -115,11 +115,11 @@ module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
   }
 }
 
-module appSitesModule '../microsoft/web/sites.bicep' = {
+module sitesModule '../microsoft/web/sites.bicep' = {
   // should be implied: 
   dependsOn: [serverFarmsModule]
   // pass parameters:
-  name: 'appSites_module'
+  name: 'sites_module'
   scope: resourceGroup(groupResourceName)
   params: {
     parentResourceId: appServicePlanModule.outputs.resourceId
@@ -139,7 +139,7 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   name: 'BBBB'
   scope: resourceGroup(groupResourceName) 
   params: {
-    resourceName:  '${appSitesModule.outputs.resourceName}/web'
+    resourceName:  '${sitesModule.outputs.resourceName}/web'
     resourceLocationId: sourcecontrolsResourceLocationId
     resourceTags: useTags
 
@@ -150,7 +150,7 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
   }
 }
 
-output resourceId string = appSitesModule.outputs.resourceId
-output resourceName string = appSitesModule.outputs.resourceName
+output resourceId string = sitesModule.outputs.resourceId
+output resourceName string = sitesModule.outputs.resourceName
 // param sink (to not cause error if param is not used):
 output _ bool = startsWith('${resourceLocationId}', 'z')
