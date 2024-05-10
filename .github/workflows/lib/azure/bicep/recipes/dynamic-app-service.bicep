@@ -86,6 +86,9 @@ var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
 // 
 // ------------------------------------------------------------
+var uniqueSuffix = uniqueString(subscription().subscriptionId)
+// ------------------------------------------------------------
+
 
 module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   name:  '${deployment().name}_resourcegroups_module'
@@ -123,7 +126,7 @@ module sitesModule '../microsoft/web/sites.bicep' = {
   params: {
     parentResourceId: serverFarmsModule.outputs.resourceId
 
-    resourceName: '${childResourceName}${uniqueString( resourceGroup(groupResourceName) ) }')
+    resourceName: '${childResourceName}-${uniqueSuffix}')
 
     resourceLocationId: sitesResourceLocationId
     resourceTags: useTags
