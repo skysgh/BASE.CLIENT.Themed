@@ -94,9 +94,9 @@ jobs:
 
             resourceLocationId="australiacentral"
             groupResourceLocationId="australiacentral" 
-            serverfarmsResourceLocationId= "australiacentral"  
-            sitesResourceLocationId= "australiacentral" 
-            sourcecontrolResourceLocationId = "australiacentral"
+            serverfarmsResourceLocationId="australiacentral"  
+            sitesResourceLocationId="australiacentral" 
+            sourcecontrolResourceLocationId="australiacentral"
 
             webAppServicePlanSKU="F1"
             linuxFxVersion="DOTNETCORE|Latest"
