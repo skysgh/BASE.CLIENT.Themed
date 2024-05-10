@@ -122,7 +122,7 @@ module sitesModule '../microsoft/web/sites.bicep' = {
   name:  '${deployment().name}_sites_module'
   scope: resourceGroup(groupResourceName)
   params: {
-    parentResourceId: appServicePlanModule.outputs.resourceId
+    parentResourceId: serverFarmsModule.outputs.resourceId
 
     resourceName: concat( childResourceName, uniqueString( resourceGroup(subscription().id,groupResourceName).id ) )
 
