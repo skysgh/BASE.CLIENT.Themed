@@ -39,7 +39,7 @@ param swaResourceLocationId string // in case in the future one can use the same
 // ------------------------------------------------------------
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
-param resourceSku string = 'Free'
+param resourceSku string = sharedSettings.defaultSKUs.staticWebApps
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 
