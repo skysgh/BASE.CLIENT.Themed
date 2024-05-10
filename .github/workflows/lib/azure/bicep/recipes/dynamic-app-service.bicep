@@ -124,7 +124,7 @@ module sitesModule '../microsoft/web/sites.bicep' = {
   params: {
     parentResourceId: serverFarmsModule.outputs.resourceId
 
-    resourceName: '${childResourceName}${uniqueString( resourceGroupId(subscription().id,groupResourceName) )}")
+    resourceName: '${childResourceName}${uniqueString( resourceGroupId(subscription().id,groupResourceName) )}')
 
     resourceLocationId: sitesResourceLocationId
     resourceTags: useTags
