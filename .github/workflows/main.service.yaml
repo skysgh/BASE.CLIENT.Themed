@@ -14,7 +14,8 @@ env:
   THIS_DIRECTORY: '.github/workflows'
   WORKFLOW_BICEP_DIRECTORY: '.github/workflows/bicep'
   LIB_BICEP_DIRECTORY: '.github/workflows/lib/azure/bicep/recipes' # REPO_LIB_DIR1
- 
+
+
 # Running on one runner:      
 jobs:
   deploy:
