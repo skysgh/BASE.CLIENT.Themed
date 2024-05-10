@@ -64,6 +64,9 @@ param repositoryBranch string = 'main'
 @description('The folder within the repository that contains the source code of the service. ')
 param repositorySourceLocation string = '/'
 
+@description('The repositoryToken. ')
+param repositoryToken string 
+
 
 
 // ------------------------------------------------------------
@@ -137,6 +140,7 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
     resourceTags: useTags
 
     repositoryUrl: repositoryUrl
+    repositoryToken: repositoryToken
     repositoryBranch: repositoryBranch
     repositorySourceLocation: repositorySourceLocation
   }
