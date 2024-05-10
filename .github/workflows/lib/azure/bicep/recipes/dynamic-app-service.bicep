@@ -114,7 +114,7 @@ module appServicePlanModule '../microsoft/web/serverfarms.bicep' = {
 
 module appSitesModule '../microsoft/web/sites.bicep' = {
   // should be implied: 
-  // dependsOn: [appServicePlanModule]
+  dependsOn: [appServicePlanModule]
   // pass parameters:
   name: 'BBBBA'
   scope: resourceGroup(groupResourceName)
