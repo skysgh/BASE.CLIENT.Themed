@@ -122,7 +122,7 @@ module appSitesModule '../microsoft/web/sites.bicep' = {
   params: {
     parentResourceId: appServicePlanModule.outputs.resourceId
 
-    resourceName: "${childResourceName}-${uniqueSuffix}"
+    resourceName: '${childResourceName}-${uniqueSuffix}'
     resourceLocationId: sitesResourceLocationId
     resourceTags: useTags
 
