@@ -17,7 +17,7 @@ param environmentId string
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 @description('The tags for this resource. ')
-param resourceTags object = {}
+param resourceTags object = sharedSettings.defaultTags
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
