@@ -1,10 +1,7 @@
 var sharedSettings = loadJsonContent('../settings/shared.json')
-
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 //targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
-
-
-// Resources Groups are part of the general subscription
-@description('Whether to name parent resources (e.g. resourceGroups, serverfarms, etc.) as with service and env names, or the other way around.')
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 // Resources Groups are part of the general subscription
@@ -17,7 +14,8 @@ param projectServiceName string = ''
 @description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
 @allowed([ 'NP',   'BT','DT','ST','UT','IT','PP','TR','PR'])
 param environmentId string
-
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 @description('The tags for this resource. ')
 param resourceTags object = {}
 
@@ -30,7 +28,8 @@ param groupResourceLocationId string //NO. Fails most times. = resourceGroup().l
 param sqlFarmResourceLocationId string  // in case in the future one can use the same as the group.
 
 //param resourceLocationId string
-
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
