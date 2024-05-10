@@ -5,6 +5,19 @@ Folder for Azure specific reusable artefacts.
 ## Tips: Yaml ##
 * Comments start with `#`
 * Don't wrap variables in quotes (eg `a: '${something}'`) if you can invoke the directly without wrapping of any kind, including quotes (eg: `a: something`)
+* Use `>` (not `|`) when passing params to the bicep module
+* Watch out for spaces around the `=` sign when passing params to modules (see below)
+* Watch out for leaving comments within params sent to modules (see below)
+
+```
+     parameters: >
+            resourceLocationId= "australiacentral" #Not only is there a space after the = but this Comment will cause an error.
+            resourceLocationId="australiacentral" 
+```
+The above translates to unparsable string:
+```
+            resourceLocationId= "australiacentral" #Not only is there a space after the = but this Comment will cause an error. resourceLocationId="australiacentral"
+```
 
 ## Tips: Bicep ##
 Super picky about syntax:
