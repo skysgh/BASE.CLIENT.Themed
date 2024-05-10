@@ -14,6 +14,11 @@ param resourceTags object = {}
 @description('The Url of the repository containing source code of this site.')
 param repositoryUrl string
 
+@description('The token to access the repository.')
+param repositoryToken string
+
+
+
 @description('The Branch of the repository containing source code of this site.')
 param repositoryBranch string
 
@@ -27,6 +32,7 @@ param isManualIntegration bool = true
 var useResourceName = '${resourceName}/web'
 var useTags = union(resourceTags,{})
 
+var tmp = repositoryToken
 resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
   name: useResourceName
   // location: resourceLocationId
@@ -49,4 +55,4 @@ output resourceId string = resource.id
 output resourceName string = resource.name
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${resourceLocationId}-${repositorySourceLocation}-${useTags}', 'z')
+output _ bool = startsWith('${resourceLocationId}-${repositorySourceLocation}-${useTags}-${tmp}', 'z')
