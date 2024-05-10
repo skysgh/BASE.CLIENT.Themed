@@ -58,14 +58,14 @@ param linuxFxVersion string
 @description('The url to the repository to be deployed to the Server. ')
 param repositoryUrl string
 
+@description('The repositoryToken. ')
+param repositoryToken string 
+
 @description('The branch of the repository to use. TODO: this should depend on what branch was checked in.')
 param repositoryBranch string = 'main'
 
 @description('The folder within the repository that contains the source code of the service. ')
 param repositorySourceLocation string = '/'
-
-@description('The repositoryToken. ')
-param repositoryToken string 
 
 
 
