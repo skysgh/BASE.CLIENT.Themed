@@ -21,18 +21,19 @@ param environmentId string
 param resourceTags object = {}
 // ------------------------------------------------------------
 // ------------------------------------------------------------
+@description('The default location of resources. ')
+// @allowed(...too long...)
+param resourceLocationId string
+
 @description('The location of the parent resource group. ')
 // @allowed(...too long...)
-param resourceGroupLocationId string
-
+param resourceGroupLocationId string = resourceLocationId
 
 @description('The location of the parent resource group. ')
 // @allowed(...too long...)
-param storageAccountsLocationId string 
+param storageAccountsLocationId string = resourceGroupLocationId 
 // ------------------------------------------------------------
 // ------------------------------------------------------------
-
-
 
 // ------------------------------------------------------------
 // 
@@ -84,7 +85,7 @@ module storageAccountsModule '../microsoft/storage/storageaccounts.bicep' = {
 // ------------------------------------------------------------
 //
 // ------------------------------------------------------------
-output resourceId string = sitesModule.outputs.resourceId
-output resourceName string = sitesModule.outputs.resourceName
+output resourceId string = storageAccountsModule.outputs.resourceId
+output resourceName string = storageAccountsModule.outputs.resourceName
 // param sink (to not cause error if param is not used):
 output _ bool = startsWith('${resourceLocationId}', 'z')
