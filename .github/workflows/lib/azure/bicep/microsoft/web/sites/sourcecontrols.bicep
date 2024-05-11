@@ -1,3 +1,5 @@
+var sharedSettings = loadJsonContent('../../settings/shared.json')
+
 // Sub part of Sites (which is a sub part of ServerFarms)
 
 
