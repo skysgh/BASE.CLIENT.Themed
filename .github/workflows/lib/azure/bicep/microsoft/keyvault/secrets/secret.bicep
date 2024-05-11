@@ -1,5 +1,8 @@
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
+// Resources are part of a parent resource group:
+targetScope='resourceGroup'
+
 @description('Name of parent Resource - a keyvault')
 param parentResource string
 
