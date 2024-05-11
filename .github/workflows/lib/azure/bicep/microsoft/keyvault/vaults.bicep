@@ -1,8 +1,20 @@
-@description('Specifies the name of the key vault.')
-param keyVaultName string
+//../settings/shared.json
+
+@description('Specifies the name of the key vault resource.')
+param resourceName string
 
 @description('Specifies the Azure location where the key vault should be created.')
-param location string = resourceGroup().location
+param resourceLocationId string = resourceGroup().location
+
+
+
+
+@description('Sku of keyvault. Default is \'standard\' - not \'premium\'')
+@allowed([
+  'standard'
+  'premium'
+])
+param resourceSku string = 'standard' // not permitted to invoke now :-( shared.standardSKUs.keyVault
 
 @description('Specifies whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.')
 param enabledForDeployment bool = false
@@ -17,7 +29,7 @@ param enabledForTemplateDeployment bool = false
 param tenantId string = subscription().tenantId
 
 @description('Specifies the object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies. Get it by using Get-AzADUser or Get-AzADServicePrincipal cmdlets.')
-param objectId string
+param tenantObjectId string
 
 @description('Specifies the permissions to keys in the vault. Valid values are: all, encrypt, decrypt, wrapKey, unwrapKey, sign, verify, get, list, create, update, import, delete, backup, restore, recover, and purge.')
 param keysPermissions array = [
@@ -29,21 +41,9 @@ param secretsPermissions array = [
   'list'
 ]
 
-@description('Specifies whether the key vault is a standard vault or a premium vault.')
-@allowed([
-  'standard'
-  'premium'
-])
-param skuName string = 'standard'
 
-@description('Specifies the name of the secret that you want to create.')
-param secretName string
 
-@description('Specifies the value of the secret that you want to create.')
-@secure()
-param secretValue string
-
-resource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {
+resource resource 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: keyVaultName
   location: location
   properties: {
@@ -55,7 +55,7 @@ resource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {
     softDeleteRetentionInDays: 90
     accessPolicies: [
       {
-        objectId: objectId
+        objectId: tenantObjectId
         tenantId: tenantId
         permissions: {
           keys: keysPermissions
@@ -74,3 +74,5 @@ resource kv 'Microsoft.KeyVault/vaults@2023-07-01' = {
   }
 }
 
+output resourceId string = resource.id
+output resourceName string = resource.name
