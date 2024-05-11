@@ -1,4 +1,4 @@
-var sharedSettings = loadJsonContent('../settings/shared.json')
+var sharedSettings = loadJsonContent('../../../settings/shared.json')
 
 // Resources Groups are part of the general subscription
 targetScope='subscription'
