@@ -1,5 +1,8 @@
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
+// Resources are part of a parent resource group:
+targetScope='resourceGroup'
+
 // Sub part of Sites (which is a sub part of ServerFarms)
 
 
