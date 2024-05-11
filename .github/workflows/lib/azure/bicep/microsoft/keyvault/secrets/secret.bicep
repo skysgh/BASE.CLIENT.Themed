@@ -1,4 +1,4 @@
-var sharedSettings = loadJsonContent('../../settings/shared.json')
+var sharedSettings = loadJsonContent('../../../../settings/shared.json')
 
 // Resources are part of a parent resource group:
 targetScope='resourceGroup'
