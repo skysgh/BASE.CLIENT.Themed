@@ -1,4 +1,5 @@
-//../settings/shared.json
+var sharedSettings = loadJsonContent('../settings/shared.json')
+
 
 @description('Specifies the name of the key vault resource.')
 param resourceName string
