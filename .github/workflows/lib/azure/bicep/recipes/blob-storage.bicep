@@ -23,7 +23,12 @@ param resourceTags object = {}
 // ------------------------------------------------------------
 @description('The location of the parent resource group. ')
 // @allowed(...too long...)
-param resourceLocationId string //Note: cannot do when targetScope='subscription': resourceGroup().location
+param resourceGroupLocationId string
+
+
+@description('The location of the parent resource group. ')
+// @allowed(...too long...)
+param storageAccountsLocationId string 
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 
@@ -57,6 +62,19 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   }
 }
 // ------------------------------------------------------------
+module storageAccountsModule '../microsoft/storage/storageaccounts.bicep' = {
+  // should be implied: 
+  dependsOn: [resourceGroupsModule]
+  name:  '${deployment().name}_storageaccounts_module'
+  scope: resourceGroup(groupResourceName) 
+  params: {
+    resourceName: childResourceName
+    resourceLocationId: storageAccountsLocationId
+    resourceTags: useTags
+
+    resourceSKU: storageAccountsSKU
+  }
+}
 
 
 
