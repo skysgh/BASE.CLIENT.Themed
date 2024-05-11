@@ -1,3 +1,5 @@
+var sharedSettings = loadJsonContent('../settings/shared.json')
+
 // See:
 // https://learn.microsoft.com/en-us/azure/templates/microsoft.web/staticsites?pivots=deployment-language-bicep
 
