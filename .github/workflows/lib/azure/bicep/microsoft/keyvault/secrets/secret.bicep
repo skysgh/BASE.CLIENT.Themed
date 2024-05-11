@@ -19,5 +19,5 @@ resource resource 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {
   }
 }
 
-output resourceId = resource.id
-output resourceName = resource.name
+output resourceId string = resource.id
+output resourceName string = resource.name
