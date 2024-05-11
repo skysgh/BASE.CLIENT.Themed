@@ -27,3 +27,31 @@ param resourceLocationId string //Note: cannot do when targetScope='subscription
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 
+
+
+// ------------------------------------------------------------
+// 
+// ------------------------------------------------------------
+var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
+var fullName = '${projectName}${tmp}${environmentId}' 
+var shortName = projectName
+//var uniqueSuffix = uniqueString(resourceGroup().id)
+var groupResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
+var parentResourceName = toUpper(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
+var childResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
+var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
+var useTags = union(resourceTags, defaultTags)
+// ------------------------------------------------------------
+var uniqueSuffix = uniqueString(subscription().subscriptionId)
+// ------------------------------------------------------------
+
+
+module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
+  name:  '${deployment().name}_resourcegroups_module'
+  scope: subscription()
+  params: {
+    resourceName: groupResourceName
+    resourceLocationId: groupResourceLocationId
+    resourceTags: useTags
+  }
+}
