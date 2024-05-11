@@ -58,18 +58,20 @@ param webAppServicePlanSKU string = 'F1'
 param linuxFxVersion string
 
 @description('The url to the repository to be deployed to the Server. ')
-param repositoryUrl string
+param repositoryUrl string = ""
 
-@description('The repositoryToken. ')
+@description('The repositoryToken if repositoryUrl is set. ')
+@secure()
 param repositoryToken string 
 
-@description('The branch of the repository to use. TODO: this should depend on what branch was checked in.')
+@description('The branch of the repository to use. TODO: this should depend on what branch was checked in. Default = \'main\'.')
 param repositoryBranch string = 'main'
 
-@description('The folder within the repository that contains the source code of the service. ')
+@description('The folder within the repository that contains the source code of the service. Default is root (\'/\').')
 param repositorySourceLocation string = '/'
 
 
+var setupSimpleDeployMethod = startsWith(repositoryUrl, 'http')
 
 // ------------------------------------------------------------
 // 
@@ -135,7 +137,7 @@ module sitesModule '../microsoft/web/sites.bicep' = {
   }
 }
 
-module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = {
+module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (setupSimpleDeployMethod) {
   dependsOn: [sitesModule]
   name:  '${deployment().name}_sites_sourcecontrols_module'
   scope: resourceGroup(groupResourceName) 
