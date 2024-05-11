@@ -1,3 +1,5 @@
+var sharedSettings = loadJsonContent('../../settings/shared.json')
+
 @description('Name of parent Resource - a keyvault')
 param parentResource string
 
@@ -5,6 +7,7 @@ param parentResource string
 param key string
 
 @description('string value of secret')
+@secure
 param secret string 
 
 
