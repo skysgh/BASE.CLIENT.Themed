@@ -46,6 +46,7 @@ var uniqueSuffix = uniqueString(subscription().subscriptionId)
 // ------------------------------------------------------------
 
 
+// ------------------------------------------------------------
 module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   name:  '${deployment().name}_resourcegroups_module'
   scope: subscription()
@@ -55,3 +56,17 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
     resourceTags: useTags
   }
 }
+// ------------------------------------------------------------
+
+
+
+
+
+
+// ------------------------------------------------------------
+//
+// ------------------------------------------------------------
+output resourceId string = sitesModule.outputs.resourceId
+output resourceName string = sitesModule.outputs.resourceName
+// param sink (to not cause error if param is not used):
+output _ bool = startsWith('${resourceLocationId}', 'z')
