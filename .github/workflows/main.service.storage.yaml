@@ -95,7 +95,7 @@ jobs:
             environmentId="${{ env.PROJECT_ENV_ID}}"
             resourceLocationId="australiacentral"
             groupResourceLocationId="australiacentral" 
-            storageBlobLocationId="australiacentral"
+            storageAccountsLocationId="australiacentral"
           # Removed
           #  serverfarmsResourceLocationId="australiacentral"  
           #  sitesResourceLocationId="australiacentral" 
