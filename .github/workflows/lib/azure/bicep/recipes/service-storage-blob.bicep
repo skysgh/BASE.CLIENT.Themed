@@ -72,6 +72,7 @@ var defaultTags = {project: projectName, service: projectServiceName, environmen
 
 // 24-14 = 10
 // "base_kgxkbwfgeorz6 is not a valid storage account name. Storage account name must be between 3 and 24
+var useResourceGroupName = groupResourceName
 var useName = toLower('${childResourceName}${uniqueSuffix}')
 var useLocation = storageAccountsLocationId
 var useTags = union(resourceTags, defaultTags)
@@ -83,7 +84,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   name:  '${deployment().name}_resourcegroups_module'
   scope: subscription()
   params: {
-    resourceName: groupResourceName
+    resourceName: useResourceGroupName
     resourceLocationId: resourceGroupLocationId
     resourceTags: useTags
   }
@@ -93,7 +94,7 @@ module storageAccountsModule '../microsoft/storage/storageaccounts.bicep' = {
   // should be implied: 
   dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_storageaccounts_module'
-  scope: resourceGroup(groupResourceName) 
+  scope: resourceGroup(useResourceGroupName) 
   params: {
     resourceName: useName
     resourceLocationId: useLocation
