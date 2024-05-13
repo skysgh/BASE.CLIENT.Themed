@@ -17,12 +17,17 @@ param parentResource string
 // Default SKU, Kind, Tier where applicable
 // ======================================================================
 
+
+// ======================================================================
+// Resource other Params
+// ======================================================================
 @description('key of secret')
 param key string
 
 @description('string value of secret')
 @secure
 param secret string 
+
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
