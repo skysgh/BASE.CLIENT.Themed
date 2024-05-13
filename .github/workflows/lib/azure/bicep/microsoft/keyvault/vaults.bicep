@@ -30,6 +30,10 @@ param resourceLocationId string = resourceGroup().location
 param resourceSku string = 'standard' // not permitted to invoke now :-( shared.standardSKUs.keyVault
 
 
+
+// ======================================================================
+// Resource other Params
+// ======================================================================
 @description('Specifies whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.')
 param enabledForDeployment bool = false
 
