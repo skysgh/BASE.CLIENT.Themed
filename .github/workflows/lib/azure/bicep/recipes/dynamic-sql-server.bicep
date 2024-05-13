@@ -1,9 +1,16 @@
-var sharedSettings = loadJsonContent('../settings/shared.json')
-// ------------------------------------------------------------
-// ------------------------------------------------------------
+// ======================================================================
+// Scope
+// ======================================================================
 //targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
-// ------------------------------------------------------------
-// ------------------------------------------------------------
+
+// ======================================================================
+// Import Shared Settings
+// ======================================================================
+var sharedSettings = loadJsonContent('../settings/shared.json')
+
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 // Resources Groups are part of the general subscription
 @description('The name used to build resources. e.g.: \'BASE\'')
 param projectName string
@@ -27,13 +34,25 @@ param groupResourceLocationId string //NO. Fails most times. = resourceGroup().l
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'eastasia'])
 param sqlFarmResourceLocationId string  // in case in the future one can use the same as the group.
-// ------------------------------------------------------------
-// ------------------------------------------------------------
+
+
+// ======================================================================
+// Default SKU, Kind, Tier where applicable
+// ======================================================================
+
+
 @description('Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
-// ------------------------------------------------------------
-// ------------------------------------------------------------
+
+// ======================================================================
+// Resource other Params
+// ======================================================================
+
+
+// ======================================================================
+// Default Variables: useResourceName, useTags
+// ======================================================================
 var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
 var fullName = '${projectName}${tmp}${environmentId}' 
 var shortName = projectName
@@ -41,6 +60,9 @@ var shortName = projectName
 var groupResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
 var parentResourceName = toUpper(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
 var childResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
+
+var useLocation = resourceLocationId
+
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
