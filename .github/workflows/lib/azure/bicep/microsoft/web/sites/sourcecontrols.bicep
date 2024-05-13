@@ -1,4 +1,7 @@
-// var sharedSettings = loadJsonContent('../../../../settings/shared.json')
+// See:
+// https://learn.microsoft.com/en-us/azure/templates/microsoft.web/sites/sourcecontrols?pivots=deployment-language-bicep
+
+var sharedSettings = loadJsonContent('../../../settings/shared.json')
 
 // Resources are part of a parent resource group:
 targetScope='resourceGroup'
