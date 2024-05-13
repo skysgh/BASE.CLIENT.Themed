@@ -150,4 +150,4 @@ output swaUrl string = swaModule.outputs.resourceUrl
 output repositorySummary string = dummyRepoSynopsis 
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${groupResourceName}-${parentResourceName}', 'z')
+output _ bool = startsWith('${sharedSettings.version}-${groupResourceName}-${parentResourceName}', '.')
