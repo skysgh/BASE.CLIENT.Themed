@@ -52,16 +52,22 @@ param repositorySourceLocation string = '/'
 param isManualIntegration bool = true
 
 
-var useResourceName = '${resourceName}/web'
+// ======================================================================
+// Default Variables: useResourceName, useTags
+// ======================================================================
+var useName = '${resourceName}/web'
+var useLocation = 'n/a'
 var useTags = union(resourceTags,{})
 
-var tmp = repositoryToken
+
+// Secret sink:
+output __ bool = startsWith('${repositoryToken}', '.')
 
 // ======================================================================
 // Resource bicep
 // ======================================================================
 resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
-  name: useResourceName
+  name: useName
   // location: resourceLocationId
   // does not exist: tags: useTags
 
