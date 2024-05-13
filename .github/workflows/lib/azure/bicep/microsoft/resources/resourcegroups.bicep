@@ -14,12 +14,13 @@ param resourceLocationId string = 'australiacentral'
 @description('Tags to merge in.')
 param resourceTags object = {}
 
+var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // Creating new resource groups take a little bit of time
 resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
-  tags: resourceTags
+  tags: useTags
 }
 
 // Provide ref to developed resource:
