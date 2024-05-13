@@ -20,7 +20,8 @@ param projectServiceName string
 param projectEnvironmentId string
 
 @description('The default location for resources. ')
-param resourceLocation string
+//@allowed ([...])
+param resourceLocationId string
 
 @description('The default tags to merge in.')
 param resourceTags array = {}
@@ -39,16 +40,18 @@ param resourceTags array = {}
 // Default Variables: useResourceName, useTags
 // ======================================================================
 # Concat the pieces together:
-var useResourceName = toUpper(concat(projectName,projectServiceName?'_':'',projectServiceName,projectEnvironmentId))
+var useName = toUpper(concat(projectName,projectServiceName?'_':'',projectServiceName,projectEnvironmentId))
+var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // ======================================================================
 // Resource bicep
 // ======================================================================
 resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
-  name: useResourceName
-  location: resourceLocation
+  name: useName
+  location: useLocation
   tags: useTags
+
   identity: {
     type: 'string'
     userAssignedIdentities: {
