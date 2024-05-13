@@ -55,7 +55,7 @@ param storageAccountsLocationId string = resourceGroupLocationId
   'Standard_GZRS'
   'Standard_RAGZRS'
 ])
-param storageAccountsSKU string = storageAccountsSKU 
+param storageAccountsSKU string = 'Standard_LRS' 
 
 
 // ======================================================================
