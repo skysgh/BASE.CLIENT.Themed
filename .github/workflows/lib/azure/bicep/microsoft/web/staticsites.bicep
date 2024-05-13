@@ -59,12 +59,12 @@ var tmpToken = repositoryToken
 //output _ bool = startsWith('${repositoryUrl}-${repositoryBranch}-${tmpToken}', 'z')
 var _ = startsWith('${repositoryUrl}-${repositoryBranch}-${tmpToken}', 'z')
 
-
+var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
-  tags: resourceTags
+  tags: useTags
 
   sku: {
     // capabilities: [
