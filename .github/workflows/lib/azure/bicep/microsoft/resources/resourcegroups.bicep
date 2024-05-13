@@ -34,6 +34,8 @@ param resourceTags object = {}
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
+var useName = resourceName
+var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // ======================================================================
@@ -41,8 +43,8 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // ======================================================================
 // Creating new resource groups take a little bit of time
 resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-  name: resourceName
-  location: resourceLocationId
+  name: useName
+  location: useLocation
   tags: useTags
 }
 
