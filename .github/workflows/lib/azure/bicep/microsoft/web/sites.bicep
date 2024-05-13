@@ -41,14 +41,16 @@ param linuxFxVersion string = 'DOTNETCORE|Latest'
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
+var useName = resourceName
+var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // ======================================================================
 // Resource bicep
 // ======================================================================
 resource resource 'Microsoft.Web/sites@2020-06-01' = {
-  name: resourceName
-  location: resourceLocationId
+  name: useName
+  location: useLocation
   tags: useTags
   
   properties: {
