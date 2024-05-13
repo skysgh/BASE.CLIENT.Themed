@@ -1,8 +1,17 @@
-var sharedSettings = loadJsonContent('../../settings/shared.json')
-
+// ======================================================================
+// Scope
+// ======================================================================
 // Scope is parent resourceGroup:
 targetScope='resourceGroup'
 
+// ======================================================================
+// Import shared settings
+// ======================================================================
+var sharedSettings = loadJsonContent('../../settings/shared.json')
+
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 // Resource that is required to be set up before
 // instantiating (and associating to it) a 
 // server
@@ -17,6 +26,9 @@ param resourceLocationId string
 @description('Tags to merge in.')
 param resourceTags object = {}
 
+// ======================================================================
+// Default SKU, Kind, Tier where applicable
+// ======================================================================
 @description('The type of OS.')
 // @allowed([ ''])
 param serverKind string = 'linux'
@@ -25,8 +37,18 @@ param serverKind string = 'linux'
 @allowed(['F1','D1','B1','B2','S1','S2'])
 param webAppServicePlanSKU string = 'F1'
 
+// ======================================================================
+// Resource Other Params
+// ======================================================================
+
+// ======================================================================
+// Default Variables: useResourceName, useTags
+// ======================================================================
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
+// ======================================================================
+// Resource bicep
+// ======================================================================
 resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
@@ -82,7 +104,9 @@ resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
   }
 }
 
-
+// ======================================================================
+// Default Outputs: resource, resourceId, resourceName & variable sink
+// ======================================================================
 // Provide ref to developed resource:
 output resource object = resource
 // return the id (the fully qualitified name) of the newly created resource:
