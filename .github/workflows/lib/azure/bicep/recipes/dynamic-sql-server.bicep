@@ -13,6 +13,7 @@ var sharedSettings = loadJsonContent('../settings/shared.json')
 // ======================================================================
 // Resources Groups are part of the general subscription
 @description('The name used to build resources. e.g.: \'BASE\'')
+@maxLength(11) // Limited by storageAccount name length (24) minus 13 chars for uniqueString(...)
 param projectName string
 
 @description('The name used to build resources. e.g.: \'CLIENT\'')
