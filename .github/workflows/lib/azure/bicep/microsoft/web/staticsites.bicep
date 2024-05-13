@@ -70,22 +70,23 @@ param repositoryToken string
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
+var useName = resourceName
+var useLocationId = resourceLocationId
+var useTags = union(resourceTags,sharedSettings.defaultTags)
+
 // Make a dummy var to create a fake need, so that I don't have to comment out the params
 
-var tmpToken = repositoryToken
 
-// param sink (to not cause error if param is not used):
-//output _ bool = startsWith('${repositoryUrl}-${repositoryBranch}-${tmpToken}', 'z')
-var _ = startsWith('${repositoryUrl}-${repositoryBranch}-${tmpToken}', 'z')
+// SECRET param sink (to not cause error if param is not used):
+var __ = startsWith('${repositoryToken}', '.')
 
-var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // ======================================================================
 // Resource bicep
 // ======================================================================
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
-  name: resourceName
-  location: resourceLocationId
+  name: useName
+  location: useLocationId
   tags: useTags
 
   sku: {
@@ -168,9 +169,11 @@ output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat('${sharedSettings.version}'), '.')
+output _ bool = startsWith(concat('${sharedSettings.version}-${repositoryUrl}-${repositoryBranch}'), '.')
 
 // Url to website where it is deployed:
 // can be accessed from a parent module invoking this module using:
 //output swaUrl string = swaModule.outputs.resourceUrl
 output resourceUrl string = resource.properties.defaultHostname
+
+
