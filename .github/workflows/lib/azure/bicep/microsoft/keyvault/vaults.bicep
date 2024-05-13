@@ -1,5 +1,15 @@
+// ======================================================================
+// Scope
+// ======================================================================
+
+// ======================================================================
+// Import Shared Settings
+// ======================================================================
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 // Resources are part of a parent resource group:
 targetScope='resourceGroup'
 
@@ -9,12 +19,16 @@ param resourceName string
 @description('Specifies the Azure location where the key vault should be created.')
 param resourceLocationId string = resourceGroup().location
 
+// ======================================================================
+// Default SKU, Kind, Tier where applicable
+// ======================================================================
 @description('Sku of keyvault. Default is \'standard\' - not \'premium\'')
 @allowed([
   'standard'
   'premium'
 ])
 param resourceSku string = 'standard' // not permitted to invoke now :-( shared.standardSKUs.keyVault
+
 
 @description('Specifies whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.')
 param enabledForDeployment bool = false
@@ -41,8 +55,14 @@ param secretsPermissions array = [
   'list'
 ]
 
+// ======================================================================
+// Default Variables: useResourceName, useTags
+// ======================================================================
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
+// ======================================================================
+// Resource bicep
+// ======================================================================
 resource resource 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: keyVaultName
   location: location
@@ -75,6 +95,9 @@ resource resource 'Microsoft.KeyVault/vaults@2023-07-01' = {
   }
 }
 
+// ======================================================================
+// Default Outputs: resource, resourceId, resourceName & variable sink
+// ======================================================================
 // Provide ref to developed resource:
 output resource object = resource
 // return the id (the fully qualitified name) of the newly created resource:
