@@ -25,10 +25,12 @@ param serverKind string = 'linux'
 @allowed(['F1','D1','B1','B2','S1','S2'])
 param webAppServicePlanSKU string = 'F1'
 
+var useTags = union(resourceTags,sharedSettings.defaultTags)
+
 resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
-  tags: resourceTags
+  tags: useTags
   sku: {
 //    capabilities: [
 //      {
