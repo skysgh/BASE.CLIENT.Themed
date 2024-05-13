@@ -16,6 +16,8 @@ param resourceLocationId string
 @description('Resource Tags')
 param resourceTags object = {}
 
+var useTags = union(resourceTags,sharedSettings.resourceTags)
+
 @description('Resource SKU. Default is \'Standard_LRS\' (Standard Locally Redundant Storage). Other options are GLobally redundant (Standard_GRS), Zone Redundant(Standard_ZRS).')
 @allowed([
   'Standard_LRS'
@@ -46,7 +48,7 @@ resource resource 'Microsoft.Storage/storageAccounts@2022-09-01' = {
    properties: {
      accessTier: 'Hot'
    }
-  tags: resourceTags
+  tags: useTags
 }
 
 output resourceId string = resource.id
