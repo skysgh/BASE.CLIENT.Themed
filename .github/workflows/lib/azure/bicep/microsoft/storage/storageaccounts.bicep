@@ -6,19 +6,15 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 param resourceName string
 
 @description('Deployment Location')
-@allowed([
-  'westeurope'
-  'northeurope'
-])
+// Too long: @allowed(['westeurope''northeurope'])
 param resourceLocationId string
 
-
-@description('Resource Tags')
+@description('Resource Tags. Note: will be merged with the imported sharedTags.defaultTags.')
 param resourceTags object = {}
 
-var useTags = union(resourceTags,sharedSettings.defaultTags)
 
-@description('Resource SKU. Default is \'Standard_LRS\' (Standard Locally Redundant Storage). Other options are GLobally redundant (Standard_GRS), Zone Redundant(Standard_ZRS).')
+// See: https://learn.microsoft.com/en-us/rest/api/storagerp/srp_sku_types
+@description('Resource SKU. Default is \'Standard_LRS\' (Standard Locally Redundant Storage). Other options are GLobally redundant (Standard_GRS), Zone Redundant(Standard_ZRS), etc..')
 @allowed([
   'Standard_LRS'
   'Standard_GRS'
@@ -31,24 +27,32 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 ])
 param resourceSKU string = 'Standard_LRS'
 
-@description('Resource Kind. Default is: StorageV2')
+
+@description('Resource Kind. Default is: \'StorageV2\'')
 @allowed(['StorageV2'])
 param resourceKind string = 'StorageV2'
 
+@description('Resource Tier. Default is: \'Hot\'')
+@allowed(['Hot'])
+param resourceTier string = 'Hot'
+
+// Develop default variables.
+var useResourceName = resourceName;
+var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 resource resource 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   // Must be lower case:
-  name: toLower(resourceName)
+  name: toLower(useResourceName)
   location: resourceLocationId
+  tags: useTags
 
   sku: {
     name: resourceSKU
   }
   kind: resourceKind
    properties: {
-     accessTier: 'Hot'
+     accessTier: resourceTier
    }
-  tags: useTags
 }
 
 // Provide ref to developed resource:
