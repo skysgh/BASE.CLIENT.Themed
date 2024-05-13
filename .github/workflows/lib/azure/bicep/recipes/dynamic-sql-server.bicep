@@ -75,4 +75,4 @@ output resourceId string = serverFarmsModule.outputs.id
 output resourceName string = serverFarmsModule.outputs.name
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat(''), 'z')
+output _ bool = startsWith('${sharedSettings.version}', '.')
