@@ -1,12 +1,20 @@
-var sharedSettings = loadJsonContent('../settings/shared.json')
-// ------------------------------------------------------------
-// ------------------------------------------------------------
+// ======================================================================
+// Scope
+// ======================================================================
+//targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
 // NO. It stops resourceLocation().location from working: 
 // targetScope='subscription'
 // NO:targetScope='resourceGroup'
 targetScope='subscription'
-// ------------------------------------------------------------
-// ------------------------------------------------------------
+
+// ======================================================================
+// Import Shared Settings
+// ======================================================================
+var sharedSettings = loadJsonContent('../settings/shared.json')
+
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 // Resources Groups are part of the general subscription
 @description('The project name. This informs automation of naming of resource groups, services, etc. e.g.: \'BASE\'')
 param projectName string
@@ -20,6 +28,8 @@ param environmentId string
 // ------------------------------------------------------------
 @description('The tags for this resource. ')
 param resourceTags object = {}
+
+
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 @description('The location of the parent resource group. ')
@@ -45,14 +55,19 @@ param sitesResourceLocationId string = serverfarmsResourceLocationId
 // @allowed(...too long...)
 //NO:= resourceGroup().location
 param sourcecontrolsResourceLocationId string = sitesResourceLocationId 
-// ------------------------------------------------------------
-// ------------------------------------------------------------
+// ======================================================================
+// Default SKU, Kind, Tier where applicable
+// ======================================================================
+
 @description('The app service plan SKU. F1,D1,B1,B2,S1,S2')
 @allowed(['F1','D1','B1','B2','S1','S2'])
 param webAppServicePlanSKU string = 'F1'
 
 
 
+// ======================================================================
+// Resource other Params
+// ======================================================================
 @description('The Function eXtension to define the runtime stack. Consider using \'DOTNETCORE|Latest\'')
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
 param linuxFxVersion string
@@ -73,9 +88,9 @@ param repositorySourceLocation string = '/'
 
 var setupSimpleDeployMethod = startsWith(repositoryUrl, 'http')
 
-// ------------------------------------------------------------
-// 
-// ------------------------------------------------------------
+// ======================================================================
+// Default Variables: useResourceName, useTags
+// ======================================================================
 var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
 var fullName = '${projectName}${tmp}${environmentId}' 
 var shortName = projectName
@@ -91,7 +106,9 @@ var useTags = union(resourceTags, defaultTags)
 var uniqueSuffix = uniqueString(subscription().subscriptionId)
 // ------------------------------------------------------------
 
-
+// ======================================================================
+// Resource bicep
+// ======================================================================
 module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   name:  '${deployment().name}_resourcegroups_module'
   scope: subscription()
@@ -103,7 +120,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
 
   }
 }
-
+// ------------------------------------------------------------
 
 module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
   // should be implied: 
@@ -118,6 +135,7 @@ module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
     webAppServicePlanSKU: webAppServicePlanSKU
   }
 }
+// ------------------------------------------------------------
 
 module sitesModule '../microsoft/web/sites.bicep' = {
   // should be implied: 
@@ -136,6 +154,7 @@ module sitesModule '../microsoft/web/sites.bicep' = {
     linuxFxVersion: linuxFxVersion
   }
 }
+// ------------------------------------------------------------
 
 module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (setupSimpleDeployMethod) {
   dependsOn: [sitesModule]
@@ -154,7 +173,12 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (set
     repositorySourceLocation: repositorySourceLocation
   }
 }
+// ------------------------------------------------------------
 
+// ======================================================================
+// Default Outputs: resource, resourceId, resourceName & variable sink
+// ======================================================================
+output resource object = sitesModule.outputs.resource
 output resourceId string = sitesModule.outputs.resourceId
 output resourceName string = sitesModule.outputs.resourceName
 // param sink (to not cause error if param is not used):
