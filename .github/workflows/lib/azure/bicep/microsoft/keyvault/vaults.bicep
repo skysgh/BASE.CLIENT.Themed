@@ -3,16 +3,11 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 // Resources are part of a parent resource group:
 targetScope='resourceGroup'
 
-
-
 @description('Specifies the name of the key vault resource.')
 param resourceName string
 
 @description('Specifies the Azure location where the key vault should be created.')
 param resourceLocationId string = resourceGroup().location
-
-
-
 
 @description('Sku of keyvault. Default is \'standard\' - not \'premium\'')
 @allowed([
@@ -46,11 +41,12 @@ param secretsPermissions array = [
   'list'
 ]
 
-
+var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 resource resource 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: keyVaultName
   location: location
+  tags: useTags
   properties: {
     enabledForDeployment: enabledForDeployment
     enabledForDiskEncryption: enabledForDiskEncryption
