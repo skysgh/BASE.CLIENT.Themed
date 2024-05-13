@@ -13,6 +13,7 @@ var sharedSettings = loadJsonContent('../settings/shared.json')
 // ======================================================================
 // Resources Groups are part of the general subscription
 @description('The project name. This informs automation of naming of resource groups, services, etc. e.g.: \'BASE\'')
+@maxLength(11)
 param projectName string
 
 @description('The project service name. Name used to build resources. e.g.: \'SERVICE\'')
@@ -69,7 +70,9 @@ var parentResourceName = toUpper(sharedSettings.namingConventions.parentNameIsLo
 var childResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 
-var useName = '${childResourceName}_${uniqueSuffix}'
+// 24-14 = 10
+// "base_kgxkbwfgeorz6 is not a valid storage account name. Storage account name must be between 3 and 24
+var useName = toLower('${childResourceName}${uniqueSuffix}')
 var useLocation = storageAccountsLocationId
 var useTags = union(resourceTags, defaultTags)
 
