@@ -1,3 +1,4 @@
+var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 @description('resourceName')
 @minLength(3)
