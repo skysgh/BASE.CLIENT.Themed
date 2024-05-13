@@ -158,4 +158,4 @@ module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (set
 output resourceId string = sitesModule.outputs.resourceId
 output resourceName string = sitesModule.outputs.resourceName
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${resourceLocationId}', 'z')
+output _ bool = startsWith('${sharedSettings.version}=${resourceLocationId}', '.')
