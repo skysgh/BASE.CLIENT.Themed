@@ -17,8 +17,8 @@ param resourceName string
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 // will allow more later.
-@allowed([ 'australiacentral'])
-param resourceLocationId string = 'australiacentral'
+// Too many options: @allowed([ 'australiacentral'])
+param resourceLocationId string
 
 @description('Tags to merge in.')
 param resourceTags object = {}
