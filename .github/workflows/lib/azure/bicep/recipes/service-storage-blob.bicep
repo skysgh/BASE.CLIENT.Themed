@@ -20,30 +20,21 @@ param projectServiceName string = 'SERVICE'
 
 @allowed (['NP','BT', 'DT','ST','UT','IT','TR','PP','PR'])
 param environmentId string
-
-@description('The default location of resources. ')
+// ======================================================================
+@description('The location of the parent resource group. ')
 // @allowed(...too long...)
-param resourceLocationId string
+param resourceGroupLocationId string
+
+@description('The default location of resources. Default: set to \'resourceGroupLocationId\'.')
+// @allowed(...too long...)
+param resourceLocationId string = resourceGroupLocationId
 
 @description('The tags for this resource. ')
 param resourceTags object = {}
 
-@description('The location of the parent resource group. ')
-// @allowed(...too long...)
-param resourceGroupLocationId string = resourceLocationId
-
 // ======================================================================
 // Default SKU, Kind, Tier where applicable
 // ======================================================================
-
-
-// ======================================================================
-// Resource other Params
-// ======================================================================
-@description('The location of the parent resource group. ')
-// @allowed(...too long...)
-param storageAccountsLocationId string = resourceGroupLocationId 
-// ------------------------------------------------------------
 @description('Resource SKU. Default is \'Standard_LRS\' (Standard Locally Redundant Storage). Other options are GLobally redundant (Standard_GRS), Zone Redundant(Standard_ZRS), etc..')
 @allowed([
   'Standard_LRS'
@@ -56,6 +47,13 @@ param storageAccountsLocationId string = resourceGroupLocationId
   'Standard_RAGZRS'
 ])
 param storageAccountsSKU string = 'Standard_LRS' 
+
+// ======================================================================
+// Resource other Params
+// ======================================================================
+@description('The location of the parent resource group. Default: set to resourceLocationId')
+// @allowed(...too long...)
+param storageAccountsLocationId string = resourceLocationId 
 
 
 // ======================================================================
@@ -70,8 +68,10 @@ var groupResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLo
 var parentResourceName = toUpper(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
 var childResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
-var useTags = union(resourceTags, defaultTags)
 
+var useName = '${childResourceName}_${uniqueSuffix}'
+var useLocation = storageAccountsLocationId
+var useTags = union(resourceTags, defaultTags)
 
 // ======================================================================
 // Resource bicep
@@ -92,8 +92,8 @@ module storageAccountsModule '../microsoft/storage/storageaccounts.bicep' = {
   name:  '${deployment().name}_storageaccounts_module'
   scope: resourceGroup(groupResourceName) 
   params: {
-    resourceName: childResourceName
-    resourceLocationId: storageAccountsLocationId
+    resourceName: useName
+    resourceLocationId: useLocation
     resourceTags: useTags
 
     resourceSKU: storageAccountsSKU
