@@ -1,8 +1,14 @@
+// ======================================================================
+// Import Shared Settings
+// ======================================================================
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // Scope is parent resourceGroup:
 targetScope='resourceGroup'
 
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 @description('The name of the project. This informs automation of naming of resource groups, services, etc.')
 param projectName string;
 
@@ -13,18 +19,29 @@ param projectServiceName string
 @allowed (['NP','BT', 'DT','ST','UT','IT','PP','TR','PR'])
 param projectEnvironmentId string
 
-//@description('The default tags to merge in.')
-//param resourceTags array = []
-
 @description('The default location for resources. ')
 param resourceLocation string
 
+@description('The default tags to merge in.')
+param resourceTags array = {}
+
+// ======================================================================
+// Default SKU, Kind, Tier where applicable
+// ======================================================================
+
+
+// ======================================================================
+// Default Variables: useResourceName, useTags
+// ======================================================================
 # Concat the pieces together:
-var resourceName = toUpper(concat(projectName,projectServiceName?'_':'',projectServiceName,projectEnvironmentId))
+var useResourceName = toUpper(concat(projectName,projectServiceName?'_':'',projectServiceName,projectEnvironmentId))
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
+// ======================================================================
+// Resource bicep
+// ======================================================================
 resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
-  name: resourceName
+  name: useResourceName
   location: resourceLocation
   tags: useTags
   identity: {
@@ -55,7 +72,9 @@ resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
   }
 }
 
-
+// ======================================================================
+// Default Outputs: resource, resourceId, resourceName & variable sink
+// ======================================================================
 // Provide ref to developed resource:
 output resource object = resource
 // return the id (the fully qualitified name) of the newly created resource:
