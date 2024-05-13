@@ -33,6 +33,20 @@ param resourceGroupLocationId string = resourceLocationId
 // @allowed(...too long...)
 param storageAccountsLocationId string = resourceGroupLocationId 
 // ------------------------------------------------------------
+@description('Resource SKU. Default is \'Standard_LRS\' (Standard Locally Redundant Storage). Other options are GLobally redundant (Standard_GRS), Zone Redundant(Standard_ZRS), etc..')
+@allowed([
+  'Standard_LRS'
+  'Standard_GRS'
+  'Standard_RAGRS'
+  'Standard_ZRS'
+  'Premium_LRS'
+  'Premium_ZRS'
+  'Standard_GZRS'
+  'Standard_RAGZRS'
+])
+param storageAccountsSKU string = storageAccountsSKU 
+
+
 // ------------------------------------------------------------
 
 // ------------------------------------------------------------
@@ -58,7 +72,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   scope: subscription()
   params: {
     resourceName: groupResourceName
-    resourceLocationId: groupResourceLocationId
+    resourceLocationId: resourceGroupLocationId
     resourceTags: useTags
   }
 }
