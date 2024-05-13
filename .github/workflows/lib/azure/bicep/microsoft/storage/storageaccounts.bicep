@@ -1,5 +1,10 @@
+// ======================================================================
+// Import Shared Settings
+// ======================================================================
 var sharedSettings = loadJsonContent('../../settings/shared.json')
-
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 @description('resourceName')
 @minLength(3)
 @maxLength(22)
@@ -12,6 +17,9 @@ param resourceLocationId string
 @description('Resource Tags. Note: will be merged with the imported sharedTags.defaultTags.')
 param resourceTags object = {}
 
+// ======================================================================
+// Default SKU, Kind, Tier where applicable
+// ======================================================================
 
 // See: https://learn.microsoft.com/en-us/rest/api/storagerp/srp_sku_types
 @description('Resource SKU. Default is \'Standard_LRS\' (Standard Locally Redundant Storage). Other options are GLobally redundant (Standard_GRS), Zone Redundant(Standard_ZRS), etc..')
@@ -27,7 +35,6 @@ param resourceTags object = {}
 ])
 param resourceSKU string = 'Standard_LRS'
 
-
 @description('Resource Kind. Default is: \'StorageV2\'')
 @allowed(['StorageV2'])
 param resourceKind string = 'StorageV2'
@@ -36,10 +43,16 @@ param resourceKind string = 'StorageV2'
 @allowed(['Hot'])
 param resourceTier string = 'Hot'
 
+// ======================================================================
+// Default Variables: useResourceName, useTags
+// ======================================================================
 // Develop default variables.
 var useResourceName = resourceName;
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
+// ======================================================================
+// Resource bicep
+// ======================================================================
 resource resource 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   // Must be lower case:
   name: toLower(useResourceName)
@@ -54,7 +67,9 @@ resource resource 'Microsoft.Storage/storageAccounts@2022-09-01' = {
      accessTier: resourceTier
    }
 }
-
+// ======================================================================
+// Default Outputs: resource, resourceId, resourceName & variable sink
+// ======================================================================
 // Provide ref to developed resource:
 output resource object = resource
 // return the id (the fully qualitified name) of the newly created resource:
