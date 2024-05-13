@@ -56,7 +56,8 @@ param resourceTier string = 'Hot'
 // Default Variables: useResourceName, useTags
 // ======================================================================
 // Develop default variables.
-var useResourceName = resourceName;
+var useName = toLower(resourceName)
+var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // ======================================================================
@@ -64,8 +65,8 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // ======================================================================
 resource resource 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   // Must be lower case:
-  name: toLower(useResourceName)
-  location: resourceLocationId
+  name: useName
+  location: useLocation
   tags: useTags
 
   sku: {
