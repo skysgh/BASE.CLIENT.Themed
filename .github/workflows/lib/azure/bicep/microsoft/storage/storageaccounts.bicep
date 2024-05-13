@@ -1,7 +1,12 @@
 // ======================================================================
+// Scope
+// ======================================================================
+
+// ======================================================================
 // Import Shared Settings
 // ======================================================================
 var sharedSettings = loadJsonContent('../../settings/shared.json')
+
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
@@ -20,7 +25,6 @@ param resourceTags object = {}
 // ======================================================================
 // Default SKU, Kind, Tier where applicable
 // ======================================================================
-
 // See: https://learn.microsoft.com/en-us/rest/api/storagerp/srp_sku_types
 @description('Resource SKU. Default is \'Standard_LRS\' (Standard Locally Redundant Storage). Other options are GLobally redundant (Standard_GRS), Zone Redundant(Standard_ZRS), etc..')
 @allowed([
@@ -42,6 +46,11 @@ param resourceKind string = 'StorageV2'
 @description('Resource Tier. Default is: \'Hot\'')
 @allowed(['Hot'])
 param resourceTier string = 'Hot'
+
+// ======================================================================
+// Resource other Params
+// ======================================================================
+
 
 // ======================================================================
 // Default Variables: useResourceName, useTags
