@@ -1,14 +1,21 @@
+// Sub part of Sites (which is a sub part of ServerFarms)
 // See:
 // https://learn.microsoft.com/en-us/azure/templates/microsoft.web/sites/sourcecontrols?pivots=deployment-language-bicep
 
-var sharedSettings = loadJsonContent('../../../settings/shared.json')
-
+// ======================================================================
+// Scope
+// ======================================================================
 // Resources are part of a parent resource group:
 targetScope='resourceGroup'
 
-// Sub part of Sites (which is a sub part of ServerFarms)
+// ======================================================================
+// Import Shared Settings
+// ======================================================================
+var sharedSettings = loadJsonContent('../../../settings/shared.json')
 
-
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 @description('the unique name of site.')
 param resourceName string 
 
@@ -19,6 +26,14 @@ param resourceLocationId string = ''
 @description('The tags for this resource. ')
 param resourceTags object = {}
 
+// ======================================================================
+// Default SKU, Kind, Tier where applicable
+// ======================================================================
+
+
+// ======================================================================
+// Other Resource Params
+// ======================================================================
 @description('The Url of the repository containing source code of this site.')
 param repositoryUrl string
 
@@ -41,6 +56,10 @@ var useResourceName = '${resourceName}/web'
 var useTags = union(resourceTags,{})
 
 var tmp = repositoryToken
+
+// ======================================================================
+// Resource bicep
+// ======================================================================
 resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
   name: useResourceName
   // location: resourceLocationId
@@ -56,6 +75,9 @@ resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
 }
 
 
+// ======================================================================
+// Default Outputs: resource, resourceId, resourceName & variable sink
+// ======================================================================
 // Provide ref to developed resource:
 output resource object = resource
 // return the id (the fully qualitified name) of the newly created resource:
