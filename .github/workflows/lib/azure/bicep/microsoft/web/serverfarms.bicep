@@ -1,4 +1,4 @@
-// var sharedSettings = loadJsonContent('../../../settings/shared.json')
+var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // Scope is parent resourceGroup:
 targetScope='resourceGroup'
