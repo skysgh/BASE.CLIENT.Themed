@@ -58,7 +58,7 @@ param webAppServicePlanSKU string = 'F1'
 param linuxFxVersion string
 
 @description('The url to the repository to be deployed to the Server. ')
-param repositoryUrl string = ""
+param repositoryUrl string = ''
 
 @description('The repositoryToken if repositoryUrl is set. ')
 @secure()
