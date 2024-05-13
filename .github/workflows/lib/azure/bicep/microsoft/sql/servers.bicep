@@ -21,11 +21,12 @@ param resourceLocation string
 
 # Concat the pieces together:
 var resourceName = toUpper(concat(projectName,projectServiceName?'_':'',projectServiceName,projectEnvironmentId))
+var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
   name: resourceName
   location: resourceLocation
-  // tags: resourceTags
+  tags: useTags
   identity: {
     type: 'string'
     userAssignedIdentities: {
