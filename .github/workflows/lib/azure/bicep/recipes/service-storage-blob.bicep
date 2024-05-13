@@ -114,4 +114,4 @@ module storageAccountsModule '../microsoft/storage/storageaccounts.bicep' = {
 output resourceId string = storageAccountsModule.outputs.resourceId
 output resourceName string = storageAccountsModule.outputs.resourceName
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}=${resourceLocationId}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceLocationId}-${uniqueSuffix}-${parentResourceName}', '.')
