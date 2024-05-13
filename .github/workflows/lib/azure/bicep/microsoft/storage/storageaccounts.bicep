@@ -16,7 +16,7 @@ param resourceLocationId string
 @description('Resource Tags')
 param resourceTags object = {}
 
-var useTags = union(resourceTags,sharedSettings.resourceTags)
+var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 @description('Resource SKU. Default is \'Standard_LRS\' (Standard Locally Redundant Storage). Other options are GLobally redundant (Standard_GRS), Zone Redundant(Standard_ZRS).')
 @allowed([
