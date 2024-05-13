@@ -1,6 +1,8 @@
 // ======================================================================
 // Scope
 // ======================================================================
+// Resources are part of a parent resource group:
+targetScope='resourceGroup'
 
 // ======================================================================
 // Import Shared Settings
@@ -10,14 +12,14 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
-// Resources are part of a parent resource group:
-targetScope='resourceGroup'
-
 @description('Specifies the name of the key vault resource.')
 param resourceName string
 
 @description('Specifies the Azure location where the key vault should be created.')
 param resourceLocationId string = resourceGroup().location
+
+@description('Resource tags')
+param resourceTags object = {}
 
 // ======================================================================
 // Default SKU, Kind, Tier where applicable
@@ -28,8 +30,6 @@ param resourceLocationId string = resourceGroup().location
   'premium'
 ])
 param resourceSku string = 'standard' // not permitted to invoke now :-( shared.standardSKUs.keyVault
-
-
 
 // ======================================================================
 // Resource other Params
@@ -62,14 +62,16 @@ param secretsPermissions array = [
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
+var useName = keyValueName
+var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // ======================================================================
 // Resource bicep
 // ======================================================================
 resource resource 'Microsoft.KeyVault/vaults@2023-07-01' = {
-  name: keyVaultName
-  location: location
+  name: useName
+  location: useLocation
   tags: useTags
   properties: {
     enabledForDeployment: enabledForDeployment
