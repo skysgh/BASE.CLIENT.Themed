@@ -83,11 +83,11 @@ resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
 }
 
 
+// Provide ref to developed resource:
+output resource object = resource
 // return the id (the fully qualitified name) of the newly created resource:
 output resourceId string = resource.id
-
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
-
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat(''), 'z')
+output _ bool = startsWith(concat('${sharedSettings.version}'), '.')
