@@ -44,14 +44,16 @@ param webAppServicePlanSKU string = 'F1'
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
+var useName = resourceName
+var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // ======================================================================
 // Resource bicep
 // ======================================================================
 resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
-  name: resourceName
-  location: resourceLocationId
+  name: useName
+  location: useLocation
   tags: useTags
   sku: {
 //    capabilities: [
