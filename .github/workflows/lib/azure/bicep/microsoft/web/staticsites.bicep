@@ -71,7 +71,7 @@ param repositoryToken string
 // Default Variables: useResourceName, useTags
 // ======================================================================
 var useName = resourceName
-var useLocationId = resourceLocationId
+var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // Make a dummy var to create a fake need, so that I don't have to comment out the params
@@ -86,7 +86,7 @@ var __ = startsWith('${repositoryToken}', '.')
 // ======================================================================
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   name: useName
-  location: useLocationId
+  location: useLocation
   tags: useTags
 
   sku: {
