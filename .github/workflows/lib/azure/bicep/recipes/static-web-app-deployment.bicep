@@ -31,7 +31,7 @@ param resourceTags object = {}
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
-param groupResourceLocationId string // = NO!:resourceGroup().location
+param resourceGroupLocationId string // = NO!:resourceGroup().location
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 @allowed([ 'centralus', 'eastus2', 'eastasia', 'westeurope', 'westus2' ])
@@ -88,7 +88,7 @@ var useTags = union(resourceTags, defaultTags)
 // resource rg1 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 //     name: groupResourceName 
 //     // NOT ALLOWED on resource: scope: 'subscription'
-//     location: groupResourceLocationId
+//     location: resourceGroupLocationId
 //     //params: {
 //       tags: useTags
 //     //}
@@ -100,7 +100,7 @@ var useTags = union(resourceTags, defaultTags)
   // Don't knnow if this needed at this level?
   params: {
     resourceName: groupResourceName
-    resourceLocationId: groupResourceLocationId
+    resourceLocationId: resourceGroupLocationId
     resourceTags: useTags
   }
 }
