@@ -1,8 +1,17 @@
-var sharedSettings = loadJsonContent('../../settings/shared.json')
-
+// ======================================================================
+// Scope
+// ======================================================================
 // Resources Groups are part of the general subscription
 targetScope='subscription'
 
+// ======================================================================
+// Import Shared Settings
+// ======================================================================
+var sharedSettings = loadJsonContent('../../settings/shared.json')
+
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 @description('Required. The name of the resource Group.')
 param resourceName string
 
@@ -14,8 +23,18 @@ param resourceLocationId string = 'australiacentral'
 @description('Tags to merge in.')
 param resourceTags object = {}
 
+// ======================================================================
+// Default SKU, Kind, Tier where applicable
+// ======================================================================
+
+// ======================================================================
+// Default Variables: useResourceName, useTags
+// ======================================================================
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
+// ======================================================================
+// Resource bicep
+// ======================================================================
 // Creating new resource groups take a little bit of time
 resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: resourceName
@@ -23,6 +42,9 @@ resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   tags: useTags
 }
 
+// ======================================================================
+// Default Outputs: resource, resourceId, resourceName & variable sink
+// ======================================================================
 // Provide ref to developed resource:
 output resource object = resource
 // return the id (the fully qualitified name) of the newly created resource:
