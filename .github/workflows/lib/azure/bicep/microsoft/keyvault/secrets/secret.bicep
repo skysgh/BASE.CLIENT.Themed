@@ -13,6 +13,11 @@ targetScope='resourceGroup'
 @description('Name of parent Resource - a keyvault')
 param parentResource string
 
+//@description('Resource Name')
+//param resourceName string
+
+@description('Resource Tags. N/A')
+param resourceTags object = {}
 // ======================================================================
 // Default SKU, Kind, Tier where applicable
 // ======================================================================
