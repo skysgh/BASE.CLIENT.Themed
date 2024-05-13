@@ -1,10 +1,20 @@
-var sharedSettings = loadJsonContent('../../settings/shared.json')
-
 // See:
 // https://learn.microsoft.com/en-us/azure/templates/microsoft.web/staticsites?pivots=deployment-language-bicep
 
+// ======================================================================
+// Scope
+// ======================================================================
 // Resources are part of a parent resource group:
 targetScope='resourceGroup'
+
+// ======================================================================
+// Import Shared Settings
+// ======================================================================
+var sharedSettings = loadJsonContent('../../settings/shared.json')
+
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 
 @description('Required. The name of the resource.Tip: usually there is only one resource, set the same as the project name, with only the name of the Resource Group being different per Environment.')
 param resourceName string
@@ -17,10 +27,16 @@ param resourceLocationId string = 'eastasia'
 @description('The tags for this resource. ')
 param resourceTags object = {}
 
+// ======================================================================
+// Default SKU, Kind, Tier where applicable
+// ======================================================================
 @description('The SKU to use.')
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 
+// ======================================================================
+// Resource other Params
+// ======================================================================
 @description('The path to the app source code relative to the root of the repository. Probably sonmething like \'SRC/\' or similar.')
 param appLocation string = '/'
 
@@ -51,6 +67,9 @@ param repositoryBranch string = 'main'
 @secure() // can't provide a default value if marked secure.
 param repositoryToken string
 
+// ======================================================================
+// Default Variables: useResourceName, useTags
+// ======================================================================
 // Make a dummy var to create a fake need, so that I don't have to comment out the params
 
 var tmpToken = repositoryToken
@@ -61,6 +80,9 @@ var _ = startsWith('${repositoryUrl}-${repositoryBranch}-${tmpToken}', 'z')
 
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
+// ======================================================================
+// Resource bicep
+// ======================================================================
 resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   name: resourceName
   location: resourceLocationId
@@ -136,7 +158,9 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
 }
 
 
-
+// ======================================================================
+// Default Outputs: resource, resourceId, resourceName & variable sink
+// ======================================================================
 // Provide ref to developed resource:
 output resource object = resource
 // return the id (the fully qualitified name) of the newly created resource:
