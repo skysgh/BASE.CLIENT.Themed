@@ -20,11 +20,12 @@ param resourceTags object = {}
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
 param linuxFxVersion string = 'DOTNETCORE|Latest'
 
+var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 resource resource 'Microsoft.Web/sites@2020-06-01' = {
   name: resourceName
   location: resourceLocationId
-  tags: resourceTags
+  tags: useTags
   
   properties: {
     serverFarmId: parentResourceId
