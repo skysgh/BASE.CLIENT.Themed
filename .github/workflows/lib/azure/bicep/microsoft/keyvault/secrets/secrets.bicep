@@ -1,6 +1,7 @@
 // ======================================================================
 // Scope
 // ======================================================================
+// https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/vaults/secrets?pivots=deployment-language-bicep
 
 // ======================================================================
 // Import Shared Settings
@@ -37,15 +38,21 @@ param secret string
 // Default Variables: useResourceName, useTags
 // ======================================================================
 var useName = 'n/a'
-var useTags = 'n/a'
+var useTags = union(resourceTags, sharedSettings.defaultTags)
 
 // ======================================================================
 // Resource bicep
 // ======================================================================
 resource resource 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {
   parent: parentResource
-  name: key
+  name: resourceName
+  tags: useTags
   properties: {
+    attributes: {  
+      enabled:true
+      // exp:int
+      // nbf:int
+    }
     value: secret
   }
 }
