@@ -15,6 +15,13 @@ targetScope='resourceGroup'
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // ======================================================================
+// Dependencies
+// ======================================================================
+@description('the parent SqlServer.')
+param parentResource object
+
+
+// ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
 @description('the name of this database resource.')
@@ -32,11 +39,11 @@ param resourceTags object = {}
 // ======================================================================
 @description('The SKU of this resource.')
 // @allowed(['Standard'])
-param resourceSKU string
+param resourceSKU string = 'Standard'
 
 @description('The Tier of this resource.')
 // @allowed(['Standard'])
-param resourceTier string
+param resourceTier string = 'Standard'
 
 // ======================================================================
 // Default Variables: useResourceName, useTags
