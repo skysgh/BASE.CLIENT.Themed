@@ -1,4 +1,9 @@
 // ======================================================================
+// References
+// ======================================================================
+// https://learn.microsoft.com/en-us/azure/key-vault/keys/quick-create-template?tabs=CLI
+
+// ======================================================================
 // Scope
 // ======================================================================
 // Resources are part of a parent resource group:
@@ -31,6 +36,11 @@ param resourceTags object = {}
 ])
 param resourceSku string = 'standard' // not permitted to invoke now :-( shared.standardSKUs.keyVault
 
+
+@allowed([
+  'A'
+])
+param resourceFamily string = 'A'
 // ======================================================================
 // Resource other Params
 // ======================================================================
@@ -73,13 +83,27 @@ resource resource 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: useName
   location: useLocation
   tags: useTags
+
   properties: {
+
+    sku: {
+      name: resourceSKU
+      family: resourceFamily
+    }
+
+    // accessPolicies: []
+    // enableRBacAuthorization: true
+
+    enableSoftDelete: true
+    softDeleteRetentionInDays: 90
+
     enabledForDeployment: enabledForDeployment
     enabledForDiskEncryption: enabledForDiskEncryption
     enabledForTemplateDeployment: enabledForTemplateDeployment
+    
     tenantId: tenantId
-    enableSoftDelete: true
-    softDeleteRetentionInDays: 90
+
+
     accessPolicies: [
       {
         objectId: tenantObjectId
@@ -90,10 +114,6 @@ resource resource 'Microsoft.KeyVault/vaults@2023-07-01' = {
         }
       }
     ]
-    sku: {
-      name: skuName
-      family: 'A'
-    }
     networkAcls: {
       defaultAction: 'Allow'
       bypass: 'AzureServices'
