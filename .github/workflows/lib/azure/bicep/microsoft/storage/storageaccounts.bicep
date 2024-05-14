@@ -93,3 +93,8 @@ output resourceId string = resource.id
 output resourceName string = resource.name
 // param sink (to not cause error if param is not used):
 output _ bool = startsWith(concat('${sharedSettings.version}'), '.')
+
+// URL to storage:
+output resourceUrl = 'https://${useName}.blob.core.windows.net'
+// Url to blob:
+// https://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
