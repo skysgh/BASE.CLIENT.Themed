@@ -1,4 +1,9 @@
 // ======================================================================
+// References
+// ======================================================================
+// https://learn.microsoft.com/en-us/azure/templates/microsoft.sql/servers?pivots=deployment-language-bicep
+
+// ======================================================================
 // Import Shared Settings
 // ======================================================================
 var sharedSettings = loadJsonContent('../../settings/shared.json')
