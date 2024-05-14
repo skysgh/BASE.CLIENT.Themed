@@ -2,6 +2,7 @@
 // References
 // ======================================================================
 // https://learn.microsoft.com/en-us/azure/templates/microsoft.sql/servers?pivots=deployment-language-bicep
+// https://learn.microsoft.com/en-us/azure/azure-sql/database/single-database-create-bicep-quickstart?view=azuresql&tabs=CLI
 
 // ======================================================================
 // Import Shared Settings
@@ -39,6 +40,14 @@ param resourceTags array = {}
 // ======================================================================
 // Resource other Params
 // ======================================================================
+@description('The server's admin account name. ')
+//@allowed ([...])
+param adminName string
+
+@description('The server's admin account password. ')
+//@allowed ([...])
+//@secure()
+param adminPassword string
 
 
 // ======================================================================
@@ -57,31 +66,31 @@ resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
   location: useLocation
   tags: useTags
 
-  identity: {
-    type: 'string'
-    userAssignedIdentities: {
-      {customized property}: {}
-    }
-  }
+//  identity: {
+//    type: 'string'
+//    userAssignedIdentities: {
+//      {customized property}: {}
+//    }
+//  }
   properties: {
-    administratorLogin: 'string'
-    administratorLoginPassword: 'string'
-    administrators: {
-      administratorType: 'ActiveDirectory'
-      azureADOnlyAuthentication: bool
-      login: 'string'
-      principalType: 'string'
-      sid: 'string'
-      tenantId: 'string'
-    }
-    federatedClientId: 'string'
-    isIPv6Enabled: 'string'
-    keyId: 'string'
-    minimalTlsVersion: 'string'
-    primaryUserAssignedIdentityId: 'string'
-    publicNetworkAccess: 'string'
-    restrictOutboundNetworkAccess: 'string'
-    version: 'string'
+    administratorLogin: adminName
+    administratorLoginPassword: adminPassword
+//    administrators: {
+//       administratorType: 'ActiveDirectory'
+//       azureADOnlyAuthentication: bool
+//       login: 'string'
+//       principalType: 'string'
+//       sid: 'string'
+//       tenantId: 'string'
+//     }
+//     federatedClientId: 'string'
+//     isIPv6Enabled: 'string'
+//     keyId: 'string'
+//     minimalTlsVersion: 'string'
+//     primaryUserAssignedIdentityId: 'string'
+//     publicNetworkAccess: 'string'
+//     restrictOutboundNetworkAccess: 'string'
+//     version: 'string'
   }
 }
 
