@@ -1,7 +1,8 @@
 // ======================================================================
 // References:
 // ======================================================================
-https://learn.microsoft.com/en-us/azure/app-service/quickstart-arm-template?pivots=platform-linux
+// https://learn.microsoft.com/en-us/azure/app-service/quickstart-arm-template?pivots=platform-linux
+// https://learn.microsoft.com/en-us/azure/app-service/provision-resource-bicep
 
 // ======================================================================
 // Scope
