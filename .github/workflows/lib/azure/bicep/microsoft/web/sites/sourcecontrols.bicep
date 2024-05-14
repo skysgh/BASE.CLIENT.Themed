@@ -1,5 +1,7 @@
+// ======================================================================
+// References:
+// ======================================================================
 // Sub part of Sites (which is a sub part of ServerFarms)
-// See:
 // https://learn.microsoft.com/en-us/azure/templates/microsoft.web/sites/sourcecontrols?pivots=deployment-language-bicep
 
 // ======================================================================
