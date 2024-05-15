@@ -41,12 +41,12 @@ param resourceTags array = {}
 // Resource other Params
 // ======================================================================
 @description('The server's admin account name. ')
-//@allowed ([...])
 param adminName string
 
-@description('The server's admin account password. ')
-//@allowed ([...])
-//@secure()
+@description('The server's admin account password. Must have 3 of 4 of [a-z], [A-Z], [0-9], or [specialchars]')
+@minLength(8)
+@maxLength(128)
+@secure()
 param adminPassword string
 
 
@@ -75,6 +75,7 @@ resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
   properties: {
     administratorLogin: adminName
     administratorLoginPassword: adminPassword
+
 //    administrators: {
 //       administratorType: 'ActiveDirectory'
 //       azureADOnlyAuthentication: bool
