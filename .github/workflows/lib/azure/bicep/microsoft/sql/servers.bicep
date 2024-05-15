@@ -40,8 +40,8 @@ param resourceTags array = {}
 // ======================================================================
 // Resource other Params
 // ======================================================================
-@description('The server's admin account name. ')
-param adminName string
+@description('The server\'s admin account name. ')
+param adminUserName string
 
 @description('The server's admin account password. Must have 3 of 4 of [a-z], [A-Z], [0-9], or [specialchars]')
 @minLength(8)
@@ -73,7 +73,7 @@ resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
 //    }
 //  }
   properties: {
-    administratorLogin: adminName
+    administratorLogin: adminUserName
     administratorLoginPassword: adminPassword
 
 //    administrators: {
