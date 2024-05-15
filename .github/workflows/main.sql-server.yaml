@@ -14,6 +14,7 @@ env:
   THIS_DIRECTORY: '.github/workflows'
   WORKFLOW_BICEP_DIRECTORY: '.github/workflows/bicep'
   LIB_BICEP_DIRECTORY: '.github/workflows/lib/azure/bicep/recipes' # REPO_LIB_DIR1
+  MAIN_BICEP_FILENAME: 'sql-server-deployment.bicep'
 
 
 # Running on one runner:      
@@ -30,7 +31,6 @@ jobs:
       REPO_LIB_DIR: "./DeploymentLib"
       # File that this YAML invokes at some point, along with its params
       # MAIN_BICEP_FILENAME: 'dynamic-app-service.bicep'
-      MAIN_BICEP_FILENAME: 'sql-server-deployment.bicep'
       # MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
       # ======================================================================
       # INPUTS:
