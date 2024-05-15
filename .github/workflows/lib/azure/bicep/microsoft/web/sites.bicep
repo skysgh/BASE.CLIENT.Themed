@@ -38,7 +38,8 @@ param resourceTags object = {}
 // ======================================================================
 // Resource other Params
 // ======================================================================
-@description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'')
+@description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'. See https://github.com/MicrosoftDocs/azure-docs/issues/47749')
+// Consider also: 'Node|20'
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
 param linuxFxVersion string = 'DOTNETCORE|Latest'
 
