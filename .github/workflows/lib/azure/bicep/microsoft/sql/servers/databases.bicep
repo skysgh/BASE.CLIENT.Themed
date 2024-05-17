@@ -56,7 +56,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // Resource bicep
 // ======================================================================
 
-resource resoure 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
+resource resource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
   parent: parentResource
 
   name: useName
