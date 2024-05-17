@@ -16,7 +16,7 @@ targetScope='resourceGroup'
 // Default Name, Location, Tags,
 // ======================================================================
 @description('The name of the project. This informs automation of naming of resource groups, services, etc.')
-param projectName string;
+param projectName string
 
 @description('The name of the project. This informs automation of naming of resource groups, services, etc.')
 param projectServiceName string
@@ -30,7 +30,7 @@ param projectEnvironmentId string
 param resourceLocationId string
 
 @description('The default tags to merge in.')
-param resourceTags array = {}
+param resourceTags object = {}
 
 // ======================================================================
 // Default SKU, Kind, Tier where applicable
@@ -43,7 +43,7 @@ param resourceTags array = {}
 @description('The server\'s admin account name. ')
 param adminUserName string
 
-@description('The server's admin account password. Must have 3 of 4 of [a-z], [A-Z], [0-9], or [specialchars]')
+@description('The server\'s admin account password. Must have 3 of 4 of [a-z], [A-Z], [0-9], or [specialchars]')
 @minLength(8)
 @maxLength(128)
 @secure()
