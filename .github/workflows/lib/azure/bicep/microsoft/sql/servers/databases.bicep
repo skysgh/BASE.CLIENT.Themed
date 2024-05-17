@@ -18,7 +18,7 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 // Dependencies
 // ======================================================================
 @description('the parent SqlServer.')
-param parentResource object
+param parentResource string
 
 
 // ======================================================================
