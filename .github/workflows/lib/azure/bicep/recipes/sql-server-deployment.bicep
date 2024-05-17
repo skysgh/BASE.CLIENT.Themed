@@ -64,7 +64,7 @@ var shortName = projectName
 
 var useGroupResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
 var useParentResourceName = toUpper(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
-var useCchildResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
+var useChildResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
 
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 
@@ -81,7 +81,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   name:  '${deployment().name}_resourceGroups_module'
   scope:subscription()
   params: {
-    resourceName: useResourceGroupName
+    resourceName: useGroupResourceName
     resourceLocationId: useResourceGroupLocation
     resourceTags: useTags
   }
@@ -90,7 +90,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
 
 module serversModule '../microsoft/sql/servers.bicep' = {
   // should be implied: 
-  // dependsOn: [resourceGroupModule]
+  // dependsOn: [resourceGroupsModule]
     name:  '${deployment().name}_servers_module'
   scope: resourceGroupModule
   params: {
@@ -104,7 +104,7 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 
 module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
   // should be implied: 
-  // dependsOn: [resourceGroupModule]
+  // dependsOn: [resourceGroupsModule]
     name:  '${deployment().name}_servers_databases_module'
   scope: resourceGroupModule
   params: {
@@ -120,8 +120,8 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
 // ======================================================================
 // Provide ref to developed resource:
 output resource object = serversDatabasesModule.outputs.resource
-output resourceId string = serversDatabasesModule.outputs.id
-output resourceName string = serversDatabasesModule.outputs.name
+output resourceId string = serversDatabasesModule.outputs.resourceId
+output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceSku}', '.')
