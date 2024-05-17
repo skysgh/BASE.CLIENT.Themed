@@ -53,8 +53,8 @@ param adminPassword string
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
-# Concat the pieces together:
-var useName = toUpper( concat(projectName, (isEmpty(projectServiceName) ?'':'_'), projectServiceName, projectEnvironmentId) )
+// Concat the pieces together:
+var useName = toUpper( concat(projectName, (empty(projectServiceName) ?'':'_'), projectServiceName, projectEnvironmentId) )
 var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
