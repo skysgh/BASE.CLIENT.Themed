@@ -30,7 +30,7 @@ param resourceTags object = {}
 // ------------------------------------------------------------
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
-param groupResourceLocationId string //NO. Fails most times. = resourceGroup().location
+param resoureGroupLocationId string //NO. Fails most times. = resourceGroup().location
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 //TOO Big: @allowed([ 'eastasia'])
@@ -68,7 +68,7 @@ var useCchildResourceName =  toUpper(sharedSettings.namingConventions.parentName
 
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 
-var useResourceGroupLocation = groupResourceLocationId
+var useResourceGroupLocation = resoureGroupLocationId
 var useResourceLocation = sqlFarmResourceLocationId
 var useLocation = sqlServerLocationId
 var useTags = union(resourceTags, defaultTags)
