@@ -36,7 +36,6 @@ param groupResourceLocationId string //NO. Fails most times. = resourceGroup().l
 //TOO Big: @allowed([ 'eastasia'])
 param sqlFarmResourceLocationId string  // in case in the future one can use the same as the group.
 
-
 @description(' is \'global\'.')
 //TOO Big: @allowed([ 'eastasia'])
 param sqlServerLocationId string  // in case in the future one can use the same as the group.
@@ -63,15 +62,15 @@ var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
 var fullName = '${projectName}${tmp}${environmentId}' 
 var shortName = projectName
 
-var groupResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
-var parentResourceName = toUpper(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
-var childResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
+var useGroupResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
+var useParentResourceName = toUpper(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
+var useCchildResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
 
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 
-var useResourceGroupLocation = groupResourceLocation
+var useResourceGroupLocation = groupResourceLocationId
 var useResourceLocation = sqlFarmResourceLocationId
-var useLocation = resourceLocationId
+var useLocation = sqlServerLocationId
 var useTags = union(resourceTags, defaultTags)
 
 // ======================================================================
@@ -89,13 +88,13 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
 }
 
 
-module serverFarmsModule '../microsoft/sql/servers.bicep' = {
+module serversModule '../microsoft/sql/servers.bicep' = {
   // should be implied: 
   // dependsOn: [resourceGroupModule]
     name:  '${deployment().name}_servers_module'
   scope: resourceGroupModule
   params: {
-    resourceName: parentResourceName
+    resourceName: useParentResourceName
     resourceLocationId: useResourceLocation
     resourceTags: useTags
   }
@@ -103,13 +102,26 @@ module serverFarmsModule '../microsoft/sql/servers.bicep' = {
 
 
 
+module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
+  // should be implied: 
+  // dependsOn: [resourceGroupModule]
+    name:  '${deployment().name}_servers_databases_module'
+  scope: resourceGroupModule
+  params: {
+    resourceName: useChildResourceName
+    resourceLocationId: useLocation
+    resourceTags: useTags
+  }
+}
+
+
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
 // Provide ref to developed resource:
-output resource object = sqlServerModule.outputs.resource
-output resourceId string = sqlServerModule.outputs.id
-output resourceName string = sqlServerModule.outputs.name
+output resource object = serversDatabasesModule.outputs.resource
+output resourceId string = serversDatabasesModule.outputs.id
+output resourceName string = serversDatabasesModule.outputs.name
 
 // param sink (to not cause error if param is not used):
 output _ bool = startsWith('${sharedSettings.version}', '.')
