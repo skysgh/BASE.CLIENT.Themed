@@ -112,9 +112,10 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 
 module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
   // should be implied: 
-  dependsOn: [resourceGroupsModule]
+  dependsOn: [resourceGroupsModule,serversModule]
 
-  parent: serversModule
+  parent: serversModule.outputs.resource
+
   name:  '${deployment().name}_servers_databases_module'
 
   scope: resourceGroup(useGroupResourceName)
