@@ -17,8 +17,8 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
 // ======================================================================
 // Dependencies
 // ======================================================================
-@description('the parent SqlServer *symbolic* name.')
-param parentResource string
+// @description('the parent SqlServer *symbolic* name.')
+// param parentResource string
 
 
 // ======================================================================
@@ -57,7 +57,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // ======================================================================
 
 resource resultResource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
-  parent: parentResource
+  // parent: parentResource
 
   name: useName
   location: useLocation
