@@ -56,7 +56,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // Resource bicep
 // ======================================================================
 
-resource resource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
+resource resultResource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
   parent: resource(parentResource)
 
   name: useName
@@ -73,10 +73,10 @@ resource resource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
 // Provide ref to developed resource:
-output resource object = resource
+output resource object = resultResource
 // return the id (the fully qualitified name) of the newly created resource:
-output resourceId string = resource.id
+output resourceId string = resultResource.id
 // return the (short) name of the newly created resource:
-output resourceName string = resource.name
+output resourceName string = resultResource.name
 // param sink (to not cause error if param is not used):
 output _ bool = startsWith(concat('${sharedSettings.version}'), '.')
