@@ -34,6 +34,7 @@ param resourceTags object = {}
 // Resource other Params
 // ======================================================================
 @description('The server\'s admin account name. ')
+@secure()
 param adminUserName string
 
 @description('The server\'s admin account password. Must have 3 of 4 of [a-z], [A-Z], [0-9], or [specialchars]')
