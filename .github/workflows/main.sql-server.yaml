@@ -95,7 +95,9 @@ jobs:
             environmentId="${{ env.PROJECT_ENV_ID}}"
 
             resourceGroupLocationId="australiacentral" 
-            resourceLocationId="australiacentral"
+            sqlFarmResourceLocationId="australiacentral"
+            sqlServerLocationId="australiacentral"
+            
 
             sqlServerAdminUserName=$secrets.DB_ADMIN_NAME
             sqlServerAdminPassword=$secrets.DB_ADMIN_PWD
