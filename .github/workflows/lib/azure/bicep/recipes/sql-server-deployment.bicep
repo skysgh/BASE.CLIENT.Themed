@@ -69,13 +69,15 @@ param sqlServerAdminPassword string
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
-var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
-var fullName = '${projectName}${tmp}${environmentId}' 
+var tmp1 = empty(projectServiceName) ? '':'_${projectServiceName}'
+var tmp2 = empty(environmentId) ? '':'_${environmentId}'
+
+var fullName = format(shareSettings.namingFormat, projectName, projectServiceName,environmentId) 
 var shortName = projectName
 
 var useResourceGroupName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
 // Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
-var useServerResourceName = toLower(replace(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName,'_','-'))
+var useServerResourceName = toLower(replace(useResourceGroupName,'_','-'))
 var useInstanceResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
 
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
