@@ -59,7 +59,7 @@ param resourceSku string = 'Free'
 @secure()
 param sqlServerAdminUserName string 
 
-@description('An Admin User\'s Pwd, to create the DB in the first place. Source from a pipeline environment Secret or pipeline accessible keyvault.')
+@description('An Admin User\'s Pwd, to create the DB in the first place. Source from a pipeline environment Secret or pipeline accessible keyvault. Must have 3 of 4 of [a-z], [A-Z], [0-9], or [specialchars]')
 @minLength(8)
 @maxLength(128)
 @secure()
