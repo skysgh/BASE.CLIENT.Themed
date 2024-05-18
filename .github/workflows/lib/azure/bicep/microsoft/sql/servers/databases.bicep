@@ -18,7 +18,7 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
 // Dependencies
 // ======================================================================
  @description('the parent SqlServer *module*\'s symbolic name.')
-param parentResourceModuleSymbolicName string
+param parentResourceName string
 
 
 // ======================================================================
@@ -48,7 +48,7 @@ param resourceTier string = 'Standard'
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
-var useName = resourceName
+var useName = '${}/${resourceName}'
 var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
@@ -57,7 +57,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // ======================================================================
 
 resource resultResource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
-  parent: parentResourceModuleSymbolicName
+
 
   name: useName
   location: useLocation
