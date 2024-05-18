@@ -124,7 +124,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
   // should be implied: 
   dependsOn: [resourceGroupsModule,serversModule]
 
-  parent: serversModule.outputs.resourceId
+  parent: serversModule
 
   name:  '${deployment().name}_servers_databases_module'
 
