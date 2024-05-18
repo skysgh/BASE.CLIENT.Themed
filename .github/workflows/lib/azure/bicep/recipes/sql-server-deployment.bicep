@@ -74,7 +74,8 @@ var fullName = '${projectName}${tmp}${environmentId}'
 var shortName = projectName
 
 var useResourceGroupName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
-var useServerResourceName = toLower(replace(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName),'-','')
+// Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
+var useServerResourceName = toLower(replace(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName,'_','-'))
 var useInstanceResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
 
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
