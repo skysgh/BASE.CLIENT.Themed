@@ -105,8 +105,12 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
   // should be implied: 
   // dependsOn: [resourceGroupsModule]
-    name:  '${deployment().name}_servers_databases_module'
+
+  parent: serversModule
+  name:  '${deployment().name}_servers_databases_module'
+
   scope: resourceGroupsModule
+
   params: {
     resourceName: useChildResourceName
     resourceLocationId: useLocation
