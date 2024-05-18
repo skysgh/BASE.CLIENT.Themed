@@ -90,9 +90,11 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
 
 module serversModule '../microsoft/sql/servers.bicep' = {
   // should be implied: 
-  // dependsOn: [resourceGroupsModule]
-    name:  '${deployment().name}_servers_module'
-  scope: resourceGroupsModule
+  dependsOn: [resourceGroupsModule]
+
+  name:  '${deployment().name}_servers_module'
+  scope: resourceGroupsModule.outputs.resource
+
   params: {
     resourceName: useParentResourceName
     resourceLocationId: useResourceLocation
@@ -104,12 +106,12 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 
 module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
   // should be implied: 
-  // dependsOn: [resourceGroupsModule]
+  dependsOn: [resourceGroupsModule]
 
   parent: serversModule
   name:  '${deployment().name}_servers_databases_module'
 
-  scope: resourceGroupsModule
+  scope: resourceGroupsModule.outputs.resource
 
   params: {
     resourceName: useChildResourceName
