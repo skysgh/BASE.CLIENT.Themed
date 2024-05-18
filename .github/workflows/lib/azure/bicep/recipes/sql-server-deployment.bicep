@@ -93,7 +93,7 @@ module serversModule '../microsoft/sql/servers.bicep' = {
   dependsOn: [resourceGroupsModule]
 
   name:  '${deployment().name}_servers_module'
-  scope: resourceGroup(resourceGroupsModule.outputs.resourceName)
+  scope: resourceGroup(useGroupResourceName)
 
   params: {
     resourceName: useParentResourceName
@@ -111,7 +111,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
   parent: serversModule
   name:  '${deployment().name}_servers_databases_module'
 
-  scope: resourceGroup(resourceGroupsModule.outputs.resourceName)
+  scope: resourceGroup(useGroupResourceName)
 
   params: {
     resourceName: useChildResourceName
