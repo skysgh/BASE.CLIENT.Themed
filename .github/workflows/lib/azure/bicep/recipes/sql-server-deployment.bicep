@@ -117,6 +117,9 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
     resourceName: useChildResourceName
     resourceLocationId: useLocation
     resourceTags: useTags
+    
+    resourceSKU: 'Standard'
+    resourceTie: 'Standard'
   }
 }
 
