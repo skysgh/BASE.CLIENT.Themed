@@ -7,7 +7,7 @@
 // Scope
 // ======================================================================
 // Scope is parent resourceGroup:
-targetScope='resourceGroup'
+targetScope='subscription'
 
 // ======================================================================
 // Import Shared Settings
