@@ -17,7 +17,7 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
 // ======================================================================
 // Dependencies
 // ======================================================================
- @description('the parent SqlServer *module*'s symbolic name.')
+ @description('the parent SqlServer *module*\'s symbolic name.')
 param parentResourceModuleSymbolicName string
 
 
