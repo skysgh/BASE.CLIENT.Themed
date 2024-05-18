@@ -2,6 +2,7 @@
 // Scope
 // ======================================================================
 //targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
+targetScope='subscription'
 
 // ======================================================================
 // Import Shared Settings
