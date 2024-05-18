@@ -73,15 +73,15 @@ var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
 var fullName = '${projectName}${tmp}${environmentId}' 
 var shortName = projectName
 
-var useGroupResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
-var useParentResourceName = toUpper(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
-var useChildResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
+var useResourceGroupName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
+var useServerResourceName = toLower(replace(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName),'-','')
+var useInstanceResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
 
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 
 var useResourceGroupLocation = resourceGroupLocationId
-var useResourceLocation = sqlFarmResourceLocationId
-var useLocation = sqlServerLocationId
+var useServerResourceLocation = sqlFarmResourceLocationId
+var useInstanceResourceLocation = sqlServerLocationId
 var useTags = union(resourceTags, defaultTags)
 
 // ======================================================================
@@ -92,7 +92,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   name:  '${deployment().name}_resourceGroups_module'
   scope:subscription()
   params: {
-    resourceName: useGroupResourceName
+    resourceName: useResourceGroupName
     resourceLocationId: useResourceGroupLocation
     resourceTags: useTags
   }
@@ -104,11 +104,11 @@ module serversModule '../microsoft/sql/servers.bicep' = {
   dependsOn: [resourceGroupsModule]
 
   name:  '${deployment().name}_servers_module'
-  scope: resourceGroup(useGroupResourceName)
+  scope: resourceGroup(useResourceGroupName)
 
   params: {
-    resourceName: useParentResourceName
-    resourceLocationId: useResourceLocation
+    resourceName: useServerResourceName
+    resourceLocationId: useServerResourceLocation
     resourceTags: useTags
 
     // resourceSKU:....
@@ -130,4 +130,4 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceSku}-${useChildResourceName}-${useLocation}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceSku}-${useInstanceResourceName}-${useInstanceResourceLocation}', '.')
