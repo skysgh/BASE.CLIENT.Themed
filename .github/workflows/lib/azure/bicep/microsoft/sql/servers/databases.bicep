@@ -48,7 +48,7 @@ param resourceTier string = 'Standard'
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
-var useName = '${}/${resourceName}'
+var useName = '${parentResourceName}/${resourceName}'
 var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
