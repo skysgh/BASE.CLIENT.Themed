@@ -10,7 +10,7 @@
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // Scope is parent resourceGroup:
-targetScope='subscription'
+targetScope='resourceGroup'
 
 // ======================================================================
 // Default Name, Location, Tags,
