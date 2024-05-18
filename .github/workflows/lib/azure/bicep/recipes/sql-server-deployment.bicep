@@ -131,7 +131,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
   scope: resourceGroup(useGroupResourceName)
 
   params: {
-    parentResourceModuleSymbolicName: 'serversModule'
+    parentResourceName: useParentResourceName
 
     resourceName: useChildResourceName
     resourceLocationId: useLocation
