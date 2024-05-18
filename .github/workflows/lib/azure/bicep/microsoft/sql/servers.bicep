@@ -15,21 +15,14 @@ targetScope='resourceGroup'
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
-@description('The name of the project. This informs automation of naming of resource groups, services, etc.')
-param projectName string
+@description('the name of this database resource.')
+param resourceName string
 
-@description('The name of the project. This informs automation of naming of resource groups, services, etc.')
-param projectServiceName string
-
-@description('The name of the project environment. This informs automation of naming of resource groups, services, etc.')
-@allowed (['NP','BT', 'DT','ST','UT','IT','PP','TR','PR'])
-param projectEnvironmentId string
-
-@description('The default location for resources. ')
-//@allowed ([...])
+@description('The id of the location for this resource.')
+// @allowed([])
 param resourceLocationId string
 
-@description('The default tags to merge in.')
+@description('The tags to merge for this resource.')
 param resourceTags object = {}
 
 // ======================================================================
@@ -54,7 +47,7 @@ param adminPassword string
 // Default Variables: useResourceName, useTags
 // ======================================================================
 // Concat the pieces together:
-var useName = toUpper( '${projectName} ${empty(projectServiceName) ?'':'_'}${projectServiceName}_${projectEnvironmentId}')
+var useName = toUpper(resourceName)
 var useLocation = resourceLocationId
 var useTags = union(resourceTags, sharedSettings.defaultTags)
 
@@ -62,6 +55,7 @@ var useTags = union(resourceTags, sharedSettings.defaultTags)
 // Resource bicep
 // ======================================================================
 resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
+
   name: useName
   location: useLocation
   tags: useTags
@@ -72,6 +66,7 @@ resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
 //      {customized property}: {}
 //    }
 //  }
+
   properties: {
     administratorLogin: adminUserName
     administratorLoginPassword: adminPassword
