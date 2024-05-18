@@ -124,10 +124,9 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
-// Provide ref to developed resource:
-output resource object = serversDatabasesModule.outputs.resource
-output resourceId string = serversDatabasesModule.outputs.resourceId
-output resourceName string = serversDatabasesModule.outputs.resourceName
+// output resource object = serversDatabasesModule.outputs.resource
+// output resourceId string = serversDatabasesModule.outputs.resourceId
+// output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceSku}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceSku}-${useChildResourceName}', '.')
