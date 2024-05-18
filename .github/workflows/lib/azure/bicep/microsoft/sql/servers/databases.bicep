@@ -12,7 +12,7 @@ targetScope='resourceGroup'
 // ======================================================================
 // Import Shared Settings
 // ======================================================================
-var sharedSettings = loadJsonContent('../../settings/shared.json')
+var sharedSettings = loadJsonContent('../../../settings/shared.json')
 
 // ======================================================================
 // Dependencies
