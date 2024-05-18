@@ -57,7 +57,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // ======================================================================
 
 resource resource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
-  parent: parentResource
+  parent: resource(parentResource)
 
   name: useName
   location: useLocation
