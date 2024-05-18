@@ -99,7 +99,13 @@ module serversModule '../microsoft/sql/servers.bicep' = {
     resourceName: useParentResourceName
     resourceLocationId: useResourceLocation
     resourceTags: useTags
-  }
+
+    projectName: 
+    
+    adminUserName: sqlServerAdminPassword,
+    adminPassword: sqlServerAdminUserName
+
+}
 }
 
 
