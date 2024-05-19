@@ -55,6 +55,10 @@ param resourceSKU string = 'Basic'
 @allowed(['Standard', 'Premium' ])
 param resourceTier string = 'Standard'
 
+@description('TODO:...')
+@allowed(['None','SystemAssigned','SystemAssigned,UserAssigned','UserAssigned'])
+param sqlServerIdentityType string
+
 // ======================================================================
 // Resource other Params
 // ======================================================================
