@@ -94,7 +94,6 @@ jobs:
             projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
             environmentId="${{ env.PROJECT_ENV_ID}}"
             resourceGroupLocationId="australiacentral" 
-            sqlServerFarmLocationId="australiacentral"
             sqlServerLocationId="australiacentral"
             sqlServerDbLocationId="australiacentral"
             resourceSKU="Basic"
