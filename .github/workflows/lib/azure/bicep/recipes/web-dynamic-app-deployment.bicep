@@ -97,8 +97,8 @@ var fullName = '${projectName}${tmp}${environmentId}'
 var shortName = projectName
 //var uniqueSuffix = uniqueString(resourceGroup().id)
 var groupResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
-var parentResourceName = toUpper(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
-var childResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
+var parentResourceName = toLower(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
+var childResourceName =  toLower(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 var useTags = union(resourceTags, defaultTags)
 // ------------------------------------------------------------
