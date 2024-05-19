@@ -35,7 +35,7 @@ param resourceGroupLocationId string //NO. Fails most times. = resourceGroup().l
 
 @description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
 //TOO Big: @allowed([ 'eastasia'])
-param sqlFarmResourceLocationId string  // in case in the future one can use the same as the group.
+param sqlServerFarmLocationId string  // in case in the future one can use the same as the group.
 
 @description(' is \'global\'.')
 //TOO Big: @allowed([ 'eastasia'])
