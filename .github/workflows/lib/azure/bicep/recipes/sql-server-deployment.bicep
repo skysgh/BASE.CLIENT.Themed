@@ -74,6 +74,62 @@ param sqlServerIdentityType string = 'SystemAssigned,UserAssigned'
 // ======================================================================
 // Resource other Params
 // ======================================================================
+
+@description('The minimal Tls Version to use. Default is \1.2'\'.')
+@secure()
+@alllowed(['1.2'])
+param sqlServerMinimalTlsVersion string = '1.2'
+
+
+
+
+
+@description('If the DB is free (one per subscription, then what do to when passing free offer. Default: \'BillOverUsage\'. ')
+@allowed(['AutoPause', 'BillOverUsage'])
+param sqlServerFreeLimitExhaustionBehavior string = 'BillOverUsage'
+
+
+@description('Specifies the availability zone the database is pinned to.	Default is\'NoPreference\'')
+@allowed(['1', '2', '3', 'NoPreference'])
+param sqlServerAvailabilityZone string = 'NoPreference'
+
+
+
+@description('	Collation of the metadata catalog.. Default is \'DATABASE_DEFAULT\' (which is by default \'SQL_Latin1_General_CP1_CI_AS\').')
+@allowed(['DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'])
+param sqlServerCatalogCollation string = 'DATABASE_DEFAULT'
+
+@description('	Collation of the metadata catalog.. Default is \'SQL_Latin1_General_CP1_CI_AS\'.')
+@allowed(['SQL_Latin1_General_CP1_CI_AS'])
+param sqlServerCollation string = 'SQL_Latin1_General_CP1_CI_AS'
+
+
+@description('Creation Mode.. Default is \'Default\'.')
+@allowed(['Copy', 'Default'', 'OnlineSecondary'', 'PointInTimeRestore'', 'Recovery'', 'Restore'', 'RestoreExternalBackup'', 'RestoreExternalBackupSecondary'', 'RestoreLongTermRetentionBackup'', 'Secondary'])
+param sqlServerCreateMode string = 'Default'
+
+@description('Whether the database is a Ledger one, permitting to review historical values. Default is \'true\'.')
+param sqlServerIsLedgerOn bool = true
+
+
+@description('Name of Sample database schema to develop . Default is \'\'.')
+@allowed(['AdventureWorksLT', 'WideWorldImportersFull', 'WideWorldImportersStd'])
+param sqlServerSampleName string = ''
+
+@description('Whether or not the database uses free monthly limits. Allowed on one database in a subscription.')
+param sqlServerUseFreeLimit bool = false
+
+
+@description('Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones. Default: false')
+param sqlServerZoneRedundant bool = false
+
+
+
+
+
+
+
+
 @description('An Admin User\'s Name, to create the DB in the first place. Source from a pipeline environment Secret or pipeline accessible keyvault.')
 @minLength(3)
 @maxLength(128)
@@ -85,6 +141,9 @@ param sqlServerAdminUserName string
 @maxLength(128)
 @secure()
 param sqlServerAdminPassword string 
+
+
+
 
 // ======================================================================
 // Default Variables: useResourceName, useTags
@@ -142,6 +201,17 @@ module serversModule '../microsoft/sql/servers.bicep' = {
     // resourceSKU:....
     // resourceTier:....
 
+    minimalTlsVersion: sqlServerMinimalTlsVersion
+
+freeLimitExhaustionBehavior = sqlServerFreeLimitExhaustionBehavior
+vailabilityZone = sqlServerAvailabilityZone
+catalogCollation = sqlServerCatalogCollation
+collation = sqlServerCollation
+createMode = sqlServerCollation
+isLedgerOn = sqlServerIsLedgerOn
+sampleName = sqlServerSampleName
+useFreeLimit  = sqlServerUseFreeLimit
+zoneRedundant = sqlServerZoneRedundant
     identityType: sqlServerIdentityType
     adminUserName: sqlServerAdminUserName
     adminPassword: sqlServerAdminPassword
