@@ -33,7 +33,7 @@ param resourceTags object = {}
 // ======================================================================
 
 @description('Database SKU Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
-@allowed([ 'Basic', 'Standard' ])
+@allowed(['Basic', 'Standard' ])
 param resourceSku string = 'Basic'
 
 @description('Options are \'Standard\' (Common workloads) and \'Premium\' (OLTP applications, with high transaction rates, low I/O latency plus several isolated replicas). Default is \'Standard\'.')
