@@ -37,6 +37,8 @@ param resourceTags object = {}
 // Resource other Params
 // ======================================================================
 @description('The server\'s admin account name. ')
+@minLength(5)
+@maxLength(128)
 @secure()
 param adminUserName string
 
