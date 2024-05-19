@@ -88,7 +88,7 @@ resource resource 'Microsoft.Search/searchServices@2020-08-01' = {
   name: name
   location: location
   sku: {
-    name: sku
+    name: resourceSKU
   }
   properties: {
     replicaCount: replicaCount
