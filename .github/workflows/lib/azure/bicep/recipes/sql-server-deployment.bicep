@@ -117,8 +117,8 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 
     // resourceSKU:....
 
-    adminUserName: sqlServerAdminPassword
-    adminPassword: sqlServerAdminUserName
+    adminUserName: sqlServerAdminUserName
+    adminPassword: sqlServerAdminPassword
 
 }
 }
