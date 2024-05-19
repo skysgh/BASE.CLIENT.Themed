@@ -126,7 +126,7 @@ module serversModule '../microsoft/sql/servers.bicep' = {
     
     // resourceSKU:....
     // resourceTier:....
-
+    identityType: sqlServerIdentityType
     adminUserName: sqlServerAdminUserName
     adminPassword: sqlServerAdminPassword
 
