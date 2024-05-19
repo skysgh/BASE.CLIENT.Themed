@@ -55,11 +55,15 @@ param sqlServerDbLocationId string  // in case in the future one can use the sam
 @allowed([ 'Free', 'Standard' ])
 param resourceSku string = 'Free'
 
+@description('Options are \'Standard\' (Common workloads) and \'Premium\' (OLTP applications, with high transaction rates, low I/O latency plus several isolated replicas). Default is \'Standard\'.')
+@allowed(['Standard', 'Premium' ])
+param resourceTier = 'Standard'
+
 // ======================================================================
 // Resource other Params
 // ======================================================================
 @description('An Admin User\'s Name, to create the DB in the first place. Source from a pipeline environment Secret or pipeline accessible keyvault.')
-@minLength(7)
+@minLength(5)
 @maxLength(128)
 @secure()
 param sqlServerAdminUserName string 
@@ -119,7 +123,9 @@ module serversModule '../microsoft/sql/servers.bicep' = {
     resourceLocationId: useServerResourceLocation
     resourceTags: useTags
 
+    
     // resourceSKU:....
+    // resourceTier:....
 
     adminUserName: sqlServerAdminUserName
     adminPassword: sqlServerAdminPassword
