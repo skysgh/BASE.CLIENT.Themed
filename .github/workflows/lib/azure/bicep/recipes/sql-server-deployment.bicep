@@ -31,7 +31,7 @@ param resourceTags object = {}
 // ------------------------------------------------------------
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 @allowed([ 'australiacentral'])
-param resourceGroupLocationId string //NO. Fails most times. = resourceGroup().location
+param resourceGroupLocationId string //NO. Fails 'resourceGroup().location' if scope is subscriptoin.
 
 @description('Location of Server.')
 //TOO Big: @allowed([ 'australiacentral'])
@@ -85,16 +85,16 @@ var fullName = replace(format(sharedSettings.namingConventions.namingFormat, pro
 var shortName = projectName
 
 var useResourceGroupName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
-// Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
-var useServerResourceName = toLower(replace('${useResourceGroupName}-${uniqueString(fullName)}' ,'_','-'))
+var useResourceGroupLocation = resourceGroupLocationId
 
-var useInstanceResourceName =  toLower(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
+// Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
+var useServerName = toLower(replace('${useResourceGroupName}-${uniqueString(fullName)}' ,'_','-'))
+var useServerLocation = sqlServerLocationId
+
+var useDbInstanceName =  toLower(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
+var useDbInstanceLocation = sqlServerDbLocationId 
 
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
-
-var useResourceGroupLocation = resourceGroupLocationId
-var useServerResourceLocation = sqlServerLocationId
-var useInstanceResourceLocation = sqlServerDbLocationId 
 var useTags = union(resourceTags, defaultTags)
 
 // ======================================================================
@@ -122,8 +122,8 @@ module serversModule '../microsoft/sql/servers.bicep' = {
   name:  '${deployment().name}_servers_module'
 
   params: {
-    resourceName: useServerResourceName
-    resourceLocationId: useServerResourceLocation
+    resourceName: useServerName
+    resourceLocationId: useServerLocation
     resourceTags: useTags
 
     
@@ -148,10 +148,10 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
 
   params: {
     // Refer to parent website so it can build resource name without use of parent property.
-    parentResourceName: useServerResourceName
+    parentResourceName: useServerName
 
-    resourceName: useInstanceResourceLocation
-    resourceLocationId: useInstanceResourceLocation
+    resourceName: useDbInstanceName
+    resourceLocationId: useDbInstanceLocation
     resourceTags: useTags
     
     resourceSKU: 'Standard'
@@ -168,4 +168,4 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceSKU}-${useInstanceResourceName}-${useInstanceResourceLocation}-${resourceTier}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceSKU}-${useDbInstanceName}-${useDbInstanceLocation}-${resourceTier}', '.')
