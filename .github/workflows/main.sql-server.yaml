@@ -98,6 +98,7 @@ jobs:
             sqlServerLocationId="australiacentral"
             sqlServerDbLocationId="australiacentral"
             resourceSKU="Basic"
+            sqlServerIdentityType='None'
             sqlServerAdminUserName=${{ secrets.DB_ADMIN_NAME}}
             sqlServerAdminPassword=${{ secrets.DB_ADMIN_PWD}}
             
