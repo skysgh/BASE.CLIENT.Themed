@@ -63,7 +63,7 @@ param sqlServerIdentityType string
 // Resource other Params
 // ======================================================================
 @description('An Admin User\'s Name, to create the DB in the first place. Source from a pipeline environment Secret or pipeline accessible keyvault.')
-@minLength(5)
+@minLength(3)
 @maxLength(128)
 @secure()
 param sqlServerAdminUserName string 
