@@ -33,13 +33,17 @@ param resourceTags object = {}
 @allowed([ 'australiacentral'])
 param resourceGroupLocationId string //NO. Fails most times. = resourceGroup().location
 
-@description('The lowercase identifier of where to build the resource Group if resourceLocation2 is not available. Default is \'global\'.')
+@description('ID of Location of the server farm. Not used at present')
 //TOO Big: @allowed([ 'eastasia'])
 param sqlServerFarmLocationId string  // in case in the future one can use the same as the group.
 
-@description(' is \'global\'.')
-//TOO Big: @allowed([ 'eastasia'])
+@description('Location of Server.')
+//TOO Big: @allowed([ 'australiacentral'])
 param sqlServerLocationId string  // in case in the future one can use the same as the group.
+
+@description('Location of Database. ')
+//TOO Big: @allowed([ 'australiacentral'])
+param sqlServerDbLocationId string  // in case in the future one can use the same as the group.
 
 
 // ======================================================================
@@ -84,8 +88,8 @@ var useInstanceResourceName =  toUpper(sharedSettings.namingConventions.parentNa
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 
 var useResourceGroupLocation = resourceGroupLocationId
-var useServerResourceLocation = sqlFarmResourceLocationId
-var useInstanceResourceLocation = sqlServerLocationId
+var useServerResourceLocation = sqlServerLocationId
+var useInstanceResourceLocation = sqlServerDbLocationId 
 var useTags = union(resourceTags, defaultTags)
 
 // ======================================================================
@@ -134,4 +138,4 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceSku}-${useInstanceResourceName}-${useInstanceResourceLocation}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceSku}-${useInstanceResourceName}-${useInstanceResourceLocation}-${sqlServerFarmLocationId}', '.')
