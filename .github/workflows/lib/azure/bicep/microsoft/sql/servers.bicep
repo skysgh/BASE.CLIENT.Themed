@@ -32,6 +32,10 @@ param resourceTags object = {}
 // Default SKU, Kind, Tier where applicable
 // ======================================================================
 
+@description('Database SKU Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
+@allowed([ 'Basic', 'Standard' ])
+param resourceSku string = 'Basic'
+
 @description('Options are \'Standard\' (Common workloads) and \'Premium\' (OLTP applications, with high transaction rates, low I/O latency plus several isolated replicas). Default is \'Standard\'.')
 @allowed(['Standard', 'Premium' ])
 param resourceTier = 'Standard'
@@ -39,6 +43,11 @@ param resourceTier = 'Standard'
 // ======================================================================
 // Resource other Params
 // ======================================================================
+
+@allowed(['None','SystemAssigned','SystemAssigned,UserAssigned','UserAssigned'])
+param identityType string
+
+
 @description('The server\'s admin account name. ')
 @minLength(5)
 @maxLength(128)
@@ -70,7 +79,7 @@ resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
   tags: useTags
 
 //  identity: {
-//    type: 'string'
+//    type: identityType
 //    userAssignedIdentities: {
 //      {customized property}: {}
 //    }
@@ -109,4 +118,4 @@ output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceTier}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceSKU}-${resourceTier}', '.')
