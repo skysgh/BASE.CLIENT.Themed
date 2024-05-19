@@ -150,7 +150,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
     // Refer to parent website so it can build resource name without use of parent property.
     parentResourceName: useServerResourceName
 
-    resourceName: useChildResourceName
+    resourceName: useInstanceResourceLocation
     resourceLocationId: useLocation
     resourceTags: useTags
     
