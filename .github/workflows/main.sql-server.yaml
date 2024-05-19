@@ -95,6 +95,8 @@ jobs:
             resourceGroupLocationId="australiacentral" 
             sqlServerFarmLocationId="australiacentral"
             sqlServerLocationId="australiacentral"
+            sqlServerDbLocationId="australiacentral"
+            resourceSku="Free"
             sqlServerAdminUserName=$secrets.DB_ADMIN_NAME
             sqlServerAdminPassword=$secrets.DB_ADMIN_PWD
             
