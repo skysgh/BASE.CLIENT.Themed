@@ -151,7 +151,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
     parentResourceName: useServerResourceName
 
     resourceName: useInstanceResourceLocation
-    resourceLocationId: useLocation
+    resourceLocationId: useInstanceResourceLocation
     resourceTags: useTags
     
     resourceSKU: 'Standard'
