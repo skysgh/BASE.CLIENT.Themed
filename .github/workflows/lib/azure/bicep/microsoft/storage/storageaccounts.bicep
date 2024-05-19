@@ -45,13 +45,21 @@ param resourceTags object = {}
 param resourceSKU string = 'Standard_LRS'
 
 @description('Resource Kind. Default is: \'StorageV2\'')
-@allowed(['StorageV2'])
+@allowed(['BlobStorage', 'BlockBlobStorage', 'FileStorage', 'Storage', 'StorageV2'])
 param resourceKind string = 'StorageV2'
 
 @description('Resource Tier. Default is: \'Hot\'')
 @allowed(['Hot'])
 param resourceTier string = 'Hot'
 
+
+
+@allowed(['None', 'SystemAssigned', 'SystemAssigned,UserAssigned', 'UserAssigned']) 
+param identityType string
+
+@description('Whether to only permit https. The answer is always true.'])
+@allowed([true]) 
+param supportsHttpsTrafficOnly bool = true
 // ======================================================================
 // Resource other Params
 // ======================================================================
@@ -78,9 +86,132 @@ resource resource 'Microsoft.Storage/storageAccounts@2022-09-01' = {
     name: resourceSKU
   }
   kind: resourceKind
-   properties: {
+
+  // extendedLocation: {
+  //  name: 'string'
+  //  type: 'EdgeZone'
+  // }
+  // identity: {
+  //   type: identityType
+  //   userAssignedIdentities: {
+  //     {customized property}: {}
+  //   }
+  // }
+  
+  properties: {
      accessTier: resourceTier
-   }
+
+    // allowBlobPublicAccess: bool
+    // allowCrossTenantReplication: bool
+    // allowedCopyScope: 'string'
+    // allowSharedKeyAccess: bool
+    // azureFilesIdentityBasedAuthentication: {
+    //   activeDirectoryProperties: {
+    //     accountType: 'string'
+    //     azureStorageSid: 'string'
+    //     domainGuid: 'string'
+    //     domainName: 'string'
+    //     domainSid: 'string'
+    //     forestName: 'string'
+    //     netBiosDomainName: 'string'
+    //     samAccountName: 'string'
+    //   }
+    //   defaultSharePermission: 'string'
+    //   directoryServiceOptions: 'string'
+    // }
+
+    // customDomain: {
+    //   name: 'string'
+    //   useSubDomainName: bool
+    // }
+
+
+// defaultToOAuthAuthentication: bool
+    dnsEndpointType: 'string'
+    encryption: {
+//       identity: {
+//         federatedIdentityClientId: 'string'
+//         userAssignedIdentity: 'string'
+//       }
+//       keySource: 'string'
+//       keyvaultproperties: {
+//         keyname: 'string'
+//         keyvaulturi: 'string'
+//         keyversion: 'string'
+//       }
+//       requireInfrastructureEncryption: bool
+//       services: {
+//         blob: {
+//           enabled: bool
+//           keyType: 'string'
+//         }
+//         file: {
+//           enabled: bool
+//           keyType: 'string'
+//         }
+//         queue: {
+//           enabled: bool
+//           keyType: 'string'
+//         }
+//         table: {
+//           enabled: bool
+//           keyType: 'string'
+//         }
+//       }
+//     }
+//     immutableStorageWithVersioning: {
+//       enabled: bool
+//       immutabilityPolicy: {
+//         allowProtectedAppendWrites: bool
+//         immutabilityPeriodSinceCreationInDays: int
+//         state: 'string'
+//       }
+//     }
+//     isHnsEnabled: bool
+//     isLocalUserEnabled: bool
+//     isNfsV3Enabled: bool
+//     isSftpEnabled: bool
+//     keyPolicy: {
+//       keyExpirationPeriodInDays: int
+//     }
+ //    largeFileSharesState: 'string'
+ //    minimumTlsVersion: 'string'
+//     networkAcls: {
+//       bypass: 'string'
+//       defaultAction: 'string'
+//       ipRules: [
+//         {
+//           action: 'Allow'
+//           value: 'string'
+//         }
+//       ]
+//       resourceAccessRules: [
+//         {
+//           resourceId: 'string'
+//           tenantId: 'string'
+//         }
+//       ]
+//       virtualNetworkRules: [
+//         {
+//           action: 'Allow'
+//           id: 'string'
+//           state: 'string'
+//         }
+//       ]
+//     }
+//     publicNetworkAccess: 'string'
+//     routingPreference: {
+//       publishInternetEndpoints: bool
+//       publishMicrosoftEndpoints: bool
+//       routingChoice: 'string'
+//     }
+//     sasPolicy: {
+//       expirationAction: 'Log'
+//       sasExpirationPeriod: 'string'
+//     }
+  supportsHttpsTrafficOnly: supportsHttpsTrafficOnly
+}
+
 }
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
