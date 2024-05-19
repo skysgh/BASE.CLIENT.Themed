@@ -38,7 +38,7 @@ param resourceSku string = 'Basic'
 
 @description('Options are \'Standard\' (Common workloads) and \'Premium\' (OLTP applications, with high transaction rates, low I/O latency plus several isolated replicas). Default is \'Standard\'.')
 @allowed(['Standard', 'Premium' ])
-param resourceTier = 'Standard'
+param resourceTier string = 'Standard'
 
 // ======================================================================
 // Resource other Params
