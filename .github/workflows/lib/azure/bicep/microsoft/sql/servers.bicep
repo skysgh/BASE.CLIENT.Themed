@@ -118,4 +118,4 @@ output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceSKU}-${resourceTier}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceSKU}-${resourceTier}-${identityType}', '.')
