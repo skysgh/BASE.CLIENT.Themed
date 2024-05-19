@@ -69,11 +69,11 @@ param sqlServerAdminPassword string
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
-var tmp1 = empty(projectServiceName) ? '':'_${projectServiceName}'
-var tmp2 = empty(environmentId) ? '':'_${environmentId}'
 
 // Use formatting. And cleanup if service name not used. There is no trim('_') unfortunately.
-var fullName = replace(format(shareSettings.namingFormat, projectName, projectServiceName,environmentId),'__','_') 
+var tmp1 = (empty(projectServiceName) ? '':format(sharedSettings.namePartFormat, projectServiceName))
+var tmp2 = (empty(environmentId)      ? '':format(sharedSettings.namePartFormat, environmentId))
+var fullName = replace(format(shareSettings.namingFormat, projectName, tmp1,tmp2),'__','_') 
 var shortName = projectName
 
 var useResourceGroupName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
