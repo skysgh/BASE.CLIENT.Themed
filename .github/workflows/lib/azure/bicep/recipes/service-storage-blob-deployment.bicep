@@ -73,7 +73,7 @@ var defaultTags = {project: projectName, service: projectServiceName, environmen
 // 24-14 = 10
 // "base_kgxkbwfgeorz6 is not a valid storage account name. Storage account name must be between 3 and 24
 var useResourceGroupName = groupResourceName
-var useName = toLower('${childResourceName}${uniqueSuffix}')
+var useName = toLower(replace(replace('${childResourceName}${uniqueSuffix}', '-', ''),'_','') )
 var useLocation = storageAccountsLocationId
 var useTags = union(resourceTags, defaultTags)
 
