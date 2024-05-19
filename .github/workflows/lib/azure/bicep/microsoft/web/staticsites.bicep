@@ -32,7 +32,7 @@ param resourceTags object = {}
 // ======================================================================
 @description('The SKU to use.')
 @allowed([ 'Free', 'Standard' ])
-param resourceSku string = 'Free'
+param resourceSKU string = 'Free'
 
 // ======================================================================
 // Resource other Params
@@ -92,9 +92,9 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
   sku: {
     // capabilities: [
     //  {
-    //    name: resourceSku
+    //    name: resourceSKU
     //    // reason: 'string'
-    //    value: resourceSku
+    //    value: resourceSKU
     //  }
     // ]
     // capacity: int
@@ -102,7 +102,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     //locations: [
     //  'string'
     //]
-     name: resourceSku
+     name: resourceSKU
     // size: 'string'
     // skuCapacity: {
     //  default: int
@@ -111,7 +111,7 @@ resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
     //  minimum: int
     //  scaleType: 'string'
     //}
-    tier: resourceSku
+    tier: resourceSKU
   }
   // kind: 'string'
  // identity: {
