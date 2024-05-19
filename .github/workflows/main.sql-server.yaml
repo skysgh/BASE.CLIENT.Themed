@@ -96,7 +96,7 @@ jobs:
             resourceGroupLocationId="australiacentral" 
             sqlFarmResourceLocationId="australiacentral"
             sqlServerLocationId="australiacentral"
-            sqlServerAdminUserName="TheDude"
+            sqlServerAdminUserName="TheDude11"
             sqlServerAdminPassword="Fish_fuck_01"
             
           # Removed
