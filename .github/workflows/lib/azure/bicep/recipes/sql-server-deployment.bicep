@@ -53,7 +53,7 @@ param sqlServerDbLocationId string  // in case in the future one can use the sam
 
 @description('Database SKU Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
 @allowed([ 'Basic', 'Standard' ])
-param resourceSku string = 'Basic'
+param resourceSKU string = 'Basic'
 
 @description('Database Tier. Options are \'Standard\' (Common workloads) and \'Premium\' (OLTP applications, with high transaction rates, low I/O latency plus several isolated replicas). Default is \'Standard\'.')
 @allowed(['Standard', 'Premium' ])
@@ -144,4 +144,4 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceSku}-${useInstanceResourceName}-${useInstanceResourceLocation}-${sqlServerFarmLocationId}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceSKU}-${useInstanceResourceName}-${useInstanceResourceLocation}-${sqlServerFarmLocationId}', '.')
