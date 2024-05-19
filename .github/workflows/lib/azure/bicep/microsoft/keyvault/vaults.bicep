@@ -29,12 +29,12 @@ param resourceTags object = {}
 // ======================================================================
 // Default SKU, Kind, Tier where applicable
 // ======================================================================
-@description('Sku of keyvault. Default is \'standard\' - not \'premium\'')
+@description('SKU of keyvault. Default is \'standard\' - not \'premium\'')
 @allowed([
   'standard'
   'premium'
 ])
-param resourceSku string = 'standard' // not permitted to invoke now :-( shared.standardSKUs.keyVault
+param resourceSKU string = 'standard' // not permitted to invoke now :-( shared.standardSKUs.keyVault
 
 
 @allowed([
