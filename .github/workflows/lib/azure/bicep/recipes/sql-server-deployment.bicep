@@ -99,6 +99,8 @@ var useTags = union(resourceTags, defaultTags)
 // ======================================================================
 // Resource bicep
 // ======================================================================
+
+// ======================================================================
 module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
    // pass parameters:
   name:  '${deployment().name}_resourceGroups_module'
@@ -111,12 +113,12 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
 }
 
 
+// ======================================================================
 module serversModule '../microsoft/sql/servers.bicep' = {
   // should be implied: 
   dependsOn: [resourceGroupsModule]
-
-  name:  '${deployment().name}_servers_module'
   scope: resourceGroup(useResourceGroupName)
+  name:  '${deployment().name}_servers_module'
 
   params: {
     resourceName: useServerResourceName
@@ -130,11 +132,31 @@ module serversModule '../microsoft/sql/servers.bicep' = {
     identityType: sqlServerIdentityType
     adminUserName: sqlServerAdminUserName
     adminPassword: sqlServerAdminPassword
-
+  }
 }
+
+
+
+// ======================================================================
+module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
+  // should be implied: 
+  dependsOn: [resourceGroupsModule,serversModule]
+  // parent: serversModule
+  scope: resourceGroup(useGroupResourceName)
+  name:  '${deployment().name}_servers_databases_module'
+
+  params: {
+    // Refer to parent website so it can build resource name without use of parent property.
+    parentResourceName: useParentResourceName
+
+    resourceName: useChildResourceName
+    resourceLocationId: useLocation
+    resourceTags: useTags
+    
+    resourceSKU: 'Standard'
+    resourceTier: 'Standard'
+  }
 }
-
-
 
 
 // ======================================================================
