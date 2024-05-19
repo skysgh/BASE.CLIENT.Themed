@@ -33,10 +33,6 @@ param resourceTags object = {}
 @allowed([ 'australiacentral'])
 param resourceGroupLocationId string //NO. Fails most times. = resourceGroup().location
 
-@description('ID of Location of the server farm. Not used at present')
-//TOO Big: @allowed([ 'eastasia'])
-param sqlServerFarmLocationId string  // in case in the future one can use the same as the group.
-
 @description('Location of Server.')
 //TOO Big: @allowed([ 'australiacentral'])
 param sqlServerLocationId string  // in case in the future one can use the same as the group.
@@ -144,4 +140,4 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceSKU}-${useInstanceResourceName}-${useInstanceResourceLocation}-${sqlServerFarmLocationId}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceSKU}-${useInstanceResourceName}-${useInstanceResourceLocation}-${resourceTier}', '.')
