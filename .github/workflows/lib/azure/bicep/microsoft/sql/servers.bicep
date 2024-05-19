@@ -49,7 +49,7 @@ param identityType string
 
 
 @description('The server\'s admin account name. ')
-@minLength(5)
+@minLength(3)
 @maxLength(128)
 @secure()
 param adminUserName string
