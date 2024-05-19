@@ -48,10 +48,11 @@ param resourceSKU string = 'Standard_LRS'
 @allowed(['BlobStorage', 'BlockBlobStorage', 'FileStorage', 'Storage', 'StorageV2'])
 param resourceKind string = 'StorageV2'
 
-@description('Resource Tier. Default is: \'Hot\'')
-@allowed(['Hot'])
-param resourceTier string = 'Hot'
 
+
+@description('Resource Tier. Required for storage accounts where kind = BlobStorage. Default is: \'Hot\'. Mist be Premium if storage account type=premium block blobs account type')
+@allowed(['Cool', 'Hot','Premium'])
+param resourceTier string = 'Hot'
 
 
 @allowed(['None', 'SystemAssigned', 'SystemAssigned,UserAssigned', 'UserAssigned']) 
@@ -60,10 +61,18 @@ param identityType string
 @description('Whether to only permit https. The answer is always true.'])
 @allowed([true]) 
 param supportsHttpsTrafficOnly bool = true
+
+
+@description('Do not open secondary doors - especially for legacy protocols.'). 
+@allowed([false]) 
+param isSftpEnabled bool = false
 // ======================================================================
 // Resource other Params
 // ======================================================================
 
+@description('Whether ux/clients can access blobs directly, or only through app acting as proxy. Default:\'Disabled\'.')
+@allowed(['Disabled','Enabled']) 
+param publicNetworkAccess bool = 'Disabled'
 
 // ======================================================================
 // Default Variables: useResourceName, useTags
@@ -99,7 +108,7 @@ resource resource 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   // }
   
   properties: {
-     accessTier: resourceTier
+     accessTier: accessTier
 
     // allowBlobPublicAccess: bool
     // allowCrossTenantReplication: bool
