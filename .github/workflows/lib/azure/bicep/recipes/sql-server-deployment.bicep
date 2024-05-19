@@ -87,7 +87,8 @@ var shortName = projectName
 var useResourceGroupName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
 // Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
 var useServerResourceName = toLower(replace('${useResourceGroupName}-${uniqueString(fullName)}' ,'_','-'))
-var useInstanceResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
+
+var useInstanceResourceName =  toLower(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
 
 var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
 
@@ -142,7 +143,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
   // should be implied: 
   dependsOn: [resourceGroupsModule,serversModule]
   // parent: serversModule
-  scope: resourceGroup(useGroupResourceName)
+  scope: resourceGroup(useResourceGroupName)
   name:  '${deployment().name}_servers_databases_module'
 
   params: {
