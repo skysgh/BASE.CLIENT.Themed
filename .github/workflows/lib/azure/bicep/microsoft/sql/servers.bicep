@@ -32,6 +32,9 @@ param resourceTags object = {}
 // Default SKU, Kind, Tier where applicable
 // ======================================================================
 
+@description('Options are \'Standard\' (Common workloads) and \'Premium\' (OLTP applications, with high transaction rates, low I/O latency plus several isolated replicas). Default is \'Standard\'.')
+@allowed(['Standard', 'Premium' ])
+param resourceTier = 'Standard'
 
 // ======================================================================
 // Resource other Params
@@ -106,4 +109,4 @@ output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat('${sharedSettings.version}'), '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceTier}', '.')
