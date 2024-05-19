@@ -15,7 +15,10 @@ targetScope='resourceGroup'
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
-@description('the name of this database resource.')
+@description('The name of this database server resource. Must be *world unique*! MinLength=14 (so as to allow for uniqueString), maxLength 63, lowercase, only alphanumeric and \'-\' (not \'_\').')
+@minLength(14)
+// example: base-srv-bt-{uniquestring}
+@maxLength(63)
 param resourceName string
 
 @description('The id of the location for this resource.')
@@ -48,7 +51,7 @@ param adminPassword string
 // Default Variables: useResourceName, useTags
 // ======================================================================
 // Concat the pieces together:
-var useName = toUpper(resourceName)
+var useName = toLower(resourceName)
 var useLocation = resourceLocationId
 var useTags = union(resourceTags, sharedSettings.defaultTags)
 
