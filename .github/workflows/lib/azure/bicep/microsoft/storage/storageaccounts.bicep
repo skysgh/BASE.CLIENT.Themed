@@ -15,9 +15,9 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
-@description('resourceName')
+@description('Resource *unique* name.Unique:yes, MinLength:3, MaxLength:24, Lowercase alphanumeric (no dashes or underlines)') 
 @minLength(3)
-@maxLength(22)
+@maxLength(24)
 param resourceName string
 
 @description('Deployment Location')
