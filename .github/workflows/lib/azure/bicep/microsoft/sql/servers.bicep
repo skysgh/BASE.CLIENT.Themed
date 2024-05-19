@@ -48,6 +48,13 @@ param resourceTier string = 'Standard'
 param identityType string
 
 
+@allowed('Minimum TLS version to use.')
+@allowed(['1.2'])
+param minimalTlsVersion string = '1.2'
+
+//userType
+
+
 @description('The server\'s admin account name. ')
 @minLength(3)
 @maxLength(128)
@@ -86,8 +93,11 @@ resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
 //  }
 
   properties: {
+    minimalTlsVersion: minimalTlsVersion
+
     administratorLogin: adminUserName
     administratorLoginPassword: adminPassword
+
 
 //    administrators: {
 //       administratorType: 'ActiveDirectory'
@@ -100,7 +110,6 @@ resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
 //     federatedClientId: 'string'
 //     isIPv6Enabled: 'string'
 //     keyId: 'string'
-//     minimalTlsVersion: 'string'
 //     primaryUserAssignedIdentityId: 'string'
 //     publicNetworkAccess: 'string'
 //     restrictOutboundNetworkAccess: 'string'
