@@ -40,7 +40,7 @@ param resourceTags object = {}
 ])
 param resourceSKU string = 'Standard'
 
-@description('Specify the family for the sku. C = Basic/Standard, P = Premium.')
+@description('Specify the family for the SKU. C = Basic/Standard, P = Premium.')
 @allowed([
   'C'
   'P'
