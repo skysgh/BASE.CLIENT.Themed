@@ -44,13 +44,14 @@ param resourceSKU string = 'Standard'
 @description('The Tier of this resource.')
 @allowed(['Basic','Standard'])
 param resourceTier string = 'Standard'
-
-
+// ======================================================================
+// Other resource specific vars
+// ======================================================================
 @description('Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled. Default:2')
 param autoPauseDelay int = 60
 
-@allowed([None', 'UserAssigned'])
-param userType string = 'UserAssigned'
+//@allowed([None', 'UserAssigned'])
+//param userType string = 'UserAssigned'
 
 @description('If the DB is free (one per subscription, then what do to when passing free offer. Default: \'BillOverUsage\'. ')
 @allowed(['AutoPause', 'BillOverUsage'])
@@ -124,14 +125,19 @@ resource resultResource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
     freeLimitExhaustionBehavior: freeLimitExhaustionBehavior 
 
     autoPauseDelay: autoPauseDelay
+
+    zoneRedundant: zoneRedundant  
+
     availabilityZone: availabilityZone
-    catalogCollation: catalogCollation
-    collation: collation
+
     createMode: createMode
+ 
+    collation: collation
+    catalogCollation: catalogCollation
 
-    isLedgerOn: isLedgerOn
+    isLedgerOn: isLedgerOn     // Develop History tables permitting rollback
+    sampleName: sampleName     // If we are building a sample DB
 
-    sampleName: sampleName
 
     // elasticPoolId: 'string'
     // encryptionProtector: 'string'
@@ -159,7 +165,7 @@ resource resultResource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
     // sourceDatabaseDeletionDate: 'string'
     // sourceDatabaseId: 'string'
     // sourceResourceId: 'string'
-    zoneRedundant: zoneRedundant  
+
   } 
 }
 
