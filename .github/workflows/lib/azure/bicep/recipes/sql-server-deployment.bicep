@@ -56,7 +56,7 @@ param resourceSKU string = 'Basic'
 param resourceTier string = 'Standard'
 
 @description('TODO:...')
-@allowed(['None','SystemAssigned','SystemAssigned,UserAssigned','UserAssigned'])
+@allowed(['None', 'SystemAssigned', 'SystemAssigned,UserAssigned', 'UserAssigned' ])
 param sqlServerIdentityType string
 
 // ======================================================================
@@ -126,6 +126,7 @@ module serversModule '../microsoft/sql/servers.bicep' = {
     
     // resourceSKU:....
     // resourceTier:....
+
     identityType: sqlServerIdentityType
     adminUserName: sqlServerAdminUserName
     adminPassword: sqlServerAdminPassword
