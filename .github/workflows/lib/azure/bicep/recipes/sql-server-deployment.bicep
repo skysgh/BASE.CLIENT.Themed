@@ -1,4 +1,16 @@
 // ======================================================================
+// Background
+// ======================================================================
+// There is a Free version of Sql Server that offers 100,000 seconds of
+// CPU (a little more than a day). 
+// But I don't yet know how to create it via Bicep.
+
+// ======================================================================
+// Resources
+// ======================================================================
+// https://blog.robsewell.com/blog/flexing-my-bicep-deploy-an-azure-sql-database-intro-to-azure-bicep-iac/
+
+// ======================================================================
 // Scope
 // ======================================================================
 //targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
@@ -55,9 +67,9 @@ param resourceSKU string = 'Basic'
 @allowed(['Standard', 'Premium' ])
 param resourceTier string = 'Standard'
 
-@description('TODO:...')
+@description('TODO:...: Default is: \'SystemAssigned,UserAssigned\' permitting creation using dbms admin user name & pwd, and later AAD sourced service account. ')
 @allowed(['None', 'SystemAssigned', 'SystemAssigned,UserAssigned', 'UserAssigned' ])
-param sqlServerIdentityType string
+param sqlServerIdentityType string = 'SystemAssigned,UserAssigned'
 
 // ======================================================================
 // Resource other Params
