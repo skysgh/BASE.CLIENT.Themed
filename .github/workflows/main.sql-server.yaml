@@ -101,6 +101,16 @@ jobs:
             sqlServerIdentityType="SystemAssigned,UserAssigned"
             sqlServerAdminUserName=${{ secrets.DB_ADMIN_NAME}}
             sqlServerAdminPassword=${{ secrets.DB_ADMIN_PWD}}
+            sqlServerMinimalTlsVersion string="1.2"
+
+            sqlServerUseFreeLimit=true
+            sqlServerFreeLimitExhaustionBehavior="BillOverUsage"
+            sqlServerAvailabilityZone string = 'NoPreference'
+            sqlServerIsLedgerOn=true
+            sqlServerSampleName=""
+            sqlServerCollation="SQL_Latin1_General_CP1_CI_AS"
+            sqlServerCatalogCollation string = 'DATABASE_DEFAULT'
+            sqlServerZoneRedundant=false
             
           # Removed
           #  serverfarmsResourceLocationId="australiacentral"  
