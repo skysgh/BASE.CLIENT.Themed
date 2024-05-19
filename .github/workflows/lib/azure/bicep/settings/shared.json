@@ -2,7 +2,7 @@
   "version": "0.1",
   "namingConventions": {
     "namingFormat": "{0}{1}{2}",
-    "namePartFormat":"_{0}",
+    "namingPartFormat":"_{0}",
     "parentNameIsLonger": true
   },
   "defaultTags":{},
