@@ -71,9 +71,9 @@ param sqlServerAdminPassword string
 // ======================================================================
 
 // Use formatting. And cleanup if service name not used. There is no trim('_') unfortunately.
-var tmp1 = (empty(projectServiceName) ? '':format(sharedSettings.namingPartFormat, projectServiceName))
-var tmp2 = (empty(environmentId)      ? '':format(sharedSettings.namingPartFormat, environmentId))
-var fullName = replace(format(shareSettings.namingFormat, projectName, tmp1,tmp2),'__','_') 
+var tmp1 = (empty(projectServiceName) ? '':format(sharedSettings.namingConventions.namingPartFormat, projectServiceName))
+var tmp2 = (empty(environmentId)      ? '':format(sharedSettings.namingConventions.namingPartFormat, environmentId))
+var fullName = replace(format(shareSettings.namingConventions.namingFormat, projectName, tmp1,tmp2),'__','_') 
 var shortName = projectName
 
 var useResourceGroupName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
