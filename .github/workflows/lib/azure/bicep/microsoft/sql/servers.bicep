@@ -44,7 +44,7 @@ param resourceTier string = 'Standard'
 // Resource other Params
 // ======================================================================
 
-@allowed(['None','SystemAssigned','SystemAssigned,UserAssigned','UserAssigned'])
+@allowed(['None', 'SystemAssigned', 'SystemAssigned,UserAssigned', 'UserAssigned'])
 param identityType string
 
 
