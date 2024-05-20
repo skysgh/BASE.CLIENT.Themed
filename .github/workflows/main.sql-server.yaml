@@ -110,7 +110,7 @@ jobs:
             sqlServerDbFreeLimitExhaustionBehavior="BillOverUsage"
             sqlServerDbAvailabilityZone="NoPreference"
             sqlServerDbIsLedgerOn=true
-            sqlServerDbCreateMode="Create"
+            sqlServerDbCreateMode="Default"
             sqlServerDbSampleName=""
             sqlServerDbCollation="SQL_Latin1_General_CP1_CI_AS"
             sqlServerDbCatalogCollation="DATABASE_DEFAULT"
