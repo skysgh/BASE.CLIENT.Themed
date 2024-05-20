@@ -91,13 +91,21 @@ param sqlServerAdminPassword string
 // ======================================================================
 // SQL SERVER DB:
 // ======================================================================
-@description('Database SKU Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
-@allowed([ 'Basic', 'Standard' ])
+@description('The SKU of this resource.The default is \'Basic\' to save costs.')
+@allowed(['Basic',
+          'StandardS0', 'StandardS1', 'StandardS2', 'StandardS3', 'StandardS4', 'StandardS6', 'StandardS7', 'StandardS9', 'StandardS12', 
+          'PremiumP1', 'PremiumP2', 'PremiumP4', 'PremiumP6', 'PremiumP11', 'PremiumP15',
+          'GP_Gen5_2', 'GP_Gen5_4', 'GP_Gen5_8', 'GP_Gen5_16', 'GP_Gen5_24', 'GP_Gen5_32', 'GP_Gen5_40', 'GP_Gen5_80', 
+          'GP_Gen4_2', 'GP_Gen4_4', 'GP_Gen4_8', 'GP_Gen4_16',
+          'BC_Gen5_2', 'BC_Gen5_4', 'BC_Gen5_8', 'BC_Gen5_16', 'BC_Gen5_24', 'BC_Gen5_32', 'BC_Gen5_40', 'BC_Gen5_80', 
+          'BC_Gen4_2', 'BC_Gen4_4', 'BC_Gen4_8', 'BC_Gen4_16'
+         ])
 param sqlServerDbResourceSKU string = 'Basic'
 
-@description('Database Tier. Options are \'Standard\' (Common workloads) and \'Premium\' (OLTP applications, with high transaction rates, low I/O latency plus several isolated replicas). Default is \'Standard\'.')
-@allowed(['Standard', 'Premium' ])
-param sqlServerDbResourceTier string = 'Standard'
+@description('The Tier of this resource. The default is \'Basic\' to save costs.')
+@allowed(['Basic', 'Standard', 'Premium', 'GeneralPurpose', 'BusinessCritical'])
+param sqlServerDbResourceTier string = 'Basic'
+
 
 @description('Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled. Default:2')
 param sqlServerDbautoPauseDelay int = 2
