@@ -105,7 +105,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // Resource bicep
 // ======================================================================
 
-resource resultResource 'Microsoft.Sql/servers/databases@2023-05-01-preview' = {
+resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = {
 
 
   name: useName
