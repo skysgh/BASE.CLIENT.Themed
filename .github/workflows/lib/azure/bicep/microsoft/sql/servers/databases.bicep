@@ -129,22 +129,23 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-05-01-preview' = {
 //  }
 
   properties: {
-    useFreeLimit: useFreeLimit 
-    freeLimitExhaustionBehavior: freeLimitExhaustionBehavior 
 
-    autoPauseDelay: autoPauseDelay
+//useFreeLimit: useFreeLimit 
+    //freeLimitExhaustionBehavior: freeLimitExhaustionBehavior 
 
-    zoneRedundant: zoneRedundant  
+    //autoPauseDelay: autoPauseDelay
 
-    availabilityZone: availabilityZone
+    //zoneRedundant: zoneRedundant  
 
-    createMode: createMode
+    //availabilityZone: availabilityZone
+
+    //createMode: createMode
  
     collation: collation
     catalogCollation: catalogCollation
 
-    isLedgerOn: isLedgerOn     // Develop History tables permitting rollback
-    sampleName: sampleName     // If we are building a sample DB
+    //isLedgerOn: isLedgerOn     // Develop History tables permitting rollback
+    //sampleName: sampleName     // If we are building a sample DB
 
 
     // elasticPoolId: 'string'
@@ -187,4 +188,5 @@ output resourceId string = resultResource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resultResource.name
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat('${sharedSettings.version}'), '.')
+output _ bool = startsWith(concat('${sharedSettings.version}-${availabilityZone}-${freeLimitExhaustionBehavior}-${useFreeLimit}-${autoPauseDelay}-${createMode}-${collation}-${catalogCollation}-${isLedgerOn}-${sampleName}'), '.')
+
