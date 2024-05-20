@@ -119,7 +119,7 @@ param sqlServerDbCollation string = 'SQL_Latin1_General_CP1_CI_AS'
 
 
 @description('Creation Mode.. Default is \'Default\'.')
-@allowed(['Copy', 'Default'', 'OnlineSecondary'', 'PointInTimeRestore'', 'Recovery'', 'Restore'', 'RestoreExternalBackup'', 'RestoreExternalBackupSecondary'', 'RestoreLongTermRetentionBackup'', 'Secondary'])
+@allowed(['Copy', 'Default', 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore', 'RestoreExternalBackup', 'RestoreExternalBackupSecondary', 'RestoreLongTermRetentionBackup', 'Secondary'])
 param sqlServerDbCreateMode string = 'Default'
 
 @description('Whether the database is a Ledger one, permitting to review historical values. Default is \'true\'.')
