@@ -98,11 +98,12 @@ jobs:
             resourceGroupLocationId="australiacentral" 
             sqlServerLocationId="australiacentral"
             sqlServerDbLocationId="australiacentral"
-            resourceSKU="Basic"
             sqlServerMinimalTlsVersion="1.3"
             sqlServerIdentityType="SystemAssigned,UserAssigned"
             sqlServerAdminUserName="${{ secrets.DB_ADMIN_NAME}}"
             sqlServerAdminPassword="${{ secrets.DB_ADMIN_PWD}}"
+            sqlServerDbResourceSKU="Basic"
+            sqlServerDbResourceTier="Standard"
             sqlServerDbautoPauseDelay=2
             sqlServerDbAvailabilityZone="NoPreference"
             sqlServerDbUseFreeLimit=false
