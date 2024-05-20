@@ -42,8 +42,8 @@ param resourceTags object = {}
 param resourceSKU string = 'Basic'
 
 @description('The Tier of this resource. The default is \'Basic\' to save costs.')
-@allowed(['Basic','Standard'])
-param resourceTier string = 'Basic'
+@allowed(['Standard', 'Premium'])
+param resourceTier string = 'Standard'
 // ======================================================================
 // Other resource specific vars
 // ======================================================================
