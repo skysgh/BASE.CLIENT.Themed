@@ -140,8 +140,8 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-05-01-preview' = {
 
     //createMode: createMode
  
-    collation: collation
-    catalogCollation: catalogCollation
+    //collation: collation
+    //catalogCollation: catalogCollation
 
     //isLedgerOn: isLedgerOn     // Develop History tables permitting rollback
     //sampleName: sampleName     // If we are building a sample DB
