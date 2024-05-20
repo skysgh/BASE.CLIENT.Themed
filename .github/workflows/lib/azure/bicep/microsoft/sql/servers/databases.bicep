@@ -97,7 +97,7 @@ param zoneRedundant bool = false
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
-var useName = '${parentResourceName}/${resourceName}'
+var useName = toLower('${parentResourceName}/${resourceName}')
 var useLocation = resourceLocationId
 var useTags = union(resourceTags,sharedSettings.defaultTags)
 
@@ -115,7 +115,7 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-05-01-preview' = {
   sku: {
     //capacity: int
     name: resourceSKU
-    tier: resourceTier
+//    tier: resourceTier
     //family: 'string'
     //size: 'string'
 }
