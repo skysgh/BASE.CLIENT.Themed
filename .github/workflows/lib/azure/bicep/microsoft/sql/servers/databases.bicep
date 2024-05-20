@@ -77,7 +77,7 @@ param createMode string = 'Default'
 param isLedgerOn bool = true
 
 @description('Name of Sample database schema to develop . Default is \'\'.')
-@allowed(['AdventureWorksLT', 'WideWorldImportersFull', 'WideWorldImportersStd'])
+@allowed(['', 'AdventureWorksLT', 'WideWorldImportersFull', 'WideWorldImportersStd'])
 param sampleName string = ''
 
 @description('Whether or not the database uses free monthly limits. Allowed on one database in a subscription.')
