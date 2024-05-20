@@ -193,7 +193,7 @@ module serversModule '../microsoft/sql/servers.bicep' = {
     // resourceTier:....
 
     minimalTlsVersion: sqlServerMinimalTlsVersion
-    userType: sqlServerUserType
+    //userType: sqlServerUserType
     identityType: sqlServerIdentityType
     adminUserName: sqlServerAdminUserName
     adminPassword: sqlServerAdminPassword
