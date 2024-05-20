@@ -104,10 +104,10 @@ jobs:
             sqlServerAdminUserName="${{ secrets.DB_ADMIN_NAME}}"
             sqlServerAdminPassword="${{ secrets.DB_ADMIN_PWD}}"
             sqlServerDbResourceSKU="Basic"
-            sqlServerDbResourceTier="Standard"
+            sqlServerDbResourceTier="Basic"
+            sqlServerDbUseFreeLimit=true
             sqlServerDbautoPauseDelay=2
             sqlServerDbAvailabilityZone="NoPreference"
-            sqlServerDbUseFreeLimit=false
             sqlServerDbFreeLimitExhaustionBehavior="BillOverUsage"
             sqlServerDbAvailabilityZone="NoPreference"
             sqlServerDbIsLedgerOn=true
