@@ -59,13 +59,6 @@ param sqlServerDbLocationId string  // in case in the future one can use the sam
 // ======================================================================
 
 
-@description('Database SKU Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
-@allowed([ 'Basic', 'Standard' ])
-param resourceSKU string = 'Basic'
-
-@description('Database Tier. Options are \'Standard\' (Common workloads) and \'Premium\' (OLTP applications, with high transaction rates, low I/O latency plus several isolated replicas). Default is \'Standard\'.')
-@allowed(['Standard', 'Premium' ])
-param resourceTier string = 'Standard'
 
 
 // ======================================================================
@@ -98,6 +91,14 @@ param sqlServerAdminPassword string
 // ======================================================================
 // SQL SERVER DB:
 // ======================================================================
+@description('Database SKU Options are \'Free\' and \'Standard\'. Default is \'Free\'.')
+@allowed([ 'Basic', 'Standard' ])
+param sqlServerDbResourceSKU string = 'Basic'
+
+@description('Database Tier. Options are \'Standard\' (Common workloads) and \'Premium\' (OLTP applications, with high transaction rates, low I/O latency plus several isolated replicas). Default is \'Standard\'.')
+@allowed(['Standard', 'Premium' ])
+param sqlServerDbResourceTier string = 'Standard'
+
 @description('Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled. Default:2')
 param sqlServerDbautoPauseDelay int = 2
 
@@ -218,8 +219,8 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
     resourceLocationId: useDbInstanceLocation
     resourceTags: useTags
     
-    resourceSKU: 'Standard'
-    resourceTier: 'Standard'
+    resourceSKU: sqlServerDbResourceSKU
+    resourceTier: sqlServerDbResourceTier
 
     autoPauseDelay: sqlServerDbautoPauseDelay
 
