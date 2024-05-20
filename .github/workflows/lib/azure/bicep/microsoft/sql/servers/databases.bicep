@@ -20,7 +20,6 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
  @description('the parent SqlServer *module*\'s symbolic name.')
 param parentResourceName string
 
-
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
