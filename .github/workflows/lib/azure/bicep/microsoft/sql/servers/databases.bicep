@@ -120,7 +120,7 @@ resource resultResource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
 //    }
 //  }
 
-  propoerties: {
+  properties: {
     useFreeLimit: useFreeLimit 
     freeLimitExhaustionBehavior: freeLimitExhaustionBehavior 
 
