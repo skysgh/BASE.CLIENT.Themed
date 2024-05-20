@@ -113,7 +113,7 @@ jobs:
             sqlServerDbCreateMode="Create"
             sqlServerDbSampleName=""
             sqlServerDbCollation="SQL_Latin1_General_CP1_CI_AS"
-            sqlServerDbCatalogCollation string="DATABASE_DEFAULT"
+            sqlServerDbCatalogCollation="DATABASE_DEFAULT"
             sqlServerDbZoneRedundant=false
             
           # Removed
