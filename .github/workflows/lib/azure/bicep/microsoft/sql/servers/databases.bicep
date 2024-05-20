@@ -37,9 +37,9 @@ param resourceTags object = {}
 // ======================================================================
 // Default SKU, Tier, ...etc.
 // ======================================================================
-@description('The SKU of this resource.')
+@description('The SKU of this resource.The default is \'Basic\' to save costs.')
 @allowed(['Basic','Standard'])
-param resourceSKU string = 'Standard'
+param resourceSKU string = 'Basic'
 
 @description('The Tier of this resource. The default is \'Basic\' to save costs.')
 @allowed(['Basic','Standard'])
