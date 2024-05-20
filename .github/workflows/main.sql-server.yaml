@@ -102,8 +102,8 @@ jobs:
             sqlServerIdentityType="SystemAssigned,UserAssigned"
             sqlServerAdminUserName="${{ secrets.DB_ADMIN_NAME}}"
             sqlServerAdminPassword="${{ secrets.DB_ADMIN_PWD}}"
-            sqlServerDbResourceSKU="Basic"
-            sqlServerDbResourceTier="Basic"
+            sqlServerDbResourceSKU="Standard"
+            sqlServerDbResourceTier="StandardS0"
             sqlServerDbUseFreeLimit=false
             sqlServerDbautoPauseDelay=2
             sqlServerDbAvailabilityZone="NoPreference"
