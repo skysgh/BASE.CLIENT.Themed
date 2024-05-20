@@ -42,7 +42,7 @@ param resourceTags object = {}
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
-@allowed([ 'australiacentral'])
+//TooBig @allowed([ 'australiacentral'])
 param resourceGroupLocationId string //NO. Fails 'resourceGroup().location' if scope is subscriptoin.
 
 @description('Location of Server.')
