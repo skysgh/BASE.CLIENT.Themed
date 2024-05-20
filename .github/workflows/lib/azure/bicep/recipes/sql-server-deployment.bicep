@@ -76,7 +76,7 @@ param resourceTier string = 'Standard'
 @allowed(['None', 'SystemAssigned', 'SystemAssigned,UserAssigned', 'UserAssigned' ])
 param sqlServerIdentityType string = 'SystemAssigned,UserAssigned'
 
-@description('The minimal Tls Version to use. Default is \1.2'\'.')
+@description('The minimal Tls Version to use. Default is \'1.2\'.')
 param sqlServerMinimalTlsVersion string = '1.2'
 
 @allowed([None', 'UserAssigned'])
