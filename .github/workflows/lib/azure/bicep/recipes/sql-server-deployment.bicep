@@ -245,4 +245,4 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceSKU}-${useDbInstanceName}-${useDbInstanceLocation}-${resourceTier}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${sqlServerDbResourceSKU}-${useDbInstanceName}-${useDbInstanceLocation}-${sqlServerDbResourceTier}', '.')
