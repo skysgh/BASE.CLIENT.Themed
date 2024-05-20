@@ -38,12 +38,19 @@ param resourceTags object = {}
 // Default SKU, Tier, ...etc.
 // ======================================================================
 @description('The SKU of this resource.The default is \'Basic\' to save costs.')
-@allowed(['Basic','Standard'])
+@allowed(['Basic',
+          'StandardS0', 'StandardS1', 'StandardS2', 'StandardS3', 'StandardS4', 'StandardS6', 'StandardS7', 'StandardS9', 'StandardS12', 
+          'PremiumP1', 'PremiumP2', 'PremiumP4', 'PremiumP6', 'PremiumP11', 'PremiumP15',
+          'GP_Gen5_2', 'GP_Gen5_4', 'GP_Gen5_8', 'GP_Gen5_16', 'GP_Gen5_24', 'GP_Gen5_32', 'GP_Gen5_40', 'GP_Gen5_80', 
+          'GP_Gen4_2', 'GP_Gen4_4', 'GP_Gen4_8', 'GP_Gen4_16',
+          'BC_Gen5_2', 'BC_Gen5_4', 'BC_Gen5_8', 'BC_Gen5_16', 'BC_Gen5_24', 'BC_Gen5_32', 'BC_Gen5_40', 'BC_Gen5_80', 
+          'BC_Gen4_2', 'BC_Gen4_4', 'BC_Gen4_8', 'BC_Gen4_16'
+         ])
 param resourceSKU string = 'Basic'
 
 @description('The Tier of this resource. The default is \'Basic\' to save costs.')
-@allowed(['Standard', 'Premium'])
-param resourceTier string = 'Standard'
+@allowed(['Basic', 'Standard', 'Premium', 'GeneralPurpose', 'BusinessCritical'])
+param resourceTier string = 'Basic'
 // ======================================================================
 // Other resource specific vars
 // ======================================================================
