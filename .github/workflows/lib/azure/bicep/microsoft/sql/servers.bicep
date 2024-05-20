@@ -44,11 +44,12 @@ param resourceTier string = 'Standard'
 // Resource other Params
 // ======================================================================
 
+@description('TODO')
 @allowed(['None', 'SystemAssigned', 'SystemAssigned,UserAssigned', 'UserAssigned'])
 param identityType string
 
 
-@allowed('Minimum TLS version to use.')
+@description('Minimum TLS version to use.')
 @allowed(['1.2','1.3'])
 param minimalTlsVersion string = '1.3'
 
