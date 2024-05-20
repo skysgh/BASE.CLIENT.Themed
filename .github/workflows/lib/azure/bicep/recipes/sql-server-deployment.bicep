@@ -73,8 +73,8 @@ param sqlServerIdentityType string = 'SystemAssigned,UserAssigned'
 @allowed(['1.2','1.3'])
 param sqlServerMinimalTlsVersion string = '1.3'
 
-@allowed(['None', 'UserAssigned'])
-param sqlServerUserType string = 'UserAssigned'
+// @allowed(['None', 'UserAssigned'])
+//param sqlServerUserType string = 'UserAssigned'
 
 @description('An Admin User\'s Name, to create the DB in the first place. Source from a pipeline environment Secret or pipeline accessible keyvault.')
 @minLength(3)
