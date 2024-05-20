@@ -187,5 +187,5 @@ output resourceId string = resultResource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resultResource.name
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat('${sharedSettings.version}-${availabilityZone}-${freeLimitExhaustionBehavior}-${useFreeLimit}-${autoPauseDelay}-${createMode}-${collation}-${catalogCollation}-${isLedgerOn}-${sampleName}'), '.')
+output _ bool = startsWith(concat('${sharedSettings.version}-${availabilityZone}-${freeLimitExhaustionBehavior}-${useFreeLimit}-${autoPauseDelay}-${createMode}-${collation}-${catalogCollation}-${isLedgerOn}-${sampleName}-${zoneRedundant}'), '.')
 
