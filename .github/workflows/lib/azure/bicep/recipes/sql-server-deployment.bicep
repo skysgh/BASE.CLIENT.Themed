@@ -127,7 +127,7 @@ param sqlServerDbIsLedgerOn bool = true
 
 
 @description('Name of Sample database schema to develop . Default is \'\'.')
-@allowed(['AdventureWorksLT', 'WideWorldImportersFull', 'WideWorldImportersStd'])
+@allowed(['', 'AdventureWorksLT', 'WideWorldImportersFull', 'WideWorldImportersStd'])
 param sqlServerDbSampleName string = ''
 
 @description('Whether or not the database uses free monthly limits. Allowed on one database in a subscription.')
