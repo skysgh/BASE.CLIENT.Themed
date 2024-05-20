@@ -49,8 +49,8 @@ param identityType string
 
 
 @allowed('Minimum TLS version to use.')
-@allowed(['1.2'])
-param minimalTlsVersion string = '1.2'
+@allowed(['1.2','1.3'])
+param minimalTlsVersion string = '1.3'
 
 //userType
 
