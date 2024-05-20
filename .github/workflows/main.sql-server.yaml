@@ -102,13 +102,12 @@ jobs:
             sqlServerIdentityType="SystemAssigned,UserAssigned"
             sqlServerAdminUserName="${{ secrets.DB_ADMIN_NAME}}"
             sqlServerAdminPassword="${{ secrets.DB_ADMIN_PWD}}"
-            sqlServerDbResourceSKU="StandardS0"
+            sqlServerDbResourceSKU="S0"
             sqlServerDbResourceTier="Standard"
             sqlServerDbUseFreeLimit=false
             sqlServerDbautoPauseDelay=2
             sqlServerDbAvailabilityZone="NoPreference"
             sqlServerDbFreeLimitExhaustionBehavior="BillOverUsage"
-            sqlServerDbAvailabilityZone="NoPreference"
             sqlServerDbIsLedgerOn=true
             sqlServerDbCreateMode="Default"
             sqlServerDbSampleName=""
