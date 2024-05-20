@@ -192,7 +192,7 @@ module serversModule '../microsoft/sql/servers.bicep' = {
     // resourceTier:....
 
     minimalTlsVersion: sqlServerMinimalTlsVersion
-    userType:sqlServerUserType
+    userType: sqlServerUserType
     identityType: sqlServerIdentityType
     adminUserName: sqlServerAdminUserName
     adminPassword: sqlServerAdminPassword
@@ -220,18 +220,17 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
     resourceSKU: 'Standard'
     resourceTier: 'Standard'
 
+    autoPauseDelay: sqlServerDbautoPauseDelay
 
-   autoPauseDelay=sqlServerDbautoPauseDelay
-
-   freeLimitExhaustionBehavior=sqlServerDbFreeLimitExhaustionBehavior
-   availabilityZone=sqlServerDbAvailabilityZone
-   catalogCollation=sqlServerDbCatalogCollation
-   collation=sqlServerDbCollation
-   createMode=sqlServerDbCreateMode
-   isLedgerOn=sqlServerDbIsLedgerOn
-   sampleName=sqlServerDbSampleName
-   useFreeLimit=sqlServerDbUseFreeLimit
-   zoneRedundant=sqlServerDbZoneRedundant
+    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
+    availabilityZone: sqlServerDbAvailabilityZone
+    catalogCollation: sqlServerDbCatalogCollation
+    collation: sqlServerDbCollation
+    createMode: sqlServerDbCreateMode
+    isLedgerOn: sqlServerDbIsLedgerOn
+    sampleName: sqlServerDbSampleName
+    useFreeLimit: sqlServerDbUseFreeLimit
+    zoneRedundant: sqlServerDbZoneRedundant
   }
 }
 
