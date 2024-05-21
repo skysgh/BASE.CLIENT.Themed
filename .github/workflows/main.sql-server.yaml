@@ -37,7 +37,7 @@ jobs:
       # IMPORTANT:
 
       # PROJECT NAME which is basis of Azure resource names.
-      PROJECT_NAME: 'BANG'
+      PROJECT_NAME: 'BAMM'
       PROJECT_SERVICE_NAME: 'SERVICE'
       # ENVIRONMANT INFO: it's either BT, DT, ST, UT, IT, TR, PP, PR
       PROJECT_ENV_ID: 'BT' # ${{vars.PROJECT_ENV_ID}}
@@ -91,12 +91,13 @@ jobs:
           # Do NOT wrap values in single quotes (only double quotes if need be)
           # do not inject blank lines.
           parameters: >
+            buildResourceGroup=true
             projectName="${{ env.PROJECT_NAME }}"
             projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
             environmentId="${{ env.PROJECT_ENV_ID}}"
-            resourceGroupLocationId="australiaeast" 
-            sqlServerLocationId="australiaeast"
-            sqlServerDbLocationId="australiaeast"
+            resourceGroupLocationId="australiacentral" 
+            sqlServerLocationId="australiacentral"
+            sqlServerDbLocationId="australiacentral"
             sqlServerMinimalTlsVersion="1.2"
             sqlServerIdentityType="None"
             sqlServerAdminUserName="${{ secrets.DB_ADMIN_NAME}}"
