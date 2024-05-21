@@ -176,7 +176,7 @@ var useTags = union(resourceTags, defaultTags)
 // ======================================================================
 
 // ======================================================================
-module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' if (buildResourceGroup) = {
+module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
    // pass parameters:
   name:  '${deployment().name}_resourceGroups_module'
   scope:subscription()
