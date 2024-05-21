@@ -21,6 +21,15 @@ targetScope='subscription'
 // ======================================================================
 var sharedSettings = loadJsonContent('../settings/shared.json')
 
+
+// ======================================================================
+// Flow Control
+// ======================================================================
+// Resources Groups are part of the general subscription
+@description('Whether to build the ResourceGroup or not.')
+param buildResourceGroup bool = true
+
+
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
@@ -167,7 +176,7 @@ var useTags = union(resourceTags, defaultTags)
 // ======================================================================
 
 // ======================================================================
-module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
+module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' if (buildResourceGroup) = {
    // pass parameters:
   name:  '${deployment().name}_resourceGroups_module'
   scope:subscription()
@@ -177,8 +186,6 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
     resourceTags: useTags
   }
 }
-
-
 // ======================================================================
 module serversModule '../microsoft/sql/servers.bicep' = {
   // should be implied: 
