@@ -122,12 +122,12 @@ param webSitesResourceName string = toLower(defaultResourceName)
 @description('The location of the site. Default is set to \'webServerfarmsResourceLocationId\', which is by default same as \'defaultResourceLocationId\'.')
 param webSitesResourceLocationId string = webServerfarmsResourceLocationId
 
+@description('The tags for the resource.')
+param webSitesResourceTags object = defaultResourceTags
+
 @description('The Function eXtension to define the runtime stack. Default is \'DOTNETCORE|Latest\' but best be specific to not get caught out if .net.core releases a version that you are in compatible with.')
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
 param webSitesLinuxFxVersion string
-
-@description('The tags for the resource.')
-param webSitesTags object = defaultResourceTags
 
 // ======================================================================
 // Params: Web Sites SourceControls
@@ -153,29 +153,6 @@ param webSitesSourceControlsRepositoryBranch string = 'main'
 
 @description('The folder within the repository that contains the source code of the service. Default is root (\'/\') - but often needs to be set to a sub folder (eg: \'src\').')
 param webSitesSourceControlsRepositorySourceLocation string = '/'
-
-// ======================================================================
-// Params: SourceControl
-// ======================================================================
-@description('The tags for this resource.')
-param webSitesSourceControlsResourceTags object = defaultResourceTags
-
-@description('The url to the repository to be deployed to the Server. Default is empty string (\'\'). ')
-param webSitesSourceControlsRepositoryUrl string = ''
-
-@description('The repositoryToken if repositoryUrl is set. Default is empty string (\'\').')
-@secure()
-param webSitesSourceControlsRepositoryToken string = ''
-
-@description('The branch of the repository to use. TODO: this should depend on what branch was checked in. Default is \'main\'.')
-param webSitesSourceControlsRepositoryBranch string = 'main'
-
-@description('The folder within the repository that contains the source code of the service. Default is root (\'/\') - but often needs to be set to a sub folder (eg: \'src\').')
-param webSitesSourceControlsRepositorySourceLocation string = '/'
-
-
-
-
 
 // ======================================================================
 // Params: Sql Server 
@@ -389,4 +366,4 @@ module sqlServerModule './sql-server-deployment.bicep' = {
 // return the (short) name of the newly created resource:
 //output resourceName string = resource.name
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat('${sharedSettings.version}'), '.')
+output _ bool = startsWith(concat('${sharedSettings.version}-${webSitesSourceControlsResourceName}-${webSitesSourceControlsResourceLocationId}'), '.')
