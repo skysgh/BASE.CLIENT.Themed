@@ -15,6 +15,9 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('Resource *unique* name.Unique:yes, MinLength:3, MaxLength:24, Lowercase alphanumeric (no dashes or underlines)') 
 @minLength(3)
 @maxLength(24)
@@ -85,7 +88,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource resource 'Microsoft.Storage/storageAccounts@2022-09-01' = {
+resource resource 'Microsoft.Storage/storageAccounts@2022-09-01' = if (buildResource) {
   // Must be lower case:
   name: useName
   location: useLocation
