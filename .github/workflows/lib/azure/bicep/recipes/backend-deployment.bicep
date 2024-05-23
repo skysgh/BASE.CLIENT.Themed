@@ -283,7 +283,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = {
     defaultResourceTags                             : defaultResourceTags
     // -----
     webServerFarmsResourceName                      : webServerFarmsResourceName
-    webServerFarmsresourceLocationId                : webServerFarmsResourceLocationId
+    webServerFarmsResourceLocationId                : webServerFarmsResourceLocationId
     webServerFarmsResourceTags                      : webServerFarmsResourceTags
     // 
     webServerFarmsServicePlanSKU                    : webServerFarmsServicePlanSKU
@@ -295,7 +295,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = {
     webSitesLinuxFxVersion                          : webSitesLinuxFxVersion
     // -----
     webSitesSourceControlsResourceName              : webSitesResourceName
-    webSitesSourceControlsLocationId                : webSitesResourceLocationId
+    webSitesSourceControlsResourceLocationId        : webSitesResourceLocationId
     webSitesSourceControlsResourceTags              : webSitesResourceTags
     // 
     webSitesSourceControlsRepositoryUrl             : webSitesSourceControlsRepositoryUrl
