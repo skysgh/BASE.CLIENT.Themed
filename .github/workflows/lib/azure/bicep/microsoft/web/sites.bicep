@@ -18,6 +18,10 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
+
 @description('Id of parent app Service Plan. eg: \'appServicePlanModule.id\'')
 param parentResourceId string
 
@@ -55,7 +59,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource resource 'Microsoft.Web/sites@2020-06-01' = {
+resource resource 'Microsoft.Web/sites@2020-06-01' = if (buildResource) {
   name: useName
   location: useLocation
   tags: useTags
