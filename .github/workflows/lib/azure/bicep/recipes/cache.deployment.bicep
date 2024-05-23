@@ -13,6 +13,12 @@ targetScope='subscription'
 // ======================================================================
 var sharedSettings = loadJsonContent('../settings/shared.json')
 
+// ======================================================================
+// Flow Control
+// ======================================================================
+// Resources Groups are part of the general subscription
+@description('Whether to build the ResourceGroup or not.')
+param buildResourceGroup bool = true
 
 // ======================================================================
 // Default Name, Location, Tags,
