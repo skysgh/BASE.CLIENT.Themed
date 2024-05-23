@@ -100,7 +100,7 @@ jobs:
             environmentId="${{ env.PROJECT_ENV_ID}}"
             defaultResourceLocationId="australiacentral"
             webServerFarmsResourceLocationId="australiacentral"  
-            webServerFarmsResourceSKU="D1"
+            webServerFarmsResourceSKU="S1"
             webSitesLinuxFxVersion="DOTNETCORE|Latest"
             webSitesSourceControlsRepositoryUrl="https://todo"
             webSitesSourceControlsRepositoryBranch='main'
