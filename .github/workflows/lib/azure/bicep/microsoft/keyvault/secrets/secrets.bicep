@@ -14,6 +14,9 @@ targetScope='resourceGroup'
 @description('Name of parent Resource - a keyvault')
 param parentResource string
 
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 //@description('Resource Name')
 //param resourceName string
 
@@ -43,7 +46,7 @@ var useTags = union(resourceTags, sharedSettings.defaultTags)
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource resource 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {
+resource resource 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = if (buildResource) {
   parent: parentResource
   name: resourceName
   tags: useTags
