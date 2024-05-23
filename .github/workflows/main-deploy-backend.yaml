@@ -103,7 +103,7 @@ jobs:
             webSitesSourceControlsRepositoryBranch='main'
             webSitesSourceControlsRepositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             webSitesSourceControlsRepositorySourceLocation="/"
-            sqlServerLocationId="australiacentral"
+            sqlServerResourceLocationId="australiacentral"
             sqlServerDbLocationId="australiacentral"
             sqlServerMinimalTlsVersion="1.2"
             sqlServerIdentityType="None"
