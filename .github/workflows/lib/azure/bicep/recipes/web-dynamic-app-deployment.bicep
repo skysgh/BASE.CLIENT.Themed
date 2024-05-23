@@ -39,111 +39,123 @@ param defaultResourceTags object = {}
 // Params: Server Farm 
 // ======================================================================
 @description('The name of the serverFarm to which site is deployed. Required to be universally unique.')
-param serverfarmsResourceName string = toLower(defaultResourceName) 
+param webServerfarmsResourceName string = toLower(defaultResourceName) 
 
 @description('The location of the serverFarm.')
 // @allowed(...too long...)
-param serverfarmsResourceLocationId string  = defaultResourceLocationId 
+param webServerfarmsResourceLocationId string  = defaultResourceLocationId 
 
 @description('The web app service plan SKU. Options are: F1,D1,B1,B2,S1,S2. Default: D1 (as F1 can only be used once, and hence needs monitoring).')
 @allowed(['F1','D1','B1','B2','S1','S2'])
-param serverFarmsServicePlanSKU string = 'D1'
+param webServerFarmsServicePlanSKU string = 'D1'
 
+@description('The tags for this resource.')
+param webServerFarmsResourceTags object = {}
 // ======================================================================
 // Params: Sites 
 // ======================================================================
 @description('The Name of the site on the server farm. Does not need to be universally unique.')
-param sitesResourceName string = toLower(defaultResourceName)
+param webSitesResourceName string = toLower(defaultResourceName)
 
 @description('The location of the site. Default is same as server farm.')
-param sitesResourceLocationId string = serverfarmsResourceLocationId
+param webSitesResourceLocationId string = webServerfarmsResourceLocationId
+
+@description('The tags for this resource.')
+param webSitesResourceTags object = {}
 
 @description('The Function eXtension to define the runtime stack. Default is \'DOTNETCORE|Latest\' but best be specific to not get caught out if .net.core releases a version that you are in compatible with.')
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
-param sitesLinuxFxVersion string
+param webSitesLinuxFxVersion string
 
 // ======================================================================
-// Params: SourceControl
+// Params: Web Sites SourceControl
 // ======================================================================
+@description('The Name of the site on the server farm. Does not need to be universally unique.')
+param webSitesSourceControlsResourceName string = toLower(webSitesResourceName)
+
+@description('The location of the site. Default is same as server farm.')
+param webSitesSourceControlsResourceLocationId string = toLower(webSitesResourceLocationId)
+
+@description('The tags for this resource.')
+param webSitesSourceControlsResourceTags object = {}
+
 @description('The url to the repository to be deployed to the Server. Default is empty string (\'\'). ')
-param sourceControlsRepositoryUrl string = ''
+param webSitesSourceControlsRepositoryUrl string = ''
 
 @description('The repositoryToken if repositoryUrl is set. Default is empty string (\'\').')
 @secure()
-param sourceControlsRepositoryToken string = ''
+param webSitesSourceControlsRepositoryToken string = ''
 
 @description('The branch of the repository to use. TODO: this should depend on what branch was checked in. Default is \'main\'.')
-param sourceControlsRepositoryBranch string = 'main'
+param webSitesSourceControlsRepositoryBranch string = 'main'
 
 @description('The folder within the repository that contains the source code of the service. Default is root (\'/\') - but often needs to be set to a sub folder (eg: \'src\').')
-param sourceControlsRepositorySourceLocation string = '/'
+param webSitesSourceControlsRepositorySourceLocation string = '/'
 // ======================================================================
 // Default Variables
 // ======================================================================
-var sourceCountrolsSetupFlag = startsWith(sitesRepositoryUrl, 'http')
+var webSitesSourceCountrolsSetupFlag = startsWith(webSitesSitesRepositoryUrl, 'http')
 // ======================================================================
 // Resource bicep: ServerFarm
 // ======================================================================
 
-module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
+module webServerFarmsModule '../microsoft/web/serverfarms.bicep' = {
   name:  '${deployment().name}_serverfarms_module'
   scope: resourceGroup(resourceGroupName) 
   params: {
-    resourceName               : toLower('${serverFarmsResourceName}${defaultResourceNameSuffix}')
-    resourceLocationId         : serverfarmsResourceLocationId
-    resourceTags               : useTags
+    resourceName               : toLower('${webServerFarmsResourceName}${defaultResourceNameSuffix}')
+    resourceLocationId         : webServerfarmsResourceLocationId
+    resourceTags               : union(defaultResourceTags, webServerFarmsResourceTags)
 
-    resourceSKU                : serverFarmsServicePlanSKU
+    resourceSKU                : webServerFarmsServicePlanSKU
   }
 }
 // ======================================================================
 // Resource bicep: Sites
 // ======================================================================
-module sitesModule '../microsoft/web/sites.bicep' = {
-  // depends on the 
+module webSitesModule '../microsoft/web/sites.bicep' = {
+  // depends implicitely on the 
+  // [webServerFarmsModule]
   // pass parameters:
   name:  '${deployment().name}_sites_module'
   scope: resourceGroup(resourceGroupName) 
   params: {
     // Implicit dependence:
-    parentResourceId           : serverFarmsModule.outputs.resourceId
-
-    resourceName               : toLower(sitesResourceName)
-    resourceLocationId         : sitesResourceLocationId
-    resourceTags               : useTags
-    // Specific:
+    parentResourceId           : webServerFarmsModule.outputs.resourceId
+    //
+    resourceName               : toLower(webSitesResourceName)
+    resourceLocationId         : webSitesResourceLocationId
+    resourceTags               : union(defaultResourceTags, webSitesResourceTags)
+    //
     linuxFxVersion             : sitesLinuxFxVersion
   }
 }
 // ======================================================================
 // Resource bicep: Sites/SourceControls
 // ======================================================================
-module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (sourceCountrolsSetupFlag) {
-  dependsOn: [sitesModule]
+module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (sourceCountrolsSetupFlag) {
+  dependsOn: [webSitesModule]
   name:  '${deployment().name}_sites_sourcecontrols_module'
   scope: resourceGroup(resourceGroupName) 
   // child resources don't use 'scope', they use 'parent':
-  // parent: sitesModule  
+  // parent: webSitesModule  
   params: {
-    // Same name as parent site:
-    resourceName               : useSitesResourceName //  sitesModule.outputs.resourceName 
-    resourceLocationId         : sourceControlsResourceLocationId
-    resourceTags               : useTags
-
-    // No SKU or similar
-
-    repositoryUrl              : sourceControlsRepositoryUrl
-    repositoryToken            : sourceControlsRepositoryToken
-    repositoryBranch           : sourceControlsRepositoryBranch
-    repositorySourceLocation   : sourceControlsRepositorySourceLocation
+    resourceName               : toLower(webSitesSourceControlsResourceName) //  sitesModule.outputs.resourceName      // Note: Same name as parent site:
+    resourceLocationId         : webSitesSourceControlsResourceLocationId
+    resourceTags               : union(defaultResourceTags, webSitesSourceControlsResourceTags)
+    //
+    repositoryUrl              : webSitesSourceControlsRepositoryUrl
+    repositoryToken            : webSitesSourceControlsRepositoryToken
+    repositoryBranch           : webSitesSourceControlsRepositoryBranch
+    repositorySourceLocation   : webSitesSourceControlsRepositorySourceLocation
   }
 }
 
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
-output resource object = sitesModule.outputs.resource
-output resourceId string = sitesModule.outputs.resourceId
-output resourceName string = sitesModule.outputs.resourceName
+output resource object = webSitesModule.outputs.resource
+output resourceId string = webSitesModule.outputs.resourceId
+output resourceName string = webSitesModule.outputs.resourceName
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}=${resourceLocationId}', '.')
+output _ bool = startsWith('${sharedSettings.version}=${defaultResourceLocationId}', '.')
