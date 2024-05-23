@@ -91,7 +91,7 @@ param resourceGroupName string = replace(toUpper('${projectName}-${projectServic
 
 @description('The Location Id of the Resource Group.')
 //TooManyOptions @allowed([ 'australiacentral'])
-param resourceGroupLocationId = defaultLocationId
+param resourceGroupLocationId string = defaultLocationId
 
 @description('Tags to use if developing the Resource Group.')
 param resourceGroupTags object = defaultResourceTags
@@ -100,18 +100,18 @@ param resourceGroupTags object = defaultResourceTags
 // Params: Web Farms
 // ======================================================================
 @description('Name of web server farm. Do not add unique suffix as it will be added later.')
-param webServerFarmsResourceName = toLower(defaultResourceName)
+param webServerFarmsResourceName string = toLower(defaultResourceName)
 
 @description('The Location Id of the Web Server. Default is set to \'defaultResourceLocationId\'. ')
 //TooManyOptions @allowed([ 'australiacentral'])
-param webServerFarmsResourceLocationId = defaultResourceLocationId
+param webServerFarmsResourceLocationId string = defaultResourceLocationId
 
 @description('The tags for the resource.')
 param webServerFarmsResourceTags object = defaultResourceTags
 
 @description('The web app service plan SKU. Options are: F1,D1,B1,B2,S1,S2. Default: D1 (as F1 can only be used once, and hence needs monitoring).')
 @allowed(['F1','D1','B1','B2','S1','S2'])
-param webServerFarmsServicePlanSKU = 'D1'
+param webServerFarmsServicePlanSKU string = 'D1'
 
 // ======================================================================
 // Params: Web Sites
