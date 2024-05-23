@@ -45,12 +45,6 @@ param resourceSKU string = 'Basic'
 @allowed(['Basic', 'Standard', 'Premium', 'GeneralPurpose', 'BusinessCritical'])
 param resourceTier string = (contains(['Basic', 'S0', 'S1', 'S2', 'S3', 'S4'], resourceSKU) ? 'Standard': (contains(['PremiumP1', 'PremiumP2', 'PremiumP4'], resourceSKU) ?'Premium': (contains(['GP_Gen5_2', 'GP_Gen5_4', 'GP_Gen4_2', 'GP_Gen4_4'], resourceSKU) ? 'GeneralPurpose': (contains(['BC_Gen5_2', 'BC_Gen5_4', 'BC_Gen4_2', 'BC_Gen4_4'], resourceSKU) ? 'BusinessCritical' : 'Basic'))))
 
-
-
-
-
-
-
 // ======================================================================
 // Other resource specific vars
 // ======================================================================
@@ -68,13 +62,13 @@ param freeLimitExhaustionBehavior string = 'BillOverUsage'
 @allowed(['1', '2', '3', 'NoPreference'])
 param availabilityZone string = 'NoPreference'
 
-@description('	Collation of the metadata catalog.. Default is \'DATABASE_DEFAULT\' (which is by default \'SQL_Latin1_General_CP1_CI_AS\').')
-@allowed(['DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'])
+@description('	Collation of the metadata catalog.. Default is \'DATABASE_DEFAULT\' (which is by default \'Latin1_General_CI_AS\').')
+@allowed(['DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS', 'Latin1_General_CI_AS'])
 param catalogCollation string = 'DATABASE_DEFAULT'
 
-@description('	Collation of the metadata catalog.. Default is \'SQL_Latin1_General_CP1_CI_AS\'.')
-@allowed(['SQL_Latin1_General_CP1_CI_AS'])
-param collation string = 'SQL_Latin1_General_CP1_CI_AS'
+@description('	Collation of the metadata catalog. Default is \'Latin1_General_CI_AS\'. (US is \'SQL_Latin1_General_CP1_CI_AS\', NZ-English is \'Latin1_General_CI_AS\', Maori is \'Latin1_General_CI_AI\').')
+@allowed(['SQL_Latin1_General_CP1_CI_AS', 'Latin1_General_CI_AS'])
+param collation string = 'Latin1_General_CI_AS'
 
 @description('Creation Mode.. Default is \'Default\'.')
 @allowed(['Copy', 'Default', 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore', 'RestoreExternalBackup', 'RestoreExternalBackupSecondary', 'RestoreLongTermRetentionBackup', 'Secondary'])
