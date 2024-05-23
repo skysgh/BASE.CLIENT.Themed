@@ -271,7 +271,7 @@ param sqlServerDbZoneRedundant bool = false
 // ======================================================================
 
 module webSiteModule './web-dynamic-app-deployment.bicep' = {
-  dependsOn: [resourceGroupsModule]
+  // dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_web_recipe_module'
   scope:subscription()
   params: {
@@ -295,7 +295,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = {
     webSitesLinuxFxVersion                          : webSitesLinuxFxVersion
     // -----
     webSitesSourceControlsResourceName              : webSitesResourceName
-    webSitesSourceControlsLocationId                : webSitesLocationId
+    webSitesSourceControlsLocationId                : webSitesResourceLocationId
     webSitesSourceControlsResourceTags              : webSitesResourceTags
     // 
     webSitesSourceControlsRepositoryUrl             : webSitesSourceControlsRepositoryUrl
@@ -311,7 +311,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = {
 // ======================================================================
 
 module sqlServerModule './sql-server-deployment.bicep' = {
-  dependsOn: [resourceGroupsModule, webSiteModule]
+  dependsOn: [webSiteModule]
   name:  '${deployment().name}_storage-sql-server_module'
   scope:subscription()
   params: {
@@ -339,7 +339,7 @@ module sqlServerModule './sql-server-deployment.bicep' = {
     sqlServerDbResourceSKU                   : sqlServerDbResourceSKU
     sqlServerDbResourceTier                  : sqlServerDbResourceTier
     //
-    sqlServerDbAutoPauseDelay                : sqlServerDbautoPauseDelay
+    sqlServerDbAutoPauseDelay                : sqlServerDbAutoPauseDelay
     sqlServerDbFreeLimitExhaustionBehavior   : sqlServerDbFreeLimitExhaustionBehavior
     sqlServerDbAvailabilityZone              : sqlServerDbAvailabilityZone
     sqlServerDbCatalogCollation              : sqlServerDbCatalogCollation
