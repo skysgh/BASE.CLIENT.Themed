@@ -112,7 +112,7 @@ jobs:
             sqlServerDbResourceTier="Standard"
             sqlServerDbUseFreeLimit=false
             sqlServerDbAutoPauseDelay=120
-            sqlServerDbResourxeLocationId="australiacentral"
+            sqlServerDbResourceLocationId="australiacentral"
             sqlServerDbAvailabilityZone="NoPreference"
             sqlServerDbFreeLimitExhaustionBehavior="BillOverUsage"
             sqlServerDbIsLedgerOn=false
