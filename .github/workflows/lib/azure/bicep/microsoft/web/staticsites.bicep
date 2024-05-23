@@ -15,6 +15,8 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
 
 @description('Required. The name of the resource.Tip: usually there is only one resource, set the same as the project name, with only the name of the Resource Group being different per Environment.')
 param resourceName string
@@ -84,7 +86,7 @@ var __ = startsWith('${repositoryToken}', '.')
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource resource 'Microsoft.Web/staticSites@2022-09-01' = {
+resource resource 'Microsoft.Web/staticSites@2022-09-01' = if (buildResource) {
   name: useName
   location: useLocation
   tags: useTags
