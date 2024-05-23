@@ -13,10 +13,14 @@
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // ======================================================================
+// Control Flags
+// ======================================================================
+@description('Build the resoure. For testing, can be set to false')
+param buildResource bool = true
+
+// ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
-@description('Build the resoure. For testing, can be set to false').
-param buildResource bool = true
 
 @description('Resource *unique* name.Unique:yes, MinLength:3, MaxLength:24, Lowercase alphanumeric (no dashes or underlines)') 
 @minLength(3)
