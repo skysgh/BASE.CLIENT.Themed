@@ -39,11 +39,11 @@ param defaultResourceTags object = {}
 // Params: Server Farm 
 // ======================================================================
 @description('The name of the serverFarm to which site is deployed. Required to be universally unique (\'defaultResourceNameSuffix\' will be appended later)')
-param webServerfarmsResourceName string = toLower(defaultResourceName) 
+param webServerFarmsResourceName string = toLower(defaultResourceName) 
 
 @description('The location of the serverFarm.')
 // @allowed(...too long...)
-param webServerfarmsResourceLocationId string  = defaultResourceLocationId 
+param webServerFarmsResourceLocationId string  = defaultResourceLocationId 
 
 @description('The web app service plan SKU. Options are: F1,D1,B1,B2,S1,S2. Default: D1 (as F1 can only be used once, and hence needs monitoring).')
 @allowed(['F1','D1','B1','B2','S1','S2'])
@@ -58,7 +58,7 @@ param webServerFarmsResourceTags object = {}
 param webSitesResourceName string = toLower(defaultResourceName)
 
 @description('The location of the site. Default is same as server farm.')
-param webSitesResourceLocationId string = webServerfarmsResourceLocationId
+param webSitesResourceLocationId string = webServerFarmsResourceLocationId
 
 @description('The tags for this resource.')
 param webSitesResourceTags object = {}
@@ -102,11 +102,11 @@ var webSitesSourceCountrolsSetupFlag = startsWith(webSitesSourceControlsReposito
 // ======================================================================
 
 module webServerFarmsModule '../microsoft/web/serverfarms.bicep' = {
-  name:  '${deployment().name}_serverfarms_module'
+  name:  '${deployment().name}_serverFarms_module'
   scope: resourceGroup(resourceGroupName) 
   params: {
     resourceName               : toLower('${webServerFarmsResourceName}${defaultResourceNameSuffix}')
-    resourceLocationId         : webServerfarmsResourceLocationId
+    resourceLocationId         : webServerFarmsResourceLocationId
     resourceTags               : union(defaultResourceTags, webServerFarmsResourceTags)
 
     resourceSKU                : webServerFarmsServicePlanSKU
