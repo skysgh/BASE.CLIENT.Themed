@@ -99,10 +99,10 @@ jobs:
             webServerFarmsResourceLocationId="australiacentral"  
             webServerFarmsResourceSKU="F1"
             webSitesLinuxFxVersion="DOTNETCORE|Latest"
-            webSitesRepositoryUrl="https://todo"
-            webSitesRepositoryBranch='main'
-            webSitesRepositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
-            webSitesRepositorySourceLocation="/"
+            webSitesSourceControlsRepositoryUrl="https://todo"
+            webSitesSourceControlsRepositoryBranch='main'
+            webSitesSourceControlsRepositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
+            webSitesSourceControlsRepositorySourceLocation="/"
             sqlServerLocationId="australiacentral"
             sqlServerDbLocationId="australiacentral"
             sqlServerMinimalTlsVersion="1.2"
