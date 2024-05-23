@@ -10,14 +10,17 @@ targetScope='resourceGroup'
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // ======================================================================
+// Control Flags
+// ======================================================================
+@description('Build the resoure. For testing, can be set to false')
+param buildResource bool = true
+
+// ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
 // Resource that is required to be set up before
 // instantiating (and associating to it) a 
 // server
-
-@description('Build the resoure. For testing, can be set to false').
-param buildResource bool = true
 
 @description('The name for the resource (serverFarms). IMPORTANT: Note that it may have one or more nested servers under it. ')
 param resourceName string
