@@ -20,12 +20,14 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
 param parentDatabaseServer string
 
 // ======================================================================
+// Control Flags
+// ======================================================================
+@description('Build the resoure. For testing, can be set to false')
+param buildResource bool = true
+
+// ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
-// Resources Groups are part of the general subscription
-
-@description('Build the resoure. For testing, can be set to false').
-param buildResource bool = true
 
 @description('The title of this firewall Rule.  1-128. Can't use: \'<>*%&:;\/?\' or control characters or endend with period.')
 @minLength(1)
