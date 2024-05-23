@@ -17,6 +17,9 @@ var sharedSettings = loadJsonContent('../settings/shared.json')
 param redisCacheName string = 'redisCache-${uniqueString(resourceGroup().id)}'
 
 
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('resourceName')
 @minLength(3)
 @maxLength(22)
@@ -114,7 +117,7 @@ var useName = 'redisCache-${uniqueString}'
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource redisCache 'Microsoft.Cache/redis@2023-08-01' = {
+resource redisCache 'Microsoft.Cache/redis@2023-08-01' = if (buildResource) {
   name: useName
   location: useLcoation
   properties: {
