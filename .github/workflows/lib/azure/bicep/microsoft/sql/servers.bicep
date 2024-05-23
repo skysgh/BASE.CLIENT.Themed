@@ -15,6 +15,9 @@ targetScope='resourceGroup'
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('The name of this database server resource. Must be *world unique*! MinLength=14 (so as to allow for uniqueString), maxLength 63, lowercase, only alphanumeric and \'-\' (not \'_\').')
 @minLength(14)
 // example: base-srv-bt-{uniquestring}
@@ -74,7 +77,7 @@ var useTags = union(resourceTags, sharedSettings.defaultTags)
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = {
+resource resource 'Microsoft.Sql/servers@2023-05-01-preview' = if (buildResource) {
 
   name: useName
   location: useLocation
