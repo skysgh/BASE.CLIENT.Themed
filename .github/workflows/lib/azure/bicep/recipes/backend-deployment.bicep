@@ -262,7 +262,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (
   params: {
     resourceName: resourceGroupName
     resourceLocationId: resourceGroupLocationId
-    resourceTags: union(defaultResourceTags, resourceGroupTags)
+    resourceTags: union(resourceGroupTags, defaultResourceTags, sharedSettings.defaultTags)
   }
 }
 
@@ -284,7 +284,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = {
     // -----
     webServerFarmsResourceName                      : webServerFarmsResourceName
     webServerFarmsResourceLocationId                : webServerFarmsResourceLocationId
-    webServerFarmsResourceTags                      : webServerFarmsResourceTags
+    webServerFarmsResourceTags                      : union( webServerFarmsResourceTags, defaultResourceTags, sharedSettings.defaultTags)
     // 
     webServerFarmsServicePlanSKU                    : webServerFarmsServicePlanSKU
     // -----
@@ -296,7 +296,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = {
     // -----
     webSitesSourceControlsResourceName              : webSitesResourceName
     webSitesSourceControlsResourceLocationId        : webSitesResourceLocationId
-    webSitesSourceControlsResourceTags              : webSitesSourceControlsResourceTags
+    webSitesSourceControlsResourceTags              : union(webSitesSourceControlsResourceTags, defaultResourceTags, sharedSettings.defaultTags)
     // 
     webSitesSourceControlsRepositoryUrl             : webSitesSourceControlsRepositoryUrl
     webSitesSourceControlsRepositoryToken           : webSitesSourceControlsRepositoryToken
@@ -324,7 +324,7 @@ module sqlServerModule './sql-server-deployment.bicep' = {
     // -----
     sqlServerResourceName                    : sqlServerResourceName
     sqlServerResourceLocationId              : sqlServerResourceLocationId
-    sqlServerResourceTags                    : union(sqlServerResourceTags, defaultResourceTags)
+    sqlServerResourceTags                    : union(sqlServerResourceTags, defaultResourceTags, sharedSettings.defaultTags)
     sqlServerIdentityType                    : sqlServerIdentityType
     sqlServerMinimalTlsVersion               : sqlServerMinimalTlsVersion
     sqlServerAdminUserName                   : sqlServerAdminUserName
@@ -334,7 +334,7 @@ module sqlServerModule './sql-server-deployment.bicep' = {
     //
     sqlServerDbResourceName                  : sqlServerDbResourceName
     sqlServerDbResourceLocationId            : sqlServerDbResourceLocationId
-    sqlServerDbResourceTags                  : union(sqlServerDbResourceTags, defaultResourceTags)
+    sqlServerDbResourceTags                  : union(sqlServerDbResourceTags, defaultResourceTags, sharedSettings.defaultTags)
     //    
     sqlServerDbResourceSKU                   : sqlServerDbResourceSKU
     sqlServerDbResourceTier                  : sqlServerDbResourceTier
