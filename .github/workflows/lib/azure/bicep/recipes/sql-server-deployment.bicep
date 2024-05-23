@@ -32,6 +32,9 @@ param resourceGroupName string
 // ======================================================================
 // Params: Resource Defaults 
 // ======================================================================
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('The default name of resources.')
 @minLength(3)
 param defaultResourceName string 
@@ -150,7 +153,7 @@ var tmpsqlServerDbResourceName = toLower( replace(sqlServerDbResourceName ,'_','
 // ======================================================================
 // Resource bicep: Sql Server
 // ======================================================================
-module serversModule '../microsoft/sql/servers.bicep' = {
+module serversModule '../microsoft/sql/servers.bicep' = if (buildResource) {
   scope: resourceGroup(resourceGroupName)
   name:  '${deployment().name}_servers_module'
 
@@ -175,7 +178,7 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 // ======================================================================
 // Resource bicep: Sql Server DB
 // ======================================================================
-module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
+module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = if (buildResource) {
   // should be implied: 
   dependsOn: [serversModule]
   scope: resourceGroup(resourceGroupName)
