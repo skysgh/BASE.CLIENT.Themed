@@ -44,7 +44,7 @@ param resourceGroupName string
 param defaultResourceName string 
 
 @description('The default suffix of resouces, appended to defaultResourceName.')
-param defaultResourceNameSuffix string = uniqueString(toLower(resourceGroupName)) 
+param defaultResourceNameSuffix string = uniqueString(toUpper(resourceGroupName)) 
 
 @description('The default location of resources. ')
 // @allowed(...too long...)
