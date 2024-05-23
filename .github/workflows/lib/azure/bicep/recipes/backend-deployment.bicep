@@ -280,7 +280,7 @@ module webSiteModule './web-dynamic-app-deploy.bicep' = {
     resourceGroupName                               : resourceGroupName
     // -----
     defaultResourceName                             : projectName
-    defaultResourceLocationId                       : defaultLocationId
+    defaultResourceLocationId                       : defaultResourceLocationId
     defaultResourceTags                             : defaultTags
     // -----
     webServerFarmsResourceName                      : webServerFarmsResourceName
