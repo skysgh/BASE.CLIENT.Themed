@@ -16,11 +16,14 @@ targetScope='resourceGroup'
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // ======================================================================
-// Default Name, Location, Tags,
+// Control Flags
 // ======================================================================
-@description('Build the resoure. For testing, can be set to false').
+@description('Build the resoure. For testing, can be set to false')
 param buildResource bool = true
 
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 
 @description('Id of parent app Service Plan. eg: \'appServicePlanModule.id\'')
 param parentResourceId string
