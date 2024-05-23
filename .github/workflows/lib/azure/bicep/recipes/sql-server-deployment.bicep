@@ -144,8 +144,8 @@ param sqlServerDbZoneRedundant bool = false
 // ======================================================================
 
 // Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
-sqlServerResourceName = toLower( replace('${sqlServerResourceName}-${defaultResourceNameSuffix}', '_', '-') )
-sqlServerDbResourceName = toLower( replace(sqlServerDbResourceName ,'_','-') )
+var tmpsqlServerResourceName = toLower( replace('${sqlServerResourceName}-${defaultResourceNameSuffix}', '_', '-') )
+var tmpsqlServerDbResourceName = toLower( replace(sqlServerDbResourceName ,'_','-') )
 
 // ======================================================================
 // Resource bicep: Sql Server
@@ -155,7 +155,7 @@ module serversModule '../microsoft/sql/servers.bicep' = {
   name:  '${deployment().name}_servers_module'
 
   params: {
-    resourceName: sqlServerResourceName
+    resourceName: tmpsqlServerResourceName
     resourceLocationId: sqlServerResourceLocationId
     resourceTags: union(sqlServerResourceTags, defaultResourceTags)
 
@@ -183,9 +183,9 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
 
   params: {
     // Refer to parent website so it can build resource name without use of parent property.
-    parentResourceName: sqlServerResourceName
+    parentResourceName: tmpsqlServerResourceName
 
-    resourceName: sqlServerDbResourceName
+    resourceName: tmpsqlServerDbResourceName
     resourceLocationId: sqlServerDbResourceLocationId
     resourceTags: union(sqlServerDbResourceTags, defaultResourceTags)
     
