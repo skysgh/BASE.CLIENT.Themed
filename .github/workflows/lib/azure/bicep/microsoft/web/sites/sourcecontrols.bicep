@@ -26,7 +26,7 @@ param resourceName string
 param resourceLocationId string = ''
 
 @description('The tags for this resource. ')
-param resourceTags object = sharedSettings.defaultTags
+param resourceTags object = {}
 
 // ======================================================================
 // Default SKU, Kind, Tier where applicable
