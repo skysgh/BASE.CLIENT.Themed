@@ -118,8 +118,8 @@ param webServerFarmsServicePlanSKU string = 'D1'
 @description('The Name of the site on the server farm. Do not add unique suffix as it is not needed to be universally unique.')
 param webSitesResourceName string = toLower(defaultResourceName)
 
-@description('The location of the site. Default is set to \'webServerfarmsResourceLocationId\', which is by default same as \'defaultResourceLocationId\'.')
-param webSitesResourceLocationId string = webServerfarmsResourceLocationId
+@description('The location of the site. Default is set to \'webServerFarmsResourceLocationId\', which is by default same as \'defaultResourceLocationId\'.')
+param webSitesResourceLocationId string = webServerFarmsResourceLocationId
 
 @description('The tags for the resource.')
 param webSitesResourceTags object = defaultResourceTags
@@ -193,9 +193,9 @@ param sqlServerAdminPassword string
 @description('Name of database. Default is set to lowercase of \'sqlServerResourceName\'. Not required to be globally unique.')
 param sqlServerDbResourceName string = toLower(sqlServerResourceName)
 
-@description('Location of Database. Default is set to \'sqlServerResouceLocationId\'.')
+@description('Location of Database. Default is set to \'sqlServerResourceLocationId\'.')
 //TOO Big: @allowed([ 'australiacentral'])
-param sqlServerDbResourceLocationId string = sqlServerResouceLocationId
+param sqlServerDbResourceLocationId string = sqlServerResourceLocationId
 
 @description('The tags for this resource.')
 param sqlServerDbResourceTags object = defaultResourceTags
@@ -330,8 +330,6 @@ module sqlServerModule './sql-server-deployment.bicep' = {
     sqlServerAdminUserName                   : sqlServerAdminUserName
     sqlServerAdminPassword                   : sqlServerAdminPassword 
     // -----
-    parentResourceName                       : sqlServerResourceName
-    //
     sqlServerDbResourceName                  : sqlServerDbResourceName
     sqlServerDbResourceLocationId            : sqlServerDbResourceLocationId
     sqlServerDbResourceTags                  : union(sqlServerDbResourceTags, defaultResourceTags, sharedSettings.defaultTags)
