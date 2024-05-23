@@ -58,8 +58,7 @@ param isManualIntegration bool = true
 // Default Variables: useResourceName, useTags
 // ======================================================================
 var useName = '${resourceName}/web'
-var useTags = union(resourceTags,{})
-
+var resourceTags = union(resourceTags,sharedSettings.defaultTags)
 
 // Secret sink:
 output __ bool = startsWith('${repositoryToken}', '.')
@@ -92,4 +91,4 @@ output resourceId string = resource.id
 // return the (short) name of the newly created resource:
 output resourceName string = resource.name
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${resourceLocationId}-${repositorySourceLocation}-${useTags}-${tmp}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceLocationId}-${repositorySourceLocation}-${resourceTags}', '.')
