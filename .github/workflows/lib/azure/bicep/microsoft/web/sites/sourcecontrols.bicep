@@ -19,14 +19,14 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
 // Default Name, Location, Tags,
 // ======================================================================
 @description('the unique name of site.')
-param resourceName string 
+param resourceName string = 
 
 @description('The id of the resource for the site. NOT USED.')
 // @allowed('') 
 param resourceLocationId string = ''
 
 @description('The tags for this resource. ')
-param resourceTags object = {}
+param resourceTags object = sharedSettings.defaultTags
 
 // ======================================================================
 // Default SKU, Kind, Tier where applicable
@@ -57,8 +57,7 @@ param isManualIntegration bool = true
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
-var useName = '${resourceName}/web'
-var resourceTags = union(resourceTags,sharedSettings.defaultTags)
+
 
 // Secret sink:
 output __ bool = startsWith('${repositoryToken}', '.')
@@ -67,7 +66,7 @@ output __ bool = startsWith('${repositoryToken}', '.')
 // Resource bicep
 // ======================================================================
 resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
-  name: useName
+  name: '${resourceName}/web'
   // location: resourceLocationId
   // does not exist: tags: useTags
 
