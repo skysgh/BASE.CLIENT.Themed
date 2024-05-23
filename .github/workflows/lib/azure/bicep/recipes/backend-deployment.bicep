@@ -271,7 +271,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (
 // ======================================================================
 
 module webSiteModule './web-dynamic-app-deployment.bicep' = {
-  // dependsOn: [resourceGroupsModule]
+  dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_web_recipe_module'
   scope:subscription()
   params: {
@@ -296,7 +296,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = {
     // -----
     webSitesSourceControlsResourceName              : webSitesResourceName
     webSitesSourceControlsResourceLocationId        : webSitesResourceLocationId
-    webSitesSourceControlsResourceTags              : webSitesResourceTags
+    webSitesSourceControlsResourceTags              : webSitesSourceControlsResourceTags
     // 
     webSitesSourceControlsRepositoryUrl             : webSitesSourceControlsRepositoryUrl
     webSitesSourceControlsRepositoryToken           : webSitesSourceControlsRepositoryToken
