@@ -107,7 +107,7 @@ module webServerFarmsModule '../microsoft/web/serverfarms.bicep' = {
     resourceLocationId         : webServerFarmsResourceLocationId
     resourceTags               : union(defaultResourceTags, sharedSettings.defaultTags, webServerFarmsResourceTags)
 
-    resourceSKU                : webServerFarmsServicePlanSKU
+    resourceSKU                : webServerFarmsResourceSKU
   }
 }
 // ======================================================================
