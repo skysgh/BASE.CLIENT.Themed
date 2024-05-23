@@ -144,8 +144,8 @@ param sqlServerDbZoneRedundant bool = false
 // ======================================================================
 
 // Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
-sqlServerResourceName = toLower(replace('${sqlServerResourceName}-${defaultResourceNameSuffix}' ,'_','-'))
-sqlServerDbResourceName = toLower(replace(sqlServerDbResourceName' ,'_','-'))
+sqlServerResourceName = toLower( replace('${sqlServerResourceName}-${defaultResourceNameSuffix}', '_', '-') )
+sqlServerDbResourceName = toLower( replace(sqlServerDbResourceName ,'_','-') )
 
 // ======================================================================
 // Resource bicep: Sql Server
