@@ -23,6 +23,9 @@ param parentResourceName string
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('the name of this database resource.')
 param resourceName string
 
@@ -99,7 +102,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // Resource bicep
 // ======================================================================
 
-resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = {
+resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = if (buildResource) {
 
 
   name: useName
