@@ -47,7 +47,6 @@ targetScope='subscription'
 // ======================================================================
 var sharedSettings = loadJsonContent('../settings/shared.json')
 
-
 // ======================================================================
 // Flow Control
 // ======================================================================
@@ -66,7 +65,7 @@ param projectName string
 @description('The name used to build resources. e.g.: \'CLIENT\'')
 param projectServiceName string
 
-@description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'')
+@description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'.')
 @allowed([ 'NP',   'BT','DT','ST','UT','IT','PP','TR','PR'])
 param environmentId string
 
@@ -77,20 +76,20 @@ param environmentId string
 param defaultResourceName string = toLower(projectName)
 
 @description('The default location Id of resources.')
-//TooManyOptions @allowed([ 'australiacentral'])
+//TooManyOptions @allowed(['australiacentral'])
 param defaultResourceLocationId string
 
-@description('The tags shared across all resources. ')
-param defaultResourceTags object = { project: projectName, service: projectServiceName, environment: environmentId }
+@description('The tags shared across all resources.')
+param defaultResourceTags object = {} // { project: projectName, service: projectServiceName, environment: environmentId }
 
 // ======================================================================
 // Params: Resource Group Specific (Only IF built here)
 // ======================================================================
-@description('The Uperr case Name of the  Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
-param resourceGroupName string = replace(toUpper('${projectName}-${projectServiceName}-${environmentId}'),'--','-')
+@description('The upper case Name of the Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
+param resourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-${environmentId}'),'--','-')
 
 @description('The Location Id of the Resource Group.')
-//TooManyOptions @allowed([ 'australiacentral'])
+//TooManyOptions @allowed(['australiacentral'])
 param resourceGroupLocationId string = defaultResourceLocationId
 
 @description('Tags to use if developing the Resource Group.')
@@ -102,14 +101,14 @@ param resourceGroupTags object = defaultResourceTags
 @description('Name of web server farm. Do not add unique suffix as it will be added later.')
 param webServerFarmsResourceName string = toLower(defaultResourceName)
 
-@description('The Location Id of the Web Server. Default is set to \'defaultResourceLocationId\'. ')
-//TooManyOptions @allowed([ 'australiacentral'])
+@description('The Location Id of the Web Server. Default is set to \'defaultResourceLocationId\'.')
+//TooManyOptions @allowed(['australiacentral'])
 param webServerFarmsResourceLocationId string = defaultResourceLocationId
 
 @description('The tags for the resource.')
 param webServerFarmsResourceTags object = defaultResourceTags
 
-@description('The web app service plan SKU. Options are: F1,D1,B1,B2,S1,S2. Default: D1 (as F1 can only be used once, and hence needs monitoring).')
+@description('The web app service plan SKU. Options are: F1,D1,B1,B2,S1,S2. Default: D1 (as \'F1\' can only be used once, and hence needs monitoring).')
 @allowed(['F1','D1','B1','B2','S1','S2'])
 param webServerFarmsServicePlanSKU string = 'D1'
 
@@ -157,7 +156,7 @@ param webSitesSourceControlsRepositorySourceLocation string = '/'
 // ======================================================================
 // Params: Sql Server 
 // ======================================================================
-@description('The name of the sql server. Required to be universally unique (\'defaultResourceNameSuffix\' will be appended later).')
+@description('The name of the sql server. Default is lower case of \'defaultResourceName\'.  Required to be universally unique (\'defaultResourceNameSuffix\' will be appended later).')
 param sqlServerResourceName string = toLower(defaultResourceName) 
 
 @description('Location of Resource. Default is \'defaultResourceLocationId\'.')
@@ -167,11 +166,11 @@ param sqlServerResourceLocationId string  = defaultResourceLocationId
 @description('The tags for this resource.')
 param sqlServerResourceTags object = defaultResourceTags
 
-@description('TODO:...: Default is: \'SystemAssigned,UserAssigned\' permitting creation using dbms admin user name & pwd, and later AAD sourced service account. ')
-@allowed(['None', 'SystemAssigned', 'SystemAssigned,UserAssigned', 'UserAssigned' ])
+@description('TODO:...: Default is: \'SystemAssigned,UserAssigned\' permitting creation using dbms admin user name & pwd, and later AAD sourced service account.')
+@allowed(['None', 'SystemAssigned', 'SystemAssigned,UserAssigned', 'UserAssigned'])
 param sqlServerIdentityType string = 'SystemAssigned,UserAssigned'
 
-@description('The minimal Tls Version to use. Default is \'1.3\'.')
+@description('The minimal TLS Version to use. Default is \'1.3\'.')
 @allowed(['1.2','1.3'])
 param sqlServerMinimalTlsVersion string = '1.3'
 
@@ -198,7 +197,7 @@ param sqlServerDbResourceName string = toLower(sqlServerResourceName)
 //TOO Big: @allowed([ 'australiacentral'])
 param sqlServerDbResourceLocationId string = sqlServerResouceLocationId
 
-@description('The tags for this resource. ')
+@description('The tags for this resource.')
 param sqlServerDbResourceTags object = defaultResourceTags
 
 @description('The SKU of this resource.The default is \'Basic\' to save costs.')
@@ -211,7 +210,7 @@ param sqlServerDbResourceSKU string = 'Basic'
 //param sqlServerDbResourceTier string = (contains(['Basic', 'StandardS0', 'StandardS1', 'StandardS2', 'StandardS3', 'StandardS4', 'StandardS6', 'StandardS7', 'StandardS9', 'StandardS12'], sqlServerDbResourceSKU) ? 'Standard': (contains(['PremiumP1', 'PremiumP2', 'PremiumP4', 'PremiumP6', 'PremiumP11', 'PremiumP15'], sqlServerDbResourceSKU) ? 'Premium': (contains(['GP_Gen5_2', 'GP_Gen5_4', 'GP_Gen5_8', 'GP_Gen5_16', 'GP_Gen5_24', 'GP_Gen5_32', 'GP_Gen5_40', 'GP_Gen5_80', 'GP_Gen4_2', 'GP_Gen4_4', 'GP_Gen4_8', 'GP_Gen4_16'], sqlServerDbResourceSKU) ? 'GeneralPurpose': (contains(['BC_Gen5_2', 'BC_Gen5_4', 'BC_Gen5_8', 'BC_Gen5_16', 'BC_Gen5_24', 'BC_Gen5_32', 'BC_Gen5_40', 'BC_Gen5_80', 'BC_Gen4_2', 'BC_Gen4_4', 'BC_Gen4_8', 'BC_Gen4_16'], sqlServerDbResourceSKU) ? 'BusinessCritical' : 'Basic'))))
 param sqlServerDbResourceTier string = (contains(['Basic', 'S0', 'S1', 'S2', 'S3', 'S4'], sqlServerDbResourceSKU) ? 'Standard': (contains(['PremiumP1', 'PremiumP2', 'PremiumP4'], sqlServerDbResourceSKU) ? 'Premium': (contains(['GP_Gen5_2', 'GP_Gen5_4', 'GP_Gen4_2', 'GP_Gen4_4'], sqlServerDbResourceSKU) ? 'GeneralPurpose': (contains(['BC_Gen5_2', 'BC_Gen5_4', 'BC_Gen4_2', 'BC_Gen4_4'], sqlServerDbResourceSKU) ? 'BusinessCritical' : 'Basic'))))
 
-@description('Time *in minutes* after which database is automatically paused. A value of -1 means that automatic pause is disabled. Default: 120 (2 hours).')
+@description('Time *in minutes* after which database is automatically paused. A value of \'-1\' means that automatic pause is disabled. Default: 120 (2 hours).')
 param sqlServerDbAutoPauseDelay int = 120
 
 @description('Specifies the availability zone the database is pinned to.	Default is\'NoPreference\'.')
@@ -222,7 +221,7 @@ param sqlServerDbAvailabilityZone string = 'NoPreference'
 @allowed(['AutoPause', 'BillOverUsage'])
 param sqlServerDbFreeLimitExhaustionBehavior string = 'BillOverUsage'
 
-@description('	Collation of the metadata catalog.. Default is \'DATABASE_DEFAULT\' (which is by default \'SQL_Latin1_General_CP1_CI_AS\').')
+@description('	Collation of the metadata catalog.. Default is \'DATABASE_DEFAULT\' (which is by default \'Latin1_General_CI_AS\').')
 @allowed(['DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS', 'Latin1_General_CI_AS'])
 param sqlServerDbCatalogCollation string = 'DATABASE_DEFAULT'
 
@@ -256,16 +255,16 @@ param sqlServerDbZoneRedundant bool = false
 // Resource bicep: ResourceGroup
 // ======================================================================
 
-module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
-   // pass parameters:
-  name:  '${deployment().name}_resourceGroups_module'
-  scope:subscription()
-  params: {
-    resourceName: resourceGroupName
-    resourceLocationId: resourceGroupLocationId
-    resourceTags: union(defaultResourceTags, resourceGroupTags)
-  }
-}
+//module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
+//   // pass parameters:
+//  name:  '${deployment().name}_resourceGroups_module'
+//  scope:subscription()
+//  params: {
+//    resourceName: resourceGroupName
+//    resourceLocationId: resourceGroupLocationId
+//    resourceTags: union(defaultResourceTags, resourceGroupTags)
+//  }
+// }
 
 // ======================================================================
 // Resource bicep: Server
@@ -325,7 +324,7 @@ module sqlServerModule './sql-server-deployment.bicep' = {
     // -----
     sqlServerResourceName                    : sqlServerResourceName
     sqlServerResourceLocationId              : sqlServerResourceLocationId
-    sqlServerResourceTags                    : sqlServerResourceTags
+    sqlServerResourceTags                    : union(sqlServerResourceTags, defaultResourceTags)
     sqlServerIdentityType                    : sqlServerIdentityType
     sqlServerMinimalTlsVersion               : sqlServerMinimalTlsVersion
     sqlServerAdminUserName                   : sqlServerAdminUserName
@@ -366,4 +365,4 @@ module sqlServerModule './sql-server-deployment.bicep' = {
 // return the (short) name of the newly created resource:
 //output resourceName string = resource.name
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith(concat('${sharedSettings.version}-${webSitesSourceControlsResourceName}-${webSitesSourceControlsResourceLocationId}'), '.')
+output _ bool = startsWith('${sharedSettings.version}-${webSitesSourceControlsResourceName}-${webSitesSourceControlsResourceLocationId}', '.')
