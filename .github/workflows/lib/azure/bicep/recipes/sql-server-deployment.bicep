@@ -86,9 +86,9 @@ param sqlServerAdminPassword string
 @description('Name of database. Default is set to lowercase of \'sqlServerResourceName\'.')
 param sqlServerDbResourceName string = toLower(sqlServerResourceName)
 
-@description('Location of Database. Default is set to \'sqlServerResouceLocationId\'.')
+@description('Location of Database. Default is set to \'sqlServerResourceLocationId\'.')
 //TOO Big: @allowed([ 'australiacentral'])
-param sqlServerDbResourceLocationId string = sqlServerResouceLocationId
+param sqlServerDbResourceLocationId string = sqlServerResourceLocationId
 
 @description('The tags for this resource. ')
 param sqlServerDbResourceTags object = {}
