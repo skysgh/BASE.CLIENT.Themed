@@ -90,6 +90,7 @@ jobs:
  
           # Consider: sqlServerDbResourxeLocationId: 'F1','D1','B1','B2','S1','S2'
           # Consider: sqlServerDbResourceSKU: 'Basic', 'S0', 'S1', 'S2'
+          # Consider: webServerFarmsResourceSKU can't be Shared/D1 if Linux is used
           # 
           # Do NOT wrap values in single quotes (only double quotes if need be)
           # Do NOT inject blank lines.
