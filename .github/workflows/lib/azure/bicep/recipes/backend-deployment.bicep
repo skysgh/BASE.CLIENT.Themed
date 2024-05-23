@@ -273,7 +273,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (
 // Resource bicep: Server
 // ======================================================================
 
-module webSiteModule './web-dynamic-app-deployment.bicep' = {
+module webSiteModule './web-dynamic-app-deployment.bicep' = if (buildResource) {
   dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_web_recipe_module'
   scope:subscription()
@@ -313,7 +313,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = {
 // Resource bicep: Server
 // ======================================================================
 
-module sqlServerModule './sql-server-deployment.bicep' = {
+module sqlServerModule './sql-server-deployment.bicep' = if (buildResource) {
   dependsOn: [webSiteModule]
   name:  '${deployment().name}_storage-sql-server_module'
   scope:subscription()
