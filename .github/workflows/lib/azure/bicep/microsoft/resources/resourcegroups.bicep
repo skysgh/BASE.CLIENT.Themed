@@ -10,6 +10,12 @@ targetScope='subscription'
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // ======================================================================
+// Control Flags
+// ======================================================================
+@description('Build the resoure. For testing, can be set to false')
+param buildResource bool = true
+
+// ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
 @description('Required. The name of the resource Group.')
@@ -42,7 +48,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // Resource bicep
 // ======================================================================
 // Creating new resource groups take a little bit of time
-resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = if (buildResource) {
   name: useName
   location: useLocation
   tags: useTags
