@@ -263,7 +263,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (
   params: {
     resourceName: resourceGroupName
     resourceLocationId: resourceGroupLocationId
-    resourceTags: union(defaultTags, resourceGroupTags)
+    resourceTags: union(defaultResourceTags, resourceGroupTags)
   }
 }
 
@@ -281,7 +281,7 @@ module webSiteModule './web-dynamic-app-deploy.bicep' = {
     // -----
     defaultResourceName                             : projectName
     defaultResourceLocationId                       : defaultResourceLocationId
-    defaultResourceTags                             : defaultTags
+    defaultResourceTags                             : defaultResourceTags
     // -----
     webServerFarmsResourceName                      : webServerFarmsResourceName
     webServerFarmsresourceLocationId                : webServerFarmsResourceLocationId
