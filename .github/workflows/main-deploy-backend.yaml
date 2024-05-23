@@ -104,7 +104,6 @@ jobs:
             webSitesSourceControlsRepositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             webSitesSourceControlsRepositorySourceLocation="/"
             sqlServerResourceLocationId="australiacentral"
-            sqlServerDbLocationId="australiacentral"
             sqlServerMinimalTlsVersion="1.2"
             sqlServerIdentityType="None"
             sqlServerAdminUserName="${{ secrets.DB_ADMIN_NAME}}"
@@ -112,7 +111,8 @@ jobs:
             sqlServerDbResourceSKU="S0"
             sqlServerDbResourceTier="Standard"
             sqlServerDbUseFreeLimit=false
-            sqlServerDbautoPauseDelay=120
+            sqlServerDbAutoPauseDelay=120
+            sqlServerDbResourxeLocationId="australiacentral"
             sqlServerDbAvailabilityZone="NoPreference"
             sqlServerDbFreeLimitExhaustionBehavior="BillOverUsage"
             sqlServerDbIsLedgerOn=false
