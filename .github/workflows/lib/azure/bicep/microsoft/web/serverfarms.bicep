@@ -29,17 +29,16 @@ param resourceTags object = {}
 // ======================================================================
 // Default SKU, Kind, Tier where applicable
 // ======================================================================
-@description('The type of OS.')
-// @allowed([ ''])
-param serverKind string = 'linux'
-
 @description('The service plan SKU')
 @allowed(['F1','D1','B1','B2','S1','S2'])
-param webAppServicePlanSKU string = 'F1'
+param resourceSKU string = 'F1'
 
 // ======================================================================
 // Resource Other Params
 // ======================================================================
+@description('The type of OS.')
+// @allowed([ ''])
+param serverKind string = 'linux'
 
 // ======================================================================
 // Default Variables: useResourceName, useTags
@@ -68,7 +67,7 @@ resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
 //    locations: [
 //      'string'
 //    ]
-    name: webAppServicePlanSKU
+    name:resourceSKU
 //    size: 'string'
 //    skuCapacity: {
 //      default: int
@@ -80,6 +79,7 @@ resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
 //    tier: 'string'
   }
   kind: serverKind
+
 //   extendedLocation: {
 //    name: 'string'
 //  }
