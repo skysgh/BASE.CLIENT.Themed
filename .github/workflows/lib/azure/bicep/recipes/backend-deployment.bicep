@@ -86,7 +86,7 @@ param defaultResourceTags object = { project: projectName, service: projectServi
 // ======================================================================
 // Params: Resource Group Specific (Only IF built here)
 // ======================================================================
-@description('The Uperr case Name of the  Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'${projectName}-${serviceName}-${envId}\'')
+@description('The Uperr case Name of the  Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
 param resourceGroupName string = replace(toUpper('${projectName}-${projectServiceName}-${environmentId}'),'--','-')
 
 @description('The Location Id of the Resource Group.')
