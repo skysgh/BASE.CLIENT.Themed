@@ -38,7 +38,7 @@ param defaultResourceTags object = {}
 // ======================================================================
 // Params: Server Farm 
 // ======================================================================
-@description('The name of the serverFarm to which site is deployed. Required to be universally unique.')
+@description('The name of the serverFarm to which site is deployed. Required to be universally unique (\'defaultResourceNameSuffix\' will be appended later)')
 param webServerfarmsResourceName string = toLower(defaultResourceName) 
 
 @description('The location of the serverFarm.')
