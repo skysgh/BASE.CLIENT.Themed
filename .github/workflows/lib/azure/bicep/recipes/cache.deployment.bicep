@@ -123,7 +123,7 @@ var useName = 'redisCache-${uniqueString}'
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource redisCache 'Microsoft.Cache/redis@2023-08-01' = {
+resource redisCache 'Microsoft.Cache/redis@2023-08-01' = if (buildResource) {
   name: useName
   location: useLcoation
   properties: {
