@@ -29,6 +29,9 @@ var sharedSettings = loadJsonContent('../settings/shared.json')
 @description('Whether to build the ResourceGroup or not.')
 param buildResourceGroup bool = true
 
+@description('Build the resoure. For testing, can be set to false')
+param buildResource bool = true
+
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
@@ -74,7 +77,7 @@ var useTags = union(resourceTags, defaultTags)
 // ======================================================================
 // Resource bicep
 // ======================================================================
-module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
+module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResource) {
   name:  '${deployment().name}_resourcegroups_module'
   scope: subscription()
   params: {
