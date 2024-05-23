@@ -192,7 +192,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
     resourceSKU: sqlServerDbResourceSKU
     resourceTier: sqlServerDbResourceTier
 
-    autoPauseDelay: sqlServerDbautoPauseDelay
+    autoPauseDelay: sqlServerDbAutoPauseDelay
 
     freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
     availabilityZone: sqlServerDbAvailabilityZone
@@ -215,4 +215,4 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = {
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${sqlServerDbResourceSKU}-${useDbInstanceName}-${useDbInstanceLocation}-${sqlServerDbResourceTier}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${sqlServerDbResourceSKU}-${sqlServerDbResourceTier}', '.')
