@@ -11,14 +11,16 @@ var sharedSettings = loadJsonContent('../settings/shared.json')
 
 
 // ======================================================================
+// Control Flags
+// ======================================================================
+@description('Build the resoure. For testing, can be set to false')
+param buildResource bool = true
+
+// ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
 @description('Specify the name of the Azure Redis Cache to create.')
 param redisCacheName string = 'redisCache-${uniqueString(resourceGroup().id)}'
-
-
-@description('Build the resoure. For testing, can be set to false').
-param buildResource bool = true
 
 @description('resourceName')
 @minLength(3)
