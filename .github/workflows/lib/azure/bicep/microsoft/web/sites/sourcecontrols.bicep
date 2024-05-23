@@ -18,6 +18,9 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('the unique name of site.')
 param resourceName string
 
@@ -65,7 +68,7 @@ output __ bool = startsWith('${repositoryToken}', '.')
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = {
+resource resource 'Microsoft.Web/sites/sourcecontrols@2021-01-01' = if (buildResource) {
   name: '${resourceName}/web'
   // location: resourceLocationId
   // does not exist: tags: useTags
