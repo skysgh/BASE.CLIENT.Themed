@@ -22,6 +22,9 @@ param resourceGroupName string
 // ======================================================================
 // Default Settings  
 // ======================================================================
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('The default name of resources.')
 @minLength(3)
 param defaultResourceName string 
@@ -99,7 +102,7 @@ var webSitesSourceCountrolsSetupFlag = startsWith(webSitesSourceControlsReposito
 // Resource bicep: ServerFarm
 // ======================================================================
 
-module webServerFarmsModule '../microsoft/web/serverfarms.bicep' = {
+module webServerFarmsModule '../microsoft/web/serverfarms.bicep' = if (buildResource) {
   name:  '${deployment().name}_serverFarms_module'
   scope: resourceGroup(resourceGroupName) 
   params: {
@@ -113,7 +116,7 @@ module webServerFarmsModule '../microsoft/web/serverfarms.bicep' = {
 // ======================================================================
 // Resource bicep: Sites
 // ======================================================================
-module webSitesModule '../microsoft/web/sites.bicep' = {
+module webSitesModule '../microsoft/web/sites.bicep' = if (buildResource) {
   // depends implicitely on the 
   // [webServerFarmsModule]
   // pass parameters:
@@ -133,7 +136,7 @@ module webSitesModule '../microsoft/web/sites.bicep' = {
 // ======================================================================
 // Resource bicep: Sites/SourceControls
 // ======================================================================
-module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (webSitesSourceCountrolsSetupFlag) {
+module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (buildResource && webSitesSourceCountrolsSetupFlag) {
   dependsOn: [webSitesModule]
   name:  '${deployment().name}_sites_sourcecontrols_module'
   scope: resourceGroup(resourceGroupName) 
