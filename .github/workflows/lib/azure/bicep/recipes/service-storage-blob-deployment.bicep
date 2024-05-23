@@ -9,6 +9,14 @@ targetScope='subscription'
 var sharedSettings = loadJsonContent('../settings/shared.json')
 
 // ======================================================================
+// Flow Control
+// ======================================================================
+// Resources Groups are part of the general subscription
+@description('Whether to build the ResourceGroup or not.')
+param buildResourceGroup bool = true
+
+
+// ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
 // Resources Groups are part of the general subscription
@@ -81,7 +89,7 @@ var useTags = union(resourceTags, defaultTags)
 // ======================================================================
 // Resource bicep
 // ======================================================================
-module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
+module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResource) {
   name:  '${deployment().name}_resourcegroups_module'
   scope: subscription()
   params: {
@@ -91,7 +99,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
   }
 }
 // ------------------------------------------------------------
-module storageAccountsModule '../microsoft/storage/storageaccounts.bicep' = {
+module storageAccountsModule '../microsoft/storage/storageaccounts.bicep' = if (buildResource) {
   // should be implied: 
   dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_storageaccounts_module'
