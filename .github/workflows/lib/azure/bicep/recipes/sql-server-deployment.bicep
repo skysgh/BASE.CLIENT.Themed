@@ -114,13 +114,13 @@ param sqlServerDbAvailabilityZone string = 'NoPreference'
 @allowed(['AutoPause', 'BillOverUsage'])
 param sqlServerDbFreeLimitExhaustionBehavior string = 'BillOverUsage'
 
-@description('	Collation of the metadata catalog.. Default is \'DATABASE_DEFAULT\' (which is by default \'SQL_Latin1_General_CP1_CI_AS\').')
-@allowed(['DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'])
+@description('	Collation of the metadata catalog.. Default is \'DATABASE_DEFAULT\' (which is by default \'Latin1_General_CI_AS\').')
+@allowed(['DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS', 'Latin1_General_CI_AS'])
 param sqlServerDbCatalogCollation string = 'DATABASE_DEFAULT'
 
-@description('	Collation of the metadata catalog.. Default is \'SQL_Latin1_General_CP1_CI_AS\'.')
-@allowed(['SQL_Latin1_General_CP1_CI_AS'])
-param sqlServerDbCollation string = 'SQL_Latin1_General_CP1_CI_AS'
+@description('	Collation of the metadata catalog. Default is \'Latin1_General_CI_AS\'. (US is \'SQL_Latin1_General_CP1_CI_AS\', NZ-English is \'Latin1_General_CI_AS\', Maori is \'Latin1_General_CI_AI\').')
+@allowed(['SQL_Latin1_General_CP1_CI_AS', 'Latin1_General_CI_AS'])
+param sqlServerDbCollation string = 'Latin1_General_CI_AS'
 
 @description('Creation Mode.. Default is \'Default\'.')
 @allowed(['Copy', 'Default', 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore', 'RestoreExternalBackup', 'RestoreExternalBackupSecondary', 'RestoreLongTermRetentionBackup', 'Secondary'])
