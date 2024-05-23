@@ -19,12 +19,18 @@ var sharedSettings = loadJsonContent('../settings/shared.json')
 @minLength(3)
 param resourceGroupName string
 
+
+// ======================================================================
+// Flow Control
+// ======================================================================
+// Resources Groups are part of the general subscription
+@description('Whether to build the ResourceGroup or not.')
+param buildResourceGroup bool = true
+
+
 // ======================================================================
 // Default Settings  
 // ======================================================================
-@description('Build the resoure. For testing, can be set to false').
-param buildResource bool = true
-
 @description('The default name of resources.')
 @minLength(3)
 param defaultResourceName string 
