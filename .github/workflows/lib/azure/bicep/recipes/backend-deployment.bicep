@@ -81,7 +81,7 @@ param defaultResourceName string = toLower(projectName)
 param defaultResourceLocationId string
 
 @description('The tags shared across all resources. ')
-param defaultResourceTags object = { "project": projectName, "service": projectServiceName, "environment": environmentId }
+param defaultResourceTags object = { project: projectName, service: projectServiceName, environment: environmentId }
 
 // ======================================================================
 // Params: Resource Group Specific (Only IF built here)
