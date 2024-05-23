@@ -47,7 +47,7 @@ param webServerFarmsResourceLocationId string  = defaultResourceLocationId
 
 @description('The web app service plan SKU. Options are: F1,D1,B1,B2,S1,S2. Default: D1 (as F1 can only be used once, and hence needs monitoring).')
 @allowed(['F1','D1','B1','B2','S1','S2'])
-param webServerFarmsServicePlanSKU string = 'D1'
+param webServerFarmsResourceSKU string = 'D1'
 
 @description('The tags for this resource.')
 param webServerFarmsResourceTags object = {}
