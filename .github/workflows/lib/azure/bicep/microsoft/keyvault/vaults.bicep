@@ -17,6 +17,9 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('Specifies the name of the key vault resource.')
 param resourceName string
 
@@ -79,7 +82,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource resource 'Microsoft.KeyVault/vaults@2023-07-01' = {
+resource resource 'Microsoft.KeyVault/vaults@2023-07-01' = if (buildResource) {
   name: useName
   location: useLocation
   tags: useTags
