@@ -23,6 +23,10 @@ param parentDatabaseServer string
 // Default Name, Location, Tags,
 // ======================================================================
 // Resources Groups are part of the general subscription
+
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('The title of this firewall Rule.  1-128. Can't use: \'<>*%&:;\/?\' or control characters or endend with period.')
 @minLength(1)
 @maxLength(128)
@@ -37,7 +41,7 @@ param startIpAddress string
 @description('The range end.')
 param endIpAddress string
 
-resource resource 'Microsoft.Sql/servers/firewallRules@2021-11-01-preview' = {
+resource resource 'Microsoft.Sql/servers/firewallRules@2021-11-01-preview' = if (buildResource) {
   name: firewallTitle
   parent: parentDatabaseServer
   properties: {
