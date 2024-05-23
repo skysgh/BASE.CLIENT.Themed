@@ -255,16 +255,16 @@ param sqlServerDbZoneRedundant bool = false
 // Resource bicep: ResourceGroup
 // ======================================================================
 
-//module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
-//   // pass parameters:
-//  name:  '${deployment().name}_resourceGroups_module'
-//  scope:subscription()
-//  params: {
-//    resourceName: resourceGroupName
-//    resourceLocationId: resourceGroupLocationId
-//    resourceTags: union(defaultResourceTags, resourceGroupTags)
-//  }
-// }
+module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
+   // pass parameters:
+  name:  '${deployment().name}_resourceGroups_module'
+  scope:subscription()
+  params: {
+    resourceName: resourceGroupName
+    resourceLocationId: resourceGroupLocationId
+    resourceTags: union(defaultResourceTags, resourceGroupTags)
+  }
+}
 
 // ======================================================================
 // Resource bicep: Server
