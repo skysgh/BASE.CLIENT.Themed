@@ -16,6 +16,9 @@ var sharedSettings = loadJsonContent('../../settings/shared.json')
 // instantiating (and associating to it) a 
 // server
 
+@description('Build the resoure. For testing, can be set to false').
+param buildResource bool = true
+
 @description('The name for the resource (serverFarms). IMPORTANT: Note that it may have one or more nested servers under it. ')
 param resourceName string
 
@@ -50,7 +53,7 @@ var useTags = union(resourceTags,sharedSettings.defaultTags)
 // ======================================================================
 // Resource bicep
 // ======================================================================
-resource resource 'Microsoft.Web/serverfarms@2022-09-01' = {
+resource resource 'Microsoft.Web/serverfarms@2022-09-01' = if (buildResource) {
   name: useName
   location: useLocation
   tags: useTags
