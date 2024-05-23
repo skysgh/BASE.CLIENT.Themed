@@ -54,6 +54,9 @@ var sharedSettings = loadJsonContent('../settings/shared.json')
 @description('Whether to build the ResourceGroup or not.')
 param buildResourceGroup bool = true
 
+@description('Build the resoure. For testing, can be set to false')
+param buildResource bool = true
+
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
