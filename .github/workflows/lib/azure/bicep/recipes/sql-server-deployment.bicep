@@ -23,13 +23,6 @@ var sharedSettings = loadJsonContent('../settings/shared.json')
 
 
 // ======================================================================
-// Flow Control
-// ======================================================================
-// Resources Groups are part of the general subscription
-@description('Whether to build the ResourceGroup or not.')
-param buildResourceGroup bool = true
-
-// ======================================================================
 // Parent Resource Group  
 // ======================================================================
 @description('The name of the resource group in which to create these resources. ')
@@ -163,7 +156,7 @@ module serversModule '../microsoft/sql/servers.bicep' = {
 
   params: {
     resourceName: sqlServerResourceName
-    resourceLocationId: useServerLocation
+    resourceLocationId: sqlServerResourceLocationId
     resourceTags: union(sqlServerResourceTags, defaultResourceTags)
 
     // resourceSKU:....
