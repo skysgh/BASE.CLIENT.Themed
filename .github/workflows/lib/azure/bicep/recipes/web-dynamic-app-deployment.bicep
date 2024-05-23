@@ -15,20 +15,21 @@ var sharedSettings = loadJsonContent('../settings/shared.json')
 // ======================================================================
 // Parent Resource Group  
 // ======================================================================
-@description('The name of the resource group in which to create resources. ')
+@description('The name of the resource group in which to create these resources. ')
+@minLength(3)
 param resourceGroupName string
 
 // ======================================================================
 // Default Settings  
 // ======================================================================
-@description('The location of resources. ')
-// @allowed(...too long...)
+@description('The default name of resources.')
+@minLength(3)
 param defaultResourceName string 
 
-@description('The location of resources. ')
-param defaultResourceNameSuffix string = '' 
+@description('The default suffix of resouces, appended to defaultResourceName.')
+param defaultResourceNameSuffix string = uniqueString(toLower(resourceGroupName)) 
 
-@description('The location of resources. ')
+@description('The default location of resources. ')
 // @allowed(...too long...)
 param defaultResourceLocationId string 
 
@@ -37,8 +38,8 @@ param defaultResourceTags object = {}
 // ======================================================================
 // Params: Server Farm 
 // ======================================================================
-@description('The name of the serverFarm to which site is deployed.')
-param serverfarmsResourceName string = toLower('${defaultResourceName}${defaultResourceNameSuffix}') 
+@description('The name of the serverFarm to which site is deployed. Required to be universally unique.')
+param serverfarmsResourceName string = toLower(defaultResourceName) 
 
 @description('The location of the serverFarm.')
 // @allowed(...too long...)
@@ -51,8 +52,8 @@ param serverFarmsServicePlanSKU string = 'D1'
 // ======================================================================
 // Params: Sites 
 // ======================================================================
-@description('The Name of the site on the server farm.')
-param sitesResourceName string = toLower('${defaultResourceName}${defaultResourceNameSuffix}')
+@description('The Name of the site on the server farm. Does not need to be universally unique.')
+param sitesResourceName string = toLower(defaultResourceName)
 
 @description('The location of the site. Default is same as server farm.')
 param sitesResourceLocationId string = serverfarmsResourceLocationId
@@ -79,10 +80,7 @@ param sourceControlsRepositorySourceLocation string = '/'
 // ======================================================================
 // Default Variables
 // ======================================================================
-var uniqueSuffix = uniqueString(resourceGroupName)
 var sourceCountrolsSetupFlag = startsWith(sitesRepositoryUrl, 'http')
-// Whatever is given, it's not relevant:
-var useSitesResourceName = '${sitesResourceName}-${uniqueSuffix}'
 // ======================================================================
 // Resource bicep: ServerFarm
 // ======================================================================
@@ -91,7 +89,7 @@ module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
   name:  '${deployment().name}_serverfarms_module'
   scope: resourceGroup(resourceGroupName) 
   params: {
-    resourceName               : serverFarmsResourceName
+    resourceName               : toLower('${serverFarmsResourceName}${defaultResourceNameSuffix}')
     resourceLocationId         : serverfarmsResourceLocationId
     resourceTags               : useTags
 
@@ -110,7 +108,7 @@ module sitesModule '../microsoft/web/sites.bicep' = {
     // Implicit dependence:
     parentResourceId           : serverFarmsModule.outputs.resourceId
 
-    resourceName               : useSitesResourceName
+    resourceName               : toLower(sitesResourceName)
     resourceLocationId         : sitesResourceLocationId
     resourceTags               : useTags
     // Specific:
