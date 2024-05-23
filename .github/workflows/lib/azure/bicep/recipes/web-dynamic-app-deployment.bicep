@@ -92,10 +92,8 @@ param webSitesSourceControlsRepositoryBranch string = 'main'
 @description('The folder within the repository that contains the source code of the service. Default is root (\'/\') - but often needs to be set to a sub folder (eg: \'src\').')
 param webSitesSourceControlsRepositorySourceLocation string = '/'
 // ======================================================================
-// CLEANUP & VARS
+// VARS
 // ======================================================================
-defaultResourceTags = union(defaultResourceTags,sharedSettings.defaultTags)
-
 var webSitesSourceCountrolsSetupFlag = startsWith(webSitesSourceControlsRepositoryUrl, 'http')
 // ======================================================================
 // Resource bicep: ServerFarm
@@ -107,7 +105,7 @@ module webServerFarmsModule '../microsoft/web/serverfarms.bicep' = {
   params: {
     resourceName               : toLower('${webServerFarmsResourceName}${defaultResourceNameSuffix}')
     resourceLocationId         : webServerFarmsResourceLocationId
-    resourceTags               : union(defaultResourceTags, webServerFarmsResourceTags)
+    resourceTags               : union(defaultResourceTags, sharedSettings.defaultTags, webServerFarmsResourceTags)
 
     resourceSKU                : webServerFarmsServicePlanSKU
   }
@@ -127,7 +125,7 @@ module webSitesModule '../microsoft/web/sites.bicep' = {
     //
     resourceName               : toLower(webSitesResourceName)
     resourceLocationId         : webSitesResourceLocationId
-    resourceTags               : union(defaultResourceTags, webSitesResourceTags)
+    resourceTags               : union(defaultResourceTags, sharedSettings.defaultTags, webSitesResourceTags)
     //
     linuxFxVersion             : webSitesLinuxFxVersion
   }
@@ -144,7 +142,7 @@ module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep
   params: {
     resourceName               : toLower(webSitesSourceControlsResourceName) //  sitesModule.outputs.resourceName      // Note: Same name as parent site:
     resourceLocationId         : webSitesSourceControlsResourceLocationId
-    resourceTags               : union(defaultResourceTags, webSitesSourceControlsResourceTags)
+    resourceTags               : union(defaultResourceTags, sharedSettings.defaultTags, webSitesSourceControlsResourceTags)
     //
     repositoryUrl              : webSitesSourceControlsRepositoryUrl
     repositoryToken            : webSitesSourceControlsRepositoryToken
