@@ -58,7 +58,6 @@ param isManualIntegration bool = true
 // Default Variables: useResourceName, useTags
 // ======================================================================
 var useName = '${resourceName}/web'
-var useLocation = 'n/a'
 var useTags = union(resourceTags,{})
 
 
