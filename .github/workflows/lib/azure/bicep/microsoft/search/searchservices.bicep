@@ -15,11 +15,14 @@ targetScope='resourceGroup'
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // ======================================================================
-// Default Name, Location, Tags,
+// Control Flags
 // ======================================================================
-@description('Build the resoure. For testing, can be set to false').
+@description('Build the resoure. For testing, can be set to false')
 param buildResource bool = true
 
+// ======================================================================
+// Default Name, Location, Tags,
+// ======================================================================
 @description('Service name must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and is limited between 2 and 60 characters in length.')
 @minLength(2)
 @maxLength(60)
