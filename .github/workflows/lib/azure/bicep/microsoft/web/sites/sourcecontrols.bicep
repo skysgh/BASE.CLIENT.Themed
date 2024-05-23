@@ -19,7 +19,7 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
 // Default Name, Location, Tags,
 // ======================================================================
 @description('the unique name of site.')
-param resourceName string = 
+param resourceName string
 
 @description('The id of the resource for the site. NOT USED.')
 // @allowed('') 
