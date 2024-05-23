@@ -13,10 +13,14 @@ targetScope='resourceGroup'
 var sharedSettings = loadJsonContent('../../settings/shared.json')
 
 // ======================================================================
+// Control Flags
+// ======================================================================
+@description('Build the resoure. For testing, can be set to false')
+param buildResource bool = true
+
+// ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
-@description('Build the resoure. For testing, can be set to false').
-param buildResource bool = true
 
 @description('Required. The name of the resource.Tip: usually there is only one resource, set the same as the project name, with only the name of the Resource Group being different per Environment.')
 param resourceName string
