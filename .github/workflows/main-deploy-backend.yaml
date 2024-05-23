@@ -37,7 +37,7 @@ jobs:
       # IMPORTANT:
 
       # PROJECT NAME which is basis of Azure resource names.
-      PROJECT_NAME: 'BASE'
+      PROJECT_NAME: 'BERK'
       PROJECT_SERVICE_NAME: 'SERVICE'
       # ENVIRONMANT INFO: it's either BT, DT, ST, UT, IT, TR, PP, PR
       PROJECT_ENV_ID: 'BT' # ${{vars.PROJECT_ENV_ID}}
@@ -87,9 +87,12 @@ jobs:
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           
           template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
-
+ 
+          # Consider: sqlServerDbResourxeLocationId: 'F1','D1','B1','B2','S1','S2'
+          # Consider: sqlServerDbResourceSKU: 'Basic', 'S0', 'S1', 'S2'
+          # 
           # Do NOT wrap values in single quotes (only double quotes if need be)
-          # do not inject blank lines.
+          # Do NOT inject blank lines.
           parameters: >
             buildResourceGroup=true
             projectName="${{ env.PROJECT_NAME }}"
@@ -97,7 +100,7 @@ jobs:
             environmentId="${{ env.PROJECT_ENV_ID}}"
             defaultResourceLocationId="australiacentral"
             webServerFarmsResourceLocationId="australiacentral"  
-            webServerFarmsResourceSKU="F1"
+            webServerFarmsResourceSKU="D1"
             webSitesLinuxFxVersion="DOTNETCORE|Latest"
             webSitesSourceControlsRepositoryUrl="https://todo"
             webSitesSourceControlsRepositoryBranch='main'
