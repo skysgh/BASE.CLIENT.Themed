@@ -271,7 +271,7 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (
 // Resource bicep: Server
 // ======================================================================
 
-module webSiteModule './web-dynamic-app-deploy.bicep' = {
+module webSiteModule './web-dynamic-app-deployment.bicep' = {
   dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_web_recipe_module'
   scope:subscription()
