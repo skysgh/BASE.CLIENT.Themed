@@ -98,7 +98,7 @@ jobs:
             serverfarmsResourceLocationId="australiacentral"  
             sitesResourceLocationId="australiacentral" 
             sourcecontrolsResourceLocationId="australiacentral"
-            webAppServicePlanSKU="F1"
+            webAppServicePlanSKU="D1"
             linuxFxVersion="DOTNETCORE|Latest"
             repositoryUrl="https://todo"
             repositoryBranch='main'
