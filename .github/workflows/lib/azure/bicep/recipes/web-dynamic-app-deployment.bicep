@@ -92,9 +92,11 @@ param webSitesSourceControlsRepositoryBranch string = 'main'
 @description('The folder within the repository that contains the source code of the service. Default is root (\'/\') - but often needs to be set to a sub folder (eg: \'src\').')
 param webSitesSourceControlsRepositorySourceLocation string = '/'
 // ======================================================================
-// Default Variables
+// CLEANUP & VARS
 // ======================================================================
-var webSitesSourceCountrolsSetupFlag = startsWith(webSitesSitesRepositoryUrl, 'http')
+defaultResourceTags = union(defaultResourceTags,sharedSettings.defaultTags)
+
+var webSitesSourceCountrolsSetupFlag = startsWith(webSitesSourceControlsRepositoryUrl, 'http')
 // ======================================================================
 // Resource bicep: ServerFarm
 // ======================================================================
@@ -127,13 +129,13 @@ module webSitesModule '../microsoft/web/sites.bicep' = {
     resourceLocationId         : webSitesResourceLocationId
     resourceTags               : union(defaultResourceTags, webSitesResourceTags)
     //
-    linuxFxVersion             : sitesLinuxFxVersion
+    linuxFxVersion             : webSitesLinuxFxVersion
   }
 }
 // ======================================================================
 // Resource bicep: Sites/SourceControls
 // ======================================================================
-module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (sourceCountrolsSetupFlag) {
+module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (webSitesSourceCountrolsSetupFlag) {
   dependsOn: [webSitesModule]
   name:  '${deployment().name}_sites_sourcecontrols_module'
   scope: resourceGroup(resourceGroupName) 
