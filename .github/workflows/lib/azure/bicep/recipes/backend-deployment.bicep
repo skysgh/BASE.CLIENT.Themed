@@ -91,7 +91,7 @@ param resourceGroupName string = replace(toUpper('${projectName}-${projectServic
 
 @description('The Location Id of the Resource Group.')
 //TooManyOptions @allowed([ 'australiacentral'])
-param resourceGroupLocationId string = defaultLocationId
+param resourceGroupLocationId string = defaultResourceLocationId
 
 @description('Tags to use if developing the Resource Group.')
 param resourceGroupTags object = defaultResourceTags
@@ -214,7 +214,7 @@ param sqlServerDbResourceTier string = (contains(['Basic', 'S0', 'S1', 'S2', 'S3
 @description('Time *in minutes* after which database is automatically paused. A value of -1 means that automatic pause is disabled. Default: 120 (2 hours).')
 param sqlServerDbAutoPauseDelay int = 120
 
-@description('Specifies the availability zone the database is pinned to.	Default is\'NoPreference\'')
+@description('Specifies the availability zone the database is pinned to.	Default is\'NoPreference\'.')
 @allowed(['1', '2', '3', 'NoPreference'])
 param sqlServerDbAvailabilityZone string = 'NoPreference'
 
@@ -223,11 +223,11 @@ param sqlServerDbAvailabilityZone string = 'NoPreference'
 param sqlServerDbFreeLimitExhaustionBehavior string = 'BillOverUsage'
 
 @description('	Collation of the metadata catalog.. Default is \'DATABASE_DEFAULT\' (which is by default \'SQL_Latin1_General_CP1_CI_AS\').')
-@allowed(['DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'])
+@allowed(['DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS', 'Latin1_General_CI_AS'])
 param sqlServerDbCatalogCollation string = 'DATABASE_DEFAULT'
 
-@description('	Collation of the metadata catalog.. Default is \'Latin1_General_CI_AS\'. (US is \'SQL_Latin1_General_CP1_CI_AS\', NZ-English is \'Latin1_General_CI_AS\', Maori is \'Latin1_General_CI_AI\').')
-@allowed(['SQL_Latin1_General_CP1_CI_AS'])
+@description('	Collation of the metadata catalog. Default is \'Latin1_General_CI_AS\'. (US is \'SQL_Latin1_General_CP1_CI_AS\', NZ-English is \'Latin1_General_CI_AS\', Maori is \'Latin1_General_CI_AI\').')
+@allowed(['SQL_Latin1_General_CP1_CI_AS', 'Latin1_General_CI_AS'])
 param sqlServerDbCollation string = 'Latin1_General_CI_AS'
 
 @description('Creation Mode.. Default is \'Default\'.')
