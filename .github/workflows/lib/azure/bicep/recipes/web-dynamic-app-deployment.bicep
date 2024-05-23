@@ -13,168 +13,133 @@ targetScope='subscription'
 var sharedSettings = loadJsonContent('../settings/shared.json')
 
 // ======================================================================
-// Default Name, Location, Tags,
+// Parent Resource Group  
 // ======================================================================
-// Resources Groups are part of the general subscription
-@description('The project name. This informs automation of naming of resource groups, services, etc. e.g.: \'BASE\'')
-@maxLength(11) // Limited by storageAccount name length (24) minus 13 chars for uniqueString(...)
-param projectName string
+@description('The name of the resource group in which to create resources. ')
+param resourceGroupName string
 
-@description('The project service name. Name used to build resources. e.g.: \'SERVICE\'')
-param projectServiceName string = 'SERVICE'
+// ======================================================================
+// Default Settings  
+// ======================================================================
+@description('The location of resources. ')
+// @allowed(...too long...)
+param defaultResourceName string 
 
-@allowed (['NP','BT', 'DT','ST','UT','IT','TR','PP','PR'])
-param environmentId string
-// ------------------------------------------------------------
-// ------------------------------------------------------------
+@description('The location of resources. ')
+param defaultResourceNameSuffix string = '' 
+
+@description('The location of resources. ')
+// @allowed(...too long...)
+param defaultResourceLocationId string 
+
 @description('The tags for this resource. ')
-param resourceTags object = {}
-
-
-// ------------------------------------------------------------
-// ------------------------------------------------------------
-@description('The location of the parent resource group. ')
-// @allowed(...too long...)
-param resourceLocationId string //NO:= resourceGroup().location
-
-@description('The location of the parent resource group. ')
-// @allowed(...too long...)
-//NO:= resourceGroup().location
-param groupResourceLocationId string = resourceLocationId 
+param defaultResourceTags object = {}
+// ======================================================================
+// Params: Server Farm 
+// ======================================================================
+@description('The name of the serverFarm to which site is deployed.')
+param serverfarmsResourceName string = toLower('${defaultResourceName}${defaultResourceNameSuffix}') 
 
 @description('The location of the serverFarm.')
 // @allowed(...too long...)
-//NO:= resourceGroup().location
-param serverfarmsResourceLocationId string  = groupResourceLocationId 
+param serverfarmsResourceLocationId string  = defaultResourceLocationId 
 
-@description('The location of the server within the serverfarm. ')
-// @allowed(...too long...)
-//NO:= resourceGroup().location
-param sitesResourceLocationId string = serverfarmsResourceLocationId 
-
-@description('The location of the server within the serverfarm. ')
-// @allowed(...too long...)
-//NO:= resourceGroup().location
-param sourcecontrolsResourceLocationId string = sitesResourceLocationId 
-// ======================================================================
-// Default SKU, Kind, Tier where applicable
-// ======================================================================
-
-@description('The app service plan SKU. F1,D1,B1,B2,S1,S2')
+@description('The web app service plan SKU. Options are: F1,D1,B1,B2,S1,S2. Default: D1 (as F1 can only be used once, and hence needs monitoring).')
 @allowed(['F1','D1','B1','B2','S1','S2'])
-param webAppServicePlanSKU string = 'F1'
-
-
+param serverFarmsServicePlanSKU string = 'D1'
 
 // ======================================================================
-// Resource other Params
+// Params: Sites 
 // ======================================================================
-@description('The Function eXtension to define the runtime stack. Consider using \'DOTNETCORE|Latest\'')
+@description('The Name of the site on the server farm.')
+param sitesResourceName string = toLower('${defaultResourceName}${defaultResourceNameSuffix}')
+
+@description('The location of the site. Default is same as server farm.')
+param sitesResourceLocationId string = serverfarmsResourceLocationId
+
+@description('The Function eXtension to define the runtime stack. Default is \'DOTNETCORE|Latest\' but best be specific to not get caught out if .net.core releases a version that you are in compatible with.')
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
-param linuxFxVersion string
+param sitesLinuxFxVersion string
 
-@description('The url to the repository to be deployed to the Server. ')
-param repositoryUrl string = ''
+// ======================================================================
+// Params: SourceControl
+// ======================================================================
+@description('The url to the repository to be deployed to the Server. Default is empty string (\'\'). ')
+param sourceControlsRepositoryUrl string = ''
 
-@description('The repositoryToken if repositoryUrl is set. ')
+@description('The repositoryToken if repositoryUrl is set. Default is empty string (\'\').')
 @secure()
-param repositoryToken string 
+param sourceControlsRepositoryToken string = ''
 
-@description('The branch of the repository to use. TODO: this should depend on what branch was checked in. Default = \'main\'.')
-param repositoryBranch string = 'main'
+@description('The branch of the repository to use. TODO: this should depend on what branch was checked in. Default is \'main\'.')
+param sourceControlsRepositoryBranch string = 'main'
 
-@description('The folder within the repository that contains the source code of the service. Default is root (\'/\').')
-param repositorySourceLocation string = '/'
-
-
-var setupSimpleDeployMethod = startsWith(repositoryUrl, 'http')
-
+@description('The folder within the repository that contains the source code of the service. Default is root (\'/\') - but often needs to be set to a sub folder (eg: \'src\').')
+param sourceControlsRepositorySourceLocation string = '/'
 // ======================================================================
-// Default Variables: useResourceName, useTags
+// Default Variables
 // ======================================================================
-var tmp = empty(projectServiceName) ? '_':'_${projectServiceName}_'
-var fullName = '${projectName}${tmp}${environmentId}' 
-var shortName = projectName
-//var uniqueSuffix = uniqueString(resourceGroup().id)
-var groupResourceName =  toUpper(sharedSettings.namingConventions.parentNameIsLonger ?  fullName : shortName)
-var parentResourceName = toLower(sharedSettings.namingConventions.parentNameIsLonger ? fullName : shortName)
-var childResourceName =  toLower(sharedSettings.namingConventions.parentNameIsLonger ? shortName : fullName)
-var defaultTags = {project: projectName, service: projectServiceName, environment: environmentId}
-var useTags = union(resourceTags, defaultTags)
-// ------------------------------------------------------------
-// 
-// ------------------------------------------------------------
-var uniqueSuffix = uniqueString(subscription().subscriptionId)
-// ------------------------------------------------------------
-
+var uniqueSuffix = uniqueString(resourceGroupName)
+var sourceCountrolsSetupFlag = startsWith(sitesRepositoryUrl, 'http')
+// Whatever is given, it's not relevant:
+var useSitesResourceName = '${sitesResourceName}-${uniqueSuffix}'
 // ======================================================================
-// Resource bicep
+// Resource bicep: ServerFarm
 // ======================================================================
-module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = {
-  name:  '${deployment().name}_resourcegroups_module'
-  scope: subscription()
-   // pass parameters:
-  params: {
-    resourceName: groupResourceName
-    resourceLocationId: groupResourceLocationId
-    resourceTags: useTags
-
-  }
-}
-// ------------------------------------------------------------
 
 module serverFarmsModule '../microsoft/web/serverfarms.bicep' = {
-  // should be implied: 
-  dependsOn: [resourceGroupsModule]
   name:  '${deployment().name}_serverfarms_module'
-  scope: resourceGroup(groupResourceName) 
+  scope: resourceGroup(resourceGroupName) 
   params: {
-    resourceName: parentResourceName
-    resourceLocationId: serverfarmsResourceLocationId
-    resourceTags: useTags
+    resourceName               : serverFarmsResourceName
+    resourceLocationId         : serverfarmsResourceLocationId
+    resourceTags               : useTags
 
-    webAppServicePlanSKU: webAppServicePlanSKU
+    resourceSKU                : serverFarmsServicePlanSKU
   }
 }
-// ------------------------------------------------------------
-
+// ======================================================================
+// Resource bicep: Sites
+// ======================================================================
 module sitesModule '../microsoft/web/sites.bicep' = {
-  // should be implied: 
-  dependsOn: [serverFarmsModule]
+  // depends on the 
   // pass parameters:
   name:  '${deployment().name}_sites_module'
-  scope: resourceGroup(groupResourceName) 
+  scope: resourceGroup(resourceGroupName) 
   params: {
-    parentResourceId: serverFarmsModule.outputs.resourceId
+    // Implicit dependence:
+    parentResourceId           : serverFarmsModule.outputs.resourceId
 
-    resourceName: '${childResourceName}-${uniqueSuffix}'
-
-    resourceLocationId: sitesResourceLocationId
-    resourceTags: useTags
-
-    linuxFxVersion: linuxFxVersion
+    resourceName               : useSitesResourceName
+    resourceLocationId         : sitesResourceLocationId
+    resourceTags               : useTags
+    // Specific:
+    linuxFxVersion             : sitesLinuxFxVersion
   }
 }
-// ------------------------------------------------------------
-
-module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (setupSimpleDeployMethod) {
+// ======================================================================
+// Resource bicep: Sites/SourceControls
+// ======================================================================
+module srcControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (sourceCountrolsSetupFlag) {
   dependsOn: [sitesModule]
   name:  '${deployment().name}_sites_sourcecontrols_module'
-  scope: resourceGroup(groupResourceName) 
+  scope: resourceGroup(resourceGroupName) 
   // child resources don't use 'scope', they use 'parent':
   // parent: sitesModule  
   params: {
-    resourceName:  sitesModule.outputs.resourceName // '/web'
-    resourceLocationId: sourcecontrolsResourceLocationId
-    resourceTags: useTags
+    // Same name as parent site:
+    resourceName               : useSitesResourceName //  sitesModule.outputs.resourceName 
+    resourceLocationId         : sourceControlsResourceLocationId
+    resourceTags               : useTags
 
-    repositoryUrl: repositoryUrl
-    repositoryToken: repositoryToken
-    repositoryBranch: repositoryBranch
-    repositorySourceLocation: repositorySourceLocation
+    // No SKU or similar
+
+    repositoryUrl              : sourceControlsRepositoryUrl
+    repositoryToken            : sourceControlsRepositoryToken
+    repositoryBranch           : sourceControlsRepositoryBranch
+    repositorySourceLocation   : sourceControlsRepositorySourceLocation
   }
 }
-// ------------------------------------------------------------
 
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
