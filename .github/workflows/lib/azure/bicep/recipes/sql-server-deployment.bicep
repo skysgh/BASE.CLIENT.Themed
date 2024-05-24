@@ -200,25 +200,25 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
     // Refer to parent website so it can build resource name without use of parent property.
     parentResourceName: tmpsqlServerResourceName
 
-    resourceName: tmpsqlServerDbResourceName
+    resourceName:       tmpsqlServerDbResourceName
     resourceLocationId: sqlServerDbResourceLocationId
-    resourceTags: union(sharedSettings.defaultTags, defaultResourceTags, sqlServerDbResourceTags)
+    resourceTags:       union(sharedSettings.defaultTags, defaultResourceTags, sqlServerDbResourceTags)
     
-    resourceSKU: sqlServerDbResourceSKU
-    //resourceTier: sqlServerDbResourceTier
+    resourceSKU:        sqlServerDbResourceSKU
+    //resourceTier:     sqlServerDbResourceTier
 
-    autoPauseDelay: sqlServerDbAutoPauseDelay
+    autoPauseDelay:     sqlServerDbAutoPauseDelay
 
-    maxSizeBytes = sqlServerDbmaxSizeBytes
+    maxSizeBytes:       sqlServerDbmaxSizeBytes
 //    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
-//    availabilityZone: sqlServerDbAvailabilityZone
-//    catalogCollation: sqlServerDbCatalogCollation
-//    collation: sqlServerDbCollation
-//    createMode: sqlServerDbCreateMode
-//    isLedgerOn: sqlServerDbIsLedgerOn
-//    sampleName: sqlServerDbSampleName
-//    //useFreeLimit: sqlServerDbUseFreeLimit
-//    zoneRedundant: sqlServerDbZoneRedundant
+//    availabilityZone:   sqlServerDbAvailabilityZone
+//    catalogCollation:   sqlServerDbCatalogCollation
+//    collation:          sqlServerDbCollation
+//    createMode:         sqlServerDbCreateMode
+//    isLedgerOn:         sqlServerDbIsLedgerOn
+//    sampleName:         sqlServerDbSampleName
+//    //useFreeLimit:     sqlServerDbUseFreeLimit
+//    zoneRedundant:      sqlServerDbZoneRedundant
   }
 }
 
