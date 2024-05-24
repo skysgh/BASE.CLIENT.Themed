@@ -94,6 +94,11 @@ param useFreeLimit bool = false
 @description('Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones. Default: false')
 param zoneRedundant bool = false
 
+@description('Max size of database. Default: 1073741824 bytes (ie 1Gb - which is acceptable for a startup at the beginning but note that it is *small* for relatively production purposes.)')
+param maxSizeBytes int = 1073741824
+
+
+
 // ======================================================================
 // Default Variables: useResourceName, useTags
 // ======================================================================
@@ -141,9 +146,10 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = i
     // collation: collation
     // catalogCollation: catalogCollation
 
-    // isLedgerOn: isLedgerOn     // Develop History tables permitting rollback
+    isLedgerOn: isLedgerOn     // Develop History tables permitting rollback
     //sampleName: sampleName     // If we are building a sample DB
-
+    
+    maxSizeBytes
 
     // elasticPoolId: 'string'
     // encryptionProtector: 'string'
@@ -157,7 +163,8 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = i
     // longTermRetentionBackupResourceId: 'string'
     // maintenanceConfigurationId: 'string'
     // manualCutover: bool
-    // maxSizeBytes: int
+    
+x    
     // minCapacity: json('decimal-as-string')
     // performCutover: bool
     // preferredEnclaveType: 'string'
