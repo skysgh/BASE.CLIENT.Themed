@@ -164,7 +164,6 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = i
     // maintenanceConfigurationId: 'string'
     // manualCutover: bool
     
-x    
     // minCapacity: json('decimal-as-string')
     // performCutover: bool
     // preferredEnclaveType: 'string'
