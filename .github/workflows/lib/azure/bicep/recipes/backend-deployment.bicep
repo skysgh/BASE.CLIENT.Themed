@@ -274,7 +274,7 @@ param sqlServerDbMaxSizeBytes int = 1073741824
 // Resource bicep: LOGIC ResourceGroup
 // ======================================================================
 
-module logicResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
+module logicResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (false) {
    // pass parameters:
   name:  '${deployment().name}-rg-logic'
   scope:subscription()
@@ -328,7 +328,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = if (false) {
 // Resource bicep: DATA ResourceGroup
 // ======================================================================
 
-module dataResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
+module dataResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (false) {
    // pass parameters:
   name:  '${deployment().name}-rg-data'
   scope:subscription()
