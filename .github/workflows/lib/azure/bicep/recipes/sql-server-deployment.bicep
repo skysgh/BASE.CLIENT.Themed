@@ -150,6 +150,10 @@ param sqlServerDbUseFreeLimit bool = false
 @description('Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones. Default: false')
 param sqlServerDbZoneRedundant bool = false
 
+@description('Max size of database. Default: 1073741824 bytes (ie 1Gb - which is acceptable for a startup at the beginning but note that it is *small* for relatively production purposes.)')
+param sqlServerMaxSizeBytes int = 1073741824
+
+
 // ======================================================================
 // CLEANUP
 // ======================================================================
@@ -205,6 +209,7 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 
     autoPauseDelay: sqlServerDbAutoPauseDelay
 
+    maxSizeBytes = sqlServerDbmaxSizeBytes
 //    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
 //    availabilityZone: sqlServerDbAvailabilityZone
 //    catalogCollation: sqlServerDbCatalogCollation
