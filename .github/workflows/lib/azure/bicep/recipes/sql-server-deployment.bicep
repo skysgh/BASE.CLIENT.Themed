@@ -163,12 +163,12 @@ var tmpsqlServerDbResourceName = toLower( replace(sqlServerDbResourceName ,'_','
 // ======================================================================
 module serversModule '../microsoft/sql/servers.bicep' = if (buildResource) {
   scope: resourceGroup(resourceGroupName)
-  name:  '${deployment().name}_servers_module'
+  name:  '${deployment().name}_sql_servers_module'
 
   params: {
     resourceName: tmpsqlServerResourceName
     resourceLocationId: sqlServerResourceLocationId
-    resourceTags: union(sqlServerResourceTags, defaultResourceTags)
+    resourceTags: union(sharedSettings.defaultTags, defaultResourceTags, sqlServerResourceTags)
 
     // resourceSKU:....
     // resourceTier:....
@@ -186,11 +186,11 @@ module serversModule '../microsoft/sql/servers.bicep' = if (buildResource) {
 // ======================================================================
 // Resource bicep: Sql Server DB
 // ======================================================================
-module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = if (buildResource) {
+module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if (buildResource) {
   // should be implied: 
   dependsOn: [serversModule]
   scope: resourceGroup(resourceGroupName)
-  name:  '${deployment().name}_servers_databases_module'
+  name:  '${deployment().name}_sql_db_module'
 
   params: {
     // Refer to parent website so it can build resource name without use of parent property.
@@ -198,7 +198,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = if (b
 
     resourceName: tmpsqlServerDbResourceName
     resourceLocationId: sqlServerDbResourceLocationId
-    resourceTags: union(sqlServerDbResourceTags, defaultResourceTags)
+    resourceTags: union(sharedSettings.defaultTags, defaultResourceTags, sqlServerDbResourceTags)
     
     resourceSKU: sqlServerDbResourceSKU
     //resourceTier: sqlServerDbResourceTier
