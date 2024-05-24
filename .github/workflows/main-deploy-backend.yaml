@@ -22,7 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: NP
     env:
-      FOO: BAR
       # ======================================================================
       # FIXED (CONTEXT):
       # ======================================================================
@@ -96,20 +95,20 @@ jobs:
           
           parameters: >
             buildResourceGroup=true
-            projectName="${{ env.PROJECT_NAME }}"
-            projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
+            projectName="${{ vars.PROJECT_NAME }}"
+            projectServiceName="${{ vars.PROJECT_SERVICE_NAME }}"
             environmentId="NP"
-            defaultResourceLocationId="${{env.AZURE_LOCATION_ID_2}}"
-            logicResourceGroupLocationId="${{env.AZURE_LOCATION_ID_2}}"
-            webServerFarmsResourceLocationId="${{env.AZURE_LOCATION_ID_2}}"  
+            defaultResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
+            logicResourceGroupLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
+            webServerFarmsResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"  
             webServerFarmsResourceSKU="S1"
             webSitesLinuxFxVersion="DOTNETCORE|Latest"
             webSitesSourceControlsRepositoryUrl="https://todo"
             webSitesSourceControlsRepositoryBranch='main'
             webSitesSourceControlsRepositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             webSitesSourceControlsRepositorySourceLocation="/"
-            dataResourceGroupLocationId="${{env.AZURE_LOCATION_ID_2}}"
-            sqlServerResourceLocationId="${{env.AZURE_LOCATION_ID_2}}"
+            dataResourceGroupLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
+            sqlServerResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
             sqlServerMinimalTlsVersion="1.2"
             sqlServerIdentityType="None"
             sqlServerAdminUserName="${{secrets.DB_ADMIN_NAME}}"
