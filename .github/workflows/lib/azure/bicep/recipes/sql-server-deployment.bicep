@@ -163,7 +163,7 @@ var tmpsqlServerDbResourceName = toLower( replace(sqlServerDbResourceName ,'_','
 // ======================================================================
 module serversModule '../microsoft/sql/servers.bicep' = if (buildResource) {
   scope: resourceGroup(resourceGroupName)
-  name:  '${deployment().name}_sql_servers_module'
+  name:  '${deployment().name}-sql-servers'
 
   params: {
     resourceName: tmpsqlServerResourceName
@@ -190,7 +190,7 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
   // should be implied: 
   dependsOn: [serversModule]
   scope: resourceGroup(resourceGroupName)
-  name:  '${deployment().name}_sql_db_module'
+  name:  '${deployment().name}-sql-db'
 
   params: {
     // Refer to parent website so it can build resource name without use of parent property.
