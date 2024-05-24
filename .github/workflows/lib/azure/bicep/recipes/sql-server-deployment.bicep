@@ -151,7 +151,7 @@ param sqlServerDbUseFreeLimit bool = false
 param sqlServerDbZoneRedundant bool = false
 
 @description('Max size of database. Default: 1073741824 bytes (ie 1Gb - which is acceptable for a startup at the beginning but note that it is *small* for relatively production purposes.)')
-param sqlServerMaxSizeBytes int = 1073741824
+param sqlServerDbMaxSizeBytes int = 1073741824
 
 
 // ======================================================================
