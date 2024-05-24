@@ -16,7 +16,6 @@ env:
   MAIN_BICEP_FILENAME: 'backend-deployment.bicep'
 
 
-
 # Running on one runner:      
 jobs:
   deploy:
