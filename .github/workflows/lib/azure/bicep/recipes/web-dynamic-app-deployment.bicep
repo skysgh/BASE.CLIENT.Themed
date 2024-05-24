@@ -105,7 +105,7 @@ param webSitesSourceControlsRepositorySourceLocation string = '/'
 // ======================================================================
 // VARS
 // ======================================================================
-var webSitesSourceCountrolsSetupFlag = startsWith(webSitesSourceControlsRepositoryUrl, 'http')
+var webSitesSourceCountrolsSetupFlag = false && startsWith(webSitesSourceControlsRepositoryUrl, 'http')
 // ======================================================================
 // Resource bicep: ServerFarm
 // ======================================================================
