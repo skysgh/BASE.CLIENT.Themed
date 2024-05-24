@@ -19,39 +19,25 @@ param buildResource bool = true
 // Default Name, Location, Tags,
 // ======================================================================
 @description('Required. The name of the resource Group.')
-param resourceName string
+param resourceGroupName string
 
 @description('The lowercase identifier of where to build the resource Group. Default is \'australiacentral\'.')
 // will allow more later.
 // Too many options: @allowed([ 'australiacentral'])
-param resourceLocationId string
+param resourceGroupLocationId string
 
 @description('Tags to merge in.')
-param resourceTags object = {}
+param resourceGroupTags object = {}
 
-// ======================================================================
-// Default SKU, Kind, Tier where applicable
-// ======================================================================
-
-// ======================================================================
-// Resource other Params
-// ======================================================================
-
-// ======================================================================
-// Default Variables: useResourceName, useTags
-// ======================================================================
-var useName = resourceName
-var useLocation = resourceLocationId
-var useTags = union(resourceTags,sharedSettings.defaultTags)
 
 // ======================================================================
 // Resource bicep
 // ======================================================================
 // Creating new resource groups take a little bit of time
 resource resource 'Microsoft.Resources/resourceGroups@2022-09-01' = if (buildResource) {
-  name: useName
-  location: useLocation
-  tags: useTags
+  name: resourceGroupName
+  location: resourceGroupLocationId
+  tags: union(sharedSettings.defaultTags,resourceGroupTags)
 }
 
 // ======================================================================
