@@ -5,7 +5,41 @@
 // not trying to solve it in an older lan based way.
 
 // ======================================================================
-// Description
+// Background
+// ======================================================================
+// It's important to know the following impacts design:
+// Naming:
+// - impacted by:
+//   https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules
+// - Resource Groups: maxLength:90.Most chars ok.
+// - Sql Server: names must be globally unique.
+//   whereas Sql Server Database names do not. 
+// - Web Server: farm names are not required to be globally unique
+//   whereas names of Web Sites on them must be globally unique. 
+// - StorageAccounts: must be globally unique, can only be 24 chars long. 
+//   which with a uniquestring (13 chars) means only 11 chars prefix ok.
+// - most names are max 50, lowercase, alphanumeric, and hyphens. 
+//   but limited by storageAccount (no hyphens, max 24),
+//   unless blockchainMembers (20) or cloudservice (15).
+// = HENCE:
+// - Resource Group names are uppercase (PROJNAME-ENV-PROJTIER-SERVICE)
+// - Resource names are all made lowercase (PROJNAME), 
+//   suffixed with uniqueString(RESOURCEGROUP)
+//
+// Design:
+// - Taking advantage of *managed* resources, 
+     And with no requirement for dedicated machines, scaling, vnets.
+//   (Otherwise ,why bother with hosting in the cloud?)
+//   It also lowers cost.
+//   But it does put the security onus on the code being secure in its
+//   own right, rather than relying on hardware (WAF).
+//   That means that, for one, checkins must be protected by code branch
+//   protection that checks code before merging.
+//   It's more work upfront, but less cost over the service lifespan.
+//   The decision of course depends on the talent you have available.
+// 
+// ======================================================================
+// Contents
 // ======================================================================
 // Deployment KeyVault.
 // Runtime KeyVault.
@@ -16,7 +50,7 @@
 // Sql Server Db 
 // Storage account
 // Sql Storage Backup
-
+//
 // ======================================================================
 // Dependencies
 // ======================================================================
@@ -61,7 +95,7 @@ param buildResource bool = true
 // Default Name, Location, Tags,
 // ======================================================================
 // Resources Groups are part of the general subscription
-@description('The name used to build resources. e.g.: \'BASE\'')
+@description('The name used to build resources. e.g.: \'BASE\'. maxLength 11 as limited by StorageAccount names of 24 chars, minus 13 for uniquestring.')
 @maxLength(11) // Limited by storageAccount name length (24) minus 13 chars for uniqueString(...)
 param projectName string
 
@@ -89,7 +123,7 @@ param defaultResourceTags object = {} // { project: projectName, service: projec
 // Params: LOGIC Resource Group Specific (Only IF built here)
 // ======================================================================
 @description('The upper case Name of the Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
-param logicResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-LOGIC-${environmentId}'),'--','-')
+param logicResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-${environmentId}-LOGIC'),'--','-')
 
 @description('The Location Id of the Resource Group.')
 //TooManyOptions @allowed(['australiacentral'])
@@ -102,7 +136,7 @@ param logicResourceGroupTags object = defaultResourceTags
 // Params: DATA Resource Group Specific (Only IF built here)
 // ======================================================================
 @description('The upper case Name of the Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
-param dataResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-DATA-${environmentId}'),'--','-')
+param dataResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-${environmentId}-DATA'),'--','-')
 
 @description('The Location Id of the Resource Group.')
 //TooManyOptions @allowed(['australiacentral'])
