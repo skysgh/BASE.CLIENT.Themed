@@ -226,4 +226,4 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${buildResourceGroup}-${sqlServerDbResourceSKU}-${sqlServerDbResourceTier}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${buildResourceGroup}-${sqlServerDbResourceSKU}-${sqlServerDbResourceTier}-${sqlServerDbUseFreeLimit}', '.')
