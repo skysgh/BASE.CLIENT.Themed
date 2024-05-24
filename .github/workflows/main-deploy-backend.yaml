@@ -16,6 +16,7 @@ env:
   MAIN_BICEP_FILENAME: 'backend-deployment.bicep'
 
 
+
 # Running on one runner:      
 jobs:
   deploy:
@@ -91,11 +92,14 @@ jobs:
           # 
           # Do NOT wrap values in single quotes (only double quotes if need be)
           # Do NOT inject blank lines.
+
+          # "${{ env.PROJECT_ENV_ID}}"
+          
           parameters: >
             buildResourceGroup=true
             projectName="${{ env.PROJECT_NAME }}"
             projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
-            environmentId="${{ env.PROJECT_ENV_ID}}"
+            environmentId="NP"
             defaultResourceLocationId="australiacentral"
             webServerFarmsResourceLocationId="australiacentral"  
             webServerFarmsResourceSKU="S1"
