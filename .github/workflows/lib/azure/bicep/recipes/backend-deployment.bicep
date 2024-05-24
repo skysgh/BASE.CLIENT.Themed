@@ -263,9 +263,9 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (
   name:  '${deployment().name}-rg'
   scope:subscription()
   params: {
-    resourceName: resourceGroupName
-    resourceLocationId: resourceGroupLocationId
-    resourceTags: union(resourceGroupTags, defaultResourceTags, sharedSettings.defaultTags)
+    resourceGroupName: resourceGroupName
+    resourceGroupLocationId: resourceGroupLocationId
+    resourceGroupTags: union(resourceGroupTags, defaultResourceTags, sharedSettings.defaultTags)
   }
 }
 
