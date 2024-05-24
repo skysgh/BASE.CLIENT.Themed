@@ -86,7 +86,7 @@ jobs:
         uses: azure/arm-deploy@v1
         with:
           scope: subscription
-          region: ${{ vars.AZURE_LOCATION_1_ID }}
+          region: ${{ vars.AZURE_LOCATION_ID_1 }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           
           template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
