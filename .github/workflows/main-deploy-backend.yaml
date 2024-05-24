@@ -114,7 +114,7 @@ jobs:
             sqlServerAdminUserName="${{secrets.DB_ADMIN_NAME}}"
             sqlServerAdminPassword="${{secrets.DB_ADMIN_PWD}}"
             sqlServerDbResourceLocationId="australiacentral"
-            sqlServerDbResourceSKU="S0"
+            sqlServerDbResourceSKU="S1"
             sqlServerDbResourceTier="Standard"
             sqlServerDbAvailabilityZone="NoPreference"
             sqlServerDbZoneRedundant=false
