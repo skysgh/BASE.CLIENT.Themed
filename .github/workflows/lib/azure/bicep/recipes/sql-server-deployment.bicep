@@ -205,15 +205,15 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 
     autoPauseDelay: sqlServerDbAutoPauseDelay
 
-    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
-    availabilityZone: sqlServerDbAvailabilityZone
-    catalogCollation: sqlServerDbCatalogCollation
-    collation: sqlServerDbCollation
-    createMode: sqlServerDbCreateMode
-    isLedgerOn: sqlServerDbIsLedgerOn
-    sampleName: sqlServerDbSampleName
-    //useFreeLimit: sqlServerDbUseFreeLimit
-    zoneRedundant: sqlServerDbZoneRedundant
+//    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
+//    availabilityZone: sqlServerDbAvailabilityZone
+//    catalogCollation: sqlServerDbCatalogCollation
+//    collation: sqlServerDbCollation
+//    createMode: sqlServerDbCreateMode
+//    isLedgerOn: sqlServerDbIsLedgerOn
+//    sampleName: sqlServerDbSampleName
+//    //useFreeLimit: sqlServerDbUseFreeLimit
+//    zoneRedundant: sqlServerDbZoneRedundant
   }
 }
 
@@ -226,4 +226,4 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${buildResourceGroup}-${sqlServerDbResourceSKU}-${sqlServerDbResourceTier}-${sqlServerDbUseFreeLimit}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${buildResourceGroup}-${sqlServerDbResourceSKU}-${sqlServerDbResourceTier}-${sqlServerDbUseFreeLimit}-${sqlServerDbFreeLimitExhaustionBehavior}-${sqlServerDbAvailabilityZone}-${ sqlServerDbCatalogCollation}-${sqlServerDbCollation}-${sqlServerDbCreateMode}-${sqlServerDbIsLedgerOn}-${sqlServerDbSampleName}-${sqlServerDbZoneRedundant}-${sqlServerDbAutoPauseDelay}', '.')
