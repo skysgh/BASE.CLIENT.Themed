@@ -37,7 +37,7 @@ jobs:
       # IMPORTANT:
 
       # PROJECT NAME which is basis of Azure resource names.
-      PROJECT_NAME: 'FUNK'
+      PROJECT_NAME: 'BASE'
       # Angular Code Name (affects where code ends up in dist/xxx)
       # ======================================================================
 
