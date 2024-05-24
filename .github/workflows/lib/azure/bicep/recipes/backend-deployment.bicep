@@ -315,7 +315,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = if (buildResource) {
 
 module sqlServerModule './sql-server-deployment.bicep' = if (buildResource) {
   dependsOn: [webSiteModule]
-  name:  '${deployment().name}_sql_recipe_module'
+  name:  '${deployment().name}_rdms_recipe_module'
   scope:subscription()
   params: {
     // -----
