@@ -260,7 +260,7 @@ param sqlServerDbZoneRedundant bool = false
 
 module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
    // pass parameters:
-  name:  '${deployment().name}_resourceGroups_module'
+  name:  '${deployment().name}_rg_module'
   scope:subscription()
   params: {
     resourceName: resourceGroupName
@@ -315,7 +315,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = if (buildResource) {
 
 module sqlServerModule './sql-server-deployment.bicep' = if (buildResource) {
   dependsOn: [webSiteModule]
-  name:  '${deployment().name}_storage-sql-server_module'
+  name:  '${deployment().name}_sql_recipe_module'
   scope:subscription()
   params: {
     // -----
