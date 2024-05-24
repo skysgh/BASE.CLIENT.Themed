@@ -209,7 +209,7 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 
     autoPauseDelay:     sqlServerDbAutoPauseDelay
 
-    maxSizeBytes:       sqlServerDbmaxSizeBytes
+    maxSizeBytes:       sqlServerDbMaxSizeBytes
 //    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
 //    availabilityZone:   sqlServerDbAvailabilityZone
 //    catalogCollation:   sqlServerDbCatalogCollation
