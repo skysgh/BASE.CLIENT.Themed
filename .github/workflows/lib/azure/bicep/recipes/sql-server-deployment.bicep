@@ -155,7 +155,7 @@ param sqlServerDbZoneRedundant bool = false
 // ======================================================================
 
 // Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
-var tmpsqlServerResourceName = toLower( replace('${sqlServerResourceName}-${defaultResourceNameSuffix}', '_', '-') )
+var tmpsqlServerResourceName = toLower( replace('${sqlServerResourceName}${defaultResourceNameSuffix}', '_', '-') )
 var tmpsqlServerDbResourceName = toLower( replace(sqlServerDbResourceName ,'_','-') )
 
 // ======================================================================
@@ -201,7 +201,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = if (b
     resourceTags: union(sqlServerDbResourceTags, defaultResourceTags)
     
     resourceSKU: sqlServerDbResourceSKU
-    resourceTier: sqlServerDbResourceTier
+    //resourceTier: sqlServerDbResourceTier
 
     autoPauseDelay: sqlServerDbAutoPauseDelay
 
@@ -212,7 +212,7 @@ module serversDatabasesModule '../microsoft/sql/servers/databases.bicep' = if (b
     createMode: sqlServerDbCreateMode
     isLedgerOn: sqlServerDbIsLedgerOn
     sampleName: sqlServerDbSampleName
-    useFreeLimit: sqlServerDbUseFreeLimit
+    //useFreeLimit: sqlServerDbUseFreeLimit
     zoneRedundant: sqlServerDbZoneRedundant
   }
 }
