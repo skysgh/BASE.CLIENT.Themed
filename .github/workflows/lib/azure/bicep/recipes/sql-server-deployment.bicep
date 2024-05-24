@@ -212,10 +212,11 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
     maxSizeBytes:       sqlServerDbMaxSizeBytes
 //    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
 //    availabilityZone:   sqlServerDbAvailabilityZone
-//    catalogCollation:   sqlServerDbCatalogCollation
-//    collation:          sqlServerDbCollation
-//    createMode:         sqlServerDbCreateMode
-//    isLedgerOn:         sqlServerDbIsLedgerOn
+    catalogCollation:   sqlServerDbCatalogCollation
+    collation:          sqlServerDbCollation
+    createMode:         sqlServerDbCreateMode
+    isLedgerOn:         sqlServerDbIsLedgerOn
+
 //    sampleName:         sqlServerDbSampleName
 //    //useFreeLimit:     sqlServerDbUseFreeLimit
 //    zoneRedundant:      sqlServerDbZoneRedundant
