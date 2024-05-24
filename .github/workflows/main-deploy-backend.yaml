@@ -120,7 +120,7 @@ jobs:
             sqlServerIdentityType="None"
             sqlServerAdminUserName="${{secrets.DB_ADMIN_NAME}}"
             sqlServerAdminPassword="${{secrets.DB_ADMIN_PWD}}"
-            sqlServerDbResourceName="SysDb"
+            sqlServerDbResourceName="Default"
             sqlServerDbResourceLocationId="australiacentral"
             sqlServerDbResourceSKU="S1"
             sqlServerDbResourceTier="Standard"
@@ -134,17 +134,9 @@ jobs:
             sqlServerDbCreateMode="Default"
             sqlServerDbCollation="SQL_Latin1_General_CP1_CI_AS"
             sqlServerDbCatalogCollation="DATABASE_DEFAULT"
-            sqlServerDbResourceName="Default"
             
           # Removed
-          #  serverfarmsResourceLocationId="australiacentral"  
-          #  sitesResourceLocationId="australiacentral" 
-          #  sourcecontrolsResourceLocationId="australiacentral"
-          #  webAppServicePlanSKU="F1"
-          #  linuxFxVersion="DOTNETCORE|Latest"
-          #  repositoryUrl="https://todo"
-          #  repositoryBranch='main'
           #  repositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
-          #  repositorySourceLocation="/"
+
           failOnStdErr: false
           
