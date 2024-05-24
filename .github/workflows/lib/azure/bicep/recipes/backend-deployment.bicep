@@ -274,7 +274,7 @@ param sqlServerDbMaxSizeBytes int = 1073741824
 // Resource bicep: LOGIC ResourceGroup
 // ======================================================================
 
-module logicResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (false) {
+module logicResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (builResourceGroup) {
    // pass parameters:
   name:  '${deployment().name}-rg-logic'
   scope:subscription()
@@ -289,7 +289,7 @@ module logicResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' =
 // Resource bicep: Server
 // ======================================================================
 
-module webSiteModule './web-dynamic-app-deployment.bicep' = if (false) {
+module webSiteModule './web-dynamic-app-deployment.bicep' = if (builResource) {
   dependsOn: [logicResourceGroupsModule]
   name:  '${deployment().name}-web-recipe'
   scope:subscription()
@@ -328,7 +328,7 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = if (false) {
 // Resource bicep: DATA ResourceGroup
 // ======================================================================
 
-module dataResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (false) {
+module dataResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (builResourceGroup) {
    // pass parameters:
   name:  '${deployment().name}-rg-data'
   scope:subscription()
@@ -343,7 +343,7 @@ module dataResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = 
 // Resource bicep: Server
 // ======================================================================
 
-module sqlServerModule './sql-server-deployment.bicep' = if (false) {
+module sqlServerModule './sql-server-deployment.bicep' = if (builResource) {
   dependsOn: [dataResourceGroupsModule, webSiteModule]
   name:  '${deployment().name}-rdms-recipe'
   scope:subscription()
