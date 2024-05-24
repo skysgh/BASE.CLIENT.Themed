@@ -169,4 +169,4 @@ output resource object = webSitesModule.outputs.resource
 output resourceId string = webSitesModule.outputs.resourceId
 output resourceName string = webSitesModule.outputs.resourceName
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}=${defaultResourceLocationId}', '.')
+output _ bool = startsWith('${sharedSettings.version}=${defaultResourceLocationId}-${buildResourceGroup}', '.')
