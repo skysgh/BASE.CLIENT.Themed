@@ -100,8 +100,7 @@ jobs:
             projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
             environmentId="NP"
             defaultResourceLocationId="${{env.AZURE_LOCATION_ID_2}}"
-            serviceResourceGroupName
-            serviceResourceGroupLocationId=="${{env.AZURE_LOCATION_ID_2}}"
+            logicResourceGroupLocationId="${{env.AZURE_LOCATION_ID_2}}"
             webServerFarmsResourceLocationId="${{env.AZURE_LOCATION_ID_2}}"  
             webServerFarmsResourceSKU="S1"
             webSitesLinuxFxVersion="DOTNETCORE|Latest"
@@ -109,7 +108,7 @@ jobs:
             webSitesSourceControlsRepositoryBranch='main'
             webSitesSourceControlsRepositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             webSitesSourceControlsRepositorySourceLocation="/"
-            dataResourceGroupLocationId=="${{env.AZURE_LOCATION_ID_2}}"
+            dataResourceGroupLocationId="${{env.AZURE_LOCATION_ID_2}}"
             sqlServerResourceLocationId="${{env.AZURE_LOCATION_ID_2}}"
             sqlServerMinimalTlsVersion="1.2"
             sqlServerIdentityType="None"
