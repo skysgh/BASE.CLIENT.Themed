@@ -45,7 +45,14 @@ jobs:
       - name: "Summarise Context Before Starting"
         run: |
           echo "::group::Misc"
-          echo "{{$env.BAR}}"
+          echo "${{env.PROJECT_NAME}}"
+          echo "${{env.PROJECT_SERVICE_NAME}}"
+          echo "${{vars.PROJECT_NAME}}"
+          echo "${{vars.PROJECT_SERVICE_NAME}}"
+          echo "${{vars.AZURE_LOCATION_ID_0}}"
+          echo "${{vars.AZURE_LOCATION_ID_1}}"
+          echo "${{vars.AZURE_LOCATION_ID_2}}"
+          echo "${{vars.AZURE_LOCATION_ID_3}}"
           echo "::endgroup::"
 
       # ==================================================
