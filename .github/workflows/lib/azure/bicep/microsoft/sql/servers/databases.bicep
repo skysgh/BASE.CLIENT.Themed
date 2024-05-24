@@ -149,7 +149,7 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = i
     isLedgerOn: isLedgerOn     // Develop History tables permitting rollback
     //sampleName: sampleName     // If we are building a sample DB
     
-    maxSizeBytes
+    maxSizeBytes: maxSizeBytes 
 
     // elasticPoolId: 'string'
     // encryptionProtector: 'string'
