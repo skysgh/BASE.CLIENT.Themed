@@ -28,7 +28,7 @@
 //
 // Design:
 // - Taking advantage of *managed* resources, 
-     And with no requirement for dedicated machines, scaling, vnets.
+//   And with no requirement for dedicated machines, scaling, vnets.
 //   (Otherwise ,why bother with hosting in the cloud?)
 //   It also lowers cost.
 //   But it does put the security onus on the code being secure in its
