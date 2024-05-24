@@ -86,17 +86,30 @@ param defaultResourceLocationId string
 param defaultResourceTags object = {} // { project: projectName, service: projectServiceName, environment: environmentId }
 
 // ======================================================================
-// Params: Resource Group Specific (Only IF built here)
+// Params: LOGIC Resource Group Specific (Only IF built here)
 // ======================================================================
 @description('The upper case Name of the Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
-param resourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-${environmentId}'),'--','-')
+param logicResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-LOGIC-${environmentId}'),'--','-')
 
 @description('The Location Id of the Resource Group.')
 //TooManyOptions @allowed(['australiacentral'])
-param resourceGroupLocationId string = defaultResourceLocationId
+param logicResourceGroupLocationId string = defaultResourceLocationId
 
 @description('Tags to use if developing the Resource Group.')
-param resourceGroupTags object = defaultResourceTags
+param logicResourceGroupTags object = defaultResourceTags
+
+// ======================================================================
+// Params: DATA Resource Group Specific (Only IF built here)
+// ======================================================================
+@description('The upper case Name of the Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
+param dataResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-DATA-${environmentId}'),'--','-')
+
+@description('The Location Id of the Resource Group.')
+//TooManyOptions @allowed(['australiacentral'])
+param dataResourceGroupLocationId string = defaultResourceLocationId
+
+@description('Tags to use if developing the Resource Group.')
+param dataResourceGroupTags object = defaultResourceTags
 
 // ======================================================================
 // Params: Web Farms
@@ -258,17 +271,17 @@ param sqlServerDbMaxSizeBytes int = 1073741824
 
 
 // ======================================================================
-// Resource bicep: ResourceGroup
+// Resource bicep: LOGIC ResourceGroup
 // ======================================================================
 
-module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
+module dataResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
    // pass parameters:
-  name:  '${deployment().name}-rg'
+  name:  '${deployment().name}-rg-logic'
   scope:subscription()
   params: {
-    resourceGroupName: resourceGroupName
-    resourceGroupLocationId: resourceGroupLocationId
-    resourceGroupTags: union(resourceGroupTags, defaultResourceTags, sharedSettings.defaultTags)
+    resourceGroupName: logicResourceGroupName
+    resourceGroupLocationId: logicResourceGroupLocationId
+    resourceGroupTags: union(logicResourceGroupTags, defaultResourceTags, sharedSettings.defaultTags)
   }
 }
 
@@ -277,12 +290,12 @@ module resourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (
 // ======================================================================
 
 module webSiteModule './web-dynamic-app-deployment.bicep' = if (buildResource) {
-  dependsOn: [resourceGroupsModule]
+  dependsOn: [dataResourceGroupsModule]
   name:  '${deployment().name}-web-recipe'
   scope:subscription()
   params: {
     // -----
-    resourceGroupName                               : resourceGroupName
+    resourceGroupName                               : logicResourceGroupName
     // -----
     defaultResourceName                             : projectName
     defaultResourceLocationId                       : defaultResourceLocationId
@@ -311,18 +324,32 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = if (buildResource) {
   }
 }
 
+// ======================================================================
+// Resource bicep: DATA ResourceGroup
+// ======================================================================
+
+module logicResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
+   // pass parameters:
+  name:  '${deployment().name}-rg-data'
+  scope:subscription()
+  params: {
+    resourceGroupName: dataResourceGroupName
+    resourceGroupLocationId: dataResourceGroupLocationId
+    resourceGroupTags: union(dataResourceGroupTags, defaultResourceTags, sharedSettings.defaultTags)
+  }
+}
 
 // ======================================================================
 // Resource bicep: Server
 // ======================================================================
 
 module sqlServerModule './sql-server-deployment.bicep' = if (buildResource) {
-  dependsOn: [webSiteModule]
+  dependsOn: [logicResourceGroupsModule, webSiteModule]
   name:  '${deployment().name}-rdms-recipe'
   scope:subscription()
   params: {
     // -----
-    resourceGroupName                        : resourceGroupName
+    resourceGroupName                        : dataResourceGroupName
     // -----
     defaultResourceName                      : projectName
     defaultResourceLocationId                : defaultResourceLocationId
