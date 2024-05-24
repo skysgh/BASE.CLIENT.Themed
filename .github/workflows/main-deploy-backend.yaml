@@ -111,7 +111,7 @@ jobs:
             webServerFarmsResourceSKU="S1"
             webSitesLinuxFxVersion="DOTNETCORE|Latest"
             webSitesSourceControlsRepositoryUrl="https://todo"
-            webSitesSourceControlsRepositoryBranch='main'
+            webSitesSourceControlsRepositoryBranch="main"
             webSitesSourceControlsRepositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             webSitesSourceControlsRepositorySourceLocation="/"
             dataResourceGroupLocationId="australiacentral"
