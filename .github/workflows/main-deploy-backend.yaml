@@ -113,6 +113,7 @@ jobs:
             sqlServerIdentityType="None"
             sqlServerAdminUserName="${{secrets.DB_ADMIN_NAME}}"
             sqlServerAdminPassword="${{secrets.DB_ADMIN_PWD}}"
+            sqlServerDbResourceName="SysDb"
             sqlServerDbResourceLocationId="australiacentral"
             sqlServerDbResourceSKU="S1"
             sqlServerDbResourceTier="Standard"
@@ -123,7 +124,7 @@ jobs:
             sqlServerDbAutoPauseDelay=120
             sqlServerDbSampleName=""
             sqlServerDbIsLedgerOn=false
-            sqlServerDbCreateMode="SysDb"
+            sqlServerDbCreateMode="Default"
             sqlServerDbCollation="SQL_Latin1_General_CP1_CI_AS"
             sqlServerDbCatalogCollation="DATABASE_DEFAULT"
             sqlServerDbResourceName="Default"
