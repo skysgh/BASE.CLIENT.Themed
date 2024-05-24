@@ -81,7 +81,7 @@ param webSitesLinuxFxVersion string
 // ======================================================================
 // Params: Web Sites SourceControl
 // ======================================================================
-@description('The Name of the site on the server farm. Does not need to be universally unique.')
+@description('The Name of the site on the server farm. Unlike Server Farms, must be globally unique, so later will be appended with \'defaultResourceNameSuffix\'.')
 param webSitesSourceControlsResourceName string = toLower(webSitesResourceName)
 
 @description('The location of the site. Default is same as server farm.')
@@ -114,7 +114,7 @@ module webServerFarmsModule '../microsoft/web/serverfarms.bicep' = if (buildReso
   name:  '${deployment().name}_serverFarms_module'
   scope: resourceGroup(resourceGroupName) 
   params: {
-    resourceName               : toLower('${webServerFarmsResourceName}${defaultResourceNameSuffix}')
+    resourceName               : toLower('${webServerFarmsResourceName}')
     resourceLocationId         : webServerFarmsResourceLocationId
     resourceTags               : union(defaultResourceTags, sharedSettings.defaultTags, webServerFarmsResourceTags)
 
@@ -134,7 +134,7 @@ module webSitesModule '../microsoft/web/sites.bicep' = if (buildResource) {
     // Implicit dependence:
     parentResourceId           : webServerFarmsModule.outputs.resourceId
     //
-    resourceName               : toLower(webSitesResourceName)
+    resourceName               : toLower('${webSitesResourceName}${defaultResourceNameSuffix}')
     resourceLocationId         : webSitesResourceLocationId
     resourceTags               : union(defaultResourceTags, sharedSettings.defaultTags, webSitesResourceTags)
     //
@@ -151,7 +151,7 @@ module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep
   // child resources don't use 'scope', they use 'parent':
   // parent: webSitesModule  
   params: {
-    resourceName               : toLower(webSitesSourceControlsResourceName) //  sitesModule.outputs.resourceName      // Note: Same name as parent site:
+    resourceName               : toLower('${webSitesSourceControlsResourceName}${defaultResourceNameSuffix}') //  sitesModule.outputs.resourceName      // Note: Same name as parent site:
     resourceLocationId         : webSitesSourceControlsResourceLocationId
     resourceTags               : union(defaultResourceTags, sharedSettings.defaultTags, webSitesSourceControlsResourceTags)
     //
