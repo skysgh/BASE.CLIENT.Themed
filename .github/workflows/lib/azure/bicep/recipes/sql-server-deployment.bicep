@@ -76,7 +76,7 @@ param sqlServerIdentityType string = 'SystemAssigned,UserAssigned'
 
 @description('The minimal Tls Version to use. Default is \'1.3\'.')
 @allowed(['1.2','1.3'])
-param sqlServerMinimalTlsVersion string = '1.3'
+param sqlServerMinimalTlsVersion string = '1.2'
 
 @description('An Admin User\'s Name, to create the DB in the first place. Source from a pipeline environment Secret or pipeline accessible keyvault.')
 @minLength(3)
