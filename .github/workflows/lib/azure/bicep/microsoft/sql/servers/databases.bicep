@@ -136,7 +136,7 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = i
 
     // availabilityZone: availabilityZone
 
-    // createMode: createMode
+     createMode: createMode
  
     // collation: collation
     // catalogCollation: catalogCollation
