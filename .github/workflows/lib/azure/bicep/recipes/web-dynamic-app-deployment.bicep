@@ -128,7 +128,7 @@ module webSitesModule '../microsoft/web/sites.bicep' = if (buildResource) {
   // depends implicitely on the 
   // [webServerFarmsModule]
   // pass parameters:
-  name:  '${deployment().name}_sites_module'
+  name:  '${deployment().name}-sites-module'
   scope: resourceGroup(resourceGroupName) 
   params: {
     // Implicit dependence:
@@ -146,7 +146,7 @@ module webSitesModule '../microsoft/web/sites.bicep' = if (buildResource) {
 // ======================================================================
 module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep' = if (buildResource && webSitesSourceCountrolsSetupFlag) {
   dependsOn: [webSitesModule]
-  name:  '${deployment().name}_sites_sc_module'
+  name:  '${deployment().name}-sites-sc-module'
   scope: resourceGroup(resourceGroupName) 
   // child resources don't use 'scope', they use 'parent':
   // parent: webSitesModule  
