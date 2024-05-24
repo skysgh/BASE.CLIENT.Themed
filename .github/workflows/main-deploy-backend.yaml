@@ -86,7 +86,7 @@ jobs:
         uses: azure/arm-deploy@v1
         with:
           scope: subscription
-          region: ${{ vars.AZURE_LOCATION_ID_1 }}
+          region: ${{ vars.AZURE_LOCATION_ID_2 }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           
           template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"
@@ -105,23 +105,23 @@ jobs:
             projectName="${{ env.PROJECT_NAME }}"
             projectServiceName="${{ vars.PROJECT_SERVICE_NAME }}"
             environmentId="NP"
-            defaultResourceLocationId="australiacentral"
-            logicResourceGroupLocationId="australiacentral"
-            webServerFarmsResourceLocationId="australiacentral"  
+            defaultResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
+            logicResourceGroupLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
+            webServerFarmsResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"  
             webServerFarmsResourceSKU="S1"
             webSitesLinuxFxVersion="DOTNETCORE|Latest"
             webSitesSourceControlsRepositoryUrl="https://todo"
             webSitesSourceControlsRepositoryBranch="main"
             webSitesSourceControlsRepositoryToken="${{ secrets.GH_BASE_CLIENT_THEMED }}"
             webSitesSourceControlsRepositorySourceLocation="/"
-            dataResourceGroupLocationId="australiacentral"
-            sqlServerResourceLocationId="australiacentral"
+            dataResourceGroupLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
+            sqlServerResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
             sqlServerMinimalTlsVersion="1.2"
             sqlServerIdentityType="None"
             sqlServerAdminUserName="${{secrets.DB_ADMIN_NAME}}"
             sqlServerAdminPassword="${{secrets.DB_ADMIN_PWD}}"
             sqlServerDbResourceName="Default"
-            sqlServerDbResourceLocationId="australiacentral"
+            sqlServerDbResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
             sqlServerDbResourceSKU="S1"
             sqlServerDbResourceTier="Standard"
             sqlServerDbAvailabilityZone="NoPreference"
