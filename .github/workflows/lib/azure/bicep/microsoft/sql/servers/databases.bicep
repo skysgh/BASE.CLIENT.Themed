@@ -29,8 +29,8 @@ param buildResource bool = true
 // ======================================================================
 // Default Name, Location, Tags,
 // ======================================================================
-@description('the name of this database resource.')
-param resourceName string
+@description('the name of this database resource. Default is: \'default\'.')
+param resourceName string = 'default'
 
 @description('The id of the location for this resource.')
 // @allowed([])
