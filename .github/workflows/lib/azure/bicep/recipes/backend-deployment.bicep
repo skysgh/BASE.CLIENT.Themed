@@ -217,6 +217,13 @@ param webSitesResourceLocationId string = webServerFarmsResourceLocationId
 @description('The tags for the resource.')
 param webSitesResourceTags object = defaultResourceTags
 
+@description('Whether to only allow https. Should be true.')
+param webSitesHttpOnly bool = true
+
+@description('The type of identity. Default is \'SystemAssigned\' which means creation of *slot specific* Entra Managed Id, that is picked up by outputs at bottom.')
+@allowed(['None', 'SystemAssigned', 'SystemAssigned, UserAssigned', 'UserAssigned'])
+param webSitesIdentityType string  = 'SystemAssigned'
+
 @description('The Function eXtension to define the runtime stack. Default is \'DOTNETCORE|Latest\' but best be specific to not get caught out if .net.core releases a version that you are in compatible with.')
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
 param webSitesLinuxFxVersion string
