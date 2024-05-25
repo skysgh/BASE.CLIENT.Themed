@@ -57,6 +57,13 @@ param defaultResourceLocationId string
 @description('The tags for this resource. ')
 param defaultResourceTags object = {}
 
+
+// ======================================================================
+// Params: Web Site Managed Identity 
+// ======================================================================
+@description('The tags for this resource. ')
+param managedIdentity string = ''
+
 // ======================================================================
 // Params: Sql Server 
 // ======================================================================
