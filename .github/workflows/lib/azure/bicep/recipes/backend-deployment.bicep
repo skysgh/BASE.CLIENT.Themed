@@ -455,6 +455,8 @@ module sqlServersModule './sql-server-deployment.bicep' = if (buildResource) {
     // -----
     resourceGroupName                        : dataResourceGroupName
     // -----
+    managedIdentity                          : webSitesModule.outputs.resourcePrincipalId
+    // -----
     defaultResourceName                      : projectName
     defaultResourceLocationId                : defaultResourceLocationId
     defaultResourceTags                      : defaultResourceTags
@@ -492,19 +494,19 @@ module sqlServersModule './sql-server-deployment.bicep' = if (buildResource) {
 // Permission: Connect Site to Sql Server
 // ======================================================================
 
-// Assign Managed Identity to SQL Server as db_owner
-resource managedIdentityRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
-  //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
-  name: guid(logicTierResourceGroupName, dataTierResourceGroupName, 'db_owner')
-  scope: sqlServersModule.outputs.sqlServersDbResourceId
-  properties: {
-    // Choices can be be:
-    // SQL DB Owner Role: d147b3d9-f6f3-45a5-9c1e-021d42485f5d
-    // Other: ...
-    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'd147b3d9-f6f3-45a5-9c1e-021d42485f5d') // SQL DB Owner Role
-    principalId: webSitesModule.outputs.resourcePrincipalId
-  }
-}
+// // Assign Managed Identity to SQL Server as db_owner
+// resource managedIdentityRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
+//   //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
+//   name: guid(logicTierResourceGroupName, dataTierResourceGroupName, 'db_owner')
+//   scope: sqlServersModule.outputs.sqlServersDbResourceId
+//   properties: {
+//     // Choices can be be:
+//     // SQL DB Owner Role: d147b3d9-f6f3-45a5-9c1e-021d42485f5d
+//     // Other: ...
+//     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'd147b3d9-f6f3-45a5-9c1e-021d42485f5d') // SQL DB Owner Role
+//     principalId: webSitesModule.outputs.resourcePrincipalId
+//   }
+// }
 
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
