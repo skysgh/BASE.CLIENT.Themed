@@ -178,7 +178,7 @@ module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep
 output webServerFarmsResourceId string = webServerFarmsModule.outputs.resourceId
 output webSitesResourceId string = webSitesModule.outputs.resourceId
 
-output webSitesResourcePrincipalId = webSitesModule.outputs.resourcePrincipalId
+output webSitesResourcePrincipalId string = webSitesModule.outputs.resourcePrincipalId
 
 // IMPORTANT: Output Managed Identity info
 output resourcePrincipalId string = webSitesModule.outputs.resourcePrincipalId
