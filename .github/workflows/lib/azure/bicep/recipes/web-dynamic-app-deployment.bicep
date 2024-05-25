@@ -175,8 +175,8 @@ module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
 // IMPORTANT: The following ids are needed to assign rights
-output webServerFarmsResourceId = webServerFarmsModule.outputs.resourceId
-output webSitesResourceId = webSitesModule.outputs.resourceId
+output webServerFarmsResourceId string = webServerFarmsModule.outputs.resourceId
+output webSitesResourceId string = webSitesModule.outputs.resourceId
 
 output webSitesResourcePrincipalId = webSitesModule.outputs.resourcePrincipalId
 
