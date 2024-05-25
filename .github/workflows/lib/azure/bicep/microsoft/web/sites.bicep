@@ -72,13 +72,12 @@ resource resource 'Microsoft.Web/sites@2020-06-01' = if (buildResource) {
   location: useLocation
   tags: useTags
   
+  identity: {
+    type: identityType 
+  }
   properties: {
     serverFarmId: parentResourceId
     httpsOnly: httpsOnly
-     identity: {
-      type: identityType 
-     }
-
     siteConfig: {
       linuxFxVersion: linuxFxVersion
       // Not essential, just showing how to set config values here.
