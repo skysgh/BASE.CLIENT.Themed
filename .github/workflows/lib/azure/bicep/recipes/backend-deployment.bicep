@@ -495,7 +495,7 @@ module sqlServersModule './sql-server-deployment.bicep' = if (buildResource) {
 // Assign Managed Identity to SQL Server as db_owner
 resource managedIdentityRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
   //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
-  name: guid(logicTierResourceGroupName, dataTierResourceGroupName 'db_owner')
+  name: guid(logicTierResourceGroupName, dataTierResourceGroupName, 'db_owner')
   scope: sqlServersModule.outputs.sqlServersDbResourceId
   properties: {
     // Choices can be be:
