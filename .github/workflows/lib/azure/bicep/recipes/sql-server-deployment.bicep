@@ -160,6 +160,17 @@ param sqlServerDbZoneRedundant bool = false
 @description('Max size of database. Default: 1073741824 bytes (ie 1Gb - which is acceptable for a startup at the beginning but note that it is *small* for relatively production purposes.)')
 param sqlServerDbMaxSizeBytes int = 1073741824
 
+// ======================================================================
+// Params: Resource Defaults 
+// ======================================================================
+
+param sqlServerDbFirewallRulesResourceName string = "Allow Azure Resources" 
+
+@description('Location of Database Rule. Default is set to \'sqlServerDbResourceLocationId\' - but it won't be used.')
+param sqlServerDbFirewallRulesResourceLocation = sqlServerDbResourceLocationId
+
+@description('The tags for this firewall rule. ')
+param sqlServerDbFirewallRulesResourceTags object = {}
 
 // ======================================================================
 // CLEANUP
@@ -217,19 +228,40 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
     autoPauseDelay:     sqlServerDbAutoPauseDelay
 
     maxSizeBytes:       sqlServerDbMaxSizeBytes
-//    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
+    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
 //    availabilityZone:   sqlServerDbAvailabilityZone
     catalogCollation:   sqlServerDbCatalogCollation
     collation:          sqlServerDbCollation
     createMode:         sqlServerDbCreateMode
     isLedgerOn:         sqlServerDbIsLedgerOn
 
-//    sampleName:         sqlServerDbSampleName
-//    //useFreeLimit:     sqlServerDbUseFreeLimit
+    sampleName:         sqlServerDbSampleName
+    useFreeLimit:     sqlServerDbUseFreeLimit
 //    zoneRedundant:      sqlServerDbZoneRedundant
   }
 }
 
+
+// ======================================================================
+// Resource bicep: Sql Server *DB* Firewall Rules
+// ======================================================================
+
+sqlServerDbFirewallRulesResourceLocation
+
+module sqlServersDatabasesModule '../microsoft/sql/servers/firewallrules.bicep' = if (buildResource) {
+  // should be implied: 
+  dependsOn: [serversModule]
+  scope: resourceGroup(resourceGroupName)
+  name:  '${deployment().name}-sql-db-fwr'
+
+  params: {
+    // Refer to parent website so it can build resource name without use of parent property.
+    parentResourceName: '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
+    resourceName      : 'Allow Azure Resource Access'
+    startIpAddress    : '0.0.0.0'
+    endIpAddress      : '0.0.0.0'
+  }
+}
 
 // HACK needed to get around that the id it is a) expecting is of a resource, not a module (which doesn't have an id property).
 // AND it expects it to be calculatable at the start, 
@@ -242,22 +274,24 @@ resource existingSqlDatabase 'Microsoft.Sql/servers/databases@2021-05-01-preview
 
 // var sqlDatabaseId = resourceId('Microsoft.Sql/servers/databases', tmpsqlServerResourceName, tmpsqlServerDbResourceName)
 
-
- // Assign Managed Identity to SQL Server as db_owner
- resource managedIdentityRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = if (!empty(managedIdentity)) {
-   dependsOn: [sqlServersDatabasesModule, existingSqlDatabase]
-   //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
-   name: guid(resourceGroupName, tmpsqlServerDbResourceName, 'db_owner')
-   //scope: sqlServersDatabasesModule // What do i use here?
-   scope: existingSqlDatabase
-   properties: {
-     // Choices can be be:
-     // SQL DB Owner Role: d147b3d9-f6f3-45a5-9c1e-021d42485f5d
-     // Other: ...
-     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'd147b3d9-f6f3-45a5-9c1e-021d42485f5d') // SQL DB Owner Role
-     principalId: managedIdentity
-   }
- }
+// // Assign Managed Identity to SQL Server as db_owner
+// resource managedIdentityRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = if (!empty(managedIdentity)) {
+//   dependsOn: [sqlServersDatabasesModule, existingSqlDatabase]
+//   //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
+//   name: guid(resourceGroupName, tmpsqlServerDbResourceName, 'db_owner')
+//   //scope: sqlServersDatabasesModule // What do i use here?
+//   scope: existingSqlDatabase
+//   properties: {
+//     // Choices can be be:
+//     // SQL DB Owner Role: d147b3d9-f6f3-45a5-9c1e-021d42485f5d
+//     // Other: ...
+//     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'd147b3d9-f6f3-45a5-9c1e-021d42485f5d') // SQL DB Owner Role
+//     principalId: managedIdentity
+//     delegatedManagedIdentityResourceId
+//     description: 'Assignment of .......'
+//
+//   }
+// }
 
 
 // ======================================================================
@@ -272,4 +306,4 @@ output sqlServersDbResourceId string = sqlServersDatabasesModule.outputs.resourc
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${buildResourceGroup}-${sqlServerDbResourceSKU}-${sqlServerDbResourceTier}-${sqlServerDbUseFreeLimit}-${sqlServerDbFreeLimitExhaustionBehavior}-${sqlServerDbAvailabilityZone}-${ sqlServerDbCatalogCollation}-${sqlServerDbCollation}-${sqlServerDbCreateMode}-${sqlServerDbIsLedgerOn}-${sqlServerDbSampleName}-${sqlServerDbZoneRedundant}-${sqlServerDbAutoPauseDelay}-${managedIdentity}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${buildResourceGroup}-${sqlServerDbResourceSKU}-${sqlServerDbResourceTier}-${sqlServerDbUseFreeLimit}-${sqlServerDbFreeLimitExhaustionBehavior}-${sqlServerDbAvailabilityZone}-${ sqlServerDbCatalogCollation}-${sqlServerDbCollation}-${sqlServerDbCreateMode}-${sqlServerDbIsLedgerOn}-${sqlServerDbSampleName}-${sqlServerDbZoneRedundant}-${sqlServerDbAutoPauseDelay}-${managedIdentity}-${sqlServerDbFirewallRulesResourceLocation}', '.')
