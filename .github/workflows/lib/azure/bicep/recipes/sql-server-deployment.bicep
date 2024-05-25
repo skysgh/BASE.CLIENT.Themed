@@ -159,8 +159,8 @@ param sqlServerDbMaxSizeBytes int = 1073741824
 // ======================================================================
 
 // Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
-var tmpsqlServerResourceName string = toLower( replace('${sqlServerResourceName}${defaultResourceNameSuffix}', '_', '-') )
-var tmpsqlServerDbResourceName string = toLower( replace(sqlServerDbResourceName ,'_','-') )
+var tmpsqlServerResourceName = toLower( replace('${sqlServerResourceName}${defaultResourceNameSuffix}', '_', '-') )
+var tmpsqlServerDbResourceName = toLower( replace(sqlServerDbResourceName ,'_','-') )
 
 // ======================================================================
 // Resource bicep: Sql Server
@@ -228,8 +228,8 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
 
-output sqlServersResourceId = serversModule.outputs.resourceId
-output sqlServersDbResourceId = sqlServersDatabasesModule.outputs.resourceId
+output sqlServersResourceId string = serversModule.outputs.resourceId
+output sqlServersDbResourceId string = sqlServersDatabasesModule.outputs.resourceId
 
 // output resource object = serversDatabasesModule.outputs.resource
 // output resourceId string = serversDatabasesModule.outputs.resourceId
