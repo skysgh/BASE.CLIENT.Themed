@@ -159,8 +159,8 @@ param sqlServerDbMaxSizeBytes int = 1073741824
 // ======================================================================
 
 // Sql Server Names can only be lowercase alphanumeric or hyphen (not underscore)
-var tmpsqlServerResourceName = toLower( replace('${sqlServerResourceName}${defaultResourceNameSuffix}', '_', '-') )
-var tmpsqlServerDbResourceName = toLower( replace(sqlServerDbResourceName ,'_','-') )
+var tmpsqlServerResourceName string = toLower( replace('${sqlServerResourceName}${defaultResourceNameSuffix}', '_', '-') )
+var tmpsqlServerDbResourceName string = toLower( replace(sqlServerDbResourceName ,'_','-') )
 
 // ======================================================================
 // Resource bicep: Sql Server
