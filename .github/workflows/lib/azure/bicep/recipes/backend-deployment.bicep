@@ -25,6 +25,7 @@
 // - Resource Group names are uppercase (PROJNAME-ENV-PROJTIER-SERVICE)
 // - Resource names are all made lowercase (PROJNAME), 
 //   suffixed with uniqueString(RESOURCEGROUP)
+//   limited to no hyphens/no underscores, a max of 11 chars Only
 //
 // Design:
 // - Taking advantage of *managed* resources, 
@@ -52,28 +53,46 @@
 // Sql Storage Backup
 //
 // ======================================================================
-// Dependencies
+// Properties: Required
 // ======================================================================
 // The Github repo has at least two secrets (Db Admin User Name/pwd)
 //
 // The following are required:
-// projectName
-// projectServiceName
-// environmentId
-// defaultResourceLocationId
-// sqlServerAdminUserName
-// sqlServerAdminPassword
+// - projectName
+// - projectServiceName
+// - environmentId
+// - defaultResourceLocationId
+// - sqlServerAdminUserName
+// - sqlServerAdminPassword
 //
-// The following have defaults, but worth considering first:
-// sqlServerDbCollation
-// sqlServerDbSampleName
-// sqlServerDbUseFreeLimit
-// sqlServerDbFreeLimitExhaustionBehavior
+//
+// ======================================================================
+// Properties: Pricing
+// ======================================================================
+// The following have defaults, but worth considering as impact cost
+// or behaviour:
+// - webServerFarmsResourceSKU
+// - sqlServerDbResourceSKU
+// - sqlServerDbUseFreeLimit
+// - sqlServerDbFreeLimitExhaustionBehavior
+//
+// ======================================================================
+// Properties: Behaviour
+// ======================================================================
+// The following have defaults, but worth considering as impact behaviour:
+// - sqlServerDbCollation
+// - sqlServerDbSampleName
+// - webSitesLinuxFxVersion    
+// - as well as the following maybe, although I recommend against it:
+// - webSitesSourceControlsRepositoryUrl
+// - webSitesSourceControlsRepositoryToken
+// - webSitesSourceControlsRepositoryBranch
+// - webSitesSourceControlsRepositorySourceLocation
 //
 // ======================================================================
 // Scope
 // ======================================================================
-//targetScope='resourceGroup'// NO: it stops resourceGroup().location from working: 'subscription'
+// by being subscription, permits creation of resource groups in this file
 targetScope='subscription'
 
 // ======================================================================
@@ -99,12 +118,12 @@ param buildResource bool = true
 @maxLength(11) // Limited by storageAccount name length (24) minus 13 chars for uniqueString(...)
 param projectName string
 
-@description('The name used to build resources. e.g.: \'CLIENT\'')
-param projectServiceName string
-
-@description('The id of the environment, to append to the name of resource groups. e.g.: \'BT\'.')
+@description('The id of the environment, to append to the name of resource groups (e.g.: \'BT\').')
 @allowed([ 'NP',   'BT','DT','ST','UT','IT','PP','TR','PR'])
 param environmentId string
+
+@description('The name used to build the names of resource groups (e.g.: \'SERVICE\', \'CLIENT\', etc.).')
+param projectServiceName string
 
 // ======================================================================
 // Params: Resource Defaults 
@@ -122,8 +141,11 @@ param defaultResourceTags object = {} // { project: projectName, service: projec
 // ======================================================================
 // Params: LOGIC Resource Group Specific (Only IF built here)
 // ======================================================================
+@description('The upper case name of the logic Tier. Default: \'LOGIC\'.')
+param logicTierResourceGroupName string = 'LOGIC'
+
 @description('The upper case Name of the Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
-param logicResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-${environmentId}-LOGIC'),'--','-')
+param logicResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-${environmentId}-${logicTierResourceGroupName}'),'--','-')
 
 @description('The Location Id of the Resource Group.')
 //TooManyOptions @allowed(['australiacentral'])
@@ -135,8 +157,11 @@ param logicResourceGroupTags object = defaultResourceTags
 // ======================================================================
 // Params: DATA Resource Group Specific (Only IF built here)
 // ======================================================================
+@description('The upper case name of the data Tier. Default: \'DATA\'.')
+param dataTierResourceGroupName string = 'DATA'
+
 @description('The upper case Name of the Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
-param dataResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-${environmentId}-DATA'),'--','-')
+param dataResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-${environmentId}-${dataTierResourceGroupName}'),'--','-')
 
 @description('The Location Id of the Resource Group.')
 //TooManyOptions @allowed(['australiacentral'])
