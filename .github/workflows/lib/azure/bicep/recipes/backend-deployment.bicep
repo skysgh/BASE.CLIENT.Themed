@@ -512,8 +512,8 @@ module sqlServersModule './sql-server-deployment.bicep' = if (buildResource) {
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
 
-output sqlServersResourceId = sqlServersModule.outputs.sqlServersResourceId
-output sqlServersDbResourceId = sqlServersModule.outputs.sqlServersDbResourceId
+output sqlServersResourceId string = sqlServersModule.outputs.sqlServersResourceId
+output sqlServersDbResourceId string = sqlServersModule.outputs.sqlServersDbResourceId
 
 // 
 // IMPORTANT: The Managed Identity created by the website.
