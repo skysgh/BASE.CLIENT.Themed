@@ -181,8 +181,16 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = i
   } 
 }
 
+
 // ======================================================================
-// Default Outputs: resource, resourceId, resourceName & variable sink
+// Outputs: Custom
+// ======================================================================
+// output MyConnectionString string = 'Server=tcp:${parentResourceName}${environment().suffixes.sqlServerHostname},1433;Initial Catalog=${resourceName};Persist Security Info=False;User ID=username;Password=password;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;'
+// DANGER: Don't want to expose the Admin Name/Pwd in output....but it's worth having it here in case: 
+//output connectionStringForDbAdmin string = 'Server=tcp:${reference(resourceName).fullyQualifiedDomainName},1433;Initial Catalog='${resourceName}';Persist Security Info=False;User ID=',reference($parentResourceName).administratorLogin,';Password=',reference($parentResourceName).administratorLoginPassword,';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;'
+
+// ======================================================================
+// Outputs: Default: resource, resourceId, resourceName & variable sink
 // ======================================================================
 // Provide ref to developed resource:
 output resource object = resultResource
