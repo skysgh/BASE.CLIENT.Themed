@@ -45,12 +45,17 @@ param resourceTags object = {}
 // ======================================================================
 // Resource other Params
 // ======================================================================
+@description('Whether to only allow https. Should be true.')
+param httpsOnly bool = true
+
 @description('The Function eXtension to define the runtime stack. Default = \'DOTNETCORE|Latest\'. See https://github.com/MicrosoftDocs/azure-docs/issues/47749')
 // Consider also: 'Node|20'
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
 param linuxFxVersion string = 'DOTNETCORE|Latest'
 
-
+@description('The type of identity. Default is \'SystemAssigned\' which means creation of *slot specific* Entra Managed Id, that is picked up by outputs at bottom.')
+@allowed(['None', 'SystemAssigned', 'SystemAssigned, UserAssigned', 'UserAssigned'])
+param identityType string  = 'SystemAssigned'
 
 // ======================================================================
 // Default Variables: useResourceName, useTags
@@ -69,15 +74,38 @@ resource resource 'Microsoft.Web/sites@2020-06-01' = if (buildResource) {
   
   properties: {
     serverFarmId: parentResourceId
+    httpsOnly: httpsOnly
+     identity: {
+      type: identityType 
+     }
+
     siteConfig: {
       linuxFxVersion: linuxFxVersion
+      // Not essential, just showing how to set config values here.
+      appSettings: [
+        {
+          name: 'server'
+          value: '${parentResourceId}'
+        }
+        {
+          name: 'site'
+          value: '${resourceName}'
+        }
+      ]
     }
+
+
+
   }
 }
 
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
+
+// IMPORTANT: Output Managed Identity info
+output resourcePrincipalId string = resource.identity.principalId
+
 // Provide ref to developed resource:
 output resource object = resource
 // return the id (the fully qualitified name) of the newly created resource:
