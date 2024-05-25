@@ -237,7 +237,6 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 // Reference the existing SQL Database resource
 resource existingSqlDatabase 'Microsoft.Sql/servers/databases@2021-05-01-preview' existing = {
   scope: resourceGroup(resourceGroupName)
-  dependsOn: [sqlServersDatabasesModule]
   name: '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
 }
 
@@ -246,7 +245,7 @@ resource existingSqlDatabase 'Microsoft.Sql/servers/databases@2021-05-01-preview
 
  // Assign Managed Identity to SQL Server as db_owner
  resource managedIdentityRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = if (!empty(managedIdentity)) {
-   dependsOn: [existingSqlDatabase]
+   dependsOn: [sqlServersDatabasesModule, existingSqlDatabase]
    //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
    name: guid(resourceGroupName, tmpsqlServerDbResourceName, 'db_owner')
    //scope: sqlServersDatabasesModule // What do i use here?
