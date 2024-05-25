@@ -84,17 +84,14 @@ resource resource 'Microsoft.Web/sites@2020-06-01' = if (buildResource) {
       appSettings: [
         {
           name: 'server'
-          value: '${parentResourceId}'
+          value: parentResourceId
         }
         {
           name: 'site'
-          value: '${resourceName}'
+          value: resourceName
         }
       ]
     }
-
-
-
   }
 }
 
