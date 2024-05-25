@@ -236,7 +236,8 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 // but that can't be gotten from within the depth of a module
 // Reference the existing SQL Database resource
 resource existingSqlDatabase 'Microsoft.Sql/servers/databases@2021-05-01-preview' existing = {
-   dependsOn: [sqlServersDatabasesModule]
+  scope: resourceGroup(resourceGroupName)
+  dependsOn: [sqlServersDatabasesModule]
   name: '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
 }
 
