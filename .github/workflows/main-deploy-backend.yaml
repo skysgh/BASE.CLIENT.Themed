@@ -130,7 +130,7 @@ jobs:
             sqlServerDbFreeLimitExhaustionBehavior="BillOverUsage"
             sqlServerDbAutoPauseDelay=120
             sqlServerDbSampleName=""
-            sqlServerDbIsLedgerOn=false
+            sqlServerDbIsLedgerOn=true
             sqlServerDbCreateMode="Default"
             sqlServerDbCollation="SQL_Latin1_General_CP1_CI_AS"
             sqlServerDbCatalogCollation="DATABASE_DEFAULT"
