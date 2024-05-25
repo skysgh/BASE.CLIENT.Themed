@@ -249,7 +249,7 @@ resource existingSqlDatabase 'Microsoft.Sql/servers/databases@2021-05-01-preview
    //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
    name: guid(resourceGroupName, tmpsqlServerDbResourceName, 'db_owner')
    //scope: sqlServersDatabasesModule // What do i use here?
-   scope: existingSqlDatabase.id
+   scope: existingSqlDatabase
    properties: {
      // Choices can be be:
      // SQL DB Owner Role: d147b3d9-f6f3-45a5-9c1e-021d42485f5d
