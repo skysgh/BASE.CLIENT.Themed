@@ -231,16 +231,25 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 }
 
 
-var sqlDatabaseId = resourceId('Microsoft.Sql/servers/databases', tmpsqlServerResourceName, tmpsqlServerDbResourceName)
+// HACK needed to get around that the id it is a) expecting is of a resource, not a module (which doesn't have an id property).
+// AND it expects it to be calculatable at the start, 
+// but that can't be gotten from within the depth of a module
+// Reference the existing SQL Database resource
+resource existingSqlDatabase 'Microsoft.Sql/servers/databases@2021-05-01-preview' existing = {
+   dependsOn: [sqlServersDatabasesModule]
+  name: '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
+}
+
+// var sqlDatabaseId = resourceId('Microsoft.Sql/servers/databases', tmpsqlServerResourceName, tmpsqlServerDbResourceName)
 
 
  // Assign Managed Identity to SQL Server as db_owner
  resource managedIdentityRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = if (!empty(managedIdentity)) {
-   dependsOn: [sqlServersDatabasesModule]
+   dependsOn: [existingSqlDatabase]
    //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
    name: guid(resourceGroupName, tmpsqlServerDbResourceName, 'db_owner')
    //scope: sqlServersDatabasesModule // What do i use here?
-   scope: sqlDatabaseId
+   scope: existingSqlDatabase.id
    properties: {
      // Choices can be be:
      // SQL DB Owner Role: d147b3d9-f6f3-45a5-9c1e-021d42485f5d
