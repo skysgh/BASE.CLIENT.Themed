@@ -232,21 +232,21 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 
 
 
- // Assign Managed Identity to SQL Server as db_owner
- resource managedIdentityRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = if (!empty(managedIdentity)) {
-   dependsOn: [sqlServersDatabasesModule]
-   //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
-   name: guid(resourceGroupName, tmpsqlServerDbResourceName, 'db_owner')
-   //scope: sqlServersDatabasesModule // What do i use here?
-   scope: resourceGroup(resourceGroupName)
-   properties: {
-     // Choices can be be:
-     // SQL DB Owner Role: d147b3d9-f6f3-45a5-9c1e-021d42485f5d
-     // Other: ...
-     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'd147b3d9-f6f3-45a5-9c1e-021d42485f5d') // SQL DB Owner Role
-     principalId: managedIdentity
-   }
- }
+// // Assign Managed Identity to SQL Server as db_owner
+// resource managedIdentityRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = if (!empty(managedIdentity)) {
+//   dependsOn: [sqlServersDatabasesModule]
+//   //name: guid(webSitesModule.outputs.resourcePrincipalId, sqlServersModule.outputs.sqlServersResourceId, 'db_owner')
+//   name: guid(resourceGroupName, tmpsqlServerDbResourceName, 'db_owner')
+//   //scope: sqlServersDatabasesModule // What do i use here?
+//   scope: resourceGroup(resourceGroupName)
+//   properties: {
+//     // Choices can be be:
+//     // SQL DB Owner Role: d147b3d9-f6f3-45a5-9c1e-021d42485f5d
+//     // Other: ...
+//     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'd147b3d9-f6f3-45a5-9c1e-021d42485f5d') // SQL DB Owner Role
+//     principalId: managedIdentity
+//   }
+// }
 
 
 // ======================================================================
