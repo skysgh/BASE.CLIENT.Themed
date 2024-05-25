@@ -243,4 +243,4 @@ output sqlServersDbResourceId string = sqlServersDatabasesModule.outputs.resourc
 // output resourceName string = serversDatabasesModule.outputs.resourceName
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}-${buildResourceGroup}-${sqlServerDbResourceSKU}-${sqlServerDbResourceTier}-${sqlServerDbUseFreeLimit}-${sqlServerDbFreeLimitExhaustionBehavior}-${sqlServerDbAvailabilityZone}-${ sqlServerDbCatalogCollation}-${sqlServerDbCollation}-${sqlServerDbCreateMode}-${sqlServerDbIsLedgerOn}-${sqlServerDbSampleName}-${sqlServerDbZoneRedundant}-${sqlServerDbAutoPauseDelay}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${buildResourceGroup}-${sqlServerDbResourceSKU}-${sqlServerDbResourceTier}-${sqlServerDbUseFreeLimit}-${sqlServerDbFreeLimitExhaustionBehavior}-${sqlServerDbAvailabilityZone}-${ sqlServerDbCatalogCollation}-${sqlServerDbCollation}-${sqlServerDbCreateMode}-${sqlServerDbIsLedgerOn}-${sqlServerDbSampleName}-${sqlServerDbZoneRedundant}-${sqlServerDbAutoPauseDelay}-${managedIdentity}', '.')
