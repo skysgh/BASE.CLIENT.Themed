@@ -398,7 +398,7 @@ module dataResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = 
 // Resource bicep: Server
 // ======================================================================
 
-module webSiteModule './web-dynamic-app-deployment.bicep' = if (buildResource) {
+module webSitesModule './web-dynamic-app-deployment.bicep' = if (buildResource) {
   dependsOn: [logicResourceGroupsModule]
   name:  '${deployment().name}-web-recipe'
   scope:subscription()
@@ -438,8 +438,8 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = if (buildResource) {
 // Resource bicep: Server
 // ======================================================================
 
-module sqlServerModule './sql-server-deployment.bicep' = if (buildResource) {
-  dependsOn: [dataResourceGroupsModule, webSiteModule]
+module sqlServersModule './sql-server-deployment.bicep' = if (buildResource) {
+  dependsOn: [dataResourceGroupsModule, webSitesModule]
   name:  '${deployment().name}-rdms-recipe'
   scope:subscription()
   params: {
@@ -485,6 +485,13 @@ module sqlServerModule './sql-server-deployment.bicep' = if (buildResource) {
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
+
+// 
+// IMPORTANT: The Managed Identity created by the website.
+// Use to register as a user in other resources (eg: sql Server, etc.)
+output resourcePrincipalId string = webSitesModule.outputs.resourcePrincipalId
+
+
 // Provide ref to developed resource:
 //output resource object = xxx.outputs.resource
 // return the id (the fully qualitified name) of the newly created resource:
