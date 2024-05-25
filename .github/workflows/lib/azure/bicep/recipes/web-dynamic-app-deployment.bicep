@@ -146,7 +146,7 @@ module webSitesModule '../microsoft/web/sites.bicep' = if (buildResource) {
     resourceTags               : union(defaultResourceTags, sharedSettings.defaultTags, webSitesResourceTags)
     //
     httpsOnly                  : webSitesHttpOnly
-    webSitesIdentityType       : webSitesIdentityType
+    identityType               : webSitesIdentityType
     linuxFxVersion             : webSitesLinuxFxVersion
   }
 }
