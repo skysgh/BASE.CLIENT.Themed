@@ -136,7 +136,7 @@ param defaultResourceName string = toLower(projectName)
 param defaultResourceLocationId string
 
 @description('The tags shared across all resources.')
-param defaultResourceTags object = { "project": projectName, "environment": environmentId, "service": projectServiceName }
+param defaultResourceTags object = { 'project': projectName, 'environmen': environmentId, 'service': projectServiceName }
 
 // ======================================================================
 // Params: LOGIC Resource Group Specific (Only IF built here)
