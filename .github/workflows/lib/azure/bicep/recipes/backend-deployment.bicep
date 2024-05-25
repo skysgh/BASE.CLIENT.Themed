@@ -426,8 +426,10 @@ module webSitesModule './web-dynamic-app-deployment.bicep' = if (buildResource) 
     webSitesResourceName                            : webSitesResourceName
     webSitesResourceLocationId                      : webSitesResourceLocationId
     webSitesResourceTags                            : webSitesResourceTags
-    // 
+    //
+    webSitesHttpOnly                                : webSitesHttpOnly
     webSitesLinuxFxVersion                          : webSitesLinuxFxVersion
+    webSitesIdentityType                            : webSitesIdentityType
     // -----
     webSitesSourceControlsResourceName              : webSitesResourceName
     webSitesSourceControlsResourceLocationId        : webSitesResourceLocationId
