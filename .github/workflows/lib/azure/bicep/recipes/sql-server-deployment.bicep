@@ -227,6 +227,10 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
+
+output sqlServersResourceId = serversModule.outputs.resourceId
+output sqlServersDbResourceId = sqlServersDatabasesModule.outputs.resourceId
+
 // output resource object = serversDatabasesModule.outputs.resource
 // output resourceId string = serversDatabasesModule.outputs.resourceId
 // output resourceName string = serversDatabasesModule.outputs.resourceName
