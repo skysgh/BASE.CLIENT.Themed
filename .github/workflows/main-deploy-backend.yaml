@@ -109,6 +109,8 @@ jobs:
             logicResourceGroupLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
             webServerFarmsResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"  
             webServerFarmsResourceSKU="S1"
+            webSitesHttpOnly=true
+            webSitesIdentityType="SystemAssigned"
             webSitesLinuxFxVersion="DOTNETCORE|Latest"
             webSitesSourceControlsRepositoryUrl="https://todo"
             webSitesSourceControlsRepositoryBranch="main"
