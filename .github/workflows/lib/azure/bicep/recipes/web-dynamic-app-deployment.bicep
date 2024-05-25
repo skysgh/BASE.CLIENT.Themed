@@ -74,6 +74,13 @@ param webSitesResourceLocationId string = webServerFarmsResourceLocationId
 @description('The tags for this resource.')
 param webSitesResourceTags object = {}
 
+@description('Whether to only allow https. Should be true.')
+param webSitesHttpOnly bool = true
+
+@description('The type of identity. Default is \'SystemAssigned\' which means creation of *slot specific* Entra Managed Id, that is picked up by outputs at bottom.')
+@allowed(['None', 'SystemAssigned', 'SystemAssigned, UserAssigned', 'UserAssigned'])
+param webSitesIdentityType string  = 'SystemAssigned'
+
 @description('The Function eXtension to define the runtime stack. Default is \'DOTNETCORE|Latest\' but best be specific to not get caught out if .net.core releases a version that you are in compatible with.')
 @allowed(['DOTNETCORE|2.2','DOTNETCORE|3.0','DOTNETCORE|3.1','DOTNETCORE|LTS','DOTNETCORE|Latest'])
 param webSitesLinuxFxVersion string
@@ -138,6 +145,8 @@ module webSitesModule '../microsoft/web/sites.bicep' = if (buildResource) {
     resourceLocationId         : webSitesResourceLocationId
     resourceTags               : union(defaultResourceTags, sharedSettings.defaultTags, webSitesResourceTags)
     //
+    httpsOnly                  : webSitesHttpOnly
+    webSitesIdentityType       : webSitesIdentityType
     linuxFxVersion             : webSitesLinuxFxVersion
   }
 }
@@ -165,6 +174,9 @@ module webSitesSourceControlsModule '../microsoft/web/sites/sourcecontrols.bicep
 // ======================================================================
 // Default Outputs: resource, resourceId, resourceName & variable sink
 // ======================================================================
+// IMPORTANT: Output Managed Identity info
+output resourcePrincipalId string = webSitesModule.outputs.resourcePrincipalId
+// And the normal ones:
 output resource object = webSitesModule.outputs.resource
 output resourceId string = webSitesModule.outputs.resourceId
 output resourceName string = webSitesModule.outputs.resourceName
