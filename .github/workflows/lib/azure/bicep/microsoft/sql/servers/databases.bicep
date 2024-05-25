@@ -133,21 +133,21 @@ resource resultResource 'Microsoft.Sql/servers/databases@2023-02-01-preview' = i
   properties: {
 
 //useFreeLimit: useFreeLimit 
-    // freeLimitExhaustionBehavior: freeLimitExhaustionBehavior 
+    freeLimitExhaustionBehavior: freeLimitExhaustionBehavior 
 
-    // autoPauseDelay: autoPauseDelay
+    autoPauseDelay: autoPauseDelay
 
-    // zoneRedundant: zoneRedundant  
+    zoneRedundant: zoneRedundant  
 
-    // availabilityZone: availabilityZone
+    availabilityZone: availabilityZone
 
-     createMode: createMode
+    createMode: createMode
  
-    // collation: collation
-    // catalogCollation: catalogCollation
+    collation: collation
+    catalogCollation: catalogCollation
 
     isLedgerOn: isLedgerOn     // Develop History tables permitting rollback
-    //sampleName: sampleName     // If we are building a sample DB
+    sampleName: sampleName     // If we are building a sample DB
     
     maxSizeBytes: maxSizeBytes 
 
