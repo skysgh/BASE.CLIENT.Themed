@@ -170,6 +170,24 @@ param dataResourceGroupLocationId string = defaultResourceLocationId
 @description('Tags to use if developing the Resource Group.')
 param dataResourceGroupTags object = defaultResourceTags
 
+
+// ======================================================================
+// Params: BACKUPS Resource Group Specific (Only IF built here)
+// ======================================================================
+@description('The upper case name of the data Tier. Default: \'BACKUPS\'.')
+param backupsTierResourceGroupName string = 'BACKUPS'
+
+@description('The upper case Name of the Resource Group in whch these resources are built. Recommend it be the default, which is the upperCase of \'projectName-serviceName-envId\'.')
+param backupsResourceGroupName string = replace( toUpper('${projectName}-${projectServiceName}-${environmentId}-${backupsTierResourceGroupName}'),'--','-')
+
+@description('The Location Id of the Resource Group.')
+//TooManyOptions @allowed(['australiacentral'])
+param backupsResourceGroupLocationId string = defaultResourceLocationId
+
+@description('Tags to use if developing the Resource Group.')
+param backupsResourceGroupTags object = defaultResourceTags
+
+
 // ======================================================================
 // Params: Web Farms
 // ======================================================================
@@ -344,6 +362,38 @@ module logicResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' =
   }
 }
 
+
+// ======================================================================
+// Resource bicep: BACKUPS ResourceGroup
+// ======================================================================
+
+module backupsResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
+   // pass parameters:
+  name:  '${deployment().name}-rg-backups'
+  scope:subscription()
+  params: {
+    resourceGroupName: backupsResourceGroupName
+    resourceGroupLocationId: backupsResourceGroupLocationId
+    resourceGroupTags: union(backupsResourceGroupTags, defaultResourceTags, sharedSettings.defaultTags)
+  }
+}
+
+// ======================================================================
+// Resource bicep: DATA ResourceGroup
+// ======================================================================
+
+module dataResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
+   // pass parameters:
+  name:  '${deployment().name}-rg-data'
+  scope:subscription()
+  params: {
+    resourceGroupName: dataResourceGroupName
+    resourceGroupLocationId: dataResourceGroupLocationId
+    resourceGroupTags: union(dataResourceGroupTags, defaultResourceTags, sharedSettings.defaultTags)
+  }
+}
+
+
 // ======================================================================
 // Resource bicep: Server
 // ======================================================================
@@ -383,20 +433,6 @@ module webSiteModule './web-dynamic-app-deployment.bicep' = if (buildResource) {
   }
 }
 
-// ======================================================================
-// Resource bicep: DATA ResourceGroup
-// ======================================================================
-
-module dataResourceGroupsModule '../microsoft/resources/resourcegroups.bicep' = if (buildResourceGroup) {
-   // pass parameters:
-  name:  '${deployment().name}-rg-data'
-  scope:subscription()
-  params: {
-    resourceGroupName: dataResourceGroupName
-    resourceGroupLocationId: dataResourceGroupLocationId
-    resourceGroupTags: union(dataResourceGroupTags, defaultResourceTags, sharedSettings.defaultTags)
-  }
-}
 
 // ======================================================================
 // Resource bicep: Server
