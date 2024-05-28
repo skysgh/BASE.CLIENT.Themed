@@ -242,13 +242,14 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 }
 
 
+
 // ======================================================================
 // Resource bicep: Sql Server *DB* Firewall Rules
 // ======================================================================
 
 //sqlServerDbFirewallRulesResourceLocation
 
-module sqlServersDbFirewallModule '../microsoft/sql/servers/firewallrules.bicep' = if (buildResource) {
+module sqlServersDbFirewallModule '../microsoft/sql/servers/firewallrules.bicep' = if (false) {
   // should be implied: 
   dependsOn: [serversModule]
   scope: resourceGroup(resourceGroupName)
