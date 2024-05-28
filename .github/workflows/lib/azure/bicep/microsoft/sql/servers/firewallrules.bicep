@@ -17,7 +17,7 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
 // Parent Resource
 // ======================================================================
 @description('The name of parent Database.')
-param parentDatabaseName string
+param parentResourceName string
 
 // ======================================================================
 // Control Flags
@@ -51,7 +51,7 @@ resource resource 'Microsoft.Sql/servers/firewallRules@2021-11-01-preview' = if 
   //parent: parentDatabase
   // so associate via the name given. Note that parentDatabasename is already in itself a  server and database name composite 
   // ie, has a slash in it too.
-  name: '${parentDatabaseName}/${resourceTitle}'
+  name: '${parentResourceName}/${resourceTitle}'
   properties: {
     startIpAddress: startIpAddress
     endIpAddress: endIpAddress
