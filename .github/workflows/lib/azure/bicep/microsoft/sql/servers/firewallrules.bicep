@@ -3,6 +3,13 @@
 // ======================================================================
 // https://medium.com/@joepschrama/deploy-a-sql-database-using-bicep-381d304d6e28
 
+
+// IMPORTANT:
+// This doesn't show up on the DB firewall rules
+// It shows up as the 
+// 'Allow Azure services and resources to access this server' 
+// tickbox being ticked. 
+
 // ======================================================================
 // Scope
 // ======================================================================

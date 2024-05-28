@@ -242,18 +242,17 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 }
 
 
-
 // ======================================================================
 // Resource bicep: Sql Server *DB* Firewall Rules
 // ======================================================================
 
 //sqlServerDbFirewallRulesResourceLocation
 
-module sqlServersDbFirewallModule '../microsoft/sql/servers/firewallrules.bicep' = if (false) {
+module sqlServersDbFirewallModule '../microsoft/sql/servers/firewallrules.bicep' = if (true) {
   // should be implied: 
   dependsOn: [serversModule]
   scope: resourceGroup(resourceGroupName)
-  name:  '${deployment().name}-sql-db-fwr'
+  name:  '${deployment().name}-sql-fwr'
 
   params: {
     // Refer to parent website so it can build resource name without use of parent property.
