@@ -34,7 +34,6 @@ param buildResource bool = true
 @maxLength(128)
 param resourceTitle string
 
-
 param resourceTags object = {}
 
 param resourceLocationId string = ''

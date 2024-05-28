@@ -256,7 +256,7 @@ module sqlServersDbFirewallModule '../microsoft/sql/servers/firewallrules.bicep'
 
   params: {
     // Refer to parent website so it can build resource name without use of parent property.
-    parentDatabaseName          : '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
+    parentDatabaseName          : tmpsqlServerDbResourceName //${tmpsqlServerResourceName}/
     resourceTitle               : sqlServerDbFirewallRulesResourceName
     resourceLocationId          : sqlServerDbFirewallRulesResourceLocation
     resourceTags                : sqlServerDbFirewallRulesResourceTags
