@@ -58,7 +58,7 @@ resource resource 'Microsoft.Sql/servers/firewallRules@2021-11-01-preview' = if 
 output resource object = resource
 output resourceId string = resource.id
 output resourceName string = resource.name
-output resourceSummary string = 'DbServer FirewallRule Summary: Name: ${resource.name), Range: ${startIpAddress} - ${endIpAddress}'
+output resourceSummary string = 'DbServer FirewallRule Summary: Name: ${resource.name}, Range: ${startIpAddress} - ${endIpAddress}'
 
 // param sink (to not cause error if param is not used):
 output _ bool = startsWith('${sharedSettings.version}', '.')
