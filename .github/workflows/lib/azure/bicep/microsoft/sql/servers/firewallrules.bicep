@@ -17,7 +17,7 @@ var sharedSettings = loadJsonContent('../../../settings/shared.json')
 // Parent Resource
 // ======================================================================
 @description('The name of parent Database.')
-param parentDatabaseServer string
+param parentDatabaseName string
 
 // ======================================================================
 // Control Flags
@@ -34,8 +34,11 @@ param buildResource bool = true
 @maxLength(128)
 param resourceTitle string
 
-@description('The name of parent Database.')
-param parentDatabase string
+
+param resourceTags object = {}
+
+param resourceLocationId string = ''
+
 
 @description('The range start.')
 param startIpAddress string
@@ -44,7 +47,7 @@ param startIpAddress string
 param endIpAddress string
 
 resource resource 'Microsoft.Sql/servers/firewallRules@2021-11-01-preview' = if (buildResource) {
-  name: '${parentDatabase}\${resourceTitle}'
+  name: '${parentDatabaseName}\${resourceTitle}'
   //parent: parentDatabase
   properties: {
     startIpAddress: startIpAddress
@@ -61,4 +64,4 @@ output resourceName string = resource.name
 output resourceSummary string = 'DbServer FirewallRule Summary: Name: ${resource.name}, Range: ${startIpAddress} - ${endIpAddress}'
 
 // param sink (to not cause error if param is not used):
-output _ bool = startsWith('${sharedSettings.version}', '.')
+output _ bool = startsWith('${sharedSettings.version}-${resourceTags}-${resourceLocationId}', '.')
