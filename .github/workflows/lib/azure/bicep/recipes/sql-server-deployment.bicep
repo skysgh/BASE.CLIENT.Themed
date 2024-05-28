@@ -256,8 +256,10 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/firewallrules.bicep' 
 
   params: {
     // Refer to parent website so it can build resource name without use of parent property.
-    parentResourceName: '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
-    resourceName      : 'Allow Azure Resource Access'
+    parentDatabaseName: '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
+    resourceName      : sqlServerDbFirewallRulesResourceName
+    resourceLocationId: sqlServerDbFirewallRulesResourceLocation
+    resourceTags      : sqlServerDbFirewallRulesResourceTags
     startIpAddress    : '0.0.0.0'
     endIpAddress      : '0.0.0.0'
   }
