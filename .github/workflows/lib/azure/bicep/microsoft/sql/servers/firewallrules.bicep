@@ -29,7 +29,7 @@ param buildResource bool = true
 // Default Name, Location, Tags,
 // ======================================================================
 
-@description('The title of this firewall Rule.  1-128. Can\'t use: \'<>*%&:;\/?\' or control characters or end with period.')
+@description('The title of this firewall Rule.  1-128. Can\'t use: \'<>*%&:;/?\' or control characters or end with period.')
 @minLength(1)
 @maxLength(128)
 param resourceTitle string
@@ -47,8 +47,12 @@ param startIpAddress string
 param endIpAddress string
 
 resource resource 'Microsoft.Sql/servers/firewallRules@2021-11-01-preview' = if (buildResource) {
-  name: '${parentDatabaseName}\${resourceTitle}'
+  
+  // can't use parent to refer to a resource that is not described in the same file:
   //parent: parentDatabase
+  // so associate via the name given. Note that parentDatabasename is already in itself a  server and database name composite 
+  // ie, has a slash in it too.
+  name: '${parentDatabaseName}/${resourceTitle}'
   properties: {
     startIpAddress: startIpAddress
     endIpAddress: endIpAddress

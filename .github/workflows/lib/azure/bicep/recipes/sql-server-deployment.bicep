@@ -164,10 +164,10 @@ param sqlServerDbMaxSizeBytes int = 1073741824
 // Params: Resource Defaults 
 // ======================================================================
 
-param sqlServerDbFirewallRulesResourceName string = "Allow Azure Resources" 
+param sqlServerDbFirewallRulesResourceName string = 'Allow Azure Resources' 
 
-@description('Location of Database Rule. Default is set to \'sqlServerDbResourceLocationId\' - but it won't be used.')
-param sqlServerDbFirewallRulesResourceLocation = sqlServerDbResourceLocationId
+@description('Location of Database Rule. Default is set to \'sqlServerDbResourceLocationId\' - but it won\'t be used.')
+param sqlServerDbFirewallRulesResourceLocation string = sqlServerDbResourceLocationId
 
 @description('The tags for this firewall rule. ')
 param sqlServerDbFirewallRulesResourceTags object = {}
@@ -188,18 +188,18 @@ module serversModule '../microsoft/sql/servers.bicep' = if (buildResource) {
   name:  '${deployment().name}-sql-servers'
 
   params: {
-    resourceName: tmpsqlServerResourceName
-    resourceLocationId: sqlServerResourceLocationId
-    resourceTags: union(sharedSettings.defaultTags, defaultResourceTags, sqlServerResourceTags)
+    resourceName                : tmpsqlServerResourceName
+    resourceLocationId          : sqlServerResourceLocationId
+    resourceTags                : union(sharedSettings.defaultTags, defaultResourceTags, sqlServerResourceTags)
 
     // resourceSKU:....
     // resourceTier:....
 
-    minimalTlsVersion: sqlServerMinimalTlsVersion
+    minimalTlsVersion           : sqlServerMinimalTlsVersion
 
-    identityType: sqlServerIdentityType
-    adminUserName: sqlServerAdminUserName
-    adminPassword: sqlServerAdminPassword
+    identityType                : sqlServerIdentityType
+    adminUserName               : sqlServerAdminUserName
+    adminPassword               : sqlServerAdminPassword
   }
 }
 
@@ -216,28 +216,28 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 
   params: {
     // Refer to parent website so it can build resource name without use of parent property.
-    parentResourceName: tmpsqlServerResourceName
+    parentResourceName          : tmpsqlServerResourceName
 
-    resourceName:       tmpsqlServerDbResourceName
-    resourceLocationId: sqlServerDbResourceLocationId
-    resourceTags:       union(sharedSettings.defaultTags, defaultResourceTags, sqlServerDbResourceTags)
+    resourceName                : tmpsqlServerDbResourceName
+    resourceLocationId          : sqlServerDbResourceLocationId
+    resourceTags                : union(sharedSettings.defaultTags, defaultResourceTags, sqlServerDbResourceTags)
     
-    resourceSKU:        sqlServerDbResourceSKU
-    //resourceTier:     sqlServerDbResourceTier
+    resourceSKU                 : sqlServerDbResourceSKU
+    //resourceTier              : sqlServerDbResourceTier
 
-    autoPauseDelay:     sqlServerDbAutoPauseDelay
+    autoPauseDelay              : sqlServerDbAutoPauseDelay
 
-    maxSizeBytes:       sqlServerDbMaxSizeBytes
-    freeLimitExhaustionBehavior: sqlServerDbFreeLimitExhaustionBehavior
-//    availabilityZone:   sqlServerDbAvailabilityZone
-    catalogCollation:   sqlServerDbCatalogCollation
-    collation:          sqlServerDbCollation
-    createMode:         sqlServerDbCreateMode
-    isLedgerOn:         sqlServerDbIsLedgerOn
+    maxSizeBytes                : sqlServerDbMaxSizeBytes
+    freeLimitExhaustionBehavior : sqlServerDbFreeLimitExhaustionBehavior
+//    availabilityZone            : sqlServerDbAvailabilityZone
+    catalogCollation            : sqlServerDbCatalogCollation
+    collation                   : sqlServerDbCollation
+    createMode                  : sqlServerDbCreateMode
+    isLedgerOn                  : sqlServerDbIsLedgerOn
 
-    sampleName:         sqlServerDbSampleName
-    useFreeLimit:     sqlServerDbUseFreeLimit
-//    zoneRedundant:      sqlServerDbZoneRedundant
+    sampleName                  : sqlServerDbSampleName
+    useFreeLimit                : sqlServerDbUseFreeLimit
+//    zoneRedundant               : sqlServerDbZoneRedundant
   }
 }
 
@@ -246,9 +246,9 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/databases.bicep' = if
 // Resource bicep: Sql Server *DB* Firewall Rules
 // ======================================================================
 
-sqlServerDbFirewallRulesResourceLocation
+//sqlServerDbFirewallRulesResourceLocation
 
-module sqlServersDatabasesModule '../microsoft/sql/servers/firewallrules.bicep' = if (buildResource) {
+module sqlServersDbFirewallModule '../microsoft/sql/servers/firewallrules.bicep' = if (buildResource) {
   // should be implied: 
   dependsOn: [serversModule]
   scope: resourceGroup(resourceGroupName)
@@ -256,12 +256,12 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/firewallrules.bicep' 
 
   params: {
     // Refer to parent website so it can build resource name without use of parent property.
-    parentDatabaseName: '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
-    resourceName      : sqlServerDbFirewallRulesResourceName
-    resourceLocationId: sqlServerDbFirewallRulesResourceLocation
-    resourceTags      : sqlServerDbFirewallRulesResourceTags
-    startIpAddress    : '0.0.0.0'
-    endIpAddress      : '0.0.0.0'
+    parentDatabaseName          : '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
+    resourceTitle               : sqlServerDbFirewallRulesResourceName
+    resourceLocationId          : sqlServerDbFirewallRulesResourceLocation
+    resourceTags                : sqlServerDbFirewallRulesResourceTags
+    startIpAddress              : '0.0.0.0'
+    endIpAddress                : '0.0.0.0'
   }
 }
 
@@ -269,10 +269,10 @@ module sqlServersDatabasesModule '../microsoft/sql/servers/firewallrules.bicep' 
 // AND it expects it to be calculatable at the start, 
 // but that can't be gotten from within the depth of a module
 // Reference the existing SQL Database resource
-resource existingSqlDatabase 'Microsoft.Sql/servers/databases@2021-05-01-preview' existing = {
-  scope: resourceGroup(resourceGroupName)
-  name: '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
-}
+//resource existingSqlDatabase 'Microsoft.Sql/servers/databases@2021-05-01-preview' existing = {
+//  scope: resourceGroup(resourceGroupName)
+//  name: '${tmpsqlServerResourceName}/${tmpsqlServerDbResourceName}'
+//}
 
 // var sqlDatabaseId = resourceId('Microsoft.Sql/servers/databases', tmpsqlServerResourceName, tmpsqlServerDbResourceName)
 
