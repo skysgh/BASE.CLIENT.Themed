@@ -61,7 +61,7 @@ jobs:
         run: |
           echo "::group::Run Context"
           echo "Current Directory:"
-          echo "$GITHUB_WORKSPACE"                 : ${{GITHUB_WORKSPACE}}
+          echo "$GITHUB_WORKSPACE"                 : ${{github.env}}
           pwd
           echo "::endgroup::"
           echo 
@@ -146,7 +146,7 @@ jobs:
         run: |
               echo "::group::Run Context"
               echo "Current Directory:"
-              echo "$GITHUB_WORKSPACE"                 : ${{GITHUB_WORKSPACE}}
+              echo "$GITHUB_WORKSPACE:"                : ${{github.env}}
               pwd
               echo "Target Lib File:"
               ls -la "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"
