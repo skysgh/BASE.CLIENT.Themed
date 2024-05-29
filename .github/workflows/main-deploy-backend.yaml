@@ -162,7 +162,7 @@ jobs:
           scope          : subscription
           region         : "${{ vars.AZURE_LOCATION_ID_2 }}"
           subscriptionId : "${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}"
-          template       : ${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}
+          template       : ./${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}
  
           # Consider: sqlServerDbResourxeLocationId: 'F1','D1','B1','B2','S1','S2'
           # Consider: sqlServerDbResourceSKU: 'Basic', 'S0', 'S1', 'S2'
