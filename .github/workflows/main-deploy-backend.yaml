@@ -109,8 +109,8 @@ jobs:
           scope: subscription
           region: ${{ vars.AZURE_LOCATION_ID_2 }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
-          # ${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}
-          template: "../DeploymentLib/SOURCE/infrastructure/aure/bicep/recipes/backend-deployment.bicep"   
+          
+          template: "../${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"   
  
           # Consider: sqlServerDbResourxeLocationId: 'F1','D1','B1','B2','S1','S2'
           # Consider: sqlServerDbResourceSKU: 'Basic', 'S0', 'S1', 'S2'
