@@ -124,24 +124,10 @@ jobs:
           repository       : ${{env.LIB_GITHUB_USERNAME_AND_REPO_NAME}}  
           path             : ${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}
 
-      - name: "04: Summarise Lib Contents"
-        run: |
-            echo "::group::Run Context"
-            echo "Current Directory:"
-            pwd
-            echo "Target Lib File:"
-            ls -la "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"
-            echo "::endgroup::"
-            echo  
-            echo "::group::Run Context (Extended Info)"
-            echo "Lib  Folder:"
-            tree "${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}"
-            echo "::endgroup::"
-            echo 
         # ==================================================
-      # Checkout code from *this* repo
-      # onto runner (not target SWA...)
-      # without giving directory, so default:
+        # Checkout code from *this* repo
+        # onto runner (not target SWA...)
+        # without giving directory, so default:
       - name: "05: Action: Checkout this *Project*'s Repo"
         uses: actions/checkout@v4
         # with:
@@ -155,7 +141,21 @@ jobs:
         with:
           creds          : ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
 
-      # ==================================================
+      - name: "04: Summarise Lib Contents"
+        run: |
+              echo "::group::Run Context"
+              echo "Current Directory:"
+              pwd
+              echo "Target Lib File:"
+              ls -la "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"
+              echo "::endgroup::"
+              echo  
+              echo "::group::Run Context (Extended Info)"
+              echo "Lib  Folder:"
+              tree "${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}"
+              echo "::endgroup::"
+              echo 
+        # ==================================================
       - name: "07: Invoke lib bicep recipe file with custom params (${{env.PROJECT_DESCRIPTION}})"
         uses: azure/arm-deploy@v1
         with:
