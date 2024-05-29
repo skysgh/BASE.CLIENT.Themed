@@ -74,8 +74,23 @@ jobs:
       - name: Explain!
         run: |
           echo "Structure of work folder of this pipeline:"
-          tree './'
+          tree '.${{env.REPO_LIB_DIR}}'
   
+
+      - name: Explain2!
+        run: |
+          echo "...:"
+          ls -la          
+
+      - name: Explain3!
+        run: |
+          echo "...:"
+          pwd          
+  
+      - name: Explain4!
+        run: |
+          echo "...:"
+          cwd          
       # ==================================================
       # Checkout code from *this* repo
       # onto runner (not target SWA...)
