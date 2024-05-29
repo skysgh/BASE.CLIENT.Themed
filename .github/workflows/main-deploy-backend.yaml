@@ -74,7 +74,7 @@ jobs:
       - name: Explain!
         run: |
           echo "Structure of work folder of this pipeline:"
-          tree '.${{env.REPO_LIB_DIR}}'
+          tree '${{env.REPO_LIB_DIR}}'
   
 
       - name: Explain2!
