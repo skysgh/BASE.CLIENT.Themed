@@ -54,30 +54,26 @@ jobs:
           echo "::group::Project Vars"
           echo "Project Name                      : ${{env.PROJECT_NAME}}"
           echo "Project Service                   : ${{env.PROJECT_SERVICE_NAME}}"
-          echo "Proejct Description               : ${{env.PROJECT_DESCRIPTION}}"
+          echo "Project Description               : ${{env.PROJECT_DESCRIPTION}}"
           echo "::endgroup::
-            
           echo "::group::Dependencies (Injected Variables & Secrets)"
           echo "GitHub Token                      : ..."
           echo "Azure Creds                       : ${{secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}}"
           echo "sqlServerAdminUserName            : ${{secrets.DB_ADMIN_NAME}}"
           echo "sqlServerAdminPassword            : ${{secrets.DB_ADMIN_PWD}}"
           echo "::endgroup::"
-                    
           echo "::group::Lib Variables"
           echo "Lib Repo GitHub UserName/Repo     : '${{env.LIB_GITHUB_USER_AND_REPO_NAME}}'"
           echo "Lib Repo Local Relative Dir       : '${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}'"
           echo "Lib Repo Bicep Recipe Directory   : '${{env.LIB_MAIN_BICEP_FILE_DIR}}'"
           echo "Lib Repo Bicep FileName           : '${{env.LIB_BICEP_FILENAME}}'"
           echo "::endgroup::"
-
           echo "::group::Project Repo Variables"
           echo "Project Repo GitHub UserName/Repo : ..."
           echo "Project Repo Local Relative Dir   : '/'"
           echo "Proejct Repo Src Directory        : ..."
           echo "Porject Repo Src FileName         : n/a"
-          echo "::endgroup::"
-  
+          echo "::endgroup::"  
           echo "::group::Azure Variables"
           echo "Azure Subscription                : '${{secrets.NP_AZURE_SUBSCRIPTION_ID}}'"
           echo "Azure Resource Location 0         : '${{vars.AZURE_LOCATION_ID_0}}'"
