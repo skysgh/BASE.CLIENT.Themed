@@ -112,7 +112,7 @@ jobs:
           echo "::group::Database Server"
           echo "- Collation is as is for handling Maori."
           echo "::endgroup::"
-          echo 
+          echo
           echo "::group::Database"
           echo "- Collation is as is for handling Maori."
           echo "- Sizing is standard and not Premium,"
@@ -130,9 +130,9 @@ jobs:
         with:
           repository       : ${{env.LIB_GITHUB_USERNAME_AND_REPO_NAME}}  
           path             : ${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}
-  
+
       - name: "04: Summarise Lib Contents"
-          run: |
+        run: |
             echo "::group::Run Context"
             echo "Current Directory:"
             pwd
