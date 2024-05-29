@@ -44,11 +44,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: NP
     env:
-      # ======================================================================
       FOO: BAR
-      # ======================================================================
     steps:
       # ==================================================
+      # Check information
       - name: "01: Summarise Context Before Starting"
         run: |
           echo "::group::Project Vars"
@@ -101,10 +100,10 @@ jobs:
       # without giving directory, so default:
       - name: "03: Checkout this Project's Repo"
         uses: actions/checkout@v4
-        # Optional to specify repo:
+        # Optional to specify 'repository' or 'path'
         # with:
         #  repository: ${{env.THIS_REPO}}
-
+        #  path: ${{env.SRC_GITHUB_RELATIVE_DEPLOYMENT_DIR}}
       # ==================================================
       # Login to Azure, in order to manipulate remote resources
       - name: "04: Azure Login, using Action, to enable building resources"
@@ -120,7 +119,23 @@ jobs:
           repository: "skysgh/resources.deployments.lib"
           path: ${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}
       # ==================================================
-      - name: "06: Run main bicep file (${{env.PROJECT_DESCRIPTION}})"
+      - name: "06: Summarise Lib Contents"
+        run: |
+          echo "::group::Run Context"
+          echo "Current Directory:"
+          echo "$GITHUB_WORKSPACE:"               : ${{github.env}}
+          pwd
+          echo "Target Lib File:"
+          ls -la "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_MAIN_BICEP_FILE_DIR }}/${{env.LIB_BICEP_FILENAME}}"
+          echo "::endgroup::"
+          echo  
+          echo "::group::Run Context (Extended Info)"
+          echo "Lib  Folder:"
+          tree "${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}"
+          echo "::endgroup::"
+          echo 
+      # ==================================================
+      - name: "07: Run main bicep file (${{env.PROJECT_DESCRIPTION}})"
         uses: azure/arm-deploy@v1
         with:
           scope: subscription
