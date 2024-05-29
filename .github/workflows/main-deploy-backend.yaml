@@ -9,7 +9,7 @@ on:
       - release
       - develop    
 env:
-  REPO_LIB_DIR: "./DeploymentLib"
+  REPO_LIB_DIR: "DeploymentLib"
 
   # Where to find reusable bicep, etc. files
   # THIS_DIRECTORY: '.github/workflows'
@@ -40,7 +40,7 @@ jobs:
       PROJECT_NAME: 'BASE'
       # Angular Code Name (affects where code ends up in dist/xxx)
       # ======================================================================
-      LIB_BICEP_DIRECTORY: "./DeploymentLib/SOURCE/infrastructure/azure/bicep/recipes"   
+      LIB_BICEP_DIRECTORY: "DeploymentLib/SOURCE/infrastructure/azure/bicep/recipes"   
 
     steps:
       # ==================================================
