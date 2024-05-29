@@ -33,7 +33,7 @@ env:
   LIB_BICEP_FILENAME: "backend-deployment.bicep"
   # But these vars probably don't change project to project:
   LIB_GITHUB_USERNAME_AND_REPO_NAME: skysgh/resources.deployments.lib
-  LIB_GITHUB_BRANCH: main
+  LIB_GITHUB_BRANCH: "main"
   LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR: "DeploymentLib"
   LIB_BICEP_DIRECTORY: "SOURCE/infrastructure/azure/bicep/recipes"   
   # ======================================================================
@@ -45,6 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: NP
     env:
+      FOO: BAR
       # ======================================================================
       # FIXED (CONTEXT):
       # ======================================================================
