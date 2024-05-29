@@ -17,6 +17,7 @@ env:
   # definately changes per project.
   # Note: it could be set here, or come from GitHUb repo vars:
   PROJECT_NAME: 'BASE'
+  PROJECT_SERVICE_NAME: ''
   PROJECT_DESCRIPTION: 'Creates backend RG, WEB APP SERVER, SQL SERVER, etc.'
   # ======================================================================
   # SRC VARIABLES
@@ -50,22 +51,12 @@ jobs:
       # ==================================================
       - name: "Summarise Context Before Starting"
         run: |
-          echo "::group::Misc"
-          echo "${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}"
-          echo "${{env.LIB_REPO_SRC_URL}}"
-          echo "${{env.LIB_BICEP_FILENAME}}"
-          echo "${{env.PROJECT_NAME}}"
-          echo "${{env.PROJECT_SERVICE_NAME}}"
-          echo "${{vars.PROJECT_NAME}}"
-          echo "${{vars.PROJECT_SERVICE_NAME}}"
-          echo "::endgroup::"
-
           echo "::group::Project Vars"
           echo "Project Name                      : ${{env.PROJECT_NAME}}"
           echo "Project Service                   : ${{env.PROJECT_SERVICE_NAME}}"
           echo "Proejct Description               : ${{env.PROJECT_DESCRIPTION}}"
           echo "::endgroup::
-                      
+            
           echo "::group::Dependencies (Injected Variables & Secrets)"
           echo "GitHub Token                      : ..."
           echo "Azure Creds                       : ${{secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}}"
