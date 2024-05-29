@@ -22,6 +22,21 @@ jobs:
     environment: NP
     env:
       # ======================================================================
+      # PROJECT VARIABLES
+      # ======================================================================
+      # The project name, which informs naming of 
+      # Azure resource groups and resource names 
+      # definately changes per project.
+      # Note: it could be set here, or come from GitHUb repo vars:
+      PROJECT_NAME: 'BASE'
+      PROJECT_DESCRIPTION: 'Creates backend RG, WEB APP SERVER, SQL SERVER, etc.'
+      # ======================================================================
+      # SRC VARIABLES
+      # ======================================================================
+      SRC_GITHUB_BRANCH: main
+      SRC_GITHUB_RELATIVE_DEPLOYMENT_DIR: "/"
+      SRC_DIRECTORY: "/"
+      # ======================================================================
       # FIXED (CONTEXT):
       # ======================================================================
       # where imported repo should go
