@@ -87,10 +87,6 @@ jobs:
           echo "...:"
           pwd          
   
-      - name: Explain4!
-        run: |
-          echo "...:"
-          cwd          
       # ==================================================
       # Checkout code from *this* repo
       # onto runner (not target SWA...)
