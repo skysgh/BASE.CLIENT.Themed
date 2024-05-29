@@ -85,12 +85,12 @@ jobs:
       - name: Explain3!
         run: |
           echo "...:"
-          ls -la "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"    
+          ls -la ${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}    
           
-          - name: Explain3!
-          run: |
-            echo "...:"
-            pwd    
+      - name: Explain4!
+        run: |
+          echo "...:"
+          pwd    
             
             
   
