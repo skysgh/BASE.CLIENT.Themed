@@ -13,7 +13,7 @@ env:
   # THIS_DIRECTORY: '.github/workflows'
   # WORKFLOW_BICEP_DIRECTORY: '.github/workflows/bicep'
   # LIB_BICEP_DIRECTORY: '.github/workflows/lib/azure/bicep/recipes' # REPO_LIB_DIR1
-  LIB_BICEP_DIRECTORY: '/DeploymentLib/SOURCE/infrastructure/azure/bicep/recipes' # REPO_LIB_DIR1  
+  LIB_BICEP_DIRECTORY: '${{REPO_LIB_DIR}}/SOURCE/infrastructure/azure/bicep/recipes' # REPO_LIB_DIR1  
   MAIN_BICEP_FILENAME: 'backend-deployment.bicep'
 
 
@@ -27,7 +27,7 @@ jobs:
       # FIXED (CONTEXT):
       # ======================================================================
       # where imported repo should go
-      REPO_LIB_DIR: "./DeploymentLib"
+      REPO_LIB_DIR: "/DeploymentLib"
       # File that this YAML invokes at some point, along with its params
       # MAIN_BICEP_FILENAME: 'dynamic-app-service.bicep'
       # MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
@@ -65,7 +65,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{env.LIB_REPO_SRC_URL}}
-          path: '/DeploymentLib'
+          path: ${{REPO_LIB_DIR}}
 
       # ==================================================
       # Checkout code from *this* repo
