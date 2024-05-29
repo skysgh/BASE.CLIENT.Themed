@@ -9,10 +9,26 @@ on:
       - release
       - develop    
 env:
+  # ======================================================================
+  # PROJECT VARIABLES
+  # ======================================================================
+  # The project name, which informs naming of 
+  # Azure resource groups and resource names 
+  # definately changes per project.
+  # Note: it could be set here, or come from GitHUb repo vars:
+  PROJECT_NAME: 'BASE'
+  PROJECT_DESCRIPTION: 'Creates backend RG, WEB APP SERVER, SQL SERVER, etc.'
+  # ======================================================================
+  # SRC VARIABLES
+  # ======================================================================
+  SRC_GITHUB_BRANCH: main
+  SRC_GITHUB_RELATIVE_DEPLOYMENT_DIR: "/"
+  SRC_DIRECTORY: "/"
   # where checked out to:
-  REPO_LIB_DIR: "DeploymentLib"
+  LIB_GITHUB_USER_AND_REPO_NAME: "skysgh/resources.deployments.lib"
+  LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR: "DeploymentLib"
   LIB_BICEP_DIRECTORY: "DeploymentLib/SOURCE/infrastructure/azure/bicep/recipes"   
-  MAIN_BICEP_FILENAME: "backend-deployment.bicep"
+  LIB_BICEP_FILENAME: "backend-deployment.bicep"
 
 
 # Running on one runner:      
@@ -21,36 +37,19 @@ jobs:
     runs-on: ubuntu-latest
     environment: NP
     env:
+
       # ======================================================================
-      # PROJECT VARIABLES
+      # LIB VARIABLES
       # ======================================================================
-      # The project name, which informs naming of 
-      # Azure resource groups and resource names 
-      # definately changes per project.
-      # Note: it could be set here, or come from GitHUb repo vars:
-      PROJECT_NAME: 'BASE'
-      PROJECT_DESCRIPTION: 'Creates backend RG, WEB APP SERVER, SQL SERVER, etc.'
-      # ======================================================================
-      # SRC VARIABLES
-      # ======================================================================
-      SRC_GITHUB_BRANCH: main
-      SRC_GITHUB_RELATIVE_DEPLOYMENT_DIR: "/"
-      SRC_DIRECTORY: "/"
       # ======================================================================
       # FIXED (CONTEXT):
       # ======================================================================
       # where imported repo should go
       # File that this YAML invokes at some point, along with its params
-      # MAIN_BICEP_FILENAME: 'dynamic-app-service.bicep'
+      # LIB_BICEP_FILENAME: 'dynamic-app-service.bicep'
       # MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
       # ======================================================================
       # INPUTS:
-      # ======================================================================
-      # IMPORTANT:
-
-      # PROJECT NAME which is basis of Azure resource names.
-      PROJECT_NAME: 'BASE'
-      # Angular Code Name (affects where code ends up in dist/xxx)
       # ======================================================================
 
     steps:
@@ -58,9 +57,9 @@ jobs:
       - name: "Summarise Context Before Starting"
         run: |
           echo "::group::Misc"
-          echo "${{env.REPO_LIB_DIR}}"
+          echo "${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}"
           echo "${{env.LIB_REPO_SRC_URL}}"
-          echo "${{env.MAIN_BICEP_FILENAME}}"
+          echo "${{env.LIB_BICEP_FILENAME}}"
           echo "${{env.PROJECT_NAME}}"
           echo "${{env.PROJECT_SERVICE_NAME}}"
           echo "${{vars.PROJECT_NAME}}"
@@ -97,7 +96,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: "skysgh/resources.deployments.lib"  
-          path: ${{env.REPO_LIB_DIR}}
+          path: ${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}
 
   
       - name: Explain 1!
@@ -107,12 +106,12 @@ jobs:
       - name: Explain 2!
         run: |
           echo "file:"
-          ls -la ${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}    
+          ls -la ${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}    
           
       - name: Explain!
         run: |
           echo "Structure of work folder of this pipeline:"
-          tree '${{env.REPO_LIB_DIR}}'
+          tree '${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}'
       # ==================================================
       - name: Run main bicep file (creating RG & WEB APP SERVER, SQL SERVER, etc.)
         uses: azure/arm-deploy@v1
@@ -121,7 +120,7 @@ jobs:
           region: ${{ vars.AZURE_LOCATION_ID_2 }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           
-          template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"   
+          template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"   
  
           # Consider: sqlServerDbResourxeLocationId: 'F1','D1','B1','B2','S1','S2'
           # Consider: sqlServerDbResourceSKU: 'Basic', 'S0', 'S1', 'S2'
