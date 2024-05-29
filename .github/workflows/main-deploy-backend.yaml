@@ -68,7 +68,7 @@ jobs:
           repository: ${{env.LIB_REPO_SRC_URL}}
           path: ${{env.REPO_LIB_DIR}}
 
-      - name: sddd
+      - name: Explain!
         run: |
             echo "Structure of work folder of this pipeline:"
             tree './'
