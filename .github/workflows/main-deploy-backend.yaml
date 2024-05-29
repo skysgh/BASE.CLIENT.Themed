@@ -52,16 +52,16 @@ jobs:
       - name: "Summarise Context Before Starting"
         run: |
           echo "::group::Project Vars"
-          echo "Project Name                      : ${{env.PROJECT_NAME}}"
-          echo "Project Service                   : ${{env.PROJECT_SERVICE_NAME}}"
-          echo "Project Description               : ${{env.PROJECT_DESCRIPTION}}"
+          echo "Project Name                      : '${{env.PROJECT_NAME}}'"
+          echo "Project Service                   : '${{env.PROJECT_SERVICE_NAME}}'"
+          echo "Project Description               : '${{env.PROJECT_DESCRIPTION}}'"
           echo "::endgroup::"
 
           echo "::group::Dependencies (Injected Variables & Secrets)"
           echo "GitHub Token                      : ..."
-          echo "Azure Creds                       : ${{secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}}"
-          echo "sqlServerAdminUserName            : ${{secrets.DB_ADMIN_NAME}}"
-          echo "sqlServerAdminPassword            : ${{secrets.DB_ADMIN_PWD}}"
+          echo "Azure Creds                       : '${{secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}}'"
+          echo "sqlServerAdminUserName            : '${{secrets.DB_ADMIN_NAME}}'"
+          echo "sqlServerAdminPassword            : '${{secrets.DB_ADMIN_PWD}}'"
           echo "::endgroup::"
 
           echo "::group::Lib Variables"
@@ -73,8 +73,9 @@ jobs:
 
           echo "::group::Project Repo Variables"
           echo "Project Repo GitHub UserName/Repo : ..."
-          echo "Project Repo Local Relative Dir   : '/'"
-          echo "Proejct Repo Src Directory        : ..."
+          echo "Project Repo Branch               : '${{env.SRC_GITHUB_BRANCH}}'"
+          echo "Project Repo Local Relative Dir   : '${{env.SRC_GITHUB_RELATIVE_DEPLOYMENT_DIR}}'"
+          echo "Proejct Repo Src Directory        : '${{env.SRC_DIRECTORY}}'"
           echo "Porject Repo Src FileName         : n/a"
           echo "::endgroup::"
 
@@ -85,6 +86,30 @@ jobs:
           echo "Azure Resource Location 2         : '${{vars.AZURE_LOCATION_ID_2}}'"
           echo "Azure Resource Location 3         : '${{vars.AZURE_LOCATION_ID_3}}'"
           echo "::endgroup::"
+      # ==================================================
+      - name: "02: Concepts & Notes"
+        run: |
+          echo "::group::Database Server"
+          echo "- Collation is as is for handling Maori."
+          echo "::endgroup::"
+          echo
+          echo "::group::Database"
+          echo "- Collation is as is for handling Maori."
+          echo "- Sizing is standard and not Premium,"
+          echo "  expecting developers to aggressively use Cache."
+          echo "- Collation is as is for handling Maori."
+          echo "- TLS is 1.2 because Azure is not yet supporting 1.3."
+          echo "::endgroup::"
+          echo 
+      # ==================================================
+      # Checkout code from *lib* repo
+      # to a directory parallel to this repo's code
+      - name: Checkout Library Repo
+        uses: actions/checkout@v4
+        with:
+          repository: "skysgh/resources.deployments.lib"  
+          path: ${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}
+
       # ==================================================
       # Checkout code from *this* repo
       # onto runner (not target SWA...)
@@ -100,18 +125,7 @@ jobs:
       - name: Azure Login, using Action, to enable building resources
         uses: azure/login@v2
         with:
-          creds: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
-
-          
-      # ==================================================
-      # Checkout code from *lib* repo
-      # to a directory parallel to this repo's code
-      - name: Checkout Library Repo
-        uses: actions/checkout@v4
-        with:
-          repository: "skysgh/resources.deployments.lib"  
-          path: ${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}
-
+          creds: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}}
       # ==================================================
       - name: Run main bicep file (creating RG & WEB APP SERVER, SQL SERVER, etc.)
         uses: azure/arm-deploy@v1
@@ -135,7 +149,7 @@ jobs:
           parameters: >
             buildResourceGroup=true
             projectName="${{ env.PROJECT_NAME }}"
-            projectServiceName="${{ vars.PROJECT_SERVICE_NAME }}"
+            projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
             environmentId="NP"
             defaultResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
             logicResourceGroupLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
