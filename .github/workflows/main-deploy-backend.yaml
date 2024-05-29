@@ -10,12 +10,14 @@ on:
       - develop    
 env:
   # Where to find reusable bicep, etc. files
-  THIS_DIRECTORY: '.github/workflows'
-  WORKFLOW_BICEP_DIRECTORY: '.github/workflows/bicep'
-  LIB_BICEP_DIRECTORY: '.github/workflows/lib/azure/bicep/recipes' # REPO_LIB_DIR1
+  # THIS_DIRECTORY: '.github/workflows'
+  # WORKFLOW_BICEP_DIRECTORY: '.github/workflows/bicep'
+  # LIB_BICEP_DIRECTORY: '.github/workflows/lib/azure/bicep/recipes' # REPO_LIB_DIR1
+  LIB_BICEP_DIRECTORY: './DeploymentLib/infrastructure/azure/bicep/recipes' # REPO_LIB_DIR1  
   MAIN_BICEP_FILENAME: 'backend-deployment.bicep'
 
 
+  
 # Running on one runner:      
 jobs:
   deploy:
@@ -45,6 +47,7 @@ jobs:
       - name: "Summarise Context Before Starting"
         run: |
           echo "::group::Misc"
+          echo "${{vars.LIB_REPO_SRC_URL}}"
           echo "${{env.PROJECT_NAME}}"
           echo "${{env.PROJECT_SERVICE_NAME}}"
           echo "${{vars.PROJECT_NAME}}"
@@ -53,6 +56,7 @@ jobs:
           echo "${{vars.AZURE_LOCATION_ID_1}}"
           echo "${{vars.AZURE_LOCATION_ID_2}}"
           echo "${{vars.AZURE_LOCATION_ID_3}}"
+          
           echo "::endgroup::"
 
       # ==================================================
