@@ -167,7 +167,7 @@ jobs:
           # 
           # /
           # ./
-          template       : ${{github.env}}/${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}
+          template       : "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"
  
           # Consider: sqlServerDbResourxeLocationId: 'F1','D1','B1','B2','S1','S2'
           # Consider: sqlServerDbResourceSKU: 'Basic', 'S0', 'S1', 'S2'
@@ -180,7 +180,7 @@ jobs:
           
           parameters: >
             buildResourceGroup=true
-            projectName="${{ env.PROJECT_NAME }}"
+            projectName="${{ env.PROJECT_NAME }}"oe
             projectServiceName="${{ env.PROJECT_SERVICE_NAME }}"
             environmentId="NP"
             defaultResourceLocationId="${{ vars.AZURE_LOCATION_ID_2 }}"
