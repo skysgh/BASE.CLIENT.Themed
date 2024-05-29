@@ -9,12 +9,13 @@ on:
       - release
       - develop    
 env:
+  REPO_LIB_DIR: "./DeploymentLib"
+
   # Where to find reusable bicep, etc. files
   # THIS_DIRECTORY: '.github/workflows'
   # WORKFLOW_BICEP_DIRECTORY: '.github/workflows/bicep'
   # LIB_BICEP_DIRECTORY: '.github/workflows/lib/azure/bicep/recipes' # REPO_LIB_DIR1
-  LIB_BICEP_DIRECTORY: '${{REPO_LIB_DIR}}/SOURCE/infrastructure/azure/bicep/recipes' # REPO_LIB_DIR1  
-  MAIN_BICEP_FILENAME: 'backend-deployment.bicep'
+  MAIN_BICEP_FILENAME: "backend-deployment.bicep"
 
 
 # Running on one runner:      
@@ -27,7 +28,6 @@ jobs:
       # FIXED (CONTEXT):
       # ======================================================================
       # where imported repo should go
-      REPO_LIB_DIR: "./DeploymentLib"
       # File that this YAML invokes at some point, along with its params
       # MAIN_BICEP_FILENAME: 'dynamic-app-service.bicep'
       # MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
@@ -40,6 +40,7 @@ jobs:
       PROJECT_NAME: 'BASE'
       # Angular Code Name (affects where code ends up in dist/xxx)
       # ======================================================================
+      LIB_BICEP_DIRECTORY: "./DeploymentLib/SOURCE/infrastructure/azure/bicep/recipes" # REPO_LIB_DIR1  
 
     steps:
       # ==================================================
@@ -65,7 +66,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{env.LIB_REPO_SRC_URL}}
-          path: ${{REPO_LIB_DIR}}
+          path: ${{env.REPO_LIB_DIR}}
 
       # ==================================================
       # Checkout code from *this* repo
