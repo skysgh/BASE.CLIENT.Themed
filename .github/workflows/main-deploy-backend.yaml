@@ -80,12 +80,19 @@ jobs:
       - name: Explain2!
         run: |
           echo "...:"
-          ls -la          
+          ls ${{ env.LIB_BICEP_DIRECTORY }}          
 
       - name: Explain3!
         run: |
           echo "...:"
-          pwd          
+          ls -la "${{ env.LIB_BICEP_DIRECTORY }}/${{env.MAIN_BICEP_FILENAME}}"    
+          
+          - name: Explain3!
+          run: |
+            echo "...:"
+            pwd    
+            
+            
   
       # ==================================================
       # Checkout code from *this* repo
