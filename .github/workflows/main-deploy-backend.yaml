@@ -34,7 +34,7 @@ env:
   LIB_REPO_BRANCH: main
   LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR: "DeploymentLib"
   LIB_MAIN_BICEP_FILE_DIR: "SOURCE/infrastructure/azure/bicep/recipes"
-  LIB_BICEP_DIRECTORY: "DeploymentLib/SOURCE/infrastructure/azure/bicep/recipes"   
+  # ======================================================================
 
 
 # Running on one runner:      
@@ -43,7 +43,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: NP
     env:
+      # ======================================================================
       FOO: BAR
+      # ======================================================================
     steps:
       # ==================================================
       - name: "Summarise Context Before Starting"
@@ -56,13 +58,42 @@ jobs:
           echo "${{env.PROJECT_SERVICE_NAME}}"
           echo "${{vars.PROJECT_NAME}}"
           echo "${{vars.PROJECT_SERVICE_NAME}}"
-          echo "${{vars.AZURE_LOCATION_ID_0}}"
-          echo "${{vars.AZURE_LOCATION_ID_1}}"
-          echo "${{vars.AZURE_LOCATION_ID_2}}"
-          echo "${{vars.AZURE_LOCATION_ID_3}}"
-          
+          echo "::endgroup::"
+
+          echo "::group::Project Vars"
+          echo "Project Name                      : ${{env.PROJECT_NAME}}"
+          echo "Project Service                   : ${{env.PROJECT_SERVICE_NAME}}"
+          echo "Proejct Description               : ${{env.PROJECT_DESCRIPTION}}"
+          echo "::endgroup::
+                      
+          echo "::group::Dependencies (Injected Variables & Secrets)"
+          echo "GitHub Token                      : ..."
+          echo "Azure Creds                       : ${{secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}}"
+          echo "sqlServerAdminUserName            : ${{secrets.DB_ADMIN_NAME}}"
+          echo "sqlServerAdminPassword            : ${{secrets.DB_ADMIN_PWD}}"
+          echo "::endgroup::"
+                    
+          echo "::group::Lib Variables"
+          echo "Lib Repo GitHub UserName/Repo     : '${{env.LIB_GITHUB_USER_AND_REPO_NAME}}'"
+          echo "Lib Repo Local Relative Dir       : '${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}'"
+          echo "Lib Repo Bicep Recipe Directory   : '${{env.LIB_MAIN_BICEP_FILE_DIR}}'"
+          echo "Lib Repo Bicep FileName           : '${{env.LIB_BICEP_FILENAME}}'"
+          echo "::endgroup::"
+
+          echo "::group::Project Repo Variables"
+          echo "Project Repo GitHub UserName/Repo : ..."
+          echo "Project Repo Local Relative Dir   : '/'"
+          echo "Proejct Repo Src Directory        : ..."
+          echo "Porject Repo Src FileName         : n/a"
           echo "::endgroup::"
   
+          echo "::group::Azure Variables"
+          echo "Azure Subscription                : '${{secrets.NP_AZURE_SUBSCRIPTION_ID}}'"
+          echo "Azure Resource Location 0         : '${{vars.AZURE_LOCATION_ID_0}}'"
+          echo "Azure Resource Location 1         : '${{vars.AZURE_LOCATION_ID_1}}'"
+          echo "Azure Resource Location 2         : '${{vars.AZURE_LOCATION_ID_2}}'"
+          echo "Azure Resource Location 3         : '${{vars.AZURE_LOCATION_ID_3}}'"
+          echo "::endgroup::"
       # ==================================================
       # Checkout code from *this* repo
       # onto runner (not target SWA...)
@@ -90,20 +121,6 @@ jobs:
           repository: "skysgh/resources.deployments.lib"  
           path: ${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}
 
-  
-      - name: Explain 1!
-        run: |
-          echo "pwd:"
-          pwd
-      - name: Explain 2!
-        run: |
-          echo "file:"
-          ls -la ${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}    
-          
-      - name: Explain!
-        run: |
-          echo "Structure of work folder of this pipeline:"
-          tree '${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}'
       # ==================================================
       - name: Run main bicep file (creating RG & WEB APP SERVER, SQL SERVER, etc.)
         uses: azure/arm-deploy@v1
@@ -112,10 +129,9 @@ jobs:
           region: ${{ vars.AZURE_LOCATION_ID_2 }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           
-          #template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"   
-          template: "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_MAIN_BICEP_FILE_DIR }}/${{env.LIB_BICEP_FILENAME}}"   
- 
-        
+          #template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"
+          template: "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_MAIN_BICEP_FILE_DIR }}/${{env.LIB_BICEP_FILENAME}}"
+
           # Consider: sqlServerDbResourxeLocationId: 'F1','D1','B1','B2','S1','S2'
           # Consider: sqlServerDbResourceSKU: 'Basic', 'S0', 'S1', 'S2'
           # Consider: webServerFarmsResourceSKU can't be Shared/D1 if Linux is used
