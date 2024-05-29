@@ -63,11 +63,6 @@ jobs:
           echo "Current Directory:"
           pwd
           echo "::endgroup::"
-          echo  
-          echo "::group::Run Context (Extended Info)"
-          echo "Lib  Folder:"
-          tree "${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}"
-          echo "::endgroup::"
           echo 
           echo "::group::Project Vars"
           echo "Project Name                      : ${{env.PROJECT_NAME}}"
