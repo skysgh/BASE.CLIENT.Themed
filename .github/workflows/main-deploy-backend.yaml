@@ -34,8 +34,8 @@ env:
   # But these vars probably don't change project to project:
   LIB_GITHUB_USERNAME_AND_REPO_NAME: skysgh/resources.deployments.lib
   LIB_GITHUB_BRANCH: "main"
-  LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR: "DeploymentLib"
-  LIB_BICEP_DIRECTORY: "SOURCE/infrastructure/azure/bicep/recipes"   
+  LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR: DeploymentLib
+  LIB_BICEP_DIRECTORY: SOURCE/infrastructure/azure/bicep/recipes
   # ======================================================================
 
 
@@ -167,7 +167,7 @@ jobs:
           # 
           # /
           # ./
-          template       : "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"
+          template       : ${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}
  
           # Consider: sqlServerDbResourxeLocationId: 'F1','D1','B1','B2','S1','S2'
           # Consider: sqlServerDbResourceSKU: 'Basic', 'S0', 'S1', 'S2'
