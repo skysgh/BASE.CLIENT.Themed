@@ -63,7 +63,7 @@ jobs:
           echo "Current Directory:"
           pwd
           echo "Target Lib File:"
-          ls -la "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"
+          ls -la "./${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"
           echo "::endgroup::"
           echo  
           echo "::group::Run Context (Extended Info)"
