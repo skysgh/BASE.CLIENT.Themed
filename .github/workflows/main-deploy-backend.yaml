@@ -131,11 +131,25 @@ jobs:
           repository       : ${{env.LIB_GITHUB_USERNAME_AND_REPO_NAME}}  
           path             : ${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}
   
-      # ==================================================
+      - name: "04: Summarise Lib Contents"
+          run: |
+            echo "::group::Run Context"
+            echo "Current Directory:"
+            pwd
+            echo "Target Lib File:"
+            ls -la "./${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"
+            echo "::endgroup::"
+            echo  
+            echo "::group::Run Context (Extended Info)"
+            echo "Lib  Folder:"
+            tree "${{env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR}}"
+            echo "::endgroup::"
+            echo 
+        # ==================================================
       # Checkout code from *this* repo
       # onto runner (not target SWA...)
       # without giving directory, so default:
-      - name: "03: Action: Checkout this *Project*'s Repo"
+      - name: "05: Action: Checkout this *Project*'s Repo"
         uses: actions/checkout@v4
         # with:
         #  Optional to specify repo:
@@ -143,13 +157,13 @@ jobs:
 
       # ==================================================
       # Login to Azure, in order to manipulate remote resources
-      - name: "04: Action: Azure Login, to enable building Azure resources"
+      - name: "06: Action: Azure Login, to enable building Azure resources"
         uses: azure/login@v2
         with:
           creds          : ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}} 
 
       # ==================================================
-      - name: "05: Invoke lib bicep recipe file with custom params (${{env.PROJECT_DESCRIPTION}})"
+      - name: "07: Invoke lib bicep recipe file with custom params (${{env.PROJECT_DESCRIPTION}})"
         uses: azure/arm-deploy@v1
         with:
           scope          : subscription
