@@ -42,21 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: NP
     env:
-
-      # ======================================================================
-      # LIB VARIABLES
-      # ======================================================================
-      # ======================================================================
-      # FIXED (CONTEXT):
-      # ======================================================================
-      # where imported repo should go
-      # File that this YAML invokes at some point, along with its params
-      # LIB_BICEP_FILENAME: 'dynamic-app-service.bicep'
-      # MAIN_BICEP_PARAM_FILENAME: 'main.service-client.bicepparam'
-      # ======================================================================
-      # INPUTS:
-      # ======================================================================
-
+      FOO: BAR
     steps:
       # ==================================================
       - name: "Summarise Context Before Starting"
