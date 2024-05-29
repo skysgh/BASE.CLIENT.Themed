@@ -40,7 +40,7 @@ jobs:
       PROJECT_NAME: 'BASE'
       # Angular Code Name (affects where code ends up in dist/xxx)
       # ======================================================================
-      LIB_BICEP_DIRECTORY: "${{env.REPO_LIB_DIR}}/SOURCE/infrastructure/azure/bicep/recipes" # REPO_LIB_DIR1  
+      LIB_BICEP_DIRECTORY: "./DeploymentLib./SOURCE/infrastructure/azure/bicep/recipes" # REPO_LIB_DIR1  
 
     steps:
       # ==================================================
