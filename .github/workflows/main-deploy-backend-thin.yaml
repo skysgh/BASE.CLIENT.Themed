@@ -1,0 +1,51 @@
+name: Deploy to Environment
+
+
+# Triggers, on specific branches
+on:
+  push:
+    branches:
+      - main
+      - release
+      - develop    
+env:
+  # ======================================================================
+  # PROJECT VARIABLES
+  # ======================================================================
+  # The project name, which informs naming of 
+  # Azure resource groups and resource names 
+  # definately changes per project.
+  # Note: it could be set here, or come from GitHUb repo vars:
+  PROJECT_NAME: 'BASE'
+  PROJECT_SERVICE_NAME: ''
+  PROJECT_DESCRIPTION: 'Creates backend RG, WEB APP SERVER, SQL SERVER, etc.'
+  # ======================================================================
+  # SRC VARIABLES
+  # ======================================================================
+  SRC_GITHUB_BRANCH: main
+  SRC_GITHUB_RELATIVE_DEPLOYMENT_DIR: "/"
+  SRC_DIRECTORY: "/"
+  # ======================================================================
+  # LIB VARIABLES
+  # ======================================================================
+  # The file invoked changes per project/service/tier:
+  LIB_BICEP_FILENAME: "backend-deployment.bicep"
+  # Whereas these vars probably don't change project to project:
+  LIB_GITHUB_USER_AND_REPO_NAME: "skysgh/resources.deployments.lib"
+  LIB_REPO_BRANCH: main
+  LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR: "DeploymentLib"
+  LIB_MAIN_BICEP_FILE_DIR: "SOURCE/infrastructure/azure/bicep/recipes"
+  # ======================================================================
+
+
+# Running on one runner:      
+jobs:
+  call-workflows-passing-data:
+    # Invoke the callee either in same repo, or remote rempo
+    # ./.github/workflows/callee.yaml
+    uses: "${{ env.LIB_GITHUB_USER_AND_REPO_NAME }}/.github/workflows/something.yaml@main"
+    with:
+      foo: bar
+    secrets: inherit
+      # or specific ones:
+      # envPAT: blah blah...
