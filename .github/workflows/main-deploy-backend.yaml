@@ -33,6 +33,7 @@ env:
   LIB_GITHUB_USER_AND_REPO_NAME: "skysgh/resources.deployments.lib"
   LIB_REPO_BRANCH: main
   LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR: "DeploymentLib"
+  LIB_MAIN_BICEP_FILE_DIR: "SOURCE/infrastructure/azure/bicep/recipes"
   LIB_BICEP_DIRECTORY: "DeploymentLib/SOURCE/infrastructure/azure/bicep/recipes"   
 
 
@@ -111,8 +112,10 @@ jobs:
           region: ${{ vars.AZURE_LOCATION_ID_2 }}
           subscriptionId: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
           
-          template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"   
+          #template: "${{ env.LIB_BICEP_DIRECTORY }}/${{env.LIB_BICEP_FILENAME}}"   
+          template: "${{ env.LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR }}/${{ env.LIB_MAIN_BICEP_FILE_DIR }}/${{env.LIB_BICEP_FILENAME}}"   
  
+        
           # Consider: sqlServerDbResourxeLocationId: 'F1','D1','B1','B2','S1','S2'
           # Consider: sqlServerDbResourceSKU: 'Basic', 'S0', 'S1', 'S2'
           # Consider: webServerFarmsResourceSKU can't be Shared/D1 if Linux is used
