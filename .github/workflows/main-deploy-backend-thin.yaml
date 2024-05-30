@@ -22,22 +22,18 @@ env:
   # ======================================================================
   # SRC VARIABLES
   # ======================================================================
-  SRC_GITHUB_BRANCH: main
-  SRC_GITHUB_RELATIVE_DEPLOYMENT_DIR: "/"
-  SRC_DIRECTORY: "/"
+  SRC_REPO_GITHUB_USER_AND_REPO_NAME: ...
+  SRC_REPO_BRANCH: main
+  SRC_REPO_ENTRY_FOLDER: "/"
+  SRC_REPO_DEPLOYMENT_DIR: "/"
   # ======================================================================
   # LIB VARIABLES
   # ======================================================================
-  # The file invoked changes per project/service/tier:
-  LIB_BICEP_FILENAME: "backend-deployment.bicep"
-  # Whereas these vars probably don't change project to project:
-  LIB_GITHUB_USER_AND_REPO_NAME: "skysgh/resources.deployments.lib"
-  LIB_REPO_BRANCH: main
-  LIB_LOCAL_RELATIVE_DEPLOYMENT_DIR: "DeploymentLib"
-  LIB_MAIN_BICEP_FILE_DIR: "SOURCE/infrastructure/azure/bicep/recipes"
+  LIB_REPO_GITHUB_USER_AND_REPO_NAME: "skysgh/resources.deployments.lib"
   # ======================================================================
 
 
+  
 # Running on one runner:      
 jobs:
   call-workflows-passing-data:
