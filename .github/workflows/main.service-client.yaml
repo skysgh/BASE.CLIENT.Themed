@@ -1,4 +1,4 @@
-name: Deploy to Environment
+name: Build Service Client Infrasstructure and Deploy
 
 # Triggers, on specific branches
 on:
@@ -6,8 +6,7 @@ on:
     branches:
       - main
       - release
-      - develop
-    
+      - develop    
 env:
   # Where to find reusable bicep, etc. files
   THIS_DIRECTORY: '.github/workflows'
