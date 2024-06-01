@@ -43,7 +43,7 @@ jobs:
       foo: bar
       PROJECT_NAME: env.PROJECT_NAME
       PROJECT_SERVICE: env.PROJECT_SERVICE
-      PROJECT_DESCTIPTION: eng.PROJECT_DESCRIPTION
+      PROJECT_DESCTIPTION: env.PROJECT_DESCRIPTION
     secrets: inherit
       # or specific ones:
       # envPAT: blah blah...
