@@ -27,7 +27,7 @@ jobs:
       # definately changes per project.
       # Note: it could be set here, or come from GitHUb repo vars:
       PROJECT_NAME: 'BASE'
-      PROJECT_SERVICE: ''
+      PROJECT_SERVICE_NAME: ''
       PROJECT_DESCRIPTION: 'Creates backend RG, WEB APP SERVER, SQL SERVER, etc.'
       # ======================================================================
       # SRC PARAMETERS
