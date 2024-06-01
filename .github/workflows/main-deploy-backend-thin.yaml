@@ -20,6 +20,13 @@ jobs:
     uses: skysgh/resources.deployments.lib/.github/workflows/back-end-deployment.yaml@main
     with:
       # ======================================================================
+      # RELIANT ON SECRETS
+      # ======================================================================
+      # NP_AZURE_ENTRA_APP_CLIENT_CREDS
+      # NP_AZURE_SUBSCRIPTION_ID
+      # DB_ADMIN_NAME
+      # DB_ADMIN_PWD
+      # ======================================================================
       # PROJECT PARAMETERS
       # ======================================================================
       # The project name, which informs naming of 
@@ -39,7 +46,17 @@ jobs:
       # LIB PARAMETERS
       # ======================================================================
       # LIB_REPO_GITHUB_USER_AND_REPO_NAME: "skysgh/resources.deployments.lib"
-
-    secrets: inherit
+      # ======================================================================
+      # AZURE PARAMETERS
+      # ======================================================================
+      AZURE_LOCATION_ID_0: global 
+      AZURE_LOCATION_ID_1: newzealand
+      AZURE_LOCATION_ID_2: australiacentral
+      AZURE_LOCATION_ID_3: southeastasia
+    secrets:  #inherit
       # or specific ones:
       # envPAT: blah blah...
+      AZURE_SUBSCRIPTION_ID: ${{secrets.NP_AZURE_SUBSCRIPTION_ID}}
+      AZURE_ENTRA_APP_CLIENT_CREDS: ${{secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}}
+      DB_ADMIN_NAME: ${{secrets.DB_ADMIN_NAME}}
+      DB_ADMIN_PWD: ${{secrets.DB_ADMIN_PWD}}
