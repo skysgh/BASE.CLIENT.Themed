@@ -41,6 +41,9 @@ jobs:
     uses: skysgh/resources.deployments.lib/.github/workflows/back-end-deployment.yaml@main
     with:
       foo: bar
+      PROJECT_NAME: env.PROJECT_NAME
+      PROJECT_SERVICE: env.PROJECT_SERVICE
+      PROJECT_DESCTIPTION: eng.PROJECT_DESCRIPTION
     secrets: inherit
       # or specific ones:
       # envPAT: blah blah...
