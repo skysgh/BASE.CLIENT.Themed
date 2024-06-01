@@ -37,7 +37,7 @@ jobs:
   call-workflow-passing-data:
     # Invoke the callee either in same repo, or remote rempo
     # ./.github/workflows/callee.yaml
-    uses: skysgh/resources.deployments.lib/.github/workflows/front_end_deployment.yml@main
+    uses: skysgh/resources.deployments.lib/.github/workflows/back-end-deployment.yaml@main
     with:
       foo: bar
     secrets: inherit
