@@ -9,29 +9,8 @@ on:
       - release
       - develop
 env:
-  # ======================================================================
-  # PROJECT VARIABLES
-  # ======================================================================
-  # The project name, which informs naming of 
-  # Azure resource groups and resource names 
-  # definately changes per project.
-  # Note: it could be set here, or come from GitHUb repo vars:
-  PROJECT_NAME: 'BASE'
-  PROJECT_SERVICE_NAME: ''
-  PROJECT_DESCRIPTION: 'Creates backend RG, WEB APP SERVER, SQL SERVER, etc.'
-  # ======================================================================
-  # SRC VARIABLES
-  # ======================================================================
-  SRC_REPO_GITHUB_USER_AND_REPO_NAME: ...
-  SRC_REPO_BRANCH: main
-  SRC_REPO_ENTRY_FOLDER: "/"
-  SRC_REPO_DEPLOYMENT_DIR: "/"
-  # ======================================================================
-  # LIB VARIABLES
-  # ======================================================================
-  LIB_REPO_GITHUB_USER_AND_REPO_NAME: "skysgh/resources.deployments.lib"
-  # ======================================================================
-
+  # env needs at least one line:  
+  foo: bar
   
 # Running on one runner:      
 jobs:
@@ -40,10 +19,27 @@ jobs:
     # ./.github/workflows/callee.yaml
     uses: skysgh/resources.deployments.lib/.github/workflows/back-end-deployment.yaml@main
     with:
-      foo: bar
-      PROJECT_NAME: env.PROJECT_NAME
-      PROJECT_SERVICE: env.PROJECT_SERVICE
-      PROJECT_DESCRIPTION: env.PROJECT_DESCRIPTION
+      # ======================================================================
+      # PROJECT PARAMETERS
+      # ======================================================================
+      # The project name, which informs naming of 
+      # Azure resource groups and resource names 
+      # definately changes per project.
+      # Note: it could be set here, or come from GitHUb repo vars:
+      PROJECT_NAME: 'BASE'
+      PROJECT_SERVICE: ''
+      PROJECT_DESCRIPTION: 'Creates backend RG, WEB APP SERVER, SQL SERVER, etc.'
+      # ======================================================================
+      # SRC PARAMETERS
+      # ======================================================================
+      SRC_REPO_GITHUB_USER_AND_REPO_NAME: ${{github.repository}}
+      SRC_REPO_BRANCH: "main"
+      SRC_REPO_SOURCE_ENTRY_FOLDER: "SOURCE/SOMETHING/TODO/..."
+      # ======================================================================
+      # LIB PARAMETERS
+      # ======================================================================
+      # LIB_REPO_GITHUB_USER_AND_REPO_NAME: "skysgh/resources.deployments.lib"
+
     secrets: inherit
       # or specific ones:
       # envPAT: blah blah...
