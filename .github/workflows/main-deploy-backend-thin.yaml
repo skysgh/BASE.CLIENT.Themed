@@ -36,7 +36,7 @@ env:
   
 # Running on one runner:      
 jobs:
-  call-workflows-passing-data:
+  call-workflow-passing-data:
     # Invoke the callee either in same repo, or remote rempo
     # ./.github/workflows/callee.yaml
     uses: "skysgh/resources.deployments.lib/.github/workflows/front-end-deployment.yaml@main"
