@@ -10,7 +10,6 @@ on:
 env:
   # env needs at least one line:  
   foo: bar
-  WORKITEM_ID: '000'
   # DEFINE REPO CONSTANTS
   NODE_VERSION: 20.11.0
   ACTIONS_STEP_DEBUG: 'true'

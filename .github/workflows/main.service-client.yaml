@@ -10,7 +10,6 @@ on:
 env:
   # env needs at least one line:  
   foo: bar
-  WORKITEM_ID: '000'
   # DEFINE REPO CONSTANTS
   NODE_VERSION: 20.11.0
   ACTIONS_STEP_DEBUG: 'true'
@@ -35,10 +34,10 @@ jobs:
       # Azure resource groups and resource names 
       # definately changes per project.
       # Note: it could be set here, or come from GitHUb repo vars:
-        PROJECT_NAME: "BASE"
-        PROJECT_SERVICE_NAME: "CLIENT"
-        PROJECT_DESCRIPTION: "Creates front end RG, Static Web APp (SWA), etc."
-        PROJECT_ENV_ID: "BT" ## ${{vars.PROJECT_ENV_ID}}
+      PROJECT_NAME: "BASE"
+      PROJECT_SERVICE_NAME: "CLIENT"
+      PROJECT_DESCRIPTION: "Creates front end RG, Static Web APp (SWA), etc."
+      PROJECT_ENV_ID: "BT" ## ${{vars.PROJECT_ENV_ID}}
       # ======================================================================
       # SRC PARAMETERS
       # ======================================================================
