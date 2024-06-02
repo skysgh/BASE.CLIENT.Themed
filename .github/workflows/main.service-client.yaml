@@ -66,14 +66,3 @@ jobs:
       # AZURE Subcription & Access Params:
       AZURE_SUBSCRIPTION_ID: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
       AZURE_ENTRA_APP_CLIENT_CREDS: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS }}
-      # AZURE Specific Resource Params:
-
-      # ======================================================================
-      # IMPORTED:GITHUB:TOKENS
-      # PAT expires Expires on Tue, Dec 31 2024.
-      # ======================================================================
-      
-      # library artefacts should be in the imported repo,
-      # but we are not yet that organised, so it's relative 
-      # to this lib
-
