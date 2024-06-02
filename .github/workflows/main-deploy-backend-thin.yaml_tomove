@@ -38,6 +38,7 @@ jobs:
       PROJECT_NAME: 'BASE'
       PROJECT_SERVICE_NAME: ''
       PROJECT_DESCRIPTION: 'Creates backend RG, WEB APP SERVER, SQL SERVER, etc.'
+      PROJECT_ENVIRONMENT_ID: 'BT'
       # ======================================================================
       # SRC PARAMETERS
       # ======================================================================

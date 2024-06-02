@@ -19,7 +19,7 @@ env:
 # Running on one runner:      
 jobs:
   call-workflow-passing-data:
-    uses: skysgh/resources.deployments.lib/.github/workflows/front-end-deployment.yaml@main
+    uses: "skysgh/resources.deployments.lib/.github/workflows/front-end-deployment.yaml@main"
     with:
       # ======================================================================
       # RELIANT ON SECRETS
@@ -38,7 +38,7 @@ jobs:
       PROJECT_NAME: "BASE"
       PROJECT_SERVICE_NAME: "CLIENT"
       PROJECT_DESCRIPTION: "Creates front end RG, Static Web APp (SWA), etc."
-      PROJECT_ENV_ID: "BT" ## ${{vars.PROJECT_ENV_ID}}
+      PROJECT_ENVIRONMENT_ID: 'BT'       ## ${{vars.PROJECT_ENV_ID}}
       # ======================================================================
       # SRC PARAMETERS
       # ======================================================================
@@ -62,15 +62,11 @@ jobs:
       AZURE_LOCATION_ID: australiacentral
       AZURE_LOCATION_ID_SWA: eastasia      
       # ======================================================================
-      secrets:  # inherit
+    secrets:  # inherit
       # AZURE Subcription & Access Params:
-      AZURE_SUBSCRIPTION_ID: ${{secrets.NP_AZURE_SUBSCRIPTION_ID}}
-      AZURE_ENTRA_APP_CLIENT_CREDS: ${{secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS}}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
+      AZURE_ENTRA_APP_CLIENT_CREDS: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS }}
       # AZURE Specific Resource Params:
-
-
-
-
 
       # ======================================================================
       # IMPORTED:GITHUB:TOKENS
@@ -80,13 +76,4 @@ jobs:
       # library artefacts should be in the imported repo,
       # but we are not yet that organised, so it's relative 
       # to this lib
-
-      WORKITEM_ID: '000'
-      # DEFINE REPO CONSTANTS
-      NODE_VERSION: 20.11.0
-      ACTIONS_STEP_DEBUG: 'true'
-      ACTIONS_RUNNER_DEBUG: 'true'
-    steps:
-      # ==================================================
-
 
