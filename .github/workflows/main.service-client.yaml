@@ -19,7 +19,7 @@ env:
 # Running on one runner:      
 jobs:
   call-workflow-passing-data:
-    uses: "skysgh/resources.deployments.lib/.github/workflows/front-end-deployment.yaml@main"
+    uses: skysgh/resources.deployments.lib/.github/workflows/front-end-deployment.yaml@main
     with:
       # ======================================================================
       # RELIANT ON SECRETS
