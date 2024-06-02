@@ -20,7 +20,6 @@ env:
 jobs:
   call-workflow-passing-data:
     # Invoke the callee either in same repo, or remote rempo
-    # ./.github/workflows/callee.yaml
     uses: skysgh/resources.deployments.lib/.github/workflows/front-end-deployment.yaml@main
     with:
       # ======================================================================
@@ -37,9 +36,9 @@ jobs:
       # Azure resource groups and resource names 
       # definately changes per project.
       # Note: it could be set here, or come from GitHUb repo vars:
-        PROJECT_NAME: 'BASE'
-        PROJECT_SERVICE_NAME: 'CLIENT'
-        PROJECT_DESCRIPTION: 'Creates front end RG, Static Web APp (SWA), etc.'
+        PROJECT_NAME: "BASE"
+        PROJECT_SERVICE_NAME: "CLIENT"
+        PROJECT_DESCRIPTION: "Creates front end RG, Static Web APp (SWA), etc."
         PROJECT_ENV_ID: "BT" ## ${{vars.PROJECT_ENV_ID}}
       # ======================================================================
       # SRC PARAMETERS
