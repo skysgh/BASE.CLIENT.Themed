@@ -10,7 +10,11 @@ on:
 env:
   # env needs at least one line:  
   foo: bar
-  
+  WORKITEM_ID: '000'
+  # DEFINE REPO CONSTANTS
+  NODE_VERSION: 20.11.0
+  ACTIONS_STEP_DEBUG: 'true'
+  ACTIONS_RUNNER_DEBUG: 'true'  
 # Running on one runner:      
 jobs:
   call-workflow-passing-data:
@@ -48,10 +52,9 @@ jobs:
       # ======================================================================
       # AZURE PARAMETERS
       # ======================================================================
-      AZURE_LOCATION_ID_0: global 
-      AZURE_LOCATION_ID_1: newzealand
-      AZURE_LOCATION_ID_2: australiacentral
-      AZURE_LOCATION_ID_3: southeastasia
+      # see: https://gist.github.com/ausfestivus/04e55c7d80229069bf3bc75870630ec8
+      AZURE_LOCATION_ID: australiacentral
+      AZURE_LOCATION_ID_ALT: southeastasia
     secrets:  # inherit
       # AZURE Subcription & Access Params:
       AZURE_SUBSCRIPTION_ID: ${{secrets.NP_AZURE_SUBSCRIPTION_ID}}
