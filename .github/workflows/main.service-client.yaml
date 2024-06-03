@@ -67,3 +67,8 @@ jobs:
       # AZURE Subcription & Access Params:
       AZURE_SUBSCRIPTION_ID: ${{ secrets.NP_AZURE_SUBSCRIPTION_ID }}
       AZURE_ENTRA_APP_CLIENT_CREDS: ${{ secrets.NP_AZURE_ENTRA_APP_CLIENT_CREDS }}
+      GH_PAT: ${{secrets.GH_BASE_CLIENT_THEMED}}
+      # GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+              
+
