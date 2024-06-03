@@ -1,5 +1,16 @@
 name: Build Service Client Infrasstructure and Deploy
 
+permissions:
+  actions: write
+  checks: write
+  contents: write
+  deployments: write
+  id-token: write 
+  issues: write
+  pull-requests: write  
+  repository-projects: write
+  security-events: write
+  statuses: write
 
 # Triggers, on specific branches
 on:
