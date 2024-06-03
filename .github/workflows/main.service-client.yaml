@@ -71,6 +71,3 @@ jobs:
       GH_REPO_TOKEN: ${{secrets.GH_REPO_TOKEN}}
       GH_PAT: ${{secrets.GH_BASE_CLIENT_THEMED}}
       # GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-              
-
