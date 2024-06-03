@@ -15,7 +15,7 @@ env:
   ACTIONS_STEP_DEBUG: 'true'
   ACTIONS_RUNNER_DEBUG: 'true'  
 
-  
+
 # Running on one runner:      
 jobs:
   call-workflow-passing-data:
@@ -36,7 +36,7 @@ jobs:
       # definately changes per project.
       # Note: it could be set here, or come from GitHUb repo vars:
       PROJECT_NAME: "BASE"
-      PROJECT_SERVICE_NAME: "CLIENT"
+      PROJECT_SERVICE_NAME: "CORE"
       PROJECT_DESCRIPTION: "Creates front end RG, Static Web APp (SWA), etc."
       PROJECT_ENVIRONMENT_ID: 'BT'       ## ${{vars.PROJECT_ENV_ID}}
       # ======================================================================
