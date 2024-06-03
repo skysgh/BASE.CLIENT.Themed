@@ -1,5 +1,6 @@
 name: Build Service Client Infrasstructure and Deploy
 
+
 permissions:
   actions: write
   checks: write
@@ -83,4 +84,3 @@ jobs:
       GH_PAT: ${{secrets.GH_BASE_CLIENT_THEMED}}
       # GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      
