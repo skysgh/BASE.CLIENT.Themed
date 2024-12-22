@@ -7,6 +7,7 @@ import { BaseCoreDashboardsIndexComponent } from './components/index/component';
 import { BaseCoreCommonComponentsModule } from '../common/components/module';
 import { BaseCoreDashboardsRouterModule } from './routes';
 import { DashboardService } from '../../services/service.dashboard.service';
+import { BaseCoreCommonModule } from '../common/module';
 //
 //import { StatComponent } from './hold/stat/component';
 //import { DashboardComponent } from './ui/component';
@@ -17,6 +18,7 @@ import { DashboardService } from '../../services/service.dashboard.service';
     // Import classes within the above specified import files.
     // Ag specific:
     CommonModule,
+    BaseCoreCommonModule,
     // Module specific:
     BaseCoreCommonComponentsModule,
     // Routes

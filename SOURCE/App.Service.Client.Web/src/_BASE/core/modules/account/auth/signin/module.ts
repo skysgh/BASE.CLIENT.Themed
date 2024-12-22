@@ -8,17 +8,23 @@ import { SigninRoutingModule } from './routing';
 import { BasicComponent } from './basic/component';
 import { CoverComponent } from './cover/component';
 import { TranslateModule } from '@ngx-translate/core';
+
 import { BaseCoreCommonComponentsModule } from '../../../common/components/module';
+import { BaseCoreCommonModule } from '../../../common/module';
+
+//import { BaseTranslatePipe } from '../../../common/pipes/basetranslate.pipe';
 
 @NgModule({
   declarations: [
     BasicComponent,
     CoverComponent
+    //BaseTranslatePipe
   ],
   imports: [
     CommonModule,
     TranslateModule.forChild(),
 
+    BaseCoreCommonModule,
     BaseCoreCommonComponentsModule,
 
     NgbCarouselModule,
@@ -26,6 +32,9 @@ import { BaseCoreCommonComponentsModule } from '../../../common/components/modul
     FormsModule,
 
     SigninRoutingModule
+  ],
+  exports: [
+    //BaseTranslatePipe
   ]
 })
 export class SigninModule { }

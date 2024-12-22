@@ -4,6 +4,8 @@ import { Component, OnInit, Input } from '@angular/core';
 // 
 // Const:
 import { system as importedSystemConst } from '../../../../../_BASE/core/constants/system';
+// Pipes:
+import { BaseTranslatePipe } from '../../../../../_BASE/core/modules/common/pipes/basetranslate.pipe';
 // Services:
 import { SystemService } from '../../../../../_BASE/core/services/system.service';
 // Models/Data:

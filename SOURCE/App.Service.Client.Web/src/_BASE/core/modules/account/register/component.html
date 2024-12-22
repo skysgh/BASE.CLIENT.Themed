@@ -43,55 +43,55 @@
                   <div class="mb-3">
                     <label for="useremail"
                            class="form-label">
-                      {{'BASE.AUTHENTICATION.EMAIL'|translate}}
+                      {{'BASE.AUTHENTICATION.EMAIL'| baseTranslate}}
                       <span class="text-danger">*</span>
                     </label>
                     <input type="email"
                            class="form-control"
                            id="useremail"
-                           placeholder="{{'BASE.AUTHENTICATION.EMAIL_PLACEHOLDER'|translate}}"
+                           placeholder="{{'BASE.AUTHENTICATION.EMAIL_PLACEHOLDER'| baseTranslate}}"
                            required formControlName="email"
                            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
                     <div class="invalid-feedback">
-                      {{'BASE.AUTHENTICATION.EMAIL_INSTRUCTIONS'|translate}}
+                      {{'BASE.AUTHENTICATION.EMAIL_INSTRUCTIONS'| baseTranslate}}
                     </div>
                   </div>
                   <div class="mb-3">
                     <label for="username" class="form-label">
-                      {{'BASE.AUTHENTICATION.USERNAME'|translate}}
+                      {{'BASE.AUTHENTICATION.USERNAME'| baseTranslate}}
                       <span class="text-danger">*</span>
                     </label>
                     <input type="text" class="form-control" id="username"
-                           placeholder="{{'BASE.AUTHENTICATION.USERNAME_PLACEHOLDER'|translate}}" required formControlName="name"
+                           placeholder="{{'BASE.AUTHENTICATION.USERNAME_PLACEHOLDER'| baseTranslate}}" required formControlName="name"
                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                     <div class="invalid-feedback">
-                      {{'BASE.AUTHENTICATION.USERNAME_INSTRUCTIONS'|translate}}
+                      {{'BASE.AUTHENTICATION.USERNAME_INSTRUCTIONS'| baseTranslate}}
                     </div>
                   </div>
 
                   <div class="mb-2">
                     <label for="userpassword"
                            class="form-label">
-                      {{'BASE.AUTHENTICATION.PASSWORD'|translate}} <span class="text-danger">*</span>
+                      {{'BASE.AUTHENTICATION.PASSWORD'| baseTranslate}} <span class="text-danger">*</span>
                     </label>
                     <input type="password"
                            class="form-control"
                            id="userpassword"
-                           placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
+                           placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'| baseTranslate}}"
                            required
                            formControlName="password"
                            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                     <div class="invalid-feedback">
-                      {{'BASE.AUTHENTICATION.PLACEHOLDER_INSTRUCTIONS'|translate}}
+                      {{'BASE.AUTHENTICATION.PLACEHOLDER_INSTRUCTIONS'| baseTranslate}}
                     </div>
                   </div>
 
                   <div class="mb-4">
                     <p class="mb-0 fs-12 text-muted fst-italic">
-                      {{'BASE.AUTHENTICATION.BY_REGISTERING'|translate}}
+                      {{'BASE.AUTHENTICATION.BY_REGISTERING'| baseTranslate}}
                       <a href="javascript:void(0);"
                          class="text-primary text-decoration-underline fst-normal fw-medium">
-                        {{'BASE.SITE.LOCATIONS.TERMS_OF_USE'|translate}}
+                        {{'BASE.SITE.LOCATIONS.TERMS_OF_USE'| baseTranslate}}
                       </a>
                     </p>
                   </div>
@@ -99,14 +99,14 @@
                   <div class="mt-4">
                     <button class="btn btn-success w-100"
                             type="submit">
-                      {{'BASE.ACTIONS.SIGN_UP'|translate}}
+                      {{'BASE.SIGN_UPS.SINGULAR'| baseTranslate}}
                     </button>
                   </div>
 
                   <div class="mt-4 text-center">
                     <div class="signin-other-title">
                       <h5 class="fs-13 mb-4 title text-muted">
-                        {{'BASE.ACTIONS.SIGN_UP_WITH'|translate}}
+                        {{'BASE.SIGN_UPS.SINGULAR'| baseTranslate}}
                       </h5>
                     </div>
 
@@ -139,10 +139,10 @@
 
           <div class="mt-4 text-center">
             <p class="mb-0">
-              {{'BASE.MISC.ALREADY_HAVE_AN_ACCOUNT?'|translate}}
+              {{'BASE.MISC.ALREADY_HAVE_AN_ACCOUNT?'| baseTranslate}}
               <a routerLink="/auth/login"
                  class="fw-semibold text-primary text-decoration-underline">
-                {{'BASE.ACTIONS.SIGN_IN'|translate}}
+                {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
 
               </a>
             </p>

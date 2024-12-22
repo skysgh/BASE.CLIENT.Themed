@@ -4,15 +4,17 @@ import { Component, OnInit } from '@angular/core';
 import { NgbNavModule, NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 // Constants:
-import { system as importedSystemConst } from '../../../../constants/system';
+import { system as importedSystemConst } from '../../../../../constants/system';
+// Pipes:
+import { BaseTranslatePipe } from '../../../../common/pipes/basetranslate.pipe';
 // Services:
-import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
-import { SystemService } from '../../../../services/system.service';
+import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
+import { SystemService } from '../../../../../services/system.service';
 // Models:
 import { YearlyPlanModel } from "src/_BASE/core/models/YearlyPlanModel";
 import { ServicePricingPlan } from "src/_BASE/core/models/data/service-pricing-plan.model";
 // Data:
-import { MonthlyPlan, YearlyPlan } from '../../../../data/fake/pricing.data';
+import { MonthlyPlan, YearlyPlan } from '../../../../../data/fake/pricing.data';
 
 
 @Component({

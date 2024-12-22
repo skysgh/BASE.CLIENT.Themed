@@ -26,6 +26,7 @@ import { BaseCoreCommonComponentsModule } from '../../common/components/module';
 import { BaseCoreLandingRoutingModule } from './routing';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BaseCoreHomeModule } from './home/module';
+import { BaseCoreCommonModule } from '../../common/module';
 
 
 
@@ -43,6 +44,7 @@ import { BaseCoreHomeModule } from './home/module';
     NgbTooltipModule,
     NgbCollapseModule,
     ScrollToModule.forRoot(),
+    BaseCoreCommonModule,
     BaseCoreCommonComponentsModule,
     BaseCoreLandingRoutingModule,
     BaseCoreHomeModule,

@@ -1,11 +1,14 @@
 <Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.271090-alpha">
   <PropertyGroup>
-    <StartupCommand>npm start</StartupCommand>
+    <!-- Add: Maybe needed for scripts to work -->
+    <!-- <NodeJsCommand>npm</NodeJsCommand>-->
+    <StartupCommand>npm run start-local-json-server</StartupCommand>
     <JavaScriptTestFramework>Jasmine</JavaScriptTestFramework>
     <!-- Allows the build (or compile) script located on package.json to run on Build -->
     <ShouldRunBuildScript>false</ShouldRunBuildScript>
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\App.Service.Client.Web\</BuildOutputFolder>
+    <BuildCommand>npm run build</BuildCommand>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="src\app\account\**" />

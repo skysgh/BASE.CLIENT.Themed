@@ -71,6 +71,8 @@ export class ServiceLanguagesService
  * @param item
  */
   protected override ServiceSpecificImplementationToFilterFor(item: ServiceLanguage): boolean {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationToFilterFor()`);
+
     return (item.enabled == true);
   }
 
@@ -83,10 +85,11 @@ export class ServiceLanguagesService
    * @param item
    */
   protected override ServiceSpecificImplementationToDevelopMappedObject(item: ServiceLanguage): SystemLanguageVM {
+
     // cannot reference this.diagnosticsTraceService
     // because we are not in the context of this.
     // Annoying!
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.developMappedObject(...)`);
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationToDevelopMappedObject(...)`);
     // In this contrived example, not doing much, just changing type:
     //return item;
     // Same thing in this simple case:
@@ -107,7 +110,8 @@ export class ServiceLanguagesService
    * method of choice to return an array of TDtos
    */
   protected ServiceSpecificImplementationOfInvokeRepository(): Observable<ServiceLanguage[]> {
-    this.diagnosticsTraceService.info(`${ this.constructor.name }.invokeRepository(...)`);
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationOfInvokeRepository(...)`);
+
     return this.ServiceLanguagesRepositoryService.getPage();
   }
 
@@ -116,13 +120,15 @@ export class ServiceLanguagesService
    * required at the end of the refreshment of the list
    */
   protected override ServiceSpecificImplementationOfOnInitComplete(items: SystemLanguageVM[]): void {
-    this.diagnosticsTraceService.debug(`${ this.constructor.name }.onInitComplete(...)`);
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationOfOnInitComplete(...)`);
+
     this.initLanguages(items);
   }
 
 
   // Not sure who calls this:
   protected initLanguages(items: SystemLanguageVM[]): void {
+
     this.diagnosticsTraceService.info(`${this.constructor.name }.initLanguages(...)`);
  
     var languageCodes =
@@ -131,7 +137,6 @@ export class ServiceLanguagesService
 
     this.translationService.initializeTranslator(languageCodes);
 
-
   }
 
 
@@ -139,10 +144,22 @@ export class ServiceLanguagesService
  * Cookie Language set
  */
   public setLanguage(language: string) {
+    this.diagnosticsTraceService.info(`${this.constructor.name}.setLanguage('${language}')`);
+
+    // use appropropriate service to set cookie:
     this.translationService.setLanguage(language);
+
   }
+
+
   public getLanguage() {
+    this.diagnosticsTraceService.info(`${this.constructor.name}.getLanguage()`);
+
+    // use appropropriate service to get cookie:
     var result = this.translationService.getDefaultLanguageCode();
+
+    this.diagnosticsTraceService.debug(`...result:'${result}'`);
+
     return result;
   }
 }

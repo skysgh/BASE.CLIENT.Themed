@@ -3,6 +3,9 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { getSidebarSize } from '../../layouts/layouts/layout-selector';
 import { RootReducerState } from '../../../store';
 import { Store } from '@ngrx/store';
+// Pipes:
+import { BaseTranslatePipe } from '../../common/pipes/basetranslate.pipe';
+
 import { EventService } from '../../../services/infrastructure/event.service';
 import { ViewModel } from './vm';
 

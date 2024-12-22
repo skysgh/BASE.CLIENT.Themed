@@ -9,6 +9,8 @@ import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ToastsContainer } from './login/toasts-container.component';
 
+import { SharedModule } from '../../../../app/shared/module';
+import { BaseCoreCommonModule } from '../common/module';
 import { BaseCoreCommonComponentsModule } from '../common/components/module';
 
 import { AccountRoutingModule } from './routing';
@@ -25,13 +27,17 @@ import { LoginComponent } from './login/component';
   ],
   imports: [
     CommonModule,
+    BaseCoreCommonModule,
     BaseCoreCommonComponentsModule,
     TranslateModule.forChild(),
     ReactiveFormsModule,
     FormsModule,
     AccountRoutingModule,
     SigninModule,
-    NgbToastModule
+    NgbToastModule,
+
+    //SharedModule,
+    BaseCoreCommonModule
   ]
 })
 export class BaseCoreAccountModule { }

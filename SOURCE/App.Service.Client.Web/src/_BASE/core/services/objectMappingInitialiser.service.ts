@@ -32,7 +32,9 @@ export class ObjectMappingInitialiserService {
   mapper: Mapper = mapper;
 
   constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
+
   }
 
 

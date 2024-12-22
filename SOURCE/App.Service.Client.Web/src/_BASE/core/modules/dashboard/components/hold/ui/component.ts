@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../../constants/system';
 // Services:
-import { DiagnosticsTraceService } from '../../../../../services/diagnostics.service';
+import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
 import { SystemService } from '../../../../../services/system.service';
-import { DashboardService } from '../../../../../services/dashboard.service';
+import { DashboardService } from '../../../../../services/service.dashboard.service';
 // Models:
 import { Stat } from '../../../../../models/data/stat.model';
 import { StatOneVTO } from '../../../../../models/view/stat-on.vto';

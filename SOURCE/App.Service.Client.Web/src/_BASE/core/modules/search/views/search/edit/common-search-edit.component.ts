@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+// Pipes:
+import { BaseTranslatePipe } from '../../../../common/pipes/basetranslate.pipe';
+// Services:
 import { SystemDiagnosticsTraceService } from '../../../../../services/system.diagnostics-trace.service';
 import { ViewModel } from './vm';
 

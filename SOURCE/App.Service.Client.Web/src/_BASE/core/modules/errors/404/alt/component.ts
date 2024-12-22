@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
+// Pipes:
+import { BaseTranslatePipe } from '../../../common/pipes/basetranslate.pipe';
 // Services:
 import { SystemService } from '../../../../services/system.service';
 import { ViewModel } from './vm';

@@ -8,6 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 // Const:
 import { system as importedSystemConst } from '../../../constants/system';
+// Pipes:
+import { BaseTranslatePipe } from '../../common/pipes/basetranslate.pipe';
 
 // Login Auth
 //import { environment } from '../../../../../environments/environment';
@@ -104,6 +106,7 @@ export class LoginComponent implements OnInit {
         this.toastService.show(data.data, { classname: 'bg-danger text-white', delay: 15000 });
       }
     });
+
 
     // stop here if form is invalid
     // if (this.loginForm.invalid) {

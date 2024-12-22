@@ -39,7 +39,7 @@
                 @if(item.icon){
                 <i-feather name="{{ item.icon }}" class="icon-dual"></i-feather>
                 }
-            <span data-key="t-menu">{{ item.title | translate }}
+            <span data-key="t-menu">{{ item.title | baseTranslate }}
               </span></li>
             }@else {
             <li class="nav-item">
@@ -48,10 +48,10 @@
                 @if(item.icon){
                 <i-feather name="{{ item.icon }}" class="icon-dual"></i-feather>
                 }
-                <span class=""> {{ item.title | translate }}</span>
+                <span class=""> {{ item.title | baseTranslate }}</span>
                 @if(item.badge){
                 <span class="badge badge-pill {{item.badge.variant}}">
-                  {{item.badge.text | translate}}
+                  {{item.badge.text | baseTranslate}}
                 </span>
                 }
               </a>
@@ -64,12 +64,12 @@
                       @if(subitem.icon){
                       <i-feather name="{{ subitem.icon }}" class="icon-dual"></i-feather>
                       }
-                      {{ subitem.title | translate}}
+                      {{ subitem.title | baseTranslate}}
                       @if(subitem.badge){
                       <span class="badge badge-pill {{subitem.badge.variant}}">
                         {{
 subitem.badge.text
-                        | translate
+                        | baseTranslate
                         }}
                       </span>
                       }
@@ -80,10 +80,10 @@ subitem.badge.text
                         <li class="nav-item">
                           @if(hasItems(subSubitem)){
                           <a class="nav-link" href="javascript:void(0);" [attr.data-parent]="subSubitem.parentId" data-bs-toggle="collapse" [attr.aria-expanded]="!subSubitem.isCollapsed" (click)="toggleItem(subSubitem)">
-                            {{ subSubitem.title | translate}}
+                            {{ subSubitem.title | baseTranslate}}
                             @if(subSubitem.badge){
                             <span class="badge badge-pill {{subSubitem.badge.variant}}">{{subSubitem.badge.text
-                              | translate}}</span>
+                              | baseTranslate}}</span>
                             }
                           </a>
                           <div class="collapse menu-dropdown extra-sub-menu" #collapse="ngbCollapse" [(ngbCollapse)]="subSubitem.isCollapsed">
@@ -91,7 +91,7 @@ subitem.badge.text
                               @for (subSubitem1 of subSubitem.subItems; track $index) {
                               <li class="nav-item">
                                 <a [attr.data-parent]="subSubitem1.parentId" [routerLink]="subSubitem1.link" class="nav-link" (click)="updateActive($event)">
-                                  {{ subSubitem1.title | translate }}
+                                  {{ subSubitem1.title | baseTranslate }}
                                 </a>
                               </li>
                               }
@@ -99,10 +99,10 @@ subitem.badge.text
                           </div>}
                           @else {
                           <a [attr.data-parent]="subSubitem.parentId" [routerLink]="subSubitem.link" class="nav-link" (click)="updateActive($event)">
-                            {{ subSubitem.title | translate }}
+                            {{ subSubitem.title | baseTranslate }}
                             @if(subSubitem.badge){
                             <span class="badge badge-pill {{subSubitem.badge.variant}}">{{subSubitem.badge.text
-                              | translate}}</span>
+                              | baseTranslate}}</span>
                             }
                           </a>
                           }
@@ -115,10 +115,10 @@ subitem.badge.text
                       @if(subitem.icon){
                       <i-feather name="{{ subitem.icon }}" class="icon-dual"></i-feather>
                       }
-                      {{ subitem.title | translate}}
+                      {{ subitem.title | baseTranslate}}
                       @if(subitem.badge){
                       <span class="badge badge-pill {{subitem.badge.variant}}">
-                        {{subitem.badge.text | translate}}
+                        {{subitem.badge.text | baseTranslate}}
                       </span>
                       }
                     </a>
@@ -132,7 +132,7 @@ subitem.badge.text
                 @if(item.icon){
                 <i-feather name="{{ item.icon }}" class="icon-dual"></i-feather>
                 }
-                <span class=""> {{ item.title | translate }}</span>
+                <span class=""> {{ item.title | baseTranslate }}</span>
                 @if(item.badge){
                 <span class="badge {{item.badge.variant}} float-end">{{item.badge.text |
                   translate}}</span>

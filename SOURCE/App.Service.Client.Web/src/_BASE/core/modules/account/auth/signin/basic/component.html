@@ -34,10 +34,10 @@
             <div class="card-body p-4">
               <div class="text-center mt-2">
                 <h5 class="text-primary">
-                  {{'BASE.GREETINGS.WELCOME_BACK!'}}
+                  {{'BASE.WELCOMES.WELCOME_BACK!' | baseTranslate }}
                 </h5>
                 <p class="text-muted">
-                  {{'BASE.ACTIONS.SIGN_IN_INSTRUCTIONS'}}
+                  {{'BASE.SIGN_INS.INSTRUCTIONS' | baseTranslate }}
                 </p>
               </div>
               <div class="p-2 mt-4">
@@ -45,32 +45,34 @@
 
                   <div class="mb-3">
                     <label for="username" class="form-label">
-                      {{'BASE.FORM.FIELDS.USERNAME'|translate}}
+                      {{'BASE.USERNAMES.SINGULAR'| baseTranslate}}
                     </label>
                     <input type="text"
                            class="form-control"
                            id="username"
-                           placeholder="{{'BASE.FORM.FIELDS.PLACEHOLDER'|translate}}"
+                           placeholder="{{'BASE.FORM.FIELDS.PLACEHOLDER'| baseTranslate}}"
                            formControlName="name"
                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                     @if(submitted && f['name'].errors){
                     <div class="invalid-feedback" align="left">
                       @if(f['name'].errors['required']){
-                      <div>{{'BASE.FORM.FIELDS.USERNAME_ERROR_01'|translate}}</div>}
+                      <div>{{'BASE.FORM.FIELDS.USERNAME_ERROR_01'| baseTranslate}}</div>}
                     </div>}
                   </div>
+
 
                   <div class="mb-3">
                     <div class="float-end">
                       <a routerLink="/auth/pass-reset/basic" class="text-muted">
-                        {{'BASE.AUTHENTICATION.FORGOT?'|translate}}
+                        {{'BASE.AUTHENTICATION.FORGOT?'| baseTranslate}}
                       </a>
                     </div>
-                    <label class="form-label" for="password-input">{{'BASE.AUTHENTICATION.PASSWORD'|translate}}</label>
+                    <label class="form-label" for="password-input">{{'BASE.AUTHENTICATION.PASSWORD'| baseTranslate}}</label>
                     <div class="position-relative auth-pass-inputgroup mb-3">
                       <input [type]="fieldTextType ? 'text' : 'password'"
                              class="form-control pe-5 password-input"
-                             placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}" id="password-input"
+                             placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'| baseTranslate}}"
+                             id="password-input"
                              formControlName="password"
                              [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                       <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-input"
@@ -82,23 +84,23 @@
                       @if(submitted && f['password'].errors){
                       <div class="invalid-feedback">
                         @if(f['password'].errors['required']){
-                        <span>{{'BASE.AUTHENTICATION.PASSWORD_ERROR_01'|translate}}</span>}
+                        <span>{{'BASE.AUTHENTICATION.PASSWORD_ERROR_01'| baseTranslate}}</span>}
                       </div>}
                     </div>
                   </div>
 
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                    <label class="form-check-label" for="auth-remember-check">{{'BASE.AUTHENTICATION.REMEMBER_ME?'|translate}}</label>
+                    <label class="form-check-label" for="auth-remember-check">{{'BASE.AUTHENTICATION.REMEMBER_ME?'| baseTranslate}}</label>
                   </div>
 
                   <div class="mt-4">
-                    <button class="btn btn-success w-100" type="submit">{{'BASE.ACTIONS_SIGN_IN'|translate}}</button>
+                    <button class="btn btn-success w-100" type="submit">{{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}</button>
                   </div>
 
                   <div class="mt-4 text-center">
                     <div class="signin-other-title">
-                      <h5 class="fs-13 mb-4 title">{{'BASE.ACTIONS_SIGN_IN_WITH'|translate}}</h5>
+                      <h5 class="fs-13 mb-4 title">{{'BASE.SIGN_INS.SIGN_IN_WITH_'| baseTranslate}}</h5>
                     </div>
                     <div class="d-flex gap-2 justify-content-center">
                       <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>

@@ -7,6 +7,8 @@ import { Observable, of } from 'rxjs';
 import { SystemService } from '../../../../../../services/system.service';
 // Constants:
 import { system as importedSystemConst } from '../../../../../../constants/system';//
+// Pipes:
+import { BaseTranslatePipe } from '../../../../../common/pipes/basetranslate.pipe';
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../../../../services/system.diagnostics-trace.service';
 import { SystemCapabilitiesVTO } from '../../../../../../models/view/system-capabilities.vto.model';

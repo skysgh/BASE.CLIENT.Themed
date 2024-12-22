@@ -40,7 +40,7 @@
         <a *ngFor="let operation of summaryItem?.operations"
            (click)="onOperationClick(operation.action)"
            class="link-success float-end">
-          {{ operation.title | translate }}
+          {{ operation.title | baseTranslate }}
           <i class="ri-arrow-right-s-line align-middle ms-1 lh-1"></i>
         </a>
       </div>

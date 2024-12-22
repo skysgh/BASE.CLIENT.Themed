@@ -6,6 +6,9 @@ import { RootReducerState } from '../../store';
 import { Store } from '@ngrx/store';
 import { ViewModel } from './vm';
 
+// Pipes:
+import { BaseTranslatePipe } from '../common/pipes/basetranslate.pipe';
+
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',

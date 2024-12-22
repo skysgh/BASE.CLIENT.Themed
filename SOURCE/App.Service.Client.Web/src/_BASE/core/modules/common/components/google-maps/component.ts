@@ -6,6 +6,8 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 //
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
+// Pipes:
+import { BaseTranslatePipe } from '../../pipes/basetranslate.pipe';
 // Services:
 import { SystemService } from '../../../../services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';

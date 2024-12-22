@@ -9,6 +9,7 @@ import { BasicComponent } from './basic/component';
 import { CoverComponent } from './cover/component';
 import { TranslateModule } from '@ngx-translate/core';
 import { BaseCoreCommonComponentsModule } from '../../../common/components/module';
+import { BaseCoreCommonModule } from '../../../common/module';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,8 @@ import { BaseCoreCommonComponentsModule } from '../../../common/components/modul
   imports: [
     CommonModule,
     TranslateModule.forChild(),
+    BaseCoreCommonModule,
     BaseCoreCommonComponentsModule,
-
     NgbCarouselModule,
     ReactiveFormsModule,
     FormsModule,

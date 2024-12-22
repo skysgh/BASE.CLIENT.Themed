@@ -32,6 +32,9 @@ export class DashboardService {
     }
 
   getSummaries() : Observable<StatOneVTO[]>{
+
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.getSummaries()`);
+
     return of(this.statsData);
   }
 

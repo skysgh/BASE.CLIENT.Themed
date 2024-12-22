@@ -58,6 +58,8 @@ export class ServiceNotificationsService
  * @param item
  */
   protected override ServiceSpecificImplementationToFilterFor(item: ServiceNotification): boolean {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationToFilterFor(...)`);
+
     // Not much of a filter on this one
     var result = (item.typeFK == this.itemTypeFKA);
     return result;
@@ -72,6 +74,8 @@ export class ServiceNotificationsService
    * @param item
    */
   protected override ServiceSpecificImplementationToDevelopMappedObject(item: ServiceNotification): ServiceNotification {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationToDevelopMappedObject(...)`);
+
     return item;
     // In this contrived example, not doing much, just changing type:
     //return item;
@@ -91,7 +95,8 @@ export class ServiceNotificationsService
    * method of choice to return an array of TDtos
    */
   protected ServiceSpecificImplementationOfInvokeRepository(): Observable<ServiceNotification[]> {
-    this.diagnosticsTraceService.debug(`${this.constructor.name }.invokeRepository(...)`);
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationOfInvokeRepository(...)`);
+
     return this.notificationsRepositoryService.getPage();
   }
 
@@ -100,8 +105,7 @@ export class ServiceNotificationsService
    * required at the end of the refreshment of the list
    */
   protected override ServiceSpecificImplementationOfOnInitComplete(items: ServiceNotification[]): void {
-    // do things...
-    this.diagnosticsTraceService.debug(`${this.constructor.name }.onInitComplete(...)`);
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationOfOnInitComplete(...)`);
   }
 }
 

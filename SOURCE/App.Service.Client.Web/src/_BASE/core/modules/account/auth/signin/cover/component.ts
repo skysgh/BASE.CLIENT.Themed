@@ -1,13 +1,27 @@
 // Ag:
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 // Etc:
+import { first } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+
 // Constants:
 import { system as importedSystemConst } from '../../../../../constants/system';
+// Pipes:
+import { BaseTranslatePipe } from '../../../../common/pipes/basetranslate.pipe';
+
 // Services:
+// Login Auth
+//import { environment } from '../../../../../../../environments/environment';
+import { AuthenticationService } from '../../../../../services/auth.service';
+import { AuthfakeauthenticationService } from '../../../../../services/authfake.service';
+import { TitleService } from '../../../../../services/title.service';
 import { SystemService } from '../../../../../services/system.service';
+import { ToastService } from '../../../../../services/toast.service';
 import { ViewModel } from './vm';
+
+//import { ViewModel } from './vm';
 
 @Component({
   selector: 'app-base-core-modules-account_auth-signin-cover',
@@ -36,7 +50,17 @@ export class CoverComponent implements OnInit {
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
-  constructor(private formBuilder: FormBuilder, private systemService: SystemService, public translate: TranslateService) {
+  constructor(
+    private titleService: TitleService,
+    private systemService: SystemService,
+    public translate: TranslateService,
+    private authenticationService: AuthenticationService,
+    private authFackservice: AuthfakeauthenticationService,
+    private route: ActivatedRoute,
+    public toastService: ToastService,
+    private formBuilder: FormBuilder,
+    private router: Router
+    ) {
     // Make system/env variables avaiable to class & view template:
     // this.system = this.systemService.system;
   }
@@ -45,10 +69,11 @@ export class CoverComponent implements OnInit {
     /**
      * Form Validatyion
      */
-     this.loginForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      password: ['', Validators.required],
+    this.loginForm = this.formBuilder.group({
+      email: ['admin@themesbrand.com', [Validators.required, Validators.email]],
+      password: ['123456', [Validators.required]],
     });
+
   }
 
   // convenience getter for easy access to form fields

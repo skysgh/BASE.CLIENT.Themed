@@ -1,6 +1,6 @@
 ## Development Directions ##
 
-Although atpyically located, this 
+Although atypically located, this 
 is the actual entry module that `main`
 invokes.
 

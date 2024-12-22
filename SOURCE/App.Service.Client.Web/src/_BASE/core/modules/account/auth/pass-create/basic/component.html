@@ -43,12 +43,12 @@
                 <form [formGroup]="passresetForm" (ngSubmit)="onSubmit()">
                   <div class="mb-3">
                     <label class="form-label" for="password-input">
-                      {{'BASE.AUTHENTICATION.PASSWORD'|translate}}
+                      {{'BASE.AUTHENTICATION.PASSWORD'| baseTranslate}}
                     </label>
                     <div class="position-relative auth-pass-inputgroup">
                       <input [type]="passwordField ? 'text' : 'password'"
                              class="form-control pe-5 password-input"
-                             placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
+                             placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'| baseTranslate}}"
                              id="password-input"
                              aria-describedby="passwordInput"
                              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -66,25 +66,25 @@
                       <div class="invalid-feedback">
                         @if(f['password'].errors['required']){
                         <span>
-                          {{'BASE.AUTHENTICATION.PASSWORD_ERROR_01'|translate}}
+                          {{'BASE.AUTHENTICATION.PASSWORD_ERROR_01'| baseTranslate}}
                         </span>}
                       </div>}
                     </div>
                     <div id="passwordInput"
                          class="form-text">
-                      {{'BASE.AUTHENTICATION.PASSWORD_ERROR_02_DETAILS'|translate}}
+                      {{'BASE.AUTHENTICATION.PASSWORD_ERROR_02_DETAILS'| baseTranslate}}
                     </div>
                   </div>
 
                   <div class="mb-3">
                     <label class="form-label"
                            for="confirm-password-input">
-                      {{'BASE.AUTHENTICATION.PASSWORD_CONFIRMATION_INSTRUCTIONS'|translate}}
+                      {{'BASE.AUTHENTICATION.PASSWORD_CONFIRMATION_INSTRUCTIONS'| baseTranslate}}
                     </label>
                     <div class="position-relative auth-pass-inputgroup mb-3">
                       <input [type]="confirmField ? 'text' : 'password'"
                              class="form-control pe-5 password-input"
-                             placeholder="{{'BASE.AUTHENTICATION.PASSWORD_CONFIRMATION_PLACEHOLDER'|translate}}"
+                             placeholder="{{'BASE.AUTHENTICATION.PASSWORD_CONFIRMATION_PLACEHOLDER'| baseTranslate}}"
                              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                              id="confirm-password-input"
                              required
@@ -101,7 +101,7 @@
                       <div class="invalid-feedback">
                         @if(f['cpassword'].errors['required']){
                         <span>
-                          {{'BASE.AUTHENTICATION.PASSWORD_CONFIRMATION_ERROR_01'|translate}}
+                          {{'BASE.AUTHENTICATION.PASSWORD_CONFIRMATION_ERROR_01'| baseTranslate}}
                         </span>}
                       </div>}
                     </div>
@@ -109,7 +109,7 @@
 
                   <div id="password-contain" class="p-3 bg-light mb-2 rounded">
                     <h5 class="fs-13">
-                      {{'BASE.AUTHENTICATION.PASSWORD_ERROR_02'|translate}}
+                      {{'BASE.AUTHENTICATION.PASSWORD_ERROR_02'| baseTranslate}}
                       :
                     </h5>
                     <p id="pass-length" class="invalid fs-12 mb-2">Minimum <b>8 characters</b></p>
@@ -128,13 +128,13 @@
                            type="checkbox" value=""
                            id="auth-remember-check">
                     <label class="form-check-label" for="auth-remember-check">
-                      {{'BASE.AUTHENTICATION.REMEMBER_ME?'|translate}}
+                      {{'BASE.AUTHENTICATION.REMEMBER_ME?'| baseTranslate}}
                     </label>
                   </div>
 
                   <div class="mt-4">
                     <button class="btn btn-success w-100" type="submit">
-                      {{'BASE.AUTHENTICATION.PASSWORDRESET'|translate}}
+                      {{'BASE.AUTHENTICATION.PASSWORDRESET'| baseTranslate}}
                     </button>
                   </div>
 
@@ -147,10 +147,10 @@
 
           <div class="mt-4 text-center">
             <p class="mb-0">
-              {{'BASE.MISC.WAIT_I_REMEMBER_MY_PASSWORD'| translate}}
+              {{'BASE.MISC.WAIT_I_REMEMBER_MY_PASSWORD'| baseTranslate}}
               <a routerLink="/auth/signin/basic"
                  class="fw-semibold text-primary text-decoration-underline">
-                {{'BASE.ACTIONS.SIGN_IN'| translate}}
+                {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
               </a>
             </p>
           </div>

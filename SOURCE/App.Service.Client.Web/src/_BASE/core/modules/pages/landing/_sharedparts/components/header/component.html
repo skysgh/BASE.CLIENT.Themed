@@ -39,49 +39,49 @@
           <a class="nav-link active"
              [ngClass]="{'active':sectionId === sectionsInfo.intro.id}"
              [ngxScrollTo]="'#'+sectionsInfo.intro.id"
-             href="javascript:void(0);">{{'BASE.HOMES.SINGULAR'|translate}}</a>
+             href="javascript:void(0);">{{'BASE.HOMES.SINGULAR'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
              [ngClass]="{'active':sectionId === sectionsInfo.capabilities.id}"
              [ngxScrollTo]="'#'+sectionsInfo.capabilities.id"
-             href="javascript:void(0);">{{'BASE.CAPABILITIES.PLURAL'|translate}}</a>
+             href="javascript:void(0);">{{'BASE.CAPABILITIES.PLURAL'| baseTranslate}}</a>
         </li>
         <!--<li class="nav-item">
     <a class="nav-link"
        [ngClass]="{'active':sectionId === sectionsInfo.features.id}"
        [ngxScrollTo]="'#'+sectionsInfo.features.id"
-       href="javascript:void(0);">{{'BASE.FEATURES.PLURAL'|translate}}</a>
+       href="javascript:void(0);">{{'BASE.FEATURES.PLURAL'| baseTranslate}}</a>
   </li>-->
         <li class="nav-item">
           <a class="nav-link"
              [ngClass]="{'active':sectionId === sectionsInfo.endorsements.id}"
              [ngxScrollTo]="'#'+sectionsInfo.endorsements.id"
-             href="javascript:void(0);">{{'BASE.REVIEWS.PLURAL'|translate}}</a>
+             href="javascript:void(0);">{{'BASE.REVIEWS.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
              [ngClass]="{'active':sectionId === sectionsInfo.faqs.id}"
              [ngxScrollTo]="'#'+sectionsInfo.faqs.id"
-             href="javascript:void(0);">{{'BASE.FAQS.PLURAL'|translate}}</a>
+             href="javascript:void(0);">{{'BASE.FAQS.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
              [ngClass]="{'active':sectionId === sectionsInfo.plans.id}"
              [ngxScrollTo]="'#'+sectionsInfo.plans.id"
-             href="javascript:void(0);">{{'BASE.PLANS.PLURAL'|translate}}</a>
+             href="javascript:void(0);">{{'BASE.PLANS.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
              [ngClass]="{'active':sectionId === sectionsInfo.team.id}"
              [ngxScrollTo]="'#'+sectionsInfo.team.id"
-             href="javascript:void(0);">{{'BASE.TEAMS.SINGULAR'|translate}}</a>
+             href="javascript:void(0);">{{'BASE.TEAMS.SINGULAR'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
              [ngClass]="{'active':sectionId === sectionsInfo.contact.id}"
              [ngxScrollTo]="'#'+sectionsInfo.contact.id"
-             href="javascript:void(0);">{{'BASE.CONTACTS.SINGULAR'|translate}}</a>
+             href="javascript:void(0);">{{'BASE.CONTACTS.SINGULAR'| baseTranslate}}</a>
         </li>
       </ul>
 
@@ -97,11 +97,11 @@
       <div class="">
         <a [routerLink]="system.navigation.auth.signin"
            class="btn btn-link fw-medium text-decoration-none text-body">
-          {{'BASE.ACTIONS.SIGN_IN'|translate}}
+          {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
         </a>
         <a [routerLink]="system.navigation.auth.signup"
            class="btn btn-primary">
-          {{'BASE.ACTIONS.SIGN_UP'|translate}}
+          {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
         </a>
       </div>
 

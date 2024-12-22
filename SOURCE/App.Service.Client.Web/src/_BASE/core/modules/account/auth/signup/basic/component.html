@@ -35,10 +35,10 @@
             <div class="card-body p-4">
               <div class="text-center mt-2">
                 <h5 class="text-primary">
-                  {{'BASE.AUTHENTICATION.SPECIFIC.SIGNUP.SINGULAR' | translate }}
+                  {{'BASE.AUTHENTICATION.SPECIFIC.SIGNUP.SINGULAR' | baseTranslate }}
                 </h5>
                 <p class="text-muted">
-                  {{'BASE.AUTHENTICATION.SPECIFIC.SIGNUP.INSTRUCTIONS' | translate }}
+                  {{'BASE.AUTHENTICATION.SPECIFIC.SIGNUP.INSTRUCTIONS' | baseTranslate }}
                 </p>
               </div>
               <div class="p-2 mt-4">
@@ -46,42 +46,42 @@
 
                   <div class="mb-3">
                     <label for="useremail" class="form-label">
-                      {{'BASE.AUTHENTICATION.EMAIL' | translate }}
+                      {{'BASE.AUTHENTICATION.EMAIL' | baseTranslate }}
                       <span class="text-danger">*</span>
                     </label>
                     <input type="email" class="form-control" id="useremail"
-                           placeholder="{{'BASE.AUTHENTICATION.EMAIL_INSTRUCTIONS' | translate }}"
+                           placeholder="{{'BASE.AUTHENTICATION.EMAIL_INSTRUCTIONS' | baseTranslate }}"
                            required
                            formControlName="email"
                            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
                     <div class="invalid-feedback">
-                      {{'BASE.AUTHENTICATION.EMAIL_ERROR_01' | translate }}
+                      {{'BASE.AUTHENTICATION.EMAIL_ERROR_01' | baseTranslate }}
                     </div>
                   </div>
                   <div class="mb-3">
                     <label for="username" class="form-label">
-                      {{'BASE.AUTHENTICATION.USERNAME' | translate }}
+                      {{'BASE.AUTHENTICATION.USERNAME' | baseTranslate }}
                       <span class="text-danger">*</span>
                     </label>
                     <input type="text" class="form-control" id="username"
-                           placeholder="{{'BASE.AUTHENTICATION.USERNAME_INSTRUCTIONS' | translate }}"
+                           placeholder="{{'BASE.AUTHENTICATION.USERNAME_INSTRUCTIONS' | baseTranslate }}"
                            required
                            formControlName="name"
                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                     <div class="invalid-feedback">
-                      {{'BASE.AUTHENTICATION.USERNAME_ERROR_01' | translate }}
+                      {{'BASE.AUTHENTICATION.USERNAME_ERROR_01' | baseTranslate }}
                     </div>
                   </div>
 
                   <div class="mb-3">
                     <label for="userpassword" class="form-label">
-                      {{'BASE.AUTHENTICATION.PASSWORD' | translate }}
+                      {{'BASE.AUTHENTICATION.PASSWORD' | baseTranslate }}
                       <span class="text-danger">*</span>
                     </label>
                     <div class="position-relative auth-pass-inputgroup">
                       <input [type]="fieldTextType ? 'text' : 'password'"
                              class="form-control pe-5 password-input"
-                             placeholder="{{'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS' | translate }}"
+                             placeholder="{{'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS' | baseTranslate }}"
                              id="password-input" aria-describedby="passwordInput"
                              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
                              formControlName="password"
@@ -95,17 +95,17 @@
                         </i>
                       </button>
                       <div class="invalid-feedback">
-                        {{'BASE.AUTHENTICATION.PASSWORD_ERROR_01' | translate }}
+                        {{'BASE.AUTHENTICATION.PASSWORD_ERROR_01' | baseTranslate }}
                       </div>
                     </div>
                   </div>
 
                   <div class="mb-4">
                     <p class="mb-0 fs-12 text-muted fst-italic">
-                      {{'BASE.AUTHENTICATION.SPECIFIC.SIGNUP.AGREE_TO_TERMS_AND_CONDITIONS' | translate }}
+                      {{'BASE.AUTHENTICATION.SPECIFIC.SIGNUP.AGREE_TO_TERMS_AND_CONDITIONS' | baseTranslate }}
                       <a href="javascript:void(0);"
                          class="text-primary text-decoration-underline fst-normal fw-medium">
-                        {{'BASE.AUTHENTICATION.SPECIFIC.SIGNUP.TERMS_AND_CONDITIONS' | translate }}
+                        {{'BASE.AUTHENTICATION.SPECIFIC.SIGNUP.TERMS_AND_CONDITIONS' | baseTranslate }}
                       </a>
                     </p>
                   </div>
@@ -125,14 +125,14 @@
 
                   <div class="mt-4">
                     <button class="btn btn-success w-100" type="submit">
-                      {{'BASE.AUTHENTICATION.SIGN_UP' | translate }}
+                      {{'BASE.AUTHENTICATION.SIGN_UP' | baseTranslate }}
                     </button>
                   </div>
 
                   <div class="mt-4 text-center">
                     <div class="signin-other-title">
                       <h5 class="fs-13 mb-4 title text-muted">
-                        {{'BASE.AUTHENTICATION.SIGN_UP_WITH' | translate }}
+                        {{'BASE.AUTHENTICATION.SIGN_UP_WITH' | baseTranslate }}
                       </h5>
                     </div>
 
@@ -165,10 +165,10 @@
 
           <div class="mt-4 text-center">
             <p class="mb-0">
-              {{'BASE.AUTHENTICATION.ALREADY_HAVE_AN_ACCOUNT?' | translate }}
+              {{'BASE.AUTHENTICATION.ALREADY_HAVE_AN_ACCOUNT?' | baseTranslate }}
               <a routerLink="/auth/signin/basic"
                  class="fw-semibold text-primary text-decoration-underline">
-                {{'BASE.AUTHENTICATION.SIGN_IN' | translate }}
+                {{'BASE.AUTHENTICATION.SIGN_IN' | baseTranslate }}
               </a>
             </p>
           </div>

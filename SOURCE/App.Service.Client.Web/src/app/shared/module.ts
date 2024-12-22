@@ -21,6 +21,7 @@ import { JobcategoriesComponent } from './landing/job/jobcategories/jobcategorie
 import { ProgressComponent } from './landing/job/progress/progress.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { BaseCoreCommonModule } from '../../_BASE/core/modules/common/module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
   ],
   imports: [
     CommonModule,
+    BaseCoreCommonModule,
+
     NgbNavModule,
     NgbAccordionModule,
     NgbDropdownModule,

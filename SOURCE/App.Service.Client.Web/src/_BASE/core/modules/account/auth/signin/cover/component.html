@@ -54,11 +54,11 @@
                                 <div class="p-lg-5 p-4">
                                     <div>
                                       <h5 class="text-primary">
-                                        {{'BASE.AUTHENTICATION.SIGNIN' | translate }}
+                                        {{'BASE.AUTHENTICATION.SIGNIN' | baseTranslate }}
                                         &nbsp;
                                       </h5>
                                       <p class="text-muted">
-                                        {{'BASE.GREETINGS.WELCOME_BACK' | translate }}
+                                        {{'BASE.WELCOMES.WELCOME_BACK' | baseTranslate }}
                                         &nbsp;
                                       </p>
                                     </div>
@@ -68,17 +68,17 @@
 
                                             <div class="mb-3">
                                               <label for="username" class="form-label">
-                                                {{'BASE.AUTHENTICATION.USERNAME' | translate }}&nbsp;
+                                                {{'BASE.AUTHENTICATION.USERNAME' | baseTranslate }}&nbsp;
                                               </label>
                                                 <input type="text"
                                                        class="form-control"
                                                        id="username"
-                                                       placeholder="{{'BASE.AUTHENTICATION.USERNAME_INSTRUCTIONS' | translate }}&nbsp;" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+                                                       placeholder="{{'BASE.AUTHENTICATION.USERNAME_INSTRUCTIONS' | baseTranslate }}&nbsp;" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                                                 @if(submitted && f['name'].errors){
                                                 <div class="invalid-feedback" align="left">
                                                     @if(f['name'].errors['required']){
                                                   <div>
-                                                    {{'BASE.AUTHENTICATION.USERNAME_ERROR_01' | translate }}&nbsp;
+                                                    {{'BASE.AUTHENTICATION.USERNAME_ERROR_01' | baseTranslate }}&nbsp;
                                                   </div>}
                                                 </div>}
                                             </div>
@@ -86,16 +86,16 @@
                                             <div class="mb-3">
                                                 <div class="float-end">
                                                   <a routerLink="/auth/pass-reset/cover" class="text-muted">
-                                                    {{'BASE.AUTHENTICATION.FORGOT?' | translate }}&nbsp;
+                                                    {{'BASE.AUTHENTICATION.FORGOT?' | baseTranslate }}&nbsp;
                                                   </a>
                                                 </div>
                                                 <label class="form-label" for="password-input">
-                                                  {{'BASE.AUTHENTICATION.PASSWORD' | translate }}
+                                                  {{'BASE.AUTHENTICATION.PASSWORD' | baseTranslate }}
                                                 </label>
                                                 <div class="position-relative auth-pass-inputgroup mb-3">
                                                     <input [type]="fieldTextType ? 'text' : 'password'"
                                                            class="form-control pe-5 password-input"
-                                                           placeholder="{{'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS' | translate }}"
+                                                           placeholder="{{'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS' | baseTranslate }}"
                                                            id="password-input"
                                                            formControlName="password"
                                                            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
@@ -107,7 +107,7 @@
                                                     <div class="invalid-feedback">
                                                         @if(f['password'].errors['required']){
                                                       <span>
-                                                        {{'BASE.AUTHENTICATION.PASSWORD_ERROR_01' | translate }}
+                                                        {{'BASE.AUTHENTICATION.PASSWORD_ERROR_01' | baseTranslate }}
                                                         &nbsp;
                                                       </span>}
                                                     </div>}
@@ -120,21 +120,21 @@
                                                        id="auth-remember-check">
                                                 <label class="form-check-label"
                                                        for="auth-remember-check">
-                                                  {{'BASE.AUTHENTICATION.REMEMBER_ME?' | translate }}&nbsp;
+                                                  {{'BASE.AUTHENTICATION.REMEMBER_ME?' | baseTranslate }}&nbsp;
                                                 </label>
                                             </div>
 
                                             <div class="mt-4">
                                               <button class="btn btn-success w-100"
                                                       type="submit">
-                                                {{'BASE.AUTHENTICATION.SIGN_IN' | translate }}&nbsp;
+                                                {{'BASE.AUTHENTICATION.SIGN_IN' | baseTranslate }}&nbsp;
                                               </button>
                                             </div>
 
                                             <div class="mt-4 text-center">
                                                 <div class="signin-other-title">
                                                   <h5 class="fs-13 mb-4 title">
-                                                    {{'BASE.AUTHENTICATION.SIGN_IN_WITH' | translate }}&nbsp;
+                                                    {{'BASE.AUTHENTICATION.SIGN_IN_WITH_' | baseTranslate }}&nbsp;
                                                   </h5>
                                                 </div>
 
@@ -151,9 +151,9 @@
 
                                     <div class="mt-5 text-center">
                                       <p class="mb-0">
-                                        {{'BASE.AUTHENTICATION.DONT_HAVE_AN_ACCOUNT?' | translate }}&nbsp;
+                                        {{'BASE.AUTHENTICATION.DONT_HAVE_AN_ACCOUNT?' | baseTranslate }}&nbsp;
                                         <a routerLink="/auth/signup/cover" class="fw-semibold text-primary text-decoration-underline">
-                                          {{'BASE.AUTHENTICATION.SIGN_UP' | translate }}&nbsp;
+                                          {{'BASE.AUTHENTICATION.SIGN_UP' | baseTranslate }}&nbsp;
                                         </a>
                                       </p>
                                     </div>
@@ -183,7 +183,7 @@
                       <p class="mb-0">
                         {{system.dynamic.copyrights.year}} © {{system.title || ''}}
                         -
-                        {{'BASE.CREDITS.DEVELOPED_BY_' | translate }}
+                        {{'BASE.CREDITS.DEVELOPED_BY_' | baseTranslate }}
                         {{system.dynamic.developer.title || 'Undefined, Inc.'}}&nbsp;
                       </p>
                     </div>

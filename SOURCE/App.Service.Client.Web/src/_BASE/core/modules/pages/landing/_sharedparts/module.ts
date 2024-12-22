@@ -66,7 +66,6 @@ import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/
     NgbAccordionModule,
     //NgbDropdownModule,
     //CountUpModule,
-    BaseCoreCommonModule,
     BaseCoreCommonComponentsModule,
     NgbTooltipModule,
     NgbCollapseModule,

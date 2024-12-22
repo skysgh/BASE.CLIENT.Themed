@@ -10,7 +10,7 @@
     <span class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">
       3
       <span class="visually-hidden">
-        {{'BASE.NOTIFICATIONS.UNREAD' | translate }}
+        {{'BASE.NOTIFICATIONS.UNREAD' | baseTranslate }}
       </span>
     </span>
   </button>
@@ -22,13 +22,13 @@
         <div class="row align-items-center">
           <div class="col">
             <h6 class="m-0 fs-16 fw-semibold text-white">
-              {{'BASE.NOTIFICATIONS.PLURAL' | translate }}
+              {{'BASE.NOTIFICATIONS.PLURAL' | baseTranslate }}
             </h6>
           </div>
           <div class="col-auto dropdown-tabs">
             <span class="badge bg-light-subtle text-body fs-13">
               {{allnotifications?.length}}
-              {{'BASE.STATUS.NEW' | translate }}
+              {{'BASE.STATUS.NEW' | baseTranslate }}
             </span>
           </div>
         </div>
@@ -41,7 +41,7 @@
             id="notificationItemsTab">
           <li [ngbNavItem]="1">
             <a ngbNavLink>
-              {{'BASE.QUANTITIES.ALL' | translate }}
+              {{'BASE.QUANTITIES.ALL' | baseTranslate }}
               ({{allnotifications?.length}})
             </a>
             <ng-template ngbNavContent>
@@ -101,7 +101,7 @@
                     <div class="my-3 text-center">
                       <button type="button"
                               class="btn btn-soft-success waves-effect waves-light">
-                        {{'BASE.ACTIONS.VIEW_ALL' | translate }}
+                        {{'BASE.ACTIONS.VIEW_ALL' | baseTranslate }}
                         <i class="ri-arrow-right-line align-middle"></i>
                       </button>
                     </div>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="text-center pb-5 mt-2">
                       <h6 class="fs-18 fw-semibold lh-base">
-                        {{ 'BASE.NOTIFICATIONS.NO_NEW' | translate}}
+                        {{ 'BASE.NOTIFICATIONS.NO_NEW' | baseTranslate}}
                       </h6>
                     </div>
                   </div>
@@ -131,7 +131,7 @@
           <li [ngbNavItem]="2">
             <a ngbNavLink>
               <span>
-                {{ 'BASE.MESSAGES.PLURAL' | translate}}
+                {{ 'BASE.MESSAGES.PLURAL' | baseTranslate}}
               </span>
             </a>
             <ng-template ngbNavContent>
@@ -173,7 +173,7 @@
                     <div class="my-3 text-center">
                       <button type="button"
                               class="btn btn-soft-success waves-effect waves-light">
-                        {{'BASE.ACTIONS.VIEW_ALL' | translate }}
+                        {{'BASE.ACTIONS.VIEW_ALL' | baseTranslate }}
                         <i class="ri-arrow-right-line align-middle"></i>
                       </button>
                     </div>
@@ -187,7 +187,7 @@
                     </div>
                     <div class="text-center pb-5 mt-2">
                       <h6 class="fs-18 fw-semibold lh-base">
-                        {{'BASE.NOTIFICATIONS.NONE' | translate }}
+                        {{'BASE.NOTIFICATIONS.NONE' | baseTranslate }}
                       </h6>
                     </div>
                   </div>
@@ -197,7 +197,7 @@
           </li>
           <li [ngbNavItem]="3">
             <a ngbNavLink>
-              {{ 'BASE.ALERTS.PLURAL' | translate}}
+              {{ 'BASE.ALERTS.PLURAL' | baseTranslate}}
             </a>
             <ng-template ngbNavContent>
               <div class="tab-pane p-4" id="alerts-tab"
@@ -209,7 +209,7 @@
                 </div>
                 <div class="text-center pb-5 mt-2">
                   <h6 class="fs-18 fw-semibold lh-base">
-                    {{ 'BASE.ALERTS.NO_NEW' | translate}}
+                    {{ 'BASE.ALERTS.NO_NEW' | baseTranslate}}
                   </h6>
                 </div>
               </div>
@@ -229,18 +229,18 @@
 
     <div class="notification-actions" id="notification-actions">
       <div class=" d-flex text-muted justify-content-center">
-        {{ 'BASE.ACTIONS.SELECT' | translate}}
+        {{ 'BASE.ACTIONS.SELECT' | baseTranslate}}
         <div id="select-content" class="text-body fw-semibold px-1">
           {{checkedValGet.length}}
         </div>
-        {{ 'BASE.OUTCOMES.RESULT' | translate}}
+        {{ 'BASE.OUTCOMES.RESULT' | baseTranslate}}
 
         <button type="button"
                 class="btn btn-link link-danger p-0 ms-3"
                 data-bs-toggle="modal"
                 (click)="openModal(removenotification)"
                 data-bs-target="#removeNotificationModal">
-          {{ 'BASE.ACTIONS.REMOVE' | translate}}
+          {{ 'BASE.ACTIONS.REMOVE' | baseTranslate}}
         </button>
       </div>
     </div>

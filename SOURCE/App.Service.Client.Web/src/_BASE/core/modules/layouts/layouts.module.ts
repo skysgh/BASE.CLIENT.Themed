@@ -43,6 +43,7 @@ import { BaseLayoutRightSideContextThemeCustomiserComponent } from './rightsideb
 import { BaseLayoutFooterComponent } from './footer/component';
 import { BaseCoreCommonComponentsModule } from '../common/components/module';
 import { ServiceLanguagesService } from '../../services/service.languages.service';
+import { BaseCoreCommonModule } from '../common/module';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { ServiceLanguagesService } from '../../services/service.languages.servic
   imports: [
     CommonModule,
     TranslateModule.forChild(),
+    BaseCoreCommonModule,
     BaseCoreCommonComponentsModule,
     RouterModule,
     NgbDropdownModule,

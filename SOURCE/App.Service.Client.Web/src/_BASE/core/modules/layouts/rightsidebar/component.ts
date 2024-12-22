@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 // Constants:
 import { system as importedSystemConst } from '../../../constants/system';
+// Pipes:
+import { BaseTranslatePipe } from '../../common/pipes/basetranslate.pipe';
 //
 import { SystemService } from '../../../services/system.service';
 import { RootReducerState } from '../../../store';

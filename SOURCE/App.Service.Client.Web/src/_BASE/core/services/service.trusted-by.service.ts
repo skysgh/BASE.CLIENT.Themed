@@ -89,7 +89,7 @@ export class ServiceTrustedByService
     // cannot reference this.diagnosticsTraceService
     // because we are not in the context of this.
     // Annoying!
-    this.diagnosticsTraceService.debug(`${ this.constructor.name }.developMappedObject(...)`);
+    this.diagnosticsTraceService.debug(`${this.constructor.name }.ServiceSpecificImplementationToDevelopMappedObject(...)`);
     // In this contrived example, not doing much, just changing type:
     //return item;
     // Same thing in this simple case:
@@ -107,7 +107,7 @@ export class ServiceTrustedByService
    * method of choice to return an array of TDtos
    */
   protected ServiceSpecificImplementationOfInvokeRepository(): Observable<ServiceTrustedBy[]> {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.invokeRepository(...)`);
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationOfInvokeRepository(...)`);
     return this.systemTrustedByRepositoryService.getPage();
   }
 
@@ -116,7 +116,7 @@ export class ServiceTrustedByService
    * required at the end of the refreshment of the list
    */
   protected override ServiceSpecificImplementationOfOnInitComplete(items: ServiceTrustedByVTO[]): void {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.onInitComplete(...)`);
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.ServiceSpecificImplementationOfOnInitComplete(...)`);
   }
 
 }

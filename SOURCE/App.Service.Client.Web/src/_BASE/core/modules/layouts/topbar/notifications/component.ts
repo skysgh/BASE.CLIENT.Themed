@@ -4,6 +4,8 @@ import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 // Etc:
 import { Observable, of } from "rxjs";
 import { TranslateService } from "@ngx-translate/core";
+// Pipes:
+import { BaseTranslatePipe } from '../../../common/pipes/basetranslate.pipe';
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
 // Services:

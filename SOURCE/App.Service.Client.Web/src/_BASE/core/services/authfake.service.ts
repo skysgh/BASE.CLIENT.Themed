@@ -18,8 +18,8 @@ export class AuthfakeauthenticationService {
   // Make system/env variables avaiable to class & view template:
   public system = importedSystemConst;
 
-    private currentUserSubject: BehaviorSubject<User>;
-    public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
 
   constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService, private http: HttpClient) {
 
@@ -30,46 +30,52 @@ export class AuthfakeauthenticationService {
         JSON.parse(sessionStorage.getItem(this.system.storage.system.currentUser)!));
 
     this.currentUser = this.currentUserSubject.asObservable();
-    }
+  }
 
-    /**
-     * current user
-     */
-    public get currentUserValue(): User {
-      this.diagnosticsTraceService.debug("AuthfakeauthenticationService.currentUserValue()")
-      var result = this.currentUserSubject.value;
-      this.diagnosticsTraceService.debug(`...: ${result}`);
-      return result;
-    }
+  /**
+   * current user
+   */
+  public get currentUserValue(): User {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.currentUserValue()`)
 
-    /**
-     * Performs the auth
-     * @param email email of user
-     * @param password password of user
-     */
-    login(email: string, password: string) {
-      this.diagnosticsTraceService.debug(`${this.constructor.name }.login('${email}', pwd...)`)
+    var result = this.currentUserSubject.value;
+    this.diagnosticsTraceService.debug(`...: ${result}`);
 
-        return this.http.post<any>(`/users/authenticate`, { email, password })
+    return result;
+  }
 
-            .pipe(map(user => {
-                // login successful if there's a jwt token in the response
-                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                  sessionStorage.setItem(this.system.storage.system.currentUser, JSON.stringify(user));
+  /**
+   * Performs the auth
+   * @param email email of user
+   * @param password password of user
+   */
+  login(email: string, password: string) {
 
-                  this.currentUserSubject.next(user);
-                }
-                return user;
-            }));
-    }
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.login('${email}', pwd...)`);
 
-    /**
-     * Logout the user
-     */
-    logout() {
-      // remove user from local storage to log user out
-      sessionStorage.removeItem(this.system.storage.system.currentUser);
-        this.currentUserSubject.next(null!);
-    }
+    return this.http.post<any>(`/users/authenticate`, { email, password })
+
+      .pipe(map(user => {
+        // login successful if there's a jwt token in the response
+        if (user && user.token) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          sessionStorage.setItem(this.system.storage.system.currentUser, JSON.stringify(user));
+
+          this.currentUserSubject.next(user);
+        }
+        return user;
+      }));
+  }
+
+  /**
+   * Logout the user
+   */
+  logout() {
+
+    this.diagnosticsTraceService.info(`${this.constructor.name}.logout()`);
+
+    // remove user from local storage to log user out
+    sessionStorage.removeItem(this.system.storage.system.currentUser);
+    this.currentUserSubject.next(null!);
+  }
 }

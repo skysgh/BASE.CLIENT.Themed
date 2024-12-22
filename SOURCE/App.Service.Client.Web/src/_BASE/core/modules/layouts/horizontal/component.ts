@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewModel } from '../vm';
 
+// Pipes:
+import { BaseTranslatePipe } from '../../common/pipes/basetranslate.pipe';
+
 @Component({
   selector: 'app-horizontal',
   templateUrl: './component.html',

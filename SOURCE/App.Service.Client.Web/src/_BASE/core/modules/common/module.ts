@@ -1,6 +1,9 @@
 // Ag dependencies:
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+// Etc:
+import { TranslateService } from '@ngx-translate/core';
+
 import { ScrollspyDirective } from './scrollspy.directive';
 import { LandingScrollspyDirective } from './landingscrollspy.directive';
 import { NgbAccordionModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
@@ -10,6 +13,8 @@ import { SystemEndorsementRepositoryService } from '../../services/services/repo
 import { matchesProperty } from 'lodash';
 import { EnabledPipe } from './pipes/enabled.pipe';
 import { MatchesPipe } from './pipes/matches.pipe';
+
+import { BaseTranslatePipe } from './pipes/basetranslate.pipe';
 //import { ScrollspyDirective } from './scrollspy.directive';
 
 //import Module specific:
@@ -18,6 +23,7 @@ import { MatchesPipe } from './pipes/matches.pipe';
     // Import classes within the above specified import files.
     // Ag specific:
     CommonModule,
+
     TranslateModule.forChild(),
     // Module specific:
     // No components
@@ -30,6 +36,8 @@ import { MatchesPipe } from './pipes/matches.pipe';
   declarations: [
     ScrollspyDirective,
     LandingScrollspyDirective,
+    
+    BaseTranslatePipe,
 
     EnabledPipe,
     MatchesPipe
@@ -40,6 +48,8 @@ import { MatchesPipe } from './pipes/matches.pipe';
   exports: [
     LandingScrollspyDirective,
     ScrollspyDirective,
+
+    BaseTranslatePipe,
     EnabledPipe,
     MatchesPipe
 

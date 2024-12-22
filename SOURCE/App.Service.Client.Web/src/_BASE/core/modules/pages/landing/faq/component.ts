@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+// Pipes:
+import { BaseTranslatePipe } from '../../../common/pipes/basetranslate.pipe';
+// Services:
 import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 import { SystemService } from '../../../../services/system.service';
 import { ViewModel } from './vm';

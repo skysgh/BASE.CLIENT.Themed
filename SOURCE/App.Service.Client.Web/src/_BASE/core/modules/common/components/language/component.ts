@@ -7,6 +7,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { TranslateService } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
+// Pipes:
+import { BaseTranslatePipe } from '../../pipes/basetranslate.pipe';
 // Language
 import { ServiceLanguagesService } from '../../../../services/service.languages.service';
 import { SystemService } from "../../../../services/system.service";

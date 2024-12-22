@@ -32,6 +32,7 @@ import { BaseCoreCommonComponentsSignUpInComponent } from './signupin/component'
 import { BaseCoreCommonComponentsFooterOComponent } from './footers/footerO/component';
 import { BaseCoreCommonComponentsSocialMediaLinksComponent } from './socialmedialinks/component';
 import { BaseCoreCommonComponentsCookieAlertSimpleComponent } from './cookieAlertSimple/component';
+import { BaseCoreCommonModule } from '../module';
 
 
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
@@ -40,6 +41,7 @@ import { BaseCoreCommonComponentsCookieAlertSimpleComponent } from './cookieAler
 @NgModule({
   imports: [
     CommonModule,
+    BaseCoreCommonModule,
     RouterModule,
     TranslateModule.forChild(),
     NgbNavModule,

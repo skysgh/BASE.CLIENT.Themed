@@ -10,10 +10,10 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { SharedModule } from '../../../../../app/shared/module';
+import { SharedModule } from '../../../../../../app/shared/module';
 
 //
-import { SystemDiagnosticsTraceService } from '../../../services/system.diagnostics-trace.service';
+import { SystemDiagnosticsTraceService } from '../../../../services/system.diagnostics-trace.service';
 // 
 //import { BaseCorePagesLandingRoutingModule } from "./routing";
 

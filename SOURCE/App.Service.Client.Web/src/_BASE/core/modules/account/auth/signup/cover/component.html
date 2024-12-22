@@ -56,8 +56,8 @@
               <div class="col-lg-6">
                 <div class="p-lg-5 p-4">
                   <div>
-                    <h5 class="text-primary">{{'BASE.AUTHENTICATION.TASK.SIGN_UP'|translate}}</h5>
-                    <p class="text-muted">{{'BASE.AUTHENTICATION.TASK.SIGN_UP_INSTRUCTIONS'|translate}}</p>
+                    <h5 class="text-primary">{{'BASE.AUTHENTICATION.TASK.SIGN_UP'| baseTranslate}}</h5>
+                    <p class="text-muted">{{'BASE.AUTHENTICATION.TASK.SIGN_UP_INSTRUCTIONS'| baseTranslate}}</p>
                   </div>
 
                   <div class="mt-4">
@@ -65,32 +65,32 @@
 
                       <div class="mb-3">
                         <label for="useremail" class="form-label">
-                          {{'BASE.AUTHENTICATION.EMAIL'|translate}}
+                          {{'BASE.AUTHENTICATION.EMAIL'| baseTranslate}}
                           <span class="text-danger">*</span>
                         </label>
                         <input type="email" class="form-control"
                                id="useremail"
-                               placeholder="{{'BASE.AUTHENTICATION.EMAIL_PLACEHOLDER'|translate}}"
+                               placeholder="{{'BASE.AUTHENTICATION.EMAIL_PLACEHOLDER'| baseTranslate}}"
                                required
                                formControlName="email"
                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
                         <div class="invalid-feedback">
-                          {{'BASE.AUTHENTICATION.EMAIL_INSTRUCTIONS'|translate}}
+                          {{'BASE.AUTHENTICATION.EMAIL_INSTRUCTIONS'| baseTranslate}}
                         </div>
                       </div>
                       <div class="mb-3">
-                        <label for="username" class="form-label">{{'BASE.FORMS.FIELDS.USERNAME_INSTRUCTIONS'|translate}} <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="username" placeholder="{{'BASE.FORMS.FIELDS.USERNAME_PLACEHOLDER'|translate}}" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+                        <label for="username" class="form-label">{{'BASE.FORMS.FIELDS.USERNAME_INSTRUCTIONS'| baseTranslate}} <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="username" placeholder="{{'BASE.FORMS.FIELDS.USERNAME_PLACEHOLDER'| baseTranslate}}" required formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
                         <div class="invalid-feedback">
-                          {{'BASE.FORMS.FIELDS.USERNAME_INSTRUCTIONS'|translate}}
+                          {{'BASE.FORMS.FIELDS.USERNAME_INSTRUCTIONS'| baseTranslate}}
                         </div>
                       </div>
 
                       <div class="mb-3">
-                        <label for="userpassword" class="form-label">{{'BASE.AUTHENTICATION.PASSWORD'|translate}}<span class="text-danger">*</span></label>
+                        <label for="userpassword" class="form-label">{{'BASE.AUTHENTICATION.PASSWORD'| baseTranslate}}<span class="text-danger">*</span></label>
                         <div class="position-relative auth-pass-inputgroup">
                           <input [type]="fieldTextType ? 'text' : 'password'" class="form-control pe-5 password-input"
-                                 placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
+                                 placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'| baseTranslate}}"
                                  id="password-input"
                                  aria-describedby="passwordInput"
                                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -103,7 +103,7 @@
                                             }" (click)="toggleFieldTextType()"></i>
                           </button>
                           <div class="invalid-feedback">
-                            {{'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS'|translate}}
+                            {{'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS'| baseTranslate}}
                           </div>
                         </div>
                       </div>

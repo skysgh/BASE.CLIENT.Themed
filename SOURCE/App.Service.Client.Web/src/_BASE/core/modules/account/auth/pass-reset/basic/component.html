@@ -44,7 +44,7 @@
 
               <div class="alert border-2 bg-body-secondary alert-warning text-center mb-2 mx-2"
                    role="alert">
-                {{'BASE.MISC.ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS'|translate}}
+                {{'BASE.MISC.ENTER_EMAIL_FOR_SENDING_YOU_INSTRUCTIONS'| baseTranslate}}
               </div>
               <div class="p-2">
                 <form [formGroup]="passresetForm" (ngSubmit)="onSubmit()">
@@ -52,18 +52,18 @@
                     <label class="form-label">Email</label>
                     <input type="email" class="form-control"
                            id="email"
-                           placeholder="{{'BASE.AUTHENTICATION.EMAIL_PLACEHOLDER' | translate}}"
+                           placeholder="{{'BASE.AUTHENTICATION.EMAIL_PLACEHOLDER' | baseTranslate}}"
                            formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
                     @if(submitted && f['email'].errors){
                     <div class="invalid-feedback" align="left">
                       @if(f['email'].errors['required']){
-                      <div>{{'BASE.AUTHENTICATION.EMAIL_ERROR_01' | translate}}</div>}
+                      <div>{{'BASE.AUTHENTICATION.EMAIL_ERROR_01' | baseTranslate}}</div>}
                     </div>}
                   </div>
 
                   <div class="text-center mt-4">
                     <button class="btn btn-success w-100" type="submit">
-                      {{'BASE.MISC.SEND_EMAILED_INSTRUCTIONS' | translate}}
+                      {{'BASE.MISC.SEND_EMAILED_INSTRUCTIONS' | baseTranslate}}
 
                     </button>
                   </div>
@@ -76,10 +76,10 @@
 
           <div class="mt-4 text-center">
             <p class="mb-0">
-              {{'BASE.MISC.WAIT_I_REMEMBER_MY_PASSWORD'|translate}}
+              {{'BASE.MISC.WAIT_I_REMEMBER_MY_PASSWORD'| baseTranslate}}
               <a routerLink="/auth/signin/basic"
                  class="fw-semibold text-primary text-decoration-underline">
-                {{'BASE.ACTIONS.SIGN_IN'|translate}}
+                {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
               </a>
             </p>
           </div>

@@ -71,12 +71,13 @@ export const systemNavigation = {
     main: "/dashboards/main"
   },
   apps: {
+    'root': '/apps/',
     architecture: {
-      root: "apps/architecture/values",
-      values: "apps/architecture/values",
-      qualities: "apps/architecture/qualities",
-      principles: "apps/architecture/principles",
-      patterns: "apps/architecture/patterns"
+      root: "/apps/architecture/values",
+      values: "/apps/architecture/values",
+      qualities: "/apps/architecture/qualities",
+      principles: "/apps/architecture/principles",
+      patterns: "/apps/architecture/patterns"
     },
     spikes: {
       root: "/apps/spikes/",

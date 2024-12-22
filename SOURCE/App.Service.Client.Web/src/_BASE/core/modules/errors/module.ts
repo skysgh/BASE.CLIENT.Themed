@@ -17,6 +17,7 @@ import { BaseErrors404AltComponent } from './404/alt/component';
 import { BaseErrors500TodoComponent } from './500/component';
 import { BaseErrorsOfflineComponent } from './000/offline/component';
 import { TranslationService } from '../../services/translation.service';
+import { BaseCoreCommonModule } from '../common/module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TranslationService } from '../../services/translation.service';
   imports: [
     TranslateModule.forChild(),
     CommonModule,
+    BaseCoreCommonModule,
     AppBaseErrorsRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

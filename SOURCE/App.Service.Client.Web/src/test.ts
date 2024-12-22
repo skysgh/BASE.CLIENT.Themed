@@ -7,6 +7,15 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
+/**
+ * Declares a `require` function with a `context` method.
+ * This is specific to Webpack and is used to dynamically require modules.
+ * 
+ * @param path - The directory path to search within.
+ * @param deep - A boolean indicating whether to search subdirectories.
+ * @param filter - A regular expression to match files.
+ * @returns An object with methods to require modules and get the list of keys (file paths).
+ */
 declare const require: {
   context(path: string, deep?: boolean, filter?: RegExp): {
     <T>(id: string): T;

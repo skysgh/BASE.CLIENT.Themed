@@ -6,7 +6,7 @@
 
               <div class="text-center mt-5">
                 <h5 class="fs-20">
-                  {{'BASE.TRUST.DESCRIPTION'|translate}}
+                  {{'BASE.TRUST.DESCRIPTION'| baseTranslate}}
                 </h5>
                 <!-- Swiper -->
                 <ng-container *ngIf="list$| async as list">
@@ -17,7 +17,7 @@
                       <div class="swiper-slide" ngxSlickItem>
                         <div class="client-images">
                           <img src="{{this.system.sources.assets.public.dynamic.services.images.trustedBy}}{{item.imageName}}"
-                               alt="{{item.title|translate}}"
+                               alt="{{item.title| baseTranslate}}"
                                class="mx-auto img-fluid d-block">
                         </div>
                       </div>

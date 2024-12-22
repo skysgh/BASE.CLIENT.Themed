@@ -55,8 +55,8 @@
 
               <div class="col-lg-6">
                 <div class="p-lg-5 p-4">
-                  <h5 class="text-primary">{{'BASE.AUTHENTICATION.FORGOT?'|translate}}</h5>
-                  <p class="text-muted">{{'BASE.ACTIONS.RESET'|translate}}</p>
+                  <h5 class="text-primary">{{'BASE.AUTHENTICATION.FORGOT?'| baseTranslate}}</h5>
+                  <p class="text-muted">{{'BASE.ACTIONS.RESET'| baseTranslate}}</p>
 
                   <div class="mt-2 text-center">
                     <lord-icon src="https://cdn.lordicon.com/rhvddzym.json"
@@ -81,14 +81,14 @@
                         <div class="invalid-feedback" align="left">
                           @if(f['email'].errors['required']){
                           <div>
-                            {{'BASE.AUTHENTICATION.EMAIL_ERROR_01'|translate}}
+                            {{'BASE.AUTHENTICATION.EMAIL_ERROR_01'| baseTranslate}}
                           </div>}
                         </div>}
                       </div>
 
                       <div class="text-center mt-4">
                         <button class="btn btn-success w-100" type="submit">
-                          {{'BASE.MISC.SEND_EMAILED_INSTRUCTIONS'|translate}}
+                          {{'BASE.MISC.SEND_EMAILED_INSTRUCTIONS'| baseTranslate}}
                         </button>
                       </div>
                     </form><!-- end form -->
@@ -96,10 +96,10 @@
 
                   <div class="mt-5 text-center">
                     <p class="mb-0">
-                      {{'BASE.MISC.WAIT_I_REMEMBER_MY_PASSWORD'|translate}}
+                      {{'BASE.MISC.WAIT_I_REMEMBER_MY_PASSWORD'| baseTranslate}}
                       <a routerLink="/auth/signin/cover"
                          class="fw-semibold text-primary text-decoration-underline">
-                        {{'BASE.AUTHENTICATION.SIGN_IN'|translate}}
+                        {{'BASE.AUTHENTICATION.SIGN_IN'| baseTranslate}}
                       </a>
                     </p>
                   </div>

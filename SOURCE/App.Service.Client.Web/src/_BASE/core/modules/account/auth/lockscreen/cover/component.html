@@ -59,10 +59,10 @@
                 <div class="p-lg-5 p-4">
                   <div>
                     <h5 class="text-primary">
-                      {{'BASE.MISC.LOCK_SCREEN_TITLE'|translate}}
+                      {{'BASE.MISC.LOCK_SCREEN_TITLE'| baseTranslate}}
                     </h5>
                     <p class="text-muted">
-                      {{'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS'|translate}}
+                      {{'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS'| baseTranslate}}
                     </p>
                   </div>
                   <div class="user-thumb text-center">
@@ -75,24 +75,24 @@
                     <form [formGroup]="lockscreenForm" (ngSubmit)="onSubmit()">
                       <div class="mb-3">
                         <label class="form-label" for="userpassword">
-                          {{'BASE.AUTHENTICATION.PASSWORD'|translate}}
+                          {{'BASE.AUTHENTICATION.PASSWORD'| baseTranslate}}
                         </label>
                         <input type="password" class="form-control"
                                id="userpassword"
-                               placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'|translate}}"
+                               placeholder="{{'BASE.AUTHENTICATION.PASSWORD_PLACEHOLDER'| baseTranslate}}"
                                required formControlName="password"
                                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                         @if(submitted && f['password'].errors){
                         <div class="invalid-feedback" align="left">
                           @if(f['password'].errors['required']){
-                          <div>{{'BASE.AUTHENTICATION.PASSWORD_ERROR_01'|translate}}</div>
+                          <div>{{'BASE.AUTHENTICATION.PASSWORD_ERROR_01'| baseTranslate}}</div>
                           }
                         </div>}
                       </div>
                       <div class="mb-2 mt-4">
                         <button class="btn btn-success w-100"
                                 type="submit">
-                          {{'BASE.ACTIONS.UNLOCK'|translate}}
+                          {{'BASE.ACTIONS.UNLOCK'| baseTranslate}}
                         </button>
                       </div>
                     </form><!-- end form -->
@@ -100,10 +100,10 @@
 
                   <div class="mt-5 text-center">
                     <p class="mb-0">
-                      {{'BASE.MISC.NOT_YOU?'| translate}}
+                      {{'BASE.MISC.NOT_YOU?'| baseTranslate}}
                       <a routerLink="/auth/signin/cover"
                          class="fw-semibold text-primary text-decoration-underline">
-                        {{'BASE.ACTIONS.SIGN_IN'|translate}}
+                        {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
                       </a>
                     </p>
                   </div>

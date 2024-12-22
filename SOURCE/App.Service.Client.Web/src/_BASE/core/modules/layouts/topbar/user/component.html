@@ -27,7 +27,7 @@ userData.role
   <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
     <!-- item-->
     <h6 class="dropdown-header">
-      {{ 'BASE.GREETINGS.WELCOME_' | translate}}
+      {{ 'BASE.WELCOMES.WELCOME_' | baseTranslate}}
       {{userData.first_name}}!
     </h6>
 
@@ -35,46 +35,46 @@ userData.role
        routerLink="{{system.navigation.settings.user}}">
       <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
       <span class="align-middle">
-        {{ 'BASE.PROFILES.SINGULAR' | translate}}
+        {{ 'BASE.PROFILES.SINGULAR' | baseTranslate}}
       </span>
     </a>
     <a class="dropdown-item" routerLink="{{system.navigation.messages}}">
       <i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">{{ 'BASE.MESSAGES.PLURAL' | translate}}</span>
+      <span class="align-middle">{{ 'BASE.MESSAGES.PLURAL' | baseTranslate}}</span>
     </a>
     <a class="dropdown-item" routerLink="{{system.navigation.tasks}}">
       <i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">{{ 'BASE.TASKS.PLURAL' | translate}}</span>
+      <span class="align-middle">{{ 'BASE.TASKS.PLURAL' | baseTranslate}}</span>
     </a>
     <a class="dropdown-item" routerLink="{{system.navigation.pages.public.information.faq}}">
       <i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">{{ 'BASE.HELP.SINGULAR' | translate}}</span>
+      <span class="align-middle">{{ 'BASE.HELP.SINGULAR' | baseTranslate}}</span>
     </a>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item"
        routerLink="{{system.navigation.settings.user}}">
       <i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">{{ 'BASE.FINANCES.PLURAL' | translate}} : <b>$5971.67</b></span>
+      <span class="align-middle">{{ 'BASE.FINANCES.PLURAL' | baseTranslate}} : <b>$5971.67</b></span>
     </a>
     <a class="dropdown-item" routerLink="{{system.navigation.settings.user}}">
       <span class="badge bg-success-subtle text-success mt-1 float-end">
-        {{ 'BASE.STATUS.NEW' | translate}}
+        {{ 'BASE.STATUS.NEW' | baseTranslate}}
       </span>
       <i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i>
       <span class="align-middle">
-        {{ 'BASE.SETTINGS.PLURAL' | translate}}
+        {{ 'BASE.SETTINGS.PLURAL' | baseTranslate}}
       </span>
     </a>
     <a class="dropdown-item" routerLink="{{system.navigation.auth.lockscreen}}">
       <i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i>
       <span class="align-middle">
-        {{ 'BASE.ACTIONS.LOCK' | translate}}
+        {{ 'BASE.LOCK.SINGULAR' | baseTranslate}}
       </span>
     </a>
     <a class="dropdown-item" href="javascript: void(0);" (click)="logout()">
       <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
       <span class="align-middle" data-key="t-logout">
-        {{ 'BASE.ACTIONS.LOGOUT' | translate}}
+        {{ 'BASE.SIGN_OUTS.SINGULAR' | baseTranslate}}
       </span>
     </a>
   </div>

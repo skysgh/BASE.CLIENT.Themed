@@ -3,6 +3,8 @@ import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '
 import { NavigationEnd, Router } from '@angular/router';
 // Etc:
 import { TranslateService } from '@ngx-translate/core';
+// Pipes:
+import { BaseTranslatePipe } from '../../common/pipes/basetranslate.pipe';
 
 //import { MENU } from './menu';
 import { MENU } from '../../../../core/navigation/menu';

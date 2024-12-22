@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 // Etc:
 import { TranslateService } from '@ngx-translate/core';
+// Pipes:
+import { BaseTranslatePipe } from '../../../common/pipes/basetranslate.pipe';
 // Constants:
 import { system as importedSystemConst } from '../../../../constants/system';
 import { SystemService } from '../../../../services/system.service';

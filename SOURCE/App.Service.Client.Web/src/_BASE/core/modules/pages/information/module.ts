@@ -1,17 +1,10 @@
 // Import Ag:
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { ReactiveFormsModule } from '@angular/forms';
 // Services:
-import { SystemDiagnosticsTraceService } from '../../../services/system.diagnostics-trace.service';
 
 //Import template:
 import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../common/components/breadcrumbs/component';
 //
-import { BaseCoreCommonComponentsModule } from '../../common/components/module';
-import { SharedModule } from '../../../../../app/shared/module';
 
 // Import  Base.Common.Models:
 
@@ -23,6 +16,14 @@ import { SharedModule } from '../../../../../app/shared/module';
 // Import Module specific.services:
 // import { SpikeSpikesRepositoryService } from "./services/spike-repository.service"
 // Import Module specific.components:
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { SystemDiagnosticsTraceService } from '../../../services/system.diagnostics-trace.service';
+import { BaseCoreCommonComponentsModule } from '../../common/components/module';
+import { SharedModule } from '../../../../../app/shared/module';
 import { BaseCorePagesInformationPrivacyPolicyComponent } from './components/privacy/component';
 import { BaseCorePagesInformationTermsComponent } from './components/terms/component';
 import { BaseCorePagesInformationCorrectionsComponent } from './components/corrections/component';
@@ -30,9 +31,10 @@ import { BaseCorePagesInformationSupportComponent } from './components/support/c
 import { BaseCorePagesInformationIndexComponent } from './components/index/component';
 import { BaseCorePagesInformationContactComponent } from './components/contact/component';
 import { BaseAppsPagesLandingIndexHeaderComponent } from './components/index/components/header/component';
+import { BaseCoreCommonModule } from '../../common/module';
+
 //import { DashboardsRoutingModule } from "./dashboards-routing.module";
 //import { PagesRoutingModule } from "./pages-routing.module";
-
 @NgModule({
   imports: [
     CommonModule,
@@ -45,15 +47,14 @@ import { BaseAppsPagesLandingIndexHeaderComponent } from './components/index/com
         // which has route for children.
         // the default route imports .
         // which is the landing moudl
-
         // Hence 'pages/landing/' will come up first.
         //// which happens to be a router-output, and into that
         //// load the module for specific group of views:
-        { path: '',                     component: BaseCorePagesInformationIndexComponent },
-        { path: 'contact',              component: BaseCorePagesInformationContactComponent },
-        { path: 'corrections',          component: BaseCorePagesInformationCorrectionsComponent },
-        { path: 'privacy',              component: BaseCorePagesInformationPrivacyPolicyComponent },
-        { path: 'support',              component: BaseCorePagesInformationSupportComponent },
+        { path: '', component: BaseCorePagesInformationIndexComponent },
+        { path: 'contact', component: BaseCorePagesInformationContactComponent },
+        { path: 'corrections', component: BaseCorePagesInformationCorrectionsComponent },
+        { path: 'privacy', component: BaseCorePagesInformationPrivacyPolicyComponent },
+        { path: 'support', component: BaseCorePagesInformationSupportComponent },
         { path: 'terms', component: BaseCorePagesInformationTermsComponent },
         // Redirections:
         { path: 'termsandconditions', redirectTo: 'terms' },
@@ -63,6 +64,7 @@ import { BaseAppsPagesLandingIndexHeaderComponent } from './components/index/com
     //Ag specific:
     FormsModule,
     SharedModule,
+    BaseCoreCommonModule,
     BaseCoreCommonComponentsModule
     //SpikeRoutingModule,
   ],
@@ -84,8 +86,8 @@ import { BaseAppsPagesLandingIndexHeaderComponent } from './components/index/com
   ],
   providers: [
     // declare services to dependency inject into constructors.
-  //  SpikeSpikesRepositoryService,
-  //  SpikeSubSpikesRepositoryService
+    //  SpikeSpikesRepositoryService,
+    //  SpikeSubSpikesRepositoryService
   ]
 })
 /**
@@ -94,7 +96,7 @@ import { BaseAppsPagesLandingIndexHeaderComponent } from './components/index/com
  */
 export class BaseCorePagesInformationModule {
 
-  constructor(private diagnosticsTraceService:SystemDiagnosticsTraceService) {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
   }
 }

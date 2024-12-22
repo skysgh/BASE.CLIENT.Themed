@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+// Pipes:
+import { BaseTranslatePipe } from '../../../../../_BASE/core/modules/common/pipes/basetranslate.pipe';
+
 import { ViewModel } from './vm';
 
 @Component({

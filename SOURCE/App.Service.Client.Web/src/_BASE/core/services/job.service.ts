@@ -24,11 +24,14 @@ export class JobService {
   constructor(
     private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private jobRepositoryService: JobRepositoryService) {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
+    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
   }
 
   public getPage() //: Observable<Job>[]
   {
+    this.diagnosticsTraceService.info(`${this.constructor.name}.getPage()`);
+
     //use the repo
     this.jobRepositoryService.getPage();
   }
