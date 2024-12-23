@@ -9,7 +9,11 @@
       <p class="text-muted mb-4 fs-15">{{'BASE.PRICING.DESCRIPTION'| baseTranslate}}</p>
 
       <div class="d-inline-flex">
-        <ul ngbNav #customNav="ngbNav" [activeId]="1" class="nav nav-pills arrow-navtabs plan-nav rounded mb-3 p-1" id="pills-tab" role="tablist" role="tablist">
+        <ul ngbNav #customNav="ngbNav"
+            [activeId]="1"
+            class="nav nav-pills arrow-navtabs plan-nav rounded mb-3 p-1"
+            id="pills-tab"
+            role="tablist">
           <li [ngbNavItem]="1" class="nav-item">
             <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
               {{'BASE.SCHEDULING.MONTHLY'| baseTranslate}}
