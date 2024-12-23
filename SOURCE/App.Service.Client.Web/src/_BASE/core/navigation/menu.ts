@@ -236,7 +236,7 @@ export const MENU: IHasMenuItem[] =
 
     {
       id: 30,
-      title: 'BASE.INFORMATION.SINGULAR',
+      title: 'BASE.INFORMATIONS.SINGULAR',
       description: '...',
       icon: 'info',
       subItems: [

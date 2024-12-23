@@ -29,7 +29,8 @@
                     <input type="text"
                            class="form-control"
                            placeholder="{{ 'BASE.CORE.SHARED.ACTIONS.SEARCHES.PLACEHOLDER' | baseTranslate}}"
-                           aria-label="Recipient's username">
+                           [attr.aria-label]="'BASE.RECIPIENTS.RECIPIENTS_USERNAME' | baseTranslate"
+                           >
                     <button class="btn btn-primary"
                             type="submit">
                       <i class="mdi mdi-magnify"></i>
@@ -56,7 +57,8 @@
                     <input type="text"
                            class="form-control"
                            placeholder="{{ 'BASE.CORE.SHARED.ACTIONS.SEARCHES.PLACEHOLDER' | baseTranslate}}"
-                           aria-label="Recipient's username">
+                           [attr.aria-label]="'BASE.RECIPIENTS.RECIPIENTS_USERNAME' | baseTranslate"
+                           >
                     <button class="btn btn-primary"
                             type="submit">
                       <i class="mdi mdi-magnify"></i>
@@ -94,7 +96,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    attr.aria-label="{{ 'BASE.ACTIONS.CLOSE' | baseTranslate}}"
+                           [attr.aria-label]="'BASE.ACTIONS.CLOSE' | baseTranslate"
                     id="NotificationModalbtn-close"
                     (click)="modal.dismiss('Cross click')"></button>
         </div>

@@ -1,5 +1,28 @@
 {
   "BASE": {
+    "_SYS": {
+      "VIEWS": {
+        "SIGN_UP": {
+          "TITLE": "{BASE.SIGNUPS.SINGULAR}"
+
+        },
+        "SIGN_IN": {
+          "TITLE": "{BASE.SIGNINS.SINGULAR}"
+        },
+        "SIGN_OUT": {
+          "TITLE": "{BASE.SIGNOUTS.SINGULAR}"
+        },
+        "PASSWORD_RESET": {
+          "TITLE": "{BASE.PASSWORDS.RESET}"
+        },
+        "HOME": {
+
+        },
+        "DASHBOARD": {
+
+        }
+      }
+    },
     "_TEMPLATE": {
       "[LAST_EDITED]": "[v24.12.19.00]",
       "[COMMENTS]": "[See other SECTIONS]",
@@ -19,7 +42,28 @@
       "FUTURE": "",
       "PRESENT": "",
       "PAST": "",
+      "NEGATIVE_PAST": "",
       "[DIV_04]": "[------]"
+    },
+    "ABANDONMENTS": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See also ISSUES, PROCESSES, ABANDONMENTS, COMPLETIONS]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "Abandoner",
+      "ACTORS": "Abandoners",
+      "SINGULAR": "Abandonment",
+      "PLURAL": "Abandonments",
+      "IMPERATIVE": "Abandon",
+      "TODO": "To Abandon",
+      "FUTURE": "Will Abandon",
+      "PRESENT": "Abandoning",
+      "PAST": "Abandoned",
+      "NEGATIVE_PAST": "Unabandoned  //Not a word."
     },
     "ACCESSES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -38,7 +82,8 @@
       "TODO": "To Access",
       "FUTURE": "Will Access",
       "PRESENT": "Accessing",
-      "PAST": "Accessed"
+      "PAST": "Accessed",
+      "NEGATIVE_PAST": "Unaccessed //Not in the dictionary."
     },
     "ACCEPTANCES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -57,7 +102,8 @@
       "TODO": "To Accept",
       "FUTURE": "Will Accept",
       "PRESENT": "Accepting",
-      "PAST": "Accepted"
+      "PAST": "Accepted",
+      "NEGATIVE_PAST": "Unaccepted"
     },
     "ACCOMPLISHMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -76,7 +122,8 @@
       "TODO": "To Accomplish",
       "FUTURE": "Will Accomplish",
       "PRESENT": "Accomplishing",
-      "PAST": "Accomplished"
+      "PAST": "Accomplished",
+      "NEGATIVE_PAST": "Unaccomplished"
     },
     "ACCOUNTS": {
       "[LAST_EDITED]": "[]",
@@ -95,7 +142,8 @@
       "TODO": "To Account",
       "FUTURE": "Will Account",
       "PRESENT": "Accounting",
-      "PAST": "Accounted"
+      "PAST": "Accounted",
+      "NEGATIVE_PAST": "Unaccounted"
     },
     "ACHIEVEMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -114,7 +162,8 @@
       "TODO": "To Achieve",
       "FUTURE": "Will Achieve",
       "PRESENT": "Achieving",
-      "PAST": "Achieved"
+      "PAST": "Achieved",
+      "NEGATIVE_PAST": "Unachieved"
     },
     "ACCREDITATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -133,7 +182,8 @@
       "TODO": "To Accredit",
       "FUTURE": "Will Accredit",
       "PRESENT": "Accrediting",
-      "PAST": "Accredited"
+      "PAST": "Accredited",
+      "NEGATIVE_PAST": "Unaccredited"
     },
     "ACQUAINTANCES": {
       "[LAST_EDITED]": "[]",
@@ -152,7 +202,8 @@
       "TODO": "To Acquaint",
       "FUTURE": "Will Acquaint",
       "PRESENT": "Acquainting",
-      "PAST": "Acquainted"
+      "PAST": "Acquainted",
+      "NEGATIVE_PAST": "Unacquainted"
     },
     "ACTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -174,6 +225,7 @@
       "FUTURE": "Will Action",
       "PRESENT": "Actioning",
       "PAST": "Actioned",
+      "NEGATIVE_PAST": "Unactioned  //A word, but not often used.",
       "[DIV_04]": "[------]",
       "BY": "By",
       "FROM": "From",
@@ -274,7 +326,8 @@
       "TODO": "To Add",
       "FUTURE": "Will Add",
       "PRESENT": "Adding",
-      "PAST": "Added"
+      "PAST": "Added",
+      "NEGATIVE_PAST": "Not Added"
     },
     "ADMINISTRATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -293,7 +346,8 @@
       "TODO": "To Administer",
       "FUTURE": "Will Administer",
       "PRESENT": "Administering",
-      "PAST": "Administered"
+      "PAST": "Administered",
+      "NEGATIVE_PAST": "Unadministered //Correct, but not regularly used."
     },
     "AGES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -313,6 +367,7 @@
       "FUTURE": "Will Age",
       "PRESENT": "Aging",
       "PAST": "Aged",
+      "NEGATIVE_PAST": "Unaged",
       "[DIV_04]": "[------]",
       "INFANT": "Infant",
       "ADOLESCENT": "Adolescent",
@@ -339,6 +394,7 @@
       "FUTURE": "Will Agree",
       "PRESENT": "Agreeing",
       "PAST": "Agreed",
+      "NEGATIVE_PAST": "Unagreed",
       "[DIV_04]": "[------]",
       "TERMS_AND_CONDITIONS": "Terms & Conditions"
     },
@@ -360,6 +416,7 @@
       "FUTURE": "Will Alert",
       "PRESENT": "Alerting",
       "PAST": "Alerted",
+      "NEGATIVE_PAST": "Unalerted",
       "[DIV_04]": "[------]",
       "NO_NEW": "No New Alerts"
     },
@@ -380,7 +437,8 @@
       "TODO": "To Analyse",
       "FUTURE": "Will Analyse",
       "PRESENT": "Analysing",
-      "PAST": "Analysed"
+      "PAST": "Analysed",
+      "NEGATIVE_PAST": "Unanalysed"
     },
     "ANNOTATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -399,7 +457,8 @@
       "TODO": "To Annotate",
       "FUTURE": "Will Annotate",
       "PRESENT": "Annotating",
-      "PAST": "Annotated"
+      "PAST": "Annotated",
+      "NEGATIVE_PAST": "Unannotated"
     },
     "APPLICATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -418,7 +477,8 @@
       "TODO": "To Apply",
       "FUTURE": "Will Apply",
       "PRESENT": "Applying",
-      "PAST": "Applied"
+      "PAST": "Applied",
+      "NEGATIVE_PAST": "Unapplied"
     },
     "APPOINTMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -437,7 +497,8 @@
       "TODO": "To Meet",
       "FUTURE": "Will Meet",
       "PRESENT": "Meeting",
-      "PAST": "Met"
+      "PAST": "Met",
+      "NEGATIVE_PAST": "unmet"
     },
     "APPRECIATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -457,6 +518,7 @@
       "FUTURE": "Will Appreciate",
       "PRESENT": "Appreciating",
       "PAST": "Appreciated",
+      "NEGATIVE_PAST": "Unappreciated",
       "[DIV_04]": "[------]",
       "THANKS": "Thanks",
       "THANKS!": "Thanks!",
@@ -481,6 +543,7 @@
       "FUTURE": "Will Apologise",
       "PRESENT": "Apologising",
       "PAST": "Apologised",
+      "NEGATIVE_PAST": "Unapologised",
       "[DIV_04]": "[------]",
       "OOPS!": "Oops!",
       "SORRY": "Sorry"
@@ -502,7 +565,8 @@
       "TODO": "To Approve",
       "FUTURE": "Will Approve",
       "PRESENT": "Approving",
-      "PAST": "Approved"
+      "PAST": "Approved",
+      "NEGATIVE_PAST": "Unapproved"
     },
     "APPS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -519,9 +583,10 @@
       "PLURAL": "Apps",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "ARCHITECTURES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -534,17 +599,40 @@
       "[DIV_02]": "[------]",
       "ACTOR": "Architect",
       "ACTORS": "Architects",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Architecture",
       "PLURAL": "Architectures",
       "IMPERATIVE": "Architect",
       "TODO": "To Architect",
       "FUTURE": "Will Architect",
       "PRESENT": "Architecting",
-      "PAST": "Architected"
+      "PAST": "Architected",
+      "NEGATIVE_PAST": "Unarchitected"
+    },
+    "ARCHIVING": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See also PROCESSES, RECORDS]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "Archiver",
+      "ACTORS": "Archivers",
+      "[DIV_03]": "[------]",
+      "SINGULAR": "Archive",
+      "PLURAL": "Archives",
+      "IMPERATIVE": "Archive",
+      "TODO": "To Archive",
+      "FUTURE": "Will Archive",
+      "PRESENT": "Archiveing",
+      "PAST": "Archived",
+      "NEGATIVE_PAST": "Unarchived //Not a word."
     },
     "AREAS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
-      "[COMMENTS]": "[See SPACES, PLACES,BUILDINGS,HOUSES]",
+      "[COMMENTS]": "[See SPACES,PLACES,BUILDINGS,HOUSES,MEASUREMENTS]",
       "[ABOUT]": "[]",
       "[DIV_01]": "[------]",
       "EXPLANATION": "",
@@ -553,13 +641,15 @@
       "[DIV_02]": "[------]",
       "ACTOR": "[N/A]",
       "ACTORS": "[N/A]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Area",
       "PLURAL": "Areas",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "CONTINENT": "Continent",
       "COUNTRY": "Country",
@@ -590,9 +680,10 @@
       "PLURAL": "",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "ADD": "{{BASE.ADDITIONS.IMPERATIVE}}",
       "REMOVE": "{{BASE.REMOVALS.IMPERATIVE}}",
@@ -623,7 +714,8 @@
       "TODO": "To Arrive",
       "FUTURE": "Will Arrive",
       "PRESENT": "Arriving",
-      "PAST": "Arrived"
+      "PAST": "Arrived",
+      "NEGATIVE_PAST": "Unarrived"
     },
     "ASPECTS": {
       "[LAST_EDITED]": "[]",
@@ -640,9 +732,10 @@
       "PLURAL": "Aspects",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "ASSESSMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -662,6 +755,7 @@
       "FUTURE": "Will Assess",
       "PRESENT": "Assessing",
       "PAST": "Assessed",
+      "NEGATIVE_PAST": "Unassessed",
       "[DIV_04]": "[------]",
       "ASSET": "Asset",
       "ASSETS": "Assets"
@@ -683,9 +777,10 @@
       "TODO": "To Assist",
       "FUTURE": "Will Assist",
       "PRESENT": "Assisting",
-      "PAST": "Assisted"
+      "PAST": "Assisted",
+      "NEGATIVE_PAST": "Unassisted"
     },
-    "ATTACHEMENTS": {
+    "ATTACHMENTS": {
       "[LAST_EDITED]": "[]",
       "[COMMENTS]": "[see MESSAGES]",
       "[ABOUT]": "[]",
@@ -701,7 +796,8 @@
       "TODO": "To Attach",
       "FUTURE": "Will Attach",
       "PRESENT": "Attaching",
-      "PAST": "Attached"
+      "PAST": "Attached",
+      "NEGATIVE_PAST": "Unattached"
     },
     "ATTENDANCES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -720,7 +816,8 @@
       "TODO": "To Attend",
       "FUTURE": "Will Attend",
       "PRESENT": "Attending",
-      "PAST": "Attended"
+      "PAST": "Attended",
+      "NEGATIVE_PAST": "Unattended"
     },
     "AUTHENTICATION": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -739,7 +836,8 @@
       "TODO": "To Authenticate",
       "FUTURE": "Will Authenticate",
       "PRESENT": "Authenticating",
-      "PAST": "Kua Authenticated",
+      "PAST": "Authenticated",
+      "NEGATIVE_PAST": "Unauthenticated",
       "[DIV_04]": "[------]",
       "BY_REGISTERING": "By registering, you agree to the",
       "TASK": {
@@ -755,33 +853,41 @@
         "SUCCESSMESSAGE": "Success Message",
         "TWOSTEPVERIFICATION": "Two Step Verification"
       },
+
       "USERNAME": "User name",
-      "USERNAME_INSTRUCTIONS": "Enter your username",
-      "USERNAME_PLACEHOLDER": "Enter your username",
-      "USERNAME_ERROR_01": "A username is required",
-      "USERNAME_ERROR_02": "Username format unrecognised",
-      "EMAIL": "Email",
-      "EMAIL_INSTRUCTIONS": "Enter an email address",
-      "EMAIL_PLACEHOLDER": "Enter an email address",
-      "EMAIL_ERROR_01": "Email is required",
-      "EMAIL_ERROR_02": "Email has unrecognised format",
-      "EMAIL_CONFIRMATION": "Confirm email",
-      "EMAIL_CONFIRMATION_INSTRUCTIONS": "Confirm email",
-      "EMAIL_CONFIRMATION_PLACEHOLDER": "Enter an email address",
-      "EMAIL_CONFIRMATION_ERROR_01": "Email is required",
-      "EMAIL_CONFIRMATION_ERROR_02": "Email has unrecognised format",
-      "PASSWORD": "Password",
-      "PASSWORD_INSTRUCTIONS": "Enter your password",
-      "PASSWORD_PLACEHOLDER": "Enter your password",
-      "PASSWORD_ERROR_01": "Password is required",
-      "PASSWORD_ERROR_02": "Password is required to be complex.",
-      "PASSWORD_ERROR_02_DETAILS": "At least 8 characters, etc.",
-      "PASSWORD_CONFIRMATION": "Password",
-      "PASSWORD_CONFIRMATION_INSTRUCTIONS": "Enter your password again",
-      "PASSWORD_CONFIRMATION_PLACEHOLDER": "Enter your password again",
-      "PASSWORD_CONFIRMATION_ERROR_01": "Password is required",
-      "PASSWORD_CONFIRMATION_ERROR_02": "Password is required to be complex.",
-      "PASSWORD_CONFIRMATION_ERROR_02_DETAILS": "Atleast 8 characters, etc.",
+      "USERNAME_INSTRUCTIONS": "{{BASE.USERNAME.INSTRUCTIONS}}",
+      "USERNAME_PLACEHOLDER": "{{BASE.USERNAME.PLACEHOLDER}}",
+      "USERNAME_ERROR_01": "{{BASE.USERNAME.ERROR_01}}",
+      "USERNAME_ERROR_02": "{{BASE.USERNAME.ERROR_02}}",
+
+
+
+      "EMAIL": "{{BASE.EMAILS.SINGULAR}}",
+      "EMAIL_INSTRUCTIONS": "{{BASE.EMAILS.INSTRUCTIONS}}",
+      "EMAIL_PLACEHOLDER": "{{BASE.EMAILS.PLACEHOLDER}}",
+      "EMAIL_ERROR_01": "{{BASE.EMAILS.ERRORS_01}}",
+      "EMAIL_ERROR_02": "{{BASE.EMAILS.ERRORS_02}}",
+
+      "EMAIL_CONFIRMATION": "{{Confirm email}}",
+      "EMAIL_CONFIRMATION_INSTRUCTIONS": "{{BASE.EMAILS.INSTRUCTIONS_2}}",
+      "EMAIL_CONFIRMATION_PLACEHOLDER": "{{BASE.EMAILS.PLACEHOLDER_2}}",
+      "EMAIL_CONFIRMATION_ERROR_01": "{{BASE.EMAILS.ERRRORS_11}}",
+      "EMAIL_CONFIRMATION_ERROR_02": "{{BASE.EMAILS.ERRRORS_21}}",
+
+      "PASSWORD": "{{BASE.PASSWORDS.SINGULAR}}",
+      "PASSWORD_INSTRUCTIONS": "{{BASE.PASSWORDS.INSTRUCTIONS}}",
+      "PASSWORD_PLACEHOLDER": "{{BASE.PASSWORDS.PLACEHOLDER}}",
+      "PASSWORD_ERROR_01": "{{BASE.PASSWORDS.ERROR_01}}",
+      "PASSWORD_ERROR_02": "{{BASE.PASSWORDS.ERROR_02}}",
+      "PASSWORD_ERROR_02_DETAILS": "{{BASE.PASSWORDS.ERROR_02_B}}",
+
+      "PASSWORD_CONFIRMATION": "{{BASE.PASSWORDS.SINGULAR}}",
+      "PASSWORD_CONFIRMATION_INSTRUCTIONS": "{{BASE.PASSWORDS.INSTRUCTIONS_2}}",
+      "PASSWORD_CONFIRMATION_PLACEHOLDER": "{{BASE.PASSWORDS.PLACEHOLDER_2}}",
+      "PASSWORD_CONFIRMATION_ERROR_01": "{{BASE.PASSWORDS.ERROR_11}}",
+      "PASSWORD_CONFIRMATION_ERROR_02": "{{BASE.PASSWORDS.ERROR_12}}",
+      "PASSWORD_CONFIRMATION_ERROR_02_DETAILS": "{{BASE.PASSWORDS.ERROR_12_B}}",
+
       "FORGOT?": "Forgot?",
       "REMEMBER_ME?": "Remember me?",
       "REMEMBER_ME_INSTRUCTIONS": "(Across sessions, even after the browser is closed)",
@@ -802,9 +908,10 @@
       "PLURAL": "[N/A]",
       "IMPERATIVE": "Make available",
       "TODO": "Will be available",
-      "FUTURE": "WILL Will be available",
+      "FUTURE": "Will Will be available",
       "PRESENT": "Is Available",
-      "PAST": "Was Available"
+      "PAST": "Was Available",
+      "NEGATIVE_PAST": "Unavailable"
     },
     "AVATARS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -821,9 +928,10 @@
       "PLURAL": "Avatars",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "BALANCES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -842,7 +950,8 @@
       "TODO": "To Balance",
       "FUTURE": "Will Balance",
       "PRESENT": "Balancing",
-      "PAST": "Balanced"
+      "PAST": "Balanced",
+      "NEGATIVE_PAST": "Unbalanced"
     },
     "BASES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -863,6 +972,7 @@
       "FUTURE": "Will Base",
       "PRESENT": "Basing",
       "PAST": "Based",
+      "NEGATIVE_PAST": "Unbased",
       "[DIV_04]": "[------]",
       "BASE": "BASE",
       "B.A.S.E": "B.A.S.E.",
@@ -888,7 +998,8 @@
       "TODO": "To Bill",
       "FUTURE": "Will Bill",
       "PRESENT": "Billing",
-      "PAST": "Billed"
+      "PAST": "Billed",
+      "NEGATIVE_PAST": "Unbilled"
     },
     "BODIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -905,9 +1016,10 @@
       "PLURAL": "[N/A]",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "PARTS": {
         "SINGULAR": "Part",
@@ -976,7 +1088,8 @@
       "TODO": "To Broker",
       "FUTURE": "Will Broker",
       "PRESENT": "Brokering",
-      "PAST": "Brokered"
+      "PAST": "Brokered",
+      "NEGATIVE_PAST": "Unbrokered"
     },
     "BUILDINGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -996,6 +1109,7 @@
       "FUTURE": "Will Build",
       "PRESENT": "Building",
       "PAST": "Built",
+      "NEGATIVE_PAST": "Unbuilt",
       "[DIV_04]": "[------]",
       "BUILDING": "Building",
       "FACTORY": "Factory",
@@ -1023,9 +1137,10 @@
       "PLURAL": "Buttons",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "PRESS": "Press",
       "RELEASE": "Release",
@@ -1050,7 +1165,8 @@
       "TODO": "To Buy",
       "FUTURE": "Will Buy",
       "PRESENT": "Buying",
-      "PAST": "Bought"
+      "PAST": "Bought",
+      "NEGATIVE_PAST": "Unbought  //Not a word."
     },
     "CALCULATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1069,7 +1185,8 @@
       "TODO": "To Calculate",
       "FUTURE": "Will Calculate",
       "PRESENT": "Calculating",
-      "PAST": "Calculated"
+      "PAST": "Calculated",
+      "NEGATIVE_PAST": "Uncalculated"
     },
     "CALENDARS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1086,13 +1203,14 @@
       "PLURAL": "[N/A]",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "CANCELATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
-      "[COMMENTS]": "[See CREATIONS]",
+      "[COMMENTS]": "[See CREATIONS. NOte that in GB it is CANCELLATION with two L's.]",
       "[ABOUT]": "[]",
       "[DIV_01]": "[------]",
       "INSTRUCTIONS": "",
@@ -1107,7 +1225,8 @@
       "TODO": "To Cancel",
       "FUTURE": "Will Cancel",
       "PRESENT": "Canceling",
-      "PAST": "Cancelled"
+      "PAST": "Cancelled",
+      "NEGATIVE_PAST": "Uncancelled"
     },
     "CAPABILITIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1124,9 +1243,10 @@
       "PLURAL": "Capabilities",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "DIAGNOSTICS": "Diagnostics",
       "ERROR_RECORDING": "Error Recording",
@@ -1155,6 +1275,7 @@
       "FUTURE": "Will Catalog",
       "PRESENT": "Cataloging",
       "PAST": "Cataloged",
+      "NEGATIVE_PAST": "Uncataloged",
       "[DIV_04]": "[------]",
       "CATEGORIES_INSTRUCTIONS": "Please provide one or more categories:",
       "CATEGORIES_PLACEHOLDER": "...Categories."
@@ -1177,6 +1298,7 @@
       "FUTURE": "Will Categorise",
       "PRESENT": "Categorising",
       "PAST": "Categorised",
+      "NEGATIVE_PAST": "Uncategorised",
       "[DIV_04]": "[------]",
       "CATEGORIES_INSTRUCTIONS": "Please provide one or more categories:",
       "CATEGORIES_PLACEHOLDER": "...Categories."
@@ -1196,9 +1318,10 @@
       "PLURAL": "Cells",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "CERTAINTIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1215,9 +1338,10 @@
       "PLURAL": "Certainties",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "UNCERTAIN": "Uncertain",
       "ALMOST_CERTAIN": "Almost Certain",
@@ -1240,7 +1364,8 @@
       "TODO": "To Certify",
       "FUTURE": "Will Certify",
       "PRESENT": "Certifying",
-      "PAST": "Certified"
+      "PAST": "Certified",
+      "NEGATIVE_PAST": "Uncertified"
     },
     "CHANGES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1259,7 +1384,8 @@
       "TODO": "To Change",
       "FUTURE": "Will Change",
       "PRESENT": "Changing",
-      "PAST": "Changed"
+      "PAST": "Changed",
+      "NEGATIVE_PAST": "Unchanged"
     },
     "CHANNELS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1279,6 +1405,7 @@
       "FUTURE": "Will Contact",
       "PRESENT": "Contacting",
       "PAST": "Contacted",
+      "NEGATIVE_PAST": "Uncontacted",
       "[DIV_04]": "[------]",
       "POSTAL": "{{BASE.POSTAL_ADDRESSES}}",
       "EMAIL": "{{BASE.EMAILS.SINGULAR}}",
@@ -1304,6 +1431,7 @@
       "FUTURE": "Will Chart",
       "PRESENT": "Charting",
       "PAST": "Charted",
+      "NEGATIVE_PAST": "Uncharted",
       "[DIV_04]": "[------]",
       "LINE": "Line",
       "BAR": "Bar",
@@ -1326,10 +1454,11 @@
       "SINGULAR": "Chat",
       "PLURAL": "Chats",
       "TODO": "Chat",
-      "FUTURE": "WILL Chat",
+      "FUTURE": "Will Chat",
       "IMPERATIVE": "Chat",
       "PRESENT": "Chatting",
-      "PAST": "Chatted"
+      "PAST": "Chatted",
+      "NEGATIVE_PAST": "Unchatted //Correct, but not regularly used."
     },
     "CHARACTERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1348,7 +1477,8 @@
       "TODO": "To Characterise",
       "FUTURE": "Will Characterise",
       "PRESENT": "Characterising",
-      "PAST": "Characterised"
+      "PAST": "Characterised",
+      "NEGATIVE_PAST": "Uncharacterised"
     },
     "CHECKS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1367,7 +1497,8 @@
       "TODO": "To Check",
       "FUTURE": "Will Check",
       "PRESENT": "Checking",
-      "PAST": "Checked"
+      "PAST": "Checked",
+      "NEGATIVE_PAST": "Unchecked"
     },
     "CHECKBOXES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1384,9 +1515,10 @@
       "PLURAL": "Checkboxes",
       "IMPERATIVE": "{{BASE.CHECKS.IMPERATIVE}}",
       "TODO": "{{BASE.CHECKS.TODO}}",
-      "FUTURE": "WILL {{CHECKS.TODO}}",
+      "FUTURE": "Will {{CHECKS.TODO}}",
       "PRESENT": "{{BASE.CHECKS.PRESENT}}",
-      "PAST": "{{BASE.CHECKS.PAST}}"
+      "PAST": "{{BASE.CHECKS.PAST}}",
+      "NEGATIVE_PAST": "{{BASE.CHECKS.NEGATIVE}}"
     },
     "CHOICES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1406,6 +1538,7 @@
       "FUTURE": "Will Choose",
       "PRESENT": "Choosing",
       "PAST": "Chosen",
+      "NEGATIVE_PAST": "Unchosen",
       "[DIV_04]": "[------]",
       "CHOOSE_ONE": "Choose one",
       "CHOOSE_MULTIPLE": "Choose one or more"
@@ -1425,9 +1558,10 @@
       "PLURAL": "Claims",
       "IMPERATIVE": "Claim",
       "TODO": "Claim",
-      "FUTURE": "WILL Claim",
+      "FUTURE": "Will Claim",
       "PRESENT": "Claiming",
-      "PAST": "Claimed"
+      "PAST": "Claimed",
+      "NEGATIVE_PAST": "Unclaimed"
     },
     "CLASSES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1447,7 +1581,8 @@
       "TODO": "To Class",
       "FUTURE": "Will Class",
       "PRESENT": "Classing",
-      "PAST": "Classed"
+      "PAST": "Classed",
+      "NEGATIVE_PAST": "Unclassed"
     },
     "CLASSIFICTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1465,7 +1600,8 @@
       "TODO": "To Classify",
       "FUTURE": "Will Classify",
       "PRESENT": "Classifying",
-      "PAST": "Classified"
+      "PAST": "Classified",
+      "NEGATIVE_PAST": "Unclassified"
     },
     "CLIENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1483,9 +1619,10 @@
       "PLURAL": "Clients",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "DETAILS": "Client Details"
     },
@@ -1508,7 +1645,8 @@
       "TODO": "To Close",
       "FUTURE": "Will Close",
       "PRESENT": "Closing",
-      "PAST": "Closing"
+      "PAST": "Closing",
+      "NEGATIVE_PAST": "Unclosing"
     },
     "CODES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1528,7 +1666,8 @@
       "TODO": "To Code",
       "FUTURE": "Will Code",
       "PRESENT": "Coding",
-      "PAST": "Coded"
+      "PAST": "Coded",
+      "NEGATIVE_PAST": "Uncoded"
     },
     "CODESETS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1546,9 +1685,10 @@
       "PLURAL": "Code",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "COLLABORATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1568,6 +1708,7 @@
       "FUTURE": "Will Collaborate",
       "PRESENT": "Collaborating",
       "PAST": "Collaborated",
+      "NEGATIVE_PAST": "Uncollaborated",
       "[DIV_04]": "[------]",
       "COLLABORATED_ON": "Collaborated On",
       "COLLABORATED_ON_": "Collaborated on",
@@ -1591,7 +1732,8 @@
       "TODO": "To Collect",
       "FUTURE": "Will Collect",
       "PRESENT": "Collecting",
-      "PAST": "Collected"
+      "PAST": "Collected",
+      "NEGATIVE_PAST": "Uncollected"
     },
     "COLOURS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1611,6 +1753,7 @@
       "FUTURE": "Will Colour",
       "PRESENT": "Colouring",
       "PAST": "Coloured",
+      "NEGATIVE_PAST": "Uncoloured",
       "[DIV_04]": "[------]",
       "BLACK": "Black",
       "RED": "Red",
@@ -1642,9 +1785,30 @@
       "FUTURE": "Will Come",
       "PRESENT": "Coming",
       "PAST": "Came",
+      "NEGATIVE_PAST": "Uncame",
       "[DIV_04]": "[------]",
       "COMING_SOON": "Coming Soon",
       "NEW_FEATURES_IN_THE_WORKS": "New features are currently in the works..."
+    },
+    "COMPLAINTS": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See ISSUES,PROCESSES]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "Complainer",
+      "ACTORS": "Complainers",
+      "SINGULAR": "Complaint",
+      "PLURAL": "Complaints",
+      "IMPERATIVE": "Complain",
+      "TODO": "To Complain",
+      "FUTURE": "Will Complain",
+      "PRESENT": "Complaining",
+      "PAST": "Complained",
+      "NEGATIVE_PAST": "Uncomplained"
     },
     "COMMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1663,7 +1827,8 @@
       "TODO": "To Comment",
       "FUTURE": "Will Comment",
       "PRESENT": "Commenting",
-      "PAST": "Commented"
+      "PAST": "Commented",
+      "NEGATIVE_PAST": "Uncommented"
     },
     "COMMERCE": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1680,16 +1845,17 @@
       "PLURAL": "[N/A]",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "PRODUCTS": "{{BASE.PRODUCTS.PLURAL}}",
       "ORDERS": "{{BASE.ORDERS.PLURAL}}"
     },
     "COMPLETIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
-      "[COMMENTS]": "[See TASKS]",
+      "[COMMENTS]": "[See TASKS, ABANDONMENTS]",
       "[ABOUT]": "[]",
       "[DIV_01]": "[------]",
       "EXPLANATION": "",
@@ -1704,7 +1870,8 @@
       "TODO": "To Complete",
       "FUTURE": "Will Complete",
       "PRESENT": "Completing",
-      "PAST": "Completed"
+      "PAST": "Completed",
+      "NEGATIVE_PAST": "Uncompleted"
     },
     "COMPONENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1721,9 +1888,10 @@
       "PLURAL": "Components",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "COMPREHENSIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1742,7 +1910,8 @@
       "TODO": "To Comprehend",
       "FUTURE": "Will Comprehend",
       "PRESENT": "Comprehending",
-      "PAST": "Comprehended"
+      "PAST": "Comprehended",
+      "NEGATIVE_PAST": "Uncomprehended"
     },
     "CONFIRMATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1761,7 +1930,8 @@
       "TODO": "To Confirm",
       "FUTURE": "Will Confirm",
       "PRESENT": "Confirming",
-      "PAST": "Confirmed"
+      "PAST": "Confirmed",
+      "NEGATIVE_PAST": "Unconfirmed"
     },
     "CONNECTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1781,6 +1951,7 @@
       "FUTURE": "Will Connect",
       "PRESENT": "Connecting",
       "PAST": "Connected",
+      "NEGATIVE_PAST": "Unconnected",
       "[DIV_04]": "[------]",
       "ATTACHED": "Attached",
       "DETACHED": "Detached"
@@ -1802,7 +1973,8 @@
       "TODO": "To Consent",
       "FUTURE": "Will Consent",
       "PRESENT": "Consenting",
-      "PAST": "Consented"
+      "PAST": "Consented",
+      "NEGATIVE_PAST": "Unconsented"
     },
     "CONSIDERATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1822,7 +1994,8 @@
       "TODO": "To Consider",
       "FUTURE": "Will Consider",
       "PRESENT": "Considering",
-      "PAST": "Considered"
+      "PAST": "Considered",
+      "NEGATIVE_PAST": "Unconsidered"
     },
     "CONSULTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1841,7 +2014,8 @@
       "TODO": "To Consult",
       "FUTURE": "Will Consult",
       "PRESENT": "Consulting",
-      "PAST": "Consulted"
+      "PAST": "Consulted",
+      "NEGATIVE_PAST": "Unconsulted"
     },
     "CONTACTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1861,6 +2035,7 @@
       "FUTURE": "Will Contact",
       "PRESENT": "Contacting",
       "PAST": "Contacted",
+      "NEGATIVE_PAST": "Uncontacted",
       "[DIV_04]": "[------]",
       "CONTACT_US": "Contact Us",
       "INSTRUCTIONS_CASUAL": "Get In Touch"
@@ -1882,7 +2057,8 @@
       "TODO": "To Contain",
       "FUTURE": "Will Contain",
       "PRESENT": "Containing",
-      "PAST": "Contained"
+      "PAST": "Contained",
+      "NEGATIVE_PAST": "Uncontained"
     },
     "CONTENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1899,10 +2075,12 @@
       "PLURAL": "Contents",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
+      "SCROLLABLE_CONTENT": "Scrollable Content",
       "EMPTY": "Empty",
       "NEARLY_EMPTY": "Nearly empty",
       "HALF_EMPTY": "Half empty",
@@ -1927,7 +2105,8 @@
       "TODO": "To Contextualise",
       "FUTURE": "Will Contextualise",
       "PRESENT": "Contextualising",
-      "PAST": "Contextualised"
+      "PAST": "Contextualised",
+      "NEGATIVE_PAST": "Uncontextualised"
     },
     "CONTRACTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1947,6 +2126,7 @@
       "FUTURE": "Will Contract",
       "PRESENT": "Contracting",
       "PAST": "Contracted",
+      "NEGATIVE_PAST": "Uncontracted",
       "[DIV_04]": "[------]",
       "SALES": {
         "SINGULAR": "Sales Contract"
@@ -1972,7 +2152,8 @@
       "TODO": "To Contribute",
       "FUTURE": "Will Contribute",
       "PRESENT": "Contributing",
-      "PAST": "Contributed"
+      "PAST": "Contributed",
+      "NEGATIVE_PAST": "Uncontributed"
     },
     "COOKIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -1989,9 +2170,10 @@
       "PLURAL": "Cookies",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "DISCLOSURE": "This site requires cookies to function as intended.",
       "IMPLICIT_AGREEMENT": "By continuing to use this site you are agreeing to their use.",
@@ -2014,7 +2196,8 @@
       "TODO": "To Copyright",
       "FUTURE": "Will Copyright",
       "PRESENT": "Copyrighting",
-      "PAST": "Copyrighted"
+      "PAST": "Copyrighted",
+      "NEGATIVE_PAST": "Uncopyrighted"
     },
     "CORRECTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2033,7 +2216,8 @@
       "TODO": "To Correct",
       "FUTURE": "Will Correct",
       "PRESENT": "Correcting",
-      "PAST": "Corrected"
+      "PAST": "Corrected",
+      "NEGATIVE_PAST": "Uncorrected"
     },
     "COURSES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2050,9 +2234,10 @@
       "PLURAL": "Courses",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "CREATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2071,7 +2256,8 @@
       "TODO": "To Create",
       "FUTURE": "Will Create",
       "PRESENT": "Creating",
-      "PAST": "Created"
+      "PAST": "Created",
+      "NEGATIVE_PAST": "Uncreated"
     },
     "CREDITS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2091,6 +2277,7 @@
       "FUTURE": "Will Credit",
       "PRESENT": "Crediting",
       "PAST": "Credited",
+      "NEGATIVE_PAST": "Uncredited",
       "[DIV_04]": "[------]",
       "SPONSORED_BY_": "Made available by",
       "DISTRIBUTED_BY_": "Distributed by",
@@ -2118,9 +2305,10 @@
       "PLURAL": "Curricula",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "CUSTOMERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2137,9 +2325,10 @@
       "PLURAL": "Customers",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "DETAILS": "Customer Details"
     },
@@ -2158,9 +2347,10 @@
       "PLURAL": "Dashboards",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "DATES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2179,7 +2369,8 @@
       "TODO": "To Date",
       "FUTURE": "Will Date",
       "PRESENT": "Dating",
-      "PAST": "Dated"
+      "PAST": "Dated",
+      "NEGATIVE_PAST": "Undated"
     },
     "DAYS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2196,9 +2387,10 @@
       "PLURAL": "Days",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "MONDAY": "Monday",
       "TUESDAY": "Tuesday",
@@ -2225,7 +2417,8 @@
       "TODO": "To Debit",
       "FUTURE": "Will Debit",
       "PRESENT": "Debiting",
-      "PAST": "Debitted"
+      "PAST": "Debitted",
+      "NEGATIVE_PAST": "Undebitted"
     },
     "DEBTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2242,9 +2435,10 @@
       "PLURAL": "Debts",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "DECLINATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2263,7 +2457,8 @@
       "TODO": "To Decline",
       "FUTURE": "Will Decline",
       "PRESENT": "Declining",
-      "PAST": "Declined"
+      "PAST": "Declined",
+      "NEGATIVE_PAST": "Undeclined"
     },
     "DELETIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2282,7 +2477,8 @@
       "TODO": "To Delete",
       "FUTURE": "Will Delete",
       "PRESENT": "Deleting",
-      "PAST": "Deleted"
+      "PAST": "Deleted",
+      "NEGATIVE_PAST": "Undeleted"
     },
     "DEMONSTRATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2301,7 +2497,8 @@
       "TODO": "To Demonstrate",
       "FUTURE": "Will Demonstrate",
       "PRESENT": "Demonstrating",
-      "PAST": "Demonstrated"
+      "PAST": "Demonstrated",
+      "NEGATIVE_PAST": "Undemonstrated"
     },
     "DEMOS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2320,7 +2517,8 @@
       "TODO": "To Demo",
       "FUTURE": "Will Demo",
       "PRESENT": "Demoing",
-      "PAST": "Demoed"
+      "PAST": "Demoed",
+      "NEGATIVE_PAST": "Undemoed"
     },
     "DEMOGRAPHICS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2337,9 +2535,10 @@
       "PLURAL": "Demographics",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "DEPARTMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2356,9 +2555,10 @@
       "PLURAL": "Departments",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "ABBREVIATION": "Dept"
     },
@@ -2380,6 +2580,7 @@
       "FUTURE": "Will Depart",
       "PRESENT": "Departing",
       "PAST": "Departing",
+      "NEGATIVE_PAST": "Undeparting",
       "[DIV_04]": "[------]",
       "BYE": "Bye",
       "BYE!": "Bye!",
@@ -2404,7 +2605,8 @@
       "TODO": "To Design",
       "FUTURE": "Will Design",
       "PRESENT": "Designing",
-      "PAST": "Designed"
+      "PAST": "Designed",
+      "NEGATIVE_PAST": "Undesigned"
     },
     "DETAILS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2423,7 +2625,8 @@
       "TODO": "To Detail",
       "FUTURE": "Will Detail",
       "PRESENT": "Detailing",
-      "PAST": "Detailed"
+      "PAST": "Detailed",
+      "NEGATIVE_PAST": "Undetailed"
     },
     "DEVELOPMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2442,7 +2645,8 @@
       "TODO": "To Develop",
       "FUTURE": "Will Develop",
       "PRESENT": "Developing",
-      "PAST": "Past Develoments"
+      "PAST": "Past Develoments",
+      "NEGATIVE_PAST": "Unpast Develoments"
     },
     "DIAGNOSTICS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2461,7 +2665,8 @@
       "TODO": "To Diagnose",
       "FUTURE": "Will Diagnose",
       "PRESENT": "Diagnosing",
-      "PAST": "Diagnosed"
+      "PAST": "Diagnosed",
+      "NEGATIVE_PAST": "Undiagnosed"
     },
     "DIRECTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2480,6 +2685,7 @@
       "FUTURE": "Will Direct",
       "PRESENT": "Directing",
       "PAST": "Directed",
+      "NEGATIVE_PAST": "Undirected",
       "[DIV_04]": "[------]",
       "UP": "Up",
       "DOWN": "Down",
@@ -2503,7 +2709,8 @@
       "TODO": "To File",
       "FUTURE": "Will File",
       "PRESENT": "Filing",
-      "PAST": "Filed"
+      "PAST": "Filed",
+      "NEGATIVE_PAST": "Unfiled"
     },
     "DISENABLEMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2522,7 +2729,8 @@
       "TODO": "To Disable",
       "FUTURE": "Will Disable",
       "PRESENT": "Disabling",
-      "PAST": "Disabled"
+      "PAST": "Disabled",
+      "NEGATIVE_PAST": "Undisabled"
     },
     "DISCLOSURES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2541,7 +2749,8 @@
       "TODO": "To Disclose",
       "FUTURE": "Will Disclose",
       "PRESENT": "Disclosing",
-      "PAST": "Disclosed"
+      "PAST": "Disclosed",
+      "NEGATIVE_PAST": "Undisclosed"
     },
     "DISCOUNTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2560,7 +2769,8 @@
       "TODO": "To Discount",
       "FUTURE": "Will Discount",
       "PRESENT": "Discounting",
-      "PAST": "Discounted"
+      "PAST": "Discounted",
+      "NEGATIVE_PAST": "Undiscounted"
     },
     "DISLIKES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2579,7 +2789,8 @@
       "TODO": "To Dislike",
       "FUTURE": "Will Dislike",
       "PRESENT": "Disliking",
-      "PAST": "Disliked"
+      "PAST": "Disliked",
+      "NEGATIVE_PAST": "Undisliked"
     },
     "DIVISIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2599,6 +2810,7 @@
       "FUTURE": "Will Divide",
       "PRESENT": "Dividinging",
       "PAST": "Divided",
+      "NEGATIVE_PAST": "Undivided",
       "[DIV_04]": "[------]",
       "DIVIDER": "Divider",
       "DIVIDE_BY": "Divide by",
@@ -2621,7 +2833,8 @@
       "TODO": "To Document",
       "FUTURE": "Will Document",
       "PRESENT": "Documenting",
-      "PAST": "Documented"
+      "PAST": "Documented",
+      "NEGATIVE_PAST": "Undocumented"
     },
     "DOMAINS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2638,9 +2851,10 @@
       "PLURAL": "Domains",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "DRAFTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2659,7 +2873,8 @@
       "TODO": "To Draft",
       "FUTURE": "Will Draft",
       "PRESENT": "Drafting",
-      "PAST": "Drafted"
+      "PAST": "Drafted",
+      "NEGATIVE_PAST": "Undrafted"
     },
     "DRIVES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2678,7 +2893,8 @@
       "TODO": "To Drive",
       "FUTURE": "Will Drive",
       "PRESENT": "Driving",
-      "PAST": "Drove"
+      "PAST": "Drove",
+      "NEGATIVE_PAST": "Undrove"
     },
     "EDITIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2697,7 +2913,8 @@
       "TODO": "To Edit",
       "FUTURE": "Will Edit",
       "PRESENT": "Edit",
-      "PAST": "Edited"
+      "PAST": "Edited",
+      "NEGATIVE_PAST": "Unedited"
     },
     "EDUCATION": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2717,6 +2934,7 @@
       "FUTURE": "Will Educate",
       "PRESENT": "Educating",
       "PAST": "Educated",
+      "NEGATIVE_PAST": "Uneducated",
       "[DIV_04]": "[------]",
       "ROLES": {
         "PRINCIPALS": "Principals",
@@ -2781,8 +2999,10 @@
       "[ABOUT]": "[]",
       "[DIV_01]": "[------]",
       "EXPLANATION": "",
-      "INSTRUCTIONS": "Please provide a valid email",
-      "PLACEHOLDER": "Email",
+      "INSTRUCTIONS": "Please provide an email address",
+      "INSTRUCTIONS_2": "Please confirm the email address",
+      "PLACEHOLDER": "Email address",
+      "PLACEHOLDER_2": "Confirmation address",
       "PLACEHOLDER_REQUIRED": "Email*",
       "[DIV_02]": "[------]",
       "ACTOR": "Emailer",
@@ -2793,7 +3013,13 @@
       "TODO": "To Email",
       "FUTURE": "Will Email",
       "PRESENT": "Emailing",
-      "PAST": "Emailed"
+      "PAST": "Emailed",
+      "NEGATIVE_PAST": "Unemailed",
+      "[DIV_04]": "[------]",
+      "ERROR_01": "An email is required",
+      "ERROR_02": "The email provided has an unrecognised format",
+      "ERROR_11": "A confirmatinon email is required",
+      "ERROR_12": "THe confirmation email provided has an unrecognised format"
     },
     "EMPLOYMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2812,7 +3038,8 @@
       "TODO": "To Employ",
       "FUTURE": "Will Employ",
       "PRESENT": "Employing",
-      "PAST": "Employed"
+      "PAST": "Employed",
+      "NEGATIVE_PAST": "Unemployed"
     },
     "ENABLEMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2831,7 +3058,8 @@
       "TODO": "To Enable",
       "FUTURE": "Will Enable",
       "PRESENT": "Enabling",
-      "PAST": "Enabled"
+      "PAST": "Enabled",
+      "NEGATIVE_PAST": "Unenabled"
     },
     "ENACTMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2850,7 +3078,8 @@
       "TODO": "To Enact",
       "FUTURE": "Will Enact",
       "PRESENT": "Enacting",
-      "PAST": "Enacted"
+      "PAST": "Enacted",
+      "NEGATIVE_PAST": "Unenacted"
     },
     "ENDORSEMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2869,7 +3098,8 @@
       "TODO": "To Endorse",
       "FUTURE": "Will Endorse",
       "PRESENT": "Endorsing",
-      "PAST": "Endorsed"
+      "PAST": "Endorsed",
+      "NEGATIVE_PAST": "Unendorsed"
     },
     "ENFORCEMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2888,7 +3118,8 @@
       "TODO": "To Enforce",
       "FUTURE": "Will Enforce",
       "PRESENT": "Enforcing",
-      "PAST": "Enforced"
+      "PAST": "Enforced",
+      "NEGATIVE_PAST": "Unenforced"
     },
     "ENROLLMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2907,7 +3138,8 @@
       "TODO": "To Enroll",
       "FUTURE": "Will Enroll",
       "PRESENT": "Enrolling",
-      "PAST": "Enrolled"
+      "PAST": "Enrolled",
+      "NEGATIVE_PAST": "Unenrolled"
     },
     "ENTITIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2924,9 +3156,10 @@
       "PLURAL": "Entities",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "ENTRIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2945,7 +3178,8 @@
       "TODO": "To Enter",
       "FUTURE": "Will Enter",
       "PRESENT": "Entering",
-      "PAST": "Entered"
+      "PAST": "Entered",
+      "NEGATIVE_PAST": "Unentered"
     },
     "ENVIRONMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -2962,9 +3196,10 @@
       "PLURAL": "Environments",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "URBAN": "Urban",
       "RURAL": "Rural",
@@ -2986,6 +3221,26 @@
       "BARN": "Barn",
       "FARM": "Farm"
     },
+    "ENVISIONS": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See GOALS, PRINCIPLES, VISIONS, MISSIONS]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "[N/A]",
+      "ACTORS": "[N/A]",
+      "SINGULAR": "[N/A]",
+      "PLURAL": "[N/A]",
+      "IMPERATIVE": "Envision",
+      "TODO": "To Envision",
+      "FUTURE": "Will Envision",
+      "PRESENT": "Envisioning",
+      "PAST": "Envisioned",
+      "NEGATIVE_PAST": "Unenvisioned"
+    },
     "ERRORS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
       "[COMMENTS]": "[]",
@@ -3004,6 +3259,7 @@
       "FUTURE": "Will Error",
       "PRESENT": "Erroring",
       "PAST": "Errored",
+      "NEGATIVE_PAST": "Unerrored",
       "[DIV_04]": "[------]",
       "OOPS!": "{{BASE.APOLOGIES.OOPS!}}",
       "SORRY": "{{BASE.APOLOGIES.SORRY}}",
@@ -3381,7 +3637,8 @@
       "TODO": "To Evidence",
       "FUTURE": "Will Evidence",
       "PRESENT": "Evidencing",
-      "PAST": "Evidenced"
+      "PAST": "Evidenced",
+      "NEGATIVE_PAST": "Unevidenced"
     },
     "EXAMPLES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3398,9 +3655,10 @@
       "PLURAL": "Examples",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "EXCLUDES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3419,7 +3677,8 @@
       "TODO": "To Exclude",
       "FUTURE": "Will Exclude",
       "PRESENT": "Excluding",
-      "PAST": "Excluded"
+      "PAST": "Excluded",
+      "NEGATIVE_PAST": "Unexcluded"
     },
     "EXPENSES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3436,9 +3695,10 @@
       "PLURAL": "Expenses",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "FACETS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3457,7 +3717,8 @@
       "TODO": "To Facet",
       "FUTURE": "Will Facet",
       "PRESENT": "Faceted",
-      "PAST": "Faceted"
+      "PAST": "Faceted",
+      "NEGATIVE_PAST": "Unfaceted"
     },
     "FACTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3475,7 +3736,8 @@
       "TODO": "To be Verified",
       "FUTURE": "Will be Verified",
       "PRESENT": "Verified Fact",
-      "PAST": "Verified Fact"
+      "PAST": "Verified Fact",
+      "NEGATIVE_PAST": "Unverified Fact"
     },
     "FAILURES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3494,7 +3756,8 @@
       "TODO": "To Fail",
       "FUTURE": "Will Fail",
       "PRESENT": "Failing",
-      "PAST": "Failed"
+      "PAST": "Failed",
+      "NEGATIVE_PAST": "Unfailed"
     },
     "FAMILIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3511,9 +3774,10 @@
       "PLURAL": "Families",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]"
     },
     "FAQS": {
@@ -3531,9 +3795,10 @@
       "PLURAL": "FAQs",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "FREQUENTLY_ASKED_QUESTIONS": "Frequently Asked Questions"
 
@@ -3555,7 +3820,8 @@
       "TODO": "To Feature",
       "FUTURE": "Will Feature",
       "PRESENT": "Featuring",
-      "PAST": "Featured"
+      "PAST": "Featured",
+      "NEGATIVE_PAST": "Unfeatured"
     },
     "FILES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3574,7 +3840,31 @@
       "TODO": "To File",
       "FUTURE": "Will File",
       "PRESENT": "Filing",
-      "PAST": "Filed"
+      "PAST": "Filed",
+      "NEGATIVE_PAST": "Unfiled"
+    },
+    "FILENAMES": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "Filer",
+      "ACTORS": "Filers",
+      "[DIV_03]": "[------]",
+      "SINGULAR": "Filename",
+      "PLURAL": "Filenames",
+      "IMPERATIVE": "[N/A]",
+      "TODO": "[N/A]",
+      "FUTURE": "[N/A]",
+      "PRESENT": "[N/A]",
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
+      "[DIV_04]": "[------]",
+      "RENAME": "{{BASE.NAMES.RENAME}}"
     },
     "FINANCES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3594,6 +3884,7 @@
       "TODO": "To Finance",
       "FUTURE": "Will Finance",
       "PAST": "Financed",
+      "NEGATIVE_PAST": "Unfinanced",
       "[DIV_04]": "[------]",
       "BALANCE": "{{BASE.BALANCES.SINGULAR}}",
       "DEBIT": "{{BASE.DEBITS.SINGULAR}}",
@@ -3623,7 +3914,8 @@
       "TODO": "To Find",
       "FUTURE": "Will Find",
       "PRESENT": "Finding",
-      "PAST": "Found"
+      "PAST": "Found",
+      "NEGATIVE_PAST": "Unfound"
     },
     "FIND": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3642,7 +3934,8 @@
       "TODO": "To Find",
       "FUTURE": "Will Find",
       "PRESENT": "Finding",
-      "PAST": "Found"
+      "PAST": "Found",
+      "NEGATIVE_PAST": "Unfound"
     },
     "FINES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3661,7 +3954,8 @@
       "TODO": "To Fine",
       "FUTURE": "Will Fine",
       "PRESENT": "Fining",
-      "PAST": "Fined"
+      "PAST": "Fined",
+      "NEGATIVE_PAST": "Unfined"
     },
     "FLOW": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3681,6 +3975,7 @@
       "FUTURE": "Will Flow",
       "PRESENT": "Flowing",
       "PAST": "Flowed",
+      "NEGATIVE_PAST": "Unflowed",
       "[DIV_04]": "[------]",
       "FLUID": "Fluid",
       "BOXED": "Boxed"
@@ -3702,7 +3997,8 @@
       "TODO": "To File",
       "FUTURE": "Will File",
       "PRESENT": "Filing",
-      "PAST": "Filed"
+      "PAST": "Filed",
+      "NEGATIVE_PAST": "Unfiled"
     },
     "FORMS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3722,17 +4018,7 @@
       "FUTURE": "Will Form",
       "PRESENT": "Forming",
       "PAST": "Formed",
-      "STANDARD": {
-        "SIGN_UP": {
-
-        },
-        "SIGN_IN": {
-
-        },
-        "SIGN_OUT": {
-
-        }
-      }
+      "NEGATIVE_PAST": "Unformed"
     },
     "FOOTERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3751,7 +4037,8 @@
       "TODO": "To Foot",
       "FUTURE": "Will Foot",
       "PRESENT": "[Footing]",
-      "PAST": "Footed"
+      "PAST": "Footed",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "FRACTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3771,6 +4058,7 @@
       "FUTURE": "Will Fraction",
       "PRESENT": "[N/A]",
       "PAST": "Fractioned",
+      "NEGATIVE_PAST": "Unfractioned",
       "[DIV_04]": "[------]",
       "QUARTER": "Quarter",
       "HALF": "Half",
@@ -3794,9 +4082,10 @@
       "PLURAL": "Frameworks",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "FRIENDS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3815,7 +4104,8 @@
       "TODO": "To Beriend",
       "FUTURE": "Will Beriend",
       "PRESENT": "Befriending",
-      "PAST": "Befriended"
+      "PAST": "Befriended",
+      "NEGATIVE_PAST": "Unbefriended"
     },
     "FUNCTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3834,7 +4124,8 @@
       "TODO": "To Function",
       "FUTURE": "Will Function",
       "PRESENT": "Functioning",
-      "PAST": "Functioned"
+      "PAST": "Functioned",
+      "NEGATIVE_PAST": "Unfunctioned"
     },
     "FUNCTIONALITIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3851,9 +4142,10 @@
       "PLURAL": "Functionalities",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "FUNDINGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3872,7 +4164,8 @@
       "TODO": "To Fund",
       "FUTURE": "Will Fund",
       "PRESENT": "Funding",
-      "PAST": "Funded"
+      "PAST": "Funded",
+      "NEGATIVE_PAST": "Unfunded"
     },
     "GENDERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3889,9 +4182,10 @@
       "PLURAL": "Genders",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
 
     "GOING": {
@@ -3912,6 +4206,7 @@
       "FUTURE": "Will go",
       "PRESENT": "Going",
       "PAST": "Gone",
+      "NEGATIVE_PAST": "Ungone",
       "[DIV_04]": "[------]",
       "GOTO": "Go to",
       "GOTO_THE": "Go to the"
@@ -3935,6 +4230,7 @@
       "FUTURE": "Will Govern",
       "PRESENT": "Governing",
       "PAST": "Governed",
+      "NEGATIVE_PAST": "Ungoverned",
       "[DIV_04]": "[------]",
       "PARLIAMENT": "Parliament",
       "MEMBER_OF_PARLIAMENT": "Member of Parliament",
@@ -3975,7 +4271,8 @@
       "TODO": "To Grade",
       "FUTURE": "Will Grade",
       "PRESENT": "Grading",
-      "PAST": "Graded"
+      "PAST": "Graded",
+      "NEGATIVE_PAST": "Ungraded"
     },
     "GRADUATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -3994,7 +4291,8 @@
       "TODO": "To Graduate",
       "FUTURE": "Will Graduate",
       "PRESENT": "Graduating",
-      "PAST": "Graduated"
+      "PAST": "Graduated",
+      "NEGATIVE_PAST": "Ungraduated"
     },
     "GREETINGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4014,6 +4312,7 @@
       "FUTURE": "Will Greet",
       "PRESENT": "Greeting",
       "PAST": "Greeted",
+      "NEGATIVE_PAST": "Ungreeted",
       "[DIV_04]": "[------]",
       "HI": "Hi",
       "HI_": "Hi",
@@ -4036,7 +4335,8 @@
       "TODO": "To Group",
       "FUTURE": "Will Group",
       "PRESENT": "Grouping",
-      "PAST": "Grouped"
+      "PAST": "Grouped",
+      "NEGATIVE_PAST": "Ungrouped"
     },
     "HALVES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4055,7 +4355,8 @@
       "TODO": "To Halve",
       "FUTURE": "Will Halve",
       "PRESENT": "Halving",
-      "PAST": "Halved"
+      "PAST": "Halved",
+      "NEGATIVE_PAST": "Unhalved"
     },
     "HEADERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4077,6 +4378,7 @@
       "FUTURE": "Will Head",
       "PRESENT": "Heading",
       "PAST": "Headed",
+      "NEGATIVE_PAST": "Unheaded",
       "[DIV_04]": "[------]",
       "ENABLED": "{{BASE.ENABLEMENTS.PAST}}",
       "CHANGE": "",
@@ -4099,9 +4401,10 @@
       "PLURAL": "[N/A]",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "DOCTOR": "Doctor",
       "PATIENT": "Patient",
@@ -4135,6 +4438,7 @@
       "FUTURE": "Will Help",
       "PRESENT": "Helping",
       "PAST": "Helped",
+      "NEGATIVE_PAST": "Unhelped",
       "[DIV_04]": "[------]",
       "CENTER": "Help Center"
     },
@@ -4155,7 +4459,8 @@
       "TODO": "To Home",
       "FUTURE": "Will Home",
       "PRESENT": "Homing",
-      "PAST": "Homed"
+      "PAST": "Homed",
+      "NEGATIVE_PAST": "Unhomed"
     },
     "HOUSES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4176,6 +4481,7 @@
       "FUTURE": "Will House",
       "PRESENT": "Housing",
       "PAST": "Housed",
+      "NEGATIVE_PAST": "Unhoused",
       "[DIV_04]": "[------]",
       "ROOM": "Room",
       "FOUNDATIONS": "Foundations",
@@ -4218,9 +4524,10 @@
       "PLURAL": "Hues",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "DARK": "Dark",
       "GRADIENT": "Gradient",
@@ -4241,9 +4548,10 @@
       "PLURAL": "Icons",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "IDENTITIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4263,6 +4571,7 @@
       "FUTURE": "Will Identify",
       "PRESENT": "Identifying",
       "PAST": "Identified",
+      "NEGATIVE_PAST": "Unidentified",
       "[DIV_04]": "[------]",
       "ACRONYM": "ID",
       "FORMFIELDS": {
@@ -4313,7 +4622,8 @@
       "TODO": "To Ignore",
       "FUTURE": "Will Ignore",
       "PRESENT": "Ignoring",
-      "PAST": "Ignored"
+      "PAST": "Ignored",
+      "NEGATIVE_PAST": "Unignored"
     },
     "IMAGES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4330,9 +4640,10 @@
       "PLURAL": "Images",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "IMPACTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4352,6 +4663,7 @@
       "FUTURE": "Will Impact",
       "PRESENT": "Impacting",
       "PAST": "Impacted",
+      "NEGATIVE_PAST": "Unimpacted",
       "[DIV_04]": "[------]",
       "NEGLIGEABLE": "Negligeable",
       "LOW": "Low",
@@ -4376,7 +4688,8 @@
       "TODO": "To Include",
       "FUTURE": "Will Include",
       "PRESENT": "Including",
-      "PAST": "Included"
+      "PAST": "Included",
+      "NEGATIVE_PAST": "Unincluded"
     },
     "INCOMES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4393,9 +4706,10 @@
       "PLURAL": "Incomes",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "INFORMATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4415,7 +4729,8 @@
       "FUTURE": "Will Inform",
       "IMPERATIVE": "Inform",
       "PRESENT": "Informing",
-      "PAST": "Informed"
+      "PAST": "Informed",
+      "NEGATIVE_PAST": "Uninformed"
     },
     "INFRASTRUCTURES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4432,9 +4747,10 @@
       "PLURAL": "Infrastructures",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "WIFI": "Wifi",
       "ROUTER": "Router",
@@ -4469,7 +4785,8 @@
       "TODO": "To Inquire",
       "FUTURE": "Will Inquire",
       "PRESENT": "Inquiring",
-      "PAST": "Inquired"
+      "PAST": "Inquired",
+      "NEGATIVE_PAST": "Uninquired"
     },
     "INSERTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4488,7 +4805,8 @@
       "TODO": "To Insert",
       "FUTURE": "Will Insert",
       "PRESENT": "Inserting",
-      "PAST": "Inserted"
+      "PAST": "Inserted",
+      "NEGATIVE_PAST": "Uninserted"
     },
     "INSTALLATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4507,7 +4825,8 @@
       "TODO": "To Install",
       "FUTURE": "Will Install",
       "PRESENT": "Installing",
-      "PAST": "Installed"
+      "PAST": "Installed",
+      "NEGATIVE_PAST": "Uninstalled"
     },
     "INTERESTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4526,7 +4845,8 @@
       "TODO": "To Interest",
       "FUTURE": "Will Interest",
       "PRESENT": "Interesting",
-      "PAST": "Interested"
+      "PAST": "Interested",
+      "NEGATIVE_PAST": "Uninterested"
     },
     "INVEST": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4545,7 +4865,8 @@
       "TODO": "To Invest",
       "FUTURE": "Will Invest",
       "PRESENT": "Investing",
-      "PAST": "Invested"
+      "PAST": "Invested",
+      "NEGATIVE_PAST": "Uninvested"
     },
     "INVESTIGATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4564,7 +4885,8 @@
       "TODO": "To Investigate",
       "FUTURE": "Will Investigate",
       "PRESENT": "Investigating",
-      "PAST": "Investigated"
+      "PAST": "Investigated",
+      "NEGATIVE_PAST": "Uninvestigated"
     },
     "INVITATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4583,7 +4905,8 @@
       "TODO": "To Invite",
       "FUTURE": "Will Invite",
       "PRESENT": "Inviting",
-      "PAST": "Invited"
+      "PAST": "Invited",
+      "NEGATIVE_PAST": "Uninvited"
     },
     "INVOICES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4602,11 +4925,12 @@
       "TODO": "To Invoice",
       "FUTURE": "Will Invoice",
       "PRESENT": "Invoicing",
-      "PAST": "Invoiced"
+      "PAST": "Invoiced",
+      "NEGATIVE_PAST": "Uninvoiced"
     },
     "ISSUES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
-      "[COMMENTS]": "[See WORK, STATUS, SUGGESTIONS, PROPOSALS.]",
+      "[COMMENTS]": "[See WORK, STATUS, SUGGESTIONS, PROPOSALS, COMPLAINTS, PROCESSES, RESOLUTIONS]",
       "[ABOUT]": "[]",
       "[DIV_01]": "[------]",
       "EXPLANATION": "",
@@ -4622,7 +4946,8 @@
       "TODO": "To raise",
       "FUTURE": "Will raise",
       "PRESENT": "Raising an issue",
-      "PAST": "Issue was raised"
+      "PAST": "Issue was raised",
+      "NEGATIVE_PAST": "Unissue was raised"
     },
     "JOBS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4639,9 +4964,10 @@
       "PLURAL": "Jobs",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "JOURNALS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4660,7 +4986,8 @@
       "TODO": "To Journal",
       "FUTURE": "Will Journal",
       "PRESENT": "Journalling",
-      "PAST": "Journalled"
+      "PAST": "Journalled",
+      "NEGATIVE_PAST": "Unjournalled"
     },
     "JUDGEMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4679,7 +5006,8 @@
       "TODO": "To Judge",
       "FUTURE": "Will Judge",
       "PRESENT": "Judging",
-      "PAST": "Judged"
+      "PAST": "Judged",
+      "NEGATIVE_PAST": "Unjudged"
     },
     "LANDINGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4699,7 +5027,8 @@
       "TODO": "To Land",
       "FUTURE": "Will Land",
       "PRESENT": "Landing",
-      "PAST": "Landed"
+      "PAST": "Landed",
+      "NEGATIVE_PAST": "Unlanded"
     },
     "LAWS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4716,9 +5045,10 @@
       "PLURAL": "Laws",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "LEGAL": "Legal",
       "ILLLEGAL": "Illegal"
@@ -4740,7 +5070,8 @@
       "TODO": "To Layer",
       "FUTURE": "Will Layer",
       "PRESENT": "Layering",
-      "PAST": "Layered"
+      "PAST": "Layered",
+      "NEGATIVE_PAST": "Unlayered"
     },
     "LAYOUTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4760,6 +5091,7 @@
       "FUTURE": "Will lay out",
       "PRESENT": "Laying out",
       "PAST": "Laid out",
+      "NEGATIVE_PAST": "Unlaid out",
       "[DIV_04]": "[------]",
       "LAYOUT": "Layout",
       "LAYOUTS": "Layouts",
@@ -4787,7 +5119,8 @@
       "TODO": "To Lead",
       "FUTURE": "Will Lead",
       "PRESENT": "Leading",
-      "PAST": "Led"
+      "PAST": "Led",
+      "NEGATIVE_PAST": "Unled"
     },
     "LEARNINGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4808,6 +5141,7 @@
       "FUTURE": "Will Learn",
       "PRESENT": "Learning",
       "PAST": "Learned",
+      "NEGATIVE_PAST": "Unlearned",
       "[DIV_04]": "[------]",
       "LEARN_MORE": "Learn more"
     },
@@ -4826,9 +5160,10 @@
       "PLURAL": "Lessons",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "LIABILITIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4845,9 +5180,10 @@
       "PLURAL": "Liabilities",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "LIKES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4866,7 +5202,8 @@
       "TODO": "To Like",
       "FUTURE": "Will Like",
       "PRESENT": "Liking",
-      "PAST": "Liked"
+      "PAST": "Liked",
+      "NEGATIVE_PAST": "Unliked"
     },
     "LIKELINESS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4883,9 +5220,10 @@
       "PLURAL": "[N/A]",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "HIGHLY_UNLIKELY": "Highly Unlikely",
       "UNLIKELY": "Unlikely",
@@ -4909,7 +5247,8 @@
       "TODO": "To Link",
       "FUTURE": "Will Link",
       "PRESENT": "Linking",
-      "PAST": "Linked"
+      "PAST": "Linked",
+      "NEGATIVE_PAST": "Unlinked"
     },
     "LINEITEMS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4926,9 +5265,10 @@
       "PLURAL": "Line Items",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "LINES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4947,7 +5287,8 @@
       "TODO": "To align",
       "FUTURE": "Will align",
       "PRESENT": "Aligning",
-      "PAST": "Aligned"
+      "PAST": "Aligned",
+      "NEGATIVE_PAST": "Unaligned"
     },
     "LISTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4966,7 +5307,8 @@
       "TODO": "To List",
       "FUTURE": "Will List",
       "PRESENT": "Listing",
-      "PAST": "Listed"
+      "PAST": "Listed",
+      "NEGATIVE_PAST": "Unlisted"
     },
     "LOCATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -4986,6 +5328,7 @@
       "FUTURE": "Will Locate",
       "PRESENT": "Locating",
       "PAST": "Located",
+      "NEGATIVE_PAST": "Unlocated",
       "[DIV_04]": "[------]",
       "ALTITUDE": "Altitude",
       "ORIENTATION": "Orientation",
@@ -5019,7 +5362,8 @@
       "TODO": "To Lock",
       "FUTURE": "Will Lock",
       "PRESENT": "Locking",
-      "PAST": "Locked"
+      "PAST": "Locked",
+      "NEGATIVE_PAST": "Unlocked"
     },
     "LOGIC": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5036,9 +5380,10 @@
       "PLURAL": "[N/A]",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "GROUP": "Group",
       "SUBGROUP": "Subgroup",
@@ -5068,9 +5413,10 @@
       "PLURAL": "Logos",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "LOGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5089,7 +5435,8 @@
       "TODO": "To Log",
       "FUTURE": "Will Log",
       "PRESENT": "Logging",
-      "PAST": "Logged"
+      "PAST": "Logged",
+      "NEGATIVE_PAST": "Unlogged"
     },
     "LOSSES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5108,7 +5455,8 @@
       "TODO": "To Lose",
       "FUTURE": "Will Lose",
       "PRESENT": "Losing",
-      "PAST": "Lost"
+      "PAST": "Lost",
+      "NEGATIVE_PAST": "Unlost"
     },
     "MAINTAINERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5128,7 +5476,8 @@
       "TODO": "To Maintain",
       "FUTURE": "Will Maintain",
       "PRESENT": "Maintaining",
-      "PAST": "Maintained"
+      "PAST": "Maintained",
+      "NEGATIVE_PAST": "Unmaintained"
     },
     "MANAGEMENT": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5147,7 +5496,8 @@
       "TODO": "To Manage",
       "FUTURE": "Will Manage",
       "PRESENT": "Managing",
-      "PAST": "Managed"
+      "PAST": "Managed",
+      "NEGATIVE_PAST": "Unmanaged"
     },
     "MATHS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5164,9 +5514,30 @@
       "PLURAL": "Maths",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
+    },
+    "MEASUREMENTS": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See AREAS]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "Measurer",
+      "ACTORS": "Measurers",
+      "SINGULAR": "Measurement",
+      "PLURAL": "Measurements",
+      "IMPERATIVE": "Measure",
+      "TODO": "To Measure",
+      "FUTURE": "Will Measure",
+      "PRESENT": "Measuring",
+      "PAST": "Measured",
+      "NEGATIVE_PAST": "Unmeasured"
     },
     "MEDIA": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5183,14 +5554,15 @@
       "PLURAL": "Medias",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
-      "DIMENSIONS": "Dimensions",
-      "FILENAME": "Filename",
-      "FORMAT": "Format",
-      "SIZE": "Size"
+      "DIMENSIONS": "{{BASE.DIMENSIONS.PLURAL}}",
+      "FILENAME": "{{BASE.FILENAMES.SINGULAR}}",
+      "FORMAT": "{{BASE.FORMATS.SINGULAR}}",
+      "SIZE": "{{BASE.SIZES.SINGULAR}}"
     },
     "MEMBERSHIPS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5207,9 +5579,10 @@
       "PLURAL": "Memberships",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "MERGES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5228,7 +5601,8 @@
       "TODO": "To Merge",
       "FUTURE": "Will Merge",
       "PRESENT": "Merging",
-      "PAST": "Merged"
+      "PAST": "Merged",
+      "NEGATIVE_PAST": "Unmerged"
     },
     "MESSAGES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5249,6 +5623,7 @@
       "FUTURE": "Will Message",
       "PRESENT": "Messaging",
       "PAST": "Messaged",
+      "NEGATIVE_PAST": "Unmessaged",
       "[DIV_04]": "[------]",
       "PLACEHOLDER_REQUIRED": "Message*",
       "NONE": "None",
@@ -5288,6 +5663,7 @@
       "FUTURE": "Will Metal",
       "PRESENT": "Metaling",
       "PAST": "Metaled",
+      "NEGATIVE_PAST": "Unmetaled",
       "[DIV_04]": "[------]",
       "TIN": "Tin",
       "BRONZE": "Bronze",
@@ -5325,6 +5701,26 @@
       "DIDNT_RECEIVE_CODE?": "Didn't receive a code?",
       "CHECK_YOUR_EMAIL": "Check your Email"
     },
+    "MISSIONS": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See GOALS, PRINCIPLES, VISIONS, ENVISIONS,OBJECTIVES,OUTCOMES,OUTPUTS]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "[N/A]",
+      "ACTORS": "[N/A]",
+      "SINGULAR": "Mission",
+      "PLURAL": "Missions",
+      "IMPERATIVE": "[N/A]",
+      "TODO": "[N/A]",
+      "FUTURE": "[N/A]",
+      "PRESENT": "[N/A]",
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
+    },
     "MODELS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
       "[COMMENTS]": "",
@@ -5342,7 +5738,8 @@
       "TODO": "To Model",
       "FUTURE": "Will Model",
       "PRESENT": "Modeling",
-      "PAST": "Modelled"
+      "PAST": "Modelled",
+      "NEGATIVE_PAST": "Unmodelled"
     },
     "MONITORERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5361,7 +5758,8 @@
       "TODO": "To Monitor",
       "FUTURE": "Will Monitor",
       "PRESENT": "Monitoring",
-      "PAST": "Monitored"
+      "PAST": "Monitored",
+      "NEGATIVE_PAST": "Unmonitored"
     },
     "MONTHS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5377,9 +5775,10 @@
       "SINGULAR": "Month",
       "PLURAL": "Months",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "JANUARY": "January",
       "FEBRUARY": "February",
@@ -5409,9 +5808,10 @@
       "PLURAL": "Mice",
       "IMPERATIVE": "Mouse",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "MOVE": "Move",
       "HOVER": "Hover",
@@ -5443,6 +5843,7 @@
       "FUTURE": "Will Multiply",
       "PRESENT": "Multiplying",
       "PAST": "Multiplied",
+      "NEGATIVE_PAST": "Unmultiplied",
       "[DIV_04]": "[------]",
       "MULTIPLIER": "Multiplier",
       "MULTIPLY_BY": "Multiply by",
@@ -5468,7 +5869,9 @@
       "FUTURE": "Will Name",
       "PRESENT": "Naming",
       "PAST": "Named",
+      "NEGATIVE_PAST": "Unnamed",
       "[DIV_04]": "[------]",
+      "RENAME": "Rename",
       "PREFIX": "Prefix",
       "PLACEHOLDER_REQUIRED": "Name*",
       "PREFIX_INSTRUCTIONS": "Provide a Title (Mr, Mrs, Dr., ...)",
@@ -5521,7 +5924,8 @@
       "TODO": "To Nature",
       "FUTURE": "Will Nature",
       "PRESENT": "Naturing",
-      "PAST": "Natured"
+      "PAST": "Natured",
+      "NEGATIVE_PAST": "Unnatured"
     },
     "NAVIGATION": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5541,10 +5945,13 @@
       "FUTURE": "Will Navigate",
       "PRESENT": "Navigating",
       "PAST": "Navigated",
+      "NEGATIVE_PAST": "Unnavigated",
       "[DIV_04]": "[------]",
+      "TOGGLE_NAVIGATION": "Toggle Navigation",
       "BACK": "Back",
       "FORWARD": "Forward",
       "PAUSE": "Pause"
+
     },
     "NETWORKS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5563,7 +5970,8 @@
       "TODO": "To Network",
       "FUTURE": "Will Network",
       "PRESENT": "Networking",
-      "PAST": "Networked"
+      "PAST": "Networked",
+      "NEGATIVE_PAST": "Unnetworked"
     },
     "NODES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5580,9 +5988,10 @@
       "PLURAL": "Nodes",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "Outputted"
+      "PAST": "Outputted",
+      "NEGATIVE_PAST": "Unoutputted"
     },
     "NOTIFICATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5602,6 +6011,7 @@
       "FUTURE": "Will Notify",
       "PRESENT": "Notifying",
       "PAST": "Notified",
+      "NEGATIVE_PAST": "Unnotified",
       "[DIV_04]": "[------]",
       "NO_NEW": "No New Notifications",
       "NONE": "None",
@@ -5626,7 +6036,8 @@
       "TODO": "To Note",
       "FUTURE": "Will Note",
       "PRESENT": "Noting",
-      "PAST": "Noted"
+      "PAST": "Noted",
+      "NEGATIVE_PAST": "Unnoted"
     },
     "NUMBERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5646,6 +6057,7 @@
       "FUTURE": "Will Count",
       "PRESENT": "Counting",
       "PAST": "Counted",
+      "NEGATIVE_PAST": "Uncounted",
       "[DIV_04]": "[------]",
       "ONE": "One",
       "TWO": "Two",
@@ -5695,9 +6107,35 @@
       "PLURAL": "[N/A]",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
+    },
+    "OBJECTIVES": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "The essence of a system. See GOALS,STATUS,OBJECTIVES, OUTPUTS]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "[N/A]",
+      "ACTORS": "[N/A]",
+      "SINGULAR": "Objective",
+      "PLURAL": "Objectives",
+      "IMPERATIVE": "[N/A]",
+      "TODO": "[N/A]",
+      "FUTURE": "Will [N/A]",
+      "PRESENT": "[N/A]",
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
+      "[DIV_04]": "[------]",
+      "MEET_THE_OBJECTIVE": "Meet the objective",
+      "MEET_THE_OBJECTIVES": "Meet the objectives",
+      "MEET_OBJECTIVE": "Meet objective",
+      "MEET_OBJECTIVES": "Meet objectives"
     },
     "OBLIGATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5716,7 +6154,8 @@
       "TODO": "To Oblige",
       "FUTURE": "Will Oblige",
       "PRESENT": "Obliging",
-      "PAST": "Obliged"
+      "PAST": "Obliged",
+      "NEGATIVE_PAST": "Unobliged"
     },
     "OBSERVATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5735,7 +6174,8 @@
       "TODO": "To Observe",
       "FUTURE": "Will Observe",
       "PRESENT": "Observing",
-      "PAST": "Observed"
+      "PAST": "Observed",
+      "NEGATIVE_PAST": "Unobserved"
     },
     "OPENINGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5750,12 +6190,13 @@
       "ACTORS": "Openers",
       "SINGULAR": "Opening",
       "PLURAL": "Openings",
-      "DESCRIPTION": "Opportunities to work here.",
+      "DESCRIPTION": "",
       "IMPERATIVE": "Open",
       "TODO": "To Open",
       "FUTURE": "Will Open",
       "PRESENT": "Opening",
-      "PAST": "Opened"
+      "PAST": "Opened",
+      "NEGATIVE_PAST": "Unopened"
     },
     "OPERATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5774,7 +6215,29 @@
       "TODO": "To Operate",
       "FUTURE": "Will Operate",
       "PRESENT": "Operating",
-      "PAST": "Operated"
+      "PAST": "Operated",
+      "NEGATIVE_PAST": "Unoperated"
+    },
+    "OPPORTUNITIES": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "[N/A]",
+      "ACTORS": "[N/A]",
+      "SINGULAR": "Opportunity",
+      "PLURAL": "Opportunities",
+      "DESCRIPTION": "",
+      "IMPERATIVE": "[N/A]",
+      "TODO": "[N/A]",
+      "FUTURE": "[N/A]",
+      "PRESENT": "[N/A]",
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "ORATION": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5794,7 +6257,8 @@
       "TODO": "To Orate",
       "FUTURE": "Will Orate",
       "PRESENT": "Orate",
-      "PAST": "Orated"
+      "PAST": "Orated",
+      "NEGATIVE_PAST": "Unorated"
     },
     "ORDERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5815,6 +6279,7 @@
       "FUTURE": "Will Order",
       "PRESENT": "Ordering",
       "PAST": "Ordered",
+      "NEGATIVE_PAST": "Unordered",
       "[DIV_04]": "[------]",
       "DETAILS": "Order Details"
     },
@@ -5836,6 +6301,7 @@
       "FUTURE": "Will Organise",
       "PRESENT": "Organising",
       "PAST": "Organised",
+      "NEGATIVE_PAST": "Unorganised",
       "[DIV_04]": "[------]",
       "ACCOUNT": "Account",
       "ACCOUNT_INSTRUCTIONS": "Please provide the account name:",
@@ -5892,13 +6358,14 @@
       "FUTURE": "Will Orient",
       "PRESENT": "Orienting",
       "PAST": "Oriented",
+      "NEGATIVE_PAST": "Unoriented",
       "[DIV_04]": "[------]",
       "HORIZONTAL": "Horizontal",
       "VERTICAL": "Vertical"
     },
     "OUTCOMES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
-      "[COMMENTS]": "The essence of a system. See GOALS,STATUS,OUTPUTS]",
+      "[COMMENTS]": "The essence of a system. See OBJECTIVES, GOALS,STATUS,OUTPUTS]",
       "[ABOUT]": "[]",
       "[DIV_01]": "[------]",
       "EXPLANATION": "",
@@ -5911,9 +6378,10 @@
       "PLURAL": "Outcomes",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "RESULT": "Result",
       "SUCCESS": "Success",
@@ -5922,7 +6390,7 @@
     },
     "OUTPUTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
-      "[COMMENTS]": "[See GOALS,STATUS,OUTCOMES]",
+      "[COMMENTS]": "[See GOALS,OBJECTIVES,STATUS,OUTCOMES]",
       "[ABOUT]": "[]",
       "[DIV_01]": "[------]",
       "EXPLANATION": "",
@@ -5937,7 +6405,8 @@
       "TODO": "To Output",
       "FUTURE": "Will Output",
       "PRESENT": "Outputing",
-      "PAST": "Outputted"
+      "PAST": "Outputted",
+      "NEGATIVE_PAST": "Unoutputted"
     },
     "OWINGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5956,7 +6425,8 @@
       "TODO": "To Owe",
       "FUTURE": "Will Owe",
       "PRESENT": "Owing",
-      "PAST": "Owed"
+      "PAST": "Owed",
+      "NEGATIVE_PAST": "Unowed"
     },
     "OWNERSHIPS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -5976,6 +6446,7 @@
       "FUTURE": "Will Own",
       "PRESENT": "Owning",
       "PAST": "Owned",
+      "NEGATIVE_PAST": "Unowned",
       "[DIV_04]": "[------]",
       "PUBLIC": "Public",
       "PRIVATE": "Private",
@@ -6006,7 +6477,8 @@
       "TODO": "To Page",
       "FUTURE": "Will Page",
       "PRESENT": "Paging",
-      "PAST": "[Paged?]"
+      "PAST": "Paged",
+      "NEGATIVE_PAST": "UnPaged"
     },
     "PARENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6025,7 +6497,8 @@
       "TODO": "To Parent",
       "FUTURE": "Will Parent",
       "PRESENT": "Parenting",
-      "PAST": "Parented"
+      "PAST": "Parented",
+      "NEGATIVE_PAST": "Unparented"
     },
     "PARTICIPATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6044,7 +6517,8 @@
       "TODO": "To Participate",
       "FUTURE": "Will Participate",
       "PRESENT": "Participating",
-      "PAST": "Participated"
+      "PAST": "Participated",
+      "NEGATIVE_PAST": "Unparticipated"
     },
     "PASSINGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6063,7 +6537,8 @@
       "TODO": "To Pass",
       "FUTURE": "Will Pass",
       "PRESENT": "Passing",
-      "PAST": "Passed"
+      "PAST": "Passed",
+      "NEGATIVE_PAST": "Unpassed"
     },
     "PASSWORDS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6071,19 +6546,24 @@
       "[ABOUT]": "[]",
       "[DIV_01]": "[------]",
       "EXPLANATION": "",
-      "INSTRUCTIONS": "",
-      "PLACEHOLDER": "",
+      "INSTRUCTIONS": "Please provide a password",
+      "PLACEHOLDER": "{{BASE.PASSWORDS.SINGULAR}}",
       "[DIV_02]": "[------]",
       "ACTOR": "[N/A]",
       "ACTORS": "[N/A]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Password",
       "PLURAL": "Passwords",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "Passworded"
-
+      "PAST": "Passworded",
+      "NEGATIVE_PAST": "Unpassworded",
+      "[DIV_04]": "[------]",
+      "ERROR_01": "A password is required",
+      "ERROR_02": "A password is required to be complex.",
+      "ERROR_02_B": "A minimum length, etc."
     },
     "PASSWORD_CREATE": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6100,9 +6580,10 @@
       "PLURAL": "Password Creations",
       "IMPERATIVE": "Create",
       "TODO": "Password To Create",
-      "FUTURE": "WILL Password To Create",
+      "FUTURE": "Will Password To Create",
       "PRESENT": "Password Creating",
-      "PAST": "Password Created"
+      "PAST": "Password Created",
+      "NEGATIVE_PAST": "Unpassword Created"
     },
 
     "PASSWORD_RESETS": {
@@ -6122,7 +6603,8 @@
       "TODO": "To Reset",
       "FUTURE": "Will Reset",
       "PRESENT": "Resetting Password",
-      "PAST": "Resetted Password"
+      "PAST": "Resetted Password",
+      "NEGATIVE_PAST": "Unresetted Password"
     },
 
     "PATTERNS": {
@@ -6140,9 +6622,10 @@
       "PLURAL": "Patterns",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "PAYMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6161,7 +6644,8 @@
       "TODO": "To Pay",
       "FUTURE": "Will Pay",
       "PRESENT": "Paying",
-      "PAST": "Paid"
+      "PAST": "Paid",
+      "NEGATIVE_PAST": "Unpaid"
     },
     "PEOPLE": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6178,9 +6662,10 @@
       "PLURAL": "People",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "PERCENTAGES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6197,9 +6682,10 @@
       "PLURAL": "Percentages",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "PERMISSIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6218,7 +6704,8 @@
       "TODO": "To Permit",
       "FUTURE": "Will Permit",
       "PRESENT": "Permitting",
-      "PAST": "Permitted"
+      "PAST": "Permitted",
+      "NEGATIVE_PAST": "Unpermitted"
     },
     "PERSONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6235,9 +6722,10 @@
       "PLURAL": "Persons",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "PERSPECTIVES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6254,9 +6742,10 @@
       "PLURAL": "Perspectives",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
 
     "PHONES": {
@@ -6276,7 +6765,8 @@
       "TODO": "To Phone",
       "FUTURE": "Will Phone",
       "PRESENT": "Phoning",
-      "PAST": "Phoned"
+      "PAST": "Phoned",
+      "NEGATIVE_PAST": "Unphoned"
     },
     "PHOTOS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6293,9 +6783,10 @@
       "PLURAL": "Photos",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "PLACES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6315,6 +6806,7 @@
       "FUTURE": "Will Place",
       "PRESENT": "Placing",
       "PAST": "Placed",
+      "NEGATIVE_PAST": "Unplaced",
       "[DIV_04]": "[------]",
       "PURPOSE": "{{BASE.PURPOSES.SINGULAR}}"
     },
@@ -6337,7 +6829,8 @@
       "TODO": "To Plan",
       "FUTURE": "Will Plan",
       "PRESENT": "Planning",
-      "PAST": "Planned"
+      "PAST": "Planned",
+      "NEGATIVE_PAST": "Unplanned"
     },
     "POLICIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6354,9 +6847,10 @@
       "PLURAL": "Policies",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "COOKIE": "Cookie Policy",
       "TRACKING": "Tracking Policy",
@@ -6381,6 +6875,7 @@
       "FUTURE": "Will Position",
       "PRESENT": "Positioning",
       "PAST": "Positioned",
+      "NEGATIVE_PAST": "Unpositioned",
       "[DIV_04]": "[------]",
       "RELATIVE": {
         "[ABOUT]": "[]",
@@ -6432,9 +6927,10 @@
       "PLURAL": "Pointers",
       "IMPERATIVE": "Point",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "Pointing",
-      "PAST": "Pointed"
+      "PAST": "Pointed",
+      "NEGATIVE_PAST": "Unpointed"
     },
     "POSSESSIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6454,6 +6950,7 @@
       "FUTURE": "Will Possess",
       "PRESENT": "Possessing",
       "PAST": "Possessed",
+      "NEGATIVE_PAST": "Unpossessed",
       "[DIV_04]": "[------]",
       "MINE": "Mine",
       "OURS": "Ours",
@@ -6480,9 +6977,10 @@
       "PLURAL": "Postal Addresses",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "UNIT": "Unit",
       "UNIT_EXAMPLE": "2B",
@@ -6518,12 +7016,33 @@
       "PLURAL": "Probabilities",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "IMPROBABLE": "Improbable",
       "PROBABLE": "Probable"
+    },
+    "PROCESSES": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See COMPLAINTS, ISSUES, ABANDONMENTS, RESOLUTIONS]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "Processor",
+      "ACTORS": "Processors",
+      "SINGULAR": "Process",
+      "PLURAL": "Processes",
+      "IMPERATIVE": "Process",
+      "TODO": "To Process",
+      "FUTURE": "Will Process",
+      "PRESENT": "Processing",
+      "PAST": "Processed",
+      "NEGATIVE_PAST": "Unprocessed"
     },
     "PROFITS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6542,7 +7061,8 @@
       "TODO": "To Profit",
       "FUTURE": "Will Profit",
       "PRESENT": "Profiting",
-      "PAST": "Profited"
+      "PAST": "Profited",
+      "NEGATIVE_PAST": "Unprofited"
     },
     "PREFERENCES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6561,7 +7081,8 @@
       "TODO": "To Prefer",
       "FUTURE": "Will Prefer",
       "PRESENT": "Prefering",
-      "PAST": "Preferred"
+      "PAST": "Preferred",
+      "NEGATIVE_PAST": "Unpreferred"
     },
     "PRESENCE": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6580,7 +7101,8 @@
       "TODO": "To be present",
       "FUTURE": "Will be present",
       "PRESENT": "Is present",
-      "PAST": "Was present"
+      "PAST": "Presented",
+      "NEGATIVE_PAST": "Unpresented"
     },
     "PRICES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6599,7 +7121,8 @@
       "TODO": "To Price",
       "FUTURE": "Will Price",
       "PRESENT": "Pricing",
-      "PAST": "Priced"
+      "PAST": "Priced",
+      "NEGATIVE_PAST": "Unpriced"
     },
     "PRINCIPLES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6616,9 +7139,10 @@
       "PLURAL": "Principles",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "PRIVACIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6635,9 +7159,10 @@
       "PLURAL": "Privacies",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "PROCUREMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6657,6 +7182,7 @@
       "FUTURE": "Will Procure",
       "PRESENT": "Procuring",
       "PAST": "Procured",
+      "NEGATIVE_PAST": "Unprocured",
       "[DIV_04]": "[------]",
       "PROCUREMENT": "Procurement",
       "PROCUREMENTS": "Procurements"
@@ -6679,6 +7205,7 @@
       "FUTURE": "Will Produce",
       "PRESENT": "Producing",
       "PAST": "Produced",
+      "NEGATIVE_PAST": "Unproduced",
       "[DIV_04]": "[------]",
       "PRODUCT_DETAILS": "Product Details"
     },
@@ -6701,6 +7228,7 @@
       "FUTURE": "Will Profile",
       "PRESENT": "Profiling",
       "PAST": "Profiled",
+      "NEGATIVE_PAST": "Unprofiled",
       "[DIV_04]": "[------]",
       "SYSTEM_PROFILE": "System Profile",
       "SECURITY_PROFILE": "Security Profile",
@@ -6711,8 +7239,6 @@
       "VOCATION_PROFILE": "Vocation Profile",
       "WORK_PROFILE": "Work Profile",
       "SOCIAL_PROFILE": "Social Profile"
-
-
     },
     "PROGRESS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6731,7 +7257,13 @@
       "TODO": "To Progress",
       "FUTURE": "Will Progress",
       "PRESENT": "Progressing",
-      "PAST": "Progressed"
+      "PAST": "Progressed",
+      "NEGATIVE_PAST": "Unprogressed",
+      "[DIV_04]": "[------]",
+      "IN_PROGRESS": "In Progress",
+      "PROGRESS_INDICATOR": "Progress Indicator"
+
+
     },
     "PROHIBITIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6750,7 +7282,8 @@
       "TODO": "To Prohibit",
       "FUTURE": "Will Prohibit",
       "PRESENT": "Prohibiting",
-      "PAST": "Prohibited"
+      "PAST": "Prohibited",
+      "NEGATIVE_PAST": "Unprohibited"
     },
     "PROJECTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6767,9 +7300,10 @@
       "PLURAL": "Projects",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "PROMPTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6788,7 +7322,8 @@
       "TODO": "To Prompt",
       "FUTURE": "Will Prompt",
       "PRESENT": "Prompting",
-      "PAST": "Prompted"
+      "PAST": "Prompted",
+      "NEGATIVE_PAST": "Unprompted"
     },
     "PRONOUNS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6805,9 +7340,10 @@
       "PLURAL": "Pronouns",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "GENDER_INSTRUCTIONS": "Provide this identity's gender orientation",
       "GENDER_EXAMPLE": "Male",
@@ -6832,7 +7368,8 @@
       "TODO": "To Propose",
       "FUTURE": "Will Propose",
       "PRESENT": "Proposing",
-      "PAST": "Proposed"
+      "PAST": "Proposed",
+      "NEGATIVE_PAST": "Unproposed"
     },
     "PUBLISH": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6851,7 +7388,8 @@
       "TODO": "To Publish",
       "FUTURE": "Will Publish",
       "PRESENT": "Publishing",
-      "PAST": "Published"
+      "PAST": "Published",
+      "NEGATIVE_PAST": "Unpublished"
     },
     "PUNISHMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6870,7 +7408,8 @@
       "TODO": "To Punish",
       "FUTURE": "Will Punish",
       "PRESENT": "Punishing",
-      "PAST": "Punished"
+      "PAST": "Punished",
+      "NEGATIVE_PAST": "Unpunished"
     },
     "PURCHASES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6889,7 +7428,8 @@
       "TODO": "To Purchase",
       "FUTURE": "Will Purchase",
       "PRESENT": "Purchasing",
-      "PAST": "Purchased"
+      "PAST": "Purchased",
+      "NEGATIVE_PAST": "Unpurchased"
     },
     "PURCHASE_ORDERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6906,9 +7446,10 @@
       "PLURAL": "Purchase Orders",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "PURPOSES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -6925,9 +7466,10 @@
       "PLURAL": "Purpose",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "DWELLING": "Dwelling",
       "CLEANING": "Cleaning",
@@ -6958,6 +7500,7 @@
       "FUTURE": "Will Qualify",
       "PRESENT": "Qualifying",
       "PAST": "Qualified",
+      "NEGATIVE_PAST": "Unqualified",
       "[DIV_04]": "[------]",
       "ACCOUNTABLE": "Accountable",
       "ADAPTABLE": "Adaptable",
@@ -7019,6 +7562,7 @@
       "FUTURE": "Will Quantify",
       "PRESENT": "Quantifying",
       "PAST": "Quantified",
+      "NEGATIVE_PAST": "Unquantified",
       "[DIV_04]": "[------]",
       "ALL": "All",
       "WHOLE": "{{BASE.FRACTIONS.WHOLE}}",
@@ -7046,7 +7590,8 @@
       "TODO": "To Quarter",
       "FUTURE": "Will Quarter",
       "PRESENT": "Quartering",
-      "PAST": "Quartered"
+      "PAST": "Quartered",
+      "NEGATIVE_PAST": "Unquartered"
     },
     "QUERIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7065,7 +7610,8 @@
       "TODO": "To Query",
       "FUTURE": "Will Query",
       "PRESENT": "Querying",
-      "PAST": "Queryed"
+      "PAST": "Queryed",
+      "NEGATIVE_PAST": "Unqueryed"
     },
     "QUESTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7084,7 +7630,8 @@
       "TODO": "To Question",
       "FUTURE": "Will Question",
       "PRESENT": "Questioning",
-      "PAST": "Questioned"
+      "PAST": "Questioned",
+      "NEGATIVE_PAST": "Unquestioned"
     },
     "RATIOS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7103,7 +7650,8 @@
       "TODO": "To Ration",
       "FUTURE": "Will Ration",
       "PRESENT": "Rationing",
-      "PAST": "Rationed"
+      "PAST": "Rationed",
+      "NEGATIVE_PAST": "Unrationed"
     },
     "READ": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7122,7 +7670,11 @@
       "TODO": "To Read",
       "FUTURE": "Will Read",
       "PRESENT": "Reading",
-      "PAST": "Read"
+      "PAST": "Read",
+      "NEGATIVE_PAST": "Unread",
+      "[DIV_04]": "[------]",
+      "READ": "Read",
+      "UNREAD": "Unread"
     },
     "RECEIPTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7135,13 +7687,19 @@
       "[DIV_02]": "[------]",
       "ACTOR": "Recipient",
       "ACTORS": "Recipients",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Receipt",
       "PLURAL": "Receipts",
       "IMPERATIVE": "Receive",
       "TODO": "To Receive",
       "FUTURE": "Will Receive",
       "PRESENT": "Receiving",
-      "PAST": "Received"
+      "PAST": "Received",
+      "NEGATIVE_PAST": "Unreceived",
+      "[DIV_04]": "[------]",
+      "RECIPIENTS_USERNAME": "Recipient's Username",
+      "RECIPIENTS_USER_NAME": "Recipient's User Name",
+      "RECIPIENTS_EMAIL": "Recipient's Email"
     },
     "RECOMMENDATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7160,7 +7718,8 @@
       "TODO": "To Recommend",
       "FUTURE": "Will Recommend",
       "PRESENT": "Recommending",
-      "PAST": "Recommended"
+      "PAST": "Recommended",
+      "NEGATIVE_PAST": "Unrecommended"
     },
     "RECORDS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7179,7 +7738,8 @@
       "TODO": "To Record",
       "FUTURE": "Will Record",
       "PRESENT": "Recording",
-      "PAST": "Recorded"
+      "PAST": "Recorded",
+      "NEGATIVE_PAST": "Unrecorded"
     },
     "REDOS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7198,7 +7758,8 @@
       "TODO": "To Redo",
       "FUTURE": "Will Redo",
       "PRESENT": "Redoing",
-      "PAST": "Redone"
+      "PAST": "Redone",
+      "NEGATIVE_PAST": "Unredone"
     },
     "REFERALS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7217,7 +7778,8 @@
       "TODO": "To Refer",
       "FUTURE": "Will Refer",
       "PRESENT": "Refering",
-      "PAST": "Referred"
+      "PAST": "Referred",
+      "NEGATIVE_PAST": "Unreferred"
     },
     "REFERENCE_DATA": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7234,9 +7796,10 @@
       "PLURAL": "Reference Data",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "REFRESHMENTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7255,7 +7818,8 @@
       "TODO": "To Refresh",
       "FUTURE": "Will Refresh",
       "PRESENT": "Refreshing",
-      "PAST": "Refreshed"
+      "PAST": "Refreshed",
+      "NEGATIVE_PAST": "Unrefreshed"
     },
     "REFUNDS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7274,7 +7838,8 @@
       "TODO": "To Refund",
       "FUTURE": "Will Refund",
       "PRESENT": "Refunding",
-      "PAST": "Refunded"
+      "PAST": "Refunded",
+      "NEGATIVE_PAST": "Unrefunded"
     },
     "REGIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7291,9 +7856,10 @@
       "PLURAL": "Regions",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "REGULATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7310,9 +7876,10 @@
       "PLURAL": "Regulations",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "REJECTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7331,7 +7898,8 @@
       "TODO": "To Reject",
       "FUTURE": "Will Reject",
       "PRESENT": "Rejecting",
-      "PAST": "Rejected"
+      "PAST": "Rejected",
+      "NEGATIVE_PAST": "Unrejected"
     },
     "RELATIONSHIPS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7351,6 +7919,7 @@
       "FUTURE": "Will Relate",
       "PRESENT": "Relating",
       "PAST": "Related",
+      "NEGATIVE_PAST": "Unrelated",
       "[DIV_04]": "[------]",
       "ACQUAINTANCE": "{{BASE.ACQUAINTANCES.SINGULAR}}",
       "FRIEND": "{{BASE.FRIENDS.SINGULAR}}",
@@ -7404,9 +7973,10 @@
       "PLURAL": "Relatives",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "RELEASES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7425,10 +7995,29 @@
       "TODO": "To Release",
       "FUTURE": "Will Release",
       "PRESENT": "Releasing",
-      "PAST": "Released"
+      "PAST": "Released",
+      "NEGATIVE_PAST": "Unreleased"
     },
-
-
+    "RETIREMENTS": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "Retirer",
+      "ACTORS": "Retirers",
+      "SINGULAR": "Retirement",
+      "PLURAL": "Retirements",
+      "IMPERATIVE": "Retire",
+      "TODO": "To Retire",
+      "FUTURE": "Will Retire",
+      "PRESENT": "Retiring",
+      "PAST": "Retired",
+      "NEGATIVE_PAST": "Unretired"
+    },
     "REMOVALS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
       "[COMMENTS]": "[See ARITHMETICS,OPERATIONS, ADDITIONS,SUBTRACTIONS,MULTIPLICATIONS, DIVISIONS, INSERTIONS, MERGES, UNDOS]",
@@ -7447,6 +8036,7 @@
       "FUTURE": "Will Remove",
       "PRESENT": "Removing",
       "PAST": "Removed",
+      "NEGATIVE_PAST": "Unremoved",
       "[DIV_04]": "[------]",
       "REMOVE_FROM": "Remove From",
       "REMOVED_FROM": "Removed From",
@@ -7469,7 +8059,8 @@
       "TODO": "To Report",
       "FUTURE": "Will Report",
       "PRESENT": "Reporting",
-      "PAST": "Reported"
+      "PAST": "Reported",
+      "NEGATIVE_PAST": "Unreported"
     },
     "RESCINDS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7488,7 +8079,8 @@
       "TODO": "To Rescind",
       "FUTURE": "Will Rescind",
       "PRESENT": "Rescinding",
-      "PAST": "Rescinded"
+      "PAST": "Rescinded",
+      "NEGATIVE_PAST": "Unrescinded"
     },
     "RESENDS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7507,7 +8099,28 @@
       "TODO": "To Resend",
       "FUTURE": "Will Resend",
       "PRESENT": "Resending",
-      "PAST": "Resended"
+      "PAST": "Resended",
+      "NEGATIVE_PAST": "Unresended"
+    },
+    "RESOLUTIONS": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See ISSUES,ABANDOMENTS, PROCESSES]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "Resolver",
+      "ACTORS": "Resolvers",
+      "SINGULAR": "[N/A]",
+      "PLURAL": "[N/A]",
+      "IMPERATIVE": "Resolve",
+      "TODO": "To Resolve",
+      "FUTURE": "Will Resolve",
+      "PRESENT": "Resolveing",
+      "PAST": "Resolved",
+      "NEGATIVE_PAST": "Unresolved"
     },
     "RESPONSIBILITIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7527,6 +8140,7 @@
       "FUTURE": "Will Be Reposible For",
       "PRESENT": "Being Responsible For",
       "PAST": "Was Responsible For",
+      "NEGATIVE_PAST": "UnResponsible For",
       "[DIV_04]": "[------]",
       "RESPONSIBLE": "Responsible",
       "RESPONSIBILITY": "Responsibility",
@@ -7549,7 +8163,8 @@
       "TODO": "To Return",
       "FUTURE": "Will Return",
       "PRESENT": "Returning",
-      "PAST": "Returned"
+      "PAST": "Returned",
+      "NEGATIVE_PAST": "Unreturned"
     },
     "REVERTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7568,7 +8183,8 @@
       "TODO": "To Revert",
       "FUTURE": "Will Revert",
       "PRESENT": "Reverting",
-      "PAST": "Reverted"
+      "PAST": "Reverted",
+      "NEGATIVE_PAST": "Unreverted"
     },
     "REVIEWS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7588,6 +8204,7 @@
       "FUTURE": "Will Review",
       "PRESENT": "Reviewing",
       "PAST": "Reviewed",
+      "NEGATIVE_PAST": "Unreviewed",
       "[DIV_04]": "[------]",
       "REVIEWED_BY": "Reviewed By"
     },
@@ -7610,6 +8227,7 @@
       "FUTURE": "Will Revise",
       "PRESENT": "Reviewing",
       "PAST": "Reviewed",
+      "NEGATIVE_PAST": "Unreviewed",
       "[DIV_04]": "[------]",
       "REVISED_BY": "Revised By"
     },
@@ -7631,6 +8249,7 @@
       "FUTURE": "Will Revoke",
       "PRESENT": "Revoking",
       "PAST": "Revoked",
+      "NEGATIVE_PAST": "Unrevoked",
       "[DIV_04]": "[------]",
       "REVOKED_BY": "Revoked By"
     },
@@ -7651,7 +8270,8 @@
       "TODO": "To Reward",
       "FUTURE": "Will Reward",
       "PRESENT": "Rewarding",
-      "PAST": "Rewarded"
+      "PAST": "Rewarded",
+      "NEGATIVE_PAST": "Unrewarded"
     },
     "RISKS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7671,6 +8291,7 @@
       "FUTURE": "Will Risk",
       "PRESENT": "Risking",
       "PAST": "Risked",
+      "NEGATIVE_PAST": "Unrisked",
       "[DIV_04]": "[------]",
       "LIKELINESS": "{{BASE.LIKELINESS.SINGULAR}}",
       "IMPACT": "[IMPACTS.SINGULAR]"
@@ -7690,9 +8311,10 @@
       "PLURAL": "Roles",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "ROWS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7709,9 +8331,10 @@
       "PLURAL": "Rows",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "ROOMS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7730,7 +8353,8 @@
       "TODO": "To Room",
       "FUTURE": "Will Room",
       "PRESENT": "Rooming",
-      "PAST": "Romed",
+      "PAST": "Roomed",
+      "NEGATIVE_PAST": "Unroomed",
       "[DIV_04]": "[------]",
       "CLASSROOM": "Classroom",
       "ADMIN": "Admin"
@@ -7753,6 +8377,7 @@
       "FUTURE": "Will Sell",
       "PRESENT": "Selling",
       "PAST": "Sold",
+      "NEGATIVE_PAST": "Unsold",
       "[DIV_04]": "[------]",
       "LEAD": "Lead",
       "FORCAST": "Forcast",
@@ -7791,7 +8416,8 @@
       "TODO": "To Sail",
       "FUTURE": "Will Sail",
       "PRESENT": "Sailing",
-      "PAST": "Sailed"
+      "PAST": "Sailed",
+      "NEGATIVE_PAST": "Unsailed"
     },
     "SAVES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7812,6 +8438,7 @@
       "FUTURE": "Will Save",
       "PRESENT": "Saving",
       "PAST": "Saved",
+      "NEGATIVE_PAST": "Unsaved",
       "[DIV_04]": "[------]",
       "SAVE": "Save",
       "SAVE!": "Save!"
@@ -7834,6 +8461,7 @@
       "FUTURE": "Will Schedule",
       "PRESENT": "Scheduling",
       "PAST": "Scheduled",
+      "NEGATIVE_PAST": "Unscheduled",
       "[DIV_04]": "[------]",
       "DAILY": "Daily",
       "WEEKLY": "Weekly",
@@ -7858,7 +8486,8 @@
       "TODO": "To Schema",
       "FUTURE": "Will Schema",
       "PRESENT": "Scheming",
-      "PAST": "Schemed"
+      "PAST": "Schemed",
+      "NEGATIVE_PAST": "Unschemed"
     },
     "SCHOOLS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7878,6 +8507,7 @@
       "FUTURE": "Will School",
       "PRESENT": "Schooling",
       "PAST": "Schooled",
+      "NEGATIVE_PAST": "Unschooled",
       "[DIV_04]": "[------]",
       "PUBLIC": "Public",
       "PRIVATE": "Private",
@@ -7905,7 +8535,8 @@
       "TODO": "To Score",
       "FUTURE": "Will Score",
       "PRESENT": "Scoring",
-      "PAST": "Scored"
+      "PAST": "Scored",
+      "NEGATIVE_PAST": "Unscored"
     },
     "SEARCHES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7925,6 +8556,7 @@
       "FUTURE": "Will Search",
       "PRESENT": "Searching",
       "PAST": "Schearched",
+      "NEGATIVE_PAST": "Unschearched",
       "[DIV_04]": "[------]",
       "VIEW_ALL_RESULTS": "View all results",
       "SEARCH_RESULT": "Search Result",
@@ -7948,7 +8580,28 @@
       "TODO": "To Section",
       "FUTURE": "Will Section",
       "PRESENT": "Sectioning",
-      "PAST": "Sectioned"
+      "PAST": "Sectioned",
+      "NEGATIVE_PAST": "Unsectioned"
+    },
+    "SECURITIES": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See SETTINGS, PREFERENCES, ROLES]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "[N/A]",
+      "ACTORS": "[N/A]",
+      "SINGULAR": "Security",
+      "PLURAL": "Securities",
+      "IMPERATIVE": "Secure",
+      "TODO": "To Secure",
+      "FUTURE": "Will Secure",
+      "PRESENT": "Securing",
+      "PAST": "Secured",
+      "NEGATIVE_PAST": "Unsecured"
     },
     "SEE": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7967,7 +8620,10 @@
       "TODO": "To See",
       "FUTURE": "Will See",
       "PRESENT": "Seeing",
-      "PAST": "Saw"
+      "PAST": "Seen",
+      "NEGATIVE_PAST": "Unseen",
+      "[DIV_04]": "[------]",
+      "UNSEEN": "Unseen"
     },
     "SEEK": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -7986,7 +8642,8 @@
       "TODO": "To Seek",
       "FUTURE": "Will Seek",
       "PRESENT": "Seeking",
-      "PAST": "Seeked"
+      "PAST": "Seeked",
+      "NEGATIVE_PAST": "Unseeked"
     },
     "SELECTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8005,7 +8662,8 @@
       "TODO": "To Select",
       "FUTURE": "Will Select",
       "PRESENT": "Selecting",
-      "PAST": "Selected"
+      "PAST": "Selected",
+      "NEGATIVE_PAST": "Unselected"
     },
     "SELLERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8025,6 +8683,7 @@
       "FUTURE": "Will Sell",
       "PRESENT": "Selling",
       "PAST": "Sold",
+      "NEGATIVE_PAST": "Unsold",
       "[DIV_04]": "[------]",
       "DETAILS": "Seller's Details"
     },
@@ -8045,7 +8704,8 @@
       "TODO": "To Send",
       "FUTURE": "Will Send",
       "PRESENT": "Sending",
-      "PAST": "Sent"
+      "PAST": "Sent",
+      "NEGATIVE_PAST": "Unsent"
     },
     "SEQUENCES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8065,6 +8725,7 @@
       "FUTURE": "Will Sequence",
       "PRESENT": "Sequencing",
       "PAST": "Sequenced",
+      "NEGATIVE_PAST": "Unsequenced",
       "[DIV_04]": "[------]",
       "PREPARE": "Prepare",
       "BEGIN": "Begin",
@@ -8076,7 +8737,7 @@
     "SETTINGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
       "[COMMENTS]": "System (generally Account/Tenancy-specific) Settings. See difference with PROFILE.]",
-      "[ABOUT]": "[]",
+      "[ABOUT]": "[See CONFIGURATION, PREFERENCES. Configuration is immutable, generally, whereas SETTINGS are mutable ]",
       "[DIV_01]": "[------]",
       "EXPLANATION": "",
       "INSTRUCTIONS": "",
@@ -8092,8 +8753,14 @@
       "FUTURE": "Will Set",
       "PRESENT": "Setting",
       "PAST": "Set",
-      "[DIV_04]": "[------]"
-
+      "NEGATIVE_PAST": "Unset",
+      "[DIV_04]": "[------]",
+      "SYSTEM_SETTINGS": "{{BASE.SYSTEMS.SINGULAR}} {{BASE.SETTINGS.PLURAL}}",
+      "ACCOUNT_SETTINGS": "{{BASE.ACCOUNTS.SINGULAR}} {{BASE.SETTINGS.PLURAL}}",
+      "USER_SETTINGS": "{{BASE.USES.SINGULAR}} {{BASE.SETTINGS.PLURAL}}",
+      "GROUP_SETTINGS": "{{BASE.GROUP.SINGULAR}} {{BASE.SETTINGS.PLURAL}}",
+      "GROUPS_SETTINGS": "{{BASE.GROUPS.SINGULAR}} {{BASE.SETTINGS.PLURAL}}",
+      "SECURITY_SETTINGS": "{{BASE.SECURITIES.SINGULAR}} {{BASE.SETTINGS.PLURAL}}"
     },
     "SETUPS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8113,6 +8780,7 @@
       "FUTURE": "Will Setup",
       "PRESENT": "Setting",
       "PAST": "Setup",
+      "NEGATIVE_PAST": "Unsetup",
       "[DIV_04]": "[------]",
       "HOW_TO_SETUP": "How to Setup"
     },
@@ -8131,9 +8799,10 @@
       "PLURAL": "Sexes",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "SHIPPING": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8153,6 +8822,7 @@
       "FUTURE": "Will Ship",
       "PRESENT": "Shipping",
       "PAST": "Shipped",
+      "NEGATIVE_PAST": "Unshipped",
       "[DIV_04]": "[------]",
       "STANDARD": "Standard",
       "EXPEDITED": "Expedited",
@@ -8177,6 +8847,7 @@
       "FUTURE": "Will Shop",
       "PRESENT": "Shopping",
       "PAST": "Shopped",
+      "NEGATIVE_PAST": "Unshopped",
       "[DIV_04]": "[------]",
       "EMPTY": "Empty",
       "CART": "Cart",
@@ -8211,9 +8882,10 @@
       "PLURAL": "Siblings",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "SIGHT": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8233,12 +8905,13 @@
       "FUTURE": "Will Sight",
       "PRESENT": "Sighting",
       "PAST": "Sighted",
+      "NEGATIVE_PAST": "Unsighted",
       "[DIV_04]": "[------]",
-      "UNSEEN": "Unseen",
-      "UNREAD": "Unread",
-      "VIEW": "View",
-      "[SeeN": "[Seen",
-      "READ": "Read"
+      "SEEN": "{{BASE.SEE.PAST}}",
+      "UNSEEN": "{{BASE.SEE.UNSEEN}}",
+      "READ": "{{BASE.READ.PAST}}",
+      "UNREAD": "{{BASE.READ.UNREAD}}",
+      "VIEW": "View"
     },
     "SIGN_UPS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8259,6 +8932,7 @@
       "FUTURE": "Will Signup",
       "PRESENT": "Signing Up",
       "PAST": "Signed Up",
+      "NEGATIVE_PAST": "Unsigned Up",
       "[DIV_04]": "[------]",
       "SIGN_UP_WITH": "Sign Up With",
       "SIGN_UP_WITH_": "Sign up with"
@@ -8281,6 +8955,7 @@
       "FUTURE": "Will Sign In",
       "PRESENT": "Signing In",
       "PAST": "Signed In",
+      "NEGATIVE_PAST": "Unsigned In",
       "[DIV_04]": "[------]",
       "SIGN_IN_WITH": "Sign In With",
       "SIGN_IN_WITH_": "Sign in with",
@@ -8304,6 +8979,7 @@
       "FUTURE": "Will Sign Out",
       "PRESENT": "Signing Out",
       "PAST": "Signed Out",
+      "NEGATIVE_PAST": "Unsigned Out",
       "[DIV_04]": "[------]",
       "YOU_ARE_SIGNED_OUT": "You are signed out"
     },
@@ -8323,9 +8999,10 @@
       "PLURAL": "Sites",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "SITEMAPS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8343,9 +9020,10 @@
       "DESCRIPTION": "Where you are.",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "SIZES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8365,6 +9043,7 @@
       "FUTURE": "Will Size",
       "PRESENT": "Sizing",
       "PAST": "Sized",
+      "NEGATIVE_PAST": "Unsized",
       "[DIV_04]": "[------]",
       "XTRA_SMALL": "Extra Small",
       "XTRA_SMALL_ALT1": "Scout",
@@ -8406,9 +9085,10 @@
       "PLURAL": "Social Media",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "LINKEDIN": "LinkedIn",
       "X": "Handle",
@@ -8430,9 +9110,10 @@
       "PLURAL": "Spaces",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "SPACING": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8452,6 +9133,7 @@
       "FUTURE": "Will Space",
       "PRESENT": "Spacing",
       "PAST": "Spaced",
+      "NEGATIVE_PAST": "Unspaced",
       "[DIV_04]": "[------]",
       "COMPACT": "Compact",
       "REGULAR": "Regular",
@@ -8474,7 +9156,8 @@
       "TODO": "To Sponsor",
       "FUTURE": "Will Sponsor",
       "PRESENT": "Sponsoring",
-      "PAST": "Sponsored"
+      "PAST": "Sponsored",
+      "NEGATIVE_PAST": "Unsponsored"
     },
     "STAKEHOLDERS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8491,9 +9174,10 @@
       "PLURAL": "Stakeholders",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "CONSUMER": "Service Consumer",
       "BUSINESS": "Service Provider",
       "CUSTOMER_SUPPORT": "Customer Support",
@@ -8518,9 +9202,10 @@
       "PLURAL": "Statements",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "PRIVACY": "Privacy Statement",
       "COOKIE": "Cookie Statement",
       "DATA_USE": "Data Use Statement"
@@ -8536,6 +9221,7 @@
       "[DIV_02]": "[------]",
       "ACTOR": "[N/A]",
       "ACTORS": "[N/A]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "State",
       "PLURAL": "States",
       "IMPERATIVE": "State",
@@ -8543,28 +9229,30 @@
       "FUTURE": "Will State",
       "PRESENT": "Stating",
       "PAST": "Stated",
-      "DRAFTED": "Drafted",
-      "EXCLUDED": "Excluded",
-      "IGNORED": "Ignored",
-      "MANAGED": "Managed",
-      "IN_PROGRESS": "In Progress",
-      "ABANDONED": "Abandoned",
-      "REJECTED": "Rejected",
-      "APPROVED": "Approved",
-      "PUBLISHED": "Published",
-      "ENDORSED": "Endorsed",
-      "MERGED": "Merged",
-      "REMOVED": "Removed",
-      "RETIRED": "Retired",
+      "NEGATIVE_PAST": "Unstated",
+      "[DIV_04]": "[------]",
+      "DRAFTED": "{{BASE.DRAFTS.PAST}}",
+      "EXCLUDED": "{{BASE.EXCLUDES.PAST}}",
+      "IGNORED": "{{BASE.IGNORES.PAST}}",
+      "MANAGED": "{{BASE.MANAGEMENT.PAST}}",
+      "IN_PROGRESS": "{{BASE.PROGRESS.IN_PROGRESS}}",
+      "ABANDONED": "{{BASE.ABANDONMENTS.PAST}}",
+      "REJECTED": "{{BASE.REJECTIONS.PAST}}",
+      "APPROVED": "{{BASE.APPROVALS.PAST}}",
+      "PUBLISHED": "{{BASE.PUBLISHED.PAST}}",
+      "ENDORSED": "{{BASE.ENDORSEMENTS.PAST}}",
+      "MERGED": "{{BASE.MERGES.PAST}}",
+      "REMOVED": "{{BASE.REMOVALS.PAST}}",
+      "RETIRED": "{{BASE.RETIREMENTS.PAST}}",
       "LEGACY": "Legacy",
-      "ARCHIVED": "Archived",
-      "READ": "Read",
-      "UNREAD": "Unread",
+      "ARCHIVED": "{{BASE.ARCHIVING.PAST}}",
+      "READ": "{{BASE.READ.PAST}}",
+      "UNREAD": "{{BASE.READ.UNREAD}}",
       "NO_NEW_": "No New"
     },
     "STATUS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
-      "[COMMENTS]": "Often displayed as part of the Layout frame. See CONTEXT Area.]",
+      "[COMMENTS]": "Often displayed as part of the Layout frame. See CONTEXT Area. See GOALS, OBJECTIEVS, OBJECTIVES, OUTCOMES, OUTPUTS]",
       "[ABOUT]": "[]",
       "[DIV_01]": "[------]",
       "DESCRIPTION": "Current state of last operation, account, system.",
@@ -8579,9 +9267,10 @@
       "PLURAL": "Statuses",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "NEW": "New",
       "ENABLED": "ENABLEMENTS.PAST]",
@@ -8613,7 +9302,8 @@
       "TODO": "To Study",
       "FUTURE": "Will Study",
       "PRESENT": "Studying",
-      "PAST": "Studied"
+      "PAST": "Studied",
+      "NEGATIVE_PAST": "Unstudied"
     },
     "SUBJECTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8633,6 +9323,7 @@
       "FUTURE": "Will Subject",
       "PRESENT": "Subjecting",
       "PAST": "Subjected",
+      "NEGATIVE_PAST": "Unsubjected",
       "PLACEHOLDER_REQUIRED": "Subject*..."
     },
     "SUBSCRIPTIONS": {
@@ -8653,6 +9344,7 @@
       "FUTURE": "Will Subscribe",
       "PRESENT": "Subscribing",
       "PAST": "Subscribed",
+      "NEGATIVE_PAST": "Unsubscribed",
       "SIZING": "{{BASE.SIZES.PRESENT}}"
     },
     "SUBTRACTIONS": {
@@ -8673,6 +9365,7 @@
       "FUTURE": "Will Subtract",
       "PRESENT": "Subtracting",
       "PAST": "Subtracted",
+      "NEGATIVE_PAST": "Unsubtracted",
       "[DIV_04]": "[------]",
       "SUBTRACT_FROM": "Subtract from",
       "SUBTRACTED_FROM": "Subtracted from"
@@ -8694,7 +9387,8 @@
       "TODO": "To Suggest",
       "FUTURE": "Will Suggest",
       "PRESENT": "Suggesting",
-      "PAST": "Suggested"
+      "PAST": "Suggested",
+      "NEGATIVE_PAST": "Unsuggested"
     },
     "SUPPORTS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8715,6 +9409,7 @@
       "FUTURE": "Will Support",
       "PRESENT": "Supporting",
       "PAST": "Supported",
+      "NEGATIVE_PAST": "Unsupported",
       "SUPPORTER": "Supporter",
       "SUPPORTERS": "Supporters"
     },
@@ -8735,7 +9430,8 @@
       "TODO": "To Supply",
       "FUTURE": "Will Supply",
       "PRESENT": "Supplying",
-      "PAST": "Supplied"
+      "PAST": "Supplied",
+      "NEGATIVE_PAST": "Unsupplied"
     },
     "SYSTEMS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8754,7 +9450,8 @@
       "TODO": "To systematize",
       "FUTURE": "Will systematize",
       "PRESENT": "Systematizing",
-      "PAST": "Systematized"
+      "PAST": "Systematized",
+      "NEGATIVE_PAST": "Unsystematized"
     },
     "TAGS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8773,7 +9470,8 @@
       "TODO": "To Tag",
       "FUTURE": "Will Tag",
       "PRESENT": "Tagging",
-      "PAST": "Tagged"
+      "PAST": "Tagged",
+      "NEGATIVE_PAST": "Untagged"
     },
     "TASKS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8793,6 +9491,7 @@
       "FUTURE": "Will Do",
       "PRESENT": "Doing",
       "PAST": "Done",
+      "NEGATIVE_PAST": "Undone",
       "DESCRIPTION": "Tasks to accomplish projects",
       "TITLE_INSTRUCTIONS": "",
       "TITLE_PLACEHOLDER": "",
@@ -8843,7 +9542,8 @@
       "TODO": "To Teach",
       "FUTURE": "Will Teach",
       "PRESENT": "Teaching",
-      "PAST": "Taught"
+      "PAST": "Taught",
+      "NEGATIVE_PAST": "Untaught"
     },
     "TEAMS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8860,9 +9560,10 @@
       "PLURAL": "Teams",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "THE_TEAM": "The Team",
       "OUR_TEAM": "Our Team"
@@ -8884,7 +9585,8 @@
       "TODO": "To Template",
       "FUTURE": "Will Template",
       "PRESENT": "Templating",
-      "PAST": "Templated"
+      "PAST": "Templated",
+      "NEGATIVE_PAST": "Untemplated"
     },
     "TERMS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8901,9 +9603,10 @@
       "PLURAL": "Terms",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "TERMS_AND_CONDITIONS": "Terms And Conditions",
       "TERMS_OF_USE": "Terms Of Use",
       "TERMS_OF_SERVICE": "Terms Of Service"
@@ -8925,7 +9628,8 @@
       "TODO": "To Test",
       "FUTURE": "Will Test",
       "PRESENT": "Testing",
-      "PAST": "Tested"
+      "PAST": "Tested",
+      "NEGATIVE_PAST": "Untested"
     },
     "TENANCIES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -8945,6 +9649,7 @@
       "IMPERATIVE": "Tenant",
       "PRESENT": "Tenanting",
       "PAST": "Tenanted",
+      "NEGATIVE_PAST": "Untenanted",
       "FIELDS": {
         "TENANCY_INSTRUCTIONS": "Please provide the account name:",
         "TENANCY_PLACEHOLDER": "Account Title"
@@ -8968,6 +9673,7 @@
       "FUTURE": "Will Theme",
       "PRESENT": "Theming",
       "PAST": "Themed",
+      "NEGATIVE_PAST": "Unthemed",
       "CUSTOMISER": "Theme Customiser",
       "LAYOUT": "Layout",
       "COLOUR_SCHEME": "Colour Scheme",
@@ -8999,6 +9705,7 @@
       "FUTURE": "Will Time",
       "PRESENT": "Timing",
       "PAST": "Timed",
+      "NEGATIVE_PAST": "Untimed",
       "HOUR": "Hour",
       "HOURS": "Hours",
       "MINUTE": "Minute",
@@ -9029,9 +9736,10 @@
       "DESCRIPTION": "Our expected timeline of when we'll be adding features...",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "TODOS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -9050,7 +9758,8 @@
       "TODO": "To Do",
       "FUTURE": "Will Do",
       "PRESENT": "Doing",
-      "PAST": "Done"
+      "PAST": "Done",
+      "NEGATIVE_PAST": "Undone"
     },
     "TRANSACTIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -9071,6 +9780,7 @@
       "FUTURE": "Will Transact",
       "PRESENT": "Transacting",
       "PAST": "Transacted",
+      "NEGATIVE_PAST": "Untransacted",
       "[DIV_04]": "[------]",
       "GIFT": "Gift",
       "TRIAL": "Trial",
@@ -9095,7 +9805,8 @@
       "TODO": "To Transfer",
       "FUTURE": "Will Transfer",
       "PRESENT": "Transfering",
-      "PAST": "Transfered"
+      "PAST": "Transfered",
+      "NEGATIVE_PAST": "Untransfered"
     },
     "TRUST": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -9116,6 +9827,7 @@
       "FUTURE": "Will Trust",
       "PRESENT": "Trusting",
       "PAST": "Trusted",
+      "NEGATIVE_PAST": "Untrusted",
       "[DIV_04]": "[------]",
       "TRUSTED_BY": "Trusted by"
     },
@@ -9136,7 +9848,8 @@
       "TODO": "To Undo",
       "FUTURE": "Will Undo",
       "PRESENT": "Undoing",
-      "PAST": "Undone"
+      "PAST": "Undone",
+      "NEGATIVE_PAST": "Unundone"
     },
     "UNLOCKS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -9155,7 +9868,8 @@
       "TODO": "To Unock",
       "FUTURE": "Will Unock",
       "PRESENT": "Unlocking",
-      "PAST": "Unlocked"
+      "PAST": "Unlocked",
+      "NEGATIVE_PAST": "Ununlocked"
     },
 
     "UI": {
@@ -9172,10 +9886,11 @@
       "SINGULAR": "UI",
       "PLURAL": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "IMPERATIVE": "[N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "ELEMENTS": {
         "SINGULAR": "",
         "PLURAL": "",
@@ -9228,7 +9943,7 @@
         "TRANSFORMATION": "Transformation",
         "LINE": "Line",
         "POINT": "Point",
-        "PROGRESS_INDICATOR": "Progress indicator",
+        "PROGRESS_INDICATOR": "{{BASE.PROGRESS.PROGRESS_INDICATOR}}",
         "WAIT_INDICATOR": "Wait indicator"
       }
     },
@@ -9249,9 +9964,10 @@
       "TODO": "To Update",
       "FUTURE": "Will Update",
       "PRESENT": "Updating",
-      "PAST": "Updated"
+      "PAST": "Updated",
+      "NEGATIVE_PAST": "Unupdated"
     },
-    "USE": {
+    "USES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
       "[COMMENTS]": "[]",
       "[ABOUT]": "[]",
@@ -9268,7 +9984,28 @@
       "TODO": "To Use",
       "FUTURE": "Will Use",
       "PRESENT": "Using",
-      "PAST": "Used"
+      "PAST": "Used",
+      "NEGATIVE_PAST": "Unused"
+    },
+    "USERS": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "",
+      "PLACEHOLDER": "",
+      "[DIV_02]": "[------]",
+      "ACTOR": "{{BASE.USES.ACTOR}}",
+      "ACTORS": "{{BASE.USES.ACTORS}}",
+      "SINGULAR": "{{BASE.USES.SINGULAR}}",
+      "PLURAL": "{{BASE.USES.PLURAL}}",
+      "IMPERATIVE": "{{BASE.USES.IMPERATIVE}}",
+      "TODO": "{{BASE.USES.TODO}}",
+      "FUTURE": "{{BASE.USES.FUTURE}}",
+      "PRESENT": "{{BASE.USES.PRESENT}}",
+      "PAST": "{{BASE.USES.PAST}}",
+      "NEGATIVE_PAST": "{{BASE.USES.NEGATIVE}}"
     },
     "USERNAMES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -9277,7 +10014,7 @@
       "[DIV_01]": "[------]",
       "EXPLANATION": "",
       "INSTRUCTIONS": "Provide your system user name",
-      "PLACEHOLDER": "Enter your user name",
+      "PLACEHOLDER": "Provide your user name",
       "[DIV_02]": "[------]",
       "ACTOR": "User",
       "ACTORS": "Users",
@@ -9286,12 +10023,14 @@
       "PLURAL": "User names",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "[DIV_04]": "[------]",
       "ERROR_01": "A user name is required",
-      "ERROR_02": "The User name format is unrecognised"
+      "ERROR_02": "The User name format is unrecognised",
+      "USERNAME": "User name"
     },
 
 
@@ -9314,6 +10053,7 @@
       "FUTURE": "Will Value",
       "PRESENT": "Valuing",
       "PAST": "Valued",
+      "NEGATIVE_PAST": "Unvalued",
       "[DIV_04]": "[------]",
       "COURAGE": "Courage",
       "HONESTY": "Honesty",
@@ -9360,9 +10100,10 @@
       "PLURAL": "Validations",
       "IMPERATIVE": "Validate",
       "TODO": "Validating",
-      "FUTURE": "WILL Validating",
+      "FUTURE": "Will Validating",
       "PRESENT": "Validating",
       "PAST": "Validated",
+      "NEGATIVE_PAST": "Unvalidated",
       "[DIV_04]": "[------]",
       "REQUIRED": "Required",
       "INCORRECT_FORMAT": "Incorrect format",
@@ -9393,6 +10134,7 @@
       "FUTURE": "Will View",
       "PRESENT": "Viewing",
       "PAST": "Viewed",
+      "NEGATIVE_PAST": "Unviewed",
       "VIEW": "View",
       "VIEW_ALL": "View All"
     },
@@ -9411,9 +10153,10 @@
       "PLURAL": "Vehicles",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
       "BOAT": "Boat",
       "WHEELBARROW": "Wheelbarrow",
       "SKATEBOARD": "Bicycle",
@@ -9440,9 +10183,10 @@
       "PLURAL": "Vendors",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "VERIFICATIONS": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -9462,7 +10206,28 @@
       "TODO": "To be Verified",
       "FUTURE": "Will be Verified",
       "PRESENT": "Verified",
-      "PAST": "Verified"
+      "PAST": "Verified",
+      "NEGATIVE_PAST": "Unverified"
+    },
+    "VISIONS": {
+      "[LAST_EDITED]": "[v24.12.19.00]",
+      "[COMMENTS]": "[See GOALS, PRINCIPLES, ENVISIONS]",
+      "[ABOUT]": "[]",
+      "[DIV_01]": "[------]",
+      "EXPLANATION": "",
+      "INSTRUCTIONS": "Please provide a vision statement",
+      "PLACEHOLDER": "Vision statement",
+      "[DIV_02]": "[------]",
+      "ACTOR": "Visionairy",
+      "ACTORS": "Visionairies",
+      "SINGULAR": "Vision",
+      "PLURAL": "Visions",
+      "IMPERATIVE": "[N/A]",
+      "TODO": "[N/A]",
+      "FUTURE": "Will [N/A]",
+      "PRESENT": "[N/A]",
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
 
     "UNAVAILABLE": {
@@ -9481,9 +10246,10 @@
       "PLURAL": "[N/A]",
       "IMPERATIVE": "[N/A]",
       "TODO": "Will be unavailable",
-      "FUTURE": "WILL Will be unavailable",
+      "FUTURE": "Will Will be unavailable",
       "PRESENT": "Is Unavailable",
-      "PAST": "Was Unavailable"
+      "PAST": "Was Unavailable",
+      "NEGATIVE_PAST": "Available"
     },
     "WEATHER": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -9497,13 +10263,16 @@
       "[DIV_02]": "[------]",
       "ACTOR": "[N/A]",
       "ACTORS": "[N/A]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Weather",
       "PLURAL": "[N/A]",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
       "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]",
+      "[DIV_04]": "[------]",
       "SUN": "Sun",
       "MOON": "Moon",
       "CLOUDS": "Clouds",
@@ -9533,9 +10302,10 @@
       "PLURAL": "Weeks",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     },
     "WELCOMES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -9556,6 +10326,7 @@
       "FUTURE": "Will Welcome",
       "PRESENT": "Welcoming",
       "PAST": "Welcomed",
+      "NEGATIVE_PAST": "Unwelcomed",
       "[DIV_04]": "[------]",
       "WELCOME_BACK": "Welcome Back",
       "WELCOME_BACK_": "Welcome back",
@@ -9581,7 +10352,8 @@
       "TODO": "To Win",
       "FUTURE": "Will Win",
       "PRESENT": "Winning",
-      "PAST": "Won"
+      "PAST": "Won",
+      "NEGATIVE_PAST": "Unwon"
     },
     "WORK": {
       "[LAST_EDITED]": "[v24.12.19.00]",
@@ -9602,10 +10374,11 @@
       "FUTURE": "Will Work",
       "PRESENT": "Working",
       "PAST": "Worked",
+      "NEGATIVE_PAST": "Unworked",
       "EFFORT": "Effort",
       "SKILL": "Skill",
       "ASSESSMENT": "Assessment",
-      "PROGRESS": "Progress",
+      "PROGRESS": "{{BASE.PROGRESS.SINGULAR}}",
       "IMPROVEMENT": "Improvement"
     },
     "YEARS": {
@@ -9623,9 +10396,10 @@
       "PLURAL": "Years",
       "IMPERATIVE": "[N/A]",
       "TODO": "[N/A]",
-      "FUTURE": "WILL [N/A]",
+      "FUTURE": "Will [N/A]",
       "PRESENT": "[N/A]",
-      "PAST": "[N/A]"
+      "PAST": "[N/A]",
+      "NEGATIVE_PAST": "[N/A]"
     }
   },
   "APPS": {
@@ -9639,18 +10413,19 @@
       "INSTRUCTIONS": "",
       "PLACEHOLDER": "",
       "[DIV_02]": "[------]",
-      "SINGULAR": "App",
-      "PLURAL": "Apps",
+      "SINGULAR": "{{BASE.APPS.SINGULAR}}",
+      "PLURAL": "{{BASE.ARCHITECTURES.PLURAL}}",
       "DESCRIPTION": ""
     },
     "ARCHITECTURE": {
       "[ABOUT]": "[]",
+      "TITLE": "{{BASE.ARCHITECTURES.SINGULAR}}",
       "EXPLANATION": "",
       "INSTRUCTIONS": "",
       "PLACEHOLDER": "",
       "[DIV_02]": "[------]",
-      "SINGULAR": "Architecture",
-      "PLURALS": "Architectures",
+      "SINGULAR": "{{BASE.ARCHITECTURES.SINGULAR}}",
+      "PLURALS": "{{BASE.ARCHITECTURES.PLURAL}}",
       "DESCRIPTION": ""
     },
     "EDUCATION": {
@@ -9660,7 +10435,7 @@
       "EXPLANATION": "",
       "INSTRUCTIONS": "",
       "PLACEHOLDER": "",
-      "SINGULAR": "Education"
+      "SINGULAR": "{{BASE.ARCHITECTURES.SINGULAR}}"
     },
     "HEALTH": {
       "[ABOUT]": "[]",
@@ -9668,16 +10443,20 @@
       "EXPLANATION": "",
       "INSTRUCTIONS": "",
       "PLACEHOLDER": "",
-      "SINGULAR": "Health",
+      "SINGULAR": "{{BASE.HEALTH.SINGULAR}}",
       "DESCRIPTION": ""
     }
   },
+
+
+
+
   "CUSTOM": {
     "SITE": {
       "HOME": {
         "INTRO": {
           "TITLE": "BASE",
-          "DESCRIPTION": "The better way to build {{ BASE.VALUES.SINGULAR  }}. //Embedding a token.",
+          "DESCRIPTION": "The better way to build {{ BASE.VALUES.SINGULAR  }}. //Example of embedding a token.",
           "MORE": ""
         },
         "CAPABILITIES": {

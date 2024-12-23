@@ -1,5 +1,6 @@
 // Ag:
 import { Component, ViewChild, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
+import {CommonModule} from '@angular/common'; 
 // Etc:
 import { Store } from '@ngrx/store';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';

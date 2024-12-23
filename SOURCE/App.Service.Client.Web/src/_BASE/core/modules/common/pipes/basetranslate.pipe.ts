@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+//import { resolve } from 'path';
 
 /**
  * Angular Pipe to translate a key and recursively resolve nested keys.
@@ -38,7 +39,14 @@ export class BaseTranslatePipe implements PipeTransform {
     }
 
     let translatedValue : string= this.translate.instant(key);
-    translatedValue = translatedValue.split('//')[0].trim();
+    //translatedValue = translatedValue.split('//')[0].trim();
+
+    //const pattern = /^(?!https?:\/\/.*)(.*?)(?=\/\/)/;
+    //const pattern = /^(?!https?:[0-9]*\/\/)(.*?)(?=\/\/)/;
+    const pattern = /^(.*?)(?<!https?:[0-9]*)\/\/.*$/;
+
+    translatedValue = translatedValue.match(pattern) ? translatedValue.match(pattern)![1] : translatedValue;
+
 
     // If no nested keys, return the translated value
     if (!this.containsNestedKeys(translatedValue)) {
@@ -46,9 +54,13 @@ export class BaseTranslatePipe implements PipeTransform {
     }
 
     // Resolve nested keys in the translated value
-    const resolvedValue = this.replaceNestedKeys(translatedValue, depth);
+    let resolvedValue : string = this.replaceNestedKeys(translatedValue, depth);
+
+    resolvedValue = (resolvedValue == "[N/A]") ? `[@${key}]` : resolvedValue;
+    resolvedValue = (resolvedValue == "") ? `@${key}` : resolvedValue;
 
     return resolvedValue;
+
   }
 
   /**

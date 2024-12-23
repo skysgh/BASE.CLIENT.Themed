@@ -1,6 +1,6 @@
 // Ag:
 import { Component, Inject, OnInit } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
+import { CommonModule, DOCUMENT } from '@angular/common'; 
 // Etc:
 import { Store } from '@ngrx/store';
 import { TranslateService } from "@ngx-translate/core";

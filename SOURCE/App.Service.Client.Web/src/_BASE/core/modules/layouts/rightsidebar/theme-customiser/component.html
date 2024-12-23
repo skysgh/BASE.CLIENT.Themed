@@ -2,7 +2,11 @@
 <ng-template #filtetcontent let-offcanvas>
   <div class="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header">
     <h5 class="m-0 me-2 text-white">{{'BASE.THEMES.CUSTOMISER'| baseTranslate}}</h5>
-    <button type="button" class="btn-close btn-close-white ms-auto " data-bs-dismiss="offcanvas" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+    <button type="button"
+            class="btn-close btn-close-white ms-auto "
+            data-bs-dismiss="offcanvas"
+            [attr.aria-label]="'BASE.ACTIONS.CLOSE' | baseTranslate"
+            (click)="offcanvas.dismiss('Cross click')"></button>
   </div>
   <div class="offcanvas-body p-0">
     <ngx-simplebar class="h-100">
