@@ -5,12 +5,12 @@ theme files, a new module and routing base is defined
 here.
 
 
-
 In a demo, everythings starts simple, with one primary type...
 and then quickly gets more complicated, with an app containing
 several primary entities. Each requiring their own set of BREAD views,
 etc.
-YOu either end up with a *lot* of files (components,html,css) 
+
+Yiu either end up with a *lot* of files (components,html,css) 
 in one folder, or you divie it up with folders. 
 As we have done.
 

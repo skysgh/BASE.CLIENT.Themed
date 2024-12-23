@@ -287,7 +287,7 @@ export const MENU: IHasMenuItem[] =
         {
           id: 402,
           parentId: 40,
-          title: 'BASE.TENANCIES.PLURAL',
+          title: 'BASE.ACCOUNTS.PLURAL',
           description: '...',
           link: system.navigation.settings.tenancy,
         },

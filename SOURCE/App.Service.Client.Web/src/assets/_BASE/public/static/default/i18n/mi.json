@@ -2,6 +2,7 @@
   "BASE": {
     "ACCESSES": {
       "__COMMENTS": "[v24.04.24.00.  See also ROLES, COMMERCE/ROLES, STATES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakauru",
       "PLURAL": "Whakauru",
       "DESCRIPTION": "Whakarārangi Ngā Whakauru",
@@ -12,6 +13,7 @@
     },
     "ACCEPTANCES": {
       "__COMMENTS": "[[v24.04.24.00.  See RECOMMENDATIONS, APPLICATIONS, INVITATIONS, APPROVALS]]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaaetanga",
       "PLURAL": "Whakaaetanga",
       "DESCRIPTION": "Whakarārangi Ngā Whakaaetanga o te Karanga Rōpu",
@@ -22,6 +24,7 @@
     },
     "ACCOMPLISHMENTS": {
       "__COMMENTS": "[v24.04.24.00.  See OBSERVATIONS, SCORES, ASSESSMENTS, PROGRESS, JUDGEMENTS ACHIEVEMENTS. Note that ACCOMPLISHMENTS are smaller (for tasks) compared to ACHIEVEMENTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakakotahi",
       "PLURAL": "Whakakotahi",
       "DESCRIPTION": "Whakarārangi Ngā Whakakotahi",
@@ -32,6 +35,7 @@
     },
     "ACHIEVEMENTS": {
       "__COMMENTS": "[v24.04.24.00.  See OBSERVATIONS, ASSESSMENTS, PROGRESS, ACCOMPLISHMENTS. NOTE that Achievements are bigger (ie exams) than ACCOMPLISHMENTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whaihua",
       "PLURAL": "Whaihua",
       "DESCRIPTION": "Whakarārangi Ngā Whaihua",
@@ -42,6 +46,7 @@
     },
     "ACCREDITATIONS": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia Te Mātauranga, Ngā Whakamana]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamana",
       "PLURAL": "Ngā Whakamana",
       "DESCRIPTION": "",
@@ -51,6 +56,7 @@
     },
     "ACTIONS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahi",
       "PLURAL": "Mahi",
       "DESCRIPTION": "Whakarārangi Ngā Mahi Ā-Waho",
@@ -155,6 +161,7 @@
     },
     "ADDITION": {
       "__COMMENTS": "[v24.04.24.00.  See NUMBERS, ARITHMETIC, SUBTRACT, MULTIPLY, DIVIDE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tāpiri",
       "PLURAL": "Tāpiri",
       "DESCRIPTION": "",
@@ -165,6 +172,7 @@
     },
     "AGES": {
       "__COMMENTS": "[v24.04.24.00.  See NUMBERS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ara",
       "PLURAL": "Tau",
       "DESCRIPTION": "Whakarārangi Ngā Tau",
@@ -181,6 +189,7 @@
     },
     "AGREEMENTS": {
       "__COMMENTS": "[v24.04.24.00.  See also CONTRACTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaae",
       "PLURAL": "Whakaae",
       "DESCRIPTION": "Whakarārangi Ngā Whakaae",
@@ -192,6 +201,7 @@
     },
     "ALERTS": {
       "__COMMENTS": "[v24.04.24.00.  Are System Alerts. See NOTIFICATIONS and MESSAGES.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tono",
       "PLURAL": "Tono",
       "DESCRIPTION": "Whakarārangi Ngā Tono",
@@ -203,6 +213,7 @@
     },
     "ANALYSIS": {
       "__COMMENTS": "[v24.04.24.00.  See also DIAGNOSTICS, REPORTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tātaritanga",
       "PLURAL": "Tātaritanga",
       "DESCRIPTION": "Whakarārangi Ngā Tātaritanga",
@@ -213,6 +224,7 @@
     },
     "APPLICATIONS": {
       "__COMMENTS": "[v24.04.24.00.  See INVITATIONS, ACCEPTANCES.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakatakoto",
       "PLURAL": "Whakatakoto",
       "DESCRIPTION": "Whakarārangi Ngā Whakatakoto",
@@ -223,6 +235,7 @@
     },
     "APPOINTMENTS": {
       "__COMMENTS": "[v24.04.24.00.  See SCHEDULING, CALENDAR, TASKS, PROJECTS areas.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakatau",
       "PLURAL": "Whakatau",
       "DESCRIPTION": "Whakarārangi Ngā Whakatau",
@@ -233,6 +246,7 @@
     },
     "APPRECIATIONS": {
       "__COMMENTS": "[v24.04.24.00.  See CREDITS, GREETINGS, DEPARTURES, LIKES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamiha",
       "PLURAL": "Whakamiha",
       "DESCRIPTION": "Whakarārangi Ngā Whakamiha",
@@ -247,6 +261,7 @@
     },
     "APPROVALS": {
       "__COMMENTS": "[v24.04.24.00.  See RECOMMENDATIONS, APPLICATIONS, INVITATIONS, CONSENTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaaetanga",
       "PLURAL": "Whakaaetanga",
       "DESCRIPTION": "",
@@ -257,6 +272,7 @@
     },
     "APPS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tangata",
       "PLURAL": "Tangata",
       "DESCRIPTION": "",
@@ -267,6 +283,7 @@
     },
     "ARCHITECTURES": {
       "__COMMENTS": "[v24.04.24.00.  See DESIGN]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kāhui",
       "PLURAL": "Kāhui",
       "DESCRIPTION": "",
@@ -277,6 +294,7 @@
     },
     "AREAS": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia Ngā Āhuatanga, Ngā Wāhi, Ngā Whare, Ngā Whare]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rohe",
       "PLURAL": "Ngā Rohe",
       "DESCRIPTION": "",
@@ -300,6 +318,7 @@
     },
     "ARITHMETICS": {
       "__COMMENTS": "[v24.04.24.00.  See LOGIC, CALCULATIONS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahi Toi",
       "PLURAL": "Mahi Toi",
       "DESCRIPTION": "",
@@ -321,6 +340,7 @@
     },
     "ARRIVALS": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia te Heke Mai]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Heke",
       "PLURAL": "Ngā Heke",
       "DESCRIPTION": "",
@@ -330,6 +350,7 @@
     },
     "ASSESSMENTS": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia ngā Mātakitaki, Hei Heke, Ngā Tohu, Ngā Māka, Ngā Rēhitanga, Ngā Whakairinga, Ngā Tau]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mātakitaki",
       "PLURAL": "Ngā Mātakitaki",
       "DESCRIPTION": "",
@@ -339,6 +360,7 @@
     },
     "ASSISTANCE": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia NGĀ Āwhina me te Tautoko]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Āwhina",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -348,6 +370,7 @@
     },
     "ATTENDANCES": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia Te Ako, Ngā Āwhina, Te Matauranga, Ngā Tānga, Ngā Aromatawai, Ngā Whakatika]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Akoranga",
       "PLURAL": "Ngā Akoranga",
       "DESCRIPTION": "",
@@ -357,6 +380,7 @@
     },
     "AUTHENTICATION": {
       "__COMMENTS": "[v24.04.25.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapae",
       "PLURAL": "Ngā Whakapae",
       "DESCRIPTION": "",
@@ -411,6 +435,7 @@
     },
     "AVAILABLE": {
       "__COMMENTS": "[v24.04.24.00.  See UNAVAILABLE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Wātea",
       "PLURAL": "Kāore",
       "DESCRIPTION": "",
@@ -420,6 +445,7 @@
     },
     "BILLS": {
       "__COMMENTS": "[v24.04.24.00.  See RECEIPTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Puka",
       "PLURAL": "Ngā Puka",
       "DESCRIPTION": "",
@@ -429,6 +455,7 @@
     },
     "BODIES": {
       "__COMMENTS": "[v24.04.24.00.  See PERSON. Parrallel to IDENTITY. See NAMES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tīnana",
       "PLURAL": "Ngā Tīnana",
       "DESCRIPTION": "",
@@ -437,7 +464,8 @@
       "PAST": "Kāore i te wātea",
       "PARTS": {
         "__COMMENTS": "[v24.04.24.00.  ]",
-        "SINGULAR": "Wāhanga",
+        "[DIV_03]": "[------]",
+      "SINGULAR": "Wāhanga",
         "PLURAL": "Ngā Wāhanga",
         "DESCRIPTION": "",
         "TOE": "Māhunga",
@@ -488,6 +516,7 @@
     },
     "BROKERS": {
       "__COMMENTS": "[v24.04.24.00.  See BUYERS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaihoko",
       "PLURAL": "Ngā Kaihoko",
       "DESCRIPTION": "",
@@ -497,6 +526,7 @@
     },
     "BUILDINGS": {
       "__COMMENTS": "[v24.04.25.00.  See AREAS, SPACES, HOUSES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Building",
       "PLURAL": "Buildings",
       "COMMAND": "Build",
@@ -516,6 +546,7 @@
     },
     "CALCULATIONS": {
       "__COMMENTS": "[v24.04.24.00.  See ARITHMETICS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamahinga",
       "PLURAL": "Ngā Whakamahinga",
       "COMMAND": "Whakamahia",
@@ -525,6 +556,7 @@
     },
     "CALENDER": {
       "__COMMENTS": "[v24.04.24.00.  Avoid. Prefer using APPOINTMENTS. See NOTES, TASKS, SCHEDULING, PROJECTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Karenda",
       "PLURAL": "Ngā Karenda",
       "DESCRIPTION": "",
@@ -534,6 +566,7 @@
     },
     "CAPABILITIES": {
       "__COMMENTS": "[v24.04.24.00.  See STAKEHOLDERS,FUNCTIONALITIES,QUALITIES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaupapa",
       "PLURAL": "Ngā Kaupapa",
       "DESCRIPTION": "",
@@ -551,6 +584,7 @@
     },
     "CERTIFICATION": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia TE Mātauranga, TE WHAKAMANATANGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamana",
       "PLURAL": "Ngā Whakamana",
       "DESCRIPTION": "",
@@ -560,6 +594,7 @@
     },
     "CHANNELS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kanohi",
       "PLURAL": "Ngā Kanohi",
       "DESCRIPTION": "Ngā kanohi whakapaipai",
@@ -573,6 +608,7 @@
     },
     "CHARTS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tātai",
       "PLURAL": "Ngā Tātai",
       "DESCRIPTION": "",
@@ -588,6 +624,7 @@
     },
     "CLASSES": {
       "__COMMENTS": "[v24.04.25.00. Tirohia NGĀ KURA, NGĀ AKONGA, NGĀ AKORANGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kura",
       "PLURAL": "Ngā Kura",
       "DESCRIPTION": "",
@@ -597,6 +634,7 @@
     },
     "CHATS": {
       "__COMMENTS": "[v24.04.24.00.  WARNING: Avoid. Plenty of other tools for this. See MESSAGES Area.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kōrero",
       "PLURAL": "Ngā Kōrero",
       "FUTURE": "Kōrero",
@@ -606,6 +644,7 @@
     },
     "CLASSIFICTIONS": {
       "__COMMENTS": "[v24.04.24.00.  See TAG, ORGANISE.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rūrupa",
       "PLURAL": "Ngā Rūrupa",
       "DESCRIPTION": "",
@@ -615,6 +654,7 @@
     },
     "CLIENTS": {
       "__COMMENTS": "[v24.04.24.00.  See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaihoko",
       "PLURAL": "Ngā Kaihoko",
       "DESCRIPTION": "",
@@ -625,6 +665,7 @@
     },
     "CODE": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kōnae",
       "PLURAL": "Ngā Kōnae",
       "DESCRIPTION": "",
@@ -634,6 +675,7 @@
     },
     "CODESETS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ngā taupānga kōnae",
       "PLURAL": "Ngā Kōnae",
       "DESCRIPTION": "",
@@ -643,6 +685,7 @@
     },
     "COLOURS": {
       "__COMMENTS": "[v24.04.24.00.  See HUES.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tae",
       "PLURAL": "Ngā Tae",
       "DESCRIPTION": "",
@@ -663,6 +706,7 @@
     },
     "COOKIES": {
       "__COMMENTS": "[v24.04.24.00.  See STATEMENTS, POLICIES,PRIVACIES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kūki",
       "PLURAL": "Ngā Kūki",
       "DESCRIPTION": "",
@@ -676,6 +720,7 @@
     },
     "COMING_SOON": {
       "__COMMENTS": "[v24.04.24.00.  See ARRIVALS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "E haere ana",
       "PLURAL": "Kāore i te wātea",
       "DESCRIPTION": "Kei te mahi ana ngā hua hou...",
@@ -685,6 +730,7 @@
     },
     "COMMERCE": {
       "__COMMENTS": "[v24.04.24.00.  See FINANCE, SALES,TRANSACTION]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hoko",
       "PLURAL": "Kāore i te wātea",
       "DESCRIPTION": "",
@@ -696,6 +742,7 @@
     },
     "COMPREHENSION": {
       "__COMMENTS": "[v24.04.25.00. Tirohia NGĀ PĀNGA, NGĀ KUPU, ME TE PANUI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamāramatanga",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -705,6 +752,7 @@
     },
     "CONFIRMATIONS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapae",
       "PLURAL": "Ngā Whakapae",
       "DESCRIPTION": "Whakaae mai, tēnā",
@@ -715,6 +763,7 @@
     },
     "CONNECTIONS": {
       "__COMMENTS": "[v24.04.24.00.  See CHATS, CHANNELS, CONTACTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hononga",
       "PLURAL": "Ngā Hononga",
       "DESCRIPTION": "",
@@ -726,6 +775,7 @@
     },
     "CONSENTS": {
       "__COMMENTS": "[v24.04.24.00.  See INVITES, APPROVALS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaae",
       "PLURAL": "Ngā Whakaae",
       "DESCRIPTION": "",
@@ -735,6 +785,7 @@
     },
     "CONSULTS": {
       "__COMMENTS": "[v24.04.24.00.  See ROLES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakatika",
       "PLURAL": "Ngā Whakatika",
       "DESCRIPTION": "",
@@ -744,6 +795,7 @@
     },
     "CONTACTS": {
       "__COMMENTS": "[v24.04.24.00.  See PERSONS, GROUPS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapā",
       "PLURAL": "Ngā Whakapā",
       "DESCRIPTION": "Kei konei mātou hei āwhina",
@@ -755,6 +807,7 @@
     },
     "CONTENTS": {
       "__COMMENTS": "[v24.04.24.00.  Can be used to show MESSAGES - empty, etc.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mea",
       "PLURAL": "Ngā Mea",
       "DESCRIPTION": "",
@@ -770,6 +823,7 @@
     },
     "CONTEXT": {
       "__COMMENTS": "[v24.04.24.00.  Often displayed as part of the Layout frame. See STATUS area.See also POSITIONS, LOCATIONS.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Horopaki",
       "PLURAL": "Ngā Horopaki",
       "DESCRIPTION": "Horopaki o nāianei: kaiwhakamahi, pūkete, pūnaha.",
@@ -779,6 +833,7 @@
     },
     "CONTRACTS": {
       "__COMMENTS": "[v24.04.24.00.  See also STATEMENTS, DISCLOSURES, TERMS & CONDITIONS, POLICIES, AGREEMENTS, SUBSCRIPTIONS.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahere",
       "PLURAL": "Ngā Mahere",
       "DESCRIPTION": "",
@@ -786,14 +841,17 @@
       "PRESENT": "E mahere ana",
       "PAST": "I maheretia",
       "SALES": {
-        "SINGULAR": "Mahere Hoko"
+        "[DIV_03]": "[------]",
+      "SINGULAR": "Mahere Hoko"
       },
       "SUBSCRIPTION": {
-        "SINGULAR": "Mahere Moni"
+        "[DIV_03]": "[------]",
+      "SINGULAR": "Mahere Moni"
       }
     },
     "COPYRIGHT": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mātākupu",
       "PLURAL": "Ngā Mātākupu",
       "DESCRIPTION": "",
@@ -803,6 +861,7 @@
     },
     "CORRECTIONS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakatika",
       "PLURAL": "Ngā Whakatika",
       "DESCRIPTION": "",
@@ -812,6 +871,7 @@
     },
     "COURSES": {
       "__COMMENTS": "[v24.04.25.00. Tirohia NGĀ TARI, NGĀ AKO ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Akoranga",
       "PLURAL": "Ngā Akoranga",
       "DESCRIPTION": "",
@@ -821,6 +881,7 @@
     },
     "CREATIONS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapakari",
       "PLURAL": "Ngā Whakapakari",
       "DESCRIPTION": "",
@@ -830,6 +891,7 @@
     },
     "CREDITS": {
       "__COMMENTS": "[v24.04.24.00.  See APPRCIATIONS, GREETINGS, DEPARTURES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamihi",
       "PLURAL": "Ngā Whakamihi",
       "DESCRIPTION": "",
@@ -845,6 +907,7 @@
     },
     "CURRICULA": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia TE MĀTAURANGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mātāuranga",
       "PLURAL": "Ngā Mātāuranga",
       "DESCRIPTION": "",
@@ -854,6 +917,7 @@
     },
     "CUSTOMERS": {
       "__COMMENTS": "[v24.04.24.00.  See BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaihoko",
       "PLURAL": "Ngā Kaihoko",
       "DESCRIPTION": "",
@@ -864,6 +928,7 @@
     },
     "DASHBOARDS": {
       "__COMMENTS": "[v24.04.24.00.  See HOME]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Papatohu",
       "PLURAL": "Ngā Papatohu",
       "DESCRIPTION": "",
@@ -873,6 +938,7 @@
     },
     "DAYS": {
       "__COMMENTS": "[v24.04.24.00.  See also WEEKS, MONTHS, YEARS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rā",
       "PLURAL": "Ngā Rā",
       "DESCRIPTION": "",
@@ -889,6 +955,7 @@
     },
     "DEMOS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaaturanga",
       "PLURAL": "Ngā Whakaaturanga",
       "DESCRIPTION": "",
@@ -898,6 +965,7 @@
     },
     "DEMOGRAPHICS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Raraunga Tau",
       "PLURAL": "Ngā Raraunga Tau",
       "DESCRIPTION": "",
@@ -907,6 +975,7 @@
     },
     "DEPARTURES": {
       "__COMMENTS": "[v24.04.24.00.  See GREETINGS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Haere",
       "PLURAL": "Ngā Haere",
       "DESCRIPTION": "",
@@ -921,6 +990,7 @@
     },
     "DESIGNS": {
       "__COMMENTS": "[v24.04.24.00.  See ARCHITECTURES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tohu",
       "PLURAL": "Ngā Tohu",
       "DESCRIPTION": "",
@@ -930,6 +1000,7 @@
     },
     "DETAILS": {
       "__COMMENTS": "[v24.04.24.00.  See ARCHITECTURES, PRODUCT]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Taipitopito",
       "PLURAL": "Ngā Taipitopito",
       "DESCRIPTION": "",
@@ -939,6 +1010,7 @@
     },
     "DEVELOP": {
       "__COMMENTS": "[v24.04.24.00.  See BUILD]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakawhanake",
       "PLURAL": "Ngā Whakawhanake",
       "DESCRIPTION": "",
@@ -948,6 +1020,7 @@
     },
     "DEVELOPERS": {
       "__COMMENTS": "[v24.04.24.00.  See SPONSORS, STAKEHOLDERS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaiwhanake",
       "PLURAL": "Ngā Kaiwhanake",
       "DESCRIPTION": "",
@@ -957,6 +1030,7 @@
     },
     "DIAGNOSTICS": {
       "__COMMENTS": "[v24.04.24.00.  See also ANALYSIS, REPORTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamātakitaki",
       "PLURAL": "Ngā Whakamātakitaki",
       "DESCRIPTION": "",
@@ -966,6 +1040,7 @@
     },
     "DIRECTIONS": {
       "__COMMENTS": "[v24.04.24.00.  See also POSITIONS.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ara",
       "PLURAL": "Ngā Ara",
       "DESCRIPTION": "",
@@ -979,6 +1054,7 @@
     },
     "DISCLOSURES": {
       "__COMMENTS": "[v24.04.24.00.  See AGREEMENTS, POLICIES, STATEMENTS, TERMS & CONDITIONS, and CONTRACTS.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapāho",
       "PLURAL": "Ngā Whakapāho",
       "DESCRIPTION": "",
@@ -988,6 +1064,7 @@
     },
     "DISCOUNTS": {
       "__COMMENTS": "[v24.04.24.00.  See PRICES, SHOPPING]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hua whakapau",
       "PLURAL": "Ngā Hua whakapau",
       "DESCRIPTION": "",
@@ -997,6 +1074,7 @@
     },
     "DISLIKES": {
       "__COMMENTS": "[v24.04.24.00.  See APPRECIATION, LIKES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamate",
       "PLURAL": "Ngā Whakamate",
       "DESCRIPTION": "",
@@ -1006,6 +1084,7 @@
     },
     "DIVISION": {
       "__COMMENTS": "[v24.04.24.00.  See NUMBERS, ARITHMETIC, ADDITION, SUBTRACTION, MULTIPLICATION]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakahaere",
       "PLURAL": "Ngā Whakahaere",
       "DESCRIPTION": "",
@@ -1016,6 +1095,7 @@
     },
     "DOMAINS": {
       "__COMMENTS": "[v24.04.24.00.  Terms specific to distinct Domains.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rohe",
       "PLURAL": "Ngā Rohe",
       "DESCRIPTION": "",
@@ -1025,6 +1105,7 @@
     },
     "EDUCATION": {
       "__COMMENTS": "[v24.04.25.00.  See DOMAIN, LEARN, SCORE, ASSESS, ENROLMENTS, ATTEND]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaakoranga",
       "PLURAL": "Ngā Whakaakoranga",
       "DESCRIPTION": "",
@@ -1090,6 +1171,7 @@
     },
     "EMAILS": {
       "__COMMENTS": "[v24.04.24.00.  See NOTES, TASKS, NOTIFICATIONS, ALERTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Īmēra",
       "PLURAL": "Īmēra",
       "DESCRIPTION": "",
@@ -1102,6 +1184,7 @@
     },
     "EMPLOYMENTS": {
       "__COMMENTS": "[v24.04.24.00.  See JOBS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whai mahi",
       "PLURAL": "Ngā Whai mahi",
       "DESCRIPTION": "",
@@ -1111,6 +1194,7 @@
     },
     "ENDORSEMENTS": {
       "__COMMENTS": "[v24.04.24.00.  See RECOMMENDATIONS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamana",
       "PLURAL": "Ngā Whakamana",
       "DESCRIPTION": "",
@@ -1120,6 +1204,7 @@
     },
     "ENROLLMENTS": {
       "__COMMENTS": "[v24.04.24.00.  See PARTICIPATION, SUBSCRIPTION]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaurunga",
       "PLURAL": "Ngā Whakaurunga",
       "DESCRIPTION": "",
@@ -1129,6 +1214,7 @@
     },
     "ENTITIES": {
       "__COMMENTS": "[v24.04.24.00.  The primary elements of change: PEOPLE, PLACES, PRODUCTS, etc.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Taonga",
       "PLURAL": "Ngā Taonga",
       "DESCRIPTION": "",
@@ -1138,6 +1224,7 @@
     },
     "ENVIRONMENTS": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia TE TAIAO, TE ĀHUARANGI.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Taiao",
       "PLURAL": "Taiao",
       "DESCRIPTION": "",
@@ -1532,6 +1619,7 @@
     },
     "EVIDENCE": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TIRITI, NGĀ MĀRAMATANGA, NGĀ ASIHINGA, NGĀ WHAKAWHETAI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tiriti",
       "PLURAL": "Ngā Tiriti",
       "DESCRIPTION": "",
@@ -1541,6 +1629,7 @@
     },
     "EXAMPLES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tauira",
       "PLURAL": "Ngā Tauira",
       "DESCRIPTION": "",
@@ -1550,6 +1639,7 @@
     },
     "EXCLUDES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NĀ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakakore",
       "PLURAL": "Whakakorea",
       "DESCRIPTION": "",
@@ -1559,6 +1649,7 @@
     },
     "FAILURES": {
       "__COMMENTS": "[v24.04.25.00.  Tirohia NGĀ TĀMATAU, TE MĀTAURANGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hinganga",
       "PLURAL": "Hinganga",
       "DESCRIPTION": "",
@@ -1568,6 +1659,7 @@
     },
     "FAMILIES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ WHAKAWHANAUNGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whānau",
       "PLURAL": "Ngā Whānau",
       "DESCRIPTION": "",
@@ -1592,6 +1684,7 @@
     },
     "FAQS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Pātai Anō",
       "PLURAL": "Ngā Pātai Anō",
       "DESCRIPTION": "",
@@ -1601,6 +1694,7 @@
     },
     "FEATURES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whāinga",
       "PLURAL": "Ngā Whāinga",
       "DESCRIPTION": "",
@@ -1611,6 +1705,7 @@
     "FINANCES": {
       "__COMMMENTS": "Tirohia HOKOHOKO, UTU.",
       "FUTURE": "Ki te Whakahoahoa",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Moni",
       "PLURAL": "Ngā Moni",
       "DESCRIPTION": "",
@@ -1628,6 +1723,7 @@
     },
     "FINDINGS": {
       "__COMMENTS": "[v24.04.24.00.  E pā ana ki te Kōwhiringa.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tirohanga",
       "PLURAL": "Ngā Tirohanga",
       "DESCRIPTION": "",
@@ -1637,6 +1733,7 @@
     },
     "FLOW": {
       "__COMMENTS": "[v24.04.24.00.  E pā ana ki te Kōwhiringa.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rere",
       "PLURAL": "Ngā Rere",
       "DESCRIPTION": "",
@@ -1648,6 +1745,7 @@
     },
     "FRAMEWORKS": {
       "__COMMENTS": "[v24.04.25.00.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kāupapa",
       "PLURAL": "Kāupapa",
       "DESCRIPTION": "",
@@ -1657,6 +1755,7 @@
     },
     "FUNCTIONALITIES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ HAPORI, NGĀ ĀHEINGA, NGĀ MAHITAHITANGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Āhei",
       "PLURAL": "Ngā Āheinga",
       "DESCRIPTION": "",
@@ -1666,6 +1765,7 @@
     },
     "FUNDINGS": {
       "__COMMENTS": "[v24.04.25.00.  See EDUCATION, FINANCES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Moni Whakatutuki",
       "PLURAL": "Moni Whakatutuki",
       "DESCRIPTION": "",
@@ -1675,6 +1775,7 @@
     },
     "GOVERNMENTS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kāwanatanga",
       "PLURAL": "Ngā Kāwanatanga",
       "DESCRIPTION": "",
@@ -1682,7 +1783,8 @@
       "PRESENT": "Kei te Kāwanatanga",
       "PAST": "Kua Kāwanatanga",
       "ENTITIES": {
-        "SINGULAR": "Wāhi",
+        "[DIV_03]": "[------]",
+      "SINGULAR": "Wāhi",
         "PLURAL": "Ngā Wāhi",
         "DESCRIPTION": "",
         "BILL": "Pire",
@@ -1694,6 +1796,7 @@
     },
     "GRADES": {
       "__COMMENTS": "[v24.04.25.00.  See ASSESSMENTS, EDUCATION]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Grade",
       "PLURAL": "Grades",
       "DESCRIPTION": "",
@@ -1703,6 +1806,7 @@
     },
     "GRADUATIONS": {
       "__COMMENTS": "[v24.04.25.00.  See EDUCATION]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Graduration",
       "PLURAL": "Gradurations",
       "DESCRIPTION": "",
@@ -1712,6 +1816,7 @@
     },
     "GREETINGS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ MĀNAAKI, NGĀ HAERENGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mihi",
       "PLURAL": "Ngā Mihi",
       "DESCRIPTION": "",
@@ -1730,6 +1835,7 @@
     },
     "GROUPS": {
       "__COMMENTS": "[v24.04.24.00.  Ngā rōpū e noho nei]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rōpū",
       "PLURAL": "Ngā Rōpū",
       "DESCRIPTION": "",
@@ -1740,6 +1846,7 @@
     "HEADERS": {
       "__COMMENTS": "[v24.04.24.00.  E Āwangawanga Ana, kāore he āwangawanga/s i tēnei rōpū: he mea āhua nei kia whai āwangawanga kēngia ki te kī 'Taitara' me 'Whakaahuatanga'...]",
       "ENABLED": "Whakahoahoa",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Taitara",
       "PLURAL": "Taitara",
       "TITLE": "Taitara",
@@ -1754,6 +1861,7 @@
     },
     "HEALTH": {
       "__COMMENTS": "[v24.04.24.00.   ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hauora",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -1772,6 +1880,7 @@
     },
     "HELP": {
       "__COMMENTS": "[v24.04.24.00.  Tāpiri ki te Tautoko me te Āwhina (nā ētahi atu).]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Āwhina",
       "PLURAL": "Kāore",
       "DESCRIPTION": "Kitea te Āwhina Ātahu",
@@ -1782,6 +1891,7 @@
     },
     "HOMES": {
       "__COMMENTS": "[v24.04.25.00.  See DASHBOARDS, FAQS, SUPPORT]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whare",
       "PLURAL": "Ngā Whare",
       "FUTURE": "Kāore",
@@ -1790,6 +1900,7 @@
     },
     "HOUSES": {
       "__COMMENTS": "[v24.04.25.00.  See SPACES, BUILDINGS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whare",
       "PLURAL": "Whare",
       "DESCRIPTION": "ko te wahi kei te ngakau!",
@@ -1825,6 +1936,7 @@
     },
     "HUES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kōwhai",
       "PLURAL": "Ngā Kōwhai",
       "DESCRIPTION": "",
@@ -1838,6 +1950,7 @@
     "IDENTITIES": {
       "__COMMENTS": "[v24.04.24.00.  He mea i te TANGATA kia kitea he IDENTITY tētahi mea o te TANGA]",
       "ACRONYM": "ID",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tūranga",
       "PLURAL": "Ngā Tūranga",
       "DESCRIPTION": "",
@@ -1877,6 +1990,7 @@
     },
     "IGNORES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TŪRANGA, NGĀ TŪTAKI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakakore",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -1886,6 +2000,7 @@
     },
     "IMPACT": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapā",
       "PLURAL": "Whakapā",
       "DESCRIPTION": "",
@@ -1900,6 +2015,7 @@
     },
     "INCLUDES": {
       "__COMMENTS": "[v24.04.25.00.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakauru",
       "PLURAL": "Whakauru",
       "DESCRIPTION": "",
@@ -1909,6 +2025,7 @@
     },
     "INFORMATION": {
       "__COMMENTS": "[v24.04.24.00.  Whāi Arotahi i ngā Whārangi Āhua (Tauranga, Pātai Āhua, Whakamārama, Ngā Tikanga, etc.). Tirohia ngā Whārangi Āhua me te Āhua o ngā Whārangi.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whārangi Āhua",
       "PLURAL": "N/A",
       "DESCRIPTION": "Ngā whārangi āhua ka taea te wātea ki te iwi",
@@ -1918,6 +2035,7 @@
     },
     "INFRASTRUCTURE": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ngā Whakatakoto",
       "PLURAL": "Ngā Whakatakoto",
       "DESCRIPTION": "",
@@ -1942,6 +2060,7 @@
     },
     "INTERESTS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ PŪNAE, NGĀ TARI, NGĀ TANGATA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hīmene",
       "PLURAL": "Hīmene",
       "DESCRIPTION": "",
@@ -1951,6 +2070,7 @@
     },
     "INVITATIONS": {
       "__COMMENTS": "[v24.04.24.00.  TODO: WHAKAAE, WHAKAMANA, UPOKOHIKO, TONO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakakōrero",
       "PLURAL": "Whakakōrero",
       "DESCRIPTION": "",
@@ -1960,6 +2080,7 @@
     },
     "INVOICES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ HOKO, NGĀ RAUPAPA, NGĀ PĀNUIRAUPAPA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rīhi",
       "PLURAL": "Rīhi",
       "DESCRIPTION": "",
@@ -1969,6 +2090,7 @@
     },
     "ISSUES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia TE MAHI, TE TŪRANGA, NGĀ TOHUTOHU, NGĀ TŪRANGAPĀTII]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Take",
       "PLURAL": "Ngā Take",
       "DESCRIPTION": "Ngā take mōhio",
@@ -1978,6 +2100,7 @@
     },
     "JOBS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TŪRANGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahi",
       "PLURAL": "Ngā Mahi",
       "DESCRIPTION": "",
@@ -1987,6 +2110,7 @@
     },
     "JUDGEMENTS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ EVIDENCE, NGĀ TIRINGA, NGĀ KITE, NGĀ AROMATARANGI, NGĀ WHAKARITE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakarite",
       "PLURAL": "Ngā Whakarite",
       "DESCRIPTION": "",
@@ -1996,6 +2120,7 @@
     },
     "LANDING": {
       "__COMMENTS": "[v24.04.24.00.  Whāi Arotahi i ngā Whārangi Āhua tūkino mai i ngā Whakapuare me ngā Pūtake. Tirohia ngā Whārangi Āhua me te Āhua o ngā Whārangi.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapae",
       "PLURAL": "Ngā Whakapae",
       "DESCRIPTION": "Ngā Whārangi Āhua tūkino mai",
@@ -2005,6 +2130,7 @@
     },
     "LAYOUTS": {
       "__COMMENTS": "[v24.04.24.00.  Mō te whakarite i ngā āhuatanga o ngā wāhanga o te paetukutuku.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Āhua",
       "PLURAL": "Ngā Āhua",
       "DESCRIPTION": "",
@@ -2022,6 +2148,7 @@
     },
     "LAWS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TURE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ture",
       "PLURAL": "Ngā Ture",
       "DESCRIPTION": "",
@@ -2031,6 +2158,7 @@
     },
     "LIKES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ MAHI WHAKAMIHIA, NGĀ MAHI KIŪ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Aroha",
       "PLURAL": "Ngā Aroha",
       "DESCRIPTION": "",
@@ -2040,6 +2168,7 @@
     },
     "LESSONS": {
       "__COMMENTS": "[v24.04.25.00.  See COURSES, CLASSES, EDUCATION]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Wānanga",
       "PLURAL": "Wānanga",
       "DESCRIPTION": "",
@@ -2049,6 +2178,7 @@
     },
     "LIKLINESS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia TE RARURARU, TE WHAKARITE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tōkena",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -2063,6 +2193,7 @@
     },
     "LOCATIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ WĀHI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Wāhi",
       "PLURAL": "Ngā Wāhi",
       "DESCRIPTION": "",
@@ -2086,6 +2217,7 @@
     },
     "LOGIC": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ PŪTANGA, NGĀ TAUWHIRINGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tauwhiringa",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -2107,6 +2239,7 @@
     },
     "LOGO": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rārangi",
       "PLURAL": "Ngā Rārangi",
       "DESCRIPTION": "",
@@ -2116,6 +2249,7 @@
     },
     "MAINTAINERS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ KAITIAKI, NGĀ WHAKAATU, NGĀ KAWAEKŪ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tiaki",
       "PLURAL": "N/A",
       "DESCRIPTION": "Inā mō te wā ka tiakina te ratonga kia taea ai te tāpiri i ngā hua hou...",
@@ -2125,6 +2259,7 @@
     },
     "MAINTENANCE": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tiaki",
       "PLURAL": "N/A",
       "DESCRIPTION": "Inā mō te wā ka tiakina te ratonga kia taea ai te tāpiri i ngā hua hou...",
@@ -2134,6 +2269,7 @@
     },
     "MANAGEMENT": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakahaere",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -2143,6 +2279,7 @@
     },
     "MATHS": {
       "__COMMENTS": "[v24.04.25.00.  See NUMERACY, COMPREHENSION]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Pāngarau",
       "PLURAL": "Pāngarau",
       "DESCRIPTION": "",
@@ -2152,6 +2289,7 @@
     },
     "MEDIA": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Pāpāho",
       "PLURAL": "Ngā Pāpāho",
       "DESCRIPTION": "",
@@ -2165,6 +2303,7 @@
     },
     "MEMBERS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mema",
       "PLURAL": "Ngā Mema",
       "DESCRIPTION": "",
@@ -2174,6 +2313,7 @@
     },
     "MESSAGES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia hoki NGĀ WHAKAMĀRAMA, NGĀ KŌRERO, NGĀ ĪMERE, NGĀ TUKU.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Karere",
       "PLURAL": "Ngā Karere",
       "DESCRIPTION": "Ngā Karere i waenganui i ngā Kaiwhakamahi",
@@ -2212,6 +2352,7 @@
     },
     "MISC": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rōpū",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -2233,6 +2374,7 @@
     },
     "MONITORERS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TŪMAHI, NGĀ KAIWHAKAMĀRAMA, NGĀ TIAKI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaiwhakamārama",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -2242,6 +2384,7 @@
     },
     "MONTHS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia hoki NGĀ RĀHUI, NGĀ RAU, NGĀ WĀ, NGĀ WHAKAHI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Marama",
       "PLURAL": "Ngā Marama",
       "DESCRIPTION": "",
@@ -2263,6 +2406,7 @@
     },
     "MULTIPLICATION": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TAIRANGI, NGĀ TOHU, NGĀ HAPU, NGĀ WHAKARU]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaruru",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -2273,6 +2417,7 @@
     },
     "NAMES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia TE TANGATA, TE TUAKIRI.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ingoa",
       "PLURAL": "Ngā Ingoa",
       "DESCRIPTION": "",
@@ -2318,10 +2463,12 @@
     },
     "NATURE": {
       "__COMMENTS": "[v24.04.25.00.  See WEATHER.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Taiao"
     },
     "NAVIGATION": {
       "__COMMENTS": "[v24.04.24.00.  He Āhuatanga o te ĀTA.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Haere",
       "PLURAL": "Kāore",
       "DESCRIPTION": "",
@@ -2331,6 +2478,7 @@
     },
     "NOTIFICATIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ ARATAKI, NGĀ TUKU PĀNUI, NGĀ ĪMERE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Aratohu",
       "PLURAL": "Ngā Arataki",
       "DESCRIPTION": "",
@@ -2347,6 +2495,7 @@
     },
     "NOTES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ MAHI, NGĀ APONITI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tuhinga",
       "PLURAL": "Ngā Tuhinga",
       "DESCRIPTION": "",
@@ -2356,6 +2505,7 @@
     },
     "NUMBERS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TAHI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tau",
       "PLURAL": "Ngā Tau",
       "DESCRIPTION": "",
@@ -2397,6 +2547,7 @@
     },
     "NUMERACY": {
       "__COMMENTS": "[v24.04.25.00.  See ARITHMETICS, NUMBERS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahi Tāuranga",
       "PLURAL": "Kāore",
       "DESCRIPTION": "",
@@ -2406,6 +2557,7 @@
     },
     "OBSERVATIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ WHAKAARO, NGĀ WHAKAPAE, NGĀ HINENGARO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaaro",
       "PLURAL": "Ngā Whakaaro",
       "DESCRIPTION": "",
@@ -2415,6 +2567,7 @@
     },
     "OPENINGS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakatuwhera",
       "PLURAL": "Ngā Whakatuwhera",
       "DESCRIPTION": "He Ōhanga ki te Mahi i konei.",
@@ -2424,6 +2577,7 @@
     },
     "OPERATIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia MAINTENANCE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakahaere",
       "PLURAL": "Ngā Whakahaere",
       "DESCRIPTION": "",
@@ -2433,6 +2587,7 @@
     },
     "ORATION": {
       "__COMMENTS": "[v24.04.25.00.  See MATHS, VOCABULARY, READING]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kōrero",
       "PLURAL": "Kāore",
       "DESCRIPTION": "",
@@ -2442,6 +2597,7 @@
     },
     "ORDERS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia CUSTOMERS, CLIENTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tono",
       "PLURAL": "Ngā Tono",
       "DESCRIPTION": "",
@@ -2452,6 +2608,7 @@
     },
     "ORGANISATIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia TAG, CLASSIFICATIONS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakahaere",
       "PLURAL": "Ngā Whakahaere",
       "DESCRIPTION": "",
@@ -2497,6 +2654,7 @@
     },
     "ORIENTATIONS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tūāhua",
       "PLURAL": "Ngā Tūāhua",
       "DESCRIPTION": "",
@@ -2508,6 +2666,7 @@
     },
     "OUTCOMES": {
       "__COMMENTS": "[v24.04.24.00.  Te mauri o te pūnaha. Tirohia STATUS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hua",
       "PLURAL": "Ngā Hua",
       "DESCRIPTION": "",
@@ -2521,6 +2680,7 @@
     },
     "OWNERSHIPS": {
       "__COMMENTS": "[v24.04.25.00.  See POSSESSIONS.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whaiwhakaaro",
       "PLURAL": "Ngā Whaiwhakaaro",
       "DESCRIPTION": "",
@@ -2540,6 +2700,7 @@
     },
     "PAGES": {
       "__COMMENTS": "[v24.04.24.00.  Ngā Whārangi kua ārai ki ngā Kaiwhakamahi. Tirohia INFORMATION me LANDING Areas]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whārangi",
       "PLURAL": "Ngā Whārangi",
       "DESCRIPTION": "Ngā Whārangi kua ārai ki ngā kaiwhakamahi whai mana",
@@ -2549,6 +2710,7 @@
     },
     "PARTICIPATIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia ENROLLMENT, SUBSCRIPTION, PRESENCE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whai Wāhi",
       "PLURAL": "Kāore",
       "DESCRIPTION": "",
@@ -2558,6 +2720,7 @@
     },
     "PASSINGS": {
       "__COMMENTS": "[v24.04.25.00.  See EDUCATION]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamā",
       "PLURAL": "Ngā Whakamā",
       "DESCRIPTION": "",
@@ -2567,6 +2730,7 @@
     },
     "PASSWORDS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kupuhipa",
       "PLURAL": "Ngā Kupuhipa",
       "DESCRIPTION": "",
@@ -2576,6 +2740,7 @@
     },
     "PATTERNS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tauira",
       "PLURAL": "Ngā Tauira",
       "DESCRIPTION": "",
@@ -2585,6 +2750,7 @@
     },
     "PEOPLE": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia PERSONS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tangata",
       "PLURAL": "Ngā Tāngata",
       "DESCRIPTION": "",
@@ -2594,6 +2760,7 @@
     },
     "PERMISSIONS": {
       "__COMMENTS": "[v24.04.24.00.  Ka tāpirihia/Whakakorengia ngā Whakaaetanga mai i ACCESS_LEVELS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaaetanga",
       "PLURAL": "Ngā Whakaaetanga",
       "DESCRIPTION": "",
@@ -2603,6 +2770,7 @@
     },
     "PERSONS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tangata",
       "PLURAL": "Ngā Tāngata",
       "DESCRIPTION": "",
@@ -2612,6 +2780,7 @@
     },
     "PHONE": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Waea",
       "PLURAL": "Ngā Waea",
       "DESCRIPTION": "",
@@ -2621,6 +2790,7 @@
     },
     "PLACES": {
       "__COMMENTS": "[v24.04.25.00.  See LOCATION.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Wāhi",
       "PLURAL": "Ngā Wāhi",
       "DESCRIPTION": "",
@@ -2631,6 +2801,7 @@
     },
     "PLANS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia PRICES, SUBSCRIPTIONS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahere",
       "PLURAL": "Ngā Mahere",
       "DESCRIPTION": "Kei raro i ngā mahere rerekē te ratonga.",
@@ -2642,6 +2813,7 @@
     },
     "POLICIES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia PRINCIPLES, DISCLOSURES, STATEMENTS, REGULATIONS, LAWS. Ka wātea tētahi mea ki tētahi Whakapā About mō te ture a tētahi.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaupapa",
       "PLURAL": "Ngā Kaupapa",
       "DESCRIPTION": "",
@@ -2655,6 +2827,7 @@
     },
     "POSITIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia hoki ngā ARONGA me ngā TAHUA.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tūwāhi",
       "PLURAL": "Ngā Tūwāhi",
       "DESCRIPTION": "",
@@ -2662,7 +2835,8 @@
       "PRESENT": "Tūwāhi",
       "PAST": "I Tūwāhitia",
       "RELATIVE": {
-        "SINGULAR": "Whaiwāhi",
+        "[DIV_03]": "[------]",
+      "SINGULAR": "Whaiwāhi",
         "DESCRIPTION": "",
         "_PREVIOUS": "o mua",
         "_NEXT": "panuku",
@@ -2676,7 +2850,8 @@
         "BELOW": "I raro"
       },
       "ABSOLUTE": {
-        "SINGULAR": "Tūturu",
+        "[DIV_03]": "[------]",
+      "SINGULAR": "Tūturu",
         "DESCRIPTION": "",
         "FIRST": "Tuatahi",
         "SECOND": "Tuarua",
@@ -2687,6 +2862,7 @@
     },
     "POSSESSIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia OWNERSHIP.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whiwhi",
       "PLURAL": "Ngā Whiwhi",
       "DESCRIPTION": "",
@@ -2704,6 +2880,7 @@
     },
     "POSTAL_ADDRESSES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Wāhitau Poutāpeta",
       "PLURAL": "Ngā Wāhitau Poutāpeta",
       "DESCRIPTION": "",
@@ -2731,6 +2908,7 @@
     },
     "PRICES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia PRICING, PLANS, SUBSCRIPTIONS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Utunga",
       "PLURAL": "Ngā Utunga",
       "DESCRIPTION": "",
@@ -2740,6 +2918,7 @@
     },
     "PRESENCE": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia PARTICIPATIONS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Wā Kore",
       "PLURAL": "Ngā Wā Kore",
       "DESCRIPTION": "",
@@ -2749,6 +2928,7 @@
     },
     "PRINCIPLES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaupapa",
       "PLURAL": "Ngā Kaupapa",
       "DESCRIPTION": "",
@@ -2758,6 +2938,7 @@
     },
     "PRIVACIES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia STATEMENTS, POLICIES, COOKIES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapiri",
       "PLURAL": "Ngā Whakapiri",
       "DESCRIPTION": "",
@@ -2768,6 +2949,7 @@
     },
     "PROCURE": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia BROKER, SPONSORS, SUPPLIERS, PROVIDERS, VENDORS, BROKERS, PROCURERS, BUYERS, VENDORS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaūnga",
       "PLURAL": "Ngā Whakaūnga",
       "DESCRIPTION": "",
@@ -2777,6 +2959,7 @@
     },
     "PRODUCTS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hua",
       "PLURAL": "Ngā Hua",
       "DESCRIPTION": "",
@@ -2787,6 +2970,7 @@
     },
     "PROFILES": {
       "__COMMENTS": "[v24.04.24.00.  Ngā Wahirua o te Kaiwhakamahi o nāianei. Kāore he mea hītori (Raraunga) ko tā (Pūnaha) nga Tautuhinga]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Wahirua",
       "PLURAL": "Ngā Wahirua",
       "DESCRIPTION": "",
@@ -2796,6 +2980,7 @@
     },
     "PROGRESS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia ACTIONS. He kupu 'koropiko' mō te 'Mahi']",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahi Whakangaro",
       "PLURAL": "Kāore",
       "DESCRIPTION": "",
@@ -2805,6 +2990,7 @@
     },
     "PROJECTS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia TASKS, Tirohanga RĒHITA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaupapa",
       "PLURAL": "Ngā Kaupapa",
       "DESCRIPTION": "",
@@ -2814,6 +3000,7 @@
     },
     "PROMPTS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tīwhiritanga",
       "PLURAL": "Ngā Tīwhiritanga",
       "DESCRIPTION": "",
@@ -2823,6 +3010,7 @@
     },
     "PROPOSALS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia ISSUES, SUGGESTIONS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "TONO",
       "PLURAL": "TONO",
       "DESCRIPTION": "",
@@ -2832,6 +3020,7 @@
     },
     "PURPOSES": {
       "__COMMENTS": "[v24.04.25.00.  See BUILDING, SPACES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whainga",
       "PLURAL": "Whainga",
       "DESCRIPTION": "",
@@ -2851,6 +3040,7 @@
     },
     "PURCHASEORDERS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia INVOICES, BILLS, RECEIPTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tūtohu Hoko",
       "PLURAL": "Ngā Tūtohu Hoko",
       "DESCRIPTION": "",
@@ -2860,6 +3050,7 @@
     },
     "QUANTITIES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia hoki ngā RONGO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mātai",
       "PLURAL": "Ngā Mātai",
       "DESCRIPTION": "",
@@ -2875,6 +3066,7 @@
     },
     "QUALITIES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mananatanga",
       "PLURAL": "Ngā Mananatanga",
       "DESCRIPTION": "",
@@ -2925,6 +3117,7 @@
     },
     "QUARTERS": {
       "__COMMENTS": "[v24.04.25.00.  See also MONTHS,YEARS, TERMS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tuarua",
       "PLURAL": "Ngā Tuarua",
       "DESCRIPTION": "",
@@ -2935,6 +3128,7 @@
     },
     "READ": {
       "__COMMENTS": "[v24.04.25.00.  Prefer VIEW. See MATHS, COMPREHENSION, VOCABULARY]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamārama",
       "PLURAL": "Ngā Whakamārama",
       "DESCRIPTION": "",
@@ -2944,6 +3138,7 @@
     },
     "RECEIPTS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia BILLS, INVOICES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Pēke",
       "PLURAL": "Ngā Pēke",
       "DESCRIPTION": "",
@@ -2953,6 +3148,7 @@
     },
     "RECOMMENDATIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia APPROVALS, ENDORSEMENTS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapae",
       "PLURAL": "Ngā Whakapae",
       "DESCRIPTION": "",
@@ -2962,6 +3158,7 @@
     },
     "REFER": {
       "__COMMENTS": "[v24.04.25.00.  See REFERENCE_DATA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whaiwhakaaro",
       "PLURAL": "Kāore",
       "DESCRIPTION": "",
@@ -2971,6 +3168,7 @@
     },
     "REFERENCE_DATA": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Raraunga Tohutoro",
       "PLURAL": "Ngā Raraunga Tohutoro",
       "DESCRIPTION": "",
@@ -2980,6 +3178,7 @@
     },
     "REGIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ WĀHI, ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rohe",
       "PLURAL": "Ngā Rohe",
       "DESCRIPTION": "",
@@ -2989,6 +3188,7 @@
     },
     "REGULATIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia KĀWANATANGA, KOI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ture",
       "PLURAL": "Ngā Ture",
       "DESCRIPTION": "",
@@ -2998,6 +3198,7 @@
     },
     "RELATIONSHIPS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia WHĀNAU]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapapa",
       "PLURAL": "Ngā Whakapapa",
       "DESCRIPTION": "",
@@ -3007,6 +3208,7 @@
     },
     "REMOVAL": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia TANGO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tango",
       "PLURAL": "Ngā Tāngohanga",
       "DESCRIPTION": "",
@@ -3018,6 +3220,7 @@
     },
     "REPORTS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tauira",
       "PLURAL": "Ngā Tauira",
       "DESCRIPTION": "",
@@ -3027,6 +3230,7 @@
     },
     "RESPONSIBILITIES": {
       "__COMMENTS": "[v24.04.24.00.  Ka Whiwhi ngā Kaiwhakamahi I nga WHAKAŪ Kua tukuatia ngā MAHI TONO e Hononga Whaiinga Mahi]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakatūnga",
       "PLURAL": "Ngā Whakatūnga",
       "DESCRIPTION": "",
@@ -3039,6 +3243,7 @@
     },
     "REVIEWS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Arotake",
       "PLURAL": "Ngā Arotake",
       "DESCRIPTION": "",
@@ -3048,6 +3253,7 @@
     },
     "RISKS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ PAPAHA, MĀTAURANGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ohorere",
       "PLURAL": "Ngā Ohorere",
       "DESCRIPTION": "",
@@ -3059,6 +3265,7 @@
     },
     "ROLES": {
       "__COMMENTS": "[v24.04.24.00.  See also ACCESS_LEVELS, PERMISSIONS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rōpū",
       "PLURAL": "Ngā Rōpū",
       "DESCRIPTION": "",
@@ -3068,6 +3275,7 @@
     },
     "ROOMS": {
       "__COMMENTS": "[v24.04.25.00.  See SPACES, BUILDINGS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rūma",
       "PLURAL": "Ngā Rūma",
       "DESCRIPTION": "",
@@ -3079,6 +3287,7 @@
     },
     "SALES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia HOKOHOKO, NGĀ HOKOHOKO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hoko",
       "PLURAL": "Ngā Hokohoko",
       "DESCRIPTION": "",
@@ -3106,6 +3315,7 @@
     },
     "SAILING": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia REREKEI, HOKI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rerekei",
       "PLURAL": "Ngā Rerekei",
       "DESCRIPTION": "",
@@ -3115,6 +3325,7 @@
     },
     "SCHEDULES": {
       "__COMMENTS": "[v24.04.24.00.  See also EDUCATION.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tauwhāinga",
       "PLURAL": "Ngā Tauwhāinga",
       "DESCRIPTION": "",
@@ -3124,6 +3335,7 @@
     },
     "SCHEDULING": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ KAUPAPA MAHI, NGĀ MAHI TONO, NGĀ APPOINTMENTS, NGĀ WHĀRUARUA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tūnga Mahi",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3138,6 +3350,7 @@
     },
     "SCHOOLS": {
       "__COMMENTS": "[v24.04.25.00.  See EDUCATION, PLACES, SPACES, BUILDINGS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kura",
       "PLURAL": "Ngā Kura",
       "DESCRIPTION": "",
@@ -3155,6 +3368,7 @@
     },
     "SCORES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia HĒTANGA, MĀTAURANGA, NGĀ ĀHUA, NGĀ KAUPAPA AROTO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hētanga",
       "PLURAL": "Ngā Hētanga",
       "DESCRIPTION": "",
@@ -3164,6 +3378,7 @@
     },
     "SEARCHES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TŪMATA, NGĀ WHAKAWHITI.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rapu",
       "PLURAL": "Ngā Rapu",
       "DESCRIPTION": "",
@@ -3177,6 +3392,7 @@
     },
     "SEARCH_RESULTS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ KAUPAPA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hua Rapu",
       "PLURAL": "Ngā Hua Rapu",
       "DESCRIPTION": "",
@@ -3186,6 +3402,7 @@
     },
     "SEE": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia TITIRO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tirohia",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3195,6 +3412,7 @@
     },
     "SELLERS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ HOKOHOKO, NGĀ KAIHOKOHOKO, NGĀ KAIAUKATI, NGĀ KAITIHI, NGĀ KAIWHAKAKORE, NGĀ KAIWHAKARITE, NGĀ HOKOHOKO, NGĀ KAIHOKOHOKO, NGĀ KUPU KAITIHI, NGĀ KAIHOKOHOKO, NGĀ KAIWAIWAI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaihokohoko",
       "PLURAL": "Ngā Kaihokohoko",
       "DESCRIPTION": "",
@@ -3205,6 +3423,7 @@
     },
     "SEQUENCES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia hoki ngā Tūnga.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tātātahitanga",
       "PLURAL": "Tātātahitanga",
       "DESCRIPTION": "",
@@ -3220,6 +3439,7 @@
     },
     "SETTINGS": {
       "__COMMENTS": "[v24.04.24.00.  Ngā Tautuhinga Hanga (kāore i tua atu i te Takawaenga). Tirohia te rerekētanga ki te PROFILE.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tautuhinga",
       "PLURAL": "Ngā Tautuhinga",
       "DESCRIPTION": "",
@@ -3229,6 +3449,7 @@
     },
     "SETUPS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia WHAKAHOAHOA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakahoahoa",
       "PLURAL": "Ngā Whakahoahoa",
       "DESCRIPTION": "",
@@ -3239,6 +3460,7 @@
     },
     "SHIPPING": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia hoki HOKO, REREKEI, HOKI.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rerekei",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3252,6 +3474,7 @@
     },
     "SHOPPING": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hoko",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3278,6 +3501,7 @@
     },
     "SIGHT": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia TITIRO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tirohia",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3292,6 +3516,7 @@
     },
     "SITES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia PAE atu ki te taumata tiketike.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Pae",
       "PLURAL": "Ngā Pae",
       "DESCRIPTION": "",
@@ -3301,6 +3526,7 @@
     },
     "SITEMAPS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahere Pae",
       "PLURAL": "Ngā Mahere Pae",
       "DESCRIPTION": "Kei whea koe.",
@@ -3310,6 +3536,7 @@
     },
     "SIZES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TAU, NGĀ RAUPAPA, NGĀ HIRAKA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tau",
       "PLURAL": "Ngā Tau",
       "DESCRIPTION": "",
@@ -3343,6 +3570,7 @@
     },
     "SOCIALMEDIA": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tikanga Pāpori",
       "PLURAL": "Tikanga Pāpori",
       "DESCRIPTION": "",
@@ -3356,6 +3584,7 @@
     },
     "SPACES": {
       "__COMMENTS": "[v24.04.25.00.  See AREAS, PLACES,BUILDINGS, SPACES, HOUSES]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Space",
       "PLURAL": "Spaces",
       "FUTURE": "N/A",
@@ -3364,6 +3593,7 @@
     },
     "SPACING": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakatere",
       "PLURAL": "Whakatere",
       "DESCRIPTION": "",
@@ -3376,6 +3606,7 @@
     },
     "SPONSORS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia KAITAUTOKO, KAIWHAKARITE, KAIWHAKAPAI, KAITIAKI, KAITĀKI, NGĀ KAIHOKOHOKO, NGĀ KAITIHI, NGĀ KAIWHAKAKORE, NGĀ KAITIHI, NGĀ KAIWAIWAI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaitautoko",
       "PLURAL": "Ngā Kaitautoko",
       "DESCRIPTION": "",
@@ -3385,6 +3616,7 @@
     },
     "STAKEHOLDERS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaitiaki",
       "PLURAL": "Ngā Kaitiaki",
       "DESCRIPTION": "",
@@ -3402,6 +3634,7 @@
     },
     "STATEMENTS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ ĀTAUPATUPATU, NGĀ KAUPAPA, NGĀ PAPATAKI. WHAKAARO: Ka whakaratohia tētahi Ātaupā mō tōnei Kaupapahere. Aukati me hono atu ki tētahi Tautohetohe mō tō Kaupapahere.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ātaupā",
       "PLURAL": "Ngā Ātaupā",
       "FUTURE": "Kāore i te wā",
@@ -3413,6 +3646,7 @@
     },
     "STATES": {
       "__COMMENTS": "[v24.04.24.00.  Ahunga o te āhua i tua atu o ngā rama me ngā rauemi, ki te tuku OUTCOMES.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ahunga",
       "PLURAL": "Ngā Ahunga",
       "DESCRIPTION": "",
@@ -3440,6 +3674,7 @@
     },
     "STATUS": {
       "__COMMENTS": "[v24.04.24.00.  Kua whakaaturia hei wāhanga o te Takapū whakaputanga. Tirohia te Takiwā Wāhanga.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Takiwā",
       "PLURAL": "Ngā Takiwā",
       "DESCRIPTION": "Te āhua o te wā o te mahi whakamutunga, o te kaupapa, o te pūnaha.",
@@ -3456,6 +3691,7 @@
     },
     "STATUS_UPDATES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakahōunga Takiwā",
       "PLURAL": "Whakahōunga Takiwā",
       "DESCRIPTION": "",
@@ -3467,6 +3703,7 @@
     },
     "SUBJECTS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ KŌRERO, NGĀ WHAKAKŌRERO, NGĀ TŪWHAKAARO, NGĀ KŌRERO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaupapa",
       "PLURAL": "Ngā Kaupapa",
       "DESCRIPTION": "",
@@ -3479,6 +3716,7 @@
     },
     "SUBSCRIPTIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TAU, NGĀ METALS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Rīwaenga",
       "PLURAL": "Ngā Rīwaenga",
       "DESCRIPTION": "",
@@ -3489,6 +3727,7 @@
     },
     "SUBTRACTION": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TAU, NGĀ ARITHMETIC, NGĀ TAHI, NGĀ WĀHANGA, NGĀ TŌPAU, WHAKATAKOTO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakakore",
       "PLURAL": "Whakakore",
       "DESCRIPTION": "",
@@ -3499,6 +3738,7 @@
     },
     "SUGGESTIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ TŪMATAKUHANGA, NGĀ TŪTOHITANGA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakaaro",
       "PLURAL": "Whakaaro",
       "DESCRIPTION": "",
@@ -3508,6 +3748,7 @@
     },
     "SUPPORT": {
       "__COMMENTS": "[v24.04.24.00.  Hōmai i te Hōtaka [aho]. Tirohia NGĀ MAHERE, NGĀ TŪMANGA, NGĀ MAINTAINANCE, NGĀ TŪIRA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tautoko",
       "PLURAL": "Kāore",
       "DESCRIPTION": "Whakamahana",
@@ -3517,6 +3758,7 @@
     },
     "SUPPORTERS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ WHAKAUTE, NGĀ KAIPAHI, NGĀ KAITIAKI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tautoko",
       "PLURAL": "Kāore",
       "DESCRIPTION": "",
@@ -3526,6 +3768,7 @@
     },
     "SUPPLIERS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ KAIWHAKARATO, NGĀ KAITIAKI, NGĀ KAIMOKOPUNI, NGĀ KAIHOKO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaiwhakarato",
       "PLURAL": "Ngā Kaiwhakarato",
       "DESCRIPTION": "Kaiwhakarato",
@@ -3535,6 +3778,7 @@
     },
     "SYSTEMS": {
       "__COMMENTS": "[v24.04.24.00.  He maha iho te huinga o te Rārangi Pūnaha.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Pūnaha",
       "PLURAL": "Ngā Pūnaha",
       "DESCRIPTION": "",
@@ -3544,6 +3788,7 @@
     },
     "TAGS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia te WHAKAHAERE, ngā WHAKAHAERE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Pūnaha",
       "PLURAL": "Ngā Pūnaha",
       "DESCRIPTION": "",
@@ -3553,6 +3798,7 @@
     },
     "TASKS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia nga TOHUA, te WHARE ĀRAHI mahi.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahi",
       "PLURAL": "Ngā Mahi",
       "FUTURE": "Ki te Mahi",
@@ -3593,6 +3839,7 @@
     },
     "TEAMS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ KAIMATAU]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kapa",
       "PLURAL": "Ngā Kapa",
       "DESCRIPTION": "",
@@ -3603,6 +3850,7 @@
     },
     "TERMS": {
       "__COMMENTS": "[v24.04.25.00.  See also DAYS, MONTHS,YEARS, QUARTERS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kauwahi",
       "PLURAL": "Ngā Kauwahi",
       "DESCRIPTION": "",
@@ -3616,6 +3864,7 @@
     },
     "TESTS": {
       "__COMMENTS": "[v24.04.25.00.  See ASSESSMENTS, EDUCATION]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakamātautau",
       "PLURAL": "Ngā Whakamātautau",
       "DESCRIPTION": "",
@@ -3625,6 +3874,7 @@
     },
     "TEMPLATE": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Template",
       "PLURAL": "Kāhuahua",
       "DESCRIPTION": "",
@@ -3634,6 +3884,7 @@
     },
     "TENANCIES": {
       "__COMMENTS": "[v24.04.24.00.  WHAKATŪPATO: He kupu hangarau te Tenancy. Āta whakamahi. Kīia tika ACCOUNT.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tenancy",
       "PLURAL": "Ngā Tenancy",
       "DESCRIPTION": "",
@@ -3647,6 +3898,7 @@
     },
     "THEMES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaupapa",
       "PLURAL": "Ngā Kaupapa",
       "DESCRIPTION": "",
@@ -3668,6 +3920,7 @@
       "247": "24/7",
       "925": "9am ki te 5pm",
       "__COMMENTS": "[v24.04.24.00.  Tirohia RĀ.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Wā",
       "PLURAL": "Ngā Wā",
       "DESCRIPTION": "",
@@ -3690,6 +3943,7 @@
     },
     "TIMELINES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kōwae Wā",
       "PLURAL": "Ngā Kōwae Wā",
       "DESCRIPTION": "Ā mātou kōwae wā i āhea ka tāpiri i ngā āhuatanga...",
@@ -3699,6 +3953,7 @@
     },
     "TODOS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia ngā WHAKARITENGA, ngā TINOARO, ngā TOHUA]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tohu",
       "PLURAL": "Ngā Tohu",
       "DESCRIPTION": "",
@@ -3708,6 +3963,7 @@
     },
     "TRANSACTIONS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ HOKOHOKO.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hokohoko",
       "PLURAL": "Ngā Hokohoko",
       "DESCRIPTION": "",
@@ -3723,6 +3979,7 @@
     },
     "TRUST": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Whakapono",
       "PLURAL": "N/A",
       "DESCRIPTION": "Whakapono ana",
@@ -3732,6 +3989,7 @@
     },
     "UI": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "UI",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3739,7 +3997,8 @@
       "PRESENT": "N/A",
       "PAST": "N/A",
       "ELEMENTS": {
-        "SINGULAR": "",
+        "[DIV_03]": "[------]",
+      "SINGULAR": "",
         "PLURAL": "",
         "DESCRIPTION": "",
         "WINDOW": "Matapihi",
@@ -3796,6 +4055,7 @@
     },
     "USERS": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaiwhakamahi",
       "PLURAL": "Ngā Kaiwhakamahi",
       "DESCRIPTION": "",
@@ -3805,6 +4065,7 @@
     },
     "VALUES": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Uara",
       "PLURAL": "Ngā Uara",
       "DESCRIPTION": "",
@@ -3814,6 +4075,7 @@
     },
     "VALIDATION": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia NGĀ AROMATAWAI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Aromatawai",
       "PLURAL": "Ngā Aromatawai",
       "DESCRIPTION": "",
@@ -3830,6 +4092,7 @@
     },
     "VIEWS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia PANUI]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Panui",
       "PLURAL": "Ngā Panui",
       "DESCRIPTION": "",
@@ -3841,6 +4104,7 @@
     },
     "VEHICLES": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia KŌWAE.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Waka",
       "PLURAL": "Ngā Waka",
       "DESCRIPTION": "",
@@ -3860,6 +4124,7 @@
     },
     "VENDORS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia HOKO, KAIWAIHANGA, KAIWHAKARATO, KAIWHAKANUI, BROKERS, KAITAHA, HOKO]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Kaiwaihanga",
       "PLURAL": "Ngā Kaiwaihanga",
       "DESCRIPTION": "",
@@ -3869,6 +4134,7 @@
     },
     "UNAVAILABLE": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia ĀKORE]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Ākore",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3878,6 +4144,7 @@
     },
     "WEATHER": {
       "__COMMENTS": "[v24.04.24.00.  ]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Āhua Āwhenua",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3898,6 +4165,7 @@
     },
     "WEEKS": {
       "__COMMENTS": "[v24.04.25.00.  See also MONTHS,YEARS, QUARTERS, TERMS]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Wiki",
       "PLURAL": "Ngā Wiki",
       "DESCRIPTION": "",
@@ -3908,6 +4176,7 @@
     },
     "WELCOME": {
       "__COMMENTS": "[v24.04.24.00.  Te whārangi kāinga mō ngā kaiwhakamahi kua whiwhi tūturu. Tirohia te PAPA.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Nau mai",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3917,6 +4186,7 @@
     },
     "WORK": {
       "__COMMENTS": "[v24.04.24.00.  Te utu i roto i te whakarerekē i te STATUS o ngā Rauemi me ngā Rokohanga ki te whakaputa i ngā HUA.]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mahi",
       "PLURAL": "N/A",
       "DESCRIPTION": "",
@@ -3931,6 +4201,7 @@
     },
     "YEARS": {
       "__COMMENTS": "[v24.04.24.00.  Tirohia hoki Ngā Wiki, Ngā Marama]",
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tau",
       "PLURAL": "Ngā Tau",
       "DESCRIPTION": "",
@@ -3943,19 +4214,23 @@
   "APPS": {
     "DESCRIPTION": "",
     "SPIKE": {
+      "[DIV_03]": "[------]",
       "SINGULAR": "Tara",
       "PLURAL": "Ngā Tara",
       "DESCRIPTION": ""
     },
     "ARCHITECTURE": {
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hangarau",
       "DESCRIPTION": ""
     },
     "EDUCATION": {
+      "[DIV_03]": "[------]",
       "SINGULAR": "Mātauranga",
       "DESCRIPTION": ""
     },
     "HEALTH": {
+      "[DIV_03]": "[------]",
       "SINGULAR": "Hauora",
       "DESCRIPTION": ""
     }
