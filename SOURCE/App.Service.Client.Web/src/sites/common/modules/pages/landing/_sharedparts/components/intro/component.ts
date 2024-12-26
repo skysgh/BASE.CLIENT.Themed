@@ -11,7 +11,6 @@ import { SystemDiagnosticsTraceService } from '../../../../../../../../core/serv
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
 //import { TranslateBase }
-import { BaseTranslatePipe } from '../../../../../../../../core.ui/pipes/basetranslate.pipe';
 
 @Component({
   selector: 'app-base-core-pages-landing-index-demos',

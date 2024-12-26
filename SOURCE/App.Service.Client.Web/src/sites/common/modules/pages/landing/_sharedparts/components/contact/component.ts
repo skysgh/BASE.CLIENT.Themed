@@ -4,8 +4,6 @@ import { Component, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../../../../../core/constants/system';
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
 import { SystemService } from '../../../../../../../../core/services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../../../../../core/services/system.diagnostics-trace.service';

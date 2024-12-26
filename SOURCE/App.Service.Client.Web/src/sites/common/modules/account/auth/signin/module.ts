@@ -12,7 +12,6 @@ import { TranslateModule } from '@ngx-translate/core';
 // import { BaseCoreCommonComponentsModule } from '../../../common/components/module';
 import { BaseCoreCommonModule } from '../../../common/module';
 
-//import { BaseTranslatePipe } from '../../../common/pipes/basetranslate.pipe';
 
 @NgModule({
   declarations: [

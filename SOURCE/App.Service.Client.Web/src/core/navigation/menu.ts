@@ -1,8 +1,6 @@
 import { IHasMenuItem } from '../models/contracts/IHasMenuItem';
 // Constants:
 import { system } from '../constants/system';
-// Pipes:
-import { BaseTranslatePipe } from '../../core.ui/pipes/basetranslate.pipe';
 
 
 export const MENU: IHasMenuItem[] =

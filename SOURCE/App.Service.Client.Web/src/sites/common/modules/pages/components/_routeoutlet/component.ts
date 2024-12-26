@@ -2,8 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // Import Common:
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { ViewModel } from './vm';

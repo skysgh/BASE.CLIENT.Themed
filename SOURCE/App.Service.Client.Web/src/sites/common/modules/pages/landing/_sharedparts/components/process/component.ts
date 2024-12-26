@@ -7,8 +7,6 @@ import {ProcessModel} from './process.model';
 import { Process } from './data';
 // Constants:
 import { system as importedSystemConst } from '../../../../../../../../core/constants/system';
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
 import { SystemService } from '../../../../../../../../core/services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../../../../../core/services/system.diagnostics-trace.service';

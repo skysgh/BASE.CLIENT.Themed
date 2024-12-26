@@ -5,8 +5,6 @@ import { NgbNavModule, NgbAccordionModule, NgbDropdownModule } from '@ng-bootstr
 import { TranslateService } from '@ngx-translate/core';
 // Constants:
 import { system as importedSystemConst } from '../../../../../../core/constants/system';
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { SystemService } from '../../../../../../core/services/system.service';

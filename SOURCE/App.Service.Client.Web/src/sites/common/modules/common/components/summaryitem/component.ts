@@ -4,8 +4,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 //
 // Constants:
 import { system as importedSystemConst } from '../../../../../../core/constants/system';
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 // Models:

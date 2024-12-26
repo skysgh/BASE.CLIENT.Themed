@@ -5,11 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-//import { BaseTranslatePipe } from '../../../../common/pipes/basetranslate.pipe';
 // Constants:
 import { system as importedSystemConst } from '../../../../../../../core/constants/system';
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
 import { SystemService } from '../../../../../../../core/services/system.service';
 import { ViewModel } from './vm';

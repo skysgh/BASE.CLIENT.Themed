@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../core.ui/pipes/basetranslate.pipe';
 
 import { EventService } from '../../../../../core/services/infrastructure/event.service';
 import { ViewModel } from './vm';

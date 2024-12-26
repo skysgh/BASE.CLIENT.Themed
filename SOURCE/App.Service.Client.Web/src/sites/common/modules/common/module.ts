@@ -22,10 +22,6 @@ import { BaseCoreCommonDirectivesModule } from './directives/module';
 import { BaseCoreCommonPipesModule } from './pipes/module';
 import { BaseCoreCommonComponentsModule } from './components/module';
 
-//import { EnabledPipe } from './pipes/enabled.pipe';
-//import { MatchesPipe } from './pipes/matches.pipe';
-
-//import { BaseTranslatePipe } from './pipes/basetranslate.pipe';
 //import { ScrollspyDirective } from './scrollspy.directive';
 
 //import Module specific:

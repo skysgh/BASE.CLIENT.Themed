@@ -1,5 +1,3 @@
-// Pipes:
-// import { BaseTranslatePipe } from '../../../common/pipes/basetranslate.pipe';
 
 //import { ViewModel } from './vm';
 

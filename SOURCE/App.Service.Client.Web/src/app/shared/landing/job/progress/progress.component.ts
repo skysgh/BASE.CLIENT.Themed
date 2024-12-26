@@ -4,8 +4,6 @@ import { Component, OnInit } from '@angular/core';
 // 
 // Constants:
 import { system as importedSystemConst } from '../../../../../core/constants/system';
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
 import { SystemService } from '../../../../../core/services/system.service';
 import { ViewModel } from './vm';

@@ -9,8 +9,6 @@ import { system as importedSystemConst } from '../../../../../../core/constants/
 import { TranslateService } from '@ngx-translate/core';
 import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { ViewModel } from './vm';
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
 //
 // Models:

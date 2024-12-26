@@ -3,8 +3,6 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 // Etc:
 import { TranslateService } from "@ngx-translate/core";
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../../core.ui/pipes/basetranslate.pipe';
 // Constants:
 import { system as importedSystemConst } from '../../../../../../core/constants/system';
 // Services:

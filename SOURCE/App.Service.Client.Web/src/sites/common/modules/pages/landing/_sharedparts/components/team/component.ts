@@ -5,8 +5,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 // Constants:
 import { system as importedSystemConst } from '../../../../../../../../core/constants/system';
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
 import { SystemService } from '../../../../../../../../core/services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../../../../../core/services/system.diagnostics-trace.service';

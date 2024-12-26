@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// Pipes:
-import { BaseTranslatePipe } from '../../../../../core.ui/pipes/basetranslate.pipe';
-
 import { candidates } from './data';
 import { ViewModel } from './vm';
 
