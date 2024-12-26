@@ -1,4 +1,4 @@
-import { ChartTypeVTO } from '../../../../../_BASE/core/models/view/chart-type.vto.model';
+import { ChartTypeVTO } from '../../../../../core/models/view/chart-type.vto.model';
 
 
 /**

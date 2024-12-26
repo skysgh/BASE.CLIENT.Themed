@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SystemDiagnosticsTraceService } from '../../../../../../../core/services/system.diagnostics-trace.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../../../core/services/system.diagnostics-trace.service';
 import { Spike } from '../../../../../models/spike.model';
 import { TranslateService } from '@ngx-translate/core';
 

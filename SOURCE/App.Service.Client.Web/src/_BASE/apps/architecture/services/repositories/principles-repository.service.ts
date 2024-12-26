@@ -2,17 +2,17 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 //import { env } from "process";
-import { MappedGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/mapped-generic-repository.service.base";
-import { SystemDiagnosticsTraceService } from "../../../../core/services/system.diagnostics-trace.service";
-import { SystemEnvironmentService } from "../../../../core/services/system.environment.service";
-import { SystemErrorService } from "../../../../core/services/system.error.service";
-import { TypeService } from "../../../../core/services/type.service";
+import { MappedGenericRepositoryServiceBase } from "../../../../../core/services/repositories/base/mapped-generic-repository.service.base";
+import { SystemDiagnosticsTraceService } from "../../../../../core/services/system.diagnostics-trace.service";
+import { SystemEnvironmentService } from "../../../../../core/services/system.environment.service";
+import { SystemErrorService } from "../../../../../core/services/system.error.service";
+import { TypeService } from "../../../../../core/services/type.service";
 // import models:
 import { Principle } from "../../models/principle.model";
-import { SessionStorageService } from "../../../../core/services/infrastructure/SessionStorageService";
-import { ObjectMappingService } from "../../../../core/services/infrastructure/objectMapping.service";
-import { UrlService } from "../../../../core/services/url.service";
-import { SimpleGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/simple-generic-repository-service.base";
+import { SessionStorageService } from "../../../../../core/services/infrastructure/SessionStorageService";
+import { ObjectMappingService } from "../../../../../core/services/infrastructure/objectMapping.service";
+import { UrlService } from "../../../../../core/services/url.service";
+import { SimpleGenericRepositoryServiceBase } from "../../../../../core/services/repositories/base/simple-generic-repository-service.base";
 
 
 @Injectable()

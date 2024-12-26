@@ -20,10 +20,10 @@ import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/compon
 // 
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
 import { BaseAppsSpikeSubSpikesRepositoryService } from './services/repositories/subspike-repository.service';
-import { BaseCoreCommonModule } from '../../core/modules/common/module';
-import { BaseCoreCommonComponentsModule } from '../../core/modules/common/components/module';
-import { ServiceLanguagesRepositoryService } from '../../core/services/services/repositories/service-languages.repository.service';
-import { ServiceLanguagesService } from '../../core/services/service.languages.service';
+import { BaseCoreCommonModule } from '../../../sites/common/modules/common/module';
+// import { BaseCoreCommonComponentsModule } from '../../../core/modules/common/components/module';
+import { ServiceLanguagesRepositoryService } from '../../../core/services/services/repositories/service-languages.repository.service';
+import { ServiceLanguagesService } from '../../../core/services/service.languages.service';
 
 // ...submodules:
 // NO mention, as it is late loaded by routes:
@@ -65,8 +65,7 @@ import { ServiceLanguagesService } from '../../core/services/service.languages.s
     FormsModule,
     // Module specific:
     //SpikeRoutingModule,
-    BaseCoreCommonModule,
-    BaseCoreCommonComponentsModule,
+    BaseCoreCommonModule
   ],
   exports: [
     // Not sure why doing this:

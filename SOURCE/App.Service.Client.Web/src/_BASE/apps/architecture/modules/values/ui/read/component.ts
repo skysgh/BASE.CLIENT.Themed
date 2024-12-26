@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
-import { ExampleService } from '../../../../../../core/services/example.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../../core/services/system.diagnostics-trace.service';
+import { ExampleService } from '../../../../../../../core/services/example.service';
 import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
 
 import { Value } from '../../../../models/value.model';

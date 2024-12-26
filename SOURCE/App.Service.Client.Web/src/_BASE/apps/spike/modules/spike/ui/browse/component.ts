@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 // Services:
-import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../../core/services/system.diagnostics-trace.service';
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Models:
 import { Spike } from '../../../../models/spike.model';
 import { ActivatedRoute } from '@angular/router';
-import { SummaryItemVTO } from '../../../../../../core/models/SummaryItem.vto.model';
+import { SummaryItemVTO } from '../../../../../../../core/models/SummaryItem.vto.model';
 import { ViewModel } from './vm';
 
 

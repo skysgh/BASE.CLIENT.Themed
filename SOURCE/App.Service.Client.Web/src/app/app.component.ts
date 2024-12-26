@@ -1,6 +1,6 @@
 //import { Component } from '@angular/core';
 // Pipes:
-//import { BaseTranslatePipe } from '../_BASE/core/modules/common/pipes/basetranslate.pipe';
+//import { BaseTranslatePipe } from '../core/modules/common/pipes/basetranslate.pipe';
 
 //import { TitleService } from '../_BASE/shared/services/title.service';
 //import { SystemService } from '../_BASE/shared/services/system.service';

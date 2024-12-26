@@ -1,7 +1,7 @@
-import { HasTenantedReferenceDataBase } from "../../../core/models/base/HasTenantedReferenceDataBase";
-import { IHasParentFK } from "../../../core/models/contracts/IHasParentFK";
-import { IHasTitleAndDescription } from "../../../core/models/contracts/IHasTitleAndDescription";
-import { IHasUUID } from "../../../core/models/contracts/IHasUUID";
+import { HasTenantedReferenceDataBase } from "../../../../core/models/base/HasTenantedReferenceDataBase";
+import { IHasParentFK } from "../../../../core/models/contracts/IHasParentFK";
+import { IHasTitleAndDescription } from "../../../../core/models/contracts/IHasTitleAndDescription";
+import { IHasUUID } from "../../../../core/models/contracts/IHasUUID";
 
 export class SubSpike extends HasTenantedReferenceDataBase
   implements IHasParentFK,

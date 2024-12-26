@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core';
 
 // Import Module:
-import { SystemDiagnosticsTraceService } from '../../../../../../../core/services/system.diagnostics-trace.service';
+import { SystemDiagnosticsTraceService } from '../../../../../../../../core/services/system.diagnostics-trace.service';
 
 import { Value } from '../../../../../models/value.model';
 

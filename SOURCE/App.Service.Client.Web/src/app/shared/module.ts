@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 // Counter
 import { CountUpModule } from 'ngx-countup';
 
-//import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../_BASE/core/modules/components/breadcrumbs/component';
+//import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../core/modules/components/breadcrumbs/component';
 
 
 
@@ -21,7 +21,7 @@ import { JobcategoriesComponent } from './landing/job/jobcategories/jobcategorie
 import { ProgressComponent } from './landing/job/progress/progress.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { BaseCoreCommonModule } from '../../_BASE/core/modules/common/module';
+import { BaseCoreCommonModule } from '../../sites/common/modules/common/module';
 
 @NgModule({
   declarations: [
@@ -55,6 +55,8 @@ import { BaseCoreCommonModule } from '../../_BASE/core/modules/common/module';
     CandidateComponent,
     BlogComponent,
     JobcategoriesComponent,
-    JobBaseLayoutFooterComponent]
+    JobBaseLayoutFooterComponent
+
+  ]
 })
 export class SharedModule { }

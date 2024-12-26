@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 // Etc:
 // 
 // Constants:
-import { system as importedSystemConst } from '../../../../../_BASE/core/constants/system';
+import { system as importedSystemConst } from '../../../../../core/constants/system';
 // Pipes:
-import { BaseTranslatePipe } from '../../../../../_BASE/core/modules/common/pipes/basetranslate.pipe';
+import { BaseTranslatePipe } from '../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
-import { SystemService } from '../../../../../_BASE/core/services/system.service';
+import { SystemService } from '../../../../../core/services/system.service';
 import { ViewModel } from './vm';
 
 

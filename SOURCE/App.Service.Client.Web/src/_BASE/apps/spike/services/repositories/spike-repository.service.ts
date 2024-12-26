@@ -4,12 +4,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 // Constants:
-import { system as importedSystemConst } from '../../../../core/constants/system';
+import { system as importedSystemConst } from '../../../../../core/constants/system';
 // Services:
-import { MappedGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/mapped-generic-repository.service.base";
+import { MappedGenericRepositoryServiceBase } from "../../../../../core/services/repositories/base/mapped-generic-repository.service.base";
 // Models:
 import { Spike } from "../../models/spike.model";
-import { RepositoryStandardServicesPackage } from "../../../../core/services/repositories/base/_standard-repository-services-package";
+import { RepositoryStandardServicesPackage } from "../../../../../core/services/repositories/base/_standard-repository-services-package";
 
 @Injectable()
 export class BaseAppsSpikeSpikesRepositoryService

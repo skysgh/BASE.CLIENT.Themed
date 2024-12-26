@@ -1,0 +1,56 @@
+<div class="col-xl-4 summary-item">
+  <div class="card">
+    <div class="card-header">
+
+      <img [src]="summaryItem?.typeImage"
+           title="Person"
+           alt="Item Image"
+           >
+
+      <span class="float-end text-secondary">
+      {{summaryItem?.type}}
+      </span>
+
+      <h6 class="card-title">
+        {{summaryItem?.title}}
+        <span class="text-secondary">
+          {{summaryItem?.id}}
+        </span>
+      </h6>
+      <p class="card-subtitle text-muted mb-0">blah...</p>
+    </div>
+    <div class="card-body">
+      <p class="text-muted">
+        {{summaryItem?.description}}
+      </p>
+      <p class="text-muted mb-0">
+        foo bar...
+      </p>
+    </div>
+    <div>
+      <div *ngFor="let value of summaryItem?.values">
+        <p>{{value.title}}: {{ value.value }}</p>
+      </div>
+    </div>
+    <div class="card-footer">
+
+      <!-- optional:start -->
+      <div *ngIf="summaryItem?.operations?.length"
+           class="operations">
+        <a *ngFor="let operation of summaryItem?.operations"
+           (click)="onOperationClick(operation.action)"
+           class="link-success float-end">
+          {{ operation.title | baseTranslate }}
+          <i class="ri-arrow-right-s-line align-middle ms-1 lh-1"></i>
+        </a>
+      </div>
+      <!-- operations:done-->
+      <!--<p class="text-muted mb-0">{{summaryItem.primaryActionContextInfo}}</p>-->
+
+
+    </div>
+
+</div>
+
+
+

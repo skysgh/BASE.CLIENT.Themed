@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { SystemDiagnosticsTraceService } from '../../core/services/system.diagnostics-trace.service';
+import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
 import { BaseAppsEducationProductsComponent } from './areas/products/component';
 import { BaseAppsEducationPlacesComponent } from './areas/places/component';
 import { BaseAppsEducationPeopleComponent } from './areas/people/component';

@@ -5,7 +5,7 @@
 //import { AppComponent } from './app.component';
 
 //import { BaseCoreLayoutsModule } from "./layouts/layouts.module";
-////  import { AppRoutingModule } from '../_BASE/core/modules/_app/app-routing.module';
+////  import { AppRoutingModule } from '../core/modules/_app/app-routing.module';
 ////import { PagesModule } from "./pages/pages.module";
 
 //// Auth
@@ -23,7 +23,7 @@
 //import { StoreModule } from '@ngrx/store';
 //import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 //import { EffectsModule } from '@ngrx/effects';
-//import { AuthenticationEffects } from './store/Authentication/authentication.effects'; //'src/_BASE/core/store'
+//import { AuthenticationEffects } from './store/Authentication/authentication.effects'; //'src/core/store'
 
 //import { CookieService } from 'ngx-cookie-service';
 

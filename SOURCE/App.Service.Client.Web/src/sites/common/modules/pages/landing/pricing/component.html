@@ -1,0 +1,263 @@
+<!-- Start Breadcrumbs -->
+<app-base-core-common-components-breadcrumbs title="Pages" [breadcrumbItems]="breadCrumbItems"></app-base-core-common-components-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-6">
+    <div class="text-center mb-4">
+      <h4 class="fw-semibold fs-22">{{ 'BASE.PRICING.SINGULAR' | baseTranslate}} </h4>
+      <p class="text-muted mb-4 fs-15">{{'BASE.PRICING.DESCRIPTION'| baseTranslate}}</p>
+
+      <div class="d-inline-flex">
+        <ul ngbNav #customNav="ngbNav"
+            [activeId]="1"
+            class="nav nav-pills arrow-navtabs plan-nav rounded mb-3 p-1"
+            id="pills-tab"
+            role="tablist">
+          <li [ngbNavItem]="1" class="nav-item">
+            <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
+              {{'BASE.SCHEDULING.MONTHLY'| baseTranslate}}
+            </a>
+            <ng-template ngbNavContent>
+
+                <div class="row justify-content-center">
+                  <div class="col-xxl-12">
+                    <div class="row">
+
+                      <ng-container *ngIf="monthlyPlans$ | async as monthlyPlans">
+                        <ng-container *ngFor="let item of monthlyPlans ; let i = index;">
+
+                          <div class="col-lg-2">
+                            <div class="card pricing-box"
+                                 [ngClass]=" { 'ribbon-box right': item.ribbon === true}">
+                              <div class="card-body p-4 m-2">
+                                <div class="ribbon-two ribbon-two-danger"
+                                     [ngClass]=" { 'd-none': item.ribbon !== true}">
+                                  <span>Popular</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                  <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-semibold">{{item.title}}</h5>
+                                    <p class="text-muted mb-0">{{item.description}}</p>
+                                  </div>
+                                  <div class="avatar-sm">
+                                    <div class="avatar-title bg-light rounded-circle text-primary">
+                                      <i class="{{item.imageId}} fs-20"></i>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="pt-4">
+                                  <h2>
+                                    <sup><small>$</small></sup>
+                                    {{item.monthlyRate}}
+                                    <span class="fs-13 text-muted">
+                                      / {{'BASE.DATES.MONTHS.SINGULAR'  | baseTranslate}}
+                                    </span>
+                                  </h2>
+                                </div>
+                                <hr class="my-4 text-muted">
+                                <div>
+                                  <ul class="list-unstyled text-muted vstack gap-3">
+                                    <li>
+                                      <div class="d-flex">
+                                        <div class="flex-shrink-0 text-success me-1">
+                                          <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                          {{'BASE.DATES.QUANTITIES.UPTO' | baseTranslate}}
+                                          <b>{{item.members}}</b> {{'BASE.DATES.MEMBERSHIPS.PLURAL' | baseTranslate }}
+
+
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex">
+                                        <div class="flex-shrink-0 text-success me-1">
+                                          <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                          {{'BASE.DATES.QUANTITIES.UPTO' | baseTranslate}}
+                                          <b>{{item.groups}}</b> {{'BASE.DATES.GROUPS.PLURAL' | baseTranslate}}
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex">
+                                        <div class="flex-shrink-0 text-success me-1">
+                                          <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                          {{'BASE.DATES.QUANTITIES.UPTO' | baseTranslate}}
+                                          <b>{{item.projects}}</b> {{'BASE.DATES.PROJECTS.PLURAL' | baseTranslate}}
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex">
+                                        <div class="flex-shrink-0 text-success me-1">
+                                          <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                          {{'BASE.DATES.QUANTITIES.UPTO' | baseTranslate}}
+                                          <b>{{item.products}}</b> {{'BASE.DATES.PRODUCTS.PLURAL' | baseTranslate}}
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                  </ul>
+                                  <div class="mt-4">
+                                    <a href="javascript:void(0);"
+                                       class="btn btn w-100 waves-effect waves-light">
+                                      ???
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--end col-->
+                          </ng-container>
+                        </ng-container>
+
+                    </div><!--end row-->
+                  </div><!--end col-->
+                </div><!--end row-->
+            </ng-template>
+          </li>
+
+          <li [ngbNavItem]="2" class="nav-item">
+            <a ngbNavLink class="nav-link" data-bs-toggle="tab" role="tab">
+              {{'BASE.SCHEDULING.YEARLY'| baseTranslate}}
+              <span class="badge bg-success">
+                (
+                {{'BASE.DISCOUNTS.PAST' | baseTranslate}}
+                )
+              </span>
+            </a>
+            <ng-template ngbNavContent>
+ 
+
+                <div class="row justify-content-center">
+                  <div class="col-xl-6">
+                    <div class="row">
+
+                      <ng-container *ngIf="yearlyPlans$ | async as yearlyPlans">
+                        <ng-container *ngFor="let item of yearlyPlans ; let i = index; ">
+
+                          <div class="col-lg-3">
+                            <div class="card pricing-box" [ngClass]=" { 'ribbon-box right': item.ribbon === true}">
+                              <div class="card-body p-4 m-2">
+                                <div class="ribbon-two ribbon-two-danger" [ngClass]=" { 'd-none': item.ribbon !== true}">
+                                  <span>Popular</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                  <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-semibold">{{item.title}}</h5>
+                                    <p class="text-muted mb-0">{{item.description}}</p>
+                                  </div>
+                                  <div class="avatar-sm">
+                                    <div class="avatar-title bg-light rounded-circle text-primary">
+                                      <i class="{{item.imageId}} fs-20"></i>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="pt-4">
+                                  <h2>
+                                    <sup>
+                                      <small>
+                                        $
+                                      </small>
+                                    </sup>{{item.monthlyRate}}
+                                    <span class="fs-13 text-muted">/Month</span>
+                                  </h2>
+                                </div>
+                                <hr class="my-4 text-muted">
+                                <div>
+                                  <ul class="list-unstyled text-muted vstack gap-3">
+                                    <li>
+                                      <div class="d-flex">
+                                        <div class="flex-shrink-0 text-success me-1">
+                                          <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                          Upto <b>{{item.members}}</b> Members
+                                        </div>
+                                      </div>
+                                    </li>
+
+
+
+                                    <li>
+                                      <div class="d-flex">
+                                        <div class="flex-shrink-0 text-success me-1">
+                                          <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                          Upto <b>{{item.groups}}</b> Groups
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex">
+                                        <div class="flex-shrink-0 text-success me-1">
+                                          <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                          Upto <b>{{item.projects}}</b> Projects
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex">
+                                        <div class="flex-shrink-0 text-- me-1">
+                                          <i class="ri---circle-fill fs-15 align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                          <b>24/7</b> Support
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="d-flex">
+                                        <div class="flex-shrink-0 text-- me-1">
+                                          <i class="ri---circle-fill fs-15 align-middle"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                          <b>Unlimited</b> Storage
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                  <div class="mt-4">
+                                    <a href="javascript:void(0);"
+                                       class="btn btn- w-100 waves-effect waves-light">
+                                      ?????
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--end col-->
+                          </ng-container>
+                        </ng-container>
+                    </div><!--end row-->
+                  </div><!--end col-->
+                </div><!--end row-->
+
+
+            </ng-template>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div><!--end col-->
+</div><!--end row-->
+
+
+<div class="row">
+  <div [ngbNavOutlet]="customNav"></div>
+</div><!--end row-->
+
+

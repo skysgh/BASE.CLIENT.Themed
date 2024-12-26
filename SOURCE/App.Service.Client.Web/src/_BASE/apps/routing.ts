@@ -9,11 +9,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateModule } from '@ngx-translate/core';
 // Constants:
-import { system as importedSystemConst } from '../core/constants/system';
+import { system as importedSystemConst } from '../../core/constants/system';
 // Services:
-import { SystemDiagnosticsTraceService } from '../core/services/system.diagnostics-trace.service';
+import { SystemDiagnosticsTraceService } from '../../core/services/system.diagnostics-trace.service';
 // Modules:
-import { AppBaseCoreErrorsModule } from '../core/modules/errors/module';
+import { AppBaseCoreErrorsModule } from '../../sites/common/modules/errors/module';
 // Components:
 import { BaseAppsRouteComponent } from "./ui/_route/component";
 

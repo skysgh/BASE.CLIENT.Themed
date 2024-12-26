@@ -11,6 +11,7 @@ import { ArchitectureRoutingModule } from "./routing.module";
 //Module specific components:
 import { BaseAppsArchitectureValuesModule } from "./modules/values/module";
 import { ArchitectureValuesRepositoryService } from './services/repositories/values-repository.service';
+import { BaseCoreCommonModule } from '../../../sites/common/modules/common/module';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { ArchitectureValuesRepositoryService } from './services/repositories/val
     // SubModules:
     //ArchitectureValuesModule
     // No components
+    BaseCoreCommonModule
   ],
   
   declarations: [

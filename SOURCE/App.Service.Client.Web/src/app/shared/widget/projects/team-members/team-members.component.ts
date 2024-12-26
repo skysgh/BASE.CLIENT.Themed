@@ -3,13 +3,13 @@ import { Component, OnInit, Input } from '@angular/core';
 // Etc:
 // 
 // Const:
-import { system as importedSystemConst } from '../../../../../_BASE/core/constants/system';
+import { system as importedSystemConst } from '../../../../../core/constants/system';
 // Pipes:
-import { BaseTranslatePipe } from '../../../../../_BASE/core/modules/common/pipes/basetranslate.pipe';
+import { BaseTranslatePipe } from '../../../../../core.ui/pipes/basetranslate.pipe';
 // Services:
-import { SystemService } from '../../../../../_BASE/core/services/system.service';
+import { SystemService } from '../../../../../core/services/system.service';
 // Models/Data:
-import { ChartTypeVTO } from '../../../../../_BASE/core/models/view/chart-type.vto.model';
+import { ChartTypeVTO } from '../../../../../core/models/view/chart-type.vto.model';
 import { status1, status2, status3, status4, status5, status6, status7 } from './data';
 import { ViewModel } from './vm';
 

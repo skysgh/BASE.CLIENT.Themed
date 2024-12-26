@@ -4,10 +4,11 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 // Services:
-import { SystemDiagnosticsTraceService } from "../../core/services/system.diagnostics-trace.service";
+import { SystemDiagnosticsTraceService } from "../../../core/services/system.diagnostics-trace.service";
 // Modules:
-import { BaseCoreCommonModule } from "../../core/modules/common/module";
-import { BaseCoreCommonComponentsModule } from "../../core/modules/common/components/module";
+import { BaseCoreCommonModule } from "../../../sites/common/modules/common/module";
+
+// import { BaseCoreCommonComponentsModule } from "../../../core/modules/common/components/module";
 import { BaseAppsEducationRoutingModule } from "./routing";
 // Controls:
 import { BaseAppsEducationProductsComponent } from "./areas/products/component";
@@ -29,7 +30,7 @@ import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishmen
     CommonModule,
     FormsModule,
     // Custom specific:
-    BaseCoreCommonComponentsModule,
+    BaseCoreCommonModule,
     // Module specific:
     BaseAppsEducationRoutingModule
     // No components

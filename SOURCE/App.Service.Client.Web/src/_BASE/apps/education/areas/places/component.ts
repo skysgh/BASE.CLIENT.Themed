@@ -3,10 +3,10 @@ import { Component, OnInit } from "@angular/core";
 // Etc.
 import { TranslateService } from "@ngx-translate/core";
 // Constants:
-import { system as importedSystemConst } from '../../../../core/constants/system';
+import { system as importedSystemConst } from '../../../../../core/constants/system';
 // Services:
-import { SystemService } from "../../../../core/services/system.service";
-import { SystemDiagnosticsTraceService } from "../../../../core/services/system.diagnostics-trace.service";
+import { SystemService } from "../../../../../core/services/system.service";
+import { SystemDiagnosticsTraceService } from "../../../../../core/services/system.diagnostics-trace.service";
 import { ViewModel } from "./vm";
 
 @Component({

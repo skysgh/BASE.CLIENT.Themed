@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { SystemService } from '../../../core/services/system.service';
-import { TitleService } from '../../../core/services/title.service';
+import { SystemService } from '../../../../core/services/system.service';
+import { TitleService } from '../../../../core/services/title.service';
 
 
 @Component({
