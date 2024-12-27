@@ -1,5 +1,8 @@
 ## Development Directions ##
 
+*Note:  
+If `src` is level.00, think of `Core` as "level.02" of the app.*
+
 `Core` is the *reusable* part of the project, 
 that is not specific to any UI framework. 
 It is kept in a separate folder to the theme specific 

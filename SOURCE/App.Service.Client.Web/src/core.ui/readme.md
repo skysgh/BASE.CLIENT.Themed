@@ -1,10 +1,17 @@
 ## Developement Directives ##
 
-`Core.UI` is for reusable UI elements, that invokes only `Core` *Services*, etc.
+*Note:  
+If `src` is level.00, and `Core` is "level.01",
+think of `Core.UI` as "level.02" of the app.*
 
-It is separate from `Core`, as `Core` is usable 
-across different frameworks (not just Angular), whereas `Core.UI` is specific to
-a display framework -- Angular.
+Whereas `Core` is for portable code, irrespective of framework,
+there's only so far one can go before one has to deal with ui framework
+in some way.
+
+`Core.UI` is for reusable UI elements.
+
+`Core.UI` invokes only `Core` *Services* and *model*s without a reliance 
+on anything specific to the `Themes`.
 
 It is also seperate from `Themed`, as that is for 
 UI elements that are tied to the theme, 

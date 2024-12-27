@@ -194,7 +194,7 @@ export const systemAssets = {
           }
         },
         template: {
-          i18n: "/themed/v1/assets/public/i18n/",
+          i18n: "/themes/v1/assets/public/i18n/",
           images: {
           }
         },
@@ -220,24 +220,24 @@ export const systemAssets = {
           }
         },
         themes: {
-          fonts: "/themed/v1/assets/fonts/",
+          fonts: "/themes/v1/assets/fonts/",
           images: {
-            layouts: "/themed/v1/assets/images/layouts",
-            modals: "/themed/v1/assets/images/modals",
+            layouts: "/themes/v1/assets/images/layouts",
+            modals: "/themes/v1/assets/images/modals",
             pages: {
-              backgrounds: "/themed/v1/assets/images/pages/backgrounds",
-              comingsoon: "/themed/v1/assets/images/pages/comingsoon",
-              errors: "/themed/v1/assets/images/pages/errors",
-              maintainance: "/themed/v1/assets/images/pages/maintainance",
-              about: "/themed/v1/assets/images/pages/about",
+              backgrounds: "/themes/v1/assets/images/pages/backgrounds",
+              comingsoon: "/themes/v1/assets/images/pages/comingsoon",
+              errors: "/themes/v1/assets/images/pages/errors",
+              maintainance: "/themes/v1/assets/images/pages/maintainance",
+              about: "/themes/v1/assets/images/pages/about",
             },
             uncertain: {
-              brands: "/themed/v1/assets/images/misc/brands/",
-              galaxy: "/themed/v1/assets/images/uncertain/galaxy/",
-              small: "/themed/v1/assets/images/uncertain/small/",
-              svg: "/themed/v1/assets/images/uncertain/svg/",
-              sweetalerts: "/themed/v1/assets/images/uncertain/sweetalerts/",
-              clients: "/themed/v1/assets/images/uncertain/clients/",
+              brands: "/themes/v1/assets/images/misc/brands/",
+              galaxy: "/themes/v1/assets/images/uncertain/galaxy/",
+              small: "/themes/v1/assets/images/uncertain/small/",
+              svg: "/themes/v1/assets/images/uncertain/svg/",
+              sweetalerts: "/themes/v1/assets/images/uncertain/sweetalerts/",
+              clients: "/themes/v1/assets/images/uncertain/clients/",
             },
             unused: {
 

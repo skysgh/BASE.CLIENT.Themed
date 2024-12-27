@@ -45,9 +45,9 @@
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss",
 
-              "src/themed/v1/assets/scss/icons.scss",
-              "src/themed/v1/assets/scss/config/minimal/bootstrap.scss",
-              "src/themed/v1/assets/scss/config/minimal/app.scss_______________________"
+              "src/themes/v1/assets/scss/icons.scss",
+              "src/themes/v1/assets/scss/config/minimal/bootstrap.scss",
+              "src/themes/v1/assets/scss/config/minimal/app.scss_______________________"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

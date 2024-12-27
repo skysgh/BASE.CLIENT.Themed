@@ -16,7 +16,7 @@ directories.
 One would probably have, for example: 
 
 * `core.ui/assets/` for reusable UI elements
-* `themed/assets/` for theme specific UI elements
+* `themes/assets/` for theme specific UI elements
 * `app/assets/` for application specific assets
 * `app.lets/assets/` for application specific assets that are not part of the main application.
   * TODO: note that I'm not sure yet how to make that work for 3rd party plugins.

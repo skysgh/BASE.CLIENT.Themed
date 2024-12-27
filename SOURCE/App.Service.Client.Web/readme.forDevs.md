@@ -28,6 +28,6 @@
 ### Objectives ###
 
 * As much as possible be reusable -- independent of Angular framework -- under `core/`.
-* `sites/` (may become `themed/v1/sites/`, tbd) contains the landing page(s).
+* `sites/` (may become `themes/v1/sites/`, tbd) contains the landing page(s).
 * `app/` (contains the `app` layout)
 * `app.lets/`(contains plugins to `app/`)

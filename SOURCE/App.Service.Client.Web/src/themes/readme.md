@@ -1,5 +1,10 @@
 ## Development Directives ##
 
+*Note:  
+If `src` is level.00, `core` is "level.01",
+and `core.uI` is "level.02", think of `themes` 
+as "level.03" of the app.*
+
 Over a service lifespan (e.g. 10 years)
 it should be expected that the service's UX will 
 will require being re-implemented in different 

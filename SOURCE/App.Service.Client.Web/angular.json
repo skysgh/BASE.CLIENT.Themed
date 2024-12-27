@@ -34,7 +34,7 @@
 
               "src/assets",
               "src/core/assets",
-              "src/themed/v1/assets",
+              "src/themes/v1/assets",
               "src/sites/assets"
             ],
             "styles": [
@@ -49,9 +49,9 @@
               "node_modules/slick-carousel/slick/slick-theme.scss",
 
 
-              "src/themed/v1/assets/scss/icons.scss",
-              "src/themed/v1/assets/scss/config/minimal/bootstrap.scss",
-              "src/themed/v1/assets/scss/config/minimal/app.scss"
+              "src/themes/v1/assets/scss/icons.scss",
+              "src/themes/v1/assets/scss/config/minimal/bootstrap.scss",
+              "src/themes/v1/assets/scss/config/minimal/app.scss"
 
             ],
             "scripts": [
@@ -175,7 +175,7 @@
 
               "src/assets",
               "src/core/assets/",
-              "src/themed/v1/assets",
+              "src/themes/v1/assets",
               "src/sites/assets"
             ],
             "styles": [
