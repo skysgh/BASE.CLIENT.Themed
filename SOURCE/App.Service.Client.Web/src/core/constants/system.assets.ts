@@ -187,10 +187,10 @@ export const systemAssets = {
        * 
        */
       static: {
-        default: {
-          i18n: "/assets/_BASE/public/static/default/i18n/",
+        core: {
+          i18n: "/core/assets/public/i18n/",
           images: {
-            flags: "/assets/_BASE/public/static/default/images/flags/",
+            flags: "/core/assets/public/images/flags/",
           }
         },
         sponsors: {
@@ -210,24 +210,24 @@ export const systemAssets = {
           }
         },
         themes: {
-          fonts: "/assets/_BASE/public/static/theme/fonts/",
+          fonts: "/themed/v1/assets/fonts/",
           images: {
-            layouts: "/assets/_BASE/public/static/themes/images/layouts",
-            modals: "/assets/_BASE/public/static/themes/images/modals",
+            layouts: "/themed/v1/assets/images/layouts",
+            modals: "/themed/v1/assets/images/modals",
             pages: {
-              backgrounds: "/assets/_BASE/public/static/themes/images/pages/backgrounds",
-              comingsoon: "/assets/_BASE/public/static/themes/images/pages/comingsoon",
-              errors: "/assets/_BASE/public/static/themes/images/pages/errors",
-              maintainance: "/assets/_BASE/public/static/themes/images/pages/maintainance",
-              about: "/assets/_BASE/public/static/themes/images/pages/about",
+              backgrounds: "/themed/v1/assets/images/pages/backgrounds",
+              comingsoon: "/themed/v1/assets/images/pages/comingsoon",
+              errors: "/themed/v1/assets/images/pages/errors",
+              maintainance: "/themed/v1/assets/images/pages/maintainance",
+              about: "/themed/v1/assets/images/pages/about",
             },
             uncertain: {
-              brands: "/assets/_BASE/public/static/themes/images/misc/brands/",
-              galaxy: "/assets/_BASE/public/static/themes/images/uncertain/galaxy/",
-              small: "/assets/_BASE/public/static/themes/images/uncertain/small/",
-              svg: "/assets/_BASE/public/static/themes/images/uncertain/svg/",
-              sweetalerts: "/assets/_BASE/public/static/themes/images/uncertain/sweetalerts/",
-              clients: "/assets/_BASE/public/static/themes/images/uncertain/clients/",
+              brands: "/themed/v1/assets/images/misc/brands/",
+              galaxy: "/themed/v1/assets/images/uncertain/galaxy/",
+              small: "/themed/v1/assets/images/uncertain/small/",
+              svg: "/themed/v1/assets/images/uncertain/svg/",
+              sweetalerts: "/themed/v1/assets/images/uncertain/sweetalerts/",
+              clients: "/themed/v1/assets/images/uncertain/clients/",
             },
             unused: {
 

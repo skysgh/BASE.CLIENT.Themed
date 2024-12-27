@@ -93,7 +93,7 @@ export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
     // Same logic really, except for setting language.
     if (systemLanguage) {
       this.languageTitle = systemLanguage.title;
-      this.flagvalue = `${this.system.sources.assets.public.static.default.images.flags}${systemLanguage.languageCode}.svg`;
+      this.flagvalue = `${this.system.sources.assets.public.static.core.images.flags}${systemLanguage.languageCode}.svg`;
 
       if (setLanguage) {
         this.translationService.setLanguage(systemLanguage.languageCode!);
@@ -101,7 +101,7 @@ export class BaseCoreCommonComponentTopBarLanguageComponent implements OnInit {
       this.activeLanguageCode = systemLanguage.languageCode;
     }else {
       this.languageTitle = '...';
-      this.flagvalue = this.system.sources.assets.public.static.default.images.flags + '/00.svg';
+      this.flagvalue = this.system.sources.assets.public.static.core.images.flags + '/00.svg';
     }
   }
 

@@ -46,10 +46,12 @@ export class TranslationService {
 
 
   public createTranslateLoader(http: HttpClient): any {
+    let path: string = this.systemService.system.sources.assets.public.static.core.i18n;
+
     return
     new TranslateHttpLoader(
       http,
-      this.systemService.system.sources.assets.public.static.default.i18n,
+      path,
       '.json');
   }
 

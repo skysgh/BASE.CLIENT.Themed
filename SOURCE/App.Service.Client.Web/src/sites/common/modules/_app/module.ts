@@ -54,8 +54,9 @@ import { BaseCoreCommonModule } from '../common/module';
 // import { BaseCoreCommonComponentsModule } from '../common/components/module';
 import { TranslationService } from '../../../../core/services/translation.service';
 export function createTranslateLoader(http: HttpClient): any {
-  
-  return new TranslateHttpLoader(http, system.sources.assets.public.static.default.i18n, '.json');
+  let path :string = system.sources.assets.public.static.core.i18n;
+
+  return new TranslateHttpLoader(http, path , '.json');
 }
 
 if (environment.defaultauth === 'firebase') {
