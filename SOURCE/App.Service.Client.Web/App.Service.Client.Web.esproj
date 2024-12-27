@@ -74,7 +74,6 @@
     <Folder Include="src\assets\_BASE\public\static\userdata\images\" />
     <Folder Include="src\sites.apps\app\modules\" />
     <Folder Include="src\sites\landing\" />
-    <Folder Include="src\themed\v1\assets\public\i18n\" />
     <Folder Include="src\themed\v1\assets\scss\images\backgrounds\" />
     <Folder Include="src\themed\v1\assets\scss\images\for_styles\backgrounds\tops\tops\" />
     <Folder Include="src\themed\v1\assets\scss\images\NewFolder\" />
