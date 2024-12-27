@@ -1,0 +1,10 @@
+{
+  "THEMES": {
+    "V1": {
+      "TEST": {
+        "YAY": "SUPER YAY {{BASE.SIGN_UPS.SINGULAR}}"
+      }
+    }
+  }
+}
+

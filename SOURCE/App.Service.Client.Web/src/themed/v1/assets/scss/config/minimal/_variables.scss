@@ -1,9 +1,19 @@
 // Variables
-//$default_images_root is only used once, to import the svg image of a flag 
-$default_images_root: '../images/';
-// $theme_images_root is used more often
-$theme_images_root: '../images/for_styles/';
+// IMPORTANT:
+// Note that these offset appear to be from a directory within scss,
+// not this directory (or the offset would be ../../ rather than
+// just../)
+// And yet, app.scss refers to font with ../../ ...so not sure what's
+// going on.
 
+//$default_images_root is only used once, to import the svg image of a flag
+$offset: '../';
+$offset_plus_one: '../#{$offset}';
+// #{$offset}
+// #{$doubleoffset}
+$default_images_root: '#{$offset}images/';
+// $theme_images_root is used more often
+$theme_images_root: '#{$offset}images/for_styles/';
 // Google Font
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 

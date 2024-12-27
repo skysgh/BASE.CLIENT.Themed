@@ -2,12 +2,18 @@
 
 File: Custom Bootstrap Css File
 */
+$offset: '../';
+$offset: '../';
+$offset_plus_one: '../#{$offset}';
 
 
 //Core files
-@import "./node_modules/bootstrap/scss/functions";
-@import "./node_modules/bootstrap/scss/variables";
-@import "variables";
-@import "variables-dark";
-@import "../../components/utilities";
-@import "./node_modules/bootstrap/scss/bootstrap";
+@import './node_modules/bootstrap/scss/functions';
+@import './node_modules/bootstrap/scss/variables';
+@import 'variables';
+@import 'variables-dark';
+// Note:
+// was unable to use a variable here for unclear reasons
+// so it's hard coded.
+@import '../../components/utilities';
+@import './node_modules/bootstrap/scss/bootstrap';

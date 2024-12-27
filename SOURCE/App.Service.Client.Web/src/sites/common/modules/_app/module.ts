@@ -53,10 +53,20 @@ import { AppLayoutComponent } from '../layouts/layout.component';
 import { BaseCoreCommonModule } from '../common/module';
 // import { BaseCoreCommonComponentsModule } from '../common/components/module';
 import { TranslationService } from '../../../../core/services/translation.service';
-export function createTranslateLoader(http: HttpClient): any {
-  let path :string = system.sources.assets.public.static.core.i18n;
+import { MultiTranslateLoader } from '../translations/module';
 
-  return new TranslateHttpLoader(http, path , '.json');
+// export function createTranslateLoader(http: HttpClient): any {
+//   let path :string = system.sources.assets.public.static.core.i18n;
+// 
+//   return new TranslateHttpLoader(http, path , '.json');
+// }
+export function createTranslateLoader(http: HttpClient): any {
+  // Specify paths where to look for resources:
+  let path: string = system.sources.assets.public.static.core.i18n;
+  let path2: string = system.sources.assets.public.static.template.i18n;
+  let path3: string = system.sources.assets.public.static.app.i18n;
+  return new MultiTranslateLoader(http, [path, path2, path3]);
+
 }
 
 if (environment.defaultauth === 'firebase') {
@@ -74,10 +84,15 @@ if (environment.defaultauth === 'firebase') {
   imports: [
 
     TranslateModule.forRoot({
+      // Set the first language
+      // based on saved settings:
       defaultLanguage: getLanguageCode(),
+      
       loader: {
         provide: TranslateLoader,
+        // use our custom multiloader:
         useFactory: (createTranslateLoader),
+        // inject into createTranslateLoader, as first argument:
         deps: [HttpClient]
       }
     }),

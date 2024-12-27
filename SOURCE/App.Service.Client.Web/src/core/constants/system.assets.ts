@@ -193,6 +193,16 @@ export const systemAssets = {
             flags: "/core/assets/public/images/flags/",
           }
         },
+        template: {
+          i18n: "/themed/v1/assets/public/i18n/",
+          images: {
+          }
+        },
+        app: {
+          i18n: "/sites/assets/public/i18n/",
+          images: {
+          }
+        },
         sponsors: {
           images: {}
         },

@@ -34,8 +34,8 @@
 
               "src/assets",
               "src/core/assets",
-
-              "src/themed/v1/assets"
+              "src/themed/v1/assets",
+              "src/sites/assets"
             ],
             "styles": [
               "node_modules/prismjs/themes/prism.css",
@@ -175,8 +175,8 @@
 
               "src/assets",
               "src/core/assets/",
-
-              "src/themed/v1/assets"
+              "src/themed/v1/assets",
+              "src/sites/assets"
             ],
             "styles": [
               "src/styles.scss"
