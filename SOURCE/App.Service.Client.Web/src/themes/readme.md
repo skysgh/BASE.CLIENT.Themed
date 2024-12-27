@@ -31,4 +31,39 @@ In the meantime, though, even the `sites` are template specific,
 they will be kept seperate and parallel to the `themes`.
 
 
+### Multiple versions ###
+
+It might seem redundent at first to make a whole
+sub directory and namespace for a theme version
+when there is only one theme so far. 
+
+But 10-12 years is a long time. And in that time 
+one can expect to at the very least reskin an app.
+
+And while working on 'V2', you won't be able to 
+take down the old one as you have current users - 
+and it's probably unwise to release a complete makeover
+without an ability to fall back to a previous theme
+if things go pear shaped once release. 
+
+You have a couple of ways to do it.
+If you are 100% sure you are just changing the visual
+aspects, without changes at all to the theme, 
+you could keep the modules and component `ts`
+files and provide a V2 `html` file.
+
+But it's more than likely that at that future date 
+the theme you want to move to is using a different
+Framework version, that the older theme was never 
+upgraded to (and is probably out of support).
+
+In which case you'll have to update the `ts` files as well.
+
+Looking at it from that wider context of the whole
+service lifespan, adding a 'V1' namespace doesn't 
+sound like so much of an over-engineering (although I'll 
+admit that it doesn't sound that convincing that it will 
+actually work when put to the test - there will be too
+many differences to host multiple themes and frameworks
+in one project).
 

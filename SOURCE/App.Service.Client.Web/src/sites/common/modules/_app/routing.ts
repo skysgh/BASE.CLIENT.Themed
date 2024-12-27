@@ -2,9 +2,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
-
-
 //import { BaseRouterOutletComponent } from './ui/_routerOutlet/component';
 import { AppLayoutComponent} from '../layouts/layout.component';
 
@@ -26,7 +23,6 @@ const routes: Routes = [
 
   { path: 'dashboards', component: AppLayoutComponent, loadChildren: () => import('../dashboard/module').then(m => m.BaseCoreDashboardsModule), canActivate: [AuthGuard] },
 
-
   //// But apps, is more complex:
   //// Is is wrapped in the AppLayout frame first.
   //// And it is Guarded.
@@ -39,7 +35,8 @@ const routes: Routes = [
   { path: 'information', redirectTo: 'pages/information', pathMatch: 'prefix' },
   { path: 'auth', loadChildren: () => import('../account/module').then(m => m.BaseCoreAccountModule) },
   { path: 'errors', loadChildren: () => import('../errors/module').then(m => m.AppBaseCoreErrorsModule) },
-  { path: '', redirectTo: 'pages', pathMatch:'full' },
+
+  { path: '', redirectTo: 'pages', pathMatch: 'full' },
 
   { path: '**', redirectTo: 'errors' }
 

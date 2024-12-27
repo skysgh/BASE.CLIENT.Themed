@@ -8,7 +8,8 @@ Whereas `Core` is for portable code, irrespective of framework,
 there's only so far one can go before one has to deal with ui framework
 in some way.
 
-`Core.UI` is for reusable UI elements.
+`Core.UI` is for reusable *ui framework* elements 
+(but not necessarily UI elements, which would have references to styles).
 
 `Core.UI` invokes only `Core` *Services* and *model*s without a reliance 
 on anything specific to the `Themes`.
