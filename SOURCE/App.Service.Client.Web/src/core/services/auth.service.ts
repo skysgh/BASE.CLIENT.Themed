@@ -17,7 +17,8 @@ import { SessionStorageService } from './infrastructure/SessionStorageService';
 // models:
 import { User } from '../../sites/common/store/Authentication/auth.models';
 
-const AUTH_API = importedSystemConst.apis.AUTH_API;
+
+const AUTH_API = importedSystemConst.apis.themesbrand.AUTH_API;
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

@@ -4022,6 +4022,7 @@
       "[DIV_07]": "[------]",
       "OOPS!": "{{BASE.APOLOGIES.OOPS!}}",
       "SORRY": "{{BASE.APOLOGIES.SORRY}}",
+      "JSON_FETCH_FAILED": "JSON failed request ({0}).",
       "100": {
         "ID": "100",
         "TITLE": "Continue",

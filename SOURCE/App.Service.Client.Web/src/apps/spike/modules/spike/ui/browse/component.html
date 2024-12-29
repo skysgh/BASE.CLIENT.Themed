@@ -1,0 +1,23 @@
+<table class="table table-hover table-nowrap mb-0">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">{{'BASE.HEADERS.TITLE' | baseTranslate}}</th>
+      <th scope="col">{{'BASE.HEADERS.DESCRIPTION' | baseTranslate}}</th>
+      <th scope="col">{{'BASE.HEADERS.ACTIONS' | baseTranslate}}</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="data">
+    <tr *ngFor="let x of data">
+      <td>{{x.title}}</td>
+      <td>{{x.description}}</td>
+      <td><a [routerLink]="['../view/', x.id]"><i class="ri-download-2-line"></i></a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!--<ng-container *ngFor="let item of data">
+  <app-summary-item [summaryItem]="item"></app-summary-item>
+</ng-container>-->
+
+

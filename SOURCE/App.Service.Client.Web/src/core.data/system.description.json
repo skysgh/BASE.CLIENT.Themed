@@ -1,0 +1,468 @@
+{
+  "base_service_Features": [
+    {
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "id": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Dashboards",
+      "description": "for the right level of insight.",
+      "imageName": "..."
+    },
+    {
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "id": "00000000-00000000-00000000-00000002",
+      "enabled": true,
+      "title": "Available in local languages",
+      "description": "English, Māori, Samoan, Tonga, Chinese, Indian...",
+      "imageName": "..."
+    },
+    {
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "id": "00000000-00000000-00000000-00000003",
+      "enabled": true,
+      "title": "Device & Platform independent",
+      "description": "Anytime, anywhere, any device",
+      "imageName": "..."
+    },
+    {
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "id": "00000000-00000000-00000000-00000004",
+      "enabled": true,
+      "title": "Government Secure",
+      "description": "Encryted, Encrypted, Encrypted.",
+      "imageName": "..."
+    },
+    {
+      "serviceId": "00000000-00000000-00000000-00000005",
+      "id": "00000000-00000000-00000000-00000005",
+      "enabled": true,
+      "title": "Scalable",
+      "description": "Ready for the whole sector...",
+      "imageName": "..."
+    }
+  ],
+  "base_service_Capabilities": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PURPOSE.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PURPOSE.DESCRIPTION",
+      "imageId": "ri-pencil-ruler-2-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PROJECTS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PROJECTS.DESCRIPTION",
+      "imageId": " ri-flag-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PEOPLE.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PEOPLE.DESCRIPTION",
+      "imageId": " ri-user-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": true,
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.GROUPS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.GROUPS.DESCRIPTION",
+      "imageId": "ri-group-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": true,
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PLACES.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PLACES.DESCRIPTION",
+      "imageId": "ri-map-pin-2-line"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "enabled": true,
+      "imageId": " ri-line-chart-line",
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PROGRESS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PRODUCTS.DESCRIPTION"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "enabled": true,
+      "imageId": "ri-book-open-line",
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PRODUCTS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PRODUCTS.DESCRIPTION"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "enabled": true,
+      "imageId": " ri-award-line",
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PLANS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PLANS.DESCRIPTION"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "enabled": true,
+      "imageId": "ri-recycle-line",
+      "title": "CUSTOM.SITE.HOME.CAPABILITIES.ACHIEVEMENTS.TITLE",
+      "description": "CUSTOM.SITE.HOME.CAPABILITIES.ACHIEVEMENTS.DESCRIPTION"
+    }
+  ],
+  "base_service_Endorsements": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "Great!",
+      "description": "Provides me the oversight I was missing. Great!'",
+      "userFK": null,
+      "languageCode": "en"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "Great!",
+      "description": "Could not be more pleased. Thank you.'",
+      "userFK": null,
+      "languageCode": "en"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "Great!",
+      "description": "Thank you: respectful and inclusive while being useful...(in moari).'",
+      "userFK": null,
+      "languageCode": "mi"
+    }
+  ],
+
+  "base_service_UserEndorsements": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "About time",
+      "description": "Waited 10 years for this.",
+      "by": "Stuart W.",
+      "role": "CDO, MO[R]E, Inc."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "Finally have the tool",
+      "description": "Custom software, like this one -- specific to need -- *always* beats configured COTS in terms of consumer satisfaction.",
+      "by": "Iona H.",
+      "role": "CEO, Future of Ed"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "Gobsmacked",
+      "description": "WHy didn't we do this sooner?!?!",
+      "by": "Sally C.S.",
+      "role": "Teacher, Everywhere Middle School."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "Hate It",
+      "description": "Gartner's doesn't mention it! There are *way* more expensive solutions for us to try first.",
+      "by": "Martin R.",
+      "role": "Martin & Co."
+    }
+  ],
+  "base_service_TrustedBy": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "MOE",
+      "description": "Ministry of Edukation",
+      "imageName": "moe.png"
+    },
+
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "TEC",
+      "description": "Tertuary Education Club",
+      "imageName": "tec.png"
+    }
+  ],
+  "base_service_FaqCategories": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "General Questions",
+      "description": ""
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "Privacy & Security",
+      "description": ""
+    }
+  ],
+
+  "base_service_Faqs": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "categoryId": "00000000-0000-0000-0000-000000000001",
+      "title": "How to invite users to join your groups",
+      "description": "Under Your Profile, you can Recommend, Invite, Endorse other people to roles within specific groups, whether they are a already a user or not."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "categoryId": "00000000-0000-0000-0000-000000000001",
+      "title": "How do I set up a school, or classroom?",
+      "description": "Create as many nested groups as you want, defining their Type as you go. For example, start by defining a new Group of type School, and within it create nested Groups of type Subject,and Classroom. You may create other groups, such as Cohorts, etc, as any Person can belong to multiple Groups. Even be dual enrolled in multiple schools. You can even create extra-curricula groups as well, for sports, for transport, for an outing."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "categoryId": "00000000-0000-0000-0000-000000000001",
+      "title": "How do I peeople in roles?",
+      "description": "As you know, you can invite People to groups -- but you also define selection criteria to include Persons automatically.  For example you can create a Cohort group of People who are of a certain age, or declare faith, or demographics."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "categoryId": "00000000-0000-0000-0000-000000000002",
+      "title": "How secure is this system?",
+      "description": "Where to start? Well, for one, it's hosted in an ISO-27001 Level 2 compliant environment. Nobody -- employees or users -- have unauthorised access to data in an unaudited manner (every is logged). No data at rest or in transmission between networks is unencrypted. Period. '"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "categoryId": "00000000-0000-0000-0000-000000000002",
+      "title": "How private is my data?",
+      "description": "Your personal identifying information is encrypted with your own personal key. Nobody else -- employees or users -- can unlock it. Furthermore, if you are legally entitled to and request it, we will delete your personally identifying information."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "serviceId": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "categoryId": "00000000-0000-0000-0000-000000000002",
+      "title": "What if I lose access to my email account?",
+      "description": "That happens more than you think. For example, when teachers or students change schools. It's easy. We allow you to attach multiple external digital identies to your user account. For example, your school account, your personal account, your mobile phone number, or even your parents. If you lose access from one of them, you can either get back in with another, or request to add a new one, and a query will be sent out to your other still functioning email addresses for you to confirm first that it's ok. Easy!"
+    }
+  ],
+
+
+  "base_service_PricingPlans": [
+    {
+      "id": "00000000-00000000-00000000-00000001",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Single",
+      "description": "For opportunity scouts, creating paths before all others.",
+      "monthlyRate": "4.99",
+      "yearlyRate": "49.99",
+
+      "members": 3,
+      "groups": 3,
+      "projects": 3,
+      "products": 3
+    },
+    {
+      "id": "00000000-00000000-00000000-00000002",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Small",
+      "description": "For small & tight teams, ready to take on the world.",
+      "monthlyRate": "9.99",
+      "yearlyRate": "99.99"
+    },
+    {
+      "id": "00000000-00000000-00000000-00000003",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Medium",
+      "description": "For teams optimising the opportunities they've already found.",
+      "monthlyRate": "29.99",
+      "yearlyRate": "299.99"
+
+    },
+    {
+      "id": "00000000-00000000-00000000-00000004",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Enterprise",
+      "description": "For unignorable organisations that shape our world.",
+      "monthlyRate": "199.99",
+      "yearlyRate": "1999.99"
+
+    },
+    {
+      "id": "00000000-00000000-00000000-00000005",
+      "serviceId": "00000000-00000000-00000000-00000001",
+      "enabled": true,
+      "title": "Unlimited",
+      "description": "For uninteruptible service (AND 2 months every year free!).",
+      "monthlyRate": "499.99",
+      "yearlyRate": "4999.99"
+    }
+  ],
+  "base_service_PricingPlanFeatures": [
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "title": "Projects",
+      "description": "For achieving outcomes."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "title": "Groups",
+      "description": "For grouping Persons"
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "Users",
+      "description": "For enabling service Users."
+    }
+  ],
+
+  "base_service_PricingPlanFeaturesAllocation": [
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000001",
+      "pricingFK": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "offered": true,
+      "title": "3 Projects",
+      "description": "...some desc..."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": true,
+      "pricingFK": "00000000-0000-0000-0000-000000000001",
+      "title": "15 Groups",
+      "description": "Group users, suppliers"
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000014",
+      "pricingFK": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "offered": true,
+      "title": "300 Users",
+      "description": "...some desc..."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000014",
+      "pricingFK": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "offered": false,
+      "title": "Unlimited Storage",
+      "description": "(but nobody's runout yet!)"
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000014",
+      "pricingFK": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "offered": false,
+      "title": "24/7 Support",
+      "description": "We're open office hours!"
+    },
+
+
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000021",
+      "pricingFK": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": true,
+      "title": "6 Projects",
+      "description": "Take on more as you grow!"
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000022",
+      "pricingFK": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": true,
+      "title": "30 Groups",
+      "description": "Group providers, potentials, users"
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000023",
+      "pricingFK": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": true,
+      "title": "300 People",
+      "description": "...some desc..."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000024",
+      "pricingFK": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": "fale",
+      "title": "Unlimited Storage",
+      "description": "...some desc..."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000024",
+      "pricingFK": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "offered": "fale",
+      "title": "24/7 Support",
+      "description": "...some desc..."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000031",
+      "pricingFK": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "offered": true,
+      "title": "1 Domain",
+      "description": "...some desc..."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000032",
+      "pricingFK": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "offered": true,
+      "title": "3 Projects",
+      "description": "...some desc..."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000033",
+      "pricingFK": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "offered": true,
+      "title": "300 People",
+      "description": "...some desc..."
+    },
+    {
+      "serviceId": "00000000-0000-0000-0000-000000000001",
+      "id": "00000000-0000-0000-0000-000000000034",
+      "pricingFK": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "offered": true,
+      "title": "24/7 Support",
+      "description": "...some desc..."
+    }
+  ]
+
+}

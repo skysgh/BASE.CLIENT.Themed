@@ -37,9 +37,9 @@ import { system } from '../../../../core/constants/system';
 // Core Utilities:
 import { initFirebaseBackend } from '../../../../core/utilities/authUtils';
 // Core Helpers:
-import { FakeBackendInterceptor } from '../../../../core/helpers/fake-backend';
-import { ErrorInterceptor } from '../../../../core/helpers/error.interceptor';
-import { JwtInterceptor } from '../../../../core/helpers/jwt.interceptor';
+import { FakeBackendInterceptor } from '../../../../core.ui/interceptors/fake-backend.interceptor';
+import { ErrorInterceptor } from '../../../../core.ui/interceptors/http-response-error.interceptor';
+import { JwtInterceptor } from '../../../../core.ui/interceptors/jwt-bearertoken.interceptor';
 // Core Store:
 import { AuthenticationEffects } from '../../store/Authentication/authentication.effects';
 // Core Services:
@@ -53,7 +53,7 @@ import { AppLayoutComponent } from '../layouts/layout.component';
 import { BaseCoreCommonModule } from '../common/module';
 // import { BaseCoreCommonComponentsModule } from '../common/components/module';
 import { TranslationService } from '../../../../core/services/translation.service';
-import { MultiTranslateLoader } from '../translations/module';
+import { LoggingInterceptor } from '../../../../core.ui/interceptors/logger.interceptor';
 
 // export function createTranslateLoader(http: HttpClient): any {
 //   let path :string = system.sources.assets.public.static.core.i18n;
@@ -61,14 +61,32 @@ import { MultiTranslateLoader } from '../translations/module';
 //   return new TranslateHttpLoader(http, path , '.json');
 // }
 export function createTranslateLoader(http: HttpClient): any {
+
+  // Note:
+  // This method is *outside* the class!
+  // This is presumably because it is referenced and invoked by the
+  // metadata describing the class, as oppossed to its
+  // constructor
+
   // Specify paths where to look for resources:
   let path: string = system.sources.assets.public.static.core.i18n;
   let path2: string = system.sources.assets.public.static.template.i18n;
   let path3: string = system.sources.assets.public.static.app.i18n;
-  return new MultiTranslateLoader(http, [path, path2, path3]);
+  let paths: string[] = [path, path2, path3];
+
+  // As it is outside the class
+  // there is no instance yet of TranslationService
+  // and can't invoke it's constructor which depends on
+  // other services that are as yet not instantiated.
+  // Same for the SystemService from which one derives
+  // constants, which in turn describe where assets are.
+  // So:
+  // Call static method on service that will be part of all services later.
+  return TranslationService.createTranslateLoader(http, paths);
 
 }
 
+// By default, the method invokes 
 if (environment.defaultauth === 'firebase') {
   initFirebaseBackend(environment.firebaseConfig);
 } else {
@@ -116,14 +134,20 @@ if (environment.defaultauth === 'firebase') {
     // BaseCoreCommonComponentsModule,
     BaseCoreLayoutsModule,
     //PagesModule
+
+
   ],
   exports: [
     RouterModule
   ],
   providers: [
+    // This core.ui interceptor traces calls and their responses.
+    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
+
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
+
     CookieService,
     provideHttpClient(),
     provideMarkdown({ loader: HttpClient }),

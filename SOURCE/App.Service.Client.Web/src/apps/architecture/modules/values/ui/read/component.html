@@ -1,0 +1,25 @@
+
+<ul>
+  <li *ngFor="let x of data">{{x.title}}</li>
+</ul>
+
+
+<a class="button"
+   routerLink="/edit"
+   routerLinkActive="activebutton"
+   ariaCurrentWhenActive="page">
+  Edit
+</a>
+
+
+<button type="button"
+        routerLink="/edit"
+        class="btn btn-primary waves-effect waves-light">
+  Return
+</button>
+
+<button type="button"
+        routerLink="/edit"
+        class="btn btn-outline-secondary waves-effect waves-light">
+  Edit
+</button>

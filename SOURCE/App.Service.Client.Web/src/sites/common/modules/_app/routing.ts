@@ -27,7 +27,7 @@ const routes: Routes = [
   //// Is is wrapped in the AppLayout frame first.
   //// And it is Guarded.
   { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BaseCorePagesModule) },
-  { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../../../_BASE/apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
+  { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
   ////  { path: 'settings', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
   //// This again goes in the main AppROContainer with no prior framing:
   //// specifies what is default:

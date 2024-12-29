@@ -45,6 +45,7 @@
     <TypeScriptConfiguration Remove="src\_custom\**" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\app.lets\" />
     <Folder Include="src\app\core\models\" />
     <Folder Include="src\app\shared\landing\index\" />
     <Folder Include="src\assets\_BASE\private\dynamic\default\" />
@@ -78,7 +79,7 @@
     <Folder Include="src\themes\v1\assets\scss\images\for_styles\backgrounds\tops\tops\" />
     <Folder Include="src\themes\v1\assets\scss\images\NewFolder\" />
     <Folder Include="src\themes\v1\assets\scss\images\pages\comingsoon\" />
-    <Folder Include="src\_BASE\apps\education\ui\" />
+    <Folder Include="src\apps\education\ui\" />
     <Folder Include="src\sites\common\modules\common\widgets\" />
     <Folder Include="src\sites\common\modules\errors\400\" />
     <Folder Include="src\sites\common\modules\layouts\common\" />

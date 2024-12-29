@@ -1,0 +1,93 @@
+{
+  "organisations": {
+    "distributors": {
+
+    },
+    "sponsors": {
+
+    },
+    "developers": {
+      "title": "Machine Brains, Inc.",
+      "description": "Artificial assisted purveyors of digital realities.",
+      "channels": {
+        "email": "contact@machinebrains.com",
+        "tel": "+64 21 159 6440",
+        "postal": {
+          "street": "328 Hawkins Hill",
+          "city": "Wellington",
+          "region": "North Island",
+          "code": "6021",
+          "country": "NZ"
+        }
+      }
+    }
+  },
+
+  "team": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "enabled": true,
+      "title": "Mark Rumble",
+      "description": "...",
+      "role": "Fearless Leader",
+      "imageName": "avatar-2.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "enabled": true,
+      "title": "Russell Brand",
+      "description": "...",
+      "role": "Project Manager",
+      "imageName": "avatar-3.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "enabled": true,
+      "title": "Sandy England",
+      "description": "...",
+      "role": "Enterprise Architect",
+      "imageName": "avatar-10.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "enabled": true,
+      "title": "Sky Crow",
+      "description": "...",
+      "role": "Digital Dreamer",
+      "imageName": "avatar-8.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "enabled": true,
+      "description": "...",
+      "title": "M.A. D. Lady",
+      "role": "Advisor",
+      "imageName": "avatar-5.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "enabled": true,
+      "title": "Margot Chaplin",
+      "description": "...",
+      "role": "Sector Advisor",
+      "imageName": "avatar-4.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "enabled": true,
+      "title": "Mel Atonine",
+      "description": "...",
+      "role": "Commie",
+      "imageName": "avatar-6.jpg"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "enabled": true,
+      "title": "Matt Dubad",
+      "description": "...",
+      "role": "DevOops Specialist",
+      "imageName": "avatar-7.jpg"
+    }
+  ]
+}
+

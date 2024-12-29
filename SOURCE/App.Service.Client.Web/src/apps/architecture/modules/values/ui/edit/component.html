@@ -1,0 +1,71 @@
+HI from Spike Edit
+
+<form action="javascript:void(0);" class="row g-3">
+  <div class="col-12">
+    <div class="text-end">
+      <button type="button"
+              routerLink="/"
+              class="btn btn-outline-secondary waves-effect waves-light">
+        Cancel
+      </button>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="inputGiven" class="form-label">{{'BASE.PERSON.IDENTITY.NAMES.GIVEN' | baseTranslate}}&nbsp;</label>
+    <input type="text" class="form-control" id="inputGiven" placeholder="{{'BASE.PERSON.IDENTITY.NAMES.GIVEN_EXAMPLE' | baseTranslate}}&nbsp;">
+  </div>
+  <div class="col-md-6">
+    <label for="inputSurname" class="form-label">{{'BASE.PERSON.IDENTITY.NAMES.SHARED' | baseTranslate}}&nbsp;</label>
+    <input type="text" class="form-control" id="inputSurname" placeholder="{{'BASE.PERSON.IDENTITY.NAMES.SHARED_EXAMPLE' | baseTranslate}}&nbsp;">
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">{{'BASE.PERSON.CHANNEL.POSTAL.STREET' | baseTranslate}}&nbsp;</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="{{'BASE.PERSON.CHANNELPOSTAL.STREET_EXAMPLE' | baseTranslate}}&nbsp;">
+  </div>
+  <div class="col-12">
+    <label for="inputAddress2" class="form-label">{{'BASE.PERSON.CHANNEL.POSTAL.UNIT' | baseTranslate}}&nbsp;</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="{{'BASE.PERSON.CHANNELPOSTAL.UNIT_EXAMPLE' | baseTranslate}}&nbsp;">
+  </div>
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">{{'BASE.PERSON.CHANNEL.POSTAL.CITY' | baseTranslate}}&nbsp;</label>
+    <input type="text" class="form-control" id="inputCity" placeholder="{{'BASE.PERSON.CHANNELPOSTAL.CITY_EXAMPLE' | baseTranslate}}&nbsp;">
+  </div>
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">{{'BASE.PERSON.CHANNEL.POSTAL.STATE' | baseTranslate}}&nbsp;</label>
+    <select id="inputState" class="form-select">
+      <option selected>Choose...</option>
+      <option>...</option>
+      <option>...</option>
+      <option>...</option>
+      <option>...</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <label for="inputZip" class="form-label">{{'BASE.PERSON.CHANNEL.POSTAL.POSTAL_CODE' | baseTranslate}}&nbsp;</label>
+    <input type="text" class="form-control" id="inputZip" placeholder="{{'BASE.PERSON.CHANNELPOSTAL.POSTAL_CODE_EXAMPLE' | baseTranslate}}&nbsp;">
+  </div>
+  <div class="col-12">
+    <div class="text-end">
+      <button type="button"
+              routerLink="/"
+              class="btn btn-primary waves-effect waves-light">
+        {{'BASE.ACTIONS.SAVE' | baseTranslate}}&nbsp;
+      </button>
+
+      <button type="button"
+              routerLink="/"
+              class="btn btn-outline-secondary waves-effect waves-light">
+        {{'BASE.ACTIONS.CANCEL' | baseTranslate}}&nbsp;
+      </button>
+    </div>
+  </div>
+</form>
+
+<a class="button"
+   routerLink="/"
+   routerLinkActive="activebutton"
+   ariaCurrentWhenActive="page">
+  {{'BASE.ACTIONS.CANCEL' | baseTranslate}}&nbsp;
+</a>
+
+

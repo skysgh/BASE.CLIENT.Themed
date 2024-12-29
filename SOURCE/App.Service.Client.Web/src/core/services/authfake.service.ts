@@ -13,6 +13,16 @@ import { User } from '../models/misc/auth.models';
 // Data:
 
 
+/**
+ * Authentication Service to fake a remote service.
+ *
+ * Used by `auth.gard.ts` to check if user is authenticated and
+ * `auth.interceptor.ts` to add JWT token to requests.
+ * Also used by `login.component.ts` to login user.
+ * Also used by `register.component.ts` to register user.
+ * Also used by `signin` component.
+ * 
+ */
 @Injectable({ providedIn: 'root' })
 export class AuthfakeauthenticationService {
   // Make system/env variables avaiable to class & view template:
@@ -33,12 +43,14 @@ export class AuthfakeauthenticationService {
   }
 
   /**
-   * current user
+   * Get's the Current User
+   * (from local storage).
    */
   public get currentUserValue(): User {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.currentUserValue()`)
 
     var result = this.currentUserSubject.value;
+
     this.diagnosticsTraceService.debug(`...: ${result}`);
 
     return result;
@@ -53,22 +65,30 @@ export class AuthfakeauthenticationService {
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.login('${email}', pwd...)`);
 
+    // Not sure what this does.
+    // But it appears to hitting it's own service
+    // (Maybe it's using the interceptor to add the token?)
+    // and returning a user object.
     return this.http.post<any>(`/users/authenticate`, { email, password })
 
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          // store user details and jwt token in local storage to
+          // keep user logged in between page refreshes
           sessionStorage.setItem(this.system.storage.system.currentUser, JSON.stringify(user));
 
+          // persist in this service 
           this.currentUserSubject.next(user);
         }
+        // and return:
         return user;
       }));
   }
 
   /**
-   * Logout the user
+   * Logs the user out.
+   * By removing the user from local storage.
    */
   logout() {
 
@@ -76,6 +96,7 @@ export class AuthfakeauthenticationService {
 
     // remove user from local storage to log user out
     sessionStorage.removeItem(this.system.storage.system.currentUser);
+    // Clear this service's user.
     this.currentUserSubject.next(null!);
   }
 }

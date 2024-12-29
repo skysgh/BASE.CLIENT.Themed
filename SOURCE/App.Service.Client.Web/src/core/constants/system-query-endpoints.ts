@@ -14,10 +14,12 @@ export const systemQueryEndpoints = {
     + (importedEnvironmentConst.custom.service.type == 'json-server' ? 'rest/' : 'tables/'),
 
   // Api Calling
-  API_URL: 'https://api-node.themesbrand.website/',
+  themesbrand: {
+    API_URL: 'https://api-node.themesbrand.website/',
 
-  // Auth Api
-  AUTH_API: "https://api-node.themesbrand.website/auth/",
+    // Auth Api
+    AUTH_API: "https://api-node.themesbrand.website/auth/"
+  },
 
   base: {
     system: {

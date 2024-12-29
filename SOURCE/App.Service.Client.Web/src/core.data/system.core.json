@@ -1,0 +1,140 @@
+{
+  "system": {
+    "name": "Some Name",
+    "description": "...some description",
+    "image": "foo.png",
+    "copyright": "Copyright Machine Brains, Inc.2024",
+
+    "creator": {
+      "name": "Machine Brains, Inc.",
+      "image": "foo.png"
+    },
+    "developer": {
+      "name": "Machine Brains, Inc.",
+      "image": "foo.png"
+    },
+    "distributor": {
+      "name": "Machine Brains, Inc.",
+      "image": "foo.png"
+    },
+    "languages": {
+
+    },
+
+    "base_service_Statements": [
+      {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "typeId": "00000000-0000-0000-0000-000000000001",
+        "encodingTypeId": "00000000-0000-0000-0000-000000000001",
+        "languageCode": "en",
+        "issuedUtc": "2023-04-23T18:25:43.511Z",
+        "title": "Privacy Statement",
+        "text": "...some desc..."
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000002",
+        "typeId": "00000000-0000-0000-0000-000000000001",
+        "encodingTypeId": "00000000-0000-0000-0000-000000000001",
+        "languageCode": "en",
+        "issuedUtc": "2023-02-23T18:25:43.511Z",
+        "title": "Some other Statement",
+        "text": "...some desc..........."
+      }
+    ],
+
+    "base_service_Languages": [
+      {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": true,
+        "title": "NZ English",
+        "description": "Kiwi",
+        "languageCode": "en",
+        "flagImageId": "nz"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000002",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": true,
+        "title": "Te Reo",
+        "description": "NZ Māori",
+        "languageCode": "mi",
+        "flagImageId": "mi"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000003",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": true,
+        "title": "中国人",
+        "description": "Chinese language",
+        "languageCode": "zh",
+        "flagImageId": "china"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000004",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": false,
+        "title": "Francais",
+        "description": "French language",
+        "languageCode": "fr",
+        "flagImageId": "france"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000005",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": false,
+        "title": "Española",
+        "description": "Spanish language",
+        "languageCode": "es",
+        "flagImageId": "spain"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000006",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": false,
+        "title": "Deutsche",
+        "description": "German language",
+        "languageCode": "de",
+        "flagImageId": "germany"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000007",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": false,
+        "title": "Italiana",
+        "description": "Italian language",
+        "languageCode": "it",
+        "flagImageId": "italy"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000007",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": true,
+        "title": "Gagana Samoa",
+        "description": "Samoan language",
+        "languageCode": "ws",
+        "flagImageId": "ws"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000008",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": true,
+        "title": "Tonga",
+        "description": "Tongan",
+        "languageCode": "to",
+        "flagImageId": "to"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000009",
+        "serviceId": "00000000-0000-0000-0000-000000000003",
+        "enabled": true,
+        "title": "भारतीय",
+        "description": "Indian",
+        "languageCode": "in",
+        "flagImageId": "in"
+      }
+    ]
+
+
+  }
+}
