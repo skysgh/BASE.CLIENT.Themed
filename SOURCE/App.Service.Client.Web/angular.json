@@ -35,7 +35,17 @@
               "src/assets",
               "src/core/assets",
               "src/themes/v1/assets",
-              "src/sites/assets"
+              "src/sites/assets",
+
+              "src/app/main/assets",
+
+              "src/app.lets/example/assets",
+              "src/app.lets/template/assets",
+              "src/app.lets/spike/assets",
+              "src/app.lets/example/assets",
+              "src/app.lets/architecture/assets",
+              "src/app.lets/education/assets"
+
             ],
             "styles": [
               "node_modules/prismjs/themes/prism.css",
@@ -176,7 +186,16 @@
               "src/assets",
               "src/core/assets/",
               "src/themes/v1/assets",
-              "src/sites/assets"
+              "src/sites/assets",
+
+              "src/app/main/assets",
+
+              "src/app.lets/example/assets",
+              "src/app.lets/template/assets",
+              "src/app.lets/spike/assets",
+              "src/app.lets/example/assets",
+              "src/app.lets/architecture/assets",
+              "src/app.lets/education/assets"
             ],
             "styles": [
               "src/styles.scss"

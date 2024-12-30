@@ -1,0 +1,22 @@
+{
+  "app_architecture_Qualities": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "categoryFk": "00000000-0000-0000-0000-000000000001",
+      "title": "THe solution's system(s) MUST..etc.",
+      "description": "etc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "categoryFk": "00000000-0000-0000-0000-000000000001",
+      "title": "THe solution's system(s) MUST..etc.",
+      "description": "etc..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "categoryFk": "00000000-0000-0000-0000-000000000002",
+      "title": "THe solution's system(s) MUST..etc.",
+      "description": "etc..."
+    }
+  ]
+}

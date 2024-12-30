@@ -27,13 +27,13 @@ const routes: Routes = [
   //// Is is wrapped in the AppLayout frame first.
   //// And it is Guarded.
   { path: 'pages', loadChildren: () => import('../pages/module').then(m => m.BaseCorePagesModule) },
-  { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
+  { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../../../app.lets/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
   ////  { path: 'settings', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
   //// This again goes in the main AppROContainer with no prior framing:
   //// specifies what is default:
   { path: 'landing', redirectTo: 'pages/landing', pathMatch: 'prefix' },
   { path: 'information', redirectTo: 'pages/information', pathMatch: 'prefix' },
-  { path: 'auth', loadChildren: () => import('../account/module').then(m => m.BaseCoreAccountModule) },
+  { path: 'auth', loadChildren: () => import('../user/account/module').then(m => m.BaseCoreAccountModule) },
   { path: 'errors', loadChildren: () => import('../errors/module').then(m => m.AppBaseCoreErrorsModule) },
 
   { path: '', redirectTo: 'pages', pathMatch: 'full' },

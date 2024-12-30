@@ -12,6 +12,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="src\app\account\**" />
+    <None Remove="src\app\core\**" />
     <None Remove="src\app\custom\**" />
     <None Remove="src\sites\NewFolder\public\pages\module01\**" />
     <None Remove="src\assets\custom\**" />
@@ -28,6 +29,7 @@
     <None Remove="src\sites\common\modules\search\views\search\browse\**" />
     <None Remove="src\_custom\**" />
     <TypeScriptConfiguration Remove="src\app\account\**" />
+    <TypeScriptConfiguration Remove="src\app\core\**" />
     <TypeScriptConfiguration Remove="src\app\custom\**" />
     <TypeScriptConfiguration Remove="src\sites\NewFolder\public\pages\module01\**" />
     <TypeScriptConfiguration Remove="src\assets\custom\**" />
@@ -45,9 +47,7 @@
     <TypeScriptConfiguration Remove="src\_custom\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app.lets\" />
-    <Folder Include="src\app\core\models\" />
-    <Folder Include="src\app\shared\landing\index\" />
+    <Folder Include="src\app\unsure\shared\landing\index\" />
     <Folder Include="src\assets\_BASE\private\dynamic\default\" />
     <Folder Include="src\assets\_BASE\private\dynamic\themes\" />
     <Folder Include="src\assets\_BASE\private\dynamic\userdata\files\" />
@@ -67,19 +67,25 @@
     <Folder Include="src\assets\_BASE\public\static\services\images\pages\shared\" />
     <Folder Include="src\assets\_BASE\public\static\sponsors\" />
     <Folder Include="src\assets\_BASE\public\static\themes\" />
+    <Folder Include="src\core\assets\NewFolder\" />
+    <Folder Include="src\core\data\public\" />
     <Folder Include="src\sites\assets\public\i18n\" />
+    <Folder Include="src\sites\common\modules\dashboard\assets\" />
+    <Folder Include="src\sites\common\modules\errors\assets\" />
+    <Folder Include="src\sites\common\modules\layouts\assets\" />
     <Folder Include="src\sites\common\modules\translations\" />
+    <Folder Include="src\sites\common\modules\_app\assets\" />
+    <Folder Include="src\themes\portable\" />
     <Folder Include="src\themes\v1\assets\images\backgrounds\" />
     <Folder Include="src\themes\v1\assets\images\NewFolder\" />
     <Folder Include="src\themes\v1\assets\images\pages\comingsoon\" />
     <Folder Include="src\assets\_BASE\public\static\userdata\images\" />
     <Folder Include="src\sites.apps\app\modules\" />
-    <Folder Include="src\sites\landing\" />
     <Folder Include="src\themes\v1\assets\scss\images\backgrounds\" />
     <Folder Include="src\themes\v1\assets\scss\images\for_styles\backgrounds\tops\tops\" />
     <Folder Include="src\themes\v1\assets\scss\images\NewFolder\" />
     <Folder Include="src\themes\v1\assets\scss\images\pages\comingsoon\" />
-    <Folder Include="src\apps\education\ui\" />
+    <Folder Include="src\app.lets\education\ui\" />
     <Folder Include="src\sites\common\modules\common\widgets\" />
     <Folder Include="src\sites\common\modules\errors\400\" />
     <Folder Include="src\sites\common\modules\layouts\common\" />
@@ -91,6 +97,7 @@
     <Folder Include="src\_BASE\shared\maps\" />
     <Folder Include="src\_BASE\shared\areas\" />
     <Folder Include="src\_BASE\shared\ui\view_widgets\" />
+    <Folder Include="src\_misc\" />
     <Folder Include="_custom\documentation\bicep\" />
   </ItemGroup>
   <ItemGroup>

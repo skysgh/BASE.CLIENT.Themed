@@ -21,7 +21,7 @@
 
 //// Pages Routing
 //import { PagesRoutingModule } from "./pages-routing.module";
-//import { SharedModule } from "../shared/shared.module";
+//import { SharedModule } from '../../../../../../app/unsure/shared/module';
 //import { WidgetModule } from '../shared/widget/widget.module';
 ////import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
 ////import { DashboardsModule } from "./dashboards/dashboards.module";

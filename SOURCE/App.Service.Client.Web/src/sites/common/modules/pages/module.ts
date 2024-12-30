@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 //Import template:
-import { SharedModule } from '../../../../app/shared/module';
+import { SharedModule } from '../../../../app/unsure/shared/module';
 // Import  Base.Common.Models:
 
 // Import  Base.Common.Services:

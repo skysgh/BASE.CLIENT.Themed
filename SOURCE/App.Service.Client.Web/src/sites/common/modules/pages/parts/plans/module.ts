@@ -10,18 +10,18 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { SharedModule } from '../../../../../../app/shared/module';
+import { SharedModule } from '../../../../../../app/unsure/shared/module';
 
 //
 import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 // 
 //import { BaseCorePagesLandingRoutingModule } from "./routing";
 
-import { BaseCorePagesLandingComingSoonComponent } from './coming-soon/component';
-import { BaseCorePagesLandingIndexComponent } from './index/component';
-import { BaseCorePagesLandingMaintenanceComponent } from './maintenance/component';
-import { BaseCorePagesLandingOpportunitiesComponent } from './opportunities/component';
-import { BaseCorePagesLandingPricingComponent } from './pricing/component';
+import { BaseCorePagesLandingComingSoonComponent } from '../../landing/coming-soon/component';
+import { BaseCorePagesLandingIndexComponent } from '../../landing/index/component';
+import { BaseCorePagesLandingMaintenanceComponent } from '../../landing/maintenance/component';
+import { BaseCorePagesLandingOpportunitiesComponent } from '../../landing/opportunities/component';
+import { BaseCorePagesLandingPricingComponent } from '../../landing/pricing/component';
 // import { BaseCoreCommonComponentsModule } from '../../common/components/module';
 import { BaseCoreLandingRoutingModule } from './routing';
 import { SlickCarouselModule } from 'ngx-slick-carousel';

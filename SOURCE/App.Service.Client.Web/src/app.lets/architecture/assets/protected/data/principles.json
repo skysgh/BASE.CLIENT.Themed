@@ -1,0 +1,34 @@
+{
+  "app_architecture_Principles": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "Security-first",
+      "description": "Ensuring what users entrust to the system remains safe"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "API-first",
+      "description": "Ensuring the system is interoperable and uses the CPU closest to consumption."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "Accessible-first",
+      "description": "Ensuring the most people can use the system."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "Open-first",
+      "description": "Ensuring the most people are enabled to access the system's data."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "typeFk": "00000000-0000-0000-0000-000000000008",
+      "title": "Future-first",
+      "description": "Ensuring the design is not narrowly focused on today's problems forgetting what could be done if there were no problems to focus on today."
+    }
+  ]
+}

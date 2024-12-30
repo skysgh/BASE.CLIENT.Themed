@@ -1,0 +1,54 @@
+{
+  "app_architecture_PrincipleTypes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "business",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "enterprise",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "delivery",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "title": "security",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "title": "interoperability",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "title": "operability",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "title": "maintainability",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "title": "design",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000009",
+      "title": "development",
+      "description": "..."
+    }
+  ]
+
+
+
+
+
+}

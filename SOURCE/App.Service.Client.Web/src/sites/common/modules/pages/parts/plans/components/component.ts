@@ -9,7 +9,7 @@ import { system as importedSystemConst } from '../../../../../../../core/constan
 import { SystemDiagnosticsTraceService } from '../../../../../../../core/services/system.diagnostics-trace.service';
 import { SystemService } from '../../../../../../../core/services/system.service';
 // Models:
-import { YearlyPlanModel } from '../../../../../../../core/models/data/yearly-plan.model';
+import { YearlyPlanModel } from '../../../../../../../../core/models/data/yearly-plan.model';
 import { ServicePricingPlan } from '../../../../../../../core/models/data/service-pricing-plan.model';
 // Data:
 import { MonthlyPlan, YearlyPlan } from '../../../../../../../core/data/fake/pricing.data';

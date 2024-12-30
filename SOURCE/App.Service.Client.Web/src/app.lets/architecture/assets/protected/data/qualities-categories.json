@@ -1,0 +1,28 @@
+{
+  "app_architecture_QualityCategories": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "typeFk": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25010/Functionality",
+      "description": "Qualities of Functionality"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "typeFk": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25010/Usability",
+      "description": "How usable is the system."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "typeFk": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25010/Security",
+      "description": "How secure is the system."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "typeFk": "00000000-0000-0000-0000-000000000001",
+      "title": "etc.",
+      "description": "etc..."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "app_architecture_QualityTypes": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25010",
+      "description": "Sytem Qualities"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25012",
+      "description": "Sytem Data Qualities"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "ISO-25022",
+      "description": "Sytem User Experience Qualities"
+    }
+  ]
+}

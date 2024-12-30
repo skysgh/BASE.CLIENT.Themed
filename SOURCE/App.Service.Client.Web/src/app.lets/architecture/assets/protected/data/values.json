@@ -1,0 +1,52 @@
+{
+  "app_architecture_Values": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "title": "honesty",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "title": "forthrightness",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "title": "consistency",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "title": "trustworthiness",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "title": "inclusive",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "title": "constructive",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "title": "creative",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "title": "inexpensive",
+      "description": "..."
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000009",
+      "title": "profitable",
+      "description": "..."
+    }
+  ]
+}
+
+
+
