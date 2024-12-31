@@ -23,7 +23,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SystemDiagnosticsTraceService } from '../../../../../core/services/system.diagnostics-trace.service';
 // import { BaseCoreCommonComponentsModule } from '../../common/components/module';
-import { SharedModule } from '../../../../../app/unsure/shared/module';
+import { SharedModule } from '../../../../../themes/v1/modules/unused/unsure/shared/module';
 import { BaseCorePagesInformationPrivacyPolicyComponent } from './components/privacy/component';
 import { BaseCorePagesInformationTermsComponent } from './components/terms/component';
 import { BaseCorePagesInformationCorrectionsComponent } from './components/corrections/component';

@@ -32,7 +32,7 @@ import { BaseAppsPagesLandingIndexTeamComponent } from './components/team/compon
 import { BaseAppsPagesLandingIndexWorkProcessComponent } from './components/process/component';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { SharedModule } from '../../../../../../app/unsure/shared/module';
+import { SharedModule } from '../../../../../../themes/v1/modules/unused/unsure/shared/module';
 import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CountUpModule } from 'ngx-countup';

@@ -9,7 +9,8 @@ import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ToastsContainer } from './login/toasts-container.component';
 
-import { SharedModule } from '../../../../../app/unsure/shared/module';
+//import { SharedModule } from '../../../../../themes/v1/modules/unused/unsure/shared/module';
+
 import { BaseCoreCommonModule } from '../../common/module';
 // import { BaseCoreCommonComponentsModule } from '../common/components/module';
 

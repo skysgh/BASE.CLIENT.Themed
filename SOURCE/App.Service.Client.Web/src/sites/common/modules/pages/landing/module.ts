@@ -10,7 +10,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { SharedModule } from '../../../../../app/unsure/shared/module';
+import { SharedModule } from '../../../../../themes/v1/modules/unused/unsure/shared/module';
 
 //
 import { SystemDiagnosticsTraceService } from '../../../../../core/services/system.diagnostics-trace.service';

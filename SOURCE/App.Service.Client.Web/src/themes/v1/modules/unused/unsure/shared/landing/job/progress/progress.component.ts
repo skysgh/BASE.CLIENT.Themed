@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 // Etc:
 // 
 // Constants:
-import { system as importedSystemConst } from '../../../../../../core/constants/system';
+import { system as importedSystemConst } from '../../../../../../../../../core/constants/system';
 // Services:
-import { SystemService } from '../../../../../../core/services/system.service';
+import { SystemService } from '../../../../../../../../../core/services/system.service';
 import { ViewModel } from './vm';
 
 

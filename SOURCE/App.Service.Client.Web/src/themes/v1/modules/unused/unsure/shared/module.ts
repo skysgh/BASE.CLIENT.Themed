@@ -21,7 +21,7 @@ import { JobcategoriesComponent } from './landing/job/jobcategories/jobcategorie
 import { ProgressComponent } from './landing/job/progress/progress.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { BaseCoreCommonModule } from '../../../sites/common/modules/common/module';
+import { BaseCoreCommonModule } from '../../../../../../sites/common/modules/common/module';
 
 @NgModule({
   declarations: [

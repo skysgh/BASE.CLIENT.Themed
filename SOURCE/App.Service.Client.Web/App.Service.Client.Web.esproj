@@ -47,7 +47,7 @@
     <TypeScriptConfiguration Remove="src\_custom\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app\unsure\shared\landing\index\" />
+    <Folder Include="src\themes\v1\modules\unused\unsure\shared\landing\index\" />
     <Folder Include="src\assets\_BASE\private\dynamic\default\" />
     <Folder Include="src\assets\_BASE\private\dynamic\themes\" />
     <Folder Include="src\assets\_BASE\private\dynamic\userdata\files\" />
@@ -94,6 +94,7 @@
     <Folder Include="src\sites\common\modules\pages\business_ops\" />
     <Folder Include="src\sites\common\modules\pages\NewFolder\" />
     <Folder Include="src\sites\common\modules\pages\operations\" />
+    <Folder Include="src\themes\v1\widgets\" />
     <Folder Include="src\_BASE\shared\maps\" />
     <Folder Include="src\_BASE\shared\areas\" />
     <Folder Include="src\_BASE\shared\ui\view_widgets\" />

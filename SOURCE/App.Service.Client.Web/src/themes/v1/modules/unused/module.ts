@@ -1,8 +1,7 @@
 // Ag dependencies:
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { BaseThemesV1UnusedModule } from "./unused/module";
-import { WidgetModule } from "./widget/widget.module";
+import { SharedModule } from "./unsure/shared/module";
 
 //import Module specific:
 @NgModule({
@@ -11,16 +10,15 @@ import { WidgetModule } from "./widget/widget.module";
     // Ag specific:
     CommonModule,
     //
-    BaseThemesV1UnusedModule,
-    WidgetModule
+    SharedModule
   ],
   declarations: [
+
   ],
   providers: [
   ],
   exports: [
-    BaseThemesV1UnusedModule,
-    WidgetModule
+    SharedModule
   ]
 })
-export class BaseThemesV1ModulesModule { }
+export class BaseThemesV1UnusedModule { }
