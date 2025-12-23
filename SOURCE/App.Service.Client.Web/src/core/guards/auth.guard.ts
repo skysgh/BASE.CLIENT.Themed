@@ -3,17 +3,17 @@ import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 // Const:
-import { system as importedSystemConst } from '../constants/system';
 
 // Auth Services
 import { AuthenticationService } from '../services/auth.service';
 import { AuthfakeauthenticationService } from '../services/authfake.service';
 import { environment } from '../../environments/environment';
+import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
@@ -34,12 +34,12 @@ export class AuthGuard {
                 return true;
             }
             // check if user data is in storage is logged in via API.
-          if (sessionStorage.getItem(this.system.storage.system.currentUser)) {
+          if (sessionStorage.getItem(this.appsConfiguration.others.core.constants.storage.session.currentUser)) {
                 return true;
         }
         // not logged in so redirect to login page with the return url
             }
-        this.router.navigate([this.system.navigation.auth.login], { queryParams: { returnUrl: state.url } });
+        this.router.navigate([this.appsConfiguration.navigation.auth.login], { queryParams: { returnUrl: state.url } });
         return false;
     }
 }

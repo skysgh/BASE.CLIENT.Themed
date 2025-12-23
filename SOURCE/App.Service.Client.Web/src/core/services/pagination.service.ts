@@ -5,9 +5,11 @@ import { Injectable } from '@angular/core';
 // Etc:
 //
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
+import { SystemDefaultServices } from './system.default-services.service';
+
 // Models:
 //
 // Data:
@@ -16,8 +18,6 @@ import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.servic
     providedIn: 'root',
 })
 export class PaginationService {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
   pageSize: any = 8;
     page: any = 1;
@@ -25,14 +25,14 @@ export class PaginationService {
     startIndex: number = 1;
     endIndex: number = 9;
 
-  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
-
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
+  constructor(
+    private defaultServiceServices: SystemDefaultServices) {
+    this.defaultServiceServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
   }
     // Pagination
     changePage(alldata: any[]) {
 
-      this.diagnosticsTraceService.debug(`${this.constructor.name}.changePage(allData)`);
+      this.defaultServiceServices.diagnosticsTraceService.debug(`${this.constructor.name}.changePage(allData)`);
 
       const startItem = (this.page - 1) * this.pageSize + 1;
         const endItem = (this.page - 1) * this.pageSize + this.pageSize;
@@ -45,7 +45,7 @@ export class PaginationService {
 
     // Sort Data
     onSort(column: any, dataList: any[]) {
-      this.diagnosticsTraceService.debug(`${this.constructor.name}.onSort(column, dataList)`);
+      this.defaultServiceServices.diagnosticsTraceService.debug(`${this.constructor.name}.onSort(column, dataList)`);
 
       if (this.direction == 'asc') {
             this.direction = 'desc';
@@ -60,8 +60,10 @@ export class PaginationService {
         return dataList = sortedArray;
     }
     compare(v1: string | number, v2: string | number) {
-      this.diagnosticsTraceService.debug(`${this.constructor.name}.compare()`);
-        return v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
+
+      this.defaultServiceServices.diagnosticsTraceService.debug(`${this.constructor.name}.compare()`);
+
+      return v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
     }
 
 

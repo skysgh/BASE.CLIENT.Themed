@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+
 // Services:
 import { ServiceLanguagesRepositoryService } from './services/repositories/service-languages.repository.service';
 import { TranslationService } from './translation.service';
@@ -16,6 +16,8 @@ import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.servic
 import { ServiceLanguage } from '../models/data/service-language.model';
 import { SystemLanguageVM } from '../models/service-Language.vto.model';
 import { MappedItemsCollectionServiceBase } from './base/mapped-items-collection.service.base';
+import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+import { SystemDefaultServices } from './system.default-services.service';
 
 
 /** Service invoked from toolbar
@@ -26,8 +28,6 @@ import { MappedItemsCollectionServiceBase } from './base/mapped-items-collection
 export class ServiceLanguagesService
   extends MappedItemsCollectionServiceBase
   <ServiceLanguage, string, ServiceLanguage> {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
 
 
@@ -35,7 +35,7 @@ export class ServiceLanguagesService
   protected override pollDelayInSeconds: number = 0; //(60 * 1000);
   // Feild name to filter on.
   protected override itemKeyFieldName: string =
-    this.system.storage.db.defaultFieldNames.languageCode;
+    appsConfiguration.others.core.constants.storage.db.columnNames.defaults.languageCode;
 
   // The key issue to keep in mind is that
   // front end components (eg: topbar)
@@ -44,13 +44,13 @@ export class ServiceLanguagesService
   // a repo to return results.
   // So it's a double observable if you will.
   constructor(
-    /*already defined in super*/ diagnosticsTraceService: SystemDiagnosticsTraceService,
+    private defaultServices: SystemDefaultServices,
     /*already defined in super*/ translate: TranslateService,
     private cookieService: CookieService,
     private ServiceLanguagesRepositoryService: ServiceLanguagesRepositoryService,
-    private translationService: TranslationService
+    override translationService: TranslationService
   ) {
-    super(diagnosticsTraceService, translate);
+    super(defaultServices.diagnosticsTraceService, translationService);
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 

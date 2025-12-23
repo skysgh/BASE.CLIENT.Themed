@@ -1,10 +1,8 @@
 // Constants:
-import { system /*as importedSystemConst*/ } from './system';
+import { coreConfiguration } from '../configuration/implementations/core.configuration';
 
 export const GlobalComponent = {
 
-  headerToken: { 'Authorization': `Bearer ${sessionStorage.getItem(system.storage.system.token)}` },
-
-
+  headerToken: { 'Authorization': `Bearer ${sessionStorage.getItem(coreConfiguration.constants.storage.session.token)}` },
 
 }

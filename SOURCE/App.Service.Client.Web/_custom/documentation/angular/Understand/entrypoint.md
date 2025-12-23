@@ -15,8 +15,8 @@ The code of the page is
   <!-- <base href="/base/angular/minimal-rtl/"> -->
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="{{system.sources.assets.public.static.services.images}}favicon.ico">
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE"></script>
+  <link rel="icon" type="image/x-icon" href="{{this.appsConfiguration.constants.assets.openstatic.services.images}}favicon.ico">
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE"></script> -->
 </head>
 ```
 
@@ -51,7 +51,7 @@ Where the first empty path is pointing to
 which was already imported into `AppModule` (`src/app.module.ts`) earlier.
 To do that, it had to import its owning module as well, so notice the earlier
 ```ts
-import { BaseCoreLayoutsModule } from "./layouts/layouts.module";
+import { BaseThemesV1LayoutsModule } from "./layouts/layouts.module";
 ```
 because it explains somethign that shows up next.
 

@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
+    // Components, Directives, Pipes developed in this Module.
     AppComponent
   ],
+  providers: [],
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,7 @@
 // Ag:
 import { Injectable } from '@angular/core';
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 
@@ -11,8 +11,6 @@ import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.servic
 @Injectable({ providedIn: 'root' })
 // Injectable service to describe current environment
 export class ExampleService {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
 
   public someField: string = "hell...";

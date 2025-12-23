@@ -1,7 +1,10 @@
+// Ag:
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+//Can Remove: import { TranslateModule } from '@ngx-translate/core';
+// Services:
 import { SystemDiagnosticsTraceService } from '../../core/services/system.diagnostics-trace.service';
+// Components:
 import { BaseAppsEducationProductsComponent } from './areas/products/component';
 import { BaseAppsEducationPlacesComponent } from './areas/places/component';
 import { BaseAppsEducationPeopleComponent } from './areas/people/component';
@@ -35,7 +38,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    TranslateModule.forChild(),
+    //Can Remove: TranslateModule.forChild(),
   ],
   exports: [
     RouterModule

@@ -1,42 +1,43 @@
 // Rx:
-//
+import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
+import { Observable } from 'rxjs';
 // Ag:
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // Etc:
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { CookieService } from 'ngx-cookie-service';
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+
 // Services:
+import { MultiTranslateLoader } from '../../core.ag/translations/MultiTranslateLoader';
+
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
-import { SystemService } from './system.service';
-import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
-import { Observable } from 'rxjs';
-import { MultiTranslateLoader } from '../../sites/common/modules/translations/module';
+//import { SystemService } from './system.service';
+import { SystemDefaultServices } from './system.default-services.service';
+import { CookieService } from './cookie.service';
 
 
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
   private readonly MAX_DEPTH: number = 5;
 
-  public system = importedSystemConst;
-  private C_LANG: string = 'lang';
+  private C_LANG: string = appsConfiguration.others.core.constants.storage.cookies.lang;
   private previouslySetDefaultLanguage?: string;
 
   /**
    * Constructor.
    * @param diagnosticsTraceService
-   * @param systemService
    * @param translateService
    * @param cookieService
    */
   constructor(
-    private diagnosticsTraceService: SystemDiagnosticsTraceService,
-    private systemService: SystemService,
-    private translateService: TranslateService,
-    private cookieService: CookieService
+    //private defaultServices: SystemDefaultServices,
+    //private systemService: SystemService,
+    private cookieService: CookieService,
+    // Still needed:
+    private translateService: TranslateService
   ) { }
 
   /**
@@ -56,12 +57,31 @@ export class TranslationService {
 
   }
 
+  private addLangs(languageCodes:string[]) : void {
+    this.translateService.addLangs(languageCodes);
+  }
+
+  private innerUse(languageCode: string):Observable<any> {
+    return this.translateService.use(languageCode);
+  }
+
+  private getBrowserLang(): string | undefined {
+    return this.translateService.getBrowserLang();
+  }
+
+  private innerInstant(key:string) {
+    return this.translateService.instant(key);
+  }
+  private innerGet(key: string) : Observable<any>{
+    return this.translateService.get(key);
+  }
+
   /**
    * Initialize the translator with available language codes.
    */
   public initializeTranslator(languageCodes: string[]): void {
-    this.diagnosticsTraceService.info("TranslationService.initializeTranslator(...)");
-    this.translateService.addLangs(languageCodes);
+    //this.defaultServices.diagnosticsTraceService.info("TranslationService.initializeTranslator(...)");
+    this.addLangs(languageCodes);
     this.initialiseTranslatorsCurrentLanguage();
   }
 
@@ -71,9 +91,9 @@ export class TranslationService {
   public initialiseTranslatorsCurrentLanguage(): string {
     const languageCode = this.getDefaultLanguageCode();
     if (languageCode !== this.previouslySetDefaultLanguage) {
-      this.translateService.use(languageCode);
+      this.innerUse(languageCode);
       this.previouslySetDefaultLanguage = languageCode;
-      this.systemService.system.dynamic.configuration.defaultLanguageCode = languageCode;
+      appsConfiguration.others.core.defaultLanguageCode = languageCode;
     }
     return languageCode;
   }
@@ -84,7 +104,7 @@ export class TranslationService {
   public getDefaultLanguageCode(): string {
     const languageCode = this.cookieService.check(this.C_LANG)
       ? this.cookieService.get(this.C_LANG)
-      : this.translateService.getBrowserLang() || this.systemService.system.dynamic.configuration.defaultLanguageCode;
+      : this.getBrowserLang() || appsConfiguration.others.core.defaultLanguageCode;
 
     return languageCode;
   }
@@ -93,8 +113,8 @@ export class TranslationService {
    * Change the current language.
    */
   public setLanguage(lang: string): void {
-    this.translateService.use(lang);
-    this.cookieService.set('lang', lang);
+    this.innerUse(lang);
+    this.cookieService.set(this.C_LANG, lang);
   }
 
   /**
@@ -119,7 +139,7 @@ export class TranslationService {
       return key; // Stop recursion if max depth is exceeded
     }
 
-    let translatedValue: string = this.translateService.instant(key);
+    let translatedValue: string = this.innerInstant(key);
 
     const pattern = /^(.*?)(?<!https?:[0-9]*)\/\/.*$/;
     translatedValue = translatedValue.match(pattern) ? translatedValue.match(pattern)![1] : translatedValue;
@@ -139,7 +159,7 @@ export class TranslationService {
       return key; // Stop recursion if max depth is exceeded
     }
 
-    const translatedValue: string = await lastValueFrom(this.translateService.get(key));
+    const translatedValue: string = await lastValueFrom(this.innerGet(key));
 
     const pattern = /^(.*?)(?<!https?:[0-9]*)\/\/.*$/;
     const cleanedValue = translatedValue.match(pattern) ? translatedValue.match(pattern)![1] : translatedValue;

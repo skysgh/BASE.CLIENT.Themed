@@ -4,34 +4,44 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Other dependencies:
+import { BaseThemesV1Module } from '../../themes/t1/module';
 
 //Module specific:
-import { ArchitectureRoutingModule } from "./routing.module";
-//import {ArchitectureValuesRepositoryService } from "./services/values-repository.service"
-//Module specific components:
+import { BaseAppsArchitectureRoutingModule } from "./routing.module";
+// Parent Module:
+import { BaseAppsModule } from '../module';
+// Child Modules:
 import { BaseAppsArchitectureValuesModule } from "./modules/values/module";
+
+//Module specific components:
 import { ArchitectureValuesRepositoryService } from './services/repositories/values-repository.service';
-import { BaseCoreCommonModule } from '../../sites/common/modules/common/module';
+//import {ArchitectureValuesRepositoryService } from "./services/values-repository.service"
 
 @NgModule({
+  declarations: [
+    // Components, Directives, Pipes developed in this Module.
+  ],
+  providers: [
+    // declare services to dependency inject into constructors.
+    ArchitectureValuesRepositoryService
+  ],
   imports: [
     // Import classes within the above specified import files.
     //Ag specific:
     CommonModule,
     FormsModule,
-    // Module specific:
-    ArchitectureRoutingModule,
+    // Routes:
+    BaseAppsArchitectureRoutingModule,
     // SubModules:
-    //ArchitectureValuesModule
-    // No components
-    BaseCoreCommonModule
+    BaseAppsArchitectureValuesModule,
+    // Components:
+    // ...not yet...
+    // Import Parent Module:
+    BaseAppsModule
+  ],  
+  exports: [
+    // NO: Export Parent Module: (create's circular condition)
+    // NO: BaseAppsModule
   ],
-  
-  declarations: [
-  ],
-  providers: [
-    // declare services to dependency inject into constructors.
-    ArchitectureValuesRepositoryService
-  ]
 })
-export class ArchitectureModule { }
+export class BaseAppsArchitectureModule { }

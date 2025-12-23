@@ -1,7 +1,12 @@
+// Ag:
 import { Component, Input } from '@angular/core';
-import { SystemDiagnosticsTraceService } from '../../../../../../../core/services/system.diagnostics-trace.service';
+// Configuration:
+import { appsConfiguration } from '../../../../../../../apps/configuration/implementations/apps.configuration';
+import { appletsSpikesConfiguration } from '../../../../../configuration/implementations/app.lets.spikes.configuration';
+// Services:
+import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
+// Models:
 import { Spike } from '../../../../../models/spike.model';
-import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -12,10 +17,13 @@ import { TranslateService } from '@ngx-translate/core';
 
 export class BaseAppsSpikeSpikesBrowseItemComponent {
 
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose applet configuration:
+  public appletConfiguration = appletsSpikesConfiguration
+
   @Input()
   data: any;
-  constructor(
-    private translate: TranslateService,
-    private diagnosticsTraceService: SystemDiagnosticsTraceService) {
+  constructor(private defaultControllerServices: DefaultComponentServices) {
   }
 }

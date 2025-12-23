@@ -32,7 +32,7 @@
 //  ],
 
 //  declarations: [
-//    // define what Components belong to this Module (i.e., are not `standalone`)
+// Components, Directives, Pipes developed in this Module.
 //    SpikeSpikesRouteComponent,
 //    //
 //    SpikeSpikesBrowseComponent,

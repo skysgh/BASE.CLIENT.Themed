@@ -4,16 +4,18 @@ import { tap, map, switchMap } from 'rxjs/operators';
 // Ag:
 import { Injectable } from '@angular/core';
 // Etc:
-import { TranslateService } from '@ngx-translate/core';
+
 // Constants:
-import { system as importedSystemConst } from '../../constants/system';
+//
 // Services:
 import { MappedItemsCollectionServiceBase } from '../base/mapped-items-collection.service.base';
 import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.service';
 import { SystemPricingPlanRepositoryService } from './repositories/service-pricingplan.repository.service';
+import { TranslationService } from '../translation.service';
 // Models:
 import { ServicePricingPlan } from '../../models/data/service-pricing-plan.model';
 import { ServicePricingPlanVTO } from '../../models/service.pricingplan.vto.model';
+import { appsConfiguration } from '../../../apps/configuration/implementations/apps.configuration';
 
 // Models:
 
@@ -28,12 +30,10 @@ import { ServicePricingPlanVTO } from '../../models/service.pricingplan.vto.mode
 export class ServicePricingPlansService
   extends MappedItemsCollectionServiceBase
   <ServicePricingPlan, string, ServicePricingPlanVTO> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
 
   // Don't poll:
   protected override pollDelayInSeconds: number = 0; //(60 * 1000);
-  protected override itemKeyFieldName: string = importedSystemConst.storage.db.defaultFieldNames.id;
+  protected override itemKeyFieldName: string = appsConfiguration.others.core.constants.storage.db.columnNames.defaults.id;
 
   // The key issue to keep in mind is that
   // front end components (eg: topbar)
@@ -43,10 +43,10 @@ export class ServicePricingPlansService
   // So it's a double observable if you will.
   constructor(
     diagnosticsTraceService: SystemDiagnosticsTraceService,
-    translate: TranslateService,
+    translationService: TranslationService,
     private systemPricingPlansRepositoryService: SystemPricingPlanRepositoryService
   ) {
-    super(diagnosticsTraceService, translate);
+    super(diagnosticsTraceService, translationService);
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 

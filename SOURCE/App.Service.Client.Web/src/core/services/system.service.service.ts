@@ -3,11 +3,12 @@
 // Ag:
 import { Injectable } from '@angular/core';
 // Etc:
-// 
+//
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+//
 // Services//
 import { SystemEnvironmentService } from './system.environment.service';
+import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
 
 // Models:
 //
@@ -19,11 +20,10 @@ import { SystemEnvironmentService } from './system.environment.service';
 // Injectable service to describe current environment
 export class ServiceService {
   // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
   public id: string;
   constructor(systemEnvironmentService: SystemEnvironmentService) {
     // TODO: Make dynamic
-    this.id = this.system.dynamic.service.id
+    this.id = appsConfiguration.description.title
   }
 }

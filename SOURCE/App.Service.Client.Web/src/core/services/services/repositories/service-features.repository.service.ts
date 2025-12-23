@@ -4,12 +4,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 // Constants:
-import { system as importedSystemConst } from '../../../constants/system';
+
 // Services:
 import { SimpleGenericRepositoryServiceBase } from "../../repositories/base/simple-generic-repository-service.base";
 import { RepositoryStandardServicesPackage } from "../../repositories/base/_standard-repository-services-package";
 // Models:
 import { ServiceFeature } from "../../../models/data/service-features.model";
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
 
 /**
  * Stateless service to manage interactions with
@@ -21,8 +22,6 @@ import { ServiceFeature } from "../../../models/data/service-features.model";
 
 export class ServiceFeaturesRepositoryService
   extends SimpleGenericRepositoryServiceBase<ServiceFeature> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
 
   constructor(
     repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
@@ -30,10 +29,10 @@ export class ServiceFeaturesRepositoryService
     super(
       repositoryStandardServicesPackage,
       httpClient,
-      importedSystemConst.apis.base.service.feature
+      appsConfiguration.others.sites.constants.apis.brochure.feature
     );
     // Make system/env variables avaiable to view template (via singleton or service):
-    // this.system = systemService.system;
+    
   }
 }
 

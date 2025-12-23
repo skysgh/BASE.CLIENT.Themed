@@ -4,10 +4,11 @@ import { HttpClient } from "@angular/common/http";
 // Etc:
 //
 // Constants:
-import { system as importedSystemConst } from '../../../constants/system';
+//
 // Services:
 import { SimpleGenericRepositoryServiceBase } from "../base/simple-generic-repository-service.base";
 import { RepositoryStandardServicesPackage } from "../base/_standard-repository-services-package";
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
 // Models:
 // TODO
 
@@ -21,7 +22,7 @@ export class CompaniesRepositoryService
     super(
       repositoryStandardServicesPackage,
       httpClient,
-      importedSystemConst.apis.transactions
+      appsConfiguration.constants.apis.transactions
     );
   }
 

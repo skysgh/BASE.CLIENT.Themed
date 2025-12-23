@@ -5,11 +5,12 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 // Services:
 import { SystemDiagnosticsTraceService } from "../../core/services/system.diagnostics-trace.service";
-// Modules:
-import { BaseCoreCommonModule } from "../../sites/common/modules/common/module";
-
-// import { BaseCoreCommonComponentsModule } from "../../../core/modules/common/components/module";
+// Routes:
 import { BaseAppsEducationRoutingModule } from "./routing";
+// Parent Module:
+import { BaseAppsModule } from "../module";
+// Child Modules:
+// ...not yet...
 // Controls:
 import { BaseAppsEducationProductsComponent } from "./areas/products/component";
 import { BaseAppsEducationPeopleComponent } from "./areas/people/component";
@@ -24,21 +25,8 @@ import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishmen
 
 
 @NgModule({
-  imports: [
-    // Import classes within the above specified import files.
-    // Ag specific:
-    CommonModule,
-    FormsModule,
-    // Custom specific:
-    BaseCoreCommonModule,
-    // Module specific:
-    BaseAppsEducationRoutingModule
-    // No components
-  ],
-  exports: [
-    RouterModule
-  ],
   declarations: [
+    // Components, Directives, Pipes developed in this Module.
     BaseAppsEducationProductsComponent,
     BaseAppsEducationPeopleComponent,
     BaseAppsEducationPlacesComponent,
@@ -51,6 +39,36 @@ import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishmen
     BaseAppsEducationAccomplishmentsComponent
   ],
   providers: [
+    // ...not yet...
+  ],
+  imports: [
+    // Import classes within the above specified import files.
+    // Ag specific:
+    CommonModule,
+    FormsModule,
+    // Routes:
+    BaseAppsEducationRoutingModule,
+    // Components
+    // ...not yet...
+    // Import Parent Module:
+    BaseAppsModule
+   ],
+  exports: [
+    // TODO: Why???
+    RouterModule,
+    // NO: Export Parent Module: (create's circular condition)
+    // NO: BaseAppsModule,
+    // Declared Components:
+    BaseAppsEducationProductsComponent,
+    BaseAppsEducationPeopleComponent,
+    BaseAppsEducationPlacesComponent,
+    BaseAppsEducationFinancesComponent,
+    BaseAppsEducationEnrollmentComponent,
+    BaseAppsEducationParticipationComponent,
+    BaseAppsEducationPresenceComponent,
+    BaseAppsEducationAssessmentsComponent,
+    BaseAppsEducationProgressComponent,
+    BaseAppsEducationAccomplishmentsComponent
   ]
 })
 export class BaseAppsEducationModule {

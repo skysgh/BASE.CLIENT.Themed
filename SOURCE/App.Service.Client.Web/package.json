@@ -7,11 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-
     "soul": "soul --database=_custom/sqlite/base.db --p=4202",
     "json-server": "json-server --port=4202 --routes=_custom/json-server/routes.json _custom/json-server/data.json",
-
-
     "start-local-json-server": "concurrently --kill-others-on-fail \"npm run json-server\" \"npm run start\"",
     "start-local-json-server2": "\"npm run json-server\" & \"npm run start\"",
     "start-local-soul": "concurrently --kill-others-on-fail \"npm run soul\" \"npm run start\""
@@ -130,11 +127,13 @@
     "@types/jquery": "^3.5.29",
     "@types/leaflet": "^1.9.8",
     "@types/lodash": "^4.14.202",
+    "@types/module-alias": "^2.0.4",
     "@types/node": "^20.9.4",
     "@types/quill": "^2.0.14",
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "typescript": "~5.2.2"
+    "typescript": "~5.2.2",
+    "typescript-transform-paths": "^3.5.3"
   },
   "browserslist": [
     "last 1 version",

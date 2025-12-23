@@ -1,0 +1,27 @@
+{
+  "title": "Amazing Grace",
+  "description": "whatever...",
+
+  "context": {
+    "sponsor": {
+      "name": "FooBiddyFoo, Inc.",
+    }
+  },
+
+  "appslets": {
+    "defaultAppId": "Spikes",
+    "appIds": [
+      "Education",
+      "Spikes"
+    ]
+  },
+  "others": {
+    "core": {
+      "integrations": {
+        "keys": {
+          "googleMaps": "AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE",
+        }
+      }
+    }
+  }
+}

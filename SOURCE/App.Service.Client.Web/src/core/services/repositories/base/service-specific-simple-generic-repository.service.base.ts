@@ -6,8 +6,6 @@ import { MappedGenericRepositoryServiceBase } from "./mapped-generic-repository.
 /** Service to retrieve entities specific to a Service.Id */
 export abstract class ServiceSpecificSimpleGenericRepositoryServiceBase<TDto extends IHasServiceId>
   extends MappedGenericRepositoryServiceBase<TDto, TDto> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
 
 
   protected override MapObjectTo(dto: TDto): TDto{

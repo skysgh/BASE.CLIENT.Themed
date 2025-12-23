@@ -6,7 +6,6 @@ import { MappedGenericRepositoryServiceBase } from "./mapped-generic-repository.
 export abstract class ServiceSpecificMappedGenericRepositoryServiceBase<TDto extends IHasServiceId, TVto>
   extends MappedGenericRepositoryServiceBase<TDto, TVto> {
   // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
 
 
 }

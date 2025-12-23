@@ -2,11 +2,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // Constants:
-import { system as importedSystemConst } from '../../../constants/system';
+//
 // Services:
-import { SystemService } from '../../system.service';
+//import { SystemService } from '../../system.service';
 // Models/Data:
 import { User } from '../../../../core/models/misc/auth.models';
+import { appsConfiguration } from '../../../../apps/configuration/implementations/apps.configuration';
 
 /**
  * Stateless service to manage interactions with
@@ -17,10 +18,11 @@ import { User } from '../../../../core/models/misc/auth.models';
 @Injectable({ providedIn: 'root' })
 export class UserProfileService {
   // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
-  constructor(private http: HttpClient, systemService: SystemService) {
+  constructor(private http: HttpClient
+    /*systemService: SystemService*/
+  ) {
     // Make system/env variables avaiable to view template (via singleton or service):
-    // this.system = systemService.system;
+    
   }
     /***
      * Get All Usera
@@ -34,7 +36,7 @@ export class UserProfileService {
      */
   register(user: User) {
       
-    return this.http.post(this.system.navigation.auth.register, user);
+    return this.http.post(appsConfiguration.navigation.auth.register, user);
   }
 
 

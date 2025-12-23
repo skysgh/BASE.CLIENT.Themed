@@ -4,11 +4,12 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 // Constants:
-import { system as importedSystemConst } from '../../../constants/system';
+
 // Services:
 import { SimpleGenericRepositoryServiceBase } from "../../repositories/base/simple-generic-repository-service.base";
 import { RepositoryStandardServicesPackage } from "../../repositories/base/_standard-repository-services-package";
 import { ServiceStat } from "../../../models/data/service-stat.model";
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
 // Models:
 
 /**
@@ -21,19 +22,16 @@ import { ServiceStat } from "../../../models/data/service-stat.model";
 
 export class ServiceStatsRepositoryService
   extends SimpleGenericRepositoryServiceBase<ServiceStat> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
-
   constructor(
     repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
     httpClient: HttpClient) {
     super(
       repositoryStandardServicesPackage,
       httpClient,
-      importedSystemConst.apis.base.service.stats
+      appsConfiguration.others.sites.constants.apis.brochure.stats
     );
     // Make system/env variables avaiable to view template (via singleton or service):
-    // this.system = systemService.system;
+    
   }
 }
 

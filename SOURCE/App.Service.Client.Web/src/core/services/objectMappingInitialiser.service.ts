@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { createMapper, createMap, Mapper } from '@automapper/core';
 import { classes } from '@automapper/classes';
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 // Models:
@@ -26,8 +26,7 @@ const mapper = createMapper({
  * to map DTOs to system entities and back again.
  */
 export class ObjectMappingInitialiserService {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
+
   //expose the singleton created earlier:
   mapper: Mapper = mapper;
 

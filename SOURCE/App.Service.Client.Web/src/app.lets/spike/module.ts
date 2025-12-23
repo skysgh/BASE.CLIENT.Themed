@@ -1,7 +1,8 @@
+//ngx:
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+//Can Remove: import { TranslateModule } from '@ngx-translate/core';
 
-// Import Ag dependencies:
+// Ag:
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,10 +21,13 @@ import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/compon
 // 
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
 import { BaseAppsSpikeSubSpikesRepositoryService } from './services/repositories/subspike-repository.service';
-import { BaseCoreCommonModule } from '../../sites/common/modules/common/module';
+
+//import { BaseThemesV1CommonModule } from '../../themes/v0/features/components/module';
+
 // import { BaseCoreCommonComponentsModule } from '../../../core/modules/common/components/module';
 import { ServiceLanguagesRepositoryService } from '../../core/services/services/repositories/service-languages.repository.service';
 import { ServiceLanguagesService } from '../../core/services/service.languages.service';
+import { BaseAppsModule } from '../module';
 
 // ...submodules:
 // NO mention, as it is late loaded by routes:
@@ -33,9 +37,27 @@ import { ServiceLanguagesService } from '../../core/services/service.languages.s
 
 
 @NgModule({
+  declarations: [
+    // Components, Directives, Pipes developed in this Module.
+    BaseAppsSpikeRouteOutletComponent,
+    // Spike Components:
+    BaseAppsSpikeSpikesBrowseComponent,
+    BaseAppsSpikeSpikesReadComponent,
+    BaseAppsSpikeSpikesEditComponent,
+    // SubSpike Components:
+    BaseAppsSpikeSubSpikesBrowseComponent
+  ],
+  providers: [
+    // declare services to dependency inject into constructors.
+    BaseAppsSpikeSpikesRepositoryService,
+    BaseAppsSpikeSubSpikesRepositoryService,
+    ServiceLanguagesService,
+    ServiceLanguagesRepositoryService
+  ],
   imports: [
     CommonModule,
-    TranslateModule.forChild(),
+
+    //Can Remove: TranslateModule.forChild(),
     RouterModule.forChild(
       [
       // we're basically saying load a control from this module,
@@ -63,30 +85,18 @@ import { ServiceLanguagesService } from '../../core/services/service.languages.s
     // Import classes within the above specified import files.
     //Ag specific:
     FormsModule,
-    // Module specific:
-    //SpikeRoutingModule,
-    BaseCoreCommonModule
+
+    // Routes:
+    // BaseAppsSpikeRoutingModule,
+
+    // Import Parent Module:
+    BaseAppsModule
   ],
   exports: [
     // Not sure why doing this:
     RouterModule
-  ],
-  declarations: [
-    // define what Components belong to this Module (i.e., are not `standalone`)
-    BaseAppsSpikeRouteOutletComponent,
-    // Spike Components:
-    BaseAppsSpikeSpikesBrowseComponent,
-    BaseAppsSpikeSpikesReadComponent,
-    BaseAppsSpikeSpikesEditComponent,
-    // SubSpike Components:
-    BaseAppsSpikeSubSpikesBrowseComponent
-  ],
-  providers: [
-    // declare services to dependency inject into constructors.
-    BaseAppsSpikeSpikesRepositoryService,
-    BaseAppsSpikeSubSpikesRepositoryService,
-    ServiceLanguagesService,
-    ServiceLanguagesRepositoryService
-  ]
+    // NO: Export Parent Module:
+    // NO: BaseAppsModule,
+    ]
 })
 export class BaseAppsSpikeModule { }

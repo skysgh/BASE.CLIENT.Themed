@@ -4,28 +4,34 @@ import { ExampleService } from '../../../../../../core/services/example.service'
 import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
 
 import { Value } from '../../../../models/value.model';
+import { appsConfiguration } from '../../../../../../apps/configuration/implementations/apps.configuration';
+import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
+import { appletsArchitectureConfiguration } from '../../../../configuration/implementations/app.lets.architecture.configuration';
 
 
 @Component({
   selector: 'app-base-apps-architecture-value-read',
-  templateUrl: './spike-read.component.html',
-  styleUrls: ['./spike-read.component.scss']
+  templateUrl: './component.html',
+  styleUrls: ['./component.scss']
 })
 
 export class BaseAppsArchitectureValuesReadComponent implements OnInit {
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose applet configuration:
+  public appletConfiguration = appletsArchitectureConfiguration
 
   public data? : Value[] = [];
 
   constructor(
-    private diagnosticsTraceService: SystemDiagnosticsTraceService,
-    private exampleService: ExampleService,
+    private defaultControllerServices: DefaultComponentServices,
     private repositoryService: ArchitectureValuesRepositoryService,
     ) {
 
     
-    this.diagnosticsTraceService.info("foo");
-    var a = exampleService.someField;
-    this.diagnosticsTraceService.info(a);
+    this.defaultControllerServices.diagnosticsTraceService.info("foo");
+    //var a = exampleService.someField;
+    this.defaultControllerServices.diagnosticsTraceService.info('');
 
     //this.data : any=[];//[{ title: 'Ebony' }, { title: 'Chiho' }];
   }
@@ -36,6 +42,6 @@ export class BaseAppsArchitectureValuesReadComponent implements OnInit {
     }
 
   public DoSomething() {
-    this.diagnosticsTraceService.info("blah");
+    this.defaultControllerServices.diagnosticsTraceService.info("blah");
   }
 }

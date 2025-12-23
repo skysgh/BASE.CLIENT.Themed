@@ -2,13 +2,14 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 // Constants:
-import { system as importedSystemConst } from '../../constants/system';
+
 // Services:
 //import { MappedGenericRepositoryServiceBase } from "./base/mapped-generic-repository.service.base";
 import { SimpleGenericRepositoryServiceBase } from "./base/simple-generic-repository-service.base";
 import { RepositoryStandardServicesPackage } from "./base/_standard-repository-services-package";
 // Models:
 import { Agreement } from "../../models/agreement.model";
+import { appsConfiguration } from "../../../apps/configuration/implementations/apps.configuration";
 
 
 /**
@@ -28,7 +29,7 @@ export class AgreementsRepositoryService
       repositoryStandardServicesPackage,
       httpClient,
       // Constants:
-      importedSystemConst.apis.base.service.todo.agreements
+      appsConfiguration.constants.apis.todo.agreements
     );
   }
 }

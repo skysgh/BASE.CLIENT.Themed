@@ -1,0 +1,112 @@
+// Rx:
+//
+// Ag:
+import { Component, OnInit } from '@angular/core';
+//
+// Configuration:
+import { appsConfiguration } from '../../../../apps/configuration/implementations/apps.configuration';
+import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
+// Services:
+import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
+import { EventService } from '../../../../core/services/infrastructure/event.service';
+// Models:
+import { ViewModel } from './vm';
+
+
+@Component({
+  selector: 'app-two-column',
+  templateUrl: './two-column.component.html',
+  styleUrls: ['./two-column.component.scss']
+})
+
+/**
+ * BaseLayoutTwoColumnComponent
+ */
+export class BaseLayoutTwoColumnComponent implements OnInit {
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose parent configuration:
+  public groupConfiguration = themesT1Configuration
+
+  // This controller's ViewModel:
+  public viewModel: ViewModel = new ViewModel();
+  // TODO: Move these variables into it.
+
+  constructor(
+    private defaultControllerServices: DefaultComponentServices,
+    private eventService: EventService
+  ) { }
+  isCondensed = false;
+
+  ngOnInit(): void {
+    window.addEventListener('resize', () => {
+      if (document.documentElement.getAttribute('data-layout') == "twocolumn") {
+        if (document.documentElement.clientWidth <= 767) {
+          this.eventService.broadcast('changeLayout', 'vertical');
+          document.documentElement.setAttribute('data-layout', 'vertical');
+          document.body.classList.add('twocolumn-panel');
+        } else {
+          this.eventService.broadcast('changeLayout', 'twocolumn');
+          document.documentElement.setAttribute('data-layout', 'twocolumn');
+          document.body.classList.remove('twocolumn-panel');
+          document.getElementById('side-bar')?.classList.add('d-none')
+        }
+      }
+      else {
+        if (document.body.classList.contains('twocolumn-panel')) {
+          if (document.documentElement.clientWidth <= 767) {
+            this.eventService.broadcast('changeLayout', 'vertical');
+            document.documentElement.setAttribute('data-layout', 'vertical');
+          } else {
+            this.eventService.broadcast('changeLayout', 'twocolumn');
+            document.documentElement.setAttribute('data-layout', 'twocolumn');
+            document.body.classList.remove('twocolumn-panel')
+            document.getElementById('side-bar')?.classList.add('d-none')
+          }
+        }
+      }
+    })
+  }
+
+
+  /**
+   * On mobile toggle button clicked
+   */
+  onToggleMobileMenu() {
+    document.body.classList.toggle('twocolumn-panel');
+  }
+
+  /**
+   * on settings button clicked from topbar
+   */
+  onSettingsButtonClicked() {
+    document.body.classList.toggle('right-bar-enabled');
+    const rightBar = document.getElementById('theme-settings-offcanvas');
+    if (rightBar != null) {
+      rightBar.classList.toggle('show');
+      rightBar.setAttribute('style', "visibility: visible;");
+    }
+  }
+
+  onResize(event: any) {
+    if (document.body.getAttribute('layout') == "twocolumn") {
+      if (event.target.innerWidth <= 767) {
+        this.eventService.broadcast('changeLayout', 'vertical');
+      } else {
+        this.eventService.broadcast('changeLayout', 'twocolumn');
+        document.body.classList.remove('twocolumn-panel');
+        document.body.classList.remove('vertical-sidebar-enable');
+      }
+    }
+  }
+
+  isTwoColumnLayoutRequested() {
+    return 'twocolumn' === document.documentElement.getAttribute('data-layout');
+
+  }
+
+  issemiboxLayoutRequested() {
+    return 'semibox' === document.documentElement.getAttribute('data-layout');
+  }
+
+}

@@ -5,12 +5,13 @@ import { Injectable } from '@angular/core';
 // Etc:
 //
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+//
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 // Models:
 import { v4 as uuidv4 } from 'uuid';
 import { NIL as NIL_UUID } from 'uuid';
+import { SystemDefaultServices } from './system.default-services.service';
 // Data:
 
 /**
@@ -24,13 +25,20 @@ import { NIL as NIL_UUID } from 'uuid';
 
 @Injectable({ providedIn: 'root' })
 export class UUIDService {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
-  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+  /**
+   * Constructor
+   * @param defaultServices
+   */
+  constructor(private defaultServices: SystemDefaultServices) {
+    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 
+  /**
+   *
+   * 
+   * @returns
+   */
   getNullUUID() {
     return NIL_UUID;
   }

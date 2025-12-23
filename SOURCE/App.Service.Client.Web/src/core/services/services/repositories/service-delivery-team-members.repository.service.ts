@@ -6,13 +6,14 @@ import { Injectable } from "@angular/core";
 // Etc:
 //
 // Constants:
-import { system as importedSystemConst } from '../../../constants/system';
+
 // Services:
 import { RepositoryStandardServicesPackage } from "../../repositories/base/_standard-repository-services-package";
 import { SimpleGenericRepositoryServiceBase } from '../../repositories/base/simple-generic-repository-service.base';
 
 // Models:
 import { ServiceDeliveryTeamMemberVTO } from '../../../../core/models/view/service-delivery-team-member.vto.model';
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
 
 /**
  * Stateless service to manage interactions with
@@ -24,9 +25,6 @@ import { ServiceDeliveryTeamMemberVTO } from '../../../../core/models/view/servi
 @Injectable({ providedIn: 'root' })
 export class ServiceDeliveryTeamMemberRepositoryService
   extends SimpleGenericRepositoryServiceBase<ServiceDeliveryTeamMemberVTO> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
-
 
   constructor(
     repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
@@ -34,7 +32,7 @@ export class ServiceDeliveryTeamMemberRepositoryService
     super(
       repositoryStandardServicesPackage,
       httpClient,
-      importedSystemConst.apis.base.service.deliveryTeamMembers
+      appsConfiguration.others.sites.constants.apis.brochure.deliveryTeamMembers
     );
 
   }

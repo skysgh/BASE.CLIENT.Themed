@@ -3,9 +3,11 @@
 // Ag:
 import { Injectable } from '@angular/core';
 // Constants:
-import { system as importedSystemConst } from '../../constants/system';
+//import { coreConfiguration } from '../../../configuration/inplementations/core.configuration';
+
 // Services:
 import { SystemDiagnosticsTraceService } from './../system.diagnostics-trace.service';
+import { SystemDefaultServices } from '../system.default-services.service';
 
 
 @Injectable({
@@ -13,13 +15,16 @@ import { SystemDiagnosticsTraceService } from './../system.diagnostics-trace.ser
 })
 export class SessionStorageService {
 
-  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+  constructor(
+    private defaultServices: SystemDefaultServices) {
 
+    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+    
   }
 
   clear(): void {
-    this.diagnosticsTraceService.info("sessionStorageService.clear()");
+    this.defaultServices.diagnosticsTraceService.info("sessionStorageService.clear()");
+
     window.sessionStorage.clear();
   }
 
@@ -29,20 +34,21 @@ export class SessionStorageService {
    * @param value
    */
   public setItem(key: string, value: string): void {
-    this.diagnosticsTraceService.info(`tokenStorageService.saveToken('${key}', '${value}')`);
+    this.defaultServices.diagnosticsTraceService.info(`tokenStorageService.saveToken('${key}', '${value}')`);
+
     window.sessionStorage.removeItem(key);
     window.sessionStorage.setItem(key, value);
   }
 
   public getItem(key:string): string | null {
-    this.diagnosticsTraceService.info(`tokenStorageService.getToken('${key}')`);
+    this.defaultServices.diagnosticsTraceService.info(`tokenStorageService.getToken('${key}')`);
     var result = sessionStorage.getItem(key);
-    this.diagnosticsTraceService.info(`...found: '${result}'`);
+    this.defaultServices.diagnosticsTraceService.info(`...found: '${result}'`);
     return result;
   }
 
   public removeItem(key: string): void {
-    this.diagnosticsTraceService.info(`tokenStorageService.removeToken('${key}')`);
+    this.defaultServices.diagnosticsTraceService.info(`tokenStorageService.removeToken('${key}')`);
     window.sessionStorage.removeItem(key);
   }
 

@@ -14,8 +14,6 @@ import { MappedGenericRepositoryServiceBase } from "./mapped-generic-repository.
  */
 export abstract class SimpleGenericRepositoryServiceBase<TDto> extends
   MappedGenericRepositoryServiceBase<TDto, TDto> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
 
 
 /* Map incoming TDto to a TVto more appropriate for the UI.

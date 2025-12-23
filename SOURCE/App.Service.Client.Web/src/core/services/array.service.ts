@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { system as importedSystemConst } from '../constants/system';
 import { SystemDiagnosticsTraceService } from "./system.diagnostics-trace.service";
+import { SystemDefaultServices } from "./system.default-services.service";
 
 // Models:
 //
@@ -9,10 +9,9 @@ import { SystemDiagnosticsTraceService } from "./system.diagnostics-trace.servic
 @Injectable({ providedIn: 'root' })
 export class ArrayService {
     // Make system/env variables avaiable to class & view template:
-    public system = importedSystemConst;
 
-    constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
-        this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
+  constructor(private defaultServices: SystemDefaultServices) {
+    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
 
   }
 

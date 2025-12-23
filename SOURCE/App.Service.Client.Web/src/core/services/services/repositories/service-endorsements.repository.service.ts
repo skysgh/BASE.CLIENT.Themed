@@ -4,12 +4,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 // Constants:
-import { system as importedSystemConst } from '../../../constants/system';
+
 // Services:
 import { RepositoryStandardServicesPackage } from "../../repositories/base/_standard-repository-services-package";
 import { SimpleGenericRepositoryServiceBase } from "../../repositories/base/simple-generic-repository-service.base";
 // Models:
 import { ServiceEndorsementMAYBE } from "../../../models/data/service-endorsement.model";
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
 
 /**
  * Stateless service to manage interactions with
@@ -25,8 +26,6 @@ import { ServiceEndorsementMAYBE } from "../../../models/data/service-endorsemen
 
 export class SystemEndorsementRepositoryService
   extends SimpleGenericRepositoryServiceBase<ServiceEndorsementMAYBE> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
 
   constructor(
     repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
@@ -34,9 +33,9 @@ export class SystemEndorsementRepositoryService
     super(
       repositoryStandardServicesPackage,
       httpClient,
-      importedSystemConst.apis.base.service.endorsements
+      appsConfiguration.others.sites.constants.apis.brochure.endorsements
     );
     // Make system/env variables avaiable to view template (via singleton or service):
-    // this.system = systemService.system;
+    
   }
 }

@@ -1,7 +1,7 @@
 ## Developer Directions ##
 
 As discussed [previously](./), try to keep all customisation changes to within:
-* `src/app/_custom`.
+* `src/apps/_custom`.
 * `src/assets/_custom`
 
 That said, the following artefacts outside the above folders required changes too:

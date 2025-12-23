@@ -1,13 +1,15 @@
 // Ag:
 import { Component, OnInit } from "@angular/core";
 // Etc.
-import { TranslateService } from "@ngx-translate/core";
+
 // Constants:
-import { system as importedSystemConst } from '../../../../core/constants/system';
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
+
 // Services:
-import { SystemService } from "../../../../core/services/system.service";
+//import { SystemService } from "../../../../core/services/system.service";
 import { SystemDiagnosticsTraceService } from "../../../../core/services/system.diagnostics-trace.service";
 import { ViewModel } from "./vm";
+import { DefaultComponentServices } from "../../../../core/services/default-controller-services";
 
 @Component({
   selector: 'app-base-apps-education-enrollment',
@@ -15,25 +17,30 @@ import { ViewModel } from "./vm";
   styleUrls: ['./component.scss']
 })
 export class BaseAppsEducationEnrollmentComponent implements OnInit {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
+
+
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
+
   // TODO: Move these variables into it.
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
 
-  constructor(systemService: SystemService, private diagnosticsTraceService: SystemDiagnosticsTraceService, translateService: TranslateService) {
+  constructor(
+    private defaultComponentService: DefaultComponentServices) {
     // Make system/env variables avaiable to view template (via singleton or service):
-    // this.system = systemService.system;
+    
 
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
+    this.defaultComponentService.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 
   }
   ngOnInit(): void {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`)
+    this.defaultComponentService.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`)
   }
 }

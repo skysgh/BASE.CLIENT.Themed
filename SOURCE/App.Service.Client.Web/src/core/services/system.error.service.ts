@@ -3,21 +3,33 @@
 // Ag:
 import { Injectable } from '@angular/core';
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+//
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 
 // Describe the service:
 @Injectable({ providedIn: 'root' })
 
-  // Injectable service to capture errors and record them
-  // back on the service.
-  // Presumably till a new count of zero.
+  /**
+  * Injectable service to capture errors and record them
+  * back to the server (later).
+  *
+  * Part of the SystemDefaultServicesService
+  */
 export class SystemErrorService{
   // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
+  //
 
-  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
+  /**
+   * Constructor.
+   * 
+   * WARNING: Can't inject DefaultServices as it depends on this
+   * service.
+   * @param diagnosticsTraceService
+   */
+  constructor(
+    // NEVER INJECT private defaultServices: SystemDefaultServices AS IT WILL CYCLE
+    private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
 

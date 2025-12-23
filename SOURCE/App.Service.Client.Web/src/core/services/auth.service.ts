@@ -7,18 +7,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 // hum...
 import { getFirebaseBackend } from '../utilities/authUtils';
-import { RegisterSuccess, loginFailure, loginSuccess, logout, logoutSuccess } from '../../sites/common/store/Authentication/authentication.actions';
+import { RegisterSuccess, loginFailure, loginSuccess, logout, logoutSuccess } from '../../themes/t1/_state/authentication/authentication.actions'
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+// Configuration:
+import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+import { coreConfiguration } from '../configuration/implementations/core.configuration';
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
-import { SystemErrorService } from './system.error.service';
 import { SessionStorageService } from './infrastructure/SessionStorageService';
 // models:
-import { User } from '../../sites/common/store/Authentication/auth.models';
+import { User } from '../../themes/t1/_state/authentication/auth.models';
+// '../../themes/t1/services/_store/authentication/auth.models';
 
 
-const AUTH_API = importedSystemConst.apis.themesbrand.AUTH_API;
+const AUTH_API = appsConfiguration.others.themes.current.constants.apis.themesbrand.AUTH_API;
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -31,8 +33,6 @@ const httpOptions = {
  * Auth-service Component
  */
 export class AuthenticationService {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
   user!: User;
   currentUserValue: any;
@@ -40,18 +40,23 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   // public currentUser: Observable<User>;
 
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose parent configuration:
+  public groupConfiguration = coreConfiguration
+
   constructor(
     private diagnosticsTraceService: SystemDiagnosticsTraceService,
     private sessionStorageService: SessionStorageService,
-    private errorService: SystemErrorService,
-
+    /*NEVER: private errorServices:SystemErrorService*/
 
     private http: HttpClient,
     private store: Store) {
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 
-    var user = JSON.parse(this.sessionStorageService.getItem(this.system.storage.system.currentUser)!);
+    //var user = new Object();
+    var user = JSON.parse(this.sessionStorageService.getItem(this.appsConfiguration.others.core.constants.storage.session.currentUser)!);
     this.currentUserSubject = new BehaviorSubject<User>(user);
 
     // this.currentUser = this.currentUserSubject.asObservable();
@@ -139,8 +144,8 @@ export class AuthenticationService {
     this.store.dispatch(logout());
     // logout the user
     // return getFirebaseBackend()!.logout();
-    sessionStorage.removeItem(this.system.storage.system.currentUser);
-    sessionStorage.removeItem(this.system.storage.system.token);
+    sessionStorage.removeItem(this.appsConfiguration.others.core.constants.storage.session.currentUser);
+    sessionStorage.removeItem(this.appsConfiguration.others.core.constants.storage.session.token);
     this.currentUserSubject.next(null!);
 
     return of(undefined).pipe(

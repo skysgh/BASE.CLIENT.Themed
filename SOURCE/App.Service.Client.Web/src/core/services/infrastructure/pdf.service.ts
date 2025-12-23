@@ -7,13 +7,14 @@ import { HttpClient } from '@angular/common/http';
 // Etc:
 import { PDFDocument } from 'pdf-lib';
 // Constants:
-import { system as importedSystemConst } from '../../constants/system';
+
 // Services:
 // Models:
 //
 // Unknown:
 import { Search } from 'angular-feather/icons';
 import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.service';
+import { SystemDefaultServices } from '../system.default-services.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,10 @@ import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.servi
 export class PdfService {
 
   constructor(private http: HttpClient,
-    private diagnosticsTraceService: SystemDiagnosticsTraceService) {
+    private defaultServices: SystemDefaultServices
+    ) {
 
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
   }
   public fetchAndReplacePdfTokens(
     pdfUrl: string,

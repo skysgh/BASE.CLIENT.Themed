@@ -3,11 +3,13 @@ import { Component, OnInit } from "@angular/core";
 // Etc.
 import { TranslateService } from "@ngx-translate/core";
 // Constants:
-import { system as importedSystemConst } from '../../../../core/constants/system';
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
 // Services:
-import { SystemService } from "../../../../core/services/system.service";
+//import { SystemService } from "../../../../core/services/system.service";
 import { SystemDiagnosticsTraceService } from "../../../../core/services/system.diagnostics-trace.service";
 import { ViewModel } from "./vm";
+import { DefaultComponentServices } from "../../../../core/services/default-controller-services";
+import { appletsEducationConfiguration } from "../../configuration/implementations/app.lets.education.configuration";
 
 @Component({
   selector: 'app-base-apps-education-presence',
@@ -15,8 +17,10 @@ import { ViewModel } from "./vm";
   styleUrls: ['./component.scss']
 })
 export class BaseAppsEducationPresenceComponent implements OnInit {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose applet configuration:
+  public appletConfiguration = appletsEducationConfiguration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
@@ -25,14 +29,13 @@ export class BaseAppsEducationPresenceComponent implements OnInit {
   // bread crumb items
   breadCrumbItems!: Array<{}>;
 
-  constructor(systemService: SystemService, private diagnosticsTraceService: SystemDiagnosticsTraceService, translateService: TranslateService) {
+  constructor(private defaultControllerServices: DefaultComponentServices) {
     // Make system/env variables avaiable to view template (via singleton or service):
-    // this.system = systemService.system;
 
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
+    this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 
   }
   ngOnInit(): void {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`)
+    this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`)
   }
 }

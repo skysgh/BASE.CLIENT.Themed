@@ -10,7 +10,6 @@
 //import { ServiceNotification } from "../../models/data/service-notification.model";
 //import { Message } from "../../models/data/message.model";
 // Constants:
-//import { system as importedSystemConst } from '../../../constants/system';
 //import { SystemQueryEndpoints } from "../../constants/systemQueryEndpoints";
 //// import models:
 
@@ -24,8 +23,6 @@
 //@Injectable({ providedIn: 'root' })
 //export class MessagesRepositoryService
 //  extends SimpleGenericRepositoryServiceBase<Message> {
-// Make system/env variables avaiable to class & view template:
-// already defined in superclass: public system = importedSystemConst;
 
 //  constructor(
 //repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
@@ -33,7 +30,7 @@
 //  super(
 //    repositoryStandardServicesPackage,
 //    httpClient,
-//      importedSystemConst.apis.base.service.notifications
+//      appsConfiguration.constants.base.service.notifications
 //    );
 //  }
 

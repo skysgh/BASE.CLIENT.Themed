@@ -1,9 +1,9 @@
 ## About ##
 
-`apps` is the folder containing **app.lets*,
-which show up in the `app` main menu once signed in.
+`app.lets` is the folder containing **app.lets*,
+which show up in the `apps/main`'s menu once signed in.
 
-Example `apps` might include:
+Example `app.lets` might include:
 * `spikes`: where one can experiment on developing new common functionality.
 * `demo`: to demonstrate the capabilities of an app (abstractly).
 * `architecture`: an app suitable for an IT architecture practice

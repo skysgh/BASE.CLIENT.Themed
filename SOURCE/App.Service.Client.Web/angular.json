@@ -30,22 +30,112 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-
               "src/assets",
-              "src/core/assets",
-              "src/themes/v1/assets",
-              "src/sites/assets",
 
-              "src/app/main/assets",
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/assets",
+                "output": "/assets/app.lets"
+              },
 
-              "src/app.lets/example/assets",
-              "src/app.lets/template/assets",
-              "src/app.lets/spike/assets",
-              "src/app.lets/example/assets",
-              "src/app.lets/architecture/assets",
-              "src/app.lets/education/assets"
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/architecture/assets",
+                "output": "/assets/app.lets/architecture"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/demos/assets",
+                "output": "/assets/app.lets/demos"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/education/assets",
+                "output": "/assets/app.lets/education"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/example/assets",
+                "output": "/assets/app.lets/example"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/resources/assets",
+                "output": "/assets/app.lets/resources"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/scheduling/assets",
+                "output": "/assets/app.lets/scheduling"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/social/assets",
+                "output": "/assets/app.lets/social"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/spike/assets",
+                "output": "/assets/app.lets/spike"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/system/assets",
+                "output": "/assets/app.lets/system"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/tasks/assets",
+                "output": "/assets/app.lets/tasks"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/template/assets",
+                "output": "/assets/app.lets/template"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/transactions/assets",
+                "output": "/assets/app.lets/transactions"
+              },
 
+
+              {
+                "glob": "**/*",
+                "input": "src/apps/assets",
+                "output": "/assets/apps"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/apps.main/assets",
+                "output": "/assets/apps.main"
+              },
+
+              {
+                "glob": "**/*",
+                "input": "src/core/assets",
+                "output": "/assets/core"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/core.ag/assets",
+                "output": "/assets/core"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites/assets",
+                "output": "/assets/sites"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites.apps/assets",
+                "output": "/assets/sites.apps"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/themes/t1/assets",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "node_modules/prismjs/themes/prism.css",
@@ -58,10 +148,9 @@
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss",
 
-
-              "src/themes/v1/assets/scss/icons.scss",
-              "src/themes/v1/assets/scss/config/minimal/bootstrap.scss",
-              "src/themes/v1/assets/scss/config/minimal/app.scss"
+              "src/themes/t1/assets/deployed/scss/icons.scss",
+              "src/themes/t1/assets/deployed/scss/config/minimal/bootstrap.scss",
+              "src/themes/t1/assets/deployed/scss/config/minimal/app.scss"
 
             ],
             "scripts": [
@@ -156,6 +245,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "base:build:production"
@@ -181,21 +273,107 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-
               "src/assets",
-              "src/core/assets/",
-              "src/themes/v1/assets",
-              "src/sites/assets",
 
-              "src/app/main/assets",
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/assets",
+                "output": "/assets/app.lets"
+              },
 
-              "src/app.lets/example/assets",
-              "src/app.lets/template/assets",
-              "src/app.lets/spike/assets",
-              "src/app.lets/example/assets",
-              "src/app.lets/architecture/assets",
-              "src/app.lets/education/assets"
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/architecture/assets",
+                "output": "/assets/app.lets/architecture"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/demos/assets",
+                "output": "/assets/app.lets/demos"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/education/assets",
+                "output": "/assets/app.lets/education"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/example/assets",
+                "output": "/assets/app.lets/example"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/resources/assets",
+                "output": "/assets/app.lets/resources"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/scheduling/assets",
+                "output": "/assets/app.lets/scheduling"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/social/assets",
+                "output": "/assets/app.lets/social"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/spike/assets",
+                "output": "/assets/app.lets/spike"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/system/assets",
+                "output": "/assets/app.lets/system"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/tasks/assets",
+                "output": "/assets/app.lets/tasks"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/template/assets",
+                "output": "/assets/app.lets/template"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/app.lets/transactions/assets",
+                "output": "/assets/app.lets/transactions"
+              },
+
+
+              {
+                "glob": "**/*",
+                "input": "src/apps/assets",
+                "output": "/assets/apps"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/apps.main/assets",
+                "output": "/assets/apps.main"
+              },
+
+              {
+                "glob": "**/*",
+                "input": "src/core/assets",
+                "output": "/assets/core"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/core.ag/assets",
+                "output": "/assets/core"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites/assets",
+                "output": "/assets/sites"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites.apps/assets",
+                "output": "/assets/sites.apps"
+              }
             ],
             "styles": [
               "src/styles.scss"

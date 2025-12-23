@@ -1,6 +1,7 @@
 import { IHasMenuItem } from '../models/contracts/IHasMenuItem';
 // Constants:
-import { system } from '../constants/system';
+
+import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
 
 
 export const MENU: IHasMenuItem[] =
@@ -10,7 +11,7 @@ export const MENU: IHasMenuItem[] =
       title: 'BASE.DASHBOARDS.PLURAL',
       description: 'BASE.DASHBOARD.DESCRIPTION',
       icon: 'home',
-      link: system.navigation.dashboard.root,
+      link: appsConfiguration.navigation.dashboards.root,
     },
     {
       id: 20,
@@ -22,7 +23,7 @@ export const MENU: IHasMenuItem[] =
           id: 201,
           title: 'APPS.SPIKE.SINGULAR',
           description: 'APPS.SPIKES.DESCRIPTION',
-          link: system.navigation.apps.spikes.root,
+          link: appsConfiguration.navigation.apps.spikes.root,
           parentId: 20
         },
         {
@@ -37,28 +38,28 @@ export const MENU: IHasMenuItem[] =
               parentId: 202,
               title: 'BASE.VALUES.PLURAL',
               description: 'BASE.VALUES.DESCRIPTION',
-              link: system.navigation.apps.architecture.values,
+              link: appsConfiguration.navigation.apps.architecture.values,
             },
             {
               id: 2022,
               parentId: 202,
               title: 'BASE.PRINCIPLES.PLURAL',
               description: 'BASE.PRINCIPLES.DESCRIPTION',
-              link: system.navigation.apps.architecture.principles,
+              link: appsConfiguration.navigation.apps.architecture.principles,
             },
             {
               id: 2023,
               parentId: 202,
               title: 'BASE.QUALITIES.PLURAL',
               description: 'BASE.QUALITIES.DESCRIPTION',
-              link: system.navigation.apps.architecture.qualities,
+              link: appsConfiguration.navigation.apps.architecture.qualities,
             },
             {
               id: 2024,
               parentId: 202,
               title: 'BASE.PATTERNS.PLURAL',
               description: 'BASE.PATTERNS.DESCRIPTION',
-              link: system.navigation.apps.architecture.patterns,
+              link: appsConfiguration.navigation.apps.architecture.patterns,
             },
           ]
         }
@@ -76,7 +77,7 @@ export const MENU: IHasMenuItem[] =
           id: 2031,
           title: 'BASE.PRODUCTS.PLURAL',
           description: 'APPS.PRODUCTS.DESCRIPTION',
-          link: system.navigation.apps.education.products.root,
+          link: appsConfiguration.navigation.apps.education.products.root,
           icon: 'package',
           parentId: 203
         },
@@ -85,14 +86,14 @@ export const MENU: IHasMenuItem[] =
           title: 'BASE.PEOPLE.SINGULAR',
           description: 'APPS.PEOPLE.DESCRIPTION',
           icon: 'users',
-          link: system.navigation.apps.education.people.root,
+          link: appsConfiguration.navigation.apps.education.people.root,
           parentId: 203, 
           subItems: [
             {
               id: 20321,
               title: 'BASE.EDUCATION.ROLES.ALL',
               description: 'BASE.EDUCATION.DESCRIPTION',
-              link: system.navigation.apps.education.people.root,
+              link: appsConfiguration.navigation.apps.education.people.root,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -100,7 +101,7 @@ export const MENU: IHasMenuItem[] =
               id: 20321,
               title: 'BASE.EDUCATION.ROLES.LEARNERS',
               description: 'BASE.EDUCATION.DESCRIPTION',
-              link: system.navigation.apps.education.people.learners,
+              link: appsConfiguration.navigation.apps.education.people.learners,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -108,7 +109,7 @@ export const MENU: IHasMenuItem[] =
               id: 20321,
               title: 'BASE.EDUCATION.ROLES.CARETAKERS',
               description: '...',
-              link: system.navigation.apps.education.people.caretakers,
+              link: appsConfiguration.navigation.apps.education.people.caretakers,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -116,7 +117,7 @@ export const MENU: IHasMenuItem[] =
               id: 20322,
               title: 'BASE.EDUCATION.ROLES.TEACHERS',
               description: '...',
-              link: system.navigation.apps.education.people.teachers,
+              link: appsConfiguration.navigation.apps.education.people.teachers,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -124,7 +125,7 @@ export const MENU: IHasMenuItem[] =
               id: 20322,
               title: 'BASE.EDUCATION.ROLES.ADMINISTRATORS',
               description: '...',
-              link: system.navigation.apps.education.people.administrators,
+              link: appsConfiguration.navigation.apps.education.people.administrators,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -132,7 +133,7 @@ export const MENU: IHasMenuItem[] =
               id: 20322,
               title: 'BASE.EDUCATION.ROLES.PRINCIPALS',
               description: '...',
-              link: system.navigation.apps.education.people.principals,
+              link: appsConfiguration.navigation.apps.education.people.principals,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -140,7 +141,7 @@ export const MENU: IHasMenuItem[] =
               id: 20322,
               title: 'BASE.EDUCATION.ROLES.SPECIALISTS',
               description: '...',
-              link: system.navigation.apps.education.people.specialists,
+              link: appsConfiguration.navigation.apps.education.people.specialists,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -149,7 +150,7 @@ export const MENU: IHasMenuItem[] =
               id: 20323,
               title: 'BASE.EDUCATION.TERMS.ALUMNI',
               description: '...',
-              link: system.navigation.apps.education.people.alumni,
+              link: appsConfiguration.navigation.apps.education.people.alumni,
               icon: 'map-pin',
               parentId: 20321
             },
@@ -160,7 +161,7 @@ export const MENU: IHasMenuItem[] =
           id: 2033,
           title: 'BASE.PLACES.PLURAL',
           description: '...',
-          link: system.navigation.apps.education.places.root,
+          link: appsConfiguration.navigation.apps.education.places.root,
           icon: 'map-pin',
           parentId: 203
         },
@@ -168,7 +169,7 @@ export const MENU: IHasMenuItem[] =
           id: 2034,
           title: 'BASE.ENROLLMENTS.PLURAL',
           description: '...',
-          link: system.navigation.apps.education.enrollments.root,
+          link: appsConfiguration.navigation.apps.education.enrollments.root,
           icon: 'airplay',
           parentId: 203
         },
@@ -176,7 +177,7 @@ export const MENU: IHasMenuItem[] =
           id: 2035,
           title: 'BASE.FINANCES.PLURAL',
           description: '...',
-          link: system.navigation.apps.education.finances.root,
+          link: appsConfiguration.navigation.apps.education.finances.root,
           icon: 'airplay',
           parentId: 203
         },
@@ -185,7 +186,7 @@ export const MENU: IHasMenuItem[] =
           id: 2036,
           title: 'BASE.PRESENCE.SINGULAR',
           description: '...',
-          link: system.navigation.apps.education.presence.root,
+          link: appsConfiguration.navigation.apps.education.presence.root,
           icon: 'airplay',
           parentId: 203
         },
@@ -193,7 +194,7 @@ export const MENU: IHasMenuItem[] =
           id: 2037,
           title: 'BASE.PARTICIPATIONS.SINGULAR',
           description: '...',
-          link: system.navigation.apps.education.participation.root,
+          link: appsConfiguration.navigation.apps.education.participation.root,
           icon: 'airplay',
           parentId: 203
         },
@@ -201,7 +202,7 @@ export const MENU: IHasMenuItem[] =
           id: 2038,
           title: 'BASE.ASSESSMENTS.PLURAL',
           description: '...',
-          link: system.navigation.apps.education.assessments.root,
+          link: appsConfiguration.navigation.apps.education.assessments.root,
           icon: 'airplay',
           parentId: 203
         },
@@ -209,7 +210,7 @@ export const MENU: IHasMenuItem[] =
           id: 2039,
           title: 'BASE.PROGRESS.SINGULAR',
           description: '...',
-          link: system.navigation.apps.education.progress.root,
+          link: appsConfiguration.navigation.apps.education.progress.root,
           icon: 'chart',
           parentId: 203
         },
@@ -217,7 +218,7 @@ export const MENU: IHasMenuItem[] =
           id: 2030,
           title: 'BASE.ACCOMPLISHMENTS.PLURAL',
           description: '...',
-          link: system.navigation.apps.education.accomplishments.root,
+          link: appsConfiguration.navigation.apps.education.accomplishments.root,
           icon: 'airplay',
           parentId: 203
         },
@@ -243,28 +244,28 @@ export const MENU: IHasMenuItem[] =
           parentId: 30,
           title: 'BASE.POLICIES.PRIVACY',
           description: '...',
-          link: system.navigation.pages.public.information.privacy,
+          link: appsConfiguration.navigation.pages.open.information.service.privacy,
         },
         {
           id: 302,
           parentId: 30,
           title: 'BASE.TERMS.TERMS_AND_CONDITIONS',
           description: '...',
-          link: system.navigation.pages.public.information.terms,
+          link: appsConfiguration.navigation.pages.open.information.service.terms,
         },
         {
           id: 303,
           parentId: 30,
           title: 'BASE.CORRECTIONS.PLURAL',
           description: '...',
-          link: system.navigation.pages.public.information.corrections,
+          link: appsConfiguration.navigation.pages.open.information.service.corrections,
         },
         {
           id: 304,
           parentId: 30,
           title: 'BASE.SUPPORT.SINGULAR',
           description: '...',
-          link: system.navigation.pages.public.information.support,
+          link: appsConfiguration.navigation.pages.open.information.service.support,
         }
       ]
     },
@@ -280,28 +281,28 @@ export const MENU: IHasMenuItem[] =
           parentId: 40,
           title: 'BASE.SYSTEMS.SINGULAR',
           description: '...',
-          link: system.navigation.settings.system,
+          link: appsConfiguration.navigation.settings.system,
         },
         {
           id: 402,
           parentId: 40,
           title: 'BASE.ACCOUNTS.PLURAL',
           description: '...',
-          link: system.navigation.settings.tenancy,
+          link: appsConfiguration.navigation.settings.tenancy,
         },
         {
           id: 403,
           parentId: 40,
           title: 'BASE.GROUPS.PLURAL',
           description: '...',
-          link: system.navigation.settings.group,
+          link: appsConfiguration.navigation.settings.group,
         },
         {
           id: 404,
           parentId: 40,
           title: 'BASE.USERS.PLURAL',
           description: '...',
-          link: system.navigation.settings.user,
+          link: appsConfiguration.navigation.settings.user,
         }
       ]
     }

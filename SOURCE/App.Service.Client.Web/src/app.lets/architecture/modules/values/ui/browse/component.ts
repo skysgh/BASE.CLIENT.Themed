@@ -1,9 +1,12 @@
+// Rx:
+
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
-// Import Common:
-import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
-// Import Module specific:
+// Configuration:
+import { appsConfiguration } from '../../../../../../apps/configuration/implementations/apps.configuration';
+import { appletsArchitectureConfiguration } from '../../../../configuration/implementations/app.lets.architecture.configuration';
 // .. Import Services:
+import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
 // ..Import Models:
 import { Value } from '../../../../models/value.model';
@@ -15,12 +18,16 @@ import { Value } from '../../../../models/value.model';
   styleUrls: ['./component.scss']
 })
 export class BaseAppsArchitectureValuesBrowseComponent implements OnInit {
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose applet configuration:
+  public appletConfiguration = appletsArchitectureConfiguration
 
 
   public data?: Value[] = [];
 
   constructor(
-    private diagnosticsTraceService: SystemDiagnosticsTraceService,
+    private defaultControllerServices: DefaultComponentServices,
     private repositoryService: ArchitectureValuesRepositoryService
   ) {
   }

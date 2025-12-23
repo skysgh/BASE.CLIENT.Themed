@@ -1,17 +1,17 @@
-// Import Ag:
+// Rx:
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+// Ag:
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-
-// Import Common:
-import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
-import { ExampleService } from '../../../../../../core/services/example.service';
-// Import Module:
+// Configuration:
+import { appsConfiguration } from '../../../../../../apps/configuration/implementations/apps.configuration';
+import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
+// Services:
+import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
-import { Observable } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
 import { ViewModel } from './vm';
 
 
@@ -22,6 +22,10 @@ import { ViewModel } from './vm';
 })
 
 export class BaseAppsSpikeSpikesReadComponent implements OnInit {
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose applet configuration:
+  public appletConfiguration = appletsSpikesConfiguration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
@@ -33,25 +37,21 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
     //Observable of the matrix params:
     private route: ActivatedRoute,
     private router: Router,
-
-    private translate: TranslateService,
-
-    private diagnosticsTraceService: SystemDiagnosticsTraceService,
-    private exampleService: ExampleService,
+    private defaultControllServices: DefaultComponentServices,
     private repositoryService: BaseAppsSpikeSpikesRepositoryService,
   ) {
-    this.diagnosticsTraceService.info("Constructor");
+    this.defaultControllServices.diagnosticsTraceService.info("Constructor");
   }
 
 
   ngOnInit(): void {
-    this.diagnosticsTraceService.info("Component OnInit");
+    this.defaultControllServices.diagnosticsTraceService.info("Component OnInit");
 
     this.route.params.subscribe(params => {
-      this.diagnosticsTraceService.info(`params ready. id:${params['id']}`);
+      this.defaultControllServices.diagnosticsTraceService.info(`params ready. id:${params['id']}`);
 
       this.repositoryService.getSingle(params['id']).subscribe(x => {
-        this.diagnosticsTraceService.info('got X: ' + x!.title);
+        this.defaultControllServices.diagnosticsTraceService.info('got X: ' + x!.title);
         this.data = x!
       });
     });
@@ -79,6 +79,6 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
   }
 
   public DoSomething() {
-    this.diagnosticsTraceService.info("blah");
+    this.defaultControllServices.diagnosticsTraceService.info("blah");
   }
 }

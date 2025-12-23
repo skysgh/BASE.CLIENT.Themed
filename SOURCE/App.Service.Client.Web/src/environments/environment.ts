@@ -2,23 +2,17 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  custom: {
-    diagnostics: {
-      // 5=Debug, 4=Verbose, 3=Info, 2=Warn, 1=Error
-      level: 5
-    },
-    service: {
-      baseUrl: 'http://localhost:4202/',
+import { Environment } from "./environment.types";
+import { environmentSharedCustomDev } from "./environment.custom";
 
-      // type is 'soul','json-server' or '.net.core'
-      // and have to run 'npm run soul', 'npm run json-server' or start the .net.core service.
-      // it changes the way query endpoints are built in systemQueryEndpoints.cs
-      type: 'json-server',
-    }
-  },
+export const environment: Environment = {
+
+  // Specific to this app.
+  custom: environmentSharedCustomDev,
+
   production: false,
   defaultauth: 'fackbackend',
+
   firebaseConfig: {
     apiKey: '',
     authDomain: '',
@@ -29,6 +23,7 @@ export const environment = {
     appId: '',
     measurementId: ''
   }
+
 };
 
 /*

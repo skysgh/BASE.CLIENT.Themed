@@ -2,13 +2,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 // Constants:
-import { system as importedSystemConst } from '../../constants/system';
+
 // Services:
 //import { MappedGenericRepositoryServiceBase } from "./base/mapped-generic-repository.service.base";
 import { SimpleGenericRepositoryServiceBase } from "./base/simple-generic-repository-service.base";
 import { RepositoryStandardServicesPackage } from "./base/_standard-repository-services-package";
 //Models:
 import { Job } from "../../models/data/job.model";
+import { appsConfiguration } from "../../../apps/configuration/implementations/apps.configuration";
 
 /**
  * Stateless service to manage interactions with
@@ -20,8 +21,6 @@ import { Job } from "../../models/data/job.model";
 
 export class JobRepositoryService
   extends SimpleGenericRepositoryServiceBase<Job> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
 
   constructor(
     repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
@@ -29,9 +28,9 @@ export class JobRepositoryService
     super(
       repositoryStandardServicesPackage,
       httpClient,
-      importedSystemConst.apis.base.service.jobs
+      appsConfiguration.others.sites.constants.apis.brochure.jobs
     );
     // Make system/env variables avaiable to view template (via singleton or service):
-    // this.system = systemService.system;
+    
   }
 }

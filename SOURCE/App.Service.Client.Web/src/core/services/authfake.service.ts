@@ -7,9 +7,11 @@ import { HttpClient } from '@angular/common/http';
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+
 // Models:
 import { User } from '../models/misc/auth.models';
+import { SystemDefaultServices } from './system.default-services.service';
+import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
 // Data:
 
 
@@ -25,20 +27,22 @@ import { User } from '../models/misc/auth.models';
  */
 @Injectable({ providedIn: 'root' })
 export class AuthfakeauthenticationService {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
+  
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService, private http: HttpClient) {
+  constructor(
+    private defaultServices: SystemDefaultServices,
+    private http: HttpClient) {
 
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 
-    this.currentUserSubject =
-      new BehaviorSubject<User>(
-        JSON.parse(sessionStorage.getItem(this.system.storage.system.currentUser)!));
+    // Safely handle case where no user is stored in sessionStorage
+    const storedUser = sessionStorage.getItem(appsConfiguration.others.core.constants.storage.session.currentUser);
+    const user = storedUser ? JSON.parse(storedUser) : null;
 
+    this.currentUserSubject = new BehaviorSubject<User>(user);
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -47,11 +51,11 @@ export class AuthfakeauthenticationService {
    * (from local storage).
    */
   public get currentUserValue(): User {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.currentUserValue()`)
+    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.currentUserValue()`)
 
     var result = this.currentUserSubject.value;
 
-    this.diagnosticsTraceService.debug(`...: ${result}`);
+    this.defaultServices.diagnosticsTraceService.debug(`...: ${result}`);
 
     return result;
   }
@@ -63,7 +67,7 @@ export class AuthfakeauthenticationService {
    */
   login(email: string, password: string) {
 
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.login('${email}', pwd...)`);
+    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.login('${email}', pwd...)`);
 
     // Not sure what this does.
     // But it appears to hitting it's own service
@@ -76,7 +80,7 @@ export class AuthfakeauthenticationService {
         if (user && user.token) {
           // store user details and jwt token in local storage to
           // keep user logged in between page refreshes
-          sessionStorage.setItem(this.system.storage.system.currentUser, JSON.stringify(user));
+          sessionStorage.setItem(appsConfiguration.others.core.constants.storage.session.currentUser, JSON.stringify(user));
 
           // persist in this service 
           this.currentUserSubject.next(user);
@@ -92,10 +96,10 @@ export class AuthfakeauthenticationService {
    */
   logout() {
 
-    this.diagnosticsTraceService.info(`${this.constructor.name}.logout()`);
+    this.defaultServices.diagnosticsTraceService.info(`${this.constructor.name}.logout()`);
 
     // remove user from local storage to log user out
-    sessionStorage.removeItem(this.system.storage.system.currentUser);
+    sessionStorage.removeItem(appsConfiguration.others.core.constants.storage.session.currentUser);
     // Clear this service's user.
     this.currentUserSubject.next(null!);
   }

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+// Configuration:
+import { appsConfiguration } from '../../../../../../apps/configuration/implementations/apps.configuration';
+import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
 // Services:
-import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
+import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 // Models:
 import { Spike } from '../../../../models/spike.model';
-import { ActivatedRoute } from '@angular/router';
 import { SummaryItemVTO } from '../../../../../../core/models/SummaryItem.vto.model';
 import { ViewModel } from './vm';
 
@@ -15,6 +18,10 @@ import { ViewModel } from './vm';
   styleUrls: ['./component.scss']
 })
 export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose applet configuration:
+  public appletConfiguration = appletsSpikesConfiguration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
@@ -26,24 +33,24 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private diagnosticsTraceService: SystemDiagnosticsTraceService,
+    private defaultControllerServices: DefaultComponentServices,
     private repositoryService: BaseAppsSpikeSpikesRepositoryService
   ) {
-    this.diagnosticsTraceService.info("Constructor");
+    this.defaultControllerServices.diagnosticsTraceService.info("Constructor");
   }
 
   ngOnInit(): void {
-    this.diagnosticsTraceService.info("Component OnInit");
+    this.defaultControllerServices.diagnosticsTraceService.info("Component OnInit");
     // Load list of elements:
     // TODO page it.
 
 
       this.route.queryParams.subscribe(queryParams=> {
-        this.diagnosticsTraceService.info("params ready");
+        this.defaultControllerServices.diagnosticsTraceService.info("params ready");
         this.page = queryParams['page'] | queryParams['pg'] | 1;
-        this.diagnosticsTraceService.info('page: ' + this.page);
+        this.defaultControllerServices.diagnosticsTraceService.info('page: ' + this.page);
         this.repositoryService.getPage(this.page).subscribe((x:any) => {
-          this.diagnosticsTraceService.info('got X: ' + x);
+          this.defaultControllerServices.diagnosticsTraceService.info('got X: ' + x);
           this.data = x;
           this.summaryItems = x.map(this.mapAway);
         });

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 // Constants:
-import { system as importedSystemConst } from '../../constants/system';
+
 // Services:
 import { MappedItemsCollectionServiceBase } from '../base/mapped-items-collection.service.base';
 import { TranslationService } from '../translation.service';
@@ -18,6 +18,8 @@ import { ServicePricingPlanVTO } from '../../models/service.pricingplan.vto.mode
 import { SystemPricingPlanRepositoryService } from './repositories/service-pricingplan.repository.service';
 import { ServiceFeature } from '../../models/data/service-features.model';
 import { ServiceFeaturesRepositoryService } from './repositories/service-features.repository.service';
+import { appsConfiguration } from '../../../apps/configuration/implementations/apps.configuration';
+
 
 // Models:
 
@@ -32,12 +34,10 @@ import { ServiceFeaturesRepositoryService } from './repositories/service-feature
 export class ServiceFeaturesService
   extends MappedItemsCollectionServiceBase
   <ServiceFeature, string, ServiceFeature> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
 
   // Don't poll:
   protected override pollDelayInSeconds: number = 0; //(60 * 1000);
-  protected override itemKeyFieldName: string = importedSystemConst.storage.db.defaultFieldNames.id;
+  protected override itemKeyFieldName: string = appsConfiguration.others.core.constants.storage.db.columnNames.defaults.id;
 
   // The key issue to keep in mind is that
   // front end components (eg: topbar)
@@ -47,12 +47,11 @@ export class ServiceFeaturesService
   // So it's a double observable if you will.
   constructor(
     diagnosticsTraceService: SystemDiagnosticsTraceService,
-    translate: TranslateService,
     private cookieService: CookieService,
     private systemFeaturesRepositoryService: ServiceFeaturesRepositoryService,
-    private translationService: TranslationService
+    translationService: TranslationService
   ) {
-    super(diagnosticsTraceService, translate);
+    super(diagnosticsTraceService, translationService);
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 

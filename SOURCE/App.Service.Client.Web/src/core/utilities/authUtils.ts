@@ -1,13 +1,9 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-
-// Constants:
-import { system as importedSystemConst } from '../constants/system';
+import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
 
 class FirebaseAuthBackend {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
     constructor(firebaseConfig: any) {
         if (firebaseConfig) {
@@ -15,9 +11,9 @@ class FirebaseAuthBackend {
             firebase.initializeApp(firebaseConfig);
             firebase.auth().onAuthStateChanged((user: any) => {
                 if (user) {
-                  sessionStorage.setItem(this.system.storage.system.authUser, JSON.stringify(user));
+                  sessionStorage.setItem(appsConfiguration.others.core.constants.storage.session.authUser, JSON.stringify(user));
                 } else {
-                    sessionStorage.removeItem('authUser');
+                  sessionStorage.removeItem(appsConfiguration.others.core.constants.storage.session.authUser);
                 }
             });
         }
@@ -80,17 +76,17 @@ class FirebaseAuthBackend {
     }
 
     setLoggeedInUser = (user: any) => {
-        sessionStorage.setItem('authUser', JSON.stringify(user));
+      sessionStorage.setItem(appsConfiguration.others.core.constants.storage.session.authUser, JSON.stringify(user));
     }
 
     /**
      * Returns the authenticated user
      */
     getAuthenticatedUser = () => {
-        if (!sessionStorage.getItem('authUser')) {
+      if (!sessionStorage.getItem(appsConfiguration.others.core.constants.storage.session.authUser)) {
             return null;
         }
-        return JSON.parse(sessionStorage.getItem('authUser')!);
+      return JSON.parse(sessionStorage.getItem(appsConfiguration.others.core.constants.storage.session.authUser)!);
     }
 
     /**

@@ -1,8 +1,8 @@
 import { Observable, BehaviorSubject, of, timer } from 'rxjs';
 import { tap , map, switchMap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.service';
+import { TranslationService } from '../translation.service';
 
 /*
 abstract base class for
@@ -84,7 +84,7 @@ export abstract class MappedItemsCollectionServiceBase<TDto, TKeyType, TVto> {
   // So it's a double observable if you will.
   constructor(
     public diagnosticsTraceService: SystemDiagnosticsTraceService ,
-    public translate: TranslateService
+    public translationService: TranslationService
   ) {
     this._this = this;
     this._className = this.constructor.name;

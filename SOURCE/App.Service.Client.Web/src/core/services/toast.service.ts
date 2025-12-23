@@ -4,9 +4,10 @@
 import { Injectable, TemplateRef } from '@angular/core';
 // Etc:
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+//
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
+import { SystemDefaultServices } from './system.default-services.service';
 // Models:
 //
 // Data:
@@ -16,13 +17,12 @@ import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.servic
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
+
 
   toasts: any[] = [];
 
-  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
+  constructor(private defaultServices: SystemDefaultServices) {
+    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
   }
 
   public show(textOrTpl: string | TemplateRef<any>, options: any = {}) {

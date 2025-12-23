@@ -1,6 +1,58 @@
 {
     "platform": {
-      "apiRuntime": "node:18"
+        "apiRuntime": "node:18"
+    },
+    "navigationFallback": {
+        "rewrite": "/index.html",
+        "exclude": [
+            "/assets/**",
+            "/core/assets/**",
+            "/core/assets.data/**",
+            "/core/assets.media/**",
+            "/themes/t1/assets/**",
+            "/themes/t1/assets.data/**",
+            "/themes/t1/assets.media/**",
+            "/sites/assets/**",
+            "/sites/assets.data/**",
+            "/sites/assets.media/**",
+            "/apps/assets/**",
+            "/apps/assets.data/**",
+            "/apps/assets.media/**",
+            "/apps.main/assets/**",
+            "/apps.main/assets.data/**",
+            "/apps.main/assets.media/**",
+            "/app.lets/*/assets/**",
+            "/app.lets/*/assets.data/**",
+            "/app.lets/*/assets.media/**",
+            "*.{css,scss,js,png,jpg,jpeg,gif,svg,ico,woff,woff2,ttf,eot,json,xml,txt,pdf}"
+        ]
+    },
+    "routes": [
+        {
+            "route": "/assets/*",
+            "allowedRoles": [
+                "anonymous"
+            ]
+        },
+        {
+            "route": "/*.{css,js,png,jpg,jpeg,gif,svg,ico,woff,woff2,ttf,eot}",
+            "allowedRoles": [
+                "anonymous"
+            ]
+        }
+    ],
+    "mimeTypes": {
+        ".json": "application/json",
+        ".woff": "font/woff",
+        ".woff2": "font/woff2"
+    },
+    "globalHeaders": {
+        "cache-control": "public, max-age=31536000, immutable"
+    },
+    "responseOverrides": {
+        "404": {
+            "rewrite": "/index.html",
+            "statusCode": 200
+        }
     }
-
 }

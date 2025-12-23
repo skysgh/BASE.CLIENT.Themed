@@ -5,7 +5,8 @@ import { retry, catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpEvent, HttpHeaders, HttpResponse } from '@angular/common/http';
 //import { query } from '@angular/animations';
 // Constants:
-import { system as importedSystemConst } from '../../../constants/system';
+import { coreConfiguration } from '../../../../core/configuration/implementations/core.configuration';
+
 //Import Services:
 import { SystemEnvironmentService } from '../../system.environment.service';
 import { SystemDiagnosticsTraceService } from '../../system.diagnostics-trace.service';
@@ -49,7 +50,6 @@ import { ServiceLanguagesService } from '../../service.languages.service';
  */ 
 export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
   // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
   // Affects how build url variables:
   protected serverType: string;
@@ -117,12 +117,12 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
 
     // This is URL before it is appended with modifiers:
-    this.endpointUrl = `${this.system.apis.baseRestUrl}${resourceUrl}`;
+    this.endpointUrl = `${coreConfiguration.constants.environment.custom.urls.apis.root}${resourceUrl}`;
 
     // will be 'json-server', 'soul', or '.net.core'
     // and is used to drive the kind of rest query syntax to use
     // while we can't rely on OData :-(
-    this.serverType = this.system.environment.custom.service.type;
+    this.serverType = coreConfiguration.constants.environment.custom.service.type;
   }
 
   
@@ -143,7 +143,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.getPageChildren()`);
 
     if (!parentFKFieldName || parentFKFieldName.length == 0) {
-      parentFKFieldName = importedSystemConst.storage.db.defaultFieldNames.parentFK;
+      parentFKFieldName = coreConfiguration.constants.storage.db.columnNames.defaults.parentFK;
     };
     var url: string =
       this.buildEnabledParentFKPagedRequestUrl(
@@ -307,7 +307,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
 
   protected buildEnabledParentFKPagedRequestUrl(
     fkValue: string,
-    fkPropertyName: string = importedSystemConst.storage.db.defaultFieldNames.parentFK,
+    fkPropertyName: string = coreConfiguration.constants.storage.db.columnNames.defaults.parentFK,
     page: number = 1,
     enabled: boolean = true,
     queryArgs: IHasStringKeyValue[] | null = null): string {
@@ -466,7 +466,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
     if (this.serverType == 'json-server') {
       queryArgs = [
         { key: 'page', value: page.toString() },
-        { key: '_per_page', value: this.system.apis.recordsPerPage.toString() }
+        { key: '_per_page', value: coreConfiguration.constants.apis.recordsPerPage.toString() }
       ];
     } else if (this.serverType == 'soul') {
       throw "todo: soul";
@@ -510,11 +510,11 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
   protected appendServiceFKIfApplicable(url: string): string {
     if (!this.typeService.hasProperty(
       this._dtoInstance,
-      importedSystemConst.storage.db.defaultFieldNames.serviceFK)) {
+      coreConfiguration.constants.storage.db.columnNames.defaults.serviceFK)) {
       return url;
     }
     url = this.appendMatchInstructions
-      (url, importedSystemConst.storage.db.defaultFieldNames.serviceFK,
+      (url, coreConfiguration.constants.storage.db.columnNames.defaults.serviceFK,
         this.serviceService.id
       );
     return url;
@@ -524,11 +524,11 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
   protected appendTenantFKIfApplicable(url: string): string {
     if (!this.typeService.hasProperty(
       this._dtoInstance,
-      importedSystemConst.storage.db.defaultFieldNames.tenancyFK)) {
+      coreConfiguration.constants.storage.db.columnNames.defaults.tenancyFK)) {
       return url;
     }
     url = this.appendMatchInstructions
-      (url, importedSystemConst.storage.db.defaultFieldNames.tenancyFK,
+      (url, coreConfiguration.constants.storage.db.columnNames.defaults.tenancyFK,
         this.serviceTenancyService.id
       );
     return url;
@@ -547,7 +547,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
   protected appendParentFKFilter(
     url: string,
     parentFK: string,
-    FKPropertyName: string = importedSystemConst.storage.db.defaultFieldNames.parentFK): string {
+    FKPropertyName: string = coreConfiguration.constants.storage.db.columnNames.defaults.parentFK): string {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.appendParentFKFilter()`);
     return this.appendFKFilter(url, parentFK, FKPropertyName);
   }
@@ -648,7 +648,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
   protected buildHttpHeaders(): HttpHeaders {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.buildHttpHeaders()`);
 
-    var bearerToken = this.sessionStorageService.getItem(this.system.storage.system.token);
+    var bearerToken = this.sessionStorageService.getItem(coreConfiguration.constants.storage.session.token);
 
     let headers = new HttpHeaders();
 
@@ -658,18 +658,18 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
     return headers;
   }
 
-  protected HasServiceId(tenancyIdFieldName: string = this.system.storage.db.defaultFieldNames.serviceFK) {
+  protected HasServiceId(tenancyIdFieldName: string = coreConfiguration.constants.storage.db.columnNames.defaults.serviceFK) {
     var result = this.typeService.hasProperty(
       this._dtoInstance,
-      importedSystemConst.storage.db.defaultFieldNames.serviceFK);
+      coreConfiguration.constants.storage.db.columnNames.defaults.serviceFK);
 
     return result;
   }
 
-  protected HasTenancyId(tenancyIdFieldName:string = this.system.storage.db.defaultFieldNames.tenancyFK) {
+  protected HasTenancyId(tenancyIdFieldName: string = coreConfiguration.constants.storage.db.columnNames.defaults.tenancyFK) {
     var result = this.typeService.hasProperty(
       this._dtoInstance,
-      importedSystemConst.storage.db.defaultFieldNames.tenancyFK);
+      coreConfiguration.constants.storage.db.columnNames.defaults.tenancyFK);
 
     return result;
   }

@@ -12,9 +12,9 @@ Modules is the key directory, as it contains the core modules
 that are loaded at start.
 
 Notice the `modules/common` folder, which contains the common
-Module (`BaseCoreCommonModule`).
+Module (`BaseThemesV1CommonModule`).
 
 Notice the `modules/common/components` folder, which contains the
 `BaseCoreCommonComponentsModule` which then imports the above
-`BaseCoreCommonModule`.
+`BaseThemesV1CommonModule`.
 

@@ -7,13 +7,15 @@ import { Injectable } from "@angular/core";
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 // Constants:
-import { system as importedSystemConst } from '../../../constants/system';
+
 // Services:
 import { SimpleGenericRepositoryServiceBase } from '../../repositories/base/simple-generic-repository-service.base';
 import { RepositoryStandardServicesPackage } from "../../repositories/base/_standard-repository-services-package";
 // Models:
 import { ServiceUserQuote } from "../../../models/data/service-user-quote.model";
 import { ServiceLanguagesService } from "../../service.languages.service";
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
+
 
 /**
  * Stateless service to manage interactions with
@@ -25,8 +27,6 @@ import { ServiceLanguagesService } from "../../service.languages.service";
 @Injectable({ providedIn: 'root' })
 export class ServiceUserEndorsementsRepositoryService
   extends SimpleGenericRepositoryServiceBase<ServiceUserQuote> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
 
   constructor(
     repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
@@ -35,7 +35,7 @@ export class ServiceUserEndorsementsRepositoryService
     super(
       repositoryStandardServicesPackage,
       httpClient,
-      importedSystemConst.apis.base.service.endorsements
+      appsConfiguration.others.sites.constants.apis.brochure.endorsements
       
     );
   }
@@ -49,7 +49,7 @@ export class ServiceUserEndorsementsRepositoryService
     result =
       this.appendMatchInstructions(
         result,
-        this.system.storage.db.defaultFieldNames.languageCode,
+        appsConfiguration.others.core.constants.storage.db.columnNames.defaults.languageCode,
         languageCode,
         ' ');
 

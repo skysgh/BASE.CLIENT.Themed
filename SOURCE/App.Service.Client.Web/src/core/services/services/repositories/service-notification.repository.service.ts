@@ -4,13 +4,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 // Constants:
-import { system as importedSystemConst } from '../../../constants/system';
+
 // Services:
 import { SimpleGenericRepositoryServiceBase } from '../../repositories/base/simple-generic-repository-service.base';
 import { RepositoryStandardServicesPackage } from "../../repositories/base/_standard-repository-services-package";
 // Models:
 import { ServiceNotification } from "../../../models/data/service-notification.model";
 import { Observable } from "rxjs";
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
 
 
 /**
@@ -23,17 +24,13 @@ import { Observable } from "rxjs";
 @Injectable({ providedIn: 'root' })
 export class NotificationsRepositoryService
   extends SimpleGenericRepositoryServiceBase<ServiceNotification> {
-  // Make system/env variables avaiable to class & view template:
-  // already defined in superclass: public system = importedSystemConst;
-
   constructor(
     repositoryStandardServicesPackage: RepositoryStandardServicesPackage,
     httpClient: HttpClient) {
     super(
       repositoryStandardServicesPackage,
       httpClient,
-
-      importedSystemConst.apis.base.service.notifications
+      appsConfiguration.others.sites.constants.apis.service.notifications
     );
   }
 

@@ -39,15 +39,15 @@
               "node_modules/shepherd.js/dist/css/shepherd.css",
               "node_modules/flatpickr/dist/flatpickr.css",
 
-              "apps/core/app/styles.scss",
+              "apps/core/apps/styles.scss",
 
               "node_modules/@ctrl/ngx-emoji-mart/picker.css",
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss",
 
-              "src/themes/v1/assets/scss/icons.scss",
-              "src/themes/v1/assets/scss/config/minimal/bootstrap.scss",
-              "src/themes/v1/assets/scss/config/minimal/app.scss_______________________"
+              "src/themes/t1/assets/scss/icons.scss",
+              "src/themes/t1/assets/scss/config/minimal/bootstrap.scss",
+              "src/themes/t1/assets/scss/config/minimal/app.scss_______________________"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

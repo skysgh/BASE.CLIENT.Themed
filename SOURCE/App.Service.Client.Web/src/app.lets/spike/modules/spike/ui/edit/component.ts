@@ -1,12 +1,14 @@
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-// Import Common:
-import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
+// Configuration:
+import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
+import { appsConfiguration } from '../../../../../../apps/configuration/implementations/apps.configuration';
+// Services:
+import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
 // Import Models:
 import { Spike } from '../../../../models/spike.model';
-import { TranslateService } from '@ngx-translate/core';
 import { ViewModel } from './vm';
 
 
@@ -16,6 +18,10 @@ import { ViewModel } from './vm';
   styleUrls: ['./component.scss']
 })
 export class BaseAppsSpikeSpikesEditComponent implements OnInit {
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose applet configuration:
+  public appletConfiguration = appletsSpikesConfiguration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
@@ -24,22 +30,21 @@ export class BaseAppsSpikeSpikesEditComponent implements OnInit {
   public data?: Spike;
 
   constructor(
-    private translate: TranslateService,
     private route: ActivatedRoute,
-    private diagnosticsTraceService: SystemDiagnosticsTraceService,
+    private defaultControllerServices: DefaultComponentServices,
     private repositoryService: BaseAppsSpikeSpikesRepositoryService,
   ) {
-    this.diagnosticsTraceService.info("Constructor");
+    this.defaultControllerServices.diagnosticsTraceService.info("Constructor");
   }
 
     ngOnInit(): void {
-      this.diagnosticsTraceService.info("Component OnInit");
+      this.defaultControllerServices.diagnosticsTraceService.info("Component OnInit");
 
       this.route.params.subscribe(params => {
-        this.diagnosticsTraceService.info("params ready");
-        this.diagnosticsTraceService.info('id: ' + params['id']);
+        this.defaultControllerServices.diagnosticsTraceService.info("params ready");
+        this.defaultControllerServices.diagnosticsTraceService.info('id: ' + params['id']);
         this.repositoryService.getSingle(params['id']).subscribe(x => {
-          this.diagnosticsTraceService.info('got X: ' + x!.title);
+          this.defaultControllerServices.diagnosticsTraceService.info('got X: ' + x!.title);
           this.data = x!
         });
       });

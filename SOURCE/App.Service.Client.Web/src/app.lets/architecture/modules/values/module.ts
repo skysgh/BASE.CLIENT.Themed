@@ -13,20 +13,11 @@ import { BaseAppsArchitectureValuesReadComponent } from "./ui/read/component";
 import { BaseAppsArchitectureValuesEditComponent } from "./ui/edit/component";
 
 import { ArchitectureValuesRepositoryService } from '../../services/repositories/values-repository.service';
+import { BaseAppsModule } from '../../../module';
 
 @NgModule({
-  imports: [
-    // Import classes within the above specified import files.
-    //Ag specific:
-    CommonModule,
-    FormsModule,
-    // Module specific:
-    //SpikeSpikesRoutingModule
-    // No components
-  ],
-  
   declarations: [
-    // define what Components belong to this Module (i.e., are not `standalone`)
+    // Components, Directives, Pipes developed in this Module.
     BaseAppsArchitectureValuesBrowseComponent,
     ArchitectureValuesBrowseItemComponent,
     BaseAppsArchitectureValuesReadComponent,
@@ -35,6 +26,22 @@ import { ArchitectureValuesRepositoryService } from '../../services/repositories
   providers: [
     // declare services to dependency inject into constructors.
     ArchitectureValuesRepositoryService
+  ],
+  imports: [
+    // Import classes within the above specified import files.
+    //Ag specific:
+    CommonModule,
+    FormsModule,
+    // Import Parent Module:
+    BaseAppsModule,
+    // Child Modules:
+    //SpikeSpikesRoutingModule
+    // No components
+  ],
+  exports: [
+    // NO: Export Parent Module
+    // NO: BaseAppsModule
   ]
+  
 })
 export class BaseAppsArchitectureValuesModule { }

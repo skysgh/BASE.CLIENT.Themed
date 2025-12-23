@@ -3,17 +3,20 @@ import { BehaviorSubject, Observable, map, of, switchMap, tap, timer } from 'rxj
 // Ag:
 import { Injectable } from '@angular/core';
 // Etc:
-import { TranslateService } from '@ngx-translate/core';
+import {
+} from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+
 // Services:
 import { MappedItemsCollectionServiceBase } from './base/mapped-items-collection.service.base';
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
-import { SystemService } from './system.service';
+//import { SystemService } from './system.service';
 import { NotificationsRepositoryService } from './services/repositories/service-notification.repository.service';
 // Models:
 import { ServiceNotification } from '../models/data/service-notification.model';
+import { TranslationService } from './translation.service';
+import { SystemDefaultServices } from './system.default-services.service';
 
 
 
@@ -27,7 +30,6 @@ import { ServiceNotification } from '../models/data/service-notification.model';
 export class ServiceNotificationsService
   extends MappedItemsCollectionServiceBase<ServiceNotification, string, ServiceNotification>{
   // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
   protected override pollDelayInSeconds: number = 60;
   protected override itemKeyFieldName = 'id';
@@ -37,12 +39,12 @@ export class ServiceNotificationsService
   private itemTypeFKB: string = '00000000-0000-0000-0000-000000000002';
 
   constructor(
-    diagnosticsTraceService: SystemDiagnosticsTraceService,
-    translate: TranslateService,
+    private defaultServices: SystemDefaultServices,
+    override translationService: TranslationService,
     cookieService: CookieService,
     private notificationsRepositoryService: NotificationsRepositoryService) {
     //Invoke super constructor, which invokes timer, etc.
-    super(diagnosticsTraceService, translate);
+    super(defaultServices.diagnosticsTraceService, translationService);
 
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
 

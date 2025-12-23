@@ -4,7 +4,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 // Constants:
-import { system as importedSystemConst } from '../../../../core/constants/system';
+
 // Services:
 import { MappedGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/mapped-generic-repository.service.base";
 // Models:
@@ -15,7 +15,6 @@ import { RepositoryStandardServicesPackage } from "../../../../core/services/rep
 export class BaseAppsSpikeSpikesRepositoryService
   extends MappedGenericRepositoryServiceBase<Spike,Spike> {
   // Make system/env variables avaiable to class & view template:
-  // already inherited: public system = importedSystemConst;
 
 
 

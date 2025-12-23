@@ -6,5 +6,5 @@
     * from `Base - Angular 17 Responsive Admin Dashboard Template`
     * to : `...`
     * while waiting for javascript to update it.
-* the `assets/images/favicon.ico`
+* the `assets/open/images/favicon.ico`
 * 

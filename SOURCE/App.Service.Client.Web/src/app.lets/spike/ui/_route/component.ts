@@ -1,9 +1,14 @@
-// Import Ag:
+// Rx:
+// 
+// Ag:
 import { Component, OnInit } from '@angular/core';
-// Import Common:
-import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
+// Configuration:
+import { appsConfiguration } from '../../../../apps/configuration/implementations/apps.configuration';
+import { appletsSpikesConfiguration } from '../../configuration/implementations/app.lets.spikes.configuration';
+// Services:
+import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
+// Modules:
 import { ViewModel } from './vm';
-// Import Module:
 
 
 @Component({
@@ -13,14 +18,19 @@ import { ViewModel } from './vm';
 })
 
 export class BaseAppsSpikeRouteOutletComponent implements OnInit {
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose applet configuration:
+  public appletConfiguration = appletsSpikesConfiguration
+
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
 
   // TODO: Move these variables into it.
 
   constructor(
-    private diagnosticsTraceService: SystemDiagnosticsTraceService
-  ) {
+    private defaultControllerServices: DefaultComponentServices
+    ) {
 
   }
   ngOnInit(): void {

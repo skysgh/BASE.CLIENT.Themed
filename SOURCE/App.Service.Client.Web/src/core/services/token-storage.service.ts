@@ -5,62 +5,62 @@ import { Injectable } from '@angular/core';
 // Etc:
 //
 // Constants:
-import { system as importedSystemConst } from '../constants/system';
+import { coreConfiguration } from '../configuration/implementations/core.configuration';
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 import { SessionStorageService } from './infrastructure/SessionStorageService';
+import { SystemDefaultServices } from './system.default-services.service';
 // Models:
 //
 // Data:
 //
-
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TokenStorageService {
-  // Make system/env variables avaiable to class & view template:
-  public system = importedSystemConst;
 
 
   constructor(
-    private diagnosticsTraceService: SystemDiagnosticsTraceService,
+    private defaultServices: SystemDefaultServices,
     private sessionStorageService: SessionStorageService) {
 
-    this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`)
+
+    
   }
 
   signOut(): void {
-    this.diagnosticsTraceService.info("tokenStorageService.sign out");
+    this.defaultServices.diagnosticsTraceService.info("tokenStorageService.sign out");
     this.sessionStorageService.clear();
   }
 
   public saveToken(token: string): void {
-    this.diagnosticsTraceService.info(`tokenStorageService.saveToken('${token}')`);
-    this.sessionStorageService.removeItem(this.system.storage.system.authToken);
-    window.sessionStorage.setItem(this.system.storage.system.authToken, token);
+    this.defaultServices.diagnosticsTraceService.info(`tokenStorageService.saveToken('${token}')`);
+    this.sessionStorageService.removeItem(coreConfiguration.constants.storage.session.authToken);
+    window.sessionStorage.setItem(coreConfiguration.constants.storage.session.authToken, token);
   }
 
   public getToken(): string | null {
-    this.diagnosticsTraceService.info("tokenStorageService.getToken()");
-    var result = this.sessionStorageService.getItem(this.system.storage.system.token);
-    this.diagnosticsTraceService.info(`found: '${result}'`);
+    this.defaultServices.diagnosticsTraceService.info("tokenStorageService.getToken()");
+    var result = this.sessionStorageService.getItem(coreConfiguration.constants.storage.session.token);
+    this.defaultServices.diagnosticsTraceService.info(`found: '${result}'`);
     return result;
 }
 
   public saveUser(user: any): void {
-    this.diagnosticsTraceService.info("tokenStorageService.saveUser()");
-    this.sessionStorageService.removeItem(this.system.storage.system.currentUser);
+    this.defaultServices.diagnosticsTraceService.info("tokenStorageService.saveUser()");
+    this.sessionStorageService.removeItem(coreConfiguration.constants.storage.session.currentUser);
     var text = JSON.stringify(user);
-    this.sessionStorageService.setItem(this.system.storage.system.currentUser, text);
-    this.diagnosticsTraceService.info(`saved: '${text}'`);
+    this.sessionStorageService.setItem(coreConfiguration.constants.storage.session.currentUser, text);
+    this.defaultServices.diagnosticsTraceService.info(`saved: '${text}'`);
   }
 
   public getUser(): any {
-    this.diagnosticsTraceService.info("tokenStorageService.getUser()");
-    const text = this.sessionStorageService.getItem(this.system.storage.system.currentUser);
-    this.diagnosticsTraceService.info(`found: '${text}'`);
+    this.defaultServices.diagnosticsTraceService.info("tokenStorageService.getUser()");
+    const text = this.sessionStorageService.getItem(coreConfiguration.constants.storage.session.currentUser);
+    this.defaultServices.diagnosticsTraceService.info(`found: '${text}'`);
     if (text) {
       var result = JSON.parse(text);
       return result;

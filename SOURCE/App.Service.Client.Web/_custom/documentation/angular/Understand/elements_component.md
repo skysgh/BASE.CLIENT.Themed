@@ -68,11 +68,12 @@ with `template` and `styles`
 but I recommend avoiding this approach.
 
 ## Standalone or ngModule
-A component can be marked `standalone: true` or belong to a parent module.
+A component can be marked `standalone: true` and/or belong to a parent module.
 Standalone is simpler, in that the component doesn't need to registered in a parent module.
 But I don't find that to be too often the case.
+Only useful for very discrete components that are not complex - but I find that to be rare
+so I don't think this project has any such.
 
-Instead
 
 
 

@@ -1,12 +1,12 @@
 // Import Ag:
 import { Component, OnInit } from '@angular/core';
-// Import Common:
-import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
-import { ExampleService } from '../../../../../../core/services/example.service';
-// Import Module:
+// Configuration:
+import { appsConfiguration } from '../../../../../../apps/configuration/implementations/apps.configuration';
+import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
+// Services:
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
-import { TranslateService } from '@ngx-translate/core';
-
+import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
+// Models:
 
 @Component({
   selector: 'app-base-apps-spike-spikes-route',
@@ -15,12 +15,19 @@ import { TranslateService } from '@ngx-translate/core';
 })
 
 export class BaseAppsSpikeSpikesRouteComponent implements OnInit {
+  // Expose system configuration:
+  public appsConfiguration = appsConfiguration
+  // Expose applet configuration:
+  public appletsEducationConfiguration = appletsSpikesConfiguration
 
+  /**
+   * Controller
+   * @param defaultControllerServices
+   * @param spikeRepositoryService
+   */
   constructor(
-    private translate: TranslateService,
-    private diagnosticsTraceService: SystemDiagnosticsTraceService,
-    private exampleService: ExampleService,
-    private spikeRepositoryService: BaseAppsSpikeSpikesRepositoryService,
+    private defaultControllerServices: DefaultComponentServices,
+    private spikeRepositoryService: BaseAppsSpikeSpikesRepositoryService
   ) {
     
   }
