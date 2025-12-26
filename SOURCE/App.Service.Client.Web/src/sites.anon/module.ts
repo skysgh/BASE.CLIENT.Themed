@@ -23,31 +23,15 @@ import { sitesConstants } from "./constants/implementations/sites.constants";
     // ============================================================================
     // ✅ DI TOKEN PROVIDERS
     // 
-    // Sites.Anon tier provides its own tokens for its components to inject.
-    // Values come from sitesConstants (own tier).
+    // NOTE: DEPLOYED_RESOURCES now uses providedIn: 'root' in its token definition
+    // so it's automatically available everywhere. No explicit provider needed here.
+    // 
+    // If you need to override default values, provide it here:
+    // {
+    //   provide: DEPLOYED_RESOURCES,
+    //   useValue: { /* custom values */ }
+    // }
     // ============================================================================
-    
-    {
-      provide: DEPLOYED_RESOURCES,
-      useValue: {
-        logos: {
-          // ✅ Use bracket notation for properties from index signature
-          light: sitesConstants.assets['deployed'].images.logos + 'logo-light.png',
-          dark: sitesConstants.assets['deployed'].images.logos + 'logo-dark.png'
-        },
-        images: {
-          root: sitesConstants.assets['deployed'].images.root,
-          trustedBy: sitesConstants.assets['deployed'].images.trustedBy,
-          flags: sitesConstants.assets['deployed'].images.flags,
-          backgrounds: sitesConstants.assets['deployed'].images.backgrounds
-        },
-        files: {
-          root: sitesConstants.assets['deployed'].files.root,
-          markdown: sitesConstants.assets['deployed'].files.markdownDir || sitesConstants.assets['deployed'].files.root + 'markdown/',
-          pdf: sitesConstants.assets['deployed'].files.pdfDir || sitesConstants.assets['deployed'].files.root + 'pdf/'
-        }
-      }
-    }
   ],
   imports: [
     CommonModule,
