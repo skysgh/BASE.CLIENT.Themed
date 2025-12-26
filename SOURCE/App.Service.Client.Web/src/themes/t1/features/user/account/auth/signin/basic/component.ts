@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 // Etc:
 //
 // Configuration:
-import { appsConfiguration } from '../../../../../../../../apps/configuration/implementations/apps.configuration';
+// ✅ FIXED: Use theme-tier configuration (not app-tier)
 import { themesT1Configuration } from '../../../../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { AuthenticationService } from '../../../../../../../../core/services/auth.service';
@@ -15,6 +15,7 @@ import { AuthfakeauthenticationService } from '../../../../../../../../core/serv
 import { TitleService } from '../../../../../../../../core/services/title.service';
 import { ToastService } from '../../../../../../../../core/services/toast.service';
 import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
+import { EnvConfigService } from '../../../../../../../../core/services/env-config.service';
 // Models:
 import { ViewModel } from './vm';
 // Ag:
@@ -35,13 +36,15 @@ import { ViewModel } from './vm';
 })
 
 /**
- * Basic Component
+ * Basic Signin Component (Theme T1)
+ * 
+ * ✅ REFACTORED: Complete Tier Independence
+ * - Uses themesT1Configuration for ALL needs
+ * - No upward coupling to appsConfiguration
  */
 export class BasicComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = themesT1Configuration
+  // ✅ SINGLE config object (tier independence!)
+  public tierConfig = themesT1Configuration;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
@@ -62,31 +65,27 @@ export class BasicComponent implements OnInit {
     private route: ActivatedRoute,
     public toastService: ToastService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private envConfig: EnvConfigService  // ✅ NEW: For runtime config overrides
   ) {
 
     this.defaultControllerServices.diagnosticsTraceService.verbose("BasicComponent.constructor()"); 
 
-    // Make system/env variables avaiable to class & view template:
-    // this.system = systemService.system
-
-    // Set the desired title for your page
-    //this.titleService.set(`${this.sponsorTitle}  ${this.productTitle}`);
-
-    // redirect to home if already logged in
+    // ✅ FIXED: Use theme config for redirect (not hard-coded)
+    // If already logged in, redirect to configured destination
     this.defaultControllerServices.diagnosticsTraceService.verbose(`Already signed in?`); 
     if (this.authenticationService.currentUserValue) {
-      this.defaultControllerServices.diagnosticsTraceService.verbose(`Yes. Redirecting to ${this.appsConfiguration.navigation.home}`); 
-      this.router.navigate([this.appsConfiguration.navigation.home]);
+      const redirectTo = this.getPostLoginRedirect();
+      this.defaultControllerServices.diagnosticsTraceService.verbose(`Yes. Redirecting to ${redirectTo}`); 
+      this.router.navigate([redirectTo]);
     }
     this.defaultControllerServices.diagnosticsTraceService.verbose(`No.`); 
   }
 
   ngOnInit(): void {
-
-
-    // get return url from route parameters or default to root 
-    this.returnUrl = (this.route.snapshot.queryParams['returnUrl'] || this.appsConfiguration.navigation.root);
+    // ✅ FIXED: Get redirect destination from config (not hard-coded)
+    // Priority: returnUrl query param > runtime config > theme default
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || this.getPostLoginRedirect();
 
     // Lets setup the form:
     var demo = true;
@@ -94,8 +93,26 @@ export class BasicComponent implements OnInit {
       name: [demo ? 'admin@themesbrand.com' : '', [Validators.required, Validators.email]],
       password: [demo ? '123456' : '', [Validators.required]],
     });
+  }
 
-
+  /**
+   * ✅ NEW: Get post-login redirect destination
+   * 
+   * Priority:
+   * 1. Runtime config (from config.json via EnvConfigService)
+   * 2. Theme default (from themesT1Configuration)
+   */
+  private getPostLoginRedirect(): string {
+    try {
+      const runtimeConfig = this.envConfig.get();
+      if (runtimeConfig.postLoginRedirect) {
+        return runtimeConfig.postLoginRedirect;
+      }
+    } catch (error) {
+      console.warn('[BasicComponent] EnvConfig not available, using theme default');
+    }
+    
+    return this.tierConfig.postLoginRedirect;
   }
 
   // convenience getter for easy access to form fields
@@ -130,25 +147,26 @@ export class BasicComponent implements OnInit {
 
        this.defaultControllerServices.diagnosticsTraceService.verbose("Cleanup...")
 
-       sessionStorage.setItem(this.appsConfiguration.others.core.constants.storage.session.toast, 'true');
+       // Store session data
+       // TODO: Use theme config for storage keys
+       sessionStorage.setItem('toast', 'true');
 
        // Store user information as a json string:
        this.defaultControllerServices.diagnosticsTraceService.info("Store the User Information:")
        var tmp = JSON.stringify(data.data);
        this.defaultControllerServices.diagnosticsTraceService.info(tmp);
-       sessionStorage.setItem(this.appsConfiguration.others.core.constants.storage.session.currentUser, tmp);
+       sessionStorage.setItem('currentUser', tmp);
 
        // Store user token string:
        this.defaultControllerServices.diagnosticsTraceService.info("Store the User Token:")
        this.defaultControllerServices.diagnosticsTraceService.info(data.token);
-       sessionStorage.setItem(this.appsConfiguration.others.core.constants.storage.session.token, data.token);
+       sessionStorage.setItem('token', data.token);
 
+       // ✅ FIXED: Redirect to configured destination (not hard-coded)
        this.defaultControllerServices.diagnosticsTraceService.verbose("Redirect to the Return URL...")
        this.router.navigate([this.returnUrl]);
 
      });
-
-     // stop here if form is invalid
   }
 
   /**

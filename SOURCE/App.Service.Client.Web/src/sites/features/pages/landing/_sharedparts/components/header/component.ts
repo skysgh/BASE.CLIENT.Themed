@@ -1,10 +1,16 @@
 //Rx:
 //
 // Ag:
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Inject } from '@angular/core';
+// Sites DI Tokens:
+import { 
+  DEPLOYED_RESOURCES,      // Static assets (logos)
+  DeployedResourcePaths,
+  PUBLIC_NAVIGATION,       // ✅ NEW: Public navigation (no auth required)
+  PublicNavigationPaths 
+} from '../../../../../../tokens';
 // Configuration:
 import { appsConfiguration } from '../../../../../../../apps/configuration/implementations/apps.configuration';
-import { appsMainConstants } from '../../../../../../../apps.main/constants/implementations/apps.main.constants';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
@@ -23,25 +29,36 @@ import { ViewModel } from './vm';
 /**
  * Header Component
  * 
- * TODO: ARCHITECTURAL DEBT - Resource Path Coupling
- * This component was updated to use appsMainConstants which creates DIRECT upward coupling.
- * Sites tier should NOT reference Apps.Main tier directly.
+ * ✅ FULLY MIGRATED - Security-Classified DI Pattern
  * 
- * Current: appsMainConstants.resources.open.images.logos (WRONG - direct upward coupling)
- * Previous: appsConfiguration.constants.resources (slightly less bad - indirect)
- * Proper: Inject RESOURCE_PATHS token or ResourceService (DI abstraction)
+ * Uses PUBLIC_NAVIGATION because:
+ * - Shown on public pages (no auth required)
+ * - Contains sign in/up links
+ * - Marketing/landing page navigation
  * 
- * See: _custom/documentation/roadmaps/architectural-recovery-plan.md Phase 3.3
- * See: _custom/documentation/roadmaps/library-extraction-roadmap.md Phase 1.4
+ * Token Usage:
+ * - DEPLOYED_RESOURCES: Static logos (safe, CDN-friendly)
+ * - PUBLIC_NAVIGATION: Unauthenticated routes (landing, auth, support)
  * 
- * Impact: Violates tier architecture, blocks library extraction, tight coupling
- * Fix Priority: Phase 3 (replace with injection token)
+ * Benefits:
+ * ✅ No upward coupling (Sites no longer imports Apps.Main)
+ * ✅ Security-conscious (public vs private routes)
+ * ✅ Testable (mock tokens)
+ * ✅ Type-safe (full intellisense)
+ * 
+ * See: _custom/documentation/patterns/navigation-public-private-split-summary.md
  */
 export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
-  // Expose system configuration:
+  // ⚠️ PARTIAL: Still uses appsConfiguration for some config
+  // TODO: Create APP_CONTEXT token for sponsor/developer info
   public appsConfiguration = appsConfiguration
-  // Expose Apps.Main constants for logos and main app resources:
-  public appsMainConstants = appsMainConstants
+  
+  // ✅ Injected DEPLOYED resources (static, safe)
+  public deployed!: DeployedResourcePaths;
+  
+  // ✅ Injected PUBLIC navigation (no auth required)
+  public nav!: PublicNavigationPaths;
+  
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 
@@ -51,19 +68,26 @@ export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
 
   sectionsInfo = importedSectionsInfo;
 
-  // CHanging this (by the parent body div wrapper)
+  // Changing this (by the parent body div wrapper)
   // changes the style of the button.
   @Input()
   sectionId: string = this.sectionsInfo.intro.id;
   
   constructor(
+    @Inject(DEPLOYED_RESOURCES) deployed: DeployedResourcePaths,
+    @Inject(PUBLIC_NAVIGATION) nav: PublicNavigationPaths,
     private defaultControllerServices: DefaultComponentServices) {
 
+    // Store injected resources and navigation
+    this.deployed = deployed;
+    this.nav = nav;
+    
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
+
   }
 
   ngOnInit(): void {
-    // Noting?
+    // Nothing?
   }
 
   //Button Event Handler:

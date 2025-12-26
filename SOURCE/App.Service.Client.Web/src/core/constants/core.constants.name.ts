@@ -15,3 +15,9 @@ export const NAME = 'Core';
  * APIs:    /api/core/
  */
 export const PATHFRAGMENT = 'core';
+
+/**
+ * Machine file path (with trailing slash for safe concatenation)
+ * ✅ Example: `${ROOT_RELATIVE_PATH}assets` → "core/assets"
+ */
+export const ROOT_RELATIVE_PATH = 'core/';  // ✅ Trailing slash!

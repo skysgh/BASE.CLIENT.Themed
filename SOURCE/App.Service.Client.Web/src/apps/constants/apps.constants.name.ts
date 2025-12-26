@@ -1,17 +1,20 @@
 /**
- * Central constants for the Apps tier.
+ * Central constants for the Apps tier (Private application features).
  * Single source of truth for naming and paths.
  */
 
 /**
- * Display name for this tier (used in UI, logs, etc.)
+ * Display name for this tier
  */
 export const NAME = 'Apps';
 
 /**
- * URL path fragment for this tier.
- * 
- * Assets: /assets/apps/deployed/
- * APIs:    /api/apps/
+ * Machine file path (with trailing slash for safe concatenation)
+ * ✅ Example: `${ROOT_RELATIVE_PATH}assets` → "apps/assets"
+ */
+export const ROOT_RELATIVE_PATH = 'apps/';  // ✅ Trailing slash!
+
+/**
+ * Path fragment for URLs
  */
 export const PATHFRAGMENT = 'apps';

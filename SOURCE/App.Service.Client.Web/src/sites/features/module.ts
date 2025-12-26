@@ -2,7 +2,6 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { BaseCoreSitesModule } from "../module";
 import { BaseThemesModule } from "../../themes/module";
-import { appsConfiguration } from "../../apps/configuration/implementations/apps.configuration";
 import { sitesConfiguration } from "../configuration/implementation/sites.configuration";
 
 // Parent Module:
@@ -41,10 +40,23 @@ import { sitesConfiguration } from "../configuration/implementation/sites.config
   ]
 
 })
+/**
+ * Base Sites Features Module
+ * 
+ * ✅ DECOUPLED: No longer imports appsConfiguration
+ * 
+ * Breaking change: Removed public appsConfiguration property.
+ * Components should use ConfigRegistryService instead.
+ * 
+ * Benefits:
+ * ✅ No circular dependency (Sites no longer imports Apps)
+ * ✅ Proper tier architecture
+ * ✅ Modules are not config providers
+ */
 export class BaseCoreSitesFeaturesModule {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
+  // ❌ REMOVED: public appsConfiguration = appsConfiguration
+  // Components should use ConfigRegistryService instead
+  
+  // ✅ KEEP: Expose parent configuration (Sites owns this)
   public groupConfiguration = sitesConfiguration
-
 }

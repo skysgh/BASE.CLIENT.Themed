@@ -11,7 +11,7 @@ import { BaseCoreCommonComponentsPdfComponent } from "./pdf/component";
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { BaseCoreAgModule } from "../module";
-import { appsConfiguration } from "../../apps/configuration/implementations/apps.configuration";
+// ❌ REMOVED: No longer import appsConfiguration (breaks circular dependency)
 import { coreAgConfiguration } from "../configuration/implementations/coreAg.configuration";
 
 
@@ -22,6 +22,9 @@ import { coreAgConfiguration } from "../configuration/implementations/coreAg.con
  * Example would include maps, or PDF renderers,
  * which are sufficiently heavy that it would
  * be defer loading till when actually needed.
+ * 
+ * ✅ DECOUPLED: No longer imports appsConfiguration
+ * Components should use ConfigRegistryService if needed.
  */
 @NgModule({
   declarations: [
@@ -67,8 +70,9 @@ import { coreAgConfiguration } from "../configuration/implementations/coreAg.con
  * (they may be even marked as standalone).
  */
 export class BaseCoreAgComponentsSpecificModule {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
+  // ❌ REMOVED: public appsConfiguration = appsConfiguration
+  // Components should use ConfigRegistryService instead
+  
+  // ✅ KEEP: Expose parent configuration (Core.Ag owns this)
   public groupConfiguration = coreAgConfiguration
 }

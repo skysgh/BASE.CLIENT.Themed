@@ -1,7 +1,6 @@
-import { TAppsConfiguration } from "../../../../../../apps/configuration/t.apps.configuration";
-
 export class ViewModel {
-  constructor(configuration: TAppsConfiguration) {
-
+  constructor() {
+    // ViewModel no longer requires configuration parameter
+    // If configuration is needed, inject it via tokens in component
   }
 }

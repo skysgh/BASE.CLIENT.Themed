@@ -107,8 +107,8 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/apps.main/assets",
-                "output": "/assets/apps.main"
+                "input": "src/apps.bootstrap/assets",
+                "output": "/assets/apps.bootstrap"
               },
 
               {
@@ -350,8 +350,8 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/apps.main/assets",
-                "output": "/assets/apps.main"
+                "input": "src/apps.bootstrap/assets",
+                "output": "/assets/apps.bootstrap"
               },
 
               {

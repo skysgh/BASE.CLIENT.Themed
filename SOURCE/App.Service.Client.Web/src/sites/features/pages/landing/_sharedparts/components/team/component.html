@@ -20,7 +20,12 @@
                 <div class="card">
                   <div class="card-body text-center p-4">
                     <div class="avatar-xl mx-auto mb-4 position-relative">
-                      <img src="{{this.appsConfiguration.others.sites.constants.resources.sensitive.images.users}}{{data.imageName}}" alt="" class="img-fluid rounded-circle">
+                      <!-- ✅ SECURITY FIX: Using uploaded resources for user photos -->
+                      <!-- User-generated content (HIGH RISK) - needs authentication -->
+                      <!-- Future: Will use signed URLs via getUserPhotoUrl() method -->
+                      <img [src]="getUserPhotoUrl(data.imageName)" alt="" class="img-fluid rounded-circle">
+                      <!-- ⚠️ Still using appsConfiguration for messages navigation -->
+                      <!-- TODO: Use nav.messages.inbox when expanded -->
                       <a href="{{this.appsConfiguration.navigation.messages}}" class="btn btn-success btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
                         <div class="avatar-title bg-transparent">
                           <i class="ri-mail-fill align-bottom"></i>
@@ -28,6 +33,8 @@
                       </a>
                     </div>
                     <!-- end card body -->
+                    <!-- ⚠️ Still using appsConfiguration for user settings -->
+                    <!-- TODO: Use nav.settings.user when ready -->
                     <h5 class="mb-1"><a href="{{this.appsConfiguration.navigation.settings.user}}" class="text-body">{{data.title}}</a></h5>
                     <p class="text-muted mb-0 ff-secondary">{{data.role}}</p>
                   </div>
@@ -42,7 +49,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="text-center mt-2">
-                  <a href="{{this.appsConfiguration.navigation.teams.root}}"
+                  <!-- ✅ UPDATED: Using PRIVATE_NAVIGATION (teams.root) -->
+                  <a [routerLink]="nav.teams.root"
                      class="btn btn-primary">
                     {{'BASE.ACTIONS.VIEW_ALL'| baseTranslate}} {{'BASE.MEMBERSHIPS.PLURAL' | baseTranslate }}
                     <i class="ri-arrow-right-line ms-1 align-bottom"></i>

@@ -7,6 +7,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// ✅ NEW: Config Registry
+import { ConfigRegistryService } from '../../core/services/config-registry.service';
+
 // Import Common dependencies:
 
 // Import Module specific dependencies:
@@ -22,12 +25,15 @@ import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/compon
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
 import { BaseAppsSpikeSubSpikesRepositoryService } from './services/repositories/subspike-repository.service';
 
+// ✅ NEW: Import spike constants
+import { appletsSpikesConstants } from './constants/implementations/app.lets.spikes.constants';
+
 //import { BaseThemesV1CommonModule } from '../../themes/v0/features/components/module';
 
 // import { BaseCoreCommonComponentsModule } from '../../../core/modules/common/components/module';
 import { ServiceLanguagesRepositoryService } from '../../core/services/services/repositories/service-languages.repository.service';
 import { ServiceLanguagesService } from '../../core/services/service.languages.service';
-import { BaseAppsModule } from '../module';
+import { BaseAppsModule } from '../../apps/module';
 
 // ...submodules:
 // NO mention, as it is late loaded by routes:
@@ -99,4 +105,16 @@ import { BaseAppsModule } from '../module';
     // NO: BaseAppsModule,
     ]
 })
-export class BaseAppsSpikeModule { }
+export class BaseAppsSpikeModule {
+  /**
+   * ✅ NEW: Register Spike applet
+   * 
+   * Uses namespaced key: 'applets.spike' (not just 'spike')
+   * This prevents collision with core tiers.
+   */
+  constructor(configRegistryService: ConfigRegistryService) {
+    configRegistryService.register('applets.spike', {
+      constants: appletsSpikesConstants
+    });
+  }
+}

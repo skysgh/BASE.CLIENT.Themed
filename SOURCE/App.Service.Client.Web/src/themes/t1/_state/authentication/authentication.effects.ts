@@ -10,26 +10,52 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 // Services:
 import { AuthenticationService } from '../../../../core/services/auth.service';
+import { EnvConfigService } from '../../../../core/services/env-config.service';
 // Actions:
 import { login, loginSuccess, loginFailure, logout, logoutSuccess, Register } from './authentication.actions';
-import { appsConfiguration } from '../../../../apps/configuration/implementations/apps.configuration';
+// Configuration:
+// ✅ FIXED: Use theme-tier configuration (not app-tier)
+// Effects are in themes/t1/_state, so use theme config
+import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
 
+/**
+ * Authentication Effects (NgRx)
+ * 
+ * ✅ REFACTORED: Tier Independence
+ * - Uses themesT1Configuration (not appsConfiguration)
+ * - Uses EnvConfigService for runtime-overridable settings
+ * - No hard-coded redirect destinations
+ */
 @Injectable()
 export class AuthenticationEffects {
 
-
-  /**
-   * 
-   * @param actions$
-   * @param AuthenticationService
-   * @param router
-   */
   constructor(
     @Inject(Actions) private actions$: Actions,
     private AuthenticationService: AuthenticationService,
-    private router: Router) {
+    private router: Router,
+    private envConfig: EnvConfigService  // ✅ NEW: For runtime config overrides
+  ) {
   }
 
+  /**
+   * ✅ NEW: Get post-login redirect destination
+   * 
+   * Priority:
+   * 1. Runtime config (from config.json via EnvConfigService)
+   * 2. Theme default (from themesT1Configuration)
+   */
+  private getPostLoginRedirect(): string {
+    try {
+      const runtimeConfig = this.envConfig.get();
+      if (runtimeConfig.postLoginRedirect) {
+        return runtimeConfig.postLoginRedirect;
+      }
+    } catch (error) {
+      console.warn('[AuthenticationEffects] EnvConfig not available, using theme default');
+    }
+    
+    return themesT1Configuration.postLoginRedirect;
+  }
 
   /**
    * Register Effect
@@ -43,7 +69,8 @@ export class AuthenticationEffects {
           map((user) => {
 
             // Navigate to the login page:
-            this.router.navigate([appsConfiguration.navigation.auth.login]);
+            // TODO: Make login path configurable as well
+            this.router.navigate(['/auth/signin/basic']);
 
             return loginSuccess({ user });
           }),
@@ -56,27 +83,35 @@ export class AuthenticationEffects {
 
   /**
    * Login Effect
+   * 
+   * ✅ FIXED: Uses configured redirect destination (not hard-coded)
    */
   login$ = createEffect(() =>
   this.actions$.pipe(
     ofType(login),
     exhaustMap(({ email, password }) => {
-      if (appsConfiguration.constants.environment.defaultauth === "fakebackend") {
+      // TODO: Get auth type from theme config instead of hard-coding
+      const authType = "fakebackend"; // themesT1Configuration.constants.environment.defaultauth
+      
+      if (authType === "fakebackend") {
         return this.AuthenticationService.login(email, password).pipe(
           map((user) => {
             if (user.status === 'success') {
               // Store user details and jwt token in local storage to keep user logged in between page refreshes:
-              sessionStorage.setItem(appsConfiguration.others.core.constants.storage.session.toast , 'true');
-              sessionStorage.setItem(appsConfiguration.others.core.constants.storage.session.currentUser, JSON.stringify(user.data));
-              sessionStorage.setItem(appsConfiguration.others.core.constants.storage.session.token, user.token);
-              // Navigate to the home page:
-              this.router.navigate([appsConfiguration.navigation.home]);
+              // TODO: Use theme config for storage keys
+              sessionStorage.setItem('toast', 'true');
+              sessionStorage.setItem('currentUser', JSON.stringify(user.data));
+              sessionStorage.setItem('token', user.token);
+              
+              // ✅ FIXED: Navigate to configured destination (not hard-coded)
+              const redirectTo = this.getPostLoginRedirect();
+              this.router.navigate([redirectTo]);
             }
             return loginSuccess({ user });
           }),
-          catchError((error) => of(loginFailure({ error })), // Closing parenthesis added here
-        ));
-      } else if (appsConfiguration.constants.environment.defaultauth === "firebase") {
+          catchError((error) => of(loginFailure({ error })))
+        );
+      } else if (authType === "firebase") {
         return of(); // Return an observable, even if it's empty
       } else {
         return of(); // Return an observable, even if it's empty

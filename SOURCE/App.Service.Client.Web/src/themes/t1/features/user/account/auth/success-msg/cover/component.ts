@@ -5,13 +5,12 @@ import { Component, OnInit } from '@angular/core';
 // Misc:
 //
 // Configurations:
-import { appsConfiguration } from '../../../../../../../../apps/configuration/implementations/apps.configuration';
+// ✅ FIXED: Use theme-tier configuration (not app-tier)
 import { themesT1Configuration } from '../../../../../../configuration/implementations/themes.t1.configuration';
 // Services:
-//import { SystemService } from '../../../../../../../../core/services/system.service';
+import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
 // Models:
 import { ViewModel } from './vm';
-import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
 // Data:
 
 @Component({
@@ -21,14 +20,13 @@ import { DefaultComponentServices } from '../../../../../../../../core/services/
 })
 
 /**
- * Success Msg Cover Component
+ * Success Msg Cover Component (Theme T1)
+ * 
+ * ✅ REFACTORED: Complete Tier Independence
  */
 export class CoverComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = themesT1Configuration
-
+  // ✅ SINGLE config object (tier independence!)
+  public tierConfig = themesT1Configuration;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
@@ -37,7 +35,7 @@ export class CoverComponent implements OnInit {
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
- 
+
   constructor(private defaultControllerServices: DefaultComponentServices) {
     // Make system/env variables avaiable to class & view template:
     //this.system = this.systemService.system;

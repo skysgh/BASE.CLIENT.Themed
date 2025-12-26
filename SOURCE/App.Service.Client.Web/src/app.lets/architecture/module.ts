@@ -3,19 +3,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// ✅ NEW: Config Registry
+import { ConfigRegistryService } from '../../core/services/config-registry.service';
+
 // Other dependencies:
 import { BaseThemesV1Module } from '../../themes/t1/module';
 
 //Module specific:
 import { BaseAppsArchitectureRoutingModule } from "./routing.module";
 // Parent Module:
-import { BaseAppsModule } from '../module';
+import { BaseAppsModule } from '../../apps/module';
 // Child Modules:
 import { BaseAppsArchitectureValuesModule } from "./modules/values/module";
 
 //Module specific components:
 import { ArchitectureValuesRepositoryService } from './services/repositories/values-repository.service';
-//import {ArchitectureValuesRepositoryService } from "./services/values-repository.service"
+
+// ✅ NEW: Import architecture constants
+import { appletsArchitectureConstants } from './constants/implementations/app.lets.architecture.constants';
 
 @NgModule({
   declarations: [
@@ -44,4 +49,16 @@ import { ArchitectureValuesRepositoryService } from './services/repositories/val
     // NO: BaseAppsModule
   ],
 })
-export class BaseAppsArchitectureModule { }
+export class BaseAppsArchitectureModule {
+  /**
+   * ✅ NEW: Register Architecture applet
+   * 
+   * Uses namespaced key: 'applets.architecture'
+   * Prevents collision with core tiers.
+   */
+  constructor(configRegistryService: ConfigRegistryService) {
+    configRegistryService.register('applets.architecture', {
+      constants: appletsArchitectureConstants
+    });
+  }
+}

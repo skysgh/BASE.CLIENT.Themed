@@ -1,11 +1,16 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+
+// ✅ Config Registry
+import { ConfigRegistryService } from "../core/services/config-registry.service";
+
 // Parent Module:
-//import { BaseThemesV1Module } from "../themes/t1/module";
-//import { BaseCoreSitesFeaturesModule } from "./features/module";
 import { BaseThemesModule } from "../themes/module";
-import { appsConfiguration } from "../apps/configuration/implementations/apps.configuration";
 import { sitesConfiguration } from "./configuration/implementation/sites.configuration";
+
+// ✅ Import sites constants for registration
+import { sitesConstants } from "./constants/implementations/sites.constants";
+
 // Child Modules:
 // NO: import { BaseCorePagesModule } from "./pages/module";
 // NO: import { BaseCoreDashboardsModule } from "./dashboard/module";
@@ -41,10 +46,39 @@ import { sitesConfiguration } from "./configuration/implementation/sites.configu
   ]
 
 })
+/**
+ * Base Sites Module
+ * 
+ * ✅ DECOUPLED: No longer imports appsConfiguration
+ * 
+ * Breaking change: Removed public appsConfiguration property.
+ * Components should use ConfigRegistryService instead.
+ * 
+ * Benefits:
+ * ✅ No circular dependency (Sites no longer imports Apps)
+ * ✅ Proper tier architecture
+ * ✅ Modules are not config providers
+ */
 export class BaseCoreSitesModule {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
+  // ❌ REMOVED: public appsConfiguration = appsConfiguration
+  // Components should use ConfigRegistryService instead
+  
+  // ✅ KEEP: Expose parent configuration (Sites owns this)
   public groupConfiguration = sitesConfiguration
 
+  /**
+   * ✅ Register Sites config
+   * 
+   * Registers sites configuration including:
+   * - Navigation paths
+   * - API endpoints
+   * - Resource paths (deployed/uploaded)
+   * - Assets
+   */
+  constructor(configRegistryService: ConfigRegistryService) {
+    configRegistryService.register('sites', {
+      constants: sitesConstants,
+      configuration: sitesConfiguration
+    });
+  }
 }

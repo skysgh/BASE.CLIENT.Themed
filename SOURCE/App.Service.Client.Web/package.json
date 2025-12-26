@@ -7,11 +7,33 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    
     "soul": "soul --database=_custom/sqlite/base.db --p=4202",
+    
     "json-server": "json-server --port=4202 --routes=_custom/json-server/routes.json _custom/json-server/data.json",
+    
+    "json-server:with-static": "json-server --port=4202 --routes=_custom/json-server/routes.json --static src/assets _custom/json-server/data.json",
+    
     "start-local-json-server": "concurrently --kill-others-on-fail \"npm run json-server\" \"npm run start\"",
     "start-local-json-server2": "\"npm run json-server\" & \"npm run start\"",
-    "start-local-soul": "concurrently --kill-others-on-fail \"npm run soul\" \"npm run start\""
+    
+    "start-local-json-server-with-static": "concurrently --kill-others-on-fail \"npm run json-server:with-static\" \"npm run start\"",
+    
+    "start-local-soul": "concurrently --kill-others-on-fail \"npm run soul\" \"npm run start\"",
+    
+    "_comments": {
+      "_json-server-discovery": "💡 json-server can serve BOTH API endpoints AND static files!",
+      "_static-flag": "Use --static <path> to serve static files (like /assets/)",
+      "_why-useful": "Single server (:4202) can serve API + assets (no need for :4200)",
+      "_use-case-1": "Testing: Mock both backend API and static assets from one server",
+      "_use-case-2": "Deployment: Simple single-server setup for demos",
+      "_caution": "In production, use proper CDN for assets (Cloudflare, AWS S3, etc.)",
+      "_example-basic": "json-server --static ./public data.json",
+      "_example-our-setup": "json-server --port=4202 --static src/assets --routes=_custom/json-server/routes.json _custom/json-server/data.json",
+      "_result": "API at :4202/api/rest/* + Assets at :4202/assets/*",
+      "_vs-angular-serve": "Angular serve (:4200) still needed for dev (HMR, live reload)",
+      "_when-to-use": "Use 'start-local-json-server-with-static' to test full backend simulation"
+    }
   },
   "private": true,
   "dependencies": {

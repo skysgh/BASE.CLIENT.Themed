@@ -4,8 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 // Etc:
 import { TranslateService } from '@ngx-translate/core';
-// Configuraiton:
-import { appsConfiguration } from '../../../../../../../apps/configuration/implementations/apps.configuration';
+// Configuration:
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
@@ -24,10 +23,12 @@ import { ViewModel } from './vm';
 
 /**
  * Faqs Component
+ * 
+ * ✅ ARCHITECTURAL FIX - Removed Upward Coupling
+ * Removed direct appsConfiguration import (upward coupling to Apps tier)
+ * Component now only references sitesConfiguration (same tier)
  */
 export class BaseAppsPagesLandingIndexFaqsComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 

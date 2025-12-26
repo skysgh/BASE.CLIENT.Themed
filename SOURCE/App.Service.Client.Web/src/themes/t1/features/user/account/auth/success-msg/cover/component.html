@@ -14,7 +14,8 @@
                   <div class="position-relative h-100 d-flex flex-column">
                     <div class="mb-4">
                       <a routerLink="/" class="d-block">
-                        <img src="{{this.appsConfiguration.constants.resources.open.images.logos}}logo-light.png" alt="" height="18">
+                        <!-- ✅ FIXED: Use tierConfig.branding -->
+                        <img src="{{this.tierConfig.branding.logoPath}}logo-light.png" alt="" height="18">
                       </a>
                     </div>
                     <div class="mt-auto">
@@ -65,10 +66,10 @@
                       {{'BASE.MISC.SUCCESS_DESCRIPTION'| baseTranslate}}
                     </p>
                     <div class="mt-4">
-                      <a routerLink="/auth/signin/basic"
+                      <!-- ✅ FIXED: Use tierConfig.postLoginRedirect -->
+                      <a [routerLink]="[tierConfig.postLoginRedirect]"
                          class="btn btn-success w-100">
                         {{'BASE.LOCATIONS.DASHBOARD'| baseTranslate}}
-
                       </a>
                     </div>
                   </div>

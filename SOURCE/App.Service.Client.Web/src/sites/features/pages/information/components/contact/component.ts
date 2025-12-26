@@ -3,7 +3,6 @@
 // Ag:
 import { Component, OnInit } from "@angular/core";
 // Configuration:
-import { appsConfiguration } from "../../../../../../apps/configuration/implementations/apps.configuration";
 import { sitesConfiguration } from "../../../../../configuration/implementation/sites.configuration";
 // Services:
 import { DefaultComponentServices } from "../../../../../../core/services/default-controller-services";
@@ -15,9 +14,15 @@ import { ViewModel } from "./vm";
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
+
+/**
+ * Information Contact Component
+ * 
+ * ✅ ARCHITECTURAL FIX - Removed Upward Coupling
+ * Removed direct appsConfiguration import (upward coupling to Apps tier)
+ * Component now only references sitesConfiguration (same tier)
+ */
 export class BaseCorePagesInformationContactComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 

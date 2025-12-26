@@ -33,7 +33,7 @@ TODO:
       <div class="col-lg-4 mt-4">
         <div>
           <div>
-            <img src="{{this.appsConfiguration.constants.resources.open.images.logos}}logo-light.png" alt="logo light" height="17">
+            <img [src]="deployed.logos.light" alt="logo light" height="17">
           </div>
           <div class="mt-4 fs-13">
             <p>{{this.appsConfiguration.description.description}}</p>
@@ -48,7 +48,7 @@ TODO:
             <h5 class="text-white mb-0">Company</h5>
             <div class="text-muted mt-3">
               <ul class="list-unstyled ff-secondary footer-list">
-                <li><a href="/pages/profile">About Us</a></li>
+                <li><a [routerLink]="nav.information.about">About Us</a></li>
                 <li><a href="/pages/gallery">Gallery</a></li>
                 <li><a href="/projects/overview">Projects</a></li>
                 <li><a href="/pages/timeline">Timeline</a></li>
@@ -59,7 +59,7 @@ TODO:
             <h5 class="text-white mb-0">Apps Pages</h5>
             <div class="text-muted mt-3">
               <ul class="list-unstyled ff-secondary footer-list">
-                <li><a href="/pages/pricing">{{this.appsConfiguration.navigation.schedules}}</a></li>
+                <li><a [routerLink]="nav.landing.pricing">{{this.appsConfiguration.navigation.schedules}}</a></li>
                 <li><a href="/{{this.appsConfiguration.navigation.messages}}">Mailbox</a></li>
                 <li><a href="/chat">Chat</a></li>
                 <li><a href="{{this.appsConfiguration.navigation.tasks}}">Tasks</a></li>
@@ -70,8 +70,8 @@ TODO:
             <h5 class="text-white mb-0">Support</h5>
             <div class="text-muted mt-3">
               <ul class="list-unstyled ff-secondary footer-list">
-                <li><a href="{{this.appsConfiguration.navigation.pages.open.information.service.faqs}}">FAQs</a></li>
-                <li><a href="{{this.appsConfiguration.navigation.pages.open.information.service.contact}}">Contact</a></li>
+                <li><a [routerLink]="nav.support.faq">FAQs</a></li>
+                <li><a [routerLink]="nav.support.contact">Contact</a></li>
               </ul>
             </div>
           </div>

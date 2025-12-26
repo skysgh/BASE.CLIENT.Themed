@@ -16,23 +16,32 @@ import { ViewModel } from './vm';
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
+
+/**
+ * Information Index Component
+ * 
+ * ⚠️ PARTIAL MIGRATION - Template Still Uses appsConfiguration
+ * Template uses appsConfiguration.navigation.pages extensively
+ * Need to create PAGES_NAVIGATION token or keep appsConfiguration
+ * 
+ * TODO: Create comprehensive navigation token structure
+ * See: _custom/documentation/COMPONENT-MIGRATION-PROGRESS.md "Deeper Migrations Needed"
+ */
 export class BaseCorePagesInformationIndexComponent implements OnInit {
-  // Expose system configuration:
+  // ⚠️ Temporarily restored for template compatibility
   public appsConfiguration = appsConfiguration
+  
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 
-  //var x = appsConfiguration.navigation.pages.open.information
   // This controller's ViewModel:
-  public viewModel: ViewModel = new ViewModel(appsConfiguration);
+  public viewModel: ViewModel = new ViewModel();
   // TODO: Move these variables into it.
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   constructor(private defaultControllerServices: DefaultComponentServices) {
     // Make system/env variables avaiable to view template (via singleton or service):
-    
-    //var t = this.appsConfiguration.navigation.pages.open.information.service.contact;
 
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }

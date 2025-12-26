@@ -1,0 +1,63 @@
+{
+  "$schema": "./env-config.schema.json",
+  "version": "1.0.0-mock",
+  "timestamp": "2025-01-25T12:00:00Z",
+  
+  "app": {
+    "name": "BOOM!",
+    "title": "BOOM! - Runtime Config Test",
+    "description": "Testing cascading configuration with app rename",
+    "version": "1.0.0"
+  },
+  
+  "backend": {
+    "available": false,
+    "apiBaseUrl": "http://localhost:4202",
+    "timeout": 5000
+  },
+  
+  "features": {
+    "authentication": true,
+    "uploads": true,
+    "telemetry": false
+  },
+  
+  "i18n": {
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en", "es", "fr"],
+    "translations": {
+      "en": {
+        "welcome": "Welcome to BOOM!",
+        "title": "BOOM! Application"
+      }
+    }
+  },
+  
+  "endpoints": {
+    "sites": {
+      "brochure": "/api/sites/brochure",
+      "persons": "/api/sites/persons"
+    }
+  },
+  
+  "comments": {
+    "_comment1": "✅ TEST 1: App name changed from 'BASE-DEV' to 'BOOM!'",
+    "_comment2": "✅ TEST 2: Deep merge test - features.telemetry overridden to false",
+    "_comment3": "✅ TEST 3: Higher tier override - endpoints.sites.brochure path",
+    "_comment4": "To verify cascading works:",
+    "_step1": "1. Check console: Should see 'Mock JSON loaded (overridden)'",
+    "_step2": "2. Check console: Should see 'App name: BOOM!'",
+    "_step3": "3. In component: configRegistry.get('apps').app.name should be 'BOOM!'",
+    "_step4": "4. Features should be merged (auth=true, uploads=true, telemetry=false)",
+    "_note": "This file demonstrates:",
+    "_feature1": "- Cascading config (deployed → mock → backend)",
+    "_feature2": "- Deep merge (partial override, keeps other values)",
+    "_feature3": "- Runtime config (no redeploy needed)",
+    "_feature4": "- Array access: config['app']['name'] works for dynamic keys",
+    "_ports": "Port clarification:",
+    "_port1": "- Angular dev server: :4200 (serves app + /assets/)",
+    "_port2": "- json-server: :4202 (simulates backend API)",
+    "_port3": "Mock JSON served by Angular (:4200/assets/data/env-config.json)",
+    "_port4": "Backend API served by json-server (:4202/api/rest/env-config)"
+  }
+}

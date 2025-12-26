@@ -3,7 +3,6 @@
 // Ag:
 import { Component, OnInit, Input } from '@angular/core';
 // Configuration:
-import { appsConfiguration } from '../../../../../../apps/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
@@ -19,10 +18,14 @@ import { ViewModel } from './vm';
 
 /**
  * Analytics stat Component
+ * 
+ * ✅ ARCHITECTURAL FIX - Removed Upward Coupling
+ * Removed direct appsConfiguration import (upward coupling to Apps tier)
+ * Component now only references themesT1Configuration (same tier)
+ * 
+ * Note: This component is in /unused/ directory but still cleaned up for consistency
  */
 export class AnalyticsStatComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
   // Expose parent configuration:
   public groupConfiguration = themesT1Configuration
 

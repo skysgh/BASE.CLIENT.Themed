@@ -3,14 +3,17 @@
 // Ag:
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-// Const:
 
-// Services:
+// ✅ Config Registry
+import { ConfigRegistryService } from "../core/services/config-registry.service";
 
 // Parent Modules:
 import { BaseCoreAgModule } from "../core.ag/module";
 // Modules:
 import { BaseThemesV1Module } from "./t1/module";
+
+// ✅ Import theme configuration (not inline object!)
+import { themesConfiguration } from "./configuration/themes.configuration";
 
 
 @NgModule({
@@ -38,4 +41,14 @@ import { BaseThemesV1Module } from "./t1/module";
     BaseThemesV1Module
   ]
 })
-export class BaseThemesModule { }
+export class BaseThemesModule {
+  /**
+   * ✅ Register Themes config
+   * 
+   * Uses typed configuration (not inline object).
+   * Preserves IntelliSense for theme properties.
+   */
+  constructor(configRegistryService: ConfigRegistryService) {
+    configRegistryService.register('themes', themesConfiguration);
+  }
+}

@@ -4,14 +4,18 @@
  */
 
 /**
- * Display name for this tier (used in UI, logs, etc.)
+ * Display name for this tier
  */
 export const NAME = 'Sites';
 
 /**
- * URL path fragment for this tier.
- * 
- * Assets: /assets/sites/deployed/
- * APIs:    /api/sites/
+ * Machine file path (with trailing slash for safe concatenation)
+ * ✅ Example: `${ROOT_RELATIVE_PATH}assets` → "sites/assets"
+ */
+export const ROOT_RELATIVE_PATH = 'sites/';  // ✅ Trailing slash!
+
+/**
+ * Path fragment for URLs
+ * Used in assets and media path construction
  */
 export const PATHFRAGMENT = 'sites';

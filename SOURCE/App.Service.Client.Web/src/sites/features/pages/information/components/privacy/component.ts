@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 // 
 // Configuration:
 import { sitesConfiguration } from '../../../../../configuration/implementation/sites.configuration';
-import { appsConfiguration } from '../../../../../../apps/configuration/implementations/apps.configuration';
+// ✅ NEW: Use ConfigRegistry instead of direct import
+import { ConfigRegistryService } from '../../../../../../core/services/config-registry.service';
 // Services:
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 // Model:
@@ -18,16 +19,29 @@ import { ViewModel } from './vm';
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
+/**
+ * Privacy Policy Component
+ * 
+ * ✅ MIGRATED: No longer imports appsConfiguration directly
+ * 
+ * Uses ConfigRegistryService to get Sites config for markdown path.
+ * This breaks circular dependency (Sites → Apps → Sites).
+ * 
+ * Benefits:
+ * ✅ No circular dependency
+ * ✅ Proper tier architecture
+ * ✅ Easy to test (mock registry)
+ * ✅ Loose coupling
+ */
 export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
+  // ✅ Get apps config from registry (not direct import)
+  private appsConfig: any;
+  
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 
   // This controller's ViewModel:
-  public viewModel: ViewModel = new ViewModel(appsConfiguration);
-  // TODO: Move these variables into it.
-
+  public viewModel!: ViewModel;
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
@@ -37,17 +51,21 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
 
   constructor(
     protected http: HttpClient,
-    private defaultControllerServices: DefaultComponentServices
+    private defaultControllerServices: DefaultComponentServices,
+    private configRegistry: ConfigRegistryService  // ✅ NEW: Inject registry
   ) {
-    // Make system/env variables avaiable to view template (via singleton or service):
-    
-
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 
-    var url: string = `${this.appsConfiguration.others.sites.constants.resources.open.files.markdown}en/privacy.md`;
+    // ✅ Get config from registry instead of direct import
+    this.appsConfig = this.configRegistry.get('apps');
+    
+    // ✅ Create ViewModel with config from registry
+    this.viewModel = new ViewModel(this.appsConfig);
+
+    // ✅ Get markdown path from Sites config (via Apps config)
+    var url: string = `${this.appsConfig.others.sites.constants.resources.open.files.markdown}en/privacy.md`;
 
     this.getMarkdown(url);
-
   }
 
   ngOnInit(): void {
@@ -109,9 +127,6 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
   }
 
   private replaceVariables(markdown: string, keys: string[]): string {
-    //this.defaultControllerServices.translationService.addLangs(['en']);
-    //this.translate.setDefaultLang('en');
-
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.replaceVariables(...)`);
     var result :string = markdown;
     // Replace variables in the markdown content
@@ -144,5 +159,11 @@ export class BaseCorePagesInformationPrivacyPolicyComponent implements OnInit {
     }
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.getValueFromObject(...) ${key}:${value}`);
     return value;
+  }
+  
+  // ✅ NEW: Expose appsConfiguration for template compatibility
+  // (Templates may reference this.appsConfiguration)
+  public get appsConfiguration() {
+    return this.appsConfig;
   }
 }

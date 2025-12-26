@@ -1,0 +1,145 @@
+{
+  "$schema": "./app-config.schema.json",
+  "version": "1.0.0",
+  "lastModified": "2025-01-25T12:00:00Z",
+  
+  "account": {
+    "id": "default",
+    "name": "Default Account",
+    "description": "Default configuration for BASE Client platform",
+    "branding": {
+      "logo": {
+        "light": "/assets/apps.bootstrap/media/open/images/logos/logo-light.png",
+        "dark": "/assets/apps.bootstrap/media/open/images/logos/logo-dark.png"
+      },
+      "colors": {
+        "primary": "#405189",
+        "secondary": "#3577f1",
+        "success": "#0ab39c",
+        "danger": "#f06548",
+        "warning": "#f7b84b",
+        "info": "#299cdb"
+      },
+      "favicon": "/assets/open/static/images/favicon.ico"
+    },
+    "notes": {
+      "architecture": "Single database with record-level permissions (RBAC + ABAC)",
+      "crossAccountSharing": "Enabled - supports consultants, partners across accounts",
+      "security": "Enforced at record level, not database separation"
+    }
+  },
+  
+  "modules": {
+    "loading": {
+      "core": "eager",
+      "core.ag": "eager",
+      "themes": "eager",
+      "sites": "lazy",
+      "apps": "lazy",
+      "app.lets": "lazy"
+    },
+    "enabled": {
+      "sites": true,
+      "apps": true,
+      "app.lets": true
+    }
+  },
+  
+  "applets": {
+    "enabled": [
+      "education",
+      "scheduling",
+      "social",
+      "tasks",
+      "spike"
+    ],
+    "disabled": [
+      "demos",
+      "example",
+      "template"
+    ],
+    "loading": {
+      "education": "lazy",
+      "scheduling": "lazy",
+      "social": "lazy",
+      "tasks": "lazy",
+      "spike": "lazy"
+    }
+  },
+  
+  "features": {
+    "authentication": {
+      "enabled": true,
+      "providers": ["local", "oauth"],
+      "requireEmailVerification": true,
+      "allowSignup": true
+    },
+    "i18n": {
+      "enabled": true,
+      "defaultLanguage": "en",
+      "supportedLanguages": ["en", "es", "fr", "de"],
+      "loadStrategy": "eager"
+    },
+    "telemetry": {
+      "enabled": true,
+      "provider": "none",
+      "trackPageViews": true,
+      "trackErrors": true
+    },
+    "crossAccountCollaboration": {
+      "enabled": true,
+      "allowSharing": true,
+      "requirePermissions": true
+    }
+  },
+  
+  "splash": {
+    "enabled": true,
+    "minimumDisplayTime": 500,
+    "logo": "/assets/apps.bootstrap/media/open/images/logos/logo-light.png",
+    "backgroundColor": "#ffffff",
+    "spinnerColor": "#405189",
+    "waitFor": {
+      "i18n": true,
+      "config": true,
+      "theme": true,
+      "user": false
+    }
+  },
+  
+  "navigation": {
+    "public": {
+      "showSignup": true,
+      "showSignin": true,
+      "showLanguageSelector": true
+    },
+    "private": {
+      "showNotifications": true,
+      "showUserProfile": true,
+      "showSearch": true
+    }
+  },
+  
+  "assets": {
+    "cdn": {
+      "enabled": false,
+      "baseUrl": "https://cdn.example.com"
+    },
+    "caching": {
+      "strategy": "default",
+      "maxAge": 86400
+    }
+  },
+  
+  "api": {
+    "baseUrl": "/api",
+    "timeout": 30000,
+    "retryAttempts": 3
+  },
+  
+  "development": {
+    "showDebugInfo": false,
+    "mockData": false,
+    "verboseLogging": false
+  }
+}

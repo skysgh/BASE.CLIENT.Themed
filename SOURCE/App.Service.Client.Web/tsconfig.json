@@ -9,14 +9,18 @@
 
     "baseUrl": "./",
 
-    "paths": {
-      "_root": [ "src/*" ],
-      "_core": [ "src/core/*" ],
-      "_core.Ag": [ "src/core.ag/*" ],
-      "_themes": [ "src/themes/*" ],
-      "_sites": [ "src/sites/*" ],
-      "_apps": [ "src/sites.apps/*" ]
-    },
+    // ❌ REMOVED: Path aliases don't work in Visual Studio auto-import
+    // They work for compilation but not for developer experience
+    // Physical folder names now have number prefixes for ordering
+    // "paths": {
+    //   "_root": [ "src/*" ],
+    //   "_core": [ "src/core/*" ],
+    //   "_core.Ag": [ "src/core.ag/*" ],
+    //   "_themes": [ "src/themes/*" ],
+    //   "_sites": [ "src/sites/*" ],
+    //   "_apps": [ "src/sites.apps/*" ]
+    // },
+
     // Note: To transform paths for both the output .js and .d.ts files, you need both of the below entries
     "plugins": [
       // Transform paths in output .js files
@@ -52,7 +56,15 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "strictNullChecks": true,
+    "strictAttributeTypes": true,
+    "strictSafeNavigationTypes": true,
+    "strictDomLocalRefTypes": true,
+    "strictOutputEventTypes": true,
+    "strictDomEventTypes": true,
+    "strictContextGenerics": true,
+    "strictLiteralTypes": true
   },
 
   "skipLibCheck": true, // if your TS is lower than 4.0

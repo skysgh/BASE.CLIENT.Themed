@@ -3,12 +3,20 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+
+// ✅ NEW: Config Registry
+import { ConfigRegistryService } from "../../core/services/config-registry.service";
+
 // Services:
 import { SystemDiagnosticsTraceService } from "../../core/services/system.diagnostics-trace.service";
 // Routes:
 import { BaseAppsEducationRoutingModule } from "./routing";
 // Parent Module:
-import { BaseAppsModule } from "../module";
+import { BaseAppsModule } from "../../apps/module";
+
+// ✅ NEW: Import education constants for registration
+import { appletsEducationConstants } from "./constants/implementations/app.lets.education.constants";
+
 // Child Modules:
 // ...not yet...
 // Controls:
@@ -72,8 +80,23 @@ import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishmen
   ]
 })
 export class BaseAppsEducationModule {
-  constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
+  /**
+   * Constructor
+   * @param diagnosticsTraceService
+   * @param configRegistryService - ✅ NEW: Config registry
+   */
+  constructor(
+    private diagnosticsTraceService: SystemDiagnosticsTraceService,
+    configRegistryService: ConfigRegistryService  // ✅ NEW
+  ) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
+    
+    // ✅ NEW: Register Education applet config
+    // This happens when the module is lazy-loaded!
+    configRegistryService.register('applets.education', {
+      constants: appletsEducationConstants,
+      // Future: Add education-specific configuration here
+    });
   }
 }
 

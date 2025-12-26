@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.271090-alpha">
+﻿<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.271090-alpha">
   <PropertyGroup>
     <!-- Add: Maybe needed for scripts to work -->
     <!-- <NodeJsCommand>npm</NodeJsCommand>-->
@@ -11,7 +11,7 @@
     <BuildCommand>npm run build</BuildCommand>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="src\apps.main\assets\assets.media\open\images\backgrounds\**" />
+    <None Remove="src\apps.bootstrap\assets\assets.media\open\images\backgrounds\**" />
     <None Remove="src\core\constants\settings\**" />
     <None Remove="src\sites\assets\deployed\images\pages\pages\**" />
     <None Remove="src\sites\features\dashboard\components\hold\**" />
@@ -31,7 +31,7 @@
     <None Remove="src\themes\t1\assets\deployed\images\NewFolder\**" />
     <None Remove="src\themes\t1\layouts\common\**" />
     <None Remove="src\_custom\**" />
-    <TypeScriptConfiguration Remove="src\apps.main\assets\assets.media\open\images\backgrounds\**" />
+    <TypeScriptConfiguration Remove="src\apps.bootstrap\assets\assets.media\open\images\backgrounds\**" />
     <TypeScriptConfiguration Remove="src\core\constants\settings\**" />
     <TypeScriptConfiguration Remove="src\sites\assets\deployed\images\pages\pages\**" />
     <TypeScriptConfiguration Remove="src\sites\features\dashboard\components\hold\**" />
@@ -55,18 +55,23 @@
   <ItemGroup>
     <Folder Include="src\app.lets\architecture\NewFolder\" />
     <Folder Include="src\apps\main\" />
+    <Folder Include="src\core.ag\base\constants\" />
+    <Folder Include="src\core.ag\contracts\" />
     <Folder Include="src\core.ag\features\" />
     <Folder Include="src\core.ag\support\" />
+    <Folder Include="src\core.ag\tokens\" />
     <Folder Include="src\core\contracts\" />
+    <Folder Include="src\core\tokens\" />
     <Folder Include="src\sites\assets\data\sensitive\" />
     <Folder Include="src\sites\assets\data\open\" />
     <Folder Include="src\sites\features\dashboard\models\" />
+    <Folder Include="src\themes\t1\adapters\button\" />
     <Folder Include="src\themes\t1\contracts\" />
     <Folder Include="src\themes\t1\features\errors\assets\sensitive\" />
     <Folder Include="src\themes\t1\features\errors\assets\open\" />
     <Folder Include="src\themes\t1\layouts\" />
     <Folder Include="src\themes\t1\services\" />
-    <Folder Include="src\apps.main\assets.dynamic\open\images\backgrounds\sidebards\" />
+    <Folder Include="src\apps.bootstrap\assets.dynamic\open\images\backgrounds\sidebards\" />
     <Folder Include="src\core\assets\assets.data\public\" />
     <Folder Include="src\sites\features\dashboard\assets\" />
     <Folder Include="src\themes\t1\components.layout\assets\" />

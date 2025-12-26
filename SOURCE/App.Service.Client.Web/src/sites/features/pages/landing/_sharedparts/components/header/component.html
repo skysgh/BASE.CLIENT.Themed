@@ -1,25 +1,20 @@
-<!-- Header and backtotop buttons both attach handlers of the same name to
-     the browser scroll's event.
-     Both have a specific Id so that the eventhandlers can talk to their
-     respective elements:
--->
+<!-- Header navbar for landing pages -->
 <nav class="navbar navbar-expand-lg navbar-landing fixed-top" id="navbar"
      (window:scroll)="onWindowScroll()">
 
   <div class="container">
-    <!-- The first part of the nav bar is nothing special, just a logo, -->
+    <!-- Logo -->
     <a class="navbar-brand" routerLink="/">
-      <img src="{{this.appsMainConstants.resources.open.images.logos}}logo-dark.png"
+      <img [src]="deployed.logos.dark"
            class="card-logo card-logo-dark"
            alt="logo dark" height="17">
-      <img src="{{this.appsMainConstants.resources.open.images.logos}}logo-light.png"
+      <img [src]="deployed.logos.light"
            class="card-logo card-logo-light"
            alt="logo light"
            height="17">
     </a>
-    <!-- followed by a graphic btn that invokes toggleMenu() to
-         show or hide othe buttons to scroll to various sections
-         of the single page -->
+    
+    <!-- Mobile menu toggle -->
     <button class="navbar-toggler py-0 fs-20 text-body"
             type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -29,11 +24,10 @@
             (click)="onToggleMenu()">
       <i class="mdi mdi-menu"></i>
     </button>
-    <!-- these are menu buttons that are shown or hidden by the above btn.
-         based on the state of the 'sectionId' property the button
-         render differently/highlighted.
-    -->
+    
+    <!-- Navigation menu -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Section navigation (landing page specific) -->
       <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
         <li class="nav-item">
           <a class="nav-link active"
@@ -47,12 +41,6 @@
              [ngxScrollTo]="'#'+sectionsInfo.capabilities.id"
              href="javascript:void(0);">{{'BASE.CAPABILITIES.PLURAL'| baseTranslate}}</a>
         </li>
-        <!--<li class="nav-item">
-    <a class="nav-link"
-       [ngClass]="{'active':sectionId === sectionsInfo.features.id}"
-       [ngxScrollTo]="'#'+sectionsInfo.features.id"
-       href="javascript:void(0);">{{'BASE.FEATURES.PLURAL'| baseTranslate}}</a>
-  </li>-->
         <li class="nav-item">
           <a class="nav-link"
              [ngClass]="{'active':sectionId === sectionsInfo.endorsements.id}"
@@ -85,23 +73,18 @@
         </li>
       </ul>
 
-      <!-- It's unkind (and against the law in many jurisdictions) to have a website
-        that has public pages that are not accessible / understandable. So we add
-        the same common button here that permits setting the cookie
-       even if they are not yet authenticated.
-       Language should permit them to read the Terms before they sign up/in.-->
+      <!-- Language selector (public - no auth required) -->
       <app-base-common-components-topbar-languagelanguage></app-base-common-components-topbar-languagelanguage>
 
-      <!-- Setting the language permits being appraised of Terms before they accept
-           as they sign up/in.-->
+      <!-- ✅ Authentication links (using PUBLIC_NAVIGATION) -->
       <div class="">
-        <a [routerLink]="appsConfiguration.navigation.auth.signin"
+        <a [routerLink]="nav.auth.signin"
            class="btn btn-link fw-medium text-decoration-none text-body">
           {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
         </a>
-        <a [routerLink]="appsConfiguration.navigation.auth.signup"
+        <a [routerLink]="nav.auth.signup"
            class="btn btn-primary">
-          {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
+          {{'BASE.SIGN_UPS.SINGULAR'| baseTranslate}}
         </a>
       </div>
 

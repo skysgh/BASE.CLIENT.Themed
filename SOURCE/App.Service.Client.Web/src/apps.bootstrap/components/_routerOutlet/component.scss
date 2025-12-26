@@ -1,0 +1,9 @@
+/* Root component styles */
+/* Splash screen is now in index.html (pure HTML) */
+/* No component-specific splash styles needed */
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

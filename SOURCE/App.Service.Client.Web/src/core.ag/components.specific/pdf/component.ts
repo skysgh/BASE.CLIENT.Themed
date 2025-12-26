@@ -12,7 +12,6 @@ import { PdfService } from "../../../core/services/infrastructure/pdf.service";
 
 import { ViewModel } from "./vm";
 import { SystemDefaultServices } from "../../../core/services/system.default-services.service";
-import { appsConfiguration } from "../../../apps/configuration/implementations/apps.configuration";
 import { coreAgConfiguration } from "../../configuration/implementations/coreAg.configuration";
 import { DefaultComponentServices } from "../../../core/services/default-controller-services";
 // Models:
@@ -40,6 +39,10 @@ import { DefaultComponentServices } from "../../../core/services/default-control
  */
 /**
  * See: https://www.npmjs.com/package/ng2-pdf-viewer
+ * 
+ * ✅ ARCHITECTURAL FIX - Removed Upward Coupling
+ * Removed direct appsConfiguration import (upward coupling to Apps tier)
+ * Component now only references coreAgConfiguration (same tier)
  */
 @Component({
   selector: 'app-base-core-common-components-pdf',
@@ -47,8 +50,6 @@ import { DefaultComponentServices } from "../../../core/services/default-control
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentsPdfComponent implements OnInit, OnDestroy {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
   // Expose parent configuration:
   public groupConfiguration = coreAgConfiguration
 

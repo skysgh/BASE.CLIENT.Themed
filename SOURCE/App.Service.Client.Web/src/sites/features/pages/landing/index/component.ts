@@ -17,11 +17,19 @@ import { ViewModel } from './vm';
 })
 
 /**
- * Index Component
+ * Landing Index Component
+ * 
+ * ⚠️ PARTIAL MIGRATION - Template Still Uses appsConfiguration
+ * Template uses appsConfiguration.navigation.pages.open.landing extensively
+ * Need comprehensive PAGES_NAVIGATION token or keep appsConfiguration
+ * 
+ * TODO: Expand NAVIGATION_PATHS to include pages.open.landing routes
+ * See: _custom/documentation/COMPONENT-MIGRATION-PROGRESS.md "Deeper Migrations Needed"
  */
 export class BaseCorePagesLandingIndexComponent  {
-  // Expose system configuration:
+  // ⚠️ Temporarily restored for template compatibility
   public appsConfiguration = appsConfiguration
+  
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 

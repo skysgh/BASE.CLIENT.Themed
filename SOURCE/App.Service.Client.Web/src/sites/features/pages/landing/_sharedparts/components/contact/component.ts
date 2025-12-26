@@ -2,12 +2,13 @@
 import { Component, OnInit, Output } from '@angular/core';
 // Etc:
 import { TranslateService } from '@ngx-translate/core';
+// Configuration:
+import { appsConfiguration } from '../../../../../../../apps/configuration/implementations/apps.configuration';
+import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
 import { SystemDefaultServices } from '../../../../../../../core/services/system.default-services.service';
-import { appsConfiguration } from '../../../../../../../apps/configuration/implementations/apps.configuration';
-import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
 
 //import { formData as fd } from './form.json';
@@ -21,10 +22,18 @@ import { DefaultComponentServices } from '../../../../../../../core/services/def
 
 /**
  * Contact Component
+ * 
+ * ⚠️ PARTIAL MIGRATION - Template Still Uses appsConfiguration
+ * Template uses appsConfiguration.context.sponsor extensively for address display
+ * Need to create APP_CONTEXT token or keep appsConfiguration
+ * 
+ * TODO: Create APP_CONTEXT token for sponsor/developer/distributor information
+ * See: _custom/documentation/COMPONENT-MIGRATION-PROGRESS.md "Deeper Migrations Needed"
  */
 export class BaseAppsPagesLandingIndexContactComponent implements OnInit {
-  // Expose system configuration:
+  // ⚠️ Temporarily restored for template compatibility
   public appsConfiguration = appsConfiguration
+  
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 

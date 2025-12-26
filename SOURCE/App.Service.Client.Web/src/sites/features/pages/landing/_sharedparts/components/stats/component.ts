@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 // Ag:
 import { Component, OnInit } from '@angular/core';
 // Configuration:
-import { appsConfiguration } from '../../../../../../../apps/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
@@ -23,10 +22,12 @@ import { ViewModel } from './vm';
 
 /**
  * Counter Component
+ * 
+ * ✅ ARCHITECTURAL FIX - Removed Upward Coupling
+ * Removed direct appsConfiguration import (upward coupling to Apps tier)
+ * Component now only references sitesConfiguration (same tier)
  */
 export class BaseAppsPagesLandingIndexStatsComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 
@@ -73,11 +74,4 @@ export class BaseAppsPagesLandingIndexStatsComponent implements OnInit {
     // not requiring any inputs from template so do now rather than waiting till ngOnInit:
     this.systemStatsService.mappedItems$.subscribe(x => this.stats$ = of(x));
   }
-
-
-
-
-
-
-  
 }
