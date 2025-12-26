@@ -1,91 +1,93 @@
 {
   "CUSTOM": {
     "SITE": {
-      "HOME": {
-        "INTRO": {
-          "TITLE": "BASE",
-          "DESCRIPTION": "The better way to build {{ BASE.VALUES.SINGULAR  }}. //Example of embedding a token.",
-          "MORE": ""
-        },
-        "CAPABILITIES": {
-          "TITLE": "{{BASE.CAPABILITIES.PLURAL}}",
-          "DESCRIPTION": "Anytime, Anywhere, Any Device - have a deeper understanding of your whole service.",
-          "MORE": "",
-          "PURPOSE": {
-            "TITLE": "{{BASE.PURPOSES.SINGULAR}}",
-            "DESCRIPTION": "Define objectives..."
+      "ANON": {
+        "HOME": {
+          "INTRO": {
+            "TITLE": "BASE",
+            "DESCRIPTION": "The better way to build {{ BASE.VALUES.SINGULAR  }}. //Example of embedding a token.",
+            "MORE": ""
           },
-          "PROJECTS": {
-            "TITLE": "{{BASE.PROJECTS.PLURAL}}",
-            "DESCRIPTION": "Develop projects to reach them..."
+          "CAPABILITIES": {
+            "TITLE": "{{BASE.CAPABILITIES.PLURAL}}",
+            "DESCRIPTION": "Anytime, Anywhere, Any Device - have a deeper understanding of your whole service.",
+            "MORE": "",
+            "PURPOSE": {
+              "TITLE": "{{BASE.PURPOSES.SINGULAR}}",
+              "DESCRIPTION": "Define objectives..."
+            },
+            "PROJECTS": {
+              "TITLE": "{{BASE.PROJECTS.PLURAL}}",
+              "DESCRIPTION": "Develop projects to reach them..."
+            },
+            "PEOPLE": {
+              "TITLE": "{{BASE.PEOPLE.PLURAL}}",
+              "DESCRIPTION": "...by enabling people..."
+            },
+            "GROUPS": {
+              "TITLE": "{{BASE.GROUPS.PLURAL}}",
+              "DESCRIPTION": "...organised in manageable groups..."
+            },
+            "PLACES": {
+              "TITLE": "{{BASE.PLACES.PLURAL}}",
+              "DESCRIPTION": "...using available locations..."
+            },
+            "PARTICIPATION": {
+              "TITLE": "{{BASE.PARTICIPATIONS.SINGLE}}",
+              "DESCRIPTION": "...participating..."
+            },
+            "PRESENCE": {
+              "TITLE": "{{BASE.PRESENCE.SINGULAR}}",
+              "DESCRIPTION": "...remotely or in person..."
+            },
+            "PROGRESS": {
+              "TITLE": "{{BASE.PROGRESS.SINGULAR}}",
+              "DESCRIPTION": "...progressing..."
+            },
+            "PRODUCTS": {
+              "TITLE": "{{BASE.PRODUCTS.PLURAL}}",
+              "DESCRIPTION": "...through curriculum meterial..."
+            },
+            "PLANS": {
+              "TITLE": "{{BASE.PLANS.PLURAL}}",
+              "DESCRIPTION": "...according to plan..."
+            },
+            "ACHIEVEMENTS": {
+              "TITLE": "{{BASE.ACHIEVEMENTS.PLURAL}}",
+              "DESCRIPTION": "...towards lifelong valued achievements."
+            }
           },
-          "PEOPLE": {
-            "TITLE": "{{BASE.PEOPLE.PLURAL}}",
-            "DESCRIPTION": "...by enabling people..."
+          "FEATURES": {
+            "TITLE": "{{BASE.FEATURES.PLURAL}}",
+            "DESCRIPTION": "....",
+            "MORE": "....",
+            "MORE_INFO": "...."
           },
-          "GROUPS": {
-            "TITLE": "{{BASE.GROUPS.PLURAL}}",
-            "DESCRIPTION": "...organised in manageable groups..."
+          "DASHBOARDS": {
+            "TITLE": "{{BASE.FEATURES.PLURAL}}",
+            "DESCRIPTION": "We've developed features to enable users of any age, in any size org, in their preferred language..."
           },
-          "PLACES": {
-            "TITLE": "{{BASE.PLACES.PLURAL}}",
-            "DESCRIPTION": "...using available locations..."
+          "ENDORSEMENTS": {
+            "TITLE": "Don't Take Our Word For It...",
+            "DESCRIPTION": "...take instead the perspective of other's who have used it first."
           },
-          "PARTICIPATION": {
-            "TITLE": "{{BASE.PARTICIPATIONS.SINGLE}}",
-            "DESCRIPTION": "...participating..."
-          },
-          "PRESENCE": {
-            "TITLE": "{{BASE.PRESENCE.SINGULAR}}",
-            "DESCRIPTION": "...remotely or in person..."
-          },
-          "PROGRESS": {
-            "TITLE": "{{BASE.PROGRESS.SINGULAR}}",
-            "DESCRIPTION": "...progressing..."
-          },
-          "PRODUCTS": {
-            "TITLE": "{{BASE.PRODUCTS.PLURAL}}",
-            "DESCRIPTION": "...through curriculum meterial..."
+          "FAQS": {
+            "TITLE": "{{BASE.FAQS.FREQUENTLY_ASKED_QUESTIONS}}",
+            "DESCRIPTION": "The following are the most common questions. Have more? We have more answers."
           },
           "PLANS": {
-            "TITLE": "{{BASE.PLANS.PLURAL}}",
-            "DESCRIPTION": "...according to plan..."
+            "TITLE": "Choose the plan that's right for you!",
+            "DESCRIPTION": "Straight forward, flexible, inexpensive plans for every situation."
           },
-          "ACHIEVEMENTS": {
-            "TITLE": "{{BASE.ACHIEVEMENTS.PLURAL}}",
-            "DESCRIPTION": "...towards lifelong valued achievements."
+          "TEAM": {
+            "TITLE": "{{BASE.TEAMS.THE_TEAM}}",
+            "DESCRIPTION": "Some of the core team that is behind the automation that has your back.",
+            "MORE": "Many of us have worked together on delivering several successful projects over many years."
+          },
+          "CONTACT": {
+            "TITLE": "{{BASE.CONTACTS.CONTACT_US}}",
+            "DESCRIPTION": "We're eager to help you to meet your objectives with our services."
           }
-        },
-        "FEATURES": {
-          "TITLE": "{{BASE.FEATURES.PLURAL}}",
-          "DESCRIPTION": "....",
-          "MORE": "....",
-          "MORE_INFO": "...."
-        },
-        "DASHBOARDS": {
-          "TITLE": "{{BASE.FEATURES.PLURAL}}",
-          "DESCRIPTION": "We've developed features to enable users of any age, in any size org, in their preferred language..."
-        },
-        "ENDORSEMENTS": {
-          "TITLE": "Don't Take Our Word For It...",
-          "DESCRIPTION": "...take instead the perspective of other's who have used it first."
-        },
-        "FAQS": {
-          "TITLE": "{{BASE.FAQS.FREQUENTLY_ASKED_QUESTIONS}}",
-          "DESCRIPTION": "The following are the most common questions. Have more? We have more answers."
-        },
-        "PLANS": {
-          "TITLE": "Choose the plan that's right for you!",
-          "DESCRIPTION": "Straight forward, flexible, inexpensive plans for every situation."
-        },
-        "TEAM": {
-          "TITLE": "{{BASE.TEAMS.THE_TEAM}}",
-          "DESCRIPTION": "Some of the core team that is behind the automation that has your back.",
-          "MORE": "Many of us have worked together on delivering several successful projects over many years."
-        },
-        "CONTACT": {
-          "TITLE": "{{BASE.CONTACTS.CONTACT_US}}",
-          "DESCRIPTION": "We're eager to help you to meet your objectives with our services."
         }
       }
     }
