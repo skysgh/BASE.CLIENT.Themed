@@ -1,4 +1,4 @@
-import { TAppletsEducationConfigurationNavigation } from "../../../app.lets/education/configuration/t.app.lets.education.configuration.navigation";
+import { TAppletsEducationConfigurationNavigation } from "../../../sites.app.lets/education/configuration/t.app.lets.education.configuration.navigation";
 import { TBaseConfigurationObject } from "../t.base.configuration.object";
 
 /**

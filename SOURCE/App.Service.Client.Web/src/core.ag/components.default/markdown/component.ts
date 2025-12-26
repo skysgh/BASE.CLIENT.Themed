@@ -9,7 +9,8 @@ import { Component, Input, OnInit} from "@angular/core";
 import { SystemDefaultServices } from "../../../core/services/system.default-services.service";
 // Models:
 import { ViewModel } from "./vm";
-import { appsConfiguration } from "../../../apps/configuration/implementations/apps.configuration";
+// ✅ UPDATED: Use new tier path after restructuring (apps -> sites.app)
+import { appsConfiguration } from "../../../sites.app/configuration/implementations/apps.configuration";
 import { coreAgConfiguration } from "../../configuration/implementations/coreAg.configuration";
 import { DefaultComponentServices } from "../../../core/services/default-controller-services";
 // Data:

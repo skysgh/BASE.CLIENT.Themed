@@ -29,8 +29,9 @@ import { TranslationService } from '../../core/services/translation.service';
 import { BaseCoreAgModule } from '../module';
 import { AppExtensionRoutingModule } from './routing';
 import { BaseThemesModule } from '../../themes/module';
-import { BaseAppsModule } from '../sites.app/module';
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+// ✅ UPDATED: Correct path depth (../../ not ../) after tier restructuring
+import { BaseAppsModule } from '../../sites.app/module';
+import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
 
 // Theme-specific state management
 import { authenticationReducer } from '../../themes/t1/_state/authentication/authentication.reducer';
