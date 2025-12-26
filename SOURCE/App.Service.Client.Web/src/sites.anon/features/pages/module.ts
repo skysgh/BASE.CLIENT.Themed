@@ -33,6 +33,8 @@ import { BaseThemesV1Module } from '../../../themes/t1/module';
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
 import { BaseThemesModule } from '../../../themes/module';
+// ✅ Import parent module to get access to its providers (tokens)
+import { BaseCoreSitesModule } from '../../module';
 // Configuration:
 import { appsConfiguration } from '../../../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../configuration/implementation/sites.configuration';
@@ -53,31 +55,21 @@ import { sitesConfiguration } from '../../configuration/implementation/sites.con
   imports: [
     CommonModule,
 
-    // Import Base of Upstream Column: THemes, which depends on Core.Ag:
+    // ✅ Import parent module FIRST to get token providers
+    BaseCoreSitesModule,
+    
+    // Import Base of Upstream Column: Themes, which depends on Core.Ag:
     BaseThemesModule,
-    //Can Remove: TranslateModule.forChild(),
+    
     RouterModule.forChild(
       [
-        // We're basically saying that
-        // parent module (base.module) associated 'page'
-        // to a a routeroutlet containing component it managed,
-        // and into it loaded this module.
-        // This module then provided no further router-outlets, just pages
-        // within its resposibility, such that
-        // 'base/pages/' or 'base/pages/layout' loads a router-controller
-        // it manages, and within that, loads deeper module.
-        // Note:
-        // Admittedly in he case of information, their simplicity doesn't
-        // warant a module for each, but out of habit I *think* I prefer paying
-        // a rigour price early, in case I manouverability later.
+        // Lazy load child feature modules
         { path: 'landing', loadChildren: () => import('./landing/module').then(m => m.BaseCorePagesLandingModule) },
         { path: 'information', loadChildren: () => import('./information/module').then(m => m.BaseCorePagesInformationModule) },
       ]
     ),
-    // Import classes within the above specified import files.
-    //Ag specific:
+    
     FormsModule,
-
     
     // Child Modules:
     BaseCorePagesLandingModule,

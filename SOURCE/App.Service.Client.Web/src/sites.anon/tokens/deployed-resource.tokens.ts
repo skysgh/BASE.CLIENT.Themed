@@ -70,13 +70,16 @@ import { DeployedResourcePaths } from '../contracts';
 /**
  * Injection token for deployed (static) resource paths.
  * 
- * ✅ UPDATED: Now uses providedIn: 'root' for automatic availability
- * in lazy-loaded modules without explicit provider setup.
+ * ✅ BEST PRACTICE: Provided by parent module (BaseCoreSitesModule)
+ * Child modules inherit by importing parent module.
+ * 
+ * ❌ ANTI-PATTERN: Using providedIn: 'root' (global pollution, no tree-shaking)
  * 
  * Pattern:
- * - Token provides default factory values
- * - Modules can override by providing their own values
- * - Lazy-loaded modules inherit root value automatically
+ * - Token defined here (contract)
+ * - BaseCoreSitesModule provides values
+ * - Lazy-loaded modules import BaseCoreSitesModule
+ * - Components inject token
  * 
  * SECURITY: LOW RISK
  * - Static content reviewed by team
@@ -85,29 +88,6 @@ import { DeployedResourcePaths } from '../contracts';
  * - No authentication required
  */
 export const DEPLOYED_RESOURCES = new InjectionToken<DeployedResourcePaths>(
-  'deployed.resources',
-  {
-    providedIn: 'root',
-    factory: () => {
-      // Default values (can be overridden by module providers)
-      // These use relative paths that work in development
-      return {
-        logos: {
-          light: '/assets/sites.anon/deployed/images/logos/logo-light.png',
-          dark: '/assets/sites.anon/deployed/images/logos/logo-dark.png'
-        },
-        images: {
-          root: '/assets/sites.anon/deployed/images/',
-          trustedBy: '/assets/sites.anon/deployed/images/trustedby/',
-          flags: '/assets/sites.anon/deployed/images/flags/',
-          backgrounds: '/assets/sites.anon/deployed/images/backgrounds/'
-        },
-        files: {
-          root: '/assets/sites.anon/deployed/files/',
-          markdown: '/assets/sites.anon/deployed/files/markdown/',
-          pdf: '/assets/sites.anon/deployed/files/pdf/'
-        }
-      };
-    }
-  }
+  'deployed.resources'
+  // ✅ No providedIn - explicit provider in module (best practice)
 );
