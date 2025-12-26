@@ -4,16 +4,15 @@ import { NgModule } from "@angular/core";
 // ✅ Config Registry
 import { ConfigRegistryService } from "../core/services/config-registry.service";
 
+// ✅ Import DI tokens
+import { DEPLOYED_RESOURCES } from "./tokens/deployed-resource.tokens";
+
 // Parent Module:
 import { BaseThemesModule } from "../themes/module";
 import { sitesConfiguration } from "./configuration/implementation/sites.configuration";
 
-// ✅ Import sites constants for registration
+// ✅ Import sites constants for registration and token values
 import { sitesConstants } from "./constants/implementations/sites.constants";
-
-// Child Modules:
-// NO: import { BaseCorePagesModule } from "./pages/module";
-// NO: import { BaseCoreDashboardsModule } from "./dashboard/module";
 
 
 @NgModule({
@@ -21,28 +20,40 @@ import { sitesConstants } from "./constants/implementations/sites.constants";
     // Components, Directives, Pipes developed in this Module.
   ],
   providers: [
-    // declare services to dependency inject into constructors.
+    // ============================================================================
+    // ✅ DI TOKEN PROVIDERS
+    // 
+    // Sites.Anon tier provides its own tokens for its components to inject.
+    // Values come from sitesConstants (own tier).
+    // ============================================================================
+    
+    {
+      provide: DEPLOYED_RESOURCES,
+      useValue: {
+        logos: {
+          light: sitesConstants.assets.deployed.images.logos + 'logo-light.png',
+          dark: sitesConstants.assets.deployed.images.logos + 'logo-dark.png'
+        },
+        images: {
+          root: sitesConstants.assets.deployed.images.root,
+          trustedBy: sitesConstants.assets.deployed.images.trustedBy,
+          flags: sitesConstants.assets.deployed.images.flags,
+          backgrounds: sitesConstants.assets.deployed.images.backgrounds
+        },
+        files: {
+          root: sitesConstants.assets.deployed.files.root,
+          markdown: sitesConstants.assets.deployed.files.markdownDir || sitesConstants.assets.deployed.files.root + 'markdown/',
+          pdf: sitesConstants.assets.deployed.files.pdfDir || sitesConstants.assets.deployed.files.root + 'pdf/'
+        }
+      }
+    }
   ],
   imports: [
-    // Import classes within the above specified import files.
-    // Ag specific:
     CommonModule,
-    // Import Base of Upstream Column: Themes, and thereby Core.Ag: 
     BaseThemesModule,
-
-    // NO: Import Parent Module:
-    // NO: N/A (at top of column hiearchy)
-    // NO: Import Child Modules:
-    // NO: BaseCoreSitesFeaturesModule,
-    // NO: BaseCoreDashboardsModule,
-    // NO: BaseCorePagesModule
   ],
   exports: [
     BaseThemesModule,
-    // NO: Export Parent Module:
-    // NO: BaseThemesV1Module
-    // Child Modules:
-    // NO: BaseCoreSitesFeaturesModule
   ]
 
 })
