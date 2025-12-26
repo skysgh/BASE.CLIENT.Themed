@@ -17,14 +17,14 @@ import { RouterModule, Routes } from '@angular/router';
 // ✅ Config Registry
 import { ConfigRegistryService } from '../core/services/config-registry.service';
 
-// ✅ Sites DI Tokens (defined by Sites, provided by Apps)
+// ✅ Sites.App DI Tokens (own tier tokens, not cross-tier import)
 import { 
-  API_ENDPOINTS,
-  DEPLOYED_RESOURCES,
-  UPLOADED_RESOURCES,
-  PUBLIC_NAVIGATION,
-  PRIVATE_NAVIGATION 
-} from '../sites/tokens';
+  APP_API_ENDPOINTS,
+  APP_DEPLOYED_RESOURCES,
+  APP_UPLOADED_RESOURCES,
+  APP_PUBLIC_NAVIGATION,
+  APP_PRIVATE_NAVIGATION 
+} from './tokens';
 
 // Other dependencies:
 import { BaseThemesV1Module } from '../themes/t1/module';
@@ -36,44 +36,37 @@ import { ServiceLanguagesService } from '../core/services/service.languages.serv
 // Modules:
 import { BaseAppsRoutingModule } from './routing';
 //Components:
-import { BaseAppsRouteComponent } from "../apps/ui/_route/component";
-import { BaseCoreSitesModule } from '../sites/module';
+import { BaseAppsRouteComponent } from "./ui/_route/component";
+import { BaseCoreSitesModule } from '../sites.anon/module';
 
 // ✅ Import apps/sites constants for token values
 import { appsConstants } from './constants/implementations/apps.constants';
 import { appsConfiguration } from './configuration/implementations/apps.configuration';
 import { appsMainConstants } from '../apps.bootstrap/constants/implementations/apps.main.constants';
-import { sitesConstantsApis } from '../sites/constants/implementations/sites.constants.apis';
-import { sitesConstantsResources } from '../sites/constants/implementations/sites.constants.resources';
-import { sitesConfigurationNavigation } from '../sites/configuration/implementation/sites.configuration.navigation';
+import { sitesConstantsApis } from '../sites.anon/constants/implementations/sites.constants.apis';
+import { sitesConstantsResources } from '../sites.anon/constants/implementations/sites.constants.resources';
+import { sitesConfigurationNavigation } from '../sites.anon/configuration/implementation/sites.configuration.navigation';
 import { environment } from '../environments/environment';
 
 
 @NgModule({
   declarations: [
-    // Components, Directives, Pipes developed in this Module.
     BaseAppsRouteComponent
   ],
   providers: [
-    // declare services to dependency inject into constructors.
     ServiceLanguagesRepositoryService,
     ServiceLanguagesService,
 
     // ============================================================================
     // ✅ DI TOKEN PROVIDERS
     // 
-    // These tokens are defined by Sites tier (consumer defines interface)
-    // and provided here by Apps tier (provider implements interface).
-    // 
-    // This follows SOLID principles:
-    // - Sites defines what it needs (token + interface)
-    // - Apps provides the actual values
-    // - Loose coupling via Dependency Inversion
+    // Uses APP_ prefixed tokens (own tier, not cross-tier imports).
+    // Implements interfaces defined in parent sites/types/tokens.types.ts
     // ============================================================================
 
-    // DEPLOYED RESOURCES (Static assets - logos, images, files)
+    // DEPLOYED RESOURCES
     {
-      provide: DEPLOYED_RESOURCES,
+      provide: APP_DEPLOYED_RESOURCES,
       useValue: {
         logos: {
           light: `${appsMainConstants.resources.open.images.logos}logo-light.png`,
@@ -93,9 +86,9 @@ import { environment } from '../environments/environment';
       }
     },
 
-    // UPLOADED RESOURCES (User-generated content - profiles, documents, media)
+    // UPLOADED RESOURCES
     {
-      provide: UPLOADED_RESOURCES,
+      provide: APP_UPLOADED_RESOURCES,
       useValue: {
         users: {
           root: sitesConstantsResources.sensitive.root,
@@ -117,7 +110,7 @@ import { environment } from '../environments/environment';
 
     // API ENDPOINTS
     {
-      provide: API_ENDPOINTS,
+      provide: APP_API_ENDPOINTS,
       useValue: {
         brochure: sitesConstantsApis.brochure,
         persons: sitesConstantsApis.persons,
@@ -127,9 +120,9 @@ import { environment } from '../environments/environment';
       }
     },
 
-    // PUBLIC NAVIGATION (No auth required)
+    // PUBLIC NAVIGATION
     {
-      provide: PUBLIC_NAVIGATION,
+      provide: APP_PUBLIC_NAVIGATION,
       useValue: {
         root: sitesConfigurationNavigation.root,
         home: sitesConfigurationNavigation.home,
@@ -173,9 +166,9 @@ import { environment } from '../environments/environment';
       }
     },
 
-    // PRIVATE NAVIGATION (Auth required)
+    // PRIVATE NAVIGATION
     {
-      provide: PRIVATE_NAVIGATION,
+      provide: APP_PRIVATE_NAVIGATION,
       useValue: {
         up: sitesConfigurationNavigation.up,
         public: {
@@ -286,7 +279,7 @@ export class BaseAppsModule {
       configuration: appsConfiguration
     });
     
-    console.log('✅ [BaseAppsModule] Tokens provided (DEPLOYED_RESOURCES, API_ENDPOINTS, etc.)');
+    console.log('✅ [BaseAppsModule] Tokens provided (APP_DEPLOYED_RESOURCES, APP_API_ENDPOINTS, etc.)');
   }
 }
 

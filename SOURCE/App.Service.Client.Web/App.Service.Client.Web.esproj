@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\app.lets\architecture\NewFolder\" />
-    <Folder Include="src\apps\main\" />
+    <Folder Include="src\sites.app\main\" />
     <Folder Include="src\core.ag\base\constants\" />
     <Folder Include="src\core.ag\contracts\" />
     <Folder Include="src\core.ag\features\" />
