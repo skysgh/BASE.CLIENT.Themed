@@ -14,7 +14,7 @@ import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.servi
 import { ServiceStatsRepositoryService } from './repositories/service-stats.repository.service';
 import { ServiceStat } from '../../models/data/service-stat.model';
 import { ServiceStatVTO } from '../../models/view/service-stat.vto.model';
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
 import { TranslationService } from '../translation.service';
 // Models:
 

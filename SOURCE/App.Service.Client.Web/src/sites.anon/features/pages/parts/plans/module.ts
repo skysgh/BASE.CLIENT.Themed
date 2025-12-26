@@ -24,7 +24,7 @@ import { BaseCorePagesLandingPricingComponent } from '../../landing/pricing/comp
 import { BaseCoreLandingRoutingModule } from './routing';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BaseThemesModule } from '../../../../../themes/module';
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../../../configuration/implementation/sites.configuration';
 
 // NO: Parent Module:

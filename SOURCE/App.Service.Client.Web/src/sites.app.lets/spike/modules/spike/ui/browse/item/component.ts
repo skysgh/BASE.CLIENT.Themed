@@ -1,7 +1,7 @@
 // Ag:
 import { Component, Input } from '@angular/core';
 // Configuration:
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { appletsSpikesConfiguration } from '../../../../../configuration/implementations/app.lets.spikes.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';

@@ -16,7 +16,7 @@ import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.servic
 import { ServiceLanguage } from '../models/data/service-language.model';
 import { SystemLanguageVM } from '../models/service-Language.vto.model';
 import { MappedItemsCollectionServiceBase } from './base/mapped-items-collection.service.base';
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
 import { SystemDefaultServices } from './system.default-services.service';
 
 

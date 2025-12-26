@@ -1,7 +1,7 @@
 import { IHasMenuItem } from '../models/contracts/IHasMenuItem';
 // Constants:
 
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
 
 
 export const MENU: IHasMenuItem[] =

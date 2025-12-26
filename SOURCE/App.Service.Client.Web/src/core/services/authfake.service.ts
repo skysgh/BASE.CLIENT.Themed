@@ -11,7 +11,7 @@ import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.servic
 // Models:
 import { User } from '../models/misc/auth.models';
 import { SystemDefaultServices } from './system.default-services.service';
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
 // Data:
 
 

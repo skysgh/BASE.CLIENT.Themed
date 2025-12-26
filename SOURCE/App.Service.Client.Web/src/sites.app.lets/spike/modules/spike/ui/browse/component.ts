@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 // Configuration:
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
 // Services:
 import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';

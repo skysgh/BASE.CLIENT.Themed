@@ -33,7 +33,7 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
 // import { BaseCoreCommonComponentsModule } from '../../../core/modules/common/components/module';
 import { ServiceLanguagesRepositoryService } from '../../core/services/services/repositories/service-languages.repository.service';
 import { ServiceLanguagesService } from '../../core/services/service.languages.service';
-import { BaseAppsModule } from '../sites.app/module';
+import { BaseAppsModule } from '../../sites.app/module';
 
 // ...submodules:
 // NO mention, as it is late loaded by routes:

@@ -10,7 +10,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 
 // Configuration:
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../../configuration/implementation/sites.configuration';
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';

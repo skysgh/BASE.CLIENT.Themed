@@ -17,7 +17,7 @@ import {
   IApiEndpoints,
   IPublicNavigation,
   IPrivateNavigation
-} from '../../sites/types/tokens.types';
+} from '../../sites.anon/types/tokens.types';
 
 // ============================================================================
 // APP TIER TOKENS

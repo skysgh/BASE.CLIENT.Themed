@@ -9,7 +9,8 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 // Services:
 import { SystemDiagnosticsTraceService } from '../../core/services/system.diagnostics-trace.service';
 import { SystemDefaultServices } from '../../core/services/system.default-services.service';
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+// ✅ UPDATED: Correct path depth (../../ not ../) from core.ag/interceptors to sites.app
+import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
 
 
 

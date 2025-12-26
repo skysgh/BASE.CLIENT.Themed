@@ -18,7 +18,7 @@ import { Observable, of } from 'rxjs';
 import {  Responsive as importedResponsive} from './settings';
 import { ViewModel } from './vm';
 import { SystemDefaultServices } from '../../../../../../../core/services/system.default-services.service';
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
 

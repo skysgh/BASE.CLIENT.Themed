@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { TranslationService } from '../../../../../../../core/services/translation.service';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 import { SystemDiagnosticsTraceService } from '../../../../../../../core/services/system.diagnostics-trace.service';

@@ -3,7 +3,7 @@
 // Ag:
 import { Injectable } from '@angular/core';
 // Configuration:
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 import { SystemErrorService } from './system.error.service';
