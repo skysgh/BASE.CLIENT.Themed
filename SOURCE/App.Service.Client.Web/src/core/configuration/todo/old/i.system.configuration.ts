@@ -3,7 +3,7 @@
 
 //import { IThemeConfiguration } from './i.theme.configuration';
 //import { ICoreAgConfiguration } from '../../../core.ag/configuration/i.core-ag.configuration';
-//import { ISiteConfiguration } from '../../../sites/configuration/i.site.configuration';
+//import { ISiteConfiguration } from '../sites.anon/configuration/i.site.configuration';
 //import { ISystemDescription } from './i.system.description';
 
 //import { systemApp }  from '../../constants/system.app';

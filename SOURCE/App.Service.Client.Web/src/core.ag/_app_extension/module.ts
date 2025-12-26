@@ -29,8 +29,8 @@ import { TranslationService } from '../../core/services/translation.service';
 import { BaseCoreAgModule } from '../module';
 import { AppExtensionRoutingModule } from './routing';
 import { BaseThemesModule } from '../../themes/module';
-import { BaseAppsModule } from '../../apps/module';
-import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+import { BaseAppsModule } from '../sites.app/module';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 
 // Theme-specific state management
 import { authenticationReducer } from '../../themes/t1/_state/authentication/authentication.reducer';

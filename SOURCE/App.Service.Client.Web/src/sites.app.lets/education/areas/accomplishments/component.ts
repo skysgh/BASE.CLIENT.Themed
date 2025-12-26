@@ -1,7 +1,7 @@
 // Ag:
 import { Component, OnInit } from "@angular/core";
 // configuration:
-import { appsConfiguration } from '../../../../apps/configuration/implementations/apps.configuration'
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration'
 import { appletsEducationConfiguration } from "../../configuration/implementations/app.lets.education.configuration";
 // Services:
 import { DefaultComponentServices } from "../../../../core/services/default-controller-services";

@@ -18,7 +18,7 @@ import { ServicePricingPlanVTO } from '../../models/service.pricingplan.vto.mode
 import { SystemPricingPlanRepositoryService } from './repositories/service-pricingplan.repository.service';
 import { ServiceFeature } from '../../models/data/service-features.model';
 import { ServiceFeaturesRepositoryService } from './repositories/service-features.repository.service';
-import { appsConfiguration } from '../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 
 
 // Models:

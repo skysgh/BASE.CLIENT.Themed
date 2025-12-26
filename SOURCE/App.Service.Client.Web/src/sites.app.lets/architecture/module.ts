@@ -12,7 +12,7 @@ import { BaseThemesV1Module } from '../../themes/t1/module';
 //Module specific:
 import { BaseAppsArchitectureRoutingModule } from "./routing.module";
 // Parent Module:
-import { BaseAppsModule } from '../../apps/module';
+import { BaseAppsModule } from '../sites.app/module';
 // Child Modules:
 import { BaseAppsArchitectureValuesModule } from "./modules/values/module";
 

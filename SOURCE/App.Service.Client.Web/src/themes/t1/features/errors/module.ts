@@ -16,7 +16,7 @@ import { BaseErrors404AltComponent } from './404/alt/component';
 import { BaseErrors500TodoComponent } from './500/component';
 import { BaseErrorsOfflineComponent } from './000/offline/component';
 import { BaseThemesModule } from '../../../module';
-import { appsConfiguration } from '../../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
 

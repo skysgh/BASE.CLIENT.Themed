@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 //
 // Services//
 import { SystemEnvironmentService } from './system.environment.service';
-import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 
 // Models:
 //

@@ -46,7 +46,7 @@ import { BaseAppsPagesLandingIndexHeaderComponent } from './components/header/co
 //import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from '_root';
 import { BaseThemesModule } from '../../../../../themes/module';
 import { BaseThemesV1Module } from '../../../../../themes/t1/module';
-import { appsConfiguration } from '../../../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../../../configuration/implementation/sites.configuration';
 import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/scrollBackToTop/BaseAppsPagesLandingIndexScrollBackToTopComponent';
 import { BaseCoreAgModule } from '../../../../../core.ag/module';

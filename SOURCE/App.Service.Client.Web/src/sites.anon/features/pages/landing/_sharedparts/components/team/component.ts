@@ -10,7 +10,7 @@ import {
   PrivateNavigationPaths 
 } from '../../../../../../tokens';
 // Configuration:
-import { appsConfiguration } from '../../../../../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';

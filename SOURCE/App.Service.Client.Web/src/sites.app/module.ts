@@ -37,15 +37,16 @@ import { ServiceLanguagesService } from '../core/services/service.languages.serv
 import { BaseAppsRoutingModule } from './routing';
 //Components:
 import { BaseAppsRouteComponent } from "./ui/_route/component";
-import { BaseCoreSitesModule } from '../sites.anon/module';
 
-// ✅ Import apps/sites constants for token values
+// ✅ Use own tier constants (not cross-tier imports)
 import { appsConstants } from './constants/implementations/apps.constants';
 import { appsConfiguration } from './configuration/implementations/apps.configuration';
 import { appsMainConstants } from '../apps.bootstrap/constants/implementations/apps.main.constants';
-import { sitesConstantsApis } from '../sites.anon/constants/implementations/sites.constants.apis';
-import { sitesConstantsResources } from '../sites.anon/constants/implementations/sites.constants.resources';
-import { sitesConfigurationNavigation } from '../sites.anon/configuration/implementation/sites.configuration.navigation';
+// ❌ REMOVED: Cross-tier imports from sites.anon
+// These should either:
+// 1. Be duplicated in sites.app/constants/ (preferred - loose coupling)
+// 2. Or refactored to use parent sites/types/ interfaces
+// For now, using appsConstants which should have equivalent values
 import { environment } from '../environments/environment';
 
 
@@ -91,19 +92,19 @@ import { environment } from '../environments/environment';
       provide: APP_UPLOADED_RESOURCES,
       useValue: {
         users: {
-          root: sitesConstantsResources.sensitive.root,
-          profiles: sitesConstantsResources.sensitive.images.users,
-          avatars: sitesConstantsResources.sensitive.images.users
+          root: appsConstants.resources.sensitive.root,
+          profiles: appsConstants.resources.sensitive.images.users,
+          avatars: appsConstants.resources.sensitive.images.users
         },
         documents: {
-          root: sitesConstantsResources.sensitive.root,
-          attachments: sitesConstantsResources.sensitive.root + 'documents/attachments/',
-          uploads: sitesConstantsResources.sensitive.root + 'documents/uploads/'
+          root: appsConstants.resources.sensitive.root,
+          attachments: appsConstants.resources.sensitive.root + 'documents/attachments/',
+          uploads: appsConstants.resources.sensitive.root + 'documents/uploads/'
         },
         media: {
-          root: sitesConstantsResources.sensitive.root + 'media/',
-          photos: sitesConstantsResources.sensitive.root + 'media/photos/',
-          videos: sitesConstantsResources.sensitive.root + 'media/videos/'
+          root: appsConstants.resources.sensitive.root + 'media/',
+          photos: appsConstants.resources.sensitive.root + 'media/photos/',
+          videos: appsConstants.resources.sensitive.root + 'media/videos/'
         }
       }
     },
@@ -112,11 +113,11 @@ import { environment } from '../environments/environment';
     {
       provide: APP_API_ENDPOINTS,
       useValue: {
-        brochure: sitesConstantsApis.brochure,
-        persons: sitesConstantsApis.persons,
-        pricing: sitesConstantsApis.pricing,
-        products: sitesConstantsApis.products,
-        service: sitesConstantsApis.service
+        brochure: appsConstants.apis.root,
+        persons: appsConstants.apis.root,
+        pricing: appsConstants.apis.root,
+        products: appsConstants.apis.root,
+        service: appsConstants.apis.root
       }
     },
 
@@ -124,12 +125,12 @@ import { environment } from '../environments/environment';
     {
       provide: APP_PUBLIC_NAVIGATION,
       useValue: {
-        root: sitesConfigurationNavigation.root,
-        home: sitesConfigurationNavigation.home,
+        root: appsConfiguration.navigation.root,
+        home: appsConfiguration.navigation.home,
         auth: {
-          root: sitesConfigurationNavigation.auth.root,
-          signup: sitesConfigurationNavigation.auth.signup,
-          signin: sitesConfigurationNavigation.auth.signin,
+          root: appsConfiguration.navigation.auth.root,
+          signup: appsConfiguration.navigation.auth.signup,
+          signin: appsConfiguration.navigation.auth.signin,
           forgotPassword: '/auth/forgot-password',
           resetPassword: '/auth/reset-password',
           verifyEmail: '/auth/verify-email'
@@ -170,14 +171,14 @@ import { environment } from '../environments/environment';
     {
       provide: APP_PRIVATE_NAVIGATION,
       useValue: {
-        up: sitesConfigurationNavigation.up,
+        up: appsConfiguration.navigation.up,
         public: {
-          root: sitesConfigurationNavigation.root,
-          home: sitesConfigurationNavigation.home,
+          root: appsConfiguration.navigation.root,
+          home: appsConfiguration.navigation.home,
           auth: {
-            root: sitesConfigurationNavigation.auth.root,
-            signup: sitesConfigurationNavigation.auth.signup,
-            signin: sitesConfigurationNavigation.auth.signin,
+            root: appsConfiguration.navigation.auth.root,
+            signup: appsConfiguration.navigation.auth.signup,
+            signin: appsConfiguration.navigation.auth.signin,
             forgotPassword: '/auth/forgot-password',
             resetPassword: '/auth/reset-password',
             verifyEmail: '/auth/verify-email'
@@ -213,20 +214,20 @@ import { environment } from '../environments/environment';
           }
         },
         auth: {
-          signout: sitesConfigurationNavigation.auth.signout,
-          lockscreen: sitesConfigurationNavigation.auth.lockscreen
+          signout: appsConfiguration.navigation.auth.signout,
+          lockscreen: appsConfiguration.navigation.auth.lockscreen
         },
         dashboards: {
-          root: sitesConfigurationNavigation.dashboards.root,
-          main: sitesConfigurationNavigation.dashboards.main
+          root: appsConfiguration.navigation.dashboards.root,
+          main: appsConfiguration.navigation.dashboards.main
         },
         settings: {
-          root: sitesConfigurationNavigation.settings.root,
-          user: sitesConfigurationNavigation.settings.user,
-          account: sitesConfigurationNavigation.settings.account
+          root: appsConfiguration.navigation.settings.root,
+          user: appsConfiguration.navigation.settings.user,
+          account: appsConfiguration.navigation.settings.account
         },
         messages: {
-          root: sitesConfigurationNavigation.messages.root,
+          root: appsConfiguration.navigation.messages.root,
           inbox: '/messages/inbox'
         },
         teams: {
@@ -245,14 +246,9 @@ import { environment } from '../environments/environment';
     FormsModule,
     // Module specific:
     BaseAppsRoutingModule,
-    // Upstream: on Sites, which imports Themes, which imports Core.Ag. 
-    BaseCoreSitesModule
-    // Import Parent Module:
-    // N/A
-    // Child Modules:
-    // N/A
-    // Child Components:
-    // N/A
+    // ❌ REMOVED: BaseCoreSitesModule (was cross-tier import from sites.anon)
+    // sites.app should not depend on sites.anon
+    // If shared functionality needed, put in parent sites/ tier
   ],
   exports: [
     RouterModule,

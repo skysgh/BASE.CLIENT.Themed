@@ -10,7 +10,7 @@ import { getFirebaseBackend } from '../utilities/authUtils';
 import { RegisterSuccess, loginFailure, loginSuccess, logout, logoutSuccess } from '../../themes/t1/_state/authentication/authentication.actions'
 // Constants:
 // Configuration:
-import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 import { coreConfiguration } from '../configuration/implementations/core.configuration';
 // Services:
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';

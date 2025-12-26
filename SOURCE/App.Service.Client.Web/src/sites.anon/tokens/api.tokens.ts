@@ -18,8 +18,8 @@
  * PROVIDER SETUP:
  * ```typescript
  * // apps.main/module.ts
- * import { API_ENDPOINTS } from '../sites/tokens';
- * import { sitesConstantsApis } from '../sites/constants/implementations/sites.constants.apis';
+ * import { API_ENDPOINTS } from '../sites.anon/tokens';
+ * import { sitesConstantsApis } from '../sites.anon/constants/implementations/sites.constants.apis';
  * 
  * @NgModule({
  *   providers: [{

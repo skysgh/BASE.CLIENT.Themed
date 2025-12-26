@@ -9,7 +9,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // Configuration:
-import { appsConfiguration } from '../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 // Services:
 import { SystemDefaultServices } from '../core/services/system.default-services.service';
 

@@ -15,7 +15,7 @@ import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.servic
 import { ServiceTrustedBy } from '../models/data/service-trustedby.model';
 import { ServiceTrustedByVTO } from '../models/view/service.trusted-by.vto.model';
 import { SystemTrustedByRepositoryService } from './services/repositories/service-trustedby.repository.service';
-import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 import { SystemDefaultServices } from './system.default-services.service';
 // Models:
 

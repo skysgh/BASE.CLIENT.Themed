@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 // Constants:
-import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 
 // Services:
 import { MultiTranslateLoader } from '../../core.ag/translations/MultiTranslateLoader';

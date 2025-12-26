@@ -33,7 +33,7 @@
  * PROVIDER SETUP:
  * ```typescript
  * // apps.main/module.ts
- * import { UPLOADED_RESOURCES } from '../sites/tokens';
+ * import { UPLOADED_RESOURCES } from '../sites.anon/tokens';
  * import { environment } from '../environments/environment';
  * 
  * @NgModule({

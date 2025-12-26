@@ -4,7 +4,7 @@ import { ExampleService } from '../../../../../../core/services/example.service'
 import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
 
 import { Value } from '../../../../models/value.model';
-import { appsConfiguration } from '../../../../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 import { appletsArchitectureConfiguration } from '../../../../configuration/implementations/app.lets.architecture.configuration';
 

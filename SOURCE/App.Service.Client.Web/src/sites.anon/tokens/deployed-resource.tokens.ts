@@ -24,7 +24,7 @@
  * PROVIDER SETUP:
  * ```typescript
  * // apps.main/module.ts
- * import { DEPLOYED_RESOURCES } from '../sites/tokens';
+ * import { DEPLOYED_RESOURCES } from '../sites.anon/tokens';
  * 
  * @NgModule({
  *   providers: [{

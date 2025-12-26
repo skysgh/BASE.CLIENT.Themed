@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 // Services//
 //import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
 import { environment } from '../../environments/environment';
-//import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+//import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 
 
 // Describe the service:

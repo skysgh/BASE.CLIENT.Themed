@@ -18,8 +18,8 @@
  * PROVIDER SETUP:
  * ```typescript
  * // apps.main/module.ts
- * import { NAVIGATION_PATHS } from '../sites/tokens';
- * import { sitesConfigurationNavigation } from '../sites/configuration/implementation/sites.configuration.navigation';
+ * import { NAVIGATION_PATHS } from '../sites.anon/tokens';
+ * import { sitesConfigurationNavigation } from '../sites.anon/configuration/implementation/sites.configuration.navigation';
  * 
  * @NgModule({
  *   providers: [{

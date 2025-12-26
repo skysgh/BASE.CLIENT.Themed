@@ -9,7 +9,7 @@ import { SystemDiagnosticsTraceService } from '../../../../../../../../core/serv
 // Data/Models:
 //import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 //import { SystemService } from '../../../../../../../../core/services/system.service';
-import { appsConfiguration } from '../../../../../../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 import { TranslationService } from '../../../../../../../../core/services/translation.service';
 
 

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 //import { SystemService } from '../../system.service';
 // Models/Data:
 import { User } from '../../../../core/models/misc/auth.models';
-import { appsConfiguration } from '../../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 
 /**
  * Stateless service to manage interactions with

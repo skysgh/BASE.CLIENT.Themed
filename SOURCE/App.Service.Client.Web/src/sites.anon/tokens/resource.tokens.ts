@@ -18,7 +18,7 @@
  * PROVIDER SETUP:
  * ```typescript
  * // apps.main/module.ts
- * import { RESOURCE_PATHS } from '../sites/tokens';
+ * import { RESOURCE_PATHS } from '../sites.anon/tokens';
  * 
  * @NgModule({
  *   providers: [{

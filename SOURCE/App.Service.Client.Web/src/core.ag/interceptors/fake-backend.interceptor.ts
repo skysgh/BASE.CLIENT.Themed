@@ -9,7 +9,7 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 // Services:
 import { SystemDiagnosticsTraceService } from '../../core/services/system.diagnostics-trace.service';
 import { SystemDefaultServices } from '../../core/services/system.default-services.service';
-import { appsConfiguration } from '../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 
 
 

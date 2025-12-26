@@ -34,7 +34,7 @@ import { BaseThemesV1Module } from '../../../themes/t1/module';
 import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
 import { BaseThemesModule } from '../../../themes/module';
 // Configuration:
-import { appsConfiguration } from '../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../configuration/implementation/sites.configuration';
 // NO: Parent Module:
 // import { BaseCoreSitesFeaturesModule } from '../module';

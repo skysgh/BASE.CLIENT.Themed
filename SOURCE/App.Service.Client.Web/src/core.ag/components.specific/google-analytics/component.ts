@@ -10,7 +10,7 @@ import { ViewModel } from './vm';
 import { SystemDefaultServices } from '../../../core/services/system.default-services.service';
 import { StringService } from '../../../core/services/string.service';
 import { coreAgConfiguration } from '../../configuration/implementations/coreAg.configuration';
-import { appsConfiguration } from '../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
 import { DefaultComponentServices } from '../../../core/services/default-controller-services';
 // Models:
 // Data:
