@@ -35,7 +35,7 @@ import {
   getSidebarVisibilitye,
   getTopbarColor
 } from '../../../_state/layout/layout-selector';
-import { appsConfiguration } from "../../../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
 import { TranslationService } from "../../../../../core/services/translation.service";
 

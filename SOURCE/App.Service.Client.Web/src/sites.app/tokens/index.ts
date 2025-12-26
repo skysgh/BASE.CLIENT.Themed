@@ -11,13 +11,14 @@
  */
 
 import { InjectionToken } from '@angular/core';
+// ✅ Import from PARENT sites/types (not sibling sites.anon)
 import {
   IDeployedResources,
   IUploadedResources,
   IApiEndpoints,
   IPublicNavigation,
   IPrivateNavigation
-} from '../../sites.anon/types/tokens.types';
+} from '../../sites/types/tokens.types';
 
 // ============================================================================
 // APP TIER TOKENS
