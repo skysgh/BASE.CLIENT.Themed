@@ -1,4 +1,4 @@
-import { sitesConfigurationNavigationPurchases } from '../../../sites.anon/configuration/implementation/sites.configuration.navigation.purchases";
+import { sitesConfigurationNavigationPurchases } from '../../../sites.anon/configuration/implementation/sites.configuration.navigation.purchases';
 import { TAppsConfigurationNavigationPurchases } from "../t.apps.configuration.navigation.purchases";
 
 

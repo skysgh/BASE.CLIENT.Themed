@@ -9,7 +9,7 @@ import { Component, Input, OnDestroy, OnInit, Output } from "@angular/core";
 // Services:
 import { SystemDiagnosticsTraceService } from "../../../../../core/services/system.diagnostics-trace.service";
 import { ViewModel } from "./vm";
-import { appsConfiguration } from "../../../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from "../../../../../apps/configuration/implementations/apps.configuration";
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
 import { DefaultComponentServices } from "../../../../../core/services/default-controller-services";
 

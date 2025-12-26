@@ -1,7 +1,7 @@
-import { appletsConfiguration } from '../../../sites.app.lets/configuration/implementations/app.lets.configuration";
+import { appletsConfiguration } from '../../../sites.app.lets/configuration/implementations/app.lets.configuration';
 import { coreAgConfiguration } from "../../../core.ag/configuration/implementations/coreAg.configuration";
 import { coreConfiguration } from "../../../core/configuration/implementations/core.configuration";
-import { sitesConfiguration } from '../../../sites.anon/configuration/implementation/sites.configuration";
+import { sitesConfiguration } from '../../../sites.anon/configuration/implementation/sites.configuration';
 import { themesConfiguration } from "../../../themes/configuration/themes.configuration";
 import { themesT1Configuration } from "../../../themes/t1/configuration/implementations/themes.t1.configuration";
 import { TAppsConfigurationOthers } from "../t.apps.configuration.others";

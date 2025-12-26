@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 //  Misc:
 //
 // Configuration:
-import { appsConfiguration } from "../../../../../apps/configuration/implementations/apps.configuration';
+import { appsConfiguration } from "../../../../../apps/configuration/implementations/apps.configuration";
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
 // Services:
 import { EventService } from '../../../../../core/services/infrastructure/event.service';

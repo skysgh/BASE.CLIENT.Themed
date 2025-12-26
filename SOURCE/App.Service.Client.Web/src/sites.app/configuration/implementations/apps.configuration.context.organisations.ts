@@ -6,7 +6,7 @@ import { appsConfigurationSponsorSystemOrganisation } from "./apps.configuration
 import { TAppsConfigurationContext } from "../t.apps.configuration.context";
 import { appsConfigurationNavigation } from "./apps.configuration.navigation";
 import { appsConfigurationOthers } from "./apps.configuration.others";
-import { appletsConstants } from '../../../sites.app.lets/constants/implementations/app.lets.constants";
+import { appletsConstants } from '../../../sites.app.lets/constants/implementations/app.lets.constants';
 
 
 
