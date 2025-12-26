@@ -11,7 +11,7 @@ import { MENU } from '../../../../core/navigation/menu';
 import { IHasMenuItem } from '../../../../core/models/contracts/IHasMenuItem';
 import { ViewModel } from './vm';
 // Configuration:
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';

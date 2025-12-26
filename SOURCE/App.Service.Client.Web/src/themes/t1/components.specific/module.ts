@@ -11,7 +11,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 // Bootstrap:
 import { NgbAccordionModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 // Configuration:
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../core/services/default-controller-services';

@@ -15,7 +15,7 @@ import { TranslationService } from '../translation.service';
 // Models:
 import { ServicePricingPlan } from '../../models/data/service-pricing-plan.model';
 import { ServicePricingPlanVTO } from '../../models/service.pricingplan.vto.model';
-import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../sites.app/configuration/implementations/apps.configuration';
 
 // Models:
 

@@ -50,7 +50,7 @@ import { BaseCoreCommonComponentsSignUpInComponent } from './components/signupin
 import { BaseThemesV1Module } from '../module';
 import { BaseThemesModule } from '../../module';
 import { BaseThemesV1PipesModule } from '../pipes/module';
-import { appsConfiguration } from '../sites.app/configuration/implementations/apps.configuration';
+import { appsConfiguration } from '../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../configuration/implementations/themes.t1.configuration';
 
 @NgModule({

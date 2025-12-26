@@ -93,8 +93,9 @@ import { environment } from '../environments/environment';
       useValue: {
         users: {
           root: appsConstants.resources.sensitive.root,
-          profiles: appsConstants.resources.sensitive.images.users,
-          avatars: appsConstants.resources.sensitive.images.users
+          // ✅ Use bracket notation for properties from index signature
+          profiles: appsConstants.resources.sensitive.images['users'],
+          avatars: appsConstants.resources.sensitive.images['users']
         },
         documents: {
           root: appsConstants.resources.sensitive.root,
