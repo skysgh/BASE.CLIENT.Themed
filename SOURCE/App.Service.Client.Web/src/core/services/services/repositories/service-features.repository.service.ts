@@ -10,7 +10,7 @@ import { SimpleGenericRepositoryServiceBase } from "../../repositories/base/simp
 import { RepositoryStandardServicesPackage } from "../../repositories/base/_standard-repository-services-package";
 // Models:
 import { ServiceFeature } from "../../../models/data/service-features.model";
-import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
 
 /**
  * Stateless service to manage interactions with

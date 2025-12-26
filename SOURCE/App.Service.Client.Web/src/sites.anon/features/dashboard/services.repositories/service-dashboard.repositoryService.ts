@@ -11,7 +11,7 @@ import { HttpClient } from "@angular/common/http";
 import { SimpleGenericRepositoryServiceBase } from "../../../../core/services/repositories/base/simple-generic-repository-service.base";
 import { RepositoryStandardServicesPackage } from "../../../../core/services/repositories/base/_standard-repository-services-package";
 import { ServiceStat } from "../../../../core/models/data/service-stat.model";
-import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
 // Models/Data:
 //import { ServiceStat } from "../../../models/data/service-stat.model";
 

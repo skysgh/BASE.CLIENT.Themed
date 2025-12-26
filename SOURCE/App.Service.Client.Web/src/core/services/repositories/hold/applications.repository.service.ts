@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 // Etc:
 //
 // Constants:
-import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
 // Services:
 import { SimpleGenericRepositoryServiceBase } from "../base/simple-generic-repository-service.base";
 import { RepositoryStandardServicesPackage } from "../base/_standard-repository-services-package";

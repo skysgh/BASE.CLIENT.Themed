@@ -1,4 +1,4 @@
-import { TSitesConfigurationNavigationDashboards } from "../../sites/configuration/t.sites.configuration.navigation.dashboards";
+import { TSitesConfigurationNavigationDashboards } from '../../sites.anon/configuration/t.sites.configuration.navigation.dashboards";
 
 
 export type TAppsConfigurationNavigationDashboards = TSitesConfigurationNavigationDashboards & {};

@@ -1,4 +1,4 @@
-import { TSitesConfigurationNavigationErrors } from "../../sites/configuration/t.sites.configuration.navigation.errors";
+import { TSitesConfigurationNavigationErrors } from '../../sites.anon/configuration/t.sites.configuration.navigation.errors";
 
 
 

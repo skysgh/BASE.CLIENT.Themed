@@ -14,7 +14,7 @@ import { RepositoryStandardServicesPackage } from "../../repositories/base/_stan
 // Models:
 import { ServiceUserQuote } from "../../../models/data/service-user-quote.model";
 import { ServiceLanguagesService } from "../../service.languages.service";
-import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
 
 
 /**

@@ -1,6 +1,6 @@
 
-import { sitesConfiguration } from "../../../sites/configuration/implementation/sites.configuration";
-import { sitesConfigurationNavigation, NAV_ROOT} from "../../../sites/configuration/implementation/sites.configuration.navigation";
+import { sitesConfiguration } from '../../../sites.anon/configuration/implementation/sites.configuration";
+import { sitesConfigurationNavigation, NAV_ROOT} from '../../../sites.anon/configuration/implementation/sites.configuration.navigation";
 import { TAppsConfigurationNavigation } from "../t.apps.configuration.navigation";
 import { appsConfigurationNavigationApps } from "./apps.configuration.navigation.apps";
 import { appsConfigurationNavigationAuth } from "./apps.configuration.navigation.auth";

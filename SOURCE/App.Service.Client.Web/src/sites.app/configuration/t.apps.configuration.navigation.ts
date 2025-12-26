@@ -1,4 +1,4 @@
-import { TAppletsConfigurationNavigation } from "../../app.lets/configuration/t.app.lets.configuration.navigation";
+import { TAppletsConfigurationNavigation } from '../../sites.app.lets/configuration/t.app.lets.configuration.navigation";
 import { TBaseConfigurationNavigationRoutes } from "../../core/base/configuration/t.base.configuration.navigation";
 import { TAppsConfigurationNavigationSupport } from "./t.apps.configuration.navigation.support";
 import { TAppsConfigurationNavigationDashboards } from "./t.apps.configuration.navigation.dashboards";

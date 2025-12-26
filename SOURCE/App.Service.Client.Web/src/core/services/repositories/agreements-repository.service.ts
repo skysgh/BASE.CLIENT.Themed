@@ -9,7 +9,7 @@ import { SimpleGenericRepositoryServiceBase } from "./base/simple-generic-reposi
 import { RepositoryStandardServicesPackage } from "./base/_standard-repository-services-package";
 // Models:
 import { Agreement } from "../../models/agreement.model";
-import { appsConfiguration } from "../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../sites.app/configuration/implementations/apps.configuration";
 
 
 /**

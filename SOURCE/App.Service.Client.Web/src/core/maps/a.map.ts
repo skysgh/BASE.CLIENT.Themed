@@ -1,4 +1,4 @@
-import { Product } from "../../apps/education/models/product";
+import { Product } from '../../sites.app/education/models/product";
 
 // use to pass this callback to a map method:
 // eg:

@@ -13,7 +13,7 @@ import { RepositoryStandardServicesPackage } from '../../repositories/base/_stan
 import { SimpleGenericRepositoryServiceBase } from '../../repositories/base/simple-generic-repository-service.base';
 // Models:
 import { SystemCapabilitiesVTO } from '../../../../core/models/view/system-capabilities.vto.model';
-import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
 
 /**
  * Stateless service to manage interactions with

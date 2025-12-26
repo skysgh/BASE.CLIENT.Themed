@@ -9,7 +9,7 @@ import { HttpClient } from "@angular/common/http";
 import { SimpleGenericRepositoryServiceBase } from "../../repositories/base/simple-generic-repository-service.base";
 import { RepositoryStandardServicesPackage } from "../../repositories/base/_standard-repository-services-package";
 import { ServiceStat } from "../../../models/data/service-stat.model";
-import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
 // Models:
 
 /**
