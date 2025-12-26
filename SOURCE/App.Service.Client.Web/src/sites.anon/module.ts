@@ -31,19 +31,20 @@ import { sitesConstants } from "./constants/implementations/sites.constants";
       provide: DEPLOYED_RESOURCES,
       useValue: {
         logos: {
-          light: sitesConstants.assets.deployed.images.logos + 'logo-light.png',
-          dark: sitesConstants.assets.deployed.images.logos + 'logo-dark.png'
+          // ✅ Use bracket notation for properties from index signature
+          light: sitesConstants.assets['deployed'].images.logos + 'logo-light.png',
+          dark: sitesConstants.assets['deployed'].images.logos + 'logo-dark.png'
         },
         images: {
-          root: sitesConstants.assets.deployed.images.root,
-          trustedBy: sitesConstants.assets.deployed.images.trustedBy,
-          flags: sitesConstants.assets.deployed.images.flags,
-          backgrounds: sitesConstants.assets.deployed.images.backgrounds
+          root: sitesConstants.assets['deployed'].images.root,
+          trustedBy: sitesConstants.assets['deployed'].images.trustedBy,
+          flags: sitesConstants.assets['deployed'].images.flags,
+          backgrounds: sitesConstants.assets['deployed'].images.backgrounds
         },
         files: {
-          root: sitesConstants.assets.deployed.files.root,
-          markdown: sitesConstants.assets.deployed.files.markdownDir || sitesConstants.assets.deployed.files.root + 'markdown/',
-          pdf: sitesConstants.assets.deployed.files.pdfDir || sitesConstants.assets.deployed.files.root + 'pdf/'
+          root: sitesConstants.assets['deployed'].files.root,
+          markdown: sitesConstants.assets['deployed'].files.markdownDir || sitesConstants.assets['deployed'].files.root + 'markdown/',
+          pdf: sitesConstants.assets['deployed'].files.pdfDir || sitesConstants.assets['deployed'].files.root + 'pdf/'
         }
       }
     }
