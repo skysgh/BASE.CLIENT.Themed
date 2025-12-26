@@ -10,7 +10,7 @@ import { appsConfigurationNavigation } from "./apps.configuration.navigation";
 import { appsConfigurationOthers } from "./apps.configuration.others";
 import { appsConfigurationTodo } from "./apps.configuration.todo.settings.base_____";
 import { appsConfigurationContext } from "./apps.configuration.context.organisations";
-import { TAppsConfiguration } from "../t.apps.configuration";
+import { TAppsConfiguration } from "../t.apps.configuration';
 // Services:
 //
 // Other Configuration:

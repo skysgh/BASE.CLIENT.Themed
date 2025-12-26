@@ -10,7 +10,7 @@ import { TAppsConfigurationNavigationMessages } from "./t.apps.configuration.nav
 import { TAppsConfigurationNavigationTasks } from "./t.apps.configuration.navigation.tasks";
 import { TAppsConfigurationNavigationSchedules } from "./t.apps.configuration.navigation.schedules";
 import { TAppsConfigurationNavigationTeams } from "./t.apps.configuration.navigation.teams";
-import { TAppsConfiguration } from "./t.apps.configuration";
+import { TAppsConfiguration } from "./t.apps.configuration';
 import { TAppsConfigurationNavigationPurchases } from "./t.apps.configuration.navigation.purchases";
 
 /**An Apps specific extension of

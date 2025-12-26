@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 // Services:
 import { SimpleGenericRepositoryServiceBase } from "../base/simple-generic-repository-service.base";
 import { RepositoryStandardServicesPackage } from "../base/_standard-repository-services-package";
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 // Models:
 // TODO:
 

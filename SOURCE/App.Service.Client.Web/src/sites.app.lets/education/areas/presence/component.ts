@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 // Etc.
 import { TranslateService } from "@ngx-translate/core";
 // Constants:
-import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from "../../../../apps/configuration/implementations/apps.configuration';
 // Services:
 //import { SystemService } from "../../../../core/services/system.service";
 import { SystemDiagnosticsTraceService } from "../../../../core/services/system.diagnostics-trace.service";

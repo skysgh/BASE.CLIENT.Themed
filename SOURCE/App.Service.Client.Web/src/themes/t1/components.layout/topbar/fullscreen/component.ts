@@ -9,7 +9,7 @@ import { themesT1Configuration } from "../../../configuration/implementations/th
 import { EventService } from '../../../../../core/services/infrastructure/event.service';
 // Models:
 import { ViewModel } from "../vm";
-import { appsConfiguration } from "../../../../../apps/configuration/implementations/apps.configuration";
+import { appsConfiguration } from "../../../../../apps/configuration/implementations/apps.configuration';
 // Services:
 import { DefaultComponentServices } from "../../../../../core/services/default-controller-services";
 

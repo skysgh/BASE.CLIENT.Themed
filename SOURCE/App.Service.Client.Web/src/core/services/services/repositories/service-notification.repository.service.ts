@@ -11,7 +11,7 @@ import { RepositoryStandardServicesPackage } from "../../repositories/base/_stan
 // Models:
 import { ServiceNotification } from "../../../models/data/service-notification.model";
 import { Observable } from "rxjs";
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 
 
 /**

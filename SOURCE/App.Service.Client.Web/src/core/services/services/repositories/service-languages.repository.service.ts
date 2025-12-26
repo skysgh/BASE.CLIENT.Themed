@@ -11,7 +11,7 @@ import { ServiceSpecificSimpleGenericRepositoryServiceBase } from "../../reposit
 import { RepositoryStandardServicesPackage } from "../../repositories/base/_standard-repository-services-package";
 // Models/Data:
 import { ServiceLanguage } from "../../../models/data/service-language.model";
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 // Constants:
 
 /**

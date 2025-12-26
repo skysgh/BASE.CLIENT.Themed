@@ -10,7 +10,7 @@ import { RepositoryStandardServicesPackage } from "../../repositories/base/_stan
 import { SimpleGenericRepositoryServiceBase } from "../../repositories/base/simple-generic-repository-service.base";
 // Models:
 import { ServiceEndorsementMAYBE } from "../../../models/data/service-endorsement.model";
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 
 /**
  * Stateless service to manage interactions with

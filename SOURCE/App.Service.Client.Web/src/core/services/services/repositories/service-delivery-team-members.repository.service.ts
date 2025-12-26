@@ -13,7 +13,7 @@ import { SimpleGenericRepositoryServiceBase } from '../../repositories/base/simp
 
 // Models:
 import { ServiceDeliveryTeamMemberVTO } from '../../../../core/models/view/service-delivery-team-member.vto.model';
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 
 /**
  * Stateless service to manage interactions with

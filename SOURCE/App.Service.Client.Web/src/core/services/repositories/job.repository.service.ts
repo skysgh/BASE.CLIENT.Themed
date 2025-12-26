@@ -9,7 +9,7 @@ import { SimpleGenericRepositoryServiceBase } from "./base/simple-generic-reposi
 import { RepositoryStandardServicesPackage } from "./base/_standard-repository-services-package";
 //Models:
 import { Job } from "../../models/data/job.model";
-import { appsConfiguration } from '../../../sites.app/configuration/implementations/apps.configuration";
+import { appsConfiguration } from '../../../sites.app/configuration/implementations/apps.configuration';
 
 /**
  * Stateless service to manage interactions with
