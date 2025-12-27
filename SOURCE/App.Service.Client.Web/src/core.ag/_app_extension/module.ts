@@ -7,7 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 // Import Auth:
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 // Import Language:
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateCompiler } from '@ngx-translate/core';
+import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 // Import Store:
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -77,6 +78,11 @@ import { authenticationReducer } from '../../themes/t1/_state/authentication/aut
         // the method depends on services, etc. so
         // inject into createTranslateLoader, as first argument:
         deps: [HttpClient]
+      },
+      // ✅ NEW: Add MessageFormat compiler for gender/plural support!
+      compiler: {
+        provide: TranslateCompiler,
+        useClass: TranslateMessageFormatCompiler
       }
     }),
 

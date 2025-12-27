@@ -1,0 +1,33 @@
+{
+  "BASE": {
+    "_MESSAGEFORMAT_EXAMPLES": {
+      "[LAST_EDITED]": "[v24.12.28.00]",
+      "[ABOUT]": "[Examples of MessageFormat v2 syntax for gender/plural awareness. Copy these into your main i18n files!]",
+      "[DIV_01]": "[------]",
+      "COMMENT": "✅ PLURAL-AWARE TRANSLATIONS",
+      "[DIV_02]": "[------]",
+      "ITEMS_COUNT": "{count, plural, =0{No items} one{# item} other{# items}}",
+      "DAYS_LEFT": "{days, plural, =0{Expired today} one{# day left} other{# days left}}",
+      "FILES_SELECTED": "{count, plural, =0{No files selected} one{# file selected} other{# files selected}}",
+      "USERS_ONLINE": "{count, plural, =0{Nobody online} one{# user online} other{# users online}}",
+      "[DIV_03]": "[------]",
+      "COMMENT_2": "✅ GENDER-AWARE TRANSLATIONS",
+      "[DIV_04]": "[------]",
+      "USER_GREETING": "{gender, select, male{Welcome, Mr. {name}!} female{Welcome, Ms. {name}!} other{Welcome, {name}!}}",
+      "ROLE_ASSIGNED": "{gender, select, male{He was assigned as {role}} female{She was assigned as {role}} other{They were assigned as {role}}}",
+      "PROFILE_UPDATED": "{gender, select, male{His profile was updated} female{Her profile was updated} other{Their profile was updated}}",
+      "[DIV_05]": "[------]",
+      "COMMENT_3": "✅ COMBINED: Gender + Plural",
+      "[DIV_06]": "[------]",
+      "FRIEND_REQUESTS": "{gender, select, male{He sent you} female{She sent you} other{They sent you}} {count, plural, =0{no requests} one{# friend request} other{# friend requests}}",
+      "FILES_UPLOADED": "{gender, select, male{He uploaded} female{She uploaded} other{They uploaded}} {count, plural, =0{no files} one{# file} other{# files}}",
+      "MESSAGES_RECEIVED": "{gender, select, male{He sent} female{She sent} other{They sent}} {count, plural, =0{no messages} one{# message} other{# messages}}",
+      "[DIV_07]": "[------]",
+      "COMMENT_4": "✅ NESTED KEYS + MessageFormat (THE MAGIC!)",
+      "[DIV_08]": "[------]",
+      "TASK_CREATED": "{gender, select, male{He {{BASE.ACTIONS.CREATE}}d this task} female{She {{BASE.ACTIONS.CREATE}}d this task} other{They {{BASE.ACTIONS.CREATE}}d this task}}",
+      "TASK_DELETED": "{gender, select, male{He {{BASE.ACTIONS.DELETE}}d} female{She {{BASE.ACTIONS.DELETE}}d} other{They {{BASE.ACTIONS.DELETE}}d}} {count, plural, one{# task} other{# tasks}}",
+      "ACCOUNT_STATUS": "Your {{BASE.ACCOUNTS.SINGULAR}} has {count, plural, =0{no pending items} one{# pending item} other{# pending items}}"
+    }
+  }
+}
