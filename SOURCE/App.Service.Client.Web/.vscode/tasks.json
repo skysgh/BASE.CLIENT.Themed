@@ -3,6 +3,60 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "test-and-serve",
+      "dependsOn": [
+        "test-critical",
+        "ng-serve"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "detail": "Run tests THEN start dev server (recommended for F5)"
+    },
+    {
+      "label": "test-critical",
+      "type": "npm",
+      "script": "test:critical",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Run Core critical tests (219 tests, ~10s)"
+    },
+    {
+      "label": "ng-serve",
+      "type": "npm",
+      "script": "start:fast",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "source": "ts",
+        "applyTo": "closedDocuments",
+        "fileLocation": [
+          "relative",
+          "${cwd}"
+        ],
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Compiled successfully"
+        }
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false
+      },
+      "detail": "Start Angular dev server without tests"
+    },
+    {
       "type": "npm",
       "script": "startX",
       "isBackground": true,
@@ -18,7 +72,8 @@
             "regexp": "bundle generation complete"
           }
         }
-      }
+      },
+      "detail": "Legacy start task"
     },
     {
       "type": "npm",
@@ -36,7 +91,47 @@
             "regexp": "bundle generation complete"
           }
         }
-      }
+      },
+      "detail": "Legacy test task"
+    },
+    {
+      "label": "test-all",
+      "type": "npm",
+      "script": "test:all",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated"
+      },
+      "detail": "Run ALL tests with coverage"
+    },
+    {
+      "label": "test-coverage",
+      "type": "npm",
+      "script": "test:coverage",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated"
+      },
+      "detail": "Generate coverage report"
+    },
+    {
+      "label": "test-report",
+      "type": "npm",
+      "script": "test:report",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated"
+      },
+      "detail": "Generate metrics dashboard"
     }
   ]
 }

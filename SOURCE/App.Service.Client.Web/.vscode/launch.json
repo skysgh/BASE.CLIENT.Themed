@@ -4,16 +4,46 @@
     {
       "type": "edge",
       "request": "launch",
-      "name": "localhost (Edge)",
+      "name": "localhost (Edge) with Tests",
       "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "test-and-serve",
+      "presentation": {
+        "group": "debug-with-tests"
+      }
     },
     {
       "type": "chrome",
       "request": "launch",
-      "name": "localhost (Chrome)",
+      "name": "localhost (Chrome) with Tests",
       "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "test-and-serve",
+      "presentation": {
+        "group": "debug-with-tests"
+      }
+    },
+    {
+      "type": "edge",
+      "request": "launch",
+      "name": "localhost (Edge) - Skip Tests",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "ng-serve",
+      "presentation": {
+        "group": "debug-skip-tests"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "localhost (Chrome) - Skip Tests",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "ng-serve",
+      "presentation": {
+        "group": "debug-skip-tests"
+      }
     }
   ]
 }
