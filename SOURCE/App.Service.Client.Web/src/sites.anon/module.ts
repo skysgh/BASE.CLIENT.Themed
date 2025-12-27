@@ -7,6 +7,7 @@ import { ConfigRegistryService } from "../core/services/config-registry.service"
 // ✅ Import DI tokens to provide
 import { DEPLOYED_RESOURCES } from "./tokens/deployed-resource.tokens";
 import { PUBLIC_NAVIGATION } from "./tokens/public-navigation.tokens";
+import { UPLOADED_RESOURCES } from "./tokens/uploaded-resource.tokens";
 
 // Parent Module:
 import { BaseThemesModule } from "../themes/module";
@@ -96,6 +97,27 @@ import { sitesConstants } from "./constants/implementations/sites.constants";
           notFound: '/errors/404',
           serverError: '/errors/500',
           forbidden: '/errors/403'
+        }
+      }
+    },
+    
+    {
+      provide: UPLOADED_RESOURCES,
+      useValue: {
+        users: {
+          root: '/assets/media/sensitive/',
+          profiles: '/assets/media/sensitive/images/users/',
+          avatars: '/assets/media/sensitive/images/users/'
+        },
+        documents: {
+          root: '/assets/media/sensitive/documents/',
+          attachments: '/assets/media/sensitive/documents/attachments/',
+          uploads: '/assets/media/sensitive/documents/uploads/'
+        },
+        media: {
+          root: '/assets/media/sensitive/media/',
+          photos: '/assets/media/sensitive/media/photos/',
+          videos: '/assets/media/sensitive/media/videos/'
         }
       }
     }
