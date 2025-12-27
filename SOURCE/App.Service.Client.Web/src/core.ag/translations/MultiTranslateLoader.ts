@@ -1,7 +1,7 @@
 import { TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { forkJoin, Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 
 /**
@@ -11,26 +11,8 @@ import { map } from 'rxjs/operators';
  * not just one, but multiple json files,
  * (eg one from core, one from theme, one from app, etc.).
  *
- * The way it is later used is from AppModule:
- * \@NgModule({
- *   declarations: [
- *    // Components, Directives, Pipes developed in this Module.
- *   ],
- *   imports: [
- *     // Other modules here
- *     TranslateModule.forRoot({
- *       loader: {
- *         provide: TranslateLoader,
- *         useFactory: (http: HttpClient) => {
- *           return new MultiTranslateLoader(http, ['assets/core', 'assets/app']);
- *         },
- *         deps: [HttpClient],
- *       },
- *     }),
- *   ],
- *   bootstrap: [\/* Your root component *\/],
- * })
- * export class AppModule { }
+ * ✅ FAULT-TOLERANT: If a file doesn't exist (404), it's skipped.
+ * This allows tiers to have optional i18n files without breaking the app.
  */
 export class MultiTranslateLoader implements TranslateLoader {
   /**
@@ -45,19 +27,32 @@ export class MultiTranslateLoader implements TranslateLoader {
    * Load all the specified language files,
    * from the different locations,
    * and merge them together.
+   * 
+   * ✅ FAULT-TOLERANT: Skips missing files instead of failing
+   * 
    * @param lang
    * @returns
    */
   getTranslation(lang: string): Observable<any> {
-    // Load all the specified files
-    const translationRequests = this.paths.map(path => {
-      // ✅ Remove trailing slash if present to avoid double slashes
-      const cleanPath = path.endsWith('/') ? path.slice(0, -1) : path;
-      return this.http.get(`${cleanPath}/${lang}.json`);
-    });
+    // ✅ Remove trailing slash if present to avoid double slashes
+    const cleanPaths = this.paths.map(path => 
+      path.endsWith('/') ? path.slice(0, -1) : path
+    );
+    
+    // Load all the specified files (with error handling)
+    const translationRequests = cleanPaths.map(path =>
+      this.http.get(`${path}/${lang}.json`).pipe(
+        // ✅ If file doesn't exist (404), return empty object instead of error
+        catchError(error => {
+          console.warn(`[MultiTranslateLoader] Failed to load: ${path}/${lang}.json`, error.status);
+          return of({});  // Return empty object, don't fail the entire load!
+        })
+      )
+    );
 
     /**
      * Merge the translations from each file
+     * ✅ Even if some files are missing, we merge what we got
      */
     return forkJoin(translationRequests).pipe(
       map(translations =>
