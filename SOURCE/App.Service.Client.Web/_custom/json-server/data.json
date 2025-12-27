@@ -1115,8 +1115,8 @@
       "serviceId": "00000000-00000000-00000000-00000001",
       "id": "00000000-00000000-00000000-00000002",
       "enabled": true,
-      "title": "Available in local languages",
-      "description": "English, Māori, Samoan, Tonga, Chinese, Indian...",
+      "title": "Advanced i18n (MessageFormat)",
+      "description": "Gender/plural-aware translations for 100+ languages including Māori, Samoan, Tongan, Chinese, Indian...",
       "imageName": "..."
     },
     {
@@ -1136,8 +1136,8 @@
       "imageName": "..."
     },
     {
-      "serviceId": "00000000-00000000-00000000-00000005",
       "id": "00000000-00000000-00000000-00000005",
+      "serviceId": "00000000-00000000-00000000-00000001",
       "enabled": true,
       "title": "Scalable",
       "description": "Ready for the whole sector...",
