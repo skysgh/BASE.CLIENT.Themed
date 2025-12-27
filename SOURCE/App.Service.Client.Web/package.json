@@ -11,6 +11,8 @@
     "test:coverage": "ng test --code-coverage",
     "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "test:single": "ng test --include='**/*.spec.ts' --watch=false",
+    "test:headless": "ng test --browsers=ChromeHeadless --watch=false",
+    "test:report": "ng test --code-coverage --browsers=ChromeHeadless --watch=false && node scripts/generate-test-report.js",
     
     "soul": "soul --database=_custom/sqlite/base.db --p=4202",
     
