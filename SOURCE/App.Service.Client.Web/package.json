@@ -5,7 +5,10 @@
     "ng": "ng",
     "start": "npm run test:critical && ng serve",
     "start:fast": "ng serve",
-    "build": "ng build",
+    "build": "npm run test:critical && npm run build:prod",
+    "build:fast": "ng build",
+    "build:prod": "ng build --configuration production && npm run metrics:copy",
+    "build:dev": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:watch": "ng test --watch",
@@ -16,6 +19,9 @@
     "test:critical": "ng test --include='**/core/**/*.spec.ts' --browsers=ChromeHeadless --watch=false",
     "test:all": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "test:report": "npm run test:all && node scripts/generate-test-report.js",
+    "metrics:generate": "npm run test:report",
+    "metrics:copy": "node scripts/copy-metrics-to-assets.js",
+    "metrics:serve": "npm run metrics:generate && npm run metrics:copy",
     
     "soul": "soul --database=_custom/sqlite/base.db --p=4202",
     
