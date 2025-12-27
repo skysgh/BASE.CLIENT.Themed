@@ -50,9 +50,11 @@ export class MultiTranslateLoader implements TranslateLoader {
    */
   getTranslation(lang: string): Observable<any> {
     // Load all the specified files
-    const translationRequests = this.paths.map(path =>
-      this.http.get(`${path}/${lang}.json`)
-    );
+    const translationRequests = this.paths.map(path => {
+      // ✅ Remove trailing slash if present to avoid double slashes
+      const cleanPath = path.endsWith('/') ? path.slice(0, -1) : path;
+      return this.http.get(`${cleanPath}/${lang}.json`);
+    });
 
     /**
      * Merge the translations from each file
