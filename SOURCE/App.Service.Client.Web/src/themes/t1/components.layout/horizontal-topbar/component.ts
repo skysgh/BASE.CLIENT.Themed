@@ -1,4 +1,5 @@
 // Rx:
+import { Observable } from 'rxjs';
 //
 // Ag:
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
@@ -11,10 +12,10 @@ import { MENU } from '../../../../core/navigation/menu';
 import { IHasMenuItem } from '../../../../core/models/contracts/IHasMenuItem';
 import { ViewModel } from './vm';
 // Configuration:
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
+import { AccountService } from '../../../../core/services/account.service';
 
 @Component({
   selector: 'app-horizontal-topbar',
@@ -22,22 +23,30 @@ import { DefaultComponentServices } from '../../../../core/services/default-cont
   styleUrls: ['./component.scss']
 })
 export class BaseLayoutHorizontalTopbarComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
   // Expose parent configuration:
   public groupConfiguration = themesT1Configuration
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   menu: any;
   menuItems: IHasMenuItem[] = [];
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
-  constructor(private router: Router, private defaultComponentServices: DefaultComponentServices) {
-    // Make system/env variables avaiable to view template (via const or service):
-    
+  // ✅ Account-aware logo paths
+  public logoDark$: Observable<string | undefined>;
+  public logoLight$: Observable<string | undefined>;
+  public logoSm$: Observable<string | undefined>;
+
+  constructor(
+    private router: Router, 
+    private defaultComponentServices: DefaultComponentServices,
+    private accountService: AccountService
+  ) {
+    // ✅ Get logos from account config
+    this.logoDark$ = this.accountService.getConfigValue('branding.logo');
+    this.logoLight$ = this.accountService.getConfigValue('branding.logoDark');
+    this.logoSm$ = this.accountService.getConfigValue('branding.logoSm');
   }
 
   ngOnInit(): void {

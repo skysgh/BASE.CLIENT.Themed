@@ -3,13 +3,16 @@ import { TSitesConstantsApis } from "./t.sites.constants.apis";
 import { TSitesConstantsAssets } from "./t.sites.constants.assets";
 import { TSitesConstantsResources } from "./t.sites.constants.resources";
 
-export const NAME = 'Sites';
+/**
+ * ✅ UPDATED after tier restructuring:
+ * Changed from 'Sites' to 'Sites.Anon' to match new tier structure
+ */
+export const NAME = 'Sites.Anon';
 
 export type TSitesConstants = TBaseConstants & {
+  apis: TSitesConstantsApis;
 
-  apis: TSitesConstantsApis,
+  assets: TSitesConstantsAssets;
 
-  assets: TSitesConstantsAssets,
-
-  resources: TSitesConstantsResources,
-}
+  resources: TSitesConstantsResources;
+};

@@ -18,6 +18,18 @@ export const NAV_ROOT = StringService.replaceTemplate(environment.custom.urls.na
  * 
  * This is the implementation that provides actual values for the theme configuration.
  * Values defined here can be overridden at runtime via config.json (see EnvConfigService).
+ * 
+ * ✅ MULTI-ACCOUNT ARCHITECTURE:
+ * Branding (logos, titles, descriptions) is NOT stored here!
+ * Components must inject AccountService and use:
+ *   - accountService.getConfigValue('branding.logo')
+ *   - accountService.getConfigValue('branding.logoDark')
+ *   - accountService.getConfigValue('name')
+ *   - accountService.getConfigValue('description')
+ * 
+ * This ensures reactive account-specific branding when URL changes:
+ *   /foo/pages → FOO logo
+ *   /bar/pages → BAR logo
  */
 export const themesT1Configuration: TThemesT1Configuration /*: ThemesT1ConfigurationType*/ = {
 
@@ -43,42 +55,6 @@ export const themesT1Configuration: TThemesT1Configuration /*: ThemesT1Configura
    * Example: /auth/signin?returnUrl=/specific-page will go to /specific-page after login.
    */
   postLoginRedirect: '/dashboards/main/',
-
-  /**
-   * Branding metadata (hardcoded defaults).
-   * 
-   * ✅ FIXED: Hardcode instead of importing appsConfiguration (avoids circular dependency).
-   * 
-   * Pattern: These are theme defaults. Components can still use tierConfig.branding.
-   * EnvConfigService can override these at runtime via config.json.
-   * 
-   * Trade-off:
-   * ✅ No circular dependency (theme doesn't import app)
-   * ⚠️ Hardcoded paths (but same as app defaults anyway)
-   * ✅ Can override via config.json
-   * 
-   * Used By: Auth pages (login, signin, logout), layout components (topbar, sidebar).
-   * 
-   * Override in config.json:
-   * {
-   *   "branding": {
-   *     "logoPath": "/media/custom/images/logos/",
-   *     "appTitle": "Custom Title",
-   *     "appDescription": "Custom Description"
-   *   }
-   * }
-   */
-  branding: {
-    // ✅ Hardcoded defaults (same as app would provide, but no circular dependency)
-    // Note: These paths follow the standard convention:
-    //   /media/{tier}/images/logos/
-    // where tier = 'apps' for application-level branding
-    logoPath: '/media/apps/images/logos/',
-    
-    // TODO: Load these from environment or config.json
-    appTitle: '[TODO:Title]',  // Same as appsConfiguration.description.title
-    appDescription: '[TODO:Description]',  // Same as appsConfiguration.description.description
-  }
 }
 
 

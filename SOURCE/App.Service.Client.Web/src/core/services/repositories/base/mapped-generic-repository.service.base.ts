@@ -20,7 +20,7 @@ import { IHasStringKeyValue } from '../../../../core/models/contracts/IHasString
 import { ArrayService } from '../../array.service';
 import { RepositoryStandardServicesPackage } from './_standard-repository-services-package';
 import { ServiceService } from '../../system.service.service';
-import { ServiceTenancyService } from '../../TenantService';
+import { ServiceAccountService } from '../../service.account.service';
 import { ServiceLanguagesService } from '../../service.languages.service';
 
 
@@ -66,7 +66,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
   protected arrayService: ArrayService;
   protected environmentService: SystemEnvironmentService;
   protected serviceService: ServiceService;
-  protected serviceTenancyService: ServiceTenancyService;
+  protected serviceAccountService: ServiceAccountService;
   protected diagnosticsTraceService: SystemDiagnosticsTraceService;
   protected errorService: SystemErrorService;
   protected objectMappingService: ObjectMappingService;
@@ -103,7 +103,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
     this.arrayService = this.repositoryStandardServicesPackage.arrayService;
     this.environmentService = this.repositoryStandardServicesPackage.environmentService;
     this.serviceService = this.repositoryStandardServicesPackage.serviceService;
-    this.serviceTenancyService = this.repositoryStandardServicesPackage.tenancyService;
+    this.serviceAccountService = this.repositoryStandardServicesPackage.accountService;
     this.diagnosticsTraceService = this.repositoryStandardServicesPackage.diagnosticsTraceService;
     this.errorService = this.repositoryStandardServicesPackage.errorService;
     this.objectMappingService = this.repositoryStandardServicesPackage.objectMappingService;
@@ -344,7 +344,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
   }
 
   /**
-   * Overriddable helper method to query for
+   * Overridable helper method to query for
    * a page of enabled entities.
    * @param page
    * @param enabled
@@ -529,7 +529,7 @@ export abstract class MappedGenericRepositoryServiceBase<TDto,TVto> {
     }
     url = this.appendMatchInstructions
       (url, coreConfiguration.constants.storage.db.columnNames.defaults.tenancyFK,
-        this.serviceTenancyService.id
+        this.serviceAccountService.id
       );
     return url;
   }

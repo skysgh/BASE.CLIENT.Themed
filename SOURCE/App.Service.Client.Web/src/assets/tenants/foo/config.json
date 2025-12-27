@@ -1,0 +1,44 @@
+{
+  "tenantId": "foo",
+  "name": "Foo Corporation",
+  "branding": {
+    "logo": "/assets/tenants/foo/media/logo-dark.png",
+    "logoDark": "/assets/tenants/foo/media/logo-light.png",
+    "logoSm": "/assets/tenants/foo/media/logo-sm.png",
+    "theme": {
+      "primaryColor": "#ff6b6b",
+      "secondaryColor": "#4ecdc4",
+      "accentColor": "#ffe66d"
+    }
+  },
+  "context": {
+    "sponsor": {
+      "title": "Foo Corporation",
+      "description": "Leading provider of Foo services",
+      "channels": {
+        "email": "contact@foo.com",
+        "tel": "+1-555-FOO-CORP",
+        "postal": {
+          "street": "789 Foo Plaza",
+          "city": "Foo City",
+          "region": "FC",
+          "code": "12345",
+          "country": "USA"
+        }
+      }
+    }
+  },
+  "resources": {
+    "images": {
+      "root": "/assets/tenants/foo/media/images/",
+      "trustedBy": "/assets/tenants/foo/media/images/trustedBy/"
+    },
+    "i18n": {
+      "path": "/assets/tenants/foo"
+    }
+  },
+  "features": {
+    "enableAnalytics": true,
+    "enableChat": false
+  }
+}

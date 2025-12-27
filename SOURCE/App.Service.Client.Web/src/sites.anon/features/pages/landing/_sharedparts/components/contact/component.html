@@ -21,21 +21,21 @@
               <div class="mt-4">
                 <h5 class="fs-13 text-muted text-uppercase">{{'BASE.SPONSORS.SINGULAR'| baseTranslate}}:</h5>
                 <div class="ff-secondary fw-semibold">
-                  {{this.appsConfiguration.context.sponsor.channels.postal.street}},<br />
-                  {{this.appsConfiguration.context.sponsor.channels.postal.city}},<br />
-                  {{this.appsConfiguration.context.sponsor.channels.postal.region}}
-                  {{this.appsConfiguration.context.sponsor.channels.postal.code}}<br />
-                  {{this.appsConfiguration.context.sponsor.channels.postal.country}}
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['street']}},<br />
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['city']}},<br />
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['region']}}
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['code']}}<br />
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['country']}}
                 </div>
               </div>
               <div class="mt-4">
                 <h5 class="fs-13 text-muted text-uppercase">{{'BASE.DEVELOPERS.PLURAL'| baseTranslate}}:</h5>
                 <div class="ff-secondary fw-semibold">
-                  {{this.appsConfiguration.context.sponsor.channels.postal.street}},<br />
-                  {{this.appsConfiguration.context.sponsor.channels.postal.city}}<br />
-                  {{this.appsConfiguration.context.sponsor.channels.postal.region}}
-                  {{this.appsConfiguration.context.sponsor.channels.postal.code}}<br />
-                  {{this.appsConfiguration.context.sponsor.channels.postal.country}}
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['street']}},<br />
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['city']}}<br />
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['region']}}
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['code']}}<br />
+                  {{tierConfiguration['context']?.['sponsor']?.['channels']?.['postal']?.['country']}}
                 </div>
                 <div class="mt-4">
                   <h5 class="fs-13 text-muted text-uppercase">{{'BASE.TIMES.HOURS_AVAILABLE'| baseTranslate}}:</h5>

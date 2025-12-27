@@ -1,0 +1,51 @@
+{
+  "accountId": "foo",
+  "accountGuid": "11111111-1111-1111-1111-111111111111",
+  "name": "Foo Corporation",
+  "title": "Foo Corp",
+  "subtitle": "Leading Foo Services",
+  "branding": {
+    "logo": "/assets/core/media/open/accounts/foo/logo-dark.svg",
+    "logoDark": "/assets/core/media/open/accounts/foo/logo-dark.svg",
+    "logoSm": "/assets/core/media/open/accounts/foo/logo-sm.png",
+    "theme": {
+      "primaryColor": "#ff6b6b",
+      "secondaryColor": "#4ecdc4",
+      "accentColor": "#ffe66d"
+    }
+  },
+  "context": {
+    "sponsor": {
+      "title": "Foo Corporation",
+      "description": "Leading provider of Foo services",
+      "channels": {
+        "email": "contact@foo.com",
+        "tel": "+1-555-FOO-CORP",
+        "postal": {
+          "street": "789 Foo Plaza",
+          "city": "Foo City",
+          "region": "FC",
+          "code": "12345",
+          "country": "USA"
+        }
+      }
+    }
+  },
+  "applets": {
+    "enabled": ["education", "spikes"],
+    "default": "education"
+  },
+  "resources": {
+    "images": {
+      "root": "/assets/core/media/open/accounts/foo/",
+      "trustedBy": "/assets/core/media/open/accounts/foo/trustedBy/"
+    },
+    "i18n": {
+      "path": "/assets/data/accounts/foo"
+    }
+  },
+  "features": {
+    "enableAnalytics": true,
+    "enableChat": false
+  }
+}

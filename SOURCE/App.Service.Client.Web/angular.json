@@ -31,7 +31,36 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/assets",
-
+              {
+                "glob": "**/*",
+                "input": "src/core/assets",
+                "output": "/assets/core"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/core.ag/assets",
+                "output": "/assets/core"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/apps.bootstrap/assets",
+                "output": "/assets/apps.bootstrap"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/themes/t1/assets",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites.anon/assets",
+                "output": "/assets/sites.anon"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites.app/assets",
+                "output": "/assets/sites.app"
+              },
               {
                 "glob": "**/*",
                 "input": "src/sites.app.lets/assets",
@@ -97,44 +126,6 @@
                 "glob": "**/*",
                 "input": "src/sites.app.lets/transactions/assets",
                 "output": "/assets/sites.app.lets/transactions"
-              },
-
-
-              {
-                "glob": "**/*",
-                "input": "src/sites.app/assets",
-                "output": "/assets/sites.app"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/apps.bootstrap/assets",
-                "output": "/assets/apps.bootstrap"
-              },
-
-              {
-                "glob": "**/*",
-                "input": "src/core/assets",
-                "output": "/assets/core"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/core.ag/assets",
-                "output": "/assets/core"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/sites.anon/assets",
-                "output": "/assets/sites.anon"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/sites.app/assets",
-                "output": "/assets/sites.app"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/themes/t1/assets",
-                "output": "/assets/"
               }
             ],
             "styles": [
@@ -277,6 +268,36 @@
 
               {
                 "glob": "**/*",
+                "input": "src/core/assets",
+                "output": "/assets/core"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/core.ag/assets",
+                "output": "/assets/core"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/apps.bootstrap/assets",
+                "output": "/assets/apps.bootstrap"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/themes/t1/assets",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites.anon/assets",
+                "output": "/assets/sites.anon"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites.app/assets",
+                "output": "/assets/sites.app"
+              },
+              {
+                "glob": "**/*",
                 "input": "src/sites.app.lets/assets",
                 "output": "/assets/sites.app.lets"
               },
@@ -340,40 +361,8 @@
                 "glob": "**/*",
                 "input": "src/sites.app.lets/transactions/assets",
                 "output": "/assets/sites.app.lets/transactions"
-              },
-
-
-              {
-                "glob": "**/*",
-                "input": "src/sites.app/assets",
-                "output": "/assets/sites.app"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/apps.bootstrap/assets",
-                "output": "/assets/apps.bootstrap"
-              },
-
-              {
-                "glob": "**/*",
-                "input": "src/core/assets",
-                "output": "/assets/core"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/core.ag/assets",
-                "output": "/assets/core"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/sites.anon/assets",
-                "output": "/assets/sites.anon"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/sites.app/assets",
-                "output": "/assets/sites.app"
               }
+
             ],
             "styles": [
               "src/styles.scss"

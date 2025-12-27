@@ -1,4 +1,5 @@
 // Rx:
+import { Observable } from 'rxjs';
 // 
 // Ag:
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
@@ -6,10 +7,10 @@ import { Router, NavigationEnd } from '@angular/router';
 // Etc:
 //
 // Configuration:
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
+import { AccountService } from '../../../../core/services/account.service';
 // Models:
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
@@ -21,19 +22,20 @@ import { ViewModel } from './vm';
   styleUrls: ['./two-column-sidebar.component.scss']
 })
 export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
   // Expose parent configuration:
   public groupConfiguration = themesT1Configuration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   menu: any;
   toggle: any = true;
   menuItems: MenuItem[] = [];
 
+  // ✅ Account-aware logos (reactive)
+  public logoSm$: Observable<string | undefined>;
+  public logoDark$: Observable<string | undefined>;
+  public logoLight$: Observable<string | undefined>;
 
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
@@ -42,15 +44,18 @@ export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
    * 
    * @param router
    * @param defaultControllerServices
+   * @param accountService
    */
-  constructor(private router: Router,
-    private defaultControllerServices: DefaultComponentServices
+  constructor(
+    private router: Router,
+    private defaultControllerServices: DefaultComponentServices,
+    private accountService: AccountService
   ) {
-    // Make system/env variables avaiable to view template (via const or service):
-    
-
+    // ✅ Get logos from account config (reactive)
+    this.logoSm$ = this.accountService.getConfigValue('branding.logoSm');
+    this.logoDark$ = this.accountService.getConfigValue('branding.logo');
+    this.logoLight$ = this.accountService.getConfigValue('branding.logoDark');
   }
-
 
   ngOnInit(): void {
     // Menu Items

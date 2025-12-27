@@ -1397,6 +1397,12 @@
         "DESCRIPTION": "Kāore i kitea te rauemi (he kupu pāreke hoki mō te Whārangi)! Aroha mai.",
         "INSTRUCTIONS": "..."
       },
+      "404-A": {
+        "ID": "404",
+        "[DIV_03]": "[------]",
+        "SINGULAR": "Not Found",
+        "DESCRIPTION": "Account not found!"
+      },
       "405": {
         "ID": "405",
         "TITLE": "Tono Mahi Kāore i Whakaaetia",

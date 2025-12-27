@@ -2,12 +2,14 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, InjectionToken, APP_INITIALIZER} from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from '@angular/router';
+import { Router } from '@angular/router';
 
 // ✅ Config Registry Service
 import { ConfigRegistryService } from "../core/services/config-registry.service";
 
 // Services:
 import { EnvConfigService } from "../core/services/env-config.service";
+import { AccountService } from "../core/services/account.service";
 
 // Components:
 import { BaseRouterOutletComponent } from "./components/_routerOutlet/component";
@@ -26,6 +28,38 @@ export function initializeEnvConfig(
   envConfig: EnvConfigService
 ): () => Promise<void> {
   return () => envConfig.initialize();
+}
+
+/**
+ * Account Configuration Initializer
+ * 
+ * Detects account from URL and loads account-specific configuration
+ * BEFORE app renders. Runs during APP_INITIALIZER phase.
+ * 
+ * Multi-Account Support:
+ * - Path-based: example.com/foo → account 'foo'
+ * - Subdomain: foo.example.com → account 'foo'
+ * - Default: example.com → account 'default'
+ * 
+ * Architecture:
+ * 1. Detect account ID from URL
+ * 2. Load /assets/config/default.json (base config)
+ * 3. Load /assets/accounts/{accountId}/config.json (account overrides)
+ * 4. Mark _accountNotFound if config not found
+ * 5. ✅ AccountGuard handles redirect to 404-A (not here!)
+ * 6. Cascade merge: default → account
+ * 7. Make config available via AccountService
+ */
+export function initializeAccount(
+  accountService: AccountService
+): () => Promise<void> {
+  return async () => {
+    await accountService.initialize();
+    
+    // ✅ REMOVED: Redirect logic (now handled by AccountGuard)
+    // AccountGuard runs when route activates and checks isAccountNotFound()
+    // This allows proper Angular routing and guards to work
+  };
 }
 
 @NgModule({
@@ -49,17 +83,36 @@ export function initializeEnvConfig(
       multi: true
     },
 
+    // ✅ Initialize account configuration before app starts
+    // This MUST run early so components can access account config
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeAccount,
+      deps: [AccountService],
+      multi: true
+    },
+
     // ============================================================================
-    // ✅ OLD PROVIDERS REMOVED!
+    // ✅ MULTI-ACCOUNT ARCHITECTURE:
     // 
-    // Tokens now provided by tier modules themselves:
-    // - DEPLOYED_RESOURCES: Provided by Apps.Main module
-    // - UPLOADED_RESOURCES: Provided by Apps.Main module
-    // - API_ENDPOINTS: Provided by Apps.Main module
-    // - PUBLIC_NAVIGATION: Provided by Apps.Main module
-    // - PRIVATE_NAVIGATION: Provided by Apps.Main module
+    // Components no longer use static configuration!
+    // Instead they inject AccountService for runtime account-aware config:
     // 
-    // This decouples Bootstrap from Sites/Apps tiers!
+    // OLD (Static):
+    //   public appsConfiguration = appsConfiguration  // ❌ Cross-tier coupling
+    //   <img src="{{appsConfiguration.constants.resources.logos}}logo.png">
+    // 
+    // NEW (Multi-Account):
+    //   constructor(private accountService: AccountService) {}
+    //   this.logoUrl$ = this.accountService.getConfigValue('branding.logo')
+    //   <img [src]="logoUrl$ | async">
+    // 
+    // Benefits:
+    // ✅ Runtime account switching
+    // ✅ URL-based account detection
+    // ✅ Cascading configuration (default → account)
+    // ✅ No cross-tier coupling
+    // ✅ Testable (mock AccountService)
     // ============================================================================
   ],
   imports: [
@@ -83,27 +136,30 @@ export function initializeEnvConfig(
  * Ultra-thin bootstrap layer. Provides core services and initializers ONLY.
  * 
  * ✅ DECOUPLED: No imports from Sites/Apps tiers!
- * ✅ TOKEN PATTERN: Tokens provided by tier modules
+ * ✅ MULTI-ACCOUNT: AccountService provides runtime config
  * ✅ CONFIG REGISTRY: Modules self-register configuration
  * 
  * Architecture:
- * - Bootstrap provides services only
- * - Apps.Main module provides tokens (DEPLOYED_RESOURCES, etc.)
- * - Each tier registers config via ConfigRegistryService
- * - Components inject tokens or use ConfigRegistryService
+ * - Bootstrap provides core services (AccountService, EnvConfigService)
+ * - AccountService loads account config at runtime from URL
+ * - Components inject AccountService (not static config)
+ * - Each account has isolated config (/assets/accounts/{accountId}/)
  * 
  * Benefits:
  * ✅ Zero coupling (Bootstrap doesn't know about tiers)
- * ✅ Lazy-load compatible (modules provide when loaded)
- * ✅ Type-safe (tokens have interfaces)
- * ✅ Testable (mock tokens or registry)
+ * ✅ Multi-account support (runtime account detection)
+ * ✅ Cascading config (default → account override)
+ * ✅ Type-safe (AccountConfig interface)
+ * ✅ Testable (mock AccountService)
  */
 export class AppModule {
   constructor(
-    private configRegistryService: ConfigRegistryService
+    private configRegistryService: ConfigRegistryService,
+    private accountService: AccountService
   ) {
     console.log('🚀 [AppModule] Bootstrap initialized');
     console.log('✅ [AppModule] ConfigRegistryService available');
+    console.log(`✅ [AppModule] Multi-account mode - Current account: ${accountService.getAccountId()}`);
     
     // ✅ REGISTER: Apps configuration
     // Note: This is a temporary measure until Apps.Main module registers itself
@@ -116,14 +172,17 @@ export class AppModule {
       },
       others: {
         core: {
-          constants: {
-            storage: {
-              session: {
-                currentUser: 'currentUser',
-                authUser: 'authUser'
-              }
+          constants:
+           {
+              storage:
+               {
+                  session:
+                   {
+                      currentUser: 'currentUser',
+                      authUser: 'authUser'
+                   }
+               }
             }
-          }
         }
       }
     });

@@ -1,0 +1,61 @@
+{
+  "accountId": "default",
+  "accountGuid": "00000000-0000-0000-0000-000000000001",
+  "name": "Default Account",
+  "title": "BASE.ACCOUNTS.DEFAULT.TITLE",
+  "subtitle": "BASE.ACCOUNTS.DEFAULT.SUBTITLE",
+  "description": "BASE.ACCOUNTS.DEFAULT.DESCRIPTION",
+  "branding": {
+    "logo": "/assets/core/media/open/accounts/default/logo-dark.svg",
+    "logoDark": "/assets/core/media/open/accounts/default/logo-dark.svg",
+    "logoSm": "/assets/core/media/open/accounts/default/logo-sm.png",
+    "theme": {
+      "primaryColor": "#007bff",
+      "secondaryColor": "#6c757d",
+      "accentColor": "#28a745"
+    }
+  },
+  "context": {
+    "sponsor": {
+      "title": "Default Sponsor",
+      "description": "Default sponsor organization",
+      "channels": {
+        "email": "sponsor@example.com",
+        "tel": "+1-555-0100",
+        "postal": {
+          "street": "123 Main Street",
+          "city": "Springfield",
+          "region": "IL",
+          "code": "62701",
+          "country": "USA"
+        }
+      }
+    }
+  },
+  "applets": {
+    "enabled": ["education", "spikes", "architecture", "resources", "system"],
+    "default": "spikes"
+  },
+  "resources": {
+    "images": {
+      "root": "/assets/core/media/open/accounts/default/",
+      "trustedBy": "/assets/core/media/open/accounts/default/trustedBy/",
+      "backgrounds": "/assets/core/media/open/accounts/default/backgrounds/"
+    },
+    "files": {
+      "root": "/assets/media/accounts/open/default/files/"
+    },
+    "i18n": {
+      "path": "/assets/data"
+    }
+  },
+  "features": {
+    "enableAnalytics": true,
+    "enableChat": true,
+    "enableNotifications": true
+  },
+  "_comments": {
+    "i18n": "Text values can be i18n keys (e.g., BASE.ACCOUNTS.DEFAULT.TITLE) or plain text. The baseTranslate pipe will resolve keys automatically and leave plain text as-is.",
+    "reactive": "All branding values are reactive via AccountService.getConfigValue(). Components should use observables with async pipe for automatic updates when account changes."
+  }
+}

@@ -1,5 +1,6 @@
 // Rx:
 import { first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 // Ag:
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 // Etc:
 //
 // Configuration:
-// ✅ FIXED: Use theme-tier configuration (not app-tier)
 import { themesT1Configuration } from '../../../../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { AuthenticationService } from '../../../../../../../../core/services/auth.service';
@@ -16,18 +16,9 @@ import { TitleService } from '../../../../../../../../core/services/title.servic
 import { ToastService } from '../../../../../../../../core/services/toast.service';
 import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
 import { EnvConfigService } from '../../../../../../../../core/services/env-config.service';
+import { AccountService } from '../../../../../../../../core/services/account.service';
 // Models:
 import { ViewModel } from './vm';
-// Ag:
-// Etc:
-
-// Constants:
-
-// Services:
-// Login Auth
-//import { environment } from '../../../../../../environments/environment';
-
-
 
 @Component({
   selector: 'app-base-core-modules-account_auth-signin-basic',
@@ -38,17 +29,17 @@ import { ViewModel } from './vm';
 /**
  * Basic Signin Component (Theme T1)
  * 
- * ✅ REFACTORED: Complete Tier Independence
- * - Uses themesT1Configuration for ALL needs
- * - No upward coupling to appsConfiguration
+ * ✅ MULTI-ACCOUNT: Uses AccountService for reactive branding
  */
 export class BasicComponent implements OnInit {
-  // ✅ SINGLE config object (tier independence!)
   public tierConfig = themesT1Configuration;
+
+  // ✅ Account-aware branding (reactive)
+  public logo$: Observable<string | undefined>;
+  public appDescription$: Observable<string | undefined>;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   // Login Form
   loginForm!: FormGroup;
@@ -66,8 +57,12 @@ export class BasicComponent implements OnInit {
     public toastService: ToastService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private envConfig: EnvConfigService  // ✅ NEW: For runtime config overrides
+    private envConfig: EnvConfigService,
+    private accountService: AccountService
   ) {
+    // ✅ Get branding from account config (reactive)
+    this.logo$ = this.accountService.getConfigValue('branding.logo');
+    this.appDescription$ = this.accountService.getConfigValue('description');
 
     this.defaultControllerServices.diagnosticsTraceService.verbose("BasicComponent.constructor()"); 
 

@@ -896,20 +896,20 @@
       "100": {
         "ID": "100",
         "[DIV_03]": "[------]",
-      "SINGULAR": "",
+        "SINGULAR": "",
         "DESCRIPTION": ""
       },
       "102": {
         "__COMMENTS": "Depracated",
         "ID": "102",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Processing",
+        "SINGULAR": "Processing",
         "DESCRIPTION": ""
       },
       "200": {
         "ID": "200",
         "[DIV_03]": "[------]",
-      "SINGULAR": "OK",
+        "SINGULAR": "OK",
         "DESCRIPTION": "The resource was found and returned.",
         "INSTRUCTIONS": "We're cool."
       },
@@ -917,7 +917,7 @@
         "__COMMENTS": "The default response from a POST operation. The 'location' header links to it.",
         "ID": "201",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Created",
+        "SINGULAR": "Created",
         "DESCRIPTION": "Resource created.",
         "INSTRUCTIONS": "THe 'location' provides the url to the newly created resource."
       },
@@ -925,162 +925,168 @@
         "__COMMENTS": "Used for batch processing.",
         "ID": "202",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Accepted",
+        "SINGULAR": "Accepted",
         "DESCRIPTION": "Operation request accepted but not prcessed yet."
       },
       "203": {
         "ID": "203",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Non-Authoritative Information",
+        "SINGULAR": "Non-Authoritative Information",
         "DESCRIPTION": ""
       },
       "204": {
         "ID": "204",
         "[DIV_03]": "[------]",
-      "SINGULAR": "No Content",
+        "SINGULAR": "No Content",
         "DESCRIPTION": ""
       },
       "205": {
         "ID": "205",
         "DESCRIPTION": "",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Reset Content"
+        "SINGULAR": "Reset Content"
       },
       "206": {
         "ID": "206",
         "DESCRIPTION": "",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Partial Content"
+        "SINGULAR": "Partial Content"
       },
       "207": {
         "ID": "207",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Multi-Status",
+        "SINGULAR": "Multi-Status",
         "DESCRIPTION": ""
       },
       "208": {
         "ID": "208",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Already Reported",
+        "SINGULAR": "Already Reported",
         "DESCRIPTION": ""
       },
       "226": {
         "ID": "226",
         "[DIV_03]": "[------]",
-      "SINGULAR": "IM Used",
+        "SINGULAR": "IM Used",
         "DESCRIPTION": ""
       },
       "300": {
         "ID": "300",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Multiple Choices",
+        "SINGULAR": "Multiple Choices",
         "DESCRIPTION": ""
       },
       "301": {
         "ID": "301",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Moved Permanently",
+        "SINGULAR": "Moved Permanently",
         "DESCRIPTION": ""
       },
       "302": {
         "ID": "302",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Found",
+        "SINGULAR": "Found",
         "DESCRIPTION": ""
       },
       "303": {
         "ID": "303",
         "[DIV_03]": "[------]",
-      "SINGULAR": "See Other",
+        "SINGULAR": "See Other",
         "DESCRIPTION": ""
       },
       "304": {
         "ID": "304",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Not Notified",
+        "SINGULAR": "Not Notified",
         "DESCRIPTION": ""
       },
       "307": {
         "ID": "307",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Temporary Redirect",
+        "SINGULAR": "Temporary Redirect",
         "DESCRIPTION": ""
       },
       "308": {
         "ID": "308",
         "DESCRIPTION": "",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Permanent Redirect"
+        "SINGULAR": "Permanent Redirect"
       },
       "400": {
         "ID": "400",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Bad Request",
+        "SINGULAR": "Bad Request",
         "DESCRIPTION": ""
       },
       "401": {
         "ID": "401",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Unauthorised",
+        "SINGULAR": "Unauthorised",
         "DESCRIPTION": "The server doesn't know which user you are.",
         "INSTRUCTIONS": "You need to sign up/in first (but there is no guarantee that you will have the required Permission)"
       },
       "402": {
         "ID": "402",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Payment Required",
+        "SINGULAR": "Payment Required",
         "DESCRIPTION": "The operation you requested requires an active up to date service subscription.",
         "INSTRUCTIONS": "https://www.youtube.com/watch?v=E-P2qL3qkzk"
       },
       "403": {
         "ID": "403",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Forbidden",
+        "SINGULAR": "Forbidden",
         "DESCRIPTION": "While Authenticated, the user account does not have sufficient permissions to be Authorised to perform this operation.",
         "INSTRUCTIONS": "Ask a responsible stakeholder to elevate the permissions granted to the user account."
       },
       "404": {
         "ID": "404",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Not Found",
+        "SINGULAR": "Not Found",
         "DESCRIPTION": "Resource not found!"
+      },
+      "404-A": {
+        "ID": "404",
+        "[DIV_03]": "[------]",
+        "SINGULAR": "Not Found",
+        "DESCRIPTION": "Account not found!"
       },
       "405": {
         "ID": "405",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Method Not Allowed",
+        "SINGULAR": "Method Not Allowed",
         "DESCRIPTION": ""
       },
       "406": {
         "ID": "406",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Method Not Acceptable",
+        "SINGULAR": "Method Not Acceptable",
         "DESCRIPTION": ""
       },
       "407": {
         "ID": "407",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Proxy Authentication Required",
+        "SINGULAR": "Proxy Authentication Required",
         "DESCRIPTION": ""
       },
       "408": {
         "ID": "408",
         "DESCRIPTION": "Some network, proxy, device, service needs to hurry up or instruction needs to be smaller...",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Request Timeout",
+        "SINGULAR": "Request Timeout",
         "INSTRUCTIONS": "It almost never works, but if you must, you could try again."
       },
       "409": {
         "ID": "409",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Conflict",
+        "SINGULAR": "Conflict",
         "DESCRIPTION": "",
         "INSTRUCTIONS": "..."
       },
       "410": {
         "ID": "410",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Gone",
+        "SINGULAR": "Gone",
         "DESCRIPTION": "",
         "INSTRUCTIONS": "https://www.youtube.com/watch?v=jr47YisIsz8"
       },
@@ -1088,25 +1094,25 @@
         "ID": "411",
         "DESCRIPTION": "",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Length Required"
+        "SINGULAR": "Length Required"
       },
       "412": {
         "ID": "412",
         "DESCRIPTION": "",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Precondition Failed"
+        "SINGULAR": "Precondition Failed"
       },
       "413": {
         "ID": "413",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Payload Too Large",
+        "SINGULAR": "Payload Too Large",
         "DESCRIPTION": "Just can't digest something that big...",
         "INSTRUCTIONS": ""
       },
       "414": {
         "ID": "414",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Uri Too Long",
+        "SINGULAR": "Uri Too Long",
         "INSTRUCTIONS": "",
         "DESCRIPTION": ""
       },
@@ -1114,20 +1120,20 @@
         "ID": "415",
         "DESCRIPTION": "",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Unsupported Media Type",
+        "SINGULAR": "Unsupported Media Type",
         "INSTRUCTIONS": ""
       },
       "416": {
         "ID": "416",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Range Not Satisfiable",
+        "SINGULAR": "Range Not Satisfiable",
         "INSTRUCTIONS": "",
         "DESCRIPTION": ""
       },
       "417": {
         "ID": "427",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Expectation Failed",
+        "SINGULAR": "Expectation Failed",
         "DESCRIPTION": "",
         "INSTRUCTIONS": ""
       },
@@ -1135,137 +1141,137 @@
         "ID": "421",
         "DESCRIPTION": "",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Misdirected Request",
+        "SINGULAR": "Misdirected Request",
         "INSTRUCTIONS": ""
       },
       "422": {
         "ID": "422",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Unprocessable Content",
+        "SINGULAR": "Unprocessable Content",
         "DESCRIPTION": "",
         "INSTRUCTIONS": ""
       },
       "423": {
         "ID": "422",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Locked",
+        "SINGULAR": "Locked",
         "DESCRIPTION": "",
         "INSTRUCTIONS": ""
       },
       "424": {
         "ID": "424",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Failed Dependency",
+        "SINGULAR": "Failed Dependency",
         "DESCRIPTION": "",
         "INSTRUCTIONS": ""
       },
       "425": {
         "ID": "425",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Too Early",
+        "SINGULAR": "Too Early",
         "DESCRIPTION": "",
         "INSTRUCTIONS": ""
       },
       "426": {
         "ID": "426",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Upgrade Required",
+        "SINGULAR": "Upgrade Required",
         "DESCRIPTION": "",
         "INSTRUCTIONS": ""
       },
       "428": {
         "ID": "428",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Precondition Required",
+        "SINGULAR": "Precondition Required",
         "DESCRIPTION": ""
       },
       "429": {
         "ID": "429",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Too Many Requests",
+        "SINGULAR": "Too Many Requests",
         "DESCRIPTION": "",
         "INSTRUCTIONS": ""
       },
       "431": {
         "ID": "431",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Request Header Fields Too Large",
+        "SINGULAR": "Request Header Fields Too Large",
         "DESCRIPTION": "",
         "INSTRUCTIONS": ""
       },
       "451": {
         "ID": "451",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Unavailable For Legal Reasons",
+        "SINGULAR": "Unavailable For Legal Reasons",
         "DESCRIPTION": "",
         "INSTRUCTIONS": ""
       },
       "500": {
         "ID": "500",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Internal (Server-Side) Error",
+        "SINGULAR": "Internal (Server-Side) Error",
         "INSTRUCTIONS": "",
         "DESCRIPTION": "We're not exactly sure what happened, but our servers say something is wrong."
       },
       "501": {
         "ID": "501",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Not Implemented",
+        "SINGULAR": "Not Implemented",
         "DESCRIPTION": "We're getting there...just not yet.'",
         "INSTRUCTIONS": ""
       },
       "502": {
         "ID": "502",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Bad Gateway",
+        "SINGULAR": "Bad Gateway",
         "DESCRIPTION": ""
       },
       "503": {
         "ID": "503",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Service Unavailable",
+        "SINGULAR": "Service Unavailable",
         "DESCRIPTION": ""
       },
       "504": {
         "ID": "504",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Gateway Timeout",
+        "SINGULAR": "Gateway Timeout",
         "DESCRIPTION": ""
       },
       "505": {
         "ID": "505",
         "[DIV_03]": "[------]",
-      "SINGULAR": "HTTP Version Not Supported",
+        "SINGULAR": "HTTP Version Not Supported",
         "DESCRIPTION": ""
       },
       "506": {
         "ID": "506",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Variant Also Negotiates",
+        "SINGULAR": "Variant Also Negotiates",
         "DESCRIPTION": ""
       },
       "507": {
         "ID": "507",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Insufficient Storage",
+        "SINGULAR": "Insufficient Storage",
         "DESCRIPTION": ""
       },
       "508": {
         "ID": "508",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Loop Detected",
+        "SINGULAR": "Loop Detected",
         "DESCRIPTION": ""
       },
       "510": {
         "ID": "510",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Not Extended",
+        "SINGULAR": "Not Extended",
         "DESCRIPTION": ""
       },
       "511": {
         "ID": "011",
         "[DIV_03]": "[------]",
-      "SINGULAR": "Network Authentication Required",
+        "SINGULAR": "Network Authentication Required",
         "DESCRIPTION": "The client needs to authenticate to gain network access."
       },
       "__COMMENTS": "",
@@ -1273,7 +1279,7 @@
       "000": {
         "ID": "000",
         "[DIV_03]": "[------]",
-      "SINGULAR": "",
+        "SINGULAR": "",
         "DESCRIPTION": "Offline. When connected again, we could try again."
       },
       "[DIV_03]": "[------]",

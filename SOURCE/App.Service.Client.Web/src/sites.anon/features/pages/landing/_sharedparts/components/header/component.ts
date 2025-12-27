@@ -1,19 +1,17 @@
 //Rx:
-//
+import { Observable } from 'rxjs';
 // Ag:
 import { Component, EventEmitter, Input, OnInit, Output, Inject } from '@angular/core';
 // Sites DI Tokens:
 import { 
-  DEPLOYED_RESOURCES,      // Static assets (logos)
-  DeployedResourcePaths,
-  PUBLIC_NAVIGATION,       // ✅ NEW: Public navigation (no auth required)
+  PUBLIC_NAVIGATION,       // ✅ Public navigation (no auth required)
   PublicNavigationPaths 
 } from '../../../../../../tokens';
 // Configuration:
-import { appsConfiguration } from '../../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
+import { AccountService } from '../../../../../../../core/services/account.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
@@ -29,7 +27,7 @@ import { ViewModel } from './vm';
 /**
  * Header Component
  * 
- * ✅ FULLY MIGRATED - Security-Classified DI Pattern
+ * ✅ MULTI-ACCOUNT: Uses AccountService for reactive branding
  * 
  * Uses PUBLIC_NAVIGATION because:
  * - Shown on public pages (no auth required)
@@ -37,34 +35,30 @@ import { ViewModel } from './vm';
  * - Marketing/landing page navigation
  * 
  * Token Usage:
- * - DEPLOYED_RESOURCES: Static logos (safe, CDN-friendly)
  * - PUBLIC_NAVIGATION: Unauthenticated routes (landing, auth, support)
+ * - AccountService: Reactive account-specific branding (logos, titles)
  * 
  * Benefits:
  * ✅ No upward coupling (Sites no longer imports Apps.Main)
  * ✅ Security-conscious (public vs private routes)
- * ✅ Testable (mock tokens)
+ * ✅ Multi-account ready (reactive logos per account)
+ * ✅ Testable (mock tokens and AccountService)
  * ✅ Type-safe (full intellisense)
- * 
- * See: _custom/documentation/patterns/navigation-public-private-split-summary.md
  */
 export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
-  // ⚠️ PARTIAL: Still uses appsConfiguration for some config
-  // TODO: Create APP_CONTEXT token for sponsor/developer info
-  public appsConfiguration = appsConfiguration
-  
-  // ✅ Injected DEPLOYED resources (static, safe)
-  public deployed!: DeployedResourcePaths;
   
   // ✅ Injected PUBLIC navigation (no auth required)
   public nav!: PublicNavigationPaths;
+  
+  // ✅ Account-aware logos (reactive)
+  public logoDark$: Observable<string | undefined>;
+  public logoLight$: Observable<string | undefined>;
   
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   sectionsInfo = importedSectionsInfo;
 
@@ -74,16 +68,18 @@ export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
   sectionId: string = this.sectionsInfo.intro.id;
   
   constructor(
-    @Inject(DEPLOYED_RESOURCES) deployed: DeployedResourcePaths,
     @Inject(PUBLIC_NAVIGATION) nav: PublicNavigationPaths,
-    private defaultControllerServices: DefaultComponentServices) {
-
-    // Store injected resources and navigation
-    this.deployed = deployed;
+    private defaultControllerServices: DefaultComponentServices,
+    private accountService: AccountService
+  ) {
+    // Store injected navigation
     this.nav = nav;
     
+    // ✅ Get logos from account config (reactive)
+    this.logoDark$ = this.accountService.getConfigValue('branding.logo');
+    this.logoLight$ = this.accountService.getConfigValue('branding.logoDark');
+    
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
-
   }
 
   ngOnInit(): void {

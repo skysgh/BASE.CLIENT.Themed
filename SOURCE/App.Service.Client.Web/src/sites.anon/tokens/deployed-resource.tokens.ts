@@ -3,15 +3,43 @@
  * 
  * Provides Angular DI token for STATIC/DEPLOYED resources.
  * 
+ * ⚠️ **DEPRECATED FOR BRANDING (2025-12-27):**
+ * Logos and account-specific branding should now use AccountService instead.
+ * This token is still useful for non-account-specific assets (flags, backgrounds, etc.)
+ * 
  * RESOURCE TYPE: Deployed (Static, CDN-safe, Public)
  * - Bundled with deployment
  * - No authentication required
  * - Safe for aggressive caching
- * - Examples: logos, flags, backgrounds, static documents
+ * - Examples: ~~logos~~ (use AccountService), flags, backgrounds, static documents
+ * 
+ * **Migration Guide:**
+ * ```typescript
+ * // ❌ OLD: DEPLOYED_RESOURCES for logos
+ * constructor(@Inject(DEPLOYED_RESOURCES) deployed: DeployedResourcePaths) {
+ *   this.logo = deployed.logos.light;
+ * }
+ * 
+ * // ✅ NEW: AccountService for account-specific branding
+ * constructor(private accountService: AccountService) {
+ *   this.logo$ = this.accountService.getConfigValue('branding.logo');
+ * }
+ * ```
+ * 
+ * **Still Appropriate For:**
+ * - Country/language flags (same for all accounts)
+ * - Background patterns (same for all accounts)
+ * - Static documents (terms, privacy - same for all accounts)
+ * - UI decorations (not account-specific)
+ * 
+ * **NOT Appropriate For:**
+ * - ❌ Account logos (use AccountService)
+ * - ❌ Account titles/descriptions (use AccountService)
+ * - ❌ Any branding that changes per account (use AccountService)
  * 
  * ARCHITECTURE:
  * - Token defined in Sites (consumer defines contract)
- * - Values provided in Apps.Main (provider implements contract)
+ * - Values provided in Sites.Anon module (provider implements contract)
  * - Components inject token (loose coupling via DI)
  * 
  * TIER PLACEMENT:
@@ -21,47 +49,10 @@
  * 3. Enables Sites library extraction (self-contained contracts)
  * 4. Follows SOLID: consumer defines interface, provider implements
  * 
- * PROVIDER SETUP:
- * ```typescript
- * // apps.main/module.ts
- * import { DEPLOYED_RESOURCES } from '../sites.anon/tokens';
- * 
- * @NgModule({
- *   providers: [{
- *     provide: DEPLOYED_RESOURCES,
- *     useValue: {
- *       logos: { 
- *         light: '/assets/images/logos/logo-light.png',
- *         dark: '/assets/images/logos/logo-dark.png'
- *       },
- *       images: { ... },
- *       files: { ... }
- *     }
- *   }]
- * })
- * ```
- * 
- * CONSUMER USAGE:
- * ```typescript
- * // sites/components/header/component.ts
- * import { DEPLOYED_RESOURCES, DeployedResourcePaths } from '../../tokens';
- * 
- * export class HeaderComponent {
- *   constructor(
- *     @Inject(DEPLOYED_RESOURCES) public deployed: DeployedResourcePaths
- *   ) {}
- * }
- * ```
- * 
- * TEMPLATE USAGE:
- * ```html
- * <!-- Direct access - no auth needed, safe for caching -->
- * <img [src]="deployed.logos.light" alt="Company Logo">
- * ```
- * 
  * @see deployed-resource.contracts.ts for interface definition
  * @see uploaded-resource.tokens.ts for user-generated content
- * @see _custom/documentation/patterns/resource-injection-pattern.md
+ * @see _custom/documentation/patterns/deployed-resources-migration-complete.md
+ * @see _custom/documentation/patterns/multi-account-i18n-support.md
  */
 
 import { InjectionToken } from '@angular/core';
@@ -86,6 +77,8 @@ import { DeployedResourcePaths } from '../contracts';
  * - Bundled with deployment
  * - Safe for public CDN distribution
  * - No authentication required
+ * 
+ * ⚠️ NOTE: For account-specific branding, use AccountService instead!
  */
 export const DEPLOYED_RESOURCES = new InjectionToken<DeployedResourcePaths>(
   'deployed.resources'

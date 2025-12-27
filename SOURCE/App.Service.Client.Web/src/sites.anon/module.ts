@@ -7,6 +7,7 @@ import { ConfigRegistryService } from "../core/services/config-registry.service"
 // ✅ Import DI tokens to provide
 import { DEPLOYED_RESOURCES } from "./tokens/deployed-resource.tokens";
 import { PUBLIC_NAVIGATION } from "./tokens/public-navigation.tokens";
+import { PRIVATE_NAVIGATION } from "./tokens/private-navigation.tokens";
 import { UPLOADED_RESOURCES } from "./tokens/uploaded-resource.tokens";
 
 // Parent Module:
@@ -25,22 +26,19 @@ import { sitesConstants } from "./constants/implementations/sites.constants";
     // ============================================================================
     // ✅ DI TOKEN PROVIDERS
     // 
-    // NOTE: DEPLOYED_RESOURCES now uses providedIn: 'root' in its token definition
-    // so it's automatically available everywhere. No explicit provider needed here.
+    // ⚠️ DEPRECATED FOR BRANDING: DEPLOYED_RESOURCES is no longer used for logos/branding.
+    // All account-specific branding now comes from AccountService.
     // 
-    // If you need to override default values, provide it here:
-    // {
-    //   provide: DEPLOYED_RESOURCES,
-    //   useValue: { /* custom values */ }
-    // }
+    // ✅ STILL USEFUL FOR: Non-account-specific static assets (flags, backgrounds, etc.)
     // ============================================================================
     {
       provide: DEPLOYED_RESOURCES,
       useValue: {
         logos: {
-          // ✅ Direct access - structure is flat, not nested under 'deployed'
-          light: (sitesConstants.assets.images.pages?.home?.root || sitesConstants.assets.images.root) + 'logos/logo-light.png',
-          dark: (sitesConstants.assets.images.pages?.home?.root || sitesConstants.assets.images.root) + 'logos/logo-dark.png'
+          // ⚠️ DEPRECATED: Use AccountService.getConfigValue('branding.logo') instead
+          // These hardcoded paths are no longer used by any components
+          light: '', // Removed - use AccountService
+          dark: ''   // Removed - use AccountService
         },
         images: {
           root: sitesConstants.assets.images.root,
@@ -97,6 +95,120 @@ import { sitesConstants } from "./constants/implementations/sites.constants";
           notFound: '/errors/404',
           serverError: '/errors/500',
           forbidden: '/errors/403'
+        }
+      }
+    },
+    
+    // ✅ NEW: PRIVATE_NAVIGATION provider (authenticated routes)
+    {
+      provide: PRIVATE_NAVIGATION,
+      useValue: {
+        // Navigate up one level
+        up: '..',
+        
+        // Authentication actions (private)
+        auth: {
+          signout: '/auth/signout',
+          lockscreen: '/auth/lockscreen'
+        },
+        
+        // Dashboard routes (authentication required)
+        dashboards: {
+          root: '/dashboards',
+          main: '/dashboards/main',
+          analytics: '/dashboards/analytics',
+          overview: '/dashboards/overview'
+        },
+        
+        // User settings (authentication required)
+        settings: {
+          root: '/settings',
+          user: '/settings/user',
+          account: '/settings/account',
+          preferences: '/settings/preferences',
+          security: '/settings/security',
+          notifications: '/settings/notifications'
+        },
+        
+        // Messaging (authentication required)
+        messages: {
+          root: '/messages',
+          inbox: '/messages/inbox',
+          sent: '/messages/sent',
+          compose: '/messages/compose',
+          archived: '/messages/archived',
+          drafts: '/messages/drafts'
+        },
+        
+        // Teams (authentication required)
+        teams: {
+          root: '/teams',
+          members: '/teams/members',
+          invitations: '/teams/invitations',
+          settings: '/teams/settings',
+          projects: '/teams/projects'
+        },
+        
+        // Purchases (authentication required)
+        purchases: {
+          root: '/purchases',
+          orders: '/purchases/orders',
+          cart: '/purchases/cart',
+          checkout: '/purchases/checkout',
+          paymentMethods: '/purchases/payment-methods'
+        },
+        
+        // Admin (authentication + role required)
+        admin: {
+          root: '/admin',
+          users: '/admin/users',
+          settings: '/admin/settings',
+          logs: '/admin/logs',
+          reports: '/admin/reports'
+        },
+        
+        // ✅ Include public navigation for authenticated users
+        public: {
+          up: '..',
+          root: sitesConfiguration.navigation.root,
+          home: sitesConfiguration.navigation.home,
+          auth: {
+            root: sitesConfiguration.navigation.auth.root,
+            signup: sitesConfiguration.navigation.auth.signup,
+            signin: sitesConfiguration.navigation.auth.signin,
+            forgotPassword: '/auth/forgot-password',
+            resetPassword: '/auth/reset-password',
+            verifyEmail: '/auth/verify-email'
+          },
+          landing: {
+            root: '/landing',
+            home: '/landing',
+            pricing: '/landing/pricing',
+            features: '/landing/features',
+            testimonials: '/landing/testimonials',
+            faq: '/landing/faq',
+            contact: '/landing/contact'
+          },
+          information: {
+            root: '/information',
+            about: '/information/about',
+            terms: '/information/terms',
+            privacy: '/information/privacy',
+            cookies: '/information/cookies',
+            accessibility: '/information/accessibility',
+            contact: '/information/contact'
+          },
+          support: {
+            root: '/support',
+            faq: '/support/faq',
+            contact: '/support/contact',
+            status: '/support/status'
+          },
+          errors: {
+            notFound: '/errors/404',
+            serverError: '/errors/500',
+            forbidden: '/errors/403'
+          }
         }
       }
     },

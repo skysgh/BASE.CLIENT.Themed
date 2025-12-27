@@ -61,7 +61,6 @@
     <Folder Include="src\core.ag\support\" />
     <Folder Include="src\core.ag\tokens\" />
     <Folder Include="src\core\contracts\" />
-    <Folder Include="src\core\tokens\" />
     <Folder Include="src\sites\assets\data\sensitive\" />
     <Folder Include="src\sites\assets\data\open\" />
     <Folder Include="src\sites\features\dashboard\models\" />

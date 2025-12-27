@@ -1,15 +1,16 @@
 <!-- Splash screen shown until app is ready -->
 <div class="splash-screen" *ngIf="!isReady" [@fadeOut]>
   <div class="splash-content">
-    <img src="/assets/apps.bootstrap/media/open/images/logos/logo-light.png" 
-         alt="Loading" 
+    <!-- ✅ Account-aware logo -->
+    <img [src]="logoUrl$ | async" 
+         [alt]="(accountName$ | async) || 'Loading'" 
          class="splash-logo">
     <div class="splash-spinner">
       <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-    <p class="splash-message">Loading application...</p>
+    <p class="splash-message">Loading {{(accountName$ | async) || 'application'}}...</p>
   </div>
 </div>
 

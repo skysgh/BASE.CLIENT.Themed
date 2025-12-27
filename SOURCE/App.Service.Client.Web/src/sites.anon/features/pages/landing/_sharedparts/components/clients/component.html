@@ -16,8 +16,8 @@
                       @for (item of list; track $index) {
                       <div class="swiper-slide" ngxSlickItem>
                         <div class="client-images">
-                          <img src="{{this.appsConfiguration.constants.resources.open.images.trustedBy}}{{item.imageName}}"
-                               alt="{{item.title| baseTranslate}}"
+                          <img [src]="resources.images.trustedBy + item.imageName"
+                               [alt]="item.title | baseTranslate"
                                class="mx-auto img-fluid d-block">
                         </div>
                       </div>

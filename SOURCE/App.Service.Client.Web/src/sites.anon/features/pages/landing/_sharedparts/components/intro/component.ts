@@ -1,9 +1,10 @@
 // Rx:
 
 // Ag:
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Inject } from '@angular/core';
+// Tokens:
+import { DEPLOYED_RESOURCES, DeployedResources } from '../../../../../../../core/tokens';
 // Configuration:
-import { appsConfiguration } from '../../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
@@ -19,17 +20,17 @@ import { ViewModel } from './vm';
 
 
 /**
- * Footer Component
+ * Intro Component - Landing Page Hero Section
  */
 export class BaseAppsPagesLandingIndexDemosComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = sitesConfiguration
+  // ✅ Inject resources from Core token
+  public resources: DeployedResources;
+  
+  // ✅ CONVENTION: Expose tier configuration as 'tierConfiguration'
+  public tierConfiguration = sitesConfiguration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   sectionsInfo = importedSectionsInfo;
 
@@ -37,13 +38,13 @@ export class BaseAppsPagesLandingIndexDemosComponent implements OnInit {
   showNavigationIndicators: any;
 
   constructor(
-    private defaultControllerServices: DefaultComponentServices) {
-    // Make system/env variables avaiable to view template (via singleton or service):
-
+    private defaultControllerServices: DefaultComponentServices,
+    @Inject(DEPLOYED_RESOURCES) resources: DeployedResources
+  ) {
+    // ✅ Store injected resources for template access
+    this.resources = resources;
 
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
-
-   
   }
 
 

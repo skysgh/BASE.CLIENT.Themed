@@ -1,0 +1,45 @@
+{
+  "tenantId": "bar",
+  "name": "Bar Industries",
+  "branding": {
+    "logo": "/assets/tenants/bar/media/logo-dark.png",
+    "logoDark": "/assets/tenants/bar/media/logo-light.png",
+    "logoSm": "/assets/tenants/bar/media/logo-sm.png",
+    "theme": {
+      "primaryColor": "#6c5ce7",
+      "secondaryColor": "#a29bfe",
+      "accentColor": "#fd79a8"
+    }
+  },
+  "context": {
+    "sponsor": {
+      "title": "Bar Industries",
+      "description": "Innovative Bar solutions worldwide",
+      "channels": {
+        "email": "hello@bar.com",
+        "tel": "+1-555-BAR-INDUS",
+        "postal": {
+          "street": "321 Bar Boulevard",
+          "city": "Bar Town",
+          "region": "BT",
+          "code": "67890",
+          "country": "USA"
+        }
+      }
+    }
+  },
+  "resources": {
+    "images": {
+      "root": "/assets/tenants/bar/media/images/",
+      "trustedBy": "/assets/tenants/bar/media/images/trustedBy/"
+    },
+    "i18n": {
+      "path": "/assets/tenants/bar"
+    }
+  },
+  "features": {
+    "enableAnalytics": false,
+    "enableChat": true,
+    "enableNotifications": false
+  }
+}

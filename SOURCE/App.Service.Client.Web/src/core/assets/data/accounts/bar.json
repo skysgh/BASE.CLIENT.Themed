@@ -1,0 +1,52 @@
+{
+  "accountId": "bar",
+  "accountGuid": "22222222-2222-2222-2222-222222222222",
+  "name": "Bar Industries",
+  "title": "Bar Industries",
+  "subtitle": "Innovative Bar Solutions",
+  "branding": {
+    "logo": "/assets/core/media/open/accounts/bar/logo-dark.svg",
+    "logoDark": "/assets/core/media/open/accounts/bar/logo-dark.svg",
+    "logoSm": "/assets/core/media/open/accounts/bar/logo-sm.png",
+    "theme": {
+      "primaryColor": "#6c5ce7",
+      "secondaryColor": "#a29bfe",
+      "accentColor": "#fd79a8"
+    }
+  },
+  "context": {
+    "sponsor": {
+      "title": "Bar Industries",
+      "description": "Innovative Bar solutions worldwide",
+      "channels": {
+        "email": "hello@bar.com",
+        "tel": "+1-555-BAR-INDUS",
+        "postal": {
+          "street": "321 Bar Boulevard",
+          "city": "Bar Town",
+          "region": "BT",
+          "code": "67890",
+          "country": "USA"
+        }
+      }
+    }
+  },
+  "applets": {
+    "enabled": ["architecture", "resources", "system"],
+    "default": "architecture"
+  },
+  "resources": {
+    "images": {
+      "root": "/assets/core/media/open/accounts/bar/",
+      "trustedBy": "/assets/core/media/open/accounts/bar/trustedBy/"
+    },
+    "i18n": {
+      "path": "/assets/data/accounts/bar"
+    }
+  },
+  "features": {
+    "enableAnalytics": false,
+    "enableChat": true,
+    "enableNotifications": false
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "tenantId": "default",
+  "name": "BASE Application",
+  "branding": {
+    "logo": "/assets/apps.bootstrap/media/open/images/logos/logo-dark.png",
+    "logoDark": "/assets/apps.bootstrap/media/open/images/logos/logo-light.png",
+    "logoSm": "/assets/apps.bootstrap/media/open/images/logos/logo-sm.png",
+    "theme": {
+      "primaryColor": "#007bff",
+      "secondaryColor": "#6c757d",
+      "accentColor": "#28a745"
+    }
+  },
+  "context": {
+    "sponsor": {
+      "title": "Default Sponsor",
+      "description": "Default sponsor organization",
+      "channels": {
+        "email": "sponsor@example.com",
+        "tel": "+1-555-0100",
+        "postal": {
+          "street": "123 Main Street",
+          "city": "Springfield",
+          "region": "IL",
+          "code": "62701",
+          "country": "USA"
+        }
+      }
+    },
+    "developer": {
+      "title": "Default Developer",
+      "description": "Default developer organization",
+      "channels": {
+        "email": "dev@example.com",
+        "tel": "+1-555-0200",
+        "postal": {
+          "street": "456 Dev Avenue",
+          "city": "Tech City",
+          "region": "CA",
+          "code": "94016",
+          "country": "USA"
+        }
+      }
+    }
+  },
+  "resources": {
+    "images": {
+      "root": "/assets/apps.bootstrap/media/open/images/",
+      "trustedBy": "/assets/apps.bootstrap/media/open/images/trustedBy/",
+      "backgrounds": "/assets/apps.bootstrap/media/open/images/backgrounds/"
+    },
+    "files": {
+      "root": "/assets/apps.bootstrap/media/open/files/",
+      "documents": "/assets/apps.bootstrap/media/open/files/documents/"
+    },
+    "i18n": {
+      "path": "/assets"
+    }
+  },
+  "features": {
+    "enableAnalytics": true,
+    "enableChat": true,
+    "enableNotifications": true
+  }
+}

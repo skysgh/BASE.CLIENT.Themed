@@ -7,6 +7,7 @@ import { AppLayoutComponent } from '../../themes/t1/components.layout/layout.com
 
 // Auth
 import { AuthGuard } from '../../core/guards/auth.guard';
+import { AccountGuard } from '../../core/guards/account.guard';
 import { SystemDiagnosticsTraceService } from '../../core/services/system.diagnostics-trace.service';
 // Constants:
 
@@ -20,25 +21,60 @@ const routes: Routes = [
   //// so pages and landing (and auth, etc.) will be loaded directly within
   //// the AppROComponent. They also don't need to be gaurded - they're public access.
 
-  { path: 'dashboards', component: AppLayoutComponent, loadChildren: () => import('../../sites.anon/features/dashboard/module').then(m => m.BaseCoreDashboardsModule), canActivate: [AuthGuard] },
+  // ✅ Account-based routes (e.g., /foo/pages, /bar/apps)
+  // Only match if second segment is a known route pattern
+  // ✅ ADDED: AccountGuard checks if account config was found
+  { 
+    path: ':accountId/dashboards', 
+    component: AppLayoutComponent, 
+    loadChildren: () => import('../../sites.anon/features/dashboard/module').then(m => m.BaseCoreDashboardsModule), 
+    canActivate: [AccountGuard, AuthGuard]  // ← Validate account first, then auth
+  },
+  { 
+    path: ':accountId/pages', 
+    loadChildren: () => import('../../sites.anon/features/pages/module').then(m => m.BaseCoreSitesFeaturesPagesModule),
+    canActivate: [AccountGuard]  // ← Validate account exists
+  },
+  { 
+    path: ':accountId/apps', 
+    component: AppLayoutComponent, 
+    loadChildren: () => import('../../sites.app/module').then(m => m.BaseAppsModule), 
+    canActivate: [AccountGuard, AuthGuard]  // ← Validate account first, then auth
+  },
+  { 
+    path: ':accountId/landing', 
+    redirectTo: ':accountId/pages/landing', 
+    pathMatch: 'full'
+  },
+  { 
+    path: ':accountId/information', 
+    redirectTo: ':accountId/pages/information', 
+    pathMatch: 'full'
+  },
+  { 
+    path: ':accountId/auth', 
+    loadChildren: () => import('../../themes/t1/features/user/account/module').then(m => m.BaseThemesV1FeaturesUserAccountModule),
+    canActivate: [AccountGuard]  // ← Validate account exists
+  },
+  { 
+    path: ':accountId/errors', 
+    loadChildren: () => import('../../themes/t1/features/errors/module').then(m => m.BaseThemesV1FeaturesErrorsModule)
+    // No guard - error pages should always be accessible
+  },
 
-  // Public pages tier (anonymous access)
+  // ✅ Default routes (no account ID - uses 'default' account)
+  { path: 'dashboards', component: AppLayoutComponent, loadChildren: () => import('../../sites.anon/features/dashboard/module').then(m => m.BaseCoreDashboardsModule), canActivate: [AuthGuard] },
   { path: 'pages', loadChildren: () => import('../../sites.anon/features/pages/module').then(m => m.BaseCoreSitesFeaturesPagesModule) },
-  
-  // Authenticated app tier (protected)
   { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../sites.app/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
-  ////  { path: 'settings', component: AppLayoutComponent, loadChildren: () => import('../../../apps/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
-  //// This again goes in the main AppROContainer with no prior framing:
-  //// specifies what is default:
-  { path: 'landing', redirectTo: 'pages/landing', pathMatch: 'prefix' },
-  { path: 'information', redirectTo: 'pages/information', pathMatch: 'prefix' },
+  { path: 'landing', redirectTo: 'pages/landing', pathMatch: 'full' },
+  { path: 'information', redirectTo: 'pages/information', pathMatch: 'full' },
   { path: 'auth', loadChildren: () => import('../../themes/t1/features/user/account/module').then(m => m.BaseThemesV1FeaturesUserAccountModule) },
   { path: 'errors', loadChildren: () => import('../../themes/t1/features/errors/module').then(m => m.BaseThemesV1FeaturesErrorsModule) },
 
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
 
+  // ✅ Catch-all: Unknown routes go to Angular 404 (not "account not found")
   { path: '**', redirectTo: 'errors' }
-
 ];
 
 @NgModule({

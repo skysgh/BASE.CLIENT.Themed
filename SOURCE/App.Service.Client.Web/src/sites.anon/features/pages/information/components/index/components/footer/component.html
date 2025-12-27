@@ -33,7 +33,8 @@ TODO:
       <div class="col-lg-4 mt-4">
         <div>
           <div>
-            <img [src]="deployed.logos.light" alt="logo light" height="17">
+            <!-- ✅ MULTI-ACCOUNT: Use AccountService observable -->
+            <img *ngIf="logo$ | async as logo" [src]="logo" alt="logo light" height="17">
           </div>
           <div class="mt-4 fs-13">
             <p>{{this.appsConfiguration.description.description}}</p>

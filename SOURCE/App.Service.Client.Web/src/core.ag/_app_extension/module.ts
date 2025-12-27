@@ -31,7 +31,6 @@ import { AppExtensionRoutingModule } from './routing';
 import { BaseThemesModule } from '../../themes/module';
 // ✅ UPDATED: Correct path depth (../../ not ../) after tier restructuring
 import { BaseAppsModule } from '../../sites.app/module';
-import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
 
 // Theme-specific state management
 import { authenticationReducer } from '../../themes/t1/_state/authentication/authentication.reducer';
@@ -147,46 +146,47 @@ function getLanguageCode() {
 
   var languageCookie: (string | undefined) = CookieService.getCookieValue(C_LANG);
 
-  var result = (languageCookie || navigator.language || appsConfiguration.others.core.defaultLanguageCode).split('-')[0];
+  // ✅ FIXED: Use hardcoded default 'en' instead of cross-tier import
+  var result = (languageCookie || navigator.language || 'en').split('-')[0];
 
   return result;
 }
 
 
 /**
- * Method called from within Module metadata to create a loader
- * of the json files required.
+ * ✅ FIXED: Convention-based i18n loader
  * 
- * Does not need langCode yet as it doesn't load them, just defines
- * the directories where to retrieve from.
- *
- * the function is `export`ed because it is called from outside the module
- * at one point (forget where).
- *
- *  TODO: TO REDO IN THE FUTURE.
- * This bugs me in that this method needs to know where the assets are
- * so it defeats pluggability. 
+ * Creates a MultiTranslateLoader that loads translation files from multiple tiers
+ * following the convention: /assets/{tier}/deployed/i18n/{lang}.json
  * 
- * Note that it is called by metadata
- * *before* class is instantiated, so must
- * be a static method outside the Module's class.
- * @param http
- * @returns
+ * Architecture Benefits:
+ * - ✅ No cross-tier imports (loosely coupled)
+ * - ✅ Convention over configuration (predictable paths)
+ * - ✅ Follows angular.json asset mapping structure
+ * - ✅ Each tier can be removed without breaking others
+ * - ✅ Cascading translations (later paths override earlier ones)
+ * 
+ * Path Convention:
+ * - Core tier:       /assets/core/deployed/i18n/
+ * - Theme tier:      /assets/deployed/i18n/           (themes/t1 → assets/)
+ * - Sites.anon tier: /assets/sites.anon/deployed/i18n/
+ * - Sites.app tier:  /assets/sites.app/deployed/i18n/
+ * 
+ * Note: MultiTranslateLoader is fault-tolerant - missing files return empty object (no error)
+ * 
+ * @param http HttpClient for loading translation files
+ * @returns TranslateLoader instance configured with convention-based paths
  */
 export function createTranslateLoader(http: HttpClient): any {
 
-  // Specify paths where to look for resources:
-  let path: string = appsConfiguration.others.core.constants.assets.i18n;
-  let path2: string = appsConfiguration.others.themes.current.constants.assets.i18n;
-  let path3: string = appsConfiguration.constants.assets.i18n!;
-  let path4: string = appsConfiguration.others.sites.constants.assets.i18n || '';
-
-  let paths: string[] = [path, path2, path3];
-  
-  // Only add sites i18n if it exists
-  if (path4) {
-    paths.push(path4);
-  }
+  // ✅ Convention-based paths (no configuration imports needed!)
+  // These paths match the angular.json asset mappings
+  const paths: string[] = [
+    '/assets/core/deployed/i18n',           // Core tier (base translations)
+    '/assets/deployed/i18n',                 // Theme tier (theme-specific translations)
+    '/assets/sites.anon/deployed/i18n',     // Sites.anon tier (public site translations)
+    '/assets/sites.app/deployed/i18n'      // Sites.app tier (authenticated site translations)
+  ];
 
   // Call static method on service that will be part of all services later.
   return TranslationService.createTranslateLoader(http, paths);

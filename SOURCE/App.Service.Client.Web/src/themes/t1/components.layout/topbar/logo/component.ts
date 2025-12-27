@@ -1,14 +1,14 @@
 // Rx:
+import { Observable } from 'rxjs';
 //
 // Ag:
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 // Etc:
-//
 // Configuration:
-import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
 // Services:
 import { DefaultComponentServices } from "../../../../../core/services/default-controller-services";
+import { AccountService } from "../../../../../core/services/account.service";
 // Models:
 import { ViewModel } from "../vm";
 // Data:
@@ -20,21 +20,25 @@ import { ViewModel } from "../vm";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarLogoComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
   // Expose parent configuration:
   public groupConfiguration = themesT1Configuration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
+  // ✅ Account-aware logo paths
+  public logoDark$: Observable<string | undefined>;
+  public logoLight$: Observable<string | undefined>;
+  public logoSm$: Observable<string | undefined>;
 
   constructor(
-    private defaultControllerServices: DefaultComponentServices
+    private defaultControllerServices: DefaultComponentServices,
+    private accountService: AccountService
   ) {
-    // Make system/env variables avaiable to view template (via const or service):
-    
+    // ✅ Get logos from account config
+    this.logoDark$ = this.accountService.getConfigValue('branding.logo');
+    this.logoLight$ = this.accountService.getConfigValue('branding.logoDark');
+    this.logoSm$ = this.accountService.getConfigValue('branding.logoSm');
   }
 
   ngOnInit(): void {

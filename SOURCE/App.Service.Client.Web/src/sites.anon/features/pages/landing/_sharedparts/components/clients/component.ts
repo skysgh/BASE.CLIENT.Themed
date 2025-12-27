@@ -1,25 +1,21 @@
 // Ag:
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 // Etc:
 import { TranslateService } from '@ngx-translate/core';
-// Constants:
-//
+// Tokens:
+import { DEPLOYED_RESOURCES, DeployedResources } from '../../../../../../../core/tokens';
+// Configuration:
+import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
-//import { SystemService } from '../../../../../../../core/services/system.service';
 import { SystemDiagnosticsTraceService } from '../../../../../../../core/services/system.diagnostics-trace.service';
 // Models:
-//import { ClientLogo } from './data';
-// Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ServiceTrustedByService } from '../../../../../../../core/services/service.trusted-by.service';
 import { ServiceTrustedByVTO } from '../../../../../../../core/models/view/service.trusted-by.vto.model';
 import { Observable, of } from 'rxjs';
-
-import {  Responsive as importedResponsive} from './settings';
+import { Responsive as importedResponsive } from './settings';
 import { ViewModel } from './vm';
 import { SystemDefaultServices } from '../../../../../../../core/services/system.default-services.service';
-import { appsConfiguration } from '../../../../../../../sites.app/configuration/implementations/apps.configuration';
-import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
 
 @Component({
@@ -29,17 +25,17 @@ import { DefaultComponentServices } from '../../../../../../../core/services/def
 })
 
 /**
- * ClientLogoComponent
+ * ClientLogoComponent - Trusted By Section
  */
 export class BaseAppsPagesLandingIndexClientsComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = sitesConfiguration
+  // ✅ Inject resources from Core token
+  public resources: DeployedResources;
+  
+  // ✅ CONVENTION: Expose tier configuration as 'tierConfiguration'
+  public tierConfiguration = sitesConfiguration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   sectionsInfo = importedSectionsInfo;
   // Configuration for ngx-slick-carousel:
@@ -50,10 +46,12 @@ export class BaseAppsPagesLandingIndexClientsComponent implements OnInit {
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    private serviceTrustedByService: ServiceTrustedByService
+    private serviceTrustedByService: ServiceTrustedByService,
+    @Inject(DEPLOYED_RESOURCES) resources: DeployedResources
   ) {
+    // ✅ Store injected resources for template access
+    this.resources = resources;
 
-    var t = appsConfiguration.constants.resources.open.images.trustedBy;
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 
     this.initList();
@@ -63,11 +61,7 @@ export class BaseAppsPagesLandingIndexClientsComponent implements OnInit {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`)
   }
 
-
-
-  
   private initList() {
-    
     this.serviceTrustedByService 
       .items$
       .subscribe(list => {
@@ -78,7 +72,4 @@ export class BaseAppsPagesLandingIndexClientsComponent implements OnInit {
         this.list$ = of(list)
       });
   }
-
-
-
 }

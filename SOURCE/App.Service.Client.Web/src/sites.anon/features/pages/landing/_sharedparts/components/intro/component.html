@@ -1,4 +1,4 @@
-    <!-- start hero section -->
+<!-- start hero section -->
 <section class="section pb-0 hero-section" [id]="sectionsInfo.intro.id">
   <div class="bg-overlay bg-overlay-pattern"></div>
   <div class="container">
@@ -10,26 +10,23 @@
             <br />
             <span class="text-secondary">
               {{'CUSTOM.SITE.ANON.HOME.INTRO.DESCRIPTION'| baseTranslate }}
-              <!--
-              {{'THEMES.V1.TEST.YAY'| baseTranslate}}
-                -->
             </span>
           </h1>
           <p class="lead text-muted lh-base">
-            {{this.appsConfiguration.description.description | baseTranslate}}
+            {{tierConfiguration['description']?.['description'] | baseTranslate}}
           </p>
         </div>
 
         <div class="mt-4 mt-sm-5 pt-sm-5 mb-sm-n5 demo-carousel">
           <div class="demo-img-patten-top d-none d-sm-block">
-            <img src="{{this.appsConfiguration.others.sites.constants.assets.images.pages.home.intro}}img-pattern.png"
+            <img src="/assets/sites.anon/deployed/images/pages/home/intro/img-pattern.png"
                  class="d-block img-fluid"
-                 alt="...">
+                 alt="Background pattern">
           </div>
           <div class="demo-img-patten-bottom d-none d-sm-block">
-            <img src="{{this.appsConfiguration.others.sites.constants.assets.images.pages.home.intro}}img-pattern.png"
+            <img src="/assets/sites.anon/deployed/images/pages/home/intro/img-pattern.png"
                  class="d-block img-fluid"
-                 alt="...">
+                 alt="Background pattern">
           </div>
           <div class="">
             <ngb-carousel [showNavigationArrows]="showNavigationArrows"
@@ -37,25 +34,25 @@
                           class="carousel-inner shadow-lg p-2 bg-white rounded">
 
               <ng-template ngbSlide>
-                <img src="{{this.appsConfiguration.others.sites.constants.assets.images.pages.home.demos}}default.png" class="d-block w-100" alt="...">
+                <img src="/assets/sites.anon/deployed/images/pages/home/demos/default.png" class="d-block w-100" alt="Default demo">
               </ng-template>
               <ng-template ngbSlide>
-                <img src="{{this.appsConfiguration.others.sites.constants.assets.images.pages.home.demos}}saas.png" class="d-block w-100" alt="...">
+                <img src="/assets/sites.anon/deployed/images/pages/home/demos/saas.png" class="d-block w-100" alt="SaaS demo">
               </ng-template>
               <ng-template ngbSlide>
-                <img src="{{this.appsConfiguration.others.sites.constants.assets.images.pages.home.demos}}material.png" class="d-block w-100" alt="...">
+                <img src="/assets/sites.anon/deployed/images/pages/home/demos/material.png" class="d-block w-100" alt="Material demo">
               </ng-template>
               <ng-template ngbSlide>
-                <img src="{{this.appsConfiguration.others.sites.constants.assets.images.pages.home.demos}}minimal.png" class="d-block w-100" alt="...">
+                <img src="/assets/sites.anon/deployed/images/pages/home/demos/minimal.png" class="d-block w-100" alt="Minimal demo">
               </ng-template>
               <ng-template ngbSlide>
-                <img src="{{this.appsConfiguration.others.sites.constants.assets.images.pages.home.demos}}creative.png" class="d-block w-100" alt="...">
+                <img src="/assets/sites.anon/deployed/images/pages/home/demos/creative.png" class="d-block w-100" alt="Creative demo">
               </ng-template>
               <ng-template ngbSlide>
-                <img src="{{this.appsConfiguration.others.sites.constants.assets.images.pages.home.demos}}modern.png" class="d-block w-100" alt="...">
+                <img src="/assets/sites.anon/deployed/images/pages/home/demos/modern.png" class="d-block w-100" alt="Modern demo">
               </ng-template>
               <ng-template ngbSlide>
-                <img src="{{this.appsConfiguration.others.sites.constants.assets.images.pages.home.demos}}interactive.png" class="d-block w-100" alt="...">
+                <img src="/assets/sites.anon/deployed/images/pages/home/demos/interactive.png" class="d-block w-100" alt="Interactive demo">
               </ng-template>
 
             </ngb-carousel>

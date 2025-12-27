@@ -7,22 +7,13 @@ import { SystemDiagnosticsTraceService } from '../../../../core/services/system.
 // Components
 import { BaseErrorsOfflineComponent } from "./000/offline/component";
 import { BaseErrors404BasicComponent } from "./404/basic/component";
-import { BaseErrors404CoverComponent } from "./404/cover/component";
-import { BaseErrors404AltComponent } from "./404/alt/component";
 import { BaseErrors500TodoComponent } from "./500/component";
+import { BaseErrorsAccountNotFoundComponent } from "./404/account-not-found/component";
 
 const routes: Routes = [
   {
     path:"404-basic",
     component: BaseErrors404BasicComponent
-  },
-  {
-    path: "404-cover",
-    component: BaseErrors404CoverComponent
-  },
-  {
-    path: "404-alt",
-    component: BaseErrors404AltComponent
   },
   {
     path: "500-default",
@@ -33,16 +24,22 @@ const routes: Routes = [
     component: BaseErrorsOfflineComponent
   },
   {
-    path: "000", redirectTo: 'offline'
+    path: "404-account-not-found",
+    component: BaseErrorsAccountNotFoundComponent
+  },
+  // Redirects
+  {
+    path: "000", redirectTo: 'offline', pathMatch: 'full'
   },
   {
-    path: "404", redirectTo: '404-basic'
+    path: "404", redirectTo: '404-basic', pathMatch: 'full'
   },
   {
-    path: "500", redirectTo: '500-default' 
+    path: "500", redirectTo: '500-default', pathMatch: 'full'
   },
+  // Catch-all: Unknown error routes go to 404-basic
   {
-    path: "**", redirectTo:"404-basic"
+    path: "**", redirectTo: "404-basic", pathMatch: 'full'
   }
 ];
 
@@ -51,8 +48,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class BaseThemesV1ErrorsRoutingModule {
-
-
   constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
   }

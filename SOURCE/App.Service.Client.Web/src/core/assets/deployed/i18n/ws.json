@@ -1821,6 +1821,12 @@
         "DESCRIPTION": "E le maua le mea (o se upu ma lelei i le fa'apitoa) e leai.",
         "INSTRUCTIONS": "..."
       },
+      "404-A": {
+        "ID": "404",
+        "[DIV_03]": "[------]",
+        "SINGULAR": "Not Found",
+        "DESCRIPTION": "Account not found!"
+      },
       "405": {
         "ID": "405",
         "TITLE": "E Le Maua Lenei Fa'afeso'ota'i",

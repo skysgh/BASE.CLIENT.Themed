@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppReadinessService } from '../../../core/services/app-readiness.service';
-import { Subscription } from 'rxjs';
+import { AccountService } from '../../../core/services/account.service';
+import { Subscription, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-splash-screen',
@@ -12,7 +14,22 @@ export class SplashScreenComponent implements OnInit, OnDestroy {
   public isReady = false;
   private subscription?: Subscription;
   
-  constructor(private appReadiness: AppReadinessService) {}
+  // ✅ Account-aware logo (Observable that filters out undefined)
+  public logoUrl$: Observable<string>;
+  public accountName$: Observable<string>;
+  
+  constructor(
+    private appReadiness: AppReadinessService,
+    private accountService: AccountService
+  ) {
+    // ✅ Get logo and name from account config, with fallback defaults
+    this.logoUrl$ = this.accountService.getConfigValue('branding.logoDark').pipe(
+      map(url => url || '/assets/core/media/open/accounts/default/logo-dark.svg')
+    );
+    this.accountName$ = this.accountService.getConfigValue('name').pipe(
+      map(name => name || 'BASE')
+    );
+  }
   
   ngOnInit(): void {
     // Listen for app readiness

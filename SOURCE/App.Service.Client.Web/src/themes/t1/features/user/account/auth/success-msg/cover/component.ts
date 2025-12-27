@@ -1,14 +1,15 @@
 // Rx:
+import { Observable } from 'rxjs';
 //
 // Ag:
 import { Component, OnInit } from '@angular/core';
 // Misc:
 //
 // Configurations:
-// ✅ FIXED: Use theme-tier configuration (not app-tier)
 import { themesT1Configuration } from '../../../../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
+import { AccountService } from '../../../../../../../../core/services/account.service';
 // Models:
 import { ViewModel } from './vm';
 // Data:
@@ -22,26 +23,28 @@ import { ViewModel } from './vm';
 /**
  * Success Msg Cover Component (Theme T1)
  * 
- * ✅ REFACTORED: Complete Tier Independence
+ * ✅ MULTI-ACCOUNT: Uses AccountService for reactive branding
  */
 export class CoverComponent implements OnInit {
-  // ✅ SINGLE config object (tier independence!)
   public tierConfig = themesT1Configuration;
+
+  // ✅ Account-aware branding (reactive)
+  public logo$: Observable<string | undefined>;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
-
-  constructor(private defaultControllerServices: DefaultComponentServices) {
-    // Make system/env variables avaiable to class & view template:
-    //this.system = this.systemService.system;
-}
+  constructor(
+    private defaultControllerServices: DefaultComponentServices,
+    private accountService: AccountService
+  ) {
+    // ✅ Get branding from account config (reactive)
+    this.logo$ = this.accountService.getConfigValue('branding.logo');
+  }
 
   ngOnInit(): void {
   }
-
 }

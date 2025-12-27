@@ -5,10 +5,13 @@
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand" routerLink="/">
-      <img [src]="deployed.logos.dark"
+      <!-- ✅ MULTI-ACCOUNT: Use AccountService observables -->
+      <img *ngIf="logoDark$ | async as logoDark"
+           [src]="logoDark"
            class="card-logo card-logo-dark"
            alt="logo dark" height="17">
-      <img [src]="deployed.logos.light"
+      <img *ngIf="logoLight$ | async as logoLight"
+           [src]="logoLight"
            class="card-logo card-logo-light"
            alt="logo light"
            height="17">

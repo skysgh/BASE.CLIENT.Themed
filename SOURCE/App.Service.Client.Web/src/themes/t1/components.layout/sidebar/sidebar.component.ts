@@ -3,16 +3,14 @@
 // Ag:
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-// Etc:
-
-//import { MENU } from './menu';
+import { Observable } from 'rxjs';
 
 import { IHasMenuItem } from '../../../../core/models/contracts/IHasMenuItem';
 // Configuration:
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
+import { AccountService } from '../../../../core/services/account.service';
 // Models:
 import { ViewModel } from './vm';
 // Data:
@@ -25,14 +23,12 @@ import { MENU } from '../../../../core/navigation/menu';
   styleUrls: ['./sidebar.component.scss']
 })
 export class BaseLayoutSidebarComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = themesT1Configuration
+  
+  // ✅ CONVENTION: Expose tier configuration as 'tierConfiguration'
+  public tierConfiguration = themesT1Configuration
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   menu: any;
   toggle: any = true;
@@ -41,13 +37,20 @@ export class BaseLayoutSidebarComponent implements OnInit {
   @ViewChild('sideMenu') sideMenu!: ElementRef;
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
+  // ✅ Account-aware logo paths
+  public logoDark$: Observable<string | undefined>;
+  public logoLight$: Observable<string | undefined>;
+  public logoSm$: Observable<string | undefined>;
+
   constructor(
     private router: Router,
-    private defaultControllerServices: DefaultComponentServices
+    private defaultControllerServices: DefaultComponentServices,
+    private accountService: AccountService
   ) {
-    // Make system/env variables avaiable to view template (via const or service):
-    
-
+    // ✅ Get logos from account config
+    this.logoDark$ = this.accountService.getConfigValue('branding.logo');
+    this.logoLight$ = this.accountService.getConfigValue('branding.logoDark');
+    this.logoSm$ = this.accountService.getConfigValue('branding.logoSm');
   }
 
   ngOnInit(): void {
@@ -154,7 +157,7 @@ export class BaseLayoutSidebarComponent implements OnInit {
   initActiveMenu() {
     let pathName = window.location.pathname;
     // Check if the application is running in production
-    if (themesT1Configuration.constants.environment.production) {
+    if (this.tierConfiguration.constants.environment.production) {
       // Modify pathName for production build
       pathName = pathName.replace('/base/angular/minimal', '');
     }
@@ -168,7 +171,7 @@ export class BaseLayoutSidebarComponent implements OnInit {
       this.removeActivation(activeItems);
 
       let matchingMenuItem = items.find((x: any) => {
-        if (themesT1Configuration.constants.environment.production) {
+        if (this.tierConfiguration.constants.environment.production) {
           let path = x.pathname
           path = path.replace('/base/angular/minimal', '');
           return path === pathName;
