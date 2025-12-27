@@ -58,11 +58,8 @@ export class BaseRouterOutletComponent implements OnInit {
     private configRegistry: ConfigRegistryService,
     private router: Router
   ) {
-    // Title will be set in ngOnInit after config loads
-  }
-  
-  ngOnInit(): void {
-    // ✅ Listen to router events (actual render signal!)
+    // ✅ Subscribe to router IMMEDIATELY (before ngOnInit)
+    // This ensures we catch the FIRST navigation event
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -75,6 +72,10 @@ export class BaseRouterOutletComponent implements OnInit {
         this.hideSplashAfterRender();
       }
     });
+  }
+  
+  ngOnInit(): void {
+    // ✅ Router subscription moved to constructor (to catch first navigation)
     
     // Subscribe to app readiness
     this.appReadiness.isReady$.subscribe(ready => {
