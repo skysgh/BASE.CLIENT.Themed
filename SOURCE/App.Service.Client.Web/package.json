@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run test:critical && ng serve",
+    "start:fast": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -12,7 +13,9 @@
     "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "test:single": "ng test --include='**/*.spec.ts' --watch=false",
     "test:headless": "ng test --browsers=ChromeHeadless --watch=false",
-    "test:report": "ng test --code-coverage --browsers=ChromeHeadless --watch=false && node scripts/generate-test-report.js",
+    "test:critical": "ng test --include='**/core/**/*.spec.ts' --browsers=ChromeHeadless --watch=false",
+    "test:all": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+    "test:report": "npm run test:all && node scripts/generate-test-report.js",
     
     "soul": "soul --database=_custom/sqlite/base.db --p=4202",
     

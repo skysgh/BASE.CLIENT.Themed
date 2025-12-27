@@ -17,15 +17,15 @@ import { BaseAppsPagesLandingIndexTeamComponent } from './component';
 
 // Test utilities
 import {
-  setupTestBed,
+  setupCoreTestBed,
   MockResourceUrlService,
-  mockPrivateNavigation,
   mockTeamMembers
-} from '../../../../../../testing/test-helpers';
+} from '../../../../../../../core/testing/core-test-helpers';
 
 // Services
 import { ResourceUrlService } from '../../../../../../../core/services/resource-url.service';
 import { ServiceDeliveryTeamMemberRepositoryService } from '../../../../../../../core/services/services/repositories/service-delivery-team-members.repository.service';
+import { PRIVATE_NAVIGATION } from '../../../../../../../core/tokens/private-navigation.token';
 
 describe('TeamComponent', () => {
   let component: BaseAppsPagesLandingIndexTeamComponent;
@@ -44,7 +44,7 @@ describe('TeamComponent', () => {
     ]);
 
     // Configure test bed with our component
-    await setupTestBed(
+    await setupCoreTestBed(
       [BaseAppsPagesLandingIndexTeamComponent],
       {
         providers: [
