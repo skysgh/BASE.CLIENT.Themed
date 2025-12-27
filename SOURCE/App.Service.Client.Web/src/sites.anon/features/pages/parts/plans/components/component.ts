@@ -11,7 +11,7 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 //import { YearlyPlanModel } from '../../../../../../../core/models/data/yearly-plan.model';
 import { ServicePricingPlan } from '../../../../../../core/models/data/service-pricing-plan.model';
 // Data:
-import { MonthlyPlan, YearlyPlan } from '../../../../../data/fake/pricing.data';
+// import { MonthlyPlan, YearlyPlan } from '../../../../../data/fake/pricing.data';
 
 
 @Component({
@@ -69,8 +69,9 @@ export class BaseCorePagesLandingPricingComponent implements OnInit {
 
   // Chat Data Fetch
   private _fetchData() {
-    this.MonthlyPlan = MonthlyPlan;
-    this.YearlyPlan = YearlyPlan;
+    // this.MonthlyPlan = MonthlyPlan;
+    // this.YearlyPlan = YearlyPlan;
+    // TODO: Load from repository service instead of mock data
   }
 
 }
