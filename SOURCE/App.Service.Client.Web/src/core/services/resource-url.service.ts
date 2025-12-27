@@ -55,8 +55,17 @@ export class ResourceUrlService {
   /**
    * Get URL for user avatar/profile photo
    * 
-   * Development Mode: Returns direct path to theme mock images
-   * Production Mode: Returns signed URL from API (future)
+   * Development Mode: Returns direct path (tier-agnostic)
+   * Production Mode: Returns signed URL from blob storage
+   * 
+   * Path Structure:
+   * - Dev: /assets/media/sensitive/images/users/{filename}
+   * - Prod: https://cdn.blob.core.windows.net/media/sensitive/images/users/{filename}?sig=...
+   * 
+   * Note: In dev, path doesn't include tier (sites.anon) because:
+   * - Matches production blob structure (no tier in blob paths)
+   * - Angular serves from sites.anon/assets/media → /assets/media
+   * - Simpler migration to blob storage (same path structure)
    * 
    * @param imageName - Filename (e.g., "avatar-2.jpg")
    * @returns Observable<string> - Full URL to avatar image
@@ -65,19 +74,19 @@ export class ResourceUrlService {
    * ```typescript
    * this.resourceUrlService.getUserAvatarUrl('avatar-2.jpg')
    *   .subscribe(url => console.log(url));
-   * // Dev: "/assets/deployed/images/users/avatar-2.jpg"
-   * // Prod: "https://cdn.example.com/users/avatars/avatar-2.jpg?sig=abc&exp=123"
+   * // Dev: "/assets/media/sensitive/images/users/avatar-2.jpg"
+   * // Prod: "https://cdn.blob.core.windows.net/media/sensitive/images/users/avatar-2.jpg?sig=abc&exp=123"
    * ```
    */
   getUserAvatarUrl(imageName: string): Observable<string> {
-    // ✅ PHASE 1: Development mode - direct path to theme assets
+    // ✅ PHASE 1: Development mode - direct path (tier-agnostic, matches prod structure)
     if (!environment.production) {
-      return of(`/assets/deployed/images/users/${imageName}`);
+      return of(`/assets/media/sensitive/images/users/${imageName}`);
     }
     
-    // ✅ PHASE 3: Production mode - signed URL from API
-    // TODO: Implement when API + blob storage ready
-    return this.getSignedUrl(`users/avatars/${imageName}`, 60, 'public_avatar');
+    // ✅ PHASE 3: Production mode - signed URL from blob storage
+    // Structure: https://storage.blob.core.windows.net/media/sensitive/images/users/{filename}?sig=abc&exp=123
+    return this.getSignedUrl(`media/sensitive/images/users/${imageName}`, 60, 'user_avatar');
   }
   
   /**
@@ -85,25 +94,39 @@ export class ResourceUrlService {
    * 
    * Always requires authentication and signed URL (HIGH RISK content)
    * 
+   * Path Structure (same as avatars):
+   * - Dev: /assets/media/sensitive/documents/{filename}
+   * - Prod: https://cdn.blob.core.windows.net/media/sensitive/documents/{filename}?sig=...
+   * 
    * @param userId - User ID who owns the document
    * @param filename - Document filename
    * @returns Observable<string> - Signed URL with expiration
    */
   getUserDocumentUrl(userId: string, filename: string): Observable<string> {
-    // ✅ PHASE 1: Development mode - direct path to mock assets
+    // ✅ PHASE 1: Development mode - direct path (tier-agnostic)
     if (!environment.production) {
       return of(`/assets/media/sensitive/documents/${filename}`);
     }
     
     // ✅ PHASE 3: Production mode - signed URL (requires auth)
-    return this.getSignedUrl(`users/${userId}/documents/${filename}`, 60, 'user_document');
+    // Note: In prod, user ID might be part of blob path for isolation
+    return this.getSignedUrl(`media/sensitive/documents/${userId}/${filename}`, 60, 'user_document');
   }
   
   /**
    * Get URL for team member photo (public marketing site)
    * 
-   * Development Mode: Returns theme asset path
+   * Development Mode: Returns direct path (tier-agnostic)
    * Production Mode: Returns signed URL (even for "public" images)
+   * 
+   * Path Structure:
+   * - Dev: /assets/media/sensitive/images/users/{filename}  (same as user avatars!)
+   * - Prod: https://cdn.blob.core.windows.net/media/sensitive/images/users/{filename}?sig=...
+   * 
+   * Why "sensitive" for public team photos?
+   * - Enables signature-based access control (employee cleanup, GDPR)
+   * - Same structure as user avatars (consistency)
+   * - Signature validates access (even if image is "public")
    * 
    * Why signatures for public images?
    * - Employee departure cleanup (expire key → instant cleanup)
@@ -115,13 +138,15 @@ export class ResourceUrlService {
    * @returns Observable<string> - URL to team photo
    */
   getTeamMemberPhotoUrl(imageName: string): Observable<string> {
-    // ✅ PHASE 1: Development mode - use theme assets
+    // ✅ PHASE 1: Development mode - use tier-agnostic path
     if (!environment.production) {
-      return of(`/assets/deployed/images/users/${imageName}`);
+      return of(`/assets/media/sensitive/images/users/${imageName}`);
     }
     
     // ✅ PHASE 3: Production mode - signed URL (public but tracked)
-    return this.getSignedUrl(`public/team/${imageName}`, 60, 'team_member_photo');
+    // Note: Could use /media/open/ for truly public images, but using /sensitive/
+    // enables signature-based cleanup when employee leaves
+    return this.getSignedUrl(`media/sensitive/images/users/${imageName}`, 60, 'team_member_photo');
   }
   
   /**

@@ -57,6 +57,11 @@
                 "output": "/assets/sites.anon"
               },
               {
+                "glob": "media/**/*",
+                "input": "src/sites.anon/assets",
+                "output": "/assets/"
+              },
+              {
                 "glob": "**/*",
                 "input": "src/sites.app/assets",
                 "output": "/assets/sites.app"
@@ -290,6 +295,11 @@
                 "glob": "**/*",
                 "input": "src/sites.anon/assets",
                 "output": "/assets/sites.anon"
+              },
+              {
+                "glob": "media/**/*",
+                "input": "src/sites.anon/assets",
+                "output": "/assets/"
               },
               {
                 "glob": "**/*",
