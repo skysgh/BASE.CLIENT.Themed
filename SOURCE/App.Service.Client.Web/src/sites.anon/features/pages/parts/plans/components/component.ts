@@ -11,7 +11,7 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 //import { YearlyPlanModel } from '../../../../../../../core/models/data/yearly-plan.model';
 import { ServicePricingPlan } from '../../../../../../core/models/data/service-pricing-plan.model';
 // Data:
-import { MonthlyPlan, YearlyPlan } from '../../../../../../core/data/fake/pricing.data';
+import { MonthlyPlan, YearlyPlan } from '../../../../../data/fake/pricing.data';
 
 
 @Component({
