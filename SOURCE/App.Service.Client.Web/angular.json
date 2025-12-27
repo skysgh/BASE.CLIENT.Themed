@@ -34,76 +34,76 @@
 
               {
                 "glob": "**/*",
-                "input": "src/app.lets/assets",
-                "output": "/assets/app.lets"
+                "input": "src/sites.app.lets/assets",
+                "output": "/assets/sites.app.lets"
               },
 
               {
                 "glob": "**/*",
-                "input": "src/app.lets/architecture/assets",
-                "output": "/assets/app.lets/architecture"
+                "input": "src/sites.app.lets/architecture/assets",
+                "output": "/assets/sites.app.lets/architecture"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/demos/assets",
-                "output": "/assets/app.lets/demos"
+                "input": "src/sites.app.lets/demos/assets",
+                "output": "/assets/sites.app.lets/demos"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/education/assets",
-                "output": "/assets/app.lets/education"
+                "input": "src/sites.app.lets/education/assets",
+                "output": "/assets/sites.app.lets/education"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/example/assets",
-                "output": "/assets/app.lets/example"
+                "input": "src/sites.app.lets/example/assets",
+                "output": "/assets/sites.app.lets/example"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/resources/assets",
-                "output": "/assets/app.lets/resources"
+                "input": "src/sites.app.lets/resources/assets",
+                "output": "/assets/sites.app.lets/resources"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/scheduling/assets",
-                "output": "/assets/app.lets/scheduling"
+                "input": "src/sites.app.lets/scheduling/assets",
+                "output": "/assets/sites.app.lets/scheduling"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/social/assets",
-                "output": "/assets/app.lets/social"
+                "input": "src/sites.app.lets/social/assets",
+                "output": "/assets/sites.app.lets/social"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/spike/assets",
-                "output": "/assets/app.lets/spike"
+                "input": "src/sites.app.lets/spike/assets",
+                "output": "/assets/sites.app.lets/spike"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/system/assets",
-                "output": "/assets/app.lets/system"
+                "input": "src/sites.app.lets/system/assets",
+                "output": "/assets/sites.app.lets/system"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/tasks/assets",
-                "output": "/assets/app.lets/tasks"
+                "input": "src/sites.app.lets/tasks/assets",
+                "output": "/assets/sites.app.lets/tasks"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/template/assets",
-                "output": "/assets/app.lets/template"
+                "input": "src/sites.app.lets/template/assets",
+                "output": "/assets/sites.app.lets/template"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/transactions/assets",
-                "output": "/assets/app.lets/transactions"
+                "input": "src/sites.app.lets/transactions/assets",
+                "output": "/assets/sites.app.lets/transactions"
               },
 
 
               {
                 "glob": "**/*",
-                "input": "src/apps/assets",
-                "output": "/assets/apps"
+                "input": "src/sites.app/assets",
+                "output": "/assets/sites.app"
               },
               {
                 "glob": "**/*",
@@ -123,13 +123,13 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/sites/assets",
-                "output": "/assets/sites"
+                "input": "src/sites.anon/assets",
+                "output": "/assets/sites.anon"
               },
               {
                 "glob": "**/*",
-                "input": "src/sites.apps/assets",
-                "output": "/assets/sites.apps"
+                "input": "src/sites.app/assets",
+                "output": "/assets/sites.app"
               },
               {
                 "glob": "**/*",
@@ -277,76 +277,76 @@
 
               {
                 "glob": "**/*",
-                "input": "src/app.lets/assets",
-                "output": "/assets/app.lets"
+                "input": "src/sites.app.lets/assets",
+                "output": "/assets/sites.app.lets"
               },
 
               {
                 "glob": "**/*",
-                "input": "src/app.lets/architecture/assets",
-                "output": "/assets/app.lets/architecture"
+                "input": "src/sites.app.lets/architecture/assets",
+                "output": "/assets/sites.app.lets/architecture"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/demos/assets",
-                "output": "/assets/app.lets/demos"
+                "input": "src/sites.app.lets/demos/assets",
+                "output": "/assets/sites.app.lets/demos"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/education/assets",
-                "output": "/assets/app.lets/education"
+                "input": "src/sites.app.lets/education/assets",
+                "output": "/assets/sites.app.lets/education"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/example/assets",
-                "output": "/assets/app.lets/example"
+                "input": "src/sites.app.lets/example/assets",
+                "output": "/assets/sites.app.lets/example"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/resources/assets",
-                "output": "/assets/app.lets/resources"
+                "input": "src/sites.app.lets/resources/assets",
+                "output": "/assets/sites.app.lets/resources"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/scheduling/assets",
-                "output": "/assets/app.lets/scheduling"
+                "input": "src/sites.app.lets/scheduling/assets",
+                "output": "/assets/sites.app.lets/scheduling"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/social/assets",
-                "output": "/assets/app.lets/social"
+                "input": "src/sites.app.lets/social/assets",
+                "output": "/assets/sites.app.lets/social"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/spike/assets",
-                "output": "/assets/app.lets/spike"
+                "input": "src/sites.app.lets/spike/assets",
+                "output": "/assets/sites.app.lets/spike"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/system/assets",
-                "output": "/assets/app.lets/system"
+                "input": "src/sites.app.lets/system/assets",
+                "output": "/assets/sites.app.lets/system"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/tasks/assets",
-                "output": "/assets/app.lets/tasks"
+                "input": "src/sites.app.lets/tasks/assets",
+                "output": "/assets/sites.app.lets/tasks"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/template/assets",
-                "output": "/assets/app.lets/template"
+                "input": "src/sites.app.lets/template/assets",
+                "output": "/assets/sites.app.lets/template"
               },
               {
                 "glob": "**/*",
-                "input": "src/app.lets/transactions/assets",
-                "output": "/assets/app.lets/transactions"
+                "input": "src/sites.app.lets/transactions/assets",
+                "output": "/assets/sites.app.lets/transactions"
               },
 
 
               {
                 "glob": "**/*",
-                "input": "src/apps/assets",
-                "output": "/assets/apps"
+                "input": "src/sites.app/assets",
+                "output": "/assets/sites.app"
               },
               {
                 "glob": "**/*",
@@ -366,13 +366,13 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/sites/assets",
-                "output": "/assets/sites"
+                "input": "src/sites.anon/assets",
+                "output": "/assets/sites.anon"
               },
               {
                 "glob": "**/*",
-                "input": "src/sites.apps/assets",
-                "output": "/assets/sites.apps"
+                "input": "src/sites.app/assets",
+                "output": "/assets/sites.app"
               }
             ],
             "styles": [
@@ -385,3 +385,5 @@
     }
   }
 }
+
+
