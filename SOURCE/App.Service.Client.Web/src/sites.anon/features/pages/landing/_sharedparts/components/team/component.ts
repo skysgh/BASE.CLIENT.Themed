@@ -4,9 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Component, OnInit, Inject } from '@angular/core';
 // Sites DI Tokens:
 import { 
-  UPLOADED_RESOURCES,      // User-generated content (profile photos)
-  UploadedResourcePaths,
-  PRIVATE_NAVIGATION,      // ✅ UPDATED: Private navigation (includes public)
+  PRIVATE_NAVIGATION,      // ✅ Private navigation (includes public)
   PrivateNavigationPaths 
 } from '../../../../../../tokens';
 // Configuration:
@@ -15,6 +13,7 @@ import { sitesConfiguration } from '../../../../../../configuration/implementati
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
 import { ServiceDeliveryTeamMemberRepositoryService } from '../../../../../../../core/services/services/repositories/service-delivery-team-members.repository.service';
+import { ResourceUrlService } from '../../../../../../../core/services/resource-url.service';
 // Models
 import { ServiceDeliveryTeamMemberVTO } from '../../../../../../../core/models/view/service-delivery-team-member.vto.model';
 // Data:
@@ -30,29 +29,26 @@ import { ViewModel } from './vm';
 /**
  * Team Component
  * 
- * ✅ FULLY MIGRATED - Security-Classified DI Pattern
+ * ✅ FULLY MIGRATED - Resource URL Service Pattern
  * 
- * Uses PRIVATE_NAVIGATION because:
- * - May show authenticated user context
- * - PRIVATE_NAVIGATION includes public routes via .public property
- * - Ready for role-based team features (future)
+ * Architecture:
+ * - Uses ResourceUrlService for all image URLs
+ * - Service handles dev/prod mode automatically
+ * - Ready for signed URLs when API available (Phase 3)
  * 
- * Token Usage:
- * - UPLOADED_RESOURCES: User profile photos (HIGH RISK - user-generated)
- * - PRIVATE_NAVIGATION: Full navigation tree (private + public)
- * 
- * Security Classification:
- * - Profile photos are USER-UPLOADED (untrusted, needs auth)
- * - Future enhancement: Will use signed URLs with expiration
+ * Security:
+ * - Team photos are "public" but still tracked
+ * - Future: Signed URLs enable instant cleanup when employee leaves
+ * - Future: GDPR compliance via access revocation
  * 
  * Benefits:
- * ✅ Security-conscious architecture (uploaded content explicitly marked)
- * ✅ Ready for signed URL migration (future enhancement)
- * ✅ Testable (mock the injection tokens)
- * ✅ Flexible (swap implementations per environment)
- * ✅ Full navigation tree available (private + public)
+ * ✅ Single source of truth for resource URLs
+ * ✅ Environment-aware (dev vs prod)
+ * ✅ Easy to test (mock the service)
+ * ✅ Ready for production (just implement API endpoint)
  * 
- * See: _custom/documentation/patterns/navigation-public-private-split-summary.md
+ * See: core/services/resource-url.service.ts
+ * See: _custom/documentation/architecture/resource-signatures-strategy.md
  */
 export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
   // ⚠️ PARTIAL: Still uses appsConfiguration for some settings
@@ -62,9 +58,6 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
 
-  // ✅ Injected UPLOADED resource paths (HIGH RISK - user-generated)
-  public uploaded!: UploadedResourcePaths;
-  
   // ✅ Injected PRIVATE navigation (includes public via .public)
   public nav!: PrivateNavigationPaths;
 
@@ -77,13 +70,12 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
   sectionsInfo = importedSectionsInfo;
   
   constructor(
-    @Inject(UPLOADED_RESOURCES) uploaded: UploadedResourcePaths,
     @Inject(PRIVATE_NAVIGATION) nav: PrivateNavigationPaths,
     private defaultControllerServices: DefaultComponentServices,
-    protected systemTeamRepositoryService :ServiceDeliveryTeamMemberRepositoryService  ) {
-
+    protected systemTeamRepositoryService: ServiceDeliveryTeamMemberRepositoryService,
+    private resourceUrlService: ResourceUrlService
+  ) {
     // Store injected resources
-    this.uploaded = uploaded;
     this.nav = nav;
 
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
@@ -97,27 +89,24 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
   }
 
   /**
-   * Get user profile photo URL
+   * Get team member photo URL
    * 
-   * Current implementation: Basic path concatenation
-   * Future enhancement: Will use ResourceUrlService for signed URLs
+   * ✅ NEW: Uses ResourceUrlService
    * 
-   * @param imageName - User's image filename (e.g., "user123.jpg")
-   * @returns Full URL to user's profile photo
+   * Development mode: Returns theme asset path
+   * Production mode: Returns signed URL (future)
+   * 
+   * Benefits:
+   * - Centralized URL logic (one place to change)
+   * - Environment-aware (dev vs prod)
+   * - Ready for signed URLs when API available
+   * - Employee cleanup via signature expiration (future)
+   * 
+   * @param imageName - Team member's image filename (e.g., "avatar-2.jpg")
+   * @returns Observable<string> - Full URL to photo
    */
-  getUserPhotoUrl(imageName: string): string {
-    // ✅ Uses uploaded resources (user-generated content)
-    // TODO: Migrate to signed URLs: return this.resourceUrlService.getSignedUrl(path, 60);
-    const fullPath = this.uploaded.users.profiles + imageName;
-    
-    // Temporary debug logging
-    console.log('Team Component - getUserPhotoUrl:', {
-      imageName,
-      profilesPath: this.uploaded.users.profiles,
-      fullPath
-    });
-    
-    return fullPath;
+  getUserPhotoUrl(imageName: string): Observable<string> {
+    return this.resourceUrlService.getTeamMemberPhotoUrl(imageName);
   }
 
   /**

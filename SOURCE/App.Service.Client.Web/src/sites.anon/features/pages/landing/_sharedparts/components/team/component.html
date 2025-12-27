@@ -20,10 +20,10 @@
                 <div class="card">
                   <div class="card-body text-center p-4">
                     <div class="avatar-xl mx-auto mb-4 position-relative">
-                      <!-- ✅ SECURITY FIX: Using uploaded resources for user photos -->
-                      <!-- User-generated content (HIGH RISK) - needs authentication -->
-                      <!-- Future: Will use signed URLs via getUserPhotoUrl() method -->
-                      <img [src]="getUserPhotoUrl(data.imageName)" alt="" class="img-fluid rounded-circle">
+                      <!-- ✅ REFACTORED: Using ResourceUrlService -->
+                      <!-- Development: Theme asset paths -->
+                      <!-- Production (future): Signed URLs from API -->
+                      <img [src]="getUserPhotoUrl(data.imageName) | async" alt="" class="img-fluid rounded-circle">
                       <!-- ⚠️ Still using appsConfiguration for messages navigation -->
                       <!-- TODO: Use nav.messages.inbox when expanded -->
                       <a href="{{this.appsConfiguration.navigation.messages}}" class="btn btn-success btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">

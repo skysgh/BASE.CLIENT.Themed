@@ -655,65 +655,65 @@
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "enabled": true,
-      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PURPOSE.TITLE",
-      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PURPOSE.DESCRIPTION",
+      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PURPOSE.TITLE",
+      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PURPOSE.DESCRIPTION",
       "imageId": "ri-pencil-ruler-2-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
       "enabled": true,
-      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PROJECTS.TITLE",
-      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PROJECTS.DESCRIPTION",
+      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PROJECTS.TITLE",
+      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PROJECTS.DESCRIPTION",
       "imageId": " ri-flag-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
       "enabled": true,
-      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PEOPLE.TITLE",
-      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PEOPLE.DESCRIPTION",
+      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PEOPLE.TITLE",
+      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PEOPLE.DESCRIPTION",
       "imageId": " ri-user-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000004",
       "enabled": true,
-      "title": "CUSTOM.SITE.HOME.CAPABILITIES.GROUPS.TITLE",
-      "description": "CUSTOM.SITE.HOME.CAPABILITIES.GROUPS.DESCRIPTION",
+      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.GROUPS.TITLE",
+      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.GROUPS.DESCRIPTION",
       "imageId": "ri-group-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000004",
       "enabled": true,
-      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PLACES.TITLE",
-      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PLACES.DESCRIPTION",
+      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PLACES.TITLE",
+      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PLACES.DESCRIPTION",
       "imageId": "ri-map-pin-2-line"
     },
     {
       "id": "00000000-0000-0000-0000-000000000005",
       "enabled": true,
       "imageId": " ri-line-chart-line",
-      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PROGRESS.TITLE",
-      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PRODUCTS.DESCRIPTION"
+      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PROGRESS.TITLE",
+      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PROGRESS.DESCRIPTION"
     },
     {
       "id": "00000000-0000-0000-0000-000000000006",
       "enabled": true,
       "imageId": "ri-book-open-line",
-      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PRODUCTS.TITLE",
-      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PRODUCTS.DESCRIPTION"
+      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PRODUCTS.TITLE",
+      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PRODUCTS.DESCRIPTION"
     },
     {
       "id": "00000000-0000-0000-0000-000000000007",
       "enabled": true,
       "imageId": " ri-award-line",
-      "title": "CUSTOM.SITE.HOME.CAPABILITIES.PLANS.TITLE",
-      "description": "CUSTOM.SITE.HOME.CAPABILITIES.PLANS.DESCRIPTION"
+      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PLANS.TITLE",
+      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PLANS.DESCRIPTION"
     },
     {
       "id": "00000000-0000-0000-0000-000000000008",
       "enabled": true,
       "imageId": "ri-recycle-line",
-      "title": "CUSTOM.SITE.HOME.CAPABILITIES.ACHIEVEMENTS.TITLE",
-      "description": "CUSTOM.SITE.HOME.CAPABILITIES.ACHIEVEMENTS.DESCRIPTION"
+      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.ACHIEVEMENTS.TITLE",
+      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.ACHIEVEMENTS.DESCRIPTION"
     }
   ],
 
@@ -951,7 +951,7 @@
       "id": "00000000-0000-0000-0000-000000000002",
       "from": "Angela Bernier",
       "subject": "Answered to your comment on the cash flow forecast's graph 🔔.",
-      "img": "{{system.sources.assets.private.dynamic.userdata.images.users}}avatar-2.jpg",
+      "img": "{{system.sources.assets.private.dynamic.userdata.images/users}}avatar-2.jpg",
       "imageId": "bx-badge-check",
       "time": "48 min ago",
       "checkboxId": "all-notification-check02",
@@ -970,7 +970,7 @@
       "id": "00000000-0000-0000-0000-000000000004",
       "from": "Maureen Gibsons",
       "subject": "We talked about a project on linkedin.",
-      "img": "{{system.sources.assets.private.dynamic.userdata.images.users}}avatar-8.jpg",
+      "img": "{{system.sources.assets.private.dynamic.userdata.images/users}}avatar-8.jpg",
       "imageId": "bx-badge-check",
       "time": "4 HRS ago",
       "checkboxId": "all-notification-check04",

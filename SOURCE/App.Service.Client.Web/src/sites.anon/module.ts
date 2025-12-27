@@ -217,9 +217,12 @@ import { sitesConstants } from "./constants/implementations/sites.constants";
       provide: UPLOADED_RESOURCES,
       useValue: {
         users: {
-          root: '/assets/media/sensitive/',
-          profiles: '/assets/media/sensitive/images/users/',
-          avatars: '/assets/media/sensitive/images/users/'
+          // ⚠️ TEMPORARY: Using theme assets for development
+          // TODO Phase 2: Migrate to ResourceUrlService
+          // TODO Phase 3: Migrate to signed URLs via API
+          root: '/assets/deployed/images/',
+          profiles: '/assets/deployed/images/users/',
+          avatars: '/assets/deployed/images/users/'
         },
         documents: {
           root: '/assets/media/sensitive/documents/',
