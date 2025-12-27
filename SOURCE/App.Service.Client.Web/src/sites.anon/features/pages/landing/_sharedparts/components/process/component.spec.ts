@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BaseAppsPagesLandingIndexWorkProcessComponent } from '_root';
+import { BaseAppsPagesLandingIndexWorkProcessComponent } from './component';
 
 describe('BaseAppsPagesLandingIndexWorkProcessComponent', () => {
   let component: BaseAppsPagesLandingIndexWorkProcessComponent;

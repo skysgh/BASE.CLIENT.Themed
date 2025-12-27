@@ -80,28 +80,31 @@ export function getMockHttpClient() {
  * This is core-tier data - no higher-tier specifics!
  */
 export const mockDefaultAccount: AccountConfig = {
-  id: 'default',
-  subdomain: 'default',
+  accountId: 'default',
+  accountGuid: '00000000-0000-0000-0000-000000000001',
   name: 'Default Account',
+  title: 'Default Account',
+  subtitle: 'Test Environment',
   branding: {
-    logo: {
-      light: '/assets/media/open/accounts/default/logo-light.svg',
-      dark: '/assets/media/open/accounts/default/logo-dark.svg'
-    },
-    colors: {
-      primary: '#007bff',
-      secondary: '#6c757d'
-    },
-    theme: 'light'
+    logo: '/assets/media/open/accounts/default/logo-light.svg',
+    logoDark: '/assets/media/open/accounts/default/logo-dark.svg',
+    theme: {
+      primaryColor: '#007bff',
+      secondaryColor: '#6c757d'
+    }
   },
-  i18n: {
-    defaultLanguage: 'en',
-    supportedLanguages: ['en'],
-    namespaces: ['common']
+  context: {
+    sponsor: {
+      title: 'Default Sponsor'
+    }
   },
-  features: {
-    authentication: true,
-    multiLanguage: false
+  resources: {
+    images: {
+      root: '/assets/media/open/accounts/default/'
+    },
+    i18n: {
+      path: '/assets/data'
+    }
   }
 };
 
@@ -109,28 +112,31 @@ export const mockDefaultAccount: AccountConfig = {
  * Mock foo account configuration
  */
 export const mockFooAccount: AccountConfig = {
-  id: 'foo',
-  subdomain: 'foo',
+  accountId: 'foo',
+  accountGuid: '00000000-0000-0000-0000-000000000002',
   name: 'Foo Account',
+  title: 'Foo Account',
+  subtitle: 'Test Environment',
   branding: {
-    logo: {
-      light: '/assets/media/open/accounts/foo/logo-light.svg',
-      dark: '/assets/media/open/accounts/foo/logo-dark.svg'
-    },
-    colors: {
-      primary: '#28a745',
-      secondary: '#17a2b8'
-    },
-    theme: 'dark'
+    logo: '/assets/media/open/accounts/foo/logo-light.svg',
+    logoDark: '/assets/media/open/accounts/foo/logo-dark.svg',
+    theme: {
+      primaryColor: '#28a745',
+      secondaryColor: '#17a2b8'
+    }
   },
-  i18n: {
-    defaultLanguage: 'en',
-    supportedLanguages: ['en', 'es'],
-    namespaces: ['common', 'foo']
+  context: {
+    sponsor: {
+      title: 'Foo Sponsor'
+    }
   },
-  features: {
-    authentication: true,
-    multiLanguage: true
+  resources: {
+    images: {
+      root: '/assets/media/open/accounts/foo/'
+    },
+    i18n: {
+      path: '/assets/data'
+    }
   }
 };
 
@@ -138,28 +144,31 @@ export const mockFooAccount: AccountConfig = {
  * Mock bar account configuration
  */
 export const mockBarAccount: AccountConfig = {
-  id: 'bar',
-  subdomain: 'bar',
+  accountId: 'bar',
+  accountGuid: '00000000-0000-0000-0000-000000000003',
   name: 'Bar Account',
+  title: 'Bar Account',
+  subtitle: 'Test Environment',
   branding: {
-    logo: {
-      light: '/assets/media/open/accounts/bar/logo-light.svg',
-      dark: '/assets/media/open/accounts/bar/logo-dark.svg'
-    },
-    colors: {
-      primary: '#dc3545',
-      secondary: '#ffc107'
-    },
-    theme: 'light'
+    logo: '/assets/media/open/accounts/bar/logo-light.svg',
+    logoDark: '/assets/media/open/accounts/bar/logo-dark.svg',
+    theme: {
+      primaryColor: '#dc3545',
+      secondaryColor: '#ffc107'
+    }
   },
-  i18n: {
-    defaultLanguage: 'mi',
-    supportedLanguages: ['en', 'mi'],
-    namespaces: ['common', 'bar']
+  context: {
+    sponsor: {
+      title: 'Bar Sponsor'
+    }
   },
-  features: {
-    authentication: true,
-    multiLanguage: true
+  resources: {
+    images: {
+      root: '/assets/media/open/accounts/bar/'
+    },
+    i18n: {
+      path: '/assets/data'
+    }
   }
 };
 
@@ -179,7 +188,7 @@ export const mockBarAccount: AccountConfig = {
 export function setupCoreTestBed(
   declarations: any[] = [],
   additionalConfig: Partial<TestModuleMetadata> = {}
-): typeof TestBed {
+) {
   
   const baseConfig: TestModuleMetadata = {
     declarations: [...declarations],

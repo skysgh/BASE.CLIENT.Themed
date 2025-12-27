@@ -17,15 +17,30 @@ import { BaseAppsPagesLandingIndexTeamComponent } from './component';
 
 // Test utilities
 import {
-  setupCoreTestBed,
-  MockResourceUrlService,
-  mockTeamMembers
+  setupCoreTestBed
 } from '../../../../../../../core/testing/core-test-helpers';
 
 // Services
 import { ResourceUrlService } from '../../../../../../../core/services/resource-url.service';
 import { ServiceDeliveryTeamMemberRepositoryService } from '../../../../../../../core/services/services/repositories/service-delivery-team-members.repository.service';
-import { PRIVATE_NAVIGATION } from '../../../../../../../core/tokens/private-navigation.token';
+
+// Mock data
+const mockTeamMembers = [
+  {
+    id: '1',
+    enabled: true,
+    title: 'John Doe',
+    role: 'Team Leader',
+    imageName: 'avatar-1.jpg'
+  },
+  {
+    id: '2',
+    enabled: true,
+    title: 'Jane Smith',
+    role: 'Developer',
+    imageName: 'avatar-2.jpg'
+  }
+];
 
 describe('TeamComponent', () => {
   let component: BaseAppsPagesLandingIndexTeamComponent;

@@ -31,7 +31,7 @@ export class BaseCorePagesLandingPricingComponent implements OnInit {
 
   breadCrumbItems!: Array<{}>;
   MonthlyPlan!: ServicePricingPlan[];
-  YearlyPlan!: YearlyPlanModel[];
+  YearlyPlan!: ServicePricingPlan[];
 
 
   constructor(

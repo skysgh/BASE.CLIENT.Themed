@@ -159,7 +159,8 @@ describe('ResourceUrlService (Core Tier)', () => {
     it('should not be an observable', () => {
       const url = service.getDeployedAssetUrl('test.jpg');
       expect(typeof url).toBe('string');
-      expect(url).not.toHaveProperty('subscribe');
+      // Observable would have 'subscribe' method
+      expect((url as any).subscribe).toBeUndefined();
     });
   });
 

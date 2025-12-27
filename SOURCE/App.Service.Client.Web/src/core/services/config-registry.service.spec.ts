@@ -77,7 +77,7 @@ describe('ConfigRegistryService (Core Tier)', () => {
       service.register('test', { value: 'original' });
       service.register('test', { value: 'updated' });
 
-      const config = service.get('test');
+      const config: any = service.get('test');
       expect(config.value).toBe('updated');
     });
 
@@ -93,7 +93,7 @@ describe('ConfigRegistryService (Core Tier)', () => {
       };
 
       service.register('complex', complexConfig);
-      const retrieved = service.get('complex');
+      const retrieved: any = service.get('complex');
       
       expect(retrieved.level1.level2.level3.value).toBe('deep');
     });
@@ -104,7 +104,7 @@ describe('ConfigRegistryService (Core Tier)', () => {
       };
 
       service.register('array', arrayConfig);
-      const retrieved = service.get('array');
+      const retrieved: any = service.get('array');
       
       expect(retrieved.items).toEqual([1, 2, 3, 4, 5]);
     });
@@ -120,7 +120,7 @@ describe('ConfigRegistryService (Core Tier)', () => {
     });
 
     it('should retrieve registered configuration', () => {
-      const config = service.get('test');
+      const config: any = service.get('test');
       expect(config).toBeDefined();
       expect(config.name).toBe('Test Config');
       expect(config.value).toBe(42);
@@ -141,8 +141,8 @@ describe('ConfigRegistryService (Core Tier)', () => {
       service.register('config1', { id: 1 });
       service.register('config2', { id: 2 });
 
-      const config1 = service.get('config1');
-      const config2 = service.get('config2');
+      const config1: any = service.get('config1');
+      const config2: any = service.get('config2');
 
       expect(config1.id).toBe(1);
       expect(config2.id).toBe(2);
@@ -212,20 +212,26 @@ describe('ConfigRegistryService (Core Tier)', () => {
       expect(service.has('sites')).toBe(true);
 
       // Verify retrievable
-      expect(service.get('core').constants.apiUrl).toBe('/api');
-      expect(service.get('core.ag').configuration.strictMode).toBe(false);
-      expect(service.get('sites').configuration.theme).toBe('light');
+      const coreConfig: any = service.get('core');
+      const coreAgConfig: any = service.get('core.ag');
+      const sitesConfig: any = service.get('sites');
+      
+      expect(coreConfig.constants.apiUrl).toBe('/api');
+      expect(coreAgConfig.configuration.strictMode).toBe(false);
+      expect(sitesConfig.configuration.theme).toBe('light');
     });
 
     it('should handle configuration updates', () => {
       // Initial registration
       service.register('app', { version: '1.0.0' });
-      expect(service.get('app').version).toBe('1.0.0');
+      const initial: any = service.get('app');
+      expect(initial.version).toBe('1.0.0');
 
       // Update
       service.register('app', { version: '2.0.0', features: ['new'] });
-      expect(service.get('app').version).toBe('2.0.0');
-      expect(service.get('app').features).toEqual(['new']);
+      const updated: any = service.get('app');
+      expect(updated.version).toBe('2.0.0');
+      expect(updated.features).toEqual(['new']);
     });
   });
 
@@ -267,7 +273,8 @@ describe('ConfigRegistryService (Core Tier)', () => {
       service.register(longKey, { value: 'test' });
       
       expect(service.has(longKey)).toBe(true);
-      expect(service.get(longKey).value).toBe('test');
+      const config: any = service.get(longKey);
+      expect(config.value).toBe('test');
     });
   });
 });
