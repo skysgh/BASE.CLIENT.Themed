@@ -6,11 +6,10 @@ import { Component, OnInit } from '@angular/core';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-import { SystemCapabilitiesRepositoryService } from '../../../../../../../core/services/services/repositories/service-capabilities.service';
+import { ServiceCapabilityService } from '../../../../../../../core/services/service-capability.service';
 // Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
-import { SystemCapabilitiesVTO } from '../../../../../../../core/models/view/system-capabilities.vto.model';
 import { servicesModel } from './services.model';
 import { Services } from './data';
 
@@ -24,9 +23,11 @@ import { Services } from './data';
 /**
  * Services Component
  * 
- * ✅ ARCHITECTURAL FIX - Removed Upward Coupling
- * Removed direct appsConfiguration import (upward coupling to Apps tier)
- * Component now only references sitesConfiguration (same tier)
+ * ✅ REPOSITORY MIGRATION - Phase 3 Complete
+ * Updated to use new ServiceCapabilityService (service layer)
+ * Removed direct repository access (old pattern)
+ * Component now follows repository → mapper → service → component pattern
+ * Uses Signal-based reactivity from service
  */
 export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
   // Expose parent configuration:
@@ -34,38 +35,21 @@ export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
-
-
-
-  capabilities$: Observable<SystemCapabilitiesVTO[]> = of([]);
 
   sectionsInfo = importedSectionsInfo;
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    protected capabilitiesRepositoryService: SystemCapabilitiesRepositoryService
-    ) {
-
+    public capabilityService: ServiceCapabilityService
+  ) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }
 
   ngOnInit(): void {
     /**
-     * fetches data
+     * Data is automatically loaded by service on construction
+     * Template accesses capabilityService.enabledCapabilities() signal directly
      */
-     this._fetchData();
   }
-
-   /**
- * User grid data fetches
- */
-  private _fetchData() {
-    this.capabilitiesRepositoryService
-      .getPage()
-      .subscribe(x => {
-        this.capabilities$ = of(x)
-      });
-    }
 
 }

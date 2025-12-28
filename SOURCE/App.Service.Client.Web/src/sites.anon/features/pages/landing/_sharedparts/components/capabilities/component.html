@@ -17,8 +17,8 @@
         <!-- end row -->
 
         <div class="row g-3">
-          <ng-container *ngIf="capabilities$ | async as capabilities">
-            @for (data of capabilities; track $index) {
+          <!-- ✅ REPOSITORY MIGRATION: Updated to use Signal-based service -->
+          @for (data of capabilityService.enabledCapabilities(); track data.id) {
             <div class="col-lg-4">
               <div class="d-flex p-3">
                 <div class="flex-shrink-0 me-3">
@@ -39,11 +39,10 @@
                   </div>
                 </div>
               </div>
-            </div>}
-            <!-- end col -->
-            </ng-container>
             </div>
-      
+          }
+          <!-- end col -->
+        </div>
         <!-- end row -->
     </div>
     <!-- end container -->
