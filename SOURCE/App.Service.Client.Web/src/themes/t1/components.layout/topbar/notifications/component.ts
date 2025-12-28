@@ -5,14 +5,14 @@ import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 // Etc:
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 // Services:
-import { ServiceNotificationsService } from "../../../../../core/services/service.notification.service";
+import { ServiceNotificationService } from "../../../../../core/services/service-notification.service";
+import { ResourceUrlService } from "../../../../../core/services/resource-url.service";
 // Configuration:
 import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
 // Services:
 import { DefaultComponentServices } from "../../../../../core/services/default-controller-services";
 // Modal
-import { ServiceNotification } from "../../../../../core/models/data/service-notification.model";
 import { ViewModel } from "../vm";
 
 @Component({
@@ -26,33 +26,26 @@ export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnIn
   // Expose parent configuration:
   public groupConfiguration = themesT1Configuration
 
-
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   messages: any
 
   checkedValGet: any[] = [];
 
   // NOtificationService lists:
-  allnotifications: any
+  // ✅ REMOVED: allnotifications - template uses signal directly
   totalNotify: number = 0;
   newNotify: number = 0;
   readNotify: number = 0;
   notifyId: any;
 
-
-  public notificationsAll$: Observable<ServiceNotification[]> = of([]);
-  public notificationsMessages$: Observable<ServiceNotification[]> = of([]);
-  public notificationsAlerts$: Observable<ServiceNotification[]> = of([]);
-
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    private serviceNotificationsService: ServiceNotificationsService,
+    public notificationService: ServiceNotificationService,
+    private resourceUrlService: ResourceUrlService,
     private modalService: NgbModal) {
-    // Make system/env variables avaiable to view template (via const or service):
-    
+    this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name} initialized - using new polling service`);
   }
 
 
@@ -61,23 +54,26 @@ export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnIn
 
 
   ngOnInit(): void {
-    this.initMessages();
+    // ✅ REMOVED: Stale initialization - template uses signal directly
+    // The service automatically polls every 60s and updates the signal
+    this.messages = []; // TODO: filter by type when we have message types
+    
+    this.defaultControllerServices.diagnosticsTraceService.debug(
+      `${this.constructor.name} initialized - notifications will update automatically via signal`
+    );
   }
 
-  private initMessages() {
-    this.serviceNotificationsService
-      .mappedItems$
-      .subscribe(x => {
-        // Fetch Data
-        this.notificationsAll$ = of(x);
-      });
-
-    this.serviceNotificationsService
-      .filteredMappedItems$
-      .subscribe(x => {
-        // Fetch Data
-        this.notificationsMessages$ = of(x);
-      });
+  /**
+   * Get secure avatar URL using ResourceUrlService
+   * @param filename Avatar filename (e.g., 'avatar-1.jpg')
+   * @returns Observable<string> - Secure URL for avatar
+   */
+  getAvatarUrl(filename: string): Observable<string> {
+    if (!filename) {
+      return of('');
+    }
+    
+    return this.resourceUrlService.getUserAvatarUrl(filename);
   }
 
   /**
@@ -91,11 +87,14 @@ export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnIn
 
 
   notificationDelete() {
+    // ✅ UPDATED: Use signal instead of stale allnotifications
+    const currentNotifications = this.notificationService.enabledNotifications();
+    
     if (this.notifyId == '1') {
       for (var i = 0; i < this.checkedValGet.length; i++) {
-        for (var j = 0; j < this.allnotifications.length; j++) {
-          if (this.allnotifications[j].id == this.checkedValGet[i]) {
-            this.allnotifications.splice(j, 1)
+        for (var j = 0; j < currentNotifications.length; j++) {
+          if (currentNotifications[j].id == this.checkedValGet[i]) {
+            currentNotifications.splice(j, 1)
           }
         }
       }
@@ -128,10 +127,13 @@ export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnIn
     this.notifyId = id
     var result;
     if (id == '1') {
+      // ✅ UPDATED: Use signal
+      const currentNotifications = this.notificationService.enabledNotifications();
       var checkedVal: any[] = [];
-      for (var i = 0; i < this.allnotifications.length; i++) {
-        if (this.allnotifications[i].state == true) {
-          result = this.allnotifications[i].id;
+      for (var i = 0; i < currentNotifications.length; i++) {
+        // ✅ FIXED: Use 'enabled' property instead of 'state'
+        if (currentNotifications[i].enabled == true) {
+          result = currentNotifications[i].id;
           checkedVal.push(result);
         }
       }

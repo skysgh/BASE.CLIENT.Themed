@@ -1,5 +1,4 @@
 // Rx:
-import { Observable, of } from 'rxjs';
 // Ag:
 import { Component, OnInit } from '@angular/core';
 // Etc:
@@ -8,9 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-import { ServiceFaqsRepositoryService } from '../../../../../../../core/services/services/repositories/service-faqs.repository.service';
+import { ServiceFaqService } from '../../../../../../../core/services/service-faq.service';
 // Models/Data:
-import { ServiceFaq } from '../../../../../../../core/models/data/service-faq.model';
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
 
@@ -24,9 +22,8 @@ import { ViewModel } from './vm';
 /**
  * Faqs Component
  * 
- * ✅ ARCHITECTURAL FIX - Removed Upward Coupling
- * Removed direct appsConfiguration import (upward coupling to Apps tier)
- * Component now only references sitesConfiguration (same tier)
+ * ✅ Updated to use modern ServiceFaqService with signals
+ * No more manual subscriptions needed!
  */
 export class BaseAppsPagesLandingIndexFaqsComponent implements OnInit {
   // Expose parent configuration:
@@ -34,24 +31,19 @@ export class BaseAppsPagesLandingIndexFaqsComponent implements OnInit {
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
-
 
   sectionsInfo = importedSectionsInfo;
 
-  faqs$: Observable<ServiceFaq[]> = of([]);
-
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    private serviceFaqsRepositoryService: ServiceFaqsRepositoryService) {
+    public faqService: ServiceFaqService) {
 
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   } 
 
   ngOnInit(): void {
-    this.serviceFaqsRepositoryService.getPage().subscribe(x => {
-      this.faqs$ = of(x);
-    });
+    // FAQs automatically loaded by service
+    // Access via faqService.enabledFaqs() signal
   }
 
 }

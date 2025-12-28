@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\app.lets\architecture\NewFolder\" />
+    <Folder Include="src\core\data\fake\" />
+    <Folder Include="src\sites.anon\data\fake\" />
     <Folder Include="src\sites.app\main\" />
     <Folder Include="src\core.ag\base\constants\" />
     <Folder Include="src\core.ag\contracts\" />
@@ -88,6 +90,7 @@
     <Folder Include="_custom\documentation\constraints\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".vscode\README-F5-DEBUG-WITH-TESTS.md" />
     <None Include="src\sites\features\pages\landing\coming-soon\component.html" />
     <None Include="src\sites\features\pages\landing\coming-soon\component.scss" />
     <None Include="src\sites\features\pages\landing\coming-soon\component.spec.ts" />

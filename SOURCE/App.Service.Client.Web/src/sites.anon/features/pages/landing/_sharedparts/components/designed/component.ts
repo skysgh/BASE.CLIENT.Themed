@@ -1,5 +1,4 @@
 // Rx:
-import { Observable, of } from 'rxjs';
 // Ag:
 import { Component, OnInit } from '@angular/core';
 // Configuration:
@@ -7,9 +6,8 @@ import { appsConfiguration } from '../../../../../../../sites.app/configuration/
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-import { ServiceFeaturesService } from '../../../../../../../core/services/services/service-features.service';
+import { ServiceFeatureService } from '../../../../../../../core/services/service-feature.service';
 // Models:
-import { ServiceFeature } from '../../../../../../../core/models/data/service-features.model';
 import { ViewModel } from './vm';
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
@@ -22,6 +20,9 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 /**
  * Designed Component
+ * 
+ * Updated to use modern ServiceFeatureService with signals.
+ * No more manual subscriptions needed!
  */
 export class BaseAppsPagesLandingIndexDesignedComponent implements OnInit {
   // Expose system configuration:
@@ -31,29 +32,18 @@ export class BaseAppsPagesLandingIndexDesignedComponent implements OnInit {
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   sectionsInfo = importedSectionsInfo;
 
-  public features$: Observable<ServiceFeature[]> = of([]);
-
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    protected serviceFeaturesService: ServiceFeaturesService) {
-
+    public featureService: ServiceFeatureService) {
 
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
-
-    this._fetchData();
-
   } 
 
   ngOnInit(): void {
+    // Features are automatically loaded by service
+    // Access via featureService.features() signal
   }
-
-  // Chat Data Fetch
-  private _fetchData() {
-    this.features$ = this.serviceFeaturesService.items$;
-  }
-
 }

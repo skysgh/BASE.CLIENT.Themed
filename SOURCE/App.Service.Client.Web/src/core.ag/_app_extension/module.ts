@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 // Import Auth:
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 // Import Language:
-import { TranslateModule, TranslateLoader, TranslateCompiler } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateCompiler, MissingTranslationHandler, MissingTranslationHandlerParams } from '@ngx-translate/core';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 // Import Store:
 import { StoreModule } from '@ngrx/store';
@@ -36,6 +36,16 @@ import { BaseAppsModule } from '../../sites.app/module';
 // Theme-specific state management
 import { authenticationReducer } from '../../themes/t1/_state/authentication/authentication.reducer';
 
+/**
+ * ✅ Custom Missing Translation Handler
+ * Reduces console noise from translation errors
+ */
+export class QuietMissingTranslationHandler implements MissingTranslationHandler {
+  handle(params: MissingTranslationHandlerParams) {
+    // Return key in lowercase brackets instead of flooding console
+    return `[${params.key.toLowerCase()}]`;
+  }
+}
 
 @NgModule({
   declarations: [
@@ -79,10 +89,16 @@ import { authenticationReducer } from '../../themes/t1/_state/authentication/aut
         // inject into createTranslateLoader, as first argument:
         deps: [HttpClient]
       },
-      // ✅ NEW: Add MessageFormat compiler for gender/plural support!
-      compiler: {
-        provide: TranslateCompiler,
-        useClass: TranslateMessageFormatCompiler
+      // ⚠️ TEMPORARILY DISABLED: MessageFormat causing console flood
+      // Re-enable after fixing translation keys
+      // compiler: {
+      //   provide: TranslateCompiler,
+      //   useClass: TranslateMessageFormatCompiler
+      // },
+      // ✅ Custom handler to reduce console noise
+      missingTranslationHandler: {
+        provide: MissingTranslationHandler,
+        useClass: QuietMissingTranslationHandler
       }
     }),
 

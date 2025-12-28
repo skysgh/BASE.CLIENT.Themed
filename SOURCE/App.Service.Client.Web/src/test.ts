@@ -7,29 +7,20 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
-/**
- * Declares a `require` function with a `context` method.
- * This is specific to Webpack and is used to dynamically require modules.
- * 
- * @param path - The directory path to search within.
- * @param deep - A boolean indicating whether to search subdirectories.
- * @param filter - A regular expression to match files.
- * @returns An object with methods to require modules and get the list of keys (file paths).
- */
-declare const require: {
-  context(path: string, deep?: boolean, filter?: RegExp): {
-    <T>(id: string): T;
-    keys(): string[];
-  };
-};
-
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting(),
 );
 
-// Then we find all the tests.
-const context = require.context('./', true, /\.spec\.ts$/);
-// And load the modules.
-context.keys().map(context);
+// ✅ FIX: Use import.meta for webpack 5 compatibility
+// This works with modern webpack and doesn't require 'require' types
+
+// @ts-ignore - webpack will handle this at build time
+const context = import.meta.webpackContext('./', {
+  recursive: true,
+  regExp: /\.spec\.ts$/
+});
+
+// Load all spec files
+context.keys().forEach(context);

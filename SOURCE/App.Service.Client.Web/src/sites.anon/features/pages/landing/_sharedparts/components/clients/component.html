@@ -9,22 +9,20 @@
                   {{'BASE.TRUST.DESCRIPTION'| baseTranslate}}
                 </h5>
                 <!-- Swiper -->
-                <ng-container *ngIf="list$| async as list">
-                  <div class="swiper trusted-client-slider mt-sm-5 mt-4 mb-sm-5 mb-4" dir="ltr">
-                    <ngx-slick-carousel class="carousel" [config]="carouselConfiguration">
-
-                      @for (item of list; track $index) {
-                      <div class="swiper-slide" ngxSlickItem>
-                        <div class="client-images">
-                          <img [src]="resources.images.trustedBy + item.imageName"
-                               [alt]="item.title | baseTranslate"
-                               class="mx-auto img-fluid d-block">
-                        </div>
+                <div class="swiper trusted-client-slider mt-sm-5 mt-4 mb-sm-5 mb-4" dir="ltr">
+                  <ngx-slick-carousel class="carousel" [config]="carouselConfiguration">
+                    <!-- ✅ UPDATED: Use signal instead of observable -->
+                    @for (item of trustedByService.enabledClients(); track $index) {
+                    <div class="swiper-slide" ngxSlickItem>
+                      <div class="client-images">
+                        <img [src]="resources.images.trustedBy + item.imageName"
+                             [alt]="item.title | baseTranslate"
+                             class="mx-auto img-fluid d-block">
                       </div>
-                      }
-                    </ngx-slick-carousel>
-                  </div>
-                  </ng-container>
+                    </div>
+                    }
+                  </ngx-slick-carousel>
+                </div>
               </div>
 
             </div>

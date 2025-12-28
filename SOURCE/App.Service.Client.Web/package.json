@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "npm run test:critical && ng serve",
+    "start": "ng serve",
     "start:fast": "ng serve",
+    "start:with-tests": "npm run test:critical && ng serve",
     "build": "npm run test:critical && npm run build:prod",
     "build:fast": "ng build",
     "build:prod": "ng build --configuration production && npm run metrics:copy",

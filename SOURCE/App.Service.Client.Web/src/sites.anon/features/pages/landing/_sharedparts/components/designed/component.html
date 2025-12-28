@@ -14,46 +14,41 @@
           <div class="row">
             <div class="col-sm-5">
               <div class="vstack gap-2">
-                <ng-container *ngIf="features$ | async as features">
-                  <ng-container *ngFor="let item of features.slice(0, 3) ; let i = index;">
-
-                    <div class="d-flex align-items-center">
-                      <div class="flex-shrink-0 me-2">
-                        <div class="avatar-xs icon-effect">
-                          <div class="avatar-title bg-transparent text-success rounded-circle h2">
-                            <i class="ri-check-fill"></i>
-                          </div>
+                <!-- Updated to use signals instead of observables -->
+                <ng-container *ngFor="let item of featureService.enabledFeatures().slice(0, 3) ; let i = index;">
+                  <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0 me-2">
+                      <div class="avatar-xs icon-effect">
+                        <div class="avatar-title bg-transparent text-success rounded-circle h2">
+                          <i class="ri-check-fill"></i>
                         </div>
                       </div>
-                      <div class="flex-grow-1">
-                        <h5 class="fs-14 mb-0">{{item.title| baseTranslate}}</h5>
-                        {{item.description| baseTranslate}}
-                      </div>
                     </div>
-                    </ng-container>
-                  </ng-container>
+                    <div class="flex-grow-1">
+                      <h5 class="fs-14 mb-0">{{item.title| baseTranslate}}</h5>
+                      {{item.description| baseTranslate}}
+                    </div>
+                  </div>
+                </ng-container>
               </div>
             </div>
             <div class="col-sm-5">
               <div class="vstack gap-2">
-
-                <ng-container *ngIf="features$ | async as features">
-                  <ng-container *ngFor="let item of features.slice(3, 6) ; let i = index;">
-
-                    <div class="d-flex align-items-center">
-                      <div class="flex-shrink-0 me-2">
-                        <div class="avatar-xs icon-effect">
-                          <div class="avatar-title bg-transparent text-success rounded-circle h2">
-                            <i class="ri-check-fill"></i>
-                          </div>
+                <!-- Updated to use signals instead of observables -->
+                <ng-container *ngFor="let item of featureService.enabledFeatures().slice(3, 6) ; let i = index;">
+                  <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0 me-2">
+                      <div class="avatar-xs icon-effect">
+                        <div class="avatar-title bg-transparent text-success rounded-circle h2">
+                          <i class="ri-check-fill"></i>
                         </div>
                       </div>
-                      <div class="flex-grow-1">
-                        <h5 class="fs-14 mb-0">{{item.title| baseTranslate}}</h5>
-                        {{item.description| baseTranslate}}
-                      </div>
                     </div>
-                  </ng-container>
+                    <div class="flex-grow-1">
+                      <h5 class="fs-14 mb-0">{{item.title| baseTranslate}}</h5>
+                      {{item.description| baseTranslate}}
+                    </div>
+                  </div>
                 </ng-container>
               </div>
             </div>

@@ -54,24 +54,36 @@ export class MockAccountService {
    */
   private getMockAccount(): AccountConfig {
     return {
-      id: 'test-account',
-      subdomain: 'test',
+      accountId: 'test-account',
+      accountGuid: '00000000-0000-0000-0000-000000000000',
       name: 'Test Account',
+      title: 'Test Account Title',
+      subtitle: 'Test Subtitle',
       branding: {
-        logo: {
-          light: '/mock/logo-light.svg',
-          dark: '/mock/logo-dark.svg'
-        },
-        colors: {
-          primary: '#007bff',
-          secondary: '#6c757d'
-        },
-        theme: 'light'
+        logo: '/mock/logo-light.svg',
+        logoDark: '/mock/logo-dark.svg',
+        theme: {
+          primaryColor: '#007bff',
+          secondaryColor: '#6c757d'
+        }
       },
-      i18n: {
-        defaultLanguage: 'en',
-        supportedLanguages: ['en'],
-        namespaces: ['common']
+      context: {
+        sponsor: {
+          title: 'Test Sponsor'
+        }
+      },
+      resources: {
+        images: {
+          root: '/mock/images/',
+          trustedBy: '/mock/images/trustedby/',
+          backgrounds: '/mock/images/backgrounds/'
+        },
+        files: {
+          root: '/mock/files/'
+        },
+        i18n: {
+          path: '/mock/i18n'
+        }
       },
       features: {
         authentication: true,
@@ -360,12 +372,12 @@ export const mockPrivateNavigation = {
  * 
  * @param declarations - Components/Directives/Pipes to declare
  * @param additionalConfig - Additional TestBed configuration to merge
- * @returns TestBed configuration
+ * @returns TestBed instance
  */
 export function setupTestBed(
   declarations: any[] = [],
   additionalConfig: Partial<TestModuleMetadata> = {}
-): typeof TestBed {
+) {
   
   const baseConfig: TestModuleMetadata = {
     declarations: [...declarations],
@@ -444,24 +456,30 @@ export const mockTeamMembers = [
  */
 export const mockAccounts = {
   default: {
-    id: 'default',
-    subdomain: 'default',
+    accountId: 'default',
+    accountGuid: '00000000-0000-0000-0000-000000000001',
     name: 'Default Account',
+    title: 'Default Account Title',
     branding: {
-      logo: {
-        light: '/mock/default/logo-light.svg',
-        dark: '/mock/default/logo-dark.svg'
-      },
-      colors: {
-        primary: '#007bff',
-        secondary: '#6c757d'
-      },
-      theme: 'light'
+      logo: '/mock/default/logo-light.svg',
+      logoDark: '/mock/default/logo-dark.svg',
+      theme: {
+        primaryColor: '#007bff',
+        secondaryColor: '#6c757d'
+      }
     },
-    i18n: {
-      defaultLanguage: 'en',
-      supportedLanguages: ['en'],
-      namespaces: ['common']
+    context: {
+      sponsor: {
+        title: 'Default Sponsor'
+      }
+    },
+    resources: {
+      images: {
+        root: '/mock/default/images/'
+      },
+      i18n: {
+        path: '/mock/default/i18n'
+      }
     },
     features: {
       authentication: true,
@@ -469,24 +487,30 @@ export const mockAccounts = {
     }
   },
   foo: {
-    id: 'foo',
-    subdomain: 'foo',
+    accountId: 'foo',
+    accountGuid: '00000000-0000-0000-0000-000000000002',
     name: 'Foo Account',
+    title: 'Foo Account Title',
     branding: {
-      logo: {
-        light: '/mock/foo/logo-light.svg',
-        dark: '/mock/foo/logo-dark.svg'
-      },
-      colors: {
-        primary: '#28a745',
-        secondary: '#17a2b8'
-      },
-      theme: 'dark'
+      logo: '/mock/foo/logo-light.svg',
+      logoDark: '/mock/foo/logo-dark.svg',
+      theme: {
+        primaryColor: '#28a745',
+        secondaryColor: '#17a2b8'
+      }
     },
-    i18n: {
-      defaultLanguage: 'en',
-      supportedLanguages: ['en', 'es'],
-      namespaces: ['common', 'foo']
+    context: {
+      sponsor: {
+        title: 'Foo Sponsor'
+      }
+    },
+    resources: {
+      images: {
+        root: '/mock/foo/images/'
+      },
+      i18n: {
+        path: '/mock/foo/i18n'
+      }
     },
     features: {
       authentication: true,
