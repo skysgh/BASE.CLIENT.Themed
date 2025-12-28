@@ -16,8 +16,13 @@ import { BaseAppsModule } from '../../sites.app/module';
 // Child Modules:
 import { BaseAppsArchitectureValuesModule } from "./modules/values/module";
 
-//Module specific components:
-import { ArchitectureValuesRepositoryService } from './services/repositories/values-repository.service';
+// ✅ NEW: Import new core architecture services
+import { ArchitectureValueService } from '../../core/services/architecture-value.service';
+import { ArchitecturePrincipleTypeService } from '../../core/services/architecture-principle-type.service';
+import { ArchitecturePrincipleService } from '../../core/services/architecture-principle.service';
+import { ArchitectureQualityTypeService } from '../../core/services/architecture-quality-type.service';
+import { ArchitectureQualityCategoryService } from '../../core/services/architecture-quality-category.service';
+import { ArchitectureQualityService } from '../../core/services/architecture-quality.service';
 
 // ✅ NEW: Import architecture constants
 import { appletsArchitectureConstants } from './constants/implementations/app.lets.architecture.constants';
@@ -27,8 +32,16 @@ import { appletsArchitectureConstants } from './constants/implementations/app.le
     // Components, Directives, Pipes developed in this Module.
   ],
   providers: [
-    // declare services to dependency inject into constructors.
-    ArchitectureValuesRepositoryService
+    // ✅ NEW: Use core Signal-based architecture services
+    ArchitectureValueService,
+    ArchitecturePrincipleTypeService,
+    ArchitecturePrincipleService,
+    ArchitectureQualityTypeService,
+    ArchitectureQualityCategoryService,
+    ArchitectureQualityService
+    
+    // ❌ REMOVED: Old repository service
+    // ArchitectureValuesRepositoryService
   ],
   imports: [
     // Import classes within the above specified import files.

@@ -1,6 +1,5 @@
 //ngx:
 import { RouterModule } from '@angular/router';
-//Can Remove: import { TranslateModule } from '@ngx-translate/core';
 
 // Ag:
 import { NgModule } from '@angular/core';
@@ -10,35 +9,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // ✅ NEW: Config Registry
 import { ConfigRegistryService } from '../../core/services/config-registry.service';
 
-// Import Common dependencies:
+// ✅ NEW: Import new core Signal-based services
+import { SpikeService } from '../../core/services/spike.service';
+import { SubSpikeService } from '../../core/services/sub-spike.service';
 
 // Import Module specific dependencies:
-//import { SpikeRoutingModule } from "./routing.module";
-// .. services:
-import { BaseAppsSpikeSpikesRepositoryService } from "./services/repositories/spike-repository.service"
-// ..components:
+// .. components:
 import { BaseAppsSpikeRouteOutletComponent } from './ui/_route/component';
 import { BaseAppsSpikeSpikesBrowseComponent } from './modules/spike/ui/browse/component';
 import { BaseAppsSpikeSpikesReadComponent } from './modules/spike/ui/read/component';
 import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/component';
-// 
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
-import { BaseAppsSpikeSubSpikesRepositoryService } from './services/repositories/subspike-repository.service';
 
 // ✅ NEW: Import spike constants
 import { appletsSpikesConstants } from './constants/implementations/app.lets.spikes.constants';
 
-//import { BaseThemesV1CommonModule } from '../../themes/v0/features/components/module';
-
-// import { BaseCoreCommonComponentsModule } from '../../../core/modules/common/components/module';
 import { ServiceLanguagesRepositoryService } from '../../core/services/services/repositories/service-languages.repository.service';
 import { ServiceLanguagesService } from '../../core/services/service.languages.service';
 import { BaseAppsModule } from '../../sites.app/module';
-
-// ...submodules:
-// NO mention, as it is late loaded by routes:
-// import { SpikeSpikesModule } from "./modules/spike/module";
-
 
 
 
@@ -54,11 +42,15 @@ import { BaseAppsModule } from '../../sites.app/module';
     BaseAppsSpikeSubSpikesBrowseComponent
   ],
   providers: [
-    // declare services to dependency inject into constructors.
-    BaseAppsSpikeSpikesRepositoryService,
-    BaseAppsSpikeSubSpikesRepositoryService,
+    // ✅ NEW: Use core Signal-based services
+    SpikeService,
+    SubSpikeService,
     ServiceLanguagesService,
     ServiceLanguagesRepositoryService
+    
+    // ❌ REMOVED: Old repository services
+    // BaseAppsSpikeSpikesRepositoryService,
+    // BaseAppsSpikeSubSpikesRepositoryService,
   ],
   imports: [
     CommonModule,

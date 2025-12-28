@@ -3,11 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 // Configuration:
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
-// Services:
-import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
+
+// ✅ NEW: Use core Signal-based service
+import { SpikeService } from '../../../../../../core/services/spike.service';
+// ✅ NEW: Use ViewModel instead of old model
+import { SpikeViewModel } from '../../../../../../core/models/view-models/spike.view-model';
+
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 // Models:
-import { Spike } from '../../../../models/spike.model';
 import { SummaryItemVTO } from '../../../../../../core/models/SummaryItem.vto.model';
 import { ViewModel } from './vm';
 
@@ -26,38 +29,30 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
 
-  // TODO: Move these variables into it:
+  // ✅ UPDATED: Use ViewModel types
   public page:number = 1;
-  public data: Spike[] = [];
-  public summaryItems: Spike[] = [];
+  public data: SpikeViewModel[] = [];
+  public summaryItems: SummaryItemVTO[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private defaultControllerServices: DefaultComponentServices,
-    private repositoryService: BaseAppsSpikeSpikesRepositoryService
+    // ✅ NEW: Inject core Signal-based service
+    private spikeService: SpikeService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.info("Constructor");
   }
 
   ngOnInit(): void {
     this.defaultControllerServices.diagnosticsTraceService.info("Component OnInit");
-    // Load list of elements:
-    // TODO page it.
-
-
-      this.route.queryParams.subscribe(queryParams=> {
-        this.defaultControllerServices.diagnosticsTraceService.info("params ready");
-        this.page = queryParams['page'] | queryParams['pg'] | 1;
-        this.defaultControllerServices.diagnosticsTraceService.info('page: ' + this.page);
-        this.repositoryService.getPage(this.page).subscribe((x:any) => {
-          this.defaultControllerServices.diagnosticsTraceService.info('got X: ' + x);
-          this.data = x;
-          this.summaryItems = x.map(this.mapAway);
-        });
-      });
-
+    
+    // ✅ NEW: Use Signal-based service (data loads automatically in constructor)
+    // Access data via signal: this.spikeService.spikes()
+    this.data = this.spikeService.spikes();
+    this.summaryItems = this.data.map(this.mapAway);
   }
-  mapAway(i: Spike) : SummaryItemVTO{
+  
+  mapAway(i: SpikeViewModel) : SummaryItemVTO{
     var r :SummaryItemVTO = {
         id: i.id,
         enabled: true,
@@ -66,10 +61,9 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
         typeImage: 'spike.png',
         category: 'unset...',
         title: i.title,
-        description: i.description,
+        description: i.description || '',
         more: '',
       values: [
-
         { title: 'primary', value: '123' },
         { title: 'seondary', value: '456' }
       ],
