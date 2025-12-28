@@ -11,6 +11,10 @@ export class SystemNotificationService {
   loading = signal(false);
   error = signal<string | null>(null);
   
+  // All notifications (for template compatibility)
+  enabledNotifications = computed(() => this.notifications());
+  
+  // Unread notifications
   unreadNotifications = computed(() => this.notifications().filter(n => !n.isRead));
   unreadCount = computed(() => this.unreadNotifications().length);
   hasUnread = computed(() => this.unreadCount() > 0);

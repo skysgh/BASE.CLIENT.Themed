@@ -2,15 +2,21 @@ import { SystemNotificationDto } from '../models/dtos/system-notification.dto';
 import { SystemNotificationViewModel } from '../models/view-models/system-notification.view-model';
 
 export function mapSystemNotificationDtoToViewModel(dto: SystemNotificationDto): SystemNotificationViewModel {
-  const createdAt = new Date(dto.createdAt);
+  const sentUtc = new Date(dto.sentUtc);
   return {
     id: dto.id,
     title: dto.title,
-    message: dto.message,
-    type: dto.type,
-    isRead: dto.read,
-    createdAt: createdAt,
-    timeAgo: getTimeAgo(createdAt)
+    message: dto.description,
+    type: dto.typeFK,
+    isRead: dto.read ?? false,
+    createdAt: sentUtc,
+    timeAgo: getTimeAgo(sentUtc),
+    // Template compatibility properties
+    description: dto.description,
+    imageName: dto.imageName,
+    imageId: dto.imageId,
+    sentUtc: sentUtc,
+    enabled: dto.enabled
   };
 }
 

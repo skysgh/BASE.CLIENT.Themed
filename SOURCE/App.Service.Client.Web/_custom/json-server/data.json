@@ -991,7 +991,8 @@
       "title": "General",
       "description": "Students running in hallways",
       "sentUtc": "2023-04-23T18:25:43.511Z",
-      "checkboxId": "all-notification-check01"
+      "checkboxId": "all-notification-check01",
+      "read": false
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
@@ -1003,7 +1004,8 @@
       "title": "Angela Bernier ",
       "description": "School bell still muted? 🔔.",
       "sentUtc": "2023-04-23T18:25:43.511Z",
-      "checkboxId": "all-notification-check02"
+      "checkboxId": "all-notification-check02",
+      "read": true
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
@@ -1015,7 +1017,8 @@
       "title": "General",
       "description": "Parents are really mad!",
       "sentUtc": "2023-04-23T18:25:43.511Z",
-      "checkboxId": "all-notification-check03"
+      "checkboxId": "all-notification-check03",
+      "read": false
     },
     {
       "id": "00000000-0000-0000-0000-000000000004",
@@ -1027,7 +1030,8 @@
       "title": "Maureen Gibsons",
       "description": "Maths results in.",
       "sentUtc": "2023-04-23T18:25:43.511Z",
-      "checkboxId": "all-notification-check04"
+      "checkboxId": "all-notification-check04",
+      "read": false
     }
 
   ],

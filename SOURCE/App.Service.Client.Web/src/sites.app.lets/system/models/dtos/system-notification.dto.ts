@@ -1,8 +1,13 @@
 export interface SystemNotificationDto {
   id: string;
+  enabled: boolean;
+  forUserFK: string;
+  typeFK: string;
   title: string;
-  message: string;
-  type: string;
-  read: boolean;
-  createdAt: string;
+  description: string;
+  imageId?: string;
+  imageName?: string;
+  sentUtc: string;
+  checkboxId?: string;
+  read?: boolean;
 }

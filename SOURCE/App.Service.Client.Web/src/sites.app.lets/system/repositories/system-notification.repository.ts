@@ -16,6 +16,10 @@ export class SystemNotificationRepository extends RepositoryService<SystemNotifi
     super(http, '/api/rest/base_service_Notifications', logger, errorService);
   }
 
+  getEnabled(): Observable<SystemNotificationDto[]> {
+    return this.query({ enabled: true });
+  }
+
   getUnread(): Observable<SystemNotificationDto[]> {
     return this.query({ read: false });
   }
