@@ -272,7 +272,6 @@ export function validateCoreTierIsolation(): void {
  * ✅ ALLOWED IMPORTS:
  * - import { X } from '../services/...';           (core services)
  * - import { X } from '../models/...';             (core models)
- * - import { X } from '../guards/...';             (core guards)
  * - import { X } from '@angular/...';              (Angular framework)
  * - import { X } from 'rxjs/...';                  (RxJS library)
  * - import { X } from './core-test-helpers';       (core test helpers)
@@ -284,10 +283,15 @@ export function validateCoreTierIsolation(): void {
  * - import { X } from '../../sites.app/...';       (higher tier)
  * - import { X } from '../../apps.bootstrap/...';  (higher tier)
  * 
+ * ⚠️ MIGRATED TO CORE.AG:
+ * - Guards (AuthGuard, AccountGuard) are Angular-specific and now live in core.ag/guards/
+ * - Import guards from: import { AuthGuard } from '../../core.ag/guards/auth.guard';
+ * 
  * WHY?
  * - Core is the foundation - must be rock-solid
  * - Core tests verify core works in isolation
  * - Higher tiers depend on core, not vice versa
  * - Core should be extractable as standalone library
  * - Test failures should pinpoint exact tier with issue
+ * - Angular-specific code (guards, interceptors, pipes) belongs in core.ag
  */

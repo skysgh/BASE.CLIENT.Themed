@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-import { ServiceCapabilityService } from '../../../../../../../core/services/service-capability.service';
+// ✅ UPDATED: Use brochure applet
+import { BrochureCapabilityService } from '../../../../../../../sites.app.lets/brochure/services/brochure-capability.service';
 // Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
@@ -19,37 +20,18 @@ import { Services } from './data';
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-
-/**
- * Services Component
- * 
- * ✅ REPOSITORY MIGRATION - Phase 3 Complete
- * Updated to use new ServiceCapabilityService (service layer)
- * Removed direct repository access (old pattern)
- * Component now follows repository → mapper → service → component pattern
- * Uses Signal-based reactivity from service
- */
 export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
-  // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
-
-  // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-
   sectionsInfo = importedSectionsInfo;
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public capabilityService: ServiceCapabilityService
+    public capabilityService: BrochureCapabilityService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }
 
   ngOnInit(): void {
-    /**
-     * Data is automatically loaded by service on construction
-     * Template accesses capabilityService.enabledCapabilities() signal directly
-     */
   }
-
 }

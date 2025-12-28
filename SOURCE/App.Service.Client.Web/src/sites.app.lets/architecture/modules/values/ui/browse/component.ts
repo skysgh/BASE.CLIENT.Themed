@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
 // Configuration:
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { appletsArchitectureConfiguration } from '../../../../configuration/implementations/app.lets.architecture.configuration';
-// .. Import Services:
+// ✅ MIGRATED: Use applet-local Signal-based service
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
-import { ArchitectureValuesRepositoryService } from '../../../../services/repositories/values-repository.service';
-// ..Import Models:
-import { Value } from '../../../../models/value.model';
+import { ArchitectureValueService } from '../../../../services/architecture-value.service';
+// ✅ MIGRATED: Use applet-local ViewModel
+import { ArchitectureValueViewModel } from '../../../../models/view-models/architecture-value.view-model';
 
 
 @Component({
@@ -23,18 +23,18 @@ export class BaseAppsArchitectureValuesBrowseComponent implements OnInit {
   // Expose applet configuration:
   public appletConfiguration = appletsArchitectureConfiguration
 
-
-  public data?: Value[] = [];
+  // ✅ UPDATED: Use ViewModel type
+  public data: ArchitectureValueViewModel[] = [];
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    private repositoryService: ArchitectureValuesRepositoryService
+    // ✅ MIGRATED: Use applet-local Signal-based service
+    private valueService: ArchitectureValueService
   ) {
   }
 
   ngOnInit(): void {
-    this.repositoryService
-      .getPage()
-      .subscribe((x: any) => { this.data = x; });
+    // ✅ UPDATED: Use Signal-based service (data loads automatically in constructor)
+    this.data = this.valueService.values();
   }
 }

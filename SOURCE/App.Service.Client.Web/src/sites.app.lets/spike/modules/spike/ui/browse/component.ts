@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
 
-// ✅ NEW: Use core Signal-based service
-import { SpikeService } from '../../../../../../core/services/spike.service';
-// ✅ NEW: Use ViewModel instead of old model
-import { SpikeViewModel } from '../../../../../../core/models/view-models/spike.view-model';
+// ✅ MIGRATED: Use applet-local Signal-based service (moved from core)
+import { SpikeService } from '../../../../services/spike.service';
+// ✅ MIGRATED: Use applet-local ViewModel (moved from core)
+import { SpikeViewModel } from '../../../../models/view-models/spike.view-model';
 
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 // Models:

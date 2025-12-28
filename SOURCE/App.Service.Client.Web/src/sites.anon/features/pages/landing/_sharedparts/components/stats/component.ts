@@ -1,17 +1,13 @@
-// Rx:
-import { Observable, of } from 'rxjs';
 // Ag:
 import { Component, OnInit } from '@angular/core';
 // Configuration:
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-import { ServiceStatsService } from '../../../../../../../core/services/services/service-stats.service';
-// Models:
-import { ServiceStat } from '../../../../../../../core/models/data/service-stat.model';
+// Brochure Applet:
+import { BrochureStatsService } from '../../../../../../../sites.app.lets/brochure/services/brochure-stats.service';
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
-import { ServiceStatVTO } from '../../../../../../../core/models/view/service-stat.vto.model';
 import { ViewModel } from './vm';
 
 @Component({
@@ -19,59 +15,28 @@ import { ViewModel } from './vm';
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-
-/**
- * Counter Component
- * 
- * ✅ ARCHITECTURAL FIX - Removed Upward Coupling
- * Removed direct appsConfiguration import (upward coupling to Apps tier)
- * Component now only references sitesConfiguration (same tier)
- */
 export class BaseAppsPagesLandingIndexStatsComponent implements OnInit {
-  // Expose parent configuration:
-  public groupConfiguration = sitesConfiguration
-
-  // This controller's ViewModel:
+  public groupConfiguration = sitesConfiguration;
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
-
   sectionsInfo = importedSectionsInfo;
 
-  /**
-   * The number to start from every time
-   * (does not change, always zero).
-   */
-   private C_START_NUMBER: number = 0;
-  /**
-   * Settings to define how how the stats renderer
-   * is to behave.
-   */
+  private C_START_NUMBER: number = 0;
   public option = {
-    // The number to start with
     startVal: this.C_START_NUMBER,
-    //rendering info:
     decimalPlaces: 2,
     duration: 2,
     useEasing: true
   };
 
-
-  /* The items the interface renders when they become available */
-  public stats$: Observable<ServiceStatVTO[]> = of([]);
-
-
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    protected systemStatsService: ServiceStatsService) 
- {
+    public statsService: BrochureStatsService
+  ) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
-
-  } 
-
+  }
 
   ngOnInit(): void {
-    // Stats$ Initiated from constructor.
-    // not requiring any inputs from template so do now rather than waiting till ngOnInit:
-    this.systemStatsService.mappedItems$.subscribe(x => this.stats$ = of(x));
+    // Stats automatically loaded by service
+    // Access via statsService.enabledStats() signal
   }
 }

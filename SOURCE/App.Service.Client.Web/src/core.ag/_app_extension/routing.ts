@@ -2,13 +2,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-//import { BaseRouterOutletComponent } from './ui/_routerOutlet/component';
 import { AppLayoutComponent } from '../../themes/t1/components.layout/layout.component';
 
-// Auth
-import { AuthGuard } from '../../core/guards/auth.guard';
-import { AccountGuard } from '../../core/guards/account.guard';
+// ✅ MIGRATED: Guards now in core.ag (Angular-specific)
+import { AuthGuard } from '../guards/auth.guard';
+import { AccountGuard } from '../guards/account.guard';
 import { SystemDiagnosticsTraceService } from '../../core/services/system.diagnostics-trace.service';
+
 // Constants:
 
 

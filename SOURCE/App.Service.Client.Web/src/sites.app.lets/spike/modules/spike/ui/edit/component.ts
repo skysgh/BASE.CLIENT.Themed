@@ -6,9 +6,9 @@ import { appletsSpikesConfiguration } from '../../../../configuration/implementa
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
-import { BaseAppsSpikeSpikesRepositoryService } from '../../../../services/repositories/spike-repository.service';
-// Import Models:
-import { Spike } from '../../../../models/spike.model';
+// ✅ FIXED: Use local applet service
+import { SpikeService } from '../../../../services/spike.service';
+import { SpikeViewModel } from '../../../../models/view-models/spike.view-model';
 import { ViewModel } from './vm';
 
 
@@ -18,35 +18,27 @@ import { ViewModel } from './vm';
   styleUrls: ['./component.scss']
 })
 export class BaseAppsSpikeSpikesEditComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose applet configuration:
-  public appletConfiguration = appletsSpikesConfiguration
+  public appsConfiguration = appsConfiguration;
+  public appletConfiguration = appletsSpikesConfiguration;
 
-  // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-
-  // TODO: Move these variables into it:
-  public data?: Spike;
+  public data?: SpikeViewModel;
 
   constructor(
     private route: ActivatedRoute,
     private defaultControllerServices: DefaultComponentServices,
-    private repositoryService: BaseAppsSpikeSpikesRepositoryService,
+    private spikeService: SpikeService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.info("Constructor");
   }
 
-    ngOnInit(): void {
-      this.defaultControllerServices.diagnosticsTraceService.info("Component OnInit");
+  ngOnInit(): void {
+    this.defaultControllerServices.diagnosticsTraceService.info("Component OnInit");
 
-      this.route.params.subscribe(params => {
-        this.defaultControllerServices.diagnosticsTraceService.info("params ready");
-        this.defaultControllerServices.diagnosticsTraceService.info('id: ' + params['id']);
-        this.repositoryService.getSingle(params['id']).subscribe(x => {
-          this.defaultControllerServices.diagnosticsTraceService.info('got X: ' + x!.title);
-          this.data = x!
-        });
-      });
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      this.defaultControllerServices.diagnosticsTraceService.info('id: ' + id);
+      this.data = this.spikeService.getById(id);
+    });
   }
 }

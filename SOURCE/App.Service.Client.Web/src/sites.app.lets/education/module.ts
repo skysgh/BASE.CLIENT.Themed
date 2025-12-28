@@ -4,21 +4,16 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 
-// ✅ NEW: Config Registry
+// Core utilities only (not domain-specific)
 import { ConfigRegistryService } from "../../core/services/config-registry.service";
-
-// Services:
 import { SystemDiagnosticsTraceService } from "../../core/services/system.diagnostics-trace.service";
+
 // Routes:
 import { BaseAppsEducationRoutingModule } from "./routing";
-// Parent Module:
-import { BaseAppsModule } from "../../apps/module";
 
-// ✅ NEW: Import education constants for registration
+// Applet constants
 import { appletsEducationConstants } from "./constants/implementations/app.lets.education.constants";
 
-// Child Modules:
-// ...not yet...
 // Controls:
 import { BaseAppsEducationProductsComponent } from "./areas/products/component";
 import { BaseAppsEducationPeopleComponent } from "./areas/people/component";
@@ -59,7 +54,7 @@ import { BaseAppsEducationAccomplishmentsComponent } from "./areas/accomplishmen
     // Components
     // ...not yet...
     // Import Parent Module:
-    BaseAppsModule
+    // BaseAppsModule
    ],
   exports: [
     // TODO: Why???

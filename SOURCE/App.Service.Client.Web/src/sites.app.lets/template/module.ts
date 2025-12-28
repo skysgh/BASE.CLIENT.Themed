@@ -1,8 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-import { BaseAppsModule } from "../module";
-
 @NgModule({
   declarations: [
     // Components, Directives, Pipes developed in this Module.
@@ -24,7 +22,7 @@ import { BaseAppsModule } from "../module";
     // Components
     // ...not yet...
     // Import Parent Module:
-    BaseAppsModule
+    // BaseAppsModule
   ],
   exports: [
     // NO: Export Parent Module: (create's circular condition)

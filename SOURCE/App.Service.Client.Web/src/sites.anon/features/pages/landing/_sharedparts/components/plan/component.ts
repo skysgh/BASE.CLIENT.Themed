@@ -1,5 +1,4 @@
 // Rx:
-import { Observable, of } from 'rxjs';
 // Ag:
 import { Component, OnInit } from '@angular/core';
 // Configuration:
@@ -7,12 +6,10 @@ import { appsConfiguration } from '../../../../../../../sites.app/configuration/
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-import { ServicePricingPlansService } from '../../../../../../../core/services/services/service-pricingplans.service';
-// Models:
-import { ServicePricingPlan } from "../../../../../../../core/models/data/service-pricing-plan.model";
+// ✅ UPDATED: Use brochure applet
+import { BrochurePricingPlanService } from '../../../../../../../sites.app.lets/brochure/services/brochure-pricing-plan.service';
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
-import { error } from 'jquery';
 import { ViewModel } from './vm';
 
 
@@ -33,9 +30,6 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
   public groupConfiguration = sitesConfiguration
 
 
-  public monthlyPlans$: Observable<ServicePricingPlan[]> = of([]);
-  public yearlyPlans$: Observable<ServicePricingPlan[]> = of([]);
-
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
   // TODO: Move these variables into it.
@@ -44,11 +38,9 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
 
   constructor(
     private defaultControllerServices : DefaultComponentServices,
-    private servicePricingPlansService: ServicePricingPlansService
+    public pricingPlanService: BrochurePricingPlanService
 ) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
-
-    this._fetchData();
 
   }
 
@@ -60,27 +52,10 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
     })
   }
 
-
-
-
-
-
-   // Chat Data Fetch
-   private _fetchData() {
-     this.monthlyPlans$ = this.servicePricingPlansService.items$;
-     this.yearlyPlans$ = this.servicePricingPlansService.filteredNotMappedItems$;
-  }
-
-  /**
-   * Open modal
-   * @param content modal content
-   */
-   
   public flipView() {
     let checkBox = document.getElementById("plan-switch");
     if (checkBox == null) {
       throw "can't find inputcontrol";
-      return;
     }
     var value = (checkBox as HTMLInputElement).checked;
 
@@ -96,7 +71,5 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
 
     month.forEach((item) => { item.setAttribute('style', monthStyle); });
     annual.forEach((item) => { item.setAttribute('style', yearStyle); });
-    
   }
-
 }

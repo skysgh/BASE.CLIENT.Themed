@@ -4,7 +4,7 @@
       <h5 class="text-muted text-uppercase fs-13">
         {{stats.title}}
         <i class="fs-18 float-end align-middle"
-           [ngClass]=" { 'ri-arrow-up-circle-line text-success': stats!.changeDirection >0, 'ri-arrow-down-circle-line text-danger': stats!.changeDirection < 0}"></i>
+           [ngClass]="(stats.changeDirection ?? 0) > 0 ? 'ri-arrow-up-circle-line text-success' : 'ri-arrow-down-circle-line text-danger'"></i>
       </h5>
       <div class="d-flex align-items-center">
         <div class="flex-shrink-0">
@@ -14,7 +14,6 @@
           <h2 class="mb-0">
             {{stats.prefix}}
             <span [countUp]="stats.value"
-                  decimalPlaces="stats.decimalPlaces"
                   class="counter-value"
                   [options]="statsRenderingOptions">
             </span>

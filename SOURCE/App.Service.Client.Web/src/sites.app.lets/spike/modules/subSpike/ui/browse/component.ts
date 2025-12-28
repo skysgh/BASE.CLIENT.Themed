@@ -8,9 +8,10 @@ import { appsConfiguration } from '../../../../../../sites.app/configuration/imp
 import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
-import { BaseAppsSpikeSubSpikesRepositoryService } from '../../../../services/repositories/subspike-repository.service';
-// Models:
-import { SubSpike } from '../../../../models/subspike.model';
+// ✅ MIGRATED: Use applet-local Signal-based service (moved from core)
+import { SubSpikeService } from '../../../../services/sub-spike.service';
+// ✅ MIGRATED: Use applet-local ViewModel (moved from core)
+import { SubSpikeViewModel } from '../../../../models/view-models/sub-spike.view-model';
 import { ViewModel } from './vm';
 
 
@@ -28,42 +29,28 @@ export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
 
-  // TODO: Move these variables into it:
+  // ✅ UPDATED: Use ViewModel types
   public page: number = 1;
-  public data?: SubSpike[] = [];
+  public data: SubSpikeViewModel[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private defaultControllerServices: DefaultComponentServices,
-    private repositoryService: BaseAppsSpikeSubSpikesRepositoryService
+    // ✅ MIGRATED: Use applet-local Signal-based service
+    private subSpikeService: SubSpikeService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.info("SubSpike:Constructor");
   }
 
   ngOnInit(): void {
     this.defaultControllerServices.diagnosticsTraceService.info("SubSpike:Component OnInit");
-    // Load list of elements:
-    // TODO page it.
-
 
     this.route.params.subscribe(params => {
       this.defaultControllerServices.diagnosticsTraceService.info("params ready2");
       this.defaultControllerServices.diagnosticsTraceService.info('id2: ' + params['id']);
-      this.repositoryService.getPageAdChildrenOf(params['id']).subscribe((x:any) => {
-        this.defaultControllerServices.diagnosticsTraceService.info('got Y: ' + x.title);
-        this.data = x
-      });
+      
+      // ✅ UPDATED: Use Signal-based service method
+      this.data = this.subSpikeService.getByParentId(params['id']);
     });
-
-    //this.route.queryParams.subscribe(queryParams => {
-    //  this.diagnosticsTraceService.info("params ready");
-    //  this.page = queryParams['page'] | queryParams['pg'] | 1;
-    //  this.diagnosticsTraceService.info('page: ' + this.page);
-    //  this.repositoryService.getPage(this.page).subscribe((x: any) => {
-    //    this.diagnosticsTraceService.info('got X: ' + x);
-    //    this.data = x
-    //  });
-    //});
-
   }
 }

@@ -6,12 +6,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// ✅ NEW: Config Registry
+// Core utilities only (not domain-specific)
 import { ConfigRegistryService } from '../../core/services/config-registry.service';
 
-// ✅ NEW: Import new core Signal-based services
-import { SpikeService } from '../../core/services/spike.service';
-import { SubSpikeService } from '../../core/services/sub-spike.service';
+// ✅ FIXED: Use LOCAL applet services (not core - those were moved here)
+import { SpikeService } from './services/spike.service';
+import { SubSpikeService } from './services/sub-spike.service';
 
 // Import Module specific dependencies:
 // .. components:
@@ -21,89 +21,41 @@ import { BaseAppsSpikeSpikesReadComponent } from './modules/spike/ui/read/compon
 import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/component';
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
 
-// ✅ NEW: Import spike constants
+// Applet constants
 import { appletsSpikesConstants } from './constants/implementations/app.lets.spikes.constants';
-
-import { ServiceLanguagesRepositoryService } from '../../core/services/services/repositories/service-languages.repository.service';
-import { ServiceLanguagesService } from '../../core/services/service.languages.service';
-import { BaseAppsModule } from '../../sites.app/module';
-
 
 
 @NgModule({
   declarations: [
-    // Components, Directives, Pipes developed in this Module.
     BaseAppsSpikeRouteOutletComponent,
-    // Spike Components:
     BaseAppsSpikeSpikesBrowseComponent,
     BaseAppsSpikeSpikesReadComponent,
     BaseAppsSpikeSpikesEditComponent,
-    // SubSpike Components:
     BaseAppsSpikeSubSpikesBrowseComponent
   ],
   providers: [
-    // ✅ NEW: Use core Signal-based services
+    // Local applet services
     SpikeService,
-    SubSpikeService,
-    ServiceLanguagesService,
-    ServiceLanguagesRepositoryService
-    
-    // ❌ REMOVED: Old repository services
-    // BaseAppsSpikeSpikesRepositoryService,
-    // BaseAppsSpikeSubSpikesRepositoryService,
+    SubSpikeService
   ],
   imports: [
     CommonModule,
-
-    //Can Remove: TranslateModule.forChild(),
-    RouterModule.forChild(
-      [
-      // we're basically saying load a control from this module,
-      // which happens to be a router-output, and into that
-      // load the module for specific group of views:
-      //{
-      //  //path: 'spike', component: SpikeRouteOutletComponent,
-        ////loadChildren: () => import('./modules/spike/module').then(m => m.SpikeSpikesModule), /*canActivate: [AuthGuard]*/
-        //children:
-        //  [
-            { path: 'spikes', component: BaseAppsSpikeSpikesBrowseComponent },
-            { path: 'browse', redirectTo: 'spikes', pathMatch: 'prefix' },
-            { path: 'list', redirectTo: 'spikes', pathMatch: 'prefix' },
-            { path: ':id', component: BaseAppsSpikeSpikesReadComponent },
-            { path: 'view/:id', redirectTo: ':id', pathMatch: 'prefix' },
-            //    { path: 'read/:id', redirectTo: ':id', pathMatch: 'prefix' },
-            { path: 'edit/:id', component: BaseAppsSpikeSpikesEditComponent },
-            { path: '', redirectTo:'spikes', pathMatch:'prefix'}
-    //      ]
-    //  },
-    //  // Until there are other entities:
-    //  { path: '', redirectTo: 'spike', pathMatch: 'prefix' },
-      ]
-    ),
-    // Import classes within the above specified import files.
-    //Ag specific:
     FormsModule,
-
-    // Routes:
-    // BaseAppsSpikeRoutingModule,
-
-    // Import Parent Module:
-    BaseAppsModule
+    RouterModule.forChild([
+      { path: 'spikes', component: BaseAppsSpikeSpikesBrowseComponent },
+      { path: 'browse', redirectTo: 'spikes', pathMatch: 'prefix' },
+      { path: 'list', redirectTo: 'spikes', pathMatch: 'prefix' },
+      { path: ':id', component: BaseAppsSpikeSpikesReadComponent },
+      { path: 'view/:id', redirectTo: ':id', pathMatch: 'prefix' },
+      { path: 'edit/:id', component: BaseAppsSpikeSpikesEditComponent },
+      { path: '', redirectTo: 'spikes', pathMatch: 'prefix' }
+    ])
   ],
   exports: [
-    // Not sure why doing this:
     RouterModule
-    // NO: Export Parent Module:
-    // NO: BaseAppsModule,
-    ]
+  ]
 })
 export class BaseAppsSpikeModule {
-  /**
-   * ✅ NEW: Register Spike applet
-   * 
-   * Uses namespaced key: 'applets.spike' (not just 'spike')
-   * This prevents collision with core tiers.
-   */
   constructor(configRegistryService: ConfigRegistryService) {
     configRegistryService.register('applets.spike', {
       constants: appletsSpikesConstants
