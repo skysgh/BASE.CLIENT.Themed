@@ -5,3 +5,4 @@ export { BrochureEndorsementService } from './brochure-endorsement.service';
 export { BrochureTrustedByService } from './brochure-trusted-by.service';
 export { BrochurePricingPlanService } from './brochure-pricing-plan.service';
 export { BrochureStatsService } from './brochure-stats.service';
+export { BrochureDeliveryTeamMemberService } from './brochure-delivery-team-member.service';

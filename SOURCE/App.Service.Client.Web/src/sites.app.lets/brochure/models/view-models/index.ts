@@ -5,3 +5,4 @@ export { BrochureEndorsementViewModel } from './brochure-endorsement.view-model'
 export { BrochureTrustedByViewModel } from './brochure-trusted-by.view-model';
 export { BrochurePricingPlanViewModel } from './brochure-pricing-plan.view-model';
 export { BrochureStatsViewModel } from './brochure-stats.view-model';
+export { BrochureDeliveryTeamMemberViewModel } from './brochure-delivery-team-member.view-model';

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Folder Include="src\app.lets\architecture\NewFolder\" />
     <Folder Include="src\core\data\fake\" />
+    <Folder Include="src\core\guards\" />
     <Folder Include="src\sites.anon\data\fake\" />
     <Folder Include="src\sites.app.lets\architecture\services\repositories\" />
     <Folder Include="src\sites.app.lets\spike\services\repositories\" />
