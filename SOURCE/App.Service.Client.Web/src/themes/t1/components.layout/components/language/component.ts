@@ -9,9 +9,9 @@ import { appsConfiguration } from '../../../../../sites.app/configuration/implem
 import { themesT1Configuration } from '../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use system applet service
-import { SystemLanguageService } from '../../../../../sites.app.lets/system/services/system-language.service';
-import { SystemLanguageViewModel } from '../../../../../sites.app.lets/system/models/view-models/system-language.view-model';
+// Service Operate Applet:
+import { ServiceOperateLanguageService } from '../../../../../sites.app.lets/service.operate/services/service-operate-language.service';
+import { ServiceOperateLanguageViewModel } from '../../../../../sites.app.lets/service.operate/models/view-models/service-operate-language.view-model';
 // Models:
 import { ViewModel } from './vm';
 import { TranslationService } from '../../../../../core/services/translation.service';
@@ -37,8 +37,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    // ✅ UPDATED: Use system applet service
-    public languageService: SystemLanguageService,
+    public languageService: ServiceOperateLanguageService,
     public translationService: TranslationService,
     public _cookiesService: CookieService
   ) {
@@ -46,7 +45,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
   }
 
   // ✅ Get languages from signal-based service
-  get languages(): SystemLanguageViewModel[] {
+  get languages(): ServiceOperateLanguageViewModel[] {
     return this.languageService.languages();
   }
 
@@ -77,7 +76,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
   /**
    * Language Value Set
    */
-  setLanguage(language?: SystemLanguageViewModel, setLang: boolean = true) {
+  setLanguage(language?: ServiceOperateLanguageViewModel, setLang: boolean = true) {
     if (language) {
       this.languageTitle = language.name;
       // Use flagImageId for the flag image
@@ -93,7 +92,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
     }
   }
 
-  trackByCountryCode(index: number, item: SystemLanguageViewModel) {
+  trackByCountryCode(index: number, item: ServiceOperateLanguageViewModel) {
     return item.languageCode;
   }
 }

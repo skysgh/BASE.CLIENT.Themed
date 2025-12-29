@@ -22,9 +22,9 @@ import { AuthfakeauthenticationService } from '../../../../core/services/authfak
 import { TokenStorageService } from '../../../../core/services/token-storage.service';
 // Base Models:
 import { ViewModel } from './vm';
-// ✅ UPDATED: Use applet models instead of core models
-import { SystemLanguageViewModel } from '../../../../sites.app.lets/system/models/view-models/system-language.view-model';
-import { SystemNotificationViewModel } from '../../../../sites.app.lets/system/models/view-models/system-notification.view-model';
+// Service Operate Applet:
+import { ServiceOperateLanguageViewModel } from '../../../../sites.app.lets/service.operate/models/view-models/service-operate-language.view-model';
+import { ServiceOperateNotificationViewModel } from '../../../../sites.app.lets/service.operate/models/view-models/service-operate-notification.view-model';
 
 @Component({
   selector: 'app-topbar',

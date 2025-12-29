@@ -5,7 +5,7 @@ import { appletsEducationConfiguration } from "../education/configuration/implem
 import { TAppletsEducationConfigurationNavigation } from "../education/configuration/t.app.lets.education.configuration.navigation";
 import { appletsEducationConstants } from "../education/constants/implementations/app.lets.education.constants";
 import { TAppletsSpikesConfigurationNavigation } from "../spike/configuration/t.app.lets.spikes.configuration.navigation";
-import { TAppletsSystemsConfigurationNavigation } from "../system/configuration/t.app.lets.systems.configuration.navigation";
+import { TAppletsSystemsConfigurationNavigation } from "../service.operate/configuration/t.app.lets.systems.configuration.navigation";
 
 
 export type TAppletsConfigurationNavigation = TBaseConfigurationNavigationRoutes & {

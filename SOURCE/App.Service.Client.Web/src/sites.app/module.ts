@@ -31,8 +31,8 @@ import { BaseThemesV1Module } from '../themes/t1/module';
 
 // Services:
 import { SystemDefaultServices } from '../core/services/system.default-services.service';
-// ✅ UPDATED: Use system applet language service
-import { SystemLanguageService } from '../sites.app.lets/system/services/system-language.service';
+// Service Operate Applet:
+import { ServiceOperateLanguageService } from '../sites.app.lets/service.operate/services/service-operate-language.service';
 // Modules:
 import { BaseAppsRoutingModule } from './routing';
 //Components:

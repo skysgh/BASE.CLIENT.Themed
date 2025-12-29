@@ -5,8 +5,8 @@ import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 // Etc:
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 // Services:
-// ✅ UPDATED: Use system applet
-import { SystemNotificationService } from "../../../../../sites.app.lets/system/services/system-notification.service";
+// Service Operate Applet:
+import { ServiceOperateNotificationService } from "../../../../../sites.app.lets/service.operate/services/service-operate-notification.service";
 import { ResourceUrlService } from "../../../../../core/services/resource-url.service";
 // Configuration:
 import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
@@ -35,7 +35,7 @@ export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnIn
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public notificationService: SystemNotificationService,
+    public notificationService: ServiceOperateNotificationService,
     private resourceUrlService: ResourceUrlService,
     private modalService: NgbModal
   ) {
