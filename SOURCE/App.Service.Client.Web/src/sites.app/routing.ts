@@ -23,6 +23,12 @@ const routes: Routes = [
   // Which has routing, and therefore will point to that module's appropriate control
   // which may be another router (it is in this case).
 
+  // Settings - Unified settings hub
+  { 
+    path: 'settings', 
+    loadChildren: () => import('./features/settings/routes').then(m => m.settingsRoutes)
+  },
+
   //{ path: 'spike', loadChildren: () => import('./spike/module').then(m => m.BaseAppsSpikeModule) , pathMatch:'prefix'},
   //{ path: 'education', loadChildren: () => import('./education/module').then(m => m.BaseAppsEducationModule), pathMatch: 'prefix' },
 

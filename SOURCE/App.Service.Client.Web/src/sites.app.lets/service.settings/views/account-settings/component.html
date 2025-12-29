@@ -1,0 +1,60 @@
+<div class="settings-section">
+  <div class="section-header">
+    <h4>
+      <i class="bx bx-buildings me-2"></i>
+      Account Settings
+    </h4>
+    <p class="text-muted mb-0">Configuration for {{ accountName }}</p>
+  </div>
+
+  <div class="section-content">
+    @if (settingsService.loading()) {
+      <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    } @else if (settingsService.error()) {
+      <div class="alert alert-danger">
+        {{ settingsService.error() }}
+      </div>
+    } @else {
+      <div class="card">
+        <div class="card-body">
+          <p class="text-muted text-center py-4">
+            <i class="bx bx-info-circle fs-24 d-block mb-2"></i>
+            Account settings will be available once the API is connected.
+          </p>
+          
+          <!-- Placeholder for account settings categories -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Branding</h6>
+                <p class="text-muted small">Logo, colors, theme customization</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Team</h6>
+                <p class="text-muted small">Team members, roles, permissions</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Billing</h6>
+                <p class="text-muted small">Subscription, payment methods</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Applets</h6>
+                <p class="text-muted small">Enable/disable applets for this account</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

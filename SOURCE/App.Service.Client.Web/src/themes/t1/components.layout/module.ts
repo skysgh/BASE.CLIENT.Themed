@@ -27,6 +27,7 @@ import { BaseLayoutTopBarComponent } from './topbar/topbar.component';
 //import { BaseCoreCommonComponentTopBarLanguageComponent } from './topbar/language/component';
 import { BaseCoreCommonComponentTopBarNotificationsComponent } from './topbar/notifications/component';
 import { BaseCoreCommonComponentTopBarShoppingComponent } from './topbar/shopping/component';
+import { BaseCoreCommonComponentTopBarSettingsComponent } from './topbar/settings/component';
 import { BaseCoreCommonComponentTopBarHueComponent } from './topbar/hue/component';
 import { BaseCoreCommonComponentTopBarFullScreenComponent } from './topbar/fullscreen/component';
 import { BaseCoreCommonComponentTopBarSearchComponent } from './topbar/search/component';
@@ -61,6 +62,7 @@ import { themesT1Configuration } from '../configuration/implementations/themes.t
     BaseCoreCommonComponentTopBarNotificationsComponent,
     BaseCoreCommonComponentTopBarLogoComponent,
     BaseCoreCommonComponentTopBarShoppingComponent,
+    BaseCoreCommonComponentTopBarSettingsComponent,
     BaseCoreCommonComponentTopBarHueComponent,
     BaseCoreCommonComponentTopBarFullScreenComponent,
     BaseCoreCommonComponentTopBarSearchComponent,

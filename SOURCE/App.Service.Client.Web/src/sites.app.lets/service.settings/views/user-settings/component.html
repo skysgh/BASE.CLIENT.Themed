@@ -1,0 +1,115 @@
+<div class="settings-section">
+  <div class="section-header">
+    <h4>
+      <i class="bx bx-user me-2"></i>
+      User Preferences
+    </h4>
+    <p class="text-muted mb-0">Personalize your experience</p>
+  </div>
+
+  <div class="section-content">
+    @if (settingsService.loading()) {
+      <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    } @else if (settingsService.error()) {
+      <div class="alert alert-danger">
+        {{ settingsService.error() }}
+      </div>
+    } @else {
+      <!-- Profile Section -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h6 class="mb-0">Profile</h6>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Display Name</h6>
+                <p class="text-muted small">How your name appears to others</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Avatar</h6>
+                <p class="text-muted small">Profile picture settings</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Appearance Section -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h6 class="mb-0">Appearance</h6>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Theme</h6>
+                <p class="text-muted small">Light, dark, or system default</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Language</h6>
+                <p class="text-muted small">Preferred display language</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Section -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h6 class="mb-0">Notifications</h6>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Email Notifications</h6>
+                <p class="text-muted small">When to receive email alerts</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Push Notifications</h6>
+                <p class="text-muted small">Browser notification preferences</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Section -->
+      <div class="card">
+        <div class="card-header">
+          <h6 class="mb-0">Privacy</h6>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Activity Status</h6>
+                <p class="text-muted small">Show when you're online</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Data Export</h6>
+                <p class="text-muted small">Download your data</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

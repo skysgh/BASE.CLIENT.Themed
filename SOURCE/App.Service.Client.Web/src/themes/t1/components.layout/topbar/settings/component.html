@@ -1,0 +1,10 @@
+@if (isEnabled) {
+<div class="ms-1 header-item d-none d-sm-flex">
+  <button type="button"
+          class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
+          (click)="openSettings()"
+          title="{{ 'BASE.SETTINGS.TITLE' | baseTranslate }}">
+    <i class='bx bx-cog fs-22'></i>
+  </button>
+</div>
+}

@@ -1,6 +1,7 @@
 // Ag:
 import { Component, OnInit } from "@angular/core";
-
+// Services:
+import { AccountService } from "../../../../../core/services/account.service";
 import { cartData } from '../../../../../core/assets/data/fake/cart.data';
 
 // Etc:
@@ -21,15 +22,12 @@ import { ViewModel } from "../vm";
   styleUrls: ['./component.scss']
 })
 export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
-  // Expose system configuration:
   public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
   public groupConfiguration = themesT1Configuration
-
-  
-  // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
+
+  // Feature flag - controls visibility (from applets.shopping.features.cart)
+  public isEnabled: boolean = false;
 
   // Shopping
   public cartData!: CartModel[];
@@ -37,24 +35,32 @@ export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
   cart_length: any = 0;
 
   constructor(
-    private defaultControllerServices: DefaultComponentServices) {
-
-    // Make system/env variables avaiable to view template (via const or service):
-
-    //var x = this.appsConfiguration.others.applets.navigation.apps.education
-
-    //var y = appsConfiguration.others.applets.navigation.education.products
+    private defaultControllerServices: DefaultComponentServices,
+    private accountService: AccountService
+  ) {
+    // Check if shopping applet is enabled and cart feature is enabled
+    this.accountService.getConfig().subscribe(config => {
+      const shoppingApplet = config.applets?.['shopping'];
+      if (shoppingApplet && typeof shoppingApplet === 'object') {
+        this.isEnabled = shoppingApplet.enabled && (shoppingApplet.features?.['cart'] ?? true);
+      } else {
+        this.isEnabled = false;
+      }
+      this.defaultControllerServices.diagnosticsTraceService.debug(
+        `${this.constructor.name} - Shopping cart enabled: ${this.isEnabled}`
+      );
+    });
   }
 
   ngOnInit(): void {
-    this.initCart();
-}
+    if (this.isEnabled) {
+      this.initCart();
+    }
+  }
 
   private initCart() {
     this.cartData = cartData;
-
     this.cart_length = this.cartData.length;
-
     this.cartData.forEach((item) => {
       var item_price = item.quantity * item.price
       this.total += item_price
@@ -70,6 +76,5 @@ export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
     this.total > 1 ? (document.getElementById("empty-cart") as HTMLElement).style.display = "none" : (document.getElementById("empty-cart") as HTMLElement).style.display = "block";
     document.getElementById('item_' + id)?.remove();
   }
-
 }
 

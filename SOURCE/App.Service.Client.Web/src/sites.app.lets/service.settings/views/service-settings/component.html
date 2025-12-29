@@ -1,0 +1,60 @@
+<div class="settings-section">
+  <div class="section-header">
+    <h4>
+      <i class="bx bx-server me-2"></i>
+      Service Settings
+    </h4>
+    <p class="text-muted mb-0">Platform-wide configuration (super admin only)</p>
+  </div>
+
+  <div class="section-content">
+    @if (settingsService.loading()) {
+      <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    } @else if (settingsService.error()) {
+      <div class="alert alert-danger">
+        {{ settingsService.error() }}
+      </div>
+    } @else {
+      <div class="card">
+        <div class="card-body">
+          <p class="text-muted text-center py-4">
+            <i class="bx bx-info-circle fs-24 d-block mb-2"></i>
+            Service settings will be available once the API is connected.
+          </p>
+          
+          <!-- Placeholder for settings categories -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">General</h6>
+                <p class="text-muted small">Maintenance mode, rate limits, etc.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Security</h6>
+                <p class="text-muted small">API keys, authentication settings</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Integrations</h6>
+                <p class="text-muted small">Third-party service connections</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="settings-category">
+                <h6 class="fw-semibold">Feature Flags</h6>
+                <p class="text-muted small">Global feature toggles</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

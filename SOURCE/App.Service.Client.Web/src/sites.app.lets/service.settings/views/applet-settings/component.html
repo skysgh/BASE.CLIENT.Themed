@@ -1,0 +1,41 @@
+<div class="settings-section">
+  @if (notFound) {
+    <div class="alert alert-warning">
+      <i class="bx bx-error-circle me-2"></i>
+      Settings for applet "{{ appletId }}" are not available.
+    </div>
+  } @else if (schema) {
+    <div class="section-header">
+      <h4>
+        <i class="bx {{schema.icon}} me-2"></i>
+        {{ schema.displayName }} Settings
+      </h4>
+      <p class="text-muted mb-0">Configure {{ schema.displayName | lowercase }} options</p>
+    </div>
+
+    <div class="section-content">
+      <div class="card">
+        <div class="card-body">
+          @if (schema.sections.length === 0) {
+            <p class="text-muted text-center py-4">
+              <i class="bx bx-info-circle fs-24 d-block mb-2"></i>
+              No settings sections registered for this applet.
+            </p>
+          } @else {
+            <!-- Render registered sections -->
+            <div class="row">
+              @for (section of schema.sections; track section.key) {
+                <div class="col-md-6">
+                  <div class="settings-category">
+                    <h6 class="fw-semibold">{{ section.label }}</h6>
+                    <p class="text-muted small">Configure {{ section.label | lowercase }}</p>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

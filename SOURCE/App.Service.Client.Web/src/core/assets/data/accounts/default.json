@@ -33,8 +33,53 @@
     }
   },
   "applets": {
-    "enabled": ["education", "spikes", "architecture", "resources", "system"],
-    "default": "spikes"
+    "default": "spikes",
+    "education": {
+      "enabled": true,
+      "features": {}
+    },
+    "spikes": {
+      "enabled": true,
+      "features": {}
+    },
+    "architecture": {
+      "enabled": true,
+      "features": {}
+    },
+    "resources": {
+      "enabled": true,
+      "features": {}
+    },
+    "products": {
+      "enabled": false,
+      "features": {
+        "inventory": true,
+        "variants": false
+      }
+    },
+    "commerce": {
+      "enabled": false,
+      "features": {
+        "invoicing": true,
+        "refunds": true
+      }
+    },
+    "shopping": {
+      "enabled": false,
+      "features": {
+        "cart": true,
+        "wishlist": false,
+        "guestCheckout": true
+      }
+    },
+    "settings": {
+      "enabled": true,
+      "features": {
+        "serviceSettings": false,
+        "accountSettings": true,
+        "userSettings": true
+      }
+    }
   },
   "resources": {
     "images": {
@@ -52,10 +97,12 @@
   "features": {
     "enableAnalytics": true,
     "enableChat": true,
-    "enableNotifications": true
+    "enableNotifications": true,
+    "enableSettingsIcon": true
   },
   "_comments": {
-    "i18n": "Text values can be i18n keys (e.g., BASE.ACCOUNTS.DEFAULT.TITLE) or plain text. The baseTranslate pipe will resolve keys automatically and leave plain text as-is.",
-    "reactive": "All branding values are reactive via AccountService.getConfigValue(). Components should use observables with async pipe for automatic updates when account changes."
+    "i18n": "Text values can be i18n keys (e.g., BASE.ACCOUNTS.DEFAULT.TITLE) or plain text.",
+    "applets": "Each applet has enabled flag and features object. Check with accountService.getConfigValue('applets.shopping.features.cart')",
+    "features": "Top-level features are global UI toggles. Applet-specific features are under applets.{name}.features"
   }
 }

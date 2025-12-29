@@ -41,7 +41,10 @@ export interface AccountConfig {
   /** Resource paths (images, files, i18n) */
   resources: AccountResources;
   
-  /** Optional: Feature flags specific to this account */
+  /** Applet configuration with per-applet feature flags */
+  applets?: AccountApplets;
+  
+  /** Global feature flags (UI toggles not specific to an applet) */
   features?: AccountFeatures;
   
   /** Internal flag: Was this account config found or is it a fallback? */
@@ -122,9 +125,48 @@ export interface AccountResources {
   };
 }
 
+/**
+ * Applet configuration with per-applet feature flags
+ */
+export interface AccountApplets {
+  /** Default applet to show */
+  default?: string;
+  
+  /** Per-applet configuration */
+  [appletId: string]: AppletConfig | string | undefined;
+}
+
+/**
+ * Individual applet configuration
+ */
+export interface AppletConfig {
+  /** Is this applet enabled for this account? */
+  enabled: boolean;
+  
+  /** Applet-specific feature flags */
+  features?: {
+    [featureName: string]: boolean;
+  };
+}
+
+/**
+ * Global feature flags (not applet-specific)
+ */
 export interface AccountFeatures {
-  /** Enable/disable specific features per account */
-  [featureName: string]: boolean;
+  /** Enable analytics tracking */
+  enableAnalytics?: boolean;
+  
+  /** Enable chat functionality */
+  enableChat?: boolean;
+  
+  /** Enable notifications */
+  enableNotifications?: boolean;
+  
+  /** Enable settings gear icon in topbar */
+  enableSettingsIcon?: boolean;
+  
+  /** Enable/disable other global features */
+  [featureName: string]: boolean | undefined;
 }
 
 /**
@@ -158,6 +200,14 @@ export const DEFAULT_ACCOUNT_CONFIG: Partial<AccountConfig> = {
     i18n: {
       path: '/assets/data'
     }
+  },
+  applets: {
+    default: 'spikes',
+    settings: { enabled: true, features: { userSettings: true, accountSettings: true } }
+  },
+  features: {
+    enableSettingsIcon: true,
+    enableNotifications: true
   }
 };
 
