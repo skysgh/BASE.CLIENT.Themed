@@ -31,8 +31,8 @@ import { BaseThemesV1Module } from '../themes/t1/module';
 
 // Services:
 import { SystemDefaultServices } from '../core/services/system.default-services.service';
-import { ServiceLanguagesRepositoryService } from '../core/services/services/repositories/service-languages.repository.service';
-import { ServiceLanguagesService } from '../core/services/service.languages.service';
+// ✅ UPDATED: Use system applet language service
+import { SystemLanguageService } from '../sites.app.lets/system/services/system-language.service';
 // Modules:
 import { BaseAppsRoutingModule } from './routing';
 //Components:
@@ -42,11 +42,6 @@ import { BaseAppsRouteComponent } from "./ui/_route/component";
 import { appsConstants } from './constants/implementations/apps.constants';
 import { appsConfiguration } from './configuration/implementations/apps.configuration';
 import { appsMainConstants } from '../apps.bootstrap/constants/implementations/apps.main.constants';
-// ❌ REMOVED: Cross-tier imports from sites.anon
-// These should either:
-// 1. Be duplicated in sites.app/constants/ (preferred - loose coupling)
-// 2. Or refactored to use parent sites/types/ interfaces
-// For now, using appsConstants which should have equivalent values
 import { environment } from '../environments/environment';
 
 
@@ -55,8 +50,7 @@ import { environment } from '../environments/environment';
     BaseAppsRouteComponent
   ],
   providers: [
-    ServiceLanguagesRepositoryService,
-    ServiceLanguagesService,
+    // ✅ Language service now from system applet (providedIn: 'root')
 
     // ============================================================================
     // ✅ DI TOKEN PROVIDERS

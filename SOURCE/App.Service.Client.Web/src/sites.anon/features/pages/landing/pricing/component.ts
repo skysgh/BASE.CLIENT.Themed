@@ -1,5 +1,5 @@
 // Rx:
-//
+import { Observable, of } from 'rxjs';
 // Ag:
 import { Component, OnInit } from '@angular/core';
 // Etc:
@@ -8,14 +8,10 @@ import { NgbNavModule, NgbAccordionModule, NgbDropdownModule } from '@ng-bootstr
 import { sitesConfiguration } from '../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
-// Models:
-import { ServicePricingPlan } from "../../../../../core/models/data/service-pricing-plan.model";
-import { ServicePricingPlansService } from '../../../../../core/services/services/service-pricingplans.service';
-import { Observable, of } from 'rxjs';  
+// ✅ UPDATED: Use brochure applet service
+import { BrochurePricingPlanService } from '../../../../../sites.app.lets/brochure/services/brochure-pricing-plan.service';
+import { BrochurePricingPlanViewModel } from '../../../../../sites.app.lets/brochure/models/view-models/brochure-pricing-plan.view-model';
 import { ViewModel } from './vm';
-// Data:
-//import { MonthlyPlan, YearlyPlan } from '../../../../data/fake/pricing.data';
-
 
 @Component({
   selector: 'app-base-core-pages-landing-pricing',
@@ -26,9 +22,7 @@ import { ViewModel } from './vm';
 /**
  * Pricing Component
  * 
- * ✅ ARCHITECTURAL FIX - Removed Upward Coupling
- * Removed direct appsConfiguration import (upward coupling to Apps tier)
- * Component now only references sitesConfiguration (same tier)
+ * ✅ UPDATED - Uses Brochure App.let
  */
 export class BaseCorePagesLandingPricingComponent implements OnInit {
   // Expose parent configuration:
@@ -36,22 +30,14 @@ export class BaseCorePagesLandingPricingComponent implements OnInit {
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   breadCrumbItems!: Array<{}>;
 
-
-  public monthlyPlans$: Observable<ServicePricingPlan[]> = of([]);
-  public yearlyPlans$: Observable<ServicePricingPlan[]> = of([]);
-
-
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    private servicePricingPlansService: ServicePricingPlansService
+    // ✅ UPDATED: Use brochure applet service
+    public pricingPlanService: BrochurePricingPlanService
   ) {
-    // Make system/env variables avaiable to view template (via singleton or service):
-    
-
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 
     /**
@@ -61,30 +47,15 @@ export class BaseCorePagesLandingPricingComponent implements OnInit {
       { label: 'Pages' },
       { label: 'Pricing', active: true }
     ];
-
-
   }
 
-
-
-
-
-
-
-
+  // ✅ Get pricing plans from signal-based service
+  get pricingPlans(): BrochurePricingPlanViewModel[] {
+    return this.pricingPlanService.plans();
+  }
 
   ngOnInit(): void {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`)
-
-
-    // Chat Data Get Function
-    this._fetchData();
+    // Pricing plans load automatically in service constructor
   }
-
-  // Chat Data Fetch
-  private _fetchData() {
-    this.monthlyPlans$ = this.servicePricingPlansService.mappedItems$;
-    this.yearlyPlans$ = this.servicePricingPlansService.filteredNotMappedItems$;
-  }
-
 }

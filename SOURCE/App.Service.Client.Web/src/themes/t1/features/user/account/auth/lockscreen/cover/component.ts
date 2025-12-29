@@ -1,21 +1,16 @@
 // Ag:
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-//Etc:
-//
-// Services
-import { ServiceUserEndorsementsRepositoryService } from '../../../../../../../../core/services/services/repositories/service-user-endorsements.service';
 // Configuration:
 import { appsConfiguration } from '../../../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../../../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
+// ✅ UPDATED: Use brochure applet service for endorsements
+import { BrochureEndorsementService } from '../../../../../../../../sites.app.lets/brochure/services/brochure-endorsement.service';
 // Models:
 import { User } from '../../../../../../_state/authentication/auth.models';
-import { ServiceUserQuote } from '../../../../../../../../core/models/data/service-user-quote.model';
 import { ViewModel } from './vm';
-// Data:
-
 
 @Component({
   selector: 'app-base-core-modules-account_auth-lockscreen-cover',
@@ -32,10 +27,8 @@ export class CoverComponent implements OnInit {
   // Expose parent configuration:
   public groupConfiguration = themesT1Configuration
 
-
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   // Login Form
   lockscreenForm!: FormGroup;
@@ -46,31 +39,30 @@ export class CoverComponent implements OnInit {
   // Carousel navigation arrow show
   showNavigationArrows: any;
 
-  private systemUserQuotes: any;
-
-  
   constructor(
     private formBuilder: FormBuilder,
     private defaultControllerServices: DefaultComponentServices,
-    private systemUserEndorsementsRepositoryService : ServiceUserEndorsementsRepositoryService
+    // ✅ UPDATED: Use brochure endorsement service
+    public endorsementService: BrochureEndorsementService
   ) {
-    // Make system/env variables avaiable to view template (via singleton or service):
+    // Make system/env variables avaiable to view template
     var x = appsConfiguration.constants.resources.open.images.logos;
+  }
 
-}
+  // ✅ Get endorsements from signal-based service
+  get endorsements() {
+    return this.endorsementService.endorsements();
+  }
 
   ngOnInit(): void {
-    //
-    this.systemUserQuotes =
-      this.systemUserEndorsementsRepositoryService.getPage();
+    // Endorsements load automatically in service constructor
 
     /**
-     * Form Validatyion
+     * Form Validation
      */
-     this.lockscreenForm = this.formBuilder.group({
+    this.lockscreenForm = this.formBuilder.group({
       password: ['', [Validators.required]]
-     });
-
+    });
   }
 
   // convenience getter for easy access to form fields
@@ -79,12 +71,11 @@ export class CoverComponent implements OnInit {
   /**
    * Form submit
    */
-   onSubmit() {
+  onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.lockscreenForm.invalid) {
       return;
     }
   }
-
 }

@@ -4,11 +4,13 @@ import { SystemLanguageViewModel } from '../models/view-models/system-language.v
 export function mapSystemLanguageDtoToViewModel(dto: SystemLanguageDto): SystemLanguageViewModel {
   return {
     id: dto.id,
-    code: dto.code,
-    name: dto.name,
-    nativeName: dto.nativeName,
     enabled: dto.enabled,
-    displayLabel: `${dto.name} (${dto.nativeName})`
+    name: dto.title,
+    nativeName: dto.description,
+    languageCode: dto.languageCode,
+    code: dto.languageCode,  // alias for backward compatibility
+    flagImageId: dto.flagImageId,
+    displayLabel: `${dto.title} (${dto.description})`
   };
 }
 

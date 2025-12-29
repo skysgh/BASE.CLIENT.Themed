@@ -12,10 +12,12 @@ import { appsConfiguration } from '../../../../../../../sites.app/configuration/
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-import { ServiceDeliveryTeamMemberRepositoryService } from '../../../../../../../core/services/services/repositories/service-delivery-team-members.repository.service';
+// ✅ UPDATED: Use brochure applet service
+import { BrochureDeliveryTeamMemberService } from '../../../../../../../sites.app.lets/brochure/services/brochure-delivery-team-member.service';
 import { ResourceUrlService } from '../../../../../../../core/services/resource-url.service';
 // Models
-import { ServiceDeliveryTeamMemberVTO } from '../../../../../../../core/models/view/service-delivery-team-member.vto.model';
+// ✅ UPDATED: Use brochure applet view model
+import { BrochureDeliveryTeamMemberViewModel } from '../../../../../../../sites.app.lets/brochure/models/view-models/brochure-delivery-team-member.view-model';
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
@@ -29,7 +31,7 @@ import { ViewModel } from './vm';
 /**
  * Team Component
  * 
- * ✅ FULLY MIGRATED - Resource URL Service Pattern
+ * ✅ FULLY MIGRATED - Uses Brochure App.let
  * 
  * Architecture:
  * - Uses ResourceUrlService for all image URLs
@@ -61,18 +63,21 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
   // ✅ Injected PRIVATE navigation (includes public via .public)
   public nav!: PrivateNavigationPaths;
 
-  team$: Observable<ServiceDeliveryTeamMemberVTO[]> = of([]);
+  // ✅ UPDATED: Use signal-based service
+  get team$(): BrochureDeliveryTeamMemberViewModel[] {
+    return this.teamService.teamMembers();
+  }
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   sectionsInfo = importedSectionsInfo;
   
   constructor(
     @Inject(PRIVATE_NAVIGATION) nav: PrivateNavigationPaths,
     private defaultControllerServices: DefaultComponentServices,
-    protected systemTeamRepositoryService: ServiceDeliveryTeamMemberRepositoryService,
+    // ✅ UPDATED: Use brochure applet service
+    public teamService: BrochureDeliveryTeamMemberService,
     private resourceUrlService: ResourceUrlService
   ) {
     // Store injected resources
@@ -82,10 +87,8 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /**
-     * fetches data
-     */
-    this._fetchData();
+    // Team members load automatically in service constructor
+    this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`);
   }
 
   /**
@@ -108,14 +111,4 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
   getUserPhotoUrl(imageName: string): Observable<string> {
     return this.resourceUrlService.getTeamMemberPhotoUrl(imageName);
   }
-
-  /**
- * User grid data fetches
- */
-  private _fetchData() {
-    this.systemTeamRepositoryService
-      .getPage(1)
-      .subscribe(x => this.team$ = of(x));
-  }
-
 }

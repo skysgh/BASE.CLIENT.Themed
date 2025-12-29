@@ -4,14 +4,10 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
-//Can Remove: import { TranslateModule } from '@ngx-translate/core';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 // Feather Icon
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
-
-// Services:
-import { ServiceLanguagesService } from '../../../core/services/service.languages.service';
 
 // Component pages
 import { AppLayoutComponent } from './layout.component';
@@ -54,7 +50,6 @@ import { appsConfiguration } from '../../../sites.app/configuration/implementati
 import { themesT1Configuration } from '../configuration/implementations/themes.t1.configuration';
 
 @NgModule({
-  providers: [ServiceLanguagesService],
   declarations: [
     // Components, Directives, Pipes developed in this Module.
     AppLayoutComponent,

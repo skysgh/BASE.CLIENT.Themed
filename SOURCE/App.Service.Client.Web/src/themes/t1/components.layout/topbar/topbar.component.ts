@@ -11,16 +11,6 @@ import { DOCUMENT } from '@angular/common';
 // Etc:
 import { CookieService } from 'ngx-cookie-service';
 
-//Logout
-//import { environment } from '../../../../environments/environment';
-
-// Services:
-
-//import { allNotification, messages } from './data'
-//import { CartModel } from './topbar.model';
-//import { cartData } from './data';
-//  Base Services:
-
 // Configuration:
 import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
@@ -32,10 +22,9 @@ import { AuthfakeauthenticationService } from '../../../../core/services/authfak
 import { TokenStorageService } from '../../../../core/services/token-storage.service';
 // Base Models:
 import { ViewModel } from './vm';
-import { ServiceLanguage } from '../../../../core/models/data/service-language.model';
-import { ServiceNotification } from '../../../../core/models/data/service-notification.model';
-// Data:
-//
+// ✅ UPDATED: Use applet models instead of core models
+import { SystemLanguageViewModel } from '../../../../sites.app.lets/system/models/view-models/system-language.view-model';
+import { SystemNotificationViewModel } from '../../../../sites.app.lets/system/models/view-models/system-notification.view-model';
 
 @Component({
   selector: 'app-topbar',

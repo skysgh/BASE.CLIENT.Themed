@@ -9,13 +9,12 @@ import { appsConfiguration } from '../../../../../sites.app/configuration/implem
 import { themesT1Configuration } from '../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
-import { ServiceLanguagesService } from '../../../../../core/services/service.languages.service';
-import { ServiceLanguage } from '../../../../../core/models/data/service-language.model';
+// ✅ UPDATED: Use system applet service
+import { SystemLanguageService } from '../../../../../sites.app.lets/system/services/system-language.service';
+import { SystemLanguageViewModel } from '../../../../../sites.app.lets/system/models/view-models/system-language.view-model';
 // Models:
 import { ViewModel } from './vm';
 import { TranslationService } from '../../../../../core/services/translation.service';
-// Data:
-
 
 @Component({
   selector: 'app-base-common-components-topbar-languagelanguage',
@@ -28,88 +27,73 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
   // Expose parent configuration:
   public groupConfiguration = themesT1Configuration
 
-
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
 
-  // TODO: Move these variables into it.
-
-  public systemLanguages$: Observable<ServiceLanguage[]> = of([]);
-
   // Language: stuff:
-  activeLanguageCode:string = '';
+  activeLanguageCode: string = '';
   flagvalue: string = '';
-  //valueset: string = '';
   languageTitle: string = '';
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public languageService: ServiceLanguagesService,
+    // ✅ UPDATED: Use system applet service
+    public languageService: SystemLanguageService,
     public translationService: TranslationService,
-    public _cookiesService: CookieService) {
-
-    // Make system/env variables .avaiable to view template (via singleton or service):
-    
-
+    public _cookiesService: CookieService
+  ) {
     this.initLanguages();
+  }
 
+  // ✅ Get languages from signal-based service
+  get languages(): SystemLanguageViewModel[] {
+    return this.languageService.languages();
   }
 
   ngOnInit(): void {
-
-    }
-
-
-  private initLanguages() {
-    // This will take a sec to retrieve:
-    this.languageService
-      .items$
-      .subscribe(list => {
-
-        if (list.length == 0) {
-          this.defaultControllerServices.diagnosticsTraceService.info("...early exit...");
-          return;
-        }
-        this.defaultControllerServices.diagnosticsTraceService.info("Number of languages is:" + list.length);
-
-        this.activeLanguageCode = this.translationService.getDefaultLanguageCode();
-        // Cookies wise Language set
-
-        //Get an array of one, matching current language description:
-        var tmp = list.filter(i => i.languageCode === this.activeLanguageCode);
-
-        this.setLanguage(tmp.length?tmp[0]:undefined, false);
-
-
-        this.systemLanguages$ = of(list);
-
-      });
-
   }
 
-
-  /***
- * Language Value Set
- */
-  setLanguage(systemLanguage?: ServiceLanguage, setLanguage:boolean=true) {
-    // Same logic really, except for setting language.
-    if (systemLanguage) {
-      this.languageTitle = systemLanguage.title;
-      this.flagvalue = `${this.appsConfiguration.others.core.constants.assets.images.flags}${systemLanguage.languageCode}.svg`;
-
-      if (setLanguage) {
-        this.translationService.setLanguage(systemLanguage.languageCode!);
+  private initLanguages() {
+    // Wait for languages to load, then set active language
+    const checkLanguages = () => {
+      const list = this.languageService.languages();
+      if (list.length === 0) {
+        // Languages not loaded yet, try again
+        setTimeout(checkLanguages, 100);
+        return;
       }
-      this.activeLanguageCode = systemLanguage.languageCode;
-    }else {
+
+      this.defaultControllerServices.diagnosticsTraceService.info("Number of languages is:" + list.length);
+      this.activeLanguageCode = this.translationService.getDefaultLanguageCode();
+
+      // Get matching language using languageCode
+      const tmp = list.filter(i => i.languageCode === this.activeLanguageCode);
+      this.setLanguage(tmp.length ? tmp[0] : undefined, false);
+    };
+
+    checkLanguages();
+  }
+
+  /**
+   * Language Value Set
+   */
+  setLanguage(language?: SystemLanguageViewModel, setLang: boolean = true) {
+    if (language) {
+      this.languageTitle = language.name;
+      // Use flagImageId for the flag image
+      this.flagvalue = `${this.appsConfiguration.others.core.constants.assets.images.flags}${language.flagImageId}.svg`;
+
+      if (setLang) {
+        this.translationService.setLanguage(language.languageCode);
+      }
+      this.activeLanguageCode = language.languageCode;
+    } else {
       this.languageTitle = '...';
       this.flagvalue = this.appsConfiguration.others.core.constants.assets.images.flags + '/00.svg';
     }
   }
 
-  trackByCountryCode(index: number, item: ServiceLanguage) {
-    //this.diagnosticsTraceService.info(item.description);
+  trackByCountryCode(index: number, item: SystemLanguageViewModel) {
     return item.languageCode;
   }
-
 }
