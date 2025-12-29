@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Component, OnInit, Inject } from '@angular/core';
 // Sites DI Tokens:
 import { 
-  PRIVATE_NAVIGATION,      // ✅ Private navigation (includes public)
+  PRIVATE_NAVIGATION,
   PrivateNavigationPaths 
 } from '../../../../../../tokens';
 // Configuration:
@@ -12,13 +12,10 @@ import { appsConfiguration } from '../../../../../../../sites.app/configuration/
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use brochure applet service
-import { BrochureDeliveryTeamMemberService } from '../../../../../../../sites.app.lets/brochure/services/brochure-delivery-team-member.service';
+// Service Describe Applet:
+import { ServiceDescribeDeliveryTeamMemberService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-delivery-team-member.service';
+import { ServiceDescribeDeliveryTeamMemberViewModel } from '../../../../../../../sites.app.lets/service.describe/models/view-models/service-describe-delivery-team-member.view-model';
 import { ResourceUrlService } from '../../../../../../../core/services/resource-url.service';
-// Models
-// ✅ UPDATED: Use brochure applet view model
-import { BrochureDeliveryTeamMemberViewModel } from '../../../../../../../sites.app.lets/brochure/models/view-models/brochure-delivery-team-member.view-model';
-// Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
 
@@ -56,33 +53,27 @@ export class BaseAppsPagesLandingIndexTeamComponent implements OnInit {
   // ⚠️ PARTIAL: Still uses appsConfiguration for some settings
   // TODO: Create APP_CONTEXT token for sponsor/developer info
   public appsConfiguration = appsConfiguration
-  
   // Expose parent configuration:
   public groupConfiguration = sitesConfiguration
-
   // ✅ Injected PRIVATE navigation (includes public via .public)
   public nav!: PrivateNavigationPaths;
-
   // ✅ UPDATED: Use signal-based service
-  get team$(): BrochureDeliveryTeamMemberViewModel[] {
+  get team$(): ServiceDescribeDeliveryTeamMemberViewModel[] {
     return this.teamService.teamMembers();
   }
-
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-
   sectionsInfo = importedSectionsInfo;
   
   constructor(
     @Inject(PRIVATE_NAVIGATION) nav: PrivateNavigationPaths,
     private defaultControllerServices: DefaultComponentServices,
-    // ✅ UPDATED: Use brochure applet service
-    public teamService: BrochureDeliveryTeamMemberService,
+    // ✅ UPDATED: Use service.describe applet service
+    public teamService: ServiceDescribeDeliveryTeamMemberService,
     private resourceUrlService: ResourceUrlService
   ) {
     // Store injected resources
     this.nav = nav;
-
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }
 

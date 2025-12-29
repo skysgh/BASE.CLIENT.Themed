@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// Brochure Applet:
-import { BrochureStatsService } from '../../../../../../../sites.app.lets/brochure/services/brochure-stats.service';
+// Service Describe Applet:
+import { ServiceDescribeStatsService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-stats.service';
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
@@ -30,7 +30,7 @@ export class BaseAppsPagesLandingIndexStatsComponent implements OnInit {
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public statsService: BrochureStatsService
+    public statsService: ServiceDescribeStatsService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }

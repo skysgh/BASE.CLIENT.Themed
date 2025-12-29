@@ -7,8 +7,8 @@ import { appsConfiguration } from '../../../../../sites.app/configuration/implem
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
 // Services:
 import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use brochure view model
-import { BrochureStatsViewModel } from '../../../../../sites.app.lets/brochure/models/view-models/brochure-stats.view-model';
+// Service Describe Applet:
+import { ServiceDescribeStatsViewModel } from '../../../../../sites.app.lets/service.describe/models/view-models/service-describe-stats.view-model';
 import { ViewModel } from './vm';
 
 /**
@@ -25,7 +25,7 @@ export class BaseCommonComponentsStatsOneComponent implements OnInit {
   public viewModel: ViewModel = new ViewModel();
 
   @Input()
-  public stats: BrochureStatsViewModel | undefined;
+  public stats: ServiceDescribeStatsViewModel | undefined;
 
   @Input()
   public decimalPlaces: number = 2;

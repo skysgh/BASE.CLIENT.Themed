@@ -6,8 +6,8 @@ import { appsConfiguration } from '../../../../../../../sites.app/configuration/
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use brochure applet
-import { BrochurePricingPlanService } from '../../../../../../../sites.app.lets/brochure/services/brochure-pricing-plan.service';
+// Service Describe Applet:
+import { ServiceDescribePricingPlanService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-pricing-plan.service';
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
@@ -38,7 +38,7 @@ export class BaseAppsPagesLandingIndexPlanComponent implements OnInit {
 
   constructor(
     private defaultControllerServices : DefaultComponentServices,
-    public pricingPlanService: BrochurePricingPlanService
+    public pricingPlanService: ServiceDescribePricingPlanService
 ) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 

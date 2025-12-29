@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use brochure applet
-import { BrochureCapabilityService } from '../../../../../../../sites.app.lets/brochure/services/brochure-capability.service';
+// Service Describe Applet:
+import { ServiceDescribeCapabilityService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-capability.service';
 // Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
@@ -27,7 +27,7 @@ export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public capabilityService: BrochureCapabilityService
+    public capabilityService: ServiceDescribeCapabilityService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   }

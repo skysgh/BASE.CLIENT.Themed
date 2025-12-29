@@ -6,8 +6,8 @@ import { appsConfiguration } from '../../../../../../../../sites.app/configurati
 import { themesT1Configuration } from '../../../../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use brochure applet service for endorsements
-import { BrochureEndorsementService } from '../../../../../../../../sites.app.lets/brochure/services/brochure-endorsement.service';
+// Service Describe Applet:
+import { ServiceDescribeEndorsementService } from '../../../../../../../../sites.app.lets/service.describe/services/service-describe-endorsement.service';
 // Models:
 import { User } from '../../../../../../_state/authentication/auth.models';
 import { ViewModel } from './vm';
@@ -43,7 +43,7 @@ export class CoverComponent implements OnInit {
     private formBuilder: FormBuilder,
     private defaultControllerServices: DefaultComponentServices,
     // ✅ UPDATED: Use brochure endorsement service
-    public endorsementService: BrochureEndorsementService
+    public endorsementService: ServiceDescribeEndorsementService
   ) {
     // Make system/env variables avaiable to view template
     var x = appsConfiguration.constants.resources.open.images.logos;

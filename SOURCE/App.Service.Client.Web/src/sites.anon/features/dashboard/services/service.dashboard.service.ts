@@ -2,11 +2,11 @@
 import { Injectable, computed } from '@angular/core';
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
-import { BrochureStatsService } from '../../../../sites.app.lets/brochure/services/brochure-stats.service';
+import { ServiceDescribeStatsService } from '../../../../sites.app.lets/service.describe/services/service-describe-stats.service';
 
 /**
  * Dashboard service for the anon site.
- * Delegates to BrochureStatsService.
+ * Delegates to ServiceDescribeStatsService.
  */
 @Injectable({ providedIn: 'root' })
 export class DashboardService {
@@ -18,7 +18,7 @@ export class DashboardService {
 
   constructor(
     private diagnosticsTraceService: SystemDiagnosticsTraceService,
-    private statsService: BrochureStatsService
+    private statsService: ServiceDescribeStatsService
   ) {
     this.diagnosticsTraceService.debug(`${this.constructor.name}.constructor(...)`);
   }
@@ -28,6 +28,76 @@ export class DashboardService {
     this.statsService.loadStats();
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

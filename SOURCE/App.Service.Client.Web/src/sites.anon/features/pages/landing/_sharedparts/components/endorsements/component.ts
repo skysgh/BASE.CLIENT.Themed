@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use brochure applet
-import { BrochureEndorsementService } from '../../../../../../../sites.app.lets/brochure/services/brochure-endorsement.service';
+// Service Describe Applet:
+import { ServiceDescribeEndorsementService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-endorsement.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
@@ -34,7 +34,7 @@ export class BaseAppsPagesLandingIndexReviewComponent implements OnInit {
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public endorsementService: BrochureEndorsementService
+    public endorsementService: ServiceDescribeEndorsementService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   } 

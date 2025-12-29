@@ -11,7 +11,9 @@ import { CommonModule } from '@angular/common';
  * - User (system users)
  * - Embargo (trade restrictions)
  * - CountryExcluded (service availability)
- * - StatementType (document types)
+ * 
+ * MOVED to service.compliance applet:
+ * - StatementType (legal document types)
  * - TextMediaEncodingType (encoding formats)
  * 
  * Used by:

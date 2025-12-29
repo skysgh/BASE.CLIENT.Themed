@@ -8,9 +8,9 @@ import { NgbNavModule, NgbAccordionModule, NgbDropdownModule } from '@ng-bootstr
 import { sitesConfiguration } from '../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use brochure applet service
-import { BrochurePricingPlanService } from '../../../../../sites.app.lets/brochure/services/brochure-pricing-plan.service';
-import { BrochurePricingPlanViewModel } from '../../../../../sites.app.lets/brochure/models/view-models/brochure-pricing-plan.view-model';
+// Service Describe Applet:
+import { ServiceDescribePricingPlanService } from '../../../../../sites.app.lets/service.describe/services/service-describe-pricing-plan.service';
+import { ServiceDescribePricingPlanViewModel } from '../../../../../sites.app.lets/service.describe/models/view-models/service-describe-pricing-plan.view-model';
 import { ViewModel } from './vm';
 
 @Component({
@@ -21,8 +21,6 @@ import { ViewModel } from './vm';
 
 /**
  * Pricing Component
- * 
- * ✅ UPDATED - Uses Brochure App.let
  */
 export class BaseCorePagesLandingPricingComponent implements OnInit {
   // Expose parent configuration:
@@ -35,8 +33,7 @@ export class BaseCorePagesLandingPricingComponent implements OnInit {
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    // ✅ UPDATED: Use brochure applet service
-    public pricingPlanService: BrochurePricingPlanService
+    public pricingPlanService: ServiceDescribePricingPlanService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
 
@@ -49,13 +46,11 @@ export class BaseCorePagesLandingPricingComponent implements OnInit {
     ];
   }
 
-  // ✅ Get pricing plans from signal-based service
-  get pricingPlans(): BrochurePricingPlanViewModel[] {
+  get pricingPlans(): ServiceDescribePricingPlanViewModel[] {
     return this.pricingPlanService.plans();
   }
 
   ngOnInit(): void {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`)
-    // Pricing plans load automatically in service constructor
   }
 }

@@ -6,8 +6,8 @@ import { appsConfiguration } from '../../../../../../../sites.app/configuration/
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use brochure applet
-import { BrochureFeatureService } from '../../../../../../../sites.app.lets/brochure/services/brochure-feature.service';
+// Service Describe Applet:
+import { ServiceDescribeFeatureService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-feature.service';
 // Models:
 import { ViewModel } from './vm';
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
@@ -26,7 +26,7 @@ export class BaseAppsPagesLandingIndexDesignedComponent implements OnInit {
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public featureService: BrochureFeatureService) {
+    public featureService: ServiceDescribeFeatureService) {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
   } 
 

@@ -6,8 +6,8 @@ import { DEPLOYED_RESOURCES, DeployedResources } from '../../../../../../../core
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// ✅ UPDATED: Use brochure applet
-import { BrochureTrustedByService } from '../../../../../../../sites.app.lets/brochure/services/brochure-trusted-by.service';
+// Service Describe Applet:
+import { ServiceDescribeTrustedByService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-trusted-by.service';
 // Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { Responsive as importedResponsive } from './settings';
@@ -27,7 +27,7 @@ export class BaseAppsPagesLandingIndexClientsComponent implements OnInit {
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public trustedByService: BrochureTrustedByService,
+    public trustedByService: ServiceDescribeTrustedByService,
     @Inject(DEPLOYED_RESOURCES) resources: DeployedResources
   ) {
     this.resources = resources;
