@@ -1,0 +1,86 @@
+<div class="spike-add">
+  <div class="page-header mb-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h4 class="mb-1">
+          <i class="bx bx-plus-circle me-2"></i>
+          Create New Spike
+        </h4>
+        <p class="text-muted mb-0">Add a new spike to the system</p>
+      </div>
+      <div class="d-flex gap-2 align-items-center">
+        <!-- Form engine toggle (for comparison) -->
+        <div class="form-check form-switch me-3">
+          <input 
+            class="form-check-input" 
+            type="checkbox" 
+            id="formEngineToggle"
+            [checked]="formEngine === 'jsonforms'"
+            (change)="toggleFormEngine()">
+          <label class="form-check-label small" for="formEngineToggle">
+            Use JSON Forms
+          </label>
+        </div>
+        
+        <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+          <i class="bx bx-x me-1"></i>
+          Cancel
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-primary" 
+          (click)="onSave()"
+          [disabled]="saving || form.invalid">
+          <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
+          <i *ngIf="!saving" class="bx bx-save me-1"></i>
+          Create
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Alert -->
+  <div *ngIf="saveError" class="alert alert-danger alert-dismissible fade show mb-4">
+    <i class="bx bx-error-circle me-2"></i>
+    {{saveError}}
+    <button type="button" class="btn-close" (click)="saveError = null"></button>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <!-- Formly Form -->
+      <ng-container *ngIf="formEngine === 'formly'">
+        <form [formGroup]="form">
+          <formly-form 
+            [form]="form" 
+            [fields]="fields" 
+            [model]="model">
+          </formly-form>
+        </form>
+      </ng-container>
+
+      <!-- JSON Forms (placeholder for comparison) -->
+      <ng-container *ngIf="formEngine === 'jsonforms'">
+        <div class="alert alert-info">
+          <i class="bx bx-info-circle me-2"></i>
+          JSON Forms integration coming soon. Switch back to Formly to create.
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- Form Actions (bottom) -->
+  <div class="d-flex justify-content-end gap-2 mt-3">
+    <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+      Cancel
+    </button>
+    <button 
+      type="button" 
+      class="btn btn-primary" 
+      (click)="onSave()"
+      [disabled]="saving || form.invalid">
+      <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
+      Create Spike
+    </button>
+  </div>
+</div>

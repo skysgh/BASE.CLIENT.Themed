@@ -1,0 +1,112 @@
+# Spike View Form Definition (Read-Only)
+#
+# This form renders Spike data in a read-only view.
+# Uses special 'readonly: true' flag on all fields.
+
+id: spike-view
+title: Spike Details
+mode: view
+
+fields:
+  - key: title
+    type: text
+    label: Title
+    readonly: true
+
+  - key: description
+    type: textarea
+    label: Description
+    readonly: true
+
+  - key: categoryId
+    type: select
+    label: Category
+    readonly: true
+    options:
+      - value: "1"
+        label: Feature
+      - value: "2"
+        label: Bug Fix
+      - value: "3"
+        label: Research
+      - value: "4"
+        label: Improvement
+      - value: "5"
+        label: Maintenance
+
+  - key: statusId
+    type: select
+    label: Status
+    readonly: true
+    options:
+      - value: "1"
+        label: Draft
+      - value: "2"
+        label: Submitted
+      - value: "3"
+        label: Approved
+      - value: "4"
+        label: Rejected
+      - value: "5"
+        label: Archived
+
+  - key: priority
+    type: select
+    label: Priority
+    readonly: true
+    options:
+      - value: 1
+        label: Lowest
+      - value: 2
+        label: Low
+      - value: 3
+        label: Medium
+      - value: 4
+        label: High
+      - value: 5
+        label: Highest
+
+  - key: dueDate
+    type: date
+    label: Due Date
+    readonly: true
+
+  - key: estimatedEffort
+    type: number
+    label: Estimated Effort (hours)
+    readonly: true
+
+  - key: classificationIds
+    type: multiselect
+    label: Tags
+    readonly: true
+    options:
+      - value: "1"
+        label: Urgent
+      - value: "2"
+        label: Blocked
+      - value: "3"
+        label: Needs Review
+
+layout:
+  columns: 2
+  sections:
+    - id: basic
+      title: Basic Information
+      fieldKeys:
+        - title
+        - description
+
+    - id: classification
+      title: Classification
+      fieldKeys:
+        - categoryId
+        - statusId
+        - priority
+        - classificationIds
+
+    - id: planning
+      title: Planning
+      fieldKeys:
+        - dueDate
+        - estimatedEffort

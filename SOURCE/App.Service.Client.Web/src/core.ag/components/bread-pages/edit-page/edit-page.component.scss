@@ -1,0 +1,56 @@
+.edit-page {
+  padding: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  
+  &.saving {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  
+  .saving-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 10;
+  }
+  
+  .page-header {
+    h4 {
+      font-weight: 600;
+      color: var(--vz-heading-color);
+    }
+  }
+  
+  .page-content {
+    .card {
+      border: 1px solid var(--vz-border-color);
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .edit-page {
+    padding: 1rem;
+    
+    .page-header {
+      .d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+      }
+      
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 1rem;
+      }
+    }
+  }
+}

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../../../core/services/account.service';
+import { SETTINGS_BASE_PATH, SETTINGS_NAV_ITEMS, APPLET_SETTINGS_PATH } from '../constants/settings.constants';
+import { SETTINGS_SEGMENTS } from '../../../core/constants/navigation.constants';
 
 /**
  * Settings Navigation Item
@@ -21,6 +23,8 @@ export interface SettingsNavItem {
  * Settings Navigation Service
  * 
  * Single source of truth for settings navigation.
+ * Uses constants from settings.constants.ts - no hardcoded strings.
+ * 
  * Used by:
  * - Gear icon (topbar) → navigates to settings root
  * - Settings hub sidebar → builds nav items
@@ -30,33 +34,19 @@ export interface SettingsNavItem {
  */
 @Injectable({ providedIn: 'root' })
 export class SettingsNavigationService {
-  
-  /** Base path for settings (relative to app root) */
-  private readonly SETTINGS_BASE = 'apps/settings';
 
-  /** Core navigation items - the single source of truth */
+  /** Core navigation items - built from constants */
   readonly coreNavItems: SettingsNavItem[] = [
     {
-      id: 'service',
-      label: 'Service Settings',
-      icon: 'bx-server',
-      segment: 'service',
-      permission: 'settings:service:view',
+      ...SETTINGS_NAV_ITEMS.SERVICE,
       visible: true
     },
     {
-      id: 'account',
-      label: 'Account Settings',
-      icon: 'bx-buildings',
-      segment: 'account',
-      permission: 'settings:account:view',
+      ...SETTINGS_NAV_ITEMS.ACCOUNT,
       visible: true
     },
     {
-      id: 'user',
-      label: 'User Preferences',
-      icon: 'bx-user',
-      segment: 'user',
+      ...SETTINGS_NAV_ITEMS.USER,
       visible: true
     }
   ];
@@ -73,9 +63,9 @@ export class SettingsNavigationService {
   getSettingsBasePath(): string {
     const accountId = this.accountService.getAccountId();
     if (accountId && accountId !== 'default') {
-      return `/${accountId}/${this.SETTINGS_BASE}`;
+      return `/${accountId}/${SETTINGS_BASE_PATH}`;
     }
-    return `/${this.SETTINGS_BASE}`;
+    return `/${SETTINGS_BASE_PATH}`;
   }
 
   /**
@@ -87,11 +77,19 @@ export class SettingsNavigationService {
   }
 
   /**
+   * Get relative path for a settings section (for use within settings hub)
+   * @param segment Section segment (e.g., 'user', 'account', 'service')
+   */
+  getRelativeSectionPath(segment: string): string {
+    return `./${segment}`;
+  }
+
+  /**
    * Get full path for an applet's settings
    * @param appletId Applet identifier
    */
   getAppletSettingsPath(appletId: string): string {
-    return `${this.getSettingsBasePath()}/applets/${appletId}`;
+    return `${this.getSettingsBasePath()}/${APPLET_SETTINGS_PATH(appletId)}`;
   }
 
   /**
@@ -109,7 +107,7 @@ export class SettingsNavigationService {
   }
 
   /**
-   * Get navigation items with full paths resolved
+   * Get navigation items with relative paths for sidebar
    * @param filterByPermission Optional: filter by user permissions
    */
   getNavItemsWithPaths(filterByPermission?: (permission: string) => boolean): Array<SettingsNavItem & { route: string }> {
@@ -123,7 +121,8 @@ export class SettingsNavigationService {
       })
       .map(item => ({
         ...item,
-        route: this.getSectionPath(item.segment)
+        // Use relative paths for child route navigation
+        route: item.segment
       }));
   }
 }

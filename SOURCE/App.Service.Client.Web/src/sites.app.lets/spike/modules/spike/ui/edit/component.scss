@@ -1,0 +1,88 @@
+.spike-edit {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+// Formly validation styling
+::ng-deep {
+  // Required field indicator
+  formly-field {
+    .form-label {
+      &::after {
+        content: '';
+      }
+    }
+    
+    // When field has required prop
+    &[required] .form-label::after,
+    formly-wrapper-form-field[required] .form-label::after {
+      content: ' *';
+      color: var(--vz-danger);
+    }
+  }
+  
+  // Add asterisk for required fields
+  .form-label[for] {
+    // Check parent formly-field for required
+  }
+  
+  // Invalid field styling
+  .ng-invalid.ng-touched {
+    .form-control,
+    .form-select {
+      border-color: var(--vz-danger);
+      
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(var(--vz-danger-rgb), 0.25);
+      }
+    }
+  }
+  
+  // Valid field styling (optional - can be distracting)
+  // .ng-valid.ng-touched.ng-dirty {
+  //   .form-control,
+  //   .form-select {
+  //     border-color: var(--vz-success);
+  //   }
+  // }
+  
+  // Error message styling
+  .invalid-feedback,
+  formly-validation-message {
+    display: block;
+    color: var(--vz-danger);
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+  }
+  
+  // Textarea min height
+  textarea.form-control {
+    min-height: 80px;
+  }
+  
+  // Date input styling
+  input[type="date"] {
+    &::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      opacity: 0.6;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Alert styling
+.alert ul {
+  padding-left: 1.25rem;
+  
+  li {
+    margin-bottom: 0.25rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

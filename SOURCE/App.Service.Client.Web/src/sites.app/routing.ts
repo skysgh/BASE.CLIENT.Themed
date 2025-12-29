@@ -18,15 +18,34 @@ import { SystemDefaultServices } from '../core/services/system.default-services.
 
 
 const routes: Routes = [
-  // We're effectively saying, load this modules component (CustomAppsRouteComponent)
-  // which it can see, and when that's done, load into it a Module.
-  // Which has routing, and therefore will point to that module's appropriate control
-  // which may be another router (it is in this case).
-
   // Settings - Unified settings hub
   { 
     path: 'settings', 
     loadChildren: () => import('./features/settings/routes').then(m => m.settingsRoutes)
+  },
+
+  // Search - Universal search (Browse in BREAD)
+  { 
+    path: 'search', 
+    loadChildren: () => import('../sites.app.lets/service.search/routes').then(m => m.searchRoutes)
+  },
+
+  // Compliance - Legal documents (Privacy, Terms, etc.)
+  { 
+    path: 'compliance', 
+    loadChildren: () => import('../sites.app.lets/service.compliance/module').then(m => m.ServiceComplianceAppletModule)
+  },
+
+  // Theme - Theme reference (developer tool)
+  { 
+    path: 'theme', 
+    loadChildren: () => import('../sites.app.lets/service.theme/module').then(m => m.ServiceThemeModule)
+  },
+
+  // Spike - Discovery app.let
+  { 
+    path: 'spike', 
+    loadChildren: () => import('../sites.app.lets/spike/module').then(m => m.BaseAppsSpikeModule)
   },
 
   //{ path: 'spike', loadChildren: () => import('./spike/module').then(m => m.BaseAppsSpikeModule) , pathMatch:'prefix'},

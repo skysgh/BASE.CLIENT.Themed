@@ -1,0 +1,90 @@
+<div class="edit-page" [class.saving]="saving">
+  <!-- Saving Overlay -->
+  <div *ngIf="saving" class="saving-overlay">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Saving...</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="page-header mb-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+      <div class="header-content">
+        <h4 class="mb-0">
+          <i class="bx {{icon}} me-2" [style.color]="iconColor"></i>
+          {{computedTitle}}
+        </h4>
+        <p *ngIf="hasChanges" class="text-warning small mb-0 mt-1">
+          <i class="bx bx-error-circle me-1"></i>
+          Unsaved changes
+        </p>
+      </div>
+      
+      <!-- Header Actions -->
+      <div class="header-actions d-flex gap-2 align-items-center">
+        <!-- Custom Header Actions -->
+        <ng-container *ngIf="headerActionsTemplate">
+          <ng-container *ngTemplateOutlet="headerActionsTemplate"></ng-container>
+        </ng-container>
+        
+        <!-- Delete Button (edit only) -->
+        <button 
+          *ngIf="showDelete && !isNew" 
+          type="button" 
+          class="btn btn-outline-danger"
+          (click)="onDelete()">
+          <i class="bx bx-trash me-1"></i>
+          Delete
+        </button>
+        
+        <!-- Cancel Button -->
+        <button 
+          type="button" 
+          class="btn btn-outline-secondary"
+          [routerLink]="backLink"
+          (click)="onCancel()">
+          {{cancelLabel}}
+        </button>
+        
+        <!-- Save Button -->
+        <button 
+          type="button" 
+          class="btn btn-primary"
+          [disabled]="!isValid || saving"
+          (click)="onSave()">
+          <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
+          <i *ngIf="!saving" class="bx bx-save me-1"></i>
+          {{computedSaveLabel}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content (projected - usually a form) -->
+  <div class="page-content">
+    <div class="card">
+      <div class="card-body">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Actions (duplicate for mobile) -->
+  <div class="page-footer d-flex justify-content-end gap-2 mt-4 d-md-none">
+    <button 
+      type="button" 
+      class="btn btn-outline-secondary"
+      [routerLink]="backLink"
+      (click)="onCancel()">
+      {{cancelLabel}}
+    </button>
+    <button 
+      type="button" 
+      class="btn btn-primary"
+      [disabled]="!isValid || saving"
+      (click)="onSave()">
+      <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
+      {{computedSaveLabel}}
+    </button>
+  </div>
+</div>

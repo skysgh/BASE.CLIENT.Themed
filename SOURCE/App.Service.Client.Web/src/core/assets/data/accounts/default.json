@@ -33,52 +33,71 @@
     }
   },
   "applets": {
-    "default": "spikes",
-    "education": {
+    "default": "spike",
+    "_comment": "Applet IDs should match APPLET_IDS from core/constants/applet.constants.ts",
+    
+    "spike": {
       "enabled": true,
-      "features": {}
-    },
-    "spikes": {
-      "enabled": true,
-      "features": {}
-    },
-    "architecture": {
-      "enabled": true,
-      "features": {}
-    },
-    "resources": {
-      "enabled": true,
-      "features": {}
-    },
-    "products": {
-      "enabled": false,
+      "showInNav": true,
+      "navOrder": 1,
       "features": {
-        "inventory": true,
-        "variants": false
+        "categories": true,
+        "classifications": true,
+        "workflow": true
       }
     },
-    "commerce": {
-      "enabled": false,
-      "features": {
-        "invoicing": true,
-        "refunds": true
-      }
-    },
-    "shopping": {
-      "enabled": false,
-      "features": {
-        "cart": true,
-        "wishlist": false,
-        "guestCheckout": true
-      }
-    },
-    "settings": {
+    "service.settings": {
       "enabled": true,
+      "showInNav": false,
       "features": {
         "serviceSettings": false,
         "accountSettings": true,
         "userSettings": true
       }
+    },
+    "service.search": {
+      "enabled": true,
+      "showInNav": true,
+      "navOrder": 99,
+      "features": {}
+    },
+    "service.theme": {
+      "enabled": false,
+      "showInNav": false,
+      "features": {}
+    },
+    "education": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 2,
+      "features": {}
+    },
+    "architecture": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 3,
+      "features": {}
+    },
+    "people": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 4,
+      "features": {}
+    },
+    "products": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 5,
+      "features": {
+        "inventory": true,
+        "variants": false
+      }
+    },
+    "places": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 6,
+      "features": {}
     }
   },
   "resources": {
@@ -98,11 +117,12 @@
     "enableAnalytics": true,
     "enableChat": true,
     "enableNotifications": true,
-    "enableSettingsIcon": true
+    "enableSettingsIcon": true,
+    "enableSearchIcon": true
   },
   "_comments": {
     "i18n": "Text values can be i18n keys (e.g., BASE.ACCOUNTS.DEFAULT.TITLE) or plain text.",
-    "applets": "Each applet has enabled flag and features object. Check with accountService.getConfigValue('applets.shopping.features.cart')",
+    "applets": "Each applet has enabled, showInNav, navOrder, and features. Use APPLET_IDS constants for IDs.",
     "features": "Top-level features are global UI toggles. Applet-specific features are under applets.{name}.features"
   }
 }

@@ -1,0 +1,102 @@
+<div class="browse-page">
+  <!-- Header -->
+  <div class="page-header d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+    <div class="header-content">
+      <h4 class="mb-0">
+        <i class="bx {{icon}} me-2" [style.color]="iconColor"></i>
+        {{title}}
+      </h4>
+      <p class="text-muted mb-0 mt-1" *ngIf="subtitle || itemCount > 0">
+        {{subtitle || itemCount + ' items'}}
+      </p>
+    </div>
+    
+    <div class="header-actions d-flex gap-2 align-items-center">
+      <!-- View Toggle -->
+      <div *ngIf="showViewToggle" class="btn-group btn-group-sm">
+        <button 
+          type="button"
+          class="btn"
+          [class.btn-primary]="viewMode === 'cards'"
+          [class.btn-outline-secondary]="viewMode !== 'cards'"
+          (click)="onViewModeChange('cards')"
+          title="Cards">
+          <i class="bx bx-grid-alt"></i>
+        </button>
+        <button 
+          type="button"
+          class="btn"
+          [class.btn-primary]="viewMode === 'table'"
+          [class.btn-outline-secondary]="viewMode !== 'table'"
+          (click)="onViewModeChange('table')"
+          title="Table">
+          <i class="bx bx-table"></i>
+        </button>
+        <button 
+          type="button"
+          class="btn"
+          [class.btn-primary]="viewMode === 'list'"
+          [class.btn-outline-secondary]="viewMode !== 'list'"
+          (click)="onViewModeChange('list')"
+          title="List">
+          <i class="bx bx-list-ul"></i>
+        </button>
+      </div>
+      
+      <!-- Refresh -->
+      <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onRefresh()" [disabled]="loading">
+        <i class="bx bx-refresh" [class.bx-spin]="loading"></i>
+      </button>
+      
+      <!-- Custom Header Actions -->
+      <ng-container *ngIf="headerActionsTemplate">
+        <ng-container *ngTemplateOutlet="headerActionsTemplate"></ng-container>
+      </ng-container>
+      
+      <!-- Add Button -->
+      <button *ngIf="showAdd" class="btn btn-primary" (click)="onAdd()">
+        <i class="bx bx-plus me-1"></i>
+        {{addLabel}}
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <ng-container *ngIf="!loading && itemCount === 0">
+    <ng-container *ngIf="emptyTemplate; else defaultEmpty">
+      <ng-container *ngTemplateOutlet="emptyTemplate"></ng-container>
+    </ng-container>
+    
+    <ng-template #defaultEmpty>
+      <div class="empty-state text-center py-5">
+        <i class="bx {{icon}} display-1 text-muted"></i>
+        <h5 class="mt-3">{{emptyMessage}}</h5>
+        <p class="text-muted">{{emptyActionLabel}}</p>
+        <button *ngIf="showAdd" class="btn btn-primary" (click)="onAdd()">
+          <i class="bx bx-plus me-1"></i>
+          {{addLabel}}
+        </button>
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <!-- Content (projected) -->
+  <div *ngIf="!loading && itemCount > 0" class="page-content">
+    <ng-content></ng-content>
+  </div>
+
+  <!-- Footer -->
+  <div *ngIf="backLink" class="page-footer mt-4">
+    <a [routerLink]="backLink" class="btn btn-outline-secondary">
+      <i class="bx bx-arrow-back me-1"></i>
+      {{backLabel}}
+    </a>
+  </div>
+</div>

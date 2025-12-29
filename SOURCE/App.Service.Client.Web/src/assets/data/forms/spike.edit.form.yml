@@ -1,0 +1,137 @@
+# Spike Form Definition
+# 
+# This YAML file defines the form schema for Spike entities.
+# It is converted to JSON at runtime by FormLoaderService.
+# 
+# BENEFITS OF YAML:
+# - Comments! (like this one)
+# - More readable for non-technical stakeholders
+# - Less syntax noise
+# 
+# CONVENTIONS:
+# - Use snake_case for field keys
+# - Use camelCase for option values
+# - Keep related fields together
+
+id: spike-edit
+title: Edit Spike
+description: Form for editing an existing Spike
+mode: edit
+
+# Field definitions
+fields:
+  # Basic Information
+  - key: title
+    type: text
+    label: Title
+    placeholder: Enter spike title
+    required: true
+    validation:
+      minLength: 3
+      maxLength: 200
+      messages:
+        minLength: Title must be at least 3 characters
+        maxLength: Title cannot exceed 200 characters
+
+  - key: description
+    type: textarea
+    label: Description
+    placeholder: Describe the spike...
+    validation:
+      maxLength: 2000
+
+  # Classification
+  - key: categoryId
+    type: select
+    label: Category
+    required: true
+    # Options loaded from reference data
+    optionsSource: spikeCategories
+    options:
+      - value: "1"
+        label: Feature
+      - value: "2"
+        label: Bug Fix
+      - value: "3"
+        label: Research
+      - value: "4"
+        label: Improvement
+      - value: "5"
+        label: Maintenance
+
+  - key: priority
+    type: select
+    label: Priority
+    required: true
+    defaultValue: 3
+    options:
+      - value: 1
+        label: Lowest
+      - value: 2
+        label: Low
+      - value: 3
+        label: Medium
+      - value: 4
+        label: High
+      - value: 5
+        label: Highest
+
+  # Planning
+  - key: dueDate
+    type: date
+    label: Due Date
+    description: When should this spike be completed?
+
+  - key: estimatedEffort
+    type: number
+    label: Estimated Effort (hours)
+    placeholder: "0"
+    validation:
+      min: 0
+      max: 10000
+
+  # Tags
+  - key: classificationIds
+    type: multiselect
+    label: Tags
+    description: Add tags to help categorize this spike
+    optionsSource: spikeClassifications
+    options:
+      - value: "1"
+        label: Urgent
+      - value: "2"
+        label: Blocked
+      - value: "3"
+        label: Needs Review
+      - value: "4"
+        label: Customer Facing
+      - value: "5"
+        label: Internal
+      - value: "6"
+        label: Technical Debt
+
+# Layout configuration
+layout:
+  columns: 2
+  sections:
+    - id: basic
+      title: Basic Information
+      description: Core details about the spike
+      fieldKeys:
+        - title
+        - description
+
+    - id: classification
+      title: Classification
+      description: How to categorize this spike
+      fieldKeys:
+        - categoryId
+        - priority
+        - classificationIds
+
+    - id: planning
+      title: Planning
+      description: Timeline and effort estimates
+      fieldKeys:
+        - dueDate
+        - estimatedEffort

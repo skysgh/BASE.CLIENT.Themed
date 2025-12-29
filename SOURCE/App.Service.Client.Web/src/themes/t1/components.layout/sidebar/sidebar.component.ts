@@ -11,10 +11,9 @@ import { themesT1Configuration } from '../../configuration/implementations/theme
 // Services:
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
 import { AccountService } from '../../../../core/services/account.service';
+import { ThemeT1NavigationAdapter } from '../../services/theme-navigation-adapter.service';
 // Models:
 import { ViewModel } from './vm';
-// Data:
-import { MENU } from '../../../../core/navigation/menu';
 
 
 @Component({
@@ -45,7 +44,8 @@ export class BaseLayoutSidebarComponent implements OnInit {
   constructor(
     private router: Router,
     private defaultControllerServices: DefaultComponentServices,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private navigationAdapter: ThemeT1NavigationAdapter
   ) {
     // ✅ Get logos from account config
     this.logoDark$ = this.accountService.getConfigValue('branding.logo');
@@ -54,8 +54,9 @@ export class BaseLayoutSidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Menu Items
-    this.menuItems = MENU;
+    // ✅ Build menu using theme adapter (reads from NavigationDataService)
+    this.menuItems = this.navigationAdapter.getMenuItems();
+    
     this.router.events.subscribe((event) => {
       if (document.documentElement.getAttribute('data-layout') != "twocolumn") {
         if (event instanceof NavigationEnd) {

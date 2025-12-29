@@ -74,7 +74,6 @@
     <Folder Include="src\themes\t1\features\errors\assets\sensitive\" />
     <Folder Include="src\themes\t1\features\errors\assets\open\" />
     <Folder Include="src\themes\t1\layouts\" />
-    <Folder Include="src\themes\t1\services\" />
     <Folder Include="src\apps.bootstrap\assets.dynamic\open\images\backgrounds\sidebards\" />
     <Folder Include="src\core\assets\assets.data\public\" />
     <Folder Include="src\sites\features\dashboard\assets\" />

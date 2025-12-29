@@ -1,0 +1,21 @@
+.spike-add {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.page-header {
+  h4 {
+    display: flex;
+    align-items: center;
+    
+    i {
+      color: var(--vz-primary);
+    }
+  }
+}
+
+.card {
+  border: 1px solid var(--vz-border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}

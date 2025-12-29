@@ -1,3 +1,5 @@
+File: App.Service.Client.Web\_custom\json-server\data.json
+````````json
 {
   "base_system_Services": [
     {
@@ -1402,8 +1404,6 @@
 
 
 
-
-
   "base_service_ProductTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -1416,8 +1416,6 @@
       "description": "blah...blah..."
     }
   ],
-
-
 
 
 
@@ -1442,299 +1440,1488 @@
   "app_spike_Spikes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
-      "title": "Spike.Foo",
-      "description": "...some desc..."
+      "title": "Evaluate Form Rendering Libraries",
+      "description": "Research and compare dynamic form rendering approaches for the BREAD pattern implementation. Need to support YAML-based form definitions with validation.",
+      "categoryId": "1",
+      "statusId": "2",
+      "dueDate": "2025-02-15T00:00:00Z",
+      "estimatedEffort": 24,
+      "priority": 4,
+      "classificationIds": ["class-1"],
+      "tagIds": ["tag-technical"],
+      "parts": [
+        {
+          "typeId": "1",
+          "name": "Tech Lead",
+          "value": "John Smith",
+          "secondaryValue": "john.smith@example.com",
+          "notes": "Primary decision maker"
+        },
+        {
+          "typeId": "2",
+          "name": "Development Environment",
+          "value": "Angular 17 + TypeScript",
+          "notes": "Must be compatible"
+        },
+        {
+          "typeId": "4",
+          "name": "Bundle Size",
+          "value": "< 100KB",
+          "notes": "Must stay within budget"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-001-1",
+          "spikeId": "spike-001",
+          "typeId": "1",
+          "description": "Research Formly capabilities",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 1,
+          "notes": "Focus on dynamic field generation",
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-10T10:00:00Z"
+        },
+        {
+          "id": "item-001-2",
+          "spikeId": "spike-001",
+          "typeId": "1",
+          "description": "Research JSONForms capabilities",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 2,
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-10T10:00:00Z"
+        },
+        {
+          "id": "item-001-3",
+          "spikeId": "spike-001",
+          "typeId": "3",
+          "description": "Formly supports YAML via adapter pattern",
+          "sequence": 3,
+          "notes": "Confirmed working in POC",
+          "createdUtc": "2025-01-12T14:00:00Z",
+          "modifiedUtc": "2025-01-12T14:00:00Z"
+        }
+      ],
+      "subSpikes": [
+        {
+          "id": "subspike-001-1",
+          "parentSpikeId": "spike-001",
+          "title": "Formly Deep Dive",
+          "description": "Detailed analysis of NGX-Formly",
+          "statusId": "4",
+          "sequence": 1,
+          "estimatedEffort": 8,
+          "parts": [],
+          "items": [],
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-14T16:00:00Z"
+        },
+        {
+          "id": "subspike-001-2",
+          "parentSpikeId": "spike-001",
+          "title": "JSONForms Evaluation",
+          "description": "Detailed analysis of JSONForms",
+          "statusId": "2",
+          "sequence": 2,
+          "estimatedEffort": 8,
+          "parts": [],
+          "items": [],
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-15T09:00:00Z"
+        }
+      ],
+      "createdUtc": "2025-01-10T10:00:00Z",
+      "modifiedUtc": "2025-01-15T09:00:00Z",
+      "createdBy": "user-001"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "title": "Spike.Bar",
-      "description": "...whatever..."
+      "id": "spike-002",
+      "title": "Navigation Service Abstraction",
+      "description": "Design and implement a navigation data service that transforms menu data for different theme requirements. Enables theme independence.",
+      "categoryId": "4",
+      "statusId": "1",
+      "dueDate": "2025-02-28T00:00:00Z",
+      "estimatedEffort": 16,
+      "priority": 3,
+      "classificationIds": [],
+      "tagIds": ["tag-technical", "tag-business"],
+      "parts": [
+        {
+          "typeId": "1",
+          "name": "Architect",
+          "value": "Jane Doe",
+          "secondaryValue": "jane.doe@example.com"
+        },
+        {
+          "typeId": "3",
+          "name": "Backwards Compatibility",
+          "value": "Must support existing menu.ts format"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-002-1",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Define navigation data model",
+          "quantity": 2,
+          "unit": "hours",
+          "sequence": 1,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        },
+        {
+          "id": "item-002-2",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Create NavigationDataService",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 2,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        },
+        {
+          "id": "item-002-3",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Implement theme-specific adapters",
+          "quantity": 6,
+          "unit": "hours",
+          "sequence": 3,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        }
+      ],
+      "subSpikes": [],
+      "createdUtc": "2025-01-20T10:00:00Z",
+      "modifiedUtc": "2025-01-20T10:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "spike-003",
+      "title": "PDF Compliance Viewer Integration",
+      "description": "Integrate PDF viewer for compliance documents (Privacy, Terms, etc.) with lazy loading and account-specific document support.",
+      "categoryId": "3",
+      "statusId": "4",
+      "dueDate": "2025-01-30T00:00:00Z",
+      "estimatedEffort": 12,
+      "priority": 2,
+      "classificationIds": [],
+      "tagIds": ["tag-reviewed"],
+      "parts": [
+        {
+          "typeId": "2",
+          "name": "PDF Library",
+          "value": "ng2-pdf-viewer",
+          "notes": "Already in project"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-003-1",
+          "spikeId": "spike-003",
+          "typeId": "2",
+          "description": "service.compliance module",
+          "sequence": 1,
+          "notes": "Lazy loaded module with PDF views",
+          "createdUtc": "2025-01-25T10:00:00Z",
+          "modifiedUtc": "2025-01-28T16:00:00Z"
+        },
+        {
+          "id": "item-003-2",
+          "spikeId": "spike-003",
+          "typeId": "4",
+          "description": "Use standalone components for each policy type",
+          "sequence": 2,
+          "createdUtc": "2025-01-26T10:00:00Z",
+          "modifiedUtc": "2025-01-26T10:00:00Z"
+        }
+      ],
+      "subSpikes": [],
+      "createdUtc": "2025-01-25T10:00:00Z",
+      "modifiedUtc": "2025-01-28T16:00:00Z",
+      "createdBy": "user-002"
     }
   ],
 
-
-
-
-
-
-
-
-
-  "app_spike_SubSpikes": [
+  "app_spike_Categories": [
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "parentFK": "00000000-0000-0000-0000-000000000001",
-      "title": "SubSpike.Foo.Foo",
-      "description": "..."
+      "id": "1",
+      "name": "Technical Research",
+      "description": "Technical exploration and proof of concepts",
+      "icon": "bx-code-alt",
+      "color": "#3577f1"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "parentFK": "00000000-0000-0000-0000-000000000001",
-      "title": "SubSpike.Foo.Bar",
-      "description": "..."
+      "id": "2",
+      "name": "Business Analysis",
+      "description": "Market research and business viability",
+      "icon": "bx-briefcase",
+      "color": "#0ab39c"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "parentFK": "00000000-0000-0000-0000-000000000002",
-      "title": "SubSpike.Bar.Foo",
-      "description": "..."
+      "id": "3",
+      "name": "User Experience",
+      "description": "UX research and prototyping",
+      "icon": "bx-user",
+      "color": "#f7b84b"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "parentFK": "00000000-0000-0000-0000-000000000002",
-      "title": "SubSpike.Bar.Bar",
-      "description": "..."
+      "id": "4",
+      "name": "Architecture",
+      "description": "System design and architecture decisions",
+      "icon": "bx-sitemap",
+      "color": "#405189"
     }
   ],
 
-  "todo_templateItems": [
+  "app_spike_Statuses": [
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "title": "Foo",
-      "description": "..."
+      "id": "1",
+      "name": "Draft",
+      "description": "Initial draft, not yet started",
+      "icon": "bx-edit",
+      "color": "#6c757d"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "title": "Bar",
-      "description": "..."
+      "id": "2",
+      "name": "In Progress",
+      "description": "Currently being worked on",
+      "icon": "bx-loader-circle",
+      "color": "#299cdb"
+    },
+    {
+      "id": "3",
+      "name": "Review",
+      "description": "Ready for review",
+      "icon": "bx-search",
+      "color": "#f7b84b"
+    },
+    {
+      "id": "4",
+      "name": "Completed",
+      "description": "Successfully completed",
+      "icon": "bx-check-circle",
+      "color": "#0ab39c"
+    },
+    {
+      "id": "5",
+      "name": "Cancelled",
+      "description": "Cancelled or abandoned",
+      "icon": "bx-x-circle",
+      "color": "#f06548"
     }
   ],
 
-
-
-
-  "todo_templateSubItems": [
+  "app_spike_Tags": [
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "parentFK": "00000000-0000-0000-0000-000000000001",
-      "title": "SubFoo.Foo",
-      "description": "..."
+      "id": "tag-urgent",
+      "name": "Urgent",
+      "color": "#f06548",
+      "icon": "bx-alarm-exclamation",
+      "isSystem": true
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "parentFK": "00000000-0000-0000-0000-000000000001",
-      "title": "SubFoo.Bar",
-      "description": "..."
+      "id": "tag-blocked",
+      "name": "Blocked",
+      "color": "#f7b84b",
+      "icon": "bx-block",
+      "isSystem": true
     },
     {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "parentFK": "00000000-0000-0000-0000-000000000002",
-      "title": "SubBar.Foo",
-      "description": "..."
+      "id": "tag-reviewed",
+      "name": "Reviewed",
+      "color": "#0ab39c",
+      "icon": "bx-check-circle",
+      "isSystem": true
     },
     {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "parentFK": "00000000-0000-0000-0000-000000000002",
-      "title": "SubBar.Bar",
-      "description": "..."
+      "id": "tag-technical",
+      "name": "Technical",
+      "color": "#405189",
+      "icon": "bx-cog",
+      "isSystem": false
+    },
+    {
+      "id": "tag-business",
+      "name": "Business",
+      "color": "#3577f1",
+      "icon": "bx-briefcase",
+      "isSystem": false
     }
   ],
 
-
-
-
-  "app_architecture_Values": [
+  "app_spike_PartTypes": [
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "title": "honesty",
-      "description": "..."
+      "id": "1",
+      "name": "Stakeholder",
+      "description": "Person with interest in the outcome",
+      "icon": "bx-user"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "title": "forthrightness",
-      "description": "..."
+      "id": "2",
+      "name": "Resource",
+      "description": "Tool, system, or resource needed",
+      "icon": "bx-box"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "title": "consistency",
-      "description": "..."
+      "id": "3",
+      "name": "Constraint",
+      "description": "Limitation or boundary condition",
+      "icon": "bx-block"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "title": "trustworthiness",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000005",
-      "title": "inclusive",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000006",
-      "title": "constructive",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000007",
-      "title": "creative",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000008",
-      "title": "inexpensive",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000009",
-      "title": "profitable",
-      "description": "..."
+      "id": "4",
+      "name": "Assumption",
+      "description": "Assumed condition",
+      "icon": "bx-help-circle"
     }
   ],
 
-
-
-
-
-  "app_architecture_PrincipleTypes": [
+  "app_spike_ItemTypes": [
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "title": "business",
-      "description": "..."
+      "id": "1",
+      "name": "Task",
+      "description": "Work item to complete",
+      "icon": "bx-task"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "title": "enterprise",
-      "description": "..."
+      "id": "2",
+      "name": "Deliverable",
+      "description": "Output or artifact",
+      "icon": "bx-package"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "title": "delivery",
-      "description": "..."
+      "id": "3",
+      "name": "Finding",
+      "description": "Discovery or insight",
+      "icon": "bx-bulb"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "title": "security",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000005",
-      "title": "interoperability",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000006",
-      "title": "operability",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000007",
-      "title": "maintainability",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000008",
-      "title": "design",
-      "description": "..."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000009",
-      "title": "development",
-      "description": "..."
+      "id": "4",
+      "name": "Decision",
+      "description": "Decision made",
+      "icon": "bx-check-shield"
     }
   ],
 
-
-
-
-  "app_architecture_Principles": [
+  "app_spike_Spikes": [
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "typeFk": "00000000-0000-0000-0000-000000000008",
-      "title": "Security-first",
-      "description": "Ensuring what users entrust to the system remains safe"
+      "id": "spike-001",
+      "title": "Evaluate Form Rendering Libraries",
+      "description": "Research and compare dynamic form rendering approaches for the BREAD pattern implementation. Need to support YAML-based form definitions with validation.",
+      "categoryId": "1",
+      "statusId": "2",
+      "dueDate": "2025-02-15T00:00:00Z",
+      "estimatedEffort": 24,
+      "priority": 4,
+      "classificationIds": ["class-1"],
+      "tagIds": ["tag-technical"],
+      "parts": [
+        {
+          "typeId": "1",
+          "name": "Tech Lead",
+          "value": "John Smith",
+          "secondaryValue": "john.smith@example.com",
+          "notes": "Primary decision maker"
+        },
+        {
+          "typeId": "2",
+          "name": "Development Environment",
+          "value": "Angular 17 + TypeScript",
+          "notes": "Must be compatible"
+        },
+        {
+          "typeId": "4",
+          "name": "Bundle Size",
+          "value": "< 100KB",
+          "notes": "Must stay within budget"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-001-1",
+          "spikeId": "spike-001",
+          "typeId": "1",
+          "description": "Research Formly capabilities",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 1,
+          "notes": "Focus on dynamic field generation",
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-10T10:00:00Z"
+        },
+        {
+          "id": "item-001-2",
+          "spikeId": "spike-001",
+          "typeId": "1",
+          "description": "Research JSONForms capabilities",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 2,
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-10T10:00:00Z"
+        },
+        {
+          "id": "item-001-3",
+          "spikeId": "spike-001",
+          "typeId": "3",
+          "description": "Formly supports YAML via adapter pattern",
+          "sequence": 3,
+          "notes": "Confirmed working in POC",
+          "createdUtc": "2025-01-12T14:00:00Z",
+          "modifiedUtc": "2025-01-12T14:00:00Z"
+        }
+      ],
+      "subSpikes": [
+        {
+          "id": "subspike-001-1",
+          "parentSpikeId": "spike-001",
+          "title": "Formly Deep Dive",
+          "description": "Detailed analysis of NGX-Formly",
+          "statusId": "4",
+          "sequence": 1,
+          "estimatedEffort": 8,
+          "parts": [],
+          "items": [],
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-14T16:00:00Z"
+        },
+        {
+          "id": "subspike-001-2",
+          "parentSpikeId": "spike-001",
+          "title": "JSONForms Evaluation",
+          "description": "Detailed analysis of JSONForms",
+          "statusId": "2",
+          "sequence": 2,
+          "estimatedEffort": 8,
+          "parts": [],
+          "items": [],
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-15T09:00:00Z"
+        }
+      ],
+      "createdUtc": "2025-01-10T10:00:00Z",
+      "modifiedUtc": "2025-01-15T09:00:00Z",
+      "createdBy": "user-001"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "typeFk": "00000000-0000-0000-0000-000000000008",
-      "title": "API-first",
-      "description": "Ensuring the system is interoperable and uses the CPU closest to consumption."
+      "id": "spike-002",
+      "title": "Navigation Service Abstraction",
+      "description": "Design and implement a navigation data service that transforms menu data for different theme requirements. Enables theme independence.",
+      "categoryId": "4",
+      "statusId": "1",
+      "dueDate": "2025-02-28T00:00:00Z",
+      "estimatedEffort": 16,
+      "priority": 3,
+      "classificationIds": [],
+      "tagIds": ["tag-technical", "tag-business"],
+      "parts": [
+        {
+          "typeId": "1",
+          "name": "Architect",
+          "value": "Jane Doe",
+          "secondaryValue": "jane.doe@example.com"
+        },
+        {
+          "typeId": "3",
+          "name": "Backwards Compatibility",
+          "value": "Must support existing menu.ts format"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-002-1",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Define navigation data model",
+          "quantity": 2,
+          "unit": "hours",
+          "sequence": 1,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        },
+        {
+          "id": "item-002-2",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Create NavigationDataService",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 2,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        },
+        {
+          "id": "item-002-3",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Implement theme-specific adapters",
+          "quantity": 6,
+          "unit": "hours",
+          "sequence": 3,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        }
+      ],
+      "subSpikes": [],
+      "createdUtc": "2025-01-20T10:00:00Z",
+      "modifiedUtc": "2025-01-20T10:00:00Z",
+      "createdBy": "user-001"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "typeFk": "00000000-0000-0000-0000-000000000008",
-      "title": "Accessible-first",
-      "description": "Ensuring the most people can use the system."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "typeFk": "00000000-0000-0000-0000-000000000008",
-      "title": "Open-first",
-      "description": "Ensuring the most people are enabled to access the system's data."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000005",
-      "typeFk": "00000000-0000-0000-0000-000000000008",
-      "title": "Future-first",
-      "description": "Ensuring the design is not narrowly focused on today's problems forgetting what could be done if there were no problems to focus on today."
+      "id": "spike-003",
+      "title": "PDF Compliance Viewer Integration",
+      "description": "Integrate PDF viewer for compliance documents (Privacy, Terms, etc.) with lazy loading and account-specific document support.",
+      "categoryId": "3",
+      "statusId": "4",
+      "dueDate": "2025-01-30T00:00:00Z",
+      "estimatedEffort": 12,
+      "priority": 2,
+      "classificationIds": [],
+      "tagIds": ["tag-reviewed"],
+      "parts": [
+        {
+          "typeId": "2",
+          "name": "PDF Library",
+          "value": "ng2-pdf-viewer",
+          "notes": "Already in project"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-003-1",
+          "spikeId": "spike-003",
+          "typeId": "2",
+          "description": "service.compliance module",
+          "sequence": 1,
+          "notes": "Lazy loaded module with PDF views",
+          "createdUtc": "2025-01-25T10:00:00Z",
+          "modifiedUtc": "2025-01-28T16:00:00Z"
+        },
+        {
+          "id": "item-003-2",
+          "spikeId": "spike-003",
+          "typeId": "4",
+          "description": "Use standalone components for each policy type",
+          "sequence": 2,
+          "createdUtc": "2025-01-26T10:00:00Z",
+          "modifiedUtc": "2025-01-26T10:00:00Z"
+        }
+      ],
+      "subSpikes": [],
+      "createdUtc": "2025-01-25T10:00:00Z",
+      "modifiedUtc": "2025-01-28T16:00:00Z",
+      "createdBy": "user-002"
     }
   ],
-  "app_architecture_QualityTypes": [
+
+  "app_spike_Categories": [
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "title": "ISO-25010",
-      "description": "Sytem Qualities"
+      "id": "1",
+      "name": "Technical Research",
+      "description": "Technical exploration and proof of concepts",
+      "icon": "bx-code-alt",
+      "color": "#3577f1"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "title": "ISO-25012",
-      "description": "Sytem Data Qualities"
+      "id": "2",
+      "name": "Business Analysis",
+      "description": "Market research and business viability",
+      "icon": "bx-briefcase",
+      "color": "#0ab39c"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "title": "ISO-25022",
-      "description": "Sytem User Experience Qualities"
-    }
-  ],
-  "app_architecture_QualityCategories": [
-    {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "typeFk": "00000000-0000-0000-0000-000000000001",
-      "title": "ISO-25010/Functionality",
-      "description": "Qualities of Functionality"
+      "id": "3",
+      "name": "User Experience",
+      "description": "UX research and prototyping",
+      "icon": "bx-user",
+      "color": "#f7b84b"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "typeFk": "00000000-0000-0000-0000-000000000001",
-      "title": "ISO-25010/Usability",
-      "description": "How usable is the system."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "typeFk": "00000000-0000-0000-0000-000000000001",
-      "title": "ISO-25010/Security",
-      "description": "How secure is the system."
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "typeFk": "00000000-0000-0000-0000-000000000001",
-      "title": "etc.",
-      "description": "etc..."
+      "id": "4",
+      "name": "Architecture",
+      "description": "System design and architecture decisions",
+      "icon": "bx-sitemap",
+      "color": "#405189"
     }
   ],
 
-
-
-
-
-  "app_architecture_Qualities": [
+  "app_spike_Statuses": [
     {
-      "id": "00000000-0000-0000-0000-000000000001",
-      "categoryFk": "00000000-0000-0000-0000-000000000001",
-      "title": "THe solution's system(s) MUST..etc.",
-      "description": "etc..."
+      "id": "1",
+      "name": "Draft",
+      "description": "Initial draft, not yet started",
+      "icon": "bx-edit",
+      "color": "#6c757d"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000002",
-      "categoryFk": "00000000-0000-0000-0000-000000000001",
-      "title": "THe solution's system(s) MUST..etc.",
-      "description": "etc..."
+      "id": "2",
+      "name": "In Progress",
+      "description": "Currently being worked on",
+      "icon": "bx-loader-circle",
+      "color": "#299cdb"
     },
     {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "categoryFk": "00000000-0000-0000-0000-000000000002",
-      "title": "THe solution's system(s) MUST..etc.",
-      "description": "etc..."
+      "id": "3",
+      "name": "Review",
+      "description": "Ready for review",
+      "icon": "bx-search",
+      "color": "#f7b84b"
+    },
+    {
+      "id": "4",
+      "name": "Completed",
+      "description": "Successfully completed",
+      "icon": "bx-check-circle",
+      "color": "#0ab39c"
+    },
+    {
+      "id": "5",
+      "name": "Cancelled",
+      "description": "Cancelled or abandoned",
+      "icon": "bx-x-circle",
+      "color": "#f06548"
     }
+  ],
 
+  "app_spike_Tags": [
+    {
+      "id": "tag-urgent",
+      "name": "Urgent",
+      "color": "#f06548",
+      "icon": "bx-alarm-exclamation",
+      "isSystem": true
+    },
+    {
+      "id": "tag-blocked",
+      "name": "Blocked",
+      "color": "#f7b84b",
+      "icon": "bx-block",
+      "isSystem": true
+    },
+    {
+      "id": "tag-reviewed",
+      "name": "Reviewed",
+      "color": "#0ab39c",
+      "icon": "bx-check-circle",
+      "isSystem": true
+    },
+    {
+      "id": "tag-technical",
+      "name": "Technical",
+      "color": "#405189",
+      "icon": "bx-cog",
+      "isSystem": false
+    },
+    {
+      "id": "tag-business",
+      "name": "Business",
+      "color": "#3577f1",
+      "icon": "bx-briefcase",
+      "isSystem": false
+    }
+  ],
+
+  "app_spike_PartTypes": [
+    {
+      "id": "1",
+      "name": "Stakeholder",
+      "description": "Person with interest in the outcome",
+      "icon": "bx-user"
+    },
+    {
+      "id": "2",
+      "name": "Resource",
+      "description": "Tool, system, or resource needed",
+      "icon": "bx-box"
+    },
+    {
+      "id": "3",
+      "name": "Constraint",
+      "description": "Limitation or boundary condition",
+      "icon": "bx-block"
+    },
+    {
+      "id": "4",
+      "name": "Assumption",
+      "description": "Assumed condition",
+      "icon": "bx-help-circle"
+    }
+  ],
+
+  "app_spike_ItemTypes": [
+    {
+      "id": "1",
+      "name": "Task",
+      "description": "Work item to complete",
+      "icon": "bx-task"
+    },
+    {
+      "id": "2",
+      "name": "Deliverable",
+      "description": "Output or artifact",
+      "icon": "bx-package"
+    },
+    {
+      "id": "3",
+      "name": "Finding",
+      "description": "Discovery or insight",
+      "icon": "bx-bulb"
+    },
+    {
+      "id": "4",
+      "name": "Decision",
+      "description": "Decision made",
+      "icon": "bx-check-shield"
+    }
+  ],
+
+  "app_spike_Spikes": [
+    {
+      "id": "spike-001",
+      "title": "Evaluate Form Rendering Libraries",
+      "description": "Research and compare dynamic form rendering approaches for the BREAD pattern implementation. Need to support YAML-based form definitions with validation.",
+      "categoryId": "1",
+      "statusId": "2",
+      "dueDate": "2025-02-15T00:00:00Z",
+      "estimatedEffort": 24,
+      "priority": 4,
+      "classificationIds": ["class-1"],
+      "tagIds": ["tag-technical"],
+      "parts": [
+        {
+          "typeId": "1",
+          "name": "Tech Lead",
+          "value": "John Smith",
+          "secondaryValue": "john.smith@example.com",
+          "notes": "Primary decision maker"
+        },
+        {
+          "typeId": "2",
+          "name": "Development Environment",
+          "value": "Angular 17 + TypeScript",
+          "notes": "Must be compatible"
+        },
+        {
+          "typeId": "4",
+          "name": "Bundle Size",
+          "value": "< 100KB",
+          "notes": "Must stay within budget"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-001-1",
+          "spikeId": "spike-001",
+          "typeId": "1",
+          "description": "Research Formly capabilities",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 1,
+          "notes": "Focus on dynamic field generation",
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-10T10:00:00Z"
+        },
+        {
+          "id": "item-001-2",
+          "spikeId": "spike-001",
+          "typeId": "1",
+          "description": "Research JSONForms capabilities",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 2,
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-10T10:00:00Z"
+        },
+        {
+          "id": "item-001-3",
+          "spikeId": "spike-001",
+          "typeId": "3",
+          "description": "Formly supports YAML via adapter pattern",
+          "sequence": 3,
+          "notes": "Confirmed working in POC",
+          "createdUtc": "2025-01-12T14:00:00Z",
+          "modifiedUtc": "2025-01-12T14:00:00Z"
+        }
+      ],
+      "subSpikes": [
+        {
+          "id": "subspike-001-1",
+          "parentSpikeId": "spike-001",
+          "title": "Formly Deep Dive",
+          "description": "Detailed analysis of NGX-Formly",
+          "statusId": "4",
+          "sequence": 1,
+          "estimatedEffort": 8,
+          "parts": [],
+          "items": [],
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-14T16:00:00Z"
+        },
+        {
+          "id": "subspike-001-2",
+          "parentSpikeId": "spike-001",
+          "title": "JSONForms Evaluation",
+          "description": "Detailed analysis of JSONForms",
+          "statusId": "2",
+          "sequence": 2,
+          "estimatedEffort": 8,
+          "parts": [],
+          "items": [],
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-15T09:00:00Z"
+        }
+      ],
+      "createdUtc": "2025-01-10T10:00:00Z",
+      "modifiedUtc": "2025-01-15T09:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "spike-002",
+      "title": "Navigation Service Abstraction",
+      "description": "Design and implement a navigation data service that transforms menu data for different theme requirements. Enables theme independence.",
+      "categoryId": "4",
+      "statusId": "1",
+      "dueDate": "2025-02-28T00:00:00Z",
+      "estimatedEffort": 16,
+      "priority": 3,
+      "classificationIds": [],
+      "tagIds": ["tag-technical", "tag-business"],
+      "parts": [
+        {
+          "typeId": "1",
+          "name": "Architect",
+          "value": "Jane Doe",
+          "secondaryValue": "jane.doe@example.com"
+        },
+        {
+          "typeId": "3",
+          "name": "Backwards Compatibility",
+          "value": "Must support existing menu.ts format"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-002-1",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Define navigation data model",
+          "quantity": 2,
+          "unit": "hours",
+          "sequence": 1,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        },
+        {
+          "id": "item-002-2",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Create NavigationDataService",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 2,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        },
+        {
+          "id": "item-002-3",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Implement theme-specific adapters",
+          "quantity": 6,
+          "unit": "hours",
+          "sequence": 3,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        }
+      ],
+      "subSpikes": [],
+      "createdUtc": "2025-01-20T10:00:00Z",
+      "modifiedUtc": "2025-01-20T10:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "spike-003",
+      "title": "PDF Compliance Viewer Integration",
+      "description": "Integrate PDF viewer for compliance documents (Privacy, Terms, etc.) with lazy loading and account-specific document support.",
+      "categoryId": "3",
+      "statusId": "4",
+      "dueDate": "2025-01-30T00:00:00Z",
+      "estimatedEffort": 12,
+      "priority": 2,
+      "classificationIds": [],
+      "tagIds": ["tag-reviewed"],
+      "parts": [
+        {
+          "typeId": "2",
+          "name": "PDF Library",
+          "value": "ng2-pdf-viewer",
+          "notes": "Already in project"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-003-1",
+          "spikeId": "spike-003",
+          "typeId": "2",
+          "description": "service.compliance module",
+          "sequence": 1,
+          "notes": "Lazy loaded module with PDF views",
+          "createdUtc": "2025-01-25T10:00:00Z",
+          "modifiedUtc": "2025-01-28T16:00:00Z"
+        },
+        {
+          "id": "item-003-2",
+          "spikeId": "spike-003",
+          "typeId": "4",
+          "description": "Use standalone components for each policy type",
+          "sequence": 2,
+          "createdUtc": "2025-01-26T10:00:00Z",
+          "modifiedUtc": "2025-01-26T10:00:00Z"
+        }
+      ],
+      "subSpikes": [],
+      "createdUtc": "2025-01-25T10:00:00Z",
+      "modifiedUtc": "2025-01-28T16:00:00Z",
+      "createdBy": "user-002"
+    }
+  ],
+
+  "app_spike_Categories": [
+    {
+      "id": "1",
+      "name": "Technical Research",
+      "description": "Technical exploration and proof of concepts",
+      "icon": "bx-code-alt",
+      "color": "#3577f1"
+    },
+    {
+      "id": "2",
+      "name": "Business Analysis",
+      "description": "Market research and business viability",
+      "icon": "bx-briefcase",
+      "color": "#0ab39c"
+    },
+    {
+      "id": "3",
+      "name": "User Experience",
+      "description": "UX research and prototyping",
+      "icon": "bx-user",
+      "color": "#f7b84b"
+    },
+    {
+      "id": "4",
+      "name": "Architecture",
+      "description": "System design and architecture decisions",
+      "icon": "bx-sitemap",
+      "color": "#405189"
+    }
+  ],
+
+  "app_spike_Statuses": [
+    {
+      "id": "1",
+      "name": "Draft",
+      "description": "Initial draft, not yet started",
+      "icon": "bx-edit",
+      "color": "#6c757d"
+    },
+    {
+      "id": "2",
+      "name": "In Progress",
+      "description": "Currently being worked on",
+      "icon": "bx-loader-circle",
+      "color": "#299cdb"
+    },
+    {
+      "id": "3",
+      "name": "Review",
+      "description": "Ready for review",
+      "icon": "bx-search",
+      "color": "#f7b84b"
+    },
+    {
+      "id": "4",
+      "name": "Completed",
+      "description": "Successfully completed",
+      "icon": "bx-check-circle",
+      "color": "#0ab39c"
+    },
+    {
+      "id": "5",
+      "name": "Cancelled",
+      "description": "Cancelled or abandoned",
+      "icon": "bx-x-circle",
+      "color": "#f06548"
+    }
+  ],
+
+  "app_spike_Tags": [
+    {
+      "id": "tag-urgent",
+      "name": "Urgent",
+      "color": "#f06548",
+      "icon": "bx-alarm-exclamation",
+      "isSystem": true
+    },
+    {
+      "id": "tag-blocked",
+      "name": "Blocked",
+      "color": "#f7b84b",
+      "icon": "bx-block",
+      "isSystem": true
+    },
+    {
+      "id": "tag-reviewed",
+      "name": "Reviewed",
+      "color": "#0ab39c",
+      "icon": "bx-check-circle",
+      "isSystem": true
+    },
+    {
+      "id": "tag-technical",
+      "name": "Technical",
+      "color": "#405189",
+      "icon": "bx-cog",
+      "isSystem": false
+    },
+    {
+      "id": "tag-business",
+      "name": "Business",
+      "color": "#3577f1",
+      "icon": "bx-briefcase",
+      "isSystem": false
+    }
+  ],
+
+  "app_spike_PartTypes": [
+    {
+      "id": "1",
+      "name": "Stakeholder",
+      "description": "Person with interest in the outcome",
+      "icon": "bx-user"
+    },
+    {
+      "id": "2",
+      "name": "Resource",
+      "description": "Tool, system, or resource needed",
+      "icon": "bx-box"
+    },
+    {
+      "id": "3",
+      "name": "Constraint",
+      "description": "Limitation or boundary condition",
+      "icon": "bx-block"
+    },
+    {
+      "id": "4",
+      "name": "Assumption",
+      "description": "Assumed condition",
+      "icon": "bx-help-circle"
+    }
+  ],
+
+  "app_spike_ItemTypes": [
+    {
+      "id": "1",
+      "name": "Task",
+      "description": "Work item to complete",
+      "icon": "bx-task"
+    },
+    {
+      "id": "2",
+      "name": "Deliverable",
+      "description": "Output or artifact",
+      "icon": "bx-package"
+    },
+    {
+      "id": "3",
+      "name": "Finding",
+      "description": "Discovery or insight",
+      "icon": "bx-bulb"
+    },
+    {
+      "id": "4",
+      "name": "Decision",
+      "description": "Decision made",
+      "icon": "bx-check-shield"
+    }
+  ],
+
+  "app_spike_Spikes": [
+    {
+      "id": "spike-001",
+      "title": "Evaluate Form Rendering Libraries",
+      "description": "Research and compare dynamic form rendering approaches for the BREAD pattern implementation. Need to support YAML-based form definitions with validation.",
+      "categoryId": "1",
+      "statusId": "2",
+      "dueDate": "2025-02-15T00:00:00Z",
+      "estimatedEffort": 24,
+      "priority": 4,
+      "classificationIds": ["class-1"],
+      "tagIds": ["tag-technical"],
+      "parts": [
+        {
+          "typeId": "1",
+          "name": "Tech Lead",
+          "value": "John Smith",
+          "secondaryValue": "john.smith@example.com",
+          "notes": "Primary decision maker"
+        },
+        {
+          "typeId": "2",
+          "name": "Development Environment",
+          "value": "Angular 17 + TypeScript",
+          "notes": "Must be compatible"
+        },
+        {
+          "typeId": "4",
+          "name": "Bundle Size",
+          "value": "< 100KB",
+          "notes": "Must stay within budget"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-001-1",
+          "spikeId": "spike-001",
+          "typeId": "1",
+          "description": "Research Formly capabilities",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 1,
+          "notes": "Focus on dynamic field generation",
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-10T10:00:00Z"
+        },
+        {
+          "id": "item-001-2",
+          "spikeId": "spike-001",
+          "typeId": "1",
+          "description": "Research JSONForms capabilities",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 2,
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-10T10:00:00Z"
+        },
+        {
+          "id": "item-001-3",
+          "spikeId": "spike-001",
+          "typeId": "3",
+          "description": "Formly supports YAML via adapter pattern",
+          "sequence": 3,
+          "notes": "Confirmed working in POC",
+          "createdUtc": "2025-01-12T14:00:00Z",
+          "modifiedUtc": "2025-01-12T14:00:00Z"
+        }
+      ],
+      "subSpikes": [
+        {
+          "id": "subspike-001-1",
+          "parentSpikeId": "spike-001",
+          "title": "Formly Deep Dive",
+          "description": "Detailed analysis of NGX-Formly",
+          "statusId": "4",
+          "sequence": 1,
+          "estimatedEffort": 8,
+          "parts": [],
+          "items": [],
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-14T16:00:00Z"
+        },
+        {
+          "id": "subspike-001-2",
+          "parentSpikeId": "spike-001",
+          "title": "JSONForms Evaluation",
+          "description": "Detailed analysis of JSONForms",
+          "statusId": "2",
+          "sequence": 2,
+          "estimatedEffort": 8,
+          "parts": [],
+          "items": [],
+          "createdUtc": "2025-01-10T10:00:00Z",
+          "modifiedUtc": "2025-01-15T09:00:00Z"
+        }
+      ],
+      "createdUtc": "2025-01-10T10:00:00Z",
+      "modifiedUtc": "2025-01-15T09:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "spike-002",
+      "title": "Navigation Service Abstraction",
+      "description": "Design and implement a navigation data service that transforms menu data for different theme requirements. Enables theme independence.",
+      "categoryId": "4",
+      "statusId": "1",
+      "dueDate": "2025-02-28T00:00:00Z",
+      "estimatedEffort": 16,
+      "priority": 3,
+      "classificationIds": [],
+      "tagIds": ["tag-technical", "tag-business"],
+      "parts": [
+        {
+          "typeId": "1",
+          "name": "Architect",
+          "value": "Jane Doe",
+          "secondaryValue": "jane.doe@example.com"
+        },
+        {
+          "typeId": "3",
+          "name": "Backwards Compatibility",
+          "value": "Must support existing menu.ts format"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-002-1",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Define navigation data model",
+          "quantity": 2,
+          "unit": "hours",
+          "sequence": 1,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        },
+        {
+          "id": "item-002-2",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Create NavigationDataService",
+          "quantity": 4,
+          "unit": "hours",
+          "sequence": 2,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        },
+        {
+          "id": "item-002-3",
+          "spikeId": "spike-002",
+          "typeId": "1",
+          "description": "Implement theme-specific adapters",
+          "quantity": 6,
+          "unit": "hours",
+          "sequence": 3,
+          "createdUtc": "2025-01-20T10:00:00Z",
+          "modifiedUtc": "2025-01-20T10:00:00Z"
+        }
+      ],
+      "subSpikes": [],
+      "createdUtc": "2025-01-20T10:00:00Z",
+      "modifiedUtc": "2025-01-20T10:00:00Z",
+      "createdBy": "user-001"
+    },
+    {
+      "id": "spike-003",
+      "title": "PDF Compliance Viewer Integration",
+      "description": "Integrate PDF viewer for compliance documents (Privacy, Terms, etc.) with lazy loading and account-specific document support.",
+      "categoryId": "3",
+      "statusId": "4",
+      "dueDate": "2025-01-30T00:00:00Z",
+      "estimatedEffort": 12,
+      "priority": 2,
+      "classificationIds": [],
+      "tagIds": ["tag-reviewed"],
+      "parts": [
+        {
+          "typeId": "2",
+          "name": "PDF Library",
+          "value": "ng2-pdf-viewer",
+          "notes": "Already in project"
+        }
+      ],
+      "items": [
+        {
+          "id": "item-003-1",
+          "spikeId": "spike-003",
+          "typeId": "2",
+          "description": "service.compliance module",
+          "sequence": 1,
+          "notes": "Lazy loaded module with PDF views",
+          "createdUtc": "2025-01-25T10:00:00Z",
+          "modifiedUtc": "2025-01-28T16:00:00Z"
+        },
+        {
+          "id": "item-003-2",
+          "spikeId": "spike-003",
+          "typeId": "4",
+          "description": "Use standalone components for each policy type",
+          "sequence": 2,
+          "createdUtc": "2025-01-26T10:00:00Z",
+          "modifiedUtc": "2025-01-26T10:00:00Z"
+        }
+      ],
+      "subSpikes": [],
+      "createdUtc": "2025-01-25T10:00:00Z",
+      "modifiedUtc": "2025-01-28T16:00:00Z",
+      "createdBy": "user-002"
+    }
+  ],
+
+  "app_spike_Categories": [
+    {
+      "id": "1",
+      "name": "Technical Research",
+      "description": "Technical exploration and proof of concepts",
+      "icon": "bx-code-alt",
+      "color": "#3577f1"
+    },
+    {
+      "id": "2",
+      "name": "Business Analysis",
+      "description": "Market research and business viability",
+      "icon": "bx-briefcase",
+      "color": "#0ab39c"
+    },
+    {
+      "id": "3",
+      "name": "User Experience",
+      "description": "UX research and prototyping",
+      "icon": "bx-user",
+      "color": "#f7b84b"
+    },
+    {
+      "id": "4",
+      "name": "Architecture",
+      "description": "System design and architecture decisions",
+      "icon": "bx-sitemap",
+      "color": "#405189"
+    }
+  ],
+
+  "app_spike_Statuses": [
+    {
+      "id": "1",
+      "name": "Draft",
+      "description": "Initial draft, not yet started",
+      "icon": "bx-edit",
+      "color": "#6c757d"
+    },
+    {
+      "id": "2",
+      "name": "In Progress",
+      "description": "Currently being worked on",
+      "icon": "bx-loader-circle",
+      "color": "#299cdb"
+    },
+    {
+      "id": "3",
+      "name": "Review",
+      "description": "Ready for review",
+      "icon": "bx-search",
+      "color": "#f7b84b"
+    },
+    {
+      "id": "4",
+      "name": "Completed",
+      "description": "Successfully completed",
+      "icon": "bx-check-circle",
+      "color": "#0ab39c"
+    },
+    {
+      "id": "5",
+      "name": "Cancelled",
+      "description": "Cancelled or abandoned",
+      "icon": "bx-x-circle",
+      "color": "#f06548"
+    }
+  ],
+
+  "app_spike_Tags": [
+    {
+      "id": "tag-urgent",
+      "name": "Urgent",
+      "color": "#f06548",
+      "icon": "bx-alarm-exclamation",
+      "isSystem": true
+    },
+    {
+      "id": "tag-blocked",
+      "name": "Blocked",
+      "color": "#f7b84b",
+      "icon": "bx-block",
+      "isSystem": true
+    },
+    {
+      "id": "tag-reviewed",
+      "name": "Reviewed",
+      "color": "#0ab39c",
+      "icon": "bx-check-circle",
+      "isSystem": true
+    },
+    {
+      "id": "tag-technical",
+      "name": "Technical",
+      "color": "#405189",
+      "icon": "bx-cog",
+      "isSystem": false
+    },
+    {
+      "id": "tag-business",
+      "name": "Business",
+      "color": "#3577f1",
+      "icon": "bx-briefcase",
+      "isSystem": false
+    }
+  ],
+
+  "app_spike_PartTypes": [
+    {
+      "id": "1",
+      "name": "Stakeholder",
+      "description": "Person with interest in the outcome",
+      "icon": "bx-user"
+    },
+    {
+      "id": "2",
+      "name": "Resource",
+      "description": "Tool, system, or resource needed",
+      "icon": "bx-box"
+    },
+    {
+      "id": "3",
+      "name": "Constraint",
+      "description": "Limitation or boundary condition",
+      "icon": "bx-block"
+    },
+    {
+      "id": "4",
+      "name": "Assumption",
+      "description": "Assumed condition",
+      "icon": "bx-help-circle"
+    }
+  ],
+
+  "app_spike_ItemTypes": [
+    {
+      "id": "1",
+      "name": "Task",
+      "description": "Work item to complete",
+      "icon": "bx-task"
+    },
+    {
+      "id": "2",
+      "name": "Deliverable",
+      "description": "Output or artifact",
+      "icon": "bx-package"
+    },
+    {
+      "id": "3",
+      "name": "Finding",
+      "description": "Discovery or insight",
+      "icon": "bx-bulb"
+    },
+    {
+      "id": "4",
+      "name": "Decision",
+      "description": "Decision made",
+      "icon": "bx-check-shield"
+    }
   ]
 }

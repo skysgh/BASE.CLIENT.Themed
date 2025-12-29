@@ -5,11 +5,11 @@ import { Routes } from '@angular/router';
  * 
  * Thin routing layer - delegates to service.settings app.let views.
  * 
- * /settings              → Redirects to user settings (default)
- * /settings/service      → Platform-wide settings (super admin)
- * /settings/account      → Account settings (account admin)
- * /settings/user         → User preferences (all users)
- * /settings/applets/:id  → Applet-specific settings (dynamic)
+ * /apps/settings              → Settings hub with child router outlet
+ * /apps/settings/service      → Platform-wide settings (super admin)
+ * /apps/settings/account      → Account settings (account admin)
+ * /apps/settings/user         → User preferences (all users)
+ * /apps/settings/applets/:id  → Applet-specific settings (dynamic)
  */
 export const settingsRoutes: Routes = [
   {

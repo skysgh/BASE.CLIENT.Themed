@@ -1,0 +1,70 @@
+<!-- Read-Only Form Renderer -->
+<div class="readonly-form" *ngIf="formDefinition">
+  <!-- Title -->
+  <h5 *ngIf="formDefinition.title" class="form-title mb-4">
+    {{formDefinition.title}}
+  </h5>
+
+  <!-- Sections -->
+  <ng-container *ngFor="let section of sections">
+    <div class="form-section mb-4">
+      <h6 class="section-title text-muted border-bottom pb-2 mb-3">
+        {{section.title}}
+      </h6>
+      <p *ngIf="section.description" class="section-description text-muted small mb-3">
+        {{section.description}}
+      </p>
+      
+      <div class="row">
+        <ng-container *ngFor="let field of fieldsBySection.get(section.id)">
+          <div class="col-md-6 mb-3" *ngIf="field.type !== 'hidden'">
+            <ng-container *ngTemplateOutlet="fieldTemplate; context: { field: field }"></ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Ungrouped Fields -->
+  <div class="row" *ngIf="ungroupedFields.length > 0">
+    <ng-container *ngFor="let field of ungroupedFields">
+      <div class="col-md-6 mb-3">
+        <ng-container *ngTemplateOutlet="fieldTemplate; context: { field: field }"></ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Field Template -->
+<ng-template #fieldTemplate let-field="field">
+  <div class="field-container">
+    <!-- Label -->
+    <label class="field-label text-muted small mb-1 d-block">
+      {{field.label}}
+    </label>
+    
+    <!-- Value - Badge Style -->
+    <ng-container *ngIf="isBadgeField(field)">
+      <span class="badge {{getBadgeClass(field)}} fs-12">
+        {{getDisplayValue(field)}}
+      </span>
+    </ng-container>
+    
+    <!-- Value - Tags Style -->
+    <ng-container *ngIf="isTagsField(field)">
+      <div class="d-flex flex-wrap gap-1">
+        <span *ngFor="let tag of getTags(field)" class="badge bg-info-subtle text-info">
+          {{tag}}
+        </span>
+        <span *ngIf="getTags(field).length === 0" class="text-muted">—</span>
+      </div>
+    </ng-container>
+    
+    <!-- Value - Text Style (default) -->
+    <ng-container *ngIf="!isBadgeField(field) && !isTagsField(field)">
+      <p class="field-value mb-0 {{getValueClass(field)}}">
+        {{getDisplayValue(field)}}
+      </p>
+    </ng-container>
+  </div>
+</ng-template>

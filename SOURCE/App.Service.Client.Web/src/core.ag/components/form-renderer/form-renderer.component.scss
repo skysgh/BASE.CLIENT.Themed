@@ -1,0 +1,27 @@
+.form-renderer {
+  position: relative;
+  
+  &.loading {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  
+  .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 10;
+  }
+  
+  .form-actions {
+    .btn {
+      min-width: 100px;
+    }
+  }
+}

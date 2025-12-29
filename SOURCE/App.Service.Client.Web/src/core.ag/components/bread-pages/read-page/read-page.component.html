@@ -1,0 +1,106 @@
+<div class="read-page" [class.loading]="loading">
+  <!-- Loading Overlay -->
+  <div *ngIf="loading" class="loading-overlay">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="page-header mb-4">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+      <div class="header-content">
+        <!-- Badges -->
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span *ngIf="status" class="badge fs-14" [style.background-color]="status.color">
+            <i *ngIf="status.icon" class="bx {{status.icon}} me-1"></i>
+            {{status.label}}
+          </span>
+          <span *ngIf="category" class="badge bg-secondary-subtle text-secondary">
+            <i *ngIf="category.icon" class="bx {{category.icon}} me-1"></i>
+            {{category.label}}
+          </span>
+        </div>
+        
+        <!-- Title -->
+        <h3 class="mb-1">
+          <i *ngIf="icon" class="bx {{icon}} me-2" [style.color]="iconColor"></i>
+          {{title}}
+        </h3>
+        
+        <!-- Subtitle/Description -->
+        <p *ngIf="subtitle" class="text-muted small mb-0">{{subtitle}}</p>
+        <p *ngIf="description" class="text-muted mb-0 mt-1">{{description}}</p>
+      </div>
+      
+      <!-- Header Actions -->
+      <div class="header-actions d-flex gap-2 flex-wrap align-items-center">
+        <!-- View Toggle -->
+        <div *ngIf="showViewToggle" class="btn-group btn-group-sm me-2">
+          <button 
+            type="button"
+            class="btn"
+            [class.btn-primary]="viewMode === 'form'"
+            [class.btn-outline-secondary]="viewMode !== 'form'"
+            (click)="onViewModeChange('form')"
+            title="Form View">
+            <i class="bx bx-detail"></i>
+          </button>
+          <button 
+            type="button"
+            class="btn"
+            [class.btn-primary]="viewMode === 'custom'"
+            [class.btn-outline-secondary]="viewMode !== 'custom'"
+            (click)="onViewModeChange('custom')"
+            title="Custom View">
+            <i class="bx bx-customize"></i>
+          </button>
+        </div>
+        
+        <!-- Custom Header Actions -->
+        <ng-container *ngIf="headerActionsTemplate">
+          <ng-container *ngTemplateOutlet="headerActionsTemplate"></ng-container>
+        </ng-container>
+        
+        <!-- Edit Button -->
+        <button *ngIf="showEdit" type="button" class="btn btn-outline-primary" (click)="onEdit()">
+          <i class="bx bx-edit me-1"></i>
+          {{editLabel}}
+        </button>
+        
+        <!-- State Transition Actions (BREAST workflow) -->
+        <ng-container *ngIf="stateActions.length > 0">
+          <div class="vr d-none d-md-block"></div>
+          <ng-container *ngFor="let action of stateActions">
+            <button 
+              type="button" 
+              class="btn"
+              [ngClass]="action.color || 'btn-outline-secondary'"
+              (click)="onStateAction(action.id)"
+              [disabled]="action.disabled">
+              <i *ngIf="action.icon" class="bx {{action.icon}} me-1"></i>
+              {{action.label}}
+            </button>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content (projected) -->
+  <div class="page-content">
+    <ng-content></ng-content>
+  </div>
+
+  <!-- Footer -->
+  <div class="page-footer d-flex justify-content-between align-items-center mt-4">
+    <a [routerLink]="backLink" class="btn btn-outline-secondary">
+      <i class="bx bx-arrow-back me-1"></i>
+      {{backLabel}}
+    </a>
+    <div class="text-muted small">
+      <span *ngIf="createdAt">Created: {{createdAt | date:'medium'}}</span>
+      <span *ngIf="modifiedAt"> • Modified: {{modifiedAt | date:'medium'}}</span>
+    </div>
+  </div>
+</div>

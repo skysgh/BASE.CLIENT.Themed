@@ -1,0 +1,118 @@
+# Spike Add Form Definition
+#
+# Form for creating a new Spike.
+# Similar to edit, but includes hidden statusId defaulted to Draft.
+
+id: spike-add
+title: Create New Spike
+mode: add
+
+fields:
+  # Hidden status - defaults to Draft
+  - key: statusId
+    type: hidden
+    label: Status
+    defaultValue: "1"
+
+  # Basic Information
+  - key: title
+    type: text
+    label: Title
+    placeholder: Enter spike title
+    required: true
+    validation:
+      minLength: 3
+      maxLength: 200
+
+  - key: description
+    type: textarea
+    label: Description
+    placeholder: Describe the spike...
+    validation:
+      maxLength: 2000
+
+  # Classification
+  - key: categoryId
+    type: select
+    label: Category
+    required: true
+    options:
+      - value: "1"
+        label: Feature
+      - value: "2"
+        label: Bug Fix
+      - value: "3"
+        label: Research
+      - value: "4"
+        label: Improvement
+      - value: "5"
+        label: Maintenance
+
+  - key: priority
+    type: select
+    label: Priority
+    required: true
+    defaultValue: 3
+    options:
+      - value: 1
+        label: Lowest
+      - value: 2
+        label: Low
+      - value: 3
+        label: Medium
+      - value: 4
+        label: High
+      - value: 5
+        label: Highest
+
+  # Planning
+  - key: dueDate
+    type: date
+    label: Due Date
+
+  - key: estimatedEffort
+    type: number
+    label: Estimated Effort (hours)
+    validation:
+      min: 0
+      max: 10000
+
+  # Tags
+  - key: classificationIds
+    type: multiselect
+    label: Tags
+    options:
+      - value: "1"
+        label: Urgent
+      - value: "2"
+        label: Blocked
+      - value: "3"
+        label: Needs Review
+      - value: "4"
+        label: Customer Facing
+      - value: "5"
+        label: Internal
+      - value: "6"
+        label: Technical Debt
+
+layout:
+  columns: 2
+  sections:
+    - id: basic
+      title: Basic Information
+      fieldKeys:
+        - title
+        - description
+
+    - id: classification
+      title: Classification
+      fieldKeys:
+        - categoryId
+        - priority
+        - classificationIds
+
+    - id: planning
+      title: Planning
+      fieldKeys:
+        - dueDate
+        - estimatedEffort

@@ -1,9 +1,21 @@
 import { IHasMenuItem } from '../models/contracts/IHasMenuItem';
 // Constants:
-
 import { appsConfiguration } from '../../sites.app/configuration/implementations/apps.configuration';
+import { APPLET_IDS, APPLET_REGISTRY } from '../constants/applet.constants';
+import { ROUTE_SEGMENTS } from '../constants/navigation.constants';
 
+/**
+ * Static Menu Items
+ * 
+ * This provides the base menu structure.
+ * 
+ * APPLETS NOTE:
+ * Applet menu items are now dynamically built from account config.
+ * The 'Apps' section below will be populated by the sidebar component
+ * using AppletNavigationService.
+ */
 
+/** Static menu items that don't come from applet config */
 export const MENU: IHasMenuItem[] =
   [
     {
@@ -14,230 +26,27 @@ export const MENU: IHasMenuItem[] =
       link: appsConfiguration.navigation.dashboards.root,
     },
     {
+      id: 15,
+      title: 'BASE.SEARCH.SINGULAR',
+      description: 'BASE.SEARCH.DESCRIPTION',
+      icon: 'search',
+      link: `/${ROUTE_SEGMENTS.APPS}/${ROUTE_SEGMENTS.SEARCH}`,
+    },
+    // DYNAMIC APPLETS SECTION - will be populated by sidebar component
+    {
       id: 20,
       title: 'BASE.APPS.PLURAL',
       description: 'APPS.DESCRIPTION',
       icon: 'grid-alt',
-      subItems: [
-        {
-          id: 201,
-          title: 'APPS.SPIKE.SINGULAR',
-          description: 'APPS.SPIKES.DESCRIPTION',
-          link: appsConfiguration.navigation.apps.spikes.root,
-          parentId: 20
-        },
-        {
-          id: 202,
-          title: 'APPS.ARCHITECTURE.SINGULAR',
-          description: 'APPS.ARCHITECTURE.DESCRIPTION',
-          parentId: 20,
-          icon: 'building-house',
-          subItems: [
-            {
-              id: 2021,
-              parentId: 202,
-              title: 'BASE.VALUES.PLURAL',
-              description: 'BASE.VALUES.DESCRIPTION',
-              link: appsConfiguration.navigation.apps.architecture.values,
-            },
-            {
-              id: 2022,
-              parentId: 202,
-              title: 'BASE.PRINCIPLES.PLURAL',
-              description: 'BASE.PRINCIPLES.DESCRIPTION',
-              link: appsConfiguration.navigation.apps.architecture.principles,
-            },
-            {
-              id: 2023,
-              parentId: 202,
-              title: 'BASE.QUALITIES.PLURAL',
-              description: 'BASE.QUALITIES.DESCRIPTION',
-              link: appsConfiguration.navigation.apps.architecture.qualities,
-            },
-            {
-              id: 2024,
-              parentId: 202,
-              title: 'BASE.PATTERNS.PLURAL',
-              description: 'BASE.PATTERNS.DESCRIPTION',
-              link: appsConfiguration.navigation.apps.architecture.patterns,
-            },
-          ]
-        }
-      ]
+      // Placeholder - sidebar will add subItems dynamically
+      subItems: [],
+      isDynamicApplets: true, // Flag for sidebar to identify
     },
-
-    {
-      id: 203,
-      title: 'APPS.EDUCATION.SINGULAR',
-      description: 'APPS.EDUCATION.DESCRIPTION',
-      parentId: 20,
-      icon: 'navigation',
-      subItems: [
-        {
-          id: 2031,
-          title: 'BASE.PRODUCTS.PLURAL',
-          description: 'APPS.PRODUCTS.DESCRIPTION',
-          link: appsConfiguration.navigation.apps.education.products.root,
-          icon: 'package',
-          parentId: 203
-        },
-        {
-          id: 2032,
-          title: 'BASE.PEOPLE.SINGULAR',
-          description: 'APPS.PEOPLE.DESCRIPTION',
-          icon: 'users',
-          link: appsConfiguration.navigation.apps.education.people.root,
-          parentId: 203, 
-          subItems: [
-            {
-              id: 20321,
-              title: 'BASE.EDUCATION.ROLES.ALL',
-              description: 'BASE.EDUCATION.DESCRIPTION',
-              link: appsConfiguration.navigation.apps.education.people.root,
-              icon: 'map-pin',
-              parentId: 20321
-            },
-            {
-              id: 20321,
-              title: 'BASE.EDUCATION.ROLES.LEARNERS',
-              description: 'BASE.EDUCATION.DESCRIPTION',
-              link: appsConfiguration.navigation.apps.education.people.learners,
-              icon: 'map-pin',
-              parentId: 20321
-            },
-            {
-              id: 20321,
-              title: 'BASE.EDUCATION.ROLES.CARETAKERS',
-              description: '...',
-              link: appsConfiguration.navigation.apps.education.people.caretakers,
-              icon: 'map-pin',
-              parentId: 20321
-            },
-            {
-              id: 20322,
-              title: 'BASE.EDUCATION.ROLES.TEACHERS',
-              description: '...',
-              link: appsConfiguration.navigation.apps.education.people.teachers,
-              icon: 'map-pin',
-              parentId: 20321
-            },
-            {
-              id: 20322,
-              title: 'BASE.EDUCATION.ROLES.ADMINISTRATORS',
-              description: '...',
-              link: appsConfiguration.navigation.apps.education.people.administrators,
-              icon: 'map-pin',
-              parentId: 20321
-            },
-            {
-              id: 20322,
-              title: 'BASE.EDUCATION.ROLES.PRINCIPALS',
-              description: '...',
-              link: appsConfiguration.navigation.apps.education.people.principals,
-              icon: 'map-pin',
-              parentId: 20321
-            },
-            {
-              id: 20322,
-              title: 'BASE.EDUCATION.ROLES.SPECIALISTS',
-              description: '...',
-              link: appsConfiguration.navigation.apps.education.people.specialists,
-              icon: 'map-pin',
-              parentId: 20321
-            },
-
-            {
-              id: 20323,
-              title: 'BASE.EDUCATION.TERMS.ALUMNI',
-              description: '...',
-              link: appsConfiguration.navigation.apps.education.people.alumni,
-              icon: 'map-pin',
-              parentId: 20321
-            },
-          ]
-        },
-
-        {
-          id: 2033,
-          title: 'BASE.PLACES.PLURAL',
-          description: '...',
-          link: appsConfiguration.navigation.apps.education.places.root,
-          icon: 'map-pin',
-          parentId: 203
-        },
-        {
-          id: 2034,
-          title: 'BASE.ENROLLMENTS.PLURAL',
-          description: '...',
-          link: appsConfiguration.navigation.apps.education.enrollments.root,
-          icon: 'airplay',
-          parentId: 203
-        },
-        {
-          id: 2035,
-          title: 'BASE.FINANCES.PLURAL',
-          description: '...',
-          link: appsConfiguration.navigation.apps.education.finances.root,
-          icon: 'airplay',
-          parentId: 203
-        },
-
-        {
-          id: 2036,
-          title: 'BASE.PRESENCE.SINGULAR',
-          description: '...',
-          link: appsConfiguration.navigation.apps.education.presence.root,
-          icon: 'airplay',
-          parentId: 203
-        },
-        {
-          id: 2037,
-          title: 'BASE.PARTICIPATIONS.SINGULAR',
-          description: '...',
-          link: appsConfiguration.navigation.apps.education.participation.root,
-          icon: 'airplay',
-          parentId: 203
-        },
-        {
-          id: 2038,
-          title: 'BASE.ASSESSMENTS.PLURAL',
-          description: '...',
-          link: appsConfiguration.navigation.apps.education.assessments.root,
-          icon: 'airplay',
-          parentId: 203
-        },
-        {
-          id: 2039,
-          title: 'BASE.PROGRESS.SINGULAR',
-          description: '...',
-          link: appsConfiguration.navigation.apps.education.progress.root,
-          icon: 'chart',
-          parentId: 203
-        },
-        {
-          id: 2030,
-          title: 'BASE.ACCOMPLISHMENTS.PLURAL',
-          description: '...',
-          link: appsConfiguration.navigation.apps.education.accomplishments.root,
-          icon: 'airplay',
-          parentId: 203
-        },
-      ]
-    },
-
-    {
-      id: 203,
-      title: 'APPS.HEALTH.SINGULAR',
-      description: '...',
-      parentId: 20,
-      icon: 'heart'
-    },
-
     {
       id: 30,
       title: 'BASE.INFORMATIONS.SINGULAR',
       description: '...',
-      icon: 'info',
+      icon: 'info-circle',
       subItems: [
         {
           id: 301,
@@ -269,42 +78,36 @@ export const MENU: IHasMenuItem[] =
         }
       ]
     },
-
     {
       id: 40,
       title: 'BASE.SETTINGS.PLURAL',
       description: '...',
-      icon: 'settings',
-      subItems: [
-        {
-          id: 401,
-          parentId: 40,
-          title: 'BASE.SYSTEMS.SINGULAR',
-          description: '...',
-          link: appsConfiguration.navigation.settings.system,
-        },
-        {
-          id: 402,
-          parentId: 40,
-          title: 'BASE.ACCOUNTS.PLURAL',
-          description: '...',
-          link: appsConfiguration.navigation.settings.tenancy,
-        },
-        {
-          id: 403,
-          parentId: 40,
-          title: 'BASE.GROUPS.PLURAL',
-          description: '...',
-          link: appsConfiguration.navigation.settings.group,
-        },
-        {
-          id: 404,
-          parentId: 40,
-          title: 'BASE.USERS.PLURAL',
-          description: '...',
-          link: appsConfiguration.navigation.settings.user,
-        }
-      ]
+      icon: 'cog',
+      link: `/${ROUTE_SEGMENTS.APPS}/${ROUTE_SEGMENTS.SETTINGS}`,
     }
-
   ];
+
+/**
+ * Build applet menu items from registry
+ * Used by sidebar component to populate the Apps menu
+ */
+export function buildAppletMenuItems(): IHasMenuItem[] {
+  const items: IHasMenuItem[] = [];
+  let id = 2000;
+
+  // Get business applets from registry
+  for (const [appletId, metadata] of Object.entries(APPLET_REGISTRY)) {
+    if (!metadata.isService && metadata.defaultEnabled) {
+      items.push({
+        id: id++,
+        title: `APPS.${appletId.toUpperCase()}.SINGULAR`,
+        description: `APPS.${appletId.toUpperCase()}.DESCRIPTION`,
+        icon: metadata.icon.replace('bx-', ''), // Remove bx- prefix for menu icons
+        link: `/${ROUTE_SEGMENTS.APPS}/${metadata.routeSegment}`,
+        parentId: 20,
+      });
+    }
+  }
+
+  return items;
+}

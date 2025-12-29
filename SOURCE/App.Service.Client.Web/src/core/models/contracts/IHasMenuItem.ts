@@ -19,5 +19,8 @@ export interface IHasMenuItem extends IHasTitleAndDescription /*, IHasParentFK*/
   isCollapsed?: any,
   badge?: any,
   subItems?: IHasMenuItem[],
-  childItem?:any
+  childItem?:any,
+  
+  /** Flag to indicate this section should be populated dynamically with applets */
+  isDynamicApplets?: boolean;
 }

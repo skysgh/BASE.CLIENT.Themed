@@ -1,0 +1,38 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+/**
+ * Service Search App.let Module
+ * 
+ * Universal Search capability - the "Browse" part of BREAD.
+ * Provides a unified search experience across all entity types.
+ * 
+ * Key Features:
+ * - Faceted search across multiple entity types
+ * - Entity type filtering
+ * - Full-text search with highlights
+ * - Recent searches
+ * - Saved searches
+ * 
+ * Architecture:
+ * - Search is NOT a table - it's a rich discovery experience
+ * - Each entity type registers its searchable fields
+ * - Results are displayed as cards, not rows
+ * - Drill-down navigates to entity's Read view
+ * 
+ * Routes:
+ * - /search             → Universal search hub
+ * - /search?q=term      → Pre-populated search
+ * - /search?type=spike  → Filtered by entity type
+ */
+@NgModule({
+  declarations: [],
+  providers: [],
+  imports: [
+    CommonModule,
+    FormsModule,
+  ],
+  exports: []
+})
+export class ServiceSearchAppletModule { }

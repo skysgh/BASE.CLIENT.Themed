@@ -1,0 +1,64 @@
+<div class="form-view-switcher">
+  <!-- Renderer Toggle (if enabled) -->
+  <div *ngIf="showToggle && availableRenderers.length > 1" class="renderer-toggle mb-3">
+    <div class="d-flex justify-content-end">
+      <div class="btn-group btn-group-sm">
+        <ng-container *ngFor="let renderer of availableRenderers">
+          <button 
+            type="button"
+            class="btn"
+            [class.btn-primary]="currentRenderer === renderer.id"
+            [class.btn-outline-secondary]="currentRenderer !== renderer.id"
+            [disabled]="!allowChange"
+            (click)="switchRenderer(renderer.id)"
+            [title]="renderer.name">
+            <i class="bx {{renderer.icon}}"></i>
+            <span class="d-none d-md-inline ms-1">{{renderer.name}}</span>
+          </button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formly Renderer -->
+  <ng-container *ngIf="isFormlyRenderer">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <formly-form 
+        [form]="form" 
+        [fields]="fields" 
+        [model]="model">
+      </formly-form>
+      
+      <!-- Form Actions (Edit/Add mode) -->
+      <div *ngIf="!isReadMode" class="form-actions d-flex justify-content-end gap-2 mt-4">
+        <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+          {{ action === 'add' ? 'Create' : 'Save' }}
+        </button>
+      </div>
+    </form>
+  </ng-container>
+
+  <!-- Custom Template Renderer -->
+  <ng-container *ngIf="isCustomRenderer">
+    <ng-container *ngIf="hasCustomTemplate; else noCustomTemplate">
+      <ng-container 
+        *ngTemplateOutlet="activeCustomTemplate!; context: { 
+          model: model, 
+          action: action,
+          onSave: onSubmit.bind(this),
+          onCancel: onCancel.bind(this)
+        }">
+      </ng-container>
+    </ng-container>
+    
+    <ng-template #noCustomTemplate>
+      <div class="alert alert-info">
+        <i class="bx bx-info-circle me-2"></i>
+        No custom template provided. Switch to Form View or provide a custom template.
+      </div>
+    </ng-template>
+  </ng-container>
+</div>

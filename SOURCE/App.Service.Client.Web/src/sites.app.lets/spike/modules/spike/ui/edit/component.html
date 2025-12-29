@@ -1,72 +1,104 @@
-<div *ngIf="data">
-
-  <form action="javascript:void(0);" class="row g-3">
-    <div class="col-12">
-      <div class="text-end">
-        <button type="button"
-                [routerLink]="['../../view', data.id]"
-                class="btn btn-outline-secondary waves-effect waves-light">
-          {{'BASE.ACTIONS.CANCEL' | baseTranslate}}
+<div class="spike-edit" *ngIf="data">
+  <div class="page-header mb-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h4 class="mb-1">
+          <i class="bx bx-edit me-2"></i>
+          Edit Spike
+        </h4>
+        <p class="text-muted mb-0">{{data.title}}</p>
+      </div>
+      <div class="d-flex gap-2 align-items-center">
+        <!-- Form engine toggle (for comparison) -->
+        <div class="form-check form-switch me-3">
+          <input 
+            class="form-check-input" 
+            type="checkbox" 
+            id="formEngineToggle"
+            [checked]="formEngine === 'jsonforms'"
+            (change)="toggleFormEngine()">
+          <label class="form-check-label small" for="formEngineToggle">
+            Use JSON Forms
+          </label>
+        </div>
+        
+        <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+          <i class="bx bx-x me-1"></i>
+          Cancel
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-primary" 
+          (click)="onSave()"
+          [disabled]="saving || form.invalid">
+          <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
+          <i *ngIf="!saving" class="bx bx-save me-1"></i>
+          Save
         </button>
       </div>
     </div>
-    <div class="col-md-6">
-      <label for="inputGiven" class="form-label">{{'BASE.PERSONS.IDENTITIES.NAMES.GIVEN' | baseTranslate}}&nbsp;</label>
-      <input type="text" class="form-control" id="inputGiven" placeholder="{{'BASE.PERSONS.IDENTITIES.NAMES.GIVEN_EXAMPLE' | baseTranslate}}&nbsp;">
-    </div>
-    <div class="col-md-6">
-      <label for="inputSurname" class="form-label">{{'BASE.PERSONS.IDENTITIES.NAMES.SURNAME' | baseTranslate}}&nbsp;</label>
-      <input type="text" class="form-control" id="inputSurname" placeholder="{{'BASE.PERSONS.IDENTITIES.NAMES.SURNAME_EXAMPLE' | baseTranslate}}&nbsp;">
-    </div>
-    <div class="col-12">
-      <label for="inputAddress" class="form-label">{{'BASE.CHANNELS.POSTAL.ADDRESS.STREET' | baseTranslate}}&nbsp;</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="{{'BASE.CHANNELS.POSTAL.ADDRESS.STREET_EXAMPLE' | baseTranslate}}&nbsp;">
-    </div>
-    <div class="col-12">
-      <label for="inputAddress2" class="form-label">{{'BASE.CHANNELS.POSTAL.ADDRESS.UNIT' | baseTranslate}}&nbsp;</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="{{'BASE.CHANNELS.POSTAL.ADDRESS.UNIT_EXAMPLE' | baseTranslate}}&nbsp;">
-    </div>
-    <div class="col-md-6">
-      <label for="inputCity" class="form-label">{{'BASE.CHANNELS.POSTAL.ADDRESS.CITY' | baseTranslate}}&nbsp;</label>
-      <input type="text" class="form-control" id="inputCity" placeholder="{{'BASE.CHANNELS.POSTAL.ADDRESS.CITY_EXAMPLE' | baseTranslate}}&nbsp;">
-    </div>
-    <div class="col-md-4">
-      <label for="inputState" class="form-label">{{'BASE.CHANNELS.POSTAL.ADDRESS.STATE' | baseTranslate}}&nbsp;</label>
-      <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
-        <option>...</option>
-        <option>...</option>
-        <option>...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <label for="inputZip" class="form-label">{{'BASE.CHANNELS.POSTAL.ADDRESS.POSTAL_CODE' | baseTranslate}}&nbsp;</label>
-      <input type="text" class="form-control" id="inputZip" placeholder="{{'BASE.CHANNELS.POSTAL.ADDRESS.POSTAL_CODE_EXAMPLE' | baseTranslate}}&nbsp;">
-    </div>
-    <div class="col-12">
-      <div class="text-end">
-        <button type="button"
-                [routerLink]="['../../view', data.id]"
-                class="btn btn-primary waves-effect waves-light">
-          {{'BASE.ACTIONS.SAVE' | baseTranslate}}
-        </button>
+  </div>
 
-        <button type="button"
-                routerLink="../../view"
-                class="btn btn-outline-secondary waves-effect waves-light">
-          {{'BASE.ACTIONS.CANCEL' | baseTranslate}}
-        </button>
-      </div>
+  <!-- Validation Summary -->
+  <div *ngIf="form.invalid && form.touched" class="alert alert-warning mb-4">
+    <i class="bx bx-error me-2"></i>
+    <strong>Please fix the following:</strong>
+    <ul class="mb-0 mt-2">
+      <li *ngIf="form.get('title')?.hasError('required')">Title is required</li>
+      <li *ngIf="form.get('title')?.hasError('minlength')">Title must be at least 3 characters</li>
+      <li *ngIf="form.get('categoryId')?.hasError('required')">Please select a category</li>
+    </ul>
+  </div>
+
+  <!-- Error Alert -->
+  <div *ngIf="saveError" class="alert alert-danger alert-dismissible fade show mb-4">
+    <i class="bx bx-error-circle me-2"></i>
+    {{saveError}}
+    <button type="button" class="btn-close" (click)="saveError = null"></button>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <!-- Formly Form -->
+      <ng-container *ngIf="formEngine === 'formly'">
+        <form [formGroup]="form" class="needs-validation" [class.was-validated]="form.touched">
+          <formly-form 
+            [form]="form" 
+            [fields]="fields" 
+            [model]="model">
+          </formly-form>
+        </form>
+      </ng-container>
+
+      <!-- JSON Forms (placeholder for comparison) -->
+      <ng-container *ngIf="formEngine === 'jsonforms'">
+        <div class="alert alert-info">
+          <i class="bx bx-info-circle me-2"></i>
+          JSON Forms integration coming soon. Switch back to Formly to edit.
+        </div>
+      </ng-container>
     </div>
-  </form>
+  </div>
 
+  <!-- Form Actions (bottom) -->
+  <div class="d-flex justify-content-end gap-2 mt-3">
+    <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+      Cancel
+    </button>
+    <button 
+      type="button" 
+      class="btn btn-primary" 
+      (click)="onSave()"
+      [disabled]="saving || form.invalid">
+      <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
+      Save Changes
+    </button>
+  </div>
+</div>
 
-  <a class="button"
-     [routerLink]="['../view', data.id]"
-     routerLinkActive="activebutton"
-     ariaCurrentWhenActive="page">
-    {{'BASE.ACTIONS.CANCEL' | baseTranslate}}
-  </a>
-
+<!-- Loading State -->
+<div *ngIf="!data" class="text-center py-5">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>

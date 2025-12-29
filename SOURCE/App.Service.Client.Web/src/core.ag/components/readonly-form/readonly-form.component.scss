@@ -1,0 +1,38 @@
+.readonly-form {
+  .form-title {
+    font-weight: 600;
+    color: var(--vz-heading-color);
+  }
+
+  .form-section {
+    .section-title {
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .field-container {
+    .field-label {
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .field-value {
+      font-size: 0.9375rem;
+      color: var(--vz-body-color);
+      
+      &.text-end {
+        font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+      }
+    }
+  }
+
+  // Make badges slightly larger for readability
+  .badge {
+    font-weight: 500;
+  }
+}

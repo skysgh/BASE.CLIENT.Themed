@@ -2,16 +2,17 @@
 
 // Ag:
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // Configuration:
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
-// ✅ MIGRATED: Use applet-local Signal-based service (moved from core)
 import { SubSpikeService } from '../../../../services/sub-spike.service';
-// ✅ MIGRATED: Use applet-local ViewModel (moved from core)
+import { SpikeService } from '../../../../services/spike.service';
+// Models:
 import { SubSpikeViewModel } from '../../../../models/view-models/sub-spike.view-model';
+import { SpikeViewModel } from '../../../../models/view-models/spike.view-model';
 import { ViewModel } from './vm';
 
 
@@ -29,15 +30,20 @@ export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
 
-  // ✅ UPDATED: Use ViewModel types
+  // Data
   public page: number = 1;
   public data: SubSpikeViewModel[] = [];
+  
+  // Parent spike (for breadcrumb)
+  public parentSpike?: SpikeViewModel;
+  public parentSpikeId?: string;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private defaultControllerServices: DefaultComponentServices,
-    // ✅ MIGRATED: Use applet-local Signal-based service
-    private subSpikeService: SubSpikeService
+    private subSpikeService: SubSpikeService,
+    private spikeService: SpikeService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.info("SubSpike:Constructor");
   }
@@ -46,11 +52,40 @@ export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
     this.defaultControllerServices.diagnosticsTraceService.info("SubSpike:Component OnInit");
 
     this.route.params.subscribe(params => {
-      this.defaultControllerServices.diagnosticsTraceService.info("params ready2");
-      this.defaultControllerServices.diagnosticsTraceService.info('id2: ' + params['id']);
+      this.parentSpikeId = params['id'];
+      this.defaultControllerServices.diagnosticsTraceService.info('Parent spike id: ' + this.parentSpikeId);
       
-      // ✅ UPDATED: Use Signal-based service method
-      this.data = this.subSpikeService.getByParentId(params['id']);
+      // Get parent spike for breadcrumb
+      if (this.parentSpikeId) {
+        this.parentSpike = this.spikeService.getById(this.parentSpikeId);
+      }
+      
+      // Get sub-spikes
+      this.data = this.subSpikeService.getByParentId(this.parentSpikeId || '');
     });
+  }
+
+  /**
+   * Navigate to parent spike
+   */
+  goToParent(): void {
+    if (this.parentSpikeId) {
+      this.router.navigate(['../../', this.parentSpikeId], { relativeTo: this.route });
+    } else {
+      // Fallback: go to spikes list
+      this.router.navigate(['../../spikes'], { relativeTo: this.route });
+    }
+  }
+
+  /**
+   * Navigate back (uses history if available, otherwise go to parent)
+   */
+  goBack(): void {
+    // Check if we have history within our app
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      this.goToParent();
+    }
   }
 }

@@ -1,0 +1,98 @@
+<!-- Spike Dashboard Widget (D in I-BREAST-D) -->
+<div class="spike-widget card h-100" [class.widget-sm]="size === 'sm'" [class.widget-lg]="size === 'lg'">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h6 class="mb-0">
+      <i class="bx bx-bulb me-1 text-primary"></i>
+      {{title}}
+    </h6>
+    <div class="dropdown">
+      <button class="btn btn-soft-secondary btn-sm" type="button" data-bs-toggle="dropdown">
+        <i class="bx bx-dots-vertical-rounded"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" (click)="goToSpikes()"><i class="bx bx-list-ul me-2"></i>View All</a></li>
+        <li><a class="dropdown-item" (click)="goToInsights()"><i class="bx bx-bar-chart-alt-2 me-2"></i>Insights</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" (click)="goToAdd()"><i class="bx bx-plus me-2"></i>New Spike</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="card-body">
+    <!-- Compact view (sm) -->
+    <ng-container *ngIf="size === 'sm'">
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="display-6 fw-bold text-primary">{{total}}</span>
+        <div class="text-end">
+          <span class="badge bg-warning-subtle text-warning" *ngIf="inProgress > 0">{{inProgress}} active</span>
+          <span class="badge bg-danger-subtle text-danger ms-1" *ngIf="overdue > 0">{{overdue}} overdue</span>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Default view (md) -->
+    <ng-container *ngIf="size === 'md'">
+      <div class="row text-center">
+        <div class="col-6 col-md-3 mb-2">
+          <h4 class="mb-0 text-primary">{{total}}</h4>
+          <small class="text-muted">Total</small>
+        </div>
+        <div class="col-6 col-md-3 mb-2">
+          <h4 class="mb-0 text-info">{{inProgress}}</h4>
+          <small class="text-muted">In Progress</small>
+        </div>
+        <div class="col-6 col-md-3 mb-2">
+          <h4 class="mb-0" [class.text-danger]="overdue > 0" [class.text-muted]="overdue === 0">{{overdue}}</h4>
+          <small class="text-muted">Overdue</small>
+        </div>
+        <div class="col-6 col-md-3 mb-2">
+          <h4 class="mb-0 text-success">{{completedRecently}}</h4>
+          <small class="text-muted">This Week</small>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Expanded view (lg) with chart -->
+    <ng-container *ngIf="size === 'lg'">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="text-center py-2">
+            <h3 class="mb-0 text-primary">{{total}}</h3>
+            <small class="text-muted">Total Spikes</small>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-around">
+            <div class="text-center">
+              <span class="h5 text-info">{{inProgress}}</span>
+              <br><small class="text-muted">Active</small>
+            </div>
+            <div class="text-center">
+              <span class="h5" [class.text-danger]="overdue > 0">{{overdue}}</span>
+              <br><small class="text-muted">Overdue</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8" *ngIf="showChart">
+          <!-- Mini chart placeholder -->
+          <div class="chart-mini d-flex align-items-end justify-content-around h-100 pb-3">
+            <div class="chart-bar" [style.height.%]="total ? (inProgress / total) * 80 + 20 : 20" style="background: var(--vz-info);"></div>
+            <div class="chart-bar" [style.height.%]="total ? ((total - inProgress - overdue) / total) * 80 + 20 : 20" style="background: var(--vz-success);"></div>
+            <div class="chart-bar" [style.height.%]="total ? (overdue / total) * 80 + 20 : 20" style="background: var(--vz-danger);"></div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Quick action footer -->
+  <div class="card-footer bg-transparent border-top-0 pt-0" *ngIf="size !== 'sm'">
+    <div class="d-flex justify-content-between">
+      <a class="text-primary small" (click)="goToSpikes()" style="cursor: pointer;">
+        View all <i class="bx bx-chevron-right"></i>
+      </a>
+      <a class="text-primary small" (click)="goToAdd()" style="cursor: pointer;">
+        <i class="bx bx-plus"></i> New
+      </a>
+    </div>
+  </div>
+</div>
