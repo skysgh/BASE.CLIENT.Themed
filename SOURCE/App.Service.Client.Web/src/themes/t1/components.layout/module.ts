@@ -94,6 +94,7 @@ import { themesT1Configuration } from '../configuration/implementations/themes.t
     FormsModule,
     ReactiveFormsModule,
     NgbCollapseModule,
+    // ✅ FeatherModule with icons - also provided at root AppModule level
     FeatherModule.pick(allIcons),
 
     // Import Base:
@@ -106,7 +107,6 @@ import { themesT1Configuration } from '../configuration/implementations/themes.t
     // Declarations:
     BaseCoreCommonComponentTopBarLanguageSelectorComponent,
     BaseCoreCommonComponentsSignUpInComponent,
-
 
     BaseThemesV1PipesModule
   ],

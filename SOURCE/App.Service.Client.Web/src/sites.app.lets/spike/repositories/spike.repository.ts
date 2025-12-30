@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SpikeDto } from '../models/dtos/spike.dto';
+import { appletsSpikesConstants } from '../constants/implementations/app.lets.spikes.constants';
 
 /**
  * Spike Repository
@@ -19,27 +20,15 @@ import { SpikeDto } from '../models/dtos/spike.dto';
  * - Returns Observables of DTOs
  * - Consumed by mappers (not directly by components)
  * - Stateless (no caching, no signals - that's the service layer)
- * 
- * API Endpoint:
- * - Development: http://localhost:3000/app_spike_Spikes
- * - Production: /api/spike/spikes (configured in environment)
- * 
- * @example
- * ```typescript
- * // In mapper:
- * this.spikeRepository.getAll().pipe(
- *   map(dtos => this.mapper.mapDtosToViewModels(dtos))
- * )
- * ```
+ * - API URL comes from constants (never hardcoded)
  */
 @Injectable({ providedIn: 'root' })
 export class SpikeRepository {
   private readonly apiUrl: string;
 
   constructor(private http: HttpClient) {
-    // Using json-server endpoint for development
-    // Production endpoint would be configured differently
-    this.apiUrl = 'http://localhost:3000/app_spike_Spikes';
+    // API URL from constants (proxied in dev, direct in prod)
+    this.apiUrl = appletsSpikesConstants.apis.spike;
   }
 
   /**

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, map } from 'rxjs';
 import { NavigationItem, NavigationData, ThemeMenuItem } from '../../../core/navigation/navigation.model';
 import { NavigationDataService } from '../../../core/navigation/navigation-data.service';
 import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
@@ -28,12 +29,28 @@ export class ThemeT1NavigationAdapter {
   ) {}
 
   /**
-   * Get menu items in T1 theme format (IHasMenuItem[])
+   * Get menu items as Observable (reactive - updates when navigation changes)
+   */
+  getMenuItems$(): Observable<IHasMenuItem[]> {
+    return this.navigationDataService.getNavigationData().pipe(
+      map(navData => this.convertNavigationData(navData))
+    );
+  }
+
+  /**
+   * Get menu items synchronously (for initial render - may be stale)
+   * @deprecated Use getMenuItems$() for reactive updates
    */
   getMenuItems(): IHasMenuItem[] {
     const navData = this.navigationDataService.getNavigationDataSync();
+    return this.convertNavigationData(navData);
+  }
+
+  /**
+   * Convert NavigationData to theme menu items
+   */
+  private convertNavigationData(navData: NavigationData): IHasMenuItem[] {
     this.idCounter = 0;
-    
     const menuItems: IHasMenuItem[] = [];
 
     for (const section of navData.sections) {
@@ -97,34 +114,121 @@ export class ThemeT1NavigationAdapter {
 
   /**
    * Map theme-neutral icon to T1 theme icon
-   * T1 uses BoxIcons, so add 'bx-' prefix
+   * T1 sidebar uses Feather icons (angular-feather)
+   * 
+   * Valid Feather icon names: https://feathericons.com/
    */
   private mapIcon(icon?: string): string | undefined {
     if (!icon) return undefined;
     
-    // If already has bx- prefix, return as-is
-    if (icon.startsWith('bx-') || icon.startsWith('bx ')) {
-      return icon;
-    }
-    
-    // Map common icons to BoxIcons
+    // Map common/canonical icons to valid Feather icon names
+    // See: https://feathericons.com/ for all available icons
     const iconMap: Record<string, string> = {
+      // Navigation
       'home': 'home',
       'search': 'search',
-      'grid': 'grid-alt',
-      'cog': 'cog',
-      'settings': 'cog',
-      'user': 'user',
-      'lock': 'lock-alt',
-      'file': 'file',
-      'help-circle': 'help-circle',
-      'log-out': 'log-out',
+      'grid': 'grid',                // NOT 'grid-alt' - that's BoxIcons
+      'menu': 'menu',
+      
+      // Actions
       'plus': 'plus',
-      'info': 'info-circle',
+      'edit': 'edit',
+      'trash': 'trash-2',
+      'delete': 'trash-2',
+      'save': 'save',
+      
+      // Settings/Config
+      'cog': 'settings',             // 'cog' is not valid Feather - use 'settings'
+      'settings': 'settings',
+      'gear': 'settings',
+      
+      // User/Auth
+      'user': 'user',
+      'users': 'users',
+      'lock': 'lock',                // NOT 'lock-alt' - that's BoxIcons
+      'unlock': 'unlock',
+      'log-out': 'log-out',
+      'log-in': 'log-in',
+      
+      // Content
+      'file': 'file',
+      'file-text': 'file-text',
+      'folder': 'folder',
+      'book': 'book',
+      'book-open': 'book-open',
+      
+      // Communication
+      'message': 'message-square',
+      'mail': 'mail',
+      'bell': 'bell',
+      
+      // Status/Info
+      'info': 'info',
+      'info-circle': 'info',
+      'help': 'help-circle',
+      'help-circle': 'help-circle',
+      'alert': 'alert-circle',
+      'check': 'check',
+      'x': 'x',
+      
+      // Ideas/Innovation
+      'bulb': 'zap',                 // 'bulb' is not valid Feather - use 'zap' (lightning)
+      'lightbulb': 'zap',
+      'idea': 'zap',
+      
+      // Layout/View
+      'list': 'list',
+      'layers': 'layers',
+      'layout': 'layout',
+      'eye': 'eye',
+      
+      // Analytics
+      'chart': 'bar-chart-2',
+      'bar-chart': 'bar-chart-2',
+      'pie-chart': 'pie-chart',
+      'trending-up': 'trending-up',
+      
+      // Data
+      'database': 'database',
+      'box': 'box',
+      'package': 'package',
+      'archive': 'archive',
+      
+      // Calendar/Time
+      'calendar': 'calendar',
+      'clock': 'clock',
+      
+      // Misc
+      'star': 'star',
+      'heart': 'heart',
+      'tag': 'tag',
+      'map': 'map',
+      'map-pin': 'map-pin',
+      'compass': 'compass',
+      'globe': 'globe',
+      'link': 'link',
+      'external-link': 'external-link',
+      'download': 'download',
+      'upload': 'upload',
+      'share': 'share-2',
+      'copy': 'copy',
+      'clipboard': 'clipboard',
+      'tool': 'tool',
+      'terminal': 'terminal',
+      'code': 'code',
+      'cpu': 'cpu',
+      'server': 'server',
+      'shield': 'shield',
+      'activity': 'activity',
+      'zap': 'zap',
     };
 
-    const mapped = iconMap[icon] || icon;
-    return mapped;
+    // If already a valid feather icon (lowercase with optional hyphens), return as-is
+    if (/^[a-z][a-z0-9-]*$/.test(icon) && !iconMap[icon]) {
+      return icon;
+    }
+
+    return iconMap[icon] || icon;
   }
 
   private nextId(): number {

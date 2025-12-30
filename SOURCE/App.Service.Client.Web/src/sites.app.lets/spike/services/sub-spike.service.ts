@@ -1,8 +1,9 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { Observable, tap, catchError, of, map } from 'rxjs';
 import { SubSpikeRepository } from '../repositories/sub-spike.repository';
 import { SubSpikeViewModel } from '../models/view-models/sub-spike.view-model';
-import { mapSubSpikeDtosToViewModels } from '../mappers/sub-spike.mapper';
+import { SubSpikeDto } from '../models/dtos/sub-spike.dto';
+import { mapSubSpikeDtosToViewModels, mapSubSpikeDtoToViewModel } from '../mappers/sub-spike.mapper';
 import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
 
 /**
@@ -57,6 +58,11 @@ export class SubSpikeService {
    * Signal: Loading state
    */
   loading = signal(false);
+
+  /**
+   * Signal: Saving state
+   */
+  saving = signal(false);
 
   /**
    * Signal: Error message (null if no error)
@@ -148,10 +154,123 @@ export class SubSpikeService {
   }
 
   /**
+   * Create a new sub-spike
+   * 
+   * @param parentId Parent Spike ID
+   * @param model Form model data
+   * @returns Observable<SubSpikeDto> Created sub-spike
+   */
+  create(parentId: string, model: Record<string, any>): Observable<SubSpikeDto | null> {
+    this.saving.set(true);
+    this.error.set(null);
+
+    const dto = this.buildDto(parentId, model);
+    
+    return this.repository.create(dto).pipe(
+      tap({
+        next: (created) => {
+          this.logger.info(`Created sub-spike: ${created.id}`);
+          // Add to local state immediately (optimistic update)
+          const newViewModel = mapSubSpikeDtoToViewModel(created);
+          this.subSpikes.update(items => [...items, newViewModel]);
+          this.saving.set(false);
+        },
+        error: (err) => {
+          this.saving.set(false);
+          this.error.set('Failed to create sub-spike');
+          this.logger.error(`Error creating sub-spike: ${err?.message || err}`);
+        }
+      }),
+      catchError(err => {
+        this.saving.set(false);
+        this.error.set('Failed to create sub-spike');
+        return of(null);
+      })
+    );
+  }
+
+  /**
+   * Update an existing sub-spike
+   * 
+   * @param id SubSpike ID
+   * @param model Form model data
+   * @returns Observable<SubSpikeDto> Updated sub-spike
+   */
+  update(id: string, model: Record<string, any>): Observable<SubSpikeDto | null> {
+    this.saving.set(true);
+    this.error.set(null);
+
+    const existing = this.getById(id);
+    const dto = this.buildDto(existing?.parentId || '', model, existing);
+    
+    return this.repository.update(id, dto).pipe(
+      tap({
+        next: (updated) => {
+          this.saving.set(false);
+          this.logger.info(`Updated sub-spike: ${updated.id}`);
+          // Update local state
+          this.subSpikes.update(items => 
+            items.map(s => s.id === id ? { 
+              ...s, 
+              title: model['title'] || s.title, 
+              description: model['description'] || s.description 
+            } : s)
+          );
+        },
+        error: (err) => {
+          this.saving.set(false);
+          this.error.set('Failed to update sub-spike');
+          this.logger.error(`Error updating sub-spike: ${err?.message || err}`);
+        }
+      }),
+      catchError(err => {
+        this.saving.set(false);
+        this.error.set('Failed to update sub-spike');
+        return of(null);
+      })
+    );
+  }
+
+  /**
+   * Delete a sub-spike
+   */
+  delete(id: string): Observable<boolean> {
+    this.saving.set(true);
+    this.error.set(null);
+
+    return this.repository.delete(id).pipe(
+      map(() => {
+        this.saving.set(false);
+        this.logger.info(`Deleted sub-spike: ${id}`);
+        this.subSpikes.update(items => items.filter(s => s.id !== id));
+        return true;
+      }),
+      catchError(err => {
+        this.saving.set(false);
+        this.error.set('Failed to delete sub-spike');
+        this.logger.error(`Error deleting sub-spike: ${err?.message || err}`);
+        return of(false);
+      })
+    );
+  }
+
+  /**
    * Reload sub-spikes from API
    * Useful for manual refresh
    */
   refresh() {
     this.loadSubSpikes();
+  }
+
+  /**
+   * Build DTO from form model
+   */
+  private buildDto(parentId: string, model: Record<string, any>, existing?: SubSpikeViewModel): SubSpikeDto {
+    return {
+      id: existing?.id || crypto.randomUUID(),
+      parentFK: parentId,
+      title: model['title'] || '',
+      description: model['description'],
+    };
   }
 }

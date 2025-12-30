@@ -1,5 +1,6 @@
 // Rx:
 import { Store } from '@ngrx/store';
+import { filter } from 'rxjs/operators';
 // Ag:
 import { Component, ViewChild, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
 import {CommonModule} from '@angular/common'; 
@@ -63,19 +64,20 @@ export class BaseLayoutRightsidebarComponent implements OnInit {
   public viewModel: ViewModel = new ViewModel();
   // TODO: Move these variables into it.
 
-  layout: string | undefined;
-  mode: string | undefined;
-  width: string | undefined;
-  position: string | undefined;
-  topbar: string | undefined;
-  size: string | undefined;
-  sidebarView: string | undefined;
-  sidebar: string | undefined;
+  // ✅ Initialize with default values from initial state
+  layout: string | undefined = initialLayoutState.LAYOUT;
+  mode: string | undefined = initialLayoutState.LAYOUT_MODE;
+  width: string | undefined = initialLayoutState.LAYOUT_WIDTH;
+  position: string | undefined = initialLayoutState.LAYOUT_POSITION;
+  topbar: string | undefined = initialLayoutState.TOPBAR;
+  size: string | undefined = initialLayoutState.SIDEBAR_SIZE;
+  sidebarView: string | undefined = initialLayoutState.SIDEBAR_VIEW;
+  sidebar: string | undefined = initialLayoutState.SIDEBAR_COLOR;
   attribute: any;
-  sidebarImage: any;
-  preLoader: any;
+  sidebarImage: any = initialLayoutState.SIDEBAR_IMAGE;
+  preLoader: any = initialLayoutState.DATA_PRELOADER;
   grd: any;
-  sidebarVisibility: any;
+  sidebarVisibility: any = initialLayoutState.SIDEBAR_VISIBILITY;
 
   @ViewChild('filtetcontent') filtetcontent!: TemplateRef<any>;
   @Output() settingsButtonClicked = new EventEmitter();
@@ -98,7 +100,10 @@ export class BaseLayoutRightsidebarComponent implements OnInit {
       };
     }, 1000);
 
-    this.store.select('layout').subscribe((data) => {
+    this.store.select('layout').pipe(
+      // ✅ Filter out undefined/null state AND ensure LAYOUT property exists
+      filter(data => data != null && data.LAYOUT != null)
+    ).subscribe((data) => {
       this.layout = data.LAYOUT;
       this.mode = data.LAYOUT_MODE;
       this.width = data.LAYOUT_WIDTH;

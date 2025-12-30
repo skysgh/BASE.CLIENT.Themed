@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SubSpikeDto } from '../models/dtos/sub-spike.dto';
+import { appletsSpikesConstants } from '../constants/implementations/app.lets.spikes.constants';
 
 /**
  * SubSpike Repository
@@ -19,27 +20,15 @@ import { SubSpikeDto } from '../models/dtos/sub-spike.dto';
  * - Returns Observables of DTOs
  * - Consumed by mappers (not directly by components)
  * - Stateless (no caching, no signals - that's the service layer)
- * 
- * API Endpoint:
- * - Development: http://localhost:3000/app_spike_SubSpikes
- * - Production: /api/spike/sub-spikes (configured in environment)
- * 
- * @example
- * ```typescript
- * // In mapper:
- * this.subSpikeRepository.getByParentId(spikeId).pipe(
- *   map(dtos => this.mapper.mapDtosToViewModels(dtos))
- * )
- * ```
+ * - API URL comes from constants (never hardcoded)
  */
 @Injectable({ providedIn: 'root' })
 export class SubSpikeRepository {
   private readonly apiUrl: string;
 
   constructor(private http: HttpClient) {
-    // Using json-server endpoint for development
-    // Production endpoint would be configured differently
-    this.apiUrl = 'http://localhost:3000/app_spike_SubSpikes';
+    // API URL from constants (proxied in dev, direct in prod)
+    this.apiUrl = appletsSpikesConstants.apis.spikes;
   }
 
   /**

@@ -1,9 +1,9 @@
 // Rx:
 // 
 // Ag:
-import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { IHasMenuItem } from '../../../../core/models/contracts/IHasMenuItem';
 // Configuration:
@@ -21,7 +21,7 @@ import { ViewModel } from './vm';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class BaseLayoutSidebarComponent implements OnInit {
+export class BaseLayoutSidebarComponent implements OnInit, OnDestroy {
   
   // ✅ CONVENTION: Expose tier configuration as 'tierConfiguration'
   public tierConfiguration = themesT1Configuration
@@ -41,6 +41,9 @@ export class BaseLayoutSidebarComponent implements OnInit {
   public logoLight$: Observable<string | undefined>;
   public logoSm$: Observable<string | undefined>;
 
+  // Cleanup subject
+  private destroy$ = new Subject<void>();
+
   constructor(
     private router: Router,
     private defaultControllerServices: DefaultComponentServices,
@@ -54,16 +57,29 @@ export class BaseLayoutSidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // ✅ Build menu using theme adapter (reads from NavigationDataService)
-    this.menuItems = this.navigationAdapter.getMenuItems();
+    // ✅ Subscribe to menu items reactively (updates when navigation data changes)
+    this.navigationAdapter.getMenuItems$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(items => {
+        this.menuItems = items;
+        // Re-initialize active menu when items change
+        setTimeout(() => this.initActiveMenu(), 0);
+      });
     
-    this.router.events.subscribe((event) => {
-      if (document.documentElement.getAttribute('data-layout') != "twocolumn") {
-        if (event instanceof NavigationEnd) {
-          this.initActiveMenu();
+    this.router.events
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((event) => {
+        if (document.documentElement.getAttribute('data-layout') != "twocolumn") {
+          if (event instanceof NavigationEnd) {
+            this.initActiveMenu();
+          }
         }
-      }
-    });
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   /***

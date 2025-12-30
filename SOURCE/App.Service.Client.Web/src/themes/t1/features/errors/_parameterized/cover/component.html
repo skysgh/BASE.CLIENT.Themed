@@ -1,0 +1,57 @@
+<!-- auth-page wrapper -->
+<div class="auth-page-wrapper py-5 d-flex justify-content-center align-items-center min-vh-100">
+
+  <!-- auth-page content -->
+  <div class="auth-page-content overflow-hidden p-0">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-8">
+          <div class="text-center">
+            <!-- Error Image -->
+            <img [src]="errorImage"
+                 [alt]="errorConfig.code + ' error'"
+                 class="img-fluid">
+            
+            <div class="mt-3">
+              <!-- Error Code -->
+              <h1 class="display-1 fw-medium">
+                {{ errorConfig.code }}
+              </h1>
+              
+              <!-- Error Title -->
+              <h3 class="text-uppercase">
+                {{ errorConfig.titleKey | baseTranslate }}
+              </h3>
+              
+              <!-- Error Description -->
+              <p class="text-muted mb-4">
+                {{ errorConfig.descriptionKey | baseTranslate }}
+              </p>
+              
+              <!-- Action Buttons -->
+              <div class="d-flex justify-content-center gap-2">
+                <button *ngIf="errorConfig.showBackButton" 
+                        (click)="goBack()" 
+                        class="btn btn-outline-secondary">
+                  <i class="bx bx-arrow-back me-1"></i>
+                  {{ 'BASE.ACTIONS.GO_BACK' | baseTranslate }}
+                </button>
+                
+                <a *ngIf="errorConfig.showHomeButton" 
+                   routerLink="/" 
+                   [class]="'btn ' + errorConfig.buttonClass">
+                  <i class="mdi mdi-home me-1"></i>
+                  {{ 'BASE.HOMES.SINGULAR' | baseTranslate }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div><!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- end auth-page content -->
+</div>
+<!-- end auth-page-wrapper -->

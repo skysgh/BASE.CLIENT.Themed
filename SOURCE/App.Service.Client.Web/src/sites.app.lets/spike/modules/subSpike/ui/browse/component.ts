@@ -1,7 +1,7 @@
 // Rx:
 
 // Ag:
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 // Configuration:
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
@@ -37,15 +37,36 @@ export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
   // Parent spike (for breadcrumb)
   public parentSpike?: SpikeViewModel;
   public parentSpikeId?: string;
+  
+  // Loading state
+  public loading = true;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private defaultControllerServices: DefaultComponentServices,
-    private subSpikeService: SubSpikeService,
+    public subSpikeService: SubSpikeService,
     private spikeService: SpikeService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.info("SubSpike:Constructor");
+    
+    // React to signal changes
+    effect(() => {
+      const subSpikes = this.subSpikeService.subSpikes();
+      const spikes = this.spikeService.spikes();
+      const isLoading = this.subSpikeService.loading();
+      
+      // Update parent spike
+      if (this.parentSpikeId) {
+        this.parentSpike = spikes.find(s => s.id === this.parentSpikeId);
+      }
+      
+      // Filter sub-spikes for this parent
+      if (this.parentSpikeId && !isLoading) {
+        this.data = subSpikes.filter(s => s.parentId === this.parentSpikeId);
+        this.loading = false;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -55,14 +76,50 @@ export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
       this.parentSpikeId = params['id'];
       this.defaultControllerServices.diagnosticsTraceService.info('Parent spike id: ' + this.parentSpikeId);
       
-      // Get parent spike for breadcrumb
+      // Reset state
+      this.loading = true;
+      
+      // Try to get data immediately
       if (this.parentSpikeId) {
         this.parentSpike = this.spikeService.getById(this.parentSpikeId);
+        this.data = this.subSpikeService.getByParentId(this.parentSpikeId);
+        if (this.data.length > 0 || !this.subSpikeService.loading()) {
+          this.loading = false;
+        }
       }
-      
-      // Get sub-spikes
-      this.data = this.subSpikeService.getByParentId(this.parentSpikeId || '');
     });
+  }
+
+  /**
+   * Navigate to add sub-spike
+   */
+  onAddNew(): void {
+    this.router.navigate(['add'], { relativeTo: this.route });
+  }
+
+  /**
+   * Navigate to view sub-spike
+   */
+  onView(subSpike: SubSpikeViewModel): void {
+    this.router.navigate([subSpike.id], { relativeTo: this.route });
+  }
+
+  /**
+   * Navigate to edit sub-spike
+   */
+  onEdit(subSpike: SubSpikeViewModel): void {
+    this.router.navigate(['edit', subSpike.id], { relativeTo: this.route });
+  }
+
+  /**
+   * Delete sub-spike
+   */
+  onDelete(subSpike: SubSpikeViewModel): void {
+    if (!confirm(`Delete "${subSpike.title}"?`)) {
+      return;
+    }
+    
+    this.subSpikeService.delete(subSpike.id).subscribe();
   }
 
   /**
@@ -72,16 +129,14 @@ export class BaseAppsSpikeSubSpikesBrowseComponent implements OnInit {
     if (this.parentSpikeId) {
       this.router.navigate(['../../', this.parentSpikeId], { relativeTo: this.route });
     } else {
-      // Fallback: go to spikes list
       this.router.navigate(['../../spikes'], { relativeTo: this.route });
     }
   }
 
   /**
-   * Navigate back (uses history if available, otherwise go to parent)
+   * Navigate back
    */
   goBack(): void {
-    // Check if we have history within our app
     if (window.history.length > 1) {
       window.history.back();
     } else {

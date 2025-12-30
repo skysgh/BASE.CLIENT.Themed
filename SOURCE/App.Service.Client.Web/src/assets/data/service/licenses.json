@@ -1,0 +1,139 @@
+[
+  {
+    "name": "@angular/core",
+    "version": "17.x",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/angular/angular/blob/main/LICENSE",
+    "repository": "https://github.com/angular/angular",
+    "author": "Google LLC",
+    "description": "Angular - the core framework"
+  },
+  {
+    "name": "@angular/router",
+    "version": "17.x",
+    "license": "MIT",
+    "repository": "https://github.com/angular/angular",
+    "author": "Google LLC"
+  },
+  {
+    "name": "@angular/forms",
+    "version": "17.x",
+    "license": "MIT",
+    "repository": "https://github.com/angular/angular",
+    "author": "Google LLC"
+  },
+  {
+    "name": "@ngrx/store",
+    "version": "17.x",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/ngrx/platform/blob/main/LICENSE",
+    "repository": "https://github.com/ngrx/platform",
+    "author": "NgRx Team",
+    "description": "Reactive State for Angular"
+  },
+  {
+    "name": "@ngrx/effects",
+    "version": "17.x",
+    "license": "MIT",
+    "repository": "https://github.com/ngrx/platform",
+    "author": "NgRx Team"
+  },
+  {
+    "name": "rxjs",
+    "version": "7.x",
+    "license": "Apache-2.0",
+    "licenseUrl": "https://github.com/ReactiveX/rxjs/blob/master/LICENSE.txt",
+    "repository": "https://github.com/ReactiveX/rxjs",
+    "author": "Ben Lesh",
+    "description": "Reactive Extensions Library for JavaScript"
+  },
+  {
+    "name": "@ng-bootstrap/ng-bootstrap",
+    "version": "16.x",
+    "license": "MIT",
+    "repository": "https://github.com/ng-bootstrap/ng-bootstrap",
+    "description": "Angular Bootstrap components"
+  },
+  {
+    "name": "@ngx-formly/core",
+    "version": "6.x",
+    "license": "MIT",
+    "repository": "https://github.com/ngx-formly/ngx-formly",
+    "description": "Dynamic forms for Angular"
+  },
+  {
+    "name": "@ngx-translate/core",
+    "version": "15.x",
+    "license": "MIT",
+    "repository": "https://github.com/ngx-translate/core",
+    "description": "Internationalization library for Angular"
+  },
+  {
+    "name": "bootstrap",
+    "version": "5.x",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/twbs/bootstrap/blob/main/LICENSE",
+    "repository": "https://github.com/twbs/bootstrap",
+    "author": "The Bootstrap Authors",
+    "description": "The world's most popular front-end framework"
+  },
+  {
+    "name": "boxicons",
+    "version": "2.x",
+    "license": "MIT",
+    "repository": "https://github.com/atisawd/boxicons",
+    "description": "High Quality web friendly icons"
+  },
+  {
+    "name": "simplebar-angular",
+    "version": "3.x",
+    "license": "MIT",
+    "repository": "https://github.com/Grsmto/simplebar",
+    "description": "Custom scrollbar plugin"
+  },
+  {
+    "name": "ngx-markdown",
+    "version": "17.x",
+    "license": "MIT",
+    "repository": "https://github.com/jfcere/ngx-markdown",
+    "description": "Angular Markdown component"
+  },
+  {
+    "name": "ng-apexcharts",
+    "version": "1.x",
+    "license": "MIT",
+    "repository": "https://github.com/apexcharts/ng-apexcharts",
+    "description": "Angular wrapper for ApexCharts"
+  },
+  {
+    "name": "firebase",
+    "version": "10.x",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/firebase/firebase-js-sdk",
+    "author": "Google LLC",
+    "description": "Firebase JavaScript SDK"
+  },
+  {
+    "name": "lodash-es",
+    "version": "4.x",
+    "license": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "author": "John-David Dalton",
+    "description": "Utility library"
+  },
+  {
+    "name": "countup.js",
+    "version": "2.x",
+    "license": "MIT",
+    "repository": "https://github.com/inorganik/countUp.js",
+    "description": "Animates number counting"
+  },
+  {
+    "name": "json-server",
+    "version": "0.x",
+    "license": "MIT",
+    "repository": "https://github.com/typicode/json-server",
+    "author": "typicode",
+    "description": "Fake REST API for development"
+  }
+]

@@ -1,4 +1,4 @@
-<div class="spike-read" *ngIf="data">
+<div class="spike-read" *ngIf="data && !loading">
   <!-- Header with status and actions -->
   <div class="page-header mb-4">
     <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
@@ -205,22 +205,22 @@
     </div>
   </div>
 
-  <!-- SubSpikes (legacy component) -->
-  <div class="card mb-4">
-    <div class="card-header">
-      <h5 class="mb-0">
-        <i class="bx bx-folder me-2"></i>
-        Sub-Spikes
-      </h5>
-    </div>
-    <div class="card-body">
-      <app-base-apps-spike-subspikes-browse></app-base-apps-spike-subspikes-browse>
-    </div>
-  </div>
+  <!-- Sub-Spikes Summary (S in I-S-BREAD-T) -->
+  <app-child-summary
+    title="Sub-Spikes"
+    icon="bx-layer"
+    [items]="subSpikeSummaryItems"
+    [loading]="subSpikesLoading"
+    [size]="'md'"
+    browseRoute="subspikes"
+    addRoute="subspikes/add"
+    (onBrowse)="onBrowseSubSpikes()"
+    (onAdd)="onAddSubSpike()">
+  </app-child-summary>
 
   <!-- Footer Actions -->
-  <div class="d-flex justify-content-between align-items-center">
-    <button type="button" routerLink="../spikes" class="btn btn-outline-secondary">
+  <div class="d-flex justify-content-between align-items-center mt-4">
+    <button type="button" (click)="onBackToList()" class="btn btn-outline-secondary">
       <i class="bx bx-arrow-back me-1"></i>
       Back to List
     </button>
@@ -232,8 +232,20 @@
 </div>
 
 <!-- Loading State -->
-<div *ngIf="!data" class="text-center py-5">
+<div *ngIf="loading" class="text-center py-5">
   <div class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
+  <p class="text-muted mt-2">Loading spike...</p>
+</div>
+
+<!-- Not Found State -->
+<div *ngIf="notFound && !loading" class="text-center py-5">
+  <i class="bx bx-error-circle fs-48 text-warning"></i>
+  <h4 class="mt-3">Spike Not Found</h4>
+  <p class="text-muted">The spike you're looking for doesn't exist or was deleted.</p>
+  <button type="button" (click)="onBackToList()" class="btn btn-primary">
+    <i class="bx bx-arrow-back me-1"></i>
+    Back to List
+  </button>
 </div>

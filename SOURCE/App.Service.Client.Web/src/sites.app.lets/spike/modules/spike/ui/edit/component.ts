@@ -1,8 +1,9 @@
 // Import Ag:
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { Subject, takeUntil } from 'rxjs';
 // Configuration:
 import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
@@ -22,15 +23,15 @@ import { FormEngineType } from '../../../../../../core/forms/form-definition.mod
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseAppsSpikeSpikesEditComponent implements OnInit {
+export class BaseAppsSpikeSpikesEditComponent implements OnInit, OnDestroy {
   public appsConfiguration = appsConfiguration;
   public appletConfiguration = appletsSpikesConfiguration;
 
   public viewModel: ViewModel = new ViewModel();
   public data?: SpikeViewModel;
 
-  // Formly configuration
-  form = new FormGroup({});
+  // Formly configuration - recreated on each init
+  form!: FormGroup;
   model: any = {};
   fields: FormlyFieldConfig[] = [];
   
@@ -40,6 +41,9 @@ export class BaseAppsSpikeSpikesEditComponent implements OnInit {
   // Loading/saving state
   saving = false;
   saveError: string | null = null;
+  
+  // Cleanup
+  private destroy$ = new Subject<void>();
 
   constructor(
     private route: ActivatedRoute,
@@ -47,34 +51,45 @@ export class BaseAppsSpikeSpikesEditComponent implements OnInit {
     private defaultControllerServices: DefaultComponentServices,
     private spikeService: SpikeService
   ) {
-    this.defaultControllerServices.diagnosticsTraceService.info("Constructor");
+    this.defaultControllerServices.diagnosticsTraceService.info("Edit Component: Constructor");
   }
 
   ngOnInit(): void {
-    this.defaultControllerServices.diagnosticsTraceService.info("Component OnInit");
+    this.defaultControllerServices.diagnosticsTraceService.info("Edit Component: OnInit");
 
+    // Always create a fresh FormGroup
+    this.form = new FormGroup({});
+    
     // Load form definition
     const formDef = getSpikeFormDefinition('edit');
     this.fields = toFormlyConfig(formDef);
     
-    this.route.params.subscribe(params => {
-      const id = params['id'];
-      this.defaultControllerServices.diagnosticsTraceService.info('id: ' + id);
-      this.data = this.spikeService.getById(id);
-      
-      if (this.data) {
-        // Populate form model from data
-        this.model = {
-          title: this.data.title,
-          description: this.data.description || '',
-          categoryId: (this.data as any).categoryId || '1',
-          priority: (this.data as any).priority || 3,
-          dueDate: (this.data as any).dueDate || null,
-          estimatedEffort: (this.data as any).estimatedEffort || null,
-          classificationIds: (this.data as any).classificationIds || [],
-        };
-      }
-    });
+    this.route.params
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(params => {
+        const id = params['id'];
+        this.defaultControllerServices.diagnosticsTraceService.info('Loading spike id: ' + id);
+        this.data = this.spikeService.getById(id);
+        
+        if (this.data) {
+          // Populate form model from data
+          this.model = {
+            title: this.data.title,
+            description: this.data.description || '',
+            categoryId: (this.data as any).categoryId || '1',
+            priority: (this.data as any).priority || 3,
+            dueDate: (this.data as any).dueDate || null,
+            estimatedEffort: (this.data as any).estimatedEffort || null,
+            classificationIds: (this.data as any).classificationIds || [],
+          };
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.defaultControllerServices.diagnosticsTraceService.info("Edit Component: OnDestroy");
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   /**

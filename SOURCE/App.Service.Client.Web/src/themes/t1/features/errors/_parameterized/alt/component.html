@@ -1,0 +1,64 @@
+<!-- auth-page wrapper -->
+<div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
+  <div class="bg-overlay"></div>
+  
+  <!-- auth-page content -->
+  <div class="auth-page-content overflow-hidden pt-lg-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-5">
+          <div class="card overflow-hidden">
+            <div class="card-body p-4">
+              <div class="text-center">
+                <!-- Lord Icon Animation -->
+                <lord-icon class="avatar-xl"
+                           [src]="errorConfig.lordIconUrl"
+                           trigger="loop"
+                           [attr.colors]="errorConfig.lordIconColors">
+                </lord-icon>
+                
+                <!-- Error Code -->
+                <h1 class="display-1 fw-medium">
+                  {{ errorConfig.code }}
+                </h1>
+                
+                <!-- Error Title -->
+                <h3 class="text-primary mb-4">
+                  {{ errorConfig.titleKey | baseTranslate }}
+                </h3>
+                
+                <!-- Error Description -->
+                <p class="text-muted mb-4">
+                  {{ errorConfig.descriptionKey | baseTranslate }}
+                </p>
+                
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-center gap-2">
+                  <button *ngIf="errorConfig.showBackButton" 
+                          (click)="goBack()" 
+                          class="btn btn-outline-secondary">
+                    <i class="bx bx-arrow-back me-1"></i>
+                    {{ 'BASE.ACTIONS.GO_BACK' | baseTranslate }}
+                  </button>
+                  
+                  <a *ngIf="errorConfig.showHomeButton" 
+                     routerLink="/" 
+                     [class]="'btn ' + errorConfig.buttonClass">
+                    <i class="mdi mdi-home me-1"></i>
+                    {{ 'BASE.SITE.LOCATIONS.HOME' | baseTranslate }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end card -->
+        </div>
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- end auth page content -->
+</div>
+<!-- end auth-page-wrapper -->

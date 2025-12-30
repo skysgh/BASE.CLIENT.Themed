@@ -36,6 +36,18 @@ const routes: Routes = [
     loadChildren: () => import('../sites.app.lets/service.compliance/module').then(m => m.ServiceComplianceAppletModule)
   },
 
+  // About - Service information, version, licenses (Creator → Distributor → Account)
+  { 
+    path: 'about', 
+    loadChildren: () => import('../sites.app.lets/service.about/module').then(m => m.ServiceAboutModule)
+  },
+
+  // Payment Processing - Subscriptions, payment methods, transactions
+  { 
+    path: 'payment-processing', 
+    loadChildren: () => import('../sites.app.lets/service.payment-processing/module').then(m => m.ServicePaymentProcessingModule)
+  },
+
   // Theme - Theme reference (developer tool)
   { 
     path: 'theme', 

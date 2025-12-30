@@ -1,0 +1,20 @@
+/* Error Page Basic - Parameterized */
+
+.move-animation {
+  animation: move 2s ease-in-out infinite;
+}
+
+@keyframes move {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.error-basic-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+}

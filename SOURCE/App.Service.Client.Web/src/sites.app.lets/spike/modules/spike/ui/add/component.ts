@@ -1,5 +1,5 @@
 // Import Ag:
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -20,12 +20,12 @@ import { FormEngineType } from '../../../../../../core/forms/form-definition.mod
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class BaseAppsSpikeSpikesAddComponent implements OnInit {
+export class BaseAppsSpikeSpikesAddComponent implements OnInit, OnDestroy, AfterViewInit {
   public appsConfiguration = appsConfiguration;
   public appletConfiguration = appletsSpikesConfiguration;
 
-  // Formly configuration
-  form = new FormGroup({});
+  // Formly configuration - recreated on each init
+  form!: FormGroup;
   model: any = {};
   fields: FormlyFieldConfig[] = [];
   
@@ -35,23 +35,60 @@ export class BaseAppsSpikeSpikesAddComponent implements OnInit {
   // Loading/saving state
   saving = false;
   saveError: string | null = null;
+  
+  // Track if component is initialized
+  private initialized = false;
+
+  // Initialize as true to avoid ExpressionChangedAfterItHasBeenCheckedError
+  formInitialized = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private defaultControllerServices: DefaultComponentServices,
-    private spikeService: SpikeService
+    private spikeService: SpikeService,
+    private cdr: ChangeDetectorRef
   ) {
-    this.defaultControllerServices.diagnosticsTraceService.info("Constructor");
+    this.defaultControllerServices.diagnosticsTraceService.info("Add Component: Constructor");
   }
 
   ngOnInit(): void {
-    this.defaultControllerServices.diagnosticsTraceService.info("Component OnInit");
+    this.defaultControllerServices.diagnosticsTraceService.info("Add Component: OnInit");
+    this.initializeForm();
+  }
 
+  ngAfterViewInit(): void {
+    // Mark form as initialized after first render cycle to prevent ExpressionChanged error
+    setTimeout(() => {
+      this.formInitialized = true;
+      this.cdr.detectChanges();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.defaultControllerServices.diagnosticsTraceService.info("Add Component: OnDestroy");
+    this.initialized = false;
+  }
+
+  /**
+   * Initialize or reinitialize the form
+   */
+  private initializeForm(): void {
+    // Always create a fresh FormGroup
+    this.form = new FormGroup({
+    });
+    
     // Load form definition for Add mode
     const formDef = getSpikeFormDefinition('add');
     this.fields = toFormlyConfig(formDef);
     this.model = createFormlyModel(formDef);
+    
+    // Reset state
+    this.saving = false;
+    this.saveError = null;
+    this.initialized = true;
+    
+    this.defaultControllerServices.diagnosticsTraceService.info("Add Component: Form initialized");
   }
 
   /**
@@ -104,5 +141,13 @@ export class BaseAppsSpikeSpikesAddComponent implements OnInit {
   toggleFormEngine(): void {
     this.formEngine = this.formEngine === 'formly' ? 'jsonforms' : 'formly';
     this.defaultControllerServices.diagnosticsTraceService.info(`Switched form engine to: ${this.formEngine}`);
+  }
+
+  /**
+   * Check if create button should be disabled
+   */
+  get isCreateDisabled(): boolean {
+    if (!this.formInitialized) return true;
+    return this.saving || this.form.invalid;
   }
 }

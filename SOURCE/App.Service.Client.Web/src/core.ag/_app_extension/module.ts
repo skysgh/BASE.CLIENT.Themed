@@ -35,6 +35,8 @@ import { BaseAppsModule } from '../../sites.app/module';
 
 // Theme-specific state management
 import { authenticationReducer } from '../../themes/t1/_state/authentication/authentication.reducer';
+// ✅ Layout state - registered here so it's available before layout component loads
+import { layoutReducer } from '../../themes/t1/_state/layout/layout-reducer';
 
 /**
  * ✅ Custom Missing Translation Handler
@@ -104,6 +106,10 @@ export class QuietMissingTranslationHandler implements MissingTranslationHandler
 
     // Initialize root store
     StoreModule.forRoot({}),
+
+    // ✅ Register layout feature state EARLY (before lazy-loaded modules)
+    // This ensures layout state is available when AppLayoutComponent loads
+    StoreModule.forFeature('layout', layoutReducer),
 
     // Register theme-specific authentication feature state
     // (moved from CoreAg module to keep Core/CoreAg theme-independent)

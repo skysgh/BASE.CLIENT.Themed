@@ -1,0 +1,54 @@
+/* Child Summary Component Styles */
+:host {
+  display: block;
+}
+
+.child-summary-card {
+  &.child-summary-sm {
+    .card-header {
+      padding: 0.5rem 1rem;
+    }
+    
+    .card-body {
+      padding: 0.75rem 1rem;
+    }
+  }
+}
+
+.child-summary-single {
+  border-bottom: 1px solid var(--bs-border-color, #dee2e6);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.status-breakdown {
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+}
+
+.stat-item {
+  .stat-value {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+.quick-list {
+  .quick-item {
+    font-size: 0.875rem;
+    
+    &:last-child {
+      border-bottom: none !important;
+    }
+  }
+}

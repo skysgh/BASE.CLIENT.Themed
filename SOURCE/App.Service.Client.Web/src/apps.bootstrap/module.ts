@@ -4,6 +4,10 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from '@angular/router';
 import { Router } from '@angular/router';
 
+// ✅ Feather Icons - provided at root level for all modules
+import { FeatherModule } from 'angular-feather';
+import { allIcons } from 'angular-feather/icons';
+
 // ✅ Config Registry Service
 import { ConfigRegistryService } from "../core/services/config-registry.service";
 
@@ -118,7 +122,10 @@ export function initializeAccount(
   imports: [
     BrowserModule,
     RouterModule,
-    AppExtensionModule
+    AppExtensionModule,
+    // ✅ Provide Feather Icons at root level for all modules
+    // This fixes NullInjectorError: No provider for Icons! in lazy-loaded modules
+    FeatherModule.pick(allIcons)
   ],
   exports: [
     RouterModule,

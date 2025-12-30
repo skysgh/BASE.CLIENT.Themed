@@ -6,12 +6,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// Formly
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
+// Formly - use CoreFormlyModule which registers custom types including 'label'
+import { CoreFormlyModule } from '../../core/forms/formly.module';
 
 // Core pipes (for baseTranslate)
 import { BaseCoreAgPipesModule } from '../../core.ag/pipes/module';
+
+// Core components (for child-summary)
+import { CoreComponentsModule } from '../../core/components/module';
 
 // Core utilities only (not domain-specific)
 import { ConfigRegistryService } from '../../core/services/config-registry.service';
@@ -21,13 +23,17 @@ import { SpikeService } from './services/spike.service';
 import { SubSpikeService } from './services/sub-spike.service';
 
 // Import Module specific dependencies:
-// .. BREAD components:
+// .. Spike BREAD components:
 import { BaseAppsSpikeRouteOutletComponent } from './ui/_route/component';
 import { BaseAppsSpikeSpikesBrowseComponent } from './modules/spike/ui/browse/component';
 import { BaseAppsSpikeSpikesReadComponent } from './modules/spike/ui/read/component';
 import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/component';
 import { BaseAppsSpikeSpikesAddComponent } from './modules/spike/ui/add/component';
+// .. SubSpike BREAD components:
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
+import { BaseAppsSpikeSubSpikesReadComponent } from './modules/subSpike/ui/read/component';
+import { BaseAppsSpikeSubSpikesEditComponent } from './modules/subSpike/ui/edit/component';
+import { BaseAppsSpikeSubSpikesAddComponent } from './modules/subSpike/ui/add/component';
 // .. Insights component (I in I-BREAST-D):
 import { BaseAppsSpikeInsightsComponent } from './modules/spike/ui/insights/component';
 // .. Dashboard widget (D in I-BREAST-D):
@@ -40,12 +46,17 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
 @NgModule({
   declarations: [
     BaseAppsSpikeRouteOutletComponent,
+    // Spike BREAD
     BaseAppsSpikeSpikesBrowseComponent,
     BaseAppsSpikeSpikesReadComponent,
     BaseAppsSpikeSpikesEditComponent,
     BaseAppsSpikeSpikesAddComponent,
+    // SubSpike BREAD
     BaseAppsSpikeSubSpikesBrowseComponent,
-    // I-BREAST-D additions:
+    BaseAppsSpikeSubSpikesReadComponent,
+    BaseAppsSpikeSubSpikesEditComponent,
+    BaseAppsSpikeSubSpikesAddComponent,
+    // I-BREAD-T additions:
     BaseAppsSpikeInsightsComponent,
     SpikeDashboardWidgetComponent,
   ],
@@ -58,11 +69,13 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FormlyModule.forChild(),
-    FormlyBootstrapModule,
+    // Use CoreFormlyModule instead of FormlyModule.forChild() + FormlyBootstrapModule
+    // CoreFormlyModule registers custom types including 'label' for read-only views
+    CoreFormlyModule,
     BaseCoreAgPipesModule,
+    CoreComponentsModule,
     RouterModule.forChild([
-      // I-BREAST-D routes
+      // I-BREAD-T routes for Spike
       { path: 'insights', component: BaseAppsSpikeInsightsComponent },
       { path: 'reports', redirectTo: 'insights', pathMatch: 'prefix' },
       { path: 'analytics', redirectTo: 'insights', pathMatch: 'prefix' },
@@ -75,13 +88,17 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
       { path: 'new', redirectTo: 'add', pathMatch: 'prefix' },
       { path: 'create', redirectTo: 'add', pathMatch: 'prefix' },
       
-      { path: ':id', component: BaseAppsSpikeSpikesReadComponent },
-      { path: 'view/:id', redirectTo: ':id', pathMatch: 'prefix' },
-      
       { path: 'edit/:id', component: BaseAppsSpikeSpikesEditComponent },
       
-      // SubSpikes (recursive BREAD)
+      // SubSpike BREAD routes (nested under parent spike)
       { path: ':id/subspikes', component: BaseAppsSpikeSubSpikesBrowseComponent },
+      { path: ':id/subspikes/add', component: BaseAppsSpikeSubSpikesAddComponent },
+      { path: ':id/subspikes/:subId', component: BaseAppsSpikeSubSpikesReadComponent },
+      { path: ':id/subspikes/edit/:subId', component: BaseAppsSpikeSubSpikesEditComponent },
+      
+      // Spike Read (must be after subspikes routes to avoid conflicts)
+      { path: ':id', component: BaseAppsSpikeSpikesReadComponent },
+      { path: 'view/:id', redirectTo: ':id', pathMatch: 'prefix' },
       
       { path: '', redirectTo: 'spikes', pathMatch: 'prefix' }
     ])

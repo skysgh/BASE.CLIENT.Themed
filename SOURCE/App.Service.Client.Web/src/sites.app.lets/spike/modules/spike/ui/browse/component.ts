@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 // Configuration:
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
@@ -48,21 +48,26 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private defaultControllerServices: DefaultComponentServices,
-    private spikeService: SpikeService,
+    public spikeService: SpikeService,
     private viewPrefService: ViewPreferenceService
   ) {
     this.defaultControllerServices.diagnosticsTraceService.info("Constructor");
     
     // Get preferred renderer
     this.currentRenderer = this.viewPrefService.getPreferredRendererId('spike', 'browse');
+    
+    // ✅ FIXED: Use effect() to react to signal changes
+    effect(() => {
+      const spikes = this.spikeService.spikes();
+      this.data = spikes;
+      this.summaryItems = spikes.map(i => this.mapToSummaryItem(i));
+      this.defaultControllerServices.diagnosticsTraceService.debug(`Spikes updated: ${spikes.length} items`);
+    });
   }
 
   ngOnInit(): void {
     this.defaultControllerServices.diagnosticsTraceService.info("Component OnInit");
-    
-    // ✅ NEW: Use Signal-based service (data loads automatically in constructor)
-    this.data = this.spikeService.spikes();
-    this.summaryItems = this.data.map(i => this.mapToSummaryItem(i));
+    // Data loading is now handled reactively via effect() in constructor
   }
   
   /**

@@ -1,0 +1,13 @@
+{
+  "name": "BASE Platform",
+  "logo": "assets/images/logo-dark.png",
+  "website": "https://github.com/skysgh/BASE.CLIENT.Themed",
+  "description": "An enterprise application platform built with Angular, providing a modern foundation for business applications.",
+  "email": "contact@example.com",
+  "copyright": "© 2024 BASE Platform. All rights reserved.",
+  "social": {
+    "github": "https://github.com/skysgh/BASE.CLIENT.Themed",
+    "twitter": null,
+    "linkedin": null
+  }
+}

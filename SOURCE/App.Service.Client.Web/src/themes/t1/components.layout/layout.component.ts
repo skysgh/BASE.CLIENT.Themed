@@ -13,6 +13,8 @@ import { DefaultComponentServices } from '../../../core/services/default-control
 import { ViewModel } from './vm';
 // Data:
 import { RootReducerState } from '../_state';
+import { filter } from 'rxjs/operators';
+import { initialLayoutState } from '../_state/layout/layout-state';
 
 
 @Component({
@@ -34,14 +36,18 @@ export class AppLayoutComponent implements OnInit {
   public viewModel: ViewModel = new ViewModel();
   // TODO: Move these variables into it.
 
-  layoutType!: string;
+  // ✅ Initialize with default value from initial state
+  layoutType: string = initialLayoutState.LAYOUT;
 
   constructor(private store: Store<RootReducerState>,
     private defaultControllerServices: DefaultComponentServices
   ) { }
 
   ngOnInit(): void {
-    this.store.select('layout').subscribe((data) => {
+    this.store.select('layout').pipe(
+      // ✅ Filter out undefined/null state AND ensure LAYOUT property exists
+      filter(data => data != null && data.LAYOUT != null)
+    ).subscribe((data) => {
       this.layoutType = data.LAYOUT;
 
       document.documentElement.setAttribute('data-layout', data.LAYOUT);

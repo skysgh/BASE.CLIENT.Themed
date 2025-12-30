@@ -1,6 +1,7 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, effect } from '@angular/core';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, distinctUntilChanged } from 'rxjs/operators';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { NavigationItem, NavigationSection, NavigationData } from './navigation.model';
 import { AccountService } from '../services/account.service';
 import { AppletNavigationService, AppletNavItem } from '../services/applet-navigation.service';
@@ -19,22 +20,6 @@ import { ROUTE_SEGMENTS } from '../constants/navigation.constants';
  * 4. Provides canonical NavigationData format
  * 
  * Themes then ADAPT this data to their specific format.
- * 
- * FLOW:
- * ```
- * Account Config + Static Menu + Applets
- *              ↓
- *    NavigationDataService (canonical format)
- *              ↓
- *    ThemeNavigationAdapter (theme-specific format)
- *              ↓
- *    Sidebar/Menu Component
- * ```
- * 
- * WHY THIS ABSTRACTION:
- * - Changing themes doesn't require rewriting menu logic
- * - Each theme can display navigation differently
- * - Business logic (permissions, applets) stays in one place
  */
 @Injectable({ providedIn: 'root' })
 export class NavigationDataService {
@@ -53,14 +38,25 @@ export class NavigationDataService {
     private logger: SystemDiagnosticsTraceService
   ) {
     this.logger.debug(`${this.constructor.name} initialized`);
-    this.buildNavigation();
+    
+    // ✅ React to applet navigation changes using effect
+    // When visibleNavItems signal changes, rebuild navigation
+    effect(() => {
+      const appletItems = this.appletNavService.visibleNavItems();
+      this.logger.debug(`Applet nav changed: ${appletItems.length} items`);
+      this.buildNavigationWithApplets(appletItems);
+    });
   }
 
   /**
    * Get navigation data as observable
    */
   getNavigationData(): Observable<NavigationData> {
-    return this.navigationData$.asObservable();
+    return this.navigationData$.asObservable().pipe(
+      distinctUntilChanged((prev, curr) => 
+        JSON.stringify(prev) === JSON.stringify(curr)
+      )
+    );
   }
 
   /**
@@ -74,16 +70,14 @@ export class NavigationDataService {
    * Refresh navigation (call after login, account change, etc.)
    */
   refresh(): void {
-    this.buildNavigation();
+    const appletItems = this.appletNavService.getNavigationItems();
+    this.buildNavigationWithApplets(appletItems);
   }
 
   /**
-   * Build navigation from all sources
+   * Build navigation with provided applet items
    */
-  private buildNavigation(): void {
-    // Get applet nav items
-    const appletItems = this.appletNavService.getNavigationItems();
-
+  private buildNavigationWithApplets(appletItems: AppletNavItem[]): void {
     // Build canonical navigation structure
     const navData: NavigationData = {
       sections: [
@@ -96,7 +90,7 @@ export class NavigationDataService {
     };
 
     this.navigationData$.next(navData);
-    this.logger.debug(`Navigation built: ${navData.sections.length} sections`);
+    this.logger.debug(`Navigation built: ${navData.sections.length} sections, ${appletItems.length} applets`);
   }
 
   /**

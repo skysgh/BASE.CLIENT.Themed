@@ -11,9 +11,9 @@ const ROOT_URL = `${ASSETS_OPEN}images/pages/`;
 export const themesT1ConstantsAssetsImagesPages: TThemesT1ConstantsAssetsImagesPages = {
   root: `${ROOT_URL}`,
 
-  comingsoon: `${ROOT_URL}comingsoon`,
-  maintainance: `${ROOT_URL}maintainance`,
-  errors: `${ROOT_URL}errors`,
+  comingsoon: `${ROOT_URL}comingsoon/`,
+  maintainance: `${ROOT_URL}maintainance/`,
+  errors: `${ROOT_URL}errors/`,
 
 
   about: `TODO`

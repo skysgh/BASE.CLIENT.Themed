@@ -2,7 +2,7 @@
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 // Ag:
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -14,6 +14,7 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ViewPreferenceService } from '../../../../../../core/views/view-preference.service';
 // ✅ FIXED: Use local applet service
 import { SpikeService } from '../../../../services/spike.service';
+import { SubSpikeService } from '../../../../services/sub-spike.service';
 import { SpikeViewModel } from '../../../../models/view-models/spike.view-model';
 import { ViewModel } from './vm';
 // Domain models:
@@ -27,6 +28,8 @@ import {
 import { getSpikeFormDefinition } from '../../../../forms/spike-form.definitions';
 import { toFormlyConfig } from '../../../../../../core/forms/formly-adapter';
 import { FormDefinition } from '../../../../../../core/forms/form-definition.model';
+// Summary component types
+import { SummaryItem } from '../../../../../../core/components/child-summary/child-summary.component';
 
 
 @Component({
@@ -40,6 +43,13 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
 
   public viewModel: ViewModel = new ViewModel();
   public data?: SpikeViewModel;
+  
+  // Track the current ID from route
+  private currentId: string | null = null;
+  
+  // Loading state
+  public loading = true;
+  public notFound = false;
   
   // Extended data (from domain model, for display)
   public extendedData: any = {};
@@ -57,12 +67,17 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
   
   // View renderer state
   public currentRenderer: string = 'read-formly-labels';
+  
+  // SubSpikes summary data (S in I-S-BREAD-T)
+  public subSpikeSummaryItems: SummaryItem[] = [];
+  public subSpikesLoading = true;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private defaultControllServices: DefaultComponentServices,
-    private spikeService: SpikeService,
+    public spikeService: SpikeService,
+    public subSpikeService: SubSpikeService,
     private viewPrefService: ViewPreferenceService
   ) {
     this.defaultControllServices.diagnosticsTraceService.info("Constructor");
@@ -75,6 +90,48 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
     
     // Get preferred renderer
     this.currentRenderer = this.viewPrefService.getPreferredRendererId('spike', 'read');
+    
+    // ✅ FIXED: React to signal changes - when spikes are loaded, find our spike
+    effect(() => {
+      const spikes = this.spikeService.spikes();
+      const isLoading = this.spikeService.loading();
+      
+      if (this.currentId && !isLoading) {
+        const spike = spikes.find(s => s.id === this.currentId);
+        if (spike) {
+          this.loadSpikeData(spike);
+        } else if (spikes.length > 0) {
+          // Spikes loaded but ours not found
+          this.notFound = true;
+          this.loading = false;
+        }
+      }
+      
+      // Update loading state from service
+      if (!isLoading && this.loading && spikes.length > 0) {
+        this.loading = false;
+      }
+    });
+    
+    // React to SubSpikes loading
+    effect(() => {
+      const subSpikes = this.subSpikeService.subSpikes();
+      const isLoading = this.subSpikeService.loading();
+      
+      this.subSpikesLoading = isLoading;
+      
+      if (this.currentId && !isLoading) {
+        // Filter sub-spikes for this parent and map to SummaryItem
+        const parentSubSpikes = subSpikes.filter(s => s.parentId === this.currentId);
+        this.subSpikeSummaryItems = parentSubSpikes.map(s => ({
+          id: s.id,
+          title: s.title,
+          statusId: '1', // Default, could be extended
+          statusName: 'Active',
+          statusColor: '#28a745'
+        }));
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -82,58 +139,79 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       const id = params['id'];
+      this.currentId = id;
       this.defaultControllServices.diagnosticsTraceService.info(`params ready. id:${id}`);
-      this.data = this.spikeService.getById(id);
       
-      if (this.data) {
-        // Create extended data with defaults for fields not in SpikeViewModel
-        const statusId = (this.data as any).statusId || '1';
-        const status = this.allStatuses.find(s => s.id === statusId) || this.allStatuses[0];
-        
-        this.extendedData = {
-          statusId: statusId,
-          statusName: status?.name || 'Draft',
-          statusIcon: status?.icon || 'bx-edit',
-          statusColor: status?.color || '#6c757d',
-          categoryId: (this.data as any).categoryId || '1',
-          categoryName: 'Feature',
-          categoryIcon: 'bx-bulb',
-          priority: (this.data as any).priority || 3,
-          priorityLabel: 'Medium',
-          dueDate: (this.data as any).dueDate || null,
-          dueDateFormatted: '',
-          isOverdue: false,
-          estimatedEffort: (this.data as any).estimatedEffort || 0,
-          classificationIds: (this.data as any).classificationIds || [],
-          parts: (this.data as any).parts || [],
-          items: (this.data as any).items || [],
-          itemCount: ((this.data as any).items || []).length,
-          totalValue: null,
-          createdAt: new Date(),
-          modifiedAt: new Date(),
-        };
-        
-        // Set up form model for Formly
-        this.formModel = {
-          title: this.data.title,
-          description: this.data.description,
-          categoryId: this.extendedData.categoryId,
-          statusId: this.extendedData.statusId,
-          priority: this.extendedData.priority,
-          dueDate: this.extendedData.dueDate,
-          estimatedEffort: this.extendedData.estimatedEffort,
-          classificationIds: this.extendedData.classificationIds,
-        };
-        
-        // Generate Formly fields for view mode (labels, not inputs)
-        if (this.formDefinition) {
-          this.fields = toFormlyConfig(this.formDefinition, true);
-        }
-        
-        // Calculate allowed transitions
-        this.allowedTransitions = getAllowedTransitions(statusId, this.allStatuses);
+      // Reset state for new ID
+      this.loading = true;
+      this.notFound = false;
+      this.data = undefined;
+      
+      // Try to find spike immediately (might already be loaded)
+      const spike = this.spikeService.getById(id);
+      if (spike) {
+        this.loadSpikeData(spike);
       }
+      // If not found, the effect() will handle it when spikes load
     });
+  }
+
+  /**
+   * Load spike data into component state
+   */
+  private loadSpikeData(spike: SpikeViewModel): void {
+    this.data = spike;
+    this.loading = false;
+    this.notFound = false;
+    
+    // Create extended data with defaults for fields not in SpikeViewModel
+    const statusId = (spike as any).statusId || '1';
+    const status = this.allStatuses.find(s => s.id === statusId) || this.allStatuses[0];
+    
+    this.extendedData = {
+      statusId: statusId,
+      statusName: status?.name || 'Draft',
+      statusIcon: status?.icon || 'bx-edit',
+      statusColor: status?.color || '#6c757d',
+      categoryId: (spike as any).categoryId || '1',
+      categoryName: 'Feature',
+      categoryIcon: 'bx-bulb',
+      priority: (spike as any).priority || 3,
+      priorityLabel: 'Medium',
+      dueDate: (spike as any).dueDate || null,
+      dueDateFormatted: '',
+      isOverdue: false,
+      estimatedEffort: (spike as any).estimatedEffort || 0,
+      classificationIds: (spike as any).classificationIds || [],
+      parts: (spike as any).parts || [],
+      items: (spike as any).items || [],
+      itemCount: ((spike as any).items || []).length,
+      totalValue: null,
+      createdAt: new Date(),
+      modifiedAt: new Date(),
+    };
+    
+    // Set up form model for Formly
+    this.formModel = {
+      title: spike.title,
+      description: spike.description,
+      categoryId: this.extendedData.categoryId,
+      statusId: this.extendedData.statusId,
+      priority: this.extendedData.priority,
+      dueDate: this.extendedData.dueDate,
+      estimatedEffort: this.extendedData.estimatedEffort,
+      classificationIds: this.extendedData.classificationIds,
+    };
+    
+    // Generate Formly fields for view mode (labels, not inputs)
+    if (this.formDefinition) {
+      this.fields = toFormlyConfig(this.formDefinition, true);
+    }
+    
+    // Calculate allowed transitions
+    this.allowedTransitions = getAllowedTransitions(statusId, this.allStatuses);
+    
+    this.defaultControllServices.diagnosticsTraceService.info(`Loaded spike: ${spike.title}`);
   }
 
   /**
@@ -247,6 +325,27 @@ export class BaseAppsSpikeSpikesReadComponent implements OnInit {
       default:
         return `Move to ${status.name}`;
     }
+  }
+
+  /**
+   * Navigate back to spikes list
+   */
+  onBackToList(): void {
+    this.router.navigate(['../spikes'], { relativeTo: this.route });
+  }
+
+  /**
+   * Navigate to SubSpikes browse
+   */
+  onBrowseSubSpikes(): void {
+    this.router.navigate(['subspikes'], { relativeTo: this.route });
+  }
+
+  /**
+   * Navigate to add SubSpike
+   */
+  onAddSubSpike(): void {
+    this.router.navigate(['subspikes', 'add'], { relativeTo: this.route });
   }
 
   public DoSomething() {
