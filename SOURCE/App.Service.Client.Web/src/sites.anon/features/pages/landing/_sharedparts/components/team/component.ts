@@ -12,9 +12,9 @@ import { appsConfiguration } from '../../../../../../../sites.app/configuration/
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// Service Describe Applet:
-import { ServiceDescribeDeliveryTeamMemberService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-delivery-team-member.service';
-import { ServiceDescribeDeliveryTeamMemberViewModel } from '../../../../../../../sites.app.lets/service.describe/models/view-models/service-describe-delivery-team-member.view-model';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribeDeliveryTeamMemberService } from '../../../../../../../sites.app.parts/describe/services/service-describe-delivery-team-member.service';
+import { ServiceDescribeDeliveryTeamMemberViewModel } from '../../../../../../../sites.app.parts/describe/models/view-models/service-describe-delivery-team-member.view-model';
 import { ResourceUrlService } from '../../../../../../../core/services/resource-url.service';
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';

@@ -11,8 +11,16 @@ export const environment: Environment = {
   custom: environmentSharedCustomDev,
 
   production: false,
-  defaultauth: 'fackbackend',
+  
+  /**
+   * Authentication method:
+   * - 'fakebackend': Development fake auth (default)
+   * - 'firebase': Firebase authentication
+   * - 'oidc': Real OIDC providers (Microsoft, Google, etc.)
+   */
+  defaultauth: 'fakebackend',
 
+  // Firebase config (used when defaultauth = 'firebase')
   firebaseConfig: {
     apiKey: '',
     authDomain: '',
@@ -22,6 +30,48 @@ export const environment: Environment = {
     messagingSenderId: '',
     appId: '',
     measurementId: ''
+  },
+
+  /**
+   * OIDC Configuration (used when defaultauth = 'oidc')
+   * 
+   * TO ENABLE REAL AUTHENTICATION:
+   * 1. Set defaultauth: 'oidc'
+   * 2. Add your provider credentials below
+   * 3. Register callback URL with provider
+   * 
+   * See core/auth/providers/microsoft.provider.ts for Azure AD setup
+   * See core/auth/providers/google.provider.ts for Google Cloud setup
+   */
+  oidcConfig: {
+    providers: [
+      // Microsoft / Azure AD
+      {
+        provider: 'microsoft',
+        enabled: false,  // Set to true when you have credentials
+        clientId: 'YOUR-AZURE-CLIENT-ID',
+        redirectUri: 'http://localhost:4200/auth/callback',
+        scopes: ['openid', 'profile', 'email', 'User.Read'],
+        displayName: 'Microsoft',
+        icon: 'ri-microsoft-fill',
+        // Microsoft-specific settings
+        tenantId: 'consumers',  // 'consumers' for personal, 'common' for both, or tenant ID
+        authority: 'https://login.microsoftonline.com/consumers'
+      },
+      // Google
+      {
+        provider: 'google',
+        enabled: false,  // Set to true when you have credentials
+        clientId: 'YOUR-GOOGLE-CLIENT-ID.apps.googleusercontent.com',
+        redirectUri: 'http://localhost:4200/auth/callback',
+        scopes: ['openid', 'profile', 'email'],
+        displayName: 'Google',
+        icon: 'ri-google-fill'
+      }
+    ],
+    allowLocalLogin: true,  // Also allow email/password login
+    tokenStorage: 'session',
+    callbackRoute: '/auth/callback'
   }
 
 };

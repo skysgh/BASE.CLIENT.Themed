@@ -24,6 +24,10 @@ import { BaseCoreAgModule } from '../../../../../core.ag/module';
 import { BaseThemesV1ComponentsModule } from '../../../components/module';
 import { BaseThemesV1Module } from '../../../module';
 
+// ✅ Auth Components (standalone)
+import { AuthProviderListComponent } from '../../../../../core/auth/components/auth-provider-list.component';
+import { EmailLoginFormComponent } from '../../../../../core/auth/components/email-login-form.component';
+
 @NgModule({
   declarations: [
     // Components, Directives, Pipes developed in this Module.
@@ -39,6 +43,10 @@ import { BaseThemesV1Module } from '../../../module';
     ReactiveFormsModule,
     FormsModule,
     NgbToastModule,
+
+    // ✅ Standalone Auth Components
+    AuthProviderListComponent,
+    EmailLoginFormComponent,
 
     // Import upstream:
     BaseThemesModule,

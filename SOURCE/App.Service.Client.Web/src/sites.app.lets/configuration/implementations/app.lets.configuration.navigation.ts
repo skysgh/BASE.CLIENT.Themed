@@ -1,4 +1,4 @@
-import { appletsSystemsConfiguration } from "../../service.operate/configuration/implementations/app.lets.systems.configuration";
+import { appletsSystemsConfiguration } from "../../../sites.app.parts/operate/configuration/implementations/app.lets.systems.configuration";
 import { StringService } from "../../../core/services/string.service";
 import { environment } from "../../../environments/environment";
 import { TAppletsConfigurationNavigation } from "../t.app.lets.configuration.navigation";

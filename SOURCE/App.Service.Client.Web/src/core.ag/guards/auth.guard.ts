@@ -1,5 +1,5 @@
 // Ag:
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 // ✅ Core tier imports (Angular-agnostic services)
@@ -7,6 +7,8 @@ import { ConfigRegistryService } from '../../core/services/config-registry.servi
 import { AuthenticationService } from '../../core/services/auth.service';
 import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
 import { environment } from '../../environments/environment';
+// ✅ NEW: OIDC Service for real authentication
+import { OidcService } from '../../core/auth/services/oidc.service';
 
 @Injectable({ providedIn: 'root' })
 /**
@@ -17,16 +19,18 @@ import { environment } from '../../environments/environment';
  * This guard uses Angular Router and is therefore Angular-specific.
  * It belongs in core.ag, not core.
  *
- * Uses ConfigRegistryService to get navigation paths.
- * This breaks circular dependency.
- *
- * Benefits:
- * ✅ No circular dependency
- * ✅ Proper tier architecture (Angular code in core.ag)
- * ✅ Easy to test (mock registry)
+ * AUTHENTICATION MODES:
+ * 1. 'oidc' - Real OIDC authentication (Microsoft, Google, etc.)
+ * 2. 'firebase' - Firebase authentication (legacy)
+ * 3. 'fakeBackend' - Fake authentication for development
+ * 
+ * Set via environment.defaultauth
  */
 export class AuthGuard {
   private appsConfig: any;
+  
+  // Inject OIDC service
+  private oidcService = inject(OidcService);
 
   constructor(
     private router: Router,
@@ -43,7 +47,7 @@ export class AuthGuard {
       this.appsConfig = {
         navigation: {
           auth: {
-            login: '/auth/login',
+            login: '/auth/signin',
           },
         },
         others: {
@@ -62,12 +66,43 @@ export class AuthGuard {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (environment.defaultauth === 'firebase') {
+    const authMode = environment.defaultauth;
+
+    // ============================================
+    // OIDC Authentication (NEW - Real providers)
+    // ============================================
+    if (authMode === 'oidc') {
+      if (this.oidcService.isAuthenticated()) {
+        // User is authenticated
+        
+        // Optional: Check if token is expiring soon
+        // if (this.oidcService.isTokenExpiringSoon(300)) {
+        //   this.oidcService.refreshToken();
+        // }
+        
+        return true;
+      }
+
+      // Not authenticated - redirect to login
+      const loginPath = this.appsConfig?.navigation?.auth?.login || '/auth/signin';
+      this.router.navigate([loginPath], { queryParams: { returnUrl: state.url } });
+      return false;
+    }
+
+    // ============================================
+    // Firebase Authentication (Legacy)
+    // ============================================
+    if (authMode === 'firebase') {
       const currentUser = this.authenticationService.currentUser();
       if (currentUser) {
         return true;
       }
-    } else {
+    } 
+    
+    // ============================================
+    // Fake Backend Authentication (Development)
+    // ============================================
+    else {
       const currentUser = this.authFackservice.currentUserValue;
       if (currentUser) {
         return true;
@@ -81,7 +116,7 @@ export class AuthGuard {
     }
 
     // Not logged in - redirect to login with return URL
-    const loginPath = this.appsConfig?.navigation?.auth?.login || '/auth/login';
+    const loginPath = this.appsConfig?.navigation?.auth?.login || '/auth/signin';
     this.router.navigate([loginPath], { queryParams: { returnUrl: state.url } });
     return false;
   }

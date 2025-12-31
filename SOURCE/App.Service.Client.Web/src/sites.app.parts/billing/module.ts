@@ -1,0 +1,59 @@
+/**
+ * Billing Module
+ * 
+ * Handles all billing-related functionality:
+ * - REFUND FIRST - Easy refunds with no friction
+ * - Payment methods management
+ * - Subscription flow
+ * - Transaction history
+ * - Invoice management
+ * 
+ * URL prefix: /system/billing
+ */
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// Routing
+import { BillingRoutingModule } from './routing';
+
+// Core modules
+import { CoreComponentsModule } from '../../core/components/module';
+import { BaseCoreAgPipesModule } from '../../core.ag/pipes/module';
+
+// Views
+import { PaymentHubComponent } from './views/payment-hub/component';
+import { PaymentMethodsComponent } from './views/payment-methods/component';
+import { SubscribeComponent } from './views/subscribe/component';
+import { TransactionsComponent } from './views/transactions/component';
+import { RefundComponent } from './views/refund/component';
+
+@NgModule({
+  declarations: [
+    PaymentHubComponent,
+    PaymentMethodsComponent,
+    SubscribeComponent,
+    TransactionsComponent,
+    RefundComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    NgbModule,
+    BillingRoutingModule,
+    CoreComponentsModule,
+    BaseCoreAgPipesModule
+  ],
+  exports: [
+    PaymentHubComponent,
+    PaymentMethodsComponent,
+    SubscribeComponent,
+    TransactionsComponent,
+    RefundComponent
+  ]
+})
+export class BillingModule { }

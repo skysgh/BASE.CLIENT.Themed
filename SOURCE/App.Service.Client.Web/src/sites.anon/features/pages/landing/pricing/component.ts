@@ -8,9 +8,9 @@ import { NgbNavModule, NgbAccordionModule, NgbDropdownModule } from '@ng-bootstr
 import { sitesConfiguration } from '../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
-// Service Describe Applet:
-import { ServiceDescribePricingPlanService } from '../../../../../sites.app.lets/service.describe/services/service-describe-pricing-plan.service';
-import { ServiceDescribePricingPlanViewModel } from '../../../../../sites.app.lets/service.describe/models/view-models/service-describe-pricing-plan.view-model';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribePricingPlanService } from '../../../../../sites.app.parts/describe/services/service-describe-pricing-plan.service';
+import { ServiceDescribePricingPlanViewModel } from '../../../../../sites.app.parts/describe/models/view-models/service-describe-pricing-plan.view-model';
 import { ViewModel } from './vm';
 
 @Component({

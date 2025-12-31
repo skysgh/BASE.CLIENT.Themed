@@ -1,16 +1,13 @@
-//import { listLang } from '../../../../shared/settings/constants/languages';
-
-// Rx:
-import { Observable, of } from 'rxjs';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 // Ag:
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Component, OnInit, EventEmitter, Output, Inject, ViewChild, TemplateRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+// Rx:
 // Etc:
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-
+// Constants:
+import { LAYOUT_MODE, SIDEBAR_SIZE, SIDEBAR_IMAGE } from '../../_state/layout/layout-constants';
 // Configuration:
 import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
@@ -20,11 +17,13 @@ import { EventService } from '../../../../core/services/infrastructure/event.ser
 import { AuthenticationService } from '../../../../core/services/auth.service';
 import { AuthfakeauthenticationService } from '../../../../core/services/authfake.service';
 import { TokenStorageService } from '../../../../core/services/token-storage.service';
-// Base Models:
+// Operate Applet (now in sites.app.parts):
+import { ServiceOperateLanguageService } from '../../../../sites.app.parts/operate/services/service-operate-language.service';
+import { ServiceOperateNotificationService } from '../../../../sites.app.parts/operate/services/service-operate-notification.service';
+import { ServiceOperateLanguageViewModel } from '../../../../sites.app.parts/operate/models/view-models/service-operate-language.view-model';
+import { ServiceOperateNotificationViewModel } from '../../../../sites.app.parts/operate/models/view-models/service-operate-notification.view-model';
+// Models:
 import { ViewModel } from './vm';
-// Service Operate Applet:
-import { ServiceOperateLanguageViewModel } from '../../../../sites.app.lets/service.operate/models/view-models/service-operate-language.view-model';
-import { ServiceOperateNotificationViewModel } from '../../../../sites.app.lets/service.operate/models/view-models/service-operate-notification.view-model';
 
 @Component({
   selector: 'app-topbar',
@@ -39,36 +38,30 @@ export class BaseLayoutTopBarComponent implements OnInit {
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
   isDropdownOpen = false;
 
-  constructor(@Inject(DOCUMENT)
-  private document: any,
+  constructor(
+    @Inject(DOCUMENT) private document: any,
     private defaultComponentServices: DefaultComponentServices,
-    //private serviceNotificationsService: serviceNotificationsService,
     private eventService: EventService,
-    //public languageService: LanguageService,
     private modalService: NgbModal,
     public _cookiesService: CookieService,
     private authService: AuthenticationService,
     private authFackservice: AuthfakeauthenticationService,
     private router: Router,
-    private TokenStorageService: TokenStorageService
+    private tokenStorageService: TokenStorageService
   ) {
-    // Make system/env variables avaiable to view template (via const or service):
-    
   }
-    
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
   onMobileMenuButtonClicked() {
-      this.mobileMenuButtonClicked.emit();
-    }
+    this.mobileMenuButtonClicked.emit();
+  }
 
   windowScroll() {
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -82,10 +75,6 @@ export class BaseLayoutTopBarComponent implements OnInit {
 
   toggleDropdown(event: Event) {
     event.stopPropagation();
-    if (this.isDropdownOpen) {
-      this.isDropdownOpen = false;
-    } else {
-      this.isDropdownOpen = true;
-    }
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 }

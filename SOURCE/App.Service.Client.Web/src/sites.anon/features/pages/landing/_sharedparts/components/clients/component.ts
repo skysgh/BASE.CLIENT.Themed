@@ -6,8 +6,8 @@ import { DEPLOYED_RESOURCES, DeployedResources } from '../../../../../../../core
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// Service Describe Applet:
-import { ServiceDescribeTrustedByService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-trusted-by.service';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribeTrustedByService } from '../../../../../../../sites.app.parts/describe/services/service-describe-trusted-by.service';
 // Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { Responsive as importedResponsive } from './settings';

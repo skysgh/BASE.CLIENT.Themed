@@ -2,7 +2,8 @@
 import { Component, OnInit } from "@angular/core";
 // Services:
 import { AccountService } from "../../../../../core/services/account.service";
-import { SettingsNavigationService } from "../../../../../sites.app.lets/service.settings/services/settings-navigation.service";
+// Settings (now in sites.app.parts):
+import { SettingsNavigationService } from "../../../../../sites.app.parts/settings/services/settings-navigation.service";
 // Configuration:
 import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";

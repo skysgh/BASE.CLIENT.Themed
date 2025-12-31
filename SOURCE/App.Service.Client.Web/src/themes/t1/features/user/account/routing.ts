@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 // Component Pages
 import { RegisterComponent } from "./register/component";
 import { LoginComponent } from "./login/component";
+// ✅ Auth Callback for OIDC
+import { AuthCallbackComponent } from "../../../../../core/auth/components/auth-callback.component";
 
 const routes: Routes = [
   {
@@ -40,8 +42,13 @@ const routes: Routes = [
   {
     path: "signin",
     component: LoginComponent
+  },
+  // ✅ OAuth/OIDC callback route
+  // IdP redirects here after authentication
+  {
+    path: "callback",
+    component: AuthCallbackComponent
   }
-
 ];
 
 @NgModule({

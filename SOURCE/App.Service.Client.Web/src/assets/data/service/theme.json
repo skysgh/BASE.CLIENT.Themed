@@ -1,0 +1,24 @@
+{
+  "name": "Velzon",
+  "vendor": {
+    "name": "ThemesBrand",
+    "marketplace": "ThemeForest"
+  },
+  "productId": "36077495",
+  "style": "Minimal",
+  "layout": "Vertical",
+  "version": null,
+  "downloadDate": null,
+  "urls": {
+    "themeForest": "https://themeforest.net/item/velzon-aspnet-core-admin-dashboard-template/36077495",
+    "preview": "https://preview.themeforest.net/item/velzon-aspnet-core-admin-dashboard-template/full_screen_preview/36077495",
+    "demo": "https://themesbrand.com/velzon/html/minimal/dashboard-crm.html",
+    "admin": "https://velzon.themesbrand.com/user-dashboard"
+  },
+  "license": {
+    "type": "Regular License",
+    "holder": null,
+    "purchaseCode": null
+  },
+  "notes": "Version and download date not recorded at time of initial download. Style: Minimal with Vertical layout."
+}

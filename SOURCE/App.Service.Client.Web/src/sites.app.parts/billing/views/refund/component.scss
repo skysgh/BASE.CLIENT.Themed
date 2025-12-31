@@ -1,0 +1,32 @@
+/**
+ * Refund Component Styles
+ * 
+ * Simple, calming design to reduce anxiety during refund process.
+ */
+:host {
+  display: block;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Make the refund button big and reassuring */
+.btn-success.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Soft alert styles */
+.alert-soft-info {
+  background: rgba(41, 156, 219, 0.1);
+  border: none;
+  color: #299cdb;
+}
+
+.alert-soft-warning {
+  background: rgba(247, 184, 75, 0.1);
+  border: none;
+  color: #f7b84b;
+}

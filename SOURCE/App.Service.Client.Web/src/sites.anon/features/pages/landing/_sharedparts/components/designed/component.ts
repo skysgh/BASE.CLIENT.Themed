@@ -6,8 +6,8 @@ import { appsConfiguration } from '../../../../../../../sites.app/configuration/
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// Service Describe Applet:
-import { ServiceDescribeFeatureService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-feature.service';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribeFeatureService } from '../../../../../../../sites.app.parts/describe/services/service-describe-feature.service';
 // Models:
 import { ViewModel } from './vm';
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';

@@ -2,7 +2,8 @@
 import { Injectable, computed } from '@angular/core';
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
-import { ServiceDescribeStatsService } from '../../../../sites.app.lets/service.describe/services/service-describe-stats.service';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribeStatsService } from '../../../../sites.app.parts/describe/services/service-describe-stats.service';
 
 /**
  * Dashboard service for the anon site.
@@ -28,6 +29,78 @@ export class DashboardService {
     this.statsService.loadStats();
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

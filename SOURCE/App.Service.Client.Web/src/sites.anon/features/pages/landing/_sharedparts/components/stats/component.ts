@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// Service Describe Applet:
-import { ServiceDescribeStatsService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-stats.service';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribeStatsService } from '../../../../../../../sites.app.parts/describe/services/service-describe-stats.service';
 // Data:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';

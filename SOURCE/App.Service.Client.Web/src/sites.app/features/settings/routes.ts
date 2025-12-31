@@ -3,18 +3,13 @@ import { Routes } from '@angular/router';
 /**
  * Settings Feature Routes
  * 
- * Thin routing layer - delegates to service.settings app.let views.
- * 
- * /apps/settings              → Settings hub with child router outlet
- * /apps/settings/service      → Platform-wide settings (super admin)
- * /apps/settings/account      → Account settings (account admin)
- * /apps/settings/user         → User preferences (all users)
- * /apps/settings/applets/:id  → Applet-specific settings (dynamic)
+ * @deprecated This route is now at /system/settings via sites.app.parts/settings
+ * Kept for backward compatibility - redirects to new location.
  */
 export const settingsRoutes: Routes = [
   {
     path: '',
-    loadComponent: () => import('../../../sites.app.lets/service.settings/views/settings-hub/component').then(m => m.SettingsHubComponent),
+    loadComponent: () => import('../../../sites.app.parts/settings/views/settings-hub/component').then(m => m.SettingsHubComponent),
     children: [
       {
         path: '',
@@ -23,19 +18,19 @@ export const settingsRoutes: Routes = [
       },
       {
         path: 'service',
-        loadComponent: () => import('../../../sites.app.lets/service.settings/views/service-settings/component').then(m => m.ServiceSettingsSectionComponent)
+        loadComponent: () => import('../../../sites.app.parts/settings/views/service-settings/component').then(m => m.ServiceSettingsSectionComponent)
       },
       {
         path: 'account',
-        loadComponent: () => import('../../../sites.app.lets/service.settings/views/account-settings/component').then(m => m.AccountSettingsSectionComponent)
+        loadComponent: () => import('../../../sites.app.parts/settings/views/account-settings/component').then(m => m.AccountSettingsSectionComponent)
       },
       {
         path: 'user',
-        loadComponent: () => import('../../../sites.app.lets/service.settings/views/user-settings/component').then(m => m.UserSettingsSectionComponent)
+        loadComponent: () => import('../../../sites.app.parts/settings/views/user-settings/component').then(m => m.UserSettingsSectionComponent)
       },
       {
         path: 'applets/:appletId',
-        loadComponent: () => import('../../../sites.app.lets/service.settings/views/applet-settings/component').then(m => m.AppletSettingsSectionComponent)
+        loadComponent: () => import('../../../sites.app.parts/settings/views/applet-settings/component').then(m => m.AppletSettingsSectionComponent)
       }
     ]
   }

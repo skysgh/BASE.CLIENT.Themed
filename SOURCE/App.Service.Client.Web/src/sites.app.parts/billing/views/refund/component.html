@@ -1,0 +1,230 @@
+<div class="container-fluid">
+
+  <!-- Page Header -->
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+        <h4 class="mb-sm-0">{{ 'BASE.REFUNDS.REQUEST' | baseTranslate }}</h4>
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item"><a routerLink="/apps/system/billing/hub">Billing</a></li>
+            <li class="breadcrumb-item active">Refund</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading()" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- No Active Subscription -->
+  <div *ngIf="!loading() && !hasActiveSubscription()" class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body text-center py-5">
+          <div class="avatar-lg mx-auto mb-4">
+            <div class="avatar-title bg-light rounded-circle text-muted">
+              <i class="ri-checkbox-circle-line fs-36"></i>
+            </div>
+          </div>
+          <h5>No Active Subscription</h5>
+          <p class="text-muted mb-4">
+            You don't have an active subscription to refund.
+          </p>
+          <button class="btn btn-primary" (click)="goToHub()">
+            <i class="ri-arrow-left-line me-1"></i>
+            Back to Billing
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Refund Flow -->
+  <div *ngIf="!loading() && hasActiveSubscription()" class="row justify-content-center">
+    <div class="col-lg-8 col-xl-6">
+
+      <!-- STEP 1: Confirm -->
+      <div *ngIf="state().step === 'confirm'" class="card">
+        <div class="card-body p-4">
+          
+          <!-- Reassurance Header -->
+          <div class="text-center mb-4">
+            <div class="avatar-lg mx-auto mb-3">
+              <div class="avatar-title bg-success-subtle rounded-circle">
+                <i class="ri-refund-2-line fs-36 text-success"></i>
+              </div>
+            </div>
+            <h4 class="mb-2">No Questions Asked</h4>
+            <p class="text-muted mb-0">
+              We believe in earning your trust. If this service isn't right for you, 
+              we'll give you a full refund immediately.
+            </p>
+          </div>
+
+          <hr class="my-4">
+
+          <!-- What You'll Receive -->
+          <div class="bg-light p-4 rounded mb-4">
+            <h6 class="text-uppercase text-muted mb-3">
+              <i class="ri-gift-line me-1"></i>
+              What You'll Receive
+            </h6>
+            
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span>Your current plan</span>
+              <span class="fw-semibold">{{ subscription()?.planName }}</span>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span>Billing period started</span>
+              <span class="fw-semibold">{{ billingPeriodStart() }}</span>
+            </div>
+            
+            <hr>
+            
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-semibold">Full refund amount</span>
+              <span class="fs-20 fw-bold text-success">{{ refundAmountFormatted() }}</span>
+            </div>
+            
+            <div class="mt-3 p-3 bg-success-subtle rounded">
+              <div class="d-flex gap-2">
+                <i class="ri-heart-line text-success fs-20"></i>
+                <div>
+                  <strong class="text-success">We're over-giving</strong>
+                  <p class="text-muted mb-0 small">
+                    You'll receive a full refund for the entire billing period, 
+                    not just the remaining days. That's our promise.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simple Action -->
+          <div class="d-grid gap-2">
+            <button class="btn btn-success btn-lg" (click)="processRefund()">
+              <i class="ri-check-line me-2"></i>
+              Yes, Process My Refund
+            </button>
+            <button class="btn btn-soft-secondary" (click)="goToHub()">
+              I've changed my mind
+            </button>
+          </div>
+
+          <!-- Trust Message -->
+          <div class="text-center mt-4">
+            <small class="text-muted">
+              <i class="ri-shield-check-line me-1"></i>
+              Your refund will be processed within 5-10 business days.
+              We hope to see you again!
+            </small>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- STEP 2: Processing -->
+      <div *ngIf="state().step === 'processing'" class="card">
+        <div class="card-body text-center py-5">
+          <div class="spinner-border text-success mb-4" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Processing...</span>
+          </div>
+          <h4 class="mb-2">Processing Your Refund</h4>
+          <p class="text-muted mb-0">
+            This will only take a moment...
+          </p>
+        </div>
+      </div>
+
+      <!-- STEP 3: Complete -->
+      <div *ngIf="state().step === 'complete'" class="card">
+        <div class="card-body text-center py-5">
+          <div class="avatar-lg mx-auto mb-4">
+            <div class="avatar-title bg-success rounded-circle">
+              <i class="ri-check-line fs-36 text-white"></i>
+            </div>
+          </div>
+          <h4 class="text-success mb-2">Refund Processed!</h4>
+          <p class="text-muted mb-4">
+            We've initiated a full refund of <strong>{{ refundAmountFormatted() }}</strong>
+            to your original payment method.
+          </p>
+          
+          <div class="alert alert-soft-info mb-4">
+            <div class="d-flex gap-2">
+              <i class="ri-time-line fs-18"></i>
+              <div class="text-start">
+                <strong>What happens next?</strong>
+                <p class="mb-0 small">
+                  Your refund will appear on your statement within 5-10 business days,
+                  depending on your bank.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-light p-4 rounded mb-4">
+            <h6 class="text-muted mb-3">We'd love to have you back</h6>
+            <p class="text-muted mb-0 small">
+              If you ever want to try our service again, your account and data 
+              will be here waiting for you. No pressure, no hard feelings.
+            </p>
+          </div>
+
+          <button class="btn btn-primary" (click)="goToHub()">
+            <i class="ri-home-line me-1"></i>
+            Back to Billing
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Error -->
+      <div *ngIf="state().step === 'error'" class="card">
+        <div class="card-body text-center py-5">
+          <div class="avatar-lg mx-auto mb-4">
+            <div class="avatar-title bg-danger-subtle rounded-circle">
+              <i class="ri-error-warning-line fs-36 text-danger"></i>
+            </div>
+          </div>
+          <h4 class="text-danger mb-2">Something Went Wrong</h4>
+          <p class="text-muted mb-4">
+            {{ state().errorMessage }}
+          </p>
+          
+          <div class="alert alert-soft-warning mb-4">
+            <div class="d-flex gap-2">
+              <i class="ri-customer-service-line fs-18"></i>
+              <div class="text-start">
+                <strong>Don't worry - we'll make this right</strong>
+                <p class="mb-0 small">
+                  You can try again or contact our support team. 
+                  We're committed to processing your refund.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button class="btn btn-success" (click)="retry()">
+              <i class="ri-refresh-line me-1"></i>
+              Try Again
+            </button>
+            <a href="mailto:support@example.com" class="btn btn-soft-primary">
+              <i class="ri-mail-line me-1"></i>
+              Contact Support
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

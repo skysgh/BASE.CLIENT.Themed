@@ -7,8 +7,8 @@ import { appsConfiguration } from '../../../../../sites.app/configuration/implem
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
 // Services:
 import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
-// Service Describe Applet:
-import { ServiceDescribeStatsViewModel } from '../../../../../sites.app.lets/service.describe/models/view-models/service-describe-stats.view-model';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribeStatsViewModel } from '../../../../../sites.app.parts/describe/models/view-models/service-describe-stats.view-model';
 import { ViewModel } from './vm';
 
 /**

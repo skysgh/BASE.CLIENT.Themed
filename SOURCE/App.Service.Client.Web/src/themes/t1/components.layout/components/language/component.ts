@@ -9,9 +9,9 @@ import { appsConfiguration } from '../../../../../sites.app/configuration/implem
 import { themesT1Configuration } from '../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
-// Service Operate Applet:
-import { ServiceOperateLanguageService } from '../../../../../sites.app.lets/service.operate/services/service-operate-language.service';
-import { ServiceOperateLanguageViewModel } from '../../../../../sites.app.lets/service.operate/models/view-models/service-operate-language.view-model';
+// Operate Applet (now in sites.app.parts):
+import { ServiceOperateLanguageService } from '../../../../../sites.app.parts/operate/services/service-operate-language.service';
+import { ServiceOperateLanguageViewModel } from '../../../../../sites.app.parts/operate/models/view-models/service-operate-language.view-model';
 // Models:
 import { ViewModel } from './vm';
 import { TranslationService } from '../../../../../core/services/translation.service';

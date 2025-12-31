@@ -172,9 +172,10 @@
     "typescript-transform-paths": "^3.5.3"
   },
   "browserslist": [
-    "last 1 version",
-    "> 1%",
-    "IE 11"
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
   ],
   "overrides": {
     "autoprefixer": "10.4.5"

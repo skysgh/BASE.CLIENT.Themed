@@ -6,8 +6,8 @@ import { appsConfiguration } from '../../../../../../../../sites.app/configurati
 import { themesT1Configuration } from '../../../../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
-// Service Describe Applet:
-import { ServiceDescribeEndorsementService } from '../../../../../../../../sites.app.lets/service.describe/services/service-describe-endorsement.service';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribeEndorsementService } from '../../../../../../../../sites.app.parts/describe/services/service-describe-endorsement.service';
 // Models:
 import { User } from '../../../../../../_state/authentication/auth.models';
 import { ViewModel } from './vm';

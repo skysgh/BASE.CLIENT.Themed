@@ -5,8 +5,8 @@ import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 // Etc:
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 // Services:
-// Service Operate Applet:
-import { ServiceOperateNotificationService } from "../../../../../sites.app.lets/service.operate/services/service-operate-notification.service";
+// Operate Applet (now in sites.app.parts):
+import { ServiceOperateNotificationService } from "../../../../../sites.app.parts/operate/services/service-operate-notification.service";
 import { ResourceUrlService } from "../../../../../core/services/resource-url.service";
 // Configuration:
 import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';

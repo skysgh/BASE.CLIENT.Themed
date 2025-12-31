@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
-// Service Describe Applet:
-import { ServiceDescribeEndorsementService } from '../../../../../../../sites.app.lets/service.describe/services/service-describe-endorsement.service';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribeEndorsementService } from '../../../../../../../sites.app.parts/describe/services/service-describe-endorsement.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';

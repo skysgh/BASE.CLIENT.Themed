@@ -114,6 +114,47 @@ export interface FirebaseConfig {
 }
 
 /**
+ * OIDC Provider configuration
+ */
+export interface OidcProviderConfig {
+  /** Provider ID: 'microsoft' | 'google' | 'auth0' | 'okta' */
+  provider: 'microsoft' | 'google' | 'auth0' | 'okta';
+  /** Whether this provider is enabled */
+  enabled: boolean;
+  /** Client ID from the provider */
+  clientId: string;
+  /** Redirect URI after authentication */
+  redirectUri: string;
+  /** OAuth scopes to request */
+  scopes: string[];
+  /** Display name for UI */
+  displayName: string;
+  /** Icon class for UI button */
+  icon: string;
+  /** Additional provider-specific settings */
+  [key: string]: unknown;
+}
+
+/**
+ * OIDC configuration
+ */
+export interface OidcConfig {
+  /** Available identity providers */
+  providers: OidcProviderConfig[];
+  /** Allow local username/password login */
+  allowLocalLogin: boolean;
+  /** Token storage: 'memory' | 'session' | 'local' */
+  tokenStorage: 'memory' | 'session' | 'local';
+  /** OAuth callback route */
+  callbackRoute: string;
+}
+
+/**
+ * Authentication method type
+ */
+export type AuthMethod = 'fakebackend' | 'fackbackend' | 'firebase' | 'oidc';
+
+/**
  * Main environment configuration interface
  */
 export interface Environment {
@@ -121,8 +162,10 @@ export interface Environment {
   custom: EnvironmentCustom;
   /** Production flag */
   production: boolean;
-  /** Default authentication method */
-  defaultauth: string;
-  /** Firebase configuration */
+  /** Default authentication method: 'fakebackend' | 'firebase' | 'oidc' */
+  defaultauth: AuthMethod;
+  /** Firebase configuration (used when defaultauth = 'firebase') */
   firebaseConfig: FirebaseConfig;
+  /** OIDC configuration (used when defaultauth = 'oidc') */
+  oidcConfig?: OidcConfig;
 }
