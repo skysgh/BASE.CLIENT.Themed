@@ -1,30 +1,28 @@
 /**
- * Core Auth Module
+ * Core Auth Module (Angular-Agnostic)
  * 
- * OIDC/OAuth2 authentication for the application.
+ * Contains only Angular-agnostic code:
+ * - Models (types, interfaces)
+ * - Provider interfaces (abstract definitions)
  * 
- * USAGE:
- * 1. Configure providers in environment.ts or config.json
- * 2. Set environment.defaultauth = 'oidc'
- * 3. Register AuthModule in your app
- * 4. Add callback route to routing
- * 5. Use OidcService.login('microsoft') or OidcService.login('google')
+ * Angular-specific code is in core.ag/auth/:
+ * - Components (AuthProviderListComponent, etc.)
+ * - Services (OidcService)
  * 
- * EXPORTS:
- * - Models: OidcConfiguration, AuthenticatedUser, TokenSet, etc.
- * - Services: OidcService
- * - Providers: IAuthProvider, MicrosoftAuthProvider, GoogleAuthProvider
- * - Components: AuthCallbackComponent
+ * ARCHITECTURE:
+ * ┌─────────────────────────────────────────────────────────┐
+ * │  core/auth/           (Angular-agnostic)               │
+ * │  ├── models/          Types, interfaces                │
+ * │  └── providers/       Provider interface definitions   │
+ * ├─────────────────────────────────────────────────────────┤
+ * │  core.ag/auth/        (Angular-specific)               │
+ * │  ├── components/      UI components                    │
+ * │  └── services/        OidcService, etc.                │
+ * └─────────────────────────────────────────────────────────┘
  */
 
-// Models
+// Models (Angular-agnostic)
 export * from './models';
 
-// Services
-export * from './services';
-
-// Providers
+// Provider interfaces (Angular-agnostic)
 export * from './providers';
-
-// Components
-export * from './components';

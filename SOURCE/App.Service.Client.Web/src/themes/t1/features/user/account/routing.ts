@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 // Component Pages
 import { RegisterComponent } from "./register/component";
 import { LoginComponent } from "./login/component";
-// ✅ Auth Callback for OIDC
-import { AuthCallbackComponent } from "../../../../../core/auth/components/auth-callback.component";
+// ✅ UPDATED: Auth Callback from core.ag
+import { AuthCallbackComponent } from "../../../../../core.ag/auth/components/auth-callback.component";
 
 const routes: Routes = [
   {

@@ -16,11 +16,13 @@ import { TitleService } from '../../../../../../core/services/title.service';
 import { ToastService } from '../../../../../../core/services/toast.service';
 import { EnvConfigService } from '../../../../../../core/services/env-config.service';
 import { AccountService } from '../../../../../../core/services/account.service';
-import { OidcService } from '../../../../../../core/auth/services/oidc.service';
+// ✅ UPDATED: Import from core.ag
+import { OidcService } from '../../../../../../core.ag/auth/services/oidc.service';
 // Models:
 import { ViewModel } from './vm';
-import { AuthProviderDisplay } from '../../../../../../core/auth/components/auth-provider-list.component';
-import { EmailLoginCredentials } from '../../../../../../core/auth/components/email-login-form.component';
+// ✅ UPDATED: Import from core.ag
+import { AuthProviderDisplay } from '../../../../../../core.ag/auth/components/auth-provider-list.component';
+import { EmailLoginCredentials } from '../../../../../../core.ag/auth/components/email-login-form.component';
 // Environment
 import { environment } from '../../../../../../environments/environment';
 

@@ -7,8 +7,8 @@ import { ConfigRegistryService } from '../../core/services/config-registry.servi
 import { AuthenticationService } from '../../core/services/auth.service';
 import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
 import { environment } from '../../environments/environment';
-// ✅ NEW: OIDC Service for real authentication
-import { OidcService } from '../../core/auth/services/oidc.service';
+// ✅ UPDATED: OIDC Service from core.ag
+import { OidcService } from '../auth/services/oidc.service';
 
 @Injectable({ providedIn: 'root' })
 /**
