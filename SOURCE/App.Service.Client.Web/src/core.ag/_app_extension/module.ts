@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 // Routing:
 import { RouterModule, Routes } from '@angular/router';
 // Import Auth:
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 // Import Language:
 import { TranslateModule, TranslateLoader, TranslateCompiler, MissingTranslationHandler, MissingTranslationHandlerParams } from '@ngx-translate/core';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
@@ -49,94 +49,70 @@ export class QuietMissingTranslationHandler implements MissingTranslationHandler
   }
 }
 
-@NgModule({
-  declarations: [
+@NgModule({ declarations: [
     // Components, Directives, Pipes developed in this Module.
     //BaseRouterOutletComponent
-  ],
-  providers: [
-    CookieService,
-    provideHttpClient(),
-  ],
-  imports: [
-    // *******************************************************
-    // *******************************************************
-    // WARNING:
-    // WHAT THIS MODULE DOESN'T DO IS IMPORT THE PARENT MODULE
-    // (AppModule).
-    // ie, this module is for all intents and purposes the
-    // 'top/entry' point of the stack of modules.
-    // *******************************************************
-    // *******************************************************
-
-    HttpClientModule,
-    // NOTE: the root module is the only module that imports BrowserModule.
-    // All other Modules import CommonModule (from which BrowserModule is derived).
-    BrowserModule,
-    // Extended version of BrowserModule:
-    BrowserAnimationsModule,
-
-
-    // Get presentation langauge packs sorted:
-    TranslateModule.forRoot({
-      // Set the first language
-      // based on saved settings:
-      defaultLanguage: getLanguageCode(),
-      //defines the loader:
-      loader: {
-        provide: TranslateLoader,
-        // use our method to create our custom multiloader:
-        useFactory: (createTranslateLoader),
-        // the method depends on services, etc. so
-        // inject into createTranslateLoader, as first argument:
-        deps: [HttpClient]
-      },
-      // ⚠️ TEMPORARILY DISABLED: MessageFormat causing console flood
-      // Re-enable after fixing translation keys
-      // compiler: {
-      //   provide: TranslateCompiler,
-      //   useClass: TranslateMessageFormatCompiler
-      // },
-      // ✅ Custom handler to reduce console noise
-      missingTranslationHandler: {
-        provide: MissingTranslationHandler,
-        useClass: QuietMissingTranslationHandler
-      }
-    }),
-
-    // Initialize root store
-    StoreModule.forRoot({}),
-
-    // ✅ Register layout feature state EARLY (before lazy-loaded modules)
-    // This ensures layout state is available when AppLayoutComponent loads
-    StoreModule.forFeature('layout', layoutReducer),
-
-    // Register theme-specific authentication feature state
-    // (moved from CoreAg module to keep Core/CoreAg theme-independent)
-    StoreModule.forFeature('authentication', authenticationReducer),
-
-    // MUST be registered *after* storeModule has been registered.
-    // BUT won't show state of lazy loaded modules until they are loaded.
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: environment.production, // Restrict extension to log-only mode
-    }),
-
-
-    // Import the routes module, which defines routes
-    // and lazy loads feature modules as needed
-    AppExtensionRoutingModule,
-
-    BaseAppsModule
-
-  ],
-  exports: [
-    RouterModule,
-    BaseAppsModule
-  ]
-  // IMPORTANT:
-  // The bootstrap attribute cannot be moved out of AppModule.
-})
+    ],
+    exports: [
+        RouterModule,
+        BaseAppsModule
+    ]
+    // IMPORTANT:
+    // The bootstrap attribute cannot be moved out of AppModule.
+    , imports: [
+        // NOTE: the root module is the only module that imports BrowserModule.
+        // All other Modules import CommonModule (from which BrowserModule is derived).
+        BrowserModule,
+        // Extended version of BrowserModule:
+        BrowserAnimationsModule,
+        // Get presentation langauge packs sorted:
+        TranslateModule.forRoot({
+            // Set the first language
+            // based on saved settings:
+            defaultLanguage: getLanguageCode(),
+            //defines the loader:
+            loader: {
+                provide: TranslateLoader,
+                // use our method to create our custom multiloader:
+                useFactory: (createTranslateLoader),
+                // the method depends on services, etc. so
+                // inject into createTranslateLoader, as first argument:
+                deps: [HttpClient]
+            },
+            // ⚠️ TEMPORARILY DISABLED: MessageFormat causing console flood
+            // Re-enable after fixing translation keys
+            // compiler: {
+            //   provide: TranslateCompiler,
+            //   useClass: TranslateMessageFormatCompiler
+            // },
+            // ✅ Custom handler to reduce console noise
+            missingTranslationHandler: {
+                provide: MissingTranslationHandler,
+                useClass: QuietMissingTranslationHandler
+            }
+        }),
+        // Initialize root store
+        StoreModule.forRoot({}),
+        // ✅ Register layout feature state EARLY (before lazy-loaded modules)
+        // This ensures layout state is available when AppLayoutComponent loads
+        StoreModule.forFeature('layout', layoutReducer),
+        // Register theme-specific authentication feature state
+        // (moved from CoreAg module to keep Core/CoreAg theme-independent)
+        StoreModule.forFeature('authentication', authenticationReducer),
+        // MUST be registered *after* storeModule has been registered.
+        // BUT won't show state of lazy loaded modules until they are loaded.
+        StoreDevtoolsModule.instrument({
+            maxAge: 25, // Retains last 25 states
+            logOnly: environment.production, // Restrict extension to log-only mode
+        }),
+        // Import the routes module, which defines routes
+        // and lazy loads feature modules as needed
+        AppExtensionRoutingModule,
+        BaseAppsModule], providers: [
+        CookieService,
+        provideHttpClient(),
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppExtensionModule {
 
   /**

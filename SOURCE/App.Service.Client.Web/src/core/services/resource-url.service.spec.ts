@@ -13,7 +13,7 @@
  */
 
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {} from '@angular/common/http/testing';
 
 // ✅ CORE TIER IMPORTS ONLY
 import { ResourceUrlService } from './resource-url.service';
