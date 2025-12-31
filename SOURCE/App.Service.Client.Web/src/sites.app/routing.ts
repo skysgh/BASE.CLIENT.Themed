@@ -6,8 +6,15 @@
  * Route Structure:
  * - /app/*            → Domain applets (sites.app.lets/) - what users came for
  * - /system/*         → Platform applets (sites.app.parts/) - system support
+ * - /errors/*         → Error pages - graceful degradation
  * - /dev/*            → Developer tools - theme reference, integrations, etc.
  *   - /dev/theme/t1/* → Theme T1 (Velzon) reference (themes/t1.dev/)
+ *   - /dev/integrations/* → Integration guides (auth, payments, etc.)
+ * 
+ * Account Prefix Support:
+ * All routes work with or without account prefix:
+ * - /errors/404 (default account)
+ * - /bar/errors/404 (account "bar")
  */
 
 import { NgModule } from '@angular/core';
@@ -95,27 +102,34 @@ const routes: Routes = [
   },
 
   // ============================================================================
+  // ERROR PAGES - /errors/* (sites.app.parts/errors)
+  // Graceful degradation - lazy loaded (errors are rare)
+  // ============================================================================
+
+  { 
+    path: 'errors', 
+    loadChildren: () => import('../sites.app.parts/errors/module').then(m => m.ErrorsModule)
+  },
+
+  // ============================================================================
+  // MAINTENANCE PAGES - /system/maintenance (sites.app.parts/maintenance)
+  // Service status - "we're down" notifications
+  // ============================================================================
+
+  { 
+    path: 'system/maintenance', 
+    loadChildren: () => import('../sites.app.parts/maintenance/module').then(m => m.MaintenanceModule)
+  },
+
+  // ============================================================================
   // DEVELOPER TOOLS - /dev/*
   // Developer reference pages for theme, integrations, etc.
   // ============================================================================
 
-  // Theme T1 (Velzon) Developer Reference
-  // Path: /dev/theme/t1/minimal/icons, /dev/theme/t1/minimal/ui, etc.
-  { 
-    path: 'dev/theme/t1', 
-    loadChildren: () => import('../themes/t1.dev/module').then(m => m.T1DevModule)
-  },
-
-  // Future developer tools:
-  // { path: 'dev/integrations/stripe', loadChildren: () => ... },
-  // { path: 'dev/integrations/oauth', loadChildren: () => ... },
-  // { path: 'dev/integrations/oidc', loadChildren: () => ... },
-
-  // Dev Hub - Redirect to theme for now
+  // Dev Hub - shows overview with links to all dev tools
   { 
     path: 'dev', 
-    redirectTo: 'dev/theme/t1',
-    pathMatch: 'full'
+    loadChildren: () => import('../sites.app.dev/module').then(m => m.SitesAppDevModule)
   },
 
   // ============================================================================
