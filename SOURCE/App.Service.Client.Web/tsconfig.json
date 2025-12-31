@@ -31,7 +31,8 @@
     "lib": [
       "es2022",
       "dom"
-    ]
+    ],
+    "skipLibCheck": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -48,7 +49,6 @@
     "strictLiteralTypes": true
   },
 
-  "skipLibCheck": true, // if your TS is lower than 4.0
   //"experimentalDecorators": true, // for @automapper/classes
   "emitDecoratorMetadata": true // for @automapper/classes
 }
