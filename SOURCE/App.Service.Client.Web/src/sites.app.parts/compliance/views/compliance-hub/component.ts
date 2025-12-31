@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 /**
@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
  */
 @Component({
     selector: 'app-compliance-hub',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     template: `
     <div class="compliance-hub">
       <div class="page-header mb-4">
@@ -21,21 +21,23 @@ import { RouterModule } from '@angular/router';
           View our policies, terms, and compliance documentation.
         </p>
       </div>
-
+    
       <div class="row">
-        <div class="col-md-4 mb-4" *ngFor="let doc of documents">
-          <div class="card h-100 doc-card" [routerLink]="doc.route">
-            <div class="card-body">
-              <div class="doc-icon mb-3" [style.background-color]="doc.color">
-                <i class="bx {{doc.icon}}"></i>
+        @for (doc of documents; track doc) {
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 doc-card" [routerLink]="doc.route">
+              <div class="card-body">
+                <div class="doc-icon mb-3" [style.background-color]="doc.color">
+                  <i class="bx {{doc.icon}}"></i>
+                </div>
+                <h5>{{doc.title}}</h5>
+                <p class="text-muted small mb-0">{{doc.description}}</p>
               </div>
-              <h5>{{doc.title}}</h5>
-              <p class="text-muted small mb-0">{{doc.description}}</p>
             </div>
           </div>
-        </div>
+        }
       </div>
-
+    
       <div class="mt-4">
         <a routerLink="/app" class="btn btn-outline-secondary">
           <i class="bx bx-arrow-back me-1"></i>
@@ -43,7 +45,7 @@ import { RouterModule } from '@angular/router';
         </a>
       </div>
     </div>
-  `,
+    `,
     styles: [`
     .compliance-hub { padding: 1.5rem; max-width: 1200px; margin: 0 auto; }
     .doc-card { cursor: pointer; transition: all 0.2s ease; border: 1px solid var(--vz-border-color); }

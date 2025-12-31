@@ -7,7 +7,7 @@
  * Route: /apps/dev/theme/t1/minimal
  */
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 interface ReferenceSection {
@@ -28,7 +28,7 @@ interface ReferenceItem {
 
 @Component({
     selector: 'app-t1-dev-hub',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     template: `
     <div class="dev-hub">
       <!-- Header -->
@@ -45,7 +45,7 @@ interface ReferenceItem {
           </div>
         </div>
       </div>
-
+    
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb" class="mb-4">
         <ol class="breadcrumb">
@@ -54,7 +54,7 @@ interface ReferenceItem {
           <li class="breadcrumb-item active">Minimal</li>
         </ol>
       </nav>
-
+    
       <!-- Theme Info Card -->
       <div class="card bg-primary-subtle border-0 mb-4">
         <div class="card-body">
@@ -71,55 +71,61 @@ interface ReferenceItem {
                 This is the <strong>Minimal</strong> style with <strong>Vertical</strong> layout.
               </p>
             </div>
-            <a href="https://themeforest.net/item/velzon-aspnet-core-admin-dashboard-template/36077495" 
-               target="_blank" 
-               class="btn btn-primary">
+            <a href="https://themeforest.net/item/velzon-aspnet-core-admin-dashboard-template/36077495"
+              target="_blank"
+              class="btn btn-primary">
               <i class="ri-external-link-line me-1"></i>
               View on ThemeForest
             </a>
           </div>
         </div>
       </div>
-
+    
       <!-- Reference Sections -->
       <div class="row">
-        <div class="col-xl-6" *ngFor="let section of sections">
-          <div class="card">
-            <div class="card-header d-flex align-items-center">
-              <div class="avatar-sm me-3">
-                <div class="avatar-title rounded" [style.background]="section.iconColor">
-                  <i [class]="section.icon + ' fs-20 text-white'"></i>
+        @for (section of sections; track section) {
+          <div class="col-xl-6">
+            <div class="card">
+              <div class="card-header d-flex align-items-center">
+                <div class="avatar-sm me-3">
+                  <div class="avatar-title rounded" [style.background]="section.iconColor">
+                    <i [class]="section.icon + ' fs-20 text-white'"></i>
+                  </div>
                 </div>
+                <div class="flex-grow-1">
+                  <h5 class="card-title mb-0">{{ section.title }}</h5>
+                  <p class="text-muted mb-0 small">{{ section.description }}</p>
+                </div>
+                @if (section.badge) {
+                  <span class="badge bg-soft-success text-success">
+                    {{ section.badge }}
+                  </span>
+                }
               </div>
-              <div class="flex-grow-1">
-                <h5 class="card-title mb-0">{{ section.title }}</h5>
-                <p class="text-muted mb-0 small">{{ section.description }}</p>
-              </div>
-              <span *ngIf="section.badge" class="badge bg-soft-success text-success">
-                {{ section.badge }}
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="row g-2">
-                <div class="col-6 col-md-4" *ngFor="let item of section.items">
-                  <a [routerLink]="section.route + '/' + item.route" 
-                     class="btn btn-soft-secondary w-100 text-start">
-                    <i class="ri-arrow-right-s-line me-1"></i>
-                    {{ item.title }}
+              <div class="card-body">
+                <div class="row g-2">
+                  @for (item of section.items; track item) {
+                    <div class="col-6 col-md-4">
+                      <a [routerLink]="section.route + '/' + item.route"
+                        class="btn btn-soft-secondary w-100 text-start">
+                        <i class="ri-arrow-right-s-line me-1"></i>
+                        {{ item.title }}
+                      </a>
+                    </div>
+                  }
+                </div>
+                <div class="mt-3 text-end">
+                  <a [routerLink]="section.route" class="link-primary">
+                    View all {{ section.title.toLowerCase() }}
+                    <i class="ri-arrow-right-line ms-1"></i>
                   </a>
                 </div>
               </div>
-              <div class="mt-3 text-end">
-                <a [routerLink]="section.route" class="link-primary">
-                  View all {{ section.title.toLowerCase() }}
-                  <i class="ri-arrow-right-line ms-1"></i>
-                </a>
-              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
-
+    
       <!-- Developer Warning -->
       <div class="alert alert-warning border-0 d-flex align-items-center mt-4" role="alert">
         <i class="ri-tools-line fs-20 me-2"></i>
@@ -128,7 +134,7 @@ interface ReferenceItem {
         </div>
       </div>
     </div>
-  `,
+    `,
     styles: [`
     .dev-hub {
       padding: 1.5rem;

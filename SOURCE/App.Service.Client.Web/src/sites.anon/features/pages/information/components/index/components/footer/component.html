@@ -1,31 +1,31 @@
 <!--
-  Footer shows things that are not key business functional needs.
-  Metadata about sponsor organisation, etc.
-  Examples to consider what to link to are:
-  - Timely:
-    - Specials
-    - News and Media
-  - Places/Stores & Service:
-    - Stores/Schools/Dance Halls/whatever
-    - Online shopping (here)
-  - Customer Service:
-    - Orders
-    - Deliveries
-    - Account
-    - FAQs
-    - Chatbot
-    - Contact Us
-  - Wholesale supply:
-    - ...feels like it should get lumped with Customers?
-  - Suppliers?
-  - About:
-    - Us/Sponsor
-    - Beyond: Partners, Community/Environment
-    - Careers
-  - Social
-    - Facebook, Pinterest, linkedin, instagram, youtube...
+Footer shows things that are not key business functional needs.
+Metadata about sponsor organisation, etc.
+Examples to consider what to link to are:
+- Timely:
+- Specials
+- News and Media
+- Places/Stores & Service:
+- Stores/Schools/Dance Halls/whatever
+- Online shopping (here)
+- Customer Service:
+- Orders
+- Deliveries
+- Account
+- FAQs
+- Chatbot
+- Contact Us
+- Wholesale supply:
+- ...feels like it should get lumped with Customers?
+- Suppliers?
+- About:
+- Us/Sponsor
+- Beyond: Partners, Community/Environment
+- Careers
+- Social
+- Facebook, Pinterest, linkedin, instagram, youtube...
 TODO:
- -->
+-->
 <!-- [id]="sectionsInfo.footer.id" -->
 <footer class="custom-footer bg-dark py-5 position-relative">
   <div class="container">
@@ -34,7 +34,9 @@ TODO:
         <div>
           <div>
             <!-- ✅ MULTI-ACCOUNT: Use AccountService observable -->
-            <img *ngIf="logo$ | async as logo" [src]="logo" alt="logo light" height="17">
+            @if (logo$ | async; as logo) {
+              <img [src]="logo" alt="logo light" height="17">
+            }
           </div>
           <div class="mt-4 fs-13">
             <p>{{this.appsConfiguration.description.description}}</p>

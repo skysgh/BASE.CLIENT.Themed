@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 /**
@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
  */
 @Component({
     selector: 'app-typography-reference',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     template: `
     <div class="typography-reference">
       <div class="d-flex align-items-center mb-4">

@@ -29,29 +29,33 @@ import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
       </label>
       <div class="field-value" [ngClass]="valueClass">
         <!-- Badge style for status/priority -->
-        <ng-container *ngIf="isBadgeField">
+        @if (isBadgeField) {
           <span class="badge" [style.background-color]="badgeColor">
             {{ displayValue }}
           </span>
-        </ng-container>
-        
+        }
+    
         <!-- Tags style for multiselect -->
-        <ng-container *ngIf="isTagsField">
+        @if (isTagsField) {
           <div class="d-flex flex-wrap gap-1">
-            <span *ngFor="let tag of tags" class="badge bg-info-subtle text-info">
-              {{ tag }}
-            </span>
-            <span *ngIf="tags.length === 0" class="text-muted">—</span>
+            @for (tag of tags; track tag) {
+              <span class="badge bg-info-subtle text-info">
+                {{ tag }}
+              </span>
+            }
+            @if (tags.length === 0) {
+              <span class="text-muted">—</span>
+            }
           </div>
-        </ng-container>
-        
+        }
+    
         <!-- Default text style -->
-        <ng-container *ngIf="!isBadgeField && !isTagsField">
+        @if (!isBadgeField && !isTagsField) {
           <span [innerHTML]="displayValue"></span>
-        </ng-container>
+        }
       </div>
     </div>
-  `,
+    `,
     styles: [`
     .formly-label-field {
       .form-label {

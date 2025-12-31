@@ -15,7 +15,9 @@
                     <div class="mb-4">
                       <a routerLink="/" class="d-block">
                         <!-- ✅ MULTI-ACCOUNT: Use AccountService observable -->
-                        <img *ngIf="logo$ | async as logo" [src]="logo" alt="" height="18">
+                        @if (logo$ | async; as logo) {
+                          <img [src]="logo" alt="" height="18">
+                        }
                       </a>
                     </div>
                     <div class="mt-auto">
@@ -68,7 +70,7 @@
                     <div class="mt-4">
                       <!-- ✅ FIXED: Use tierConfig.postLoginRedirect -->
                       <a [routerLink]="[tierConfig.postLoginRedirect]"
-                         class="btn btn-success w-100">
+                        class="btn btn-success w-100">
                         {{'BASE.LOCATIONS.DASHBOARD'| baseTranslate}}
                       </a>
                     </div>

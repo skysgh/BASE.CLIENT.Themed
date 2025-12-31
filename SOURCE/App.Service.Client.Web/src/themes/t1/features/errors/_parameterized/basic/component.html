@@ -19,56 +19,60 @@
             <!-- Error Image -->
             <div class="">
               <img [src]="errorImage"
-                   [alt]="errorConfig.code + ' error'"
-                   class="error-basic-img move-animation">
-            </div>
-            
-            <div class="mt-n4">
-              <!-- Error Code -->
-              <h1 class="display-1 fw-medium">
-                {{ errorConfig.code }}
-              </h1>
-              
-              <!-- Error Title -->
-              <h3 class="text-uppercase">
-                {{ errorConfig.titleKey | baseTranslate }}
-              </h3>
-              
-              <!-- Error Description -->
-              <p class="text-muted mb-4">
-                {{ errorConfig.descriptionKey | baseTranslate }}
-              </p>
-              
-              <!-- Action Buttons -->
-              <div class="d-flex justify-content-center gap-2">
-                <!-- Back Button -->
-                <button *ngIf="errorConfig.showBackButton" 
-                        (click)="goBack()" 
-                        class="btn btn-outline-secondary">
-                  <i class="bx bx-arrow-back me-1"></i>
-                  {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
-                </button>
-                
-                <!-- Home Button -->
-                <a *ngIf="errorConfig.showHomeButton" 
-                   routerLink="/" 
-                   [class]="'btn ' + errorConfig.buttonClass">
-                  <i class="mdi mdi-home me-1"></i>
-                  {{ 'BASE.HOMES.SINGULAR' | baseTranslate }}
-                </a>
+                [alt]="errorConfig.code + ' error'"
+                class="error-basic-img move-animation">
+              </div>
+
+              <div class="mt-n4">
+                <!-- Error Code -->
+                <h1 class="display-1 fw-medium">
+                  {{ errorConfig.code }}
+                </h1>
+
+                <!-- Error Title -->
+                <h3 class="text-uppercase">
+                  {{ errorConfig.titleKey | baseTranslate }}
+                </h3>
+
+                <!-- Error Description -->
+                <p class="text-muted mb-4">
+                  {{ errorConfig.descriptionKey | baseTranslate }}
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-center gap-2">
+                  <!-- Back Button -->
+                  @if (errorConfig.showBackButton) {
+                    <button
+                      (click)="goBack()"
+                      class="btn btn-outline-secondary">
+                      <i class="bx bx-arrow-back me-1"></i>
+                      {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
+                    </button>
+                  }
+
+                  <!-- Home Button -->
+                  @if (errorConfig.showHomeButton) {
+                    <a
+                      routerLink="/"
+                      [class]="'btn ' + errorConfig.buttonClass">
+                      <i class="mdi mdi-home me-1"></i>
+                      {{ 'BASE.HOMES.SINGULAR' | baseTranslate }}
+                    </a>
+                  }
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- end row -->
       </div>
-      <!-- end row -->
+      <!-- end container -->
     </div>
-    <!-- end container -->
+    <!-- end auth page content -->
+
+    <!-- footer -->
+    <app-base-common-components-footer-a></app-base-common-components-footer-a>
+    <!-- end Footer -->
   </div>
-  <!-- end auth page content -->
-  
-  <!-- footer -->
-  <app-base-common-components-footer-a></app-base-common-components-footer-a>
-  <!-- end Footer -->
-</div>
-<!-- end auth-page-wrapper -->
+  <!-- end auth-page-wrapper -->

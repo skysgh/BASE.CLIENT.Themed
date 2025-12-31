@@ -24,116 +24,114 @@ import { AboutService } from '../../services/about.service';
           </h4>
         </div>
       </div>
-
-      <div *ngIf="aboutService.version() as version">
-        
-        <!-- Main Version Card -->
-        <div class="card mb-4">
-          <div class="card-body text-center py-5">
-            <div class="version-badge mb-3">
-              <span class="version-number">v{{ version.version }}</span>
-            </div>
-            <span class="badge fs-14"
-                  [class.bg-success]="version.environment === 'production'"
-                  [class.bg-warning]="version.environment !== 'production'">
-              <i class="bx bx-server me-1"></i>
-              {{ version.environment | titlecase }}
-            </span>
-          </div>
-        </div>
-
-        <!-- Build Details -->
-        <div class="card mb-4">
-          <div class="card-header">
-            <h5 class="mb-0">
-              <i class="bx bx-wrench me-2"></i>
-              Build Details
-            </h5>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <table class="table table-borderless mb-0">
-                  <tbody>
-                    <tr>
-                      <td class="text-muted">Build Number</td>
-                      <td class="fw-semibold">{{ version.buildNumber || 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                      <td class="text-muted">Build Date</td>
-                      <td class="fw-semibold">{{ formatDate(version.buildDate) }}</td>
-                    </tr>
-                    <tr>
-                      <td class="text-muted">Commit Hash</td>
-                      <td class="fw-semibold font-monospace">
-                        {{ version.commitHash ? version.commitHash.substring(0, 8) : 'N/A' }}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+    
+      @if (aboutService.version(); as version) {
+        <div>
+          <!-- Main Version Card -->
+          <div class="card mb-4">
+            <div class="card-body text-center py-5">
+              <div class="version-badge mb-3">
+                <span class="version-number">v{{ version.version }}</span>
               </div>
-              <div class="col-md-6">
-                <table class="table table-borderless mb-0">
-                  <tbody>
-                    <tr>
-                      <td class="text-muted">Angular Version</td>
-                      <td class="fw-semibold">{{ version.angularVersion || 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                      <td class="text-muted">Node Version</td>
-                      <td class="fw-semibold">{{ version.nodeVersion || 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                      <td class="text-muted">Environment</td>
-                      <td>
-                        <span class="badge"
-                              [class.bg-success]="version.environment === 'production'"
-                              [class.bg-warning]="version.environment !== 'production'">
-                          {{ version.environment }}
-                        </span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <span class="badge fs-14"
+                [class.bg-success]="version.environment === 'production'"
+                [class.bg-warning]="version.environment !== 'production'">
+                <i class="bx bx-server me-1"></i>
+                {{ version.environment | titlecase }}
+              </span>
             </div>
           </div>
-        </div>
-
-        <!-- Browser Info -->
-        <div class="card mb-4">
-          <div class="card-header">
-            <h5 class="mb-0">
-              <i class="bx bx-globe me-2"></i>
-              Browser Information
-            </h5>
+          <!-- Build Details -->
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">
+                <i class="bx bx-wrench me-2"></i>
+                Build Details
+              </h5>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <table class="table table-borderless mb-0">
+                    <tbody>
+                      <tr>
+                        <td class="text-muted">Build Number</td>
+                        <td class="fw-semibold">{{ version.buildNumber || 'N/A' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-muted">Build Date</td>
+                        <td class="fw-semibold">{{ formatDate(version.buildDate) }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-muted">Commit Hash</td>
+                        <td class="fw-semibold font-monospace">
+                          {{ version.commitHash ? version.commitHash.substring(0, 8) : 'N/A' }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <table class="table table-borderless mb-0">
+                    <tbody>
+                      <tr>
+                        <td class="text-muted">Angular Version</td>
+                        <td class="fw-semibold">{{ version.angularVersion || 'N/A' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-muted">Node Version</td>
+                        <td class="fw-semibold">{{ version.nodeVersion || 'N/A' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-muted">Environment</td>
+                        <td>
+                          <span class="badge"
+                            [class.bg-success]="version.environment === 'production'"
+                            [class.bg-warning]="version.environment !== 'production'">
+                            {{ version.environment }}
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <table class="table table-borderless mb-0">
-              <tbody>
-                <tr>
-                  <td class="text-muted" style="width: 200px;">User Agent</td>
-                  <td class="font-monospace small">{{ userAgent }}</td>
-                </tr>
-                <tr>
-                  <td class="text-muted">Language</td>
-                  <td>{{ language }}</td>
-                </tr>
-                <tr>
-                  <td class="text-muted">Platform</td>
-                  <td>{{ platform }}</td>
-                </tr>
-                <tr>
-                  <td class="text-muted">Screen Resolution</td>
-                  <td>{{ screenResolution }}</td>
-                </tr>
-              </tbody>
-            </table>
+          <!-- Browser Info -->
+          <div class="card mb-4">
+            <div class="card-header">
+              <h5 class="mb-0">
+                <i class="bx bx-globe me-2"></i>
+                Browser Information
+              </h5>
+            </div>
+            <div class="card-body">
+              <table class="table table-borderless mb-0">
+                <tbody>
+                  <tr>
+                    <td class="text-muted" style="width: 200px;">User Agent</td>
+                    <td class="font-monospace small">{{ userAgent }}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-muted">Language</td>
+                    <td>{{ language }}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-muted">Platform</td>
+                    <td>{{ platform }}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-muted">Screen Resolution</td>
+                    <td>{{ screenResolution }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-
-      </div>
-
+      }
+    
       <!-- Back Button -->
       <div class="mt-4">
         <a routerLink="../" class="btn btn-outline-secondary">
@@ -142,7 +140,7 @@ import { AboutService } from '../../services/about.service';
         </a>
       </div>
     </div>
-  `,
+    `,
     styles: [`
     .version-page { padding: 1.5rem; max-width: 800px; margin: 0 auto; }
     

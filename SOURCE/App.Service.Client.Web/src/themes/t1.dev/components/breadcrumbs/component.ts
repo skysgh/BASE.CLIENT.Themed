@@ -7,12 +7,12 @@
  * Selector: app-breadcrumbs (matches Velzon's component)
  */
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-breadcrumbs',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     template: `
     <div class="row">
       <div class="col-12">
@@ -23,17 +23,19 @@ import { RouterModule } from '@angular/router';
               <li class="breadcrumb-item">
                 <a routerLink="/apps/dev">Developer</a>
               </li>
-              <li *ngFor="let item of breadcrumbItems" 
-                  class="breadcrumb-item" 
+              @for (item of breadcrumbItems; track item) {
+                <li
+                  class="breadcrumb-item"
                   [class.active]="item.active">
-                {{ item.label }}
-              </li>
+                  {{ item.label }}
+                </li>
+              }
             </ol>
           </div>
         </div>
       </div>
     </div>
-  `
+    `
 })
 export class DevBreadcrumbsComponent {
   @Input() title: string = '';

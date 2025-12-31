@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-md-3 col-sm-6 mb-3">
       <div class="card card-metric">
         <div class="card-body">
@@ -54,7 +54,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-md-3 col-sm-6 mb-3">
       <div class="card card-metric">
         <div class="card-body">
@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-md-3 col-sm-6 mb-3">
       <div class="card card-metric">
         <div class="card-body">
@@ -102,23 +102,27 @@
         <div class="card-body">
           <!-- Simple bar representation (replace with ApexCharts later) -->
           <div class="chart-placeholder">
-            <div *ngFor="let item of statusChartData" class="chart-bar-item mb-3">
-              <div class="d-flex justify-content-between mb-1">
-                <span>{{item.label}}</span>
-                <span class="fw-medium">{{item.value}}</span>
-              </div>
-              <div class="progress" style="height: 8px;">
-                <div 
-                  class="progress-bar" 
-                  [style.width.%]="metrics.total ? (item.value / metrics.total) * 100 : 0"
-                  [style.background-color]="item.color">
+            @for (item of statusChartData; track item) {
+              <div class="chart-bar-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>{{item.label}}</span>
+                  <span class="fw-medium">{{item.value}}</span>
+                </div>
+                <div class="progress" style="height: 8px;">
+                  <div
+                    class="progress-bar"
+                    [style.width.%]="metrics.total ? (item.value / metrics.total) * 100 : 0"
+                    [style.background-color]="item.color">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div *ngIf="statusChartData.length === 0" class="text-center text-muted py-4">
-              <i class="bx bx-bar-chart display-4"></i>
-              <p class="mt-2">No data available</p>
-            </div>
+            }
+            @if (statusChartData.length === 0) {
+              <div class="text-center text-muted py-4">
+                <i class="bx bx-bar-chart display-4"></i>
+                <p class="mt-2">No data available</p>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -135,23 +139,27 @@
         </div>
         <div class="card-body">
           <div class="chart-placeholder">
-            <div *ngFor="let item of priorityChartData" class="chart-bar-item mb-3">
-              <div class="d-flex justify-content-between mb-1">
-                <span>{{item.label}}</span>
-                <span class="fw-medium">{{item.value}}</span>
-              </div>
-              <div class="progress" style="height: 8px;">
-                <div 
-                  class="progress-bar" 
-                  [style.width.%]="metrics.total ? (item.value / metrics.total) * 100 : 0"
-                  [style.background-color]="item.color">
+            @for (item of priorityChartData; track item) {
+              <div class="chart-bar-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>{{item.label}}</span>
+                  <span class="fw-medium">{{item.value}}</span>
+                </div>
+                <div class="progress" style="height: 8px;">
+                  <div
+                    class="progress-bar"
+                    [style.width.%]="metrics.total ? (item.value / metrics.total) * 100 : 0"
+                    [style.background-color]="item.color">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div *ngIf="priorityChartData.length === 0" class="text-center text-muted py-4">
-              <i class="bx bx-bar-chart display-4"></i>
-              <p class="mt-2">No data available</p>
-            </div>
+            }
+            @if (priorityChartData.length === 0) {
+              <div class="text-center text-muted py-4">
+                <i class="bx bx-bar-chart display-4"></i>
+                <p class="mt-2">No data available</p>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -191,14 +199,14 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Comparison Bar -->
           <div class="mt-3">
             <div class="d-flex gap-2 align-items-center mb-2">
               <span class="badge bg-primary">Estimated</span>
               <div class="progress flex-grow-1" style="height: 20px;">
-                <div 
-                  class="progress-bar bg-primary" 
+                <div
+                  class="progress-bar bg-primary"
                   [style.width.%]="100">
                 </div>
               </div>
@@ -206,8 +214,8 @@
             <div class="d-flex gap-2 align-items-center">
               <span class="badge bg-success" style="width: 68px;">Actual</span>
               <div class="progress flex-grow-1" style="height: 20px;">
-                <div 
-                  class="progress-bar bg-success" 
+                <div
+                  class="progress-bar bg-success"
                   [style.width.%]="metrics.totalEstimatedEffort ? (metrics.totalActualEffort / metrics.totalEstimatedEffort) * 100 : 0">
                 </div>
               </div>
@@ -219,10 +227,10 @@
   </div>
 
   <!-- Future: Add more chart sections -->
-  <!-- 
-    - Timeline/Gantt of due dates
-    - Completion trends over time (line chart)
-    - Category breakdown
-    - Tag cloud
+  <!--
+  - Timeline/Gantt of due dates
+  - Completion trends over time (line chart)
+  - Category breakdown
+  - Tag cloud
   -->
 </div>

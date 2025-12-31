@@ -1,251 +1,261 @@
 <div class="container-fluid">
-  
+
   <!-- Step 1: Select Plan -->
-  <div *ngIf="currentStep === 'select-plan'">
-    
-    <!-- Header -->
-    <div class="row justify-content-center">
-      <div class="col-lg-8 text-center mb-5">
-        <h2 class="mb-3 fw-semibold">{{ 'BASE.SUBSCRIPTIONS.SELECT_PLAN' | baseTranslate }}</h2>
-        <p class="text-muted mb-4">{{ 'BASE.SUBSCRIPTIONS.SELECT_PLAN_DESCRIPTION' | baseTranslate }}</p>
-        
-        <!-- Billing Toggle -->
-        <div class="d-flex justify-content-center align-items-center gap-3">
-          <span [class.fw-bold]="billingInterval === 'monthly'">{{ 'BASE.BILLING.MONTHLY' | baseTranslate }}</span>
-          <div class="form-check form-switch form-switch-lg">
-            <input class="form-check-input" 
-                   type="checkbox" 
-                   [checked]="billingInterval === 'yearly'"
-                   (change)="toggleBillingInterval()">
+  @if (currentStep === 'select-plan') {
+    <div>
+      <!-- Header -->
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5">
+          <h2 class="mb-3 fw-semibold">{{ 'BASE.SUBSCRIPTIONS.SELECT_PLAN' | baseTranslate }}</h2>
+          <p class="text-muted mb-4">{{ 'BASE.SUBSCRIPTIONS.SELECT_PLAN_DESCRIPTION' | baseTranslate }}</p>
+          <!-- Billing Toggle -->
+          <div class="d-flex justify-content-center align-items-center gap-3">
+            <span [class.fw-bold]="billingInterval === 'monthly'">{{ 'BASE.BILLING.MONTHLY' | baseTranslate }}</span>
+            <div class="form-check form-switch form-switch-lg">
+              <input class="form-check-input"
+                type="checkbox"
+                [checked]="billingInterval === 'yearly'"
+                (change)="toggleBillingInterval()">
+              </div>
+              <span [class.fw-bold]="billingInterval === 'yearly'">
+                {{ 'BASE.BILLING.YEARLY' | baseTranslate }}
+                <span class="badge bg-success-subtle text-success ms-1">{{ 'BASE.DISCOUNTS.SAVE_20' | baseTranslate }}</span>
+              </span>
+            </div>
           </div>
-          <span [class.fw-bold]="billingInterval === 'yearly'">
-            {{ 'BASE.BILLING.YEARLY' | baseTranslate }}
-            <span class="badge bg-success-subtle text-success ms-1">{{ 'BASE.DISCOUNTS.SAVE_20' | baseTranslate }}</span>
-          </span>
         </div>
-      </div>
-    </div>
-
-    <!-- Pricing Cards -->
-    <div class="row justify-content-center">
-      <div class="col-xl-4 col-lg-6" *ngFor="let plan of plans">
-        <div class="card plan-box mb-4" 
-             [class.border-primary]="plan.isPopular"
-             [class.ribbon-box]="plan.isPopular">
-          
-          <!-- Popular Badge -->
-          <div *ngIf="plan.isPopular" class="ribbon-two ribbon-two-primary">
-            <span>{{ 'BASE.STATUS.POPULAR' | baseTranslate }}</span>
-          </div>
-
-          <div class="card-body p-4">
-            <!-- Plan Header -->
-            <div class="d-flex align-items-center mb-3">
-              <div class="flex-grow-1">
-                <h5 class="mb-1 fw-semibold">{{ plan.name }}</h5>
-                <p class="text-muted mb-0">{{ plan.description }}</p>
-              </div>
-              <div class="avatar-sm">
-                <div class="avatar-title bg-primary-subtle text-primary rounded-circle">
-                  <i class="ri-stack-line fs-20"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- Price -->
-            <div class="py-4 text-center">
-              <h1 class="display-5 fw-bold text-primary">
-                {{ formatPrice(getPlanPrice(plan)) }}
-                <span class="fs-13 text-muted fw-normal">
-                  / {{ billingInterval === 'monthly' ? 'mo' : 'yr' }}
-                </span>
-              </h1>
-            </div>
-
-            <!-- Features -->
-            <ul class="list-unstyled vstack gap-3 mb-4">
-              <li *ngFor="let feature of plan.features" class="d-flex">
-                <div class="flex-shrink-0 text-success me-2">
-                  <i class="ri-checkbox-circle-fill fs-15"></i>
-                </div>
-                <div class="flex-grow-1">{{ feature }}</div>
-              </li>
-            </ul>
-
-            <!-- Select Button -->
-            <button class="btn w-100"
+        <!-- Pricing Cards -->
+        <div class="row justify-content-center">
+          @for (plan of plans; track plan) {
+            <div class="col-xl-4 col-lg-6">
+              <div class="card plan-box mb-4"
+                [class.border-primary]="plan.isPopular"
+                [class.ribbon-box]="plan.isPopular">
+                <!-- Popular Badge -->
+                @if (plan.isPopular) {
+                  <div class="ribbon-two ribbon-two-primary">
+                    <span>{{ 'BASE.STATUS.POPULAR' | baseTranslate }}</span>
+                  </div>
+                }
+                <div class="card-body p-4">
+                  <!-- Plan Header -->
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="flex-grow-1">
+                      <h5 class="mb-1 fw-semibold">{{ plan.name }}</h5>
+                      <p class="text-muted mb-0">{{ plan.description }}</p>
+                    </div>
+                    <div class="avatar-sm">
+                      <div class="avatar-title bg-primary-subtle text-primary rounded-circle">
+                        <i class="ri-stack-line fs-20"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Price -->
+                  <div class="py-4 text-center">
+                    <h1 class="display-5 fw-bold text-primary">
+                      {{ formatPrice(getPlanPrice(plan)) }}
+                      <span class="fs-13 text-muted fw-normal">
+                        / {{ billingInterval === 'monthly' ? 'mo' : 'yr' }}
+                      </span>
+                    </h1>
+                  </div>
+                  <!-- Features -->
+                  <ul class="list-unstyled vstack gap-3 mb-4">
+                    @for (feature of plan.features; track feature) {
+                      <li class="d-flex">
+                        <div class="flex-shrink-0 text-success me-2">
+                          <i class="ri-checkbox-circle-fill fs-15"></i>
+                        </div>
+                        <div class="flex-grow-1">{{ feature }}</div>
+                      </li>
+                    }
+                  </ul>
+                  <!-- Select Button -->
+                  <button class="btn w-100"
                     [class.btn-primary]="plan.isPopular"
                     [class.btn-soft-primary]="!plan.isPopular"
                     (click)="selectPlan(plan)">
-              {{ 'BASE.ACTIONS.SELECT' | baseTranslate }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Step 2: Payment Method -->
-  <div *ngIf="currentStep === 'payment'">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        
-        <!-- Back Button -->
-        <button class="btn btn-link text-muted mb-3" (click)="goBackToPlanSelection()">
-          <i class="ri-arrow-left-line me-1"></i> {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
-        </button>
-
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title mb-0">{{ 'BASE.PAYMENTS.SELECT_METHOD' | baseTranslate }}</h5>
-          </div>
-          <div class="card-body">
-            
-            <!-- Error -->
-            <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
-
-            <!-- Selected Plan Summary -->
-            <div class="bg-light rounded p-3 mb-4" *ngIf="selectedPlan">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <h6 class="mb-1">{{ selectedPlan.name }}</h6>
-                  <span class="text-muted">{{ billingInterval === 'monthly' ? 'Monthly' : 'Annual' }} billing</span>
+                    {{ 'BASE.ACTIONS.SELECT' | baseTranslate }}
+                  </button>
                 </div>
-                <h5 class="mb-0 text-primary">{{ formatPrice(getPlanPrice(selectedPlan)) }}</h5>
               </div>
             </div>
+          }
+        </div>
+      </div>
+    }
 
-            <!-- Payment Methods -->
-            <div *ngIf="loading()" class="text-center py-4">
-              <div class="spinner-border text-primary"></div>
-            </div>
-
-            <div class="row" *ngIf="!loading()">
-              <div class="col-lg-6" *ngFor="let method of paymentMethods()">
-                <div class="form-check card-radio mb-3">
-                  <input class="form-check-input" 
-                         type="radio" 
-                         name="paymentMethod"
-                         [id]="'pm_' + method.id"
-                         [value]="method.id"
-                         [(ngModel)]="selectedPaymentMethodId">
-                  <label class="form-check-label" [for]="'pm_' + method.id">
-                    <div class="d-flex align-items-center">
-                      <div class="avatar-xs me-3">
-                        <div class="avatar-title bg-light rounded">
-                          <i class="ri-visa-fill text-primary fs-18"></i>
-                        </div>
-                      </div>
+    <!-- Step 2: Payment Method -->
+    @if (currentStep === 'payment') {
+      <div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <!-- Back Button -->
+            <button class="btn btn-link text-muted mb-3" (click)="goBackToPlanSelection()">
+              <i class="ri-arrow-left-line me-1"></i> {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
+            </button>
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">{{ 'BASE.PAYMENTS.SELECT_METHOD' | baseTranslate }}</h5>
+              </div>
+              <div class="card-body">
+                <!-- Error -->
+                @if (error) {
+                  <div class="alert alert-danger">{{ error }}</div>
+                }
+                <!-- Selected Plan Summary -->
+                @if (selectedPlan) {
+                  <div class="bg-light rounded p-3 mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
                       <div>
-                        <span class="d-block fw-medium">•••• {{ method.last4 }}</span>
-                        <span class="text-muted fs-12">{{ method.holderName }}</span>
+                        <h6 class="mb-1">{{ selectedPlan.name }}</h6>
+                        <span class="text-muted">{{ billingInterval === 'monthly' ? 'Monthly' : 'Annual' }} billing</span>
+                      </div>
+                      <h5 class="mb-0 text-primary">{{ formatPrice(getPlanPrice(selectedPlan)) }}</h5>
+                    </div>
+                  </div>
+                }
+                <!-- Payment Methods -->
+                @if (loading()) {
+                  <div class="text-center py-4">
+                    <div class="spinner-border text-primary"></div>
+                  </div>
+                }
+                @if (!loading()) {
+                  <div class="row">
+                    @for (method of paymentMethods(); track method) {
+                      <div class="col-lg-6">
+                        <div class="form-check card-radio mb-3">
+                          <input class="form-check-input"
+                            type="radio"
+                            name="paymentMethod"
+                            [id]="'pm_' + method.id"
+                            [value]="method.id"
+                            [(ngModel)]="selectedPaymentMethodId">
+                            <label class="form-check-label" [for]="'pm_' + method.id">
+                              <div class="d-flex align-items-center">
+                                <div class="avatar-xs me-3">
+                                  <div class="avatar-title bg-light rounded">
+                                    <i class="ri-visa-fill text-primary fs-18"></i>
+                                  </div>
+                                </div>
+                                <div>
+                                  <span class="d-block fw-medium">•••• {{ method.last4 }}</span>
+                                  <span class="text-muted fs-12">{{ method.holderName }}</span>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                        </div>
+                      }
+                      <!-- Add New Method Link -->
+                      <div class="col-12">
+                        <a routerLink="../payment-methods" class="btn btn-soft-primary btn-sm">
+                          <i class="ri-add-line me-1"></i> {{ 'BASE.PAYMENTS.ADD_NEW_METHOD' | baseTranslate }}
+                        </a>
                       </div>
                     </div>
-                  </label>
+                  }
                 </div>
-              </div>
-
-              <!-- Add New Method Link -->
-              <div class="col-12">
-                <a routerLink="../payment-methods" class="btn btn-soft-primary btn-sm">
-                  <i class="ri-add-line me-1"></i> {{ 'BASE.PAYMENTS.ADD_NEW_METHOD' | baseTranslate }}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <button class="btn btn-primary" 
+                <div class="card-footer">
+                  <button class="btn btn-primary"
                     (click)="proceedToConfirm()"
                     [disabled]="!selectedPaymentMethodId">
-              {{ 'BASE.ACTIONS.CONTINUE' | baseTranslate }}
-              <i class="ri-arrow-right-line ms-1"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Step 3: Confirm -->
-  <div *ngIf="currentStep === 'confirm'">
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title mb-0">{{ 'BASE.CONFIRMATIONS.SINGULAR' | baseTranslate }}</h5>
-          </div>
-          <div class="card-body">
-            
-            <!-- Error -->
-            <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
-
-            <!-- Order Summary -->
-            <div class="table-responsive">
-              <table class="table table-borderless mb-0">
-                <tbody>
-                  <tr>
-                    <td class="text-muted">{{ 'BASE.PLANS.SINGULAR' | baseTranslate }}</td>
-                    <td class="text-end fw-medium">{{ selectedPlan?.name }}</td>
-                  </tr>
-                  <tr>
-                    <td class="text-muted">{{ 'BASE.BILLING.INTERVAL' | baseTranslate }}</td>
-                    <td class="text-end">{{ billingInterval | titlecase }}</td>
-                  </tr>
-                  <tr>
-                    <td class="text-muted">{{ 'BASE.PAYMENTS.METHOD' | baseTranslate }}</td>
-                    <td class="text-end">•••• {{ getSelectedMethodLast4() }}</td>
-                  </tr>
-                  <tr class="border-top">
-                    <td class="fw-semibold">{{ 'BASE.SHOPPING.TOTAL' | baseTranslate }}</td>
-                    <td class="text-end fw-bold text-primary fs-18">
-                      {{ selectedPlan ? formatPrice(getPlanPrice(selectedPlan)) : '' }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Terms -->
-            <p class="text-muted fs-12 mt-4">
-              {{ 'BASE.SUBSCRIPTIONS.TERMS_NOTICE' | baseTranslate }}
-            </p>
-          </div>
-          <div class="card-footer d-flex gap-2">
-            <button class="btn btn-light" (click)="currentStep = 'payment'">
-              {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
-            </button>
-            <button class="btn btn-primary flex-grow-1" 
-                    (click)="confirmSubscription()"
-                    [disabled]="processing">
-              <span *ngIf="processing" class="spinner-border spinner-border-sm me-1"></span>
-              {{ 'BASE.SUBSCRIPTIONS.SUBSCRIBE_NOW' | baseTranslate }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Step 4: Success -->
-  <div *ngIf="currentStep === 'success'">
-    <div class="row justify-content-center">
-      <div class="col-lg-5">
-        <div class="card text-center">
-          <div class="card-body py-5">
-            <div class="avatar-lg mx-auto mb-4">
-              <div class="avatar-title bg-success-subtle text-success rounded-circle fs-32">
-                <i class="ri-check-line"></i>
+                    {{ 'BASE.ACTIONS.CONTINUE' | baseTranslate }}
+                    <i class="ri-arrow-right-line ms-1"></i>
+                  </button>
+                </div>
               </div>
             </div>
-            <h4 class="mb-3">{{ 'BASE.SUBSCRIPTIONS.SUCCESS_TITLE' | baseTranslate }}</h4>
-            <p class="text-muted mb-4">{{ 'BASE.SUBSCRIPTIONS.SUCCESS_DESCRIPTION' | baseTranslate }}</p>
-            <button class="btn btn-primary" (click)="goToDashboard()">
-              {{ 'BASE.ACTIONS.GOTO' | baseTranslate }} {{ 'BASE.DASHBOARDS.SINGULAR' | baseTranslate }}
-            </button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+      }
 
-</div>
+      <!-- Step 3: Confirm -->
+      @if (currentStep === 'confirm') {
+        <div>
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">{{ 'BASE.CONFIRMATIONS.SINGULAR' | baseTranslate }}</h5>
+                </div>
+                <div class="card-body">
+                  <!-- Error -->
+                  @if (error) {
+                    <div class="alert alert-danger">{{ error }}</div>
+                  }
+                  <!-- Order Summary -->
+                  <div class="table-responsive">
+                    <table class="table table-borderless mb-0">
+                      <tbody>
+                        <tr>
+                          <td class="text-muted">{{ 'BASE.PLANS.SINGULAR' | baseTranslate }}</td>
+                          <td class="text-end fw-medium">{{ selectedPlan?.name }}</td>
+                        </tr>
+                        <tr>
+                          <td class="text-muted">{{ 'BASE.BILLING.INTERVAL' | baseTranslate }}</td>
+                          <td class="text-end">{{ billingInterval | titlecase }}</td>
+                        </tr>
+                        <tr>
+                          <td class="text-muted">{{ 'BASE.PAYMENTS.METHOD' | baseTranslate }}</td>
+                          <td class="text-end">•••• {{ getSelectedMethodLast4() }}</td>
+                        </tr>
+                        <tr class="border-top">
+                          <td class="fw-semibold">{{ 'BASE.SHOPPING.TOTAL' | baseTranslate }}</td>
+                          <td class="text-end fw-bold text-primary fs-18">
+                            {{ selectedPlan ? formatPrice(getPlanPrice(selectedPlan)) : '' }}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- Terms -->
+                  <p class="text-muted fs-12 mt-4">
+                    {{ 'BASE.SUBSCRIPTIONS.TERMS_NOTICE' | baseTranslate }}
+                  </p>
+                </div>
+                <div class="card-footer d-flex gap-2">
+                  <button class="btn btn-light" (click)="currentStep = 'payment'">
+                    {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
+                  </button>
+                  <button class="btn btn-primary flex-grow-1"
+                    (click)="confirmSubscription()"
+                    [disabled]="processing">
+                    @if (processing) {
+                      <span class="spinner-border spinner-border-sm me-1"></span>
+                    }
+                    {{ 'BASE.SUBSCRIPTIONS.SUBSCRIBE_NOW' | baseTranslate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Step 4: Success -->
+      @if (currentStep === 'success') {
+        <div>
+          <div class="row justify-content-center">
+            <div class="col-lg-5">
+              <div class="card text-center">
+                <div class="card-body py-5">
+                  <div class="avatar-lg mx-auto mb-4">
+                    <div class="avatar-title bg-success-subtle text-success rounded-circle fs-32">
+                      <i class="ri-check-line"></i>
+                    </div>
+                  </div>
+                  <h4 class="mb-3">{{ 'BASE.SUBSCRIPTIONS.SUCCESS_TITLE' | baseTranslate }}</h4>
+                  <p class="text-muted mb-4">{{ 'BASE.SUBSCRIPTIONS.SUCCESS_DESCRIPTION' | baseTranslate }}</p>
+                  <button class="btn btn-primary" (click)="goToDashboard()">
+                    {{ 'BASE.ACTIONS.GOTO' | baseTranslate }} {{ 'BASE.DASHBOARDS.SINGULAR' | baseTranslate }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+    </div>

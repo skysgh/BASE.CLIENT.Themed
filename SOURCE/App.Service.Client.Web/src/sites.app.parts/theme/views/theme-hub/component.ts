@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 /**
@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
  */
 @Component({
     selector: 'app-theme-hub',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     template: `
     <div class="theme-hub">
       <div class="page-header mb-4">
@@ -22,31 +22,33 @@ import { RouterModule } from '@angular/router';
           Use this to build consistent UIs.
         </p>
       </div>
-
+    
       <div class="row">
-        <div class="col-md-4 mb-4" *ngFor="let section of sections">
-          <div class="card h-100 section-card" [routerLink]="section.route">
-            <div class="card-body text-center">
-              <div class="section-icon mb-3" [style.background-color]="section.color">
-                <i class="bx {{section.icon}}"></i>
+        @for (section of sections; track section) {
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 section-card" [routerLink]="section.route">
+              <div class="card-body text-center">
+                <div class="section-icon mb-3" [style.background-color]="section.color">
+                  <i class="bx {{section.icon}}"></i>
+                </div>
+                <h5>{{section.title}}</h5>
+                <p class="text-muted small mb-0">{{section.description}}</p>
               </div>
-              <h5>{{section.title}}</h5>
-              <p class="text-muted small mb-0">{{section.description}}</p>
             </div>
           </div>
-        </div>
+        }
       </div>
-
+    
       <div class="mt-4 p-4 bg-light rounded">
         <h5><i class="bx bx-info-circle me-2"></i>For Applet Developers</h5>
         <p class="mb-0 text-muted">
-          This reference shows what's available in the theme. 
+          This reference shows what's available in the theme.
           When building your applet, use these consistent styles and components.
           Don't reinvent the wheel!
         </p>
       </div>
     </div>
-  `,
+    `,
     styles: [`
     .theme-hub {
       padding: 1.5rem;

@@ -32,97 +32,113 @@ export interface EmailLoginCredentials {
     template: `
     <div class="email-login-form">
       <!-- Back button -->
-      <button 
-        *ngIf="showBackButton"
-        type="button" 
-        class="btn btn-link text-muted p-0 mb-3 d-flex align-items-center gap-1"
-        (click)="onBack()">
-        <i class="ri-arrow-left-line"></i>
-        <span>{{ backText }}</span>
-      </button>
-
+      @if (showBackButton) {
+        <button
+          type="button"
+          class="btn btn-link text-muted p-0 mb-3 d-flex align-items-center gap-1"
+          (click)="onBack()">
+          <i class="ri-arrow-left-line"></i>
+          <span>{{ backText }}</span>
+        </button>
+      }
+    
       <!-- Form -->
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        
+    
         <!-- Email -->
         <div class="mb-3">
           <label class="form-label" for="email">{{ emailLabel }}</label>
-          <input 
+          <input
             type="email"
             class="form-control"
             id="email"
             formControlName="email"
             [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
             [placeholder]="emailPlaceholder">
-          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-            <span *ngIf="f['email'].errors['required']">{{ emailRequiredError }}</span>
-            <span *ngIf="f['email'].errors['email']">{{ emailInvalidError }}</span>
+            @if (submitted && f['email'].errors) {
+              <div class="invalid-feedback">
+                @if (f['email'].errors['required']) {
+                  <span>{{ emailRequiredError }}</span>
+                }
+                @if (f['email'].errors['email']) {
+                  <span>{{ emailInvalidError }}</span>
+                }
+              </div>
+            }
           </div>
-        </div>
-
-        <!-- Password -->
-        <div class="mb-3">
-          <div class="d-flex justify-content-between align-items-center">
-            <label class="form-label" for="password">{{ passwordLabel }}</label>
-            <a 
-              *ngIf="showForgotPassword"
-              [routerLink]="forgotPasswordRoute" 
-              class="text-muted fs-13">
-              {{ forgotPasswordText }}
-            </a>
-          </div>
-          <div class="position-relative auth-pass-inputgroup">
-            <input 
-              [type]="showPassword ? 'text' : 'password'"
-              class="form-control pe-5"
-              id="password"
-              formControlName="password"
-              [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
-              [placeholder]="passwordPlaceholder">
-            <button 
-              type="button"
-              class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
-              (click)="togglePassword()">
-              <i class="mdi align-middle" 
-                 [ngClass]="showPassword ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"></i>
-            </button>
-            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-              <span *ngIf="f['password'].errors['required']">{{ passwordRequiredError }}</span>
+    
+          <!-- Password -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <label class="form-label" for="password">{{ passwordLabel }}</label>
+              @if (showForgotPassword) {
+                <a
+                  [routerLink]="forgotPasswordRoute"
+                  class="text-muted fs-13">
+                  {{ forgotPasswordText }}
+                </a>
+              }
             </div>
+            <div class="position-relative auth-pass-inputgroup">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                class="form-control pe-5"
+                id="password"
+                formControlName="password"
+                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                [placeholder]="passwordPlaceholder">
+                <button
+                  type="button"
+                  class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
+                  (click)="togglePassword()">
+                  <i class="mdi align-middle"
+                  [ngClass]="showPassword ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"></i>
+                </button>
+                @if (submitted && f['password'].errors) {
+                  <div class="invalid-feedback">
+                    @if (f['password'].errors['required']) {
+                      <span>{{ passwordRequiredError }}</span>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+    
+            <!-- Remember me -->
+            <div class="form-check mb-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="rememberMe"
+                formControlName="rememberMe">
+                <label class="form-check-label" for="rememberMe">
+                  {{ rememberMeText }}
+                </label>
+              </div>
+    
+              <!-- Error message -->
+              @if (errorMessage) {
+                <div class="alert alert-danger" role="alert">
+                  {{ errorMessage }}
+                </div>
+              }
+    
+              <!-- Submit -->
+              <div class="mt-4">
+                <button
+                  type="submit"
+                  class="btn btn-success w-100"
+                  [disabled]="loading">
+                  @if (loading) {
+                    <span class="spinner-border spinner-border-sm me-1"></span>
+                  }
+                  {{ submitText }}
+                </button>
+              </div>
+    
+            </form>
           </div>
-        </div>
-
-        <!-- Remember me -->
-        <div class="form-check mb-3">
-          <input 
-            class="form-check-input" 
-            type="checkbox" 
-            id="rememberMe"
-            formControlName="rememberMe">
-          <label class="form-check-label" for="rememberMe">
-            {{ rememberMeText }}
-          </label>
-        </div>
-
-        <!-- Error message -->
-        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-          {{ errorMessage }}
-        </div>
-
-        <!-- Submit -->
-        <div class="mt-4">
-          <button 
-            type="submit" 
-            class="btn btn-success w-100"
-            [disabled]="loading">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-            {{ submitText }}
-          </button>
-        </div>
-
-      </form>
-    </div>
-  `,
+    `,
     styles: [`
     .email-login-form {
       width: 100%;

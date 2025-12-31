@@ -1,27 +1,29 @@
-<div *ngIf="stats">
-  <div class="col">
-    <div class="py-4 px-3">
-      <h5 class="text-muted text-uppercase fs-13">
-        {{stats.title}}
-        <i class="fs-18 float-end align-middle"
-           [ngClass]="(stats.changeDirection ?? 0) > 0 ? 'ri-arrow-up-circle-line text-success' : 'ri-arrow-down-circle-line text-danger'"></i>
-      </h5>
-      <div class="d-flex align-items-center">
-        <div class="flex-shrink-0">
-          <i class="{{stats.imageId}} display-6 text-muted"></i>
-        </div>
-        <div class="flex-grow-1 ms-3">
-          <h2 class="mb-0">
-            {{stats.prefix}}
-            <span [countUp]="stats.value"
-                  class="counter-value"
-                  [options]="statsRenderingOptions">
-            </span>
-            {{stats.suffix}}
-          </h2>
+@if (stats) {
+  <div>
+    <div class="col">
+      <div class="py-4 px-3">
+        <h5 class="text-muted text-uppercase fs-13">
+          {{stats.title}}
+          <i class="fs-18 float-end align-middle"
+          [ngClass]="(stats.changeDirection ?? 0) > 0 ? 'ri-arrow-up-circle-line text-success' : 'ri-arrow-down-circle-line text-danger'"></i>
+        </h5>
+        <div class="d-flex align-items-center">
+          <div class="flex-shrink-0">
+            <i class="{{stats.imageId}} display-6 text-muted"></i>
+          </div>
+          <div class="flex-grow-1 ms-3">
+            <h2 class="mb-0">
+              {{stats.prefix}}
+              <span [countUp]="stats.value"
+                class="counter-value"
+                [options]="statsRenderingOptions">
+              </span>
+              {{stats.suffix}}
+            </h2>
+          </div>
         </div>
       </div>
     </div>
+    <!-- end col -->
   </div>
-  <!-- end col -->
-  </div>
+}

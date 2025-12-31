@@ -18,48 +18,52 @@
  * 7. Redirect to original destination (returnUrl)
  */
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { OidcService } from '../services/oidc.service';
 
 @Component({
     selector: 'app-auth-callback',
-    imports: [CommonModule],
+    imports: [],
     template: `
     <div class="auth-callback">
       <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
           <div class="col-md-6 col-lg-4 text-center">
-            
+    
             <!-- Loading State -->
-            <div *ngIf="!error" class="loading-state">
-              <div class="spinner-border text-primary mb-4" style="width: 3rem; height: 3rem;" role="status">
-                <span class="visually-hidden">Completing sign in...</span>
-              </div>
-              <h4 class="mb-2">Completing Sign In</h4>
-              <p class="text-muted">Please wait while we finish authenticating you...</p>
-            </div>
-
-            <!-- Error State -->
-            <div *ngIf="error" class="error-state">
-              <div class="avatar-lg mx-auto mb-4">
-                <div class="avatar-title bg-danger-subtle rounded-circle">
-                  <i class="ri-error-warning-line fs-36 text-danger"></i>
+            @if (!error) {
+              <div class="loading-state">
+                <div class="spinner-border text-primary mb-4" style="width: 3rem; height: 3rem;" role="status">
+                  <span class="visually-hidden">Completing sign in...</span>
                 </div>
+                <h4 class="mb-2">Completing Sign In</h4>
+                <p class="text-muted">Please wait while we finish authenticating you...</p>
               </div>
-              <h4 class="text-danger mb-2">Authentication Failed</h4>
-              <p class="text-muted mb-4">{{ error }}</p>
-              <button class="btn btn-primary" (click)="goToLogin()">
-                <i class="ri-arrow-left-line me-1"></i>
-                Back to Sign In
-              </button>
-            </div>
-
+            }
+    
+            <!-- Error State -->
+            @if (error) {
+              <div class="error-state">
+                <div class="avatar-lg mx-auto mb-4">
+                  <div class="avatar-title bg-danger-subtle rounded-circle">
+                    <i class="ri-error-warning-line fs-36 text-danger"></i>
+                  </div>
+                </div>
+                <h4 class="text-danger mb-2">Authentication Failed</h4>
+                <p class="text-muted mb-4">{{ error }}</p>
+                <button class="btn btn-primary" (click)="goToLogin()">
+                  <i class="ri-arrow-left-line me-1"></i>
+                  Back to Sign In
+                </button>
+              </div>
+            }
+    
           </div>
         </div>
       </div>
     </div>
-  `,
+    `,
     styles: [`
     .auth-callback {
       background: var(--vz-body-bg);

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  
+
   <!-- Page Header -->
   <div class="row">
     <div class="col-12">
@@ -10,82 +10,94 @@
   </div>
 
   <!-- Loading State -->
-  <div *ngIf="loading()" class="text-center py-5">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">{{ 'BASE.LOADS.PRESENT' | baseTranslate }}</span>
+  @if (loading()) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">{{ 'BASE.LOADS.PRESENT' | baseTranslate }}</span>
+      </div>
     </div>
-  </div>
+  }
 
   <!-- Transactions Table -->
-  <div class="row" *ngIf="!loading()">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          
-          <!-- Empty State -->
-          <div *ngIf="transactions().length === 0" class="text-center py-5">
-            <div class="avatar-lg mx-auto mb-4">
-              <div class="avatar-title bg-light text-muted rounded-circle fs-24">
-                <i class="ri-file-list-3-line"></i>
+  @if (!loading()) {
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <!-- Empty State -->
+            @if (transactions().length === 0) {
+              <div class="text-center py-5">
+                <div class="avatar-lg mx-auto mb-4">
+                  <div class="avatar-title bg-light text-muted rounded-circle fs-24">
+                    <i class="ri-file-list-3-line"></i>
+                  </div>
+                </div>
+                <h5 class="text-muted">{{ 'BASE.TRANSACTIONS.NONE' | baseTranslate }}</h5>
               </div>
-            </div>
-            <h5 class="text-muted">{{ 'BASE.TRANSACTIONS.NONE' | baseTranslate }}</h5>
-          </div>
-
-          <!-- Transactions List -->
-          <div class="table-responsive" *ngIf="transactions().length > 0">
-            <table class="table table-hover align-middle table-nowrap mb-0">
-              <thead class="table-light">
-                <tr>
-                  <th scope="col">{{ 'BASE.DATES.SINGULAR' | baseTranslate }}</th>
-                  <th scope="col">{{ 'BASE.DESCRIPTIONS.SINGULAR' | baseTranslate }}</th>
-                  <th scope="col">{{ 'BASE.TYPES.SINGULAR' | baseTranslate }}</th>
-                  <th scope="col">{{ 'BASE.PAYMENTS.METHOD' | baseTranslate }}</th>
-                  <th scope="col">{{ 'BASE.STATUS.SINGULAR' | baseTranslate }}</th>
-                  <th scope="col" class="text-end">{{ 'BASE.AMOUNTS.SINGULAR' | baseTranslate }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let txn of transactions()">
-                  <td>
-                    <span class="text-muted">{{ formatDate(txn.createdUtc || '') }}</span>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <div class="avatar-xs me-2">
-                        <div class="avatar-title bg-light rounded-circle text-primary">
-                          <i [class]="getTypeIcon(txn.type)"></i>
-                        </div>
-                      </div>
-                      <span>{{ txn.description }}</span>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="badge bg-light text-body">{{ txn.type | titlecase }}</span>
-                  </td>
-                  <td>
-                    <span *ngIf="txn.paymentMethodLast4">•••• {{ txn.paymentMethodLast4 }}</span>
-                    <span *ngIf="!txn.paymentMethodLast4" class="text-muted">—</span>
-                  </td>
-                  <td>
-                    <span class="badge" [class]="getStatusClass(txn.status)">
-                      {{ txn.status | titlecase }}
-                    </span>
-                  </td>
-                  <td class="text-end">
-                    <span class="fw-medium" 
-                          [class.text-success]="txn.type !== 'refund'"
-                          [class.text-danger]="txn.type === 'refund'">
-                      {{ txn.type === 'refund' ? '-' : '' }}{{ formatPrice(txn.amountCents, txn.currency) }}
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            }
+            <!-- Transactions List -->
+            @if (transactions().length > 0) {
+              <div class="table-responsive">
+                <table class="table table-hover align-middle table-nowrap mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th scope="col">{{ 'BASE.DATES.SINGULAR' | baseTranslate }}</th>
+                      <th scope="col">{{ 'BASE.DESCRIPTIONS.SINGULAR' | baseTranslate }}</th>
+                      <th scope="col">{{ 'BASE.TYPES.SINGULAR' | baseTranslate }}</th>
+                      <th scope="col">{{ 'BASE.PAYMENTS.METHOD' | baseTranslate }}</th>
+                      <th scope="col">{{ 'BASE.STATUS.SINGULAR' | baseTranslate }}</th>
+                      <th scope="col" class="text-end">{{ 'BASE.AMOUNTS.SINGULAR' | baseTranslate }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (txn of transactions(); track txn) {
+                      <tr>
+                        <td>
+                          <span class="text-muted">{{ formatDate(txn.createdUtc || '') }}</span>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="avatar-xs me-2">
+                              <div class="avatar-title bg-light rounded-circle text-primary">
+                                <i [class]="getTypeIcon(txn.type)"></i>
+                              </div>
+                            </div>
+                            <span>{{ txn.description }}</span>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge bg-light text-body">{{ txn.type | titlecase }}</span>
+                        </td>
+                        <td>
+                          @if (txn.paymentMethodLast4) {
+                            <span>•••• {{ txn.paymentMethodLast4 }}</span>
+                          }
+                          @if (!txn.paymentMethodLast4) {
+                            <span class="text-muted">—</span>
+                          }
+                        </td>
+                        <td>
+                          <span class="badge" [class]="getStatusClass(txn.status)">
+                            {{ txn.status | titlecase }}
+                          </span>
+                        </td>
+                        <td class="text-end">
+                          <span class="fw-medium"
+                            [class.text-success]="txn.type !== 'refund'"
+                            [class.text-danger]="txn.type === 'refund'">
+                            {{ txn.type === 'refund' ? '-' : '' }}{{ formatPrice(txn.amountCents, txn.currency) }}
+                          </span>
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            }
           </div>
         </div>
       </div>
     </div>
-  </div>
+  }
 
 </div>

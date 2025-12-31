@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-data-collection',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     template: `
     <div class="policy-page">
       <div class="page-header d-flex justify-content-between align-items-center mb-4">

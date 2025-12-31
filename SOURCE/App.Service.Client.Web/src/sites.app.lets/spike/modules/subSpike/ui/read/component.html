@@ -7,94 +7,108 @@
         Spikes
       </a>
     </li>
-    <li class="breadcrumb-item" *ngIf="parentSpike">
-      <a [routerLink]="['../../../../', parentSpikeId]">
-        {{parentSpike.title}}
-      </a>
-    </li>
+    @if (parentSpike) {
+      <li class="breadcrumb-item">
+        <a [routerLink]="['../../../../', parentSpikeId]">
+          {{parentSpike.title}}
+        </a>
+      </li>
+    }
     <li class="breadcrumb-item">
       <a routerLink="../../">Sub-Spikes</a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page" *ngIf="data">
-      {{data.displayLabel}}
-    </li>
+    @if (data) {
+      <li class="breadcrumb-item active" aria-current="page">
+        {{data.displayLabel}}
+      </li>
+    }
   </ol>
 </nav>
 
 <!-- Loading State -->
-<div *ngIf="loading" class="text-center py-5">
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
+@if (loading) {
+  <div class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="text-muted mt-2">Loading sub-spike...</p>
   </div>
-  <p class="text-muted mt-2">Loading sub-spike...</p>
-</div>
+}
 
 <!-- Not Found State -->
-<div *ngIf="notFound && !loading" class="text-center py-5">
-  <i class="bx bx-error-circle fs-48 text-warning"></i>
-  <h4 class="mt-3">Sub-Spike Not Found</h4>
-  <p class="text-muted">The sub-spike you're looking for doesn't exist.</p>
-  <button type="button" class="btn btn-primary" (click)="onBack()">
-    <i class="bx bx-arrow-back me-1"></i>
-    Back to List
-  </button>
-</div>
+@if (notFound && !loading) {
+  <div class="text-center py-5">
+    <i class="bx bx-error-circle fs-48 text-warning"></i>
+    <h4 class="mt-3">Sub-Spike Not Found</h4>
+    <p class="text-muted">The sub-spike you're looking for doesn't exist.</p>
+    <button type="button" class="btn btn-primary" (click)="onBack()">
+      <i class="bx bx-arrow-back me-1"></i>
+      Back to List
+    </button>
+  </div>
+}
 
 <!-- Content -->
-<div *ngIf="data && !loading">
-  <!-- Page Header -->
-  <div class="d-flex justify-content-between align-items-start mb-4">
-    <div>
-      <h4 class="mb-1">
-        <i class="bx bx-layer me-2 text-primary"></i>
-        {{data.title}}
-      </h4>
-      <p class="text-muted mb-0" *ngIf="data.description">{{data.description}}</p>
+@if (data && !loading) {
+  <div>
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-start mb-4">
+      <div>
+        <h4 class="mb-1">
+          <i class="bx bx-layer me-2 text-primary"></i>
+          {{data.title}}
+        </h4>
+        @if (data.description) {
+          <p class="text-muted mb-0">{{data.description}}</p>
+        }
+      </div>
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-outline-secondary" (click)="onBack()">
+          <i class="bx bx-arrow-back me-1"></i>
+          Back
+        </button>
+        <button type="button" class="btn btn-outline-primary" (click)="onEdit()">
+          <i class="bx bx-edit me-1"></i>
+          Edit
+        </button>
+        <button type="button" class="btn btn-outline-danger" (click)="onDelete()" [disabled]="deleting">
+          @if (deleting) {
+            <span class="spinner-border spinner-border-sm me-1"></span>
+          }
+          @if (!deleting) {
+            <i class="bx bx-trash me-1"></i>
+          }
+          {{deleting ? 'Deleting...' : 'Delete'}}
+        </button>
+      </div>
     </div>
-    <div class="d-flex gap-2">
-      <button type="button" class="btn btn-outline-secondary" (click)="onBack()">
-        <i class="bx bx-arrow-back me-1"></i>
-        Back
-      </button>
-      <button type="button" class="btn btn-outline-primary" (click)="onEdit()">
-        <i class="bx bx-edit me-1"></i>
-        Edit
-      </button>
-      <button type="button" class="btn btn-outline-danger" (click)="onDelete()" [disabled]="deleting">
-        <span *ngIf="deleting" class="spinner-border spinner-border-sm me-1"></span>
-        <i *ngIf="!deleting" class="bx bx-trash me-1"></i>
-        {{deleting ? 'Deleting...' : 'Delete'}}
-      </button>
-    </div>
-  </div>
-
-  <!-- Details Card -->
-  <div class="card">
-    <div class="card-header">
-      <h5 class="mb-0">
-        <i class="bx bx-info-circle me-2"></i>
-        Details
-      </h5>
-    </div>
-    <div class="card-body">
-      <form [formGroup]="form">
-        <formly-form 
-          [form]="form" 
-          [fields]="fields" 
-          [model]="formModel">
-        </formly-form>
-      </form>
-      
-      <!-- Metadata -->
-      <hr class="my-4">
-      <div class="row text-muted small">
-        <div class="col-md-6">
-          <strong>Parent Spike:</strong> {{parentSpike?.title || 'Unknown'}}
-        </div>
-        <div class="col-md-6">
-          <strong>Display Order:</strong> Level {{data.level}}
+    <!-- Details Card -->
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <i class="bx bx-info-circle me-2"></i>
+          Details
+        </h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form">
+          <formly-form
+            [form]="form"
+            [fields]="fields"
+            [model]="formModel">
+          </formly-form>
+        </form>
+        <!-- Metadata -->
+        <hr class="my-4">
+        <div class="row text-muted small">
+          <div class="col-md-6">
+            <strong>Parent Spike:</strong> {{parentSpike?.title || 'Unknown'}}
+          </div>
+          <div class="col-md-6">
+            <strong>Display Order:</strong> Level {{data.level}}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+}

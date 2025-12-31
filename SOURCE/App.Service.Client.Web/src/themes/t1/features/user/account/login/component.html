@@ -19,7 +19,9 @@
             <div>
               <a routerLink="/" class="d-inline-block auth-logo">
                 <!-- ✅ MULTI-ACCOUNT: Use AccountService observable -->
-                <img *ngIf="logo$ | async as logo" [src]="logo" alt="" height="20">
+                @if (logo$ | async; as logo) {
+                  <img [src]="logo" alt="" height="20">
+                }
               </a>
             </div>
             <p class="mt-3 fs-15 fw-medium">
@@ -35,66 +37,68 @@
         <div class="col-md-8 col-lg-6 col-xl-5">
           <div class="card mt-4">
             <div class="card-body p-4">
-              
+
               <!-- ============================================ -->
               <!-- PROVIDER SELECTION VIEW -->
               <!-- ============================================ -->
-              <div *ngIf="currentView === 'providers'" class="provider-view">
-                <div class="text-center mt-2">
-                  <h5 class="text-primary">
-                    {{'BASE.WELCOMES.WELCOME_BACK!' | baseTranslate }}&nbsp;
-                  </h5>
-                  <p class="text-muted">
-                    Choose how you want to sign in
-                  </p>
+              @if (currentView === 'providers') {
+                <div class="provider-view">
+                  <div class="text-center mt-2">
+                    <h5 class="text-primary">
+                      {{'BASE.WELCOMES.WELCOME_BACK!' | baseTranslate }}&nbsp;
+                    </h5>
+                    <p class="text-muted">
+                      Choose how you want to sign in
+                    </p>
+                  </div>
+                  <div class="p-2 mt-4">
+                    <app-auth-provider-list
+                      [continueWithText]="'Continue with'"
+                      [showEmailOption]="allowLocalLogin"
+                      (providerSelected)="onProviderSelected($event)">
+                    </app-auth-provider-list>
+                  </div>
                 </div>
-
-                <div class="p-2 mt-4">
-                  <app-auth-provider-list
-                    [continueWithText]="'Continue with'"
-                    [showEmailOption]="allowLocalLogin"
-                    (providerSelected)="onProviderSelected($event)">
-                  </app-auth-provider-list>
-                </div>
-              </div>
+              }
 
               <!-- ============================================ -->
               <!-- EMAIL/PASSWORD LOGIN VIEW -->
               <!-- ============================================ -->
-              <div *ngIf="currentView === 'email'" class="email-view">
-                <div class="text-center mt-2">
-                  <h5 class="text-primary">
-                    {{'BASE.SIGN_INS.SINGULAR' | baseTranslate }}&nbsp;
-                  </h5>
-                  <p class="text-muted">
-                    Enter your email and password
-                  </p>
+              @if (currentView === 'email') {
+                <div class="email-view">
+                  <div class="text-center mt-2">
+                    <h5 class="text-primary">
+                      {{'BASE.SIGN_INS.SINGULAR' | baseTranslate }}&nbsp;
+                    </h5>
+                    <p class="text-muted">
+                      Enter your email and password
+                    </p>
+                  </div>
+                  <div class="p-2 mt-4">
+                    <app-email-login-form
+                      [showBackButton]="hasOidcProviders"
+                      [backText]="'Other sign in options'"
+                      [emailLabel]="'BASE.AUTHENTICATION.EMAIL' | baseTranslate"
+                      [emailPlaceholder]="'BASE.AUTHENTICATION.EMAIL_INSTRUCTIONS' | baseTranslate"
+                      [emailRequiredError]="'BASE.AUTHENTICATION.EMAIL_ERROR_01' | baseTranslate"
+                      [emailInvalidError]="'BASE.AUTHENTICATION.EMAIL_ERROR_02' | baseTranslate"
+                      [passwordLabel]="'BASE.AUTHENTICATION.PASSWORD' | baseTranslate"
+                      [passwordPlaceholder]="'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS' | baseTranslate"
+                      [passwordRequiredError]="'BASE.AUTHENTICATION.PASSWORD_ERROR_01' | baseTranslate"
+                      [rememberMeText]="'BASE.AUTHENTICATION.REMEMBER_ME?' | baseTranslate"
+                      [forgotPasswordText]="'BASE.AUTHENTICATION.FORGOT?' | baseTranslate"
+                      [submitText]="'BASE.SIGN_INS.SINGULAR' | baseTranslate"
+                      [forgotPasswordRoute]="'/auth/pass-reset'"
+                      [loading]="loading"
+                      [errorMessage]="errorMessage"
+                      [defaultEmail]="defaultEmail"
+                      [defaultPassword]="defaultPassword"
+                      (loginSubmit)="onEmailLogin($event)"
+                      (backClicked)="showProviders()">
+                    </app-email-login-form>
+                  </div>
                 </div>
-
-                <div class="p-2 mt-4">
-                  <app-email-login-form
-                    [showBackButton]="hasOidcProviders"
-                    [backText]="'Other sign in options'"
-                    [emailLabel]="'BASE.AUTHENTICATION.EMAIL' | baseTranslate"
-                    [emailPlaceholder]="'BASE.AUTHENTICATION.EMAIL_INSTRUCTIONS' | baseTranslate"
-                    [emailRequiredError]="'BASE.AUTHENTICATION.EMAIL_ERROR_01' | baseTranslate"
-                    [emailInvalidError]="'BASE.AUTHENTICATION.EMAIL_ERROR_02' | baseTranslate"
-                    [passwordLabel]="'BASE.AUTHENTICATION.PASSWORD' | baseTranslate"
-                    [passwordPlaceholder]="'BASE.AUTHENTICATION.PASSWORD_INSTRUCTIONS' | baseTranslate"
-                    [passwordRequiredError]="'BASE.AUTHENTICATION.PASSWORD_ERROR_01' | baseTranslate"
-                    [rememberMeText]="'BASE.AUTHENTICATION.REMEMBER_ME?' | baseTranslate"
-                    [forgotPasswordText]="'BASE.AUTHENTICATION.FORGOT?' | baseTranslate"
-                    [submitText]="'BASE.SIGN_INS.SINGULAR' | baseTranslate"
-                    [forgotPasswordRoute]="'/auth/pass-reset'"
-                    [loading]="loading"
-                    [errorMessage]="errorMessage"
-                    [defaultEmail]="defaultEmail"
-                    [defaultPassword]="defaultPassword"
-                    (loginSubmit)="onEmailLogin($event)"
-                    (backClicked)="showProviders()">
-                  </app-email-login-form>
-                </div>
-              </div>
+              }
 
             </div>
             <!-- end card body -->

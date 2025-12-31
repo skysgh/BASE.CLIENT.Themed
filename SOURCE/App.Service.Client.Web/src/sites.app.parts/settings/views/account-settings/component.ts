@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ServiceSettingsAccountSettingService } from '../../services/service-settings-account-setting.service';
 import { AccountService } from '../../../../core/services/account.service';
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
@@ -12,7 +12,7 @@ import { SystemDiagnosticsTraceService } from '../../../../core/services/system.
  */
 @Component({
     selector: 'app-account-settings-section',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './component.html',
     styleUrls: ['./component.scss']
 })

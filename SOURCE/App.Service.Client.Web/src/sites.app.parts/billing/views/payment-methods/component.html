@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  
+
   <!-- Page Header -->
   <div class="row">
     <div class="col-12">
@@ -16,194 +16,211 @@
   </div>
 
   <!-- Loading State -->
-  <div *ngIf="loading()" class="text-center py-5">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">{{ 'BASE.LOADS.PRESENT' | baseTranslate }}</span>
+  @if (loading()) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">{{ 'BASE.LOADS.PRESENT' | baseTranslate }}</span>
+      </div>
     </div>
-  </div>
+  }
 
   <!-- Error State -->
-  <div *ngIf="error()" class="alert alert-danger" role="alert">
-    {{ error() }}
-  </div>
+  @if (error()) {
+    <div class="alert alert-danger" role="alert">
+      {{ error() }}
+    </div>
+  }
 
   <!-- Payment Methods List -->
-  <div class="row" *ngIf="!loading()">
-    
-    <!-- No Payment Methods -->
-    <div class="col-12" *ngIf="paymentMethods().length === 0">
-      <div class="card">
-        <div class="card-body text-center py-5">
-          <div class="avatar-lg mx-auto mb-4">
-            <div class="avatar-title bg-primary-subtle text-primary rounded-circle fs-24">
-              <i class="ri-bank-card-line"></i>
+  @if (!loading()) {
+    <div class="row">
+      <!-- No Payment Methods -->
+      @if (paymentMethods().length === 0) {
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body text-center py-5">
+              <div class="avatar-lg mx-auto mb-4">
+                <div class="avatar-title bg-primary-subtle text-primary rounded-circle fs-24">
+                  <i class="ri-bank-card-line"></i>
+                </div>
+              </div>
+              <h5>{{ 'BASE.PAYMENTS.NO_METHODS' | baseTranslate }}</h5>
+              <p class="text-muted mb-4">{{ 'BASE.PAYMENTS.ADD_METHOD_PROMPT' | baseTranslate }}</p>
+              <button class="btn btn-primary" (click)="openAddForm()">
+                <i class="ri-add-line me-1"></i>
+                {{ 'BASE.ACTIONS.ADD' | baseTranslate }} {{ 'BASE.PAYMENTS.METHODS.SINGULAR' | baseTranslate }}
+              </button>
             </div>
           </div>
-          <h5>{{ 'BASE.PAYMENTS.NO_METHODS' | baseTranslate }}</h5>
-          <p class="text-muted mb-4">{{ 'BASE.PAYMENTS.ADD_METHOD_PROMPT' | baseTranslate }}</p>
-          <button class="btn btn-primary" (click)="openAddForm()">
-            <i class="ri-add-line me-1"></i>
-            {{ 'BASE.ACTIONS.ADD' | baseTranslate }} {{ 'BASE.PAYMENTS.METHODS.SINGULAR' | baseTranslate }}
-          </button>
         </div>
-      </div>
-    </div>
-
-    <!-- Payment Method Cards -->
-    <div class="col-xl-4 col-md-6" *ngFor="let method of paymentMethods()">
-      <div class="card" [class.border-primary]="method.isDefault">
-        <div class="card-body">
-          <!-- Default Badge -->
-          <div class="d-flex justify-content-between align-items-start mb-3">
-            <div class="avatar-sm">
-              <div class="avatar-title bg-light text-primary rounded fs-20">
-                <i [class]="getCardIcon(method.brand || 'unknown')"></i>
+      }
+      <!-- Payment Method Cards -->
+      @for (method of paymentMethods(); track method) {
+        <div class="col-xl-4 col-md-6">
+          <div class="card" [class.border-primary]="method.isDefault">
+            <div class="card-body">
+              <!-- Default Badge -->
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="avatar-sm">
+                  <div class="avatar-title bg-light text-primary rounded fs-20">
+                    <i [class]="getCardIcon(method.brand || 'unknown')"></i>
+                  </div>
+                </div>
+                @if (method.isDefault) {
+                  <span class="badge bg-success-subtle text-success">
+                    {{ 'BASE.STATUS.DEFAULT' | baseTranslate }}
+                  </span>
+                }
+              </div>
+              <!-- Card Details -->
+              <h5 class="card-title mb-1">
+                •••• •••• •••• {{ method.last4 }}
+              </h5>
+              <p class="text-muted mb-2">
+                {{ method.holderName }}
+              </p>
+              <p class="text-muted mb-0 fs-13">
+                <i class="ri-calendar-line me-1"></i>
+                {{ 'BASE.PAYMENTS.EXPIRES' | baseTranslate }}:
+                {{ formatExp(method.expiryMonth || 0, method.expiryYear || 0) }}
+              </p>
+              <!-- Actions -->
+              <div class="mt-4 d-flex gap-2">
+                @if (!method.isDefault) {
+                  <button
+                    class="btn btn-soft-primary btn-sm"
+                    (click)="setDefault(method.id!)">
+                    {{ 'BASE.ACTIONS.SET_DEFAULT' | baseTranslate }}
+                  </button>
+                }
+                <button
+                  class="btn btn-soft-danger btn-sm"
+                  (click)="removeMethod(method.id!)">
+                  <i class="ri-delete-bin-line"></i>
+                </button>
               </div>
             </div>
-            <span *ngIf="method.isDefault" class="badge bg-success-subtle text-success">
-              {{ 'BASE.STATUS.DEFAULT' | baseTranslate }}
-            </span>
-          </div>
-
-          <!-- Card Details -->
-          <h5 class="card-title mb-1">
-            •••• •••• •••• {{ method.last4 }}
-          </h5>
-          <p class="text-muted mb-2">
-            {{ method.holderName }}
-          </p>
-          <p class="text-muted mb-0 fs-13">
-            <i class="ri-calendar-line me-1"></i>
-            {{ 'BASE.PAYMENTS.EXPIRES' | baseTranslate }}: 
-            {{ formatExp(method.expiryMonth || 0, method.expiryYear || 0) }}
-          </p>
-
-          <!-- Actions -->
-          <div class="mt-4 d-flex gap-2">
-            <button 
-              *ngIf="!method.isDefault"
-              class="btn btn-soft-primary btn-sm"
-              (click)="setDefault(method.id!)">
-              {{ 'BASE.ACTIONS.SET_DEFAULT' | baseTranslate }}
-            </button>
-            <button 
-              class="btn btn-soft-danger btn-sm"
-              (click)="removeMethod(method.id!)">
-              <i class="ri-delete-bin-line"></i>
-            </button>
           </div>
         </div>
-      </div>
+      }
     </div>
-  </div>
+  }
 
   <!-- Add Payment Method Modal -->
-  <div class="modal fade" [class.show]="showAddForm" [style.display]="showAddForm ? 'block' : 'none'" 
-       tabindex="-1" role="dialog" *ngIf="showAddForm">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">
-            {{ 'BASE.ACTIONS.ADD' | baseTranslate }} {{ 'BASE.PAYMENTS.METHODS.SINGULAR' | baseTranslate }}
-          </h5>
-          <button type="button" class="btn-close" (click)="closeAddForm()"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Error Alert -->
-          <div *ngIf="formError" class="alert alert-danger" role="alert">
-            {{ formError }}
+  @if (showAddForm) {
+    <div class="modal fade" [class.show]="showAddForm" [style.display]="showAddForm ? 'block' : 'none'"
+      tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              {{ 'BASE.ACTIONS.ADD' | baseTranslate }} {{ 'BASE.PAYMENTS.METHODS.SINGULAR' | baseTranslate }}
+            </h5>
+            <button type="button" class="btn-close" (click)="closeAddForm()"></button>
           </div>
-
-          <form (ngSubmit)="submitNewCard()">
-            <!-- Cardholder Name -->
-            <div class="mb-3">
-              <label class="form-label">{{ 'BASE.PAYMENTS.CARD.HOLDER_NAME' | baseTranslate }}</label>
-              <input type="text" 
-                     class="form-control" 
-                     [(ngModel)]="newCard.holderName"
-                     name="holderName"
-                     placeholder="John Doe"
-                     required>
-            </div>
-
-            <!-- Card Number -->
-            <div class="mb-3">
-              <label class="form-label">{{ 'BASE.PAYMENTS.CARD.NUMBER' | baseTranslate }}</label>
-              <input type="text" 
-                     class="form-control" 
-                     [(ngModel)]="newCard.cardNumber"
-                     name="cardNumber"
-                     placeholder="4242 4242 4242 4242"
-                     maxlength="19"
-                     required>
-            </div>
-
-            <!-- Expiry & CVV -->
-            <div class="row">
-              <div class="col-4">
+          <div class="modal-body">
+            <!-- Error Alert -->
+            @if (formError) {
+              <div class="alert alert-danger" role="alert">
+                {{ formError }}
+              </div>
+            }
+            <form (ngSubmit)="submitNewCard()">
+              <!-- Cardholder Name -->
+              <div class="mb-3">
+                <label class="form-label">{{ 'BASE.PAYMENTS.CARD.HOLDER_NAME' | baseTranslate }}</label>
+                <input type="text"
+                  class="form-control"
+                  [(ngModel)]="newCard.holderName"
+                  name="holderName"
+                  placeholder="John Doe"
+                  required>
+                </div>
+                <!-- Card Number -->
                 <div class="mb-3">
-                  <label class="form-label">{{ 'BASE.PAYMENTS.CARD.EXPIRY_MONTH' | baseTranslate }}</label>
-                  <select class="form-select" [(ngModel)]="newCard.expiryMonth" name="expiryMonth" required>
-                    <option value="">MM</option>
-                    <option *ngFor="let m of [1,2,3,4,5,6,7,8,9,10,11,12]" [value]="m">
-                      {{ m.toString().padStart(2, '0') }}
-                    </option>
-                  </select>
+                  <label class="form-label">{{ 'BASE.PAYMENTS.CARD.NUMBER' | baseTranslate }}</label>
+                  <input type="text"
+                    class="form-control"
+                    [(ngModel)]="newCard.cardNumber"
+                    name="cardNumber"
+                    placeholder="4242 4242 4242 4242"
+                    maxlength="19"
+                    required>
+                  </div>
+                  <!-- Expiry & CVV -->
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="mb-3">
+                        <label class="form-label">{{ 'BASE.PAYMENTS.CARD.EXPIRY_MONTH' | baseTranslate }}</label>
+                        <select class="form-select" [(ngModel)]="newCard.expiryMonth" name="expiryMonth" required>
+                          <option value="">MM</option>
+                          @for (m of [1,2,3,4,5,6,7,8,9,10,11,12]; track m) {
+                            <option [value]="m">
+                              {{ m.toString().padStart(2, '0') }}
+                            </option>
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="mb-3">
+                        <label class="form-label">{{ 'BASE.PAYMENTS.CARD.EXPIRY_YEAR' | baseTranslate }}</label>
+                        <select class="form-select" [(ngModel)]="newCard.expiryYear" name="expiryYear" required>
+                          <option value="">YY</option>
+                          @for (y of [2024,2025,2026,2027,2028,2029,2030]; track y) {
+                            <option [value]="y">
+                              {{ y }}
+                            </option>
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="mb-3">
+                        <label class="form-label">{{ 'BASE.PAYMENTS.CARD.CVV' | baseTranslate }}</label>
+                        <input type="text"
+                          class="form-control"
+                          [(ngModel)]="newCard.cvv"
+                          name="cvv"
+                          placeholder="123"
+                          maxlength="4"
+                          required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Set as Default -->
+                    <div class="form-check mb-3">
+                      <input class="form-check-input"
+                        type="checkbox"
+                        [(ngModel)]="newCard.isDefault"
+                        name="isDefault"
+                        id="setDefault">
+                        <label class="form-check-label" for="setDefault">
+                          {{ 'BASE.PAYMENTS.SET_AS_DEFAULT' | baseTranslate }}
+                        </label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-light" (click)="closeAddForm()">
+                      {{ 'BASE.ACTIONS.CANCEL' | baseTranslate }}
+                    </button>
+                    <button type="button"
+                      class="btn btn-primary"
+                      (click)="submitNewCard()"
+                      [disabled]="formSubmitting">
+                      @if (formSubmitting) {
+                        <span class="spinner-border spinner-border-sm me-1"></span>
+                      }
+                      {{ 'BASE.ACTIONS.SAVE' | baseTranslate }}
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div class="col-4">
-                <div class="mb-3">
-                  <label class="form-label">{{ 'BASE.PAYMENTS.CARD.EXPIRY_YEAR' | baseTranslate }}</label>
-                  <select class="form-select" [(ngModel)]="newCard.expiryYear" name="expiryYear" required>
-                    <option value="">YY</option>
-                    <option *ngFor="let y of [2024,2025,2026,2027,2028,2029,2030]" [value]="y">
-                      {{ y }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="mb-3">
-                  <label class="form-label">{{ 'BASE.PAYMENTS.CARD.CVV' | baseTranslate }}</label>
-                  <input type="text" 
-                         class="form-control" 
-                         [(ngModel)]="newCard.cvv"
-                         name="cvv"
-                         placeholder="123"
-                         maxlength="4"
-                         required>
-                </div>
-              </div>
             </div>
+          }
+          @if (showAddForm) {
+            <div class="modal-backdrop fade show" (click)="closeAddForm()"></div>
+          }
 
-            <!-- Set as Default -->
-            <div class="form-check mb-3">
-              <input class="form-check-input" 
-                     type="checkbox" 
-                     [(ngModel)]="newCard.isDefault"
-                     name="isDefault"
-                     id="setDefault">
-              <label class="form-check-label" for="setDefault">
-                {{ 'BASE.PAYMENTS.SET_AS_DEFAULT' | baseTranslate }}
-              </label>
-            </div>
-          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-light" (click)="closeAddForm()">
-            {{ 'BASE.ACTIONS.CANCEL' | baseTranslate }}
-          </button>
-          <button type="button" 
-                  class="btn btn-primary" 
-                  (click)="submitNewCard()"
-                  [disabled]="formSubmitting">
-            <span *ngIf="formSubmitting" class="spinner-border spinner-border-sm me-1"></span>
-            {{ 'BASE.ACTIONS.SAVE' | baseTranslate }}
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal-backdrop fade show" *ngIf="showAddForm" (click)="closeAddForm()"></div>
-
-</div>

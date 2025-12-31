@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-import { CommonModule } from '@angular/common';
+
 import { BrowserModule } from "@angular/platform-browser";
 
 // ✅ NEW: Use ConfigRegistry instead of direct import

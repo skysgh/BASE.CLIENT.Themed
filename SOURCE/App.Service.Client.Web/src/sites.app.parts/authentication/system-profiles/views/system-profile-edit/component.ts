@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { SystemProfileService } from '../../services/system-profile.service';
 
@@ -10,7 +10,7 @@ import { SystemProfileService } from '../../services/system-profile.service';
  */
 @Component({
     selector: 'app-system-profile-edit',
-    imports: [CommonModule, FormsModule],
+    imports: [FormsModule],
     template: `
     <div class="system-profile-page">
       <div class="page-header mb-4">

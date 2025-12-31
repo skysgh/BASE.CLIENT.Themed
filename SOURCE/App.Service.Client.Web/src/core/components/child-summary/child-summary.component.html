@@ -1,93 +1,122 @@
 <!-- Single Line Mode -->
-<div *ngIf="isSingleLine" class="child-summary-single d-flex align-items-center justify-content-between py-2">
-  <div class="d-flex align-items-center gap-2">
-    <i class="bx {{icon}} text-primary"></i>
-    <span class="fw-medium">{{title}}</span>
-    <span class="badge bg-secondary">{{totalCount}}</span>
+@if (isSingleLine) {
+  <div class="child-summary-single d-flex align-items-center justify-content-between py-2">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bx {{icon}} text-primary"></i>
+      <span class="fw-medium">{{title}}</span>
+      <span class="badge bg-secondary">{{totalCount}}</span>
+    </div>
+    <div class="d-flex gap-2">
+      @if (browseRoute) {
+        <a href="javascript:void(0)" (click)="handleBrowse()" class="text-primary small">
+          View All →
+        </a>
+      }
+      @if (showAdd) {
+        <button type="button" class="btn btn-sm btn-outline-primary" (click)="handleAdd()">
+          <i class="bx bx-plus"></i>
+        </button>
+      }
+    </div>
   </div>
-  <div class="d-flex gap-2">
-    <a *ngIf="browseRoute" href="javascript:void(0)" (click)="handleBrowse()" class="text-primary small">
-      View All →
-    </a>
-    <button *ngIf="showAdd" type="button" class="btn btn-sm btn-outline-primary" (click)="handleAdd()">
-      <i class="bx bx-plus"></i>
-    </button>
-  </div>
-</div>
+}
 
 <!-- Card Mode (sm, md, lg) -->
-<div *ngIf="!isSingleLine" class="card child-summary-card" [class.child-summary-sm]="isSmall">
-  <!-- Header -->
-  <div class="card-header d-flex justify-content-between align-items-center">
-    <h6 class="mb-0">
-      <i class="bx {{icon}} me-2"></i>
-      {{title}}
-      <span class="badge bg-secondary ms-2">{{totalCount}}</span>
-    </h6>
-    <div class="d-flex gap-2">
-      <a *ngIf="browseRoute" href="javascript:void(0)" (click)="handleBrowse()" class="text-primary small">
-        View All
-      </a>
-      <button *ngIf="showAdd" type="button" class="btn btn-sm btn-primary" (click)="handleAdd()">
-        <i class="bx bx-plus me-1"></i>
-        Add
-      </button>
-    </div>
-  </div>
-
-  <!-- Body -->
-  <div class="card-body">
-    <!-- Loading -->
-    <div *ngIf="loading" class="text-center py-3">
-      <div class="spinner-border spinner-border-sm text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
+@if (!isSingleLine) {
+  <div class="card child-summary-card" [class.child-summary-sm]="isSmall">
+    <!-- Header -->
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h6 class="mb-0">
+        <i class="bx {{icon}} me-2"></i>
+        {{title}}
+        <span class="badge bg-secondary ms-2">{{totalCount}}</span>
+      </h6>
+      <div class="d-flex gap-2">
+        @if (browseRoute) {
+          <a href="javascript:void(0)" (click)="handleBrowse()" class="text-primary small">
+            View All
+          </a>
+        }
+        @if (showAdd) {
+          <button type="button" class="btn btn-sm btn-primary" (click)="handleAdd()">
+            <i class="bx bx-plus me-1"></i>
+            Add
+          </button>
+        }
       </div>
     </div>
-
-    <!-- Empty State -->
-    <div *ngIf="!loading && totalCount === 0" class="text-center py-3 text-muted">
-      <i class="bx {{icon}} fs-32 d-block mb-2"></i>
-      <p class="mb-0 small">No {{title.toLowerCase()}} yet</p>
-    </div>
-
-    <!-- Stats -->
-    <ng-container *ngIf="!loading && totalCount > 0">
-      <!-- Status Breakdown -->
-      <div *ngIf="showStatusBreakdown && statusBreakdown.length > 0" class="status-breakdown mb-3">
-        <div class="d-flex flex-wrap gap-2">
-          <span *ngFor="let group of statusBreakdown" 
-                class="badge" 
-                [style.background-color]="group.color">
-            {{group.status}}: {{group.count}}
-          </span>
-        </div>
-      </div>
-
-      <!-- Custom Stats -->
-      <div *ngIf="stats.length > 0" class="row g-2">
-        <div *ngFor="let stat of stats" class="col-6 col-md-4">
-          <div class="stat-item text-center p-2 rounded bg-light">
-            <i *ngIf="stat.icon" class="bx {{stat.icon}} fs-20" [style.color]="stat.color"></i>
-            <div class="stat-value fw-semibold">{{stat.value}}</div>
-            <div class="stat-label small text-muted">{{stat.label}}</div>
+    <!-- Body -->
+    <div class="card-body">
+      <!-- Loading -->
+      @if (loading) {
+        <div class="text-center py-3">
+          <div class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
           </div>
         </div>
-      </div>
-
-      <!-- Quick List (for md/lg) -->
-      <div *ngIf="size === 'lg' && items.length > 0" class="quick-list mt-3">
-        <div *ngFor="let item of items.slice(0, 5)" class="quick-item d-flex align-items-center py-1 border-bottom">
-          <span class="flex-grow-1">{{item.title}}</span>
-          <span *ngIf="item.statusName" class="badge" [style.background-color]="item.statusColor || '#6c757d'">
-            {{item.statusName}}
-          </span>
+      }
+      <!-- Empty State -->
+      @if (!loading && totalCount === 0) {
+        <div class="text-center py-3 text-muted">
+          <i class="bx {{icon}} fs-32 d-block mb-2"></i>
+          <p class="mb-0 small">No {{title.toLowerCase()}} yet</p>
         </div>
-        <div *ngIf="items.length > 5" class="text-center mt-2">
-          <a href="javascript:void(0)" (click)="handleBrowse()" class="text-primary small">
-            +{{items.length - 5}} more...
-          </a>
-        </div>
-      </div>
-    </ng-container>
+      }
+      <!-- Stats -->
+      @if (!loading && totalCount > 0) {
+        <!-- Status Breakdown -->
+        @if (showStatusBreakdown && statusBreakdown.length > 0) {
+          <div class="status-breakdown mb-3">
+            <div class="d-flex flex-wrap gap-2">
+              @for (group of statusBreakdown; track group) {
+                <span
+                  class="badge"
+                  [style.background-color]="group.color">
+                  {{group.status}}: {{group.count}}
+                </span>
+              }
+            </div>
+          </div>
+        }
+        <!-- Custom Stats -->
+        @if (stats.length > 0) {
+          <div class="row g-2">
+            @for (stat of stats; track stat) {
+              <div class="col-6 col-md-4">
+                <div class="stat-item text-center p-2 rounded bg-light">
+                  @if (stat.icon) {
+                    <i class="bx {{stat.icon}} fs-20" [style.color]="stat.color"></i>
+                  }
+                  <div class="stat-value fw-semibold">{{stat.value}}</div>
+                  <div class="stat-label small text-muted">{{stat.label}}</div>
+                </div>
+              </div>
+            }
+          </div>
+        }
+        <!-- Quick List (for md/lg) -->
+        @if (size === 'lg' && items.length > 0) {
+          <div class="quick-list mt-3">
+            @for (item of items.slice(0, 5); track item) {
+              <div class="quick-item d-flex align-items-center py-1 border-bottom">
+                <span class="flex-grow-1">{{item.title}}</span>
+                @if (item.statusName) {
+                  <span class="badge" [style.background-color]="item.statusColor || '#6c757d'">
+                    {{item.statusName}}
+                  </span>
+                }
+              </div>
+            }
+            @if (items.length > 5) {
+              <div class="text-center mt-2">
+                <a href="javascript:void(0)" (click)="handleBrowse()" class="text-primary small">
+                  +{{items.length - 5}} more...
+                </a>
+              </div>
+            }
+          </div>
+        }
+      }
+    </div>
   </div>
-</div>
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { AppletSettingsRegistryService, AppletSettingsSchema } from '../../services/applet-settings-registry.service';
 import { SettingsNavigationService, SettingsNavItem } from '../../services/settings-navigation.service';
@@ -17,7 +17,7 @@ interface SettingsNavItemWithRoute extends SettingsNavItem {
  */
 @Component({
     selector: 'app-settings-hub',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     templateUrl: './component.html',
     styleUrls: ['./component.scss']
 })

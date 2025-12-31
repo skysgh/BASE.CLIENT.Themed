@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 /**
@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
  */
 @Component({
     selector: 'app-colors-reference',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     template: `
     <div class="colors-reference">
       <div class="d-flex align-items-center mb-4">
@@ -19,50 +19,54 @@ import { RouterModule } from '@angular/router';
           Color Palette
         </h3>
       </div>
-
+    
       <!-- Primary Colors -->
       <h5>Primary Colors</h5>
       <div class="row mb-4">
-        <div class="col-6 col-md-2 mb-3" *ngFor="let color of primaryColors">
-          <div class="color-swatch" [style.background-color]="color.hex">
-            <span class="color-label">{{color.name}}</span>
-          </div>
-          <div class="text-center mt-2">
-            <small class="text-muted">{{color.hex}}</small>
-            <br>
-            <code class="small">{{color.css}}</code>
+        @for (color of primaryColors; track color) {
+          <div class="col-6 col-md-2 mb-3">
+            <div class="color-swatch" [style.background-color]="color.hex">
+              <span class="color-label">{{color.name}}</span>
+            </div>
+            <div class="text-center mt-2">
+              <small class="text-muted">{{color.hex}}</small>
+              <br>
+                <code class="small">{{color.css}}</code>
+              </div>
+            </div>
+          }
+        </div>
+    
+        <!-- Status Colors -->
+        <h5>Status Colors</h5>
+        <div class="row mb-4">
+          @for (color of statusColors; track color) {
+            <div class="col-6 col-md-2 mb-3">
+              <div class="color-swatch" [style.background-color]="color.hex">
+                <span class="color-label">{{color.name}}</span>
+              </div>
+              <div class="text-center mt-2">
+                <small class="text-muted">{{color.hex}}</small>
+              </div>
+            </div>
+          }
+        </div>
+    
+        <!-- Usage Examples -->
+        <h5>Usage</h5>
+        <div class="card">
+          <div class="card-body">
+            <pre class="mb-0"><code>// CSS Variable
+              color: var(--vz-primary);
+    
+              // Bootstrap Class
+              &lt;button class="btn btn-primary"&gt;...&lt;/button&gt;
+              &lt;span class="text-success"&gt;...&lt;/span&gt;
+            &lt;div class="bg-danger-subtle"&gt;...&lt;/div&gt;</code></pre>
           </div>
         </div>
       </div>
-
-      <!-- Status Colors -->
-      <h5>Status Colors</h5>
-      <div class="row mb-4">
-        <div class="col-6 col-md-2 mb-3" *ngFor="let color of statusColors">
-          <div class="color-swatch" [style.background-color]="color.hex">
-            <span class="color-label">{{color.name}}</span>
-          </div>
-          <div class="text-center mt-2">
-            <small class="text-muted">{{color.hex}}</small>
-          </div>
-        </div>
-      </div>
-
-      <!-- Usage Examples -->
-      <h5>Usage</h5>
-      <div class="card">
-        <div class="card-body">
-          <pre class="mb-0"><code>// CSS Variable
-color: var(--vz-primary);
-
-// Bootstrap Class
-&lt;button class="btn btn-primary"&gt;...&lt;/button&gt;
-&lt;span class="text-success"&gt;...&lt;/span&gt;
-&lt;div class="bg-danger-subtle"&gt;...&lt;/div&gt;</code></pre>
-        </div>
-      </div>
-    </div>
-  `,
+    `,
     styles: [`
     .colors-reference {
       padding: 1.5rem;

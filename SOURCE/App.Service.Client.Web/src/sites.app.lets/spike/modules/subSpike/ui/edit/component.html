@@ -7,17 +7,21 @@
         Spikes
       </a>
     </li>
-    <li class="breadcrumb-item" *ngIf="parentSpike">
-      <a [routerLink]="['../../../../../', parentSpikeId]">
-        {{parentSpike.title}}
-      </a>
-    </li>
+    @if (parentSpike) {
+      <li class="breadcrumb-item">
+        <a [routerLink]="['../../../../../', parentSpikeId]">
+          {{parentSpike.title}}
+        </a>
+      </li>
+    }
     <li class="breadcrumb-item">
       <a routerLink="../../../">Sub-Spikes</a>
     </li>
-    <li class="breadcrumb-item" *ngIf="data">
-      <a [routerLink]="['../../', subSpikeId]">{{data.displayLabel}}</a>
-    </li>
+    @if (data) {
+      <li class="breadcrumb-item">
+        <a [routerLink]="['../../', subSpikeId]">{{data.displayLabel}}</a>
+      </li>
+    }
     <li class="breadcrumb-item active" aria-current="page">
       Edit
     </li>
@@ -25,69 +29,78 @@
 </nav>
 
 <!-- Loading State -->
-<div *ngIf="loading" class="text-center py-5">
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
+@if (loading) {
+  <div class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="text-muted mt-2">Loading sub-spike...</p>
   </div>
-  <p class="text-muted mt-2">Loading sub-spike...</p>
-</div>
+}
 
 <!-- Not Found State -->
-<div *ngIf="notFound && !loading" class="text-center py-5">
-  <i class="bx bx-error-circle fs-48 text-warning"></i>
-  <h4 class="mt-3">Sub-Spike Not Found</h4>
-  <p class="text-muted">The sub-spike you're looking for doesn't exist.</p>
-  <button type="button" class="btn btn-primary" (click)="onCancel()">
-    <i class="bx bx-arrow-back me-1"></i>
-    Back
-  </button>
-</div>
+@if (notFound && !loading) {
+  <div class="text-center py-5">
+    <i class="bx bx-error-circle fs-48 text-warning"></i>
+    <h4 class="mt-3">Sub-Spike Not Found</h4>
+    <p class="text-muted">The sub-spike you're looking for doesn't exist.</p>
+    <button type="button" class="btn btn-primary" (click)="onCancel()">
+      <i class="bx bx-arrow-back me-1"></i>
+      Back
+    </button>
+  </div>
+}
 
 <!-- Edit Form -->
-<div *ngIf="data && !loading">
-  <!-- Page Header -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-      <h4 class="mb-1">
-        <i class="bx bx-edit me-2 text-primary"></i>
-        Edit Sub-Spike
-      </h4>
-      <p class="text-muted mb-0">
-        Editing: <strong>{{data.title}}</strong>
-      </p>
+@if (data && !loading) {
+  <div>
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h4 class="mb-1">
+          <i class="bx bx-edit me-2 text-primary"></i>
+          Edit Sub-Spike
+        </h4>
+        <p class="text-muted mb-0">
+          Editing: <strong>{{data.title}}</strong>
+        </p>
+      </div>
+    </div>
+    <!-- Error Alert -->
+    @if (saveError) {
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bx bx-error-circle me-2"></i>
+        {{saveError}}
+        <button type="button" class="btn-close" (click)="saveError = null"></button>
+      </div>
+    }
+    <!-- Form Card -->
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSave()">
+          <formly-form
+            [form]="form"
+            [fields]="fields"
+            [model]="model">
+          </formly-form>
+          <!-- Form Actions -->
+          <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+            <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+              <i class="bx bx-x me-1"></i>
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary" [disabled]="isSaveDisabled">
+              @if (saving) {
+                <span class="spinner-border spinner-border-sm me-1"></span>
+              }
+              @if (!saving) {
+                <i class="bx bx-save me-1"></i>
+              }
+              {{saving ? 'Saving...' : 'Save Changes'}}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-
-  <!-- Error Alert -->
-  <div class="alert alert-danger alert-dismissible fade show" *ngIf="saveError" role="alert">
-    <i class="bx bx-error-circle me-2"></i>
-    {{saveError}}
-    <button type="button" class="btn-close" (click)="saveError = null"></button>
-  </div>
-
-  <!-- Form Card -->
-  <div class="card">
-    <div class="card-body">
-      <form [formGroup]="form" (ngSubmit)="onSave()">
-        <formly-form 
-          [form]="form" 
-          [fields]="fields" 
-          [model]="model">
-        </formly-form>
-
-        <!-- Form Actions -->
-        <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
-          <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
-            <i class="bx bx-x me-1"></i>
-            Cancel
-          </button>
-          <button type="submit" class="btn btn-primary" [disabled]="isSaveDisabled">
-            <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
-            <i *ngIf="!saving" class="bx bx-save me-1"></i>
-            {{saving ? 'Saving...' : 'Save Changes'}}
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+}

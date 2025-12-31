@@ -9,16 +9,17 @@ import { ToastService } from '../../../../../../core/services/toast.service';
     template: `
   @for(toast of toastService.toasts;track $index){
     <ngb-toast
-            [class]="toast.classname"
+      [class]="toast.classname"
       [autohide]="true"
       [delay]="toast.delay || 5000"
       (hidden)="toastService.remove(toast)"
-    >
-      <ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
+      >
+      @if (isTemplate(toast)) {
         <ng-template [ngTemplateOutlet]="toast.textOrTpl"></ng-template>
-      </ng-template>
-
-      <ng-template #text>{{ toast.textOrTpl }}</ng-template>
+      } @else {
+        {{ toast.textOrTpl }}
+      }
+  
     </ngb-toast>
   }
   `,

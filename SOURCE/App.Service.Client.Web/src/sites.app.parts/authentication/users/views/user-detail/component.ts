@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule, ActivatedRoute } from '@angular/router';
 
 /**
@@ -10,7 +10,7 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
  */
 @Component({
     selector: 'app-user-detail',
-    imports: [CommonModule, RouterModule],
+    imports: [RouterModule],
     template: `
     <div class="user-detail-page">
       <div class="page-header mb-4">

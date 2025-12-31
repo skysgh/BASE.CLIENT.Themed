@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
 // Ag:
 import { Component, ViewChild, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
-import {CommonModule} from '@angular/common'; 
+ 
 // Etc:
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 // Configuration:

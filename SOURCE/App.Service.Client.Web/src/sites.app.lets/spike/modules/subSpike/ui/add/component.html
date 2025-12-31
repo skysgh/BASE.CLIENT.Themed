@@ -7,11 +7,13 @@
         Spikes
       </a>
     </li>
-    <li class="breadcrumb-item" *ngIf="parentSpike">
-      <a [routerLink]="['../../../', parentSpikeId]">
-        {{parentSpike.title}}
-      </a>
-    </li>
+    @if (parentSpike) {
+      <li class="breadcrumb-item">
+        <a [routerLink]="['../../../', parentSpikeId]">
+          {{parentSpike.title}}
+        </a>
+      </li>
+    }
     <li class="breadcrumb-item">
       <a routerLink="../../">Sub-Spikes</a>
     </li>
@@ -28,26 +30,30 @@
       <i class="bx bx-plus-circle me-2 text-primary"></i>
       Add Sub-Spike
     </h4>
-    <p class="text-muted mb-0" *ngIf="parentSpike">
-      Adding to: <strong>{{parentSpike.title}}</strong>
-    </p>
+    @if (parentSpike) {
+      <p class="text-muted mb-0">
+        Adding to: <strong>{{parentSpike.title}}</strong>
+      </p>
+    }
   </div>
 </div>
 
 <!-- Error Alert -->
-<div class="alert alert-danger alert-dismissible fade show" *ngIf="saveError" role="alert">
-  <i class="bx bx-error-circle me-2"></i>
-  {{saveError}}
-  <button type="button" class="btn-close" (click)="saveError = null"></button>
-</div>
+@if (saveError) {
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="bx bx-error-circle me-2"></i>
+    {{saveError}}
+    <button type="button" class="btn-close" (click)="saveError = null"></button>
+  </div>
+}
 
 <!-- Form Card -->
 <div class="card">
   <div class="card-body">
     <form [formGroup]="form" (ngSubmit)="onSave()">
-      <formly-form 
-        [form]="form" 
-        [fields]="fields" 
+      <formly-form
+        [form]="form"
+        [fields]="fields"
         [model]="model">
       </formly-form>
 
@@ -58,8 +64,12 @@
           Cancel
         </button>
         <button type="submit" class="btn btn-primary" [disabled]="isCreateDisabled">
-          <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
-          <i *ngIf="!saving" class="bx bx-plus me-1"></i>
+          @if (saving) {
+            <span class="spinner-border spinner-border-sm me-1"></span>
+          }
+          @if (!saving) {
+            <i class="bx bx-plus me-1"></i>
+          }
           {{saving ? 'Creating...' : 'Create Sub-Spike'}}
         </button>
       </div>

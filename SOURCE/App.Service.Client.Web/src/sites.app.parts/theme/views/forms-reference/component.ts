@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 
@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angul
  */
 @Component({
     selector: 'app-forms-reference',
-    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+    imports: [RouterModule, FormsModule, ReactiveFormsModule],
     template: `
     <div class="forms-reference">
       <div class="d-flex align-items-center mb-4">

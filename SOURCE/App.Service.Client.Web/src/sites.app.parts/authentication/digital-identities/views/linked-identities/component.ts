@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { DigitalIdentityService } from '../../services/digital-identity.service';
 import { IDENTITY_PROVIDERS } from '../../models/digital-identity.dto';
 
@@ -10,7 +10,7 @@ import { IDENTITY_PROVIDERS } from '../../models/digital-identity.dto';
  */
 @Component({
     selector: 'app-linked-identities',
-    imports: [CommonModule],
+    imports: [],
     template: `
     <div class="linked-identities-page">
       <div class="page-header mb-4">

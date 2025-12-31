@@ -28,34 +28,40 @@ export interface AuthProviderDisplay {
     template: `
     <div class="auth-provider-list">
       <!-- OIDC Providers (Microsoft, Google, etc.) -->
-      <div *ngFor="let provider of oidcProviders" class="mb-3">
-        <button 
-          type="button"
-          class="btn w-100 d-flex align-items-center justify-content-center gap-2 provider-btn"
-          [ngClass]="provider.buttonClass"
-          (click)="selectProvider(provider)">
-          <i [class]="provider.icon + ' fs-18'"></i>
-          <span>{{ continueWithText }} {{ provider.name }}</span>
-        </button>
-      </div>
-
+      @for (provider of oidcProviders; track provider) {
+        <div class="mb-3">
+          <button
+            type="button"
+            class="btn w-100 d-flex align-items-center justify-content-center gap-2 provider-btn"
+            [ngClass]="provider.buttonClass"
+            (click)="selectProvider(provider)">
+            <i [class]="provider.icon + ' fs-18'"></i>
+            <span>{{ continueWithText }} {{ provider.name }}</span>
+          </button>
+        </div>
+      }
+    
       <!-- Divider (if both OIDC and local are available) -->
-      <div *ngIf="oidcProviders.length > 0 && showEmailOption" class="divider my-4">
-        <span class="divider-text text-muted">{{ orText }}</span>
-      </div>
-
+      @if (oidcProviders.length > 0 && showEmailOption) {
+        <div class="divider my-4">
+          <span class="divider-text text-muted">{{ orText }}</span>
+        </div>
+      }
+    
       <!-- Email/Password Option -->
-      <div *ngIf="showEmailOption" class="mb-3">
-        <button 
-          type="button"
-          class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2 provider-btn"
-          (click)="selectEmailProvider()">
-          <i class="ri-mail-line fs-18"></i>
-          <span>{{ continueWithText }} {{ emailText }}</span>
-        </button>
-      </div>
+      @if (showEmailOption) {
+        <div class="mb-3">
+          <button
+            type="button"
+            class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2 provider-btn"
+            (click)="selectEmailProvider()">
+            <i class="ri-mail-line fs-18"></i>
+            <span>{{ continueWithText }} {{ emailText }}</span>
+          </button>
+        </div>
+      }
     </div>
-  `,
+    `,
     styles: [`
     .auth-provider-list {
       width: 100%;

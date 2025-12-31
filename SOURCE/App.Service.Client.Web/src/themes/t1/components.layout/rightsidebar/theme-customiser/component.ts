@@ -1,6 +1,6 @@
 // Ag:
 import { Component, Inject, OnInit, DOCUMENT } from "@angular/core";
-import { CommonModule } from '@angular/common'; 
+ 
 // Etc:
 import { Store } from '@ngrx/store';
 // Constants:

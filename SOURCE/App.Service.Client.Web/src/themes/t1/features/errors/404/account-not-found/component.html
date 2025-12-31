@@ -5,10 +5,12 @@
         <!-- Logo - FROM ACCOUNT CONFIG -->
         <div class="mb-7">
           <a href="/" class="mb-12">
-            <img *ngIf="logoUrl$ | async as logoUrl" 
-                 [src]="logoUrl" 
-                 alt="Logo" 
-                 class="h-40px" />
+            @if (logoUrl$ | async; as logoUrl) {
+              <img
+                [src]="logoUrl"
+                alt="Logo"
+                class="h-40px" />
+            }
           </a>
         </div>
 
@@ -24,7 +26,7 @@
 
         <!-- Account ID Display with Description -->
         <div class="fw-semibold fs-6 text-gray-500 mb-7">
-          {{'BASE.ERRORS.404-A.DESCRIPTION' | baseTranslate}} 
+          {{'BASE.ERRORS.404-A.DESCRIPTION' | baseTranslate}}
           <strong class="text-danger">"{{ accountId }}"</strong>
         </div>
 

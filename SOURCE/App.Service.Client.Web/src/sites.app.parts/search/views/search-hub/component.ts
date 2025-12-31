@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { UniversalSearchService } from '../../services/universal-search.service';
@@ -20,7 +20,7 @@ import { SearchResultItem } from '../../models/search.model';
  */
 @Component({
     selector: 'app-search-hub',
-    imports: [CommonModule, FormsModule, RouterModule],
+    imports: [FormsModule, RouterModule],
     templateUrl: './component.html',
     styleUrls: ['./component.scss']
 })

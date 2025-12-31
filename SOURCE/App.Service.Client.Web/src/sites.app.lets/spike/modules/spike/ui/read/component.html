@@ -1,251 +1,281 @@
-<div class="spike-read" *ngIf="data && !loading">
-  <!-- Header with status and actions -->
-  <div class="page-header mb-4">
-    <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
-      <div class="header-content">
-        <div class="d-flex align-items-center gap-2 mb-2">
-          <span class="badge fs-14" [style.background-color]="extendedData.statusColor">
-            <i class="bx {{extendedData.statusIcon}} me-1"></i>
-            {{extendedData.statusName}}
-          </span>
-          <span class="badge bg-secondary-subtle text-secondary">
-            <i class="bx {{extendedData.categoryIcon}} me-1"></i>
-            {{extendedData.categoryName}}
-          </span>
+@if (data && !loading) {
+  <div class="spike-read">
+    <!-- Header with status and actions -->
+    <div class="page-header mb-4">
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+        <div class="header-content">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="badge fs-14" [style.background-color]="extendedData.statusColor">
+              <i class="bx {{extendedData.statusIcon}} me-1"></i>
+              {{extendedData.statusName}}
+            </span>
+            <span class="badge bg-secondary-subtle text-secondary">
+              <i class="bx {{extendedData.categoryIcon}} me-1"></i>
+              {{extendedData.categoryName}}
+            </span>
+          </div>
+          <h3 class="mb-1">{{data.title}}</h3>
+          @if (data.description) {
+            <p class="text-muted mb-0">{{data.description}}</p>
+          }
         </div>
-        <h3 class="mb-1">{{data.title}}</h3>
-        <p class="text-muted mb-0" *ngIf="data.description">{{data.description}}</p>
-      </div>
-      
-      <div class="header-actions d-flex gap-2 flex-wrap align-items-center">
-        <!-- View Renderer Toggle -->
-        <div class="btn-group btn-group-sm me-2">
-          <button *ngFor="let renderer of availableRenderers"
-                  type="button"
-                  class="btn"
-                  [class.btn-primary]="currentRenderer === renderer.id"
-                  [class.btn-outline-secondary]="currentRenderer !== renderer.id"
-                  (click)="switchRenderer(renderer.id)"
-                  [title]="renderer.name">
-            <i class="bx {{renderer.icon}}"></i>
+        <div class="header-actions d-flex gap-2 flex-wrap align-items-center">
+          <!-- View Renderer Toggle -->
+          <div class="btn-group btn-group-sm me-2">
+            @for (renderer of availableRenderers; track renderer) {
+              <button
+                type="button"
+                class="btn"
+                [class.btn-primary]="currentRenderer === renderer.id"
+                [class.btn-outline-secondary]="currentRenderer !== renderer.id"
+                (click)="switchRenderer(renderer.id)"
+                [title]="renderer.name">
+                <i class="bx {{renderer.icon}}"></i>
+              </button>
+            }
+          </div>
+          <!-- Edit Button -->
+          <button type="button" class="btn btn-outline-primary" (click)="onEdit()">
+            <i class="bx bx-edit me-1"></i>
+            Edit
           </button>
-        </div>
-        
-        <!-- Edit Button -->
-        <button type="button" class="btn btn-outline-primary" (click)="onEdit()">
-          <i class="bx bx-edit me-1"></i>
-          Edit
-        </button>
-        
-        <!-- State Transition Buttons (BREAST workflow) -->
-        <ng-container *ngIf="allowedTransitions.length > 0">
-          <div class="vr d-none d-md-block"></div>
-          <ng-container *ngFor="let transition of allowedTransitions">
-            <button 
-              type="button" 
-              class="btn {{getTransitionButtonClass(transition)}}"
-              (click)="onTransition(transition)"
-              [disabled]="transitioning">
-              <span *ngIf="transitioning" class="spinner-border spinner-border-sm me-1"></span>
-              <i *ngIf="!transitioning" class="bx {{transition.icon}} me-1"></i>
-              {{getTransitionLabel(transition)}}
-            </button>
-          </ng-container>
-        </ng-container>
-      </div>
-    </div>
-  </div>
-
-  <!-- Formly Read View (labels, not inputs) -->
-  <ng-container *ngIf="isFormlyRenderer">
-    <div class="card mb-4">
-      <div class="card-body">
-        <form [formGroup]="form">
-          <formly-form 
-            [form]="form" 
-            [fields]="fields" 
-            [model]="formModel">
-          </formly-form>
-        </form>
-      </div>
-    </div>
-  </ng-container>
-
-  <!-- Custom Read View -->
-  <ng-container *ngIf="isCustomRenderer">
-    <!-- Metadata Cards -->
-    <div class="row mb-4">
-      <div class="col-md-3 col-sm-6 mb-3">
-        <div class="card h-100">
-          <div class="card-body text-center">
-            <i class="bx bx-calendar text-primary fs-24 mb-2"></i>
-            <h6 class="text-muted mb-1">Due Date</h6>
-            <p class="mb-0 fw-semibold" [class.text-danger]="extendedData.isOverdue">
-              {{extendedData.dueDateFormatted || 'Not set'}}
-              <span *ngIf="extendedData.isOverdue" class="badge bg-danger ms-1">Overdue</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-3">
-        <div class="card h-100">
-          <div class="card-body text-center">
-            <i class="bx bx-time text-primary fs-24 mb-2"></i>
-            <h6 class="text-muted mb-1">Estimated Effort</h6>
-            <p class="mb-0 fw-semibold">{{extendedData.estimatedEffort || 0}} hours</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-3">
-        <div class="card h-100">
-          <div class="card-body text-center">
-            <i class="bx bx-flag text-primary fs-24 mb-2"></i>
-            <h6 class="text-muted mb-1">Priority</h6>
-            <p class="mb-0 fw-semibold">{{extendedData.priorityLabel}}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-3">
-        <div class="card h-100">
-          <div class="card-body text-center">
-            <i class="bx bx-list-ul text-primary fs-24 mb-2"></i>
-            <h6 class="text-muted mb-1">Items</h6>
-            <p class="mb-0 fw-semibold">{{extendedData.itemCount}}</p>
-          </div>
+          <!-- State Transition Buttons (BREAST workflow) -->
+          @if (allowedTransitions.length > 0) {
+            <div class="vr d-none d-md-block"></div>
+            @for (transition of allowedTransitions; track transition) {
+              <button
+                type="button"
+                class="btn {{getTransitionButtonClass(transition)}}"
+                (click)="onTransition(transition)"
+                [disabled]="transitioning">
+                @if (transitioning) {
+                  <span class="spinner-border spinner-border-sm me-1"></span>
+                }
+                @if (!transitioning) {
+                  <i class="bx {{transition.icon}} me-1"></i>
+                }
+                {{getTransitionLabel(transition)}}
+              </button>
+            }
+          }
         </div>
       </div>
     </div>
-
-    <!-- Classifications (Tags) -->
-    <div class="mb-4" *ngIf="extendedData.classificationIds && extendedData.classificationIds.length > 0">
-      <h6 class="text-muted mb-2">Tags</h6>
-      <div class="d-flex gap-2 flex-wrap">
-        <span *ngFor="let tagId of extendedData.classificationIds" class="badge bg-info-subtle text-info">
-          {{tagId}}
-        </span>
+    <!-- Formly Read View (labels, not inputs) -->
+    @if (isFormlyRenderer) {
+      <div class="card mb-4">
+        <div class="card-body">
+          <form [formGroup]="form">
+            <formly-form
+              [form]="form"
+              [fields]="fields"
+              [model]="formModel">
+            </formly-form>
+          </form>
+        </div>
       </div>
-    </div>
-
-    <!-- Parts Section -->
-    <div class="card mb-4" *ngIf="extendedData.parts && extendedData.parts.length > 0">
-      <div class="card-header">
-        <h5 class="mb-0">
-          <i class="bx bx-user me-2"></i>
-          Stakeholders
-        </h5>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div *ngFor="let part of extendedData.parts" class="col-md-6 col-lg-4 mb-3">
-            <div class="d-flex align-items-center">
-              <div class="avatar-sm me-3">
-                <span class="avatar-title rounded-circle bg-primary-subtle text-primary">
-                  <i class="bx {{part.typeIcon || 'bx-user'}}"></i>
-                </span>
-              </div>
-              <div>
-                <h6 class="mb-0">{{part.name}}</h6>
-                <p class="text-muted small mb-0">{{part.typeName}}</p>
-                <p class="text-muted small mb-0" *ngIf="part.value">{{part.value}}</p>
-              </div>
+    }
+    <!-- Custom Read View -->
+    @if (isCustomRenderer) {
+      <!-- Metadata Cards -->
+      <div class="row mb-4">
+        <div class="col-md-3 col-sm-6 mb-3">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <i class="bx bx-calendar text-primary fs-24 mb-2"></i>
+              <h6 class="text-muted mb-1">Due Date</h6>
+              <p class="mb-0 fw-semibold" [class.text-danger]="extendedData.isOverdue">
+                {{extendedData.dueDateFormatted || 'Not set'}}
+                @if (extendedData.isOverdue) {
+                  <span class="badge bg-danger ms-1">Overdue</span>
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <i class="bx bx-time text-primary fs-24 mb-2"></i>
+              <h6 class="text-muted mb-1">Estimated Effort</h6>
+              <p class="mb-0 fw-semibold">{{extendedData.estimatedEffort || 0}} hours</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <i class="bx bx-flag text-primary fs-24 mb-2"></i>
+              <h6 class="text-muted mb-1">Priority</h6>
+              <p class="mb-0 fw-semibold">{{extendedData.priorityLabel}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-3">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <i class="bx bx-list-ul text-primary fs-24 mb-2"></i>
+              <h6 class="text-muted mb-1">Items</h6>
+              <p class="mb-0 fw-semibold">{{extendedData.itemCount}}</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-container>
-
-  <!-- Items Section (SubSpikes / Child Entities) - Always shown -->
-  <div class="card mb-4">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">
-        <i class="bx bx-list-check me-2"></i>
-        Items ({{extendedData.itemCount}})
-      </h5>
-      <button type="button" class="btn btn-sm btn-primary">
-        <i class="bx bx-plus me-1"></i>
-        Add Item
-      </button>
-    </div>
-    <div class="card-body">
-      <div *ngIf="extendedData.items && extendedData.items.length > 0">
-        <div *ngFor="let item of extendedData.items" class="item-row d-flex align-items-center py-2 border-bottom">
-          <div class="item-icon me-3">
-            <i class="bx {{item.typeIcon || 'bx-list-ul'}} fs-20 text-primary"></i>
-          </div>
-          <div class="item-content flex-grow-1">
-            <h6 class="mb-0">{{item.description}}</h6>
-            <p class="text-muted small mb-0">
-              {{item.typeName}}
-              <span *ngIf="item.quantity"> • Qty: {{item.quantity}} {{item.unit}}</span>
-              <span *ngIf="item.unitPrice"> • ${{item.unitPrice}}</span>
-              <span *ngIf="item.lineTotal" class="fw-semibold"> = ${{item.lineTotal}}</span>
-            </p>
-          </div>
-          <div class="item-actions">
-            <button type="button" class="btn btn-sm btn-outline-secondary">
-              <i class="bx bx-edit"></i>
-            </button>
+      <!-- Classifications (Tags) -->
+      @if (extendedData.classificationIds && extendedData.classificationIds.length > 0) {
+        <div class="mb-4">
+          <h6 class="text-muted mb-2">Tags</h6>
+          <div class="d-flex gap-2 flex-wrap">
+            @for (tagId of extendedData.classificationIds; track tagId) {
+              <span class="badge bg-info-subtle text-info">
+                {{tagId}}
+              </span>
+            }
           </div>
         </div>
-        
-        <!-- Total -->
-        <div *ngIf="extendedData.totalValue" class="d-flex justify-content-end mt-3">
-          <div class="text-end">
-            <span class="text-muted">Total:</span>
-            <span class="fs-18 fw-semibold ms-2">${{extendedData.totalValue}}</span>
+      }
+      <!-- Parts Section -->
+      @if (extendedData.parts && extendedData.parts.length > 0) {
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0">
+              <i class="bx bx-user me-2"></i>
+              Stakeholders
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              @for (part of extendedData.parts; track part) {
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="d-flex align-items-center">
+                    <div class="avatar-sm me-3">
+                      <span class="avatar-title rounded-circle bg-primary-subtle text-primary">
+                        <i class="bx {{part.typeIcon || 'bx-user'}}"></i>
+                      </span>
+                    </div>
+                    <div>
+                      <h6 class="mb-0">{{part.name}}</h6>
+                      <p class="text-muted small mb-0">{{part.typeName}}</p>
+                      @if (part.value) {
+                        <p class="text-muted small mb-0">{{part.value}}</p>
+                      }
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
           </div>
         </div>
+      }
+    }
+    <!-- Items Section (SubSpikes / Child Entities) - Always shown -->
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+          <i class="bx bx-list-check me-2"></i>
+          Items ({{extendedData.itemCount}})
+        </h5>
+        <button type="button" class="btn btn-sm btn-primary">
+          <i class="bx bx-plus me-1"></i>
+          Add Item
+        </button>
       </div>
-      
-      <div *ngIf="!extendedData.items || extendedData.items.length === 0" class="text-center py-4">
-        <i class="bx bx-list-ul fs-48 text-muted"></i>
-        <p class="text-muted mt-2">No items yet</p>
+      <div class="card-body">
+        @if (extendedData.items && extendedData.items.length > 0) {
+          <div>
+            @for (item of extendedData.items; track item) {
+              <div class="item-row d-flex align-items-center py-2 border-bottom">
+                <div class="item-icon me-3">
+                  <i class="bx {{item.typeIcon || 'bx-list-ul'}} fs-20 text-primary"></i>
+                </div>
+                <div class="item-content flex-grow-1">
+                  <h6 class="mb-0">{{item.description}}</h6>
+                  <p class="text-muted small mb-0">
+                    {{item.typeName}}
+                    @if (item.quantity) {
+                      <span> • Qty: {{item.quantity}} {{item.unit}}</span>
+                    }
+                    @if (item.unitPrice) {
+                      <span> • ${{item.unitPrice}}</span>
+                    }
+                    @if (item.lineTotal) {
+                      <span class="fw-semibold"> = ${{item.lineTotal}}</span>
+                    }
+                  </p>
+                </div>
+                <div class="item-actions">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <i class="bx bx-edit"></i>
+                  </button>
+                </div>
+              </div>
+            }
+            <!-- Total -->
+            @if (extendedData.totalValue) {
+              <div class="d-flex justify-content-end mt-3">
+                <div class="text-end">
+                  <span class="text-muted">Total:</span>
+                  <span class="fs-18 fw-semibold ms-2">${{extendedData.totalValue}}</span>
+                </div>
+              </div>
+            }
+          </div>
+        }
+        @if (!extendedData.items || extendedData.items.length === 0) {
+          <div class="text-center py-4">
+            <i class="bx bx-list-ul fs-48 text-muted"></i>
+            <p class="text-muted mt-2">No items yet</p>
+          </div>
+        }
+      </div>
+    </div>
+    <!-- Sub-Spikes Summary (S in I-S-BREAD-T) -->
+    <app-child-summary
+      title="Sub-Spikes"
+      icon="bx-layer"
+      [items]="subSpikeSummaryItems"
+      [loading]="subSpikesLoading"
+      [size]="'md'"
+      browseRoute="subspikes"
+      addRoute="subspikes/add"
+      (onBrowse)="onBrowseSubSpikes()"
+      (onAdd)="onAddSubSpike()">
+    </app-child-summary>
+    <!-- Footer Actions -->
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <button type="button" (click)="onBackToList()" class="btn btn-outline-secondary">
+        <i class="bx bx-arrow-back me-1"></i>
+        Back to List
+      </button>
+      <div class="text-muted small">
+        Created: {{extendedData.createdAt | date:'medium'}}
+        @if (extendedData.modifiedAt) {
+          <span>• Modified: {{extendedData.modifiedAt | date:'medium'}}</span>
+        }
       </div>
     </div>
   </div>
+}
 
-  <!-- Sub-Spikes Summary (S in I-S-BREAD-T) -->
-  <app-child-summary
-    title="Sub-Spikes"
-    icon="bx-layer"
-    [items]="subSpikeSummaryItems"
-    [loading]="subSpikesLoading"
-    [size]="'md'"
-    browseRoute="subspikes"
-    addRoute="subspikes/add"
-    (onBrowse)="onBrowseSubSpikes()"
-    (onAdd)="onAddSubSpike()">
-  </app-child-summary>
+<!-- Loading State -->
+@if (loading) {
+  <div class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="text-muted mt-2">Loading spike...</p>
+  </div>
+}
 
-  <!-- Footer Actions -->
-  <div class="d-flex justify-content-between align-items-center mt-4">
-    <button type="button" (click)="onBackToList()" class="btn btn-outline-secondary">
+<!-- Not Found State -->
+@if (notFound && !loading) {
+  <div class="text-center py-5">
+    <i class="bx bx-error-circle fs-48 text-warning"></i>
+    <h4 class="mt-3">Spike Not Found</h4>
+    <p class="text-muted">The spike you're looking for doesn't exist or was deleted.</p>
+    <button type="button" (click)="onBackToList()" class="btn btn-primary">
       <i class="bx bx-arrow-back me-1"></i>
       Back to List
     </button>
-    <div class="text-muted small">
-      Created: {{extendedData.createdAt | date:'medium'}} 
-      <span *ngIf="extendedData.modifiedAt">• Modified: {{extendedData.modifiedAt | date:'medium'}}</span>
-    </div>
   </div>
-</div>
-
-<!-- Loading State -->
-<div *ngIf="loading" class="text-center py-5">
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-  <p class="text-muted mt-2">Loading spike...</p>
-</div>
-
-<!-- Not Found State -->
-<div *ngIf="notFound && !loading" class="text-center py-5">
-  <i class="bx bx-error-circle fs-48 text-warning"></i>
-  <h4 class="mt-3">Spike Not Found</h4>
-  <p class="text-muted">The spike you're looking for doesn't exist or was deleted.</p>
-  <button type="button" (click)="onBackToList()" class="btn btn-primary">
-    <i class="bx bx-arrow-back me-1"></i>
-    Back to List
-  </button>
-</div>
+}

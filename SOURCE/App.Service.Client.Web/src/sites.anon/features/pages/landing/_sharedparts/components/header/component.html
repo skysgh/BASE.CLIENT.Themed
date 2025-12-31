@@ -1,78 +1,82 @@
 <!-- Header navbar for landing pages -->
 <nav class="navbar navbar-expand-lg navbar-landing fixed-top" id="navbar"
-     (window:scroll)="onWindowScroll()">
+  (window:scroll)="onWindowScroll()">
 
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand" routerLink="/">
       <!-- ✅ MULTI-ACCOUNT: Use AccountService observables -->
-      <img *ngIf="logoDark$ | async as logoDark"
-           [src]="logoDark"
-           class="card-logo card-logo-dark"
-           alt="logo dark" height="17">
-      <img *ngIf="logoLight$ | async as logoLight"
-           [src]="logoLight"
-           class="card-logo card-logo-light"
-           alt="logo light"
-           height="17">
+      @if (logoDark$ | async; as logoDark) {
+        <img
+          [src]="logoDark"
+          class="card-logo card-logo-dark"
+          alt="logo dark" height="17">
+      }
+      @if (logoLight$ | async; as logoLight) {
+        <img
+          [src]="logoLight"
+          class="card-logo card-logo-light"
+          alt="logo light"
+          height="17">
+      }
     </a>
-    
+
     <!-- Mobile menu toggle -->
     <button class="navbar-toggler py-0 fs-20 text-body"
-            type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            [attr.aria-label]="'BASE.NAVIGATION.TOGGLE_NAVIGATION' | baseTranslate"
-            (click)="onToggleMenu()">
+      type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      [attr.aria-label]="'BASE.NAVIGATION.TOGGLE_NAVIGATION' | baseTranslate"
+      (click)="onToggleMenu()">
       <i class="mdi mdi-menu"></i>
     </button>
-    
+
     <!-- Navigation menu -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Section navigation (landing page specific) -->
       <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
         <li class="nav-item">
           <a class="nav-link active"
-             [ngClass]="{'active':sectionId === sectionsInfo.intro.id}"
-             [ngxScrollTo]="'#'+sectionsInfo.intro.id"
-             href="javascript:void(0);">{{'BASE.HOMES.SINGULAR'| baseTranslate}}</a>
+            [ngClass]="{'active':sectionId === sectionsInfo.intro.id}"
+            [ngxScrollTo]="'#'+sectionsInfo.intro.id"
+          href="javascript:void(0);">{{'BASE.HOMES.SINGULAR'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === sectionsInfo.capabilities.id}"
-             [ngxScrollTo]="'#'+sectionsInfo.capabilities.id"
-             href="javascript:void(0);">{{'BASE.CAPABILITIES.PLURAL'| baseTranslate}}</a>
+            [ngClass]="{'active':sectionId === sectionsInfo.capabilities.id}"
+            [ngxScrollTo]="'#'+sectionsInfo.capabilities.id"
+          href="javascript:void(0);">{{'BASE.CAPABILITIES.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === sectionsInfo.endorsements.id}"
-             [ngxScrollTo]="'#'+sectionsInfo.endorsements.id"
-             href="javascript:void(0);">{{'BASE.REVIEWS.PLURAL'| baseTranslate}}</a>
+            [ngClass]="{'active':sectionId === sectionsInfo.endorsements.id}"
+            [ngxScrollTo]="'#'+sectionsInfo.endorsements.id"
+          href="javascript:void(0);">{{'BASE.REVIEWS.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === sectionsInfo.faqs.id}"
-             [ngxScrollTo]="'#'+sectionsInfo.faqs.id"
-             href="javascript:void(0);">{{'BASE.FAQS.PLURAL'| baseTranslate}}</a>
+            [ngClass]="{'active':sectionId === sectionsInfo.faqs.id}"
+            [ngxScrollTo]="'#'+sectionsInfo.faqs.id"
+          href="javascript:void(0);">{{'BASE.FAQS.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === sectionsInfo.plans.id}"
-             [ngxScrollTo]="'#'+sectionsInfo.plans.id"
-             href="javascript:void(0);">{{'BASE.PLANS.PLURAL'| baseTranslate}}</a>
+            [ngClass]="{'active':sectionId === sectionsInfo.plans.id}"
+            [ngxScrollTo]="'#'+sectionsInfo.plans.id"
+          href="javascript:void(0);">{{'BASE.PLANS.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === sectionsInfo.team.id}"
-             [ngxScrollTo]="'#'+sectionsInfo.team.id"
-             href="javascript:void(0);">{{'BASE.TEAMS.SINGULAR'| baseTranslate}}</a>
+            [ngClass]="{'active':sectionId === sectionsInfo.team.id}"
+            [ngxScrollTo]="'#'+sectionsInfo.team.id"
+          href="javascript:void(0);">{{'BASE.TEAMS.SINGULAR'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             [ngClass]="{'active':sectionId === sectionsInfo.contact.id}"
-             [ngxScrollTo]="'#'+sectionsInfo.contact.id"
-             href="javascript:void(0);">{{'BASE.CONTACTS.SINGULAR'| baseTranslate}}</a>
+            [ngClass]="{'active':sectionId === sectionsInfo.contact.id}"
+            [ngxScrollTo]="'#'+sectionsInfo.contact.id"
+          href="javascript:void(0);">{{'BASE.CONTACTS.SINGULAR'| baseTranslate}}</a>
         </li>
       </ul>
 
@@ -82,11 +86,11 @@
       <!-- ✅ Authentication links (using PUBLIC_NAVIGATION) -->
       <div class="">
         <a [routerLink]="nav.auth.signin"
-           class="btn btn-link fw-medium text-decoration-none text-body">
+          class="btn btn-link fw-medium text-decoration-none text-body">
           {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
         </a>
         <a [routerLink]="nav.auth.signup"
-           class="btn btn-primary">
+          class="btn btn-primary">
           {{'BASE.SIGN_UPS.SINGULAR'| baseTranslate}}
         </a>
       </div>
