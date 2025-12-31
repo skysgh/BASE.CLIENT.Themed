@@ -14,9 +14,10 @@ import { appsConfiguration } from '../../../../../sites.app/configuration/implem
 import { DefaultComponentServices } from "../../../../../core/services/default-controller-services";
 
 @Component({
-  selector: 'app-base-common-components-topbar-languagefullscreen',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-topbar-languagefullscreen',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentTopBarFullScreenComponent implements OnInit {
   // Expose system configuration:

@@ -11,9 +11,10 @@ import { SystemDefaultServices } from '../../../../../../../core/services/system
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
 
 @Component({
-  selector: 'app-base-core-pages-landing-index-contact',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-landing-index-contact',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

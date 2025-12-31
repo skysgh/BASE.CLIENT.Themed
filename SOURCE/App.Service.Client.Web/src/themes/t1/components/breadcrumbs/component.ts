@@ -13,9 +13,10 @@ import { DefaultComponentServices } from '../../../../core/services/default-cont
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-base-core-common-components-breadcrumbs',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-common-components-breadcrumbs',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

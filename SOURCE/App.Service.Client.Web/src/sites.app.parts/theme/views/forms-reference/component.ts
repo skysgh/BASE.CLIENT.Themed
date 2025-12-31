@@ -7,10 +7,9 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angul
  * Forms Reference Component
  */
 @Component({
-  selector: 'app-forms-reference',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
-  template: `
+    selector: 'app-forms-reference',
+    imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+    template: `
     <div class="forms-reference">
       <div class="d-flex align-items-center mb-4">
         <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
@@ -116,7 +115,7 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angul
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .forms-reference {
       padding: 1.5rem;
       max-width: 1200px;

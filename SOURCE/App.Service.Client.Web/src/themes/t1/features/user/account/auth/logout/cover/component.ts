@@ -14,9 +14,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-core-modules-account_auth-logout-cover',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-modules-account_auth-logout-cover',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

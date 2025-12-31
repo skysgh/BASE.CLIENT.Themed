@@ -17,9 +17,10 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ErrorPageConfig, getErrorConfig } from '../../error-data';
 
 @Component({
-  selector: 'app-error-page-cover',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-error-page-cover',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class ErrorPageCoverComponent implements OnInit {
   public appsConfiguration = appsConfiguration;

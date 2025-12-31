@@ -32,9 +32,10 @@ import { environment } from '../../../../../../environments/environment';
 type LoginView = 'providers' | 'email';
 
 @Component({
-  selector: 'app-base-core-modules-account_auth-login',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-modules-account_auth-login',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

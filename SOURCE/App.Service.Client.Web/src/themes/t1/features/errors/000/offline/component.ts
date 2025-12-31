@@ -14,9 +14,10 @@ import { BaseErrorsOfflineViewModel } from './vm';
 // Data:
 
 @Component({
-  selector: 'app-base-core-errors-offline',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-errors-offline',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

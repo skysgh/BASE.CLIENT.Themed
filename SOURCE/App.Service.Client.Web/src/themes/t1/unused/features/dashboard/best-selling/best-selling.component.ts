@@ -14,9 +14,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-best-selling',
-  templateUrl: './best-selling.component.html',
-  styleUrls: ['./best-selling.component.scss']
+    selector: 'app-best-selling',
+    templateUrl: './best-selling.component.html',
+    styleUrls: ['./best-selling.component.scss'],
+    standalone: false
 })
 export class BestSellingComponent implements OnInit {
   // Expose system configuration:

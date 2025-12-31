@@ -9,10 +9,9 @@ import { RouterModule } from '@angular/router';
  * Placeholder - to be expanded with full CRUD functionality.
  */
 @Component({
-  selector: 'app-users-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-users-list',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="users-list-page">
       <div class="page-header mb-4">
         <h2>
@@ -39,7 +38,7 @@ import { RouterModule } from '@angular/router';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .users-list-page { padding: 1.5rem; }
   `]
 })

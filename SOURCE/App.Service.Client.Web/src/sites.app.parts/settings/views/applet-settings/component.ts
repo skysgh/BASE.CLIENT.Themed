@@ -11,11 +11,10 @@ import { SystemDiagnosticsTraceService } from '../../../../core/services/system.
  * Reads applet ID from route and loads registered settings schema.
  */
 @Component({
-  selector: 'app-applet-settings-section',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-applet-settings-section',
+    imports: [CommonModule],
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss']
 })
 export class AppletSettingsSectionComponent implements OnInit {
   appletId: string = '';

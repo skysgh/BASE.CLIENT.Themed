@@ -10,11 +10,10 @@ import { SystemDiagnosticsTraceService } from '../../../../core/services/system.
  * Displays and manages global service configuration.
  */
 @Component({
-  selector: 'app-service-settings-section',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-service-settings-section',
+    imports: [CommonModule],
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss']
 })
 export class ServiceSettingsSectionComponent implements OnInit {
 

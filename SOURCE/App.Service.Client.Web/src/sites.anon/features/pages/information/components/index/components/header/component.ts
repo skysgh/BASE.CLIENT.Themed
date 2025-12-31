@@ -14,9 +14,10 @@ import { TranslationService } from '../../../../../../../../core/services/transl
 
 
 @Component({
-  selector: 'app-base-core-information-index-header',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-information-index-header',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 

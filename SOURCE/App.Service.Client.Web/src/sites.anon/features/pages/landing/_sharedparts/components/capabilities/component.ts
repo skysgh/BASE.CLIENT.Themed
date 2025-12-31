@@ -16,9 +16,10 @@ import { Services } from './data';
 
 
 @Component({
-  selector: 'app-base-core-pages-landing-index-capabilities',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-landing-index-capabilities',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseAppsPagesLandingIndexCapabilitiesComponent implements OnInit {
   public groupConfiguration = sitesConfiguration

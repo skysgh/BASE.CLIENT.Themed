@@ -28,9 +28,10 @@ import { DefaultComponentServices } from "../../../core/services/default-control
  * See: https://jfcere.github.io/ngx-markdown/get-started
  */
 @Component({
-  selector: 'app-base-core-common-components-markdown',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-common-components-markdown',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 export class BaseCoreCommonComponentsMarkdownComponent implements OnInit {

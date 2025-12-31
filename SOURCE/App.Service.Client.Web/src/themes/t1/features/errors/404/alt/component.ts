@@ -12,9 +12,10 @@ import { themesT1Configuration } from '../../../../configuration/implementations
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 
 @Component({
-  selector: 'app-base-core-errors-alt',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-errors-alt',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

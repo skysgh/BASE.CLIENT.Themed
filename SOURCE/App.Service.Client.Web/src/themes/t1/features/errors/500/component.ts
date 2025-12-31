@@ -14,9 +14,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-core-errors-500-todo',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-errors-500-todo',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

@@ -17,9 +17,10 @@ import { DefaultComponentServices } from "../../../../../core/services/default-c
 import { ViewModel } from "../vm";
 
 @Component({
-  selector: 'app-base-common-components-topbar-languagenotifications',
-  templateUrl: './x.component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-topbar-languagenotifications',
+    templateUrl: './x.component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnInit {
   public appsConfiguration = appsConfiguration;

@@ -11,7 +11,8 @@ import { StringService } from '../../core/services/string.service';
  * Usage: `{{ 'hello world' | capitalize }}`
  */
 @Pipe({
-  name: 'capitalize',
+    name: 'capitalize',
+    standalone: false
 })
 export class CapitalizePipe implements PipeTransform {
 

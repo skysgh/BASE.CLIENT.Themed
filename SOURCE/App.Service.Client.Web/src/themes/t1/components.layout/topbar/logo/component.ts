@@ -15,9 +15,10 @@ import { ViewModel } from "../vm";
 //
 
 @Component({
-  selector: 'app-base-common-components-topbar-languagelogo',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-topbar-languagelogo',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentTopBarLogoComponent implements OnInit {
   // Expose parent configuration:

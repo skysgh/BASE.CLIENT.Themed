@@ -6,10 +6,9 @@ import { RouterModule } from '@angular/router';
  * Colors Reference Component
  */
 @Component({
-  selector: 'app-colors-reference',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-colors-reference',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="colors-reference">
       <div class="d-flex align-items-center mb-4">
         <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
@@ -64,7 +63,7 @@ color: var(--vz-primary);
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .colors-reference {
       padding: 1.5rem;
       max-width: 1200px;

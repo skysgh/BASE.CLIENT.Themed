@@ -24,10 +24,9 @@ interface AccountInfo {
 }
 
 @Component({
-  selector: 'app-account-info',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-account-info',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="account-page">
       <div class="page-header d-flex justify-content-between align-items-center mb-4">
         <div>
@@ -171,7 +170,7 @@ interface AccountInfo {
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .account-page { padding: 1.5rem; max-width: 800px; margin: 0 auto; }
     
     .logo-placeholder {

@@ -27,10 +27,9 @@ export interface EmailLoginCredentials {
 }
 
 @Component({
-  selector: 'app-email-login-form',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  template: `
+    selector: 'app-email-login-form',
+    imports: [CommonModule, ReactiveFormsModule, RouterModule],
+    template: `
     <div class="email-login-form">
       <!-- Back button -->
       <button 
@@ -124,7 +123,7 @@ export interface EmailLoginCredentials {
       </form>
     </div>
   `,
-  styles: [`
+    styles: [`
     .email-login-form {
       width: 100%;
     }

@@ -5,9 +5,10 @@ import { themesT1Configuration } from '../../configuration/implementations/theme
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
 
 @Component({
-  selector: 'app-horizontal',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-horizontal',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

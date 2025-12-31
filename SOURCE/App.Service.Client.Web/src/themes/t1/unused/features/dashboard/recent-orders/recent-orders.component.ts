@@ -13,9 +13,10 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-recent-orders',
-  templateUrl: './recent-orders.component.html',
-  styleUrls: ['./recent-orders.component.scss']
+    selector: 'app-recent-orders',
+    templateUrl: './recent-orders.component.html',
+    styleUrls: ['./recent-orders.component.scss'],
+    standalone: false
 })
 export class RecentOrdersComponent implements OnInit {
   // Expose system configuration:

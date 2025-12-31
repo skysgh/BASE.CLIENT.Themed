@@ -20,9 +20,10 @@ import { TranslationService } from '../../../../../../../../core/services/transl
 
 
 @Component({
-  selector: 'app-base-common-components-footer-ooo',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-footer-ooo',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 

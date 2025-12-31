@@ -10,9 +10,10 @@ import { TransactionDto, formatAmount, getStatusBadgeClass } from '../../models'
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 
 @Component({
-  selector: 'app-transactions',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-transactions',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class TransactionsComponent implements OnInit {
 

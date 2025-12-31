@@ -14,9 +14,10 @@ import { ViewModel } from './vm';
 // Data:
 
 @Component({
-  selector: 'app-job-footer',
-  templateUrl: './job-footer.component.html',
-  styleUrls: ['./job-footer.component.scss']
+    selector: 'app-job-footer',
+    templateUrl: './job-footer.component.html',
+    styleUrls: ['./job-footer.component.scss'],
+    standalone: false
 })
 export class JobBaseLayoutFooterComponent implements OnInit {
   // Expose system configuration:

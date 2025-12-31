@@ -11,9 +11,10 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-top-performers',
-  templateUrl: './top-performers.component.html',
-  styleUrls: ['./top-performers.component.scss']
+    selector: 'app-top-performers',
+    templateUrl: './top-performers.component.html',
+    styleUrls: ['./top-performers.component.scss'],
+    standalone: false
 })
 
 /**

@@ -8,10 +8,9 @@ import { RouterModule } from '@angular/router';
  * Landing page for all compliance/legal documents.
  */
 @Component({
-  selector: 'app-compliance-hub',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-compliance-hub',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="compliance-hub">
       <div class="page-header mb-4">
         <h2>
@@ -45,7 +44,7 @@ import { RouterModule } from '@angular/router';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .compliance-hub { padding: 1.5rem; max-width: 1200px; margin: 0 auto; }
     .doc-card { cursor: pointer; transition: all 0.2s ease; border: 1px solid var(--vz-border-color); }
     .doc-card:hover { border-color: var(--vz-primary); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transform: translateY(-2px); }

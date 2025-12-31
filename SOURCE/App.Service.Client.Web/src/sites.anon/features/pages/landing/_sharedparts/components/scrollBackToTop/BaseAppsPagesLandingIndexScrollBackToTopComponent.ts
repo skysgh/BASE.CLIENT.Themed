@@ -10,7 +10,8 @@ import { SystemDiagnosticsTraceService } from '../../../../../../../core/service
 @Component({
     selector: 'app-base-core-pages-landing-index-scrollbacktotop',
     templateUrl: './component.html',
-    styleUrls: ['./component.scss']
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 

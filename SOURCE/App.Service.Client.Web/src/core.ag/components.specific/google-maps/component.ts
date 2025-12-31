@@ -15,9 +15,10 @@ import { DefaultComponentServices } from '../../../core/services/default-control
 // Data:
 
 @Component({
-  selector: 'app-base-common-components-google-maps',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-google-maps',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentsGoogleMapsComponent implements OnInit {
   // Expose system configuration:

@@ -21,9 +21,10 @@ interface PricingPlan {
 }
 
 @Component({
-  selector: 'app-subscribe',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-subscribe',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class SubscribeComponent implements OnInit {
 

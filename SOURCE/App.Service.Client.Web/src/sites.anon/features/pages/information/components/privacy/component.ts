@@ -15,9 +15,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-core-pages-information-privacy-policy',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-information-privacy-policy',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 /**
  * Privacy Policy Component

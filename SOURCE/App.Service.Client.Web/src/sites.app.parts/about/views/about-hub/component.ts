@@ -12,10 +12,9 @@ import { AccountService } from '../../../../core/services/account.service';
 import { ABOUT_CONSTANTS } from '../../constants';
 
 @Component({
-  selector: 'app-about-hub',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-about-hub',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="about-hub">
       <div class="page-header mb-4">
         <h4 class="mb-1">
@@ -226,7 +225,7 @@ import { ABOUT_CONSTANTS } from '../../constants';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .about-hub { padding: 1.5rem; max-width: 1000px; margin: 0 auto; }
     
     .hierarchy-chain { display: flex; flex-direction: column; align-items: center; }

@@ -12,7 +12,10 @@ import { Pipe, PipeTransform } from '@angular/core';
  *
  * Usage: `*ngFor="let item of items | enabled"`
  */
-@Pipe({ name: 'enabled', pure: false })
+@Pipe({
+    name: 'enabled', pure: false,
+    standalone: false
+})
 export class EnabledPipe implements PipeTransform {
   // make system/env config accessible by markup:
 

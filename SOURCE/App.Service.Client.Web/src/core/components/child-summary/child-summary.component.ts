@@ -46,9 +46,10 @@ export interface SummaryStats {
 export type SummarySize = 'sm' | 'md' | 'lg' | 'single-line';
 
 @Component({
-  selector: 'app-child-summary',
-  templateUrl: './child-summary.component.html',
-  styleUrls: ['./child-summary.component.scss']
+    selector: 'app-child-summary',
+    templateUrl: './child-summary.component.html',
+    styleUrls: ['./child-summary.component.scss'],
+    standalone: false
 })
 export class ChildSummaryComponent {
   /**

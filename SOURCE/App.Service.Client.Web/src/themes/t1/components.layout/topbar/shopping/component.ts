@@ -17,9 +17,10 @@ import { ViewModel } from "../vm";
 // Data:
 
 @Component({
-  selector: 'app-base-common-components-topbar-languageshopping',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-topbar-languageshopping',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentTopBarShoppingComponent implements OnInit {
   public appsConfiguration = appsConfiguration

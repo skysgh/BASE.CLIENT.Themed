@@ -23,9 +23,10 @@ interface RefundState {
 }
 
 @Component({
-  selector: 'app-refund',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-refund',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class RefundComponent implements OnInit {
 

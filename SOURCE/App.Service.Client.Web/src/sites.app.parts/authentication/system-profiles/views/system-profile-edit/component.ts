@@ -9,10 +9,9 @@ import { SystemProfileService } from '../../services/system-profile.service';
  * Edit cross-account user preferences.
  */
 @Component({
-  selector: 'app-system-profile-edit',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  template: `
+    selector: 'app-system-profile-edit',
+    imports: [CommonModule, FormsModule],
+    template: `
     <div class="system-profile-page">
       <div class="page-header mb-4">
         <h2>
@@ -145,7 +144,7 @@ import { SystemProfileService } from '../../services/system-profile.service';
       }
     </div>
   `,
-  styles: [`
+    styles: [`
     .system-profile-page { padding: 1.5rem; }
   `]
 })

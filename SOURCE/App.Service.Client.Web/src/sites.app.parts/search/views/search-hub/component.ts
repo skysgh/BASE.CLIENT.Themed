@@ -19,11 +19,10 @@ import { SearchResultItem } from '../../models/search.model';
  * - Mobile-friendly - cards stack vertically
  */
 @Component({
-  selector: 'app-search-hub',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-search-hub',
+    imports: [CommonModule, FormsModule, RouterModule],
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss']
 })
 export class SearchHubComponent implements OnInit {
   /** Search term bound to input */

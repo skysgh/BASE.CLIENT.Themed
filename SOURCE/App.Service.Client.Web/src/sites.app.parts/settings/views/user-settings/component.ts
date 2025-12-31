@@ -10,11 +10,10 @@ import { SystemDiagnosticsTraceService } from '../../../../core/services/system.
  * Displays and manages user-specific settings.
  */
 @Component({
-  selector: 'app-user-settings-section',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-user-settings-section',
+    imports: [CommonModule],
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss']
 })
 export class UserSettingsSectionComponent implements OnInit {
 

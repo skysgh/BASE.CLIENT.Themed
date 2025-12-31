@@ -15,9 +15,10 @@ import { AccountService } from '../../../../../../../../core/services/account.se
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-base-core-modules-account_auth-success-msg-basic',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-modules-account_auth-success-msg-basic',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

@@ -9,10 +9,9 @@ import { IDENTITY_PROVIDERS } from '../../models/digital-identity.dto';
  * View and manage linked identity providers (SSO accounts).
  */
 @Component({
-  selector: 'app-linked-identities',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-linked-identities',
+    imports: [CommonModule],
+    template: `
     <div class="linked-identities-page">
       <div class="page-header mb-4">
         <h2>
@@ -86,7 +85,7 @@ import { IDENTITY_PROVIDERS } from '../../models/digital-identity.dto';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .linked-identities-page { padding: 1.5rem; }
   `]
 })

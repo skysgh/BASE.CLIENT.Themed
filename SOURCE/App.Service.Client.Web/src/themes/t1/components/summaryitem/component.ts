@@ -14,9 +14,10 @@ import { ViewModel } from "./vm";
 //
 
 @Component({
-  selector: 'app-base-core-common-components-summaryitem',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-common-components-summaryitem',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentsSummaryItemComponent implements OnInit {
   // Expose system configuration:

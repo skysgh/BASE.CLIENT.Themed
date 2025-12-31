@@ -46,9 +46,10 @@ import {
 
 
 @Component({
-  selector: 'app-rightsidebar',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-rightsidebar',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

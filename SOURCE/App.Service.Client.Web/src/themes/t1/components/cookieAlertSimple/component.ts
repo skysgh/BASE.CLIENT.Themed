@@ -13,10 +13,11 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-common-components-cookie-alert-simple',
-  //template: '{{this.appsConfiguration.}}'
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-cookie-alert-simple',
+    //template: '{{this.appsConfiguration.}}'
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 /**
  * Component to show a bar at the bottom of the screen (or similar)

@@ -20,10 +20,9 @@ import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
  * ```
  */
 @Component({
-  selector: 'formly-field-label',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'formly-field-label',
+    imports: [CommonModule],
+    template: `
     <div class="formly-label-field mb-3">
       <label class="form-label text-muted small text-uppercase">
         {{ props.label }}
@@ -53,7 +52,7 @@ import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .formly-label-field {
       .form-label {
         font-weight: 500;
@@ -73,7 +72,7 @@ import { FieldType, FieldTypeConfig, FormlyModule } from '@ngx-formly/core';
       }
     }
   `],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormlyLabelFieldComponent extends FieldType<FieldTypeConfig> {
   

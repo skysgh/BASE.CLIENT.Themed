@@ -13,9 +13,10 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-crypto-stat',
-  templateUrl: './crypto-stat.component.html',
-  styleUrls: ['./crypto-stat.component.scss']
+    selector: 'app-crypto-stat',
+    templateUrl: './crypto-stat.component.html',
+    styleUrls: ['./crypto-stat.component.scss'],
+    standalone: false
 })
 
 /**

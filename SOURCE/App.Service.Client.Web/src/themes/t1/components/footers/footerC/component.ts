@@ -13,10 +13,10 @@ import { ViewModel } from './vm';
 //
 
 @Component({
-  selector: 'app-base-common-components-footer-c',
-
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-footer-c',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentsFooterCComponent implements OnInit {
   // Expose system configuration:

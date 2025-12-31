@@ -13,9 +13,10 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-currencies',
-  templateUrl: './currencies.component.html',
-  styleUrls: ['./currencies.component.scss']
+    selector: 'app-currencies',
+    templateUrl: './currencies.component.html',
+    styleUrls: ['./currencies.component.scss'],
+    standalone: false
 })
 
 /**

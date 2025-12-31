@@ -6,10 +6,9 @@ import { RouterModule } from '@angular/router';
  * Components Reference Component
  */
 @Component({
-  selector: 'app-components-reference',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-components-reference',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="components-reference">
       <div class="d-flex align-items-center mb-4">
         <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
@@ -103,7 +102,7 @@ import { RouterModule } from '@angular/router';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .components-reference {
       padding: 1.5rem;
       max-width: 1200px;

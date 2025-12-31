@@ -13,9 +13,10 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-top-selling',
-  templateUrl: './top-selling.component.html',
-  styleUrls: ['./top-selling.component.scss']
+    selector: 'app-top-selling',
+    templateUrl: './top-selling.component.html',
+    styleUrls: ['./top-selling.component.scss'],
+    standalone: false
 })
 export class TopSellingComponent implements OnInit {
   // Expose system configuration:

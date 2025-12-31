@@ -11,9 +11,10 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-closing-deals',
-  templateUrl: './closing-deals.component.html',
-  styleUrls: ['./closing-deals.component.scss']
+    selector: 'app-closing-deals',
+    templateUrl: './closing-deals.component.html',
+    styleUrls: ['./closing-deals.component.scss'],
+    standalone: false
 })
 
 /**

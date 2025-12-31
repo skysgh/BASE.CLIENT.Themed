@@ -12,9 +12,10 @@ import { DefaultComponentServices } from "../../../../../core/services/default-c
 import { ViewModel } from "../vm";
 
 @Component({
-  selector: 'app-base-common-components-topbar-languagehue',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-topbar-languagehue',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentTopBarHueComponent implements OnInit {
   // Expose system configuration:

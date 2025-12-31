@@ -17,9 +17,10 @@ import { ViewModel } from './vm';
 import { TranslationService } from '../../../../../core/services/translation.service';
 
 @Component({
-  selector: 'app-base-common-components-topbar-languagelanguage',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-topbar-languagelanguage',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements OnInit {
   // Expose system configuration:

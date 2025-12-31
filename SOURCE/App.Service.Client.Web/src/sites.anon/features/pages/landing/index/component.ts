@@ -11,9 +11,10 @@ import { DefaultComponentServices } from '../../../../../core/services/default-c
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-base-core-pages-landing-index',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-landing-index',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

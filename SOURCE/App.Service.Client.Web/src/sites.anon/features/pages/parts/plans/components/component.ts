@@ -15,9 +15,10 @@ import { ServicePricingPlan } from '../../../../../../core/models/data/service-p
 
 
 @Component({
-  selector: 'app-base-core-pages-landing-pricing',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-landing-pricing',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

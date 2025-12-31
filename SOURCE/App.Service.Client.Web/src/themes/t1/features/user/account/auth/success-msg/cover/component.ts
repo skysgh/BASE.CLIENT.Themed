@@ -15,9 +15,10 @@ import { ViewModel } from './vm';
 // Data:
 
 @Component({
-  selector: 'app-base-core-modules-account_auth-success-msg-cover',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-modules-account_auth-success-msg-cover',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

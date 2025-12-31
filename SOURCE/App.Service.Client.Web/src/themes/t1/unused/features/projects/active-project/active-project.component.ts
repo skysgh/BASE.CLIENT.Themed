@@ -14,9 +14,10 @@ import { ViewModel } from './vm';
 // Data:
 
 @Component({
-  selector: 'app-active-project',
-  templateUrl: './active-project.component.html',
-  styleUrls: ['./active-project.component.scss']
+    selector: 'app-active-project',
+    templateUrl: './active-project.component.html',
+    styleUrls: ['./active-project.component.scss'],
+    standalone: false
 })
 
 /**

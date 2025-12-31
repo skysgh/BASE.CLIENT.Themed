@@ -11,9 +11,10 @@ import { formatAmount, getSubscriptionStatusBadgeClass } from '../../models';
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 
 @Component({
-  selector: 'app-payment-hub',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-payment-hub',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class PaymentHubComponent implements OnInit {
 

@@ -40,9 +40,10 @@ import { themesT1Configuration } from "../../../configuration/implementations/th
 import { TranslationService } from "../../../../../core/services/translation.service";
 
 @Component({
-  selector: 'app-base-common-components-topbar-languagetheme-customiser',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-topbar-languagetheme-customiser',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseLayoutRightSideContextThemeCustomiserComponent implements OnInit {
   // Expose system configuration:

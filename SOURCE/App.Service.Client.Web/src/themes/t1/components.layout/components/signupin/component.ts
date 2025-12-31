@@ -17,9 +17,10 @@ import { DefaultComponentServices } from "../../../../../core/services/default-c
  * See: https://www.npmjs.com/package/ng2-pdf-viewer
  */
 @Component({
-  selector: 'app-base-core-common-components-signupin',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-common-components-signupin',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentsSignUpInComponent implements OnInit, OnDestroy {
   // Expose system configuration:

@@ -13,9 +13,10 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-news-feed',
-  templateUrl: './news-feed.component.html',
-  styleUrls: ['./news-feed.component.scss']
+    selector: 'app-news-feed',
+    templateUrl: './news-feed.component.html',
+    styleUrls: ['./news-feed.component.scss'],
+    standalone: false
 })
 
 /**

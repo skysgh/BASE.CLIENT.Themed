@@ -12,9 +12,10 @@ import { ViewModel } from './vm';
 import { TranslationService } from '../../../../../../../core/services/translation.service';
 
 @Component({
-  selector: 'app-base-core-pages-landing-index-features',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-landing-index-features',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

@@ -16,9 +16,10 @@ import { ViewModel } from './vm';
 import { status1, status2, status3, status4, status5, status6, status7 } from './data';
 
 @Component({
-  selector: 'app-team-members',
-  templateUrl: './team-members.component.html',
-  styleUrls: ['./team-members.component.scss']
+    selector: 'app-team-members',
+    templateUrl: './team-members.component.html',
+    styleUrls: ['./team-members.component.scss'],
+    standalone: false
 })
 
 /**

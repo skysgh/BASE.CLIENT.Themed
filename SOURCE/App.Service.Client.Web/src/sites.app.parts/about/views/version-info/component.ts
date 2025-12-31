@@ -9,10 +9,9 @@ import { RouterModule } from '@angular/router';
 import { AboutService } from '../../services/about.service';
 
 @Component({
-  selector: 'app-version-info',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-version-info',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="version-page">
       <div class="page-header d-flex justify-content-between align-items-center mb-4">
         <div>
@@ -144,7 +143,7 @@ import { AboutService } from '../../services/about.service';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .version-page { padding: 1.5rem; max-width: 800px; margin: 0 auto; }
     
     .version-badge {

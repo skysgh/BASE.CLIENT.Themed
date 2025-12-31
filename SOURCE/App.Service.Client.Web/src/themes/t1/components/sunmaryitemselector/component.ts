@@ -13,9 +13,10 @@ import { ViewModel } from './vm';
 //
 
 @Component({
-  selector: 'app-base-common-components-summaryitem-selector',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-summaryitem-selector',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

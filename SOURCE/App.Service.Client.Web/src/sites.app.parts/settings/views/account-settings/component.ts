@@ -11,11 +11,10 @@ import { SystemDiagnosticsTraceService } from '../../../../core/services/system.
  * Displays and manages account-specific configuration.
  */
 @Component({
-  selector: 'app-account-settings-section',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-account-settings-section',
+    imports: [CommonModule],
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss']
 })
 export class AccountSettingsSectionComponent implements OnInit {
   accountName: string = '';

@@ -45,9 +45,10 @@ import { DefaultComponentServices } from "../../../core/services/default-control
  * Component now only references coreAgConfiguration (same tier)
  */
 @Component({
-  selector: 'app-base-core-common-components-pdf',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-common-components-pdf',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentsPdfComponent implements OnInit, OnDestroy {
   // Expose parent configuration:

@@ -12,9 +12,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-projects-stat',
-  templateUrl: './projects-stat.component.html',
-  styleUrls: ['./projects-stat.component.scss']
+    selector: 'app-projects-stat',
+    templateUrl: './projects-stat.component.html',
+    styleUrls: ['./projects-stat.component.scss'],
+    standalone: false
 })
 
 /**

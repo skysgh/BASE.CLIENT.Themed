@@ -12,10 +12,9 @@ import { AboutService } from '../../services/about.service';
 import { LicenseDto } from '../../models/about.dto';
 
 @Component({
-  selector: 'app-licenses',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
-  template: `
+    selector: 'app-licenses',
+    imports: [CommonModule, RouterModule, FormsModule],
+    template: `
     <div class="licenses-page">
       <div class="page-header d-flex justify-content-between align-items-center mb-4">
         <div>
@@ -128,7 +127,7 @@ import { LicenseDto } from '../../models/about.dto';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .licenses-page { padding: 1.5rem; max-width: 900px; margin: 0 auto; }
     .license-card { transition: all 0.2s; }
     .license-card:hover { 

@@ -33,9 +33,10 @@ import { SummaryItem } from '../../../../../../core/components/child-summary/chi
 
 
 @Component({
-  selector: 'app-base-apps-spike-spikes-read',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-apps-spike-spikes-read',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseAppsSpikeSpikesReadComponent implements OnInit {
   public appsConfiguration = appsConfiguration;

@@ -12,9 +12,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-core-pages-landing-opportunities',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-landing-opportunities',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCorePagesLandingOpportunitiesComponent  {
   // Expose system configuration:

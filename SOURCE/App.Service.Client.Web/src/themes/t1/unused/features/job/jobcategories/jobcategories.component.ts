@@ -14,9 +14,10 @@ import { ViewModel } from './vm';
 // Data:
 
 @Component({
-  selector: 'app-jobcategories',
-  templateUrl: './jobcategories.component.html',
-  styleUrls: ['./jobcategories.component.scss']
+    selector: 'app-jobcategories',
+    templateUrl: './jobcategories.component.html',
+    styleUrls: ['./jobcategories.component.scss'],
+    standalone: false
 })
 export class JobcategoriesComponent implements OnInit {
   // Expose system configuration:

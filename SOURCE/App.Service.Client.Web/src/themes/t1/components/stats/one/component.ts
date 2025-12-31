@@ -15,9 +15,10 @@ import { ViewModel } from './vm';
  * Used on dashboard to show a box with current stats in it.
  */
 @Component({
-  selector: 'app-base-common-components-stats-one',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-stats-one',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCommonComponentsStatsOneComponent implements OnInit {
   public appsConfiguration = appsConfiguration;

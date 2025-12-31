@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-data-collection',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-data-collection',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="policy-page">
       <div class="page-header d-flex justify-content-between align-items-center mb-4">
         <div>
@@ -18,6 +17,6 @@ import { RouterModule } from '@angular/router';
       <div class="mt-4"><a routerLink="../" class="btn btn-outline-secondary"><i class="bx bx-arrow-back me-1"></i>Back to Compliance</a></div>
     </div>
   `,
-  styles: [`.policy-page { padding: 1.5rem; max-width: 1000px; margin: 0 auto; }`]
+    styles: [`.policy-page { padding: 1.5rem; max-width: 1000px; margin: 0 auto; }`]
 })
 export class DataCollectionComponent {}

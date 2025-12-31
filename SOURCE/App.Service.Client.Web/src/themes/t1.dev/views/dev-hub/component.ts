@@ -27,10 +27,9 @@ interface ReferenceItem {
 }
 
 @Component({
-  selector: 'app-t1-dev-hub',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-t1-dev-hub',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="dev-hub">
       <!-- Header -->
       <div class="page-header mb-4">
@@ -130,7 +129,7 @@ interface ReferenceItem {
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .dev-hub {
       padding: 1.5rem;
       max-width: 1200px;

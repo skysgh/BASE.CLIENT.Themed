@@ -10,9 +10,10 @@ import { DefaultComponentServices } from "../../../../../../core/services/defaul
 import { ViewModel } from "./vm";
 
 @Component({
-  selector: 'app-base-core-pages-information-contact',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-information-contact',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

@@ -10,10 +10,9 @@ import { RouterModule } from '@angular/router';
 import { AboutService } from '../../services/about.service';
 
 @Component({
-  selector: 'app-distributor-info',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-distributor-info',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="distributor-page">
       <div class="page-header d-flex justify-content-between align-items-center mb-4">
         <div>
@@ -153,7 +152,7 @@ import { AboutService } from '../../services/about.service';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .distributor-page { padding: 1.5rem; max-width: 800px; margin: 0 auto; }
     
     .logo-placeholder {

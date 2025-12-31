@@ -16,9 +16,10 @@ import { FormEngineType } from '../../../../../../core/forms/form-definition.mod
 
 
 @Component({
-  selector: 'app-base-apps-spike-spikes-add',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-apps-spike-spikes-add',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseAppsSpikeSpikesAddComponent implements OnInit, OnDestroy, AfterViewInit {
   public appsConfiguration = appsConfiguration;

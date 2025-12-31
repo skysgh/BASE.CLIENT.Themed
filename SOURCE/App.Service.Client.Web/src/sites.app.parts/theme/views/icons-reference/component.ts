@@ -9,10 +9,9 @@ import { FormsModule } from '@angular/forms';
  * BoxIcons reference with search
  */
 @Component({
-  selector: 'app-icons-reference',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
-  template: `
+    selector: 'app-icons-reference',
+    imports: [CommonModule, RouterModule, FormsModule],
+    template: `
     <div class="icons-reference">
       <div class="d-flex align-items-center mb-4">
         <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
@@ -70,7 +69,7 @@ import { FormsModule } from '@angular/forms';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .icons-reference {
       padding: 1.5rem;
       max-width: 1200px;

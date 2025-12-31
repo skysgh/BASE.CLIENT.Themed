@@ -14,9 +14,10 @@ import { ViewModel } from './vm';
 // Data:
 
 @Component({
-  selector: 'app-my-task',
-  templateUrl: './my-task.component.html',
-  styleUrls: ['./my-task.component.scss']
+    selector: 'app-my-task',
+    templateUrl: './my-task.component.html',
+    styleUrls: ['./my-task.component.scss'],
+    standalone: false
 })
 
 /**

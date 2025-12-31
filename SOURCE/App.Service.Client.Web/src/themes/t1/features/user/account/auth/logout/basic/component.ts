@@ -13,9 +13,10 @@ import { ViewModel } from './vm';
 //
 
 @Component({
-  selector: 'app-base-core-modules-account_auth-logout-basic',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-modules-account_auth-logout-basic',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

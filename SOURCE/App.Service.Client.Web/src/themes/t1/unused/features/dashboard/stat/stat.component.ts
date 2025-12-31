@@ -15,9 +15,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-stat',
-  templateUrl: './stat.component.html',
-  styleUrls: ['./stat.component.scss']
+    selector: 'app-stat',
+    templateUrl: './stat.component.html',
+    styleUrls: ['./stat.component.scss'],
+    standalone: false
 })
 export class StatComponent implements OnInit {
   // Expose system configuration:

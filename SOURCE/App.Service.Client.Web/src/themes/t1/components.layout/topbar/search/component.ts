@@ -16,9 +16,10 @@ import { ViewModel } from "../vm";
 import { DefaultComponentServices } from "../../../../../core/services/default-controller-services";
 
 @Component({
-  selector: 'app-base-common-components-topbar-languagesearch',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-topbar-languagesearch',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentTopBarSearchComponent implements OnInit {
   // Expose system configuration:

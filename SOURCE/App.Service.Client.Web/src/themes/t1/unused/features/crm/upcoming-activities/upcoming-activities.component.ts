@@ -3,9 +3,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-upcoming-activities',
-  templateUrl: './upcoming-activities.component.html',
-  styleUrls: ['./upcoming-activities.component.scss']
+    selector: 'app-upcoming-activities',
+    templateUrl: './upcoming-activities.component.html',
+    styleUrls: ['./upcoming-activities.component.scss'],
+    standalone: false
 })
 
 /**

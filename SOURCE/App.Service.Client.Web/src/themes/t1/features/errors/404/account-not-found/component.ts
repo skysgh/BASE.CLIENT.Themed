@@ -12,9 +12,10 @@ import { AccountService } from '../../../../../../core/services/account.service'
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-base-core-errors-account-not-found',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-errors-account-not-found',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

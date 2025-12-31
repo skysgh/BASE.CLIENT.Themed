@@ -16,11 +16,10 @@ interface SettingsNavItemWithRoute extends SettingsNavItem {
  * Uses SettingsNavigationService as single source of truth for paths.
  */
 @Component({
-  selector: 'app-settings-hub',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-settings-hub',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss']
 })
 export class SettingsHubComponent implements OnInit {
   // Core settings sections (from navigation service)

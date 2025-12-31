@@ -32,9 +32,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-apps-spike-subspikes-edit',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-apps-spike-subspikes-edit',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseAppsSpikeSubSpikesEditComponent implements OnInit, OnDestroy, AfterViewInit {
   public appsConfiguration = appsConfiguration;

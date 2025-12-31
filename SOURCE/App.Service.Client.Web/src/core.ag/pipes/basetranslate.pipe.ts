@@ -18,8 +18,10 @@ import { TranslationService } from '../../core/services/translation.service';
  * bare bones `translate` pipe.
  */
 @Pipe({
-  name: 'baseTranslate',
-  pure: false // Enables dynamic updates to translations
+    name: 'baseTranslate',
+    pure: false // Enables dynamic updates to translations
+    ,
+    standalone: false
 })
 export class BaseTranslatePipe implements PipeTransform {
   constructor(private translationService: TranslationService) { }

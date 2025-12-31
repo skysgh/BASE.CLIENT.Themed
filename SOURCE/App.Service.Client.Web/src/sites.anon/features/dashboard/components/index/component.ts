@@ -7,9 +7,10 @@ import { DashboardService } from '../../services/service.dashboard.service';
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'base-core-dashboard-index',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'base-core-dashboard-index',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreDashboardsIndexComponent implements OnInit {
   public viewModel: ViewModel = new ViewModel();

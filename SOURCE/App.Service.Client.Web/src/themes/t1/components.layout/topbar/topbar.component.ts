@@ -26,9 +26,10 @@ import { ServiceOperateNotificationViewModel } from '../../../../sites.app.parts
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-topbar',
-  templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.scss']
+    selector: 'app-topbar',
+    templateUrl: './topbar.component.html',
+    styleUrls: ['./topbar.component.scss'],
+    standalone: false
 })
 export class BaseLayoutTopBarComponent implements OnInit {
   // Expose system configuration:

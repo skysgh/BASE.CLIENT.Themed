@@ -12,9 +12,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-apps-spikes-route',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-apps-spikes-route',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 export class BaseAppsSpikeRouteOutletComponent implements OnInit {

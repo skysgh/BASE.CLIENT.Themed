@@ -16,9 +16,10 @@ import { DefaultComponentServices } from '../../../../../../core/services/defaul
 import { ErrorPageConfig, getErrorConfig } from '../../error-data';
 
 @Component({
-  selector: 'app-error-page-alt',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-error-page-alt',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class ErrorPageAltComponent implements OnInit {
   public appsConfiguration = appsConfiguration;

@@ -8,10 +8,9 @@ import { RouterModule } from '@angular/router';
  * Main landing page for theme reference.
  */
 @Component({
-  selector: 'app-theme-hub',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-theme-hub',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="theme-hub">
       <div class="page-header mb-4">
         <h2>
@@ -48,7 +47,7 @@ import { RouterModule } from '@angular/router';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .theme-hub {
       padding: 1.5rem;
       max-width: 1200px;

@@ -13,7 +13,8 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Usage: `*ngFor="let item of items | matches:'propertyName':'propertyValue'"`
  */
 @Pipe({
-  name: 'matches'
+    name: 'matches',
+    standalone: false
 })
 export class MatchesPipe implements PipeTransform {
 

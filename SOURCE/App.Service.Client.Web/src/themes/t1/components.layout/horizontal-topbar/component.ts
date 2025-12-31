@@ -18,9 +18,10 @@ import { DefaultComponentServices } from '../../../../core/services/default-cont
 import { AccountService } from '../../../../core/services/account.service';
 
 @Component({
-  selector: 'app-horizontal-topbar',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-horizontal-topbar',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseLayoutHorizontalTopbarComponent implements OnInit {
   // Expose parent configuration:

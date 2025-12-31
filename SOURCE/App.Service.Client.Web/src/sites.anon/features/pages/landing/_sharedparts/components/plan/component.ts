@@ -15,9 +15,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-core-pages-landing-index-plan',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-landing-index-plan',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

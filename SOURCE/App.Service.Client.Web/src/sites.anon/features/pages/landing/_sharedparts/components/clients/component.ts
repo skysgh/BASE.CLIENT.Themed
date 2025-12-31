@@ -14,9 +14,10 @@ import { Responsive as importedResponsive } from './settings';
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-base-core-pages-landing-index-client-logo',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-landing-index-client-logo',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseAppsPagesLandingIndexClientsComponent implements OnInit {
   public resources: DeployedResources;

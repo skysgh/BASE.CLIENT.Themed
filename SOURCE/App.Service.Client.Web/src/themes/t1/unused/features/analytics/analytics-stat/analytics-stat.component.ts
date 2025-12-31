@@ -11,9 +11,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-Analytics-stat',
-  templateUrl: './analytics-stat.component.html',
-  styleUrls: ['./analytics-stat.component.scss']
+    selector: 'app-Analytics-stat',
+    templateUrl: './analytics-stat.component.html',
+    styleUrls: ['./analytics-stat.component.scss'],
+    standalone: false
 })
 
 /**

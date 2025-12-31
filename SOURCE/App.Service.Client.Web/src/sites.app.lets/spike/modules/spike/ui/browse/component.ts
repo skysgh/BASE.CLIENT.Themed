@@ -17,9 +17,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-apps-spike-spikes-browse',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-apps-spike-spikes-browse',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
   // Expose system configuration:

@@ -17,9 +17,10 @@ import { ViewModel } from "./vm";
  * See: https://www.npmjs.com/package/ng2-pdf-viewer
  */
 @Component({
-  selector: 'app-base-core-common-components-socialmedialinks',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-common-components-socialmedialinks',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentsSocialMediaLinksComponent implements OnInit, OnDestroy {
   // Expose system configuration:

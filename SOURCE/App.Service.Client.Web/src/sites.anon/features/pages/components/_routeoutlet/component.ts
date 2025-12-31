@@ -11,9 +11,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-base-core-pages-route-outlet',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-route-outlet',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 export class BaseCorePagesROComponent implements OnInit {

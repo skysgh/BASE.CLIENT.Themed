@@ -25,9 +25,10 @@ import { SpikeViewModel } from '../../../../models/view-models/spike.view-model'
  * - Completion trends over time
  */
 @Component({
-  selector: 'app-base-apps-spike-insights',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-apps-spike-insights',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseAppsSpikeInsightsComponent implements OnInit {
   public appsConfiguration = appsConfiguration;

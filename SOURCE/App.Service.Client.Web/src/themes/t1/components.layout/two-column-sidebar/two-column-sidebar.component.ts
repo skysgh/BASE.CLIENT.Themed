@@ -17,9 +17,10 @@ import { MenuItem } from './menu.model';
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-two-column-sidebar',
-  templateUrl: './two-column-sidebar.component.html',
-  styleUrls: ['./two-column-sidebar.component.scss']
+    selector: 'app-two-column-sidebar',
+    templateUrl: './two-column-sidebar.component.html',
+    styleUrls: ['./two-column-sidebar.component.scss'],
+    standalone: false
 })
 export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
   // Expose parent configuration:

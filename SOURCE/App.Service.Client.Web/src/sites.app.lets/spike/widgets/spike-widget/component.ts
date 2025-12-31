@@ -16,9 +16,10 @@ import { SpikeViewModel } from '../../models/view-models/spike.view-model';
  * <app-spike-widget [size]="'lg'" [showChart]="true"></app-spike-widget>
  */
 @Component({
-  selector: 'app-spike-widget',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-spike-widget',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class SpikeDashboardWidgetComponent implements OnInit {
   

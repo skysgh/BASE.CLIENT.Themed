@@ -23,10 +23,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OidcService } from '../services/oidc.service';
 
 @Component({
-  selector: 'app-auth-callback',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-auth-callback',
+    imports: [CommonModule],
+    template: `
     <div class="auth-callback">
       <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
@@ -61,7 +60,7 @@ import { OidcService } from '../services/oidc.service';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .auth-callback {
       background: var(--vz-body-bg);
     }

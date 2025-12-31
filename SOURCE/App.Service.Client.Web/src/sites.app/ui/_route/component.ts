@@ -12,9 +12,10 @@ import { DefaultComponentServices } from '../../../core/services/default-control
 
 
 @Component({
-  selector: 'apps-route',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'apps-route',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 export class BaseAppsRouteComponent {

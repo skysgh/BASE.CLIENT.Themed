@@ -16,9 +16,10 @@ import { EnvConfigService } from '../../../core/services/env-config.service';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-root',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 /**
  * Root Component

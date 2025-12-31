@@ -17,9 +17,10 @@ import { EventService } from "../../../../../core/services/infrastructure/event.
 import { ViewModel } from "../vm";
 
 @Component({
-  selector: 'app-base-common-components-topbar-languageuser',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-topbar-languageuser',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
   // Expose system configuration:

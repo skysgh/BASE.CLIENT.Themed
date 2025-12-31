@@ -13,9 +13,10 @@ import { DefaultComponentServices } from '../../../../../../../../core/services/
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-base-core-modules-account_auth-twostep-cover',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-modules-account_auth-twostep-cover',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 /**

@@ -16,9 +16,10 @@ import { DefaultComponentServices } from '../../../core/services/default-control
 // Data:
 
 @Component({
-  selector: 'app-base-common-components-google-analytics',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-google-analytics',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentsGoogleAnalyticsComponent implements OnInit {
   // Expose system configuration:

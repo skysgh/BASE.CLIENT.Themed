@@ -11,9 +11,10 @@ import { DefaultComponentServices } from "../../../../../../core/services/defaul
 import { ViewModel } from "./vm";
 
 @Component({
-  selector: 'app-base-core-pages-information-corrections',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-information-corrections',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCorePagesInformationCorrectionsComponent implements OnInit {
   // Expose system configuration:

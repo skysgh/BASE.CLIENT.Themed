@@ -13,9 +13,10 @@ import { ViewModel } from '../vm';
 import { sectionsInfo as importedSectionsInfo } from './sectionsInfo.data';
 
 @Component({
-  selector: 'app-apps-home-home',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-apps-home-home',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 
 export class BaseAppsPagesHomeIndexComponent implements OnInit {

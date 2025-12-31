@@ -13,9 +13,10 @@ import { AccountService } from '../../../../core/services/account.service';
 import { ViewModel } from './vm';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-footer',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 /**
  * ✅ MULTI-ACCOUNT: Uses AccountService for reactive branding

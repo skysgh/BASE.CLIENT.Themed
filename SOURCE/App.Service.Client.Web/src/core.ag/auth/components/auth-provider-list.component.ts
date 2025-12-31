@@ -23,10 +23,9 @@ export interface AuthProviderDisplay {
 }
 
 @Component({
-  selector: 'app-auth-provider-list',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-auth-provider-list',
+    imports: [CommonModule],
+    template: `
     <div class="auth-provider-list">
       <!-- OIDC Providers (Microsoft, Google, etc.) -->
       <div *ngFor="let provider of oidcProviders" class="mb-3">
@@ -57,7 +56,7 @@ export interface AuthProviderDisplay {
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .auth-provider-list {
       width: 100%;
     }

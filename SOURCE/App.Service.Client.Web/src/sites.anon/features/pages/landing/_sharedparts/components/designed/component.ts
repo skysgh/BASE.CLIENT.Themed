@@ -14,9 +14,10 @@ import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 
 
 @Component({
-  selector: 'app-base-core-pages-landing-index-designed',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-core-pages-landing-index-designed',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseAppsPagesLandingIndexDesignedComponent implements OnInit {
   public appsConfiguration = appsConfiguration

@@ -12,9 +12,10 @@ import { ViewModel } from './vm';
 
 
 @Component({
-  selector: 'app-top-pages',
-  templateUrl: './top-pages.component.html',
-  styleUrls: ['./top-pages.component.scss']
+    selector: 'app-top-pages',
+    templateUrl: './top-pages.component.html',
+    styleUrls: ['./top-pages.component.scss'],
+    standalone: false
 })
 
 /**

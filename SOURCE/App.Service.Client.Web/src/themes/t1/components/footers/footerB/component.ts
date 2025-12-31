@@ -14,10 +14,10 @@ import { ViewModel } from './vm';
 // Data:
 
 @Component({
-  selector: 'app-base-common-components-footer-b',
-
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+    selector: 'app-base-common-components-footer-b',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
 })
 export class BaseCoreCommonComponentsFooterBComponent implements OnInit {
   // Expose system configuration:

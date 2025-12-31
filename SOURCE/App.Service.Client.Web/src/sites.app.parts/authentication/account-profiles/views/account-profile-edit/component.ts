@@ -9,10 +9,9 @@ import { AccountProfileService } from '../../services/account-profile.service';
  * Edit per-account user preferences.
  */
 @Component({
-  selector: 'app-account-profile-edit',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  template: `
+    selector: 'app-account-profile-edit',
+    imports: [CommonModule, FormsModule],
+    template: `
     <div class="account-profile-page">
       <div class="page-header mb-4">
         <h2>
@@ -159,7 +158,7 @@ import { AccountProfileService } from '../../services/account-profile.service';
       }
     </div>
   `,
-  styles: [`
+    styles: [`
     .account-profile-page { padding: 1.5rem; }
   `]
 })

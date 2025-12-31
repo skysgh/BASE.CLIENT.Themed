@@ -9,10 +9,9 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
  * Placeholder - to be expanded.
  */
 @Component({
-  selector: 'app-user-detail',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'app-user-detail',
+    imports: [CommonModule, RouterModule],
+    template: `
     <div class="user-detail-page">
       <div class="page-header mb-4">
         <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
@@ -28,7 +27,7 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .user-detail-page { padding: 1.5rem; }
   `]
 })
