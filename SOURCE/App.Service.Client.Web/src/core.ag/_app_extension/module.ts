@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 // Routing:
 import { RouterModule, Routes } from '@angular/router';
 // Import Auth:
-import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 // Import Language:
 import { TranslateModule, TranslateLoader, TranslateCompiler, MissingTranslationHandler, MissingTranslationHandlerParams } from '@ngx-translate/core';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
@@ -110,7 +110,6 @@ export class QuietMissingTranslationHandler implements MissingTranslationHandler
         AppExtensionRoutingModule,
         BaseAppsModule], providers: [
         CookieService,
-        provideHttpClient(),
         provideHttpClient(withInterceptorsFromDi()),
     ] })
 export class AppExtensionModule {
