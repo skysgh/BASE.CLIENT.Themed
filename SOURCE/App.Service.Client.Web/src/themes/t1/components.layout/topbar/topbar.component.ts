@@ -1,6 +1,6 @@
 // Ag:
-import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, EventEmitter, Output, Inject, DOCUMENT } from '@angular/core';
+
 // Rx:
 // Etc:
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

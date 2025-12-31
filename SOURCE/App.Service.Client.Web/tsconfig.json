@@ -2,37 +2,18 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-
     "strict": true,
-
     "traceResolution": null,
-
     "baseUrl": "./",
-
-    // ❌ REMOVED: Path aliases don't work in Visual Studio auto-import
-    // They work for compilation but not for developer experience
-    // Physical folder names now have number prefixes for ordering
-    // "paths": {
-    //   "_root": [ "src/*" ],
-    //   "_core": [ "src/core/*" ],
-    //   "_core.Ag": [ "src/core.ag/*" ],
-    //   "_themes": [ "src/themes/*" ],
-    //   "_sites": [ "src/sites/*" ],
-    //   "_apps": [ "src/sites.apps/*" ]
-    // },
-
-    // Note: To transform paths for both the output .js and .d.ts files, you need both of the below entries
     "plugins": [
-      // Transform paths in output .js files
-      { "transform": "typescript-transform-paths" },
-
-      // Transform paths in output .d.ts files (Include this line if you output declarations files)
+      {
+        "transform": "typescript-transform-paths"
+      },
       {
         "transform": "typescript-transform-paths",
         "afterDeclarations": true
       }
     ],
-
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
@@ -43,7 +24,7 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "es2022",
     "module": "es2022",
