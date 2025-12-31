@@ -101,7 +101,7 @@
     "chart.js": "^4.4.0",
     "dart-sass": "^1.25.0",
     "echarts": "^6.0.0",
-    "firebase": "^10.6.0",
+    "firebase": "^12.7.0",
     "flatpickr": "^4.6.13",
     "fuzzy-search": "^3.2.1",
     "intersection-observer": "^0.12.2",
