@@ -52,9 +52,8 @@
                     </p>
                   </div>
                   <div class="p-2 mt-4">
+                    <!-- ✅ Loads config from JSON, no inputs needed -->
                     <app-auth-provider-list
-                      [continueWithText]="'Continue with'"
-                      [showEmailOption]="allowLocalLogin"
                       (providerSelected)="onProviderSelected($event)">
                     </app-auth-provider-list>
                   </div>
@@ -88,7 +87,7 @@
                       [rememberMeText]="'BASE.AUTHENTICATION.REMEMBER_ME?' | baseTranslate"
                       [forgotPasswordText]="'BASE.AUTHENTICATION.FORGOT?' | baseTranslate"
                       [submitText]="'BASE.SIGN_INS.SINGULAR' | baseTranslate"
-                      [forgotPasswordRoute]="'/auth/pass-reset'"
+                      [forgotPasswordRoute]="forgotPasswordRoute"
                       [loading]="loading"
                       [errorMessage]="errorMessage"
                       [defaultEmail]="defaultEmail"
@@ -108,7 +107,7 @@
           <div class="mt-4 text-center">
             <p class="mb-0">
               {{'BASE.AUTHENTICATION.DONT_HAVE_AN_ACCOUNT?' | baseTranslate }} &nbsp;
-              <a routerLink="/auth/register" class="fw-semibold text-primary text-decoration-underline">
+              <a [routerLink]="signUpRoute" class="fw-semibold text-primary text-decoration-underline">
                 Sign up
               </a>
             </p>

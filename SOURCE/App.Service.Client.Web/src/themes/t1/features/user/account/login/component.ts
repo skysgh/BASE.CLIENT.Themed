@@ -18,6 +18,7 @@ import { EnvConfigService } from '../../../../../../core/services/env-config.ser
 import { AccountService } from '../../../../../../core/services/account.service';
 // ✅ UPDATED: Import from core.ag
 import { OidcService } from '../../../../../../core.ag/auth/services/oidc.service';
+import { FakeAuthRepository } from '../../../../../../core.ag/auth/services/fake-auth-repository.service';
 // Models:
 import { ViewModel } from './vm';
 // ✅ UPDATED: Import from core.ag
@@ -43,6 +44,7 @@ type LoginView = 'providers' | 'email';
  * 
  * ✅ PROVIDER-FIRST: Shows identity provider options prominently
  * ✅ MULTI-ACCOUNT: Uses AccountService for reactive branding
+ * ✅ UNIFIED AUTH: Uses FakeAuthRepository for demo, OIDC for production
  * 
  * Flow:
  * 1. User sees provider options (Microsoft, Google, Email)
@@ -77,6 +79,10 @@ export class LoginComponent implements OnInit {
   defaultEmail = '';
   defaultPassword = '';
 
+  // Routes
+  signUpRoute = '/auth/signup';
+  forgotPasswordRoute = '/auth/forgot-password';
+
   constructor(
     private defaultControllerServices: DefaultComponentServices,
     private titleService: TitleService,
@@ -87,7 +93,8 @@ export class LoginComponent implements OnInit {
     public toastService: ToastService,
     private envConfig: EnvConfigService,
     private accountService: AccountService,
-    private oidcService: OidcService
+    private oidcService: OidcService,
+    private fakeAuthRepo: FakeAuthRepository
   ) {
     // ✅ Get branding from account config (reactive)
     this.logo$ = this.accountService.getConfigValue('branding.logo');
@@ -216,61 +223,51 @@ export class LoginComponent implements OnInit {
 
   /**
    * Handle email/password login
+   * Uses FakeAuthRepository for unified User+DigitalIdentity management
    */
-  onEmailLogin(credentials: EmailLoginCredentials): void {
+  async onEmailLogin(credentials: EmailLoginCredentials): Promise<void> {
     console.log('[LoginComponent] Email login:', credentials.email);
     
     this.loading = true;
     this.errorMessage = null;
 
-    // Use the appropriate auth service based on environment
-    const authMode = environment.defaultauth;
-
-    if (authMode === 'firebase') {
-      this.authenticationService.login(credentials.email, credentials.password).subscribe({
-        next: this.handleLoginSuccess.bind(this),
-        error: this.handleLoginError.bind(this)
-      });
-    } else {
-      // Fake backend or API login
-      this.authFakeService.login(credentials.email, credentials.password).subscribe({
-        next: this.handleLoginSuccess.bind(this),
-        error: this.handleLoginError.bind(this)
-      });
-    }
-  }
-
-  /**
-   * Handle successful login
-   */
-  private handleLoginSuccess(response: any): void {
-    this.loading = false;
-    
-    if (response?.token || response) {
-      // Store in session
-      sessionStorage.setItem('currentUser', JSON.stringify(response.data || response));
-      if (response.token) {
-        sessionStorage.setItem('token', response.token);
+    try {
+      // Use FakeAuthRepository for demo mode
+      const result = await this.fakeAuthRepo.login(credentials.email, credentials.password);
+      
+      if (result.success) {
+        // Store in session
+        sessionStorage.setItem('currentUser', JSON.stringify(result.user));
+        if (result.token) {
+          sessionStorage.setItem('token', result.token);
+        }
+        if (result.person) {
+          sessionStorage.setItem('currentPerson', JSON.stringify(result.person));
+        }
+        
+        // Show success toast
+        sessionStorage.setItem('toast', 'true');
+        this.toastService.show('Welcome back!', { classname: 'bg-success text-white' });
+        
+        // Navigate to return URL
+        this.router.navigateByUrl(this.returnUrl);
+      } else {
+        // Handle lockout
+        if (result.lockedUntil) {
+          const lockTime = new Date(result.lockedUntil);
+          this.errorMessage = `Account locked until ${lockTime.toLocaleTimeString()}`;
+        } else {
+          this.errorMessage = result.error || 'Login failed. Please check your credentials.';
+        }
+        this.toastService.show(this.errorMessage, { classname: 'bg-danger text-white', delay: 5000 });
       }
-      
-      // Show success toast
-      sessionStorage.setItem('toast', 'true');
-      
-      // Navigate to return URL
-      this.router.navigateByUrl(this.returnUrl);
-    } else {
-      this.errorMessage = response?.message || 'Login failed. Please check your credentials.';
+    } catch (error: any) {
+      console.error('[LoginComponent] Login error:', error);
+      this.errorMessage = error.message || 'Login failed. Please try again.';
+      this.toastService.show(this.errorMessage!, { classname: 'bg-danger text-white', delay: 5000 });
+    } finally {
+      this.loading = false;
     }
-  }
-
-  /**
-   * Handle login error
-   */
-  private handleLoginError(error: any): void {
-    this.loading = false;
-    console.error('[LoginComponent] Login error:', error);
-    this.errorMessage = error?.error?.message || error?.message || 'Login failed. Please try again.';
-    this.toastService.show(this.errorMessage!, { classname: 'bg-danger text-white', delay: 5000 });
   }
 
   /**

@@ -1,0 +1,133 @@
+{
+  "$schema": "./auth-providers.schema.json",
+  "_comment": "Authentication provider configuration. Loaded at runtime, not compiled in.",
+  
+  "providers": [
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "displayName": "Continue with Microsoft",
+      "icon": "ri-microsoft-fill",
+      "iconColor": "#00a4ef",
+      "buttonClass": "btn-microsoft",
+      "enabled": true,
+      "protocol": "oidc",
+      "order": 1,
+      "category": "enterprise",
+      "description": "Sign in with your Microsoft account (personal or work)"
+    },
+    {
+      "id": "google",
+      "name": "Google", 
+      "displayName": "Continue with Google",
+      "icon": "ri-google-fill",
+      "iconColor": "#ea4335",
+      "buttonClass": "btn-google",
+      "enabled": true,
+      "protocol": "oidc",
+      "order": 2,
+      "category": "social",
+      "description": "Sign in with your Google account"
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "displayName": "Continue with Apple",
+      "icon": "ri-apple-fill",
+      "iconColor": "#000000",
+      "buttonClass": "btn-apple",
+      "enabled": false,
+      "protocol": "oidc",
+      "order": 3,
+      "category": "social",
+      "description": "Sign in with your Apple ID"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "displayName": "Continue with GitHub",
+      "icon": "ri-github-fill",
+      "iconColor": "#333333",
+      "buttonClass": "btn-github",
+      "enabled": true,
+      "protocol": "oauth2",
+      "order": 4,
+      "category": "developer",
+      "description": "Sign in with your GitHub account"
+    },
+    {
+      "id": "twitter",
+      "name": "X (Twitter)",
+      "displayName": "Continue with X",
+      "icon": "ri-twitter-x-fill",
+      "iconColor": "#000000",
+      "buttonClass": "btn-twitter-x",
+      "enabled": false,
+      "protocol": "oauth2",
+      "order": 5,
+      "category": "social",
+      "description": "Sign in with your X account"
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "displayName": "Continue with LinkedIn",
+      "icon": "ri-linkedin-fill",
+      "iconColor": "#0077b5",
+      "buttonClass": "btn-linkedin",
+      "enabled": false,
+      "protocol": "oauth2",
+      "order": 6,
+      "category": "professional",
+      "description": "Sign in with your LinkedIn account"
+    },
+    {
+      "id": "facebook",
+      "name": "Facebook",
+      "displayName": "Continue with Facebook",
+      "icon": "ri-facebook-fill",
+      "iconColor": "#1877f2",
+      "buttonClass": "btn-facebook",
+      "enabled": false,
+      "protocol": "oauth2",
+      "order": 7,
+      "category": "social",
+      "description": "Sign in with your Facebook account"
+    },
+    {
+      "id": "email",
+      "name": "Email",
+      "displayName": "Continue with Email",
+      "icon": "ri-mail-fill",
+      "iconColor": "#6c757d",
+      "buttonClass": "btn-outline-secondary",
+      "enabled": true,
+      "protocol": "local",
+      "order": 100,
+      "category": "local",
+      "description": "Sign in with email and password"
+    }
+  ],
+  
+  "settings": {
+    "allowLocalLogin": true,
+    "allowSignup": true,
+    "requireEmailVerification": false,
+    "defaultProvider": null,
+    "rememberMeEnabled": true,
+    "rememberMeDays": 30,
+    "sessionTimeoutMinutes": 60,
+    "maxLoginAttempts": 5,
+    "lockoutMinutes": 15
+  },
+  
+  "branding": {
+    "logoUrl": null,
+    "primaryColor": "#0ab39c",
+    "signInTitle": "Welcome Back!",
+    "signInSubtitle": "Sign in to continue to your account",
+    "signUpTitle": "Create Account",
+    "signUpSubtitle": "Get started with your free account",
+    "orDividerText": "or"
+  }
+}

@@ -5,59 +5,78 @@
  * Provider-first design: Users choose HOW they want to authenticate first.
  * 
  * LOCATION: core.ag (Angular-specific component)
+ * 
+ * Configuration loaded from /assets/config/auth-providers.json
  */
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OidcService } from '../services/oidc.service';
-import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { 
+  AuthProvidersConfiguration, 
+  AuthProviderConfig,
+  DEFAULT_AUTH_CONFIG 
+} from '../../../core/auth/models/auth-providers-config.model';
 
 /**
- * Provider display info
+ * Provider display info (emitted on selection)
  */
 export interface AuthProviderDisplay {
   id: string;
   name: string;
   icon: string;
   buttonClass: string;
-  type: 'oidc' | 'local';
+  type: 'oidc' | 'oauth2' | 'local';
+  protocol: string;
 }
 
 @Component({
     selector: 'app-auth-provider-list',
+    standalone: true,
     imports: [CommonModule],
     template: `
     <div class="auth-provider-list">
-      <!-- OIDC Providers (Microsoft, Google, etc.) -->
-      @for (provider of oidcProviders; track provider) {
+      <!-- External Providers (Microsoft, Google, GitHub, etc.) -->
+      @for (provider of externalProviders; track provider.id) {
         <div class="mb-3">
           <button
             type="button"
             class="btn w-100 d-flex align-items-center justify-content-center gap-2 provider-btn"
             [ngClass]="provider.buttonClass"
+            [style.--provider-color]="provider.iconColor"
             (click)="selectProvider(provider)">
             <i [class]="provider.icon + ' fs-18'"></i>
-            <span>{{ continueWithText }} {{ provider.name }}</span>
+            <span>{{ provider.displayName }}</span>
           </button>
         </div>
       }
     
-      <!-- Divider (if both OIDC and local are available) -->
-      @if (oidcProviders.length > 0 && showEmailOption) {
+      <!-- Divider (if both external and local are available) -->
+      @if (externalProviders.length > 0 && emailProvider) {
         <div class="divider my-4">
           <span class="divider-text text-muted">{{ orText }}</span>
         </div>
       }
     
       <!-- Email/Password Option -->
-      @if (showEmailOption) {
+      @if (emailProvider) {
         <div class="mb-3">
           <button
             type="button"
-            class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2 provider-btn"
+            class="btn w-100 d-flex align-items-center justify-content-center gap-2 provider-btn"
+            [ngClass]="emailProvider.buttonClass"
             (click)="selectEmailProvider()">
-            <i class="ri-mail-line fs-18"></i>
-            <span>{{ continueWithText }} {{ emailText }}</span>
+            <i [class]="emailProvider.icon + ' fs-18'"></i>
+            <span>{{ emailProvider.displayName }}</span>
           </button>
+        </div>
+      }
+
+      <!-- Loading state -->
+      @if (loading) {
+        <div class="text-center py-3">
+          <div class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
       }
     </div>
@@ -104,6 +123,66 @@ export interface AuthProviderDisplay {
       box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3);
     }
 
+    /* GitHub button */
+    .btn-github {
+      background-color: #24292e;
+      border-color: #24292e;
+      color: #ffffff;
+    }
+    .btn-github:hover {
+      background-color: #1b1f23;
+      border-color: #1b1f23;
+      color: #ffffff;
+    }
+
+    /* Apple button */
+    .btn-apple {
+      background-color: #000000;
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-apple:hover {
+      background-color: #1a1a1a;
+      border-color: #1a1a1a;
+      color: #ffffff;
+    }
+
+    /* X (Twitter) button */
+    .btn-twitter-x {
+      background-color: #000000;
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-twitter-x:hover {
+      background-color: #1a1a1a;
+      border-color: #1a1a1a;
+      color: #ffffff;
+    }
+
+    /* LinkedIn button */
+    .btn-linkedin {
+      background-color: #0077b5;
+      border-color: #0077b5;
+      color: #ffffff;
+    }
+    .btn-linkedin:hover {
+      background-color: #006097;
+      border-color: #006097;
+      color: #ffffff;
+    }
+
+    /* Facebook button */
+    .btn-facebook {
+      background-color: #1877f2;
+      border-color: #1877f2;
+      color: #ffffff;
+    }
+    .btn-facebook:hover {
+      background-color: #166fe5;
+      border-color: #166fe5;
+      color: #ffffff;
+    }
+
     /* Divider */
     .divider {
       display: flex;
@@ -126,16 +205,9 @@ export interface AuthProviderDisplay {
 export class AuthProviderListComponent implements OnInit {
   
   /**
-   * Text customization
+   * Override the "or" divider text
    */
-  @Input() continueWithText = 'Continue with';
   @Input() orText = 'or';
-  @Input() emailText = 'Email';
-
-  /**
-   * Whether to show the email/password option
-   */
-  @Input() showEmailOption = true;
 
   /**
    * Emitted when a provider is selected
@@ -143,67 +215,103 @@ export class AuthProviderListComponent implements OnInit {
   @Output() providerSelected = new EventEmitter<AuthProviderDisplay>();
 
   /**
-   * Available OIDC providers
+   * Configuration loaded from JSON
    */
-  oidcProviders: AuthProviderDisplay[] = [];
+  config: AuthProvidersConfiguration = DEFAULT_AUTH_CONFIG;
 
-  constructor(private oidcService: OidcService) {}
+  /**
+   * External providers (OIDC, OAuth2)
+   */
+  externalProviders: (AuthProviderConfig & { iconColor: string })[] = [];
+
+  /**
+   * Email provider (local auth)
+   */
+  emailProvider: AuthProviderConfig | null = null;
+
+  /**
+   * Loading state
+   */
+  loading = true;
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.loadProviders();
+    this.loadConfiguration();
   }
 
   /**
-   * Load enabled providers from configuration
+   * Load configuration from JSON file
    */
-  private loadProviders(): void {
-    const config = environment.oidcConfig;
-    if (!config) return;
+  private loadConfiguration(): void {
+    this.http.get<AuthProvidersConfiguration>('/assets/config/auth-providers.json')
+      .subscribe({
+        next: (config) => {
+          this.config = config;
+          this.processProviders();
+          this.loading = false;
+        },
+        error: (err) => {
+          console.warn('[AuthProviderList] Failed to load config, using defaults:', err);
+          this.config = DEFAULT_AUTH_CONFIG;
+          this.processProviders();
+          this.loading = false;
+        }
+      });
+  }
 
-    this.oidcProviders = config.providers
+  /**
+   * Process providers from configuration
+   */
+  private processProviders(): void {
+    const enabledProviders = this.config.providers
       .filter(p => p.enabled)
-      .map(p => ({
-        id: p.provider,
-        name: p.displayName,
-        icon: p.icon,
-        buttonClass: this.getButtonClass(p.provider),
-        type: 'oidc' as const
-      }));
+      .sort((a, b) => a.order - b.order);
 
-    // Check if local login is allowed
-    this.showEmailOption = config.allowLocalLogin !== false;
+    // Separate external providers from email
+    this.externalProviders = enabledProviders
+      .filter(p => p.protocol !== 'local')
+      .map(p => ({ ...p, iconColor: p.iconColor }));
+
+    // Email provider
+    const email = enabledProviders.find(p => p.protocol === 'local');
+    this.emailProvider = this.config.settings.allowLocalLogin ? email || null : null;
+
+    // Update orText from branding if available
+    if (this.config.branding?.orDividerText) {
+      this.orText = this.config.branding.orDividerText;
+    }
   }
 
   /**
-   * Get button class for provider
+   * Handle provider selection (external)
    */
-  private getButtonClass(provider: string): string {
-    const classes: Record<string, string> = {
-      'microsoft': 'btn-microsoft',
-      'google': 'btn-google',
-      'auth0': 'btn-primary',
-      'okta': 'btn-info'
+  selectProvider(provider: AuthProviderConfig): void {
+    const display: AuthProviderDisplay = {
+      id: provider.id,
+      name: provider.name,
+      icon: provider.icon,
+      buttonClass: provider.buttonClass,
+      type: provider.protocol === 'oidc' ? 'oidc' : 'oauth2',
+      protocol: provider.protocol
     };
-    return classes[provider] || 'btn-secondary';
-  }
-
-  /**
-   * Handle provider selection
-   */
-  selectProvider(provider: AuthProviderDisplay): void {
-    this.providerSelected.emit(provider);
+    this.providerSelected.emit(display);
   }
 
   /**
    * Handle email provider selection
    */
   selectEmailProvider(): void {
-    this.providerSelected.emit({
+    if (!this.emailProvider) return;
+    
+    const display: AuthProviderDisplay = {
       id: 'email',
       name: 'Email',
-      icon: 'ri-mail-line',
-      buttonClass: 'btn-outline-secondary',
-      type: 'local'
-    });
+      icon: this.emailProvider.icon,
+      buttonClass: this.emailProvider.buttonClass,
+      type: 'local',
+      protocol: 'local'
+    };
+    this.providerSelected.emit(display);
   }
 }
