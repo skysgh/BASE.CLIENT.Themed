@@ -1,52 +1,70 @@
 # Errors App.Part
 
-Platform applet for **error page** presentation - handling graceful degradation.
+Platform applet for **error page presentation**.
 
 ## Scope
 
-This app.part handles display of error states:
-- **HTTP Errors** - 400, 401, 403, 404, 500, 502, 503, 504
-- **Application Errors** - Not found, account issues
-- **Offline State** - No network connectivity
+This app.part handles all HTTP error pages using a single parameterized component:
+- **000** - Unknown/fallback error
+- **401** - Unauthorized
+- **403** - Forbidden
+- **404** - Not Found
+- **404-A** - Account Not Found
+- **500** - Internal Server Error
+- **502** - Bad Gateway
+- **503** - Service Unavailable
+- **offline** - Network offline
 
-## Views
+## Architecture
 
-### `/errors/404`
-Page not found - most common error page.
-
-### `/errors/500`
-Server error - internal error page.
-
-### `/errors/403`
-Forbidden - access denied page.
-
-### `/errors/offline`
-No network - offline state indicator.
-
-### `/errors/:code`
-Parameterized error page - dynamic error display.
-
-## Design Decisions
-
-1. **Lazy Loaded** - Errors are rare, don't preload
-2. **Standalone** - Can render without full app bootstrap
-3. **Theme-derived** - Uses theme styling but logic is here
-4. **Configurable** - Error messages from config/i18n
-
-## Related
-
-- **Maintenance** (`/system/maintenance`) - Scheduled downtime
-- **Coming Soon** (`/system/coming-soon`) - Future features
+Single parameterized component pattern:
+- Route: `/errors/:code` (e.g., `/errors/404`, `/errors/500`)
+- Component reads code from route params
+- Looks up configuration in `error-data.ts`
+- Falls back to `000` if code not found
+- All text uses i18n translation keys
 
 ## Routes
 
 ```
 /errors/
-├── 404              - Not found (basic)
-├── 404/alt          - Not found (alt style)
-├── 404/cover        - Not found (cover style)
-├── 500              - Internal server error
-├── 403              - Forbidden
-├── offline          - Offline/no network
-└── :code            - Parameterized by error code
+├── (default)        → 000 (unknown error)
+├── 401              → Unauthorized
+├── 403              → Forbidden
+├── 404              → Not Found
+├── 500              → Server Error
+└── :code            → Any error code
 ```
+
+## Benefits
+
+- **DRY**: Single component for all error pages
+- **Maintainable**: Add new codes by updating `error-data.ts` only
+- **Consistent**: Same layout, different content
+- **i18n**: All text is translatable
+
+## Adding New Error Codes
+
+1. Add configuration to `models/error-data.ts`
+2. Add translation keys to i18n files
+3. Done - no new component needed
+
+## Files
+
+```
+errors/
+├── README.md
+├── module.ts
+├── routing.ts
+├── index.ts
+├── models/
+│   └── error-data.ts        # Error configurations
+└── views/
+    └── error/
+        └── component.ts      # Parameterized error view
+```
+
+## Related
+
+- **Maintenance** (`/system/maintenance`) - Downtime pages
+- **Themes** (`themes/t1/features/errors`) - Legacy theme-specific error pages (deprecated)

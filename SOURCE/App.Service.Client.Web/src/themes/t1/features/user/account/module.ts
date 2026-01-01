@@ -18,6 +18,7 @@ import { BaseThemesV1FeaturesSigninModule } from "./auth/signin/module";
 import { BaseThemesV1FeaturesSignupModule } from "./auth/signup/module";
 import { RegisterComponent } from './register/component';
 import { LoginComponent } from './login/component';
+import { SignUpComponent } from './signup/component';
 import { BaseThemesModule } from '../../../../module';
 import { BaseCoreAgPipesModule } from '../../../../../core.ag/pipes/module';
 import { BaseCoreAgModule } from '../../../../../core.ag/module';
@@ -27,12 +28,14 @@ import { BaseThemesV1Module } from '../../../module';
 // ✅ UPDATED: Auth Components from core.ag
 import { AuthProviderListComponent } from '../../../../../core.ag/auth/components/auth-provider-list.component';
 import { EmailLoginFormComponent } from '../../../../../core.ag/auth/components/email-login-form.component';
+import { EmailSignupFormComponent } from '../../../../../core.ag/auth/components/email-signup-form.component';
 
 @NgModule({
   declarations: [
     // Components, Directives, Pipes developed in this Module.
     RegisterComponent,
     LoginComponent,
+    SignUpComponent,
     ToastsContainer
   ],
   providers:[],
@@ -47,6 +50,7 @@ import { EmailLoginFormComponent } from '../../../../../core.ag/auth/components/
     // ✅ Standalone Auth Components (from core.ag)
     AuthProviderListComponent,
     EmailLoginFormComponent,
+    EmailSignupFormComponent,
 
     // Import upstream:
     BaseThemesModule,

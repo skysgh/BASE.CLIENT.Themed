@@ -1,5 +1,5 @@
 /**
- * Coming Soon Page Component
+ * Coming Soon View Component
  * 
  * Displays a "coming soon" page for features not yet available.
  * Includes countdown timer and email notification signup.
@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-coming-soon-page',
+  selector: 'app-coming-soon',
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   template: `
@@ -149,7 +149,7 @@ import { FormsModule } from '@angular/forms';
     }
   `]
 })
-export class ComingSoonPageComponent implements OnInit, OnDestroy {
+export class ComingSoonComponent implements OnInit, OnDestroy {
   // Configuration
   title = 'Coming Soon';
   message = 'We\'re working hard on this feature. Stay tuned!';

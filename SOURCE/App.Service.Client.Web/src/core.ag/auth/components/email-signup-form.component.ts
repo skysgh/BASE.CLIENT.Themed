@@ -2,7 +2,11 @@
  * Email Signup Form Component
  * 
  * Registration form for email/password sign up.
- * Creates User + Person + DigitalIdentity in the system.
+ * Creates User + DigitalIdentity in the system.
+ * 
+ * Note: First/Last name are NOT collected here.
+ * User display name defaults to "New User" - they can update in settings later.
+ * Person details (name, etc.) are collected separately when user sets up profile.
  * 
  * LOCATION: core.ag (Angular-specific component)
  */
@@ -13,13 +17,16 @@ import { RouterModule } from '@angular/router';
 
 /**
  * Signup request data
+ * 
+ * Note: firstName/lastName are optional - defaults to "New User" display name
  */
 export interface EmailSignupRequest {
-  firstName: string;
-  lastName: string;
   email: string;
   password: string;
   acceptTerms: boolean;
+  // Optional - for backward compatibility with components that pass names
+  firstName?: string;
+  lastName?: string;
 }
 
 @Component({
@@ -41,47 +48,6 @@ export interface EmailSignupRequest {
 
       <!-- Form -->
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        
-        <!-- Name Row -->
-        <div class="row">
-          <!-- First Name -->
-          <div class="col-md-6 mb-3">
-            <label class="form-label" for="firstName">{{ firstNameLabel }}</label>
-            <input 
-              type="text"
-              class="form-control"
-              id="firstName"
-              formControlName="firstName"
-              [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"
-              [placeholder]="firstNamePlaceholder">
-            @if (submitted && f['firstName'].errors) {
-              <div class="invalid-feedback">
-                @if (f['firstName'].errors['required']) {
-                  <span>First name is required</span>
-                }
-              </div>
-            }
-          </div>
-
-          <!-- Last Name -->
-          <div class="col-md-6 mb-3">
-            <label class="form-label" for="lastName">{{ lastNameLabel }}</label>
-            <input 
-              type="text"
-              class="form-control"
-              id="lastName"
-              formControlName="lastName"
-              [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
-              [placeholder]="lastNamePlaceholder">
-            @if (submitted && f['lastName'].errors) {
-              <div class="invalid-feedback">
-                @if (f['lastName'].errors['required']) {
-                  <span>Last name is required</span>
-                }
-              </div>
-            }
-          </div>
-        </div>
 
         <!-- Email -->
         <div class="mb-3">
@@ -216,7 +182,7 @@ export interface EmailSignupRequest {
           </button>
         </div>
 
-        <!-- Sign in link -->
+        <!-- Sign in link (inside form/card) -->
         <div class="mt-4 text-center">
           <p class="mb-0 text-muted">
             Already have an account? 
@@ -240,10 +206,6 @@ export interface EmailSignupRequest {
 export class EmailSignupFormComponent implements OnInit {
   
   // Labels
-  @Input() firstNameLabel = 'First Name';
-  @Input() firstNamePlaceholder = 'Enter your first name';
-  @Input() lastNameLabel = 'Last Name';
-  @Input() lastNamePlaceholder = 'Enter your last name';
   @Input() emailLabel = 'Email';
   @Input() emailPlaceholder = 'Enter your email';
   @Input() passwordLabel = 'Password';
@@ -275,8 +237,6 @@ export class EmailSignupFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
@@ -358,11 +318,12 @@ export class EmailSignupFormComponent implements OnInit {
     }
 
     this.signupSubmit.emit({
-      firstName: this.f['firstName'].value,
-      lastName: this.f['lastName'].value,
       email: this.f['email'].value,
       password: this.f['password'].value,
-      acceptTerms: this.f['acceptTerms'].value
+      acceptTerms: this.f['acceptTerms'].value,
+      // Default display name - user can change later in settings
+      firstName: 'New',
+      lastName: 'User'
     });
   }
 }

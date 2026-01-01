@@ -95,11 +95,14 @@ export class BaseLayoutRightsidebarComponent implements OnInit {
 }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      if (this.offcanvasService.hasOpenOffcanvas() == false) {
-        this.openEnd(this.filtetcontent);
-      };
-    }, 1000);
+    // ✅ REMOVED: Auto-open flyout was annoying on every page load
+    // The settings panel should only open when user clicks the gear button
+    // OLD CODE (removed):
+    // setTimeout(() => {
+    //   if (this.offcanvasService.hasOpenOffcanvas() == false) {
+    //     this.openEnd(this.filtetcontent);
+    //   };
+    // }, 1000);
 
     this.store.select('layout').pipe(
       // ✅ Filter out undefined/null state AND ensure LAYOUT property exists

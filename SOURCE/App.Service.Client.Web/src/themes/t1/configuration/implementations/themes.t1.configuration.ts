@@ -44,7 +44,7 @@ export const themesT1Configuration: TThemesT1Configuration /*: ThemesT1Configura
   /**
    * Default post-login redirect destination.
    * 
-   * Why '/dashboards/main/': Most authenticated users need to see their dashboard first.
+   * Why '/dashboards/main': Most authenticated users need to see their dashboard first.
    * 
    * Override in config.json if your deployment needs different behavior:
    * - Redirect to user profile for first-time users
@@ -54,7 +54,7 @@ export const themesT1Configuration: TThemesT1Configuration /*: ThemesT1Configura
    * Note: Individual login attempts can still override this via returnUrl query param.
    * Example: /auth/signin?returnUrl=/specific-page will go to /specific-page after login.
    */
-  postLoginRedirect: '/dashboards/main/',
+  postLoginRedirect: '/dashboards/main',
 }
 
 

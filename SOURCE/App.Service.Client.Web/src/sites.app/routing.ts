@@ -101,6 +101,18 @@ const routes: Routes = [
     loadChildren: () => import('../sites.app.parts/accounts/module').then(m => m.AccountsModule)
   },
 
+  // Access - Geographical restrictions, embargoes
+  { 
+    path: 'system/access', 
+    loadChildren: () => import('../sites.app.parts/access/module').then(m => m.AccessModule)
+  },
+
+  // Diagnostics - System logs and monitoring
+  { 
+    path: 'system/diagnostics', 
+    loadChildren: () => import('../sites.app.parts/diagnostics/module').then(m => m.DiagnosticsModule)
+  },
+
   // ============================================================================
   // ERROR PAGES - /errors/* (sites.app.parts/errors)
   // Graceful degradation - lazy loaded (errors are rare)

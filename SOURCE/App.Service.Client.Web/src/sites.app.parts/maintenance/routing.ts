@@ -1,24 +1,24 @@
 /**
  * Maintenance App.Part Routing
  * 
- * Routes for maintenance and coming-soon pages.
+ * Routes for maintenance and coming-soon views.
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MaintenancePageComponent } from './views/maintenance-page/component';
-import { ComingSoonPageComponent } from './views/coming-soon-page/component';
+import { MaintenanceComponent } from './views/maintenance/component';
+import { ComingSoonComponent } from './views/coming-soon/component';
 
 const routes: Routes = [
-  // Maintenance page
+  // Maintenance view
   {
     path: '',
-    component: MaintenancePageComponent
+    component: MaintenanceComponent
   },
-  // Coming soon page
+  // Coming soon view
   {
     path: 'coming-soon',
-    component: ComingSoonPageComponent
+    component: ComingSoonComponent
   }
 ];
 

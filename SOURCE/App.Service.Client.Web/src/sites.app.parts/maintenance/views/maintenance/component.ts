@@ -1,5 +1,5 @@
 /**
- * Maintenance Page Component
+ * Maintenance View Component
  * 
  * Displays service maintenance/downtime information.
  * Can show live status updates from API (future).
@@ -15,7 +15,7 @@ export interface StatusUpdate {
 }
 
 @Component({
-  selector: 'app-maintenance-page',
+  selector: 'app-maintenance',
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
@@ -140,7 +140,7 @@ export interface StatusUpdate {
     }
   `]
 })
-export class MaintenancePageComponent implements OnInit {
+export class MaintenanceComponent implements OnInit {
   // Configuration
   title = 'Site is Under Maintenance';
   message = 'We\'re performing scheduled maintenance. Please check back soon.';

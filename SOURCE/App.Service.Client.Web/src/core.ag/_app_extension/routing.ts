@@ -21,6 +21,17 @@ const routes: Routes = [
   //// so pages and landing (and auth, etc.) will be loaded directly within
   //// the AppROComponent. They also don't need to be gaurded - they're public access.
 
+  // ============================================================================
+  // DEVELOPER TOOLS - /dev/* (NO AUTH REQUIRED)
+  // Developer reference pages accessible without authentication
+  // ============================================================================
+  { 
+    path: 'dev', 
+    component: AppLayoutComponent, 
+    loadChildren: () => import('../../sites.app.dev/module').then(m => m.SitesAppDevModule)
+    // No AuthGuard - developer tools accessible without login
+  },
+
   // ✅ Account-based routes (e.g., /foo/pages, /bar/apps)
   // Only match if second segment is a known route pattern
   // ✅ ADDED: AccountGuard checks if account config was found
@@ -42,6 +53,12 @@ const routes: Routes = [
     canActivate: [AccountGuard, AuthGuard]  // ← Validate account first, then auth
   },
   { 
+    path: ':accountId/dev', 
+    component: AppLayoutComponent, 
+    loadChildren: () => import('../../sites.app.dev/module').then(m => m.SitesAppDevModule)
+    // No AuthGuard - developer tools accessible without login
+  },
+  { 
     path: ':accountId/landing', 
     redirectTo: ':accountId/pages/landing', 
     pathMatch: 'full'
@@ -58,7 +75,7 @@ const routes: Routes = [
   },
   { 
     path: ':accountId/errors', 
-    loadChildren: () => import('../../themes/t1/features/errors/module').then(m => m.BaseThemesV1FeaturesErrorsModule)
+    loadChildren: () => import('../../sites.app.parts/errors/module').then(m => m.ErrorsModule)
     // No guard - error pages should always be accessible
   },
 
@@ -69,12 +86,12 @@ const routes: Routes = [
   { path: 'landing', redirectTo: 'pages/landing', pathMatch: 'full' },
   { path: 'information', redirectTo: 'pages/information', pathMatch: 'full' },
   { path: 'auth', loadChildren: () => import('../../themes/t1/features/user/account/module').then(m => m.BaseThemesV1FeaturesUserAccountModule) },
-  { path: 'errors', loadChildren: () => import('../../themes/t1/features/errors/module').then(m => m.BaseThemesV1FeaturesErrorsModule) },
+  { path: 'errors', loadChildren: () => import('../../sites.app.parts/errors/module').then(m => m.ErrorsModule) },
 
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
 
-  // ✅ Catch-all: Unknown routes go to Angular 404 (not "account not found")
-  { path: '**', redirectTo: 'errors' }
+  // ✅ Catch-all: Unknown routes go to error page
+  { path: '**', redirectTo: 'errors/404' }
 ];
 
 @NgModule({

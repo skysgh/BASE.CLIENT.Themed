@@ -4,27 +4,25 @@ import { Routes, RouterModule } from '@angular/router';
 // Component Pages
 import { RegisterComponent } from "./register/component";
 import { LoginComponent } from "./login/component";
+import { SignUpComponent } from "./signup/component";
 // ✅ Auth components from core.ag
 import { AuthCallbackComponent } from "../../../../../core.ag/auth/components/auth-callback.component";
-import { UnifiedSignUpComponent } from "../../../../../core.ag/auth/components/unified-sign-up.component";
-import { UnifiedForgotPasswordComponent } from "../../../../../core.ag/auth/components/unified-forgot-password.component";
 
 const routes: Routes = [
   // =============================================
   // Modern Auth Routes (using core.ag components)
   // =============================================
   
-  // Sign In - provider-first login
+  // Sign In - provider-first login (THE DEFAULT)
   {
     path: "signin",
     component: LoginComponent
   },
   
-  // Sign Up - provider-first registration
-  // Lazy wrapper with theme layout
+  // Sign Up - provider-first registration (THE DEFAULT)
   {
     path: 'signup', 
-    loadChildren: () => import('./auth/signup/module').then(m => m.BaseThemesV1FeaturesSignupModule)
+    component: SignUpComponent
   },
   
   // Forgot Password
@@ -40,35 +38,41 @@ const routes: Routes = [
   },
   
   // OAuth/OIDC callback route
-  // IdP redirects here after authentication
   {
     path: "callback",
     component: AuthCallbackComponent
   },
   
   // =============================================
-  // Legacy/Theme Reference Routes
+  // Theme Reference Routes (for developer reference)
+  // These show different visual styles of auth pages
+  // Lazy loaded - the child module defines basic/cover routes
   // =============================================
   
-  // Old signin theme pages
+  // Theme reference: signin styles (basic, cover)
+  // Full path: /auth/theme-signin/basic or /auth/theme-signin/cover
   {
-    path: 'auth/signin', 
+    path: 'theme-signin', 
     loadChildren: () => import('./auth/signin/module').then(m => m.BaseThemesV1FeaturesSigninModule)
   },
   
-  // Old signup theme pages  
+  // Theme reference: signup styles
   {
-    path: 'auth/signup', 
+    path: 'theme-signup', 
     loadChildren: () => import('./auth/signup/module').then(m => m.BaseThemesV1FeaturesSignupModule)
   },
   
-  // Pass reset theme pages
+  // =============================================
+  // Support Routes
+  // =============================================
+  
+  // Pass reset
   {
     path: 'pass-reset', 
     loadChildren: () => import('./auth/pass-reset/module').then(m => m.BaseThemesV1FeaturesPassResetModule)
   },
   
-  // Pass create theme pages
+  // Pass create
   {
     path: 'pass-create', 
     loadChildren: () => import('./auth/pass-create/module').then(m => m.BaseThemesV1FeaturesPassCreateModule)
@@ -104,10 +108,19 @@ const routes: Routes = [
     loadChildren: () => import('../../errors/module').then(m => m.BaseThemesV1FeaturesErrorsModule)
   },
   
-  // Legacy register (redirects or keeps for compatibility)
+  // Legacy register
   {
     path: "register",
     component: RegisterComponent
+  },
+  
+  // =============================================
+  // Default redirect
+  // =============================================
+  {
+    path: '',
+    redirectTo: 'signin',
+    pathMatch: 'full'
   }
 ];
 

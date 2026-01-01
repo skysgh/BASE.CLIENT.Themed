@@ -59,6 +59,8 @@
     <Folder Include="src\sites.anon\data\fake\" />
     <Folder Include="src\sites.app.lets\architecture\services\repositories\" />
     <Folder Include="src\sites.app.lets\spike\services\repositories\" />
+    <Folder Include="src\sites.app.parts\maintenance\views\coming-soon-page\" />
+    <Folder Include="src\sites.app.parts\maintenance\views\maintenance-page\" />
     <Folder Include="src\sites.app\main\" />
     <Folder Include="src\core.ag\base\constants\" />
     <Folder Include="src\core.ag\contracts\" />

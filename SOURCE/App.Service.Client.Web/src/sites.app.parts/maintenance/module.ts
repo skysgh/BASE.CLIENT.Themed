@@ -1,7 +1,7 @@
 /**
  * Maintenance App.Part Module
  * 
- * Platform applet for service status/maintenance pages.
+ * Platform applet for service status/maintenance views.
  * Lazy loaded - maintenance is rare, don't preload.
  * 
  * Path: /system/maintenance/*
@@ -11,8 +11,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { MaintenanceRoutingModule } from './routing';
-import { MaintenancePageComponent } from './views/maintenance-page/component';
-import { ComingSoonPageComponent } from './views/coming-soon-page/component';
+import { MaintenanceComponent } from './views/maintenance/component';
+import { ComingSoonComponent } from './views/coming-soon/component';
 
 @NgModule({
   declarations: [],
@@ -20,8 +20,8 @@ import { ComingSoonPageComponent } from './views/coming-soon-page/component';
     CommonModule,
     RouterModule,
     MaintenanceRoutingModule,
-    MaintenancePageComponent,
-    ComingSoonPageComponent
+    MaintenanceComponent,
+    ComingSoonComponent
   ],
   exports: []
 })

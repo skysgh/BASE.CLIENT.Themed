@@ -6,6 +6,7 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/ro
 import { ConfigRegistryService } from '../../core/services/config-registry.service';
 import { AuthenticationService } from '../../core/services/auth.service';
 import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
+import { NavigationService } from '../../core/services/navigation.service';
 import { environment } from '../../environments/environment';
 // ✅ UPDATED: OIDC Service from core.ag
 import { OidcService } from '../auth/services/oidc.service';
@@ -15,6 +16,7 @@ import { OidcService } from '../auth/services/oidc.service';
  * Authentication Guard
  * 
  * ✅ LOCATION: core.ag (Angular-specific)
+ * ✅ ACCOUNT-AWARE: Uses NavigationService for account-context-preserving redirects
  * 
  * This guard uses Angular Router and is therefore Angular-specific.
  * It belongs in core.ag, not core.
@@ -29,8 +31,9 @@ import { OidcService } from '../auth/services/oidc.service';
 export class AuthGuard {
   private appsConfig: any;
   
-  // Inject OIDC service
+  // Inject services
   private oidcService = inject(OidcService);
+  private navigationService = inject(NavigationService);
 
   constructor(
     private router: Router,
@@ -45,11 +48,6 @@ export class AuthGuard {
     if (!this.appsConfig) {
       console.warn('[AuthGuard] Apps config not registered yet! Using fallback.');
       this.appsConfig = {
-        navigation: {
-          auth: {
-            login: '/auth/signin',
-          },
-        },
         others: {
           core: {
             constants: {
@@ -67,25 +65,22 @@ export class AuthGuard {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const authMode = environment.defaultauth;
+    console.log('[AuthGuard] canActivate called for:', state.url);
+    console.log('[AuthGuard] Auth mode:', authMode);
+    console.log('[AuthGuard] Current account:', this.navigationService.getCurrentAccountId());
 
     // ============================================
     // OIDC Authentication (NEW - Real providers)
     // ============================================
     if (authMode === 'oidc') {
       if (this.oidcService.isAuthenticated()) {
-        // User is authenticated
-        
-        // Optional: Check if token is expiring soon
-        // if (this.oidcService.isTokenExpiringSoon(300)) {
-        //   this.oidcService.refreshToken();
-        // }
-        
+        console.log('[AuthGuard] OIDC authenticated, allowing access');
         return true;
       }
 
-      // Not authenticated - redirect to login
-      const loginPath = this.appsConfig?.navigation?.auth?.login || '/auth/signin';
-      this.router.navigate([loginPath], { queryParams: { returnUrl: state.url } });
+      // Not authenticated - redirect to login (account-aware)
+      console.log('[AuthGuard] OIDC not authenticated, redirecting to login');
+      this.navigationService.navigateToSignIn(state.url);
       return false;
     }
 
@@ -95,6 +90,7 @@ export class AuthGuard {
     if (authMode === 'firebase') {
       const currentUser = this.authenticationService.currentUser();
       if (currentUser) {
+        console.log('[AuthGuard] Firebase authenticated, allowing access');
         return true;
       }
     } 
@@ -104,20 +100,25 @@ export class AuthGuard {
     // ============================================
     else {
       const currentUser = this.authFackservice.currentUserValue;
+      console.log('[AuthGuard] Checking fake auth - currentUserValue:', currentUser ? 'exists' : 'null');
       if (currentUser) {
+        console.log('[AuthGuard] Fake auth service has user, allowing access');
         return true;
       }
       // Check session storage for API login
       const storageKey =
         this.appsConfig?.others?.core?.constants?.storage?.session?.currentUser || 'currentUser';
-      if (sessionStorage.getItem(storageKey)) {
+      const storedUser = sessionStorage.getItem(storageKey);
+      console.log('[AuthGuard] Checking sessionStorage key:', storageKey, '- value exists:', storedUser ? 'yes' : 'no');
+      if (storedUser) {
+        console.log('[AuthGuard] Session storage has user, allowing access');
         return true;
       }
     }
 
-    // Not logged in - redirect to login with return URL
-    const loginPath = this.appsConfig?.navigation?.auth?.login || '/auth/signin';
-    this.router.navigate([loginPath], { queryParams: { returnUrl: state.url } });
+    // Not logged in - redirect to login with return URL (account-aware)
+    console.log('[AuthGuard] No authentication found, redirecting to login');
+    this.navigationService.navigateToSignIn(state.url);
     return false;
   }
 

@@ -16,6 +16,7 @@ import { TitleService } from '../../../../../../core/services/title.service';
 import { ToastService } from '../../../../../../core/services/toast.service';
 import { EnvConfigService } from '../../../../../../core/services/env-config.service';
 import { AccountService } from '../../../../../../core/services/account.service';
+import { NavigationService } from '../../../../../../core/services/navigation.service';
 // ✅ UPDATED: Import from core.ag
 import { OidcService } from '../../../../../../core.ag/auth/services/oidc.service';
 import { FakeAuthRepository } from '../../../../../../core.ag/auth/services/fake-auth-repository.service';
@@ -44,6 +45,7 @@ type LoginView = 'providers' | 'email';
  * 
  * ✅ PROVIDER-FIRST: Shows identity provider options prominently
  * ✅ MULTI-ACCOUNT: Uses AccountService for reactive branding
+ * ✅ ACCOUNT-AWARE: Uses NavigationService for account-preserving navigation
  * ✅ UNIFIED AUTH: Uses FakeAuthRepository for demo, OIDC for production
  * 
  * Flow:
@@ -69,7 +71,7 @@ export class LoginComponent implements OnInit {
   currentView: LoginView = 'providers';
   loading = false;
   errorMessage: string | null = null;
-  returnUrl = '/dashboards/main';
+  returnUrl = '';  // Will be set with account-aware URL
 
   // Configuration
   allowLocalLogin = true;
@@ -79,9 +81,9 @@ export class LoginComponent implements OnInit {
   defaultEmail = '';
   defaultPassword = '';
 
-  // Routes
-  signUpRoute = '/auth/signup';
-  forgotPasswordRoute = '/auth/forgot-password';
+  // Routes (account-aware)
+  signUpRoute = '';
+  forgotPasswordRoute = '';
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
@@ -93,6 +95,7 @@ export class LoginComponent implements OnInit {
     public toastService: ToastService,
     private envConfig: EnvConfigService,
     private accountService: AccountService,
+    private navigationService: NavigationService,
     private oidcService: OidcService,
     private fakeAuthRepo: FakeAuthRepository
   ) {
@@ -103,8 +106,16 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Get return URL from query params
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || this.getPostLoginRedirect();
+    // ✅ ACCOUNT-AWARE: Get return URL from query params OR use account-aware default
+    const queryReturnUrl = this.route.snapshot.queryParams['returnUrl'];
+    this.returnUrl = queryReturnUrl || this.navigationService.getPostLoginUrl();
+    
+    // ✅ ACCOUNT-AWARE: Set routes with account prefix
+    this.signUpRoute = this.navigationService.getUrl('auth/signup');
+    this.forgotPasswordRoute = this.navigationService.getUrl('auth/forgot-password');
+    
+    console.log('[LoginComponent] Return URL:', this.returnUrl);
+    console.log('[LoginComponent] Current account:', this.navigationService.getCurrentAccountId());
 
     // Load OIDC configuration
     this.loadConfiguration();
@@ -134,10 +145,27 @@ export class LoginComponent implements OnInit {
       this.hasOidcProviders = false;
     }
 
-    // If no OIDC providers enabled, go straight to email form
-    if (!this.hasOidcProviders) {
-      this.currentView = 'email';
-    }
+    // ✅ CHANGED: Always start with provider view
+    // Even if no OIDC providers are enabled, show the provider selection
+    // because it includes the "Continue with Email" option.
+    // This gives users a consistent experience and shows what options are available.
+    // 
+    // The provider list component will:
+    // - Show OIDC providers if enabled
+    // - Always show "Continue with Email" if allowLocalLogin is true
+    // - User clicks Email → navigates to email form
+    //
+    // OLD CODE (removed): 
+    // if (!this.hasOidcProviders) {
+    //   this.currentView = 'email';
+    // }
+    
+    // Keep default: currentView = 'providers' (set in property initialization)
+    console.log('[LoginComponent] Provider config loaded:', {
+      hasOidcProviders: this.hasOidcProviders,
+      allowLocalLogin: this.allowLocalLogin,
+      currentView: this.currentView
+    });
   }
 
   /**
@@ -146,38 +174,21 @@ export class LoginComponent implements OnInit {
   private checkExistingSession(): void {
     // Check OIDC session
     if (this.oidcService.isAuthenticated()) {
-      this.router.navigateByUrl(this.returnUrl);
+      this.navigationService.navigateByUrl(this.returnUrl);
       return;
     }
 
     // Check fake auth session
     if (this.authFakeService.currentUserValue) {
-      this.router.navigateByUrl(this.returnUrl);
+      this.navigationService.navigateByUrl(this.returnUrl);
       return;
     }
 
     // Check session storage
     const currentUser = sessionStorage.getItem('currentUser');
     if (currentUser) {
-      this.router.navigateByUrl(this.returnUrl);
+      this.navigationService.navigateByUrl(this.returnUrl);
     }
-  }
-
-  /**
-   * Get post-login redirect destination
-   * Priority: returnUrl query param > runtime config > theme default
-   */
-  private getPostLoginRedirect(): string {
-    try {
-      const runtimeConfig = this.envConfig.get();
-      if (runtimeConfig.postLoginRedirect) {
-        return runtimeConfig.postLoginRedirect;
-      }
-    } catch (error) {
-      console.warn('[LoginComponent] EnvConfig not available, using theme default');
-    }
-    
-    return this.tierConfig.postLoginRedirect;
   }
 
   // ============================================
@@ -227,6 +238,7 @@ export class LoginComponent implements OnInit {
    */
   async onEmailLogin(credentials: EmailLoginCredentials): Promise<void> {
     console.log('[LoginComponent] Email login:', credentials.email);
+    console.log('[LoginComponent] Return URL will be:', this.returnUrl);
     
     this.loading = true;
     this.errorMessage = null;
@@ -234,9 +246,11 @@ export class LoginComponent implements OnInit {
     try {
       // Use FakeAuthRepository for demo mode
       const result = await this.fakeAuthRepo.login(credentials.email, credentials.password);
+      console.log('[LoginComponent] Login result:', result);
       
       if (result.success) {
         // Store in session
+        console.log('[LoginComponent] Storing user in sessionStorage...');
         sessionStorage.setItem('currentUser', JSON.stringify(result.user));
         if (result.token) {
           sessionStorage.setItem('token', result.token);
@@ -245,12 +259,21 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('currentPerson', JSON.stringify(result.person));
         }
         
+        // Verify storage
+        console.log('[LoginComponent] Stored currentUser:', sessionStorage.getItem('currentUser'));
+        
         // Show success toast
         sessionStorage.setItem('toast', 'true');
         this.toastService.show('Welcome back!', { classname: 'bg-success text-white' });
         
-        // Navigate to return URL
-        this.router.navigateByUrl(this.returnUrl);
+        // ✅ Navigate to return URL (account-aware)
+        console.log('[LoginComponent] Navigating to:', this.returnUrl);
+        try {
+          await this.navigationService.navigateByUrl(this.returnUrl);
+          console.log('[LoginComponent] Navigation successful');
+        } catch (navError) {
+          console.error('[LoginComponent] Navigation error:', navError);
+        }
       } else {
         // Handle lockout
         if (result.lockedUntil) {

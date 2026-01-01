@@ -323,9 +323,29 @@ export class AccountService {
 
   /**
    * Check if route segment is reserved (not an account ID)
+   * 
+   * These are root-level routes that exist without an account prefix.
+   * If the first URL segment matches any of these, it's NOT an account ID.
    */
   private isReservedRoute(segment: string): boolean {
-    const reservedRoutes = ['pages', 'apps', 'auth', 'errors', 'assets', 'api'];
+    const reservedRoutes = [
+      // Core routes
+      'pages',
+      'apps', 
+      'auth',
+      'errors',
+      'assets',
+      'api',
+      // Dashboard routes
+      'dashboards',
+      // Developer tools
+      'dev',
+      // System routes
+      'system',
+      // Landing/marketing
+      'landing',
+      'information'
+    ];
     return reservedRoutes.includes(segment);
   }
 
