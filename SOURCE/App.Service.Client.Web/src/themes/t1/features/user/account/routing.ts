@@ -6,7 +6,7 @@ import { RegisterComponent } from "./register/component";
 import { LoginComponent } from "./login/component";
 import { SignUpComponent } from "./signup/component";
 // ✅ Auth components from core.ag
-import { AuthCallbackComponent } from "../../../../../core.ag/auth/components/auth-callback.component";
+import { AuthCallbackComponent } from "../../../../../core.ag/auth/ui/widgets/auth-callback.component";
 
 const routes: Routes = [
   // =============================================

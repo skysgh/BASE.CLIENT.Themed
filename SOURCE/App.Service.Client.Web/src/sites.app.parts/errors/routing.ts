@@ -10,7 +10,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ErrorComponent } from './views/error/component';
+import { ErrorComponent } from './ui/views/error/component';
 
 const routes: Routes = [
   // Default - show 000 (unknown error)

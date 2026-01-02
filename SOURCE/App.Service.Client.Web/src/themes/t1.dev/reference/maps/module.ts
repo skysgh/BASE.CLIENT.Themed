@@ -17,7 +17,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 // Compatibility shim for breadcrumbs
-import { DevBreadcrumbsComponent } from '../../components/breadcrumbs/component';
+import { DevBreadcrumbsComponent } from '../../ui/widgets/breadcrumbs/component';
 
 // Routing
 import { MapsReferenceRoutingModule } from './routing';

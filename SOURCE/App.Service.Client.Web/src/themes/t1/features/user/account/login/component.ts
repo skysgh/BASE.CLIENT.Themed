@@ -23,8 +23,8 @@ import { FakeAuthRepository } from '../../../../../../core.ag/auth/services/fake
 // Models:
 import { ViewModel } from './vm';
 // ✅ UPDATED: Import from core.ag
-import { AuthProviderDisplay } from '../../../../../../core.ag/auth/components/auth-provider-list.component';
-import { EmailLoginCredentials } from '../../../../../../core.ag/auth/components/email-login-form.component';
+import { AuthProviderDisplay } from '../../../../../../core.ag/auth/ui/widgets/auth-provider-list.component';
+import { EmailLoginCredentials } from '../../../../../../core.ag/auth/ui/widgets/email-login-form.component';
 // Environment
 import { environment } from '../../../../../../environments/environment';
 

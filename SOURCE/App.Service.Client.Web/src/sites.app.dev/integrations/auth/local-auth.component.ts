@@ -138,19 +138,19 @@ import { RouterModule } from '@angular/router';
                 <td>Demo auth repository with localStorage</td>
               </tr>
               <tr>
-                <td><code>core.ag/auth/components/email-login-form.component.ts</code></td>
+                <td><code>core.ag/auth/ui/widgets/email-login-form.component.ts</code></td>
                 <td>Login form component</td>
               </tr>
               <tr>
-                <td><code>core.ag/auth/components/email-signup-form.component.ts</code></td>
+                <td><code>core.ag/auth/ui/widgets/email-signup-form.component.ts</code></td>
                 <td>Registration form component</td>
               </tr>
               <tr>
-                <td><code>core.ag/auth/components/forgot-password-form.component.ts</code></td>
+                <td><code>core.ag/auth/ui/widgets/forgot-password-form.component.ts</code></td>
                 <td>Password reset request form</td>
               </tr>
               <tr>
-                <td><code>core.ag/auth/components/reset-password-form.component.ts</code></td>
+                <td><code>core.ag/auth/ui/widgets/reset-password-form.component.ts</code></td>
                 <td>New password entry form</td>
               </tr>
             </tbody>

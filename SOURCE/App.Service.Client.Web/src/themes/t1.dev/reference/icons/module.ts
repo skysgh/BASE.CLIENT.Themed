@@ -21,7 +21,7 @@ import { allIcons } from 'angular-feather/icons';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Compatibility shim for breadcrumbs
-import { DevBreadcrumbsComponent } from '../../components/breadcrumbs/component';
+import { DevBreadcrumbsComponent } from '../../ui/widgets/breadcrumbs/component';
 
 // Component pages
 import { IconsReferenceRoutingModule } from './routing';

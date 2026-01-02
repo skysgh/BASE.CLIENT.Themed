@@ -11,8 +11,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { MaintenanceRoutingModule } from './routing';
-import { MaintenanceComponent } from './views/maintenance/component';
-import { ComingSoonComponent } from './views/coming-soon/component';
+import { MaintenanceComponent } from './ui/views/maintenance/component';
+import { ComingSoonComponent } from './ui/views/coming-soon/component';
 
 @NgModule({
   declarations: [],

@@ -19,7 +19,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { T1DevRoutingModule } from './routing';
-import { T1DevHubComponent } from './views/dev-hub/component';
+import { T1DevHubComponent } from './ui/views/dev-hub/component';
 
 @NgModule({
   declarations: [],

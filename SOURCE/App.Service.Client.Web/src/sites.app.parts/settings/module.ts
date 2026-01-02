@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // Views
-import { SettingsHubComponent } from './views/settings-hub/component';
-import { ServiceSettingsSectionComponent } from './views/service-settings/component';
-import { AccountSettingsSectionComponent } from './views/account-settings/component';
-import { UserSettingsSectionComponent } from './views/user-settings/component';
-import { AppletSettingsSectionComponent } from './views/applet-settings/component';
+import { SettingsHubComponent } from './ui/views/settings-hub/component';
+import { ServiceSettingsSectionComponent } from './ui/views/service-settings/component';
+import { AccountSettingsSectionComponent } from './ui/views/account-settings/component';
+import { UserSettingsSectionComponent } from './ui/views/user-settings/component';
+import { AppletSettingsSectionComponent } from './ui/views/applet-settings/component';
 
 /**
  * Settings Applet Module

@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // Views
-import { ComplianceHubComponent } from './views/compliance-hub/component';
-import { PrivacyPolicyComponent } from './views/privacy-policy/component';
-import { TermsConditionsComponent } from './views/terms-conditions/component';
-import { CookiePolicyComponent } from './views/cookie-policy/component';
-import { AccessibilityStatementComponent } from './views/accessibility-statement/component';
-import { DataCollectionComponent } from './views/data-collection/component';
+import { ComplianceHubComponent } from './ui/views/compliance-hub/component';
+import { PrivacyPolicyComponent } from './ui/views/privacy-policy/component';
+import { TermsConditionsComponent } from './ui/views/terms-conditions/component';
+import { CookiePolicyComponent } from './ui/views/cookie-policy/component';
+import { AccessibilityStatementComponent } from './ui/views/accessibility-statement/component';
+import { DataCollectionComponent } from './ui/views/data-collection/component';
 
 /**
  * Compliance Applet Module

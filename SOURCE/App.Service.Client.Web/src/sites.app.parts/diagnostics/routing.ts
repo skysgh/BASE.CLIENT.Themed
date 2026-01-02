@@ -10,8 +10,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DiagnosticsHubComponent } from './ui/views/diagnostics-hub/component';
 import { DiagnosticsDashboardComponent } from './ui/views/diagnostics-dashboard/component';
-import { LogListComponent } from './logs/views/log-list/component';
-import { LogDetailComponent } from './logs/views/log-detail/component';
+import { LogListComponent } from './logs/ui/views/log-list/component';
+import { LogDetailComponent } from './logs/ui/views/log-detail/component';
 
 const routes: Routes = [
   // Hub - central diagnostics

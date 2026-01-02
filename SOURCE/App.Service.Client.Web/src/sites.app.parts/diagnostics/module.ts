@@ -18,8 +18,8 @@ import { DiagnosticsHubComponent } from './ui/views/diagnostics-hub/component';
 import { DiagnosticsDashboardComponent } from './ui/views/diagnostics-dashboard/component';
 
 // Views - Logs D-BR (Browse, Read only)
-import { LogListComponent } from './logs/views/log-list/component';
-import { LogDetailComponent } from './logs/views/log-detail/component';
+import { LogListComponent } from './logs/ui/views/log-list/component';
+import { LogDetailComponent } from './logs/ui/views/log-detail/component';
 
 // Widgets
 import { ErrorCountWidgetComponent } from './ui/widgets/error-count/component';

@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { ErrorsRoutingModule } from './routing';
-import { ErrorComponent } from './views/error/component';
+import { ErrorComponent } from './ui/views/error/component';
 
 @NgModule({
   declarations: [],

@@ -23,8 +23,8 @@ import { FakeAuthRepository } from '../../../../../../core.ag/auth/services/fake
 import { AuthfakeauthenticationService } from '../../../../../../core/services/authfake.service';
 
 // Models
-import { AuthProviderDisplay } from '../../../../../../core.ag/auth/components/auth-provider-list.component';
-import { EmailSignupRequest } from '../../../../../../core.ag/auth/components/email-signup-form.component';
+import { AuthProviderDisplay } from '../../../../../../core.ag/auth/ui/widgets/auth-provider-list.component';
+import { EmailSignupRequest } from '../../../../../../core.ag/auth/ui/widgets/email-signup-form.component';
 
 // Environment
 import { environment } from '../../../../../../environments/environment';

@@ -31,32 +31,32 @@ import { RouterModule } from '@angular/router';
       {
         path: '',
         loadComponent: () => 
-          import('./views/theme-hub/component').then(m => m.ThemeHubComponent)
+          import('./ui/views/theme-hub/component').then(m => m.ThemeHubComponent)
       },
       {
         path: 'colors',
         loadComponent: () => 
-          import('./views/colors-reference/component').then(m => m.ColorsReferenceComponent)
+          import('./ui/views/colors-reference/component').then(m => m.ColorsReferenceComponent)
       },
       {
         path: 'icons',
         loadComponent: () => 
-          import('./views/icons-reference/component').then(m => m.IconsReferenceComponent)
+          import('./ui/views/icons-reference/component').then(m => m.IconsReferenceComponent)
       },
       {
         path: 'typography',
         loadComponent: () => 
-          import('./views/typography-reference/component').then(m => m.TypographyReferenceComponent)
+          import('./ui/views/typography-reference/component').then(m => m.TypographyReferenceComponent)
       },
       {
         path: 'components',
         loadComponent: () => 
-          import('./views/components-reference/component').then(m => m.ComponentsReferenceComponent)
+          import('./ui/views/components-reference/component').then(m => m.ComponentsReferenceComponent)
       },
       {
         path: 'forms',
         loadComponent: () => 
-          import('./views/forms-reference/component').then(m => m.FormsReferenceComponent)
+          import('./ui/views/forms-reference/component').then(m => m.FormsReferenceComponent)
       },
     ])
   ],

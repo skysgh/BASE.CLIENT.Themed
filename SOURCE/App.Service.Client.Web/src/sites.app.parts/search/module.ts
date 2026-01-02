@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // Views
-import { SearchHubComponent } from './views/search-hub/component';
+import { SearchHubComponent } from './ui/views/search-hub/component';
 
 /**
  * Search Applet Module

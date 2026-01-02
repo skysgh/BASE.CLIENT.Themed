@@ -9,7 +9,7 @@ import { Routes } from '@angular/router';
 export const settingsRoutes: Routes = [
   {
     path: '',
-    loadComponent: () => import('../../../sites.app.parts/settings/views/settings-hub/component').then(m => m.SettingsHubComponent),
+    loadComponent: () => import('../../../sites.app.parts/settings/ui/views/settings-hub/component').then(m => m.SettingsHubComponent),
     children: [
       {
         path: '',
@@ -18,19 +18,19 @@ export const settingsRoutes: Routes = [
       },
       {
         path: 'service',
-        loadComponent: () => import('../../../sites.app.parts/settings/views/service-settings/component').then(m => m.ServiceSettingsSectionComponent)
+        loadComponent: () => import('../../../sites.app.parts/settings/ui/views/service-settings/component').then(m => m.ServiceSettingsSectionComponent)
       },
       {
         path: 'account',
-        loadComponent: () => import('../../../sites.app.parts/settings/views/account-settings/component').then(m => m.AccountSettingsSectionComponent)
+        loadComponent: () => import('../../../sites.app.parts/settings/ui/views/account-settings/component').then(m => m.AccountSettingsSectionComponent)
       },
       {
         path: 'user',
-        loadComponent: () => import('../../../sites.app.parts/settings/views/user-settings/component').then(m => m.UserSettingsSectionComponent)
+        loadComponent: () => import('../../../sites.app.parts/settings/ui/views/user-settings/component').then(m => m.UserSettingsSectionComponent)
       },
       {
         path: 'applets/:appletId',
-        loadComponent: () => import('../../../sites.app.parts/settings/views/applet-settings/component').then(m => m.AppletSettingsSectionComponent)
+        loadComponent: () => import('../../../sites.app.parts/settings/ui/views/applet-settings/component').then(m => m.AppletSettingsSectionComponent)
       }
     ]
   }

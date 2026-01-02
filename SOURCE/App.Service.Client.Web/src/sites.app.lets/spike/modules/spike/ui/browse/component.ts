@@ -27,7 +27,7 @@ import { SearchContextService, SearchContextConfig } from '../../../../../../cor
 // Models
 import { SpikeViewModel } from '../../../../models/view-models/spike.view-model';
 import { IUniversalCardData, ICardAction } from '../../../../../../core/models/presentation/universal-card.model';
-import { ViewMode } from '../../../../../../core.ag/components/browse-view/browse-view.component';
+import { ViewMode } from '../../../../../../core.ag/ui/widgets/browse-view/browse-view.component';
 import { ChartDefinition } from '../../../../../../core/models/query/chart-definition.model';
 import {
   FilterCriteria,

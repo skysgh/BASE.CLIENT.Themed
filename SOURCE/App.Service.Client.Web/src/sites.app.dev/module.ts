@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { SitesAppDevRoutingModule } from './routing';
-import { DevHubComponent } from './views/dev-hub/component';
+import { DevHubComponent } from './ui/views/dev-hub/component';
 
 @NgModule({
   declarations: [],

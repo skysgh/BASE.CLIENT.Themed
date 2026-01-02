@@ -20,12 +20,12 @@ import { RouterModule } from '@angular/router';
 import { ConfigRegistryService } from '../../core/services/config-registry.service';
 
 // Views
-import { AboutHubComponent } from './views/about-hub/component';
-import { LicensesComponent } from './views/licenses/component';
-import { VersionInfoComponent } from './views/version-info/component';
-import { CreatorInfoComponent } from './views/creator-info/component';
-import { DistributorInfoComponent } from './views/distributor-info/component';
-import { AccountInfoComponent } from './views/account-info/component';
+import { AboutHubComponent } from './ui/views/about-hub/component';
+import { LicensesComponent } from './ui/views/licenses/component';
+import { VersionInfoComponent } from './ui/views/version-info/component';
+import { CreatorInfoComponent } from './ui/views/creator-info/component';
+import { DistributorInfoComponent } from './ui/views/distributor-info/component';
+import { AccountInfoComponent } from './ui/views/account-info/component';
 
 // Constants
 import { ABOUT_CONSTANTS } from './constants';

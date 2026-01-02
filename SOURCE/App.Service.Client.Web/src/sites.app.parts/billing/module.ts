@@ -24,11 +24,11 @@ import { CoreComponentsModule } from '../../core/components/module';
 import { BaseCoreAgPipesModule } from '../../core.ag/pipes/module';
 
 // Views
-import { PaymentHubComponent } from './views/payment-hub/component';
-import { PaymentMethodsComponent } from './views/payment-methods/component';
-import { SubscribeComponent } from './views/subscribe/component';
-import { TransactionsComponent } from './views/transactions/component';
-import { RefundComponent } from './views/refund/component';
+import { PaymentHubComponent } from './ui/views/payment-hub/component';
+import { PaymentMethodsComponent } from './ui/views/payment-methods/component';
+import { SubscribeComponent } from './ui/views/subscribe/component';
+import { TransactionsComponent } from './ui/views/transactions/component';
+import { RefundComponent } from './ui/views/refund/component';
 
 @NgModule({
   declarations: [

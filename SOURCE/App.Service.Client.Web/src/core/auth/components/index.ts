@@ -1,15 +1,15 @@
 /**
  * Auth Components - DEPRECATED LOCATION
  * 
- * ⚠️ MOVED TO core.ag/auth/components/
+ * ⚠️ MOVED TO core.ag/auth/ui/widgets/
  * 
  * Components are Angular-specific and should be in core.ag, not core.
  * This file kept for reference only.
  * 
- * Import from: '../../core.ag/auth/components/...'
+ * Import from: '../../core.ag/auth/ui/widgets/...'
  */
 
-// Components have moved to core.ag/auth/components/
-// - AuthCallbackComponent → core.ag/auth/components/auth-callback.component.ts
-// - AuthProviderListComponent → core.ag/auth/components/auth-provider-list.component.ts
-// - EmailLoginFormComponent → core.ag/auth/components/email-login-form.component.ts
+// Components have moved to core.ag/auth/ui/widgets/
+// - AuthCallbackComponent → core.ag/auth/ui/widgets/auth-callback.component.ts
+// - AuthProviderListComponent → core.ag/auth/ui/widgets/auth-provider-list.component.ts
+// - EmailLoginFormComponent → core.ag/auth/ui/widgets/email-login-form.component.ts

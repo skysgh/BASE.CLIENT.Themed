@@ -13,7 +13,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DevHubComponent } from './views/dev-hub/component';
+import { DevHubComponent } from './ui/views/dev-hub/component';
 
 const routes: Routes = [
   // Dev Hub - overview of all developer tools

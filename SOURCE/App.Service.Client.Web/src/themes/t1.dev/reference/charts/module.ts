@@ -16,7 +16,7 @@ import { NgChartsModule } from "ng2-charts";
 import { NgxEchartsModule } from "ngx-echarts";
 
 // Compatibility shim for breadcrumbs
-import { DevBreadcrumbsComponent } from '../../components/breadcrumbs/component';
+import { DevBreadcrumbsComponent } from '../../ui/widgets/breadcrumbs/component';
 
 // Routing
 import { ChartsReferenceRoutingModule } from "./routing";

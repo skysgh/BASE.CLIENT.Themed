@@ -10,10 +10,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AccessHubComponent } from './ui/views/access-hub/component';
 import { AccessDashboardComponent } from './ui/views/access-dashboard/component';
-import { EmbargoListComponent } from './embargos/views/embargo-list/component';
-import { EmbargoDetailComponent } from './embargos/views/embargo-detail/component';
-import { EmbargoEditComponent } from './embargos/views/embargo-edit/component';
-import { EmbargoAddComponent } from './embargos/views/embargo-add/component';
+import { EmbargoListComponent } from './embargos/ui/views/embargo-list/component';
+import { EmbargoDetailComponent } from './embargos/ui/views/embargo-detail/component';
+import { EmbargoEditComponent } from './embargos/ui/views/embargo-edit/component';
+import { EmbargoAddComponent } from './embargos/ui/views/embargo-add/component';
 
 const routes: Routes = [
   // Hub - central access management

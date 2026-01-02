@@ -13,7 +13,7 @@
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { T1DevHubComponent } from './views/dev-hub/component';
+import { T1DevHubComponent } from './ui/views/dev-hub/component';
 
 const routes: Routes = [
   // Root redirect to minimal variant

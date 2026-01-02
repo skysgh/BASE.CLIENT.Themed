@@ -30,7 +30,7 @@ import { SimplebarAngularModule } from 'simplebar-angular';
 import { NgxMasonryModule } from 'ngx-masonry';
 
 // Compatibility shim for breadcrumbs
-import { DevBreadcrumbsComponent } from '../../components/breadcrumbs/component';
+import { DevBreadcrumbsComponent } from '../../ui/widgets/breadcrumbs/component';
 
 // Routing
 import { UiReferenceRoutingModule } from './routing';

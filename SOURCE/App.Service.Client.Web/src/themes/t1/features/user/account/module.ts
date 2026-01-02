@@ -26,9 +26,9 @@ import { BaseThemesV1ComponentsModule } from '../../../components/module';
 import { BaseThemesV1Module } from '../../../module';
 
 // ✅ UPDATED: Auth Components from core.ag
-import { AuthProviderListComponent } from '../../../../../core.ag/auth/components/auth-provider-list.component';
-import { EmailLoginFormComponent } from '../../../../../core.ag/auth/components/email-login-form.component';
-import { EmailSignupFormComponent } from '../../../../../core.ag/auth/components/email-signup-form.component';
+import { AuthProviderListComponent } from '../../../../../core.ag/auth/ui/widgets/auth-provider-list.component';
+import { EmailLoginFormComponent } from '../../../../../core.ag/auth/ui/widgets/email-login-form.component';
+import { EmailSignupFormComponent } from '../../../../../core.ag/auth/ui/widgets/email-signup-form.component';
 
 @NgModule({
   declarations: [

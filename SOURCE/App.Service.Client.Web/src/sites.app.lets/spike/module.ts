@@ -16,7 +16,7 @@ import { BaseCoreAgPipesModule } from '../../core.ag/pipes/module';
 import { CoreComponentsModule } from '../../core/components/module';
 
 // Core.ag components (for browse-view)
-import { BrowseViewComponent } from '../../core.ag/components/browse-view';
+import { BrowseViewComponent } from '../../core.ag/ui/widgets/browse-view';
 
 // Core utilities only (not domain-specific)
 import { ConfigRegistryService } from '../../core/services/config-registry.service';

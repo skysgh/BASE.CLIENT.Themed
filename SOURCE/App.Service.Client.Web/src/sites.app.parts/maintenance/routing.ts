@@ -6,8 +6,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MaintenanceComponent } from './views/maintenance/component';
-import { ComingSoonComponent } from './views/coming-soon/component';
+import { MaintenanceComponent } from './ui/views/maintenance/component';
+import { ComingSoonComponent } from './ui/views/coming-soon/component';
 
 const routes: Routes = [
   // Maintenance view
