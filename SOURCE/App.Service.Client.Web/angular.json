@@ -68,6 +68,16 @@
               },
               {
                 "glob": "**/*",
+                "input": "src/sites.app.parts/assets",
+                "output": "/assets/sites.app.parts"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites.app.parts/operate/assets",
+                "output": "/assets/sites.app.parts/operate"
+              },
+              {
+                "glob": "**/*",
                 "input": "src/sites.app.lets/assets",
                 "output": "/assets/sites.app.lets"
               },
@@ -308,6 +318,16 @@
                 "glob": "**/*",
                 "input": "src/sites.app/assets",
                 "output": "/assets/sites.app"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites.app.parts/assets",
+                "output": "/assets/sites.app.parts"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/sites.app.parts/operate/assets",
+                "output": "/assets/sites.app.parts/operate"
               },
               {
                 "glob": "**/*",
