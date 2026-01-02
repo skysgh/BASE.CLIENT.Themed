@@ -1,19 +1,26 @@
 /**
- * OIDC Service
+ * OIDC Service (Angular-specific wrapper)
  * 
  * Provider-agnostic authentication service.
  * Abstracts the complexity of OAuth2/OIDC flows.
  * 
  * LOCATION: core.ag (Angular-specific service using Router, signals)
  * 
- * USAGE:
- * 1. Configure providers in environment or config.json
- * 2. Inject OidcService
- * 3. Call login('microsoft') or login('google')
- * 4. Handle callback in AuthCallbackComponent
- * 5. Access user via currentUser$ observable
+ * NOTE: This is the Angular-specific version that uses:
+ * - SessionStorageService (wrapped browser API)
+ * - Router for navigation
+ * - Signals for reactive state
+ * 
+ * For the core implementation details, see: core/auth/services/oidc.service.ts
+ * 
+ * TOKEN REVOCATION (OIDC Spec):
+ * When logging out properly, we should:
+ * 1. Revoke access token (if IdP supports RFC 7009)
+ * 2. Revoke refresh token
+ * 3. Clear local session
+ * 4. Redirect to IdP logout endpoint (for SSO logout)
  */
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 // Models from core (Angular-agnostic)
@@ -33,6 +40,7 @@ import {
   INITIAL_AUTH_SESSION
 } from '../../../core/auth/models/auth-state.model';
 import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
+import { SessionStorageService } from '../../../core/services/browser/session-storage.service';
 
 /**
  * OIDC Service - Facade for authentication
@@ -40,6 +48,13 @@ import { SystemDiagnosticsTraceService } from '../../../core/services/system.dia
 @Injectable({ providedIn: 'root' })
 export class OidcService {
   
+  // ============================================
+  // Dependencies
+  // ============================================
+  private router = inject(Router);
+  private diagnostics = inject(SystemDiagnosticsTraceService);
+  private sessionStorage = inject(SessionStorageService);
+
   // ============================================
   // State (Signals)
   // ============================================
@@ -56,14 +71,11 @@ export class OidcService {
   // Configuration
   private config: OidcConfiguration | null = null;
 
-  // Storage keys
+  // Storage keys (used via SessionStorageService)
   private readonly STORAGE_KEY_STATE = 'oidc_auth_state';
   private readonly STORAGE_KEY_SESSION = 'oidc_session';
 
-  constructor(
-    private router: Router,
-    private diagnostics: SystemDiagnosticsTraceService
-  ) {
+  constructor() {
     this.diagnostics.debug(`${this.constructor.name}.constructor()`);
     
     // Restore session from storage on startup
@@ -139,7 +151,7 @@ export class OidcService {
         provider,
         timestamp: Date.now()
       };
-      sessionStorage.setItem(this.STORAGE_KEY_STATE, JSON.stringify(authState));
+      this.sessionStorage.setObject(this.STORAGE_KEY_STATE, authState);
 
       // Build authorization URL
       const authUrl = this.buildAuthorizationUrl(config, state, nonce, pkce);
@@ -170,12 +182,10 @@ export class OidcService {
 
     try {
       // Retrieve and validate stored state
-      const storedStateJson = sessionStorage.getItem(this.STORAGE_KEY_STATE);
-      if (!storedStateJson) {
+      const storedState = this.sessionStorage.getObject<AuthRequestState>(this.STORAGE_KEY_STATE);
+      if (!storedState) {
         throw new Error('No authentication state found. Please try again.');
       }
-
-      const storedState: AuthRequestState = JSON.parse(storedStateJson);
       
       // Validate state parameter (CSRF protection)
       if (storedState.state !== state) {
@@ -194,11 +204,10 @@ export class OidcService {
         throw new Error('Provider configuration not found');
       }
 
-      // TODO: Exchange code for tokens
+      // TODO: Exchange code for tokens via backend proxy
       // In production, this should be done SERVER-SIDE to protect client_secret
-      // For now, we'll simulate a successful login
       
-      this.diagnostics.warn('TODO: Implement token exchange - currently simulating success');
+      this.diagnostics.warn('TODO: Implement token exchange via backend proxy');
       
       // Simulated user (replace with real token exchange)
       const user: AuthenticatedUser = {
@@ -227,7 +236,7 @@ export class OidcService {
       this.persistSession();
 
       // Clean up auth state
-      sessionStorage.removeItem(this.STORAGE_KEY_STATE);
+      this.sessionStorage.remove(this.STORAGE_KEY_STATE);
 
       // Navigate to return URL
       this.router.navigateByUrl(storedState.returnUrl);
@@ -244,18 +253,27 @@ export class OidcService {
 
   /**
    * Logout and clear session
+   * 
+   * OIDC Logout Flow:
+   * 1. Revoke tokens with IdP (if supported)
+   * 2. Clear local session state
+   * 3. Optionally redirect to IdP logout endpoint
    */
   async logout(redirectToIdp: boolean = false): Promise<void> {
     this.diagnostics.info(`${this.constructor.name}.logout()`);
     
     const currentProvider = this._session().user?.provider;
-    
-    // Clear session
-    this._session.set(INITIAL_AUTH_SESSION);
-    sessionStorage.removeItem(this.STORAGE_KEY_SESSION);
-    sessionStorage.removeItem(this.STORAGE_KEY_STATE);
+    const tokens = this._session().tokens;
 
-    // Optionally redirect to IdP logout
+    // Step 1: TODO - Revoke tokens with IdP (if supported)
+    // await this.revokeTokens(tokens, currentProvider);
+
+    // Step 2: Clear local session
+    this._session.set(INITIAL_AUTH_SESSION);
+    this.sessionStorage.remove(this.STORAGE_KEY_SESSION);
+    this.sessionStorage.remove(this.STORAGE_KEY_STATE);
+
+    // Step 3: Optionally redirect to IdP logout
     if (redirectToIdp && currentProvider) {
       const config = this.getProviderConfig(currentProvider as OidcProvider);
       if (config?.logoutUrl) {
@@ -268,8 +286,7 @@ export class OidcService {
       }
     }
 
-    // Navigate to signed-out landing page instead of login
-    // This gives user a better experience with app stats and navigation options
+    // Navigate to signed-out landing page
     this.router.navigate(['/pages/signed-out']);
   }
 
@@ -282,6 +299,13 @@ export class OidcService {
    */
   getAccessToken(): string | null {
     return this._session().tokens?.accessToken || null;
+  }
+
+  /**
+   * Get current ID token (for logout, etc.)
+   */
+  getIdToken(): string | null {
+    return this._session().tokens?.idToken || null;
   }
 
   /**
@@ -301,7 +325,7 @@ export class OidcService {
    * TODO: Implement when adding real OIDC
    */
   async refreshToken(): Promise<void> {
-    this.diagnostics.warn('TODO: Implement token refresh');
+    this.diagnostics.warn('TODO: Implement token refresh via backend proxy');
     throw new Error('Token refresh not implemented');
   }
 
@@ -388,15 +412,17 @@ export class OidcService {
    */
   private restoreSession(): void {
     try {
-      const sessionJson = sessionStorage.getItem(this.STORAGE_KEY_SESSION);
-      if (sessionJson) {
-        const session: AuthSession = JSON.parse(sessionJson);
+      const session = this.sessionStorage.getObject<AuthSession>(this.STORAGE_KEY_SESSION);
+      if (session) {
         // Restore dates
         if (session.sessionStartedAt) {
           session.sessionStartedAt = new Date(session.sessionStartedAt);
         }
         if (session.lastActivityAt) {
           session.lastActivityAt = new Date(session.lastActivityAt);
+        }
+        if (session.tokens?.expiresAt) {
+          session.tokens.expiresAt = new Date(session.tokens.expiresAt);
         }
         this._session.set(session);
         this.diagnostics.debug('Session restored from storage');
@@ -411,10 +437,7 @@ export class OidcService {
    */
   private persistSession(): void {
     try {
-      sessionStorage.setItem(
-        this.STORAGE_KEY_SESSION, 
-        JSON.stringify(this._session())
-      );
+      this.sessionStorage.setObject(this.STORAGE_KEY_SESSION, this._session());
     } catch (error) {
       this.diagnostics.warn(`Failed to persist session: ${error}`);
     }

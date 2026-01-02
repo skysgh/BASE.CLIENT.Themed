@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Module specific components
-import { BaseAppsArchitectureValuesBrowseComponent } from "./ui/browse/component";
-import { ArchitectureValuesBrowseItemComponent } from "./ui/browse/item/component";
-import { BaseAppsArchitectureValuesReadComponent } from "./ui/read/component";
-import { BaseAppsArchitectureValuesEditComponent } from "./ui/edit/component";
+import { BaseAppsArchitectureValuesBrowseComponent } from "./ui/views/browse/component";
+import { ArchitectureValuesBrowseItemComponent } from "./ui/views/browse/item/component";
+import { BaseAppsArchitectureValuesReadComponent } from "./ui/views/read/component";
+import { BaseAppsArchitectureValuesEditComponent } from "./ui/views/edit/component";
 
 // ✅ FIXED: Use local applet service
 import { ArchitectureValueService } from '../../services/architecture-value.service';

@@ -32,16 +32,16 @@ import { SpikeCardBroker } from './brokers/spike-card.broker';
 // Import Module specific dependencies:
 // .. Spike BREAD components:
 import { BaseAppsSpikeRouteOutletComponent } from './ui/_route/component';
-import { BaseAppsSpikeSpikesBrowseComponent } from './modules/spike/ui/browse/component';
-import { BaseAppsSpikeSpikesBrowseLegacyComponent } from './modules/spike/ui/browse-legacy/component';
-import { BaseAppsSpikeSpikesReadComponent } from './modules/spike/ui/read/component';
-import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/component';
-import { BaseAppsSpikeSpikesAddComponent } from './modules/spike/ui/add/component';
-import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
-import { BaseAppsSpikeSubSpikesReadComponent } from './modules/subSpike/ui/read/component';
-import { BaseAppsSpikeSubSpikesEditComponent } from './modules/subSpike/ui/edit/component';
-import { BaseAppsSpikeSubSpikesAddComponent } from './modules/subSpike/ui/add/component';
-import { BaseAppsSpikeInsightsComponent } from './modules/spike/ui/insights/component';
+import { BaseAppsSpikeSpikesBrowseComponent } from './modules/spike/ui/views/browse/component';
+import { BaseAppsSpikeSpikesBrowseLegacyComponent } from './modules/spike/ui/views/browse-legacy/component';
+import { BaseAppsSpikeSpikesReadComponent } from './modules/spike/ui/views/read/component';
+import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/views/edit/component';
+import { BaseAppsSpikeSpikesAddComponent } from './modules/spike/ui/views/add/component';
+import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/views/browse/component';
+import { BaseAppsSpikeSubSpikesReadComponent } from './modules/subSpike/ui/views/read/component';
+import { BaseAppsSpikeSubSpikesEditComponent } from './modules/subSpike/ui/views/edit/component';
+import { BaseAppsSpikeSubSpikesAddComponent } from './modules/subSpike/ui/views/add/component';
+import { BaseAppsSpikeInsightsComponent } from './modules/spike/ui/views/insights/component';
 import { SpikeDashboardWidgetComponent } from './ui/widgets/spike-widget/component';
 
 // Applet constants
