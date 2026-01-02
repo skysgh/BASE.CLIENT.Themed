@@ -17,7 +17,8 @@ export class NotificationService {
   loading = signal(false);
   error = signal<string | null>(null);
   
-  // Computed
+  // Computed - compatibility with old service
+  enabledNotifications = computed(() => this.notifications());
   unreadNotifications = computed(() => this.notifications().filter(n => !n.isRead));
   unreadCount = computed(() => this.unreadNotifications().length);
   hasUnread = computed(() => this.unreadCount() > 0);

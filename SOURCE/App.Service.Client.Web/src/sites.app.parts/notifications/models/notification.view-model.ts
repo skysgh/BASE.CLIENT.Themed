@@ -19,6 +19,12 @@ export interface NotificationViewModel {
   // Optional image
   imageUrl?: string;
   imageName?: string;
+  
+  // Template compatibility (from old ServiceOperateNotificationViewModel)
+  description?: string;
+  imageId?: string;
+  sentUtc?: Date;
+  enabled?: boolean;
 }
 
 /** Notification type display configuration */

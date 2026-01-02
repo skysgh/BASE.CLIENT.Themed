@@ -22,6 +22,11 @@ export function mapNotificationDtoToViewModel(dto: NotificationDto): Notificatio
     typeColor: typeConfig.color,
     imageUrl: dto.imageId ? `/api/files/${dto.imageId}` : undefined,
     imageName: dto.imageName,
+    // Template compatibility
+    description: dto.description,
+    imageId: dto.imageId,
+    sentUtc: sentUtc,
+    enabled: dto.enabled,
   };
 }
 

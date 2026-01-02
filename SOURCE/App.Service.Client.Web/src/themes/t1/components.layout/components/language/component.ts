@@ -9,9 +9,8 @@ import { appsConfiguration } from '../../../../../sites.app/configuration/implem
 import { themesT1Configuration } from '../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
-// Operate Applet (now in sites.app.parts):
-import { ServiceOperateLanguageService } from '../../../../../sites.app.parts/operate/services/service-operate-language.service';
-import { ServiceOperateLanguageViewModel } from '../../../../../sites.app.parts/operate/models/view-models/service-operate-language.view-model';
+import { LanguageService } from '../../../../../sites.app.parts/i18n/services/language.service';
+import { LanguageViewModel } from '../../../../../sites.app.parts/i18n/models/language.view-model';
 // Models:
 import { ViewModel } from './vm';
 import { TranslationService } from '../../../../../core/services/translation.service';
@@ -38,7 +37,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public languageService: ServiceOperateLanguageService,
+    public languageService: LanguageService,
     public translationService: TranslationService,
     public _cookiesService: CookieService
   ) {
@@ -46,7 +45,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
   }
 
   // ✅ Get languages from signal-based service
-  get languages(): ServiceOperateLanguageViewModel[] {
+  get languages(): LanguageViewModel[] {
     return this.languageService.languages();
   }
 
@@ -77,7 +76,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
   /**
    * Language Value Set
    */
-  setLanguage(language?: ServiceOperateLanguageViewModel, setLang: boolean = true) {
+  setLanguage(language?: LanguageViewModel, setLang: boolean = true) {
     if (language) {
       this.languageTitle = language.name;
       // Use flagImageId for the flag image
@@ -93,7 +92,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
     }
   }
 
-  trackByCountryCode(index: number, item: ServiceOperateLanguageViewModel) {
+  trackByCountryCode(index: number, item: LanguageViewModel) {
     return item.languageCode;
   }
 }

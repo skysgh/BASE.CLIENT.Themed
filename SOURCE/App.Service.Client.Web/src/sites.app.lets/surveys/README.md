@@ -1,6 +1,8 @@
-# Surveys App.Part
+# Surveys App.Let
 
-Configurable surveys with conditional branching ("if answer X was Y, show group Z").
+Configurable surveys with conditional branching (wizard-style).
+
+**Location**: `sites.app.lets/surveys/` (moved from app.parts - it's a full domain with CRUD)
 
 ## Purpose
 

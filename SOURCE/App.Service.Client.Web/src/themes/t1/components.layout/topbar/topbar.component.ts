@@ -17,11 +17,6 @@ import { EventService } from '../../../../core/services/infrastructure/event.ser
 import { AuthenticationService } from '../../../../core/services/auth.service';
 import { AuthfakeauthenticationService } from '../../../../core/services/authfake.service';
 import { TokenStorageService } from '../../../../core/services/token-storage.service';
-// Operate Applet (now in sites.app.parts):
-import { ServiceOperateLanguageService } from '../../../../sites.app.parts/operate/services/service-operate-language.service';
-import { ServiceOperateNotificationService } from '../../../../sites.app.parts/operate/services/service-operate-notification.service';
-import { ServiceOperateLanguageViewModel } from '../../../../sites.app.parts/operate/models/view-models/service-operate-language.view-model';
-import { ServiceOperateNotificationViewModel } from '../../../../sites.app.parts/operate/models/view-models/service-operate-notification.view-model';
 // Models:
 import { ViewModel } from './vm';
 

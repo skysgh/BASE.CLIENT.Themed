@@ -14,8 +14,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { FaqCategoryService, FaqItemService } from '../../../sites.app.parts/faq/services';
-import { FaqCategoryViewModel, FaqItemViewModel } from '../../../sites.app.parts/faq/models';
+import { FaqCategoryService, FaqItemService } from '../../../sites.app.lets/faq/services';
+import { FaqCategoryViewModel, FaqItemViewModel } from '../../../sites.app.lets/faq/models';
 
 /**
  * FAQ Category definition (legacy - for backward compatibility)

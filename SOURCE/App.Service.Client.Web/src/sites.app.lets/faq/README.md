@@ -1,11 +1,18 @@
-# FAQ App.Part
+# FAQ App.Let
 
 Self-contained FAQ management system with dynamic categories.
+
+**Location**: `sites.app.lets/faq/` (moved from app.parts - it's a full CRUD domain)
 
 ## Purpose
 
 - **End Users**: Browse FAQs organized by category
 - **Account Admins**: Manage FAQ categories and items (BREAD pattern)
+
+## Why App.Let (not App.Part)?
+
+FAQ is a **Producer** module - it manages content with full CRUD operations.
+The `help` app.part is a **Consumer** that renders FAQ content for users.
 
 ## Domain Model
 

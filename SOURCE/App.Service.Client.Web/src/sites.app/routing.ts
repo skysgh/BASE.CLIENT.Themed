@@ -97,10 +97,10 @@ const routes: Routes = [
     loadChildren: () => import('../sites.app.parts/help/module').then(m => m.HelpModule)
   },
 
-  // FAQ - Frequently Asked Questions with dynamic categories
+  // FAQ - Frequently Asked Questions with dynamic categories (app.let)
   { 
     path: 'system/faq', 
-    loadChildren: () => import('../sites.app.parts/faq/module').then(m => m.FaqModule)
+    loadChildren: () => import('../sites.app.lets/faq/module').then(m => m.FaqModule)
   },
 
   // Support - Issue/idea submission and tracking
@@ -145,10 +145,10 @@ const routes: Routes = [
     loadChildren: () => import('../sites.app.parts/diagnostics/module').then(m => m.DiagnosticsModule)
   },
 
-  // Surveys - Configurable surveys with conditional branching
+  // Surveys - Configurable surveys with conditional branching (app.let)
   { 
     path: 'system/surveys', 
-    loadChildren: () => import('../sites.app.parts/surveys/module').then(m => m.SurveysModule)
+    loadChildren: () => import('../sites.app.lets/surveys/module').then(m => m.SurveysModule)
   },
 
   // ============================================================================

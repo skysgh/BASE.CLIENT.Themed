@@ -5,8 +5,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 // Etc:
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 // Services:
-// Operate Applet (now in sites.app.parts):
-import { ServiceOperateNotificationService } from "../../../../../sites.app.parts/operate/services/service-operate-notification.service";
+import { NotificationService } from "../../../../../sites.app.parts/notifications/services/notification.service";
 import { ResourceUrlService } from "../../../../../core/services/resource-url.service";
 // Configuration:
 import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
@@ -36,7 +35,7 @@ export class BaseCoreCommonComponentTopBarNotificationsComponent implements OnIn
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    public notificationService: ServiceOperateNotificationService,
+    public notificationService: NotificationService,
     private resourceUrlService: ResourceUrlService,
     private modalService: NgbModal
   ) {
