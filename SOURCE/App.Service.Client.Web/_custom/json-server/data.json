@@ -1411,20 +1411,18 @@
     },
     {
       "id": "d35c5bad-93a8-40ae-918c-28bb8e00d78b",
-      "title": "ffoo",
+      "title": "Marylyn",
       "description": "bar",
       "categoryId": "1",
       "statusId": "1",
-      "dueDate": "2025-12-24",
-      "estimatedEffort": 10,
+      "dueDate": null,
+      "estimatedEffort": null,
       "priority": 3,
-      "classificationIds": [
-        "3"
-      ],
+      "classificationIds": [],
       "parts": [],
       "items": [],
-      "createdUtc": "2025-12-29T23:02:56.661Z",
-      "modifiedUtc": "2025-12-29T23:02:56.661Z"
+      "createdUtc": "2026-01-02T08:37:23.977Z",
+      "modifiedUtc": "2026-01-02T08:37:23.977Z"
     },
     {
       "id": "40ecd588-a27f-49c6-aebc-af9c92eca208",
@@ -1458,6 +1456,18 @@
       "items": [],
       "createdUtc": "2025-12-29T23:16:52.080Z",
       "modifiedUtc": "2025-12-29T23:16:52.080Z"
+    },
+    {
+      "id": "e9beb30d-7360-477d-bffe-f2c46db8b33a",
+      "title": "Sophia ",
+      "categoryId": "3",
+      "statusId": "1",
+      "priority": 3,
+      "classificationIds": [],
+      "parts": [],
+      "items": [],
+      "createdUtc": "2026-01-02T08:38:15.409Z",
+      "modifiedUtc": "2026-01-02T08:38:15.409Z"
     }
   ],
   "app_spike_SubSpikes": [
