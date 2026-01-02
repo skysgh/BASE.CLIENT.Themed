@@ -95,6 +95,17 @@ export interface OidcProviderConfig {
   logoutUrl?: string;
 
   /**
+   * Token revocation endpoint (RFC 7009)
+   * 
+   * Microsoft: Not standard - use logout endpoint
+   * Google: https://oauth2.googleapis.com/revoke
+   * Auth0: https://{domain}/oauth/revoke
+   * 
+   * Used to invalidate access/refresh tokens server-side
+   */
+  revocationUrl?: string;
+
+  /**
    * OAuth scopes to request
    * 
    * Microsoft: "openid profile email User.Read"
@@ -231,6 +242,8 @@ export const DEFAULT_MICROSOFT_CONFIG: Partial<MicrosoftOidcConfig> = {
   authorizeUrl: 'https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize',
   tokenUrl: 'https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token',
   logoutUrl: 'https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/logout',
+  // Microsoft doesn't have a standard revocation endpoint - use logout
+  revocationUrl: undefined,
   scopes: ['openid', 'profile', 'email', 'User.Read'],
   responseType: 'code',
   usePkce: true,
@@ -245,6 +258,8 @@ export const DEFAULT_GOOGLE_CONFIG: Partial<GoogleOidcConfig> = {
   tokenUrl: 'https://oauth2.googleapis.com/token',
   userInfoUrl: 'https://openidconnect.googleapis.com/v1/userinfo',
   logoutUrl: 'https://accounts.google.com/logout',
+  // Google supports token revocation via RFC 7009
+  revocationUrl: 'https://oauth2.googleapis.com/revoke',
   scopes: ['openid', 'profile', 'email'],
   responseType: 'code',
   usePkce: true,
