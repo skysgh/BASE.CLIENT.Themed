@@ -1,2 +1,14 @@
 {
+  "APPS": {
+    "SPIKE": {
+      "SINGULAR": "Spike",
+      "PLURAL": "Spikes",
+      "DESCRIPTION": "Discovery and ideation tracking"
+    },
+    "SUBSPIKE": {
+      "SINGULAR": "Sub-Spike",
+      "PLURAL": "Sub-Spikes",
+      "DESCRIPTION": "Child items of a Spike"
+    }
+  }
 }

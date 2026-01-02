@@ -1,4 +1,4 @@
-import { Injectable, signal, computed, effect } from '@angular/core';
+import { Injectable, signal, computed, effect, inject } from '@angular/core';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 import { toObservable } from '@angular/core/rxjs-interop';
@@ -18,11 +18,14 @@ import { ROUTE_SEGMENTS } from '../constants/navigation.constants';
  * 2. Merges dynamic applet navigation
  * 3. Applies permissions/feature flags
  * 4. Provides canonical NavigationData format
+ * 5. Builds account-aware routes (adds account prefix when needed)
  * 
  * Themes then ADAPT this data to their specific format.
  */
 @Injectable({ providedIn: 'root' })
 export class NavigationDataService {
+  
+  private accountService = inject(AccountService);
   
   /** Navigation data subject */
   private navigationData$ = new BehaviorSubject<NavigationData>({
@@ -33,7 +36,6 @@ export class NavigationDataService {
   });
 
   constructor(
-    private accountService: AccountService,
     private appletNavService: AppletNavigationService,
     private logger: SystemDiagnosticsTraceService
   ) {
@@ -47,6 +49,56 @@ export class NavigationDataService {
       this.buildNavigationWithApplets(appletItems);
     });
   }
+
+  // ─────────────────────────────────────────────────────────────
+  // Route Building - Account-Aware
+  // ─────────────────────────────────────────────────────────────
+
+  /**
+   * Build account-aware route
+   * 
+   * Routes are built relative to account context:
+   * - Default account (no prefix in URL): /apps/system/hub
+   * - Named account (with prefix): /foo/apps/system/hub
+   * 
+   * @param path Path segments after account prefix
+   */
+  private buildRoute(...segments: string[]): string {
+    const path = segments.filter(s => s).join('/');
+    
+    // Check if we're in an account context
+    const accountId = this.accountService.getAccountId();
+    const hasAccountPrefix = this.isPathBasedAccountUrl();
+    
+    if (hasAccountPrefix && accountId !== 'default') {
+      return `/${accountId}/${path}`;
+    }
+    
+    return `/${path}`;
+  }
+
+  /**
+   * Check if current URL has account prefix
+   */
+  private isPathBasedAccountUrl(): boolean {
+    const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+    const segments = pathname.split('/').filter(s => s.length > 0);
+    if (segments.length === 0) return false;
+    
+    const firstSegment = segments[0];
+    
+    // Reserved routes are not account prefixes
+    const reservedRoutes = [
+      'pages', 'apps', 'auth', 'errors', 'assets', 'api',
+      'dashboards', 'dev', 'system', 'landing', 'information'
+    ];
+    
+    return !reservedRoutes.includes(firstSegment);
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Navigation Data
+  // ─────────────────────────────────────────────────────────────
 
   /**
    * Get navigation data as observable
@@ -98,21 +150,13 @@ export class NavigationDataService {
    */
   private buildMainSection(appletItems: AppletNavItem[]): NavigationSection {
     const items: NavigationItem[] = [
-      // Dashboard
+      // Hub (formerly Dashboard)
       {
-        id: 'dashboard',
-        label: 'BASE.DASHBOARDS.PLURAL',
-        description: 'BASE.DASHBOARD.DESCRIPTION',
+        id: 'hub',
+        label: 'BASE.HUB.SINGULAR',
+        description: 'BASE.HUB.DESCRIPTION',
         icon: 'home',
-        route: '/dashboards/main'
-      },
-      // Search
-      {
-        id: 'search',
-        label: 'BASE.SEARCH.SINGULAR',
-        description: 'BASE.SEARCH.DESCRIPTION',
-        icon: 'search',
-        route: `/${ROUTE_SEGMENTS.APPS}/${ROUTE_SEGMENTS.SEARCH}`
+        route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, ROUTE_SEGMENTS.HUB)
       },
       // Dynamic Applets
       {
@@ -144,19 +188,19 @@ export class NavigationDataService {
           id: 'privacy',
           label: 'BASE.POLICIES.PRIVACY',
           icon: 'lock',
-          route: `/${ROUTE_SEGMENTS.APPS}/compliance/privacy`
+          route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, 'compliance', 'privacy')
         },
         {
           id: 'terms',
           label: 'BASE.TERMS.TERMS_AND_CONDITIONS',
           icon: 'file',
-          route: `/${ROUTE_SEGMENTS.APPS}/compliance/terms`
+          route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, 'compliance', 'terms')
         },
         {
           id: 'support',
           label: 'BASE.SUPPORT.SINGULAR',
           icon: 'help-circle',
-          route: '/pages/information/support'
+          route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, 'support')
         }
       ],
       order: 2
@@ -172,7 +216,7 @@ export class NavigationDataService {
         id: 'settings',
         label: 'BASE.SETTINGS.PLURAL',
         icon: 'cog',
-        route: `/${ROUTE_SEGMENTS.APPS}/${ROUTE_SEGMENTS.SETTINGS}`
+        route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, ROUTE_SEGMENTS.SETTINGS)
       }
     ];
   }
@@ -186,19 +230,19 @@ export class NavigationDataService {
         id: 'profile',
         label: 'BASE.PROFILE.SINGULAR',
         icon: 'user',
-        route: '/apps/profile'
+        route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, 'authentication', 'profile')
       },
       {
         id: 'user-settings',
         label: 'BASE.SETTINGS.USER',
         icon: 'cog',
-        route: `/${ROUTE_SEGMENTS.APPS}/${ROUTE_SEGMENTS.SETTINGS}/user`
+        route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, ROUTE_SEGMENTS.SETTINGS, 'user')
       },
       {
         id: 'signout',
         label: 'BASE.AUTH.SIGNOUT',
         icon: 'log-out',
-        route: '/auth/signout'
+        route: this.buildRoute('auth', 'signout')
       }
     ];
   }
@@ -212,7 +256,7 @@ export class NavigationDataService {
         id: 'new-spike',
         label: 'New Spike',
         icon: 'plus',
-        route: `/${ROUTE_SEGMENTS.APPS}/spike/add`,
+        route: this.buildRoute(ROUTE_SEGMENTS.APPS, 'spike', 'add'),
         ariaLabel: 'Create a new spike'
       }
     ];
@@ -226,7 +270,7 @@ export class NavigationDataService {
       id: applet.id,
       label: applet.label,
       icon: applet.icon.replace('bx-', ''), // Normalize icon
-      route: applet.route,
+      route: applet.route, // Applet routes are already account-aware from AppletNavigationService
       order: applet.order,
       meta: {
         color: applet.color

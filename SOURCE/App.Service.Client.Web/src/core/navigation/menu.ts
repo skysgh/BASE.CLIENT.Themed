@@ -42,49 +42,6 @@ export const MENU: IHasMenuItem[] =
       subItems: [],
       isDynamicApplets: true, // Flag for sidebar to identify
     },
-    {
-      id: 30,
-      title: 'BASE.INFORMATIONS.SINGULAR',
-      description: '...',
-      icon: 'info-circle',
-      subItems: [
-        {
-          id: 301,
-          parentId: 30,
-          title: 'BASE.POLICIES.PRIVACY',
-          description: '...',
-          link: appsConfiguration.navigation.pages.open.information.service.privacy,
-        },
-        {
-          id: 302,
-          parentId: 30,
-          title: 'BASE.TERMS.TERMS_AND_CONDITIONS',
-          description: '...',
-          link: appsConfiguration.navigation.pages.open.information.service.terms,
-        },
-        {
-          id: 303,
-          parentId: 30,
-          title: 'BASE.CORRECTIONS.PLURAL',
-          description: '...',
-          link: appsConfiguration.navigation.pages.open.information.service.corrections,
-        },
-        {
-          id: 304,
-          parentId: 30,
-          title: 'BASE.SUPPORT.SINGULAR',
-          description: '...',
-          link: appsConfiguration.navigation.pages.open.information.service.support,
-        }
-      ]
-    },
-    {
-      id: 40,
-      title: 'BASE.SETTINGS.PLURAL',
-      description: '...',
-      icon: 'cog',
-      link: `/${ROUTE_SEGMENTS.APPS}/${ROUTE_SEGMENTS.SETTINGS}`,
-    }
   ];
 
 /**

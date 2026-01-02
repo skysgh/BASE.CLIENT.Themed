@@ -1,0 +1,30 @@
+[
+  {
+    "id": "getting-started",
+    "name": "Getting Started",
+    "description": "New to the platform? Start here.",
+    "icon": "bx-rocket",
+    "order": 1
+  },
+  {
+    "id": "user-guide",
+    "name": "User Guide",
+    "description": "Learn how to use the main features.",
+    "icon": "bx-book-open",
+    "order": 2
+  },
+  {
+    "id": "faq",
+    "name": "FAQ",
+    "description": "Frequently asked questions.",
+    "icon": "bx-help-circle",
+    "order": 3
+  },
+  {
+    "id": "troubleshooting",
+    "name": "Troubleshooting",
+    "description": "Solutions to common problems.",
+    "icon": "bx-wrench",
+    "order": 4
+  }
+]

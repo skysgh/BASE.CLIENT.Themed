@@ -28,6 +28,7 @@ import { BaseLayoutTopBarComponent } from './topbar/topbar.component';
 import { BaseCoreCommonComponentTopBarNotificationsComponent } from './topbar/notifications/component';
 import { BaseCoreCommonComponentTopBarShoppingComponent } from './topbar/shopping/component';
 import { BaseCoreCommonComponentTopBarSettingsComponent } from './topbar/settings/component';
+import { BaseCoreCommonComponentTopBarHelpComponent } from './topbar/help/component';
 import { BaseCoreCommonComponentTopBarHueComponent } from './topbar/hue/component';
 import { BaseCoreCommonComponentTopBarFullScreenComponent } from './topbar/fullscreen/component';
 import { BaseCoreCommonComponentTopBarSearchComponent } from './topbar/search/component';
@@ -38,6 +39,9 @@ import { BaseCoreCommonComponentTopBarLogoComponent } from './topbar/logo/compon
 // Right side:
 import { BaseLayoutRightsidebarComponent } from './rightsidebar/component';
 import { BaseLayoutRightSideContextThemeCustomiserComponent } from './rightsidebar/theme-customiser/component';
+
+// Standalone topbar components:
+import { TopbarTrashComponent } from './topbar/trash/component';
 
 // Footer:
 import { BaseLayoutFooterComponent } from './footer/component';
@@ -63,6 +67,7 @@ import { themesT1Configuration } from '../configuration/implementations/themes.t
     BaseCoreCommonComponentTopBarLogoComponent,
     BaseCoreCommonComponentTopBarShoppingComponent,
     BaseCoreCommonComponentTopBarSettingsComponent,
+    BaseCoreCommonComponentTopBarHelpComponent,
     BaseCoreCommonComponentTopBarHueComponent,
     BaseCoreCommonComponentTopBarFullScreenComponent,
     BaseCoreCommonComponentTopBarSearchComponent,
@@ -96,6 +101,9 @@ import { themesT1Configuration } from '../configuration/implementations/themes.t
     NgbCollapseModule,
     // ✅ FeatherModule with icons - also provided at root AppModule level
     FeatherModule.pick(allIcons),
+
+    // Standalone components:
+    TopbarTrashComponent,
 
     // Import Base:
     //BaseThemesV1Module

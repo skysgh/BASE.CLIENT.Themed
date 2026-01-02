@@ -1,0 +1,16 @@
+{
+  "id": "getting-started",
+  "title": "Getting Started",
+  "description": "Welcome to the platform! This guide will help you get up and running.",
+  "category": "getting-started",
+  "tags": ["intro", "basics", "new user"],
+  "order": 1,
+  "culture": "en",
+  "icon": "bx-rocket",
+  "published": true,
+  "updatedAt": "2026-01-01",
+  "author": "Platform Team",
+  "readingTime": 3,
+  "relatedArticles": ["navigation-basics", "profile-settings"],
+  "content": "# Welcome to the Platform\n\nWe're excited to have you here! This guide will walk you through the basics of using our platform.\n\n## First Steps\n\nAfter logging in, you'll see the main dashboard. Here's what you can do:\n\n1. **Explore the Sidebar** - The left sidebar contains all main navigation items\n2. **Check Your Profile** - Click your avatar in the top right to access settings\n3. **Create Your First Spike** - Start exploring ideas with our Spike feature\n\n## Key Features\n\n### Spikes\n\nSpikes are time-boxed explorations or experiments. Use them to:\n\n- Test new ideas\n- Research solutions\n- Prototype concepts\n\n### Settings\n\nAccess system settings from the user menu to customize:\n\n- Profile information\n- Notification preferences\n- Display settings\n\n## Need Help?\n\nIf you get stuck, you can:\n\n- Browse our FAQ section\n- Check the troubleshooting guides\n- Contact support\n\n> **Tip:** Use the search bar at the top of this Help section to quickly find answers!\n\n## Next Steps\n\nReady to dive deeper? Check out these articles:\n\n- Navigation Basics\n- Managing Your Profile\n- What is a Spike?"
+}

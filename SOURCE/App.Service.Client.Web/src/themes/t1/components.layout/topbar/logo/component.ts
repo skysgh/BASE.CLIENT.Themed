@@ -2,13 +2,14 @@
 import { Observable } from 'rxjs';
 //
 // Ag:
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 // Etc:
 // Configuration:
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
 // Services:
 import { DefaultComponentServices } from "../../../../../core/services/default-controller-services";
 import { AccountService } from "../../../../../core/services/account.service";
+import { NavigationService } from "../../../../../core/services/navigation.service";
 // Models:
 import { ViewModel } from "../vm";
 // Data:
@@ -34,7 +35,8 @@ export class BaseCoreCommonComponentTopBarLogoComponent implements OnInit {
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private navigationService: NavigationService
   ) {
     // ✅ Get logos from account config
     this.logoDark$ = this.accountService.getConfigValue('branding.logo');
@@ -43,5 +45,13 @@ export class BaseCoreCommonComponentTopBarLogoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  /**
+   * Navigate to account root (e.g., /default/)
+   */
+  goToAccountRoot(): void {
+    const accountRoot = this.navigationService.getUrl('/');
+    this.navigationService.navigateByUrl(accountRoot);
   }
 }

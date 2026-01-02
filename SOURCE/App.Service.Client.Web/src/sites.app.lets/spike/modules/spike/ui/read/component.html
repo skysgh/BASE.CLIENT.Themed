@@ -1,6 +1,38 @@
 @if (data && !loading) {
   <div class="spike-read">
-    <!-- Header with status and actions -->
+    <!-- Top Navigation Bar -->
+    <div class="top-nav-bar mb-3 d-flex justify-content-between align-items-center">
+      <!-- Back to List (Primary Action) -->
+      <button type="button" (click)="onBackToList()" class="btn btn-primary">
+        <i class="bx bx-arrow-back me-1"></i>
+        Back to List
+      </button>
+      
+      <!-- Secondary Actions -->
+      <div class="d-flex gap-2 align-items-center">
+        <!-- View Renderer Toggle -->
+        <div class="btn-group btn-group-sm">
+          @for (renderer of availableRenderers; track renderer) {
+            <button
+              type="button"
+              class="btn"
+              [class.btn-secondary]="currentRenderer === renderer.id"
+              [class.btn-outline-secondary]="currentRenderer !== renderer.id"
+              (click)="switchRenderer(renderer.id)"
+              [title]="renderer.name">
+              <i class="bx {{renderer.icon}}"></i>
+            </button>
+          }
+        </div>
+        <!-- Edit Button -->
+        <button type="button" class="btn btn-outline-secondary" (click)="onEdit()">
+          <i class="bx bx-edit me-1"></i>
+          Edit
+        </button>
+      </div>
+    </div>
+
+    <!-- Header with status -->
     <div class="page-header mb-4">
       <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
         <div class="header-content">
@@ -19,29 +51,10 @@
             <p class="text-muted mb-0">{{data.description}}</p>
           }
         </div>
-        <div class="header-actions d-flex gap-2 flex-wrap align-items-center">
-          <!-- View Renderer Toggle -->
-          <div class="btn-group btn-group-sm me-2">
-            @for (renderer of availableRenderers; track renderer) {
-              <button
-                type="button"
-                class="btn"
-                [class.btn-primary]="currentRenderer === renderer.id"
-                [class.btn-outline-secondary]="currentRenderer !== renderer.id"
-                (click)="switchRenderer(renderer.id)"
-                [title]="renderer.name">
-                <i class="bx {{renderer.icon}}"></i>
-              </button>
-            }
-          </div>
-          <!-- Edit Button -->
-          <button type="button" class="btn btn-outline-primary" (click)="onEdit()">
-            <i class="bx bx-edit me-1"></i>
-            Edit
-          </button>
-          <!-- State Transition Buttons (BREAST workflow) -->
-          @if (allowedTransitions.length > 0) {
-            <div class="vr d-none d-md-block"></div>
+        
+        <!-- State Transition Buttons (BREAST workflow) -->
+        @if (allowedTransitions.length > 0) {
+          <div class="header-actions d-flex gap-2 flex-wrap align-items-center">
             @for (transition of allowedTransitions; track transition) {
               <button
                 type="button"
@@ -57,10 +70,11 @@
                 {{getTransitionLabel(transition)}}
               </button>
             }
-          }
-        </div>
+          </div>
+        }
       </div>
     </div>
+
     <!-- Formly Read View (labels, not inputs) -->
     @if (isFormlyRenderer) {
       <div class="card mb-4">
@@ -75,6 +89,7 @@
         </div>
       </div>
     }
+
     <!-- Custom Read View -->
     @if (isCustomRenderer) {
       <!-- Metadata Cards -->
@@ -121,6 +136,7 @@
           </div>
         </div>
       </div>
+
       <!-- Classifications (Tags) -->
       @if (extendedData.classificationIds && extendedData.classificationIds.length > 0) {
         <div class="mb-4">
@@ -134,6 +150,7 @@
           </div>
         </div>
       }
+
       <!-- Parts Section -->
       @if (extendedData.parts && extendedData.parts.length > 0) {
         <div class="card mb-4">
@@ -168,6 +185,7 @@
         </div>
       }
     }
+
     <!-- Items Section (SubSpikes / Child Entities) - Always shown -->
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
@@ -229,6 +247,7 @@
         }
       </div>
     </div>
+
     <!-- Sub-Spikes Summary (S in I-S-BREAD-T) -->
     <app-child-summary
       title="Sub-Spikes"
@@ -241,12 +260,9 @@
       (onBrowse)="onBrowseSubSpikes()"
       (onAdd)="onAddSubSpike()">
     </app-child-summary>
-    <!-- Footer Actions -->
-    <div class="d-flex justify-content-between align-items-center mt-4">
-      <button type="button" (click)="onBackToList()" class="btn btn-outline-secondary">
-        <i class="bx bx-arrow-back me-1"></i>
-        Back to List
-      </button>
+
+    <!-- Footer with metadata -->
+    <div class="d-flex justify-content-end align-items-center mt-4 pt-3 border-top">
       <div class="text-muted small">
         Created: {{extendedData.createdAt | date:'medium'}}
         @if (extendedData.modifiedAt) {

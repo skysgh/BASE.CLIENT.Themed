@@ -26,6 +26,9 @@ export const ROUTE_SEGMENTS = {
   AUTH: 'auth',
   ERRORS: 'errors',
   
+  // System namespace (platform applets under /apps/system/*)
+  SYSTEM: 'system',
+  
   // Common actions (BREAD)
   BROWSE: 'browse',
   READ: 'read',
@@ -40,6 +43,7 @@ export const ROUTE_SEGMENTS = {
   NEW: 'new',
   
   // Features
+  HUB: 'hub',
   SETTINGS: 'settings',
   DASHBOARD: 'dashboard',
   SEARCH: 'search',

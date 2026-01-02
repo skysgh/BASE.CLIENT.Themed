@@ -11,6 +11,7 @@ import { themesT1Configuration } from '../../configuration/implementations/theme
 // Services:
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
 import { AccountService } from '../../../../core/services/account.service';
+import { NavigationService } from '../../../../core/services/navigation.service';
 // Models:
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
@@ -46,11 +47,13 @@ export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
    * @param router
    * @param defaultControllerServices
    * @param accountService
+   * @param navigationService
    */
   constructor(
     private router: Router,
     private defaultControllerServices: DefaultComponentServices,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private navigationService: NavigationService
   ) {
     // ✅ Get logos from account config (reactive)
     this.logoSm$ = this.accountService.getConfigValue('branding.logoSm');
@@ -273,5 +276,13 @@ export class BaseLayoutTwoColumnSidebarComponent implements OnInit {
     */
   SidebarHide() {
     document.body.classList.remove('vertical-sidebar-enable');
+  }
+
+  /**
+   * Navigate to account root (e.g., /default/)
+   */
+  goToAccountRoot(): void {
+    const accountRoot = this.navigationService.getUrl('/');
+    this.navigationService.navigateByUrl(accountRoot);
   }
 }

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "getting-started",
+    "title": "Getting Started",
+    "description": "Welcome to the platform! This guide will help you get up and running.",
+    "category": "getting-started",
+    "tags": ["intro", "basics", "new user"],
+    "order": 1,
+    "culture": "en",
+    "icon": "bx-rocket",
+    "published": true,
+    "updatedAt": "2026-01-01"
+  },
+  {
+    "id": "navigation-basics",
+    "title": "Navigation Basics",
+    "description": "Learn how to navigate around the application.",
+    "category": "getting-started",
+    "tags": ["navigation", "menu", "sidebar"],
+    "order": 2,
+    "culture": "en",
+    "icon": "bx-compass",
+    "published": true,
+    "updatedAt": "2026-01-01"
+  },
+  {
+    "id": "profile-settings",
+    "title": "Managing Your Profile",
+    "description": "How to update your profile information and preferences.",
+    "category": "user-guide",
+    "tags": ["profile", "settings", "account"],
+    "order": 1,
+    "culture": "en",
+    "icon": "bx-user",
+    "published": true,
+    "updatedAt": "2026-01-01"
+  },
+  {
+    "id": "what-is-spike",
+    "title": "What is a Spike?",
+    "description": "Understanding the Spike feature for exploratory work.",
+    "category": "user-guide",
+    "tags": ["spike", "features"],
+    "order": 2,
+    "culture": "en",
+    "icon": "bx-bulb",
+    "published": true,
+    "updatedAt": "2026-01-01"
+  },
+  {
+    "id": "faq-login",
+    "title": "Login and Authentication FAQ",
+    "description": "Common questions about logging in and account access.",
+    "category": "faq",
+    "tags": ["login", "password", "authentication"],
+    "order": 1,
+    "culture": "en",
+    "icon": "bx-lock",
+    "published": true,
+    "updatedAt": "2026-01-01"
+  },
+  {
+    "id": "troubleshoot-login",
+    "title": "Can't Log In?",
+    "description": "Solutions for login and authentication issues.",
+    "category": "troubleshooting",
+    "tags": ["login", "error", "access"],
+    "order": 1,
+    "culture": "en",
+    "icon": "bx-error",
+    "published": true,
+    "updatedAt": "2026-01-01"
+  }
+]

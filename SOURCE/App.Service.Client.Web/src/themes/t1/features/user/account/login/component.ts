@@ -84,6 +84,10 @@ export class LoginComponent implements OnInit {
   // Routes (account-aware)
   signUpRoute = '';
   forgotPasswordRoute = '';
+  
+  // Back navigation
+  showBackToLanding = false;
+  landingUrl = '/';
 
   constructor(
     private defaultControllerServices: DefaultComponentServices,
@@ -113,9 +117,17 @@ export class LoginComponent implements OnInit {
     // ✅ ACCOUNT-AWARE: Set routes with account prefix
     this.signUpRoute = this.navigationService.getUrl('auth/signup');
     this.forgotPasswordRoute = this.navigationService.getUrl('auth/forgot-password');
+    this.landingUrl = this.navigationService.getUrl('/');
+    
+    // Determine if we should show back button to landing
+    // Show if: no returnUrl query param (came from landing/direct navigation)
+    // Hide if: came from signup (already has link) or has specific returnUrl
+    const fromSignup = document.referrer.includes('signup');
+    this.showBackToLanding = !queryReturnUrl && !fromSignup;
     
     console.log('[LoginComponent] Return URL:', this.returnUrl);
     console.log('[LoginComponent] Current account:', this.navigationService.getCurrentAccountId());
+    console.log('[LoginComponent] Show back to landing:', this.showBackToLanding);
 
     // Load OIDC configuration
     this.loadConfiguration();
@@ -299,5 +311,12 @@ export class LoginComponent implements OnInit {
   showProviders(): void {
     this.currentView = 'providers';
     this.errorMessage = null;
+  }
+
+  /**
+   * Navigate back to landing page
+   */
+  goToLanding(): void {
+    this.navigationService.navigateByUrl(this.landingUrl);
   }
 }

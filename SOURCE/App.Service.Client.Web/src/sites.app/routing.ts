@@ -45,7 +45,21 @@ const routes: Routes = [
   // ============================================================================
   // PLATFORM APPLETS - /system/* (sites.app.parts)
   // System support features - what helps users use the app
+  // Also available under /apps/* for convenience
   // ============================================================================
+
+  // Search - Universal search (Browse in BREAD)
+  // Available at both /apps/search and /system/search
+  { 
+    path: 'apps/search', 
+    loadChildren: () => import('../sites.app.parts/search/module').then(m => m.SearchModule)
+  },
+
+  // Hub - Central landing page with widgets
+  { 
+    path: 'system/hub', 
+    loadChildren: () => import('../sites.app.parts/hub/module').then(m => m.HubModule)
+  },
 
   // Authentication - Identity management (users, profiles, linked identities)
   { 
@@ -77,10 +91,22 @@ const routes: Routes = [
     loadChildren: () => import('../sites.app.parts/compliance/module').then(m => m.ComplianceModule)
   },
 
-  // Search - Universal search (Browse in BREAD)
+  // Help - User documentation and training
   { 
-    path: 'system/search', 
-    loadChildren: () => import('../sites.app.parts/search/module').then(m => m.SearchModule)
+    path: 'system/help', 
+    loadChildren: () => import('../sites.app.parts/help/module').then(m => m.HelpModule)
+  },
+
+  // FAQ - Frequently Asked Questions with dynamic categories
+  { 
+    path: 'system/faq', 
+    loadChildren: () => import('../sites.app.parts/faq/module').then(m => m.FaqModule)
+  },
+
+  // Support - Issue/idea submission and tracking
+  { 
+    path: 'system/support', 
+    loadChildren: () => import('../sites.app.parts/support/module').then(m => m.SupportModule)
   },
 
   // Theme - Theme reference (developer tool)
@@ -107,10 +133,22 @@ const routes: Routes = [
     loadChildren: () => import('../sites.app.parts/access/module').then(m => m.AccessModule)
   },
 
+  // Trash - Deleted items recycle bin
+  { 
+    path: 'system/trash', 
+    loadChildren: () => import('../sites.app.parts/trash/module').then(m => m.TrashModule)
+  },
+
   // Diagnostics - System logs and monitoring
   { 
     path: 'system/diagnostics', 
     loadChildren: () => import('../sites.app.parts/diagnostics/module').then(m => m.DiagnosticsModule)
+  },
+
+  // Surveys - Configurable surveys with conditional branching
+  { 
+    path: 'system/surveys', 
+    loadChildren: () => import('../sites.app.parts/surveys/module').then(m => m.SurveysModule)
   },
 
   // ============================================================================
@@ -159,7 +197,7 @@ const routes: Routes = [
   // ============================================================================
   // DEFAULT
   // ============================================================================
-  { path: '', redirectTo: 'spike', pathMatch: 'full' }
+  { path: '', redirectTo: 'system/hub', pathMatch: 'full' }
 ];
 
 

@@ -12,31 +12,36 @@ import { CoreFormlyModule } from '../../core/forms/formly.module';
 // Core pipes (for baseTranslate)
 import { BaseCoreAgPipesModule } from '../../core.ag/pipes/module';
 
-// Core components (for child-summary)
+// Core components (for child-summary, drill-selector)
 import { CoreComponentsModule } from '../../core/components/module';
+
+// Core.ag components (for browse-view)
+import { BrowseViewComponent } from '../../core.ag/components/browse-view';
 
 // Core utilities only (not domain-specific)
 import { ConfigRegistryService } from '../../core/services/config-registry.service';
+import { CardBrokerRegistry } from '../../core/models/presentation/card-broker.model';
 
 // Local applet services
 import { SpikeService } from './services/spike.service';
 import { SubSpikeService } from './services/sub-spike.service';
 
+// Local applet brokers
+import { SpikeCardBroker } from './brokers/spike-card.broker';
+
 // Import Module specific dependencies:
 // .. Spike BREAD components:
 import { BaseAppsSpikeRouteOutletComponent } from './ui/_route/component';
 import { BaseAppsSpikeSpikesBrowseComponent } from './modules/spike/ui/browse/component';
+import { BaseAppsSpikeSpikesBrowseLegacyComponent } from './modules/spike/ui/browse-legacy/component';
 import { BaseAppsSpikeSpikesReadComponent } from './modules/spike/ui/read/component';
 import { BaseAppsSpikeSpikesEditComponent } from './modules/spike/ui/edit/component';
 import { BaseAppsSpikeSpikesAddComponent } from './modules/spike/ui/add/component';
-// .. SubSpike BREAD components:
 import { BaseAppsSpikeSubSpikesBrowseComponent } from './modules/subSpike/ui/browse/component';
 import { BaseAppsSpikeSubSpikesReadComponent } from './modules/subSpike/ui/read/component';
 import { BaseAppsSpikeSubSpikesEditComponent } from './modules/subSpike/ui/edit/component';
 import { BaseAppsSpikeSubSpikesAddComponent } from './modules/subSpike/ui/add/component';
-// .. Insights component (I in I-BREAST-D):
 import { BaseAppsSpikeInsightsComponent } from './modules/spike/ui/insights/component';
-// .. Dashboard widget (D in I-BREAST-D):
 import { SpikeDashboardWidgetComponent } from './widgets/spike-widget/component';
 
 // Applet constants
@@ -48,6 +53,7 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
     BaseAppsSpikeRouteOutletComponent,
     // Spike BREAD
     BaseAppsSpikeSpikesBrowseComponent,
+    BaseAppsSpikeSpikesBrowseLegacyComponent, // ← Legacy browse (parked for reference)
     BaseAppsSpikeSpikesReadComponent,
     BaseAppsSpikeSpikesEditComponent,
     BaseAppsSpikeSpikesAddComponent,
@@ -63,7 +69,9 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
   providers: [
     // Local applet services
     SpikeService,
-    SubSpikeService
+    SubSpikeService,
+    // Card broker (for Universal Search)
+    SpikeCardBroker,
   ],
   imports: [
     CommonModule,
@@ -74,6 +82,8 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
     CoreFormlyModule,
     BaseCoreAgPipesModule,
     CoreComponentsModule,
+    // BrowseView for universal browse rendering
+    BrowseViewComponent,
     RouterModule.forChild([
       // I-BREAD-T routes for Spike
       { path: 'insights', component: BaseAppsSpikeInsightsComponent },
@@ -83,6 +93,9 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
       { path: 'spikes', component: BaseAppsSpikeSpikesBrowseComponent },
       { path: 'browse', redirectTo: 'spikes', pathMatch: 'prefix' },
       { path: 'list', redirectTo: 'spikes', pathMatch: 'prefix' },
+      
+      // Legacy browse (for reference/comparison)
+      { path: 'spikes-legacy', component: BaseAppsSpikeSpikesBrowseLegacyComponent },
       
       { path: 'add', component: BaseAppsSpikeSpikesAddComponent },
       { path: 'new', redirectTo: 'add', pathMatch: 'prefix' },
@@ -110,9 +123,17 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
   ]
 })
 export class BaseAppsSpikeModule {
-  constructor(configRegistryService: ConfigRegistryService) {
+  constructor(
+    configRegistryService: ConfigRegistryService,
+    brokerRegistry: CardBrokerRegistry,
+    spikeBroker: SpikeCardBroker
+  ) {
+    // Register applet config
     configRegistryService.register('applets.spike', {
       constants: appletsSpikesConstants
     });
+    
+    // Register card broker for Universal Search
+    brokerRegistry.register(spikeBroker);
   }
 }

@@ -1,20 +1,53 @@
-import { Component, OnInit, effect } from '@angular/core';
+/**
+ * Spike Browse Component
+ * 
+ * Uses BrowseView component with dynamic FilterCriteria and SortCriteria.
+ * All state is synced to URL for bookmarkability.
+ * 
+ * URL Pattern: /spike/spikes?q=search&filter=category:eq:technical&sort=title:asc&page=2&view=tiles
+ */
+import { Component, OnInit, OnDestroy, effect, inject, Signal, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// Configuration:
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+// Configuration
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { appletsSpikesConfiguration } from '../../../../configuration/implementations/app.lets.spikes.configuration';
 
-// ✅ MIGRATED: Use applet-local Signal-based service (moved from core)
+// Services
 import { SpikeService } from '../../../../services/spike.service';
-// ✅ MIGRATED: Use applet-local ViewModel (moved from core)
-import { SpikeViewModel } from '../../../../models/view-models/spike.view-model';
-
+import { SpikeCardBroker } from '../../../../brokers/spike-card.broker';
+import { UniversalSearchService, SearchStateManager } from '../../../../../../core/services/universal-search.service';
+import { CardBrokerRegistry } from '../../../../../../core/models/presentation/card-broker.model';
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
 import { ViewPreferenceService } from '../../../../../../core/views/view-preference.service';
-// Models:
-import { SummaryItemVTO } from '../../../../../../core/models/SummaryItem.vto.model';
+import { SearchContextService, SearchContextConfig } from '../../../../../../core/services/search-context.service';
+
+// Models
+import { SpikeViewModel } from '../../../../models/view-models/spike.view-model';
+import { IUniversalCardData, ICardAction } from '../../../../../../core/models/presentation/universal-card.model';
+import { ViewMode } from '../../../../../../core.ag/components/browse-view/browse-view.component';
+import { ChartDefinition } from '../../../../../../core/models/query/chart-definition.model';
+import {
+  FilterCriteria,
+  SortCriteria,
+  FieldDefinition,
+  serializeFilters,
+  deserializeFilters,
+  serializeSorts,
+  deserializeSorts,
+  createSortCriteria,
+} from '../../../../../../core/models/query/query-criteria.model';
 import { ViewModel } from './vm';
 
+// Search context configuration for this browse view
+const SPIKE_SEARCH_CONTEXT: SearchContextConfig = {
+  entityType: 'spike',
+  baseRoute: '/spike/spikes',
+  placeholder: 'Search spikes...',
+  icon: 'bx-bulb'
+};
 
 @Component({
     selector: 'app-base-apps-spike-spikes-browse',
@@ -22,28 +55,108 @@ import { ViewModel } from './vm';
     styleUrls: ['./component.scss'],
     standalone: false
 })
-export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose applet configuration:
-  public appletConfiguration = appletsSpikesConfiguration
-
-  // This controller's ViewModel:
+export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
+  // Configuration
+  public appsConfiguration = appsConfiguration;
+  public appletConfiguration = appletsSpikesConfiguration;
   public viewModel: ViewModel = new ViewModel();
 
-  // ✅ UPDATED: Use ViewModel types
-  public page: number = 1;
-  public data: SpikeViewModel[] = [];
-  public summaryItems: SummaryItemVTO[] = [];
+  // Injected services
+  private searchService = inject(UniversalSearchService);
+  private brokerRegistry = inject(CardBrokerRegistry);
+  private spikeBroker = inject(SpikeCardBroker);
+  private searchContext = inject(SearchContextService);
   
-  // View renderer state
-  public currentRenderer: string = 'browse-cards';
+  // Search state manager
+  searchState!: SearchStateManager<SpikeViewModel>;
   
-  // Table columns for table view
-  public tableColumns = [
-    { key: 'category', label: 'Category', width: '120px' },
-    { key: 'description', label: 'Description' },
+  // Cards signal (created after searchState)
+  cards!: Signal<IUniversalCardData[]>;
+  
+  // UI state
+  viewMode: ViewMode = 'cards';
+  selectedChartId: string = '';
+  
+  // Chart definitions from broker
+  get chartDefinitions(): ChartDefinition[] {
+    return this.spikeBroker.getAvailableCharts();
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Field Definitions (for filter/sort panels)
+  // ─────────────────────────────────────────────────────────────
+  
+  fieldDefinitions: FieldDefinition[] = [
+    { 
+      field: 'title', 
+      label: 'Title', 
+      type: 'text',
+      filterable: true,
+      sortable: true,
+    },
+    { 
+      field: 'category', 
+      label: 'Category', 
+      type: 'select',
+      filterable: true,
+      sortable: true,
+      options: [
+        { value: 'technical', label: 'Technical' },
+        { value: 'research', label: 'Research' },
+        { value: 'prototype', label: 'Prototype' },
+        { value: 'experiment', label: 'Experiment' },
+      ],
+    },
+    { 
+      field: 'status', 
+      label: 'Status', 
+      type: 'select',
+      filterable: true,
+      sortable: true,
+      options: [
+        { value: 'draft', label: 'Draft' },
+        { value: 'active', label: 'Active' },
+        { value: 'completed', label: 'Completed' },
+        { value: 'archived', label: 'Archived' },
+      ],
+    },
+    { 
+      field: 'priority', 
+      label: 'Priority', 
+      type: 'number',
+      filterable: true,
+      sortable: true,
+    },
+    { 
+      field: 'createdAt', 
+      label: 'Created Date', 
+      type: 'date',
+      filterable: true,
+      sortable: true,
+    },
+    { 
+      field: 'modifiedAt', 
+      label: 'Modified Date', 
+      type: 'date',
+      filterable: true,
+      sortable: true,
+    },
   ];
+  
+  // ─────────────────────────────────────────────────────────────
+  // URL-synced State
+  // ─────────────────────────────────────────────────────────────
+  
+  filters = signal<FilterCriteria[]>([]);
+  sorts = signal<SortCriteria[]>([createSortCriteria('title', 'asc')]);
+  currentPage = signal<number>(1);
+  
+  // Local search query (synced from SearchContext)
+  get searchQuery(): string {
+    return this.searchContext.query();
+  }
+  
+  private destroy$ = new Subject<void>();
 
   constructor(
     private route: ActivatedRoute,
@@ -52,115 +165,258 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit {
     public spikeService: SpikeService,
     private viewPrefService: ViewPreferenceService
   ) {
-    this.defaultControllerServices.diagnosticsTraceService.info("Constructor");
+    this.defaultControllerServices.diagnosticsTraceService.info('Browse Component Constructor');
     
-    // Get preferred renderer
-    this.currentRenderer = this.viewPrefService.getPreferredRendererId('spike', 'browse');
+    // Register the broker if not already registered
+    if (!this.brokerRegistry.hasBroker('spike')) {
+      this.brokerRegistry.register(this.spikeBroker);
+    }
     
-    // ✅ FIXED: Use effect() to react to signal changes
+    // Create search state
+    this.searchState = this.searchService.createSearchState<SpikeViewModel>(
+      'spike',
+      ['title', 'description', 'displayLabel']
+    );
+    
+    // Create cards signal from search state
+    this.cards = this.searchState.getCards();
+    
+    // Get view preference
+    const prefRenderer = this.viewPrefService.getPreferredRendererId('spike', 'browse');
+    this.viewMode = this.mapRendererToViewMode(prefRenderer);
+    
+    // React to spike data changes
     effect(() => {
       const spikes = this.spikeService.spikes();
-      this.data = spikes;
-      this.summaryItems = spikes.map(i => this.mapToSummaryItem(i));
-      this.defaultControllerServices.diagnosticsTraceService.debug(`Spikes updated: ${spikes.length} items`);
+      this.searchState.setSourceData(spikes);
+    });
+    
+    // React to SearchContext query changes
+    effect(() => {
+      const query = this.searchContext.query();
+      this.searchState.setQuery(query);
     });
   }
 
   ngOnInit(): void {
-    this.defaultControllerServices.diagnosticsTraceService.info("Component OnInit");
-    // Data loading is now handled reactively via effect() in constructor
-  }
-  
-  /**
-   * Get available renderers for browse view
-   */
-  get availableRenderers() {
-    return this.viewPrefService.getAvailableRenderers('browse');
-  }
-
-  /**
-   * Check current renderer type
-   */
-  get isCardsView(): boolean {
-    return this.currentRenderer.includes('cards');
-  }
-
-  get isTableView(): boolean {
-    return this.currentRenderer.includes('table');
-  }
-
-  get isListView(): boolean {
-    return this.currentRenderer.includes('list');
-  }
-
-  /**
-   * Switch renderer
-   */
-  switchRenderer(rendererId: string): void {
-    this.currentRenderer = rendererId;
-    this.viewPrefService.setPreference('spike', 'browse', rendererId);
-  }
-  
-  /**
-   * Map SpikeViewModel to SummaryItemVTO for card display
-   */
-  mapToSummaryItem(spike: SpikeViewModel): SummaryItemVTO {
-    const item = new SummaryItemVTO();
-    item.id = spike.id;
-    item.enabled = true;
-    item.typeId = 'spike';
-    item.type = 'Spike';
-    item.typeImage = '';
-    item.icon = 'bx-bulb';
-    item.color = '#007bff';
-    item.category = 'Feature'; // Would come from category lookup
-    item.title = spike.title;
-    item.description = spike.description || '';
-    item.subtitle = spike.displayLabel;
-    item.route = `/apps/spike/${spike.id}`;
-    item.status = {
-      label: 'Draft', // Would come from status lookup
-      color: '#6c757d'
-    };
-    item.values = [];
-    item.operations = [
-      { title: 'BASE.ACTIONS.VIEW', action: 'view' },
-      { title: 'BASE.ACTIONS.EDIT', action: 'edit' }
-    ];
-    return item;
-  }
-
-  /**
-   * Handle summary item click
-   */
-  onItemClick(item: SummaryItemVTO): void {
-    if (item.route) {
-      this.router.navigate([item.route]);
-    } else {
-      this.router.navigate(['../', item.id], { relativeTo: this.route });
-    }
-  }
-
-  /**
-   * Handle operation click from summary item
-   */
-  onOperationClick(event: { item: SummaryItemVTO; action: string }): void {
-    if (!event.item) return;
+    // Register search context for this browse view
+    this.searchContext.registerContext(SPIKE_SEARCH_CONTEXT);
+    this.searchContext.activateContext(SPIKE_SEARCH_CONTEXT);
     
-    switch (event.action) {
-      case 'view':
-        this.router.navigate(['../', event.item.id], { relativeTo: this.route });
-        break;
-      case 'edit':
-        this.router.navigate(['../edit', event.item.id], { relativeTo: this.route });
-        break;
+    // Subscribe to URL query params and sync state
+    this.route.queryParams.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(params => {
+      // Sync filters from URL
+      if (params['filter']) {
+        const filters = deserializeFilters(params['filter']);
+        this.filters.set(filters);
+        this.searchState.applyFilterCriteria(filters);
+      } else {
+        this.filters.set([]);
+        this.searchState.applyFilterCriteria([]);
+      }
+      
+      // Sync sorts from URL
+      if (params['sort']) {
+        const sorts = deserializeSorts(params['sort']);
+        this.sorts.set(sorts);
+        this.searchState.applySortCriteria(sorts);
+      } else {
+        const defaultSort = [createSortCriteria('title', 'asc')];
+        this.sorts.set(defaultSort);
+        this.searchState.applySortCriteria(defaultSort);
+      }
+      
+      // Sync page
+      if (params['page']) {
+        const page = parseInt(params['page'], 10);
+        if (!isNaN(page) && page > 0) {
+          this.currentPage.set(page);
+          this.searchState.setPage(page);
+        }
+      }
+      
+      // Sync search query
+      if (params['q']) {
+        this.searchContext.setQuery(params['q']);
+      }
+      
+      // Sync view mode
+      if (params['view']) {
+        const view = params['view'] as ViewMode;
+        if (['cards', 'tiles', 'table', 'list', 'chart'].includes(view)) {
+          this.viewMode = view;
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.searchContext.deactivateContext();
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Search
+  // ─────────────────────────────────────────────────────────────
+
+  onSearchChange(query: string): void {
+    this.searchContext.setQuery(query);
+    this.updateUrl({ q: query || null });
+  }
+
+  onSearchClear(): void {
+    this.searchContext.clearQuery();
+    this.updateUrl({ q: null });
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Filters
+  // ─────────────────────────────────────────────────────────────
+
+  onFiltersChange(filters: FilterCriteria[]): void {
+    this.filters.set(filters);
+    // Don't update URL until Apply is clicked
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Sorts
+  // ─────────────────────────────────────────────────────────────
+
+  onSortsChange(sorts: SortCriteria[]): void {
+    this.sorts.set(sorts);
+    // Don't update URL until Apply is clicked
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Apply (filters + sorts → API query)
+  // ─────────────────────────────────────────────────────────────
+
+  onApply(): void {
+    const filterStr = serializeFilters(this.filters());
+    const sortStr = serializeSorts(this.sorts());
+    
+    // Update URL
+    this.updateUrl({
+      filter: filterStr,
+      sort: sortStr,
+      page: null, // Reset to page 1 when criteria change
+    });
+    
+    // Apply to search state (triggers re-filter/sort)
+    this.searchState.applyFilterCriteria(this.filters());
+    this.searchState.applySortCriteria(this.sorts());
+    
+    console.log('[Browse] Applied query:', {
+      filters: this.filters(),
+      sorts: this.sorts(),
+    });
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Pagination
+  // ─────────────────────────────────────────────────────────────
+
+  onPageChange(page: number): void {
+    this.currentPage.set(page);
+    this.searchState.setPage(page);
+    this.updateUrl({ page: page > 1 ? page : null });
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // View Mode
+  // ─────────────────────────────────────────────────────────────
+
+  setViewMode(mode: ViewMode): void {
+    this.viewMode = mode;
+    
+    const rendererId = this.mapViewModeToRenderer(mode);
+    this.viewPrefService.setPreference('spike', 'browse', rendererId);
+    
+    this.updateUrl({ view: mode });
+  }
+  
+  onChartDefinitionChange(definition: ChartDefinition): void {
+    this.selectedChartId = definition.id;
+    this.viewMode = 'chart';
+    this.updateUrl({ view: 'chart', chartId: definition.id });
+  }
+
+  private mapRendererToViewMode(rendererId: string): ViewMode {
+    if (rendererId.includes('table')) return 'table';
+    if (rendererId.includes('tiles')) return 'tiles';
+    if (rendererId.includes('list')) return 'list';
+    return 'cards';
+  }
+
+  private mapViewModeToRenderer(mode: ViewMode): string {
+    switch (mode) {
+      case 'table': return 'browse-table';
+      case 'tiles': return 'browse-tiles';
+      case 'list': return 'browse-list';
+      default: return 'browse-cards';
     }
   }
 
-  /**
-   * Navigate to add new spike
-   */
-  onAddNew(): void {
-    this.router.navigate(['../add'], { relativeTo: this.route });
+  // ─────────────────────────────────────────────────────────────
+  // Card Actions
+  // ─────────────────────────────────────────────────────────────
+
+  onCardClick(card: IUniversalCardData): void {
+    if (card.primaryAction?.routerLink) {
+      this.router.navigate(card.primaryAction.routerLink);
+    } else {
+      this.router.navigate(['../', card.id], { relativeTo: this.route });
+    }
+  }
+
+  onCardAction(event: { card: IUniversalCardData; action: ICardAction }): void {
+    const { action } = event;
+    
+    if (action.routerLink) {
+      this.router.navigate(action.routerLink);
+    } else if (action.externalUrl) {
+      window.open(action.externalUrl, '_blank');
+    } else if (action.handler) {
+      action.handler(event.card.payload);
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // URL Helper
+  // ─────────────────────────────────────────────────────────────
+
+  private updateUrl(params: Record<string, any>): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: params,
+      queryParamsHandling: 'merge'
+    });
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Computed Getters (for template)
+  // ─────────────────────────────────────────────────────────────
+
+  get totalCount() {
+    return this.searchState.totalCount;
+  }
+
+  get page() {
+    return this.searchState.page;
+  }
+
+  get pageSize() {
+    return this.searchState.pageSize;
+  }
+
+  get loading() {
+    return this.searchState.loading;
+  }
+
+  get columns() {
+    return this.searchService.getColumns('spike');
   }
 }

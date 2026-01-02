@@ -7,6 +7,7 @@
  * - Presentation Profile: Columns, filters, sorting, pagination preferences
  * - Universal Card: The standard card format all entities transform into
  * - Card Broker: Interface + registry for entity → card transformation
+ * - Reference Item: Rich dropdown/selector item with card display
  */
 
 // Presentation Profile (how to display data)
@@ -17,3 +18,6 @@ export * from './universal-card.model';
 
 // Card Broker (entity → card transformation)
 export * from './card-broker.model';
+
+// Reference Item (rich selector item)
+export * from './reference-item.model';

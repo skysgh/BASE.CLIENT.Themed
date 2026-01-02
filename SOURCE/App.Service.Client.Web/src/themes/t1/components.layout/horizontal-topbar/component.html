@@ -2,7 +2,7 @@
   <!-- LOGO -->
   <div class="navbar-brand-box">
     <!-- Dark Logo-->
-    <a routerLink="/" class="logo logo-dark">
+    <a (click)="goToAccountRoot()" class="logo logo-dark" style="cursor: pointer;">
       <span class="logo-sm">
         @if (logoSm$ | async; as logoSm) {
           <img [src]="logoSm" alt="" height="22">
@@ -15,7 +15,7 @@
       </span>
     </a>
     <!-- Light Logo-->
-    <a routerLink="/" class="logo logo-light">
+    <a (click)="goToAccountRoot()" class="logo logo-light" style="cursor: pointer;">
       <span class="logo-sm">
         @if (logoSm$ | async; as logoSm) {
           <img [src]="logoSm" alt="" height="22">

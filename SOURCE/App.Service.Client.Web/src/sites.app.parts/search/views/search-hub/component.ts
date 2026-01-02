@@ -1,198 +1,250 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, OnDestroy, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, ActivatedRoute } from '@angular/router';
-import { UniversalSearchService } from '../../services/universal-search.service';
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+// Core
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
-import { SummaryItemVTO } from '../../../../core/models/SummaryItem.vto.model';
-import { SearchResultItem } from '../../models/search.model';
+import { CardBrokerRegistry } from '../../../../core/models/presentation/card-broker.model';
+
+// BrowseView
+import { BrowseViewComponent, ViewMode } from '../../../../core.ag/components/browse-view';
+import { IUniversalCardData, ICardAction } from '../../../../core/models/presentation/universal-card.model';
+import {
+  FilterCriteria,
+  SortCriteria,
+  FieldDefinition,
+  serializeFilters,
+  deserializeFilters,
+  serializeSorts,
+  deserializeSorts,
+  createSortCriteria,
+} from '../../../../core/models/query/query-criteria.model';
 
 /**
  * Search Hub Component
  * 
- * The "Browse" part of BREAD - Universal Search across all entities.
- * Uses CARDS not tables - SummaryItemVTO based.
+ * Global search across all entity types using BrowseView.
  * 
- * Architecture:
- * - Search results displayed as cards (SummaryItem)
- * - Filter/Sort panel ABOVE cards (not column headers)
- * - Mobile-friendly - cards stack vertically
+ * URL: /apps/search?q=term&filter=type:in:spike|people&sort=title:asc&view=tiles
  */
 @Component({
     selector: 'app-search-hub',
-    imports: [FormsModule, RouterModule],
+    standalone: true,
+    imports: [CommonModule, FormsModule, RouterModule, BrowseViewComponent],
     templateUrl: './component.html',
     styleUrls: ['./component.scss']
 })
-export class SearchHubComponent implements OnInit {
-  /** Search term bound to input */
-  searchTerm: string = '';
+export class SearchHubComponent implements OnInit, OnDestroy {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private logger = inject(SystemDiagnosticsTraceService);
+  private brokerRegistry = inject(CardBrokerRegistry);
   
-  /** Selected entity type filter */
-  selectedType: string = '';
+  // Signals
+  cards = signal<IUniversalCardData[]>([]);
+  loading = signal<boolean>(false);
   
-  /** Sort field */
-  sortField: string = 'modifiedAt';
+  // URL-synced state
+  searchQuery = '';
+  filters = signal<FilterCriteria[]>([]);
+  sorts = signal<SortCriteria[]>([createSortCriteria('relevance', 'desc')]);
+  viewMode: ViewMode = 'tiles';
+  page = signal<number>(1);
+  pageSize = signal<number>(20);
+  totalCount = signal<number>(0);
   
-  /** Sort direction */
-  sortDirection: 'asc' | 'desc' = 'desc';
+  // Field definitions for search
+  fieldDefinitions: FieldDefinition[] = [
+    { 
+      field: 'entityType', 
+      label: 'Type', 
+      type: 'multiselect',
+      filterable: true,
+      sortable: false,
+      options: [
+        { value: 'spike', label: 'Spikes' },
+        { value: 'support', label: 'Support Items' },
+        { value: 'faq', label: 'FAQ' },
+        { value: 'help', label: 'Help Articles' },
+      ],
+    },
+    { 
+      field: 'relevance', 
+      label: 'Relevance', 
+      type: 'number',
+      filterable: false,
+      sortable: true,
+    },
+    { 
+      field: 'title', 
+      label: 'Title', 
+      type: 'text',
+      filterable: true,
+      sortable: true,
+    },
+    { 
+      field: 'createdAt', 
+      label: 'Created Date', 
+      type: 'date',
+      filterable: true,
+      sortable: true,
+    },
+    { 
+      field: 'modifiedAt', 
+      label: 'Modified Date', 
+      type: 'date',
+      filterable: true,
+      sortable: true,
+    },
+  ];
   
-  /** Show filter panel */
-  showFilters: boolean = false;
-
-  constructor(
-    public searchService: UniversalSearchService,
-    private route: ActivatedRoute,
-    private logger: SystemDiagnosticsTraceService
-  ) {
+  private destroy$ = new Subject<void>();
+  
+  constructor() {
     this.logger.debug(`${this.constructor.name} initialized`);
   }
 
   ngOnInit(): void {
-    // Check for query params
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(params => {
+      // Sync search query
       if (params['q']) {
-        this.searchTerm = params['q'];
-        this.onSearch();
+        this.searchQuery = params['q'];
+        this.executeSearch();
       }
-      if (params['type']) {
-        this.selectedType = params['type'];
-        this.searchService.filterByType(params['type']);
+      
+      // Sync filters
+      if (params['filter']) {
+        this.filters.set(deserializeFilters(params['filter']));
+      }
+      
+      // Sync sorts
+      if (params['sort']) {
+        this.sorts.set(deserializeSorts(params['sort']));
+      }
+      
+      // Sync view mode
+      if (params['view']) {
+        this.viewMode = params['view'] as ViewMode;
+      }
+      
+      // Sync page
+      if (params['page']) {
+        this.page.set(parseInt(params['page'], 10));
       }
     });
   }
 
-  /**
-   * Execute search
-   */
-  onSearch(): void {
-    if (!this.searchTerm.trim()) {
-      this.searchService.clearSearch();
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Search
+  // ─────────────────────────────────────────────────────────────
+
+  onSearchChange(query: string): void {
+    this.searchQuery = query;
+  }
+
+  onSearchClear(): void {
+    this.searchQuery = '';
+    this.updateUrl({ q: null });
+    this.cards.set([]);
+    this.totalCount.set(0);
+  }
+
+  private executeSearch(): void {
+    if (!this.searchQuery.trim()) {
+      this.cards.set([]);
+      this.totalCount.set(0);
       return;
     }
     
-    this.searchService.search({
-      term: this.searchTerm,
-      entityType: this.selectedType || undefined,
-      sortBy: this.sortField,
-      sortDirection: this.sortDirection,
-      page: 1,
-      pageSize: 20,
+    this.loading.set(true);
+    
+    // Simulate search - in production this would call an API
+    setTimeout(() => {
+      this.loading.set(false);
+    }, 300);
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Filters & Sorts
+  // ─────────────────────────────────────────────────────────────
+
+  onFiltersChange(filters: FilterCriteria[]): void {
+    this.filters.set(filters);
+  }
+
+  onSortsChange(sorts: SortCriteria[]): void {
+    this.sorts.set(sorts);
+  }
+
+  onApply(): void {
+    const filterStr = serializeFilters(this.filters());
+    const sortStr = serializeSorts(this.sorts());
+    
+    this.updateUrl({
+      q: this.searchQuery || null,
+      filter: filterStr,
+      sort: sortStr,
+      page: null,
     });
+    
+    this.executeSearch();
   }
 
-  /**
-   * Filter by entity type
-   */
-  onTypeChange(): void {
-    this.searchService.filterByType(this.selectedType || undefined);
+  // ─────────────────────────────────────────────────────────────
+  // View Mode
+  // ─────────────────────────────────────────────────────────────
+
+  setViewMode(mode: ViewMode): void {
+    this.viewMode = mode;
+    this.updateUrl({ view: mode });
   }
 
-  /**
-   * Clear search
-   */
-  onClear(): void {
-    this.searchTerm = '';
-    this.selectedType = '';
-    this.searchService.clearSearch();
-  }
+  // ─────────────────────────────────────────────────────────────
+  // Pagination
+  // ─────────────────────────────────────────────────────────────
 
-  /**
-   * Execute recent search
-   */
-  onRecentSearch(term: string, entityType?: string): void {
-    this.searchTerm = term;
-    this.selectedType = entityType || '';
-    this.onSearch();
-  }
-
-  /**
-   * Navigate to entity
-   */
-  onResultClick(route: string): void {
-    // Navigation handled by routerLink in template
-    this.logger.debug(`Navigating to: ${route}`);
-  }
-
-  /**
-   * Handle operation click from summary item
-   */
-  onOperationClick(event: { summaryItem: SummaryItemVTO | undefined, action: string }): void {
-    this.logger.debug(`Operation clicked: ${event.action} on ${event.summaryItem?.id}`);
-    // Handle operations like 'edit', 'view', 'delete'
-  }
-
-  /**
-   * Go to page
-   */
   onPageChange(page: number): void {
-    this.searchService.goToPage(page);
+    this.page.set(page);
+    this.updateUrl({ page: page > 1 ? page : null });
+    this.executeSearch();
   }
 
-  /**
-   * Toggle filter panel
-   */
-  toggleFilters(): void {
-    this.showFilters = !this.showFilters;
-  }
+  // ─────────────────────────────────────────────────────────────
+  // Card Actions
+  // ─────────────────────────────────────────────────────────────
 
-  /**
-   * Set sort
-   */
-  onSortChange(field: string): void {
-    if (this.sortField === field) {
-      // Toggle direction
-      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-    } else {
-      this.sortField = field;
-      this.sortDirection = 'desc';
+  onCardClick(card: IUniversalCardData): void {
+    if (card.primaryAction?.routerLink) {
+      this.router.navigate(card.primaryAction.routerLink);
     }
-    this.onSearch();
   }
 
-  /**
-   * Convert SearchResultItem to SummaryItemVTO
-   */
-  toSummaryItem(item: SearchResultItem): SummaryItemVTO {
-    const summary = new SummaryItemVTO();
-    summary.id = item.id;
-    summary.title = item.title;
-    summary.description = item.description || '';
-    summary.subtitle = item.subtitle;
-    summary.type = item.entityType;
-    summary.typeId = item.entityType;
-    summary.typeImage = item.icon ? '' : '';
-    summary.icon = item.icon;
-    summary.status = item.status;
-    summary.tags = item.tags;
-    summary.route = item.route;
-    summary.values = item.metadata?.map(m => ({ title: m.label, value: m.value }));
-    summary.operations = [
-      { title: 'View', action: 'view' },
-      { title: 'Edit', action: 'edit' }
-    ];
-    return summary;
+  onCardAction(event: { card: IUniversalCardData; action: ICardAction }): void {
+    const { action } = event;
+    if (action.routerLink) {
+      this.router.navigate(action.routerLink);
+    }
   }
 
-  /**
-   * Get page numbers for pagination
-   */
-  getPageNumbers(): number[] {
-    const results = this.searchService.results();
-    const pages: number[] = [];
-    const maxVisible = 5;
-    
-    let start = Math.max(1, results.page - Math.floor(maxVisible / 2));
-    let end = Math.min(results.totalPages, start + maxVisible - 1);
-    
-    if (end - start < maxVisible - 1) {
-      start = Math.max(1, end - maxVisible + 1);
-    }
-    
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
-    
-    return pages;
+  // ─────────────────────────────────────────────────────────────
+  // URL Helper
+  // ─────────────────────────────────────────────────────────────
+
+  private updateUrl(params: Record<string, any>): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: params,
+      queryParamsHandling: 'merge'
+    });
   }
 }

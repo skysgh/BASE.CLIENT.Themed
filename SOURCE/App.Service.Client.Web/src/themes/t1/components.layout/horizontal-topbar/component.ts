@@ -16,6 +16,7 @@ import { themesT1Configuration } from '../../configuration/implementations/theme
 // Services:
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
 import { AccountService } from '../../../../core/services/account.service';
+import { NavigationService } from '../../../../core/services/navigation.service';
 
 @Component({
     selector: 'app-horizontal-topbar',
@@ -42,7 +43,8 @@ export class BaseLayoutHorizontalTopbarComponent implements OnInit {
   constructor(
     private router: Router, 
     private defaultComponentServices: DefaultComponentServices,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private navigationService: NavigationService
   ) {
     // ✅ Get logos from account config
     this.logoDark$ = this.accountService.getConfigValue('branding.logo');
@@ -175,6 +177,14 @@ export class BaseLayoutHorizontalTopbarComponent implements OnInit {
     while (els[0]) {
       els[0].classList.remove(className);
     }
+  }
+
+  /**
+   * Navigate to account root (e.g., /default/)
+   */
+  goToAccountRoot(): void {
+    const accountRoot = this.navigationService.getUrl('/');
+    this.navigationService.navigateByUrl(accountRoot);
   }
 
 }

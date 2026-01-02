@@ -42,26 +42,55 @@ export class NavigationService {
    * @returns Full path with account prefix if needed
    * 
    * Examples:
-   * - getUrl('dashboards/main') when account='default' → '/dashboards/main'
-   * - getUrl('dashboards/main') when account='foo' → '/foo/dashboards/main'
-   * - getUrl('/dashboards/main') → '/dashboards/main' (absolute, no modification)
+   * - getUrl('dashboards/main') when account='default' → '/default/dashboards/main'
+   * - getUrl('dashboards/main') when no account → '/dashboards/main'
+   * - getUrl('/') or getUrl('') → account root ('/default/' or '/')
+   * 
+   * Note: Even the 'default' account gets a prefix when accessed via /default/ URLs.
+   * Only truly anonymous routes (no account in URL) skip the prefix.
    */
   getUrl(path: string): string {
-    // If path starts with '/' and has explicit account, don't modify
-    // This allows absolute navigation when needed
-    if (path.startsWith('/')) {
-      return path;
-    }
-
     const accountId = this.accountService.getAccountId();
     
-    // Default account doesn't need prefix
-    if (accountId === 'default') {
-      return `/${path}`;
+    // Normalize path - remove leading slash for consistent handling
+    const normalizedPath = path.startsWith('/') ? path.slice(1) : path;
+    
+    // Check if we're in a path-based account context
+    // If the URL has an account prefix (like /default/, /foo/), preserve it
+    const currentUrl = window.location.pathname;
+    const hasAccountPrefix = this.isPathBasedAccountUrl(currentUrl);
+    
+    if (!hasAccountPrefix) {
+      // No account in URL - return path without prefix
+      return normalizedPath ? `/${normalizedPath}` : '/';
     }
     
-    // Named account gets prefix
-    return `/${accountId}/${path}`;
+    // Has account prefix - include it in the URL
+    return normalizedPath ? `/${accountId}/${normalizedPath}` : `/${accountId}/`;
+  }
+
+  /**
+   * Check if the current URL has an account prefix (path-based account)
+   * 
+   * Examples:
+   * - /default/apps/spike → true (has 'default' prefix)
+   * - /foo/dashboards → true (has 'foo' prefix)
+   * - /pages/landing → false (no account prefix)
+   * - /auth/signin → false (no account prefix)
+   */
+  private isPathBasedAccountUrl(pathname: string): boolean {
+    const segments = pathname.split('/').filter(s => s.length > 0);
+    if (segments.length === 0) return false;
+    
+    const firstSegment = segments[0];
+    
+    // Reserved routes are not account prefixes
+    const reservedRoutes = [
+      'pages', 'apps', 'auth', 'errors', 'assets', 'api',
+      'dashboards', 'dev', 'system', 'landing', 'information'
+    ];
+    
+    return !reservedRoutes.includes(firstSegment);
   }
 
   /**
@@ -80,16 +109,23 @@ export class NavigationService {
    * 
    * @param path Relative path (e.g., 'dashboards/main')
    * @param queryParams Optional query parameters
+   * @param options Optional navigation options (e.g., { replaceUrl: true })
    * @returns Promise that resolves when navigation completes
    */
-  async navigate(path: string, queryParams?: { [key: string]: any }): Promise<boolean> {
+  async navigate(
+    path: string, 
+    queryParams?: { [key: string]: any },
+    options?: { replaceUrl?: boolean, skipLocationChange?: boolean }
+  ): Promise<boolean> {
     const url = this.getUrl(path);
-    console.log(`[NavigationService] Navigating to: ${url}`);
+    console.log(`[NavigationService] Navigating to: ${url}${options?.replaceUrl ? ' (replacing)' : ''}`);
     
+    const navOptions: any = { ...options };
     if (queryParams) {
-      return this.router.navigate([url], { queryParams });
+      navOptions.queryParams = queryParams;
     }
-    return this.router.navigate([url]);
+    
+    return this.router.navigate([url], navOptions);
   }
 
   /**

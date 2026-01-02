@@ -11,6 +11,7 @@ import { themesT1Configuration } from '../../configuration/implementations/theme
 // Services:
 import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
 import { AccountService } from '../../../../core/services/account.service';
+import { NavigationService } from '../../../../core/services/navigation.service';
 import { ThemeT1NavigationAdapter } from '../../services/theme-navigation-adapter.service';
 // Models:
 import { ViewModel } from './vm';
@@ -49,6 +50,7 @@ export class BaseLayoutSidebarComponent implements OnInit, OnDestroy {
     private router: Router,
     private defaultControllerServices: DefaultComponentServices,
     private accountService: AccountService,
+    private navigationService: NavigationService,
     private navigationAdapter: ThemeT1NavigationAdapter
   ) {
     // ✅ Get logos from account config
@@ -247,5 +249,13 @@ export class BaseLayoutSidebarComponent implements OnInit, OnDestroy {
    */
   SidebarHide() {
     document.body.classList.remove('vertical-sidebar-enable');
+  }
+
+  /**
+   * Navigate to account root (e.g., /default/)
+   */
+  goToAccountRoot(): void {
+    const accountRoot = this.navigationService.getUrl('/');
+    this.navigationService.navigateByUrl(accountRoot);
   }
 }

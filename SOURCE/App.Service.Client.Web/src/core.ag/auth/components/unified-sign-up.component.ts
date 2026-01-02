@@ -101,7 +101,7 @@ export class UnifiedSignUpComponent implements OnInit {
 
   // State
   loading = false;
-  errorMessage: string | null = null;
+  errorMessage: null | string = null;
 
   // Text (can be i18n'd)
   welcomeTitle = 'Create Your Account';
@@ -189,11 +189,15 @@ export class UnifiedSignUpComponent implements OnInit {
     this.errorMessage = null;
 
     try {
+      // Extract and provide defaults for optional fields
+      const firstName = request.firstName ?? 'New';
+      const lastName = request.lastName ?? 'User';
+      
       const result = await this.fakeAuthRepo.register({
         email: request.email,
         password: request.password,
-        firstName: request.firstName,
-        lastName: request.lastName
+        firstName: firstName,
+        lastName: lastName
       });
 
       if (result.success) {

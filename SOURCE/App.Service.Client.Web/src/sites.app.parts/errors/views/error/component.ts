@@ -70,26 +70,28 @@ import { NavigationService } from '../../../../core/services/navigation.service'
                       <p class="text-white-50 fs-15 mb-4">{{ description }}</p>
                       
                       <!-- Buttons -->
-                      <div class="d-flex justify-content-center gap-2 flex-wrap">
-                        @if (errorConfig.showHomeButton) {
-                          <a [routerLink]="homeUrl" [class]="'btn ' + errorConfig.buttonClass">
-                            <i class="ri-home-4-line me-1"></i>
-                            Back to Home
-                          </a>
-                        }
-                        @if (errorConfig.showBackButton && canGoBack) {
-                          <button class="btn btn-outline-light" (click)="goBack()">
-                            <i class="ri-arrow-left-line me-1"></i>
-                            Go Back
-                          </button>
-                        }
-                        <!-- Always show a way to get to landing page -->
-                        @if (!errorConfig.showHomeButton) {
-                          <a [routerLink]="landingUrl" class="btn btn-light">
-                            <i class="ri-arrow-left-line me-1"></i>
-                            Go to Landing Page
-                          </a>
-                        }
+                      <div class="mt-4">
+                        <div class="d-inline-flex gap-2 flex-wrap justify-content-center">
+                          @if (errorConfig.showHomeButton) {
+                            <a [routerLink]="homeUrl" [class]="'btn ' + errorConfig.buttonClass">
+                              <i class="ri-home-4-line me-1"></i>
+                              Back to Home
+                            </a>
+                          }
+                          @if (errorConfig.showBackButton && canGoBack) {
+                            <button class="btn btn-outline-light" (click)="goBack()">
+                              <i class="ri-arrow-left-line me-1"></i>
+                              Go Back
+                            </button>
+                          }
+                          <!-- Always show a way to get to landing page if home button hidden -->
+                          @if (!errorConfig.showHomeButton) {
+                            <a [routerLink]="landingUrl" class="btn btn-light">
+                              <i class="ri-arrow-left-line me-1"></i>
+                              Go to Landing Page
+                            </a>
+                          }
+                        </div>
                       </div>
                       
                     </div>

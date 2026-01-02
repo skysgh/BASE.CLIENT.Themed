@@ -28,8 +28,10 @@
  */
 
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { IUniversalCardData, ICardAction } from './universal-card.model';
 import { IColumnDefinition } from './presentation-profile.model';
+import { ChartDefinition } from '../query/chart-definition.model';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // BROKER INTERFACE
@@ -86,6 +88,16 @@ export interface ICardBroker<TEntity = unknown> {
   getFieldValue(entity: TEntity, field: string): unknown;
   
   // ─────────────────────────────────────────────────────────────
+  // Chart support
+  // ─────────────────────────────────────────────────────────────
+  
+  /**
+   * Get available chart definitions for this entity type
+   * Returns "canned" charts the user can select from
+   */
+  getAvailableCharts?(): ChartDefinition[];
+  
+  // ─────────────────────────────────────────────────────────────
   // Action support
   // ─────────────────────────────────────────────────────────────
   
@@ -98,6 +110,33 @@ export interface ICardBroker<TEntity = unknown> {
    * Get the primary navigation action
    */
   getPrimaryAction(entity: TEntity): ICardAction | undefined;
+  
+  // ─────────────────────────────────────────────────────────────
+  // Lifecycle actions (for Trash support)
+  // ─────────────────────────────────────────────────────────────
+  
+  /**
+   * Get deleted items for this entity type
+   * Used by Trash to aggregate deleted items across all brokers
+   */
+  getDeletedItems?(): Observable<TEntity[]>;
+  
+  /**
+   * Restore a deleted entity
+   * @returns Observable<boolean> true if restore succeeded
+   */
+  restore?(entityId: string): Observable<boolean>;
+  
+  /**
+   * Permanently delete an entity (hard delete)
+   * @returns Observable<boolean> true if delete succeeded
+   */
+  deletePermanently?(entityId: string): Observable<boolean>;
+  
+  /**
+   * Check if this broker supports trash operations
+   */
+  supportsTrash?(): boolean;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -159,11 +198,37 @@ export abstract class BaseCardBroker<TEntity> implements ICardBroker<TEntity> {
   abstract getAvailableActions(entity: TEntity): ICardAction[];
   
   /**
+   * Default: no charts - subclass can override
+   */
+  getAvailableCharts(): ChartDefinition[] {
+    return [];
+  }
+  
+  /**
    * Default: first action marked as primary, or first action
    */
   getPrimaryAction(entity: TEntity): ICardAction | undefined {
     const actions = this.getAvailableActions(entity);
     return actions.find(a => a.isPrimary) || actions[0];
+  }
+  
+  /**
+   * Subclass should override with entity-specific lifecycle methods
+   */
+  getDeletedItems?(): Observable<TEntity[]> {
+    return of([]);
+  }
+  
+  restore?(entityId: string): Observable<boolean> {
+    return of(false);
+  }
+  
+  deletePermanently?(entityId: string): Observable<boolean> {
+    return of(false);
+  }
+  
+  supportsTrash?(): boolean {
+    return false;
   }
   
   // ─────────────────────────────────────────────────────────────
@@ -253,6 +318,20 @@ export class CardBrokerRegistry {
   }
   
   /**
+   * Get all registered brokers
+   */
+  getAllBrokers(): ICardBroker<unknown>[] {
+    return Array.from(this.brokers.values());
+  }
+  
+  /**
+   * Get brokers that support trash operations
+   */
+  getTrashSupportingBrokers(): ICardBroker<unknown>[] {
+    return this.getAllBrokers().filter(b => b.supportsTrash?.() ?? false);
+  }
+  
+  /**
    * Transform a single entity to card
    */
   toCard<T>(entityType: string, entity: T): IUniversalCardData {
@@ -294,6 +373,53 @@ export class CardBrokerRegistry {
       throw new Error(`No broker registered for entity type: ${entityType}`);
     }
     return broker.getFieldValue(entity, field);
+  }
+  
+  /**
+   * Get available charts for an entity type
+   */
+  getCharts(entityType: string): ChartDefinition[] {
+    const broker = this.getBroker(entityType);
+    if (!broker || !broker.getAvailableCharts) {
+      return [];
+    }
+    return broker.getAvailableCharts();
+  }
+  
+  // ─────────────────────────────────────────────────────────────
+  // Trash operations
+  // ─────────────────────────────────────────────────────────────
+  
+  /**
+   * Restore an entity via its broker
+   */
+  restore(entityType: string, entityId: string): Observable<boolean> {
+    const broker = this.getBroker(entityType);
+    if (!broker) {
+      console.error(`No broker registered for entity type: ${entityType}`);
+      return of(false);
+    }
+    if (!broker.restore) {
+      console.error(`Broker for ${entityType} does not support restore`);
+      return of(false);
+    }
+    return broker.restore(entityId);
+  }
+  
+  /**
+   * Permanently delete an entity via its broker
+   */
+  deletePermanently(entityType: string, entityId: string): Observable<boolean> {
+    const broker = this.getBroker(entityType);
+    if (!broker) {
+      console.error(`No broker registered for entity type: ${entityType}`);
+      return of(false);
+    }
+    if (!broker.deletePermanently) {
+      console.error(`Broker for ${entityType} does not support permanent delete`);
+      return of(false);
+    }
+    return broker.deletePermanently(entityId);
   }
 }
 

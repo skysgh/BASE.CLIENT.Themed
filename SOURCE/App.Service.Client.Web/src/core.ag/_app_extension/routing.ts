@@ -79,8 +79,23 @@ const routes: Routes = [
     // No guard - error pages should always be accessible
   },
 
+  // ============================================================================
+  // LEGACY ROUTES - Redirects for backward compatibility
+  // ============================================================================
+
+  // Dashboard routes - redirect to hub (dashboards not implemented yet)
+  { 
+    path: 'dashboards', 
+    redirectTo: 'apps/system/hub',
+    pathMatch: 'full'
+  },
+  { 
+    path: 'dashboards/main', 
+    redirectTo: 'apps/system/hub',
+    pathMatch: 'full'
+  },
+
   // ✅ Default routes (no account ID - uses 'default' account)
-  { path: 'dashboards', component: AppLayoutComponent, loadChildren: () => import('../../sites.anon/features/dashboard/module').then(m => m.BaseCoreDashboardsModule), canActivate: [AuthGuard] },
   { path: 'pages', loadChildren: () => import('../../sites.anon/features/pages/module').then(m => m.BaseCoreSitesFeaturesPagesModule) },
   { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../sites.app/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
   { path: 'landing', redirectTo: 'pages/landing', pathMatch: 'full' },

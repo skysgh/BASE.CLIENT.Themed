@@ -1,255 +1,50 @@
-<div class="search-hub">
-  <!-- Search Header -->
-  <div class="search-header">
-    <div class="search-bar-container">
-      <div class="input-group input-group-lg">
-        <span class="input-group-text bg-white border-end-0">
-          <i class="bx bx-search text-muted"></i>
-        </span>
-        <input 
-          type="text" 
-          class="form-control border-start-0"
-          placeholder="Search across all items..."
-          [(ngModel)]="searchTerm"
-          (keyup.enter)="onSearch()">
-        @if (searchTerm) {
-          <button class="btn btn-outline-secondary" type="button" (click)="onClear()">
-            <i class="bx bx-x"></i>
-          </button>
-        }
-        <button class="btn btn-primary" type="button" (click)="onSearch()">
-          Search
-        </button>
-      </div>
-    </div>
-    
-    <!-- Filter Bar -->
-    <div class="filter-bar mt-3">
-      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-        <!-- Entity Type Filters -->
-        <div class="d-flex align-items-center gap-2 flex-wrap">
-          <span class="text-muted small">Filter:</span>
-          <button 
-            class="btn btn-sm"
-            [class.btn-primary]="!selectedType"
-            [class.btn-outline-secondary]="selectedType"
-            (click)="selectedType = ''; onTypeChange()">
-            All
-          </button>
-          @for (type of searchService.entityTypes(); track type.typeId) {
-            <button 
-              class="btn btn-sm"
-              [class.btn-primary]="selectedType === type.typeId"
-              [class.btn-outline-secondary]="selectedType !== type.typeId"
-              (click)="selectedType = type.typeId; onTypeChange()">
-              <i class="bx {{type.icon}} me-1"></i>
-              {{type.displayName}}
-            </button>
-          }
-        </div>
-        
-        <!-- Sort Options -->
-        <div class="d-flex align-items-center gap-2">
-          <span class="text-muted small">Sort:</span>
-          <div class="btn-group btn-group-sm">
-            <button 
-              class="btn"
-              [class.btn-primary]="sortField === 'modifiedAt'"
-              [class.btn-outline-secondary]="sortField !== 'modifiedAt'"
-              (click)="onSortChange('modifiedAt')">
-              Modified
-              <i class="bx" [class.bx-sort-down]="sortField === 'modifiedAt' && sortDirection === 'desc'" 
-                 [class.bx-sort-up]="sortField === 'modifiedAt' && sortDirection === 'asc'"></i>
-            </button>
-            <button 
-              class="btn"
-              [class.btn-primary]="sortField === 'title'"
-              [class.btn-outline-secondary]="sortField !== 'title'"
-              (click)="onSortChange('title')">
-              Name
-            </button>
-            <button 
-              class="btn"
-              [class.btn-primary]="sortField === 'score'"
-              [class.btn-outline-secondary]="sortField !== 'score'"
-              (click)="onSortChange('score')">
-              Relevance
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- Search Hub - Global Search using BrowseView -->
+<div class="search-hub container-fluid">
+  <!-- Header: Title -->
+  <div class="search-header mb-4">
+    <h4 class="mb-0">
+      <i class="bx bx-search me-2 text-primary"></i>
+      Search
+    </h4>
   </div>
 
-  <!-- Loading State -->
-  @if (searchService.loading()) {
-    <div class="text-center py-5">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Searching...</span>
-      </div>
-      <p class="text-muted mt-2">Searching...</p>
-    </div>
-  }
-
-  <!-- Error State -->
-  @if (searchService.error()) {
-    <div class="alert alert-danger mt-4">
-      <i class="bx bx-error-circle me-2"></i>
-      {{searchService.error()}}
-    </div>
-  }
-
-  <!-- Empty State (before search) -->
-  @if (searchService.isEmptySearch() && !searchService.loading()) {
-    <div class="empty-state mt-5">
-      <div class="text-center py-5">
-        <i class="bx bx-search-alt display-1 text-muted"></i>
-        <h4 class="mt-3">Start Your Search</h4>
-        <p class="text-muted">Enter a search term to find items across all categories</p>
-        
-        <!-- Recent Searches -->
-        @if (searchService.recentSearches().length > 0) {
-          <div class="recent-searches mt-4">
-            <h6 class="text-muted">Recent Searches</h6>
-            <div class="d-flex flex-wrap gap-2 justify-content-center mt-2">
-              @for (recent of searchService.recentSearches(); track recent.term) {
-                <button 
-                  class="btn btn-sm btn-outline-secondary"
-                  (click)="onRecentSearch(recent.term, recent.entityType)">
-                  <i class="bx bx-history me-1"></i>
-                  {{recent.term}}
-                  @if (recent.entityType) {
-                    <span class="badge bg-secondary ms-1">{{recent.entityType}}</span>
-                  }
-                </button>
-              }
-            </div>
-            <button 
-              class="btn btn-link btn-sm text-muted mt-2"
-              (click)="searchService.clearRecentSearches()">
-              Clear history
-            </button>
-          </div>
-        }
-      </div>
-    </div>
-  }
-
-  <!-- Results - CARDS not TABLE! -->
-  @if (searchService.hasResults() && !searchService.loading()) {
-    <div class="search-results mt-4">
-      <!-- Results Header -->
-      <div class="results-header d-flex justify-content-between align-items-center mb-3">
-        <div class="results-count">
-          <span class="fw-semibold">{{searchService.results().totalCount}}</span>
-          <span class="text-muted">results found</span>
-        </div>
-      </div>
-
-      <!-- Results Grid - Cards! -->
-      <div class="results-grid row">
-        @for (item of searchService.results().items; track item.id) {
-          <!-- Card-based result item -->
-          <div class="col-xl-4 col-md-6 mb-3">
-            <div class="card result-card h-100" [routerLink]="item.route">
-              <div class="card-body">
-                <!-- Header: Icon + Type -->
-                <div class="d-flex justify-content-between align-items-start mb-3">
-                  <div class="result-icon" [style.background-color]="item.status?.color || '#6c757d'">
-                    <i class="bx {{item.icon || 'bx-file'}}"></i>
-                  </div>
-                  <span class="text-muted small">{{item.entityType}}</span>
-                </div>
-                
-                <!-- Title -->
-                <h5 class="result-title mb-1">{{item.title}}</h5>
-                
-                <!-- Subtitle -->
-                @if (item.subtitle) {
-                  <p class="result-subtitle text-muted small mb-2">{{item.subtitle}}</p>
-                }
-                
-                <!-- Description -->
-                @if (item.description) {
-                  <p class="result-description text-muted mb-3">{{item.description}}</p>
-                }
-                
-                <!-- Status Badge -->
-                @if (item.status) {
-                  <span class="badge mb-2" [style.background-color]="item.status.color">
-                    {{item.status.label}}
-                  </span>
-                }
-                
-                <!-- Tags -->
-                @if (item.tags && item.tags.length > 0) {
-                  <div class="result-tags mb-3">
-                    @for (tag of item.tags.slice(0, 3); track tag) {
-                      <span class="badge bg-light text-dark me-1">{{tag}}</span>
-                    }
-                    @if (item.tags.length > 3) {
-                      <span class="badge bg-light text-muted">+{{item.tags.length - 3}}</span>
-                    }
-                  </div>
-                }
-                
-                <!-- Metadata Values -->
-                @if (item.metadata && item.metadata.length > 0) {
-                  <div class="result-values border-top pt-2 mt-auto">
-                    @for (meta of item.metadata.slice(0, 2); track meta.label) {
-                      <div class="d-flex justify-content-between small">
-                        <span class="text-muted">{{meta.label}}:</span>
-                        <span>{{meta.value}}</span>
-                      </div>
-                    }
-                  </div>
-                }
-              </div>
-              
-              <!-- Card Footer with Actions -->
-              <div class="card-footer bg-transparent border-top-0">
-                <div class="d-flex justify-content-end gap-2">
-                  <a [routerLink]="item.route" class="btn btn-sm btn-soft-primary">
-                    View <i class="bx bx-right-arrow-alt ms-1"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
-
-      <!-- Pagination -->
-      @if (searchService.results().totalPages > 1) {
-        <nav class="d-flex justify-content-center mt-4">
-          <ul class="pagination">
-            <li class="page-item" [class.disabled]="searchService.results().page === 1">
-              <a class="page-link" (click)="onPageChange(searchService.results().page - 1)">
-                <i class="bx bx-chevron-left"></i>
-              </a>
-            </li>
-            @for (page of getPageNumbers(); track page) {
-              <li class="page-item" [class.active]="page === searchService.results().page">
-                <a class="page-link" (click)="onPageChange(page)">{{page}}</a>
-              </li>
-            }
-            <li class="page-item" [class.disabled]="searchService.results().page === searchService.results().totalPages">
-              <a class="page-link" (click)="onPageChange(searchService.results().page + 1)">
-                <i class="bx bx-chevron-right"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
+  <!-- BrowseView - handles search, filter, order, results -->
+  <app-browse-view
+    [cards]="cards()"
+    [loading]="loading()"
+    [fields]="fieldDefinitions"
+    [emptyMessage]="searchQuery ? 'No results found for your search' : 'Enter a search term to find items'"
+    [emptyIcon]="'bx bx-search-alt'"
+    [showSearch]="true"
+    [searchQuery]="searchQuery"
+    [searchPlaceholder]="'Search across all items...'"
+    [showFilterPanel]="true"
+    [filters]="filters()"
+    [showOrderPanel]="true"
+    [sorts]="sorts()"
+    [viewMode]="viewMode"
+    [page]="page()"
+    [pageSize]="pageSize()"
+    [totalCount]="totalCount()"
+    (searchChange)="onSearchChange($event)"
+    (searchClear)="onSearchClear()"
+    (filtersChange)="onFiltersChange($event)"
+    (sortsChange)="onSortsChange($event)"
+    (apply)="onApply()"
+    (viewModeChange)="setViewMode($event)"
+    (pageChange)="onPageChange($event)"
+    (cardClick)="onCardClick($event)"
+    (cardAction)="onCardAction($event)">
+    
+    <!-- Empty state actions slot -->
+    <ng-container emptyActions>
+      @if (!searchQuery) {
+        <p class="text-muted">Enter a search term above to find items across all categories</p>
+      } @else {
+        <button class="btn btn-outline-primary mt-3" (click)="onSearchClear()">
+          Clear Search
+        </button>
       }
-    </div>
-  }
-
-  <!-- No Results -->
-  @if (!searchService.hasResults() && !searchService.isEmptySearch() && !searchService.loading()) {
-    <div class="no-results text-center py-5 mt-4">
-      <i class="bx bx-search-alt display-1 text-muted"></i>
-      <h4 class="mt-3">No Results Found</h4>
-      <p class="text-muted">Try adjusting your search terms or filters</p>
-    </div>
-  }
+    </ng-container>
+  </app-browse-view>
 </div>
