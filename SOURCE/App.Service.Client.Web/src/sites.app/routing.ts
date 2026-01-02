@@ -145,6 +145,18 @@ const routes: Routes = [
     loadChildren: () => import('../sites.app.parts/diagnostics/module').then(m => m.DiagnosticsModule)
   },
 
+  // Notifications - Notification center and preferences
+  { 
+    path: 'system/notifications', 
+    loadChildren: () => import('../sites.app.parts/notifications/module').then(m => m.NotificationsModule)
+  },
+
+  // i18n - Language management
+  { 
+    path: 'system/i18n', 
+    loadChildren: () => import('../sites.app.parts/i18n/module').then(m => m.I18nModule)
+  },
+
   // Surveys - Configurable surveys with conditional branching (app.let)
   { 
     path: 'system/surveys', 
