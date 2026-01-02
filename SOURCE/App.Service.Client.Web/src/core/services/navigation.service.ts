@@ -158,6 +158,13 @@ export class NavigationService {
   }
 
   /**
+   * Get the sign-out landing page URL for current account
+   */
+  getSignOutUrl(): string {
+    return this.getUrl('pages/signed-out');
+  }
+
+  /**
    * Navigate to sign-in page for current account
    * 
    * @param returnUrl Optional return URL to redirect back after login
@@ -165,6 +172,16 @@ export class NavigationService {
   async navigateToSignIn(returnUrl?: string): Promise<boolean> {
     const queryParams = returnUrl ? { returnUrl } : undefined;
     return this.navigate('auth/signin', queryParams);
+  }
+
+  /**
+   * Navigate to sign-out landing page
+   * Shows app stats and navigation options instead of dumping user at login
+   */
+  async navigateToSignOut(): Promise<boolean> {
+    console.log('[NavigationService] Navigating to sign-out landing page');
+    // Use absolute path since user is logging out of account context
+    return this.router.navigate(['/pages/signed-out']);
   }
 
   /**

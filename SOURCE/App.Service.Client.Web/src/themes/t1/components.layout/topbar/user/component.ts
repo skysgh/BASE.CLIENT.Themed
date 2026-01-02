@@ -77,7 +77,7 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
 
   /**
    * Logout the user
-   * Clears all session storage and navigates to sign-in page
+   * Clears all session storage and navigates to signed-out landing page
    */
   logout() {
     console.log('[TopbarUser] Logging out...');
@@ -96,9 +96,9 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
     sessionStorage.removeItem('oidc_session');
     sessionStorage.removeItem('oidc_auth_state');
     
-    console.log('[TopbarUser] Session cleared, navigating to sign-in');
+    console.log('[TopbarUser] Session cleared, navigating to sign-out landing page');
     
-    // Navigate to sign-in (account-aware)
-    this.navigationService.navigateToSignIn();
+    // Navigate to signed-out landing page (shows app stats and navigation options)
+    this.navigationService.navigateToSignOut();
   }
 }
