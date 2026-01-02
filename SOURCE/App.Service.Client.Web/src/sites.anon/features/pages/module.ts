@@ -66,6 +66,8 @@ import { sitesConfiguration } from '../../configuration/implementation/sites.con
         // Lazy load child feature modules
         { path: 'landing', loadChildren: () => import('./landing/module').then(m => m.BaseCorePagesLandingModule) },
         { path: 'information', loadChildren: () => import('./information/module').then(m => m.BaseCorePagesInformationModule) },
+        // ✅ NEW: Signed-out landing page (standalone component)
+        { path: 'signed-out', loadComponent: () => import('./signed-out/component').then(m => m.SignedOutLandingComponent) },
       ]
     ),
     

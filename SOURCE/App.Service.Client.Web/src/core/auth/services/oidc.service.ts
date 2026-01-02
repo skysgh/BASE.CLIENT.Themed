@@ -268,8 +268,9 @@ export class OidcService {
       }
     }
 
-    // Navigate to login
-    this.router.navigate(['/auth/signin']);
+    // ✅ Navigate to signed-out landing page instead of login
+    // This gives user a better experience with app stats and navigation options
+    this.router.navigate(['/pages/signed-out']);
   }
 
   // ============================================
