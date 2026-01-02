@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([
       {
         path: '',
-        loadComponent: () => import('./views/account-profile-edit/component').then(m => m.AccountProfileEditComponent)
+        loadComponent: () => import('./ui/views/account-profile-edit/component').then(m => m.AccountProfileEditComponent)
       }
     ])
   ],

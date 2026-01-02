@@ -11,8 +11,8 @@ export * from './models';
 // Services
 export * from './services';
 
-// Widgets
-export * from './widgets';
+// Widgets (now under ui/)
+export * from './ui/widgets';
 
 // Module
 export { HubModule } from './module';

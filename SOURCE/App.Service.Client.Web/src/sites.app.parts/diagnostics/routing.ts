@@ -8,8 +8,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DiagnosticsHubComponent } from './views/diagnostics-hub/component';
-import { DiagnosticsDashboardComponent } from './views/diagnostics-dashboard/component';
+import { DiagnosticsHubComponent } from './ui/views/diagnostics-hub/component';
+import { DiagnosticsDashboardComponent } from './ui/views/diagnostics-dashboard/component';
 import { LogListComponent } from './logs/views/log-list/component';
 import { LogDetailComponent } from './logs/views/log-detail/component';
 

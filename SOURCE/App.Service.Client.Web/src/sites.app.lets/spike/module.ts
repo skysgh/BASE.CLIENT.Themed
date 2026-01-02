@@ -42,7 +42,7 @@ import { BaseAppsSpikeSubSpikesReadComponent } from './modules/subSpike/ui/read/
 import { BaseAppsSpikeSubSpikesEditComponent } from './modules/subSpike/ui/edit/component';
 import { BaseAppsSpikeSubSpikesAddComponent } from './modules/subSpike/ui/add/component';
 import { BaseAppsSpikeInsightsComponent } from './modules/spike/ui/insights/component';
-import { SpikeDashboardWidgetComponent } from './widgets/spike-widget/component';
+import { SpikeDashboardWidgetComponent } from './ui/widgets/spike-widget/component';
 
 // Applet constants
 import { appletsSpikesConstants } from './constants/implementations/app.lets.spikes.constants';

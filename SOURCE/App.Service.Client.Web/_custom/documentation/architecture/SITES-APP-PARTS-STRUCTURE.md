@@ -176,20 +176,27 @@ When refactoring existing parts:
 5. **Scalability**: Features folder for complex scenarios
 6. **Theme-Agnostic**: UI folder contains all visual components
 
-## Current Status (as of 2026-01-01)
+## Current Status (as of 2026-01-02)
 
 | Part | Has `ui/` folder | Notes |
 |------|------------------|-------|
-| hub | ❌ | Needs migration |
-| support | ❌ | Has views/, needs ui/ wrapper |
-| faq | ❌ | Has views/, needs ui/ wrapper |
-| diagnostics | ❌ | Has views/ and widgets/ |
-| access | ❌ | Has views/ and widgets/ |
-| help | ❌ | Has views/ |
-| authentication | ❌ | Has submodules with views/ |
+| surveys | ✅ | Canonical structure |
+| trash | ✅ | Has ui/views/ |
+| hub | 🔄 | Migrating |
+| support | 🔄 | Has views/, migrating |
+| faq | 🔄 | Has views/, migrating |
+| diagnostics | 🔄 | Has views/ and widgets/, migrating |
+| access | 🔄 | Has views/ and widgets/, migrating |
+| help | 🔄 | Has views/, migrating |
+| authentication | 🔄 | Has submodules with views/, migrating |
+| spike (applet) | 🔄 | Has modules/spike/ui/, migrating |
 
-## Next Steps
+## Migration Checklist
 
-1. Start with new parts using canonical structure
-2. Migrate existing parts incrementally as we touch them
-3. Use this document as reference
+For each part:
+- [ ] Create `ui/` folder if not exists
+- [ ] Move `views/` → `ui/views/`
+- [ ] Move `widgets/` → `ui/widgets/`
+- [ ] Update module.ts imports
+- [ ] Update routing.ts if needed
+- [ ] Verify build

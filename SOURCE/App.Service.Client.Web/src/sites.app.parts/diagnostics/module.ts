@@ -14,16 +14,16 @@ import { FormsModule } from '@angular/forms';
 import { DiagnosticsRoutingModule } from './routing';
 
 // Views - Hub & Dashboard
-import { DiagnosticsHubComponent } from './views/diagnostics-hub/component';
-import { DiagnosticsDashboardComponent } from './views/diagnostics-dashboard/component';
+import { DiagnosticsHubComponent } from './ui/views/diagnostics-hub/component';
+import { DiagnosticsDashboardComponent } from './ui/views/diagnostics-dashboard/component';
 
 // Views - Logs D-BR (Browse, Read only)
 import { LogListComponent } from './logs/views/log-list/component';
 import { LogDetailComponent } from './logs/views/log-detail/component';
 
 // Widgets
-import { ErrorCountWidgetComponent } from './widgets/error-count/component';
-import { LogVolumeWidgetComponent } from './widgets/log-volume/component';
+import { ErrorCountWidgetComponent } from './ui/widgets/error-count/component';
+import { LogVolumeWidgetComponent } from './ui/widgets/log-volume/component';
 
 @NgModule({
   declarations: [],

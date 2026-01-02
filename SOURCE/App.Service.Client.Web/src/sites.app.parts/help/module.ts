@@ -32,11 +32,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConfigRegistryService } from '../../core/services/config-registry.service';
 
 // Views
-import { HelpHubComponent } from './views/help-hub/component';
-import { HelpFaqPageComponent } from './views/faq-page/component';
-import { WikiHubComponent } from './views/wiki-hub/component';
-import { ArticleViewerComponent } from './views/article-viewer/component';
-import { CategoryViewerComponent } from './views/category-viewer/component';
+import { HelpHubComponent } from './ui/views/help-hub/component';
+import { HelpFaqPageComponent } from './ui/views/faq-page/component';
+import { WikiHubComponent } from './ui/views/wiki-hub/component';
+import { ArticleViewerComponent } from './ui/views/article-viewer/component';
+import { CategoryViewerComponent } from './ui/views/category-viewer/component';
 
 // Constants
 import { HELP_CONSTANTS } from './constants';

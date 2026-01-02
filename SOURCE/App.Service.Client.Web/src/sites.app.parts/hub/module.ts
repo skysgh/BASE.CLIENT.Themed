@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { HubComponent } from './views/hub/component';
+import { HubComponent } from './ui/views/hub/component';
 import { HubService } from './services';
 
 @NgModule({

@@ -16,11 +16,11 @@ import { RouterModule } from '@angular/router';
       {
         path: '',
         // Placeholder - will load a users list component when created
-        loadComponent: () => import('./views/users-list/component').then(m => m.UsersListComponent)
+        loadComponent: () => import('./ui/views/users-list/component').then(m => m.UsersListComponent)
       },
       {
         path: ':id',
-        loadComponent: () => import('./views/user-detail/component').then(m => m.UserDetailComponent)
+        loadComponent: () => import('./ui/views/user-detail/component').then(m => m.UserDetailComponent)
       }
     ])
   ],

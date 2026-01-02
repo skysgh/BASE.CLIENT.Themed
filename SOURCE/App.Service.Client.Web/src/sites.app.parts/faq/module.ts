@@ -21,9 +21,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // Views
-import { FaqHubComponent } from './views/faq-hub/component';
-import { CategoryBrowseComponent } from './views/admin/category-browse/component';
-import { CategoryEditComponent } from './views/admin/category-edit/component';
+import { FaqHubComponent } from './ui/views/faq-hub/component';
+import { CategoryBrowseComponent } from './ui/views/admin/category-browse/component';
+import { CategoryEditComponent } from './ui/views/admin/category-edit/component';
 
 // Services
 import { FaqCategoryService, FaqItemService } from './services';

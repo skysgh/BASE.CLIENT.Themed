@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([
       {
         path: '',
-        loadComponent: () => import('./views/linked-identities/component').then(m => m.LinkedIdentitiesComponent)
+        loadComponent: () => import('./ui/views/linked-identities/component').then(m => m.LinkedIdentitiesComponent)
       }
     ])
   ],

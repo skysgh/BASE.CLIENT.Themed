@@ -27,10 +27,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // Views
-import { SupportHubComponent } from './views/support-hub/component';
-import { ItemBrowseComponent } from './views/item-browse/component';
-import { ItemReadComponent } from './views/item-read/component';
-import { ItemAddComponent } from './views/item-add/component';
+import { SupportHubComponent } from './ui/views/support-hub/component';
+import { ItemBrowseComponent } from './ui/views/item-browse/component';
+import { ItemReadComponent } from './ui/views/item-read/component';
+import { ItemAddComponent } from './ui/views/item-add/component';
 
 // Services
 import { SupportItemService } from './services';

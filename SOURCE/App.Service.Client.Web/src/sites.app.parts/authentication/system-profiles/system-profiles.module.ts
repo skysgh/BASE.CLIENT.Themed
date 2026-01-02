@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([
       {
         path: '',
-        loadComponent: () => import('./views/system-profile-edit/component').then(m => m.SystemProfileEditComponent)
+        loadComponent: () => import('./ui/views/system-profile-edit/component').then(m => m.SystemProfileEditComponent)
       }
     ])
   ],

@@ -8,8 +8,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AccessHubComponent } from './views/access-hub/component';
-import { AccessDashboardComponent } from './views/access-dashboard/component';
+import { AccessHubComponent } from './ui/views/access-hub/component';
+import { AccessDashboardComponent } from './ui/views/access-dashboard/component';
 import { EmbargoListComponent } from './embargos/views/embargo-list/component';
 import { EmbargoDetailComponent } from './embargos/views/embargo-detail/component';
 import { EmbargoEditComponent } from './embargos/views/embargo-edit/component';

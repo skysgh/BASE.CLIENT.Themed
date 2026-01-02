@@ -14,8 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccessRoutingModule } from './routing';
 
 // Views - Hub & Dashboard
-import { AccessHubComponent } from './views/access-hub/component';
-import { AccessDashboardComponent } from './views/access-dashboard/component';
+import { AccessHubComponent } from './ui/views/access-hub/component';
+import { AccessDashboardComponent } from './ui/views/access-dashboard/component';
 
 // Views - Embargo D-BREAST
 import { EmbargoListComponent } from './embargos/views/embargo-list/component';
@@ -24,8 +24,8 @@ import { EmbargoEditComponent } from './embargos/views/embargo-edit/component';
 import { EmbargoAddComponent } from './embargos/views/embargo-add/component';
 
 // Widgets
-import { EmbargoCountWidgetComponent } from './widgets/embargo-count/component';
-import { AvailableCountriesWidgetComponent } from './widgets/available-countries/component';
+import { EmbargoCountWidgetComponent } from './ui/widgets/embargo-count/component';
+import { AvailableCountriesWidgetComponent } from './ui/widgets/available-countries/component';
 
 @NgModule({
   declarations: [],
