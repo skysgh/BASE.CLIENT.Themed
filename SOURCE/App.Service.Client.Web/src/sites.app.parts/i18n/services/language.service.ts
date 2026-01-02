@@ -26,6 +26,8 @@ export class LanguageService {
     private logger: SystemDiagnosticsTraceService
   ) {
     this.logger.debug(`${this.constructor.name} initialized`);
+    // Auto-load languages on service initialization
+    this.loadLanguages();
   }
   
   /** Load all languages */
