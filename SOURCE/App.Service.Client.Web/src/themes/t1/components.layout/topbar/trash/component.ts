@@ -15,7 +15,7 @@ import { TrashService } from '../../../../../sites.app.parts/trash/services/tras
   imports: [CommonModule, RouterModule],
   template: `
     <div class="header-item">
-      <a routerLink="/apps/system/trash" 
+      <a routerLink="/system/trash" 
          class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
          title="Trash">
         <i class="bx bx-trash fs-22"></i>

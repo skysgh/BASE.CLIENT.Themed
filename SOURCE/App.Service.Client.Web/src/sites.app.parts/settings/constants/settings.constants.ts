@@ -9,8 +9,9 @@ import { ROUTE_SEGMENTS, SETTINGS_SEGMENTS } from '../../../core/constants/navig
 
 /**
  * Settings base path (relative to site root)
+ * Note: Settings is under /system/settings, not /apps/settings
  */
-export const SETTINGS_BASE_PATH = `${ROUTE_SEGMENTS.APPS}/${ROUTE_SEGMENTS.SETTINGS}`;
+export const SETTINGS_BASE_PATH = `${ROUTE_SEGMENTS.SYSTEM}/${ROUTE_SEGMENTS.SETTINGS}`;
 
 /**
  * Settings navigation item definitions

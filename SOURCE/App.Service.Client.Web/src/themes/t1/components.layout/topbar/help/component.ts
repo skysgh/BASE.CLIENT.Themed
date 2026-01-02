@@ -57,6 +57,6 @@ export class BaseCoreCommonComponentTopBarHelpComponent implements OnInit {
   openHelp(): void {
     this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.openHelp()`);
     // Use NavigationService for account-aware routing
-    this.navigationService.navigate('apps/system/help');
+    this.navigationService.navigate('system/help');
   }
 }
