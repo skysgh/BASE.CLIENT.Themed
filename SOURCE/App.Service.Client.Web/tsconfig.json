@@ -2,7 +2,47 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    /* ============================================
+     * MAXIMUM STRICTNESS - TypeScript Compiler
+     * "The only way to keep code maintainable 
+     *  and less bugs is strict-as all the way"
+     * ============================================ */
+    
+    // Master strict flag (enables multiple strict options)
     "strict": true,
+    
+    // Additional strict type-checking options (beyond "strict": true)
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    
+    // Additional checks for code quality
+    // NOTE: noUnusedLocals/Parameters set to false for now to allow gradual cleanup
+    // TODO: Enable these once codebase is cleaned up
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    // NOTE: exactOptionalPropertyTypes is very strict - enable after interface cleanup
+    // "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    // NOTE: noUncheckedIndexedAccess adds |undefined to all index accesses - very safe but verbose
+    // "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    
+    // Module and resolution
+    "forceConsistentCasingInFileNames": true,
+    // NOTE: isolatedModules can break some patterns - enable if not using const enums
+    // "isolatedModules": true,
+    
+    // Build configuration
     "traceResolution": null,
     "baseUrl": "./",
     "plugins": [
@@ -15,11 +55,6 @@
       }
     ],
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -31,6 +66,10 @@
     "skipLibCheck": true
   },
   "angularCompilerOptions": {
+    /* ============================================
+     * MAXIMUM STRICTNESS - Angular Compiler
+     * All Angular-specific strict checks enabled
+     * ============================================ */
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
@@ -42,7 +81,8 @@
     "strictOutputEventTypes": true,
     "strictDomEventTypes": true,
     "strictContextGenerics": true,
-    "strictLiteralTypes": true
+    "strictLiteralTypes": true,
+    "strictInputTypes": true
   },
   "exclude": [
     "node_modules",

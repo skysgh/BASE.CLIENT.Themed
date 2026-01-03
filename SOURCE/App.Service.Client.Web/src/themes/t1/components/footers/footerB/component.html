@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6">
-        {{this.appsConfiguration.copyrights.year}} © {{this.appsConfiguration.context.sponsor.title}}
+        {{copyrightYear}} © {{(sponsorTitle$ | async) || 'Sponsor'}}
       </div>
       <div class="col-sm-6">
         <div class="text-sm-end d-none d-sm-block">
-          {{'BASE.CREDITS.DEVELOPED_BY_' | baseTranslate }} {{this.appsConfiguration.context.developer.title}}
+          {{'BASE.CREDITS.DEVELOPED_BY_' | baseTranslate }} {{(developerTitle$ | async) || 'Developer'}}
         </div>
       </div>
     </div>

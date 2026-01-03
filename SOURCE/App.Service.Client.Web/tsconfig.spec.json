@@ -2,6 +2,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    /* ============================================
+     * TEST BUILD - Inherits all strictness from base
+     * Tests should be just as strict as production!
+     * ============================================ */
+    "strict": true,
     "outDir": "./out-tsc/spec",
     "types": [
       "jasmine"

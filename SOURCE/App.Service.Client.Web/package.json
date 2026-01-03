@@ -115,6 +115,7 @@
     "intersection-observer": "^0.12.2",
     "jasmine-core": "^5.1.1",
     "jquery": "^3.7.1",
+    "jsep": "^1.4.0",
     "json-form": "^0.0.3",
     "json-server": "^0.17.4",
     "karma": "^6.4.2",
@@ -159,6 +160,7 @@
     "tslib": "^2.6.2",
     "uuid": "^9.0.1",
     "yaml": "^2.8.2",
+    "zod": "^4.3.4",
     "zone.js": "^0.15.1"
   },
   "devDependencies": {

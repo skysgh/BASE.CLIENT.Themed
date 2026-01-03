@@ -23,8 +23,9 @@ import {
   OptionsResolver,
   hasOptionsSource,
   isStaticOptionsSource,
-} from '../../models/schema/options-source.model';
-import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.service';
+} from '../models/schema/options-source.model';
+import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
+import { evaluateCondition, validateExpression } from './expression-evaluator.service';
 
 // ═══════════════════════════════════════════════════════════════════
 // Cache Entry
@@ -356,52 +357,14 @@ export class OptionsLoaderService {
   }
   
   private evaluateCondition(expression: string, context: OptionsLoadContext): boolean {
-    // Simple expression evaluator for conditions like:
-    // "fieldName != null"
-    // "fieldName == 'value'"
-    // "fieldName > 0"
-    
-    const match = expression.match(/^(\w+(?:\.\w+)*)\s*(==|!=|>|>=|<|<=)\s*(.+)$/);
-    if (!match) {
-      this.diagnostics.warn(`Invalid condition expression: ${expression}`);
+    // Validate expression first (in development)
+    const validation = validateExpression(expression);
+    if (!validation.isValid) {
+      this.diagnostics.warn(`Invalid condition expression: ${expression} - ${validation.errors.join(', ')}`);
       return true; // Default to true for invalid expressions
     }
     
-    const [, fieldPath, operator, valueStr] = match;
-    const fieldValue = this.getNestedValue(context.formValues, fieldPath);
-    
-    // Parse the comparison value
-    let compareValue: unknown;
-    if (valueStr === 'null') {
-      compareValue = null;
-    } else if (valueStr === 'true') {
-      compareValue = true;
-    } else if (valueStr === 'false') {
-      compareValue = false;
-    } else if (valueStr.startsWith("'") && valueStr.endsWith("'")) {
-      compareValue = valueStr.slice(1, -1);
-    } else if (!isNaN(Number(valueStr))) {
-      compareValue = Number(valueStr);
-    } else {
-      compareValue = valueStr;
-    }
-    
-    // Evaluate
-    switch (operator) {
-      case '==':
-        return fieldValue === compareValue;
-      case '!=':
-        return fieldValue !== compareValue;
-      case '>':
-        return Number(fieldValue) > Number(compareValue);
-      case '>=':
-        return Number(fieldValue) >= Number(compareValue);
-      case '<':
-        return Number(fieldValue) < Number(compareValue);
-      case '<=':
-        return Number(fieldValue) <= Number(compareValue);
-      default:
-        return true;
-    }
+    // Use safe expression evaluator
+    return evaluateCondition(expression, context.formValues, true);
   }
 }

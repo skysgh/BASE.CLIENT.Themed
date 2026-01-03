@@ -32,6 +32,9 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
   
   // Expose theme configuration:
   public themeConfiguration = themesT1Configuration;
+  
+  // ✅ Expose core constants for template
+  public coreConstants = coreConstants;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();

@@ -45,4 +45,10 @@ export interface SpikeViewModel {
    * Example: "Spike.Foo" → "Foo"
    */
   readonly displayLabel: string;
+
+  /**
+   * Index signature for generic CRUD component compatibility
+   * Allows SpikeViewModel to be used with Record<string, unknown> generics
+   */
+  readonly [key: string]: unknown;
 }

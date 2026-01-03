@@ -7,12 +7,14 @@
  * - Tabs and groups
  * - Actions (buttons)
  * - Fallback logic (detail → edit, add → edit)
+ * - Multiple form engines (Formly, JSON Forms, etc.)
  * 
  * USAGE:
  * ```json
  * {
  *   "id": "spike-edit",
  *   "title": "Edit Spike",
+ *   "engineSpec": { "engine": "formly" },
  *   "fields": [...],
  *   "actions": [
  *     { "id": "save", "label": "Save", "type": "submit" },
@@ -23,6 +25,7 @@
  */
 
 import { FormFieldSchema, FormFieldGroup, FormFieldTab } from './form-field-schema.model';
+import { FormEngineSpec, DEFAULT_ENGINE_SPEC } from '../form-engine/form-engine.types';
 
 // ═══════════════════════════════════════════════════════════════════
 // Form View Mode
@@ -173,6 +176,18 @@ export interface FormViewSchema {
   
   /** Schema name */
   name?: string;
+  
+  // ─────────────────────────────────────────────────────────────────
+  // Form Engine
+  // ─────────────────────────────────────────────────────────────────
+  
+  /**
+   * Form engine specification
+   * Determines which form engine renders this schema
+   * 
+   * @default { engine: 'formly' }
+   */
+  engineSpec?: FormEngineSpec;
   
   // ─────────────────────────────────────────────────────────────────
   // Header
@@ -473,6 +488,7 @@ export function mergeFormViewSchema(
   const base: FormViewSchema = {
     version: '1.0',
     fields: [],
+    engineSpec: DEFAULT_ENGINE_SPEC,
     showBottomActions: true,
     warnOnUnsavedChanges: true,
     validateOnBlur: true,
@@ -480,10 +496,19 @@ export function mergeFormViewSchema(
     ...defaults,
   };
   
+  // Safely merge engine specs, ensuring 'engine' is always defined
+  const mergedEngineSpec: FormEngineSpec = {
+    engine: partial.engineSpec?.engine ?? base.engineSpec?.engine ?? DEFAULT_ENGINE_SPEC.engine,
+    adapterVersion: partial.engineSpec?.adapterVersion ?? base.engineSpec?.adapterVersion ?? DEFAULT_ENGINE_SPEC.adapterVersion,
+    engineConfig: partial.engineSpec?.engineConfig ?? base.engineSpec?.engineConfig,
+    fallback: partial.engineSpec?.fallback ?? base.engineSpec?.fallback ?? DEFAULT_ENGINE_SPEC.fallback,
+  };
+  
   return {
     ...base,
     ...partial,
     layout: { ...base.layout, ...partial.layout },
+    engineSpec: mergedEngineSpec,
   };
 }
 

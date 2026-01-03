@@ -5,6 +5,63 @@
  */
 
 // ─────────────────────────────────────────────────────────────────
+// Versioning
+// ─────────────────────────────────────────────────────────────────
+
+export {
+  CURRENT_DSL_VERSION,
+  MIN_SUPPORTED_VERSION,
+  VersionedSchema,
+  SemanticVersion,
+  VersionCheckResult,
+  parseVersion,
+  compareVersions,
+  checkVersion,
+  ensureVersion,
+  versioned,
+  SchemaParser,
+  ParseResult,
+  ParseError,
+  SchemaParserRegistry,
+} from './schema-version.model';
+
+// ─────────────────────────────────────────────────────────────────
+// Validation
+// ─────────────────────────────────────────────────────────────────
+
+export {
+  SchemaValidationError,
+  SchemaValidationResult,
+  EntitySchemaValidator,
+  validateEntitySchema as validateEntitySchemaZod,
+  validateFormViewSchema,
+  validateOptionsSource,
+  formatValidationErrors,
+  formatValidationResult,
+} from './schema-validators';
+
+// ─────────────────────────────────────────────────────────────────
+// View State (separate from Schema)
+// ─────────────────────────────────────────────────────────────────
+
+export {
+  ViewStateScope,
+  ViewStateType,
+  BrowseViewState,
+  FormViewState,
+  ViewState,
+  QuickViewState,
+  ViewStateReconcileResult,
+  reconcileViewState,
+  createViewState,
+  createBrowseViewState,
+  createQuickState,
+  getSavedViewsKey,
+  getQuickStateKey,
+  getDefaultViewKey,
+} from './view-state.model';
+
+// ─────────────────────────────────────────────────────────────────
 // Core Models
 // ─────────────────────────────────────────────────────────────────
 
@@ -90,6 +147,18 @@ export {
 } from './entity-schema.model';
 
 // ─────────────────────────────────────────────────────────────────
+// Builder
+// ─────────────────────────────────────────────────────────────────
+
+export {
+  EntitySchemaBuilder,
+  FieldOptions,
+  SimpleOptions,
+  buildEntitySchema,
+  buildEntity,
+} from './entity-schema-builder';
+
+// ─────────────────────────────────────────────────────────────────
 // Examples (for reference/testing)
 // ─────────────────────────────────────────────────────────────────
 
@@ -97,3 +166,8 @@ export {
   SPIKE_ENTITY_SCHEMA,
   getSpikeSchemaJson,
 } from './examples/spike-entity-schema.example';
+
+export {
+  SUBSPIKE_ENTITY_SCHEMA,
+  getSubSpikeSchemaJson,
+} from './examples/subspike-entity-schema.example';

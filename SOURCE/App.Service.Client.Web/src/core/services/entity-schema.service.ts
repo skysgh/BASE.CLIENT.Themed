@@ -28,6 +28,13 @@ import { FormViewSchema, FormViewMode } from '../models/schema/form-view-schema.
 import { BrowseViewSchema } from '../../core.ag/ui/widgets/browse-view/browse-view-schema.model';
 import { OptionsLoaderService } from './options-loader.service';
 import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
+import { 
+  validateEntitySchema, 
+  SchemaValidationResult, 
+  SchemaValidationError,
+  formatValidationResult 
+} from '../models/schema/schema-validators';
+import { checkVersion, VersionCheckResult, CURRENT_DSL_VERSION } from '../models/schema/schema-version.model';
 
 // ═══════════════════════════════════════════════════════════════════
 // MRU Entry
@@ -86,7 +93,7 @@ export class EntitySchemaService {
   // Schema cache
   private schemas = new Map<string, EntitySchema>();
   private schemaTimestamps = new Map<string, number>();
-  private pending = new Map<string, Observable<EntitySchema>>();
+  private pending = new Map<string, Observable<EntitySchema | null>>();
   
   // MRU state
   private mru$ = new BehaviorSubject<Map<string, EntityMruEntry[]>>(new Map());
@@ -129,10 +136,13 @@ export class EntitySchemaService {
     // Load from API
     const url = `${this.config.schemaApiBase}/${entityType}`;
     const request$ = this.http.get<EntitySchema>(url).pipe(
+      map(schema => this.validateAndNormalize(schema, entityType)),
       tap(schema => {
-        this.setCache(entityType, schema);
+        if (schema) {
+          this.setCache(entityType, schema);
+          this.preloadLookups(schema);
+        }
         this.pending.delete(entityType);
-        this.preloadLookups(schema);
       }),
       catchError(error => {
         this.diagnostics.error(`Failed to load schema for ${entityType}: ${error.message}`);
@@ -157,8 +167,11 @@ export class EntitySchemaService {
    * Register a schema (for client-side defined schemas)
    */
   registerSchema(schema: EntitySchema): void {
-    this.setCache(schema.id, schema);
-    this.preloadLookups(schema);
+    const validated = this.validateAndNormalize(schema, schema.id);
+    if (validated) {
+      this.setCache(schema.id, validated);
+      this.preloadLookups(validated);
+    }
   }
   
   /**
@@ -312,6 +325,62 @@ export class EntitySchemaService {
     this.saveMruToStorage();
   }
   
+  // ═══════════════════════════════════════════════════════════════════
+  // Schema Validation
+  // ═══════════════════════════════════════════════════════════════════
+  
+  /**
+   * Validate and normalize a schema
+   */
+  private validateAndNormalize(schema: unknown, entityType: string): EntitySchema | null {
+    // Check DSL version
+    const versionCheck = checkVersion((schema as any)?.dslVersion);
+    if (!versionCheck.isValid) {
+      this.diagnostics.error(`Schema version error for ${entityType}: ${versionCheck.error}`);
+      return null;
+    }
+    
+    if (versionCheck.needsMigration) {
+      this.diagnostics.info(
+        `Schema ${entityType} uses version ${versionCheck.schemaVersion}, ` +
+        `current is ${CURRENT_DSL_VERSION}. Migration may be needed.`
+      );
+    }
+    
+    // Validate structure
+    const validation = validateEntitySchema(schema);
+    if (!validation.success) {
+      this.diagnostics.error(
+        `Schema validation failed for ${entityType}:\n${formatValidationResult(validation)}`
+      );
+      return null;
+    }
+    
+    // Log warnings
+    if (validation.warnings.length > 0) {
+      this.diagnostics.warn(
+        `Schema warnings for ${entityType}:\n${validation.warnings.map(w => `  - ${w}`).join('\n')}`
+      );
+    }
+    
+    return validation.data as EntitySchema;
+  }
+  
+  /**
+   * Validate a schema without caching
+   */
+  validateSchema(schema: unknown): SchemaValidationResult<EntitySchema> {
+    return validateEntitySchema(schema) as SchemaValidationResult<EntitySchema>;
+  }
+  
+  /**
+   * Get validation errors for a schema
+   */
+  getSchemaErrors(schema: unknown): SchemaValidationError[] {
+    const result = validateEntitySchema(schema);
+    return result.errors;
+  }
+
   // ═══════════════════════════════════════════════════════════════════
   // Lookup Helpers
   // ═══════════════════════════════════════════════════════════════════

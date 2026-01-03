@@ -30,6 +30,7 @@ import { OptionsSource } from './options-source.model';
 import { FormFieldSchema } from './form-field-schema.model';
 import { FormViewSchema, getSchemaForMode, FormViewMode } from './form-view-schema.model';
 import { BrowseViewSchema } from '../../../core.ag/ui/widgets/browse-view/browse-view-schema.model';
+import { VersionedSchema, CURRENT_DSL_VERSION, ensureVersion } from './schema-version.model';
 
 // ═══════════════════════════════════════════════════════════════════
 // Master Field Definition
@@ -66,6 +67,9 @@ export interface EntityFieldDefinition extends FormFieldSchema {
   
   /** Weight for search relevance (higher = more relevant) */
   searchWeight?: number;
+  
+  /** Reference to a named lookup defined in EntitySchema.lookups */
+  lookupRef?: string;
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -196,12 +200,18 @@ export interface EntityViews {
 /**
  * Complete entity/aggregate schema
  */
-export interface EntitySchema {
+export interface EntitySchema extends VersionedSchema {
   // ─────────────────────────────────────────────────────────────────
   // Identity
   // ─────────────────────────────────────────────────────────────────
   
-  /** Schema version */
+  /** DSL version (inherited from VersionedSchema) */
+  dslVersion: string;
+  
+  /** 
+   * Schema version for migrations 
+   * @deprecated Use dslVersion instead
+   */
   version?: string;
   
   /** Entity type ID (e.g., 'spike', 'user', 'project') */

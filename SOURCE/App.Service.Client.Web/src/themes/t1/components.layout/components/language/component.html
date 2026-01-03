@@ -18,7 +18,7 @@
          data-lang="eng"
          (click)="setLanguage(item)"
          [ngClass]="{'active': activeLanguageCode === item.languageCode}">
-        <img [src]="appsConfiguration.others.core.constants.assets.images.flags + item.flagImageId +'.svg'"
+        <img [src]="coreConstants.assets.images.flags + item.flagImageId +'.svg'"
              alt="user-image"
              class="me-2 rounded"
              height="18">

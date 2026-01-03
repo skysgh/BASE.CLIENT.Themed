@@ -44,6 +44,9 @@ import { BaseAppsSpikeSubSpikesAddComponent } from './modules/subSpike/ui/views/
 import { BaseAppsSpikeInsightsComponent } from './modules/spike/ui/views/insights/component';
 import { SpikeDashboardWidgetComponent } from './ui/widgets/spike-widget/component';
 
+// ✅ NEW: Schema-driven CRUD page
+import { SpikeSchemaAggregateComponent } from './modules/spike/ui/views/schema-aggregate/component';
+
 // Applet constants
 import { appletsSpikesConstants } from './constants/implementations/app.lets.spikes.constants';
 
@@ -84,7 +87,13 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
     CoreComponentsModule,
     // BrowseView for universal browse rendering
     BrowseViewComponent,
+    // ✅ NEW: Schema-driven CRUD page (standalone component)
+    SpikeSchemaAggregateComponent,
     RouterModule.forChild([
+      // ✅ NEW: Schema-driven CRUD page - single component handles all modes
+      { path: 'schema-crud', component: SpikeSchemaAggregateComponent },
+      { path: 'aggregate', redirectTo: 'schema-crud', pathMatch: 'prefix' },
+      
       // I-BREAD-T routes for Spike
       { path: 'insights', component: BaseAppsSpikeInsightsComponent },
       { path: 'reports', redirectTo: 'insights', pathMatch: 'prefix' },

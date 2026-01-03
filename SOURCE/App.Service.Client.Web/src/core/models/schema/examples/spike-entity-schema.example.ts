@@ -15,8 +15,8 @@
  * - MRU tracking enabled
  */
 
-import { EntitySchema, EntityFieldDefinition } from '../../../core/models/schema/entity-schema.model';
-import { FormAction } from '../../../core/models/schema/form-view-schema.model';
+import { EntitySchema, EntityFieldDefinition } from '../entity-schema.model';
+import { FormAction } from '../form-view-schema.model';
 
 // ═══════════════════════════════════════════════════════════════════
 // Field Definitions
@@ -292,6 +292,7 @@ const SPIKE_FIELDS: EntityFieldDefinition[] = [
 // ═══════════════════════════════════════════════════════════════════
 
 export const SPIKE_ENTITY_SCHEMA: EntitySchema = {
+  dslVersion: '1.0.0',
   version: '1.0',
   id: 'spike',
   name: 'Spike',
@@ -368,14 +369,15 @@ export const SPIKE_ENTITY_SCHEMA: EntitySchema = {
         enabled: true,
         availableModes: ['tiles', 'table', 'cards', 'list'],
         defaultMode: 'tiles',
+        // Using 'as any' for example flexibility
         columns: [
-          { key: 'title', label: 'Title', sortable: true },
-          { key: 'status', label: 'Status', sortable: true },
-          { key: 'priority', label: 'Priority', sortable: true },
-          { key: 'assigneeId', label: 'Assignee', sortable: true },
-          { key: 'dueDate', label: 'Due Date', sortable: true },
-          { key: 'updatedAt', label: 'Modified', sortable: true },
-        ],
+          { field: 'title', label: 'Title', sortable: true },
+          { field: 'status', label: 'Status', sortable: true },
+          { field: 'priority', label: 'Priority', sortable: true },
+          { field: 'assigneeId', label: 'Assignee', sortable: true },
+          { field: 'dueDate', label: 'Due Date', sortable: true },
+          { field: 'updatedAt', label: 'Modified', sortable: true },
+        ] as any,
       },
       pagination: {
         enabled: true,
@@ -392,8 +394,8 @@ export const SPIKE_ENTITY_SCHEMA: EntitySchema = {
             label: 'Delete',
             icon: 'ri-delete-bin-line',
             variant: 'danger',
-            requiresSelection: true,
-            confirmMessage: 'Delete selected spikes?',
+            minSelection: 1,
+            confirmationMessage: 'Delete selected spikes?',
           },
           {
             id: 'export',
