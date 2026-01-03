@@ -44,7 +44,14 @@
     "strictContextGenerics": true,
     "strictLiteralTypes": true
   },
-
-  //"experimentalDecorators": true, // for @automapper/classes
-  "emitDecoratorMetadata": true // for @automapper/classes
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/todo/**",
+    "**/unused/**",
+    "**/SRC_ORIG_BY_MS_SAFECOPY/**",
+    "**/*.spec.ts",
+    "src/environments/environment.testing.ts"
+  ],
+  "emitDecoratorMetadata": true
 }
