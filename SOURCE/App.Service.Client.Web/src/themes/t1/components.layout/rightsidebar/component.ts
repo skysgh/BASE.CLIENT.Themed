@@ -85,15 +85,11 @@ export class BaseLayoutRightsidebarComponent implements OnInit {
   @Output() settingsButtonClicked = new EventEmitter();
 
   constructor(
-    private defaultComponentServices: DefaultComponentServices,
     private eventService: EventService,
     private offcanvasService: NgbOffcanvas,
     private store: Store<RootReducerState>
   ) {
-
-    // Can be either via service, or injecting the constats/settings object:
-    //this.system = systemService.system;
-}
+  }
 
   ngOnInit(): void {
     // ✅ REMOVED: Auto-open flyout was annoying on every page load
