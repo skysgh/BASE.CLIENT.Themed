@@ -97,6 +97,12 @@ const routes: Routes = [
     loadChildren: () => import('../sites.app.parts/help/module').then(m => m.HelpModule)
   },
 
+  // Wiki - Full-featured wiki with namespace-based permissions
+  { 
+    path: 'system/wiki', 
+    loadChildren: () => import('../sites.app.parts/wiki/module').then(m => m.WikiModule)
+  },
+
   // FAQ - Frequently Asked Questions with dynamic categories (app.let)
   { 
     path: 'system/faq', 
@@ -155,6 +161,12 @@ const routes: Routes = [
   { 
     path: 'system/i18n', 
     loadChildren: () => import('../sites.app.parts/i18n/module').then(m => m.I18nModule)
+  },
+
+  // Messages - Internal messaging system
+  { 
+    path: 'system/messages', 
+    loadChildren: () => import('../sites.app.parts/messages/module').then(m => m.MessagesModule)
   },
 
   // Surveys - Configurable surveys with conditional branching (app.let)

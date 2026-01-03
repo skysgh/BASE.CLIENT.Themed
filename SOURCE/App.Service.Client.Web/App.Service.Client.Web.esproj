@@ -60,6 +60,12 @@
     <Folder Include="src\sites.anon\features\pages\signed-out\services\" />
     <Folder Include="src\sites.app.lets\architecture\services\repositories\" />
     <Folder Include="src\sites.app.lets\spike\services\repositories\" />
+    <Folder Include="src\sites.app.parts\compliance-cookie-consent\ui\components\cookie-consent-banner\" />
+    <Folder Include="src\sites.app.parts\compliance-cookie-consent\ui\components\cookie-preferences-overlay\" />
+    <Folder Include="src\sites.app.parts\compliance-cookie-consent\ui\views-parts\" />
+    <Folder Include="src\sites.app.parts\compliance-cookie-consent\ui\views\" />
+    <Folder Include="src\sites.app.parts\compliance\ui\components\cookie-consent-banner\" />
+    <Folder Include="src\sites.app.parts\compliance\ui\components\cookie-preferences-overlay\" />
     <Folder Include="src\sites.app.parts\maintenance\views\coming-soon-page\" />
     <Folder Include="src\sites.app.parts\maintenance\views\maintenance-page\" />
     <Folder Include="src\sites.app\main\" />
@@ -73,6 +79,8 @@
     <Folder Include="src\sites\assets\data\open\" />
     <Folder Include="src\sites\features\dashboard\models\" />
     <Folder Include="src\themes\t1\adapters\button\" />
+    <Folder Include="src\themes\t1\components\cookie-consent-banner\" />
+    <Folder Include="src\themes\t1\components\cookie-preferences-overlay\" />
     <Folder Include="src\themes\t1\contracts\" />
     <Folder Include="src\themes\t1\features\errors\assets\sensitive\" />
     <Folder Include="src\themes\t1\features\errors\assets\open\" />

@@ -1,0 +1,210 @@
+<div class="schema-dsl-hub container-fluid">
+  <!-- Top Navigation -->
+  <div class="top-nav-bar mb-3">
+    <a routerLink="/dev" class="btn btn-soft-primary">
+      <i class="ri-arrow-left-line me-1"></i>
+      Back to Developer Hub
+    </a>
+  </div>
+
+  <!-- Header -->
+  <div class="page-header mb-4">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <div class="avatar-md">
+          <div class="avatar-title bg-primary-subtle text-primary rounded">
+            <i class="ri-database-2-line fs-24"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h4 class="mb-1">Entity Schema DSL Guide</h4>
+        <p class="text-muted mb-0">
+          Learn how to define schema-driven aggregates with the BREAD pattern
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Introduction Card -->
+  <div class="card bg-primary-subtle border-0 mb-4">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h5 class="text-primary mb-2">
+            <i class="ri-lightbulb-flash-line me-2"></i>
+            What is the Entity Schema DSL?
+          </h5>
+          <p class="mb-0">
+            The Entity Schema DSL (Domain-Specific Language) allows you to define your 
+            domain entities in a declarative JSON format. This schema drives the entire 
+            UI rendering pipeline — from browse views with filters and sorting, to 
+            edit forms with validation, to detail views — all from a single source of truth.
+          </p>
+        </div>
+        <div class="col-lg-4 text-center d-none d-lg-block">
+          <i class="ri-file-code-line display-1 text-primary opacity-50"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREAD Pattern Overview -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0">
+        <i class="ri-stack-line me-2 text-info"></i>
+        The BREAD Pattern
+      </h5>
+    </div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md">
+          <div class="d-flex align-items-center p-3 rounded bg-light">
+            <div class="avatar-sm me-3">
+              <div class="avatar-title bg-info text-white rounded">B</div>
+            </div>
+            <div>
+              <h6 class="mb-0">Browse</h6>
+              <small class="text-muted">List/search entities with filtering</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="d-flex align-items-center p-3 rounded bg-light">
+            <div class="avatar-sm me-3">
+              <div class="avatar-title bg-success text-white rounded">R</div>
+            </div>
+            <div>
+              <h6 class="mb-0">Read</h6>
+              <small class="text-muted">View entity details (readonly)</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="d-flex align-items-center p-3 rounded bg-light">
+            <div class="avatar-sm me-3">
+              <div class="avatar-title bg-warning text-white rounded">E</div>
+            </div>
+            <div>
+              <h6 class="mb-0">Edit</h6>
+              <small class="text-muted">Update existing entities</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="d-flex align-items-center p-3 rounded bg-light">
+            <div class="avatar-sm me-3">
+              <div class="avatar-title bg-primary text-white rounded">A</div>
+            </div>
+            <div>
+              <h6 class="mb-0">Add</h6>
+              <small class="text-muted">Create new entities</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="d-flex align-items-center p-3 rounded bg-light">
+            <div class="avatar-sm me-3">
+              <div class="avatar-title bg-danger text-white rounded">D</div>
+            </div>
+            <div>
+              <h6 class="mb-0">Delete</h6>
+              <small class="text-muted">Remove entities (soft/hard)</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Articles Grid -->
+  <div class="row">
+    <div class="col-12">
+      <h5 class="mb-3">
+        <i class="ri-book-open-line me-2 text-secondary"></i>
+        Documentation Articles
+      </h5>
+    </div>
+    
+    @for (article of articles; track article.id) {
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 article-card" [routerLink]="article.route">
+          <div class="card-body">
+            <div class="d-flex align-items-start mb-3">
+              <div class="avatar-sm me-3">
+                <div class="avatar-title bg-soft-primary text-primary rounded">
+                  <i [class]="article.icon + ' fs-18'"></i>
+                </div>
+              </div>
+              <div class="flex-grow-1">
+                <h6 class="mb-1">
+                  {{ article.title }}
+                  @if (article.badge) {
+                    <span class="badge ms-1" [ngClass]="article.badgeClass || 'bg-soft-info text-info'">
+                      {{ article.badge }}
+                    </span>
+                  }
+                </h6>
+                <p class="text-muted small mb-0">{{ article.description }}</p>
+              </div>
+            </div>
+            <div class="text-end">
+              <a class="link-primary small">
+                Read article <i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Quick Reference Card -->
+  <div class="card mt-2">
+    <div class="card-header">
+      <h5 class="mb-0">
+        <i class="ri-flashlight-line me-2 text-warning"></i>
+        Quick Reference
+      </h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <h6 class="text-muted">Key Files</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2">
+              <code class="bg-light px-2 py-1 rounded">core/models/schema/entity-schema.model.ts</code>
+              <br><small class="text-muted">Main EntitySchema interface</small>
+            </li>
+            <li class="mb-2">
+              <code class="bg-light px-2 py-1 rounded">core/models/schema/form-view-schema.model.ts</code>
+              <br><small class="text-muted">Form schema definitions</small>
+            </li>
+            <li class="mb-2">
+              <code class="bg-light px-2 py-1 rounded">core.ag/ui/widgets/browse-view/browse-view-schema.model.ts</code>
+              <br><small class="text-muted">Browse view schema</small>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h6 class="text-muted">Example Schemas</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2">
+              <code class="bg-light px-2 py-1 rounded">core/models/schema/examples/spike-entity-schema.example.ts</code>
+              <br><small class="text-muted">Complete Spike entity example</small>
+            </li>
+          </ul>
+          
+          <h6 class="text-muted mt-3">API Endpoints</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2">
+              <code class="bg-light px-2 py-1 rounded">GET /api/schema/entities/&#123;entityId&#125;</code>
+              <br><small class="text-muted">Retrieve entity schema by ID</small>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

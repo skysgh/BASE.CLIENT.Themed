@@ -13,7 +13,7 @@ import { NgbAccordionModule, NgbDropdownModule, NgbNavModule } from '@ng-bootstr
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
 
-// Components
+// Components (Non-Standalone)
 import { BaseCoreCommonComponentsBreadcrumbsComponent } from './breadcrumbs/component';
 import { BaseCoreCommonComponentsSummaryItemComponent } from './summaryitem/component';
 import { BaseCoreCommonComponentsSummaryItemSelectorComponent } from './sunmaryitemselector/component';

@@ -11,9 +11,14 @@ import { AccessibilityStatementComponent } from './ui/views/accessibility-statem
 import { DataCollectionComponent } from './ui/views/data-collection/component';
 
 /**
- * Compliance Applet Module
+ * Compliance Statements Module
  * 
  * Platform applet for legal/compliance document management.
+ * Contains PDF viewers and heavy document rendering components.
+ * 
+ * NOTE: This module is lazy-loaded when users navigate to compliance pages.
+ * For the lightweight cookie consent banner/overlay, use the separate
+ * ComplianceCookieConsentModule which can be loaded on every page.
  * 
  * ROUTES:
  * - /system/compliance/         - Compliance hub
@@ -36,7 +41,7 @@ import { DataCollectionComponent } from './ui/views/data-collection/component';
       { path: 'accessibility', component: AccessibilityStatementComponent },
       { path: 'data-collection', component: DataCollectionComponent },
     ]),
-    // Standalone components
+    // Standalone view components
     ComplianceHubComponent,
     PrivacyPolicyComponent,
     TermsConditionsComponent,
@@ -44,6 +49,14 @@ import { DataCollectionComponent } from './ui/views/data-collection/component';
     AccessibilityStatementComponent,
     DataCollectionComponent,
   ],
-  exports: [RouterModule]
+  exports: [
+    RouterModule,
+  ]
 })
-export class ComplianceModule { }
+export class ComplianceStatementsModule { };
+
+/**
+ * @deprecated Use ComplianceStatementsModule instead.
+ * Kept for backward compatibility during migration.
+ */
+export { ComplianceStatementsModule as ComplianceModule };

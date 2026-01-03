@@ -16,8 +16,12 @@ import { ViewModel } from "../vm";
 
 /**
  * Default avatar path for users without a custom avatar
+ * 
+ * Path follows angular.json asset mapping:
+ * - Source: src/sites.anon/assets/media/sensitive/images/users/avatar-1.jpg
+ * - Runtime: /assets/sites.anon/media/sensitive/images/users/avatar-1.jpg
  */
-const DEFAULT_AVATAR_PATH = '/assets/deployed/images/users/avatar-1.jpg';
+const DEFAULT_AVATAR_PATH = '/assets/sites.anon/media/sensitive/images/users/avatar-1.jpg';
 
 @Component({
     selector: 'app-base-common-components-topbar-languageuser',
@@ -61,15 +65,22 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
     this.initUser();
     
     // Build account-aware routes
-    // Profile goes to system-profile (person's profile across the system)
+    // Routes are relative to /apps/ parent route
+    // The NavigationService.getUrl() handles account prefixing
+    
+    // Profile - system authentication module
     this.profileRoute = this.navigationService.getUrl('apps/system/authentication/profile');
-    // Settings goes to settings hub
+    // Settings - unified settings hub
     this.settingsRoute = this.navigationService.getUrl('apps/system/settings');
-    // Other routes
+    // About - system info
     this.aboutRoute = this.navigationService.getUrl('apps/system/about');
-    this.helpRoute = this.navigationService.getUrl('apps/system/help');
+    // Support - issue/idea submission (replaces Help)
+    this.helpRoute = this.navigationService.getUrl('apps/system/support');
+    // Messages - internal messaging
     this.messagesRoute = this.navigationService.getUrl('apps/system/messages');
-    this.tasksRoute = this.navigationService.getUrl('apps/system/tasks');
+    // Tasks - spike applet (contains task management)
+    this.tasksRoute = this.navigationService.getUrl('apps/spike');
+    // Finances - billing module
     this.financesRoute = this.navigationService.getUrl('apps/system/billing');
   }
 

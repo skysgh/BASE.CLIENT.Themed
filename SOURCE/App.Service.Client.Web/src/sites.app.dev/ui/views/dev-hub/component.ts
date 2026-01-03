@@ -5,6 +5,8 @@
  * Shows navigation to:
  * - Theme reference pages
  * - Integration guides
+ * - Schema DSL documentation
+ * - Wiki preview
  * - API documentation (future)
  * 
  * Route: /dev
@@ -110,17 +112,22 @@ interface DevSection {
         </div>
         <div class="card-body">
           <div class="row g-3">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <a routerLink="/dev/theme/t1/minimal" class="btn btn-soft-primary w-100">
                 <i class="ri-palette-line me-2"></i>Theme Reference
               </a>
             </div>
-            <div class="col-md-4">
-              <a routerLink="/dev/integrations/auth" class="btn btn-soft-success w-100">
-                <i class="ri-shield-keyhole-line me-2"></i>Auth Integration
+            <div class="col-md-3">
+              <a routerLink="/dev/guides/schema-dsl" class="btn btn-soft-info w-100">
+                <i class="ri-database-2-line me-2"></i>Schema DSL Guide
               </a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+              <a routerLink="/dev/wiki" class="btn btn-soft-success w-100">
+                <i class="ri-book-open-line me-2"></i>Wiki Preview
+              </a>
+            </div>
+            <div class="col-md-3">
               <a href="https://github.com/skysgh/BASE.CLIENT.Themed" target="_blank" class="btn btn-soft-dark w-100">
                 <i class="ri-github-line me-2"></i>GitHub Repo
               </a>
@@ -173,6 +180,37 @@ export class DevHubComponent {
         { title: 'Forms', route: 'forms', description: 'Inputs, Pickers, Validation' },
         { title: 'Tables', route: 'tables', description: 'Grid.js, List.js' },
         { title: 'Maps', route: 'maps', description: 'Leaflet, Google Maps' },
+      ]
+    },
+    {
+      id: 'guides',
+      title: 'Developer Guides',
+      description: 'Schema DSL, patterns, and best practices',
+      icon: 'ri-book-read-line',
+      iconBg: '#299cdb',
+      route: 'guides',
+      badge: 'Docs',
+      items: [
+        { title: 'Schema DSL Guide', route: 'schema-dsl', description: 'Entity schemas for BREAD pattern' },
+        { title: 'Overview & Concepts', route: 'schema-dsl/overview', description: 'Understanding schema-driven UI' },
+        { title: 'Entity Definition', route: 'schema-dsl/entity', description: 'Fields, lookups, data source' },
+        { title: 'Browse View Schema', route: 'schema-dsl/browse', description: 'Filters, sorting, display modes' },
+        { title: 'Form Schemas', route: 'schema-dsl/forms', description: 'Edit/Add/View with Formly' },
+      ]
+    },
+    {
+      id: 'wiki',
+      title: 'Wiki Preview',
+      description: 'Test wiki functionality with mock data',
+      icon: 'ri-book-open-line',
+      iconBg: '#f7b84b',
+      route: 'wiki',
+      badge: 'Preview',
+      items: [
+        { title: 'Wiki Hub', route: '', description: 'Browse namespaces and recent pages' },
+        { title: 'Public Docs', route: 'public', description: 'Public documentation namespace' },
+        { title: 'Getting Started', route: 'public/getting-started', description: 'Sample wiki page' },
+        { title: 'API Reference', route: 'public/api-reference', description: 'Sample API docs page' },
       ]
     },
     {

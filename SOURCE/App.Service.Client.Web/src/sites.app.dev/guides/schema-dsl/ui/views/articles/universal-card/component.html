@@ -1,0 +1,270 @@
+<div class="article-container container-fluid">
+  <!-- Navigation -->
+  <div class="top-nav-bar mb-3 d-flex justify-content-between">
+    <a routerLink="../entity" class="btn btn-soft-secondary">
+      <i class="ri-arrow-left-line me-1"></i>
+      Previous: Entity Definition
+    </a>
+    <a routerLink="../browse" class="btn btn-primary">
+      Next: Browse View Schema
+      <i class="ri-arrow-right-line ms-1"></i>
+    </a>
+  </div>
+
+  <!-- Article Header -->
+  <div class="article-header mb-4">
+    <div class="d-flex align-items-center mb-2">
+      <span class="text-muted small">Article 3 of 6</span>
+    </div>
+    <h2 class="mb-2">UniversalCard Mapping</h2>
+    <p class="lead text-muted">
+      Converting entity data to a normalized card structure for consistent rendering.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="article-content">
+    
+    <!-- What is UniversalCard -->
+    <section id="what-is" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-layout-card-line me-2 text-info"></i>
+        What is a UniversalCard?
+      </h4>
+      
+      <p>
+        A <strong>UniversalCard</strong> is a normalized data structure that represents 
+        any entity in a format optimized for rendering in browse views. Instead of 
+        working with raw entity data directly, the BrowseView component receives an 
+        array of UniversalCards.
+      </p>
+
+      <div class="alert alert-info border-0">
+        <i class="ri-lightbulb-line me-2"></i>
+        <strong>Why normalize?</strong> Different entities have different field structures, 
+        but they all need to be rendered in consistent card/tile/table formats. 
+        UniversalCard provides a common structure that rendering components understand.
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="card border-secondary h-100">
+            <div class="card-header bg-secondary text-white">
+              <i class="ri-database-line me-1"></i> Raw Entity Data
+            </div>
+            <div class="card-body bg-light">
+              <pre class="mb-0"><code>{{rawEntityCode}}</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card border-primary h-100">
+            <div class="card-header bg-primary text-white">
+              <i class="ri-layout-card-line me-1"></i> UniversalCard
+            </div>
+            <div class="card-body bg-light">
+              <pre class="mb-0"><code>{{universalCardCode}}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UniversalCard Interface -->
+    <section id="interface" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-code-s-slash-line me-2 text-info"></i>
+        UniversalCard Interface
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{interfaceCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mapping Strategy -->
+    <section id="mapping" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-exchange-line me-2 text-info"></i>
+        Mapping Entity to UniversalCard
+      </h4>
+      
+      <p>
+        The mapping uses the EntitySchema to know which fields map to which card properties:
+      </p>
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th>Card Property</th>
+              <th>Mapped From</th>
+              <th>Field Flag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>title</code></td>
+              <td>First field with <code>isPrimary: true</code></td>
+              <td>Usually <code>title</code> or <code>name</code></td>
+            </tr>
+            <tr>
+              <td><code>subtitle</code></td>
+              <td>Status field label (looked up from options)</td>
+              <td><code>field: 'status'</code></td>
+            </tr>
+            <tr>
+              <td><code>description</code></td>
+              <td>Description field (if browsable)</td>
+              <td><code>type: 'textarea'</code></td>
+            </tr>
+            <tr>
+              <td><code>badges</code></td>
+              <td>Fields with <code>summary: true</code></td>
+              <td>Priority, category, tags</td>
+            </tr>
+            <tr>
+              <td><code>metadata</code></td>
+              <td>Fields shown in compact view</td>
+              <td>Due date, assignee, etc.</td>
+            </tr>
+            <tr>
+              <td><code>icon</code></td>
+              <td>From entity schema or status option</td>
+              <td><code>EntitySchema.icon</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h6 class="mt-4">Mapping Function Example</h6>
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{mappingFunctionCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rendering Modes -->
+    <section id="rendering" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-layout-grid-line me-2 text-info"></i>
+        How Cards Render in Different Modes
+      </h4>
+      
+      <p>
+        The same UniversalCard data renders differently depending on the view mode:
+      </p>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <i class="ri-layout-grid-fill me-1"></i> Tiles Mode
+            </div>
+            <div class="card-body">
+              <ul class="mb-0">
+                <li>Shows <code>title</code> prominently</li>
+                <li>Displays <code>badges</code> as small pills</li>
+                <li>Shows 1-2 <code>metadata</code> items</li>
+                <li>Icon in top corner</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <i class="ri-layout-cards-fill me-1"></i> Cards Mode
+            </div>
+            <div class="card-body">
+              <ul class="mb-0">
+                <li>Larger card with <code>image</code></li>
+                <li>Shows <code>description</code> excerpt</li>
+                <li>All <code>badges</code> visible</li>
+                <li>More <code>metadata</code> items</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <i class="ri-table-2 me-1"></i> Table Mode
+            </div>
+            <div class="card-body">
+              <ul class="mb-0">
+                <li><code>title</code> in first column</li>
+                <li><code>badges</code> as inline tags</li>
+                <li><code>metadata</code> in separate columns</li>
+                <li>Actions in last column</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <i class="ri-list-check-2 me-1"></i> List Mode
+            </div>
+            <div class="card-body">
+              <ul class="mb-0">
+                <li>Compact single-line rows</li>
+                <li><code>title</code> + <code>subtitle</code> inline</li>
+                <li>Key <code>metadata</code> only</li>
+                <li>Checkbox for selection</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section id="best-practices" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-checkbox-circle-line me-2 text-success"></i>
+        Best Practices
+      </h4>
+      
+      <ul>
+        <li>
+          <strong>Always have a primary field</strong> — Mark one field as 
+          <code>isPrimary: true</code> to ensure cards always have a title.
+        </li>
+        <li>
+          <strong>Limit summary fields</strong> — Only 2-3 fields should have 
+          <code>summary: true</code> to avoid badge clutter.
+        </li>
+        <li>
+          <strong>Provide icons for status options</strong> — Status badges look 
+          better with icons from the options array.
+        </li>
+        <li>
+          <strong>Keep metadata concise</strong> — Format dates, truncate long 
+          values, and show only relevant fields.
+        </li>
+        <li>
+          <strong>Preserve original data</strong> — Always include <code>data</code> 
+          so detail/edit views can access full entity.
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- Next Article -->
+  <div class="card bg-light mt-5">
+    <div class="card-body d-flex justify-content-between align-items-center">
+      <div>
+        <span class="text-muted small">Next Article</span>
+        <h6 class="mb-0">Browse View Schema</h6>
+      </div>
+      <a routerLink="../browse" class="btn btn-primary">
+        Continue <i class="ri-arrow-right-line ms-1"></i>
+      </a>
+    </div>
+  </div>
+</div>

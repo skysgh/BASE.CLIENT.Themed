@@ -1,0 +1,183 @@
+<div class="article-container container-fluid">
+  <!-- Navigation -->
+  <div class="top-nav-bar mb-3 d-flex justify-content-between">
+    <a routerLink="../overview" class="btn btn-soft-secondary">
+      <i class="ri-arrow-left-line me-1"></i>
+      Previous: Overview
+    </a>
+    <a routerLink="../cards" class="btn btn-primary">
+      Next: UniversalCard Mapping
+      <i class="ri-arrow-right-line ms-1"></i>
+    </a>
+  </div>
+
+  <!-- Article Header -->
+  <div class="article-header mb-4">
+    <div class="d-flex align-items-center mb-2">
+      <span class="text-muted small">Article 2 of 6</span>
+    </div>
+    <h2 class="mb-2">Entity Definition</h2>
+    <p class="lead text-muted">
+      Defining fields, data types, lookups, permissions, and data source configuration.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="article-content">
+    
+    <!-- EntitySchema Structure -->
+    <section id="structure" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-layout-line me-2 text-info"></i>
+        EntitySchema Structure
+      </h4>
+      
+      <p>
+        An EntitySchema is the top-level definition for an entity/aggregate type. 
+        Here's the basic structure:
+      </p>
+      
+      <div class="card bg-dark text-light mb-4">
+        <div class="card-header bg-dark border-bottom border-secondary">
+          <code class="text-info">EntitySchema Interface</code>
+        </div>
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{entitySchemaCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Field Definitions -->
+    <section id="fields" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-input-field me-2 text-info"></i>
+        Field Definitions
+      </h4>
+      
+      <p>
+        Fields are the core building blocks. Each field definition describes a data property 
+        and how it should be rendered across different views.
+      </p>
+
+      <h6 class="mt-4">Field Types</h6>
+      <div class="table-responsive">
+        <table class="table table-sm table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Form Control</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>text</code></td><td>Single-line text</td><td>Input</td></tr>
+            <tr><td><code>textarea</code></td><td>Multi-line text</td><td>Textarea</td></tr>
+            <tr><td><code>richtext</code></td><td>HTML content</td><td>Rich Text Editor</td></tr>
+            <tr><td><code>number</code></td><td>Numeric value</td><td>Number Input</td></tr>
+            <tr><td><code>date</code></td><td>Date only</td><td>Date Picker</td></tr>
+            <tr><td><code>datetime</code></td><td>Date and time</td><td>DateTime Picker</td></tr>
+            <tr><td><code>select</code></td><td>Single selection</td><td>Dropdown/Select</td></tr>
+            <tr><td><code>multiselect</code></td><td>Multiple selections</td><td>Multi-Select</td></tr>
+            <tr><td><code>checkbox</code></td><td>Boolean toggle</td><td>Checkbox</td></tr>
+            <tr><td><code>email</code></td><td>Email address</td><td>Email Input</td></tr>
+            <tr><td><code>url</code></td><td>URL/Link</td><td>URL Input</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h6 class="mt-4">Field Properties</h6>
+      <div class="card bg-dark text-light mb-4">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{fieldDefinitionCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6 class="mt-4">Example Field Definitions</h6>
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{fieldExamplesCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lookups -->
+    <section id="lookups" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-links-line me-2 text-info"></i>
+        Named Lookups
+      </h4>
+      
+      <p>
+        Lookups define reusable option sources that can be referenced by multiple fields. 
+        This avoids duplicating API configurations and enables centralized caching.
+      </p>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{lookupsCode}}</code></pre>
+        </div>
+      </div>
+
+      <div class="alert alert-info mt-3 border-0">
+        <i class="ri-lightbulb-line me-2"></i>
+        <strong>Tip:</strong> Use lookups for frequently-used reference data like users, 
+        categories, or statuses. Fields reference them via <code>lookupRef: 'lookupId'</code>.
+      </div>
+    </section>
+
+    <!-- Data Source -->
+    <section id="datasource" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-database-2-line me-2 text-info"></i>
+        Data Source Configuration
+      </h4>
+      
+      <p>
+        The dataSource configuration tells the schema where to fetch and persist entity data.
+      </p>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{dataSourceCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Permissions -->
+    <section id="permissions" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-shield-keyhole-line me-2 text-info"></i>
+        Permissions
+      </h4>
+      
+      <p>
+        Permissions control access to BREAD operations. Values can be:
+      </p>
+      <ul>
+        <li><code>true</code> — Everyone has access</li>
+        <li><code>false</code> — No one has access</li>
+        <li><code>"permission.name"</code> — Check against user's permissions</li>
+      </ul>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{permissionsCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Next Article -->
+  <div class="card bg-light mt-5">
+    <div class="card-body d-flex justify-content-between align-items-center">
+      <div>
+        <span class="text-muted small">Next Article</span>
+        <h6 class="mb-0">UniversalCard Mapping</h6>
+      </div>
+      <a routerLink="../cards" class="btn btn-primary">
+        Continue <i class="ri-arrow-right-line ms-1"></i>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1447,15 +1447,14 @@
       "description": "Bardot",
       "categoryId": "1",
       "statusId": "1",
-      "dueDate": "2026-01-01",
-      "priority": 4,
-      "classificationIds": [
-        "1"
-      ],
+      "dueDate": null,
+      "estimatedEffort": null,
+      "priority": 3,
+      "classificationIds": [],
       "parts": [],
       "items": [],
-      "createdUtc": "2025-12-29T23:16:52.080Z",
-      "modifiedUtc": "2025-12-29T23:16:52.080Z"
+      "createdUtc": "2026-01-03T09:44:21.883Z",
+      "modifiedUtc": "2026-01-03T09:44:21.883Z"
     },
     {
       "id": "e9beb30d-7360-477d-bffe-f2c46db8b33a",

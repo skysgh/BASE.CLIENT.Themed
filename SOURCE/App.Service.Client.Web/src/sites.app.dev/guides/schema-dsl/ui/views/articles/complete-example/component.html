@@ -1,0 +1,247 @@
+<div class="article-container container-fluid">
+  <!-- Navigation -->
+  <div class="top-nav-bar mb-3 d-flex justify-content-between">
+    <a routerLink="../forms" class="btn btn-soft-secondary">
+      <i class="ri-arrow-left-line me-1"></i>
+      Previous: Form Schemas
+    </a>
+    <a routerLink=".." class="btn btn-soft-primary">
+      <i class="ri-home-line me-1"></i>
+      Back to Guide Hub
+    </a>
+  </div>
+
+  <!-- Article Header -->
+  <div class="article-header mb-4">
+    <div class="d-flex align-items-center mb-2">
+      <span class="badge bg-soft-primary text-primary me-2">With Code</span>
+      <span class="text-muted small">Article 6 of 6</span>
+    </div>
+    <h2 class="mb-2">Complete Example: Spike Entity</h2>
+    <p class="lead text-muted">
+      A full walkthrough of the Spike entity schema showing all DSL features in action.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="article-content">
+    
+    <!-- Introduction -->
+    <section id="intro" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-lightbulb-flash-line me-2 text-info"></i>
+        The Spike Entity
+      </h4>
+      
+      <p>
+        A "Spike" represents a technical investigation or proof-of-concept work in an 
+        agile development process. This is a great example entity because it demonstrates:
+      </p>
+
+      <ul>
+        <li>Multiple field types (text, select, date, richtext, etc.)</li>
+        <li>Static options (status, priority) and dynamic lookups (users, categories)</li>
+        <li>Tabbed form layout with groups</li>
+        <li>Browse view with filters, sorting, and multiple display modes</li>
+        <li>Permissions-based access control</li>
+        <li>MRU (Most Recently Used) tracking</li>
+      </ul>
+
+      <div class="alert alert-light border">
+        <i class="ri-file-code-line me-2"></i>
+        <strong>Source File:</strong>
+        <code>core/models/schema/examples/spike-entity-schema.example.ts</code>
+      </div>
+    </section>
+
+    <!-- Step 1: Identity -->
+    <section id="step-1" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <span class="badge bg-primary me-2">1</span>
+        Define Entity Identity
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-header bg-dark border-bottom border-secondary">
+          <code class="text-info">Entity Identity</code>
+        </div>
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{identityCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 2: Fields -->
+    <section id="step-2" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <span class="badge bg-primary me-2">2</span>
+        Define Master Fields
+      </h4>
+
+      <p>
+        Fields are the core building blocks. Let's define them by category:
+      </p>
+
+      <h6 class="mt-4">Identity Field</h6>
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{idFieldCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Primary Display Field (Title)</h6>
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{titleFieldCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Select with Static Options (Status)</h6>
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{statusFieldCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Select with API Options (Category)</h6>
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{categoryFieldCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Lookup Reference (Assignee)</h6>
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{assigneeFieldCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Fields with Tab/Group Assignment</h6>
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{tabGroupFieldsCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: Lookups -->
+    <section id="step-3" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <span class="badge bg-primary me-2">3</span>
+        Define Named Lookups
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{lookupsCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 4: Views -->
+    <section id="step-4" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <span class="badge bg-primary me-2">4</span>
+        Configure Views
+      </h4>
+
+      <h6>Browse View</h6>
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{browseViewCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Edit View</h6>
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{editViewCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 5: Data Source & Permissions -->
+    <section id="step-5" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <span class="badge bg-primary me-2">5</span>
+        Data Source &amp; Permissions
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{dataSourceCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Usage -->
+    <section id="usage" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-terminal-box-line me-2 text-info"></i>
+        Using the Schema
+      </h4>
+
+      <h6>In a Component</h6>
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{usageComponentCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Loading from API</h6>
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{usageApiCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Export as JSON</h6>
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{usageJsonCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Summary -->
+    <section id="summary" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-checkbox-circle-line me-2 text-success"></i>
+        Summary
+      </h4>
+      
+      <div class="card bg-success-subtle border-success">
+        <div class="card-body">
+          <h6 class="text-success">What We Covered</h6>
+          <ul class="mb-0">
+            <li>Defined entity identity (id, name, icon, color)</li>
+            <li>Created master field definitions with various types</li>
+            <li>Used static options, API-driven options, and named lookups</li>
+            <li>Configured browse view with search, filter, sort, and display modes</li>
+            <li>Built edit form with tabs and groups</li>
+            <li>Set up data source endpoints and permissions</li>
+            <li>Enabled features like soft delete, audit, and MRU tracking</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Finish -->
+  <div class="card bg-primary text-white mt-5">
+    <div class="card-body text-center py-4">
+      <i class="ri-checkbox-circle-line display-4 mb-3"></i>
+      <h5>Congratulations!</h5>
+      <p class="mb-3">
+        You've completed the Entity Schema DSL guide. You now have the knowledge to 
+        create schema-driven UIs for your domain entities.
+      </p>
+      <a routerLink=".." class="btn btn-light">
+        <i class="ri-arrow-left-line me-1"></i>
+        Back to Guide Hub
+      </a>
+    </div>
+  </div>
+</div>

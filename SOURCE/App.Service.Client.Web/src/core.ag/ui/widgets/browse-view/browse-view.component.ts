@@ -125,6 +125,8 @@ export interface CardClickEvent {
         <app-browse-search-panel
           [query]="searchQuery"
           [placeholder]="searchPlaceholder"
+          [entityIcon]="searchEntityIcon"
+          [hint]="searchHint"
           (queryChange)="onSearchChange($event)"
           (search)="onSearchSubmit($event)"
           (clear)="onSearchClear()">
@@ -572,6 +574,12 @@ export class BrowseViewComponent implements OnChanges {
   
   /** Current search query */
   @Input() searchQuery = '';
+  
+  /** Entity icon for search (e.g., 'bx-bulb' for Spikes) */
+  @Input() searchEntityIcon?: string;
+  
+  /** Search hint text */
+  @Input() searchHint?: string;
   
   // ═══════════════════════════════════════════════════════════════════
   // Inputs - Panels

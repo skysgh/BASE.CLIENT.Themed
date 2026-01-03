@@ -1,0 +1,293 @@
+<div class="article-container container-fluid">
+  <!-- Navigation -->
+  <div class="top-nav-bar mb-3 d-flex justify-content-between">
+    <a routerLink="../browse" class="btn btn-soft-secondary">
+      <i class="ri-arrow-left-line me-1"></i>
+      Previous: Browse View
+    </a>
+    <a routerLink="../example" class="btn btn-primary">
+      Next: Complete Example
+      <i class="ri-arrow-right-line ms-1"></i>
+    </a>
+  </div>
+
+  <!-- Article Header -->
+  <div class="article-header mb-4">
+    <div class="d-flex align-items-center mb-2">
+      <span class="text-muted small">Article 5 of 6</span>
+    </div>
+    <h2 class="mb-2">Form Schemas (Formly)</h2>
+    <p class="lead text-muted">
+      Building edit, add, and view forms with tabs, groups, validation, and conditional logic.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="article-content">
+    
+    <!-- Overview -->
+    <section id="overview" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-file-edit-line me-2 text-info"></i>
+        Form Views Overview
+      </h4>
+      
+      <p>
+        The EntitySchema defines three form-based views that share the same underlying 
+        <code>FormViewSchema</code> structure:
+      </p>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-warning">
+            <div class="card-header bg-warning-subtle">
+              <h6 class="mb-0"><i class="ri-pencil-line me-2"></i>Edit View</h6>
+            </div>
+            <div class="card-body">
+              <p class="small mb-0">
+                Full form for modifying existing entities. All editable fields shown 
+                with current values loaded.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-primary">
+            <div class="card-header bg-primary-subtle">
+              <h6 class="mb-0"><i class="ri-add-line me-2"></i>Add View</h6>
+            </div>
+            <div class="card-body">
+              <p class="small mb-0">
+                Form for creating new entities. Often derived from Edit with 
+                different defaults and validation.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-success">
+            <div class="card-header bg-success-subtle">
+              <h6 class="mb-0"><i class="ri-eye-line me-2"></i>Detail View</h6>
+            </div>
+            <div class="card-body">
+              <p class="small mb-0">
+                Read-only view of entity. Same layout as Edit but all fields 
+                rendered as display-only.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-info border-0">
+        <i class="ri-lightbulb-line me-2"></i>
+        <strong>Deriving Views:</strong> If you only define <code>views.edit</code>, 
+        the system automatically derives Add and Detail views from it. You can override 
+        specific properties in <code>views.add</code> or <code>views.detail</code> as needed.
+      </div>
+    </section>
+
+    <!-- FormViewSchema Structure -->
+    <section id="schema" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-code-s-slash-line me-2 text-info"></i>
+        FormViewSchema Structure
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{formViewSchemaCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs and Groups -->
+    <section id="tabs-groups" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-layout-top-2-line me-2 text-info"></i>
+        Tabs and Groups
+      </h4>
+      
+      <p>
+        Complex forms benefit from organization into tabs and groups. Fields can 
+        reference their placement via <code>tab</code> and <code>group</code> properties.
+      </p>
+
+      <div class="card bg-light mb-4">
+        <div class="card-body">
+          <pre class="mb-0"><code>┌─────────────────────────────────────────────────────────────────┐
+│  [General] [Schedule] [Outcome] [History]     ◄─ Tabs           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ┌─ Basic Info ────────────────────────────┐  ◄─ Group          │
+│  │ Title: [____________________]           │                    │
+│  │ Description: [______________]           │                    │
+│  └──────────────────────────────────────────┘                    │
+│                                                                  │
+│  ┌─ Classification ─────────────────────────┐                    │
+│  │ Status: [Draft ▼]  Priority: [Medium ▼] │                    │
+│  │ Category: [Select... ▼]                 │                    │
+│  └──────────────────────────────────────────┘                    │
+│                                                                  │
+│                              [Cancel] [Save]                     │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+        </div>
+      </div>
+
+      <h6>Tab Definition</h6>
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{tabsCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Group Definition</h6>
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{groupsCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Field to Formly Mapping -->
+    <section id="formly" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-exchange-line me-2 text-info"></i>
+        Field to Formly Mapping
+      </h4>
+      
+      <p>
+        Each field type maps to a Formly field type for rendering:
+      </p>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+          <thead class="table-light">
+            <tr>
+              <th>Schema Type</th>
+              <th>Formly Type</th>
+              <th>Component</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>text</code></td><td><code>input</code></td><td>Text input</td></tr>
+            <tr><td><code>textarea</code></td><td><code>textarea</code></td><td>Multi-line textarea</td></tr>
+            <tr><td><code>richtext</code></td><td><code>richtext</code></td><td>Rich text editor (Quill)</td></tr>
+            <tr><td><code>number</code></td><td><code>input[type=number]</code></td><td>Number input</td></tr>
+            <tr><td><code>date</code></td><td><code>datepicker</code></td><td>Date picker</td></tr>
+            <tr><td><code>datetime</code></td><td><code>datetimepicker</code></td><td>DateTime picker</td></tr>
+            <tr><td><code>select</code></td><td><code>select</code></td><td>Dropdown</td></tr>
+            <tr><td><code>multiselect</code></td><td><code>multiselect</code></td><td>Multi-select</td></tr>
+            <tr><td><code>checkbox</code></td><td><code>checkbox</code></td><td>Checkbox</td></tr>
+            <tr><td><code>toggle</code></td><td><code>toggle</code></td><td>Switch toggle</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h6 class="mt-4">Formly Field Generation</h6>
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{formlyMappingCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Validation -->
+    <section id="validation" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-shield-check-line me-2 text-info"></i>
+        Validation
+      </h4>
+      
+      <p>
+        Validation rules are defined on field schemas and converted to Formly validators:
+      </p>
+
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{validationCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Built-in Validators</h6>
+      <ul>
+        <li><code>required</code> — Field must have a value</li>
+        <li><code>minLength</code> / <code>maxLength</code> — String length constraints</li>
+        <li><code>min</code> / <code>max</code> — Numeric range constraints</li>
+        <li><code>pattern</code> — Regular expression match</li>
+        <li><code>email</code> — Valid email format (built into type='email')</li>
+        <li><code>url</code> — Valid URL format (built into type='url')</li>
+      </ul>
+    </section>
+
+    <!-- Conditional Fields -->
+    <section id="conditional" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-git-branch-line me-2 text-info"></i>
+        Conditional Fields
+      </h4>
+      
+      <p>
+        Fields can be shown/hidden or enabled/disabled based on other field values:
+      </p>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{conditionalCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mode-Specific Behavior -->
+    <section id="modes" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-split-cells-horizontal me-2 text-info"></i>
+        Mode-Specific Behavior
+      </h4>
+      
+      <p>
+        The same schema can behave differently in Add, Edit, and Detail modes:
+      </p>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{modesCode}}</code></pre>
+        </div>
+      </div>
+
+      <div class="alert alert-info mt-3 border-0">
+        <i class="ri-lightbulb-line me-2"></i>
+        <strong>Helper Function:</strong> Use <code>getSchemaForMode(editSchema, 'add')</code> 
+        to automatically derive an Add schema from Edit, applying appropriate transformations.
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <section id="actions" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-menu-line me-2 text-info"></i>
+        Form Actions
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{actionsCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Next Article -->
+  <div class="card bg-light mt-5">
+    <div class="card-body d-flex justify-content-between align-items-center">
+      <div>
+        <span class="text-muted small">Next Article</span>
+        <h6 class="mb-0">Complete Example</h6>
+      </div>
+      <a routerLink="../example" class="btn btn-primary">
+        Continue <i class="ri-arrow-right-line ms-1"></i>
+      </a>
+    </div>
+  </div>
+</div>

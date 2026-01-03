@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { TrashService, IDeletedItem } from '../../../services/trash.service';
-import { NavigationTreeService } from '../../../../../core/navigation/navigation-tree.service';
+import { NavigationService } from '../../../../../core/services/navigation.service';
 
 @Component({
   selector: 'app-trash-hub',
@@ -35,7 +35,7 @@ import { NavigationTreeService } from '../../../../../core/navigation/navigation
           
           <!-- Actions -->
           <div class="d-flex gap-2 align-items-center">
-            <a routerLink="/apps/system/hub" class="btn btn-outline-secondary">
+            <a [routerLink]="hubRoute" class="btn btn-outline-secondary">
               <i class="bx bx-arrow-back me-1"></i>
               Back to Hub
             </a>
@@ -225,9 +225,13 @@ import { NavigationTreeService } from '../../../../../core/navigation/navigation
 })
 export class TrashHubComponent implements OnInit {
   trashService = inject(TrashService);
-  private navTree = inject(NavigationTreeService);
+  private navService = inject(NavigationService);
+  
+  // Account-aware route to hub
+  hubRoute: string = '';
   
   ngOnInit(): void {
+    this.hubRoute = this.navService.getUrl('apps/system/hub');
     this.trashService.loadDeletedItems();
   }
   

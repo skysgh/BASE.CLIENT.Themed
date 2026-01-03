@@ -131,10 +131,12 @@ export class NavigationDataService {
    */
   private buildNavigationWithApplets(appletItems: AppletNavItem[]): void {
     // Build canonical navigation structure
+    // Note: Information section removed - Privacy/Terms/Support/Settings 
+    // are accessible via other means (compliance module, support module, topbar gear icon)
     const navData: NavigationData = {
       sections: [
         this.buildMainSection(appletItems),
-        this.buildInformationSection(),
+        // Information section removed to clean up sidebar
       ],
       footer: this.buildFooterItems(),
       userMenu: this.buildUserMenuItems(),
@@ -177,47 +179,14 @@ export class NavigationDataService {
   }
 
   /**
-   * Build information section
-   */
-  private buildInformationSection(): NavigationSection {
-    return {
-      id: 'information',
-      title: 'BASE.INFORMATIONS.SINGULAR',
-      items: [
-        {
-          id: 'privacy',
-          label: 'BASE.POLICIES.PRIVACY',
-          icon: 'lock',
-          route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, 'compliance', 'privacy')
-        },
-        {
-          id: 'terms',
-          label: 'BASE.TERMS.TERMS_AND_CONDITIONS',
-          icon: 'file',
-          route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, 'compliance', 'terms')
-        },
-        {
-          id: 'support',
-          label: 'BASE.SUPPORT.SINGULAR',
-          icon: 'help-circle',
-          route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, 'support')
-        }
-      ],
-      order: 2
-    };
-  }
-
-  /**
    * Build footer navigation items
+   * 
+   * NOTE: Settings removed from sidebar footer.
+   * Settings is accessible via the gear icon in the topbar.
    */
   private buildFooterItems(): NavigationItem[] {
     return [
-      {
-        id: 'settings',
-        label: 'BASE.SETTINGS.PLURAL',
-        icon: 'cog',
-        route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, ROUTE_SEGMENTS.SETTINGS)
-      }
+      // Settings removed - accessible via topbar gear icon
     ];
   }
 

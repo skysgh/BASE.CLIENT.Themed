@@ -1,0 +1,313 @@
+<div class="article-container container-fluid">
+  <!-- Navigation -->
+  <div class="top-nav-bar mb-3 d-flex justify-content-between">
+    <a routerLink=".." class="btn btn-soft-primary">
+      <i class="ri-arrow-left-line me-1"></i>
+      Back to Schema DSL Guide
+    </a>
+    <a routerLink="../entity" class="btn btn-primary">
+      Next: Entity Definition
+      <i class="ri-arrow-right-line ms-1"></i>
+    </a>
+  </div>
+
+  <!-- Article Header -->
+  <div class="article-header mb-4">
+    <div class="d-flex align-items-center mb-2">
+      <span class="badge bg-success me-2">Start Here</span>
+      <span class="text-muted small">Article 1 of 6</span>
+    </div>
+    <h2 class="mb-2">Overview & Concepts</h2>
+    <p class="lead text-muted">
+      Understanding the Schema DSL architecture and how it enables schema-driven UI rendering.
+    </p>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="card mb-4">
+    <div class="card-header bg-light">
+      <h6 class="mb-0"><i class="ri-list-unordered me-2"></i>In This Article</h6>
+    </div>
+    <div class="card-body">
+      <ul class="mb-0">
+        <li><a href="#what-is" class="text-body">What is the Entity Schema DSL?</a></li>
+        <li><a href="#bread-pattern" class="text-body">The BREAD Pattern Explained</a></li>
+        <li><a href="#architecture" class="text-body">Architecture Overview</a></li>
+        <li><a href="#benefits" class="text-body">Benefits of Schema-Driven UI</a></li>
+        <li><a href="#when-to-use" class="text-body">When to Use This Approach</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="article-content">
+    
+    <!-- What Is Section -->
+    <section id="what-is" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-question-line me-2 text-info"></i>
+        What is the Entity Schema DSL?
+      </h4>
+      
+      <p>
+        The Entity Schema DSL (Domain-Specific Language) is a declarative way to define 
+        the structure, behavior, and presentation of domain entities in your application. 
+        Instead of writing separate code for list views, forms, and detail pages, you 
+        define a single schema that describes:
+      </p>
+      
+      <ul>
+        <li><strong>Fields</strong> — What data the entity contains</li>
+        <li><strong>Lookups</strong> — How to load reference data (dropdowns, selects)</li>
+        <li><strong>Views</strong> — How to present the entity in Browse, Edit, Add, and Detail modes</li>
+        <li><strong>Permissions</strong> — Who can do what with the entity</li>
+        <li><strong>Data Source</strong> — API endpoints for CRUD operations</li>
+      </ul>
+      
+      <div class="alert alert-info border-0">
+        <i class="ri-lightbulb-line me-2"></i>
+        <strong>Key Insight:</strong> The schema acts as a "contract" between the server 
+        and client. The server can provide schema definitions via API, enabling truly 
+        dynamic UI generation without client-side code changes.
+      </div>
+    </section>
+
+    <!-- BREAD Pattern Section -->
+    <section id="bread-pattern" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-stack-line me-2 text-info"></i>
+        The BREAD Pattern Explained
+      </h4>
+      
+      <p>
+        BREAD extends the traditional CRUD pattern to better reflect how users actually 
+        interact with data in modern applications:
+      </p>
+      
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th style="width: 80px">Letter</th>
+              <th style="width: 120px">Operation</th>
+              <th>Description</th>
+              <th style="width: 150px">Schema Section</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge bg-info">B</span></td>
+              <td><strong>Browse</strong></td>
+              <td>
+                Search, filter, and list entities. Users spend most time here, 
+                so it supports multiple view modes (tiles, table, cards, list).
+              </td>
+              <td><code>views.browse</code></td>
+            </tr>
+            <tr>
+              <td><span class="badge bg-success">R</span></td>
+              <td><strong>Read</strong></td>
+              <td>
+                View a single entity's details in read-only mode. Good for 
+                quick inspection without risk of accidental changes.
+              </td>
+              <td><code>views.detail</code></td>
+            </tr>
+            <tr>
+              <td><span class="badge bg-warning">E</span></td>
+              <td><strong>Edit</strong></td>
+              <td>
+                Modify an existing entity. Form with validation, tabs, 
+                and conditional fields.
+              </td>
+              <td><code>views.edit</code></td>
+            </tr>
+            <tr>
+              <td><span class="badge bg-primary">A</span></td>
+              <td><strong>Add</strong></td>
+              <td>
+                Create a new entity. Often derived from Edit with different 
+                defaults and required fields.
+              </td>
+              <td><code>views.add</code></td>
+            </tr>
+            <tr>
+              <td><span class="badge bg-danger">D</span></td>
+              <td><strong>Delete</strong></td>
+              <td>
+                Remove an entity. Supports soft-delete (mark as deleted) 
+                or hard-delete (permanent removal).
+              </td>
+              <td><code>enableSoftDelete</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-organization-chart me-2 text-info"></i>
+        Architecture Overview
+      </h4>
+      
+      <p>The schema-driven rendering pipeline works as follows:</p>
+      
+      <div class="card bg-light mb-4">
+        <div class="card-body">
+          <pre class="mb-0"><code>┌─────────────────────────────────────────────────────────────────┐
+│                        EntitySchema                              │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐ │
+│  │   Fields    │  │   Lookups   │  │        Views            │ │
+│  │ (master)    │  │ (shared)    │  │  ┌───────┐ ┌──────┐    │ │
+│  └─────────────┘  └─────────────┘  │  │Browse │ │ Edit │    │ │
+│                                     │  └───────┘ └──────┘    │ │
+│                                     │  ┌───────┐ ┌──────┐    │ │
+│                                     │  │ Add   │ │Detail│    │ │
+│                                     │  └───────┘ └──────┘    │ │
+│                                     └─────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+              ┌───────────────────────────────┐
+              │     Schema Interpretation      │
+              │                               │
+              │  • Field → Form Control       │
+              │  • Field → Column/Card Cell   │
+              │  • Lookup → Select Options    │
+              │  • Permissions → UI State     │
+              └───────────────────────────────┘
+                              │
+                              ▼
+              ┌───────────────────────────────┐
+              │      Rendered UI              │
+              │                               │
+              │  • BrowseView (tiles/table)   │
+              │  • FormView (Formly forms)    │
+              │  • DetailView (read-only)     │
+              └───────────────────────────────┘</code></pre>
+        </div>
+      </div>
+      
+      <h6>Key Components</h6>
+      <ul>
+        <li>
+          <strong>EntitySchema</strong> — The master definition containing all field 
+          and view configurations
+        </li>
+        <li>
+          <strong>BrowseViewSchema</strong> — Configuration for the list/browse view 
+          including filters, sorting, and display modes
+        </li>
+        <li>
+          <strong>FormViewSchema</strong> — Configuration for forms including tabs, 
+          groups, validation, and layout
+        </li>
+        <li>
+          <strong>UniversalCard</strong> — A normalized data structure for rendering 
+          entities consistently across different view modes
+        </li>
+      </ul>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-checkbox-circle-line me-2 text-success"></i>
+        Benefits of Schema-Driven UI
+      </h4>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="card h-100 border-success">
+            <div class="card-body">
+              <h6><i class="ri-code-s-slash-line text-success me-2"></i>Less Code</h6>
+              <p class="text-muted small mb-0">
+                Define once, render everywhere. No need to write separate components 
+                for each entity's list, edit, and detail views.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-success">
+            <div class="card-body">
+              <h6><i class="ri-refresh-line text-success me-2"></i>Consistency</h6>
+              <p class="text-muted small mb-0">
+                All entities follow the same patterns and styling, creating a 
+                predictable user experience.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-success">
+            <div class="card-body">
+              <h6><i class="ri-server-line text-success me-2"></i>Server-Driven</h6>
+              <p class="text-muted small mb-0">
+                Schemas can be loaded from the API, enabling UI changes without 
+                deploying new client code.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-success">
+            <div class="card-body">
+              <h6><i class="ri-user-settings-line text-success me-2"></i>Customizable</h6>
+              <p class="text-muted small mb-0">
+                Users or admins can override schemas to customize field visibility, 
+                labels, and default values.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- When to Use Section -->
+    <section id="when-to-use" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-question-answer-line me-2 text-info"></i>
+        When to Use This Approach
+      </h4>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <h6 class="text-success"><i class="ri-check-line me-1"></i>Good Fit</h6>
+          <ul>
+            <li>CRUD-heavy applications (admin panels, CMS, data management)</li>
+            <li>Multi-tenant systems where schemas vary per tenant</li>
+            <li>Rapid prototyping and iterating on data models</li>
+            <li>Applications with many similar entity types</li>
+            <li>When consistency across views is important</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h6 class="text-warning"><i class="ri-close-line me-1"></i>Consider Alternatives</h6>
+          <ul>
+            <li>Highly custom/unique UIs that don't follow patterns</li>
+            <li>Simple apps with just 1-2 entities</li>
+            <li>Performance-critical views needing hand-optimized rendering</li>
+            <li>Complex interactive visualizations (dashboards, charts)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Next Article -->
+  <div class="card bg-light mt-5">
+    <div class="card-body d-flex justify-content-between align-items-center">
+      <div>
+        <span class="text-muted small">Next Article</span>
+        <h6 class="mb-0">Entity Definition</h6>
+      </div>
+      <a routerLink="../entity" class="btn btn-primary">
+        Continue <i class="ri-arrow-right-line ms-1"></i>
+      </a>
+    </div>
+  </div>
+</div>

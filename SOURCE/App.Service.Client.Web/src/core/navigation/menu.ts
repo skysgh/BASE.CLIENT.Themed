@@ -25,13 +25,7 @@ export const MENU: IHasMenuItem[] =
       icon: 'home',
       link: appsConfiguration.navigation.dashboards.root,
     },
-    {
-      id: 15,
-      title: 'BASE.SEARCH.SINGULAR',
-      description: 'BASE.SEARCH.DESCRIPTION',
-      icon: 'search',
-      link: `/${ROUTE_SEGMENTS.APPS}/${ROUTE_SEGMENTS.SEARCH}`,
-    },
+    // Search removed - accessible via topbar search icon instead
     // DYNAMIC APPLETS SECTION - will be populated by sidebar component
     {
       id: 20,

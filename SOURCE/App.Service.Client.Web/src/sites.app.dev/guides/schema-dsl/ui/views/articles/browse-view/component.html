@@ -1,0 +1,256 @@
+<div class="article-container container-fluid">
+  <!-- Navigation -->
+  <div class="top-nav-bar mb-3 d-flex justify-content-between">
+    <a routerLink="../cards" class="btn btn-soft-secondary">
+      <i class="ri-arrow-left-line me-1"></i>
+      Previous: UniversalCard Mapping
+    </a>
+    <a routerLink="../forms" class="btn btn-primary">
+      Next: Form Schemas
+      <i class="ri-arrow-right-line ms-1"></i>
+    </a>
+  </div>
+
+  <!-- Article Header -->
+  <div class="article-header mb-4">
+    <div class="d-flex align-items-center mb-2">
+      <span class="text-muted small">Article 4 of 6</span>
+    </div>
+    <h2 class="mb-2">Browse View Schema</h2>
+    <p class="lead text-muted">
+      Configuring list views with filters, sorting, pagination, and multiple display modes.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="article-content">
+    
+    <!-- Overview -->
+    <section id="overview" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-list-check-2 me-2 text-info"></i>
+        Browse View Overview
+      </h4>
+      
+      <p>
+        The Browse View is where users spend most of their time — searching, filtering, 
+        and navigating through entity lists. The <code>BrowseViewSchema</code> configures 
+        all aspects of this experience.
+      </p>
+
+      <div class="card bg-light mb-4">
+        <div class="card-body">
+          <pre class="mb-0"><code>┌──────────────────────────────────────────────────────────────────┐
+│  Browse View Layout                                              │
+├──────────────────────────────────────────────────────────────────┤
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │ 🔍 Search...                              [Filter] [Sort] │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │ Filter Panel (collapsible)                               │   │
+│  │ Status: [All ▼]  Priority: [All ▼]  Date: [Any ▼]       │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│                                                                  │
+│  ┌────────────────────────────────────────┐ View: [🔲][≡][📊]   │
+│  │                                        │                      │
+│  │  Cards / Tiles / Table / List / Chart  │  ◄─ Display Modes   │
+│  │                                        │                      │
+│  └────────────────────────────────────────┘                      │
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │ ◄ 1 2 3 ... 10 ►           Showing 1-20 of 195          │   │
+│  └──────────────────────────────────────────────────────────┘   │
+└──────────────────────────────────────────────────────────────────┘</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schema Structure -->
+    <section id="schema" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-code-s-slash-line me-2 text-info"></i>
+        BrowseViewSchema Structure
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{schemaCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Panel -->
+    <section id="search" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-search-line me-2 text-info"></i>
+        Search Configuration
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{searchCode}}</code></pre>
+        </div>
+      </div>
+
+      <div class="alert alert-info mt-3 border-0">
+        <i class="ri-lightbulb-line me-2"></i>
+        <strong>Tip:</strong> The <code>searchFields</code> should match fields marked 
+        with <code>searchable: true</code> in the entity schema. Use <code>searchWeight</code> 
+        to prioritize certain fields.
+      </div>
+    </section>
+
+    <!-- Filter Panel -->
+    <section id="filter" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-filter-3-line me-2 text-info"></i>
+        Filter Configuration
+      </h4>
+
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{filterCode}}</code></pre>
+        </div>
+      </div>
+
+      <h6>Filter Operators</h6>
+      <div class="table-responsive">
+        <table class="table table-sm table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th>Operator</th>
+              <th>Description</th>
+              <th>Applicable Types</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>eq</code></td><td>Equals</td><td>All</td></tr>
+            <tr><td><code>ne</code></td><td>Not equals</td><td>All</td></tr>
+            <tr><td><code>contains</code></td><td>Contains substring</td><td>Text</td></tr>
+            <tr><td><code>startsWith</code></td><td>Starts with</td><td>Text</td></tr>
+            <tr><td><code>gt</code> / <code>gte</code></td><td>Greater than (or equal)</td><td>Number, Date</td></tr>
+            <tr><td><code>lt</code> / <code>lte</code></td><td>Less than (or equal)</td><td>Number, Date</td></tr>
+            <tr><td><code>in</code></td><td>In list of values</td><td>Select</td></tr>
+            <tr><td><code>between</code></td><td>Between two values</td><td>Number, Date</td></tr>
+            <tr><td><code>isNull</code></td><td>Is null/empty</td><td>All</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Order/Sort Panel -->
+    <section id="order" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-sort-asc me-2 text-info"></i>
+        Sort Configuration
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{orderCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Display Modes -->
+    <section id="display" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-layout-grid-line me-2 text-info"></i>
+        Display Modes
+      </h4>
+
+      <div class="card bg-dark text-light mb-3">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{displayCode}}</code></pre>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <i class="ri-layout-grid-fill display-4 text-primary"></i>
+              <h6 class="mt-2">Tiles</h6>
+              <p class="text-muted small mb-0">Compact grid, quick scanning</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <i class="ri-table-2 display-4 text-success"></i>
+              <h6 class="mt-2">Table</h6>
+              <p class="text-muted small mb-0">Detailed data, sortable columns</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <i class="ri-pie-chart-2-line display-4 text-info"></i>
+              <h6 class="mt-2">Chart</h6>
+              <p class="text-muted small mb-0">Visual aggregations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pagination -->
+    <section id="pagination" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-pages-line me-2 text-info"></i>
+        Pagination Configuration
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{paginationCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <section id="actions" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-checkbox-multiple-line me-2 text-info"></i>
+        Batch Actions
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{actionsCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empty State -->
+    <section id="empty" class="mb-5">
+      <h4 class="border-bottom pb-2 mb-3">
+        <i class="ri-inbox-line me-2 text-info"></i>
+        Empty State Configuration
+      </h4>
+
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <pre class="mb-0 text-light"><code>{{emptyStateCode}}</code></pre>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Next Article -->
+  <div class="card bg-light mt-5">
+    <div class="card-body d-flex justify-content-between align-items-center">
+      <div>
+        <span class="text-muted small">Next Article</span>
+        <h6 class="mb-0">Form Schemas (Formly)</h6>
+      </div>
+      <a routerLink="../forms" class="btn btn-primary">
+        Continue <i class="ri-arrow-right-line ms-1"></i>
+      </a>
+    </div>
+  </div>
+</div>
