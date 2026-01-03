@@ -2,12 +2,11 @@
 import { Observable } from 'rxjs';
 //
 // Ag:
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 // Configuration:
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
 // Services:
-import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
+import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 import { AccountService } from '../../../../core/services/account.service';
 // Models:
 import { ViewModel } from './vm';
@@ -20,12 +19,14 @@ import { ViewModel } from './vm';
 })
 /**
  * ✅ MULTI-ACCOUNT: Uses AccountService for reactive branding
+ * ✅ DECOUPLED: No cross-tier imports (appsConfiguration removed)
  */
 export class BaseLayoutFooterComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = themesT1Configuration
+  private diagnostics = inject(SystemDiagnosticsTraceService);
+  private accountService = inject(AccountService);
+
+  // Expose theme configuration:
+  public themeConfiguration = themesT1Configuration;
 
   // ✅ Account-aware branding (reactive)
   public logo$: Observable<string | undefined>;
@@ -34,10 +35,7 @@ export class BaseLayoutFooterComponent implements OnInit {
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
 
-  constructor(
-    private defaultControllerServices: DefaultComponentServices,
-    private accountService: AccountService
-  ) {
+  constructor() {
     // ✅ Get branding from account config (reactive)
     this.logo$ = this.accountService.getConfigValue('branding.logo');
     this.appTitle$ = this.accountService.getConfigValue('name');

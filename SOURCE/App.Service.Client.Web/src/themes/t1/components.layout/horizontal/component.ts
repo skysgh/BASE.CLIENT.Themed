@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ViewModel } from '../vm';
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
-import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
+import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 
 @Component({
     selector: 'app-horizontal',
@@ -12,22 +11,22 @@ import { DefaultComponentServices } from '../../../../core/services/default-cont
 })
 
 /**
- * Horizontal Component
+ * Horizontal Layout Component
+ * 
+ * ✅ DECOUPLED: No cross-tier imports (appsConfiguration removed)
  */
 export class BaseLayoutHorizontalComponent implements OnInit {
+  private diagnostics = inject(SystemDiagnosticsTraceService);
 
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = themesT1Configuration
+  // Expose theme configuration:
+  public themeConfiguration = themesT1Configuration;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
-  constructor(private defaultComponentServices: DefaultComponentServices) { }
-    isCondensed = false;
-    ngOnInit(): void {
+  isCondensed = false;
+  
+  ngOnInit(): void {
   }
 
   /**

@@ -1,14 +1,15 @@
 // Rx:
 import { Observable, of } from 'rxjs';
 // Ag:
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 // Etc:
 import { CookieService } from 'ngx-cookie-service';
 // Configurations:
-import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../../configuration/implementations/themes.t1.configuration';
+// Core constants:
+import { coreConstants } from '../../../../../core/constants/implementations/core.constants';
 // Services:
-import { DefaultComponentServices } from '../../../../../core/services/default-controller-services';
+import { SystemDiagnosticsTraceService } from '../../../../../core/services/system.diagnostics-trace.service';
 import { LanguageService } from '../../../../../sites.app.parts/i18n/services/language.service';
 import { LanguageViewModel } from '../../../../../sites.app.parts/i18n/models/language.view-model';
 // Models:
@@ -21,11 +22,16 @@ import { TranslationService } from '../../../../../core/services/translation.ser
     styleUrls: ['./component.scss'],
     standalone: false
 })
+/**
+ * Language Selector Component
+ * 
+ * ✅ DECOUPLED: Uses coreConstants instead of appsConfiguration
+ */
 export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = themesT1Configuration
+  private diagnostics = inject(SystemDiagnosticsTraceService);
+  
+  // Expose theme configuration:
+  public themeConfiguration = themesT1Configuration;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
@@ -36,7 +42,6 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
   languageTitle: string = '';
 
   constructor(
-    private defaultControllerServices: DefaultComponentServices,
     public languageService: LanguageService,
     public translationService: TranslationService,
     public _cookiesService: CookieService
@@ -62,7 +67,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
         return;
       }
 
-      this.defaultControllerServices.diagnosticsTraceService.info("Number of languages is:" + list.length);
+      this.diagnostics.info("Number of languages is:" + list.length);
       this.activeLanguageCode = this.translationService.getDefaultLanguageCode();
 
       // Get matching language using languageCode
@@ -79,8 +84,8 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
   setLanguage(language?: LanguageViewModel, setLang: boolean = true) {
     if (language) {
       this.languageTitle = language.name;
-      // Use flagImageId for the flag image
-      this.flagvalue = `${this.appsConfiguration.others.core.constants.assets.images.flags}${language.flagImageId}.svg`;
+      // ✅ Use core constants for flag path (not appsConfiguration)
+      this.flagvalue = `${coreConstants.assets.images.flags}${language.flagImageId}.svg`;
 
       if (setLang) {
         this.translationService.setLanguage(language.languageCode);
@@ -88,7 +93,7 @@ export class BaseCoreCommonComponentTopBarLanguageSelectorComponent implements O
       this.activeLanguageCode = language.languageCode;
     } else {
       this.languageTitle = '...';
-      this.flagvalue = this.appsConfiguration.others.core.constants.assets.images.flags + '/00.svg';
+      this.flagvalue = coreConstants.assets.images.flags + '/00.svg';
     }
   }
 

@@ -1,20 +1,16 @@
 // rx:
 import { Subscription } from "rxjs";
 // Ag:
-import { Component, Input, OnDestroy, OnInit, Output } from "@angular/core";
-// Etc:
-//import { MarkdownService } from 'ngx-markdown';
-// Constants:
-//
+import { Component, Input, OnDestroy, OnInit, Output, inject } from "@angular/core";
 // Services:
 import { SystemDiagnosticsTraceService } from "../../../../../core/services/system.diagnostics-trace.service";
 import { ViewModel } from "./vm";
-import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
-import { DefaultComponentServices } from "../../../../../core/services/default-controller-services";
 
 /**
- * See: https://www.npmjs.com/package/ng2-pdf-viewer
+ * Sign Up/In Component
+ * 
+ * ✅ DECOUPLED: No cross-tier imports (appsConfiguration removed)
  */
 @Component({
     selector: 'app-base-core-common-components-signupin',
@@ -23,28 +19,21 @@ import { DefaultComponentServices } from "../../../../../core/services/default-c
     standalone: false
 })
 export class BaseCoreCommonComponentsSignUpInComponent implements OnInit, OnDestroy {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = themesT1Configuration
+  private diagnostics = inject(SystemDiagnosticsTraceService);
+  
+  // Expose theme configuration:
+  public themeConfiguration = themesT1Configuration;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
 
-  constructor(
-    private defaultControllerServices: DefaultComponentServices,
-  ) {
-    this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
-
-    // Too early to pick up bound src.
+  constructor() {
+    this.diagnostics.debug(`${this.constructor.name}.constructor()`);
   }
 
   ngOnInit(): void {
-    this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.onInit()`);
-
+    this.diagnostics.debug(`${this.constructor.name}.onInit()`);
   }
-
 
   ngOnDestroy(): void {
   }
