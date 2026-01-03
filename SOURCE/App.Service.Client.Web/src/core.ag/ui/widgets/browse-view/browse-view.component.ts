@@ -356,6 +356,7 @@ export class BrowseViewComponent implements OnChanges {
       this.showSearch = schema.search.enabled ?? true;
       this.searchPlaceholder = schema.search.placeholder ?? 'Search...';
       this.searchQuery = schema.search.query ?? '';
+      // TODO: Apply minLength, debounceMs, searchFields when search panel supports them
     }
     
     // Filter
@@ -368,6 +369,11 @@ export class BrowseViewComponent implements OnChanges {
       if (schema.filter.activeFilters) {
         this.filters = schema.filter.activeFilters;
       }
+      // Apply default filter if no active filters and default is specified
+      if (this.filters.length === 0 && schema.filter.defaultFilter) {
+        this.filters = [schema.filter.defaultFilter];
+      }
+      // TODO: Apply maxFilters when filter panel supports it
     }
     
     // Order
@@ -376,6 +382,10 @@ export class BrowseViewComponent implements OnChanges {
       this.orderExpanded = schema.order.expanded ?? false;
       if (schema.order.activeSorts) {
         this.sorts = schema.order.activeSorts;
+      }
+      // Apply default sort if no active sorts and default is specified
+      if (this.sorts.length === 0 && schema.order.defaultSort) {
+        this.sorts = [schema.order.defaultSort];
       }
       // Merge order fields with filter fields if not already present
       if (schema.order.fields) {
@@ -386,6 +396,7 @@ export class BrowseViewComponent implements OnChanges {
           }
         }
       }
+      // TODO: Apply maxSorts when order panel supports it
     }
     
     // Display
@@ -403,6 +414,11 @@ export class BrowseViewComponent implements OnChanges {
       if (schema.display.defaultChartId) {
         this.selectedChartId = schema.display.defaultChartId;
       }
+      // Store available modes for display panel to use
+      if (schema.display.availableModes) {
+        this._availableModes = schema.display.availableModes;
+      }
+      // TODO: Apply cardsPerRow, showCardImages, showCardBadges when renderers support them
     }
     
     // Pagination
@@ -413,6 +429,10 @@ export class BrowseViewComponent implements OnChanges {
       if (schema.pagination.page) {
         this.page = schema.pagination.page;
       }
+      // Store page size options for pagination component to use
+      if (schema.pagination.pageSizeOptions) {
+        this._pageSizeOptions = schema.pagination.pageSizeOptions;
+      }
     }
     
     // Actions
@@ -421,18 +441,50 @@ export class BrowseViewComponent implements OnChanges {
       if (schema.actions.actions) {
         this.batchActions = schema.actions.actions;
       }
+      // Store selection options
+      this._multiSelect = schema.actions.multiSelect ?? true;
+      this._showSelectAll = schema.actions.showSelectAll ?? false;
     }
     
     // Empty state
     if (schema.emptyState) {
       this.emptyMessage = schema.emptyState.message ?? 'No items found';
       this.emptyIcon = schema.emptyState.icon ?? 'bx bx-folder-open';
+      // Store add button config
+      this._showAddButton = schema.emptyState.showAddButton ?? false;
+      this._addButtonLabel = schema.emptyState.addButtonLabel;
+      this._addButtonRoute = schema.emptyState.addButtonRoute;
     }
     
     // Emit schema applied event
     this.schemaApplied.emit(schema);
   }
   
+  // ═══════════════════════════════════════════════════════════════════
+  // Schema-derived State (not @Input, derived from schema)
+  // ═══════════════════════════════════════════════════════════════════
+  
+  /** Available view modes (from schema.display.availableModes) */
+  _availableModes: ViewMode[] = ['cards', 'tiles', 'table', 'list', 'chart'];
+  
+  /** Available page size options (from schema.pagination.pageSizeOptions) */
+  _pageSizeOptions: number[] = [10, 20, 50, 100];
+  
+  /** Allow multi-select (from schema.actions.multiSelect) */
+  _multiSelect = true;
+  
+  /** Show select all option (from schema.actions.showSelectAll) */
+  _showSelectAll = false;
+  
+  /** Show add button in empty state (from schema.emptyState.showAddButton) */
+  _showAddButton = false;
+  
+  /** Add button label (from schema.emptyState.addButtonLabel) */
+  _addButtonLabel?: string;
+  
+  /** Add button route (from schema.emptyState.addButtonRoute) */
+  _addButtonRoute?: string;
+
   /**
    * Get current state as schema (for saving views)
    */
@@ -447,7 +499,7 @@ export class BrowseViewComponent implements OnChanges {
       filter: {
         enabled: this.showFilterPanel,
         expanded: this.filtersExpanded,
-        fields: this.fields,
+        fields: this.fields.filter(f => f.filterable !== false),
         activeFilters: this.filters,
       },
       order: {
@@ -458,6 +510,7 @@ export class BrowseViewComponent implements OnChanges {
       },
       display: {
         enabled: this.showDisplayPanel,
+        availableModes: this._availableModes,
         defaultMode: this.viewMode,
         columns: this.columns,
         charts: this.chartDefinitions,
@@ -466,15 +519,21 @@ export class BrowseViewComponent implements OnChanges {
       pagination: {
         enabled: true,
         pageSize: this.pageSize,
+        pageSizeOptions: this._pageSizeOptions,
         page: this.page,
       },
       actions: {
         enabled: this.showActionsBar,
         actions: this.batchActions,
+        multiSelect: this._multiSelect,
+        showSelectAll: this._showSelectAll,
       },
       emptyState: {
         message: this.emptyMessage,
         icon: this.emptyIcon,
+        showAddButton: this._showAddButton,
+        addButtonLabel: this._addButtonLabel,
+        addButtonRoute: this._addButtonRoute,
       },
     };
   }
