@@ -57,6 +57,7 @@
     <Folder Include="src\core\data\fake\" />
     <Folder Include="src\core\guards\" />
     <Folder Include="src\sites.anon\data\fake\" />
+    <Folder Include="src\sites.anon\features\pages\signed-out\services\" />
     <Folder Include="src\sites.app.lets\architecture\services\repositories\" />
     <Folder Include="src\sites.app.lets\spike\services\repositories\" />
     <Folder Include="src\sites.app.parts\maintenance\views\coming-soon-page\" />
