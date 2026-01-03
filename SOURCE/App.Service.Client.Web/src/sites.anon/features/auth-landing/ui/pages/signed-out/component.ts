@@ -1,13 +1,11 @@
 // Rx:
 import { Observable } from 'rxjs';
 // Ag:
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-// Configuration:
-import { sitesConfiguration } from '../../../../../../configuration/implementation/sites.configuration';
 // Services:
-import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
+import { SystemDiagnosticsTraceService } from '../../../../../../core/services/system.diagnostics-trace.service';
 import { AppStatsService, AppStats } from '../../../services/app-stats.service';
 
 /**
@@ -32,7 +30,9 @@ import { AppStatsService, AppStats } from '../../../services/app-stats.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]  // For lord-icon web component
 })
 export class SignedOutLandingComponent implements OnInit {
-  public sitesConfiguration = sitesConfiguration;
+  private router = inject(Router);
+  private diagnostics = inject(SystemDiagnosticsTraceService);
+  private appStatsService = inject(AppStatsService);
   
   // App statistics
   public stats$: Observable<AppStats>;
@@ -46,17 +46,13 @@ export class SignedOutLandingComponent implements OnInit {
   // For template
   public currentYear = new Date().getFullYear();
   
-  constructor(
-    private router: Router,
-    private defaultServices: DefaultComponentServices,
-    private appStatsService: AppStatsService
-  ) {
-    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`);
+  constructor() {
+    this.diagnostics.debug(`${this.constructor.name}.constructor()`);
     this.stats$ = this.appStatsService.getStats();
   }
   
   ngOnInit(): void {
-    this.defaultServices.diagnosticsTraceService.debug(`${this.constructor.name}.ngOnInit()`);
+    this.diagnostics.debug(`${this.constructor.name}.ngOnInit()`);
   }
   
   /**

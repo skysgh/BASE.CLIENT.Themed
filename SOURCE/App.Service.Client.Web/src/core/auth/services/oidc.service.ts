@@ -413,8 +413,9 @@ export class OidcService {
       idToken: 'simulated-id-token',
       refreshToken: 'simulated-refresh-token',
       tokenType: 'Bearer',
+      expiresIn: 3600, // 1 hour in seconds
       expiresAt: new Date(Date.now() + 3600 * 1000), // 1 hour
-      scopes: config.scopes
+      scope: config.scopes.join(' ')
     };
   }
 

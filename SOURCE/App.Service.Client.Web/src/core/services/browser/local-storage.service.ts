@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { SystemDiagnosticsTraceService } from './system.diagnostics-trace.service';
+import { Injectable, inject } from '@angular/core';
+import { SystemDiagnosticsTraceService } from '../system.diagnostics-trace.service';
 
 /**
  * LocalStorageService
