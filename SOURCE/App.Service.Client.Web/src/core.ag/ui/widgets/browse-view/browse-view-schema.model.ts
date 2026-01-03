@@ -24,6 +24,7 @@ import { FilterCriteria, SortCriteria, FieldDefinition, FieldType, FilterOperato
 import { ChartDefinition } from '../../../../core/models/query/chart-definition.model';
 import { IColumnDefinition } from '../../../../core/models/presentation/presentation-profile.model';
 import { BatchAction } from '../../../../core/models/query/batch-action.model';
+import { OptionsSource } from '../../../../core/models/schema/options-source.model';
 
 // ═══════════════════════════════════════════════════════════════════
 // View Mode Types
@@ -67,7 +68,22 @@ export interface SchemaFieldDefinition extends FieldDefinition {
   /** Current/default value for this field */
   currentValue?: unknown;
   
-  /** URL to fetch options dynamically (options[] will be populated from this) */
+  /** 
+   * Options source for dynamic loading via DSL
+   * Supersedes optionsUrl - use this for new implementations
+   */
+  optionsSource?: OptionsSource;
+  
+  /** 
+   * Reference to a named lookup in EntitySchema.lookups
+   * Example: "categories" references EntitySchema.lookups[].id
+   */
+  lookupRef?: string;
+  
+  /** 
+   * URL to fetch options dynamically (options[] will be populated from this)
+   * @deprecated Use optionsSource.api instead
+   */
   optionsUrl?: string;
   
   /** Whether options are currently loading */
