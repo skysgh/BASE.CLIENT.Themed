@@ -1,5 +1,5 @@
 // Ag:
-import { Component, OnInit, EventEmitter, Output, Inject, DOCUMENT } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Inject, DOCUMENT, inject } from '@angular/core';
 
 // Rx:
 // Etc:
@@ -9,10 +9,9 @@ import { CookieService } from 'ngx-cookie-service';
 // Constants:
 import { LAYOUT_MODE, SIDEBAR_SIZE, SIDEBAR_IMAGE } from '../../_state/layout/layout-constants';
 // Configuration:
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
 // Services:
-import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
+import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 import { EventService } from '../../../../core/services/infrastructure/event.service';
 import { AuthenticationService } from '../../../../core/services/auth.service';
 import { AuthfakeauthenticationService } from '../../../../core/services/authfake.service';
@@ -26,11 +25,16 @@ import { ViewModel } from './vm';
     styleUrls: ['./topbar.component.scss'],
     standalone: false
 })
+/**
+ * Topbar Component
+ * 
+ * ✅ DECOUPLED: No cross-tier imports (appsConfiguration removed)
+ */
 export class BaseLayoutTopBarComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = themesT1Configuration
+  private diagnostics = inject(SystemDiagnosticsTraceService);
+  
+  // Expose theme configuration:
+  public themeConfiguration = themesT1Configuration;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
@@ -41,7 +45,6 @@ export class BaseLayoutTopBarComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: any,
-    private defaultComponentServices: DefaultComponentServices,
     private eventService: EventService,
     private modalService: NgbModal,
     public _cookiesService: CookieService,

@@ -2,15 +2,14 @@
 import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
 // Ag:
-import { Component, ViewChild, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, ViewChild, OnInit, Output, EventEmitter, TemplateRef, inject } from '@angular/core';
  
 // Etc:
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 // Configuration:
-import { appsConfiguration } from '../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../configuration/implementations/themes.t1.configuration';
 // Services:
-import { DefaultComponentServices } from '../../../../core/services/default-controller-services';
+import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 import { EventService } from '../../../../core/services/infrastructure/event.service';
 // Data:
 import { ViewModel } from './vm';
@@ -53,13 +52,15 @@ import {
 })
 
 /**
- * Right Sidebar component
+ * Right Sidebar (Settings Panel) Component
+ * 
+ * ✅ DECOUPLED: No cross-tier imports (appsConfiguration removed)
  */
 export class BaseLayoutRightsidebarComponent implements OnInit {
-  // Expose system configuration:
-  public appsConfiguration = appsConfiguration
-  // Expose parent configuration:
-  public groupConfiguration = themesT1Configuration
+  private diagnostics = inject(SystemDiagnosticsTraceService);
+  
+  // Expose theme configuration:
+  public themeConfiguration = themesT1Configuration;
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();

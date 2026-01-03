@@ -3,6 +3,10 @@
     "concurrently": "^9.1.0"
   },
   "dependencies": {
-    "@angular/cli": "^19.0.6"
+    "@angular/cli": "^19.0.6",
+    "bootstrap": "^5.3.8",
+    "chart.js": "^4.5.1",
+    "rxjs": "^7.8.2",
+    "sweetalert2": "^11.26.17"
   }
 }
