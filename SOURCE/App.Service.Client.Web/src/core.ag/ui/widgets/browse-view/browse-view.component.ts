@@ -43,6 +43,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { IUniversalCardData, ICardAction } from '../../../../core/models/presentation/universal-card.model';
 import { IColumnDefinition } from '../../../../core/models/presentation/presentation-profile.model';
@@ -110,6 +111,7 @@ export interface CardClickEvent {
     CommonModule,
     RouterModule,
     FormsModule,
+    NgbDropdownModule,
     BrowseSearchPanelComponent,
     BrowseFilterPanelComponent,
     BrowseOrderPanelComponent,
@@ -125,11 +127,11 @@ export interface CardClickEvent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="browse-view">
-      <!-- Row 1: Search + Views Control -->
-      <div class="browse-header-row d-flex align-items-center gap-2 mb-3">
-        <!-- Search (flex-grow) -->
+      <!-- Header Row: Search + View Toggle + View Modes + Charts -->
+      <div class="browse-toolbar d-flex align-items-center gap-2 mb-3">
+        <!-- Search -->
         @if (showSearch) {
-          <div class="flex-grow-1">
+          <div class="flex-grow-1" style="max-width: 300px;">
             <app-browse-search-panel
               [query]="searchQuery"
               [placeholder]="searchPlaceholder"
@@ -142,92 +144,100 @@ export interface CardClickEvent {
           </div>
         }
         
-        <!-- Views + Display Controls -->
-        @if (showDisplayPanel) {
-          <div class="browse-controls d-flex align-items-center gap-2">
-            <!-- Views Toggle Button -->
-            @if (entityType) {
-              <button 
-                type="button"
-                class="btn btn-sm d-flex align-items-center gap-2"
-                [class.btn-primary]="isCustomizing"
-                [class.btn-soft-secondary]="!isCustomizing"
-                (click)="toggleCustomizing()">
-                <i class="bx bx-filter-alt"></i>
-                <span class="d-none d-md-inline">{{ currentViewName }}</span>
-                <i class="bx" [class.bx-chevron-down]="!isCustomizing" [class.bx-chevron-up]="isCustomizing"></i>
-              </button>
-            }
-            
-            <!-- View Mode Icons -->
-            <div class="btn-group">
-              @for (mode of viewModeOptions; track mode.id) {
+        <!-- View Toggle Button -->
+        @if (entityType) {
+          <button 
+            type="button"
+            class="btn d-flex align-items-center gap-2"
+            [class.btn-primary]="isCustomizing"
+            [class.btn-soft-secondary]="!isCustomizing"
+            (click)="toggleCustomizing()">
+            <i class="bx bx-filter-alt"></i>
+            <span>{{ currentViewName }}</span>
+            <i class="bx bx-xs" [class.bx-chevron-up]="isCustomizing" [class.bx-chevron-down]="!isCustomizing"></i>
+          </button>
+        }
+        
+        <!-- View Mode Icons -->
+        <div class="btn-group">
+          @for (mode of viewModeOptions; track mode.id) {
+            <button 
+              type="button" 
+              class="btn btn-sm"
+              [class.btn-soft-primary]="viewMode === mode.id"
+              [class.btn-soft-secondary]="viewMode !== mode.id"
+              [title]="mode.label"
+              (click)="onViewModeChange(mode.id)">
+              <i [class]="mode.icon"></i>
+            </button>
+          }
+        </div>
+        
+        <!-- Charts Dropdown (if available) -->
+        @if (chartDefinitions.length > 0) {
+          <div ngbDropdown class="d-inline-block">
+            <button 
+              type="button" 
+              class="btn btn-sm btn-soft-secondary"
+              ngbDropdownToggle>
+              <i class="bx bx-bar-chart-alt-2"></i>
+            </button>
+            <div ngbDropdownMenu class="dropdown-menu-end">
+              <h6 class="dropdown-header">Charts</h6>
+              @for (chart of chartDefinitions; track chart.id) {
                 <button 
-                  type="button" 
-                  class="btn btn-sm"
-                  [class.btn-primary]="viewMode === mode.id"
-                  [class.btn-soft-secondary]="viewMode !== mode.id"
-                  [title]="mode.label"
-                  (click)="onViewModeChange(mode.id)">
-                  <i [class]="mode.icon"></i>
+                  ngbDropdownItem
+                  [class.active]="viewMode === 'chart' && selectedChartId === chart.id"
+                  (click)="selectChart(chart)">
+                  <i class="bx bx-bar-chart-alt-2 me-2"></i>
+                  {{ chart.label }}
                 </button>
               }
             </div>
-            
-            <!-- Chart dropdown if available -->
-            @if (chartDefinitions.length > 0) {
-              <div class="dropdown" ngbDropdown>
-                <button 
-                  type="button" 
-                  class="btn btn-sm"
-                  [class.btn-primary]="viewMode === 'chart'"
-                  [class.btn-soft-secondary]="viewMode !== 'chart'"
-                  ngbDropdownToggle>
-                  <i class="bx bx-bar-chart-alt-2"></i>
-                </button>
-                <div ngbDropdownMenu>
-                  @for (chart of chartDefinitions; track chart.id) {
-                    <button class="dropdown-item" (click)="onChartDefinitionChange(chart)">
-                      {{ chart.label }}
-                    </button>
-                  }
-                </div>
-              </div>
-            }
           </div>
         }
       </div>
       
-      <!-- Row 2: Customization Panel (shown when view button clicked) -->
+      <!-- Customization Panel (shown when view button clicked) -->
       @if (isCustomizing) {
-        <div class="customization-panel card mb-3">
-          <div class="card-body py-3">
-            <div class="row g-3">
-              <!-- Saved Views List -->
-              <div class="col-12 col-md-3">
-                <label class="form-label small text-muted mb-2">
-                  <i class="bx bx-bookmark me-1"></i>Saved Views
-                </label>
+        <div class="customization-panel mb-3">
+          <div class="row g-3">
+            <!-- Left: Saved Views -->
+            <div class="col-12 col-lg-3">
+              <div class="panel-section h-100">
+                <h6 class="panel-header">
+                  <i class="bx bx-bookmark me-2"></i>Saved Views
+                </h6>
                 <div class="saved-views-list">
                   @for (view of savedViews; track view.id) {
-                    <button 
-                      class="btn btn-sm w-100 text-start mb-1 d-flex align-items-center"
-                      [class.btn-primary]="isActiveView(view)"
-                      [class.btn-light]="!isActiveView(view)"
+                    <div 
+                      class="saved-view-item d-flex align-items-center"
+                      [class.active]="isActiveView(view)"
                       (click)="onSavedViewSelect(view)">
-                      <i [class]="view.icon || 'bx bx-filter-alt'" class="me-2"></i>
+                      <i [class]="getViewIcon(view)" class="me-2"></i>
                       <span class="flex-grow-1 text-truncate">{{ view.title }}</span>
-                      @if (!view.isDefault && !view.isMru) {
-                        <i class="bx bx-x text-danger" (click)="deleteView(view, $event)"></i>
+                      @if (isActiveView(view)) {
+                        <i class="bx bx-check text-success"></i>
                       }
-                    </button>
+                      @if (!view.isDefault && !view.isMru) {
+                        <button 
+                          class="btn btn-sm btn-link text-danger p-0 ms-2"
+                          (click)="deleteView(view, $event)"
+                          title="Delete">
+                          <i class="bx bx-x"></i>
+                        </button>
+                      }
+                    </div>
                   }
                 </div>
               </div>
-              
-              <!-- Filter/Sort Controls -->
-              <div class="col-12 col-md-6">
-                @if (showFilterPanel) {
+            </div>
+            
+            <!-- Center: Filters & Sorts -->
+            <div class="col-12 col-lg-6">
+              <!-- Filters Section -->
+              @if (showFilterPanel) {
+                <div class="panel-section mb-3">
                   <app-browse-filter-panel
                     [filters]="filters"
                     [fields]="fields"
@@ -235,9 +245,12 @@ export interface CardClickEvent {
                     (filtersChange)="onFiltersChange($event)"
                     (apply)="onApply()">
                   </app-browse-filter-panel>
-                }
-                
-                @if (showOrderPanel) {
+                </div>
+              }
+              
+              <!-- Sorts Section -->
+              @if (showOrderPanel) {
+                <div class="panel-section">
                   <app-browse-order-panel
                     [sorts]="sorts"
                     [fields]="fields"
@@ -245,53 +258,56 @@ export interface CardClickEvent {
                     (sortsChange)="onSortsChange($event)"
                     (apply)="onApply()">
                   </app-browse-order-panel>
-                }
-              </div>
-              
-              <!-- Save Section -->
-              <div class="col-12 col-md-3">
-                <label class="form-label small text-muted mb-2">
-                  <i class="bx bx-save me-1"></i>Save View
-                </label>
-                <div class="input-group input-group-sm mb-2">
-                  <input 
-                    type="text" 
-                    class="form-control"
-                    placeholder="View name..."
-                    [(ngModel)]="saveViewName">
+                </div>
+              }
+            </div>
+            
+            <!-- Right: Save Section -->
+            <div class="col-12 col-lg-3">
+              <div class="panel-section h-100">
+                <h6 class="panel-header">
+                  <i class="bx bx-save me-2"></i>Save View
+                </h6>
+                <div class="save-form">
+                  <div class="input-group mb-3">
+                    <input 
+                      type="text" 
+                      class="form-control"
+                      placeholder="View name..."
+                      [(ngModel)]="saveViewName"
+                      (keyup.enter)="onSaveView()">
+                    <button 
+                      class="btn btn-success"
+                      [disabled]="!saveViewName.trim()"
+                      (click)="onSaveView()"
+                      title="Save">
+                      <i class="bx bx-check"></i>
+                    </button>
+                  </div>
                   <button 
-                    class="btn btn-success"
-                    [disabled]="!saveViewName.trim()"
-                    (click)="onSaveView()">
-                    <i class="bx bx-check"></i>
+                    class="btn btn-primary w-100"
+                    (click)="onApplyAndClose()">
+                    <i class="bx bx-check me-1"></i>Apply & Close
                   </button>
                 </div>
-                <button class="btn btn-primary btn-sm w-100" (click)="onApplyAndClose()">
-                  <i class="bx bx-check me-1"></i>Apply & Close
-                </button>
               </div>
             </div>
           </div>
         </div>
       }
       
+      <!-- Results Count -->
+      @if (!loading && cards.length > 0) {
+        <div class="results-count text-muted mb-2">
+          {{ totalCount }} items
+        </div>
+      }
+      
       <!-- Results Area -->
       <div class="browse-results">
-        <!-- Actions Bar -->
-        @if (showActionsBar) {
-          <app-browse-actions-bar
-            [totalCount]="totalCount"
-            [selectedCount]="selectedCount()"
-            [paginationInfo]="getPaginationInfo()"
-            [actions]="batchActions"
-            (actionClick)="onBatchAction($event)"
-            (clearSelection)="clearSelection()">
-          </app-browse-actions-bar>
-        }
-
         <!-- Loading State -->
         @if (loading) {
-          <div class="browse-view-loading text-center py-5">
+          <div class="text-center py-5">
             <div class="spinner-border text-primary" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
@@ -300,7 +316,7 @@ export interface CardClickEvent {
 
         <!-- Empty State -->
         @if (!loading && cards.length === 0) {
-          <div class="browse-view-empty text-center py-5">
+          <div class="text-center py-5">
             <i [class]="emptyIcon + ' display-1 text-muted'"></i>
             <h5 class="mt-3 text-muted">{{ emptyMessage }}</h5>
             <ng-content select="[emptyActions]"></ng-content>
@@ -333,7 +349,6 @@ export interface CardClickEvent {
                 [selectedIds]="selectedIds()"
                 [sortColumn]="sorts.length > 0 ? sorts[0].field : ''"
                 [sortDirection]="sorts.length > 0 ? sorts[0].direction : 'asc'"
-
                 (sortChange)="onTableSortChange($event)"
                 (cardClick)="handleCardClick($event)"
                 (cardAction)="onCardAction($event)">
@@ -357,7 +372,7 @@ export interface CardClickEvent {
           }
         }
 
-        <!-- Bottom Pagination -->
+        <!-- Pagination -->
         @if (!loading && totalPages > 1) {
           <app-browse-pagination
             [page]="page"
@@ -371,13 +386,31 @@ export interface CardClickEvent {
     </div>
   `,
   styles: [`
-    .browse-header-row {
-      // Flex row for search + controls
+    .browse-toolbar {
+      flex-wrap: wrap;
     }
     
     .customization-panel {
-      border-left: 3px solid var(--vz-primary);
-      background: rgba(var(--vz-primary-rgb), 0.02);
+      background: var(--vz-card-bg);
+      border: 1px solid var(--vz-border-color);
+      border-radius: 0.5rem;
+      padding: 1rem;
+    }
+    
+    .panel-section {
+      background: var(--vz-light);
+      border: 1px solid var(--vz-border-color);
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+    }
+    
+    .panel-header {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--vz-heading-color);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--vz-border-color);
     }
     
     .saved-views-list {
@@ -385,8 +418,26 @@ export interface CardClickEvent {
       overflow-y: auto;
     }
     
-    .browse-view-empty {
-      opacity: 0.7;
+    .saved-view-item {
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      
+      &:hover {
+        background: rgba(var(--vz-primary-rgb), 0.1);
+      }
+      
+      &.active {
+        background: var(--vz-primary);
+        color: white;
+        
+        i { color: white !important; }
+      }
+    }
+    
+    .results-count {
+      font-size: 0.875rem;
     }
   `]
 })
@@ -990,6 +1041,19 @@ export class BrowseViewComponent implements OnChanges {
       selectedIds: Array.from(this.selectedIds()),
     };
     this.batchAction.emit(filledEvent);
+  }
+  
+  getViewIcon(view: SavedView): string {
+    if (view.isMru) return 'bx bx-time-five';
+    if (view.isDefault) return 'bx bx-list-ul';
+    return view.icon || 'bx bx-filter-alt';
+  }
+  
+  selectChart(chart: ChartDefinition): void {
+    this.selectedChartId = chart.id;
+    this.viewMode = 'chart';
+    this.viewModeChange.emit('chart');
+    this.chartDefinitionChange.emit(chart);
   }
   
   onSavedViewSelect(view: SavedView): void {
