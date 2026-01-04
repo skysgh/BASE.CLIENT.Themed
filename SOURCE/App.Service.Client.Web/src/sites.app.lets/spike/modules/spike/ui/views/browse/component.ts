@@ -436,6 +436,15 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
     console.log('[Browse] Saved view selected:', view.title);
     this.savedViewService.applyView(view, this.route);
   }
+  
+  onViewSaved(event: { title: string; params: Record<string, string> }): void {
+    console.log('[Browse] Saving view:', event.title);
+    this.savedViewService.createView({
+      title: event.title,
+      entityType: 'spike',
+      urlParams: this.currentUrlParams,
+    });
+  }
 
   // ─────────────────────────────────────────────────────────────
   // URL Helper

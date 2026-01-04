@@ -42,6 +42,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { IUniversalCardData, ICardAction } from '../../../../core/models/presentation/universal-card.model';
 import { IColumnDefinition } from '../../../../core/models/presentation/presentation-profile.model';
@@ -107,6 +108,7 @@ export interface CardClickEvent {
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     BrowseSearchPanelComponent,
     BrowseFilterPanelComponent,
     BrowseOrderPanelComponent,
@@ -135,31 +137,7 @@ export interface CardClickEvent {
         </app-browse-search-panel>
       }
       
-      <!-- Filter Panel -->
-      @if (showFilterPanel) {
-        <app-browse-filter-panel
-          [filters]="filters"
-          [fields]="fields"
-          [expanded]="filtersExpanded"
-          (filtersChange)="onFiltersChange($event)"
-          (expandedChange)="filtersExpanded = $event"
-          (apply)="onApply()">
-        </app-browse-filter-panel>
-      }
-      
-      <!-- Order Panel -->
-      @if (showOrderPanel) {
-        <app-browse-order-panel
-          [sorts]="sorts"
-          [fields]="fields"
-          [expanded]="orderExpanded"
-          (sortsChange)="onSortsChange($event)"
-          (expandedChange)="orderExpanded = $event"
-          (apply)="onApply()">
-        </app-browse-order-panel>
-      }
-      
-      <!-- Display Panel -->
+      <!-- Display Panel (Views dropdown + view mode icons) -->
       @if (showDisplayPanel) {
         <app-browse-display-panel
           [viewMode]="viewMode"
@@ -167,11 +145,74 @@ export interface CardClickEvent {
           [selectedChartId]="selectedChartId"
           [entityType]="entityType"
           [currentParams]="currentParams"
+          [isCustomizing]="isCustomizing"
           (viewModeChange)="onViewModeChange($event)"
           (chartDefinitionChange)="onChartDefinitionChange($event)"
           (savedViewSelect)="onSavedViewSelect($event)"
-          (viewSaved)="onViewSaved($event)">
+          (customizingChange)="onCustomizingChange($event)">
         </app-browse-display-panel>
+      }
+      
+      <!-- Customization Panels (shown when "Customize..." is clicked) -->
+      @if (isCustomizing) {
+        <div class="customization-area card mb-3">
+          <div class="card-body py-2">
+            <!-- Filter Panel -->
+            @if (showFilterPanel) {
+              <app-browse-filter-panel
+                [filters]="filters"
+                [fields]="fields"
+                [expanded]="true"
+                (filtersChange)="onFiltersChange($event)"
+                (apply)="onApply()">
+              </app-browse-filter-panel>
+            }
+            
+            <!-- Order Panel -->
+            @if (showOrderPanel) {
+              <app-browse-order-panel
+                [sorts]="sorts"
+                [fields]="fields"
+                [expanded]="true"
+                (sortsChange)="onSortsChange($event)"
+                (apply)="onApply()">
+              </app-browse-order-panel>
+            }
+            
+            <!-- Save View Section -->
+            <div class="save-view-section border-top pt-3 mt-2">
+              <div class="d-flex align-items-center gap-3">
+                <div class="flex-grow-1">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-text">
+                      <i class="bx bx-bookmark"></i>
+                    </span>
+                    <input 
+                      type="text" 
+                      class="form-control"
+                      placeholder="Save as... (optional)"
+                      [(ngModel)]="saveViewName"
+                      (keyup.enter)="onSaveView()">
+                  </div>
+                </div>
+                <button 
+                  class="btn btn-sm btn-primary"
+                  (click)="onApplyAndClose()">
+                  <i class="bx bx-check me-1"></i>
+                  Apply
+                </button>
+                @if (saveViewName.trim()) {
+                  <button 
+                    class="btn btn-sm btn-success"
+                    (click)="onSaveView()">
+                    <i class="bx bx-save me-1"></i>
+                    Save
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
       }
       
       <!-- Results Area -->
@@ -255,7 +296,6 @@ export interface CardClickEvent {
                 <div class="chart-placeholder text-center py-5">
                   <i class="bx bx-bar-chart-alt-2 display-1 text-muted"></i>
                   <h5 class="mt-3 text-muted">Select a chart type</h5>
-                  <p class="text-muted small">Choose from the chart dropdown above</p>
                 </div>
               }
             }
@@ -280,13 +320,18 @@ export interface CardClickEvent {
       // Container styles handled by parent
     }
     
-    .browse-results {
-      // Results area
+    .customization-area {
+      border-color: var(--vz-primary) !important;
+      border-left: 3px solid var(--vz-primary);
+      background: rgba(var(--vz-primary-rgb), 0.02);
     }
     
-    .results-header {
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--vz-border-color);
+    .save-view-section {
+      border-color: var(--vz-border-color) !important;
+    }
+    
+    .browse-results {
+      // Results area
     }
     
     .browse-view-empty {
@@ -670,6 +715,12 @@ export class BrowseViewComponent implements OnChanges {
   /** Order panel expanded */
   orderExpanded = false;
   
+  /** Whether customization panels are shown */
+  isCustomizing = false;
+  
+  /** Name for saving the current view */
+  saveViewName = '';
+  
   // ═══════════════════════════════════════════════════════════════════
   // Outputs
   // ═══════════════════════════════════════════════════════════════════
@@ -848,10 +899,36 @@ export class BrowseViewComponent implements OnChanges {
   }
   
   onSavedViewSelect(view: SavedView): void {
+    this.isCustomizing = false;
+    this.saveViewName = '';
     this.savedViewSelect.emit(view);
   }
   
   onViewSaved(event: { title: string; params: Record<string, string> }): void {
     this.viewSaved.emit(event);
+  }
+  
+  onCustomizingChange(isCustomizing: boolean): void {
+    this.isCustomizing = isCustomizing;
+    if (!isCustomizing) {
+      this.saveViewName = '';
+    }
+  }
+  
+  onApplyAndClose(): void {
+    this.onApply();
+    this.isCustomizing = false;
+    this.saveViewName = '';
+  }
+  
+  onSaveView(): void {
+    if (this.saveViewName.trim()) {
+      this.viewSaved.emit({
+        title: this.saveViewName.trim(),
+        params: { ...this.currentParams },
+      });
+      this.saveViewName = '';
+      this.isCustomizing = false;
+    }
   }
 }

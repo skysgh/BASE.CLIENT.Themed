@@ -3,10 +3,10 @@
  * 
  * Dropdown for selecting saved views in BrowseView.
  * Shows:
- * - Current view indicator
- * - User's saved views
- * - Option to save current view
- * - MRU view (if different from current)
+ * - Current view indicator (MRU or named view)
+ * - Saved views list
+ * - "Customize..." option to open filter/order/display panels
+ * - Option to save current customization
  * 
  * Part of the BrowseView widget family.
  */
@@ -17,13 +17,11 @@ import {
   EventEmitter,
   inject,
   signal,
-  computed,
   OnInit,
-  OnDestroy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SavedView, getViewSummary } from '../../../../core/models/view/saved-view.model';
 import { SavedViewService } from '../../../../core/services/saved-view.service';
@@ -36,23 +34,24 @@ import { SavedViewService } from '../../../../core/services/saved-view.service';
     <div class="saved-view-dropdown" ngbDropdown>
       <button 
         type="button" 
-        class="btn btn-soft-secondary btn-sm d-flex align-items-center gap-2"
+        class="btn btn-soft-primary btn-sm d-flex align-items-center gap-2"
         ngbDropdownToggle>
         <i [class]="currentView?.icon || 'bx bx-filter-alt'"></i>
-        <span class="d-none d-md-inline">{{ currentView?.title || 'Views' }}</span>
-        <i class="bx bx-chevron-down ms-1"></i>
+        <span>{{ currentView?.title || 'All Items' }}</span>
+        @if (isCustomizing) {
+          <span class="badge bg-warning-subtle text-warning ms-1">Editing</span>
+        }
+        <i class="bx bx-chevron-down"></i>
       </button>
       
-      <div ngbDropdownMenu class="dropdown-menu-end saved-view-menu">
+      <div ngbDropdownMenu class="saved-view-menu">
         <!-- Header -->
-        <h6 class="dropdown-header d-flex align-items-center justify-content-between">
-          <span>Saved Views</span>
-          @if (hasUnsavedChanges()) {
-            <span class="badge bg-warning-subtle text-warning">Unsaved</span>
-          }
+        <h6 class="dropdown-header">
+          <i class="bx bx-bookmark me-1"></i>
+          Saved Views
         </h6>
         
-        <!-- Default View -->
+        <!-- Default View (All Items) -->
         @if (defaultView; as view) {
           <button 
             class="dropdown-item d-flex align-items-center gap-2"
@@ -66,96 +65,68 @@ import { SavedViewService } from '../../../../core/services/saved-view.service';
           </button>
         }
         
-        <!-- MRU View (if exists and not current) -->
+        <!-- MRU View (Last Used) - if different from default -->
         @if (mruView; as view) {
-          @if (!isActive(view)) {
+          @if (!mruView.isDefault) {
             <button 
               class="dropdown-item d-flex align-items-center gap-2"
+              [class.active]="isActive(view)"
               (click)="selectView(view)">
               <i class="bx bx-history text-info"></i>
               <div class="flex-grow-1">
-                <div>{{ view.title }}</div>
+                <div>Last Used</div>
                 <small class="text-muted">{{ getViewSummary(view) }}</small>
               </div>
+              @if (isActive(view)) {
+                <i class="bx bx-check text-success"></i>
+              }
             </button>
           }
         }
         
-        <!-- Divider if user views exist -->
+        <!-- User Saved Views -->
         @if (userViews.length > 0) {
           <div class="dropdown-divider"></div>
-        }
-        
-        <!-- User Saved Views -->
-        @for (view of userViews; track view.id) {
-          <div class="dropdown-item d-flex align-items-center gap-2 pe-2">
-            <button 
-              class="btn btn-link p-0 text-start flex-grow-1 d-flex align-items-center gap-2"
-              [class.fw-bold]="isActive(view)"
-              (click)="selectView(view)">
-              <i [class]="view.icon || 'bx bx-filter-alt'"></i>
-              <div class="flex-grow-1 text-truncate">
-                <div class="text-truncate">{{ view.title }}</div>
-                @if (view.description) {
-                  <small class="text-muted text-truncate d-block">{{ view.description }}</small>
+          <h6 class="dropdown-header small">My Views</h6>
+          
+          @for (view of userViews; track view.id) {
+            <div class="dropdown-item d-flex align-items-center gap-2 pe-2">
+              <button 
+                class="btn btn-link p-0 text-start flex-grow-1 d-flex align-items-center gap-2"
+                [class.fw-semibold]="isActive(view)"
+                (click)="selectView(view)">
+                <i [class]="view.icon || 'bx bx-filter-alt'" class="text-primary"></i>
+                <span class="text-truncate">{{ view.title }}</span>
+                @if (isActive(view)) {
+                  <i class="bx bx-check text-success flex-shrink-0"></i>
                 }
-              </div>
-              @if (isActive(view)) {
-                <i class="bx bx-check text-success flex-shrink-0"></i>
-              }
-            </button>
-            <button 
-              class="btn btn-sm btn-ghost-danger p-1"
-              title="Delete view"
-              (click)="deleteView(view, $event)">
-              <i class="bx bx-trash-alt"></i>
-            </button>
-          </div>
+              </button>
+              <button 
+                class="btn btn-sm btn-ghost-danger p-1"
+                title="Delete view"
+                (click)="deleteView(view, $event)">
+                <i class="bx bx-trash-alt"></i>
+              </button>
+            </div>
+          }
         }
         
-        <!-- Save Current View -->
+        <!-- Customize Option -->
         <div class="dropdown-divider"></div>
-        
-        @if (showSaveForm()) {
-          <!-- Save Form -->
-          <div class="px-3 py-2">
-            <div class="mb-2">
-              <input 
-                type="text" 
-                class="form-control form-control-sm"
-                placeholder="View name..."
-                [(ngModel)]="newViewTitle"
-                (keyup.enter)="saveCurrentView()"
-                #saveInput>
-            </div>
-            <div class="d-flex gap-2">
-              <button 
-                class="btn btn-primary btn-sm flex-grow-1"
-                [disabled]="!newViewTitle.trim()"
-                (click)="saveCurrentView()">
-                Save
-              </button>
-              <button 
-                class="btn btn-light btn-sm"
-                (click)="cancelSave()">
-                Cancel
-              </button>
-            </div>
-          </div>
-        } @else {
-          <button 
-            class="dropdown-item d-flex align-items-center gap-2 text-primary"
-            (click)="startSave()">
-            <i class="bx bx-plus"></i>
-            <span>Save Current View</span>
-          </button>
-        }
+        <button 
+          class="dropdown-item d-flex align-items-center gap-2"
+          [class.text-primary]="!isCustomizing"
+          [class.text-warning]="isCustomizing"
+          (click)="onCustomizeClick()">
+          <i class="bx" [class.bx-edit-alt]="!isCustomizing" [class.bx-x]="isCustomizing"></i>
+          <span>{{ isCustomizing ? 'Close Customization' : 'Customize View...' }}</span>
+        </button>
       </div>
     </div>
   `,
   styles: [`
     .saved-view-menu {
-      min-width: 280px;
+      min-width: 260px;
       max-width: 320px;
     }
     
@@ -164,6 +135,7 @@ import { SavedViewService } from '../../../../core/services/saved-view.service';
       
       &.active {
         background-color: rgba(var(--vz-primary-rgb), 0.1);
+        color: var(--vz-primary);
       }
       
       .btn-link {
@@ -178,7 +150,7 @@ import { SavedViewService } from '../../../../core/services/saved-view.service';
     
     .btn-ghost-danger {
       color: var(--vz-danger);
-      opacity: 0.5;
+      opacity: 0.4;
       transition: opacity 0.2s;
       
       &:hover {
@@ -197,17 +169,16 @@ export class SavedViewDropdownComponent implements OnInit {
   /** Current URL params to compare against saved views */
   @Input() currentParams: Record<string, string> = {};
   
+  /** Whether customization panels are currently shown */
+  @Input() isCustomizing = false;
+  
   /** Emitted when a view is selected */
   @Output() viewSelect = new EventEmitter<SavedView>();
   
-  /** Emitted when save is requested with current params */
-  @Output() saveRequest = new EventEmitter<{ title: string; params: Record<string, string> }>();
+  /** Emitted when user wants to customize (expand panels) */
+  @Output() customizeToggle = new EventEmitter<boolean>();
   
-  // Local state
-  showSaveForm = signal(false);
-  newViewTitle = '';
-  
-  // Computed from service - using getViewsSignal for reactivity
+  // Computed from service
   get allViews(): SavedView[] {
     return this.savedViewService.getViews(this.entityType);
   }
@@ -224,62 +195,31 @@ export class SavedViewDropdownComponent implements OnInit {
     return this.savedViewService.getUserViews(this.entityType);
   }
   
-  // Current view detection
   get currentView(): SavedView | undefined {
-    return this.savedViewService.findMatchingView(this.entityType, this.currentParams);
+    return this.savedViewService.findMatchingView(this.entityType, this.currentParams) 
+      || this.mruView 
+      || this.defaultView;
   }
   
   ngOnInit(): void {
-    // Initialize entity if needed
     this.savedViewService.initializeEntity(this.entityType);
   }
   
   isActive(view: SavedView): boolean {
-    return this.currentView?.id === view.id;
-  }
-  
-  hasUnsavedChanges(): boolean {
-    // If we have params but no matching view, it's unsaved
-    const hasParams = Object.keys(this.currentParams).filter(k => this.currentParams[k]).length > 0;
-    return hasParams && !this.currentView;
+    const matching = this.savedViewService.findMatchingView(this.entityType, this.currentParams);
+    return matching?.id === view.id;
   }
   
   selectView(view: SavedView): void {
     this.viewSelect.emit(view);
   }
   
-  startSave(): void {
-    this.showSaveForm.set(true);
-    this.newViewTitle = '';
-  }
-  
-  cancelSave(): void {
-    this.showSaveForm.set(false);
-    this.newViewTitle = '';
-  }
-  
-  saveCurrentView(): void {
-    if (!this.newViewTitle.trim()) return;
-    
-    const view = this.savedViewService.createView({
-      title: this.newViewTitle.trim(),
-      entityType: this.entityType,
-      urlParams: { ...this.currentParams },
-    });
-    
-    this.showSaveForm.set(false);
-    this.newViewTitle = '';
-    
-    // Emit for parent to handle any additional logic
-    this.saveRequest.emit({
-      title: view.title,
-      params: view.urlParams,
-    });
+  onCustomizeClick(): void {
+    this.customizeToggle.emit(!this.isCustomizing);
   }
   
   deleteView(view: SavedView, event: Event): void {
     event.stopPropagation();
-    
     if (confirm(`Delete view "${view.title}"?`)) {
       this.savedViewService.deleteView(this.entityType, view.id);
     }
