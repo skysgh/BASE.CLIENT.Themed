@@ -127,173 +127,52 @@ export interface CardClickEvent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="browse-view">
-      <!-- Header Row: Search + View Toggle + View Modes + Charts -->
-      <div class="browse-toolbar d-flex align-items-center gap-2 mb-3">
-        <!-- Search -->
-        @if (showSearch) {
-          <div class="flex-grow-1" style="max-width: 300px;">
-            <app-browse-search-panel
-              [query]="searchQuery"
-              [placeholder]="searchPlaceholder"
-              [entityIcon]="searchEntityIcon"
-              [hint]="searchHint"
-              (queryChange)="onSearchChange($event)"
-              (search)="onSearchSubmit($event)"
-              (clear)="onSearchClear()">
-            </app-browse-search-panel>
-          </div>
-        }
-        
-        <!-- View Toggle Button -->
-        @if (entityType) {
-          <button 
-            type="button"
-            class="btn d-flex align-items-center gap-2"
-            [class.btn-primary]="isCustomizing"
-            [class.btn-soft-secondary]="!isCustomizing"
-            (click)="toggleCustomizing()">
-            <i class="bx bx-filter-alt"></i>
-            <span>{{ currentViewName }}</span>
-            <i class="bx bx-xs" [class.bx-chevron-up]="isCustomizing" [class.bx-chevron-down]="!isCustomizing"></i>
-          </button>
-        }
-        
-        <!-- View Mode Icons -->
-        <div class="btn-group">
-          @for (mode of viewModeOptions; track mode.id) {
-            <button 
-              type="button" 
-              class="btn btn-sm"
-              [class.btn-soft-primary]="viewMode === mode.id"
-              [class.btn-soft-secondary]="viewMode !== mode.id"
-              [title]="mode.label"
-              (click)="onViewModeChange(mode.id)">
-              <i [class]="mode.icon"></i>
-            </button>
-          }
-        </div>
-        
-        <!-- Charts Dropdown (if available) -->
-        @if (chartDefinitions.length > 0) {
-          <div ngbDropdown class="d-inline-block">
-            <button 
-              type="button" 
-              class="btn btn-sm btn-soft-secondary"
-              ngbDropdownToggle>
-              <i class="bx bx-bar-chart-alt-2"></i>
-            </button>
-            <div ngbDropdownMenu class="dropdown-menu-end">
-              <h6 class="dropdown-header">Charts</h6>
-              @for (chart of chartDefinitions; track chart.id) {
-                <button 
-                  ngbDropdownItem
-                  [class.active]="viewMode === 'chart' && selectedChartId === chart.id"
-                  (click)="selectChart(chart)">
-                  <i class="bx bx-bar-chart-alt-2 me-2"></i>
-                  {{ chart.label }}
-                </button>
-              }
-            </div>
-          </div>
-        }
-      </div>
+      <!-- Search Panel -->
+      @if (showSearch) {
+        <app-browse-search-panel
+          [query]="searchQuery"
+          [placeholder]="searchPlaceholder"
+          [entityIcon]="searchEntityIcon"
+          [hint]="searchHint"
+          (queryChange)="onSearchChange($event)"
+          (search)="onSearchSubmit($event)"
+          (clear)="onSearchClear()">
+        </app-browse-search-panel>
+      }
       
-      <!-- Customization Panel (shown when view button clicked) -->
-      @if (isCustomizing) {
-        <div class="customization-panel mb-3">
-          <div class="row g-3">
-            <!-- Left: Saved Views -->
-            <div class="col-12 col-lg-3">
-              <div class="panel-section h-100">
-                <h6 class="panel-header">
-                  <i class="bx bx-bookmark me-2"></i>Saved Views
-                </h6>
-                <div class="saved-views-list">
-                  @for (view of savedViews; track view.id) {
-                    <div 
-                      class="saved-view-item d-flex align-items-center"
-                      [class.active]="isActiveView(view)"
-                      (click)="onSavedViewSelect(view)">
-                      <i [class]="getViewIcon(view)" class="me-2"></i>
-                      <span class="flex-grow-1 text-truncate">{{ view.title }}</span>
-                      @if (isActiveView(view)) {
-                        <i class="bx bx-check text-success"></i>
-                      }
-                      @if (!view.isDefault && !view.isMru) {
-                        <button 
-                          class="btn btn-sm btn-link text-danger p-0 ms-2"
-                          (click)="deleteView(view, $event)"
-                          title="Delete">
-                          <i class="bx bx-x"></i>
-                        </button>
-                      }
-                    </div>
-                  }
-                </div>
-              </div>
-            </div>
-            
-            <!-- Center: Filters & Sorts -->
-            <div class="col-12 col-lg-6">
-              <!-- Filters Section -->
-              @if (showFilterPanel) {
-                <div class="panel-section mb-3">
-                  <app-browse-filter-panel
-                    [filters]="filters"
-                    [fields]="fields"
-                    [expanded]="true"
-                    (filtersChange)="onFiltersChange($event)"
-                    (apply)="onApply()">
-                  </app-browse-filter-panel>
-                </div>
-              }
-              
-              <!-- Sorts Section -->
-              @if (showOrderPanel) {
-                <div class="panel-section">
-                  <app-browse-order-panel
-                    [sorts]="sorts"
-                    [fields]="fields"
-                    [expanded]="true"
-                    (sortsChange)="onSortsChange($event)"
-                    (apply)="onApply()">
-                  </app-browse-order-panel>
-                </div>
-              }
-            </div>
-            
-            <!-- Right: Save Section -->
-            <div class="col-12 col-lg-3">
-              <div class="panel-section h-100">
-                <h6 class="panel-header">
-                  <i class="bx bx-save me-2"></i>Save View
-                </h6>
-                <div class="save-form">
-                  <div class="input-group mb-3">
-                    <input 
-                      type="text" 
-                      class="form-control"
-                      placeholder="View name..."
-                      [(ngModel)]="saveViewName"
-                      (keyup.enter)="onSaveView()">
-                    <button 
-                      class="btn btn-success"
-                      [disabled]="!saveViewName.trim()"
-                      (click)="onSaveView()"
-                      title="Save">
-                      <i class="bx bx-check"></i>
-                    </button>
-                  </div>
-                  <button 
-                    class="btn btn-primary w-100"
-                    (click)="onApplyAndClose()">
-                    <i class="bx bx-check me-1"></i>Apply & Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- Filter Panel (collapsible row) -->
+      @if (showFilterPanel) {
+        <app-browse-filter-panel
+          [filters]="filters"
+          [fields]="fields"
+          [expanded]="filtersExpanded"
+          (filtersChange)="onFiltersChange($event)"
+          (expandedChange)="filtersExpanded = $event"
+          (apply)="onApply()">
+        </app-browse-filter-panel>
+      }
+      
+      <!-- Order Panel (collapsible row) -->
+      @if (showOrderPanel) {
+        <app-browse-order-panel
+          [sorts]="sorts"
+          [fields]="fields"
+          [expanded]="orderExpanded"
+          (sortsChange)="onSortsChange($event)"
+          (expandedChange)="orderExpanded = $event"
+          (apply)="onApply()">
+        </app-browse-order-panel>
+      }
+      
+      <!-- Display Panel (view mode icons) -->
+      @if (showDisplayPanel) {
+        <app-browse-display-panel
+          [viewMode]="viewMode"
+          [chartDefinitions]="chartDefinitions"
+          [selectedChartId]="selectedChartId"
+          (viewModeChange)="onViewModeChange($event)"
+          (chartDefinitionChange)="onChartDefinitionChange($event)">
+        </app-browse-display-panel>
       }
       
       <!-- Results Count -->
@@ -386,56 +265,6 @@ export interface CardClickEvent {
     </div>
   `,
   styles: [`
-    .browse-toolbar {
-      flex-wrap: wrap;
-    }
-    
-    .customization-panel {
-      background: var(--vz-card-bg);
-      border: 1px solid var(--vz-border-color);
-      border-radius: 0.5rem;
-      padding: 1rem;
-    }
-    
-    .panel-section {
-      background: var(--vz-light);
-      border: 1px solid var(--vz-border-color);
-      border-radius: 0.375rem;
-      padding: 0.75rem;
-    }
-    
-    .panel-header {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--vz-heading-color);
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--vz-border-color);
-    }
-    
-    .saved-views-list {
-      max-height: 200px;
-      overflow-y: auto;
-    }
-    
-    .saved-view-item {
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      font-size: 0.875rem;
-      
-      &:hover {
-        background: rgba(var(--vz-primary-rgb), 0.1);
-      }
-      
-      &.active {
-        background: var(--vz-primary);
-        color: white;
-        
-        i { color: white !important; }
-      }
-    }
-    
     .results-count {
       font-size: 0.875rem;
     }

@@ -27,8 +27,6 @@
     [loading]="loading()"
     [emptyMessage]="searchQuery ? 'No spikes match your search' : 'No spikes yet'"
     [emptyIcon]="'bx bx-bulb'"
-    [entityType]="'spike'"
-    [currentParams]="currentUrlParams"
     [showSearch]="true"
     [searchQuery]="searchQuery"
     [searchPlaceholder]="'Search spikes...'"
@@ -53,9 +51,7 @@
     (chartDefinitionChange)="onChartDefinitionChange($event)"
     (pageChange)="onPageChange($event)"
     (cardClick)="onCardClick($event)"
-    (cardAction)="onCardAction($event)"
-    (savedViewSelect)="onSavedViewSelect($event)"
-    (viewSaved)="onViewSaved($event)">
+    (cardAction)="onCardAction($event)">
     
     <!-- Empty state actions slot -->
     <ng-container emptyActions>
