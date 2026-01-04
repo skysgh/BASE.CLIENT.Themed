@@ -127,7 +127,7 @@ export interface CardClickEvent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="browse-view">
-      <!-- Row 1: Search (left) + View Selector (right) -->
+      <!-- Row 1: Search (left) + Views Selector (right) -->
       <div class="browse-toolbar d-flex align-items-center gap-2 mb-2">
         @if (showSearch) {
           <div class="flex-grow-1">
@@ -143,42 +143,50 @@ export interface CardClickEvent {
           </div>
         }
         
-        <!-- View Selector + Mode Icons -->
-        @if (showDisplayPanel) {
-          <div class="d-flex align-items-center gap-1">
-            @for (mode of viewModeOptions; track mode.id) {
-              <button 
-                type="button" 
-                class="btn btn-sm"
-                [class.btn-soft-primary]="viewMode === mode.id"
-                [class.btn-soft-secondary]="viewMode !== mode.id"
-                [title]="mode.label"
-                (click)="onViewModeChange(mode.id)">
-                <i [class]="mode.icon"></i>
-              </button>
-            }
-            @if (chartDefinitions.length > 0) {
-              <div ngbDropdown class="d-inline-block">
+        <!-- Saved Views Dropdown -->
+        @if (entityType) {
+          <div ngbDropdown class="d-inline-block">
+            <button 
+              type="button"
+              class="btn btn-soft-primary d-flex align-items-center gap-2"
+              ngbDropdownToggle>
+              <i class="bx bx-filter-alt"></i>
+              <span>{{ currentViewName }}</span>
+            </button>
+            <div ngbDropdownMenu class="dropdown-menu-end" style="min-width: 200px;">
+              <h6 class="dropdown-header">Saved Views</h6>
+              @for (view of savedViews; track view.id) {
                 <button 
-                  type="button" 
-                  class="btn btn-sm"
-                  [class.btn-soft-primary]="viewMode === 'chart'"
-                  [class.btn-soft-secondary]="viewMode !== 'chart'"
-                  ngbDropdownToggle>
-                  <i class="bx bx-bar-chart-alt-2"></i>
-                </button>
-                <div ngbDropdownMenu class="dropdown-menu-end">
-                  @for (chart of chartDefinitions; track chart.id) {
-                    <button 
-                      ngbDropdownItem
-                      [class.active]="selectedChartId === chart.id"
-                      (click)="selectChart(chart)">
-                      {{ chart.label }}
-                    </button>
+                  ngbDropdownItem
+                  class="d-flex align-items-center"
+                  [class.active]="isActiveView(view)"
+                  (click)="onSavedViewSelect(view)">
+                  <i [class]="getViewIcon(view)" class="me-2"></i>
+                  <span class="flex-grow-1">{{ view.title }}</span>
+                  @if (isActiveView(view)) {
+                    <i class="bx bx-check text-success"></i>
                   }
+                </button>
+              }
+              <div class="dropdown-divider"></div>
+              <div class="px-3 py-2">
+                <div class="input-group input-group-sm">
+                  <input 
+                    type="text" 
+                    class="form-control"
+                    placeholder="Save as..."
+                    [(ngModel)]="saveViewName"
+                    (click)="$event.stopPropagation()"
+                    (keyup.enter)="onSaveView()">
+                  <button 
+                    class="btn btn-success"
+                    [disabled]="!saveViewName.trim()"
+                    (click)="onSaveView(); $event.stopPropagation()">
+                    <i class="bx bx-check"></i>
+                  </button>
                 </div>
               </div>
-            }
+            </div>
           </div>
         }
       </div>
@@ -209,7 +217,7 @@ export interface CardClickEvent {
           </app-browse-order-panel>
         }
         
-        <!-- Display Panel -->
+        <!-- Display Panel (with view mode icons) -->
         @if (showDisplayPanel) {
           <app-browse-display-panel
             [viewMode]="viewMode"
