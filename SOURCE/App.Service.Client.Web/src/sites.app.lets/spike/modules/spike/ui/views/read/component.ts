@@ -28,8 +28,8 @@ import {
 import { getSpikeFormDefinition } from '../../../../../forms/spike-form.definitions';
 import { toFormlyConfig } from '../../../../../../../core/forms/formly-adapter';
 import { FormDefinition } from '../../../../../../../core/forms/form-definition.model';
-// Summary component types
-import { SummaryItem } from '../../../../../../../core/components/child-summary/child-summary.component';
+// ✅ UPDATED: Summary component types moved to core.ag
+import { SummaryItem } from '../../../../../../../core.ag/ui/widgets/child-summary/child-summary.component';
 
 
 @Component({

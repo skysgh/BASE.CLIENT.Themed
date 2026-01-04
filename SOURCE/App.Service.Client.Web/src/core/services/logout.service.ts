@@ -75,6 +75,18 @@ export class LogoutService {
       this.sessionStorage.clearAuthData();
       this.diagnostics.debug('LogoutService: Session storage cleared');
 
+      // ✅ EXTRA SAFETY: Also clear directly (in case service has issues)
+      try {
+        sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentPerson');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('authUser');
+        sessionStorage.clear(); // Nuclear option - clear everything
+        this.diagnostics.debug('LogoutService: Direct sessionStorage.clear() executed');
+      } catch (e) {
+        this.diagnostics.warn(`LogoutService: Direct clear failed: ${e}`);
+      }
+
       // Step 2: TODO - Revoke tokens with IdP if supported
       // This would call the IdP's revocation endpoint
       // await this.revokeTokens();

@@ -74,7 +74,7 @@ export class NavigationService {
    * 
    * Examples:
    * - /default/apps/spike → true (has 'default' prefix)
-   * - /foo/dashboards → true (has 'foo' prefix)
+   * - /foo/system/hub → true (has 'foo' prefix)
    * - /pages/landing → false (no account prefix)
    * - /auth/signin → false (no account prefix)
    */
@@ -85,9 +85,19 @@ export class NavigationService {
     const firstSegment = segments[0];
     
     // Reserved routes are not account prefixes
+    // These are top-level routes that don't have an account prefix
     const reservedRoutes = [
-      'pages', 'apps', 'auth', 'errors', 'assets', 'api',
-      'dashboards', 'dev', 'system', 'landing', 'information'
+      'pages',        // Public pages (sites.anon)
+      'apps',         // Domain applets (sites.app.lets)
+      'system',       // Platform parts (sites.app.parts)
+      'auth',         // Authentication flows
+      'errors',       // Error pages
+      'dev',          // Developer tools
+      'assets',       // Static assets
+      'api',          // API endpoints
+      'dashboards',   // Legacy - redirects to system/hub
+      'landing',      // Convenience redirect to pages/landing
+      'information'   // Convenience redirect to pages/information
     ];
     
     return !reservedRoutes.includes(firstSegment);
@@ -151,10 +161,10 @@ export class NavigationService {
   /**
    * Get the post-login redirect URL for current account
    * 
-   * @param customPath Optional custom path (default: 'dashboards/main')
+   * @param customPath Optional custom path (default: 'system/hub')
    */
   getPostLoginUrl(customPath?: string): string {
-    return this.getUrl(customPath || 'dashboards/main');
+    return this.getUrl(customPath || 'system/hub');
   }
 
   /**
@@ -186,9 +196,10 @@ export class NavigationService {
 
   /**
    * Navigate to post-login destination for current account
+   * Redirects to system hub (central landing page)
    */
   async navigatePostLogin(): Promise<boolean> {
-    return this.navigate('dashboards/main');
+    return this.navigate('system/hub');
   }
 
   /**

@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 
 //import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../modules/components/components/breadcrumbs/component';
 
-import { BaseAppsPagesHomeIndexComponent } from './components/component';
+import { BaseAppsPagesHomeIndexComponent } from './ui/views/home-index/component';
 // Import  Base.Common.Models:
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';

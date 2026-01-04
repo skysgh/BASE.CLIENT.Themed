@@ -7,9 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // Import Module specific.components:
-import { BaseCorePagesROComponent } from './components/_routeoutlet/component';
-import { BaseCorePagesInformationModule } from './information/module';
-import { BaseCorePagesLandingModule } from './landing/module';
+// ✅ UPDATED: Path changed from ./components/ to ./ui/views/
+import { BaseCorePagesROComponent } from './ui/views/_routeoutlet/component';
 
 import { BaseThemesV1Module } from '../../../themes/t1/module';
 
@@ -38,6 +37,8 @@ import { sitesConfiguration } from '../../configuration/implementation/sites.con
     
     RouterModule.forChild(
       [
+        // ✅ ADDED: Default redirect to landing
+        { path: '', redirectTo: 'landing', pathMatch: 'full' },
         // Lazy load child feature modules
         { path: 'landing', loadChildren: () => import('./landing/module').then(m => m.BaseCorePagesLandingModule) },
         { path: 'information', loadChildren: () => import('./information/module').then(m => m.BaseCorePagesInformationModule) },
@@ -47,10 +48,6 @@ import { sitesConfiguration } from '../../configuration/implementation/sites.con
     ),
     
     FormsModule,
-    
-    // Child Modules:
-    BaseCorePagesLandingModule,
-    BaseCorePagesInformationModule,
   ],
   exports: [
   ]

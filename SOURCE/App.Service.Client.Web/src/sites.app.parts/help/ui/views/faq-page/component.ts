@@ -2,13 +2,14 @@
  * Help FAQ Page Component
  * 
  * Full FAQ page within the Help section.
- * Uses the reusable FaqViewerComponent from core.
+ * Uses the reusable FaqViewerComponent from core.ag.
  */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { FaqViewerComponent, FaqCategoryConfig } from '../../../../../core/components/faq-viewer';
+// ✅ UPDATED: Path changed after moving to core.ag/ui/widgets
+import { FaqViewerComponent, FaqCategoryConfig } from '../../../../../core.ag/ui/widgets/faq-viewer';
 
 @Component({
   selector: 'app-help-faq-page',

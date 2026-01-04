@@ -88,9 +88,19 @@ export class NavigationDataService {
     const firstSegment = segments[0];
     
     // Reserved routes are not account prefixes
+    // These are top-level routes that don't have an account prefix
     const reservedRoutes = [
-      'pages', 'apps', 'auth', 'errors', 'assets', 'api',
-      'dashboards', 'dev', 'system', 'landing', 'information'
+      'pages',        // Public pages (sites.anon)
+      'apps',         // Domain applets (sites.app.lets)
+      'system',       // Platform parts (sites.app.parts)
+      'auth',         // Authentication flows
+      'errors',       // Error pages
+      'dev',          // Developer tools
+      'assets',       // Static assets
+      'api',          // API endpoints
+      'dashboards',   // Legacy - redirects to system/hub
+      'landing',      // Convenience redirect to pages/landing
+      'information'   // Convenience redirect to pages/information
     ];
     
     return !reservedRoutes.includes(firstSegment);
@@ -149,18 +159,22 @@ export class NavigationDataService {
 
   /**
    * Build main navigation section
+   * 
+   * Route structure:
+   * - /apps/*   → Domain applets (sites.app.lets/)
+   * - /system/* → Platform parts (sites.app.parts/)
    */
   private buildMainSection(appletItems: AppletNavItem[]): NavigationSection {
     const items: NavigationItem[] = [
-      // Hub (formerly Dashboard)
+      // Hub (central landing page) - now under /system/
       {
         id: 'hub',
         label: 'BASE.HUB.SINGULAR',
         description: 'BASE.HUB.DESCRIPTION',
         icon: 'home',
-        route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, ROUTE_SEGMENTS.HUB)
+        route: this.buildRoute(ROUTE_SEGMENTS.SYSTEM, ROUTE_SEGMENTS.HUB)
       },
-      // Dynamic Applets
+      // Dynamic Applets - under /apps/
       {
         id: 'apps',
         label: 'BASE.APPS.PLURAL',
@@ -192,6 +206,10 @@ export class NavigationDataService {
 
   /**
    * Build user menu items
+   * 
+   * Route structure:
+   * - /system/* → Platform parts (profile, settings)
+   * - /auth/* → Authentication (signout)
    */
   private buildUserMenuItems(): NavigationItem[] {
     return [
@@ -199,13 +217,13 @@ export class NavigationDataService {
         id: 'profile',
         label: 'BASE.PROFILE.SINGULAR',
         icon: 'user',
-        route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, 'authentication', 'profile')
+        route: this.buildRoute(ROUTE_SEGMENTS.SYSTEM, 'authentication', 'profile')
       },
       {
         id: 'user-settings',
         label: 'BASE.SETTINGS.USER',
         icon: 'cog',
-        route: this.buildRoute(ROUTE_SEGMENTS.APPS, ROUTE_SEGMENTS.SYSTEM, ROUTE_SEGMENTS.SETTINGS, 'user')
+        route: this.buildRoute(ROUTE_SEGMENTS.SYSTEM, ROUTE_SEGMENTS.SETTINGS, 'user')
       },
       {
         id: 'signout',
@@ -218,6 +236,8 @@ export class NavigationDataService {
 
   /**
    * Build quick action items
+   * 
+   * Quick actions route to domain applets under /apps/
    */
   private buildQuickActions(): NavigationItem[] {
     return [

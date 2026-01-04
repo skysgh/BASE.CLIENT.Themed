@@ -1,6 +1,7 @@
 // ag:
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
 
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
@@ -9,6 +10,8 @@ import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 // import { BaseCoreAgModule } from "../module";
 // Components:
 import { BaseCoreCommonComponentsMarkdownComponent } from "./markdown/component";
+// ✅ ADDED: Child Summary component moved from core/components
+import { ChildSummaryComponent } from "../ui/widgets/child-summary/child-summary.component";
 
 
 /**
@@ -27,7 +30,9 @@ import { BaseCoreCommonComponentsMarkdownComponent } from "./markdown/component"
  */
 @NgModule({ declarations: [
         // Components, Directives, Pipes developed in this Module.
-        BaseCoreCommonComponentsMarkdownComponent
+        BaseCoreCommonComponentsMarkdownComponent,
+        // ✅ ADDED: Child Summary component
+        ChildSummaryComponent
     ],
     exports: [
         // No harm exporting it.
@@ -35,10 +40,14 @@ import { BaseCoreCommonComponentsMarkdownComponent } from "./markdown/component"
         // NO: Export Parent Module:
         // NO: BaseCoreAgSupportModule,
         // Components:
-        BaseCoreCommonComponentsMarkdownComponent
+        BaseCoreCommonComponentsMarkdownComponent,
+        // ✅ ADDED: Child Summary component
+        ChildSummaryComponent
     ], imports: [
         // Access to all basic Ag pipes, directives, etc.
         CommonModule,
+        // ✅ ADDED: RouterModule for navigation
+        RouterModule,
         // NO: Import Parent Module:
         // NO: BaseCoreAgModule,
         // Dependencies:

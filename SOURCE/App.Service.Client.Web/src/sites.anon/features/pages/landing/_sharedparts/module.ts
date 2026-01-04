@@ -16,18 +16,19 @@ import { RouterModule } from '@angular/router';
 //import { BaseCoreCommonComponentsBreadcrumbsComponent } from '../../modules/components/breadcrumbs/component';
 
 // Import  Base.Common.Models:
-import { BaseAppsPagesLandingIndexDemosComponent } from './components/intro/component';
-import { BaseAppsPagesLandingIndexClientsComponent } from './components/clients/component';
-import { BaseAppsPagesLandingIndexFeaturesComponent } from './components/features/component';
-import { BaseAppsPagesLandingIndexContactComponent } from './components/contact/component';
-import { BaseAppsPagesLandingIndexStatsComponent } from './components/stats/component';
-import { BaseAppsPagesLandingIndexCtaComponent } from './components/cta/component';
-import { BaseAppsPagesLandingIndexDesignedComponent } from './components/designed/component';
-import { BaseAppsPagesLandingIndexFaqsComponent } from './components/faqs/component';
-import { BaseAppsPagesLandingIndexPlanComponent } from './components/plan/component';
-import { BaseAppsPagesLandingIndexReviewComponent } from './components/endorsements/component';
-import { BaseAppsPagesLandingIndexCapabilitiesComponent } from './components/capabilities/component';
-import { BaseAppsPagesLandingIndexTeamComponent } from './components/team/component';
+// ✅ UPDATED: Path changed from ./components/ to ./ui/viewsections/
+import { BaseAppsPagesLandingIndexDemosComponent } from './ui/viewsections/intro/component';
+import { BaseAppsPagesLandingIndexClientsComponent } from './ui/viewsections/clients/component';
+import { BaseAppsPagesLandingIndexFeaturesComponent } from './ui/viewsections/features/component';
+import { BaseAppsPagesLandingIndexContactComponent } from './ui/viewsections/contact/component';
+import { BaseAppsPagesLandingIndexStatsComponent } from './ui/viewsections/stats/component';
+import { BaseAppsPagesLandingIndexCtaComponent } from './ui/viewsections/cta/component';
+import { BaseAppsPagesLandingIndexDesignedComponent } from './ui/viewsections/designed/component';
+import { BaseAppsPagesLandingIndexFaqsComponent } from './ui/viewsections/faqs/component';
+import { BaseAppsPagesLandingIndexPlanComponent } from './ui/viewsections/plan/component';
+import { BaseAppsPagesLandingIndexReviewComponent } from './ui/viewsections/endorsements/component';
+import { BaseAppsPagesLandingIndexCapabilitiesComponent } from './ui/viewsections/capabilities/component';
+import { BaseAppsPagesLandingIndexTeamComponent } from './ui/viewsections/team/component';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
@@ -42,15 +43,15 @@ import { SystemDiagnosticsTraceService } from '../../../../../core/services/syst
 
 // import { BaseCoreCommonComponentsModule } from '../../../common/components/module';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
-import { BaseAppsPagesLandingIndexHeaderComponent } from './components/header/component';
+import { BaseAppsPagesLandingIndexHeaderComponent } from './ui/viewsections/header/component';
 //import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from '_root';
 import { BaseThemesModule } from '../../../../../themes/module';
 import { BaseThemesV1Module } from '../../../../../themes/t1/module';
 import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
 import { sitesConfiguration } from '../../../../configuration/implementation/sites.configuration';
-import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './components/scrollBackToTop/BaseAppsPagesLandingIndexScrollBackToTopComponent';
+import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from './ui/viewsections/scrollBackToTop/BaseAppsPagesLandingIndexScrollBackToTopComponent';
 import { BaseCoreAgModule } from '../../../../../core.ag/module';
-import { BaseAppsPagesLandingIndexWorkProcessComponent } from './components/process/component';
+import { BaseAppsPagesLandingIndexWorkProcessComponent } from './ui/viewsections/process/component';
 // NO: Parent Module:
 // NO: import { BaseCoreSitesFeaturesPagesModule } from '../../module';
 //NO: import { ScrollspyDirective } from '../../common/scrollspy.directive';

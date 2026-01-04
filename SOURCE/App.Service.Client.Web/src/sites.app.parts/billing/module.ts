@@ -20,7 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BillingRoutingModule } from './routing';
 
 // Core modules
-import { CoreComponentsModule } from '../../core/components/module';
+import { BaseCoreAgComponentsModule } from '../../core.ag/components.default/module';
 import { BaseCoreAgPipesModule } from '../../core.ag/pipes/module';
 
 // Views
@@ -45,7 +45,7 @@ import { RefundComponent } from './ui/views/refund/component';
     RouterModule,
     NgbModule,
     BillingRoutingModule,
-    CoreComponentsModule,
+    BaseCoreAgComponentsModule,
     BaseCoreAgPipesModule
   ],
   exports: [

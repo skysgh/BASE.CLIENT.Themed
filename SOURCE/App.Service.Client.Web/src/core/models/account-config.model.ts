@@ -32,6 +32,12 @@ export interface AccountConfig {
   /** Display subtitle (shown in header) */
   subtitle?: string;
   
+  /** Description and purpose of the application/service */
+  description?: AccountDescription;
+  
+  /** Copyright information */
+  copyrights?: AccountCopyrights;
+  
   /** Branding configuration (logo, colors, theme) */
   branding: AccountBranding;
   
@@ -49,6 +55,28 @@ export interface AccountConfig {
   
   /** Internal flag: Was this account config found or is it a fallback? */
   _accountNotFound?: boolean;
+}
+
+export interface AccountDescription {
+  /** Short description of the service */
+  description?: string;
+  
+  /** Purpose statement */
+  purpose?: string;
+  
+  /** Full title of the service */
+  title?: string;
+}
+
+/**
+ * Copyright information
+ */
+export interface AccountCopyrights {
+  /** Copyright year or year range (e.g., '2024' or '2020-2024') */
+  year?: string;
+  
+  /** Copyright holder name */
+  holder?: string;
 }
 
 export interface AccountBranding {
@@ -179,6 +207,15 @@ export const DEFAULT_ACCOUNT_CONFIG: Partial<AccountConfig> = {
   name: 'Default Account',
   title: 'BASE Application',
   subtitle: 'Multi-Account Platform',
+  description: {
+    title: 'BASE Application',
+    description: 'A multi-account platform for modern applications.',
+    purpose: 'Enabling organizations to manage their workflows efficiently.'
+  },
+  copyrights: {
+    year: new Date().getFullYear().toString(),
+    holder: 'BASE Platform'
+  },
   branding: {
     logo: '/assets/core/media/open/accounts/default/logo-dark.png',
     logoDark: '/assets/core/media/open/accounts/default/logo-light.png',
@@ -186,6 +223,11 @@ export const DEFAULT_ACCOUNT_CONFIG: Partial<AccountConfig> = {
     theme: {
       primaryColor: '#007bff',
       secondaryColor: '#6c757d'
+    }
+  },
+  context: {
+    developer: {
+      title: 'BASE Development Team'
     }
   },
   resources: {

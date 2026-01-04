@@ -1,0 +1,44 @@
+// Ag:
+import { Component, OnInit } from '@angular/core';
+// Configuration:
+// ✅ FIXED: Paths adjusted for new location (_sharedparts/ui/viewsections/stats/)
+import { sitesConfiguration } from '../../../../../../../configuration/implementation/sites.configuration';
+// Services:
+import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
+// Describe applet (now in sites.app.parts):
+import { ServiceDescribeStatsService } from '../../../../../../../../sites.app.parts/describe/services/service-describe-stats.service';
+// Data:
+import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
+import { ViewModel } from './vm';
+
+@Component({
+    selector: 'app-base-core-pages-landing-index-stats',
+    templateUrl: './component.html',
+    styleUrls: ['./component.scss'],
+    standalone: false
+})
+export class BaseAppsPagesLandingIndexStatsComponent implements OnInit {
+  public groupConfiguration = sitesConfiguration;
+  public viewModel: ViewModel = new ViewModel();
+  sectionsInfo = importedSectionsInfo;
+
+  private C_START_NUMBER: number = 0;
+  public option = {
+    startVal: this.C_START_NUMBER,
+    decimalPlaces: 2,
+    duration: 2,
+    useEasing: true
+  };
+
+  constructor(
+    private defaultControllerServices: DefaultComponentServices,
+    public statsService: ServiceDescribeStatsService
+  ) {
+    this.defaultControllerServices.diagnosticsTraceService.debug(`${this.constructor.name}.constructor()`)
+  }
+
+  ngOnInit(): void {
+    // Stats automatically loaded by service
+    // Access via statsService.enabledStats() signal
+  }
+}

@@ -12,8 +12,8 @@ import { CoreFormlyModule } from '../../core/forms/formly.module';
 // Core pipes (for baseTranslate)
 import { BaseCoreAgPipesModule } from '../../core.ag/pipes/module';
 
-// Core components (for child-summary, drill-selector)
-import { CoreComponentsModule } from '../../core/components/module';
+// ✅ UPDATED: Core components moved to core.ag - import the module that contains them
+import { BaseCoreAgComponentsModule } from '../../core.ag/components.default/module';
 
 // Core.ag components (for browse-view)
 import { BrowseViewComponent } from '../../core.ag/ui/widgets/browse-view';
@@ -80,11 +80,13 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     // Use CoreFormlyModule instead of FormlyModule.forChild() + FormlyBootstrapModule
     // CoreFormlyModule registers custom types including 'label' for read-only views
     CoreFormlyModule,
     BaseCoreAgPipesModule,
-    CoreComponentsModule,
+    // ✅ UPDATED: Use components module for child-summary, etc.
+    BaseCoreAgComponentsModule,
     // BrowseView for universal browse rendering
     BrowseViewComponent,
     // ✅ NEW: Schema-driven CRUD page (standalone component)

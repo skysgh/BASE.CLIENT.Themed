@@ -231,7 +231,7 @@ export class TrashHubComponent implements OnInit {
   hubRoute: string = '';
   
   ngOnInit(): void {
-    this.hubRoute = this.navService.getUrl('apps/system/hub');
+    this.hubRoute = this.navService.getUrl('system/hub');
     this.trashService.loadDeletedItems();
   }
   

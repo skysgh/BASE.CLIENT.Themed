@@ -24,6 +24,7 @@ import { CommonModule, Location } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { ErrorPageConfig, getErrorConfig, getErrorDefaults } from '../../../models/error-data';
 import { NavigationService } from '../../../../../core/services/navigation.service';
+import { AccountService } from '../../../../../core/services/account.service';
 
 @Component({
   selector: 'app-error',
@@ -68,6 +69,21 @@ import { NavigationService } from '../../../../../core/services/navigation.servi
                       <!-- Title & Description -->
                       <h4 class="text-uppercase text-white">{{ title }}</h4>
                       <p class="text-white-50 fs-15 mb-4">{{ description }}</p>
+                      
+                      <!-- Account ID for 404-A -->
+                      @if (errorCode === '404-A' && accountId) {
+                        <div class="alert alert-light-subtle text-start mx-auto" style="max-width: 500px;">
+                          <p class="mb-2">The account <strong class="text-danger">"{{ accountId }}"</strong> was not found.</p>
+                          <small class="text-muted">
+                            This could happen if:
+                            <ul class="mt-1 mb-0">
+                              <li>The account URL was mistyped</li>
+                              <li>The account has been removed or deactivated</li>
+                              <li>You followed an outdated link</li>
+                            </ul>
+                          </small>
+                        </div>
+                      }
                       
                       <!-- Buttons -->
                       <div class="mt-4">
@@ -128,6 +144,7 @@ import { NavigationService } from '../../../../../core/services/navigation.servi
 })
 export class ErrorComponent implements OnInit {
   private navigationService = inject(NavigationService);
+  private accountService = inject(AccountService);
   private location = inject(Location);
   private router = inject(Router);
   
@@ -138,6 +155,9 @@ export class ErrorComponent implements OnInit {
   // Display text (from i18n or defaults)
   title = '';
   description = '';
+  
+  // Account ID for 404-A errors
+  accountId = '';
   
   // Navigation URLs (account-aware)
   homeUrl = '/';
@@ -156,7 +176,6 @@ export class ErrorComponent implements OnInit {
     this.landingUrl = this.navigationService.getUrl('pages/landing');
     
     // ✅ Check if we can go back (prevent infinite loop)
-    // If the previous URL was also an error page, don't allow back
     this.canGoBack = this.checkCanGoBack();
     
     // Get error code from route parameter
@@ -169,6 +188,12 @@ export class ErrorComponent implements OnInit {
       const defaults = getErrorDefaults(code);
       this.title = defaults.title;
       this.description = defaults.description;
+      
+      // ✅ For 404-A, get the account ID from sessionStorage
+      if (code === '404-A') {
+        this.accountId = sessionStorage.getItem('accountNotFoundId') || this.accountService.getAccountId();
+        sessionStorage.removeItem('accountNotFoundId');
+      }
       
       console.log(`[ErrorComponent] Loaded error page: ${code}`);
       console.log(`[ErrorComponent] Home URL: ${this.homeUrl}`);

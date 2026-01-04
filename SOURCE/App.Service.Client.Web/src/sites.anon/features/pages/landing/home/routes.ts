@@ -2,7 +2,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // Etc:
-import { BaseAppsPagesHomeIndexComponent } from './components/component';
+// ✅ UPDATED: Path changed from ./components/ to ./ui/views/home-index/
+import { BaseAppsPagesHomeIndexComponent } from './ui/views/home-index/component';
 
 
 const routes: Routes = [

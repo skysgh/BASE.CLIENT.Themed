@@ -13,14 +13,6 @@ import { SystemDiagnosticsTraceService } from '../../core/services/system.diagno
 
 
 const routes: Routes = [
-  //// app.module states bootstrap: [AppROComponent]
-  //// so it already knows what control to load, and it happens to be a
-  //// route controller.
-  //// So no need to define again below
-
-  //// so pages and landing (and auth, etc.) will be loaded directly within
-  //// the AppROComponent. They also don't need to be gaurded - they're public access.
-
   // ============================================================================
   // DEVELOPER TOOLS - /dev/* (NO AUTH REQUIRED)
   // Developer reference pages accessible without authentication
@@ -32,32 +24,66 @@ const routes: Routes = [
     // No AuthGuard - developer tools accessible without login
   },
 
-  // ✅ Account-based routes (e.g., /foo/pages, /bar/apps)
-  // Only match if second segment is a known route pattern
-  // ✅ ADDED: AccountGuard checks if account config was found
+  // ============================================================================
+  // ACCOUNT-PREFIXED ROUTES (e.g., /foo/apps, /bar/system)
+  // ============================================================================
+  
+  // Account + Dashboards (legacy, redirects to system/hub)
   { 
     path: ':accountId/dashboards', 
-    component: AppLayoutComponent, 
-    loadChildren: () => import('../../sites.anon/features/dashboard/module').then(m => m.BaseCoreDashboardsModule), 
-    canActivate: [AccountGuard, AuthGuard]  // ← Validate account first, then auth
+    redirectTo: ':accountId/system/hub',
+    pathMatch: 'full'
   },
+  { 
+    path: ':accountId/dashboards/main', 
+    redirectTo: ':accountId/system/hub',
+    pathMatch: 'full'
+  },
+  
+  // Account + Pages (public, no auth required)
   { 
     path: ':accountId/pages', 
     loadChildren: () => import('../../sites.anon/features/pages/module').then(m => m.BaseCoreSitesFeaturesPagesModule),
-    canActivate: [AccountGuard]  // ← Validate account exists
+    canActivate: [AccountGuard]
   },
+  
+  // Account + Apps (domain applets only - sites.app.lets)
   { 
     path: ':accountId/apps', 
     component: AppLayoutComponent, 
-    loadChildren: () => import('../../sites.app/module').then(m => m.BaseAppsModule), 
-    canActivate: [AccountGuard, AuthGuard]  // ← Validate account first, then auth
+    loadChildren: () => import('../../sites.app.lets/routing.module').then(m => m.AppletsRoutingModule), 
+    canActivate: [AccountGuard, AuthGuard]
   },
+  
+  // Account + System (platform parts - sites.app.parts)
+  { 
+    path: ':accountId/system', 
+    component: AppLayoutComponent, 
+    loadChildren: () => import('../../sites.app.parts/routing.module').then(m => m.PartsRoutingModule), 
+    canActivate: [AccountGuard, AuthGuard]
+  },
+  
+  // Account + Dev
   { 
     path: ':accountId/dev', 
     component: AppLayoutComponent, 
     loadChildren: () => import('../../sites.app.dev/module').then(m => m.SitesAppDevModule)
-    // No AuthGuard - developer tools accessible without login
   },
+  
+  // Account + Auth
+  { 
+    path: ':accountId/auth', 
+    loadChildren: () => import('../../themes/t1/features/user/account/module').then(m => m.BaseThemesV1FeaturesUserAccountModule),
+    canActivate: [AccountGuard]
+  },
+  
+  // Account + Errors
+  { 
+    path: ':accountId/errors', 
+    loadChildren: () => import('../../sites.app.parts/errors/module').then(m => m.ErrorsModule)
+  },
+  
+  // Account redirects
   { 
     path: ':accountId/landing', 
     redirectTo: ':accountId/pages/landing', 
@@ -68,44 +94,77 @@ const routes: Routes = [
     redirectTo: ':accountId/pages/information', 
     pathMatch: 'full'
   },
+  // ✅ NEW: Bare account ID redirects to account's pages
+  // e.g., /bar → /bar/pages
   { 
-    path: ':accountId/auth', 
-    loadChildren: () => import('../../themes/t1/features/user/account/module').then(m => m.BaseThemesV1FeaturesUserAccountModule),
-    canActivate: [AccountGuard]  // ← Validate account exists
-  },
-  { 
-    path: ':accountId/errors', 
-    loadChildren: () => import('../../sites.app.parts/errors/module').then(m => m.ErrorsModule)
-    // No guard - error pages should always be accessible
+    path: ':accountId', 
+    redirectTo: ':accountId/pages', 
+    pathMatch: 'full'
   },
 
   // ============================================================================
-  // LEGACY ROUTES - Redirects for backward compatibility
+  // DEFAULT ROUTES (no account prefix - uses 'default' account)
   // ============================================================================
 
-  // Dashboard routes - redirect to hub (dashboards not implemented yet)
+  // Dashboard redirects to system/hub
   { 
     path: 'dashboards', 
-    redirectTo: 'apps/system/hub',
+    redirectTo: 'system/hub',
     pathMatch: 'full'
   },
   { 
     path: 'dashboards/main', 
-    redirectTo: 'apps/system/hub',
+    redirectTo: 'system/hub',
     pathMatch: 'full'
   },
 
-  // ✅ Default routes (no account ID - uses 'default' account)
-  { path: 'pages', loadChildren: () => import('../../sites.anon/features/pages/module').then(m => m.BaseCoreSitesFeaturesPagesModule) },
-  { path: 'apps', component: AppLayoutComponent, loadChildren: () => import('../../sites.app/module').then(m => m.BaseAppsModule), canActivate: [AuthGuard] },
+  // Pages (public)
+  { 
+    path: 'pages', 
+    loadChildren: () => import('../../sites.anon/features/pages/module').then(m => m.BaseCoreSitesFeaturesPagesModule) 
+  },
+  
+  // Apps (domain applets only)
+  { 
+    path: 'apps', 
+    component: AppLayoutComponent, 
+    loadChildren: () => import('../../sites.app.lets/routing.module').then(m => m.AppletsRoutingModule), 
+    canActivate: [AuthGuard] 
+  },
+  
+  // System (platform parts)
+  { 
+    path: 'system', 
+    component: AppLayoutComponent, 
+    loadChildren: () => import('../../sites.app.parts/routing.module').then(m => m.PartsRoutingModule), 
+    canActivate: [AuthGuard] 
+  },
+  
+  // Auth
+  { 
+    path: 'auth', 
+    loadChildren: () => import('../../themes/t1/features/user/account/module').then(m => m.BaseThemesV1FeaturesUserAccountModule) 
+  },
+  
+  // Errors
+  { 
+    path: 'errors', 
+    loadChildren: () => import('../../sites.app.parts/errors/module').then(m => m.ErrorsModule) 
+  },
+  
+  // Convenience redirects
   { path: 'landing', redirectTo: 'pages/landing', pathMatch: 'full' },
   { path: 'information', redirectTo: 'pages/information', pathMatch: 'full' },
-  { path: 'auth', loadChildren: () => import('../../themes/t1/features/user/account/module').then(m => m.BaseThemesV1FeaturesUserAccountModule) },
-  { path: 'errors', loadChildren: () => import('../../sites.app.parts/errors/module').then(m => m.ErrorsModule) },
 
+  // ============================================================================
+  // LEGACY REDIRECTS - Backward compatibility for /apps/system/* URLs
+  // ============================================================================
+  // TODO: Remove after migration period
+  
+  // Default
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
 
-  // ✅ Catch-all: Unknown routes go to error page
+  // Catch-all: Unknown routes go to error page
   { path: '**', redirectTo: 'errors/404' }
 ];
 
@@ -116,7 +175,17 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 /**
- * Routing Module invoked from root AppModule.
+ * Root Routing Module
+ * 
+ * Route Structure:
+ * - /apps/*      → Domain applets (sites.app.lets/) - what users came for
+ * - /system/*    → Platform parts (sites.app.parts/) - system support features
+ * - /pages/*     → Public pages (sites.anon/) - landing, info, etc.
+ * - /auth/*      → Authentication flows
+ * - /dev/*       → Developer tools
+ * - /errors/*    → Error pages
+ * 
+ * All routes support account prefix: /foo/apps/*, /foo/system/*, etc.
  */
 export class AppExtensionRoutingModule {
   constructor(private diagnosticsTraceService: SystemDiagnosticsTraceService) {

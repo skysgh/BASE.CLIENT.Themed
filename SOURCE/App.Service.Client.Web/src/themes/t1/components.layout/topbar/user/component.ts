@@ -65,23 +65,25 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
     this.initUser();
     
     // Build account-aware routes
-    // Routes are relative to /apps/ parent route
+    // Route structure after restructuring:
+    // - /apps/*   → Domain applets (sites.app.lets/) - spike, faq, surveys
+    // - /system/* → Platform parts (sites.app.parts/) - hub, settings, trash, etc.
     // The NavigationService.getUrl() handles account prefixing
     
-    // Profile - system authentication module
-    this.profileRoute = this.navigationService.getUrl('apps/system/authentication/profile');
+    // Profile - user module (formerly authentication)
+    this.profileRoute = this.navigationService.getUrl('system/user/profile');
     // Settings - unified settings hub
-    this.settingsRoute = this.navigationService.getUrl('apps/system/settings');
+    this.settingsRoute = this.navigationService.getUrl('system/settings');
     // About - system info
-    this.aboutRoute = this.navigationService.getUrl('apps/system/about');
+    this.aboutRoute = this.navigationService.getUrl('system/about');
     // Support - issue/idea submission (replaces Help)
-    this.helpRoute = this.navigationService.getUrl('apps/system/support');
+    this.helpRoute = this.navigationService.getUrl('system/support');
     // Messages - internal messaging
-    this.messagesRoute = this.navigationService.getUrl('apps/system/messages');
-    // Tasks - spike applet (contains task management)
+    this.messagesRoute = this.navigationService.getUrl('system/messages');
+    // Tasks - spike applet (domain applet)
     this.tasksRoute = this.navigationService.getUrl('apps/spike');
     // Finances - billing module
-    this.financesRoute = this.navigationService.getUrl('apps/system/billing');
+    this.financesRoute = this.navigationService.getUrl('system/billing');
   }
 
   private initUser() {

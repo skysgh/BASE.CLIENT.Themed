@@ -1,0 +1,27 @@
+.theme-settings {
+  .card-radio {
+    .form-check-input {
+      display: none;
+      
+      &:checked + .form-check-label {
+        border-color: var(--vz-primary);
+        box-shadow: 0 0 0 2px rgba(var(--vz-primary-rgb), 0.25);
+      }
+    }
+    
+    .form-check-label {
+      border: 1px solid var(--vz-border-color);
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        border-color: var(--vz-primary);
+      }
+    }
+  }
+  
+  .bg-vertical-gradient {
+    background: linear-gradient(to bottom, var(--vz-primary), var(--vz-success));
+  }
+}

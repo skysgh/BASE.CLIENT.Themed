@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 /**
  * Theme Module
  * 
- * Theme reference and documentation applet.
+ * Theme customization and reference applet.
  * 
  * PURPOSE:
+ * - User theme settings (color palette, mode, layout)
  * - Reference for theme components, icons, colors, typography
  * - Style guide for consistent UI development
  * - Copy-paste examples for applet developers
  * 
- * NOT FOR:
- * - Actual theme implementation (that's in themes/t1/)
- * - Runtime theme switching (that's in core services)
- * 
  * ROUTES:
  * - /system/theme/ - Theme reference hub
+ * - /system/theme/settings - User theme preferences
  * - /system/theme/colors - Color palette
  * - /system/theme/icons - Icon reference
  * - /system/theme/typography - Font styles
@@ -27,11 +26,17 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild([
       {
         path: '',
         loadComponent: () => 
           import('./ui/views/theme-hub/component').then(m => m.ThemeHubComponent)
+      },
+      {
+        path: 'settings',
+        loadComponent: () => 
+          import('./ui/views/theme-settings/component').then(m => m.ThemeSettingsComponent)
       },
       {
         path: 'colors',

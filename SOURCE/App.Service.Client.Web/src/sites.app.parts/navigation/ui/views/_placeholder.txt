@@ -1,0 +1,8 @@
+# Placeholder
+
+This folder will contain view components for the navigation part.
+
+Views are full-page components that are routed to directly.
+
+## Planned Views
+- navigation-settings: User preferences for navigation behavior

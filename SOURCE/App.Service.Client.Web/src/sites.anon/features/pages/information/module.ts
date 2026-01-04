@@ -20,13 +20,15 @@ import { RouterModule } from '@angular/router';
 //Can Remove: import { TranslateModule } from '@ngx-translate/core';
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 // import { BaseCoreCommonComponentsModule } from '../../common/components/module';
-import { BaseCorePagesInformationPrivacyPolicyComponent } from './components/privacy/component';
-import { BaseCorePagesInformationTermsComponent } from './components/terms/component';
-import { BaseCorePagesInformationCorrectionsComponent } from './components/corrections/component';
-import { BaseCorePagesInformationSupportComponent } from './components/support/component';
-import { BaseCorePagesInformationIndexComponent } from './components/index/component';
-import { BaseCorePagesInformationContactComponent } from './components/contact/component';
-import { BaseAppsPagesLandingIndexHeaderComponent } from './components/index/components/header/component';
+// ✅ UPDATED: Path changed from ./components/ to ./ui/views/
+import { BaseCorePagesInformationPrivacyPolicyComponent } from './ui/views/privacy/component';
+import { BaseCorePagesInformationTermsComponent } from './ui/views/terms/component';
+import { BaseCorePagesInformationCorrectionsComponent } from './ui/views/corrections/component';
+import { BaseCorePagesInformationSupportComponent } from './ui/views/support/component';
+import { BaseCorePagesInformationIndexComponent } from './ui/views/index/component';
+import { BaseCorePagesInformationContactComponent } from './ui/views/contact/component';
+// ✅ UPDATED: Path changed from ./ui/views/index/components/ to ./ui/viewsections/
+import { BaseAppsPagesLandingIndexHeaderComponent } from './ui/viewsections/header/component';
 import { BaseThemesModule } from '../../../../themes/module';
 import { BaseCoreAgComponentsSpecificModule } from '../../../../core.ag/components.specific/module';
 

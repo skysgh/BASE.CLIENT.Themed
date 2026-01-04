@@ -50,8 +50,9 @@ export class AccountGuard implements CanActivate {
       // Store account ID for error page
       sessionStorage.setItem('accountNotFoundId', accountId);
       
-      // Redirect to account-not-found error
-      this.router.navigate(['/errors/404-account-not-found']);
+      // ✅ FIX: Redirect to /errors/404-A (parameterized route)
+      // Not /errors/404-account-not-found (old route)
+      this.router.navigate(['/errors/404-A']);
       
       return false;
     }

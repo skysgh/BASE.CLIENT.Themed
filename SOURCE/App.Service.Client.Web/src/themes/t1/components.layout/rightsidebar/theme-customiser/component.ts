@@ -103,6 +103,27 @@ export class BaseLayoutRightSideContextThemeCustomiserComponent implements OnIni
     this.store.select(getLayoutMode).subscribe((mode) => {
       document.documentElement.setAttribute('data-bs-theme', mode)
     })
+    
+    // ✅ FIX: When switching to dark mode, also set sidebar and topbar to dark
+    // This ensures all surfaces switch together for a cohesive dark experience
+    if (mode === 'dark') {
+      // Only change sidebar if it's currently 'light' (don't override gradient choices)
+      if (this.sidebar === 'light' || !this.sidebar) {
+        this.changeSidebarColor('dark');
+      }
+      // Also switch topbar to dark
+      if (this.topbar === 'light' || !this.topbar) {
+        this.changeTopColor('dark');
+      }
+    } else if (mode === 'light') {
+      // When switching back to light mode, restore light sidebar and topbar
+      if (this.sidebar === 'dark') {
+        this.changeSidebarColor('light');
+      }
+      if (this.topbar === 'dark') {
+        this.changeTopColor('light');
+      }
+    }
   }
 
   // Visibility Change

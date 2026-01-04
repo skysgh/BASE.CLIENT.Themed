@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 //
-import { BaseCoreDashboardsIndexComponent } from './components/index/component';
+import { BaseCoreDashboardsIndexComponent } from './ui/views/dashboard-index/component';
 // import { BaseCoreCommonComponentsModule } from '../common/components/module';
 import { BaseCoreDashboardsRouterModule } from './routes';
 import { DashboardService } from './services/service.dashboard.service';
