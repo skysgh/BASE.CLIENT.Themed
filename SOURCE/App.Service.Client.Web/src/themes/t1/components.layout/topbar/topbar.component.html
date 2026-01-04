@@ -6,74 +6,13 @@
           <app-base-common-components-topbar-languagelogo></app-base-common-components-topbar-languagelogo>
 
           <app-base-common-components-topbar-languagemenuhide (mobileMenuButtonClicked)="onMobileMenuButtonClicked()"></app-base-common-components-topbar-languagemenuhide>
-          <!-- App Search-->
-          <app-base-common-components-topbar-languagesearch></app-base-common-components-topbar-languagesearch>
-
         </div>
         <div class="d-flex align-items-center">
 
-          <div class="dropdown d-md-none topbar-head-dropdown header-item" ngbDropdown>
-            <button type="button"
-                    class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
-                    id="page-header-search-dropdown"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"
-                    ngbDropdownToggle>
-              <i class="bx bx-search fs-22"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                 aria-labelledby="page-header-search-dropdown" ngbDropdownMenu>
-              <form class="p-3">
-                <div class="form-group m-0">
-                  <div class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           placeholder="{{ 'BASE.CORE.SHARED.ACTIONS.SEARCHES.PLACEHOLDER' | baseTranslate}}"
-                           [attr.aria-label]="'BASE.RECIPIENTS.RECIPIENTS_USERNAME' | baseTranslate"
-                           >
-                    <button class="btn btn-primary"
-                            type="submit">
-                      <i class="mdi mdi-magnify"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <div class="dropdown d-md-none topbar-head-dropdown header-item" ngbDropdown>
-            <button type="button"
-                    class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
-                    id="page-header-search-dropdown"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"
-                    ngbDropdownToggle>
-              <i class="bx bx-search fs-22"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-search-dropdown" ngbDropdownMenu>
-              <form class="p-3">
-                <div class="form-group m-0">
-                  <div class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           placeholder="{{ 'BASE.CORE.SHARED.ACTIONS.SEARCHES.PLACEHOLDER' | baseTranslate}}"
-                           [attr.aria-label]="'BASE.RECIPIENTS.RECIPIENTS_USERNAME' | baseTranslate"
-                           >
-                    <button class="btn btn-primary"
-                            type="submit">
-                      <i class="mdi mdi-magnify"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
+          <!-- Search icon - navigates to search page -->
+          <app-base-common-components-topbar-languagesearch></app-base-common-components-topbar-languagesearch>
 
           <app-base-common-components-topbar-languagelanguage></app-base-common-components-topbar-languagelanguage>
-
-
-
 
           <app-base-common-components-topbar-languagefullscreen></app-base-common-components-topbar-languagefullscreen>
 
