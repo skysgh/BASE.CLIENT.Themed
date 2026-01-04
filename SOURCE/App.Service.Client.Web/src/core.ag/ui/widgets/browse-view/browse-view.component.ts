@@ -129,8 +129,20 @@ export interface CardClickEvent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="browse-view">
-      <!-- Row 1: Search (left) + View Panel (right) -->
-      <div class="browse-toolbar d-flex align-items-start gap-2 mb-2">
+      <!-- Row 1: View Name + Search + Toggle Button -->
+      <div class="browse-toolbar d-flex align-items-center gap-2 mb-2">
+        <!-- Current View Name (read-only, like filter summary) -->
+        @if (entityType) {
+          <div class="current-view-label">
+            <i class="bx bx-filter-alt text-muted me-1"></i>
+            <span class="fst-italic">{{ currentViewName }}</span>
+            @if (isDirty) {
+              <span class="text-warning ms-1">•</span>
+            }
+          </div>
+        }
+        
+        <!-- Search -->
         @if (showSearch) {
           <div class="flex-grow-1">
             <app-browse-search-panel
@@ -145,59 +157,81 @@ export interface CardClickEvent {
           </div>
         }
         
-        <!-- View Panel (collapsed/list/edit) -->
+        <!-- Toggle Button (not a dropdown!) -->
         @if (entityType) {
+          <button 
+            type="button"
+            class="btn btn-sm"
+            [class.btn-primary]="viewPanelMode !== 'collapsed'"
+            [class.btn-soft-secondary]="viewPanelMode === 'collapsed'"
+            (click)="toggleViewPanel()"
+            title="Manage views">
+            <i class="bx" 
+               [class.bx-cog]="viewPanelMode === 'collapsed'"
+               [class.bx-x]="viewPanelMode !== 'collapsed'"></i>
+          </button>
+        }
+      </div>
+      
+      <!-- Row 2: View Panel (full width, shows list OR editor) -->
+      @if (viewPanelMode !== 'collapsed') {
+        <div class="view-panel-area mb-2">
           <app-view-panel
-            [entityType]="entityType"
+            [entityType]="entityType!"
             [currentParams]="currentParams"
             [filters]="filters"
             [sorts]="sorts"
             [viewMode]="viewMode"
             [fields]="fields"
             [chartDefinitions]="chartDefinitions"
+            [mode]="viewPanelMode"
+            (modeChange)="viewPanelMode = $event"
             (viewSelect)="onSavedViewSelect($event)"
             (filtersChange)="onFiltersChange($event)"
             (sortsChange)="onSortsChange($event)"
             (viewModeChange)="onViewModeChange($event)"
-            (apply)="onApply()">
+            (apply)="onApply()"
+            (close)="viewPanelMode = 'collapsed'">
           </app-view-panel>
-        }
-      </div>
+        </div>
+      }
       
-      <!-- Compact Panels Stack (only when view panel is collapsed) -->
-      <div class="browse-panels mb-2">
-        @if (showFilterPanel) {
-          <app-browse-filter-panel
-            [filters]="filters"
-            [fields]="fields"
-            [expanded]="filtersExpanded"
-            (filtersChange)="onFiltersChange($event)"
-            (expandedChange)="filtersExpanded = $event"
-            (apply)="onApply()">
-          </app-browse-filter-panel>
-        }
-        
-        @if (showOrderPanel) {
-          <app-browse-order-panel
-            [sorts]="sorts"
-            [fields]="fields"
-            [expanded]="orderExpanded"
-            (sortsChange)="onSortsChange($event)"
-            (expandedChange)="orderExpanded = $event"
-            (apply)="onApply()">
-          </app-browse-order-panel>
-        }
-        
-        @if (showDisplayPanel) {
-          <app-browse-display-panel
-            [viewMode]="viewMode"
-            [chartDefinitions]="chartDefinitions"
-            [selectedChartId]="selectedChartId"
-            (viewModeChange)="onViewModeChange($event)"
-            (chartDefinitionChange)="onChartDefinitionChange($event)">
-          </app-browse-display-panel>
-        }
-      </div>
+      <!-- Row 3+: Filter/Order/Display Panels (only when view panel collapsed) -->
+      @if (viewPanelMode === 'collapsed') {
+        <div class="browse-panels mb-2">
+          @if (showFilterPanel) {
+            <app-browse-filter-panel
+              [filters]="filters"
+              [fields]="fields"
+              [expanded]="filtersExpanded"
+              (filtersChange)="onFiltersChange($event)"
+              (expandedChange)="filtersExpanded = $event"
+              (apply)="onApply()">
+            </app-browse-filter-panel>
+          }
+          
+          @if (showOrderPanel) {
+            <app-browse-order-panel
+              [sorts]="sorts"
+              [fields]="fields"
+              [expanded]="orderExpanded"
+              (sortsChange)="onSortsChange($event)"
+              (expandedChange)="orderExpanded = $event"
+              (apply)="onApply()">
+            </app-browse-order-panel>
+          }
+          
+          @if (showDisplayPanel) {
+            <app-browse-display-panel
+              [viewMode]="viewMode"
+              [chartDefinitions]="chartDefinitions"
+              [selectedChartId]="selectedChartId"
+              (viewModeChange)="onViewModeChange($event)"
+              (chartDefinitionChange)="onChartDefinitionChange($event)">
+            </app-browse-display-panel>
+          }
+        </div>
+      }
       
       <!-- Results Count -->
       @if (!loading && cards.length > 0) {
@@ -285,6 +319,16 @@ export interface CardClickEvent {
     </div>
   `,
   styles: [`
+    .current-view-label {
+      font-size: 0.8125rem;
+      color: var(--vz-secondary-color);
+      white-space: nowrap;
+    }
+    
+    .view-panel-area {
+      // Full width panel area
+    }
+    
     .browse-panels {
       display: flex;
       flex-direction: column;
@@ -686,41 +730,27 @@ export class BrowseViewComponent implements OnChanges {
   /** Name for saving the current view */
   saveViewName = '';
   
-  // ═══════════════════════════════════════════════════════════════════
-  // Saved Views (computed from service)
-  // ═══════════════════════════════════════════════════════════════════
+  /** View panel mode: collapsed, list, or edit */
+  viewPanelMode: 'collapsed' | 'list' | 'edit' = 'collapsed';
   
-  get savedViews(): SavedView[] {
-    if (!this.entityType) return [];
-    return this.savedViewService.getViews(this.entityType);
-  }
+  /** Dirty state for current view */
+  isDirty = false;
   
+  /** Current view name for display */
   get currentViewName(): string {
     if (!this.entityType) return 'All Items';
     const match = this.savedViewService.findMatchingView(this.entityType, this.currentParams);
-    return match?.title || 'Custom';
+    return match?.title || (this.isDirty ? 'Custom' : 'All Items');
   }
   
-  isActiveView(view: SavedView): boolean {
-    if (!this.entityType) return false;
-    const match = this.savedViewService.findMatchingView(this.entityType, this.currentParams);
-    return match?.id === view.id;
-  }
-  
-  deleteView(view: SavedView, event: Event): void {
-    event.stopPropagation();
-    if (confirm(`Delete "${view.title}"?`)) {
-      this.savedViewService.deleteView(this.entityType!, view.id);
+  toggleViewPanel(): void {
+    if (this.viewPanelMode === 'collapsed') {
+      this.viewPanelMode = 'list';
+    } else {
+      this.viewPanelMode = 'collapsed';
     }
   }
-  
-  toggleCustomizing(): void {
-    this.isCustomizing = !this.isCustomizing;
-    if (!this.isCustomizing) {
-      this.saveViewName = '';
-    }
-  }
-  
+
   // ═══════════════════════════════════════════════════════════════════
   // Outputs
   // ═══════════════════════════════════════════════════════════════════
