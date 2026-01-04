@@ -135,7 +135,6 @@ export interface CardClickEvent {
               [placeholder]="searchPlaceholder"
               [entityIcon]="searchEntityIcon"
               [hint]="searchHint"
-              [compact]="true"
               (queryChange)="onSearchChange($event)"
               (search)="onSearchSubmit($event)"
               (clear)="onSearchClear()">
@@ -233,7 +232,6 @@ export interface CardClickEvent {
                     [filters]="filters"
                     [fields]="fields"
                     [expanded]="true"
-                    [compact]="true"
                     (filtersChange)="onFiltersChange($event)"
                     (apply)="onApply()">
                   </app-browse-filter-panel>
@@ -244,7 +242,6 @@ export interface CardClickEvent {
                     [sorts]="sorts"
                     [fields]="fields"
                     [expanded]="true"
-                    [compact]="true"
                     (sortsChange)="onSortsChange($event)"
                     (apply)="onApply()">
                   </app-browse-order-panel>
