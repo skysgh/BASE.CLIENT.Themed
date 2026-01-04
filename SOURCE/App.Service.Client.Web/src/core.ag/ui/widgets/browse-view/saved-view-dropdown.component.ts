@@ -53,7 +53,7 @@ import { SavedViewService } from '../../../../core/services/saved-view.service';
         </h6>
         
         <!-- Default View -->
-        @if (defaultView(); as view) {
+        @if (defaultView; as view) {
           <button 
             class="dropdown-item d-flex align-items-center gap-2"
             [class.active]="isActive(view)"
@@ -67,7 +67,7 @@ import { SavedViewService } from '../../../../core/services/saved-view.service';
         }
         
         <!-- MRU View (if exists and not current) -->
-        @if (mruView(); as view) {
+        @if (mruView; as view) {
           @if (!isActive(view)) {
             <button 
               class="dropdown-item d-flex align-items-center gap-2"
@@ -82,12 +82,12 @@ import { SavedViewService } from '../../../../core/services/saved-view.service';
         }
         
         <!-- Divider if user views exist -->
-        @if (userViews().length > 0) {
+        @if (userViews.length > 0) {
           <div class="dropdown-divider"></div>
         }
         
         <!-- User Saved Views -->
-        @for (view of userViews(); track view.id) {
+        @for (view of userViews; track view.id) {
           <div class="dropdown-item d-flex align-items-center gap-2 pe-2">
             <button 
               class="btn btn-link p-0 text-start flex-grow-1 d-flex align-items-center gap-2"
@@ -207,16 +207,27 @@ export class SavedViewDropdownComponent implements OnInit {
   showSaveForm = signal(false);
   newViewTitle = '';
   
-  // Computed from service
-  allViews = computed(() => this.savedViewService.getViews(this.entityType));
-  defaultView = computed(() => this.savedViewService.getDefaultView(this.entityType));
-  mruView = computed(() => this.savedViewService.getMruView(this.entityType));
-  userViews = computed(() => this.savedViewService.getUserViews(this.entityType));
+  // Computed from service - using getViewsSignal for reactivity
+  get allViews(): SavedView[] {
+    return this.savedViewService.getViews(this.entityType);
+  }
+  
+  get defaultView(): SavedView | undefined {
+    return this.savedViewService.getDefaultView(this.entityType);
+  }
+  
+  get mruView(): SavedView | undefined {
+    return this.savedViewService.getMruView(this.entityType);
+  }
+  
+  get userViews(): SavedView[] {
+    return this.savedViewService.getUserViews(this.entityType);
+  }
   
   // Current view detection
-  currentView = computed(() => {
+  get currentView(): SavedView | undefined {
     return this.savedViewService.findMatchingView(this.entityType, this.currentParams);
-  });
+  }
   
   ngOnInit(): void {
     // Initialize entity if needed
@@ -224,14 +235,13 @@ export class SavedViewDropdownComponent implements OnInit {
   }
   
   isActive(view: SavedView): boolean {
-    const current = this.currentView();
-    return current?.id === view.id;
+    return this.currentView?.id === view.id;
   }
   
   hasUnsavedChanges(): boolean {
     // If we have params but no matching view, it's unsaved
     const hasParams = Object.keys(this.currentParams).filter(k => this.currentParams[k]).length > 0;
-    return hasParams && !this.currentView();
+    return hasParams && !this.currentView;
   }
   
   selectView(view: SavedView): void {
