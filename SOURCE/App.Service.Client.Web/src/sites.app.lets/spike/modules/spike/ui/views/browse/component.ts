@@ -218,6 +218,8 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
     this.route.queryParams.pipe(
       takeUntil(this.destroy$)
     ).subscribe(params => {
+      console.log('[Browse] URL params changed:', params);
+      
       // Store current URL params for saved view comparison
       this.currentUrlParams = extractUrlParams(params);
       
@@ -235,7 +237,7 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
         }
       }
       
-      // Sync filters from URL
+      // Sync filters from URL (or clear if not present)
       if (params['filter']) {
         const filters = deserializeFilters(params['filter']);
         this.filters.set(filters);
@@ -245,7 +247,7 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
         this.searchState.applyFilterCriteria([]);
       }
       
-      // Sync sorts from URL
+      // Sync sorts from URL (or reset to default if not present)
       if (params['sort']) {
         const sorts = deserializeSorts(params['sort']);
         this.sorts.set(sorts);
@@ -256,26 +258,35 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
         this.searchState.applySortCriteria(defaultSort);
       }
       
-      // Sync page
+      // Sync page (or reset to 1 if not present)
       if (params['page']) {
         const page = parseInt(params['page'], 10);
         if (!isNaN(page) && page > 0) {
           this.currentPage.set(page);
           this.searchState.setPage(page);
         }
+      } else {
+        this.currentPage.set(1);
+        this.searchState.setPage(1);
       }
       
-      // Sync search query
+      // Sync search query (or clear if not present)
       if (params['q']) {
         this.searchContext.setQuery(params['q']);
+      } else {
+        this.searchContext.clearQuery();
       }
       
-      // Sync view mode
+      // Sync view mode (or reset to default if not present)
       if (params['view']) {
         const view = params['view'] as ViewMode;
         if (['cards', 'tiles', 'table', 'list', 'chart'].includes(view)) {
           this.viewMode = view;
         }
+      } else {
+        // Reset to stored preference or default
+        const prefRenderer = this.viewPrefService.getPreferredRendererId('spike', 'browse');
+        this.viewMode = this.mapRendererToViewMode(prefRenderer);
       }
       
       // Save as MRU (if we have any non-empty params)

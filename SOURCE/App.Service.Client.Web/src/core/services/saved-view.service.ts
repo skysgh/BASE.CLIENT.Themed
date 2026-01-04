@@ -227,12 +227,20 @@ export class SavedViewService {
     // Update last used timestamp
     this.markViewUsed(view.entityType, view.id);
     
-    // Navigate with the view's URL params
-    this.router.navigate([], {
-      relativeTo: route,
-      queryParams: view.urlParams,
-      queryParamsHandling: 'replace', // Replace all params
-    });
+    // For default view (empty params), we need to explicitly clear all query params
+    // by navigating without queryParamsHandling
+    if (Object.keys(view.urlParams).length === 0) {
+      this.router.navigate([], {
+        relativeTo: route,
+        queryParams: {},
+      });
+    } else {
+      // Navigate with the view's URL params, replacing all existing
+      this.router.navigate([], {
+        relativeTo: route,
+        queryParams: view.urlParams,
+      });
+    }
     
     console.log(`[SavedViewService] Applied view "${view.title}":`, view.urlParams);
   }
