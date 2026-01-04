@@ -1,18 +1,15 @@
 /**
  * View Panel Component
  * 
- * Displays either list of views OR view editor (full width panel).
- * Mode is controlled by parent via input/output.
+ * Two modes:
+ * 1. LIST MODE: Shows saved views with icon, name, summary - click to select
+ * 2. EDIT MODE: Title row + Filter section + Sort section + Display section
  * 
- * List mode: Shows saved views with edit/delete buttons
- * Edit mode: Shows title, filter, sort, display controls
- * 
- * UX Features:
- * - Checkmark on selected/active view
- * - Baby blue highlight on selected row
- * - Scrollable list capped at 5 rows max
- * - "Apply" for ad-hoc changes (not saved)
- * - "Save" for persisting named views
+ * Per diagram:
+ * - List has scrollbar capped at ~5 rows
+ * - Edit mode has sections: Title (with Cancel/Save/SaveAs/Delete), Filter, Sort, Display
+ * - Changes apply in real-time (no separate Apply button)
+ * - Default "All Items" disables filter/sort editing and delete button
  */
 import { 
   Component, 
@@ -21,7 +18,6 @@ import {
   EventEmitter, 
   ChangeDetectionStrategy,
   inject,
-  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -42,31 +38,21 @@ export type ViewPanelMode = 'collapsed' | 'list' | 'edit';
   template: `
     <!-- LIST MODE -->
     @if (mode === 'list') {
-      <div class="view-panel view-list">
+      <div class="view-panel">
         <div class="view-list-scroll">
           @for (view of savedViews; track view.id) {
             <div class="view-list-item d-flex align-items-center gap-2"
-                 [class.active]="isActiveView(view)"
+                 [class.selected]="isActiveView(view)"
                  (click)="selectView(view)">
-              <!-- View type icon -->
-              <i [class]="getViewIcon(view)" class="view-icon"></i>
-              
-              <!-- View title -->
-              <span class="view-title flex-grow-1 text-truncate"
-                    [class.fw-semibold]="isActiveView(view)">
-                {{ view.title }}
-              </span>
-              
-              <!-- Summary -->
-              <span class="view-summary text-muted small flex-shrink-0">
+              <i [class]="getViewIcon(view)" class="view-icon text-primary"></i>
+              <span class="view-name">{{ view.title }}</span>
+              <span class="view-summary flex-grow-1 text-muted small fst-italic text-truncate">
                 {{ getViewSummary(view) }}
               </span>
-              
-              <!-- Edit button (for non-default views) -->
               @if (!view.isDefault) {
                 <button 
-                  class="btn btn-sm btn-link text-muted p-0 action-btn"
-                  title="Edit"
+                  class="btn btn-sm btn-link p-0 edit-btn"
+                  title="Edit view"
                   (click)="editView(view); $event.stopPropagation()">
                   <i class="bx bx-edit-alt"></i>
                 </button>
@@ -74,14 +60,9 @@ export type ViewPanelMode = 'collapsed' | 'list' | 'edit';
             </div>
           }
         </div>
-        
-        <!-- Add New Button -->
         <div class="mt-2 pt-2 border-top text-end">
-          <button 
-            class="btn btn-sm btn-outline-primary"
-            (click)="startNewView()">
-            <i class="bx bx-plus me-1"></i>
-            New View
+          <button class="btn btn-sm btn-outline-primary" (click)="startNewView()">
+            <i class="bx bx-plus me-1"></i>New View
           </button>
         </div>
       </div>
@@ -89,155 +70,71 @@ export type ViewPanelMode = 'collapsed' | 'list' | 'edit';
     
     <!-- EDIT MODE -->
     @if (mode === 'edit') {
-      <div class="view-panel view-editor">
-        <!-- Title Row -->
-        <div class="editor-row d-flex align-items-center gap-2 mb-2">
-          <label class="editor-label">Title</label>
-          <input 
-            type="text" 
-            class="form-control form-control-sm flex-grow-1"
-            placeholder="Enter a name to save this view..."
-            [(ngModel)]="editTitle"
-            [disabled]="isDefaultView">
-          <button 
-            class="btn btn-sm btn-outline-secondary"
-            (click)="cancelEdit()">
-            Cancel
-          </button>
-          <button 
-            class="btn btn-sm btn-success"
-            [disabled]="!editTitle.trim()"
-            title="Save as named view"
-            (click)="saveView()">
-            Save
-          </button>
-          <button 
-            class="btn btn-sm btn-outline-primary"
-            title="Save as new view"
-            (click)="saveAsNewView()">
-            Save As...
-          </button>
-          <button 
-            class="btn btn-sm btn-outline-danger"
-            [disabled]="isDefaultView || !editingView"
-            title="Delete this view"
-            (click)="deleteCurrentView()">
-            Delete
-          </button>
+      <div class="view-panel">
+        <!-- Title Section -->
+        <div class="edit-section mb-2">
+          <div class="section-label">Title</div>
+          <div class="d-flex align-items-center gap-2">
+            <input type="text" class="form-control form-control-sm" style="max-width: 180px;"
+              placeholder="View name..." [(ngModel)]="editTitle" [disabled]="isDefaultView">
+            <button class="btn btn-sm btn-outline-secondary" (click)="cancelEdit()">Cancel</button>
+            <button class="btn btn-sm btn-success" [disabled]="!editTitle.trim() || isDefaultView" (click)="saveView()">Save</button>
+            <button class="btn btn-sm btn-outline-primary" (click)="saveAsNewView()">Save As...</button>
+            <button class="btn btn-sm btn-outline-danger" [disabled]="isDefaultView || !editingView" (click)="deleteCurrentView()">Delete</button>
+          </div>
         </div>
         
         <!-- Filter Section -->
-        <div class="editor-section mb-2" [class.disabled]="isDefaultView">
-          <div class="section-header d-flex align-items-center gap-2 mb-1">
-            <label class="editor-label mb-0">Filter</label>
-            <span class="filter-summary flex-grow-1 text-muted small fst-italic">
-              {{ getFilterSummary() }}
-            </span>
-          </div>
+        <div class="edit-section mb-2" [class.disabled-section]="isDefaultView">
+          <div class="section-label">Filter</div>
+          <div class="section-summary text-muted small fst-italic mb-1">{{ getFilterSummary() }}</div>
           <div class="d-flex align-items-center gap-2">
-            <select 
-              class="form-select form-select-sm" 
-              [(ngModel)]="newFilterField"
-              [disabled]="isDefaultView"
-              style="max-width: 140px;">
+            <select class="form-select form-select-sm" style="max-width: 120px;" [(ngModel)]="newFilterField" [disabled]="isDefaultView">
               <option value="">Field...</option>
               @for (field of filterableFields; track field.field) {
                 <option [value]="field.field">{{ field.label }}</option>
               }
             </select>
-            <select 
-              class="form-select form-select-sm flex-grow-1" 
-              [(ngModel)]="newFilterValue"
-              [disabled]="isDefaultView || !newFilterField">
+            <select class="form-select form-select-sm" style="max-width: 120px;" [(ngModel)]="newFilterValue" [disabled]="isDefaultView || !newFilterField">
               <option value="">Value...</option>
               @for (opt of getFieldOptions(newFilterField); track opt.value) {
                 <option [value]="opt.value">{{ opt.label }}</option>
               }
             </select>
-            <button 
-              class="btn btn-sm btn-outline-danger"
-              [disabled]="isDefaultView || editFilters.length === 0"
-              title="Remove last filter"
-              (click)="removeLastFilter()">
-              <i class="bx bx-minus"></i>
-            </button>
-            <button 
-              class="btn btn-sm btn-outline-primary"
-              [disabled]="isDefaultView || !newFilterField || !newFilterValue"
-              title="Add filter"
-              (click)="addFilterFromInputs()">
-              <i class="bx bx-plus"></i>
-            </button>
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="isDefaultView || editFilters.length === 0" (click)="removeLastFilter()"><i class="bx bx-minus"></i></button>
+            <button class="btn btn-sm btn-outline-primary" [disabled]="isDefaultView || !newFilterField || !newFilterValue" (click)="addFilterFromInputs()"><i class="bx bx-plus"></i></button>
           </div>
         </div>
         
         <!-- Sort Section -->
-        <div class="editor-section mb-2" [class.disabled]="isDefaultView">
-          <div class="section-header d-flex align-items-center gap-2 mb-1">
-            <label class="editor-label mb-0">Sort</label>
-            <span class="sort-summary flex-grow-1 text-muted small fst-italic">
-              {{ getSortSummary() }}
-            </span>
-          </div>
+        <div class="edit-section mb-2" [class.disabled-section]="isDefaultView">
+          <div class="section-label">Sort</div>
+          <div class="section-summary text-muted small fst-italic mb-1">{{ getSortSummary() }}</div>
           <div class="d-flex align-items-center gap-2">
-            <select 
-              class="form-select form-select-sm" 
-              [(ngModel)]="newSortField"
-              [disabled]="isDefaultView"
-              style="max-width: 140px;">
+            <select class="form-select form-select-sm" style="max-width: 120px;" [(ngModel)]="newSortField" [disabled]="isDefaultView">
               <option value="">Field...</option>
               @for (field of sortableFields; track field.field) {
                 <option [value]="field.field">{{ field.label }}</option>
               }
             </select>
-            <select 
-              class="form-select form-select-sm" 
-              [(ngModel)]="newSortDirection"
-              [disabled]="isDefaultView || !newSortField"
-              style="max-width: 100px;">
+            <select class="form-select form-select-sm" style="max-width: 100px;" [(ngModel)]="newSortDirection" [disabled]="isDefaultView || !newSortField">
               <option value="asc">A → Z</option>
               <option value="desc">Z → A</option>
             </select>
-            <div class="flex-grow-1"></div>
-            <button 
-              class="btn btn-sm btn-outline-danger"
-              [disabled]="isDefaultView || editSorts.length === 0"
-              title="Remove last sort"
-              (click)="removeLastSort()">
-              <i class="bx bx-minus"></i>
-            </button>
-            <button 
-              class="btn btn-sm btn-outline-primary"
-              [disabled]="isDefaultView || !newSortField"
-              title="Add sort"
-              (click)="addSortFromInputs()">
-              <i class="bx bx-plus"></i>
-            </button>
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="isDefaultView || editSorts.length === 0" (click)="removeLastSort()"><i class="bx bx-minus"></i></button>
+            <button class="btn btn-sm btn-outline-primary" [disabled]="isDefaultView || !newSortField" (click)="addSortFromInputs()"><i class="bx bx-plus"></i></button>
           </div>
         </div>
         
         <!-- Display Section -->
-        <div class="editor-section">
-          <div class="section-header d-flex align-items-center gap-2 mb-1">
-            <label class="editor-label mb-0">Display</label>
-            <span class="flex-grow-1 text-muted small fst-italic">
-              {{ getDisplayModeName() }}
-            </span>
-          </div>
-          <div class="d-flex align-items-center gap-2">
-            <div class="btn-group">
-              @for (opt of viewModeOptions; track opt.id) {
-                <button 
-                  type="button"
-                  class="btn btn-sm"
-                  [class.btn-primary]="editViewMode === opt.id"
-                  [class.btn-outline-secondary]="editViewMode !== opt.id"
-                  [title]="opt.label"
-                  (click)="setViewMode(opt.id)">
-                  <i [class]="opt.icon"></i>
-                </button>
-              }
-            </div>
+        <div class="edit-section">
+          <div class="section-label">Display</div>
+          <div class="d-flex align-items-center gap-2 mt-1">
+            @for (opt of viewModeOptions; track opt.id) {
+              <button type="button" class="btn btn-sm display-btn" [class.active]="editViewMode === opt.id" [title]="opt.label" (click)="setViewMode(opt.id)">
+                <i [class]="opt.icon"></i>
+              </button>
+            }
           </div>
         </div>
       </div>
@@ -247,105 +144,49 @@ export type ViewPanelMode = 'collapsed' | 'list' | 'edit';
     .view-panel {
       background: var(--vz-light);
       border: 1px solid var(--vz-border-color);
-      border-radius: 0.25rem;
-      padding: 0.5rem;
+      border-radius: 0.375rem;
+      padding: 0.75rem;
     }
-    
-    .view-list-scroll {
-      max-height: 200px; /* ~5 rows at 40px each */
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-    
+    .view-list-scroll { max-height: 200px; overflow-y: auto; }
     .view-list-item {
-      padding: 0.5rem 0.5rem;
+      padding: 0.5rem;
       border-radius: 0.25rem;
       cursor: pointer;
-      transition: background-color 0.15s ease;
-      min-height: 40px;
-      
-      &:hover {
-        background: rgba(var(--vz-primary-rgb), 0.08);
-      }
-      
-      &.active {
-        background: rgba(66, 153, 225, 0.15); /* Baby blue */
-        border-left: 3px solid var(--vz-primary);
-        padding-left: calc(0.5rem - 3px);
-      }
-      
-      .view-icon {
-        color: var(--vz-secondary-color);
-        font-size: 1rem;
-        flex-shrink: 0;
-      }
-      
-      .view-title {
-        color: var(--vz-body-color);
-      }
-      
-      .action-btn {
-        opacity: 0;
-        transition: opacity 0.15s ease;
-      }
-      
-      &:hover .action-btn {
-        opacity: 1;
-      }
+      border: 1px solid transparent;
+      &:hover { background: rgba(var(--vz-primary-rgb), 0.05); .edit-btn { opacity: 1; } }
+      &.selected { background: rgba(66, 153, 225, 0.15); border-color: rgba(66, 153, 225, 0.3); }
+      .view-icon { font-size: 1.25rem; }
+      .view-name { font-weight: 500; min-width: 80px; }
+      .edit-btn { opacity: 0; transition: opacity 0.15s; }
     }
-    
-    .editor-row {
-      padding: 0.375rem 0.5rem;
+    .edit-section {
       background: var(--vz-card-bg);
-      border: 1px solid var(--vz-border-color);
+      border: 1px dashed var(--vz-border-color);
       border-radius: 0.25rem;
-    }
-    
-    .editor-section {
       padding: 0.5rem;
-      background: var(--vz-card-bg);
-      border: 1px solid var(--vz-border-color);
-      border-radius: 0.25rem;
-      
-      &.disabled {
-        opacity: 0.5;
-        pointer-events: none;
-      }
+      &.disabled-section { opacity: 0.5; pointer-events: none; }
     }
-    
-    .section-header {
-      border-bottom: 1px solid var(--vz-border-color);
-      padding-bottom: 0.25rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .editor-label {
-      font-size: 0.75rem;
+    .section-label {
+      font-size: 0.7rem;
       font-weight: 600;
-      color: var(--vz-secondary-color);
-      min-width: 45px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      color: var(--vz-secondary-color);
+      margin-bottom: 0.25rem;
     }
-    
-    .filter-summary, .sort-summary {
-      max-width: 300px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    
-    .cursor-pointer {
-      cursor: pointer;
+    .section-summary { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .display-btn {
+      padding: 0.375rem 0.5rem;
+      border: 1px solid var(--vz-border-color);
+      background: var(--vz-card-bg);
+      &.active { background: var(--vz-primary); border-color: var(--vz-primary); color: #fff; }
+      &:hover:not(.active) { background: rgba(var(--vz-primary-rgb), 0.1); }
+      i { font-size: 1rem; }
     }
   `]
 })
 export class ViewPanelComponent {
   private savedViewService = inject(SavedViewService);
-  
-  // ═══════════════════════════════════════════════════════════════════
-  // Inputs
-  // ═══════════════════════════════════════════════════════════════════
   
   @Input({ required: true }) entityType!: string;
   @Input() currentParams: Record<string, string> = {};
@@ -356,10 +197,6 @@ export class ViewPanelComponent {
   @Input() chartDefinitions: ChartDefinition[] = [];
   @Input() mode: ViewPanelMode = 'list';
   
-  // ═══════════════════════════════════════════════════════════════════
-  // Outputs
-  // ═══════════════════════════════════════════════════════════════════
-  
   @Output() modeChange = new EventEmitter<ViewPanelMode>();
   @Output() viewSelect = new EventEmitter<SavedView>();
   @Output() filtersChange = new EventEmitter<FilterCriteria[]>();
@@ -368,17 +205,11 @@ export class ViewPanelComponent {
   @Output() apply = new EventEmitter<void>();
   @Output() close = new EventEmitter<void>();
   
-  // ═══════════════════════════════════════════════════════════════════
-  // Edit State
-  // ═══════════════════════════════════════════════════════════════════
-  
   editingView: SavedView | null = null;
   editTitle = '';
   editFilters: FilterCriteria[] = [];
   editSorts: SortCriteria[] = [];
   editViewMode: ViewMode = 'tiles';
-  
-  // Input state for simplified UI
   newFilterField = '';
   newFilterValue = '';
   newSortField = '';
@@ -391,29 +222,10 @@ export class ViewPanelComponent {
     { id: 'list' as ViewMode, icon: 'bx bx-list-ul', label: 'List' },
   ];
   
-  // ═══════════════════════════════════════════════════════════════════
-  // Computed
-  // ═══════════════════════════════════════════════════════════════════
-  
-  get savedViews(): SavedView[] {
-    return this.savedViewService.getViews(this.entityType);
-  }
-  
-  get isDefaultView(): boolean {
-    return this.editingView?.isDefault === true;
-  }
-  
-  get filterableFields(): FieldDefinition[] {
-    return this.fields.filter(f => f.filterable !== false);
-  }
-  
-  get sortableFields(): FieldDefinition[] {
-    return this.fields.filter(f => f.sortable !== false);
-  }
-  
-  // ═══════════════════════════════════════════════════════════════════
-  // Summary Methods
-  // ═══════════════════════════════════════════════════════════════════
+  get savedViews(): SavedView[] { return this.savedViewService.getViews(this.entityType); }
+  get isDefaultView(): boolean { return this.editingView?.isDefault === true; }
+  get filterableFields(): FieldDefinition[] { return this.fields.filter(f => f.filterable !== false); }
+  get sortableFields(): FieldDefinition[] { return this.fields.filter(f => f.sortable !== false); }
   
   getFilterSummary(): string {
     if (this.editFilters.length === 0) return 'No filters applied';
@@ -427,25 +239,14 @@ export class ViewPanelComponent {
     if (this.editSorts.length === 0) return 'Default order';
     return this.editSorts.map(s => {
       const field = this.fields.find(fd => fd.field === s.field);
-      const dir = s.direction === 'asc' ? '↑' : '↓';
-      return `${field?.label || s.field} ${dir}`;
+      return `${field?.label || s.field} ${s.direction === 'asc' ? '↑' : '↓'}`;
     }).join(', then ');
-  }
-  
-  getDisplayModeName(): string {
-    const opt = this.viewModeOptions.find(o => o.id === this.editViewMode);
-    return opt?.label || 'List';
   }
   
   getFieldOptions(fieldName: string): { value: string; label: string }[] {
     const field = this.fields.find(f => f.field === fieldName);
-    if (!field?.options) return [];
-    return field.options;
+    return field?.options || [];
   }
-
-  // ═══════════════════════════════════════════════════════════════════
-  // List Mode Actions
-  // ═══════════════════════════════════════════════════════════════════
   
   isActiveView(view: SavedView): boolean {
     const match = this.savedViewService.findMatchingView(this.entityType, this.currentParams);
@@ -455,12 +256,10 @@ export class ViewPanelComponent {
   getViewIcon(view: SavedView): string {
     if (view.isMru) return 'bx bx-time-five';
     if (view.isDefault) return 'bx bx-list-ul';
-    return view.icon || 'bx bx-filter-alt';
+    return view.icon || 'bx bx-layer';
   }
   
-  getViewSummary(view: SavedView): string {
-    return getViewSummary(view);
-  }
+  getViewSummary(view: SavedView): string { return getViewSummary(view); }
   
   selectView(view: SavedView): void {
     this.viewSelect.emit(view);
@@ -485,128 +284,67 @@ export class ViewPanelComponent {
     this.modeChange.emit('edit');
   }
   
-  /**
-   * Remove view delete option from list mode
-   */
-  deleteView(view: SavedView): void {
-    // No-op
-  }
-  
-  // ═══════════════════════════════════════════════════════════════════
-  // Edit Mode Actions
-  // ═══════════════════════════════════════════════════════════════════
-  
   addFilterFromInputs(): void {
     if (!this.newFilterField || !this.newFilterValue) return;
-    
-    const newFilter: FilterCriteria = {
-      id: `filter-${Date.now()}`,
-      field: this.newFilterField,
-      operator: 'eq',
-      value: this.newFilterValue,
-    };
-    
+    const newFilter: FilterCriteria = { id: `filter-${Date.now()}`, field: this.newFilterField, operator: 'eq', value: this.newFilterValue };
     this.editFilters = [...this.editFilters, newFilter];
     this.newFilterField = '';
     this.newFilterValue = '';
+    this.filtersChange.emit(this.editFilters);
   }
   
   removeLastFilter(): void {
     if (this.editFilters.length > 0) {
       this.editFilters = this.editFilters.slice(0, -1);
+      this.filtersChange.emit(this.editFilters);
     }
   }
   
   addSortFromInputs(): void {
     if (!this.newSortField) return;
-    
-    const newSort: SortCriteria = {
-      id: `sort-${Date.now()}`,
-      field: this.newSortField,
-      direction: this.newSortDirection,
-    };
-    
+    const newSort: SortCriteria = { id: `sort-${Date.now()}`, field: this.newSortField, direction: this.newSortDirection };
     this.editSorts = [...this.editSorts, newSort];
     this.newSortField = '';
     this.newSortDirection = 'asc';
+    this.sortsChange.emit(this.editSorts);
   }
   
   removeLastSort(): void {
     if (this.editSorts.length > 0) {
       this.editSorts = this.editSorts.slice(0, -1);
+      this.sortsChange.emit(this.editSorts);
     }
   }
   
   setViewMode(mode: ViewMode): void {
     this.editViewMode = mode;
+    this.viewModeChange.emit(mode);
   }
   
-  /**
-   * Save changes to existing view (if editing) or create new
-   */
   saveView(): void {
     const title = this.editTitle.trim();
-    if (!title) return;
-    
-    // Apply changes first
-    this.filtersChange.emit(this.editFilters);
-    this.sortsChange.emit(this.editSorts);
-    this.viewModeChange.emit(this.editViewMode);
-    this.apply.emit();
-    
+    if (!title || this.isDefaultView) return;
     if (this.editingView && !this.editingView.isDefault && !this.editingView.isMru) {
-      // Update existing view
-      this.savedViewService.updateView(this.entityType, this.editingView.id, {
-        title,
-        urlParams: { ...this.currentParams },
-      });
+      this.savedViewService.updateView(this.entityType, this.editingView.id, { title, urlParams: { ...this.currentParams } });
     } else {
-      // Create new view
-      this.savedViewService.createView({
-        entityType: this.entityType,
-        title,
-        urlParams: { ...this.currentParams },
-      });
+      this.savedViewService.createView({ entityType: this.entityType, title, urlParams: { ...this.currentParams } });
     }
-    
     this.modeChange.emit('list');
   }
   
-  /**
-   * Save as a new view (always creates new)
-   */
   saveAsNewView(): void {
     const title = this.editTitle.trim() || `View ${Date.now()}`;
-    
-    // Apply changes first
-    this.filtersChange.emit(this.editFilters);
-    this.sortsChange.emit(this.editSorts);
-    this.viewModeChange.emit(this.editViewMode);
-    this.apply.emit();
-    
-    // Always create new
-    this.savedViewService.createView({
-      entityType: this.entityType,
-      title,
-      urlParams: { ...this.currentParams },
-    });
-    
+    this.savedViewService.createView({ entityType: this.entityType, title, urlParams: { ...this.currentParams } });
     this.modeChange.emit('list');
   }
   
-  /**
-   * Delete the currently edited view
-   */
   deleteCurrentView(): void {
     if (!this.editingView || this.editingView.isDefault) return;
-    
     if (confirm(`Delete "${this.editingView.title}"?`)) {
       this.savedViewService.deleteView(this.entityType, this.editingView.id);
       this.modeChange.emit('list');
     }
   }
   
-  cancelEdit(): void {
-    this.modeChange.emit('list');
-  }
+  cancelEdit(): void { this.modeChange.emit('list'); }
 }

@@ -129,17 +129,18 @@ export interface CardClickEvent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="browse-view">
-      <!-- Row 1: View Name + Search + Toggle Button -->
+      <!-- Row 1: Icon + Current View Name + Search -->
       <div class="browse-toolbar d-flex align-items-center gap-2 mb-2">
-        <!-- Current View Name (read-only, like filter summary) -->
+        <!-- View Selector Button (icon + current view name) -->
         @if (entityType) {
-          <div class="current-view-label">
-            <i class="bx bx-filter-alt text-muted me-1"></i>
-            <span class="fst-italic">{{ currentViewName }}</span>
-            @if (isDirty) {
-              <span class="text-warning ms-1">•</span>
-            }
-          </div>
+          <button 
+            type="button"
+            class="btn btn-light d-flex align-items-center gap-2"
+            [class.active]="viewPanelMode !== 'collapsed'"
+            (click)="toggleViewPanel()">
+            <i class="bx bx-layer text-primary"></i>
+            <span class="fst-italic text-muted">{{ currentViewName }}</span>
+          </button>
         }
         
         <!-- Search -->
@@ -155,21 +156,6 @@ export interface CardClickEvent {
               (clear)="onSearchClear()">
             </app-browse-search-panel>
           </div>
-        }
-        
-        <!-- Toggle Button (not a dropdown!) -->
-        @if (entityType) {
-          <button 
-            type="button"
-            class="btn btn-sm"
-            [class.btn-primary]="viewPanelMode !== 'collapsed'"
-            [class.btn-soft-secondary]="viewPanelMode === 'collapsed'"
-            (click)="toggleViewPanel()"
-            title="Manage views">
-            <i class="bx" 
-               [class.bx-cog]="viewPanelMode === 'collapsed'"
-               [class.bx-x]="viewPanelMode !== 'collapsed'"></i>
-          </button>
         }
       </div>
       
@@ -187,8 +173,8 @@ export interface CardClickEvent {
             [mode]="viewPanelMode"
             (modeChange)="viewPanelMode = $event"
             (viewSelect)="onSavedViewSelect($event)"
-            (filtersChange)="onFiltersChange($event)"
-            (sortsChange)="onSortsChange($event)"
+            (filtersChange)="onFiltersChange($event); onApply()"
+            (sortsChange)="onSortsChange($event); onApply()"
             (viewModeChange)="onViewModeChange($event)"
             (apply)="onApply()"
             (close)="viewPanelMode = 'collapsed'">
