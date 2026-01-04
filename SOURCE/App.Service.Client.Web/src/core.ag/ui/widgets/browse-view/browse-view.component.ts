@@ -127,64 +127,109 @@ export interface CardClickEvent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="browse-view">
-      <!-- Search Panel -->
-      @if (showSearch) {
-        <app-browse-search-panel
-          [query]="searchQuery"
-          [placeholder]="searchPlaceholder"
-          [entityIcon]="searchEntityIcon"
-          [hint]="searchHint"
-          (queryChange)="onSearchChange($event)"
-          (search)="onSearchSubmit($event)"
-          (clear)="onSearchClear()">
-        </app-browse-search-panel>
-      }
+      <!-- Row 1: Search (left) + View Selector (right) -->
+      <div class="browse-toolbar d-flex align-items-center gap-2 mb-2">
+        @if (showSearch) {
+          <div class="flex-grow-1">
+            <app-browse-search-panel
+              [query]="searchQuery"
+              [placeholder]="searchPlaceholder"
+              [entityIcon]="searchEntityIcon"
+              [hint]="searchHint"
+              (queryChange)="onSearchChange($event)"
+              (search)="onSearchSubmit($event)"
+              (clear)="onSearchClear()">
+            </app-browse-search-panel>
+          </div>
+        }
+        
+        <!-- View Selector + Mode Icons -->
+        @if (showDisplayPanel) {
+          <div class="d-flex align-items-center gap-1">
+            @for (mode of viewModeOptions; track mode.id) {
+              <button 
+                type="button" 
+                class="btn btn-sm"
+                [class.btn-soft-primary]="viewMode === mode.id"
+                [class.btn-soft-secondary]="viewMode !== mode.id"
+                [title]="mode.label"
+                (click)="onViewModeChange(mode.id)">
+                <i [class]="mode.icon"></i>
+              </button>
+            }
+            @if (chartDefinitions.length > 0) {
+              <div ngbDropdown class="d-inline-block">
+                <button 
+                  type="button" 
+                  class="btn btn-sm"
+                  [class.btn-soft-primary]="viewMode === 'chart'"
+                  [class.btn-soft-secondary]="viewMode !== 'chart'"
+                  ngbDropdownToggle>
+                  <i class="bx bx-bar-chart-alt-2"></i>
+                </button>
+                <div ngbDropdownMenu class="dropdown-menu-end">
+                  @for (chart of chartDefinitions; track chart.id) {
+                    <button 
+                      ngbDropdownItem
+                      [class.active]="selectedChartId === chart.id"
+                      (click)="selectChart(chart)">
+                      {{ chart.label }}
+                    </button>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
       
-      <!-- Filter Panel (collapsible row) -->
-      @if (showFilterPanel) {
-        <app-browse-filter-panel
-          [filters]="filters"
-          [fields]="fields"
-          [expanded]="filtersExpanded"
-          (filtersChange)="onFiltersChange($event)"
-          (expandedChange)="filtersExpanded = $event"
-          (apply)="onApply()">
-        </app-browse-filter-panel>
-      }
-      
-      <!-- Order Panel (collapsible row) -->
-      @if (showOrderPanel) {
-        <app-browse-order-panel
-          [sorts]="sorts"
-          [fields]="fields"
-          [expanded]="orderExpanded"
-          (sortsChange)="onSortsChange($event)"
-          (expandedChange)="orderExpanded = $event"
-          (apply)="onApply()">
-        </app-browse-order-panel>
-      }
-      
-      <!-- Display Panel (view mode icons) -->
-      @if (showDisplayPanel) {
-        <app-browse-display-panel
-          [viewMode]="viewMode"
-          [chartDefinitions]="chartDefinitions"
-          [selectedChartId]="selectedChartId"
-          (viewModeChange)="onViewModeChange($event)"
-          (chartDefinitionChange)="onChartDefinitionChange($event)">
-        </app-browse-display-panel>
-      }
+      <!-- Compact Panels Stack -->
+      <div class="browse-panels mb-2">
+        <!-- Filter Panel -->
+        @if (showFilterPanel) {
+          <app-browse-filter-panel
+            [filters]="filters"
+            [fields]="fields"
+            [expanded]="filtersExpanded"
+            (filtersChange)="onFiltersChange($event)"
+            (expandedChange)="filtersExpanded = $event"
+            (apply)="onApply()">
+          </app-browse-filter-panel>
+        }
+        
+        <!-- Order Panel -->
+        @if (showOrderPanel) {
+          <app-browse-order-panel
+            [sorts]="sorts"
+            [fields]="fields"
+            [expanded]="orderExpanded"
+            (sortsChange)="onSortsChange($event)"
+            (expandedChange)="orderExpanded = $event"
+            (apply)="onApply()">
+          </app-browse-order-panel>
+        }
+        
+        <!-- Display Panel -->
+        @if (showDisplayPanel) {
+          <app-browse-display-panel
+            [viewMode]="viewMode"
+            [chartDefinitions]="chartDefinitions"
+            [selectedChartId]="selectedChartId"
+            (viewModeChange)="onViewModeChange($event)"
+            (chartDefinitionChange)="onChartDefinitionChange($event)">
+          </app-browse-display-panel>
+        }
+      </div>
       
       <!-- Results Count -->
       @if (!loading && cards.length > 0) {
-        <div class="results-count text-muted mb-2">
+        <div class="results-count text-muted small mb-1">
           {{ totalCount }} items
         </div>
       }
       
       <!-- Results Area -->
       <div class="browse-results">
-        <!-- Loading State -->
         @if (loading) {
           <div class="text-center py-5">
             <div class="spinner-border text-primary" role="status">
@@ -193,7 +238,6 @@ export interface CardClickEvent {
           </div>
         }
 
-        <!-- Empty State -->
         @if (!loading && cards.length === 0) {
           <div class="text-center py-5">
             <i [class]="emptyIcon + ' display-1 text-muted'"></i>
@@ -202,7 +246,6 @@ export interface CardClickEvent {
           </div>
         }
 
-        <!-- Content -->
         @if (!loading && cards.length > 0) {
           @switch (viewMode) {
             @case ('cards') {
@@ -251,7 +294,6 @@ export interface CardClickEvent {
           }
         }
 
-        <!-- Pagination -->
         @if (!loading && totalPages > 1) {
           <app-browse-pagination
             [page]="page"
@@ -265,8 +307,14 @@ export interface CardClickEvent {
     </div>
   `,
   styles: [`
+    .browse-panels {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    
     .results-count {
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
     }
   `]
 })

@@ -94,9 +94,8 @@ import {
     .browse-order-panel {
       background: var(--vz-light);
       border: 1px solid var(--vz-border-color);
-      border-radius: 0.375rem;
-      padding: 0.5rem 0.75rem;
-      margin-bottom: 0.75rem;
+      border-radius: 0.25rem;
+      padding: 0.375rem 0.5rem;
     }
     
     .order-summary {

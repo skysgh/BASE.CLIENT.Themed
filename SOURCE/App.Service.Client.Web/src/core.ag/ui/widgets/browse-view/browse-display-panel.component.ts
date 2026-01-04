@@ -77,25 +77,20 @@ interface ViewModeOption {
     .browse-display-panel {
       background: var(--vz-light);
       border: 1px solid var(--vz-border-color);
-      border-radius: 0.375rem;
-      padding: 0.5rem 0.75rem;
-      margin-bottom: 0.75rem;
+      border-radius: 0.25rem;
+      padding: 0.375rem 0.5rem;
     }
     
     .display-label {
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       color: var(--vz-body-color);
     }
     
-    .view-mode-icons {
-      .btn {
-        padding: 0.25rem 0.5rem;
-        line-height: 1;
-        
-        i {
-          font-size: 1rem;
-        }
-      }
+    .view-mode-icons .btn {
+      padding: 0.2rem 0.4rem;
+      line-height: 1;
+      
+      i { font-size: 0.875rem; }
     }
   `]
 })
