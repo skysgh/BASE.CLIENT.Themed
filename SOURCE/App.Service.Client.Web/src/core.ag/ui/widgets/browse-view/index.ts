@@ -18,6 +18,7 @@ export * from './sort-row.component';
 export * from './browse-view-toggle.component';
 export * from './browse-pagination.component';
 export * from './browse-actions-bar.component';
+export * from './saved-view-dropdown.component';
 
 // Renderers
 export * from './renderers/cards-renderer.component';

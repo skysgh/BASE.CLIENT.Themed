@@ -80,10 +80,12 @@ import { ListRendererComponent } from './renderers/list-renderer.component';
 import { ChartRendererComponent } from './renderers/chart-renderer.component';
 
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
+import { SavedView } from '../../../../core/models/view/saved-view.model';
 
 // Re-export for consumers
 export { ViewMode } from './browse-view-schema.model';
 export { BrowseViewSchema } from './browse-view-schema.model';
+export { SavedView } from '../../../../core/models/view/saved-view.model';
 
 /** Sort change event (legacy compatibility) */
 export interface SortChangeEvent {
@@ -163,8 +165,12 @@ export interface CardClickEvent {
           [viewMode]="viewMode"
           [chartDefinitions]="chartDefinitions"
           [selectedChartId]="selectedChartId"
+          [entityType]="entityType"
+          [currentParams]="currentParams"
           (viewModeChange)="onViewModeChange($event)"
-          (chartDefinitionChange)="onChartDefinitionChange($event)">
+          (chartDefinitionChange)="onChartDefinitionChange($event)"
+          (savedViewSelect)="onSavedViewSelect($event)"
+          (viewSaved)="onViewSaved($event)">
         </app-browse-display-panel>
       }
       
@@ -582,6 +588,16 @@ export class BrowseViewComponent implements OnChanges {
   @Input() searchHint?: string;
   
   // ═══════════════════════════════════════════════════════════════════
+  // Inputs - Saved Views
+  // ═══════════════════════════════════════════════════════════════════
+  
+  /** Entity type for saved views (e.g., 'spike') */
+  @Input() entityType?: string;
+  
+  /** Current URL params for saved view comparison */
+  @Input() currentParams: Record<string, string> = {};
+  
+  // ═══════════════════════════════════════════════════════════════════
   // Inputs - Panels
   // ═══════════════════════════════════════════════════════════════════
   
@@ -703,6 +719,12 @@ export class BrowseViewComponent implements OnChanges {
   /** Batch action clicked */
   @Output() batchAction = new EventEmitter<BatchActionEvent>();
   
+  /** Saved view selected */
+  @Output() savedViewSelect = new EventEmitter<SavedView>();
+  
+  /** View saved by user */
+  @Output() viewSaved = new EventEmitter<{ title: string; params: Record<string, string> }>();
+  
   // ═══════════════════════════════════════════════════════════════════
   // Computed
   // ═══════════════════════════════════════════════════════════════════
@@ -823,5 +845,13 @@ export class BrowseViewComponent implements OnChanges {
       selectedIds: Array.from(this.selectedIds()),
     };
     this.batchAction.emit(filledEvent);
+  }
+  
+  onSavedViewSelect(view: SavedView): void {
+    this.savedViewSelect.emit(view);
+  }
+  
+  onViewSaved(event: { title: string; params: Record<string, string> }): void {
+    this.viewSaved.emit(event);
   }
 }

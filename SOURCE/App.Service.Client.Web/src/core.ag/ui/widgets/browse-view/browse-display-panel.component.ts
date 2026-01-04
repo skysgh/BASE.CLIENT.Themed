@@ -2,6 +2,7 @@
  * Browse Display Panel Component
  * 
  * Compact view mode selector with icons always visible on the right.
+ * Includes saved views dropdown for quick view switching.
  * Chart mode opens dropdown to select from available chart definitions.
  */
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
@@ -9,6 +10,8 @@ import { CommonModule } from '@angular/common';
 
 import { ViewMode } from './browse-view.component';
 import { ChartDefinition } from '../../../../core/models/query/chart-definition.model';
+import { SavedView } from '../../../../core/models/view/saved-view.model';
+import { SavedViewDropdownComponent } from './saved-view-dropdown.component';
 
 interface ViewModeOption {
   id: ViewMode;
@@ -19,16 +22,26 @@ interface ViewModeOption {
 @Component({
   selector: 'app-browse-display-panel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SavedViewDropdownComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="browse-display-panel">
-      <div class="d-flex align-items-center justify-content-between">
-        <!-- Left: Current mode label -->
-        <div class="display-label d-flex align-items-center gap-2">
-          <i class="bx bx-palette text-muted"></i>
-          <span class="mode-text">{{ getModeLabel() }}</span>
-        </div>
+      <div class="d-flex align-items-center justify-content-between gap-3">
+        <!-- Left: Saved Views Dropdown (if entityType provided) -->
+        @if (entityType) {
+          <app-saved-view-dropdown
+            [entityType]="entityType"
+            [currentParams]="currentParams"
+            (viewSelect)="onSavedViewSelect($event)"
+            (saveRequest)="onSaveView($event)">
+          </app-saved-view-dropdown>
+        } @else {
+          <!-- Fallback: Just mode label -->
+          <div class="display-label d-flex align-items-center gap-2">
+            <i class="bx bx-palette text-muted"></i>
+            <span class="mode-text">{{ getModeLabel() }}</span>
+          </div>
+        }
         
         <!-- Right: View mode icons -->
         <div class="view-mode-icons d-flex align-items-center gap-1">
@@ -134,8 +147,20 @@ export class BrowseDisplayPanelComponent {
   @Input() chartDefinitions: ChartDefinition[] = [];
   @Input() selectedChartId: string = '';
   
+  /** Entity type for saved views (e.g., 'spike') */
+  @Input() entityType?: string;
+  
+  /** Current URL params for saved view comparison */
+  @Input() currentParams: Record<string, string> = {};
+  
   @Output() viewModeChange = new EventEmitter<ViewMode>();
   @Output() chartDefinitionChange = new EventEmitter<ChartDefinition>();
+  
+  /** Emitted when a saved view is selected */
+  @Output() savedViewSelect = new EventEmitter<SavedView>();
+  
+  /** Emitted when user saves a new view */
+  @Output() viewSaved = new EventEmitter<{ title: string; params: Record<string, string> }>();
   
   viewModeOptions: ViewModeOption[] = [
     { id: 'cards', icon: 'bx bx-grid-alt', label: 'Cards' },
@@ -178,5 +203,13 @@ export class BrowseDisplayPanelComponent {
   onChartSelect(chart: ChartDefinition): void {
     this.viewModeChange.emit('chart');
     this.chartDefinitionChange.emit(chart);
+  }
+  
+  onSavedViewSelect(view: SavedView): void {
+    this.savedViewSelect.emit(view);
+  }
+  
+  onSaveView(event: { title: string; params: Record<string, string> }): void {
+    this.viewSaved.emit(event);
   }
 }

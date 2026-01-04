@@ -5,3 +5,4 @@
  */
 
 export * from './view-description.model';
+export * from './saved-view.model';

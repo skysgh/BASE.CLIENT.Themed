@@ -3,6 +3,7 @@
  * 
  * Uses BrowseView component with dynamic FilterCriteria and SortCriteria.
  * All state is synced to URL for bookmarkability.
+ * Supports saved views with MRU (Most Recently Used) auto-restore.
  * 
  * URL Pattern: /spike/spikes?q=search&filter=category:eq:technical&sort=title:asc&page=2&view=tiles
  */
@@ -23,11 +24,12 @@ import { CardBrokerRegistry } from '../../../../../../../core/models/presentatio
 import { DefaultComponentServices } from '../../../../../../../core/services/default-controller-services';
 import { ViewPreferenceService } from '../../../../../../../core/views/view-preference.service';
 import { SearchContextService, SearchContextConfig } from '../../../../../../../core/services/search-context.service';
+import { SavedViewService } from '../../../../../../../core/services/saved-view.service';
 
 // Models
 import { SpikeViewModel } from '../../../../../models/view-models/spike.view-model';
 import { IUniversalCardData, ICardAction } from '../../../../../../../core/models/presentation/universal-card.model';
-import { ViewMode } from '../../../../../../../core.ag/ui/widgets/browse-view/browse-view.component';
+import { ViewMode, SavedView } from '../../../../../../../core.ag/ui/widgets/browse-view/browse-view.component';
 import { ChartDefinition } from '../../../../../../../core/models/query/chart-definition.model';
 import {
   FilterCriteria,
@@ -39,6 +41,7 @@ import {
   deserializeSorts,
   createSortCriteria,
 } from '../../../../../../../core/models/query/query-criteria.model';
+import { extractUrlParams } from '../../../../../../../core/models/view/saved-view.model';
 import { ViewModel } from './vm';
 
 // Search context configuration for this browse view
@@ -66,6 +69,7 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
   private brokerRegistry = inject(CardBrokerRegistry);
   private spikeBroker = inject(SpikeCardBroker);
   private searchContext = inject(SearchContextService);
+  private savedViewService = inject(SavedViewService);
   
   // Search state manager
   searchState!: SearchStateManager<SpikeViewModel>;
@@ -76,6 +80,9 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
   // UI state
   viewMode: ViewMode = 'cards';
   selectedChartId: string = '';
+  
+  // Current URL params for saved views
+  currentUrlParams: Record<string, string> = {};
   
   // Chart definitions from broker
   get chartDefinitions(): ChartDefinition[] {
@@ -157,6 +164,7 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
   }
   
   private destroy$ = new Subject<void>();
+  private isFirstLoad = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -203,10 +211,30 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
     this.searchContext.registerContext(SPIKE_SEARCH_CONTEXT);
     this.searchContext.activateContext(SPIKE_SEARCH_CONTEXT);
     
+    // Initialize saved views for spike entity
+    this.savedViewService.initializeEntity('spike', 'All Spikes');
+    
     // Subscribe to URL query params and sync state
     this.route.queryParams.pipe(
       takeUntil(this.destroy$)
     ).subscribe(params => {
+      // Store current URL params for saved view comparison
+      this.currentUrlParams = extractUrlParams(params);
+      
+      // On first load, check if we should restore MRU view
+      if (this.isFirstLoad) {
+        this.isFirstLoad = false;
+        
+        if (this.savedViewService.shouldRestoreMru('spike', this.currentUrlParams)) {
+          const mru = this.savedViewService.getMruView('spike');
+          if (mru) {
+            console.log('[Browse] Restoring MRU view:', mru.urlParams);
+            this.savedViewService.applyView(mru, this.route);
+            return; // Will re-enter with MRU params
+          }
+        }
+      }
+      
       // Sync filters from URL
       if (params['filter']) {
         const filters = deserializeFilters(params['filter']);
@@ -248,6 +276,11 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
         if (['cards', 'tiles', 'table', 'list', 'chart'].includes(view)) {
           this.viewMode = view;
         }
+      }
+      
+      // Save as MRU (if we have any non-empty params)
+      if (Object.keys(this.currentUrlParams).filter(k => this.currentUrlParams[k]).length > 0) {
+        this.savedViewService.saveMruView('spike', this.currentUrlParams);
       }
     });
   }
@@ -382,6 +415,15 @@ export class BaseAppsSpikeSpikesBrowseComponent implements OnInit, OnDestroy {
     } else if (action.handler) {
       action.handler(event.card.payload);
     }
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // Saved Views
+  // ─────────────────────────────────────────────────────────────
+
+  onSavedViewSelect(view: SavedView): void {
+    console.log('[Browse] Saved view selected:', view.title);
+    this.savedViewService.applyView(view, this.route);
   }
 
   // ─────────────────────────────────────────────────────────────
