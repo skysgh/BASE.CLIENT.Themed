@@ -82,6 +82,7 @@ import { ChartRendererComponent } from './renderers/chart-renderer.component';
 
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 import { SavedView } from '../../../../core/models/view/saved-view.model';
+import { SavedViewService } from '../../../../core/services/saved-view.service';
 
 // Re-export for consumers
 export { ViewMode } from './browse-view-schema.model';
@@ -124,91 +125,153 @@ export interface CardClickEvent {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="browse-view">
-      <!-- Search Panel -->
-      @if (showSearch) {
-        <app-browse-search-panel
-          [query]="searchQuery"
-          [placeholder]="searchPlaceholder"
-          [entityIcon]="searchEntityIcon"
-          [hint]="searchHint"
-          (queryChange)="onSearchChange($event)"
-          (search)="onSearchSubmit($event)"
-          (clear)="onSearchClear()">
-        </app-browse-search-panel>
-      }
-      
-      <!-- Display Panel (Views dropdown + view mode icons) -->
-      @if (showDisplayPanel) {
-        <app-browse-display-panel
-          [viewMode]="viewMode"
-          [chartDefinitions]="chartDefinitions"
-          [selectedChartId]="selectedChartId"
-          [entityType]="entityType"
-          [currentParams]="currentParams"
-          [isCustomizing]="isCustomizing"
-          (viewModeChange)="onViewModeChange($event)"
-          (chartDefinitionChange)="onChartDefinitionChange($event)"
-          (savedViewSelect)="onSavedViewSelect($event)"
-          (customizingChange)="onCustomizingChange($event)">
-        </app-browse-display-panel>
-      }
-      
-      <!-- Customization Panels (shown when "Customize..." is clicked) -->
-      @if (isCustomizing) {
-        <div class="customization-area card mb-3">
-          <div class="card-body py-2">
-            <!-- Filter Panel -->
-            @if (showFilterPanel) {
-              <app-browse-filter-panel
-                [filters]="filters"
-                [fields]="fields"
-                [expanded]="true"
-                (filtersChange)="onFiltersChange($event)"
-                (apply)="onApply()">
-              </app-browse-filter-panel>
+      <!-- Row 1: Search + Views Control -->
+      <div class="browse-header-row d-flex align-items-center gap-2 mb-3">
+        <!-- Search (flex-grow) -->
+        @if (showSearch) {
+          <div class="flex-grow-1">
+            <app-browse-search-panel
+              [query]="searchQuery"
+              [placeholder]="searchPlaceholder"
+              [entityIcon]="searchEntityIcon"
+              [hint]="searchHint"
+              [compact]="true"
+              (queryChange)="onSearchChange($event)"
+              (search)="onSearchSubmit($event)"
+              (clear)="onSearchClear()">
+            </app-browse-search-panel>
+          </div>
+        }
+        
+        <!-- Views + Display Controls -->
+        @if (showDisplayPanel) {
+          <div class="browse-controls d-flex align-items-center gap-2">
+            <!-- Views Toggle Button -->
+            @if (entityType) {
+              <button 
+                type="button"
+                class="btn btn-sm d-flex align-items-center gap-2"
+                [class.btn-primary]="isCustomizing"
+                [class.btn-soft-secondary]="!isCustomizing"
+                (click)="toggleCustomizing()">
+                <i class="bx bx-filter-alt"></i>
+                <span class="d-none d-md-inline">{{ currentViewName }}</span>
+                <i class="bx" [class.bx-chevron-down]="!isCustomizing" [class.bx-chevron-up]="isCustomizing"></i>
+              </button>
             }
             
-            <!-- Order Panel -->
-            @if (showOrderPanel) {
-              <app-browse-order-panel
-                [sorts]="sorts"
-                [fields]="fields"
-                [expanded]="true"
-                (sortsChange)="onSortsChange($event)"
-                (apply)="onApply()">
-              </app-browse-order-panel>
-            }
-            
-            <!-- Save View Section -->
-            <div class="save-view-section border-top pt-3 mt-2">
-              <div class="d-flex align-items-center gap-3">
-                <div class="flex-grow-1">
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-text">
-                      <i class="bx bx-bookmark"></i>
-                    </span>
-                    <input 
-                      type="text" 
-                      class="form-control"
-                      placeholder="Save as... (optional)"
-                      [(ngModel)]="saveViewName"
-                      (keyup.enter)="onSaveView()">
-                  </div>
-                </div>
+            <!-- View Mode Icons -->
+            <div class="btn-group">
+              @for (mode of viewModeOptions; track mode.id) {
                 <button 
-                  class="btn btn-sm btn-primary"
-                  (click)="onApplyAndClose()">
-                  <i class="bx bx-check me-1"></i>
-                  Apply
+                  type="button" 
+                  class="btn btn-sm"
+                  [class.btn-primary]="viewMode === mode.id"
+                  [class.btn-soft-secondary]="viewMode !== mode.id"
+                  [title]="mode.label"
+                  (click)="onViewModeChange(mode.id)">
+                  <i [class]="mode.icon"></i>
                 </button>
-                @if (saveViewName.trim()) {
-                  <button 
-                    class="btn btn-sm btn-success"
-                    (click)="onSaveView()">
-                    <i class="bx bx-save me-1"></i>
-                    Save
-                  </button>
+              }
+            </div>
+            
+            <!-- Chart dropdown if available -->
+            @if (chartDefinitions.length > 0) {
+              <div class="dropdown" ngbDropdown>
+                <button 
+                  type="button" 
+                  class="btn btn-sm"
+                  [class.btn-primary]="viewMode === 'chart'"
+                  [class.btn-soft-secondary]="viewMode !== 'chart'"
+                  ngbDropdownToggle>
+                  <i class="bx bx-bar-chart-alt-2"></i>
+                </button>
+                <div ngbDropdownMenu>
+                  @for (chart of chartDefinitions; track chart.id) {
+                    <button class="dropdown-item" (click)="onChartDefinitionChange(chart)">
+                      {{ chart.label }}
+                    </button>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+      
+      <!-- Row 2: Customization Panel (shown when view button clicked) -->
+      @if (isCustomizing) {
+        <div class="customization-panel card mb-3">
+          <div class="card-body py-3">
+            <div class="row g-3">
+              <!-- Saved Views List -->
+              <div class="col-12 col-md-3">
+                <label class="form-label small text-muted mb-2">
+                  <i class="bx bx-bookmark me-1"></i>Saved Views
+                </label>
+                <div class="saved-views-list">
+                  @for (view of savedViews; track view.id) {
+                    <button 
+                      class="btn btn-sm w-100 text-start mb-1 d-flex align-items-center"
+                      [class.btn-primary]="isActiveView(view)"
+                      [class.btn-light]="!isActiveView(view)"
+                      (click)="onSavedViewSelect(view)">
+                      <i [class]="view.icon || 'bx bx-filter-alt'" class="me-2"></i>
+                      <span class="flex-grow-1 text-truncate">{{ view.title }}</span>
+                      @if (!view.isDefault && !view.isMru) {
+                        <i class="bx bx-x text-danger" (click)="deleteView(view, $event)"></i>
+                      }
+                    </button>
+                  }
+                </div>
+              </div>
+              
+              <!-- Filter/Sort Controls -->
+              <div class="col-12 col-md-6">
+                @if (showFilterPanel) {
+                  <app-browse-filter-panel
+                    [filters]="filters"
+                    [fields]="fields"
+                    [expanded]="true"
+                    [compact]="true"
+                    (filtersChange)="onFiltersChange($event)"
+                    (apply)="onApply()">
+                  </app-browse-filter-panel>
                 }
+                
+                @if (showOrderPanel) {
+                  <app-browse-order-panel
+                    [sorts]="sorts"
+                    [fields]="fields"
+                    [expanded]="true"
+                    [compact]="true"
+                    (sortsChange)="onSortsChange($event)"
+                    (apply)="onApply()">
+                  </app-browse-order-panel>
+                }
+              </div>
+              
+              <!-- Save Section -->
+              <div class="col-12 col-md-3">
+                <label class="form-label small text-muted mb-2">
+                  <i class="bx bx-save me-1"></i>Save View
+                </label>
+                <div class="input-group input-group-sm mb-2">
+                  <input 
+                    type="text" 
+                    class="form-control"
+                    placeholder="View name..."
+                    [(ngModel)]="saveViewName">
+                  <button 
+                    class="btn btn-success"
+                    [disabled]="!saveViewName.trim()"
+                    (click)="onSaveView()">
+                    <i class="bx bx-check"></i>
+                  </button>
+                </div>
+                <button class="btn btn-primary btn-sm w-100" (click)="onApplyAndClose()">
+                  <i class="bx bx-check me-1"></i>Apply & Close
+                </button>
               </div>
             </div>
           </div>
@@ -292,11 +355,6 @@ export interface CardClickEvent {
                   [cards]="cards"
                   [chartDefinition]="selectedChart">
                 </app-chart-renderer>
-              } @else {
-                <div class="chart-placeholder text-center py-5">
-                  <i class="bx bx-bar-chart-alt-2 display-1 text-muted"></i>
-                  <h5 class="mt-3 text-muted">Select a chart type</h5>
-                </div>
               }
             }
           }
@@ -316,35 +374,39 @@ export interface CardClickEvent {
     </div>
   `,
   styles: [`
-    .browse-view {
-      // Container styles handled by parent
+    .browse-header-row {
+      // Flex row for search + controls
     }
     
-    .customization-area {
-      border-color: var(--vz-primary) !important;
+    .customization-panel {
       border-left: 3px solid var(--vz-primary);
       background: rgba(var(--vz-primary-rgb), 0.02);
     }
     
-    .save-view-section {
-      border-color: var(--vz-border-color) !important;
-    }
-    
-    .browse-results {
-      // Results area
+    .saved-views-list {
+      max-height: 200px;
+      overflow-y: auto;
     }
     
     .browse-view-empty {
-      opacity: 0.7;
-    }
-    
-    .chart-placeholder {
       opacity: 0.7;
     }
   `]
 })
 export class BrowseViewComponent implements OnChanges {
   private diagnostics = inject(SystemDiagnosticsTraceService);
+  private savedViewService = inject(SavedViewService);
+  
+  // ═══════════════════════════════════════════════════════════════════
+  // View Mode Options (for template)
+  // ═══════════════════════════════════════════════════════════════════
+  
+  viewModeOptions = [
+    { id: 'cards' as ViewMode, icon: 'bx bx-grid-alt', label: 'Cards' },
+    { id: 'tiles' as ViewMode, icon: 'bx bx-menu', label: 'Tiles' },
+    { id: 'table' as ViewMode, icon: 'bx bx-table', label: 'Table' },
+    { id: 'list' as ViewMode, icon: 'bx bx-list-ul', label: 'List' },
+  ];
 
   // ═══════════════════════════════════════════════════════════════════
   // Lifecycle
@@ -720,6 +782,41 @@ export class BrowseViewComponent implements OnChanges {
   
   /** Name for saving the current view */
   saveViewName = '';
+  
+  // ═══════════════════════════════════════════════════════════════════
+  // Saved Views (computed from service)
+  // ═══════════════════════════════════════════════════════════════════
+  
+  get savedViews(): SavedView[] {
+    if (!this.entityType) return [];
+    return this.savedViewService.getViews(this.entityType);
+  }
+  
+  get currentViewName(): string {
+    if (!this.entityType) return 'All Items';
+    const match = this.savedViewService.findMatchingView(this.entityType, this.currentParams);
+    return match?.title || 'Custom';
+  }
+  
+  isActiveView(view: SavedView): boolean {
+    if (!this.entityType) return false;
+    const match = this.savedViewService.findMatchingView(this.entityType, this.currentParams);
+    return match?.id === view.id;
+  }
+  
+  deleteView(view: SavedView, event: Event): void {
+    event.stopPropagation();
+    if (confirm(`Delete "${view.title}"?`)) {
+      this.savedViewService.deleteView(this.entityType!, view.id);
+    }
+  }
+  
+  toggleCustomizing(): void {
+    this.isCustomizing = !this.isCustomizing;
+    if (!this.isCustomizing) {
+      this.saveViewName = '';
+    }
+  }
   
   // ═══════════════════════════════════════════════════════════════════
   // Outputs
