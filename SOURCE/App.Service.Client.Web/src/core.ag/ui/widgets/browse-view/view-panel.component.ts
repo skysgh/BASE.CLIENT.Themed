@@ -62,13 +62,8 @@ export type ViewPanelMode = 'collapsed' | 'list' | 'edit';
                 {{ getViewSummary(view) }}
               </span>
               
-              <!-- Checkmark for selected -->
-              @if (isActiveView(view)) {
-                <i class="bx bx-check text-primary fs-5"></i>
-              }
-              
-              <!-- Edit button (not for default) -->
-              @if (!view.isDefault && !isActiveView(view)) {
+              <!-- Edit button (for non-default views) -->
+              @if (!view.isDefault) {
                 <button 
                   class="btn btn-sm btn-link text-muted p-0 action-btn"
                   title="Edit"
@@ -76,23 +71,12 @@ export type ViewPanelMode = 'collapsed' | 'list' | 'edit';
                   <i class="bx bx-edit-alt"></i>
                 </button>
               }
-              
-              <!-- Delete button (not for default or MRU) -->
-              @if (!view.isDefault && !view.isMru) {
-                <button 
-                  class="btn btn-sm btn-link text-danger p-0 action-btn"
-                  title="Delete"
-                  (click)="deleteView(view); $event.stopPropagation()">
-                  <i class="bx bx-trash-alt"></i>
-                </button>
-              }
             </div>
           }
         </div>
         
-        <!-- Actions -->
-        <div class="mt-2 pt-2 border-top d-flex justify-content-between align-items-center">
-          <span class="text-muted small">{{ savedViews.length }} view(s)</span>
+        <!-- Add New Button -->
+        <div class="mt-2 pt-2 border-top text-end">
           <button 
             class="btn btn-sm btn-outline-primary"
             (click)="startNewView()">
@@ -501,10 +485,11 @@ export class ViewPanelComponent {
     this.modeChange.emit('edit');
   }
   
+  /**
+   * Remove view delete option from list mode
+   */
   deleteView(view: SavedView): void {
-    if (confirm(`Delete "${view.title}"?`)) {
-      this.savedViewService.deleteView(this.entityType, view.id);
-    }
+    // No-op
   }
   
   // ═══════════════════════════════════════════════════════════════════
