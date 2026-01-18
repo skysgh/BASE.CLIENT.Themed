@@ -1,0 +1,1 @@
+export { PlanetBrowseComponent } from './component';

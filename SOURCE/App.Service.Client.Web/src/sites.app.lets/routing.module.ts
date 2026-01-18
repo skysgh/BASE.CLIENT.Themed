@@ -27,6 +27,12 @@ const routes: Routes = [
     loadChildren: () => import('./spike/module').then(m => m.BaseAppsSpikeModule)
   },
 
+  // Astronomy - Showcase applet demonstrating all relationship types
+  { 
+    path: 'astronomy', 
+    loadChildren: () => import('./astronomy/module').then(m => m.AstronomyModule)
+  },
+
   // FAQ - Frequently Asked Questions
   { 
     path: 'faq', 

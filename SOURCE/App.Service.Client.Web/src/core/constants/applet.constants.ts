@@ -20,6 +20,7 @@ export const APPLET_IDS = {
   
   // Business applets (enabled per account)
   SPIKE: 'spike',
+  ASTRONOMY: 'astronomy',
   EDUCATION: 'education',
   ARCHITECTURE: 'architecture',
   PEOPLE: 'people',
@@ -129,6 +130,18 @@ export const APPLET_REGISTRY: Record<AppletId, AppletMetadata> = {
     icon: 'bx-bulb',
     color: '#3577f1',
     routeSegment: 'spike',
+    isService: false,
+    defaultEnabled: true,
+    defaultMenuVisible: true,
+    menuLocation: 'main',
+  },
+  [APPLET_IDS.ASTRONOMY]: {
+    id: APPLET_IDS.ASTRONOMY,
+    displayName: 'Astronomy',
+    description: 'Explore star systems, planets, and moons',
+    icon: 'bx-planet',
+    color: '#f7b84b',
+    routeSegment: 'astronomy',
     isService: false,
     defaultEnabled: true,
     defaultMenuVisible: true,

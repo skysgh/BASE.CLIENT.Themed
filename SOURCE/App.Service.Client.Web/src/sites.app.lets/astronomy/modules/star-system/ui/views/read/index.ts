@@ -1,0 +1,1 @@
+export { StarSystemReadComponent } from './component';

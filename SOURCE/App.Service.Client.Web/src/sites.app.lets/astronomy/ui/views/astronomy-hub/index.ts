@@ -1,0 +1,1 @@
+export { AstronomyHubComponent } from './component';

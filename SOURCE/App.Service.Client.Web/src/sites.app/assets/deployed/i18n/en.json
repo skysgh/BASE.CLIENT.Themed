@@ -173,6 +173,26 @@
       "SINGULAR": "Sub-Spike",
       "PLURAL": "Sub-Spikes",
       "DESCRIPTION": "Child items of a Spike"
+    },
+    "ASTRONOMY": {
+      "SINGULAR": "Astronomy",
+      "PLURAL": "Astronomy",
+      "DESCRIPTION": "Explore star systems, planets, and moons"
+    },
+    "STAR_SYSTEM": {
+      "SINGULAR": "Star System",
+      "PLURAL": "Star Systems",
+      "DESCRIPTION": "A star and its orbiting bodies"
+    },
+    "PLANET": {
+      "SINGULAR": "Planet",
+      "PLURAL": "Planets",
+      "DESCRIPTION": "Celestial body orbiting a star"
+    },
+    "MOON": {
+      "SINGULAR": "Moon",
+      "PLURAL": "Moons",
+      "DESCRIPTION": "Natural satellite orbiting a planet"
     }
   },
   "SPIKE": {
