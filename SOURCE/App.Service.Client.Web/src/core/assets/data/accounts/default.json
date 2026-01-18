@@ -114,15 +114,52 @@
     }
   },
   "features": {
+    "_comment_toolbar": "Toolbar icon visibility flags",
+    "showSettingsIcon": false,
+    "showThemeSwitcher": true,
+    "showFullscreenToggle": true,
+    "showNotifications": true,
+    "showLanguageSelector": true,
+    "showShoppingCart": false,
+    "showTrashIcon": false,
+    "showHelpIcon": true,
+    
+    "_comment_usermenu": "User menu item visibility flags",
+    "showUserMenuFinances": true,
+    "showUserMenuMessages": true,
+    "showUserMenuTasks": true,
+    "showUserMenuHelp": true,
+    
+    "_comment_features": "Other feature flags",
     "enableAnalytics": true,
     "enableChat": true,
     "enableNotifications": true,
-    "enableSettingsIcon": true,
-    "enableSearchIcon": true
+    "enableSearchIcon": true,
+    
+    "_comment_legacy": "Legacy flags (deprecated - kept for backward compatibility)",
+    "enableSettingsIcon": false
+  },
+  "preferences": {
+    "_comment": "Default UI preferences (can be overridden at account/user level)",
+    "spacing": "compact",
+    "appearance": {
+      "mode": "light",
+      "layout": "vertical",
+      "layoutWidth": "fluid",
+      "layoutPosition": "fixed",
+      "topbarColor": "light",
+      "sidebarSize": "default",
+      "sidebarView": "default",
+      "sidebarColor": "dark",
+      "sidebarImage": "none",
+      "preloader": "disable",
+      "sidebarVisibility": "show"
+    }
   },
   "_comments": {
     "i18n": "Text values can be i18n keys (e.g., BASE.ACCOUNTS.DEFAULT.TITLE) or plain text.",
     "applets": "Each applet has enabled, showInNav, navOrder, and features. Use APPLET_IDS constants for IDs.",
-    "features": "Top-level features are global UI toggles. Applet-specific features are under applets.{name}.features"
+    "features": "Top-level features are global UI toggles. Applet-specific features are under applets.{name}.features",
+    "preferences": "UI preferences like spacing. Hierarchy: service → account → user (user wins)"
   }
 }

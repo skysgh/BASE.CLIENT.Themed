@@ -19,10 +19,31 @@
                         <p class="text-muted mb-4">
                           {{'BASE.ERRORS.404.DESCRIPTION'| baseTranslate}}
                         </p>
-                        <a routerLink="/" class="btn btn-primary">
-                          <i class="mdi mdi-home me-1"></i>
-                          {{'BASE.HOME.SINGULAR'| baseTranslate}}
-                        </a>
+                        
+                        <!-- 
+                          Action Buttons:
+                          1. Back: Primary (blue), first position
+                          2. Home/Hub: Secondary (outline), second position
+                        -->
+                        <div class="d-flex justify-content-center gap-2">
+                          <!-- Back Button (Primary blue, first position) -->
+                          <button type="button"
+                                  (click)="goBack()" 
+                                  class="btn btn-primary">
+                            <i class="bx bx-arrow-back me-1"></i>
+                            {{'BASE.ACTIONS.BACK'| baseTranslate}}
+                          </button>
+                          
+                          <!-- Home/Hub Link (Secondary outline, second position) -->
+                          <a [routerLink]="homeUrl" class="btn btn-outline-secondary">
+                            <i class="mdi mdi-home me-1"></i>
+                            @if (isAuthenticated) {
+                              {{'BASE.HUB.SINGULAR'| baseTranslate}}
+                            } @else {
+                              {{'BASE.HOME.SINGULAR'| baseTranslate}}
+                            }
+                          </a>
+                        </div>
                       </div>
                   </div>
               </div><!-- end col -->

@@ -11,6 +11,7 @@ import { TokenStorageService } from '../../../../../core/services/token-storage.
 import { EventService } from "../../../../../core/services/infrastructure/event.service";
 import { NavigationService } from "../../../../../core/services/navigation.service";
 import { LogoutService } from "../../../../../core/services/logout.service";
+import { AccountService } from "../../../../../core/services/account.service";
 // Models:
 import { ViewModel } from "../vm";
 
@@ -29,6 +30,26 @@ const DEFAULT_AVATAR_PATH = '/assets/sites.anon/media/sensitive/images/users/ava
     styleUrls: ['./component.scss'],
     standalone: false
 })
+/**
+ * User Menu Component (Topbar)
+ * 
+ * Displays user avatar and dropdown menu with:
+ * - Profile
+ * - Messages (configurable)
+ * - Tasks (configurable)
+ * - Help/Support (configurable)
+ * - Finances (configurable)
+ * - Settings
+ * - About
+ * - Logout
+ * 
+ * VISIBILITY:
+ * Menu items controlled by account feature flags:
+ * - `features.showUserMenuFinances` (default: true)
+ * - `features.showUserMenuMessages` (default: true)
+ * - `features.showUserMenuTasks` (default: true)
+ * - `features.showUserMenuHelp` (default: true)
+ */
 export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
   // Expose parent configuration:
   public groupConfiguration = themesT1Configuration
@@ -50,6 +71,12 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
   tasksRoute: string = '';
   financesRoute: string = '';
 
+  // Feature flags for menu items
+  showFinances: boolean = true;
+  showMessages: boolean = true;
+  showTasks: boolean = true;
+  showHelp: boolean = true;
+
   constructor(@Inject(DOCUMENT)
   private document: any,
     private defaultControllerServices: DefaultComponentServices,
@@ -57,8 +84,11 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
     private TokenStorageService: TokenStorageService,
     private router: Router,
     private navigationService: NavigationService,
-    private logoutService: LogoutService
+    private logoutService: LogoutService,
+    private accountService: AccountService
   ) {
+    // Load feature flags from account config
+    this.loadFeatureFlags();
   }
 
   ngOnInit(): void {
@@ -84,6 +114,43 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
     this.tasksRoute = this.navigationService.getUrl('apps/spike');
     // Finances - billing module
     this.financesRoute = this.navigationService.getUrl('system/billing');
+  }
+
+  /**
+   * Load feature flags from account configuration
+   */
+  private loadFeatureFlags(): void {
+    // Finances visibility
+    this.accountService.getConfigValue<boolean>('features.showUserMenuFinances').subscribe(enabled => {
+      this.showFinances = enabled ?? true;
+      this.defaultControllerServices.diagnosticsTraceService.debug(
+        `${this.constructor.name} - showFinances: ${this.showFinances}`
+      );
+    });
+
+    // Messages visibility
+    this.accountService.getConfigValue<boolean>('features.showUserMenuMessages').subscribe(enabled => {
+      this.showMessages = enabled ?? true;
+      this.defaultControllerServices.diagnosticsTraceService.debug(
+        `${this.constructor.name} - showMessages: ${this.showMessages}`
+      );
+    });
+
+    // Tasks visibility
+    this.accountService.getConfigValue<boolean>('features.showUserMenuTasks').subscribe(enabled => {
+      this.showTasks = enabled ?? true;
+      this.defaultControllerServices.diagnosticsTraceService.debug(
+        `${this.constructor.name} - showTasks: ${this.showTasks}`
+      );
+    });
+
+    // Help/Support visibility
+    this.accountService.getConfigValue<boolean>('features.showUserMenuHelp').subscribe(enabled => {
+      this.showHelp = enabled ?? true;
+      this.defaultControllerServices.diagnosticsTraceService.debug(
+        `${this.constructor.name} - showHelp: ${this.showHelp}`
+      );
+    });
   }
 
   private initUser() {

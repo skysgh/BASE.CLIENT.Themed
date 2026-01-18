@@ -58,7 +58,7 @@ export class SettingsNavigationService {
 
   /**
    * Get the base settings path (account-aware)
-   * @returns '/apps/settings' or '/{accountId}/apps/settings'
+   * @returns '/system/settings' or '/{accountId}/system/settings'
    */
   getSettingsBasePath(): string {
     const accountId = this.accountService.getAccountId();
@@ -78,18 +78,27 @@ export class SettingsNavigationService {
 
   /**
    * Get relative path for a settings section (for use within settings hub)
+   * Used by sidebar links within the settings hub.
    * @param segment Section segment (e.g., 'user', 'account', 'service')
    */
   getRelativeSectionPath(segment: string): string {
-    return `./${segment}`;
+    return segment;
   }
 
   /**
-   * Get full path for an applet's settings
+   * Get full path for an applet's settings (absolute)
    * @param appletId Applet identifier
    */
   getAppletSettingsPath(appletId: string): string {
     return `${this.getSettingsBasePath()}/${APPLET_SETTINGS_PATH(appletId)}`;
+  }
+
+  /**
+   * Get relative path for an applet's settings (for use within settings hub)
+   * @param appletId Applet identifier
+   */
+  getRelativeAppletSettingsPath(appletId: string): string {
+    return APPLET_SETTINGS_PATH(appletId);
   }
 
   /**
@@ -108,6 +117,7 @@ export class SettingsNavigationService {
 
   /**
    * Get navigation items with relative paths for sidebar
+   * Returns relative paths suitable for [routerLink] in child routes.
    * @param filterByPermission Optional: filter by user permissions
    */
   getNavItemsWithPaths(filterByPermission?: (permission: string) => boolean): Array<SettingsNavItem & { route: string }> {

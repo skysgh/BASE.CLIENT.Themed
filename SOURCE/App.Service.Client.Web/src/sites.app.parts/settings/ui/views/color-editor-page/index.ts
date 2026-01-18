@@ -1,0 +1,1 @@
+export { ColorEditorPageComponent } from './component';

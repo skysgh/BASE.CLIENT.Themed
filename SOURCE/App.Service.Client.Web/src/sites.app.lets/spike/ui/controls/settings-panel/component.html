@@ -1,0 +1,221 @@
+<!-- Settings Shell (Back + Title + Save/Reset) -->
+<app-settings-page-shell
+  titleKey="SPIKE.SETTINGS.TITLE"
+  descriptionKey="SPIKE.SETTINGS.DESCRIPTION"
+  icon="bx-target-lock"
+  [context]="level"
+  [backRoute]="backRoute"
+  [hasChanges]="hasUnsavedChanges"
+  [isSaving]="isSaving"
+  [showSuccess]="showSuccess"
+  (save)="onSave()"
+  (reset)="onReset()">
+
+  <!-- Display Settings Section -->
+  <div class="settings-section card mb-3">
+    <div class="card-header py-2">
+      <h6 class="mb-0">
+        <i class="bx bx-layout me-2"></i>
+        {{ 'SPIKE.SETTINGS.DISPLAY.TITLE' | baseTranslate }}
+      </h6>
+    </div>
+    <div class="card-body py-2">
+      
+      <!-- Default View Mode -->
+      <div class="row align-items-center mb-2">
+        <div class="col-md-4">
+          <label class="form-label mb-0">
+            {{ 'SPIKE.SETTINGS.DISPLAY.DEFAULT_VIEW' | baseTranslate }}
+            <!-- Show lock indicator if locked (user view) -->
+            @if (!isEditable(settings.defaultViewMode) && !canLock) {
+              <app-settings-lock [locked]="true" [lockedBy]="getLockedBy(settings.defaultViewMode)"></app-settings-lock>
+            }
+          </label>
+        </div>
+        <div class="col-md-7">
+          <div class="btn-group" role="group">
+            @for (option of viewModeOptions; track option.value) {
+              <input type="radio" 
+                     class="btn-check" 
+                     [id]="'viewMode_' + option.value"
+                     name="viewMode"
+                     [value]="option.value"
+                     [(ngModel)]="settings.defaultViewMode.value"
+                     [disabled]="!isEditable(settings.defaultViewMode)"
+                     (change)="onSettingChange()">
+              <label class="btn btn-outline-primary btn-sm" [for]="'viewMode_' + option.value">
+                @switch (option.value) {
+                  @case ('cards') { <i class="bx bx-grid-alt me-1"></i> }
+                  @case ('table') { <i class="bx bx-table me-1"></i> }
+                  @case ('list') { <i class="bx bx-list-ul me-1"></i> }
+                }
+                {{ option.labelKey | baseTranslate }}
+              </label>
+            }
+          </div>
+        </div>
+        <!-- Lock toggle for admins -->
+        @if (canLock) {
+          <div class="col-md-1 text-end">
+            <app-settings-lock [canLock]="true" [(isLocked)]="settings.defaultViewMode.locked" (isLockedChange)="onSettingChange()"></app-settings-lock>
+          </div>
+        }
+      </div>
+
+      <!-- Items Per Page -->
+      <div class="row align-items-center mb-2">
+        <div class="col-md-4">
+          <label class="form-label mb-0">
+            {{ 'SPIKE.SETTINGS.DISPLAY.ITEMS_PER_PAGE' | baseTranslate }}
+            @if (!isEditable(settings.itemsPerPage) && !canLock) {
+              <app-settings-lock [locked]="true" [lockedBy]="getLockedBy(settings.itemsPerPage)"></app-settings-lock>
+            }
+          </label>
+        </div>
+        <div class="col-md-7">
+          <select class="form-select form-select-sm" style="width: auto;"
+                  [(ngModel)]="settings.itemsPerPage.value"
+                  [disabled]="!isEditable(settings.itemsPerPage)"
+                  (change)="onSettingChange()">
+            @for (count of itemsPerPageOptions; track count) {
+              <option [value]="count">{{ count }}</option>
+            }
+          </select>
+        </div>
+        @if (canLock) {
+          <div class="col-md-1 text-end">
+            <app-settings-lock [canLock]="true" [(isLocked)]="settings.itemsPerPage.locked" (isLockedChange)="onSettingChange()"></app-settings-lock>
+          </div>
+        }
+      </div>
+
+      <!-- Enable Animations -->
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <label class="form-label mb-0">
+            {{ 'SPIKE.SETTINGS.DISPLAY.ENABLE_ANIMATIONS' | baseTranslate }}
+            @if (!isEditable(settings.enableAnimations) && !canLock) {
+              <app-settings-lock [locked]="true" [lockedBy]="getLockedBy(settings.enableAnimations)"></app-settings-lock>
+            }
+          </label>
+        </div>
+        <div class="col-md-7">
+          <div class="form-check form-switch mb-0">
+            <input class="form-check-input" 
+                   type="checkbox" 
+                   id="enableAnimations"
+                   [(ngModel)]="settings.enableAnimations.value"
+                   [disabled]="!isEditable(settings.enableAnimations)"
+                   (change)="onSettingChange()">
+          </div>
+        </div>
+        @if (canLock) {
+          <div class="col-md-1 text-end">
+            <app-settings-lock [canLock]="true" [(isLocked)]="settings.enableAnimations.locked" (isLockedChange)="onSettingChange()"></app-settings-lock>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Settings Section -->
+  <div class="settings-section card mb-3">
+    <div class="card-header py-2">
+      <h6 class="mb-0">
+        <i class="bx bx-data me-2"></i>
+        {{ 'SPIKE.SETTINGS.DATA.TITLE' | baseTranslate }}
+      </h6>
+    </div>
+    <div class="card-body py-2">
+      
+      <!-- Show Archived -->
+      <div class="row align-items-center mb-2">
+        <div class="col-md-4">
+          <label class="form-label mb-0">
+            {{ 'SPIKE.SETTINGS.DATA.SHOW_ARCHIVED' | baseTranslate }}
+            @if (!isEditable(settings.showArchived) && !canLock) {
+              <app-settings-lock [locked]="true" [lockedBy]="getLockedBy(settings.showArchived)"></app-settings-lock>
+            }
+          </label>
+        </div>
+        <div class="col-md-7">
+          <div class="form-check form-switch mb-0">
+            <input class="form-check-input" 
+                   type="checkbox" 
+                   id="showArchived"
+                   [(ngModel)]="settings.showArchived.value"
+                   [disabled]="!isEditable(settings.showArchived)"
+                   (change)="onSettingChange()">
+          </div>
+        </div>
+        @if (canLock) {
+          <div class="col-md-1 text-end">
+            <app-settings-lock [canLock]="true" [(isLocked)]="settings.showArchived.locked" (isLockedChange)="onSettingChange()"></app-settings-lock>
+          </div>
+        }
+      </div>
+
+      <!-- Default Sort -->
+      <div class="row align-items-center mb-2">
+        <div class="col-md-4">
+          <label class="form-label mb-0">
+            {{ 'SPIKE.SETTINGS.DATA.DEFAULT_SORT_FIELD' | baseTranslate }}
+            @if (!isEditable(settings.defaultSortField) && !canLock) {
+              <app-settings-lock [locked]="true" [lockedBy]="getLockedBy(settings.defaultSortField)"></app-settings-lock>
+            }
+          </label>
+        </div>
+        <div class="col-md-4">
+          <select class="form-select form-select-sm"
+                  [(ngModel)]="settings.defaultSortField.value"
+                  [disabled]="!isEditable(settings.defaultSortField)"
+                  (change)="onSettingChange()">
+            @for (option of sortFieldOptions; track option.value) {
+              <option [value]="option.value">{{ option.labelKey | baseTranslate }}</option>
+            }
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select class="form-select form-select-sm"
+                  [(ngModel)]="settings.defaultSortDirection.value"
+                  [disabled]="!isEditable(settings.defaultSortDirection)"
+                  (change)="onSettingChange()">
+            <option value="asc">{{ 'SPIKE.SETTINGS.SORT.ASC' | baseTranslate }}</option>
+            <option value="desc">{{ 'SPIKE.SETTINGS.SORT.DESC' | baseTranslate }}</option>
+          </select>
+        </div>
+        @if (canLock) {
+          <div class="col-md-1 text-end">
+            <app-settings-lock [canLock]="true" [(isLocked)]="settings.defaultSortField.locked" (isLockedChange)="onSettingChange()"></app-settings-lock>
+          </div>
+        }
+      </div>
+
+      <!-- Max Items (always shown, lockable by service/account) -->
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <label class="form-label mb-0">
+            {{ 'SPIKE.SETTINGS.DATA.MAX_ITEMS' | baseTranslate }}
+            @if (!isEditable(settings.maxItemsAllowed) && !canLock) {
+              <app-settings-lock [locked]="true" [lockedBy]="getLockedBy(settings.maxItemsAllowed)"></app-settings-lock>
+            }
+          </label>
+        </div>
+        <div class="col-md-7">
+          <input type="number" 
+                 class="form-control form-control-sm" 
+                 style="width: 100px;"
+                 [(ngModel)]="settings.maxItemsAllowed.value"
+                 [disabled]="!isEditable(settings.maxItemsAllowed)"
+                 (change)="onSettingChange()">
+        </div>
+        @if (canLock) {
+          <div class="col-md-1 text-end">
+            <app-settings-lock [canLock]="true" [(isLocked)]="settings.maxItemsAllowed.locked" (isLockedChange)="onSettingChange()"></app-settings-lock>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+</app-settings-page-shell>

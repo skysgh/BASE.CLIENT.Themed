@@ -2,61 +2,92 @@ import { Injectable, Type } from '@angular/core';
 import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
 
 /**
- * Applet Settings Schema
- * Defines what settings an applet provides
+ * Settings Level - determines context (service, account, or user)
  */
-export interface AppletSettingsSchema {
-  /** Unique applet identifier (e.g., 'products', 'commerce') */
-  appletId: string;
+export type SettingsLevel = 'service' | 'account' | 'user';
+
+/**
+ * Setting Field Definition
+ * Defines a single setting field with editability per level
+ */
+export interface SettingFieldSchema {
+  /** Unique field key */
+  key: string;
   
-  /** Display name for settings sidebar */
-  displayName: string;
+  /** i18n key for label */
+  labelKey: string;
   
-  /** Icon class (boxicons, e.g., 'bx-package') */
-  icon: string;
+  /** Field type */
+  type: 'text' | 'number' | 'boolean' | 'select' | 'color';
   
-  /** Settings sections within this applet */
-  sections: AppletSettingsSection[];
+  /** Default value */
+  defaultValue?: any;
   
-  /** Required permission to view these settings */
-  requiredPermission?: string;
+  /** Options for select type */
+  options?: { value: any; labelKey: string }[];
+  
+  /** Which levels can edit this field (others see lock icon) */
+  editableAt: SettingsLevel[];
+  
+  /** i18n key for description/help text */
+  descriptionKey?: string;
 }
 
+/**
+ * Applet Settings Section
+ * A group of related settings within an applet
+ */
 export interface AppletSettingsSection {
   /** Section key for routing */
   key: string;
   
-  /** Display label */
-  label: string;
+  /** i18n key for section label */
+  labelKey?: string;
   
   /** Component to render for this section */
-  component: Type<any>;
+  component?: Type<any>;
   
-  /** Required permission for this section */
-  requiredPermission?: string;
+  /** Or define fields inline (for universal rendering with lock indicators) */
+  fields?: SettingFieldSchema[];
+}
+
+/**
+ * Applet Settings Schema
+ * Defines what settings an applet provides
+ */
+export interface AppletSettingsSchema {
+  /** Unique applet identifier (e.g., 'spike', 'products') */
+  appletId: string;
+  
+  /** i18n key for display name */
+  displayNameKey: string;
+  
+  /** Icon class (boxicons, e.g., 'bx-target-lock') */
+  icon: string;
+  
+  /** i18n keys for search hints (allows finding via search) */
+  searchHintKeys: string[];
+  
+  /** Settings sections within this applet */
+  sections: AppletSettingsSection[];
+  
+  /** Category: 'platform' (Parts) or 'app' (Applets) */
+  category: 'platform' | 'app';
+  
+  /** Sort order within category */
+  order?: number;
 }
 
 /**
  * Applet Settings Registry Service
  * 
  * Central registry for applet-specific settings.
- * Applets register their settings schemas here, and the
- * settings hub dynamically renders them based on permissions.
+ * Applets register their settings schemas here.
  * 
- * Usage:
- * ```typescript
- * // In products applet
- * constructor(registry: AppletSettingsRegistryService) {
- *   registry.register({
- *     appletId: 'products',
- *     displayName: 'Products',
- *     icon: 'bx-package',
- *     sections: [
- *       { key: 'inventory', label: 'Inventory', component: InventorySettingsComponent }
- *     ]
- *   });
- * }
- * ```
+ * Supports:
+ * - Search by i18n hints
+ * - Per-field editableAt for lock indicators
+ * - Categorization (Platform vs App)
  */
 @Injectable({ providedIn: 'root' })
 export class AppletSettingsRegistryService {
@@ -74,15 +105,7 @@ export class AppletSettingsRegistryService {
       this.logger.warn(`Applet '${schema.appletId}' settings already registered, overwriting`);
     }
     this.registry.set(schema.appletId, schema);
-    this.logger.debug(`Registered settings for applet '${schema.appletId}'`);
-  }
-
-  /**
-   * Unregister an applet's settings
-   */
-  unregister(appletId: string): void {
-    this.registry.delete(appletId);
-    this.logger.debug(`Unregistered settings for applet '${appletId}'`);
+    this.logger.debug(`Registered settings for applet '${schema.appletId}' (${schema.category})`);
   }
 
   /**
@@ -100,13 +123,6 @@ export class AppletSettingsRegistryService {
   }
 
   /**
-   * Get applet IDs that have settings registered
-   */
-  getRegisteredAppletIds(): string[] {
-    return Array.from(this.registry.keys());
-  }
-
-  /**
    * Check if an applet has settings registered
    */
   has(appletId: string): boolean {
@@ -114,9 +130,25 @@ export class AppletSettingsRegistryService {
   }
 
   /**
-   * Get count of registered applet settings
+   * Check if a field is locked at a given level
+   * Returns which higher level locked it (if any)
    */
-  get count(): number {
-    return this.registry.size;
+  isFieldLocked(field: SettingFieldSchema, currentLevel: SettingsLevel): { locked: boolean; lockedBy?: SettingsLevel } {
+    if (field.editableAt.includes(currentLevel)) {
+      return { locked: false };
+    }
+    
+    // Hierarchy: service > account > user
+    const hierarchy: SettingsLevel[] = ['service', 'account', 'user'];
+    const currentIndex = hierarchy.indexOf(currentLevel);
+    
+    // Find which higher level locked it
+    for (let i = 0; i < currentIndex; i++) {
+      if (field.editableAt.includes(hierarchy[i])) {
+        return { locked: true, lockedBy: hierarchy[i] };
+      }
+    }
+    
+    return { locked: true };
   }
 }

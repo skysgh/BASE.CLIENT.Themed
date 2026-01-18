@@ -1,0 +1,49 @@
+.universal-settings-view {
+  .settings-level-header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--vz-border-color);
+  }
+
+  .settings-section {
+    h6 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .settings-card {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    border: 1px solid var(--vz-border-color);
+
+    &:hover {
+      border-color: var(--vz-primary);
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      transform: translateY(-2px);
+
+      .avatar-title {
+        background-color: var(--vz-primary) !important;
+        color: white !important;
+      }
+
+      h6 {
+        color: var(--vz-primary);
+      }
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    h6 {
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .avatar-title {
+      transition: all 0.2s ease;
+    }
+  }
+}

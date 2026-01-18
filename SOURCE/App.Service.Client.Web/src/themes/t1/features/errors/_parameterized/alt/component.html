@@ -34,23 +34,23 @@
 
                 <!-- Action Buttons -->
                 <div class="d-flex justify-content-center gap-2">
-                  @if (errorConfig.showBackButton) {
-                    <button
-                      (click)="goBack()"
-                      class="btn btn-outline-secondary">
-                      <i class="bx bx-arrow-back me-1"></i>
-                      {{ 'BASE.ACTIONS.GO_BACK' | baseTranslate }}
-                    </button>
-                  }
+                  <!-- Back Button (Primary blue, first position) -->
+                  <button type="button"
+                          (click)="goBack()"
+                          class="btn btn-primary">
+                    <i class="bx bx-arrow-back me-1"></i>
+                    {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
+                  </button>
 
-                  @if (errorConfig.showHomeButton) {
-                    <a
-                      routerLink="/"
-                      [class]="'btn ' + errorConfig.buttonClass">
-                      <i class="mdi mdi-home me-1"></i>
+                  <!-- Home/Hub Link (Secondary outline, second position) -->
+                  <a [routerLink]="homeUrl" class="btn btn-outline-secondary">
+                    <i class="mdi mdi-home me-1"></i>
+                    @if (isAuthenticated) {
+                      {{ 'BASE.HUB.SINGULAR' | baseTranslate }}
+                    } @else {
                       {{ 'BASE.SITE.LOCATIONS.HOME' | baseTranslate }}
-                    </a>
-                  }
+                    }
+                  </a>
                 </div>
               </div>
             </div>

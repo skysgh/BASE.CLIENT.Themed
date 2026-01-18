@@ -1,14 +1,17 @@
-# Service Theme App.let
+# Theme Reference Module
 
 ## Overview
 
-Theme reference and documentation for applet developers.
+**Developer-only** style guide and component reference for applet developers.
+
+> **Note**: User appearance settings have moved to the **Settings module** at
+> `/system/settings/{level}/appearance`. This module is for developer documentation only.
 
 ## Purpose
 
-This app.let provides:
+This module provides:
 - **Color Palette** - Theme colors with CSS variable names
-- **Icons Reference** - BoxIcons search and usage
+- **Icons Reference** - BoxIcons search and usage  
 - **Typography** - Font styles and utilities
 - **Components** - Buttons, badges, cards, alerts
 - **Forms** - Form field styles and FormRenderer usage
@@ -18,28 +21,46 @@ This app.let provides:
 3rd party applet developers need to know what's available in the theme
 without digging through the actual theme package (`themes/t1/`).
 
-This provides a **living style guide** accessible at `/apps/theme/`.
+This provides a **living style guide** accessible at `/system/theme/`.
 
 ## Routes
 
 | Route | Description |
 |-------|-------------|
-| `/apps/theme/` | Theme hub |
-| `/apps/theme/colors` | Color palette |
-| `/apps/theme/icons` | Icon reference |
-| `/apps/theme/typography` | Font styles |
-| `/apps/theme/components` | UI components |
-| `/apps/theme/forms` | Form patterns |
+| `/system/theme/` | Theme reference hub |
+| `/system/theme/colors` | Color palette |
+| `/system/theme/icons` | Icon reference |
+| `/system/theme/typography` | Font styles |
+| `/system/theme/components` | UI components |
+| `/system/theme/forms` | Form patterns |
 
-## Adding to Navigation
+## User Appearance Settings
 
-To enable this app.let, add to your navigation config:
+End-user appearance preferences (dark mode, layout, sidebar colors) are configured at:
 
-```typescript
+| Route | Description |
+|-------|-------------|
+| `/system/settings/user/appearance` | User-level preferences |
+| `/system/settings/account/appearance` | Account-level defaults (admin) |
+| `/system/settings/service/appearance` | Service-level defaults (super admin) |
+
+See `sites.app.parts/settings/` for the settings implementation.
+
+## Enabling This Module
+
+This module is typically **disabled** in production (`service.theme.enabled: false` in account config).
+
+To enable for development:
+
+```json
+// In accounts/default.json
 {
-  label: 'Theme Reference',
-  icon: 'bx-palette',
-  link: '/apps/theme',
+  "applets": {
+    "service.theme": {
+      "enabled": true,
+      "showInNav": true
+    }
+  }
 }
 ```
 

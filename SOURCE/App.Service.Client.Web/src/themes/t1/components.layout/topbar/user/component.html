@@ -34,23 +34,42 @@
         {{ 'BASE.PROFILES.SINGULAR' | baseTranslate}}
       </span>
     </a>
-    <a class="dropdown-item" [routerLink]="messagesRoute">
-      <i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">{{ 'BASE.MESSAGES.PLURAL' | baseTranslate}}</span>
-    </a>
-    <a class="dropdown-item" [routerLink]="tasksRoute">
-      <i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">{{ 'BASE.TASKS.PLURAL' | baseTranslate}}</span>
-    </a>
-    <a class="dropdown-item" [routerLink]="helpRoute">
-      <i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">{{ 'BASE.SUPPORT.SINGULAR' | baseTranslate}}</span>
-    </a>
+    
+    <!-- Messages (configurable) -->
+    @if (showMessages) {
+      <a class="dropdown-item" [routerLink]="messagesRoute">
+        <i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">{{ 'BASE.MESSAGES.PLURAL' | baseTranslate}}</span>
+      </a>
+    }
+    
+    <!-- Tasks (configurable) -->
+    @if (showTasks) {
+      <a class="dropdown-item" [routerLink]="tasksRoute">
+        <i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">{{ 'BASE.TASKS.PLURAL' | baseTranslate}}</span>
+      </a>
+    }
+    
+    <!-- Help/Support (configurable) -->
+    @if (showHelp) {
+      <a class="dropdown-item" [routerLink]="helpRoute">
+        <i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">{{ 'BASE.SUPPORT.SINGULAR' | baseTranslate}}</span>
+      </a>
+    }
+    
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" [routerLink]="financesRoute">
-      <i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">{{ 'BASE.FINANCES.PLURAL' | baseTranslate}} : <b>$5971.67</b></span>
-    </a>
+    
+    <!-- Finances (configurable) -->
+    @if (showFinances) {
+      <a class="dropdown-item" [routerLink]="financesRoute">
+        <i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">{{ 'BASE.FINANCES.PLURAL' | baseTranslate}} : <b>$5971.67</b></span>
+      </a>
+    }
+    
+    <!-- Settings (always shown - this is the primary access point) -->
     <a class="dropdown-item" [routerLink]="settingsRoute">
       <span class="badge bg-success-subtle text-success mt-1 float-end">
         {{ 'BASE.STATUS.NEW' | baseTranslate}}
@@ -60,12 +79,14 @@
         {{ 'BASE.SETTINGS.PLURAL' | baseTranslate}}
       </span>
     </a>
+    
     <a class="dropdown-item" [routerLink]="aboutRoute">
       <i class="mdi mdi-information-outline text-muted fs-16 align-middle me-1"></i>
       <span class="align-middle">
         {{ 'BASE.ABOUT.SINGULAR' | baseTranslate}}
       </span>
     </a>
+    
     <a class="dropdown-item" href="javascript: void(0);" (click)="logout()">
       <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
       <span class="align-middle" data-key="t-logout">

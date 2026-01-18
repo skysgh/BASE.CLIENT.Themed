@@ -1,40 +1,21 @@
 <div class="settings-container">
-  <!-- Sidebar Navigation -->
-  <div class="settings-sidebar">
-    <div class="settings-sidebar-header">
-      <h5 class="mb-0">
-        <i class="bx bx-cog me-2"></i>
-        Settings
-      </h5>
-    </div>
-
-    <div class="settings-nav">
-      <!-- Core Settings Sections -->
-      <div class="nav-section">
-        <div class="nav-section-title">General</div>
-        @for (item of visibleCoreItems; track item.id) {
-          <a [routerLink]="item.route" 
-             routerLinkActive="active"
-             class="nav-item">
-            <i class="bx {{item.icon}}"></i>
-            <span>{{item.label}}</span>
-          </a>
-        }
-      </div>
-
-      <!-- Applet Settings Sections -->
-      @if (appletNavItems.length > 0) {
-        <div class="nav-section">
-          <div class="nav-section-title">Applets</div>
-          @for (item of appletNavItems; track item.id) {
-            <a [routerLink]="item.route" 
-               routerLinkActive="active"
-               class="nav-item">
-              <i class="bx {{item.icon}}"></i>
-              <span>{{item.label}}</span>
-            </a>
-          }
-        </div>
+  <!-- Compact Header with inline level selector -->
+  <div class="settings-header">
+    <h5 class="settings-title mb-0">
+      <i class="bx bx-cog me-2"></i>
+      {{ 'BASE.SETTINGS.PLURAL' | baseTranslate }}
+    </h5>
+    
+    <!-- Level selector as segmented buttons - preserves current sub-path -->
+    <div class="settings-level-selector btn-group" role="group" aria-label="Settings level">
+      @for (item of visibleCoreItems; track item.id) {
+        <button type="button"
+                class="btn btn-outline-primary btn-sm level-btn"
+                [class.active]="isLevelActive(item.id)"
+                (click)="switchLevel(item.id)">
+          <i class="bx {{item.icon}} d-none d-md-inline-block me-md-1"></i>
+          <span class="level-label">{{item.label}}</span>
+        </button>
       }
     </div>
   </div>

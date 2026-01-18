@@ -22,6 +22,9 @@ import { BrowseViewComponent } from '../../core.ag/ui/widgets/browse-view';
 import { ConfigRegistryService } from '../../core/services/config-registry.service';
 import { CardBrokerRegistry } from '../../core/models/presentation/card-broker.model';
 
+// Settings registry for applet settings
+import { AppletSettingsRegistryService } from '../../sites.app.parts/settings/services/applet-settings-registry.service';
+
 // Local applet services
 import { SpikeService } from './services/spike.service';
 import { SubSpikeService } from './services/sub-spike.service';
@@ -46,6 +49,9 @@ import { SpikeDashboardWidgetComponent } from './ui/widgets/spike-widget/compone
 
 // ✅ NEW: Schema-driven CRUD page
 import { SpikeSchemaAggregateComponent } from './modules/spike/ui/views/schema-aggregate/component';
+
+// ✅ NEW: Settings panel
+import { SpikeSettingsPanelComponent } from './ui/controls/settings-panel/component';
 
 // Applet constants
 import { appletsSpikesConstants } from './constants/implementations/app.lets.spikes.constants';
@@ -91,7 +97,12 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
     BrowseViewComponent,
     // ✅ NEW: Schema-driven CRUD page (standalone component)
     SpikeSchemaAggregateComponent,
+    // ✅ NEW: Settings panel (standalone component)
+    SpikeSettingsPanelComponent,
     RouterModule.forChild([
+      // ✅ NEW: Settings route
+      { path: 'settings', component: SpikeSettingsPanelComponent },
+      
       // ✅ NEW: Schema-driven CRUD page - single component handles all modes
       { path: 'schema-crud', component: SpikeSchemaAggregateComponent },
       { path: 'aggregate', redirectTo: 'schema-crud', pathMatch: 'prefix' },
@@ -131,13 +142,16 @@ import { appletsSpikesConstants } from './constants/implementations/app.lets.spi
     RouterModule,
     // Export widget for use in dashboards
     SpikeDashboardWidgetComponent,
+    // Export settings panel for use in settings hub
+    SpikeSettingsPanelComponent,
   ]
 })
 export class BaseAppsSpikeModule {
   constructor(
     configRegistryService: ConfigRegistryService,
     brokerRegistry: CardBrokerRegistry,
-    spikeBroker: SpikeCardBroker
+    spikeBroker: SpikeCardBroker,
+    settingsRegistry: AppletSettingsRegistryService
   ) {
     // Register applet config
     configRegistryService.register('applets.spike', {
@@ -146,5 +160,24 @@ export class BaseAppsSpikeModule {
     
     // Register card broker for Universal Search
     brokerRegistry.register(spikeBroker);
+    
+    // ✅ NEW: Register settings for Universal Settings Browser
+    settingsRegistry.register({
+      appletId: 'spike',
+      displayNameKey: 'SPIKE.SETTINGS.TITLE',
+      icon: 'bx-target-lock',
+      searchHintKeys: [
+        'SPIKE.SETTINGS.SEARCH_HINTS'  // Will contain: "spike, test, demo, view, display"
+      ],
+      category: 'app',
+      order: 10,
+      sections: [
+        {
+          key: 'general',
+          labelKey: 'SPIKE.SETTINGS.GENERAL.TITLE',
+          component: SpikeSettingsPanelComponent
+        }
+      ]
+    });
   }
 }

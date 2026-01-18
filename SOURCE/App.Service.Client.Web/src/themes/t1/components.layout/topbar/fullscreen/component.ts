@@ -7,6 +7,7 @@ import { Component, Inject, OnInit, DOCUMENT } from "@angular/core";
 import { themesT1Configuration } from "../../../configuration/implementations/themes.t1.configuration";
 // Services:
 import { EventService } from '../../../../../core/services/infrastructure/event.service';
+import { AccountService } from "../../../../../core/services/account.service";
 // Models:
 import { ViewModel } from "../vm";
 import { appsConfiguration } from '../../../../../sites.app/configuration/implementations/apps.configuration';
@@ -19,6 +20,16 @@ import { DefaultComponentServices } from "../../../../../core/services/default-c
     styleUrls: ['./component.scss'],
     standalone: false
 })
+/**
+ * Fullscreen Toggle Component (Topbar)
+ * 
+ * Displays a fullscreen toggle button in the topbar.
+ * 
+ * VISIBILITY:
+ * Controlled by account feature flag: `features.showFullscreenToggle`
+ * - System default: true
+ * - Can be disabled per-account in config.json
+ */
 export class BaseCoreCommonComponentTopBarFullScreenComponent implements OnInit {
   // Expose system configuration:
   public appsConfiguration = appsConfiguration
@@ -27,25 +38,29 @@ export class BaseCoreCommonComponentTopBarFullScreenComponent implements OnInit 
 
   // This controller's ViewModel:
   public viewModel: ViewModel = new ViewModel();
-  // TODO: Move these variables into it.
+
+  /** Feature flag - controls visibility (default: true) */
+  public isEnabled: boolean = true;
 
   mode: string | undefined;
   element: any = null; //HTMLElement
 
   /**
    * Constructor
-   * 
-   * @param document
-   * @param translate
-   * @param eventService
    */
-  constructor(@Inject(DOCUMENT)
-  private document: any,
+  constructor(
+    @Inject(DOCUMENT) private document: any,
     private defaultControllerServices: DefaultComponentServices,
-    private eventService: EventService
-) {
-    // Make system/env variables avaiable to view template (via const or service):
-    
+    private eventService: EventService,
+    private accountService: AccountService
+  ) {
+    // Check feature flag from account config
+    this.accountService.getConfigValue<boolean>('features.showFullscreenToggle').subscribe(enabled => {
+      this.isEnabled = enabled ?? true; // Default to true
+      this.defaultControllerServices.diagnosticsTraceService.debug(
+        `${this.constructor.name} - Fullscreen toggle enabled: ${this.isEnabled}`
+      );
+    });
   }
 
   ngOnInit(): void {
@@ -87,5 +102,4 @@ export class BaseCoreCommonComponentTopBarFullScreenComponent implements OnInit 
       }
     }
   }
-
 }

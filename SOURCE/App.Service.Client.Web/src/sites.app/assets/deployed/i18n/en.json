@@ -1,4 +1,137 @@
 {
+  "BASE": {
+    "VALUES": {
+      "SINGULAR": "Value",
+      "PLURAL": "Values"
+    },
+    "SETTINGS": {
+      "SINGULAR": "Setting",
+      "PLURAL": "Settings",
+      "NO_SETTINGS_AT_LEVEL": "No settings available at this level.",
+      "LOCK_FOR_LOWER_LEVELS": "Lock for lower levels",
+      "SERVICE": {
+        "TITLE": "Service Settings",
+        "DESCRIPTION": "Platform-wide configuration (super admin only)"
+      },
+      "ACCOUNT": {
+        "TITLE": "Account Settings",
+        "DESCRIPTION": "Tenant-wide settings for this organization"
+      },
+      "USER": {
+        "TITLE": "User Preferences",
+        "DESCRIPTION": "Your personal preferences and settings"
+      },
+      "THEME": {
+        "TITLE": "Theme & Display",
+        "DESCRIPTION": "Customize colors, layout, and appearance"
+      }
+    },
+    "APPEARANCE": {
+      "TITLE": "Appearance",
+      "DESCRIPTION": "Customize theme, layout, and colors",
+      "MODE": {
+        "TITLE": "Color Mode",
+        "LABEL": "Mode",
+        "LIGHT": "Light",
+        "DARK": "Dark"
+      },
+      "COLORS": {
+        "TITLE": "Color Palette",
+        "DESCRIPTION": "Define your brand colors and how they apply to the interface.",
+        "PRIMARY": "Primary (Brand)",
+        "PRIMARY_DESC": "Main brand color for sidebar and topbar",
+        "SECONDARY": "Secondary (Accent)",
+        "SECONDARY_DESC": "Accent color for gradients and highlights",
+        "TERTIARY": "Tertiary (Controls)",
+        "TERTIARY_DESC": "Color for buttons, links, and interactive elements",
+        "ASSIGNMENTS": "Color Assignments",
+        "SIDEBAR_USES": "Sidebar uses",
+        "TOPBAR_USES": "Topbar uses",
+        "CONTROLS_USE": "Controls use"
+      },
+      "BRAND_COLOR": {
+        "TITLE": "Brand Color",
+        "DESCRIPTION": "Choose the primary color for your interface. This affects buttons, links, and accents throughout the app.",
+        "PRESETS": "Preset Colors",
+        "CUSTOM": "Custom Color"
+      },
+      "LAYOUT": {
+        "TITLE": "Layout",
+        "LABEL": "Layout Type",
+        "VERTICAL": "Vertical",
+        "HORIZONTAL": "Horizontal",
+        "TWOCOLUMN": "Two Column",
+        "SEMIBOX": "Semi Box"
+      },
+      "WIDTH": {
+        "LABEL": "Layout Width",
+        "FLUID": "Fluid",
+        "BOXED": "Boxed"
+      },
+      "POSITION": {
+        "LABEL": "Layout Position",
+        "FIXED": "Fixed",
+        "SCROLLABLE": "Scrollable"
+      },
+      "CHROME": {
+        "TITLE": "Topbar & Sidebar"
+      },
+      "TOPBAR": {
+        "LABEL": "Topbar Color"
+      },
+      "COLOR": {
+        "LIGHT": "Light",
+        "DARK": "Dark"
+      },
+      "SIDEBAR_SIZE": {
+        "LABEL": "Sidebar Size",
+        "DEFAULT": "Default",
+        "COMPACT": "Compact",
+        "SMALL_ICON": "Small Icon",
+        "SMALL_HOVER": "Small Hover"
+      },
+      "SIDEBAR_VIEW": {
+        "LABEL": "Sidebar View",
+        "DEFAULT": "Default",
+        "DETACHED": "Detached"
+      },
+      "SIDEBAR_COLOR": {
+        "LABEL": "Sidebar Color",
+        "GRADIENT": "Gradient",
+        "GRADIENT_2": "Gradient 2",
+        "GRADIENT_3": "Gradient 3",
+        "GRADIENT_4": "Gradient 4"
+      },
+      "SIDEBAR_IMAGE": {
+        "LABEL": "Sidebar Image",
+        "NONE": "None",
+        "IMG_1": "Image 1",
+        "IMG_2": "Image 2",
+        "IMG_3": "Image 3",
+        "IMG_4": "Image 4"
+      }
+    },
+    "NAVIGATION": {
+      "BACK": "Back"
+    },
+    "MESSAGES": {
+      "SETTINGS_SAVED": "Settings saved successfully!"
+    },
+    "GENERAL": {
+      "SINGULAR": "General"
+    },
+    "PLATFORM": {
+      "SINGULAR": "Platform"
+    },
+    "APPS": {
+      "SINGULAR": "App",
+      "PLURAL": "Apps"
+    },
+    "ACTIONS": {
+      "RESET_DEFAULTS": "Reset to Defaults",
+      "SAVE": "Save"
+    }
+  },
   "APPS": {
     "SPIKE": {
       "SINGULAR": "Spike",
@@ -9,6 +142,44 @@
       "SINGULAR": "Sub-Spike",
       "PLURAL": "Sub-Spikes",
       "DESCRIPTION": "Child items of a Spike"
+    }
+  },
+  "SPIKE": {
+    "SETTINGS": {
+      "TITLE": "Spike Settings",
+      "DESCRIPTION": "Configure Spike display and behavior",
+      "SEARCH_HINTS": "spike, test, demo, discovery, ideation, view, display, cards, table",
+      "DISPLAY": {
+        "TITLE": "Display",
+        "DEFAULT_VIEW": "Default View Mode",
+        "DEFAULT_VIEW_HELP": "Choose how items are displayed by default when browsing",
+        "ITEMS_PER_PAGE": "Items Per Page",
+        "ENABLE_ANIMATIONS": "Enable Animations"
+      },
+      "DATA": {
+        "TITLE": "Data",
+        "SHOW_ARCHIVED": "Show Archived Items",
+        "SHOW_ARCHIVED_HELP": "Include archived items when browsing",
+        "DEFAULT_SORT_FIELD": "Default Sort Field",
+        "DEFAULT_SORT_DIRECTION": "Default Sort Direction",
+        "MAX_ITEMS": "Maximum Items Allowed",
+        "MAX_ITEMS_HELP": "Maximum number of items that can be created (admin setting)"
+      },
+      "VIEW_MODE": {
+        "CARDS": "Cards",
+        "TABLE": "Table",
+        "LIST": "List"
+      },
+      "SORT": {
+        "CREATED_AT": "Created Date",
+        "UPDATED_AT": "Updated Date",
+        "TITLE": "Title",
+        "ASC": "Ascending",
+        "DESC": "Descending"
+      },
+      "GENERAL": {
+        "TITLE": "General"
+      }
     }
   }
 }

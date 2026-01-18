@@ -13,10 +13,15 @@ import { DefaultComponentServices } from "../../../../../core/services/default-c
 import { ViewModel } from "../vm";
 
 /**
- * Help Button Component
+ * Help Button Component (Topbar)
  * 
  * Appears in topbar beside settings gear.
  * Navigates to account's help page (showing FAQ and Wiki options).
+ * 
+ * VISIBILITY:
+ * Controlled by account feature flag: `features.showHelpIcon`
+ * - System default: true
+ * - Can be disabled per-account in config.json
  */
 @Component({
     selector: 'app-base-common-components-topbar-help',
@@ -32,7 +37,7 @@ export class BaseCoreCommonComponentTopBarHelpComponent implements OnInit {
   private router = inject(Router);
   private navigationService = inject(NavigationService);
 
-  // Feature flag - controls visibility
+  /** Feature flag - controls visibility (default: true) */
   public isEnabled: boolean = true;
 
   constructor(
@@ -40,8 +45,17 @@ export class BaseCoreCommonComponentTopBarHelpComponent implements OnInit {
     private accountService: AccountService
   ) {
     // Check feature flag from account config
-    this.accountService.getConfigValue<boolean>('features.enableHelpIcon').subscribe(enabled => {
-      this.isEnabled = enabled ?? true; // Default to true
+    // Uses new flag name, with fallback to legacy flag name
+    this.accountService.getConfigValue<boolean>('features.showHelpIcon').subscribe(enabled => {
+      // If new flag is undefined, check legacy flag
+      if (enabled === undefined) {
+        this.accountService.getConfigValue<boolean>('features.enableHelpIcon').subscribe(legacyEnabled => {
+          this.isEnabled = legacyEnabled ?? true; // Default to true
+        });
+      } else {
+        this.isEnabled = enabled;
+      }
+      
       this.defaultControllerServices.diagnosticsTraceService.debug(
         `${this.constructor.name} - Help icon enabled: ${this.isEnabled}`
       );

@@ -1,0 +1,114 @@
+<div class="auth-page-wrapper pt-5">
+  <!-- Background -->
+  <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
+    <div class="bg-overlay"></div>
+    <div class="shape">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1440 120">
+        <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="auth-page-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-center pt-4">
+            
+            <!-- Error Code Display -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center mt-sm-5">
+                  
+                  <!-- Error Code -->
+                  <div class="mb-4">
+                    <h1 class="display-1 fw-bold text-white">{{ errorCode }}</h1>
+                  </div>
+                  
+                  <!-- Icon -->
+                  <div class="avatar-lg mx-auto mb-4">
+                    <div class="avatar-title bg-light rounded-circle">
+                      <i [class]="errorConfig.icon + ' display-5 ' + errorConfig.iconColor"></i>
+                    </div>
+                  </div>
+                  
+                  <!-- Title (i18n) -->
+                  <h4 class="text-uppercase text-white">
+                    {{ errorConfig.titleKey | baseTranslate }}
+                  </h4>
+                  
+                  <!-- Description (i18n) -->
+                  <p class="text-white-50 fs-15 mb-4">
+                    {{ errorConfig.descriptionKey | baseTranslate }}
+                  </p>
+                  
+                  <!-- Account ID for 404-A -->
+                  @if (errorCode === '404-A' && accountId) {
+                    <div class="alert alert-light-subtle text-start mx-auto" style="max-width: 500px;">
+                      <p class="mb-2">
+                        {{ 'BASE.ERRORS.404-A.ACCOUNT_PREFIX' | baseTranslate }} 
+                        <strong class="text-danger">"{{ accountId }}"</strong> 
+                        {{ 'BASE.ERRORS.404-A.ACCOUNT_SUFFIX' | baseTranslate }}
+                      </p>
+                      <small class="text-muted">
+                        {{ 'BASE.ERRORS.404-A.REASONS_INTRO' | baseTranslate }}
+                        <ul class="mt-1 mb-0">
+                          <li>{{ 'BASE.ERRORS.404-A.REASON_MISTYPED' | baseTranslate }}</li>
+                          <li>{{ 'BASE.ERRORS.404-A.REASON_REMOVED' | baseTranslate }}</li>
+                          <li>{{ 'BASE.ERRORS.404-A.REASON_OUTDATED' | baseTranslate }}</li>
+                        </ul>
+                      </small>
+                    </div>
+                  }
+                  
+                  <!-- 
+                    Action Buttons:
+                    1. Back: Primary (blue), first position
+                    2. Home/Hub: Secondary (outline), second position
+                  -->
+                  <div class="mt-4">
+                    <div class="d-inline-flex gap-2 flex-wrap justify-content-center">
+                      <!-- Back Button (Primary blue, first position) -->
+                      <button class="btn btn-primary" (click)="goBack()">
+                        <i class="ri-arrow-left-line me-1"></i>
+                        {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
+                      </button>
+                      
+                      <!-- Home/Hub Link (Secondary outline, second position) -->
+                      <a [routerLink]="homeUrl" class="btn btn-outline-light">
+                        <i class="ri-home-4-line me-1"></i>
+                        @if (isAuthenticated) {
+                          {{ 'BASE.HUB.SINGULAR' | baseTranslate }}
+                        } @else {
+                          {{ 'BASE.HOMES.SINGULAR' | baseTranslate }}
+                        }
+                      </a>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <p class="mb-0 text-muted">
+              &copy; {{ year }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

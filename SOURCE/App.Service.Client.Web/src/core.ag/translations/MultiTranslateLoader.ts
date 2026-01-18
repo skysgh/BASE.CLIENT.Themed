@@ -29,6 +29,7 @@ export class MultiTranslateLoader implements TranslateLoader {
    * and merge them together.
    * 
    * ✅ FAULT-TOLERANT: Skips missing files instead of failing
+   * ✅ DEEP MERGE: Later files extend (not replace) earlier ones
    * 
    * @param lang
    * @returns
@@ -53,13 +54,40 @@ export class MultiTranslateLoader implements TranslateLoader {
     /**
      * Merge the translations from each file
      * ✅ Even if some files are missing, we merge what we got
+     * ✅ Uses DEEP MERGE so nested keys are extended, not replaced
      */
     return forkJoin(translationRequests).pipe(
       map(translations =>
         translations.reduce((acc, translation) => {
-          return { ...acc, ...translation }; // Merge translations
+          return this.deepMerge(acc, translation);
         }, {})
       )
     );
+  }
+
+  /**
+   * Deep merge two objects.
+   * Properties from source override target, but nested objects are merged recursively.
+   * This ensures that adding BASE.SETTINGS in sites.app doesn't wipe out BASE.HOMES from core.
+   */
+  private deepMerge(target: any, source: any): any {
+    const result = { ...target };
+    
+    for (const key of Object.keys(source)) {
+      if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+        // If both target and source have an object at this key, merge recursively
+        if (target[key] && typeof target[key] === 'object' && !Array.isArray(target[key])) {
+          result[key] = this.deepMerge(target[key], source[key]);
+        } else {
+          // Source has object, target doesn't - use source
+          result[key] = { ...source[key] };
+        }
+      } else {
+        // Primitive value or array - source overwrites target
+        result[key] = source[key];
+      }
+    }
+    
+    return result;
   }
 }

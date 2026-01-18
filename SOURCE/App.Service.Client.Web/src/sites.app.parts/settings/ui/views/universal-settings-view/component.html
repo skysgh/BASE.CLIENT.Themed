@@ -1,0 +1,81 @@
+<div class="universal-settings-view">
+  <!-- Level Header -->
+  <div class="settings-level-header mb-4">
+    <div class="d-flex align-items-center">
+      <div class="avatar-sm me-3">
+        <div class="avatar-title bg-primary-subtle text-primary rounded">
+          <i class="bx {{ currentLevelInfo.icon }} fs-20"></i>
+        </div>
+      </div>
+      <div>
+        <h4 class="mb-1">{{ currentLevelInfo.titleKey | baseTranslate }}</h4>
+        <p class="text-muted mb-0">{{ currentLevelInfo.descriptionKey | baseTranslate }}</p>
+      </div>
+    </div>
+  </div>
+
+  @if (!hasLinks) {
+    <div class="alert alert-info">
+      <i class="bx bx-info-circle me-2"></i>
+      No settings available at this level.
+    </div>
+  } @else {
+    <!-- Platform Settings -->
+    @if (platformLinks.length > 0) {
+      <div class="settings-section mb-4">
+        <h6 class="text-uppercase text-muted mb-3">
+          {{ 'BASE.PLATFORM.SINGULAR' | baseTranslate }}
+        </h6>
+        <div class="row g-3">
+          @for (link of platformLinks; track link.id) {
+            <div class="col-md-6 col-lg-4">
+              <a [routerLink]="link.route" class="settings-card card h-100">
+                <div class="card-body d-flex align-items-center">
+                  <div class="avatar-sm me-3">
+                    <div class="avatar-title bg-light text-primary rounded">
+                      <i class="bx {{ link.icon }} fs-20"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="mb-1">{{ link.titleKey | baseTranslate }}</h6>
+                    <p class="text-muted mb-0 small">{{ link.descriptionKey | baseTranslate }}</p>
+                  </div>
+                  <i class="bx bx-chevron-right text-muted"></i>
+                </div>
+              </a>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- App Settings -->
+    @if (appLinks.length > 0) {
+      <div class="settings-section mb-4">
+        <h6 class="text-uppercase text-muted mb-3">
+          {{ 'BASE.APPS.PLURAL' | baseTranslate }}
+        </h6>
+        <div class="row g-3">
+          @for (link of appLinks; track link.id) {
+            <div class="col-md-6 col-lg-4">
+              <a [routerLink]="link.route" class="settings-card card h-100">
+                <div class="card-body d-flex align-items-center">
+                  <div class="avatar-sm me-3">
+                    <div class="avatar-title bg-light text-primary rounded">
+                      <i class="bx {{ link.icon }} fs-20"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="mb-1">{{ link.titleKey | baseTranslate }}</h6>
+                    <p class="text-muted mb-0 small">{{ link.descriptionKey | baseTranslate }}</p>
+                  </div>
+                  <i class="bx bx-chevron-right text-muted"></i>
+                </div>
+              </a>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
+</div>

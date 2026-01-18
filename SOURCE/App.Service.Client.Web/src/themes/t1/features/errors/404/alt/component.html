@@ -23,10 +23,32 @@
                           <p class="text-muted mb-4">
                             {{'BASE.ERRORS.PAGE_NOT_FOUND_DESCRIPTION'| baseTranslate}}
                           </p>
-                          <a routerLink="/" class="btn btn-success">
-                            <i class="mdi mdi-home me-1"></i>
-                            {{'BASE.SITE.LOCATIONS.HOME'| baseTranslate}}
-                          </a>
+                          
+                          <!-- 
+                            Action Buttons:
+                            1. Back: Primary, first position
+                            2. Home/Hub: Secondary (outline), second position
+                          -->
+                          <div class="d-flex justify-content-center gap-2">
+                            <!-- Back Button (Primary, first position) -->
+                            <button type="button"
+                                    (click)="goBack()" 
+                                    class="btn btn-primary"
+                                    title="{{'BASE.ACTIONS.BACK_DESCRIPTION' | baseTranslate}}">
+                              <i class="bx bx-arrow-back me-1"></i>
+                              {{'BASE.ACTIONS.BACK'| baseTranslate}}
+                            </button>
+                            
+                            <!-- Home/Hub Link (Secondary outline, second position) -->
+                            <a [routerLink]="homeUrl" class="btn btn-outline-secondary">
+                              <i class="mdi mdi-home me-1"></i>
+                              @if (isAuthenticated) {
+                                {{'BASE.HUB.SINGULAR'| baseTranslate}}
+                              } @else {
+                                {{'BASE.SITE.LOCATIONS.HOME'| baseTranslate}}
+                              }
+                            </a>
+                          </div>
                         </div>
                       </div>
                   </div>

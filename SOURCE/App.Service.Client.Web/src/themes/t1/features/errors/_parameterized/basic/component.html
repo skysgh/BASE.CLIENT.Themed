@@ -21,58 +21,60 @@
               <img [src]="errorImage"
                 [alt]="errorConfig.code + ' error'"
                 class="error-basic-img move-animation">
-              </div>
+            </div>
 
-              <div class="mt-n4">
-                <!-- Error Code -->
-                <h1 class="display-1 fw-medium">
-                  {{ errorConfig.code }}
-                </h1>
+            <div class="mt-n4">
+              <!-- Error Code -->
+              <h1 class="display-1 fw-medium">
+                {{ errorConfig.code }}
+              </h1>
 
-                <!-- Error Title -->
-                <h3 class="text-uppercase">
-                  {{ errorConfig.titleKey | baseTranslate }}
-                </h3>
+              <!-- Error Title -->
+              <h3 class="text-uppercase">
+                {{ errorConfig.titleKey | baseTranslate }}
+              </h3>
 
-                <!-- Error Description -->
-                <p class="text-muted mb-4">
-                  {{ errorConfig.descriptionKey | baseTranslate }}
-                </p>
+              <!-- Error Description -->
+              <p class="text-muted mb-4">
+                {{ errorConfig.descriptionKey | baseTranslate }}
+              </p>
 
-                <!-- Action Buttons -->
-                <div class="d-flex justify-content-center gap-2">
-                  <!-- Back Button -->
-                  @if (errorConfig.showBackButton) {
-                    <button
-                      (click)="goBack()"
-                      class="btn btn-outline-secondary">
-                      <i class="bx bx-arrow-back me-1"></i>
-                      {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
-                    </button>
+              <!-- 
+                Action Buttons:
+                1. Back: Primary (blue), first position - always shown
+                2. Home/Hub: Secondary (outline), second position
+              -->
+              <div class="d-flex justify-content-center gap-2">
+                <!-- Back Button (Primary blue, first position) -->
+                <button type="button"
+                        (click)="goBack()"
+                        class="btn btn-primary">
+                  <i class="bx bx-arrow-back me-1"></i>
+                  {{ 'BASE.ACTIONS.BACK' | baseTranslate }}
+                </button>
+
+                <!-- Home/Hub Link (Secondary outline, second position) -->
+                <a [routerLink]="homeUrl" class="btn btn-outline-secondary">
+                  <i class="mdi mdi-home me-1"></i>
+                  @if (isAuthenticated) {
+                    {{ 'BASE.HUB.SINGULAR' | baseTranslate }}
+                  } @else {
+                    {{ 'BASE.HOMES.SINGULAR' | baseTranslate }}
                   }
-
-                  <!-- Home Button -->
-                  @if (errorConfig.showHomeButton) {
-                    <a
-                      routerLink="/"
-                      [class]="'btn ' + errorConfig.buttonClass">
-                      <i class="mdi mdi-home me-1"></i>
-                      {{ 'BASE.HOMES.SINGULAR' | baseTranslate }}
-                    </a>
-                  }
-                </div>
+                </a>
               </div>
             </div>
           </div>
         </div>
-        <!-- end row -->
       </div>
-      <!-- end container -->
+      <!-- end row -->
     </div>
-    <!-- end auth page content -->
-
-    <!-- footer -->
-    <app-base-common-components-footer-a></app-base-common-components-footer-a>
-    <!-- end Footer -->
+    <!-- end container -->
   </div>
-  <!-- end auth-page-wrapper -->
+  <!-- end auth page content -->
+
+  <!-- footer -->
+  <app-base-common-components-footer-a></app-base-common-components-footer-a>
+  <!-- end Footer -->
+</div>
+<!-- end auth-page-wrapper -->

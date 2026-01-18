@@ -1,0 +1,438 @@
+<app-settings-page-shell
+  titleKey="BASE.APPEARANCE.TITLE"
+  descriptionKey="BASE.APPEARANCE.DESCRIPTION"
+  icon="bx-palette"
+  [context]="level"
+  [backRoute]="backRoute"
+  [hasChanges]="hasUnsavedChanges"
+  [isSaving]="isSaving"
+  [showSuccess]="showSuccess"
+  (save)="onSave()"
+  (reset)="onReset()">
+
+  <!-- Mode Section -->
+  <div class="settings-section card mb-3">
+    <div class="card-header py-2">
+      <h6 class="mb-0">
+        <i class="bx bx-sun me-2"></i>
+        {{ 'BASE.APPEARANCE.MODE.TITLE' | baseTranslate }}
+      </h6>
+    </div>
+    <div class="card-body py-2">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <label class="form-label mb-0">{{ 'BASE.APPEARANCE.MODE.LABEL' | baseTranslate }}</label>
+        </div>
+        <div class="col-md-7">
+          <div class="btn-group" role="group">
+            @for (option of modeOptions; track option.value) {
+              <input type="radio" class="btn-check" [id]="'mode_' + option.value" name="mode"
+                     [value]="option.value" [(ngModel)]="settings.mode.value"
+                     [disabled]="!isEditable(settings.mode)" (change)="onSettingChange('mode')">
+              <label class="btn btn-outline-primary btn-sm" [for]="'mode_' + option.value">
+                <i class="bx {{ option.icon }} me-1"></i>{{ option.labelKey | baseTranslate }}
+              </label>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color Palette Section - Compact Summary -->
+  <div class="settings-section card mb-3">
+    <div class="card-header py-2">
+      <h6 class="mb-0">
+        <i class="bx bx-color me-2"></i>
+        {{ 'BASE.APPEARANCE.COLORS.TITLE' | baseTranslate }}
+      </h6>
+    </div>
+    <div class="card-body py-2">
+      <p class="text-muted small mb-3">{{ 'BASE.APPEARANCE.COLORS.DESCRIPTION' | baseTranslate }}</p>
+      
+      <!-- Color Tier Summary Rows -->
+      <div class="color-summary-list">
+        <!-- Primary -->
+        <div class="color-summary-row" (click)="openColorEditor('primary')">
+          <span class="color-swatch" [style.background-color]="settings.primaryColor.value"></span>
+          <div class="color-info">
+            <span class="color-label">{{ 'BASE.APPEARANCE.COLORS.PRIMARY' | baseTranslate }}</span>
+            <span class="color-hex text-muted">{{ settings.primaryColor.value }}</span>
+          </div>
+          <i class="bx bx-chevron-right text-muted"></i>
+        </div>
+        
+        <!-- Secondary -->
+        <div class="color-summary-row" (click)="openColorEditor('secondary')">
+          <span class="color-swatch" [style.background-color]="settings.secondaryColor.value"></span>
+          <div class="color-info">
+            <span class="color-label">{{ 'BASE.APPEARANCE.COLORS.SECONDARY' | baseTranslate }}</span>
+            <span class="color-hex text-muted">{{ settings.secondaryColor.value }}</span>
+          </div>
+          <i class="bx bx-chevron-right text-muted"></i>
+        </div>
+        
+        <!-- Tertiary -->
+        <div class="color-summary-row" (click)="openColorEditor('tertiary')">
+          <span class="color-swatch" [style.background-color]="settings.tertiaryColor.value"></span>
+          <div class="color-info">
+            <span class="color-label">{{ 'BASE.APPEARANCE.COLORS.TERTIARY' | baseTranslate }}</span>
+            <span class="color-hex text-muted">{{ settings.tertiaryColor.value }}</span>
+          </div>
+          <i class="bx bx-chevron-right text-muted"></i>
+        </div>
+      </div>
+      
+      <!-- Color Assignments -->
+      <div class="border-top pt-3 mt-3">
+        <h6 class="text-muted small fw-semibold mb-3">{{ 'BASE.APPEARANCE.COLORS.ASSIGNMENTS' | baseTranslate }}</h6>
+        
+        <div class="row align-items-center mb-2">
+          <div class="col-5">
+            <label class="form-label mb-0 small">{{ 'BASE.APPEARANCE.COLORS.SIDEBAR_USES' | baseTranslate }}</label>
+          </div>
+          <div class="col-7">
+            <select class="form-select form-select-sm" style="width: auto;"
+                    [(ngModel)]="settings.sidebarColorSource.value"
+                    (change)="onColorChange()">
+              @for (opt of colorSourceOptions; track opt.value) {
+                <option [value]="opt.value">{{ opt.labelKey | baseTranslate }}</option>
+              }
+            </select>
+          </div>
+        </div>
+        
+        <div class="row align-items-center mb-2">
+          <div class="col-5">
+            <label class="form-label mb-0 small">{{ 'BASE.APPEARANCE.COLORS.TOPBAR_USES' | baseTranslate }}</label>
+          </div>
+          <div class="col-7">
+            <select class="form-select form-select-sm" style="width: auto;"
+                    [(ngModel)]="settings.topbarColorSource.value"
+                    (change)="onColorChange()">
+              @for (opt of colorSourceOptions; track opt.value) {
+                <option [value]="opt.value">{{ opt.labelKey | baseTranslate }}</option>
+              }
+            </select>
+          </div>
+        </div>
+        
+        <div class="row align-items-center">
+          <div class="col-5">
+            <label class="form-label mb-0 small">{{ 'BASE.APPEARANCE.COLORS.CONTROLS_USE' | baseTranslate }}</label>
+          </div>
+          <div class="col-7">
+            <select class="form-select form-select-sm" style="width: auto;"
+                    [(ngModel)]="settings.controlsColorSource.value"
+                    (change)="onColorChange()">
+              @for (opt of colorSourceOptions; track opt.value) {
+                <option [value]="opt.value">{{ opt.labelKey | baseTranslate }}</option>
+              }
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout Section -->
+  <div class="settings-section card mb-3">
+    <div class="card-header py-2">
+      <h6 class="mb-0">
+        <i class="bx bx-layout me-2"></i>
+        {{ 'BASE.APPEARANCE.LAYOUT.TITLE' | baseTranslate }}
+      </h6>
+    </div>
+    <div class="card-body py-2">
+      <!-- Layout Type - Visual Mini-Diagrams -->
+      <div class="row align-items-start mb-3">
+        <div class="col-md-4">
+          <label class="form-label mb-0">{{ 'BASE.APPEARANCE.LAYOUT.LABEL' | baseTranslate }}</label>
+        </div>
+        <div class="col-md-7">
+          <div class="d-flex flex-wrap gap-2">
+            <!-- Vertical -->
+            <div class="form-check card-radio p-0">
+              <input id="layout_vertical" name="data-layout" type="radio" value="vertical" class="form-check-input"
+                     [checked]="settings.layout.value === 'vertical'" (click)="changeLayout('vertical')">
+              <label class="form-check-label p-0 avatar-md w-100 cursor-pointer" for="layout_vertical">
+                <span class="d-flex gap-1 h-100">
+                  <span class="flex-shrink-0">
+                    <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                      <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                      <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                      <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                    </span>
+                  </span>
+                  <span class="flex-grow-1">
+                    <span class="d-flex h-100 flex-column">
+                      <span class="bg-light d-block p-1"></span>
+                      <span class="bg-light d-block p-1 mt-auto"></span>
+                    </span>
+                  </span>
+                </span>
+              </label>
+              <h6 class="fs-11 text-center mt-1 mb-0">{{ 'BASE.APPEARANCE.LAYOUT.VERTICAL' | baseTranslate }}</h6>
+            </div>
+            
+            <!-- Horizontal -->
+            <div class="form-check card-radio p-0">
+              <input id="layout_horizontal" name="data-layout" type="radio" value="horizontal" class="form-check-input"
+                     [checked]="settings.layout.value === 'horizontal'" (click)="changeLayout('horizontal')">
+              <label class="form-check-label p-0 avatar-md w-100 cursor-pointer" for="layout_horizontal">
+                <span class="d-flex h-100 flex-column gap-1">
+                  <span class="bg-light d-flex p-1 gap-1 align-items-center">
+                    <span class="d-block p-1 bg-primary-subtle rounded me-1"></span>
+                    <span class="d-block p-1 pb-0 px-2 bg-primary-subtle ms-auto"></span>
+                  </span>
+                  <span class="bg-light d-block p-1"></span>
+                  <span class="bg-light d-block p-1 mt-auto"></span>
+                </span>
+              </label>
+              <h6 class="fs-11 text-center mt-1 mb-0">{{ 'BASE.APPEARANCE.LAYOUT.HORIZONTAL' | baseTranslate }}</h6>
+            </div>
+            
+            <!-- Two Column -->
+            <div class="form-check card-radio p-0">
+              <input id="layout_twocolumn" name="data-layout" type="radio" value="twocolumn" class="form-check-input"
+                     [checked]="settings.layout.value === 'twocolumn'" (click)="changeLayout('twocolumn')">
+              <label class="form-check-label p-0 avatar-md w-100 cursor-pointer" for="layout_twocolumn">
+                <span class="d-flex gap-1 h-100">
+                  <span class="flex-shrink-0">
+                    <span class="bg-light d-flex h-100 flex-column gap-1">
+                      <span class="d-block p-1 bg-primary-subtle mb-2"></span>
+                      <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                    </span>
+                  </span>
+                  <span class="flex-shrink-0">
+                    <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                      <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                      <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                    </span>
+                  </span>
+                  <span class="flex-grow-1">
+                    <span class="d-flex h-100 flex-column">
+                      <span class="bg-light d-block p-1"></span>
+                    </span>
+                  </span>
+                </span>
+              </label>
+              <h6 class="fs-11 text-center mt-1 mb-0">{{ 'BASE.APPEARANCE.LAYOUT.TWOCOLUMN' | baseTranslate }}</h6>
+            </div>
+            
+            <!-- Semi Box -->
+            <div class="form-check card-radio p-0">
+              <input id="layout_semibox" name="data-layout" type="radio" value="semibox" class="form-check-input"
+                     [checked]="settings.layout.value === 'semibox'" (click)="changeLayout('semibox')">
+              <label class="form-check-label p-0 avatar-md w-100 cursor-pointer" for="layout_semibox">
+                <span class="d-flex gap-1 h-100">
+                  <span class="flex-shrink-0 p-1">
+                    <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                      <span class="d-block p-1 px-2 bg-primary-subtle rounded mb-2"></span>
+                      <span class="d-block p-1 px-2 pb-0 bg-primary-subtle"></span>
+                    </span>
+                  </span>
+                  <span class="flex-grow-1">
+                    <span class="d-flex h-100 flex-column pt-1 pe-2">
+                      <span class="bg-light d-block p-1"></span>
+                    </span>
+                  </span>
+                </span>
+              </label>
+              <h6 class="fs-11 text-center mt-1 mb-0">{{ 'BASE.APPEARANCE.LAYOUT.SEMIBOX' | baseTranslate }}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layout Width -->
+      <div class="row align-items-center mb-2">
+        <div class="col-md-4">
+          <label class="form-label mb-0">{{ 'BASE.APPEARANCE.WIDTH.LABEL' | baseTranslate }}</label>
+        </div>
+        <div class="col-md-7">
+          <div class="btn-group" role="group">
+            @for (option of layoutWidthOptions; track option.value) {
+              <input type="radio" class="btn-check" [id]="'width_' + option.value" name="layoutWidth"
+                     [value]="option.value" [(ngModel)]="settings.layoutWidth.value"
+                     (change)="onSettingChange('layoutWidth')">
+              <label class="btn btn-outline-secondary btn-sm" [for]="'width_' + option.value">
+                {{ option.labelKey | baseTranslate }}
+              </label>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Layout Position -->
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <label class="form-label mb-0">{{ 'BASE.APPEARANCE.POSITION.LABEL' | baseTranslate }}</label>
+        </div>
+        <div class="col-md-7">
+          <div class="btn-group" role="group">
+            @for (option of layoutPositionOptions; track option.value) {
+              <input type="radio" class="btn-check" [id]="'position_' + option.value" name="layoutPosition"
+                     [value]="option.value" [(ngModel)]="settings.layoutPosition.value"
+                     (change)="onSettingChange('layoutPosition')">
+              <label class="btn btn-outline-secondary btn-sm" [for]="'position_' + option.value">
+                {{ option.labelKey | baseTranslate }}
+              </label>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chrome Section (Topbar & Sidebar) -->
+  <div class="settings-section card mb-3">
+    <div class="card-header py-2">
+      <h6 class="mb-0">
+        <i class="bx bx-dock-top me-2"></i>
+        {{ 'BASE.APPEARANCE.CHROME.TITLE' | baseTranslate }}
+      </h6>
+    </div>
+    <div class="card-body py-2">
+      <!-- Topbar Color -->
+      <div class="row align-items-center mb-3">
+        <div class="col-md-4">
+          <label class="form-label mb-0">{{ 'BASE.APPEARANCE.TOPBAR.LABEL' | baseTranslate }}</label>
+        </div>
+        <div class="col-md-7">
+          <div class="btn-group" role="group">
+            @for (option of topbarColorOptions; track option.value) {
+              <input type="radio" class="btn-check" [id]="'topbar_' + option.value" name="topbarColor"
+                     [value]="option.value" [(ngModel)]="settings.topbarColor.value"
+                     (change)="onSettingChange('topbarColor')">
+              <label class="btn btn-outline-secondary btn-sm" [for]="'topbar_' + option.value">
+                {{ option.labelKey | baseTranslate }}
+              </label>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Size -->
+      <div class="row align-items-start mb-3">
+        <div class="col-md-4">
+          <label class="form-label mb-0">{{ 'BASE.APPEARANCE.SIDEBAR_SIZE.LABEL' | baseTranslate }}</label>
+        </div>
+        <div class="col-md-7">
+          <div class="d-flex flex-wrap gap-2">
+            @for (option of sidebarSizeOptions; track option.value) {
+              <div class="form-check sidebar-setting card-radio p-0">
+                <input class="form-check-input" type="radio" name="data-sidebar-size" [id]="'sidebarSize_' + option.value"
+                       [value]="option.value" [checked]="settings.sidebarSize.value === option.value"
+                       (click)="changeSidebarSizeValue(option.value)">
+                <label class="form-check-label p-0 avatar-sm w-100 cursor-pointer" [for]="'sidebarSize_' + option.value">
+                  <span class="d-flex gap-1 h-100">
+                    <span class="flex-shrink-0">
+                      <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                        <span class="d-block p-1 bg-primary-subtle rounded mb-1"></span>
+                        <span class="d-block p-1 pb-0 bg-primary-subtle"></span>
+                      </span>
+                    </span>
+                    <span class="flex-grow-1">
+                      <span class="d-flex h-100 flex-column">
+                        <span class="bg-light d-block p-1"></span>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+                <h6 class="fs-10 text-center mt-1 mb-0">{{ option.labelKey | baseTranslate }}</h6>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Color -->
+      <div class="row align-items-start mb-3">
+        <div class="col-md-4">
+          <label class="form-label mb-0">{{ 'BASE.APPEARANCE.SIDEBAR_COLOR.LABEL' | baseTranslate }}</label>
+        </div>
+        <div class="col-md-7">
+          <div class="d-flex flex-wrap gap-2">
+            @for (option of sidebarColorOptions; track option.value) {
+              <div class="form-check sidebar-setting card-radio p-0">
+                <input type="radio" class="form-check-input" [id]="'sidebarColor_' + option.value" name="sidebarColor"
+                       [value]="option.value" [(ngModel)]="settings.sidebarColor.value"
+                       (change)="onSettingChange('sidebarColor')">
+                <label class="form-check-label p-0 cursor-pointer" [for]="'sidebarColor_' + option.value">
+                  <span class="avatar-xs rounded d-flex align-items-center justify-content-center {{ option.cssClass }}"
+                        [class.ring-2]="settings.sidebarColor.value === option.value"
+                        [class.ring-primary]="settings.sidebarColor.value === option.value"
+                        style="width: 32px; height: 32px;">
+                    @if (settings.sidebarColor.value === option.value) {
+                      <i class="bx bx-check" [class.text-white]="option.value !== 'light'" [class.text-primary]="option.value === 'light'"></i>
+                    }
+                  </span>
+                </label>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Image -->
+      <div class="row align-items-start">
+        <div class="col-md-4">
+          <label class="form-label mb-0">{{ 'BASE.APPEARANCE.SIDEBAR_IMAGE.LABEL' | baseTranslate }}</label>
+        </div>
+        <div class="col-md-7">
+          <div class="d-flex flex-wrap gap-2">
+            @for (option of sidebarImageOptions; track option.value) {
+              <div class="form-check sidebar-setting card-radio p-0">
+                <input type="radio" class="form-check-input" [id]="'sidebarImage_' + option.value" name="sidebarImage"
+                       [value]="option.value" [(ngModel)]="settings.sidebarImage.value"
+                       (change)="onSettingChange('sidebarImage')">
+                <label class="form-check-label p-0 cursor-pointer" [for]="'sidebarImage_' + option.value">
+                  @if (option.image) {
+                    <span class="d-block rounded overflow-hidden position-relative"
+                          [class.ring-2]="settings.sidebarImage.value === option.value"
+                          [class.ring-primary]="settings.sidebarImage.value === option.value"
+                          style="width: 40px; height: 56px;">
+                      <img [src]="sidebarImagesPath + option.image" [alt]="option.labelKey | baseTranslate"
+                           class="w-100 h-100 object-fit-cover">
+                      @if (settings.sidebarImage.value === option.value) {
+                        <span class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-25">
+                          <i class="bx bx-check fs-5 text-white"></i>
+                        </span>
+                      }
+                    </span>
+                  } @else {
+                    <span class="d-flex align-items-center justify-content-center rounded bg-light border"
+                          [class.border-primary]="settings.sidebarImage.value === option.value"
+                          style="width: 40px; height: 56px;">
+                      <i class="bx {{ option.icon }} text-muted"></i>
+                    </span>
+                  }
+                </label>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</app-settings-page-shell>
+
+<!-- Responsive Color Editor Host -->
+<app-responsive-editor-host
+  [title]="colorEditorTitle"
+  [mobileRoute]="['./colors', editingColorTier]"
+  [isOpen]="isColorEditorOpen"
+  (closed)="onColorEditorClosed()"
+  (saved)="onColorEditorSaved()">
+  
+  <ng-template responsiveEditorContent>
+    <app-color-tier-editor
+      [tier]="editingColorTier"
+      [(color)]="editingColor"
+      (colorChange)="onEditingColorChange($event)">
+    </app-color-tier-editor>
+  </ng-template>
+  
+</app-responsive-editor-host>

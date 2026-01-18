@@ -53,6 +53,9 @@ export interface AccountConfig {
   /** Global feature flags (UI toggles not specific to an applet) */
   features?: AccountFeatures;
   
+  /** UI preferences (spacing, etc.) - cascades: service → account → user */
+  preferences?: AccountPreferences;
+  
   /** Internal flag: Was this account config found or is it a fallback? */
   _accountNotFound?: boolean;
 }
@@ -179,10 +182,111 @@ export interface AppletConfig {
 
 /**
  * Global feature flags (not applet-specific)
+ * 
+ * These flags control UI visibility across the application.
+ * 
+ * Configuration Cascade:
+ * 1. System defaults (DEFAULT_ACCOUNT_CONFIG.features)
+ * 2. Account config overrides (accounts/{accountId}.json → features)
+ * 
+ * Usage in components:
+ * ```typescript
+ * this.accountService.getConfigValue<boolean>('features.showSettingsIcon').subscribe(enabled => {
+ *   this.showSettings = enabled ?? true; // fallback to default
+ * });
+ * ```
  */
 export interface AccountFeatures {
+  // ============================================
+  // Analytics & Tracking
+  // ============================================
+  
   /** Enable analytics tracking */
   enableAnalytics?: boolean;
+  
+  // ============================================
+  // Toolbar Icons (header bar)
+  // ============================================
+  
+  /** 
+   * Show settings gear icon in topbar
+   * @default false - Settings accessible via User Menu
+   */
+  showSettingsIcon?: boolean;
+  
+  /**
+   * Show theme switcher (dark/light mode) icon in topbar
+   * @default true
+   */
+  showThemeSwitcher?: boolean;
+  
+  /**
+   * Show fullscreen toggle icon in topbar
+   * @default true
+   */
+  showFullscreenToggle?: boolean;
+  
+  /**
+   * Show notifications icon in topbar
+   * @default true
+   */
+  showNotifications?: boolean;
+  
+  /**
+   * Show language selector in topbar
+   * @default true
+   */
+  showLanguageSelector?: boolean;
+  
+  /**
+   * Show shopping cart icon in topbar
+   * @default false
+   */
+  showShoppingCart?: boolean;
+  
+  /**
+   * Show trash/deleted items icon in topbar
+   * @default false
+   */
+  showTrashIcon?: boolean;
+  
+  /**
+   * Show help icon in topbar
+   * @default true
+   */
+  showHelpIcon?: boolean;
+  
+  // ============================================
+  // User Menu Items
+  // ============================================
+  
+  /**
+   * Show Finances/Wallet item in user menu
+   * @default true
+   */
+  showUserMenuFinances?: boolean;
+  
+  /**
+   * Show Messages item in user menu
+   * @default true
+   */
+  showUserMenuMessages?: boolean;
+  
+  /**
+   * Show Tasks item in user menu
+   * @default true
+   */
+  showUserMenuTasks?: boolean;
+  
+  /**
+   * Show Help/Support item in user menu
+   * @default true
+   */
+  showUserMenuHelp?: boolean;
+  
+  // ============================================
+  // Communication Features
+  // ============================================
   
   /** Enable chat functionality */
   enableChat?: boolean;
@@ -190,16 +294,133 @@ export interface AccountFeatures {
   /** Enable notifications */
   enableNotifications?: boolean;
   
-  /** Enable settings gear icon in topbar */
+  // ============================================
+  // Legacy/Deprecated (kept for backward compatibility)
+  // ============================================
+  
+  /** @deprecated Use showSettingsIcon instead */
   enableSettingsIcon?: boolean;
+  
+  // ============================================
+  // Allow additional custom flags
+  // ============================================
   
   /** Enable/disable other global features */
   [featureName: string]: boolean | undefined;
 }
 
 /**
+ * UI Preferences
+ * 
+ * Controls visual preferences like spacing, appearance, etc.
+ * Cascades: service → account → user (user wins)
+ * 
+ * Structure is nested to avoid conflicts:
+ * preferences.spacing
+ * preferences.appearance.mode
+ * preferences.appearance.layout
+ */
+export interface AccountPreferences {
+  /**
+   * UI spacing density
+   * @default 'comfortable'
+   */
+  spacing?: 'compact' | 'comfortable' | 'spacious';
+  
+  /**
+   * Appearance settings (theme, layout, colors)
+   */
+  appearance?: AppearancePreferences;
+}
+
+/**
+ * Appearance Preferences
+ * 
+ * Controls theme mode, layout, sidebar, topbar colors
+ * Mirrors the rightsidebar theme customizer options
+ */
+export interface AppearancePreferences {
+  /**
+   * Color mode
+   * @default 'light'
+   */
+  mode?: 'light' | 'dark';
+  
+  /**
+   * Primary theme color (hex)
+   * Account-level: sets the brand color
+   * User-level: personal preference (if not locked)
+   * @default '#25a0e2' (cyan)
+   */
+  primaryColor?: string;
+  
+  /**
+   * Layout style
+   * @default 'vertical'
+   */
+  layout?: 'vertical' | 'horizontal' | 'twocolumn' | 'semibox';
+  
+  /**
+   * Layout width
+   * @default 'fluid'
+   */
+  layoutWidth?: 'fluid' | 'boxed';
+  
+  /**
+   * Layout position (scrollable or fixed)
+   * @default 'fixed'
+   */
+  layoutPosition?: 'fixed' | 'scrollable';
+  
+  /**
+   * Topbar color
+   * @default 'light'
+   */
+  topbarColor?: 'light' | 'dark';
+  
+  /**
+   * Sidebar size
+   * @default 'default'
+   */
+  sidebarSize?: 'default' | 'compact' | 'small-icon' | 'small-hover';
+  
+  /**
+   * Sidebar view (for vertical layout)
+   * @default 'default'
+   */
+  sidebarView?: 'default' | 'detached';
+  
+  /**
+   * Sidebar color
+   * @default 'dark'
+   */
+  sidebarColor?: 'light' | 'dark' | 'gradient' | 'gradient-2' | 'gradient-3' | 'gradient-4';
+  
+  /**
+   * Sidebar background image
+   * @default 'none'
+   */
+  sidebarImage?: 'none' | 'img-1' | 'img-2' | 'img-3' | 'img-4';
+  
+  /**
+   * Show preloader on page load
+   * @default 'disable'
+   */
+  preloader?: 'enable' | 'disable';
+  
+  /**
+   * Sidebar visibility (for horizontal layout)
+   * @default 'show'
+   */
+  sidebarVisibility?: 'show' | 'hidden';
+}
+
+/**
  * Default account configuration
  * Used as fallback when account-specific config is not found
+ * 
+ * These are the SYSTEM DEFAULTS.
+ * Account-specific config.json files can override any of these values.
  */
 export const DEFAULT_ACCOUNT_CONFIG: Partial<AccountConfig> = {
   accountId: 'default',
@@ -248,8 +469,35 @@ export const DEFAULT_ACCOUNT_CONFIG: Partial<AccountConfig> = {
     settings: { enabled: true, features: { userSettings: true, accountSettings: true } }
   },
   features: {
-    enableSettingsIcon: true,
-    enableNotifications: true
+    // ============================================
+    // Toolbar Icons - System Defaults
+    // ============================================
+    showSettingsIcon: false,        // Settings accessible via User Menu (not toolbar)
+    showThemeSwitcher: true,        // Allow dark/light mode switching
+    showFullscreenToggle: true,     // Allow fullscreen toggle
+    showNotifications: true,        // Show notification bell
+    showLanguageSelector: true,     // Show language picker
+    showShoppingCart: false,        // E-commerce feature - off by default
+    showTrashIcon: false,           // Trash/recycle bin - off by default
+    showHelpIcon: true,             // Help icon in toolbar
+    
+    // ============================================
+    // User Menu Items - System Defaults
+    // ============================================
+    showUserMenuFinances: true,     // Show Finances/Wallet in user menu
+    showUserMenuMessages: true,     // Show Messages in user menu
+    showUserMenuTasks: true,        // Show Tasks in user menu
+    showUserMenuHelp: true,         // Show Help/Support in user menu
+    
+    // ============================================
+    // Other Features - System Defaults
+    // ============================================
+    enableAnalytics: false,         // Analytics tracking - off by default (privacy)
+    enableChat: false,              // Chat feature - off by default
+    enableNotifications: true,      // Notification system enabled
+    
+    // Legacy (deprecated)
+    enableSettingsIcon: false       // @deprecated - use showSettingsIcon
   }
 };
 

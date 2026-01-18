@@ -70,6 +70,7 @@
     <Folder Include="src\sites.app.parts\compliance\ui\components\cookie-preferences-overlay\" />
     <Folder Include="src\sites.app.parts\maintenance\views\coming-soon-page\" />
     <Folder Include="src\sites.app.parts\maintenance\views\maintenance-page\" />
+    <Folder Include="src\sites.app.parts\settings\ui\widgets\settings-page-header\" />
     <Folder Include="src\sites.app\main\" />
     <Folder Include="src\core.ag\base\constants\" />
     <Folder Include="src\core.ag\contracts\" />

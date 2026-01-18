@@ -6,25 +6,21 @@
  * 
  * Route: /errors/basic/:code (e.g., /errors/basic/404, /errors/basic/500)
  * 
- * Architecture:
- * - Reads error code from route params
- * - Looks up config in ERROR_DATA
- * - Falls back to '000' (unknown) if code not found
- * - Uses i18n translation keys for all text
- * 
- * Benefits:
- * - DRY: Single component for all error pages
- * - Maintainable: Add new codes by updating error-data.ts only
- * - Consistent: Same layout, different content
- * - i18n: All text is translatable
+ * UX:
+ * - Back button: Primary (blue), first position - always shown
+ * - Home/Hub link: Secondary (outline), second position
+ *   - Shows "Hub" for authenticated users
+ *   - Shows "Home" for anonymous users
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 // Configuration:
 import { appsConfiguration } from '../../../../../../sites.app/configuration/implementations/apps.configuration';
 import { themesT1Configuration } from '../../../../configuration/implementations/themes.t1.configuration';
 // Services:
 import { DefaultComponentServices } from '../../../../../../core/services/default-controller-services';
+import { OidcService } from '../../../../../../core.ag/auth/services/oidc.service';
+import { NavigationService } from '../../../../../../core/services/navigation.service';
 // Error data:
 import { ErrorPageConfig, getErrorConfig } from '../../error-data';
 
@@ -39,6 +35,10 @@ export class ErrorPageBasicComponent implements OnInit {
   public appsConfiguration = appsConfiguration;
   public groupConfiguration = themesT1Configuration;
 
+  // Services
+  private oidcService = inject(OidcService);
+  private navigationService = inject(NavigationService);
+
   // Error configuration (loaded from route param)
   public errorConfig!: ErrorPageConfig;
 
@@ -46,12 +46,28 @@ export class ErrorPageBasicComponent implements OnInit {
   public errorCode = '000';
   public errorImage = '';
 
+  /** Whether user is authenticated (determines Home vs Hub label) */
+  public isAuthenticated: boolean = false;
+
+  /** The home/hub URL based on authentication state */
+  public homeUrl: string = '/';
+
   constructor(
     private route: ActivatedRoute,
     private defaultComponentServices: DefaultComponentServices
   ) {}
 
   ngOnInit(): void {
+    // Check authentication state
+    this.isAuthenticated = this.oidcService.isAuthenticated();
+
+    // Set destination URL based on authentication state
+    if (this.isAuthenticated) {
+      this.homeUrl = this.navigationService.getUrl('system/hub');
+    } else {
+      this.homeUrl = '/';
+    }
+
     // Get error code from route parameter
     this.route.params.subscribe(params => {
       const code = params['code'] || '000';

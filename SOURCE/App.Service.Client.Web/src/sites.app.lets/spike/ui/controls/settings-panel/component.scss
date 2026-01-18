@@ -1,0 +1,39 @@
+.spike-settings-panel {
+  .settings-header {
+    border-bottom: 1px solid var(--vz-border-color);
+    padding-bottom: 1rem;
+  }
+
+  .btn-group {
+    .btn-check:checked + .btn-outline-primary {
+      background-color: var(--vz-primary);
+      color: white;
+    }
+  }
+
+  .form-check-label {
+    cursor: pointer;
+  }
+
+  .settings-actions {
+    padding-top: 1rem;
+    border-top: 1px solid var(--vz-border-color);
+  }
+
+  // Locked field styling
+  .field-locked {
+    opacity: 0.7;
+    
+    .form-label,
+    .form-check-label {
+      color: var(--vz-secondary);
+    }
+    
+    .form-control:disabled,
+    .form-select:disabled,
+    .form-check-input:disabled {
+      background-color: var(--vz-light);
+      cursor: not-allowed;
+    }
+  }
+}

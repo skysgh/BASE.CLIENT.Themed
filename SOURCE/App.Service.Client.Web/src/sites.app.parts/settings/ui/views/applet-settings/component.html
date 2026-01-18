@@ -3,39 +3,33 @@
     <div class="alert alert-warning">
       <i class="bx bx-error-circle me-2"></i>
       Settings for applet "{{ appletId }}" are not available.
+      <br>
+      <small class="text-muted">The applet may not have been loaded yet. Try navigating to the applet first.</small>
     </div>
   } @else if (schema) {
-    <div class="section-header">
+    <div class="section-header mb-4">
       <h4>
         <i class="bx {{schema.icon}} me-2"></i>
-        {{ schema.displayName }} Settings
+        {{ schema.displayNameKey | baseTranslate }}
+        <small class="text-muted">{{ 'BASE.SETTINGS.SINGULAR' | baseTranslate }}</small>
       </h4>
-      <p class="text-muted mb-0">Configure {{ schema.displayName | lowercase }} options</p>
     </div>
 
     <div class="section-content">
-      <div class="card">
-        <div class="card-body">
-          @if (schema.sections.length === 0) {
+      <!-- Dynamic component container -->
+      <ng-container #settingsContainer></ng-container>
+
+      <!-- Fallback if no component registered -->
+      @if (schema.sections.length === 0 || !schema.sections[0].component) {
+        <div class="card">
+          <div class="card-body">
             <p class="text-muted text-center py-4">
               <i class="bx bx-info-circle fs-24 d-block mb-2"></i>
-              No settings sections registered for this applet.
+              No settings component registered for this applet.
             </p>
-          } @else {
-            <!-- Render registered sections -->
-            <div class="row">
-              @for (section of schema.sections; track section.key) {
-                <div class="col-md-6">
-                  <div class="settings-category">
-                    <h6 class="fw-semibold">{{ section.label }}</h6>
-                    <p class="text-muted small">Configure {{ section.label | lowercase }}</p>
-                  </div>
-                </div>
-              }
-            </div>
-          }
+          </div>
         </div>
-      </div>
+      }
     </div>
   }
 </div>
