@@ -10,7 +10,7 @@
  * - Profile is always user-scoped (no service/account level selector)
  * - Account admins can LOCK profile fields (shown with lock indicators)
  */
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
@@ -78,7 +78,7 @@ interface ProfileTile {
       </div>
 
       <!-- Empty state if no tiles -->
-      @if (tiles().filter(t => t.enabled).length === 0) {
+      @if (hasNoEnabledTiles()) {
         <div class="text-center py-5">
           <i class="bx bx-user-circle display-1 text-muted"></i>
           <h5 class="text-muted mt-3">No profile sections available</h5>
@@ -122,6 +122,9 @@ export class ProfileHubComponent implements OnInit {
   private accountService = inject(AccountService);
   
   tiles = signal<ProfileTile[]>([]);
+  
+  /** Computed: check if there are no enabled tiles */
+  hasNoEnabledTiles = computed(() => this.tiles().filter(t => t.enabled).length === 0);
   
   ngOnInit(): void {
     this.buildTiles();
