@@ -169,7 +169,7 @@ import { StarSystem, Star, Planet } from '../../../../../models';
                         {{ planet.moons.length }}
                         @if (planet.moons.length > 0) {
                           <span class="text-muted small ms-1">
-                            ({{ planet.moons.slice(0, 2).map(m => m.name).join(', ') }}{{ planet.moons.length > 2 ? '...' : '' }})
+                            ({{ getMoonNames(planet) }})
                           </span>
                         }
                       </td>
@@ -257,5 +257,10 @@ export class StarSystemReadComponent implements OnInit {
   
   getConstellationNames(star: Star): string {
     return star.constellations.map(c => c.name).join(', ');
+  }
+  
+  getMoonNames(planet: Planet): string {
+    const names = planet.moons.slice(0, 2).map(m => m.name).join(', ');
+    return planet.moons.length > 2 ? names + '...' : names;
   }
 }
