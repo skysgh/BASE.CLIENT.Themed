@@ -21,13 +21,11 @@
  * Usage:
  *   import { SitesModule } from '../sites';
  *   // or for standalone components:
- *   import { PageHeaderComponent } from '../sites/ui/widgets';
+ *   import { PageHeaderComponent } from '../sites/ui/widgets/page-header';
  */
 
 // Module
 export * from './module';
 
-// Future exports (when components are added):
-// export * from './ui/widgets/page-header';
-// export * from './ui/widgets/empty-state';
-// export * from './ui/widgets/loading-state';
+// UI Widgets
+export * from './ui/widgets';

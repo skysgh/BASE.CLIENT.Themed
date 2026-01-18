@@ -8,50 +8,35 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { TrashService, IDeletedItem } from '../../../services/trash.service';
-import { NavigationService } from '../../../../../core/services/navigation.service';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
   selector: 'app-trash-hub',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageHeaderComponent],
   template: `
     <div class="trash-hub">
-      <!-- Header -->
-      <div class="page-header mb-4">
-        <div class="d-flex justify-content-between align-items-start">
-          <div>
-            <div class="d-flex align-items-center gap-3">
-              <div class="type-icon bg-secondary-subtle">
-                <i class="bx bx-trash text-secondary"></i>
-              </div>
-              <div>
-                <h4 class="mb-1">Trash</h4>
-                <p class="text-muted mb-0">
-                  {{ trashService.count() }} deleted items
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Actions -->
-          <div class="d-flex gap-2 align-items-center">
-            <button type="button" class="btn btn-outline-secondary" (click)="goBack()">
-              <i class="bx bx-arrow-back me-1"></i>
-              Back
+      <!-- Page Header -->
+      <app-page-header 
+        title="Trash"
+        icon="bx-trash"
+        iconBackground="bg-secondary-subtle"
+        iconClass="text-secondary"
+        backFallback="system/hub">
+        <ng-container subtitle>{{ trashService.count() }} deleted items</ng-container>
+        <ng-container actions>
+          @if (!trashService.isEmpty()) {
+            <button 
+              type="button" 
+              class="btn btn-outline-danger"
+              (click)="emptyTrash()"
+              [disabled]="trashService.loading()">
+              <i class="bx bx-trash me-1"></i>
+              Empty Trash
             </button>
-            @if (!trashService.isEmpty()) {
-              <button 
-                type="button" 
-                class="btn btn-outline-danger"
-                (click)="emptyTrash()"
-                [disabled]="trashService.loading()">
-                <i class="bx bx-trash me-1"></i>
-                Empty Trash
-              </button>
-            }
-          </div>
-        </div>
-      </div>
+          }
+        </ng-container>
+      </app-page-header>
 
       <!-- Warning Banner -->
       @if (!trashService.isEmpty()) {
@@ -166,16 +151,6 @@ import { NavigationService } from '../../../../../core/services/navigation.servi
       margin: 0 auto;
     }
     
-    .type-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.75rem;
-    }
-    
     .deleted-item {
       transition: all 0.2s ease;
       border: 1px solid var(--vz-border-color);
@@ -225,19 +200,9 @@ import { NavigationService } from '../../../../../core/services/navigation.servi
 })
 export class TrashHubComponent implements OnInit {
   trashService = inject(TrashService);
-  private navService = inject(NavigationService);
   
   ngOnInit(): void {
     this.trashService.loadDeletedItems();
-  }
-  
-  /**
-   * Smart back navigation
-   * - Uses browser history if available (user navigated within app)
-   * - Falls back to Hub if deep-linked (no history)
-   */
-  goBack(): void {
-    this.navService.back('system/hub');
   }
   
   restore(item: IDeletedItem): void {
