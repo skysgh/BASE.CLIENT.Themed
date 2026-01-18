@@ -1,32 +1,21 @@
 import { Injectable, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
+import { filter } from 'rxjs/operators';
 import { AccountService } from './account.service';
 
 /**
- * NavigationService - Account-Aware Navigation
+ * NavigationService - Account-Aware Navigation with Smart Back
  * 
- * Provides account-context-preserving navigation.
+ * Provides account-context-preserving navigation and intelligent back navigation.
  * 
- * PROBLEM:
- * Hardcoded routes like `/dashboards/main` break when user is in account context.
- * - User at `/foo/auth/signin` redirects to `/dashboards/main` → LOSES account context!
- * - Should redirect to `/foo/dashboards/main` instead.
+ * SMART BACK BEHAVIOR:
+ * - If user has history within the app → go back in history
+ * - If user came from external link (deep URL) and is authenticated → go to Hub
+ * - If user came from external link and is NOT authenticated → go to Home
  * 
- * SOLUTION:
- * This service automatically prefixes routes with current account ID.
- * 
- * USAGE:
- * ```typescript
- * // Instead of: this.router.navigate(['/dashboards/main']);
- * // Use: this.navigationService.navigate('dashboards/main');
- * 
- * // Or get the URL for use in templates:
- * // [routerLink]="navigationService.getUrl('auth/signin')"
- * ```
- * 
- * BEHAVIOR:
- * - Default account: `/dashboards/main` (no prefix)
- * - Named account: `/foo/dashboards/main` (with account prefix)
+ * ACCOUNT CONTEXT:
+ * Automatically prefixes routes with current account ID.
  */
 @Injectable({
   providedIn: 'root'
@@ -34,29 +23,131 @@ import { AccountService } from './account.service';
 export class NavigationService {
   private accountService = inject(AccountService);
   private router = inject(Router);
+  private location = inject(Location);
+
+  /** Track navigation history within the app */
+  private navigationHistory: string[] = [];
+  private readonly MAX_HISTORY = 50;
+
+  constructor() {
+    this.trackNavigationHistory();
+  }
+
+  /**
+   * Track navigation events to build internal history
+   */
+  private trackNavigationHistory(): void {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      // Don't add duplicates
+      if (this.navigationHistory[this.navigationHistory.length - 1] !== event.urlAfterRedirects) {
+        this.navigationHistory.push(event.urlAfterRedirects);
+        
+        // Keep history bounded
+        if (this.navigationHistory.length > this.MAX_HISTORY) {
+          this.navigationHistory.shift();
+        }
+      }
+    });
+  }
+
+  /**
+   * Smart back navigation
+   * 
+   * - If we have history within the app → go back
+   * - If this is the first page (deep link) → go to appropriate default
+   * 
+   * @param fallbackPath Optional fallback path if no history (default: auto-detect)
+   */
+  async back(fallbackPath?: string): Promise<boolean> {
+    // If we have more than 1 entry, we can go back
+    if (this.navigationHistory.length > 1) {
+      // Remove current page from history
+      this.navigationHistory.pop();
+      // Get the previous page
+      const previousUrl = this.navigationHistory[this.navigationHistory.length - 1];
+      
+      console.log(`[NavigationService] Going back to: ${previousUrl}`);
+      return this.router.navigateByUrl(previousUrl);
+    }
+    
+    // No history - user came from external/deep link
+    // Navigate to appropriate fallback
+    const target = fallbackPath || this.getDefaultFallback();
+    console.log(`[NavigationService] No history, navigating to fallback: ${target}`);
+    return this.navigate(target);
+  }
+
+  /**
+   * Get the appropriate fallback based on authentication state
+   */
+  private getDefaultFallback(): string {
+    // Check if user is authenticated by looking at current route context
+    const currentUrl = window.location.pathname;
+    const isInAuthenticatedArea = this.isAuthenticatedRoute(currentUrl);
+    
+    if (isInAuthenticatedArea) {
+      // User is in authenticated area → go to Hub
+      return 'system/hub';
+    } else {
+      // User is in public area → go to Home
+      return '/pages/landing';
+    }
+  }
+
+  /**
+   * Check if a route is in an authenticated area
+   */
+  private isAuthenticatedRoute(pathname: string): boolean {
+    const segments = pathname.split('/').filter(s => s.length > 0);
+    
+    // These are authenticated route prefixes
+    const authenticatedPrefixes = [
+      'apps',      // Domain applets
+      'system',    // Platform parts (settings, messages, etc.)
+      'dev',       // Developer tools (requires auth typically)
+    ];
+    
+    // Check if any segment matches authenticated prefixes
+    return segments.some(seg => authenticatedPrefixes.includes(seg));
+  }
+
+  /**
+   * Check if we can go back in history
+   */
+  canGoBack(): boolean {
+    return this.navigationHistory.length > 1;
+  }
+
+  /**
+   * Get the previous URL if available
+   */
+  getPreviousUrl(): string | null {
+    if (this.navigationHistory.length > 1) {
+      return this.navigationHistory[this.navigationHistory.length - 2];
+    }
+    return null;
+  }
 
   /**
    * Get account-aware URL
    * 
    * @param path Relative path (e.g., 'dashboards/main', 'auth/signin')
    * @returns Full path with account prefix if needed
-   * 
-   * Examples:
-   * - getUrl('dashboards/main') when account='default' → '/default/dashboards/main'
-   * - getUrl('dashboards/main') when no account → '/dashboards/main'
-   * - getUrl('/') or getUrl('') → account root ('/default/' or '/')
-   * 
-   * Note: Even the 'default' account gets a prefix when accessed via /default/ URLs.
-   * Only truly anonymous routes (no account in URL) skip the prefix.
    */
   getUrl(path: string): string {
     const accountId = this.accountService.getAccountId();
+    
+    // If path starts with '/', treat as absolute (no account prefix)
+    if (path.startsWith('/')) {
+      return path;
+    }
     
     // Normalize path - remove leading slash for consistent handling
     const normalizedPath = path.startsWith('/') ? path.slice(1) : path;
     
     // Check if we're in a path-based account context
-    // If the URL has an account prefix (like /default/, /foo/), preserve it
     const currentUrl = window.location.pathname;
     const hasAccountPrefix = this.isPathBasedAccountUrl(currentUrl);
     
@@ -71,12 +162,6 @@ export class NavigationService {
 
   /**
    * Check if the current URL has an account prefix (path-based account)
-   * 
-   * Examples:
-   * - /default/apps/spike → true (has 'default' prefix)
-   * - /foo/system/hub → true (has 'foo' prefix)
-   * - /pages/landing → false (no account prefix)
-   * - /auth/signin → false (no account prefix)
    */
   private isPathBasedAccountUrl(pathname: string): boolean {
     const segments = pathname.split('/').filter(s => s.length > 0);
@@ -85,7 +170,6 @@ export class NavigationService {
     const firstSegment = segments[0];
     
     // Reserved routes are not account prefixes
-    // These are top-level routes that don't have an account prefix
     const reservedRoutes = [
       'pages',        // Public pages (sites.anon)
       'apps',         // Domain applets (sites.app.lets)
@@ -105,9 +189,6 @@ export class NavigationService {
 
   /**
    * Get account-aware URL array (for routerLink)
-   * 
-   * @param path Relative path or path segments
-   * @returns Array suitable for [routerLink]
    */
   getUrlArray(path: string | string[]): string[] {
     const pathStr = Array.isArray(path) ? path.join('/') : path;
@@ -116,11 +197,6 @@ export class NavigationService {
 
   /**
    * Navigate to account-aware URL
-   * 
-   * @param path Relative path (e.g., 'dashboards/main')
-   * @param queryParams Optional query parameters
-   * @param options Optional navigation options (e.g., { replaceUrl: true })
-   * @returns Promise that resolves when navigation completes
    */
   async navigate(
     path: string, 
@@ -140,12 +216,8 @@ export class NavigationService {
 
   /**
    * Navigate by URL (for absolute URLs or URLs with query params)
-   * 
-   * @param url Full URL to navigate to
-   * @returns Promise that resolves when navigation completes
    */
   async navigateByUrl(url: string): Promise<boolean> {
-    // If URL doesn't start with '/', assume it needs account prefix
     const fullUrl = url.startsWith('/') ? url : this.getUrl(url);
     console.log(`[NavigationService] NavigateByUrl to: ${fullUrl}`);
     return this.router.navigateByUrl(fullUrl);
@@ -160,8 +232,6 @@ export class NavigationService {
 
   /**
    * Get the post-login redirect URL for current account
-   * 
-   * @param customPath Optional custom path (default: 'system/hub')
    */
   getPostLoginUrl(customPath?: string): string {
     return this.getUrl(customPath || 'system/hub');
@@ -176,8 +246,6 @@ export class NavigationService {
 
   /**
    * Navigate to sign-in page for current account
-   * 
-   * @param returnUrl Optional return URL to redirect back after login
    */
   async navigateToSignIn(returnUrl?: string): Promise<boolean> {
     const queryParams = returnUrl ? { returnUrl } : undefined;
@@ -186,17 +254,14 @@ export class NavigationService {
 
   /**
    * Navigate to sign-out landing page
-   * Shows app stats and navigation options instead of dumping user at login
    */
   async navigateToSignOut(): Promise<boolean> {
     console.log('[NavigationService] Navigating to sign-out landing page');
-    // Use absolute path since user is logging out of account context
     return this.router.navigate(['/pages/signed-out']);
   }
 
   /**
    * Navigate to post-login destination for current account
-   * Redirects to system hub (central landing page)
    */
   async navigatePostLogin(): Promise<boolean> {
     return this.navigate('system/hub');

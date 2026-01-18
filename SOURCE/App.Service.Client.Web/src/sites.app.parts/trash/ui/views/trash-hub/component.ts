@@ -35,10 +35,10 @@ import { NavigationService } from '../../../../../core/services/navigation.servi
           
           <!-- Actions -->
           <div class="d-flex gap-2 align-items-center">
-            <a [routerLink]="hubRoute" class="btn btn-outline-secondary">
+            <button type="button" class="btn btn-outline-secondary" (click)="goBack()">
               <i class="bx bx-arrow-back me-1"></i>
-              Back to Hub
-            </a>
+              Back
+            </button>
             @if (!trashService.isEmpty()) {
               <button 
                 type="button" 
@@ -227,12 +227,17 @@ export class TrashHubComponent implements OnInit {
   trashService = inject(TrashService);
   private navService = inject(NavigationService);
   
-  // Account-aware route to hub
-  hubRoute: string = '';
-  
   ngOnInit(): void {
-    this.hubRoute = this.navService.getUrl('system/hub');
     this.trashService.loadDeletedItems();
+  }
+  
+  /**
+   * Smart back navigation
+   * - Uses browser history if available (user navigated within app)
+   * - Falls back to Hub if deep-linked (no history)
+   */
+  goBack(): void {
+    this.navService.back('system/hub');
   }
   
   restore(item: IDeletedItem): void {
