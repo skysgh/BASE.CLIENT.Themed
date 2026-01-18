@@ -26,7 +26,9 @@ import {
   APP_PRIVATE_NAVIGATION 
 } from './tokens';
 
-// Other dependencies:
+// Parent tier:
+import { SitesModule } from '../sites';
+// Theme-specific module (for layout components)
 import { BaseThemesV1Module } from '../themes/t1/module';
 
 // Services:
@@ -233,20 +235,15 @@ import { environment } from '../environments/environment';
     },
   ],
   imports: [
-    // Import classes within the above specified import files.
-    //Ag specific:
-    CommonModule,
-    FormsModule,
-    // Module specific:
+    // Parent tier - brings in themes, core.ag, core
+    SitesModule,
+    // Module specific routing
     BaseAppsRoutingModule,
-    // ❌ REMOVED: BaseCoreSitesModule (was cross-tier import from sites.anon)
-    // sites.app should not depend on sites.anon
-    // If shared functionality needed, put in parent sites/ tier
+    // Theme-specific layout module (for LayoutComponent)
+    BaseThemesV1Module,
   ],
   exports: [
     RouterModule,
-    // NO: Export Parent Module:
-    // NO: ...
   ]
 })
 export class BaseAppsModule {
