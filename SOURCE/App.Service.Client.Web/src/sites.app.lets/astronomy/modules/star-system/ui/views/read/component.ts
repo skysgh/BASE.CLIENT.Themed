@@ -108,7 +108,7 @@ import { StarSystem, Star, Planet } from '../../../../../models';
                       @if (star.constellations.length > 0) {
                         <div>
                           <i class="bx bx-star me-1"></i> 
-                          Constellations (*-*): {{ star.constellations.map(c => c.name).join(', ') }}
+                          Constellations (*-*): {{ getConstellationNames(star) }}
                         </div>
                       }
                     </div>
@@ -253,5 +253,9 @@ export class StarSystemReadComponent implements OnInit {
   getStarName(starId: string): string {
     const star = this.system()?.stars.find(s => s.id === starId);
     return star?.name || starId;
+  }
+  
+  getConstellationNames(star: Star): string {
+    return star.constellations.map(c => c.name).join(', ');
   }
 }
