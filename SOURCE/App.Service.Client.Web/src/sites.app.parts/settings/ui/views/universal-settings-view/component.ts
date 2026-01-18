@@ -101,7 +101,21 @@ export class UniversalSettingsViewComponent implements OnInit, OnDestroy {
     const config = this.accountService.getCurrentConfig();
     
     // Platform settings - include level in route
-    this.platformLinks = [
+    this.platformLinks = [];
+    
+    // Profile is only shown at user level (it's always user-scoped)
+    if (this.level === 'user') {
+      this.platformLinks.push({
+        id: 'profile',
+        titleKey: 'BASE.PROFILE.SETTINGS.TITLE',
+        descriptionKey: 'BASE.PROFILE.SETTINGS.DESCRIPTION',
+        icon: 'bx-user-circle',
+        route: '/system/profile',  // Note: Goes to Profile Hub, not a settings sub-route
+        category: 'platform'
+      });
+    }
+    
+    this.platformLinks.push(
       {
         id: 'appearance',
         titleKey: 'BASE.APPEARANCE.TITLE',
@@ -118,7 +132,7 @@ export class UniversalSettingsViewComponent implements OnInit, OnDestroy {
         route: `/system/settings/${this.level}/wiki`,
         category: 'platform'
       }
-    ];
+    );
     
     // App settings from enabled applets - include level in route
     this.appLinks = [];

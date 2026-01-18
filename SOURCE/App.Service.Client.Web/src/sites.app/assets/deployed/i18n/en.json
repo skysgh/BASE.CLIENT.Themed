@@ -1,53 +1,72 @@
 {
-  "BASE": {
-    "VALUES": {
-      "SINGULAR": "Value",
-      "PLURAL": "Values"
+"BASE": {
+  "VALUES": {
+    "SINGULAR": "Value",
+    "PLURAL": "Values"
+  },
+  "PROFILE": {
+    "SINGULAR": "Profile",
+    "PLURAL": "Profiles",
+    "HUB": {
+      "DESCRIPTION": "Manage your identity and security information"
     },
     "SETTINGS": {
-      "SINGULAR": "Setting",
-      "PLURAL": "Settings",
-      "NO_SETTINGS_AT_LEVEL": "No settings available at this level.",
-      "LOCK_FOR_LOWER_LEVELS": "Lock for lower levels",
-      "SERVICE": {
-        "TITLE": "Service Settings",
-        "DESCRIPTION": "Platform-wide configuration (super admin only)"
-      },
-      "ACCOUNT": {
-        "TITLE": "Account Settings",
-        "DESCRIPTION": "Tenant-wide settings for this organization"
-      },
-      "USER": {
-        "TITLE": "User Preferences",
-        "DESCRIPTION": "Your personal preferences and settings"
-      },
-      "THEME": {
-        "TITLE": "Theme & Display",
-        "DESCRIPTION": "Customize colors, layout, and appearance"
-      }
+      "TITLE": "Profile & Identity",
+      "DESCRIPTION": "Your personal information and security settings"
     },
-    "WIKI": {
-      "SINGULAR": "Wiki",
-      "PLURAL": "Wikis",
-      "DESCRIPTION": "Documentation and knowledge base",
-      "DEFAULT_NAMESPACE": "Default Wiki",
-      "DISPLAY_OPTIONS": "Display Options",
-      "VIEW_MODE": "View Mode",
-      "SETTINGS": {
-        "TITLE": "Wiki",
-        "DESCRIPTION": "Configure wiki preferences and default namespace"
-      }
+    "PERSONAL": {
+      "TITLE": "Personal Information",
+      "DESCRIPTION": "Avatar, name, and bio"
     },
-    "APPEARANCE": {
-      "TITLE": "Appearance",
-      "DESCRIPTION": "Customize theme, layout, and colors",
-      "MODE": {
-        "TITLE": "Color Mode",
-        "LABEL": "Mode",
-        "LIGHT": "Light",
-        "DARK": "Dark"
-      },
-      "COLORS": {
+    "SECURITY": {
+      "TITLE": "Security",
+      "DESCRIPTION": "Password, 2FA, and active sessions"
+    }
+  },
+  "SETTINGS": {
+    "SINGULAR": "Setting",
+    "PLURAL": "Settings",
+    "NO_SETTINGS_AT_LEVEL": "No settings available at this level.",
+    "LOCK_FOR_LOWER_LEVELS": "Lock for lower levels",
+    "SERVICE": {
+      "TITLE": "Service Settings",
+      "DESCRIPTION": "Platform-wide configuration (super admin only)"
+    },
+    "ACCOUNT": {
+      "TITLE": "Account Settings",
+      "DESCRIPTION": "Tenant-wide settings for this organization"
+    },
+    "USER": {
+      "TITLE": "User Preferences",
+      "DESCRIPTION": "Your personal preferences and settings"
+    },
+    "THEME": {
+      "TITLE": "Theme & Display",
+      "DESCRIPTION": "Customize colors, layout, and appearance"
+    }
+  },
+  "WIKI": {
+    "SINGULAR": "Wiki",
+    "PLURAL": "Wikis",
+    "DESCRIPTION": "Documentation and knowledge base",
+    "DEFAULT_NAMESPACE": "Default Wiki",
+    "DISPLAY_OPTIONS": "Display Options",
+    "VIEW_MODE": "View Mode",
+    "SETTINGS": {
+      "TITLE": "Wiki",
+      "DESCRIPTION": "Configure wiki preferences and default namespace"
+    }
+  },
+  "APPEARANCE": {
+    "TITLE": "Appearance",
+    "DESCRIPTION": "Customize theme, layout, and colors",
+    "MODE": {
+      "TITLE": "Color Mode",
+      "LABEL": "Mode",
+      "LIGHT": "Light",
+      "DARK": "Dark"
+    },
+    "COLORS": {
         "TITLE": "Color Palette",
         "DESCRIPTION": "Define your brand colors and how they apply to the interface.",
         "PRIMARY": "Primary (Brand)",

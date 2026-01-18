@@ -86,7 +86,13 @@ const routes: Routes = [
     loadChildren: () => import('./settings/module').then(m => m.SettingsModule)
   },
 
-  // User - Profile, linked identities, user management
+  // Profile - User identity hub (personal info, security, etc.)
+  { 
+    path: 'profile', 
+    loadChildren: () => import('./profile/module').then(m => m.ProfileModule)
+  },
+
+  // User - Admin user management, linked identities
   { 
     path: 'user', 
     loadChildren: () => import('./user/module').then(m => m.UserModule)

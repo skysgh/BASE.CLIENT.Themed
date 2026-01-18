@@ -28,12 +28,15 @@
       {{userData?.first_name}}!
     </h6>
 
-    <a class="dropdown-item" [routerLink]="profileRoute">
-      <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
-      <span class="align-middle">
-        {{ 'BASE.PROFILES.SINGULAR' | baseTranslate}}
-      </span>
-    </a>
+    <!-- Profile (configurable - can be hidden if prefer through Settings) -->
+    @if (showProfile) {
+      <a class="dropdown-item" [routerLink]="profileRoute">
+        <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">
+          {{ 'BASE.PROFILES.SINGULAR' | baseTranslate}}
+        </span>
+      </a>
+    }
     
     <!-- Messages (configurable) -->
     @if (showMessages) {

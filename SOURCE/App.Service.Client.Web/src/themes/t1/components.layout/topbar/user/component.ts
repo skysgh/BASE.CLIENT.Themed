@@ -72,6 +72,7 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
   financesRoute: string = '';
 
   // Feature flags for menu items
+  showProfile: boolean = true;
   showFinances: boolean = true;
   showMessages: boolean = true;
   showTasks: boolean = true;
@@ -100,8 +101,10 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
     // - /system/* → Platform parts (sites.app.parts/) - hub, settings, trash, etc.
     // The NavigationService.getUrl() handles account prefixing
     
-    // Profile - user module (formerly authentication)
-    this.profileRoute = this.navigationService.getUrl('system/user/profile');
+    // Profile - Profile Hub (identity info)
+    // Note: Profile is always user-scoped, so it goes to /system/profile
+    // not through Settings. But Settings also has a gateway tile to Profile.
+    this.profileRoute = this.navigationService.getUrl('system/profile');
     // Settings - unified settings hub
     this.settingsRoute = this.navigationService.getUrl('system/settings');
     // About - system info
@@ -120,6 +123,14 @@ export class BaseCoreCommonComponentTopBarUserComponent implements OnInit {
    * Load feature flags from account configuration
    */
   private loadFeatureFlags(): void {
+    // Profile visibility in dropdown (can be hidden if prefer through Settings)
+    this.accountService.getConfigValue<boolean>('features.showUserMenuProfile').subscribe(enabled => {
+      this.showProfile = enabled ?? true;
+      this.defaultControllerServices.diagnosticsTraceService.debug(
+        `${this.constructor.name} - showProfile: ${this.showProfile}`
+      );
+    });
+
     // Finances visibility
     this.accountService.getConfigValue<boolean>('features.showUserMenuFinances').subscribe(enabled => {
       this.showFinances = enabled ?? true;
