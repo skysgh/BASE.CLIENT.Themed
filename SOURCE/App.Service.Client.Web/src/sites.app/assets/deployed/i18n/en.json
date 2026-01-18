@@ -26,6 +26,18 @@
         "DESCRIPTION": "Customize colors, layout, and appearance"
       }
     },
+    "WIKI": {
+      "SINGULAR": "Wiki",
+      "PLURAL": "Wikis",
+      "DESCRIPTION": "Documentation and knowledge base",
+      "DEFAULT_NAMESPACE": "Default Wiki",
+      "DISPLAY_OPTIONS": "Display Options",
+      "VIEW_MODE": "View Mode",
+      "SETTINGS": {
+        "TITLE": "Wiki",
+        "DESCRIPTION": "Configure wiki preferences and default namespace"
+      }
+    },
     "APPEARANCE": {
       "TITLE": "Appearance",
       "DESCRIPTION": "Customize theme, layout, and colors",

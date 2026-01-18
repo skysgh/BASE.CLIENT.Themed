@@ -8,6 +8,9 @@ import { UniversalSettingsViewComponent } from './ui/views/universal-settings-vi
 import { AppearanceSettingsPanelComponent } from './ui/views/appearance-settings/component';
 import { ColorEditorPageComponent } from './ui/views/color-editor-page/component';
 
+// Platform part settings
+import { WikiSettingsComponent } from '../wiki/ui/views/wiki-settings/component';
+
 // Applet settings panels
 import { SpikeSettingsPanelComponent } from '../../sites.app.lets/spike/ui/controls/settings-panel/component';
 
@@ -24,6 +27,7 @@ import { SpikeSettingsPanelComponent } from '../../sites.app.lets/spike/ui/contr
  * - /system/settings/{level}   → UniversalSettingsView
  * - /system/settings/{level}/appearance → Appearance settings
  * - /system/settings/{level}/appearance/colors/:tier → Color editor (mobile)
+ * - /system/settings/{level}/wiki → Wiki settings
  * - /system/settings/{level}/apps/spike → Spike settings
  */
 @NgModule({
@@ -47,6 +51,7 @@ import { SpikeSettingsPanelComponent } from '../../sites.app.lets/spike/ui/contr
               { path: '', component: UniversalSettingsViewComponent, data: { level: 'service' } },
               { path: 'appearance', component: AppearanceSettingsPanelComponent, data: { level: 'service' } },
               { path: 'appearance/colors/:tier', component: ColorEditorPageComponent, data: { level: 'service' } },
+              { path: 'wiki', component: WikiSettingsComponent, data: { level: 'service' } },
               { path: 'apps/spike', component: SpikeSettingsPanelComponent, data: { level: 'service' } },
             ]
           },
@@ -59,6 +64,7 @@ import { SpikeSettingsPanelComponent } from '../../sites.app.lets/spike/ui/contr
               { path: '', component: UniversalSettingsViewComponent, data: { level: 'account' } },
               { path: 'appearance', component: AppearanceSettingsPanelComponent, data: { level: 'account' } },
               { path: 'appearance/colors/:tier', component: ColorEditorPageComponent, data: { level: 'account' } },
+              { path: 'wiki', component: WikiSettingsComponent, data: { level: 'account' } },
               { path: 'apps/spike', component: SpikeSettingsPanelComponent, data: { level: 'account' } },
             ]
           },
@@ -71,6 +77,7 @@ import { SpikeSettingsPanelComponent } from '../../sites.app.lets/spike/ui/contr
               { path: '', component: UniversalSettingsViewComponent, data: { level: 'user' } },
               { path: 'appearance', component: AppearanceSettingsPanelComponent, data: { level: 'user' } },
               { path: 'appearance/colors/:tier', component: ColorEditorPageComponent, data: { level: 'user' } },
+              { path: 'wiki', component: WikiSettingsComponent, data: { level: 'user' } },
               { path: 'apps/spike', component: SpikeSettingsPanelComponent, data: { level: 'user' } },
             ]
           },
@@ -82,6 +89,7 @@ import { SpikeSettingsPanelComponent } from '../../sites.app.lets/spike/ui/contr
     UniversalSettingsViewComponent,
     AppearanceSettingsPanelComponent,
     ColorEditorPageComponent,
+    WikiSettingsComponent,
     SpikeSettingsPanelComponent,
   ],
   exports: [RouterModule]

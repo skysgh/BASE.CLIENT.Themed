@@ -109,6 +109,14 @@ export class UniversalSettingsViewComponent implements OnInit, OnDestroy {
         icon: 'bx-palette',
         route: `/system/settings/${this.level}/appearance`,
         category: 'platform'
+      },
+      {
+        id: 'wiki',
+        titleKey: 'BASE.WIKI.SETTINGS.TITLE',
+        descriptionKey: 'BASE.WIKI.SETTINGS.DESCRIPTION',
+        icon: 'bx-book-open',
+        route: `/system/settings/${this.level}/wiki`,
+        category: 'platform'
       }
     ];
     

@@ -1,0 +1,1 @@
+export { WikiSettingsComponent } from './component';
