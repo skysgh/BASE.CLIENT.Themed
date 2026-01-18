@@ -6,25 +6,9 @@
  * - Icon + Title + Subtitle (center-left)
  * - Actions slot (right) - for page-specific buttons
  * 
- * Usage:
- * ```html
- * <app-page-header 
- *   title="Trash"
- *   icon="bx-trash"
- *   [subtitle]="trashService.count() + ' deleted items'">
- *   <ng-container actions>
- *     <button class="btn btn-danger" (click)="emptyTrash()">Empty Trash</button>
- *   </ng-container>
- * </app-page-header>
- * ```
- * 
- * Or with dynamic subtitle via template:
- * ```html
- * <app-page-header title="Trash" icon="bx-trash">
- *   <ng-container subtitle>{{ count }} deleted items</ng-container>
- *   <ng-container actions>...</ng-container>
- * </app-page-header>
- * ```
+ * Icon can be specified as:
+ * - Font icon class: icon="bx-trash" (BoxIcons) or icon="ri-delete-bin-line" (RemixIcons)
+ * - Image URL: iconUrl="/assets/icons/custom.svg"
  */
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -50,10 +34,14 @@ import { NavigationService } from '../../../../core/services/navigation.service'
             </button>
           }
           
-          <!-- Icon -->
-          @if (icon) {
-            <div class="type-icon" [class]="iconBackground">
-              <i class="bx {{ icon }}" [class]="iconClass"></i>
+          <!-- Icon (font-based or image URL) -->
+          @if (icon || iconUrl) {
+            <div class="type-icon {{ iconBackground }}">
+              @if (iconUrl) {
+                <img [src]="iconUrl" [alt]="title" class="icon-img">
+              } @else {
+                <i class="{{ getIconClasses() }}"></i>
+              }
             </div>
           }
           
@@ -106,6 +94,12 @@ import { NavigationService } from '../../../../core/services/navigation.service'
       font-size: 1.75rem;
     }
     
+    .icon-img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    
     .page-actions {
       flex-wrap: wrap;
     }
@@ -128,6 +122,11 @@ import { NavigationService } from '../../../../core/services/navigation.service'
         height: 48px;
         font-size: 1.5rem;
       }
+      
+      .icon-img {
+        width: 28px;
+        height: 28px;
+      }
     }
   `]
 })
@@ -140,8 +139,14 @@ export class PageHeaderComponent {
   /** Page subtitle (or use <ng-container subtitle> for dynamic content) */
   @Input() subtitle = '';
   
-  /** BoxIcons icon class (without 'bx-' prefix is fine, we add it) */
+  /** 
+   * Font icon class (e.g., 'bx-trash', 'ri-settings-line')
+   * Supports BoxIcons (bx-), RemixIcons (ri-), and others
+   */
   @Input() icon = '';
+  
+  /** Image URL for custom icons (alternative to font icon) */
+  @Input() iconUrl = '';
   
   /** Icon background class (e.g., 'bg-primary-subtle', 'bg-danger-subtle') */
   @Input() iconBackground = 'bg-secondary-subtle';
@@ -159,9 +164,29 @@ export class PageHeaderComponent {
   @Input() backFallback = 'system/hub';
 
   /**
+   * Get the full icon class string
+   * Handles different icon font libraries
+   */
+  getIconClasses(): string {
+    const classes: string[] = [];
+    
+    // Determine icon library and add base class if needed
+    if (this.icon.startsWith('bx-') || this.icon.startsWith('bxs-') || this.icon.startsWith('bxl-')) {
+      classes.push('bx');
+    } else if (this.icon.startsWith('ri-')) {
+      // RemixIcons don't need a base class
+    } else if (this.icon.startsWith('mdi-')) {
+      classes.push('mdi');
+    }
+    
+    classes.push(this.icon);
+    classes.push(this.iconClass);
+    
+    return classes.join(' ');
+  }
+
+  /**
    * Navigate back using smart navigation
-   * - Uses browser history if available
-   * - Falls back to specified route if deep-linked
    */
   goBack(): void {
     this.navService.back(this.backFallback);
