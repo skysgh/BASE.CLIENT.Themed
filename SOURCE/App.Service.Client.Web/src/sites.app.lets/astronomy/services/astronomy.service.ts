@@ -12,6 +12,7 @@ import {
   Planet, 
   Moon, 
   Constellation,
+  Astronomer,
   StarType,
   PlanetType,
   AtmosphereType 
@@ -131,11 +132,24 @@ const ATMOSPHERE_TYPES: AtmosphereType[] = [
 ];
 
 const CONSTELLATIONS: Constellation[] = [
-  { id: 'orion', name: 'Orion', starCount: 7, mythology: 'The Hunter' },
-  { id: 'ursa-major', name: 'Ursa Major', starCount: 7, mythology: 'The Great Bear' },
-  { id: 'cassiopeia', name: 'Cassiopeia', starCount: 5, mythology: 'The Queen' },
-  { id: 'scorpius', name: 'Scorpius', starCount: 18, mythology: 'The Scorpion' },
-  { id: 'centaurus', name: 'Centaurus', starCount: 11, mythology: 'The Centaur' },
+  { id: 'orion', name: 'Orion', abbreviation: 'Ori', mythology: 'The Hunter' },
+  { id: 'ursa-major', name: 'Ursa Major', abbreviation: 'UMa', mythology: 'The Great Bear' },
+  { id: 'cassiopeia', name: 'Cassiopeia', abbreviation: 'Cas', mythology: 'The Queen' },
+  { id: 'scorpius', name: 'Scorpius', abbreviation: 'Sco', mythology: 'The Scorpion' },
+  { id: 'centaurus', name: 'Centaurus', abbreviation: 'Cen', mythology: 'The Centaur' },
+  { id: 'aquarius', name: 'Aquarius', abbreviation: 'Aqr', mythology: 'The Water Bearer' },
+];
+
+/**
+ * Astronomers - for *-* relationship with StarSystem
+ */
+const ASTRONOMERS: Astronomer[] = [
+  { id: 'copernicus', name: 'Nicolaus Copernicus', affiliation: 'University of Kraków', country: 'Poland', specialization: 'Heliocentrism' },
+  { id: 'innes', name: 'Robert Innes', affiliation: 'Union Observatory', country: 'South Africa', specialization: 'Double stars' },
+  { id: 'gillon', name: 'Michaël Gillon', affiliation: 'University of Liège', country: 'Belgium', specialization: 'Exoplanets' },
+  { id: 'delrez', name: 'Laetitia Delrez', affiliation: 'University of Liège', country: 'Belgium', specialization: 'Exoplanets' },
+  { id: 'triaud', name: 'Amaury Triaud', affiliation: 'University of Birmingham', country: 'UK', specialization: 'Exoplanets' },
+  { id: 'anglada', name: 'Guillem Anglada-Escudé', affiliation: 'Queen Mary University', country: 'Spain/UK', specialization: 'Exoplanets' },
 ];
 
 // ========================================
@@ -148,8 +162,8 @@ const MOCK_STAR_SYSTEMS: StarSystem[] = [
     name: 'Solar System',
     description: 'Our home star system, located in the Orion Arm of the Milky Way.',
     discoveredAt: new Date('1543-01-01'), // Copernicus
-    discoveredBy: 'Ancient civilizations',
     distanceFromEarth: 0,
+    discoverers: [ASTRONOMERS[0]], // Copernicus (heliocentric model)
     stars: [
       {
         id: 'sun',
@@ -158,7 +172,7 @@ const MOCK_STAR_SYSTEMS: StarSystem[] = [
         mass: 1.0, // Solar masses
         radius: 1.0, // Solar radii
         luminosity: 1.0,
-        constellations: [],
+        constellation: null, // The Sun doesn't belong to a constellation
       }
     ],
     planets: [
@@ -266,8 +280,8 @@ const MOCK_STAR_SYSTEMS: StarSystem[] = [
     name: 'Alpha Centauri',
     description: 'The closest star system to our Solar System, a triple-star system.',
     discoveredAt: new Date('1915-01-01'),
-    discoveredBy: 'Robert Innes',
     distanceFromEarth: 4.37,
+    discoverers: [ASTRONOMERS[1], ASTRONOMERS[5]], // Innes, Anglada-Escudé (*-* multiple discoverers)
     stars: [
       {
         id: 'alpha-centauri-a',
@@ -276,7 +290,7 @@ const MOCK_STAR_SYSTEMS: StarSystem[] = [
         mass: 1.1,
         radius: 1.22,
         luminosity: 1.52,
-        constellations: [CONSTELLATIONS[4]], // Centaurus
+        constellation: CONSTELLATIONS[4], // Centaurus (*-1 single constellation)
       },
       {
         id: 'alpha-centauri-b',
@@ -285,7 +299,7 @@ const MOCK_STAR_SYSTEMS: StarSystem[] = [
         mass: 0.9,
         radius: 0.86,
         luminosity: 0.5,
-        constellations: [CONSTELLATIONS[4]],
+        constellation: CONSTELLATIONS[4], // Centaurus
       },
       {
         id: 'proxima-centauri',
@@ -294,7 +308,7 @@ const MOCK_STAR_SYSTEMS: StarSystem[] = [
         mass: 0.12,
         radius: 0.15,
         luminosity: 0.0017,
-        constellations: [CONSTELLATIONS[4]],
+        constellation: CONSTELLATIONS[4], // Centaurus
       }
     ],
     planets: [
@@ -319,8 +333,8 @@ const MOCK_STAR_SYSTEMS: StarSystem[] = [
     name: 'TRAPPIST-1',
     description: 'An ultra-cool red dwarf with seven Earth-sized planets, three in habitable zone.',
     discoveredAt: new Date('2016-05-02'),
-    discoveredBy: 'TRAPPIST telescope team',
     distanceFromEarth: 39.6,
+    discoverers: [ASTRONOMERS[2], ASTRONOMERS[3], ASTRONOMERS[4]], // Gillon, Delrez, Triaud (*-* team discovery)
     stars: [
       {
         id: 'trappist-1-star',
@@ -329,7 +343,7 @@ const MOCK_STAR_SYSTEMS: StarSystem[] = [
         mass: 0.089,
         radius: 0.12,
         luminosity: 0.00052,
-        constellations: [], // Aquarius
+        constellation: CONSTELLATIONS[5], // Aquarius
       }
     ],
     planets: [

@@ -123,14 +123,14 @@ import { AstronomyService } from '../../../services/astronomy.service';
         </div>
         <div class="card-body">
           <pre class="mb-0 text-muted small"><code>StarSystem (Aggregate Root)
+├── *-* Astronomers (discoverers - many credited per system)
 ├── 1-* Stars
-│   └── *-* Constellations (junction)
+│   └── *-1 Constellation (IAU boundary - one per star)
 ├── 1-* Planets
 │   ├── *-1 Star (orbits)
 │   ├── 1-1 Atmosphere
-│   ├── 1-* Moons
-│   └── *-* Tags (future: platform part)
-└── 1-1 Discovery metadata</code></pre>
+│   └── 1-* Moons
+└── discoveredAt (value object)</code></pre>
         </div>
       </div>
     </div>

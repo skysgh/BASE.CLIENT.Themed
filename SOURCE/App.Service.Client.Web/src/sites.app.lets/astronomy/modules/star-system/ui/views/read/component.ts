@@ -38,9 +38,12 @@ import { StarSystem, Star, Planet } from '../../../../../models';
         <div class="card mb-4">
           <div class="card-body">
             <p class="mb-2">{{ sys.description }}</p>
-            <div class="d-flex gap-3 text-muted small">
+            <div class="d-flex flex-wrap gap-3 text-muted small">
               <span><i class="bx bx-calendar me-1"></i> Discovered: {{ sys.discoveredAt | date:'yyyy' }}</span>
-              <span><i class="bx bx-user me-1"></i> By: {{ sys.discoveredBy }}</span>
+              <span>
+                <i class="bx bx-user me-1"></i> 
+                Discoverers (*-*): {{ getDiscovererNames(sys) }}
+              </span>
             </div>
           </div>
         </div>
@@ -105,10 +108,10 @@ import { StarSystem, Star, Planet } from '../../../../../models';
                       <div><i class="bx bx-category me-1"></i> {{ star.type.name }}</div>
                       <div><i class="bx bx-expand me-1"></i> {{ star.mass }} M☉ / {{ star.radius }} R☉</div>
                       <div><i class="bx bx-bulb me-1"></i> {{ star.luminosity }} L☉</div>
-                      @if (star.constellations.length > 0) {
+                      @if (star.constellation) {
                         <div>
                           <i class="bx bx-star me-1"></i> 
-                          Constellations (*-*): {{ getConstellationNames(star) }}
+                          Constellation (*-1): {{ star.constellation.name }}
                         </div>
                       }
                     </div>
@@ -255,8 +258,8 @@ export class StarSystemReadComponent implements OnInit {
     return star?.name || starId;
   }
   
-  getConstellationNames(star: Star): string {
-    return star.constellations.map(c => c.name).join(', ');
+  getDiscovererNames(sys: StarSystem): string {
+    return sys.discoverers.map(d => d.name).join(', ');
   }
   
   getMoonNames(planet: Planet): string {

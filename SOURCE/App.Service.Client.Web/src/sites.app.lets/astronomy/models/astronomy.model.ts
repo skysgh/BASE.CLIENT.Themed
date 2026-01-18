@@ -3,8 +3,8 @@
  * 
  * Demonstrates all relationship types:
  * - 1-* : StarSystem → Stars, StarSystem → Planets, Planet → Moons
- * - *-* : Star ↔ Constellation
- * - *-1 : Planet → Star (orbits)
+ * - *-* : StarSystem ↔ Astronomer (discovery credits)
+ * - *-1 : Planet → Star (orbits), Star → Constellation (IAU boundary)
  * - 1-1 : Planet → Atmosphere
  */
 
@@ -37,17 +37,30 @@ export interface AtmosphereType {
 // ========================================
 
 /**
- * Constellation - Reference entity for *-* relationship with Stars
+ * Constellation - Reference entity
+ * Since 1928 IAU standardization, each star belongs to exactly ONE constellation.
  */
 export interface Constellation {
   id: string;
   name: string;
-  starCount: number;
+  abbreviation: string;
   mythology: string;
 }
 
 /**
- * Star - 1-* child of StarSystem, *-* with Constellation
+ * Astronomer - Entity for *-* relationship with StarSystem
+ * Multiple astronomers can discover a system; one astronomer discovers multiple systems.
+ */
+export interface Astronomer {
+  id: string;
+  name: string;
+  affiliation: string;
+  country: string;
+  specialization: string;
+}
+
+/**
+ * Star - 1-* child of StarSystem, *-1 to Constellation
  */
 export interface Star {
   id: string;
@@ -56,7 +69,7 @@ export interface Star {
   mass: number; // Solar masses
   radius: number; // Solar radii
   luminosity: number; // Solar luminosity
-  constellations: Constellation[]; // *-* relationship
+  constellation: Constellation | null; // *-1 relationship (each star in ONE constellation)
 }
 
 /**
@@ -110,7 +123,7 @@ export interface Planet {
 
 /**
  * StarSystem - Aggregate Root
- * Contains: 1-* Stars, 1-* Planets
+ * Contains: 1-* Stars, 1-* Planets, *-* Astronomers
  */
 export interface StarSystem {
   id: string;
@@ -119,8 +132,10 @@ export interface StarSystem {
   
   // Discovery metadata
   discoveredAt: Date;
-  discoveredBy: string;
   distanceFromEarth: number; // Light years
+  
+  // *-* relationship: multiple astronomers credited with discovery/study
+  discoverers: Astronomer[];
   
   // 1-* relationships
   stars: Star[];
