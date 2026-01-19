@@ -8,12 +8,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { HubService } from '../../../services';
-import { SpikeWidgetComponent, ActivityWidgetComponent } from '../../widgets';
+import { SpikeWidgetComponent, ActivityWidgetComponent, AstronomyWidgetComponent } from '../../widgets';
 
 @Component({
   selector: 'app-hub',
   standalone: true,
-  imports: [CommonModule, RouterModule, SpikeWidgetComponent, ActivityWidgetComponent],
+  imports: [CommonModule, RouterModule, SpikeWidgetComponent, ActivityWidgetComponent, AstronomyWidgetComponent],
   template: `
     <div class="hub-page">
       <!-- Header with Quick Actions on Right -->
@@ -51,22 +51,14 @@ import { SpikeWidgetComponent, ActivityWidgetComponent } from '../../widgets';
           <app-spike-widget></app-spike-widget>
         </div>
 
+        <!-- Astronomy Widget -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <app-astronomy-widget></app-astronomy-widget>
+        </div>
+
         <!-- Activity Widget -->
         <div class="col-12 col-md-6 col-lg-4">
           <app-activity-widget></app-activity-widget>
-        </div>
-
-        <!-- Placeholder Widget -->
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="widget-card card h-100">
-            <div class="card-body text-center py-5">
-              <div class="widget-icon bg-success-subtle text-success mx-auto mb-3">
-                <i class="bx bx-bar-chart-alt-2"></i>
-              </div>
-              <h6>Analytics</h6>
-              <p class="text-muted small mb-0">Widget coming soon</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
