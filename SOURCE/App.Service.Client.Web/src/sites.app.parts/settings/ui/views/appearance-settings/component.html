@@ -417,6 +417,37 @@
     </div>
   </div>
 
+  <!-- Browse Controls Section -->
+  <div class="settings-section card mb-3">
+    <div class="card-header py-2">
+      <h6 class="mb-0">
+        <i class="bx bx-list-ul me-2"></i>
+        {{ 'BASE.APPEARANCE.BROWSE.TITLE' | baseTranslate }}
+      </h6>
+    </div>
+    <div class="card-body py-2">
+      <p class="text-muted small mb-3">{{ 'BASE.APPEARANCE.BROWSE.DESCRIPTION' | baseTranslate }}</p>
+      
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <label class="form-label mb-0">{{ 'BASE.APPEARANCE.BROWSE.CONTROLS_LAYOUT' | baseTranslate }}</label>
+        </div>
+        <div class="col-md-7">
+          <div class="btn-group" role="group">
+            @for (option of browseControlsOptions; track option.value) {
+              <input type="radio" class="btn-check" [id]="'browseControls_' + option.value" name="browseControls"
+                     [value]="option.value" [(ngModel)]="settings.browseControlsLayout.value"
+                     (change)="onSettingChange('browseControlsLayout')">
+              <label class="btn btn-outline-secondary btn-sm" [for]="'browseControls_' + option.value">
+                <i class="bx {{ option.icon }} me-1"></i>{{ option.labelKey | baseTranslate }}
+              </label>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </app-settings-page-shell>
 
 <!-- Responsive Color Editor Host -->

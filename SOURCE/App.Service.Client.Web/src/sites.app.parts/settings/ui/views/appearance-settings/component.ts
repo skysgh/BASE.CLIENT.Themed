@@ -53,6 +53,7 @@ interface AppearanceSettings {
   sidebarColor: SettingField<string>;
   sidebarImage: SettingField<string>;
   preloader: SettingField<string>;
+  browseControlsLayout: SettingField<'panels' | 'flyout'>;
 }
 
 const DEFAULT_SETTINGS: AppearanceSettings = {
@@ -72,6 +73,7 @@ const DEFAULT_SETTINGS: AppearanceSettings = {
   sidebarColor: { value: 'dark', locked: false },
   sidebarImage: { value: 'none', locked: false },
   preloader: { value: 'disable', locked: false },
+  browseControlsLayout: { value: 'panels', locked: false },
 };
 
 @Component({
@@ -150,6 +152,11 @@ export class AppearanceSettingsPanelComponent implements OnInit {
     { value: 'img-2', labelKey: 'BASE.APPEARANCE.SIDEBAR_IMAGE.IMG_2', image: 'img-2.jpg' },
     { value: 'img-3', labelKey: 'BASE.APPEARANCE.SIDEBAR_IMAGE.IMG_3', image: 'img-3.jpg' },
     { value: 'img-4', labelKey: 'BASE.APPEARANCE.SIDEBAR_IMAGE.IMG_4', image: 'img-4.jpg' }
+  ];
+
+  browseControlsOptions = [
+    { value: 'panels', labelKey: 'BASE.APPEARANCE.BROWSE.PANELS', icon: 'bx-list-ul' },
+    { value: 'flyout', labelKey: 'BASE.APPEARANCE.BROWSE.FLYOUT', icon: 'bx-sidebar' }
   ];
 
   constructor(

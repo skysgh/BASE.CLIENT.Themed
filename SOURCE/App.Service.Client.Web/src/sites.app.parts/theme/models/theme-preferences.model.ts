@@ -53,6 +53,13 @@ export type LayoutType = 'vertical' | 'horizontal' | 'twocolumn' | 'semibox';
 export type SidebarSize = 'lg' | 'md' | 'sm' | 'sm-hover';
 
 /**
+ * Browse controls layout options
+ * - 'panels': Traditional inline collapsible panels (filter/sort/display stacked)
+ * - 'flyout': Compact mode with search bar + flyout panel for options
+ */
+export type BrowseControlsLayout = 'panels' | 'flyout';
+
+/**
  * Complete theme preferences
  */
 export interface ThemePreferences {
@@ -76,6 +83,9 @@ export interface ThemePreferences {
   
   /** Preloader enabled */
   preloaderEnabled: boolean;
+  
+  /** Browse view controls layout */
+  browseControlsLayout: BrowseControlsLayout;
 }
 
 /**
@@ -88,5 +98,6 @@ export const DEFAULT_THEME_PREFERENCES: ThemePreferences = {
   topbarColor: 'light',
   layout: 'vertical',
   sidebarSize: 'lg',
-  preloaderEnabled: true
+  preloaderEnabled: true,
+  browseControlsLayout: 'panels'  // Default to current behavior
 };

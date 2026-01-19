@@ -13,6 +13,7 @@ export * from './browse-search-panel.component';
 export * from './browse-filter-panel.component';
 export * from './browse-order-panel.component';
 export * from './browse-display-panel.component';
+export * from './browse-options-panel.component';
 export * from './filter-row.component';
 export * from './sort-row.component';
 export * from './browse-view-toggle.component';

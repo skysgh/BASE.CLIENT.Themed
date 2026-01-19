@@ -134,14 +134,21 @@
         "GRADIENT_4": "Gradient 4"
       },
       "SIDEBAR_IMAGE": {
-        "LABEL": "Sidebar Image",
-        "NONE": "None",
-        "IMG_1": "Image 1",
-        "IMG_2": "Image 2",
-        "IMG_3": "Image 3",
-        "IMG_4": "Image 4"
-      }
-    },
+          "LABEL": "Sidebar Image",
+          "NONE": "None",
+          "IMG_1": "Image 1",
+          "IMG_2": "Image 2",
+          "IMG_3": "Image 3",
+          "IMG_4": "Image 4"
+        },
+        "BROWSE": {
+          "TITLE": "Browse Controls",
+          "DESCRIPTION": "Choose how filter, sort, and display controls appear in list views.",
+          "CONTROLS_LAYOUT": "Controls Layout",
+          "PANELS": "Panels",
+          "FLYOUT": "Flyout"
+        }
+      },
     "NAVIGATION": {
       "BACK": "Back"
     },

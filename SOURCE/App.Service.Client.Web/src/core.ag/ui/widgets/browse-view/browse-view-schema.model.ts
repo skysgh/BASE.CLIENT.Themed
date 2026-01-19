@@ -32,6 +32,14 @@ import { OptionsSource } from '../../../../core/models/schema/options-source.mod
 
 export type ViewMode = 'cards' | 'tiles' | 'table' | 'list' | 'chart';
 
+/**
+ * Controls layout mode for browse view
+ * - 'panels': Traditional inline collapsible panels (current behavior)
+ * - 'flyout': Compact search bar with flyout panel for options
+ * - 'auto': Respect user preference from settings
+ */
+export type ControlsLayoutMode = 'panels' | 'flyout' | 'auto';
+
 // ═══════════════════════════════════════════════════════════════════
 // Schema Field Definitions
 // ═══════════════════════════════════════════════════════════════════
@@ -327,6 +335,14 @@ export interface BrowseViewSchema {
   // ─────────────────────────────────────────────────────────────────
   // Panels
   // ─────────────────────────────────────────────────────────────────
+  
+  /**
+   * Controls layout mode
+   * - 'panels': Show filter/sort/display as inline collapsible panels
+   * - 'flyout': Compact mode with search bar + flyout for options
+   * - 'auto': Use user preference (default)
+   */
+  controlsLayout?: ControlsLayoutMode;
   
   /** Search panel configuration */
   search?: BrowseSearchSchema;
