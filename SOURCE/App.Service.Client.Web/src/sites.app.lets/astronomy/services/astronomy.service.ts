@@ -1,11 +1,13 @@
 /**
  * Astronomy Service
  * 
- * Provides data access for celestial bodies.
- * Uses mock data for demonstration purposes.
+ * Signal-based service providing reactive state management for Star Systems.
+ * Uses repository pattern for HTTP communication with json-server.
+ * 
+ * Architecture: Repository (HTTP) → Service (signals) → Component
  */
-import { Injectable, signal, computed } from '@angular/core';
-import { Observable, of, delay } from 'rxjs';
+import { Injectable, signal, computed, inject } from '@angular/core';
+import { Observable, tap, catchError, of, map } from 'rxjs';
 import { 
   StarSystem, 
   Star, 
@@ -17,114 +19,285 @@ import {
   PlanetType,
   AtmosphereType 
 } from '../models';
+import { StarSystemRepository, PlanetRepository } from '../repositories';
+import { StarSystemDto, PlanetDto } from '../models/dtos';
+import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
 
 @Injectable({ providedIn: 'root' })
 export class AstronomyService {
+  private repository = inject(StarSystemRepository);
+  private planetRepository = inject(PlanetRepository);
+  private logger = inject(SystemDiagnosticsTraceService);
   
   // Signals for reactive state
   private _starSystems = signal<StarSystem[]>([]);
+  private _planets = signal<Planet[]>([]);
   private _loading = signal(false);
+  private _saving = signal(false);
   private _error = signal<string | null>(null);
   
   // Public readonly
   readonly starSystems = this._starSystems.asReadonly();
+  readonly planets = this._planets.asReadonly();
   readonly loading = this._loading.asReadonly();
+  readonly saving = this._saving.asReadonly();
   readonly error = this._error.asReadonly();
   
   // Computed
   readonly starSystemCount = computed(() => this._starSystems().length);
-  readonly planetCount = computed(() => 
-    this._starSystems().reduce((acc, sys) => acc + sys.planets.length, 0)
-  );
+  readonly planetCount = computed(() => this._planets().length);
   
   constructor() {
-    this.loadMockData();
+    this.logger.debug('AstronomyService initialized');
+    this.loadStarSystems();
   }
   
-  private loadMockData(): void {
+  // ========================================
+  // Star Systems - API-backed
+  // ========================================
+  
+  /**
+   * Load all star systems from API
+   */
+  loadStarSystems(): void {
     this._loading.set(true);
+    this._error.set(null);
     
-    // Simulate async load
-    setTimeout(() => {
-      this._starSystems.set(MOCK_STAR_SYSTEMS);
-      this._loading.set(false);
-    }, 500);
-  }
-  
-  // ========================================
-  // Star Systems
-  // ========================================
-  
-  getStarSystems(): Observable<StarSystem[]> {
-    return of(this._starSystems()).pipe(delay(100));
-  }
-  
-  getStarSystem(id: string): Observable<StarSystem | undefined> {
-    return of(this._starSystems().find(s => s.id === id)).pipe(delay(100));
+    this.repository.getAll().pipe(
+      tap({
+        next: (dtos) => {
+          const viewModels = dtos.map(dto => this.mapDtoToStarSystem(dto));
+          this._starSystems.set(viewModels);
+          this._loading.set(false);
+          this.logger.debug(`Loaded ${viewModels.length} star systems from API`);
+        },
+        error: (err) => {
+          this._error.set('Failed to load star systems');
+          this._loading.set(false);
+          this.logger.error(`Error loading star systems: ${err?.message || err}`);
+        }
+      })
+    ).subscribe();
   }
   
   /**
-   * Update a star system (in-memory for demo)
+   * Get star systems (returns current signal value)
+   */
+  getStarSystems(): Observable<StarSystem[]> {
+    // If already loaded, return signal value
+    if (this._starSystems().length > 0) {
+      return of(this._starSystems());
+    }
+    // Otherwise fetch from API
+    return this.repository.getAll().pipe(
+      map(dtos => dtos.map(dto => this.mapDtoToStarSystem(dto))),
+      tap(systems => this._starSystems.set(systems))
+    );
+  }
+  
+  /**
+   * Get star system by ID
+   */
+  getStarSystem(id: string): Observable<StarSystem | undefined> {
+    // Check cache first
+    const cached = this._starSystems().find(s => s.id === id);
+    if (cached) {
+      return of(cached);
+    }
+    // Fetch from API
+    return this.repository.getById(id).pipe(
+      map(dto => this.mapDtoToStarSystem(dto)),
+      catchError(() => of(undefined))
+    );
+  }
+  
+  /**
+   * Update a star system (persists to json-server)
    */
   updateStarSystem(id: string, updates: Partial<StarSystem>): Observable<StarSystem | undefined> {
-    const systems = this._starSystems();
-    const index = systems.findIndex(s => s.id === id);
+    this._saving.set(true);
     
-    if (index === -1) {
+    // Build DTO for update
+    const existing = this._starSystems().find(s => s.id === id);
+    if (!existing) {
+      this._saving.set(false);
       return of(undefined);
     }
     
-    const updated = { ...systems[index], ...updates };
-    const newSystems = [...systems];
-    newSystems[index] = updated;
-    this._starSystems.set(newSystems);
+    const dto: StarSystemDto = {
+      ...this.mapStarSystemToDto(existing),
+      ...this.mapPartialToDto(updates),
+      modifiedUtc: new Date().toISOString(),
+    };
     
-    return of(updated).pipe(delay(200));
+    return this.repository.update(id, dto).pipe(
+      map(savedDto => this.mapDtoToStarSystem(savedDto)),
+      tap({
+        next: (updated) => {
+          // Update local cache
+          this._starSystems.update(systems => 
+            systems.map(s => s.id === id ? updated : s)
+          );
+          this._saving.set(false);
+          this.logger.debug(`Updated star system: ${updated.name}`);
+        },
+        error: (err) => {
+          this._error.set('Failed to update star system');
+          this._saving.set(false);
+          this.logger.error(`Error updating star system: ${err?.message || err}`);
+        }
+      }),
+      catchError(() => of(undefined))
+    );
   }
   
   /**
-   * Create a new star system (in-memory for demo)
+   * Create a new star system (persists to json-server)
    */
-  createStarSystem(data: Omit<StarSystem, 'id'>): Observable<StarSystem> {
-    const newSystem: StarSystem = {
-      ...data,
-      id: `sys-${Date.now()}`, // Generate simple ID
-    } as StarSystem;
+  createStarSystem(data: Partial<StarSystem>): Observable<StarSystem> {
+    this._saving.set(true);
     
-    this._starSystems.update(systems => [...systems, newSystem]);
+    const now = new Date().toISOString();
+    const dto: StarSystemDto = {
+      id: `sys-${Date.now()}`,
+      name: data.name || 'New Star System',
+      description: data.description,
+      distanceLightYears: data.distanceFromEarth || 0,
+      discoveryDate: data.discoveredAt?.toISOString(),
+      starType: undefined,
+      createdUtc: now,
+      modifiedUtc: now,
+    };
     
-    return of(newSystem).pipe(delay(200));
+    return this.repository.create(dto).pipe(
+      map(savedDto => this.mapDtoToStarSystem(savedDto)),
+      tap({
+        next: (created) => {
+          this._starSystems.update(systems => [...systems, created]);
+          this._saving.set(false);
+          this.logger.debug(`Created star system: ${created.name}`);
+        },
+        error: (err) => {
+          this._error.set('Failed to create star system');
+          this._saving.set(false);
+          this.logger.error(`Error creating star system: ${err?.message || err}`);
+        }
+      })
+    );
   }
   
   /**
-   * Delete a star system (in-memory for demo)
+   * Delete a star system (persists to json-server)
    */
   deleteStarSystem(id: string): Observable<boolean> {
-    this._starSystems.update(systems => systems.filter(s => s.id !== id));
-    return of(true).pipe(delay(200));
+    this._saving.set(true);
+    
+    return this.repository.delete(id).pipe(
+      map(() => true),
+      tap({
+        next: () => {
+          this._starSystems.update(systems => systems.filter(s => s.id !== id));
+          this._saving.set(false);
+          this.logger.debug(`Deleted star system: ${id}`);
+        },
+        error: (err) => {
+          this._error.set('Failed to delete star system');
+          this._saving.set(false);
+          this.logger.error(`Error deleting star system: ${err?.message || err}`);
+        }
+      }),
+      catchError(() => of(false))
+    );
   }
   
   // ========================================
-  // Planets
+  // Planets - API-backed
   // ========================================
   
+  /**
+   * Get planets for a star system
+   */
+  getPlanetsInSystem(starSystemId: string): Observable<Planet[]> {
+    return this.planetRepository.getByStarSystemId(starSystemId).pipe(
+      map(dtos => dtos.map(dto => this.mapDtoToPlanet(dto)))
+    );
+  }
+  
+  /**
+   * Get all planets
+   */
   getAllPlanets(): Observable<Planet[]> {
-    const planets = this._starSystems().flatMap(sys => sys.planets);
-    return of(planets).pipe(delay(100));
+    return this.planetRepository.getAll().pipe(
+      map(dtos => dtos.map(dto => this.mapDtoToPlanet(dto))),
+      tap(planets => this._planets.set(planets))
+    );
   }
   
-  getPlanetsInSystem(systemId: string): Observable<Planet[]> {
-    const system = this._starSystems().find(s => s.id === systemId);
-    return of(system?.planets || []).pipe(delay(100));
-  }
-  
+  /**
+   * Get planet by ID
+   */
   getPlanet(id: string): Observable<Planet | undefined> {
-    const planets = this._starSystems().flatMap(sys => sys.planets);
-    return of(planets.find(p => p.id === id)).pipe(delay(100));
+    return this.planetRepository.getById(id).pipe(
+      map(dto => this.mapDtoToPlanet(dto)),
+      catchError(() => of(undefined))
+    );
   }
   
   // ========================================
-  // Reference Data
+  // Mappers (DTO ↔ ViewModel)
+  // ========================================
+  
+  private mapDtoToStarSystem(dto: StarSystemDto): StarSystem {
+    return {
+      id: dto.id,
+      name: dto.name,
+      description: dto.description || '',
+      distanceFromEarth: dto.distanceLightYears,
+      discoveredAt: dto.discoveryDate ? new Date(dto.discoveryDate) : new Date(),
+      discoverers: [],
+      planets: [],
+      stars: [],
+    };
+  }
+  
+  private mapStarSystemToDto(system: StarSystem): StarSystemDto {
+    return {
+      id: system.id,
+      name: system.name,
+      description: system.description,
+      distanceLightYears: system.distanceFromEarth || 0,
+      discoveryDate: system.discoveredAt?.toISOString(),
+    };
+  }
+  
+  private mapPartialToDto(updates: Partial<StarSystem>): Partial<StarSystemDto> {
+    const dto: Partial<StarSystemDto> = {};
+    if (updates.name !== undefined) dto.name = updates.name;
+    if (updates.description !== undefined) dto.description = updates.description;
+    if (updates.distanceFromEarth !== undefined) dto.distanceLightYears = updates.distanceFromEarth;
+    if (updates.discoveredAt !== undefined) dto.discoveryDate = updates.discoveredAt?.toISOString();
+    return dto;
+  }
+  
+  private mapDtoToPlanet(dto: PlanetDto): Planet {
+    return {
+      id: dto.id,
+      name: dto.name,
+      type: { id: dto.planetType || 'rocky', name: dto.planetType || 'Rocky', icon: 'bx-circle', description: '' },
+      orbitsStarId: dto.starSystemId,
+      distanceFromStar: dto.distanceFromStar || 0,
+      orbitalPeriod: dto.orbitalPeriodDays || 0,
+      radius: 1,
+      mass: 1,
+      atmosphere: null,
+      moons: [],
+      rings: false,
+      habitableZone: false,
+    };
+  }
+  
+  // ========================================
+  // Reference Data (static)
   // ========================================
   
   getStarTypes(): StarType[] {
@@ -193,229 +366,6 @@ const ASTRONOMERS: Astronomer[] = [
   { id: 'anglada', name: 'Guillem Anglada-Escudé', affiliation: 'Queen Mary University', country: 'Spain/UK', specialization: 'Exoplanets' },
 ];
 
-// ========================================
-// Mock Data
-// ========================================
 
-const MOCK_STAR_SYSTEMS: StarSystem[] = [
-  {
-    id: 'sol',
-    name: 'Solar System',
-    description: 'Our home star system, located in the Orion Arm of the Milky Way.',
-    discoveredAt: new Date('1543-01-01'), // Copernicus
-    distanceFromEarth: 0,
-    discoverers: [ASTRONOMERS[0]], // Copernicus (heliocentric model)
-    stars: [
-      {
-        id: 'sun',
-        name: 'Sol (The Sun)',
-        type: STAR_TYPES[1], // Yellow Dwarf
-        mass: 1.0, // Solar masses
-        radius: 1.0, // Solar radii
-        luminosity: 1.0,
-        constellation: null, // The Sun doesn't belong to a constellation
-      }
-    ],
-    planets: [
-      {
-        id: 'mercury',
-        name: 'Mercury',
-        type: PLANET_TYPES[0], // Rocky
-        orbitsStarId: 'sun',
-        distanceFromStar: 0.39,
-        orbitalPeriod: 88,
-        radius: 0.38,
-        mass: 0.055,
-        atmosphere: { id: 'atm-mercury', type: ATMOSPHERE_TYPES[0], pressure: 0, hasWeather: false },
-        moons: [],
-        rings: false,
-        habitableZone: false,
-      },
-      {
-        id: 'venus',
-        name: 'Venus',
-        type: PLANET_TYPES[0],
-        orbitsStarId: 'sun',
-        distanceFromStar: 0.72,
-        orbitalPeriod: 225,
-        radius: 0.95,
-        mass: 0.815,
-        atmosphere: { id: 'atm-venus', type: ATMOSPHERE_TYPES[2], pressure: 92, hasWeather: true },
-        moons: [],
-        rings: false,
-        habitableZone: false,
-      },
-      {
-        id: 'earth',
-        name: 'Earth',
-        type: PLANET_TYPES[0],
-        orbitsStarId: 'sun',
-        distanceFromStar: 1.0,
-        orbitalPeriod: 365,
-        radius: 1.0,
-        mass: 1.0,
-        atmosphere: { id: 'atm-earth', type: ATMOSPHERE_TYPES[1], pressure: 1, hasWeather: true },
-        moons: [
-          { id: 'moon', name: 'The Moon', radius: 0.27, orbitalPeriod: 27.3, tidallyLocked: true }
-        ],
-        rings: false,
-        habitableZone: true,
-      },
-      {
-        id: 'mars',
-        name: 'Mars',
-        type: PLANET_TYPES[0],
-        orbitsStarId: 'sun',
-        distanceFromStar: 1.52,
-        orbitalPeriod: 687,
-        radius: 0.53,
-        mass: 0.107,
-        atmosphere: { id: 'atm-mars', type: ATMOSPHERE_TYPES[2], pressure: 0.006, hasWeather: true },
-        moons: [
-          { id: 'phobos', name: 'Phobos', radius: 0.0017, orbitalPeriod: 0.32, tidallyLocked: true },
-          { id: 'deimos', name: 'Deimos', radius: 0.0010, orbitalPeriod: 1.26, tidallyLocked: true }
-        ],
-        rings: false,
-        habitableZone: false,
-      },
-      {
-        id: 'jupiter',
-        name: 'Jupiter',
-        type: PLANET_TYPES[1], // Gas Giant
-        orbitsStarId: 'sun',
-        distanceFromStar: 5.2,
-        orbitalPeriod: 4333,
-        radius: 11.2,
-        mass: 318,
-        atmosphere: { id: 'atm-jupiter', type: ATMOSPHERE_TYPES[3], pressure: 1000, hasWeather: true },
-        moons: [
-          { id: 'io', name: 'Io', radius: 0.29, orbitalPeriod: 1.77, tidallyLocked: true },
-          { id: 'europa', name: 'Europa', radius: 0.25, orbitalPeriod: 3.55, tidallyLocked: true },
-          { id: 'ganymede', name: 'Ganymede', radius: 0.41, orbitalPeriod: 7.15, tidallyLocked: true },
-          { id: 'callisto', name: 'Callisto', radius: 0.38, orbitalPeriod: 16.69, tidallyLocked: true },
-        ],
-        rings: true,
-        habitableZone: false,
-      },
-      {
-        id: 'saturn',
-        name: 'Saturn',
-        type: PLANET_TYPES[1],
-        orbitsStarId: 'sun',
-        distanceFromStar: 9.5,
-        orbitalPeriod: 10759,
-        radius: 9.4,
-        mass: 95,
-        atmosphere: { id: 'atm-saturn', type: ATMOSPHERE_TYPES[3], pressure: 1000, hasWeather: true },
-        moons: [
-          { id: 'titan', name: 'Titan', radius: 0.40, orbitalPeriod: 15.95, tidallyLocked: true },
-          { id: 'enceladus', name: 'Enceladus', radius: 0.04, orbitalPeriod: 1.37, tidallyLocked: true },
-        ],
-        rings: true,
-        habitableZone: false,
-      },
-    ],
-  },
-  {
-    id: 'alpha-centauri',
-    name: 'Alpha Centauri',
-    description: 'The closest star system to our Solar System, a triple-star system.',
-    discoveredAt: new Date('1915-01-01'),
-    distanceFromEarth: 4.37,
-    discoverers: [ASTRONOMERS[1], ASTRONOMERS[5]], // Innes, Anglada-Escudé (*-* multiple discoverers)
-    stars: [
-      {
-        id: 'alpha-centauri-a',
-        name: 'Alpha Centauri A',
-        type: STAR_TYPES[1],
-        mass: 1.1,
-        radius: 1.22,
-        luminosity: 1.52,
-        constellation: CONSTELLATIONS[4], // Centaurus (*-1 single constellation)
-      },
-      {
-        id: 'alpha-centauri-b',
-        name: 'Alpha Centauri B',
-        type: STAR_TYPES[0], // Orange dwarf (using red for simplicity)
-        mass: 0.9,
-        radius: 0.86,
-        luminosity: 0.5,
-        constellation: CONSTELLATIONS[4], // Centaurus
-      },
-      {
-        id: 'proxima-centauri',
-        name: 'Proxima Centauri',
-        type: STAR_TYPES[0], // Red Dwarf
-        mass: 0.12,
-        radius: 0.15,
-        luminosity: 0.0017,
-        constellation: CONSTELLATIONS[4], // Centaurus
-      }
-    ],
-    planets: [
-      {
-        id: 'proxima-b',
-        name: 'Proxima Centauri b',
-        type: PLANET_TYPES[0],
-        orbitsStarId: 'proxima-centauri',
-        distanceFromStar: 0.05,
-        orbitalPeriod: 11.2,
-        radius: 1.1,
-        mass: 1.27,
-        atmosphere: null, // Unknown
-        moons: [],
-        rings: false,
-        habitableZone: true,
-      },
-    ],
-  },
-  {
-    id: 'trappist-1',
-    name: 'TRAPPIST-1',
-    description: 'An ultra-cool red dwarf with seven Earth-sized planets, three in habitable zone.',
-    discoveredAt: new Date('2016-05-02'),
-    distanceFromEarth: 39.6,
-    discoverers: [ASTRONOMERS[2], ASTRONOMERS[3], ASTRONOMERS[4]], // Gillon, Delrez, Triaud (*-* team discovery)
-    stars: [
-      {
-        id: 'trappist-1-star',
-        name: 'TRAPPIST-1',
-        type: STAR_TYPES[0], // Red Dwarf
-        mass: 0.089,
-        radius: 0.12,
-        luminosity: 0.00052,
-        constellation: CONSTELLATIONS[5], // Aquarius
-      }
-    ],
-    planets: [
-      {
-        id: 'trappist-1b',
-        name: 'TRAPPIST-1b',
-        type: PLANET_TYPES[0],
-        orbitsStarId: 'trappist-1-star',
-        distanceFromStar: 0.011,
-        orbitalPeriod: 1.51,
-        radius: 1.12,
-        mass: 1.02,
-        atmosphere: null,
-        moons: [],
-        rings: false,
-        habitableZone: false,
-      },
-      {
-        id: 'trappist-1e',
-        name: 'TRAPPIST-1e',
-        type: PLANET_TYPES[0],
-        orbitsStarId: 'trappist-1-star',
-        distanceFromStar: 0.029,
-        orbitalPeriod: 6.1,
-        radius: 0.92,
-        mass: 0.77,
-        atmosphere: null,
-        moons: [],
-        rings: false,
-        habitableZone: true, // In habitable zone!
-      },
-    ],
-  },
-];
+// Note: MOCK_STAR_SYSTEMS removed - data now loaded from json-server via StarSystemRepository
+

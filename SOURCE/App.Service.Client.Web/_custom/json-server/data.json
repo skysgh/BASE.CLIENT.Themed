@@ -1766,10 +1766,141 @@
       "description": "etc..."
     },
     {
-      "id": "00000000-0000-0000-0000-000000000003",
-      "categoryFk": "00000000-0000-0000-0000-000000000002",
-      "title": "THe solution's system(s) MUST..etc.",
-      "description": "etc..."
+          "id": "00000000-0000-0000-0000-000000000003",
+          "categoryFk": "00000000-0000-0000-0000-000000000002",
+          "title": "THe solution's system(s) MUST..etc.",
+          "description": "etc..."
+        }
+      ],
+      "app_astronomy_StarSystems": [
+        {
+          "id": "sol",
+          "name": "Solar System",
+          "description": "Our home star system, located in the Orion Arm of the Milky Way.",
+          "distanceLightYears": 0,
+          "discoveryDate": "1543-01-01T00:00:00.000Z",
+          "discoveredBy": "copernicus",
+          "starType": "yellow-dwarf",
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "alpha-centauri",
+          "name": "Alpha Centauri",
+          "description": "The closest star system to our Solar System, a triple-star system.",
+          "distanceLightYears": 4.37,
+          "discoveryDate": "1839-01-01T00:00:00.000Z",
+          "discoveredBy": "innes",
+          "starType": "yellow-dwarf",
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "trappist-1",
+          "name": "TRAPPIST-1",
+          "description": "An ultra-cool red dwarf star with seven Earth-sized planets.",
+          "distanceLightYears": 39.6,
+          "discoveryDate": "2016-05-02T00:00:00.000Z",
+          "discoveredBy": "gillon",
+          "starType": "red-dwarf",
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        }
+      ],
+      "app_astronomy_Planets": [
+        {
+          "id": "earth",
+          "starSystemId": "sol",
+          "name": "Earth",
+          "description": "Our home planet, the only known world with life.",
+          "planetType": "rocky",
+          "distanceFromStar": 1.0,
+          "orbitalPeriodDays": 365.25,
+          "hasAtmosphere": true,
+          "atmosphereType": "nitrogen",
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "mars",
+          "starSystemId": "sol",
+          "name": "Mars",
+          "description": "The Red Planet, target of human exploration.",
+          "planetType": "rocky",
+          "distanceFromStar": 1.52,
+          "orbitalPeriodDays": 687,
+          "hasAtmosphere": true,
+          "atmosphereType": "carbon-dioxide",
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "jupiter",
+          "starSystemId": "sol",
+          "name": "Jupiter",
+          "description": "The largest planet in our solar system.",
+          "planetType": "gas-giant",
+          "distanceFromStar": 5.2,
+          "orbitalPeriodDays": 4333,
+          "hasAtmosphere": true,
+          "atmosphereType": "hydrogen",
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "proxima-b",
+          "starSystemId": "alpha-centauri",
+          "name": "Proxima Centauri b",
+          "description": "An exoplanet orbiting in the habitable zone of Proxima Centauri.",
+          "planetType": "rocky",
+          "distanceFromStar": 0.05,
+          "orbitalPeriodDays": 11.2,
+          "hasAtmosphere": null,
+          "atmosphereType": null,
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "trappist-1e",
+          "starSystemId": "trappist-1",
+          "name": "TRAPPIST-1e",
+          "description": "Most promising potentially habitable TRAPPIST-1 planet.",
+          "planetType": "rocky",
+          "distanceFromStar": 0.029,
+          "orbitalPeriodDays": 6.1,
+          "hasAtmosphere": null,
+          "atmosphereType": null,
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        }
+      ],
+      "app_astronomy_Astronomers": [
+        {
+          "id": "copernicus",
+          "name": "Nicolaus Copernicus",
+          "affiliation": "University of Kraków",
+          "country": "Poland",
+          "specialization": "Heliocentrism",
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "innes",
+          "name": "Robert Innes",
+          "affiliation": "Union Observatory",
+          "country": "South Africa",
+          "specialization": "Double stars",
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        },
+        {
+          "id": "gillon",
+          "name": "Michaël Gillon",
+          "affiliation": "University of Liège",
+          "country": "Belgium",
+          "specialization": "Exoplanets",
+          "createdUtc": "2024-01-01T00:00:00.000Z",
+          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+        }
+      ]
     }
-  ]
-}
