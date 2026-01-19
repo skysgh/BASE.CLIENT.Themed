@@ -864,10 +864,12 @@ export class BrowseViewComponent implements OnChanges {
   }
   
   onFiltersChange(filters: FilterCriteria[]): void {
+    this.filters = filters;  // Update local state
     this.filtersChange.emit(filters);
   }
   
   onSortsChange(sorts: SortCriteria[]): void {
+    this.sorts = sorts;  // Update local state
     this.sortsChange.emit(sorts);
   }
   
@@ -887,6 +889,7 @@ export class BrowseViewComponent implements OnChanges {
   }
   
   onViewModeChange(mode: ViewMode): void {
+    this.viewMode = mode;  // Update local state
     this.viewModeChange.emit(mode);
   }
   
@@ -895,6 +898,8 @@ export class BrowseViewComponent implements OnChanges {
   }
   
   onChartDefinitionChange(definition: ChartDefinition): void {
+    this.selectedChartId = definition.id;  // Update local state
+    this.viewMode = 'chart';
     this.chartDefinitionChange.emit(definition);
   }
   
