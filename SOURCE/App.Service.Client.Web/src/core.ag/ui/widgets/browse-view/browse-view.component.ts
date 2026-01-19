@@ -348,6 +348,7 @@ export interface CardClickEvent {
             <app-responsive-editor-host
               [title]="'Configure View'"
               [isOpen]="isOptionsOpen"
+              [config]="flyoutConfig"
               (closed)="closeOptions()"
               (saved)="applyOptions()">
       
@@ -413,6 +414,18 @@ export class BrowseViewComponent implements OnChanges {
     { id: 'table' as ViewMode, icon: 'bx bx-table', label: 'Table' },
     { id: 'list' as ViewMode, icon: 'bx bx-list-ul', label: 'List' },
   ];
+  
+  /** 
+   * Configuration for the flyout panel
+   * Always uses panel mode (never route mode) since we handle mobile inline
+   */
+  flyoutConfig = {
+    panelWidth: '360px',
+    panelPosition: 'end' as const,
+    showBackdrop: true,
+    closeOnBackdrop: true,
+    routeModeBreakpoint: undefined,  // Never use route mode - always panel
+  };
 
   // ═══════════════════════════════════════════════════════════════════
   // Lifecycle

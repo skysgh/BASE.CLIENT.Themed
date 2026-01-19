@@ -186,7 +186,13 @@ export class ResponsiveEditorHostComponent implements OnChanges, OnDestroy, Afte
   }
 
   private shouldUseRouteMode(): boolean {
-    const threshold = this.mergedConfig.routeModeBreakpoint || 'mobile';
+    const threshold = this.mergedConfig.routeModeBreakpoint;
+    
+    // If no threshold specified or no mobileRoute, never use route mode
+    if (!threshold || !this.mobileRoute || this.mobileRoute.length === 0) {
+      return false;
+    }
+    
     const current = this.breakpointService.current;
     
     if (threshold === 'mobile') {
