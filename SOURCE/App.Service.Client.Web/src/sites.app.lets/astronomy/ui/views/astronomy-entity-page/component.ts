@@ -67,7 +67,6 @@ const ENTITY_SCHEMAS: Record<string, EntitySchema> = {
           [data]="data()"
           [loading]="loading()"
           [totalCount]="totalCount()"
-          [parentContext]="parentContext()"
           (create)="onCreate($event)"
           (update)="onUpdate($event)"
           (delete)="onDelete($event)"
