@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 // Schema and query models
 import { BrowseViewSchema, ViewMode, SchemaFieldDefinition } from './browse-view-schema.model';
 import { FilterCriteria, SortCriteria, FieldDefinition } from '../../../../core/models/query/query-criteria.model';
+import { ChartDefinition } from '../../../../core/models/query/chart-definition.model';
 
 // Child panel components
 import { BrowseFilterPanelComponent } from './browse-filter-panel.component';
@@ -65,11 +66,11 @@ import { BrowseDisplayPanelComponent } from './browse-display-panel.component';
       <!-- Display Panel -->
       @if (showDisplay && schema?.display?.enabled !== false) {
         <app-browse-display-panel
-          [availableModes]="availableModes"
-          [currentMode]="viewMode"
-          [expanded]="displayExpanded"
-          (modeChange)="onViewModeChange($event)"
-          (expandedChange)="displayExpanded = $event">
+          [viewMode]="viewMode"
+          [chartDefinitions]="chartDefinitions"
+          [selectedChartId]="selectedChartId"
+          (viewModeChange)="onViewModeChange($event)"
+          (chartDefinitionChange)="onChartDefinitionChange($event)">
         </app-browse-display-panel>
       }
 
@@ -117,6 +118,12 @@ export class BrowseViewOptionsPanelComponent {
   /** Current view mode */
   @Input() viewMode: ViewMode = 'tiles';
 
+  /** Chart definitions for chart view */
+  @Input() chartDefinitions: ChartDefinition[] = [];
+
+  /** Selected chart ID */
+  @Input() selectedChartId: string = '';
+
   /** Show filter panel */
   @Input() showFilter = true;
 
@@ -141,6 +148,9 @@ export class BrowseViewOptionsPanelComponent {
 
   /** View mode changed */
   @Output() viewModeChange = new EventEmitter<ViewMode>();
+
+  /** Chart definition changed */
+  @Output() chartDefinitionChange = new EventEmitter<ChartDefinition>();
 
   /** Apply button clicked (flyout mode) */
   @Output() apply = new EventEmitter<void>();
@@ -182,6 +192,10 @@ export class BrowseViewOptionsPanelComponent {
 
   onViewModeChange(mode: ViewMode): void {
     this.viewModeChange.emit(mode);
+  }
+
+  onChartDefinitionChange(chart: ChartDefinition): void {
+    this.chartDefinitionChange.emit(chart);
   }
 
   onApply(): void {
