@@ -108,7 +108,8 @@ template: `
       [iconBackground]="iconBackground()"
       [iconClass]="iconClass()"
       [showBack]="mode() !== 'browse'"
-      [backFallback]="backFallback">
+      [backFallback]="backFallback"
+      (backClick)="backToBrowse()">
       <ng-container actions>
         @switch (mode()) {
           @case ('browse') {

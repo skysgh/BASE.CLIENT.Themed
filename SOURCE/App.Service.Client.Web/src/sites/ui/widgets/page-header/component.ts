@@ -10,7 +10,7 @@
  * - Font icon class: icon="bx-trash" (BoxIcons) or icon="ri-delete-bin-line" (RemixIcons)
  * - Image URL: iconUrl="/assets/icons/custom.svg"
  */
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationService } from '../../../../core/services/navigation.service';
 
@@ -163,6 +163,13 @@ export class PageHeaderComponent {
   /** Fallback route if no history (passed to NavigationService.back()) */
   @Input() backFallback = 'system/hub';
 
+  /** 
+   * Emitted when back button is clicked.
+   * If a handler is attached, it takes precedence over default navigation.
+   * Use this for in-component mode changes (e.g., detail → browse within same page)
+   */
+  @Output() backClick = new EventEmitter<void>();
+
   /**
    * Get the full icon class string
    * Handles different icon font libraries
@@ -186,9 +193,14 @@ export class PageHeaderComponent {
   }
 
   /**
-   * Navigate back using smart navigation
-   */
-  goBack(): void {
-    this.navService.back(this.backFallback);
+     * Navigate back using smart navigation
+     * If backClick has observers, emit event instead of navigating
+     */
+    goBack(): void {
+      if (this.backClick.observed) {
+        this.backClick.emit();
+      } else {
+        this.navService.back(this.backFallback);
+      }
+    }
   }
-}
