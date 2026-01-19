@@ -44,6 +44,9 @@ import { CommonModule } from '@angular/common';
 import { EntityBrowseComponent, EntityBrowseItemEvent, EntityBrowseActionEvent, EntityBrowseBatchEvent } from '../entity-browse';
 import { DynamicFormComponent, DynamicFormSubmitEvent, DynamicFormMode } from '../dynamic-form';
 
+// Standard page framing
+import { PageHeaderComponent } from '../../../../sites/ui/widgets/page-header';
+
 // Schema imports
 import { EntitySchema } from '../../../../core/models/schema/entity-schema.model';
 
@@ -87,63 +90,58 @@ export interface CrudPageState {
 // ═══════════════════════════════════════════════════════════════════
 
 @Component({
-  selector: 'app-entity-crud-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    EntityBrowseComponent,
-    DynamicFormComponent,
-  ],
-  template: `
-    <div class="entity-crud-page">
-      <!-- Page Header -->
-      <div class="entity-crud-page__header d-flex justify-content-between align-items-center mb-4">
-        <div class="entity-crud-page__title">
-          <h4 class="mb-1">{{ pageTitle() }}</h4>
-          @if (pageDescription()) {
-            <p class="text-muted mb-0">{{ pageDescription() }}</p>
-          }
-        </div>
-        <div class="entity-crud-page__actions d-flex gap-2">
-          @switch (mode()) {
-            @case ('browse') {
-              @if (showAddButton) {
-                <button class="btn btn-primary" (click)="startAdd()">
-                  <i class="ri-add-line me-1"></i>
-                  Add {{ entityName() }}
-                </button>
-              }
-            }
-            @case ('add') {
-              <!-- Actions handled by form -->
-            }
-            @case ('edit') {
-              <button class="btn btn-outline-secondary" (click)="backToBrowse()">
-                <i class="ri-arrow-left-line me-1"></i>
-                Back to List
+selector: 'app-entity-crud-page',
+standalone: true,
+imports: [
+  CommonModule,
+  EntityBrowseComponent,
+  DynamicFormComponent,
+  PageHeaderComponent,
+],
+template: `
+  <div class="entity-crud-page">
+    <!-- Page Header - Using standard PageHeaderComponent -->
+    <app-page-header
+      [title]="pageTitle()"
+      [subtitle]="pageDescription()"
+      [icon]="entitySchema?.icon || 'bx-data'"
+      [iconBackground]="iconBackground()"
+      [iconClass]="iconClass()"
+      [showBack]="mode() !== 'browse'"
+      [backFallback]="backFallback">
+      <ng-container actions>
+        @switch (mode()) {
+          @case ('browse') {
+            @if (showAddButton) {
+              <button class="btn btn-primary" (click)="startAdd()">
+                <i class="ri-add-line me-1"></i>
+                Add {{ entityName() }}
               </button>
             }
-            @case ('detail') {
-              <button class="btn btn-outline-secondary" (click)="backToBrowse()">
-                <i class="ri-arrow-left-line me-1"></i>
-                Back to List
+          }
+          @case ('add') {
+            <!-- Actions handled by form -->
+          }
+          @case ('edit') {
+            <!-- Back handled by PageHeader -->
+          }
+          @case ('detail') {
+            @if (showEditButton) {
+              <button class="btn btn-primary" (click)="startEdit()">
+                <i class="ri-edit-line me-1"></i>
+                Edit
               </button>
-              @if (showEditButton) {
-                <button class="btn btn-primary" (click)="startEdit()">
-                  <i class="ri-edit-line me-1"></i>
-                  Edit
-                </button>
-              }
-              @if (showDeleteButton) {
-                <button class="btn btn-danger" (click)="confirmDelete()">
-                  <i class="ri-delete-bin-line me-1"></i>
-                  Delete
-                </button>
-              }
+            }
+            @if (showDeleteButton) {
+              <button class="btn btn-danger" (click)="confirmDelete()">
+                <i class="ri-delete-bin-line me-1"></i>
+                Delete
+              </button>
             }
           }
-        </div>
-      </div>
+        }
+      </ng-container>
+    </app-page-header>
 
       <!-- Content Area -->
       <div class="entity-crud-page__content">
@@ -343,6 +341,9 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
   /** Custom page title (overrides schema) */
   @Input() customTitle?: string;
 
+  /** Fallback route when back is clicked with no history */
+  @Input() backFallback = 'system/hub';
+
   // ─────────────────────────────────────────────────────────────────
   // Outputs
   // ─────────────────────────────────────────────────────────────────
@@ -412,6 +413,31 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
       return this.entitySchema?.description;
     }
     return undefined;
+  });
+
+  // Icon background class based on entity color
+  iconBackground = computed(() => {
+    const color = this.entitySchema?.color;
+    if (!color) return 'bg-secondary-subtle';
+    // Map common colors to Bootstrap subtle backgrounds
+    if (color.includes('f7b') || color.includes('warning') || color.includes('ffc')) return 'bg-warning-subtle';
+    if (color.includes('299') || color.includes('0d6') || color.includes('info')) return 'bg-info-subtle';
+    if (color.includes('405') || color.includes('primary') || color.includes('0d6')) return 'bg-primary-subtle';
+    if (color.includes('dc3') || color.includes('danger')) return 'bg-danger-subtle';
+    if (color.includes('198') || color.includes('success')) return 'bg-success-subtle';
+    return 'bg-secondary-subtle';
+  });
+
+  // Icon color class based on entity color
+  iconClass = computed(() => {
+    const color = this.entitySchema?.color;
+    if (!color) return 'text-secondary';
+    if (color.includes('f7b') || color.includes('warning') || color.includes('ffc')) return 'text-warning';
+    if (color.includes('299') || color.includes('0d6') || color.includes('info')) return 'text-info';
+    if (color.includes('405') || color.includes('primary') || color.includes('0d6')) return 'text-primary';
+    if (color.includes('dc3') || color.includes('danger')) return 'text-danger';
+    if (color.includes('198') || color.includes('success')) return 'text-success';
+    return 'text-secondary';
   });
 
   // ─────────────────────────────────────────────────────────────────
