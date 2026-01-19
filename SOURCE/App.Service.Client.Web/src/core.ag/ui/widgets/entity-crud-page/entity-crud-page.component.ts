@@ -225,34 +225,16 @@ template: `
 
           <!-- Detail Mode -->
           @case ('detail') {
-            <div class="card">
-              <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title mb-0">{{ entityName() }} Details</h5>
-                <div class="d-flex gap-2">
-                  @if (showEditButton) {
-                    <button class="btn btn-sm btn-primary" (click)="startEdit()">
-                      <i class="ri-edit-line me-1"></i>
-                      Edit
-                    </button>
+            <app-dynamic-form
+              [entitySchema]="entitySchema"
+              [mode]="'detail'"
+                      [data]="selectedItem()"
+                      [showHeader]="false"
+                      [showActions]="false">
+                    </app-dynamic-form>
                   }
-                  <button class="btn btn-sm btn-ghost-secondary" (click)="backToBrowse()">
-                    <i class="ri-close-line"></i>
-                  </button>
-                </div>
+                }
               </div>
-              <div class="card-body">
-                <app-dynamic-form
-                  [entitySchema]="entitySchema"
-                  [mode]="'detail'"
-                  [data]="selectedItem()"
-                  [showHeader]="false"
-                  [showActions]="false">
-                </app-dynamic-form>
-              </div>
-            </div>
-          }
-        }
-      </div>
 
       <!-- Delete Confirmation Modal -->
       @if (showDeleteConfirm()) {
