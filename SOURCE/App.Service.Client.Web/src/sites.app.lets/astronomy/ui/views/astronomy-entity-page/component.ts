@@ -34,6 +34,7 @@ import {
   CrudDeleteEvent,
   CrudPageState,
   CrudPageMode,
+  ChildEntityConfig,
 } from '../../../../../core.ag/ui/widgets/entity-crud-page';
 
 // Schemas
@@ -48,6 +49,7 @@ import {
 import { ToastService } from '../../../../../core/services/toast.service';
 import { SystemDiagnosticsTraceService } from '../../../../../core/services/system.diagnostics-trace.service';
 import { AstronomyService } from '../../../services/astronomy.service';
+import { Planet } from '../../../models';
 
 // Entity type map
 const ENTITY_SCHEMAS: Record<string, EntitySchema> = {
@@ -83,11 +85,13 @@ const ENTITY_ROUTES: Record<string, string> = {
         [initialSelectedId]="selectedId()"
         [useRouterNavigation]="true"
         [routeBasePath]="routeBasePath()"
+        [childEntities]="childEntities()"
         (create)="onCreate($event)"
         (update)="onUpdate($event)"
         (delete)="onDelete($event)"
         (loadData)="onLoadData($event)"
-        (stateChange)="onStateChange($event)">
+        (stateChange)="onStateChange($event)"
+        (childAction)="onChildAction($event)">
       </app-entity-crud-page>
     } @else {
       <div class="alert alert-warning">
@@ -134,6 +138,46 @@ export class AstronomyEntityPageComponent implements OnInit, OnDestroy {
   data = signal<any[]>([]);
   loading = signal(false);
   totalCount = signal(0);
+  
+  // Child entities for detail view (planets within a star system)
+  private _planets = signal<Planet[]>([]);
+  
+  // Child entities configuration - computed based on entity type and loaded data
+  childEntities = computed<ChildEntityConfig[]>(() => {
+    const type = this.entityType();
+    const mode = this.initialMode();
+    const id = this.selectedId();
+    
+    // Only show child entities in detail mode for star systems
+    if (type !== 'starSystem' || mode !== 'detail' || !id) {
+      return [];
+    }
+    
+    const planets = this._planets();
+    
+    return [{
+      id: 'planets',
+      title: 'Planets',
+      icon: 'ri-earth-line',
+      foreignKey: 'starSystemId',
+      columns: [
+        { field: 'name', label: 'Name' },
+        { field: 'type', label: 'Type' },
+        { field: 'distanceFromStar', label: 'Distance (AU)' },
+        { field: 'orbitalPeriod', label: 'Orbital Period (days)' },
+      ],
+      data: planets.map(p => ({
+        id: p.id,
+        name: p.name,
+        type: p.type?.name || 'Unknown',
+        distanceFromStar: p.distanceFromStar,
+        orbitalPeriod: p.orbitalPeriod,
+      })),
+      canAdd: true,
+      addLabel: 'Add Planet',
+      detailRoute: '/apps/astronomy/planets-v2',
+    }];
+  });
 
   constructor() {
     // Sync data from service based on entity type
@@ -144,6 +188,17 @@ export class AstronomyEntityPageComponent implements OnInit, OnDestroy {
         this.totalCount.set(this.astronomyService.starSystems().length);
       }
       this.loading.set(this.astronomyService.loading());
+    });
+    
+    // Load planets when viewing a star system detail
+    effect(() => {
+      const type = this.entityType();
+      const mode = this.initialMode();
+      const id = this.selectedId();
+      
+      if (type === 'starSystem' && mode === 'detail' && id) {
+        this.loadPlanets(id);
+      }
     });
   }
 
@@ -164,32 +219,44 @@ export class AstronomyEntityPageComponent implements OnInit, OnDestroy {
     });
     
     // Load initial data
-    this.loadData();
-  }
+      this.loadData();
+    }
   
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
+    ngOnDestroy(): void {
+      this.destroy$.next();
+      this.destroy$.complete();
+    }
 
-  private loadData(): void {
-    const type = this.entityType();
-    this.loading.set(true);
+    private loadData(): void {
+      const type = this.entityType();
+      this.loading.set(true);
     
-    if (type === 'starSystem') {
-      this.astronomyService.getStarSystems().subscribe({
-        next: () => this.loading.set(false),
-        error: () => {
-          this.loading.set(false);
-          this.toastService.showError('Failed to load star systems');
+      if (type === 'starSystem') {
+        this.astronomyService.getStarSystems().subscribe({
+          next: () => this.loading.set(false),
+          error: () => {
+            this.loading.set(false);
+            this.toastService.showError('Failed to load star systems');
+          }
+        });
+      }
+    }
+  
+    private loadPlanets(starSystemId: string): void {
+      this.astronomyService.getPlanetsInSystem(starSystemId).subscribe({
+        next: (planets) => {
+          this._planets.set(planets);
+          this.diagnostics.info(`Loaded ${planets.length} planets for star system ${starSystemId}`);
+        },
+        error: (err) => {
+          this.diagnostics.error(`Failed to load planets: ${err.message}`);
         }
       });
     }
-  }
 
-  // ─────────────────────────────────────────────────────────────────
-  // CRUD Operations
-  // ─────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────
+    // CRUD Operations
+    // ─────────────────────────────────────────────────────────────────
 
   onCreate(event: CrudCreateEvent): void {
     const type = this.entityType();
@@ -252,11 +319,31 @@ export class AstronomyEntityPageComponent implements OnInit, OnDestroy {
   }
 
   onLoadData(state: CrudPageState): void {
-    this.diagnostics.info(`Load data requested`);
-    this.loadData();
-  }
+      this.diagnostics.info(`Load data requested`);
+      this.loadData();
+    }
 
-  onStateChange(state: CrudPageState): void {
-    // State is managed via URL now, no need to track here
+    onStateChange(state: CrudPageState): void {
+      // State is managed via URL now, no need to track here
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // Child Entity Actions
+    // ─────────────────────────────────────────────────────────────────
+
+    onChildAction(event: { childId: string; action: 'view' | 'add' | 'edit'; itemId?: string; parentId: string }): void {
+      this.diagnostics.info(`Child action: ${JSON.stringify(event)}`);
+    
+      if (event.childId === 'planets') {
+        if (event.action === 'view' && event.itemId) {
+          // Navigate to planet detail
+          this.router.navigate(['/apps/astronomy/planets-v2', event.itemId]);
+        } else if (event.action === 'add') {
+          // Navigate to add planet with parent context
+          this.router.navigate(['/apps/astronomy/planets-v2/new'], {
+            queryParams: { starSystemId: event.parentId }
+          });
+        }
+      }
+    }
   }
-}

@@ -79,6 +79,45 @@ export interface CrudDeleteEvent {
   ids?: string[];
 }
 
+/**
+ * Configuration for a child entity relationship (1-to-many)
+ * Used to display nested tables in detail view
+ */
+export interface ChildEntityConfig<T = Record<string, unknown>> {
+  /** Unique ID for this relationship */
+  id: string;
+  
+  /** Display title (e.g., "Planets") */
+  title: string;
+  
+  /** Icon class */
+  icon?: string;
+  
+  /** Child entity schema (for rendering columns) */
+  schema?: EntitySchema;
+  
+  /** Foreign key field on child pointing to parent */
+  foreignKey: string;
+  
+  /** Columns to display */
+  columns: { field: string; label: string; }[];
+  
+  /** Child data items */
+  data: T[];
+  
+  /** Whether user can add new children */
+  canAdd?: boolean;
+  
+  /** Label for add button */
+  addLabel?: string;
+  
+  /** Route for viewing child detail (template: e.g., '/planets/:id') */
+  detailRoute?: string;
+  
+  /** Route for adding new child (template: e.g., '/planets/new?starSystemId=:parentId') */
+  addRoute?: string;
+}
+
 export interface CrudPageState {
   mode: CrudPageMode;
   selectedId?: string;
@@ -205,17 +244,73 @@ template: `
           }
 
           <!-- Detail Mode -->
-          @case ('detail') {
-            <app-dynamic-form
-              [entitySchema]="entitySchema"
-              [mode]="'detail'"
-                      [data]="selectedItem()"
-                      [showHeader]="false"
-                      [showActions]="false">
-                    </app-dynamic-form>
-                  }
+              @case ('detail') {
+                <app-dynamic-form
+                  [entitySchema]="entitySchema"
+                  [mode]="'detail'"
+                  [data]="selectedItem()"
+                  [showHeader]="false"
+                  [showActions]="false">
+                </app-dynamic-form>
+            
+                <!-- Child Entities (1-to-many relationships) -->
+                @for (child of childEntities; track child.id) {
+                  <div class="card mt-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">
+                        @if (child.icon) {
+                          <i class="{{ child.icon }} me-2"></i>
+                        }
+                        {{ child.title }} ({{ child.data.length }})
+                      </h5>
+                      @if (child.canAdd) {
+                        <button 
+                          type="button" 
+                          class="btn btn-sm btn-primary"
+                          (click)="onChildAdd(child)">
+                          <i class="ri-add-line me-1"></i>
+                          {{ child.addLabel || 'Add' }}
+                        </button>
+                      }
+                    </div>
+                    <div class="card-body p-0">
+                      @if (child.data.length > 0) {
+                        <div class="table-responsive">
+                          <table class="table table-hover mb-0">
+                            <thead>
+                              <tr>
+                                @for (col of child.columns; track col.field) {
+                                  <th>{{ col.label }}</th>
+                                }
+                                <th style="width: 80px;"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @for (item of child.data; track item['id']) {
+                                <tr class="cursor-pointer" (click)="onChildView(child, item)">
+                                  @for (col of child.columns; track col.field) {
+                                    <td>{{ item[col.field] }}</td>
+                                  }
+                                  <td class="text-end">
+                                    <i class="ri-arrow-right-s-line text-muted"></i>
+                                  </td>
+                                </tr>
+                              }
+                            </tbody>
+                          </table>
+                        </div>
+                      } @else {
+                        <div class="text-center py-4">
+                          <i class="{{ child.icon || 'ri-folder-line' }} fs-48 text-muted"></i>
+                          <p class="text-muted mt-2 mb-0">No {{ child.title.toLowerCase() }} yet</p>
+                        </div>
+                      }
+                    </div>
+                  </div>
                 }
-              </div>
+              }
+            }
+          </div>
 
       <!-- Delete Confirmation Modal -->
       @if (showDeleteConfirm()) {
@@ -338,6 +433,12 @@ private router = inject(Router);
   /** Controls layout mode: 'panels' (inline) or 'flyout' (compact with flyout) */
   @Input() controlsLayout: 'panels' | 'flyout' = 'panels';
 
+  /**
+   * Child entity configurations for 1-to-many relationships.
+   * Displayed as sub-tables in detail view.
+   */
+  @Input() childEntities: ChildEntityConfig[] = [];
+
   // ─────────────────────────────────────────────────────────────────
   // Outputs
   // ─────────────────────────────────────────────────────────────────
@@ -359,6 +460,9 @@ private router = inject(Router);
 
   /** State changed (for URL sync) */
   @Output() stateChange = new EventEmitter<CrudPageState>();
+
+  /** Child entity action (view, add, edit) */
+  @Output() childAction = new EventEmitter<{ childId: string; action: 'view' | 'add' | 'edit'; itemId?: string; parentId: string }>();
 
   // ─────────────────────────────────────────────────────────────────
   // Internal State
@@ -777,6 +881,46 @@ private router = inject(Router);
     }
     this._showDeleteConfirm.set(false);
     this.backToBrowse();
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // Child Entity Handlers
+  // ─────────────────────────────────────────────────────────────────
+
+  onChildView(child: ChildEntityConfig, item: Record<string, unknown>): void {
+    const parentId = this._state().selectedId;
+    const itemId = String(item['id'] || item['_id']);
+    
+    if (child.detailRoute && parentId) {
+      // Navigate via router
+      const route = child.detailRoute.replace(':id', itemId);
+      this.router.navigate([route]);
+    } else {
+      // Emit event for parent to handle
+      this.childAction.emit({
+        childId: child.id,
+        action: 'view',
+        itemId,
+        parentId: parentId || '',
+      });
+    }
+  }
+
+  onChildAdd(child: ChildEntityConfig): void {
+    const parentId = this._state().selectedId;
+    
+    if (child.addRoute && parentId) {
+      // Navigate via router
+      const route = child.addRoute.replace(':parentId', parentId);
+      this.router.navigate([route]);
+    } else {
+      // Emit event for parent to handle
+      this.childAction.emit({
+        childId: child.id,
+        action: 'add',
+        parentId: parentId || '',
+      });
+    }
   }
 
   // ─────────────────────────────────────────────────────────────────

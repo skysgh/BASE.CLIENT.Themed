@@ -11,4 +11,5 @@ export {
   CrudUpdateEvent,
   CrudDeleteEvent,
   CrudPageState,
+  ChildEntityConfig,
 } from './entity-crud-page.component';
