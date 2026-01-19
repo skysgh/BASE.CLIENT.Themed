@@ -79,7 +79,7 @@ import { AstronomyService } from '../../../services/astronomy.service';
 
       <!-- Navigation Tiles -->
       <div class="row g-3">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <a routerLink="star-systems" class="nav-tile card h-100">
             <div class="card-body">
               <div class="d-flex align-items-center">
@@ -88,14 +88,14 @@ import { AstronomyService } from '../../../services/astronomy.service';
                 </div>
                 <div class="flex-grow-1">
                   <h5 class="mb-1">Star Systems</h5>
-                  <p class="text-muted mb-0">Browse star systems and their components</p>
+                  <p class="text-muted mb-0 small">Custom components (legacy)</p>
                 </div>
                 <i class="bx bx-chevron-right text-muted"></i>
               </div>
             </div>
           </a>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <a routerLink="planets" class="nav-tile card h-100">
             <div class="card-body">
               <div class="d-flex align-items-center">
@@ -104,12 +104,64 @@ import { AstronomyService } from '../../../services/astronomy.service';
                 </div>
                 <div class="flex-grow-1">
                   <h5 class="mb-1">Planets</h5>
-                  <p class="text-muted mb-0">Explore all known planets</p>
+                  <p class="text-muted mb-0 small">Custom components (legacy)</p>
                 </div>
                 <i class="bx bx-chevron-right text-muted"></i>
               </div>
             </div>
           </a>
+        </div>
+        <div class="col-md-4">
+          <a routerLink="astronomers" class="nav-tile card h-100 border-primary">
+            <div class="card-body">
+              <div class="d-flex align-items-center">
+                <div class="tile-icon bg-primary-subtle me-3">
+                  <i class="bx bx-user text-primary"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <h5 class="mb-1">Astronomers</h5>
+                  <p class="text-muted mb-0 small">Schema-driven (*-*)</p>
+                </div>
+                <i class="bx bx-chevron-right text-muted"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Schema-Driven V2 Routes (Side by Side Comparison) -->
+      <div class="card mt-4">
+        <div class="card-header bg-success-subtle">
+          <h6 class="mb-0 text-success">
+            <i class="bx bx-code-alt me-2"></i>
+            Schema-Driven Routes (V2 - EntityCrudPageComponent)
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <a routerLink="star-systems-v2" class="nav-tile card h-100 border-success">
+                <div class="card-body py-2">
+                  <div class="d-flex align-items-center">
+                    <i class="bx bx-sun text-warning me-2"></i>
+                    <span>Star Systems V2</span>
+                    <span class="badge bg-success ms-auto">Schema</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-6">
+              <a routerLink="planets-v2" class="nav-tile card h-100 border-success">
+                <div class="card-body py-2">
+                  <div class="d-flex align-items-center">
+                    <i class="bx bx-planet text-info me-2"></i>
+                    <span>Planets V2</span>
+                    <span class="badge bg-success ms-auto">Schema</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 

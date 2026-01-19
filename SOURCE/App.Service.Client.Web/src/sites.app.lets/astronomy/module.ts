@@ -1,14 +1,16 @@
 /**
  * Astronomy Applet Module
  * 
- * Showcase applet demonstrating all relationship types:
- * - 1-* : StarSystem → Stars, Planet → Moons
- * - *-* : Star ↔ Constellation (via junction)
- * - *-1 : Planet → Star (orbits)
- * - 1-1 : Planet → Atmosphere
+ * Showcase applet demonstrating SCHEMA-DRIVEN approach:
+ * - All entities use EntityCrudPageComponent
+ * - BREAD views generated from EntitySchema
+ * - Hub provides navigation tiles
  * 
- * This is NOT a commercial product - purely for framework demonstration.
- * Using celestial bodies ensures it won't conflict with real business domains.
+ * Relationship types demonstrated:
+ * - 1-* : StarSystem → Stars, Planet → Moons
+ * - *-* : StarSystem ↔ Astronomer (discovery credits)
+ * - *-1 : Planet → Star (orbits), Star → Constellation
+ * - 1-1 : Planet → Atmosphere
  * 
  * Route: /apps/astronomy
  */
@@ -26,8 +28,11 @@ import { CoreFormlyModule } from '../../core/forms/formly.module';
 // Settings registry
 import { AppletSettingsRegistryService } from '../../sites.app.parts/settings/services/applet-settings-registry.service';
 
-// Local components (will be created)
+// Local components
 import { AstronomyHubComponent } from './ui/views/astronomy-hub/component';
+import { AstronomyEntityPageComponent } from './ui/views/astronomy-entity-page/component';
+
+// Legacy custom components (to be deprecated)
 import { StarSystemBrowseComponent } from './modules/star-system/ui/views/browse/component';
 import { StarSystemReadComponent } from './modules/star-system/ui/views/read/component';
 import { PlanetBrowseComponent } from './modules/planet/ui/views/browse/component';
@@ -48,6 +53,8 @@ import { AstronomyService } from './services/astronomy.service';
     BrowseViewComponent,
     // Standalone components
     AstronomyHubComponent,
+    AstronomyEntityPageComponent,
+    // Legacy components (keep for now, will be removed)
     StarSystemBrowseComponent,
     StarSystemReadComponent,
     PlanetBrowseComponent,
@@ -57,11 +64,40 @@ import { AstronomyService } from './services/astronomy.service';
       // Hub - landing page
       { path: '', component: AstronomyHubComponent },
       
-      // Star Systems (aggregate root)
+      // ================================================================
+      // SCHEMA-DRIVEN ROUTES (NEW - using EntityCrudPageComponent)
+      // ================================================================
+      
+      // Star Systems - schema-driven BREAD
+      { 
+        path: 'star-systems-v2', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'starSystem' }
+      },
+      
+      // Planets - schema-driven BREAD
+      { 
+        path: 'planets-v2', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'planet' }
+      },
+      
+      // Astronomers - schema-driven BREAD
+      { 
+        path: 'astronomers', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'astronomer' }
+      },
+      
+      // ================================================================
+      // LEGACY ROUTES (custom components - to be deprecated)
+      // ================================================================
+      
+      // Star Systems (custom components)
       { path: 'star-systems', component: StarSystemBrowseComponent },
       { path: 'star-systems/:id', component: StarSystemReadComponent },
       
-      // Planets (can browse all or within a star system)
+      // Planets (custom components)
       { path: 'planets', component: PlanetBrowseComponent },
       { path: 'planets/:id', component: PlanetReadComponent },
       { path: 'star-systems/:systemId/planets', component: PlanetBrowseComponent },
