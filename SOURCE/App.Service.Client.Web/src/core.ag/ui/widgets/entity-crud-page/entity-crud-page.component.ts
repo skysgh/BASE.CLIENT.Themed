@@ -310,7 +310,14 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
   // ─────────────────────────────────────────────────────────────────
 
   /** Data items to display */
-  @Input() data: T[] = [];
+  @Input() 
+  set data(value: T[]) {
+    this._data.set(value);
+  }
+  get data(): T[] {
+    return this._data();
+  }
+  private _data = signal<T[]>([]);
 
   /** Loading state */
   @Input() loading = false;
@@ -455,7 +462,7 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
    * Applies search query, filters, and sorts to the input data
    */
   filteredAndSortedData = computed(() => {
-    let result = [...this.data];
+    let result = [...this._data()];  // Use signal for reactivity
     const state = this._state();
     
     // Apply search query

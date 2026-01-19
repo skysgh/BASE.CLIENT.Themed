@@ -135,49 +135,78 @@ export interface CardClickEvent {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="browse-view">
-      <!-- Row 1: Icon + Current View Name + Search -->
-      <div class="browse-toolbar d-flex align-items-center gap-2 mb-2">
-        <!-- View Selector Button (icon + current view name) -->
-        @if (entityType) {
-          <button 
-            type="button"
-            class="btn btn-light d-flex align-items-center gap-2"
-            [class.active]="viewPanelMode !== 'collapsed'"
-            (click)="toggleViewPanel()">
-            <i class="bx bx-layer text-primary"></i>
-            <span class="fst-italic text-muted">{{ currentViewName }}</span>
-          </button>
-        }
+  <div class="browse-view">
+    <!-- Row 1: Search + Configure (flyout mode puts configure here) -->
+    <div class="browse-toolbar d-flex align-items-center gap-2 mb-2">
+      <!-- View Selector Button (icon + current view name) - only when entityType set -->
+      @if (entityType && controlsLayout === 'panels') {
+        <button 
+          type="button"
+          class="btn btn-light d-flex align-items-center gap-2"
+          [class.active]="viewPanelMode !== 'collapsed'"
+          (click)="toggleViewPanel()">
+          <i class="bx bx-layer text-primary"></i>
+          <span class="fst-italic text-muted">{{ currentViewName }}</span>
+        </button>
+      }
         
-        <!-- Search -->
-        @if (showSearch) {
-          <div class="flex-grow-1">
-            <app-browse-search-panel
-              [query]="searchQuery"
-              [placeholder]="searchPlaceholder"
-              [entityIcon]="searchEntityIcon"
-              [hint]="searchHint"
-              (queryChange)="onSearchChange($event)"
-              (search)="onSearchSubmit($event)"
-              (clear)="onSearchClear()">
-            </app-browse-search-panel>
-          </div>
-        }
-      </div>
+      <!-- Search -->
+      @if (showSearch) {
+        <div class="flex-grow-1">
+          <app-browse-search-panel
+            [query]="searchQuery"
+            [placeholder]="searchPlaceholder"
+            [entityIcon]="searchEntityIcon"
+            [hint]="searchHint"
+            (queryChange)="onSearchChange($event)"
+            (search)="onSearchSubmit($event)"
+            (clear)="onSearchClear()">
+          </app-browse-search-panel>
+        </div>
+      }
+        
+      <!-- Configure View button (flyout mode only - on same line as search) -->
+      @if (controlsLayout === 'flyout' && viewPanelMode === 'collapsed') {
+        <button 
+          type="button" 
+          class="btn btn-soft-secondary btn-sm d-flex align-items-center gap-2 flex-shrink-0"
+          (click)="openOptions()">
+          <i class="bx bx-slider-alt"></i>
+          <span class="d-none d-sm-inline">Configure</span>
+          @if (filters.length > 0 || sorts.length > 0) {
+            <span class="badge bg-primary">{{ filters.length + sorts.length }}</span>
+          }
+        </button>
+          
+        <!-- View mode buttons -->
+        <div class="d-flex gap-1 flex-shrink-0">
+          @for (mode of viewModeOptions; track mode.id) {
+            <button 
+              type="button" 
+              class="btn btn-sm"
+              [class.btn-soft-primary]="viewMode === mode.id"
+              [class.btn-soft-secondary]="viewMode !== mode.id"
+              [title]="mode.label"
+              (click)="onViewModeChange(mode.id)">
+              <i [class]="mode.icon"></i>
+            </button>
+          }
+        </div>
+      }
+    </div>
       
-      <!-- Row 2: View Panel (full width, shows list OR editor) -->
-      @if (viewPanelMode !== 'collapsed') {
-        <div class="view-panel-area mb-2">
-          <app-view-panel
-            [entityType]="entityType!"
-            [currentParams]="currentParams"
-            [filters]="filters"
-            [sorts]="sorts"
-            [viewMode]="viewMode"
-            [fields]="fields"
-            [chartDefinitions]="chartDefinitions"
-            [mode]="viewPanelMode"
+    <!-- Row 2: View Panel (full width, shows list OR editor) -->
+    @if (viewPanelMode !== 'collapsed') {
+      <div class="view-panel-area mb-2">
+        <app-view-panel
+          [entityType]="entityType!"
+          [currentParams]="currentParams"
+          [filters]="filters"
+          [sorts]="sorts"
+          [viewMode]="viewMode"
+          [fields]="fields"
+          [chartDefinitions]="chartDefinitions"
+          [mode]="viewPanelMode"
             (modeChange)="viewPanelMode = $event"
             (viewSelect)="onSavedViewSelect($event)"
             (filtersChange)="onFiltersChange($event); onApply()"
@@ -228,72 +257,41 @@ export interface CardClickEvent {
           </div>
         }
         
-        <!-- Flyout mode: Show Configure button + summary -->
-        @if (controlsLayout === 'flyout') {
-          <div class="browse-flyout-bar d-flex align-items-center gap-2 mb-2">
-            <button 
-              type="button" 
-              class="btn btn-soft-secondary btn-sm d-flex align-items-center gap-2"
-              (click)="openOptions()">
-              <i class="bx bx-slider-alt"></i>
-              <span>Configure View</span>
-              @if (filters.length > 0 || sorts.length > 0) {
-                <span class="badge bg-primary ms-1">{{ filters.length + sorts.length }}</span>
-              }
-            </button>
-            
-            <!-- Quick summary of active filters/sorts -->
-            @if (filters.length > 0 || sorts.length > 0) {
-              <div class="active-criteria text-muted small">
-                @if (filters.length > 0) {
-                  <span class="me-2">
-                    <i class="bx bx-filter-alt"></i> {{ filters.length }} filter{{ filters.length > 1 ? 's' : '' }}
-                  </span>
-                }
-                @if (sorts.length > 0) {
-                  <span>
-                    <i class="bx bx-sort-alt-2"></i> {{ sorts.length }} sort{{ sorts.length > 1 ? 's' : '' }}
-                  </span>
-                }
-              </div>
+        <!-- Flyout mode: Show active criteria summary (optional) -->
+        @if (controlsLayout === 'flyout' && (filters.length > 0 || sorts.length > 0)) {
+          <div class="active-criteria-summary text-muted small mb-2">
+            @if (filters.length > 0) {
+              <span class="me-3">
+                <i class="bx bx-filter-alt"></i> {{ filters.length }} filter{{ filters.length > 1 ? 's' : '' }} applied
+              </span>
             }
-            
-            <!-- View mode buttons (always visible in flyout mode) -->
-            <div class="ms-auto d-flex gap-1">
-              @for (mode of viewModeOptions; track mode.id) {
-                <button 
-                  type="button" 
-                  class="btn btn-sm"
-                  [class.btn-soft-primary]="viewMode === mode.id"
-                  [class.btn-soft-secondary]="viewMode !== mode.id"
-                  [title]="mode.label"
-                  (click)="onViewModeChange(mode.id)">
-                  <i [class]="mode.icon"></i>
-                </button>
-              }
-            </div>
-          </div>
-        }
-      }
+            @if (sorts.length > 0) {
+              <span>
+                <i class="bx bx-sort-alt-2"></i> Sorted by {{ sorts[0].field }}
+                        </span>
+                      }
+                    </div>
+                  }
+                }
       
-      <!-- Results Count -->
-      @if (!loading && cards.length > 0) {
-        <div class="results-count text-muted small mb-1">
-          {{ totalCount }} items
-        </div>
-      }
+                <!-- Results Count -->
+                @if (!loading && cards.length > 0) {
+                  <div class="results-count text-muted small mb-1">
+                    {{ totalCount }} items
+                  </div>
+                }
       
-      <!-- Results Area -->
-      <div class="browse-results">
-        @if (loading) {
-          <div class="text-center py-5">
-            <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
-        }
+                <!-- Results Area -->
+                <div class="browse-results">
+                  @if (loading) {
+                    <div class="text-center py-5">
+                      <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </div>
+                  }
 
-        @if (!loading && cards.length === 0) {
+                  @if (!loading && cards.length === 0) {
           <div class="text-center py-5">
             <i [class]="emptyIcon + ' display-1 text-muted'"></i>
             <h5 class="mt-3 text-muted">{{ emptyMessage }}</h5>
