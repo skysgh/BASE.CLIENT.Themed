@@ -2,18 +2,20 @@
  * Astronomy Schema-Driven Entity Page
  * 
  * Universal component that renders any Astronomy entity using EntityCrudPageComponent.
- * The entity type is determined by route data.
+ * The entity type, mode, and ID are determined by route.
  * 
  * This replaces custom browse/read/edit/add components for each entity.
  * 
- * ROUTES:
- * - /apps/astronomy/star-systems      → StarSystem CRUD
- * - /apps/astronomy/planets           → Planet CRUD
- * - /apps/astronomy/astronomers       → Astronomer CRUD
+ * URL PATTERNS:
+ * - /apps/astronomy/star-systems-v2           → Browse
+ * - /apps/astronomy/star-systems-v2/new       → Add
+ * - /apps/astronomy/star-systems-v2/:id       → Detail
+ * - /apps/astronomy/star-systems-v2/:id/edit  → Edit
  */
 import {
   Component,
   OnInit,
+  OnDestroy,
   inject,
   signal,
   effect,
@@ -22,6 +24,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 // Core CRUD component
 import {
@@ -30,6 +33,7 @@ import {
   CrudUpdateEvent,
   CrudDeleteEvent,
   CrudPageState,
+  CrudPageMode,
 } from '../../../../../core.ag/ui/widgets/entity-crud-page';
 
 // Schemas
@@ -52,6 +56,13 @@ const ENTITY_SCHEMAS: Record<string, EntitySchema> = {
   'astronomer': ASTRONOMER_ENTITY_SCHEMA,
 };
 
+// Route path map (entity type -> base path)
+const ENTITY_ROUTES: Record<string, string> = {
+  'starSystem': 'star-systems-v2',
+  'planet': 'planets-v2',
+  'astronomer': 'astronomers',
+};
+
 @Component({
   selector: 'app-astronomy-entity-page',
   standalone: true,
@@ -68,6 +79,10 @@ const ENTITY_SCHEMAS: Record<string, EntitySchema> = {
         [loading]="loading()"
         [totalCount]="totalCount()"
         [controlsLayout]="'flyout'"
+        [initialMode]="initialMode()"
+        [initialSelectedId]="selectedId()"
+        [useRouterNavigation]="true"
+        [routeBasePath]="routeBasePath()"
         (create)="onCreate($event)"
         (update)="onUpdate($event)"
         (delete)="onDelete($event)"
@@ -89,29 +104,36 @@ const ENTITY_SCHEMAS: Record<string, EntitySchema> = {
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AstronomyEntityPageComponent implements OnInit {
+export class AstronomyEntityPageComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private diagnostics = inject(SystemDiagnosticsTraceService);
   private toastService = inject(ToastService);
   private astronomyService = inject(AstronomyService);
+  
+  private destroy$ = new Subject<void>();
 
-  // Entity type from route data
+  // Route-derived state
   entityType = signal<string>('');
+  initialMode = signal<CrudPageMode>('browse');
+  selectedId = signal<string | undefined>(undefined);
   
   // Resolved schema based on entity type
   entitySchema = computed(() => {
     const type = this.entityType();
     return type ? ENTITY_SCHEMAS[type] : null;
   });
+  
+  // Base path for router navigation
+  routeBasePath = computed(() => {
+    const type = this.entityType();
+    return type ? `/apps/astronomy/${ENTITY_ROUTES[type]}` : '';
+  });
 
   // Data signals
   data = signal<any[]>([]);
   loading = signal(false);
   totalCount = signal(0);
-
-  // Parent context for embedded browse (e.g., planets within a star system)
-  parentContext = signal<{ entityId: string; id: string } | null>(null);
 
   constructor() {
     // Sync data from service based on entity type
@@ -121,27 +143,33 @@ export class AstronomyEntityPageComponent implements OnInit {
         this.data.set(this.astronomyService.starSystems());
         this.totalCount.set(this.astronomyService.starSystems().length);
       }
-      // Planets and astronomers would need similar getters in the service
       this.loading.set(this.astronomyService.loading());
     });
   }
 
   ngOnInit(): void {
-    // Get entity type from route data
-    const routeData = this.route.snapshot.data;
-    const entityType = routeData['entityType'] || 'starSystem';
-    this.entityType.set(entityType);
-
-    // Check for parent context (e.g., /star-systems/:systemId/planets)
-    const systemId = this.route.snapshot.paramMap.get('systemId');
-    if (systemId) {
-      this.parentContext.set({ entityId: 'starSystem', id: systemId });
-    }
-
-    this.diagnostics.info(`AstronomyEntityPage initialized for: ${entityType}`);
+    // Subscribe to route changes for reactive updates
+    this.route.data.pipe(takeUntil(this.destroy$)).subscribe(data => {
+      const entityType = data['entityType'] || 'starSystem';
+      const mode = data['mode'] || 'browse';
+      this.entityType.set(entityType);
+      this.initialMode.set(mode as CrudPageMode);
+      this.diagnostics.info(`Route data: entityType=${entityType}, mode=${mode}`);
+    });
+    
+    this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe(params => {
+      const id = params.get('id') || undefined;
+      this.selectedId.set(id);
+      this.diagnostics.info(`Route params: id=${id}`);
+    });
     
     // Load initial data
     this.loadData();
+  }
+  
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   private loadData(): void {
@@ -157,7 +185,6 @@ export class AstronomyEntityPageComponent implements OnInit {
         }
       });
     }
-    // Add similar for planets, astronomers
   }
 
   // ─────────────────────────────────────────────────────────────────
@@ -167,34 +194,27 @@ export class AstronomyEntityPageComponent implements OnInit {
   onCreate(event: CrudCreateEvent): void {
     const type = this.entityType();
     this.diagnostics.info(`Creating ${type}`);
-    
-    // TODO: Implement create via service
     this.toastService.showInfo(`Create ${type} - not yet implemented`);
   }
 
   onUpdate(event: CrudUpdateEvent): void {
     const type = this.entityType();
     this.diagnostics.info(`Updating ${type}: ${event.id}`);
-    
-    // TODO: Implement update via service
     this.toastService.showInfo(`Update ${type} - not yet implemented`);
   }
 
   onDelete(event: CrudDeleteEvent): void {
     const type = this.entityType();
     this.diagnostics.info(`Deleting ${type}: ${event.id}`);
-    
-    // TODO: Implement delete via service
     this.toastService.showInfo(`Delete ${type} - not yet implemented`);
   }
 
   onLoadData(state: CrudPageState): void {
-    this.diagnostics.info(`Load data requested with state: ${JSON.stringify(state)}`);
+    this.diagnostics.info(`Load data requested`);
     this.loadData();
   }
 
   onStateChange(state: CrudPageState): void {
-    this.diagnostics.info(`State changed: ${state.mode}`);
-    // Could sync to URL here if needed
+    // State is managed via URL now, no need to track here
   }
 }

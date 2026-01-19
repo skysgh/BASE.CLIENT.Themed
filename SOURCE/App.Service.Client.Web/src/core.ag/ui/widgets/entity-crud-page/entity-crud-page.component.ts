@@ -39,6 +39,7 @@ import {
   computed,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 // Widget imports
 import { EntityBrowseComponent, EntityBrowseItemEvent, EntityBrowseActionEvent, EntityBrowseBatchEvent } from '../entity-browse';
@@ -180,47 +181,27 @@ template: `
 
           <!-- Add Mode -->
           @case ('add') {
-            <div class="card">
-              <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title mb-0">Add New {{ entityName() }}</h5>
-                <button class="btn btn-sm btn-ghost-secondary" (click)="backToBrowse()">
-                  <i class="ri-close-line"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <app-dynamic-form
-                  [entitySchema]="entitySchema"
-                  [mode]="'add'"
-                  [showHeader]="false"
-                  [submitLabel]="'Create ' + entityName()"
-                  (formSubmit)="onFormSubmit($event)"
-                  (formCancel)="backToBrowse()">
-                </app-dynamic-form>
-              </div>
-            </div>
+            <app-dynamic-form
+              [entitySchema]="entitySchema"
+              [mode]="'add'"
+              [showHeader]="false"
+              [submitLabel]="'Create ' + entityName()"
+              (formSubmit)="onFormSubmit($event)"
+              (formCancel)="navigateToBrowse()">
+            </app-dynamic-form>
           }
 
           <!-- Edit Mode -->
           @case ('edit') {
-            <div class="card">
-              <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title mb-0">Edit {{ entityName() }}</h5>
-                <button class="btn btn-sm btn-ghost-secondary" (click)="backToBrowse()">
-                  <i class="ri-close-line"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <app-dynamic-form
-                  [entitySchema]="entitySchema"
-                  [mode]="'edit'"
-                  [data]="selectedItem()"
-                  [showHeader]="false"
-                  [submitLabel]="'Save Changes'"
-                  (formSubmit)="onFormSubmit($event)"
-                  (formCancel)="backToBrowse()">
-                </app-dynamic-form>
-              </div>
-            </div>
+            <app-dynamic-form
+              [entitySchema]="entitySchema"
+              [mode]="'edit'"
+              [data]="selectedItem()"
+              [showHeader]="false"
+              [submitLabel]="'Save Changes'"
+              (formSubmit)="onFormSubmit($event)"
+              (formCancel)="navigateToDetail(state().selectedId!)">
+            </app-dynamic-form>
           }
 
           <!-- Detail Mode -->
@@ -276,9 +257,10 @@ template: `
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<string, unknown>>
-  implements OnInit, OnChanges {
+implements OnInit, OnChanges {
 
-  private navigationService = inject(NavigationService);
+private navigationService = inject(NavigationService);
+private router = inject(Router);
 
   // ─────────────────────────────────────────────────────────────────
   // Inputs - Schema
@@ -320,14 +302,27 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
   /** Show delete button in detail view */
   @Input() showDeleteButton = true;
 
-  /** Initial mode */
+  /** Initial mode (from route or default) */
   @Input() initialMode: CrudPageMode = 'browse';
 
-  /** Initial selected item ID */
+  /** Initial selected item ID (from route :id param) */
   @Input() initialSelectedId?: string;
 
   /** Default page size */
   @Input() defaultPageSize = 10;
+
+  /** 
+   * Use Angular Router for navigation between modes.
+   * When true, mode changes navigate to new URLs instead of updating internal state.
+   * URL patterns: /base, /base/new, /base/:id, /base/:id/edit
+   */
+  @Input() useRouterNavigation = false;
+  
+  /**
+   * Base path for router navigation (e.g., '/apps/astronomy/star-systems-v2')
+   * Required when useRouterNavigation is true.
+   */
+  @Input() routeBasePath = '';
 
   /** Batch actions */
   @Input() batchActions: BatchAction[] = [
@@ -580,40 +575,79 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
   }
 
   // ─────────────────────────────────────────────────────────────────
-  // Mode Navigation
+  // Mode Navigation (URL-based when useRouterNavigation=true)
   // ─────────────────────────────────────────────────────────────────
 
   /**
    * Handle back button click based on current mode
    * - Browse mode: Navigate back (to Hub or previous page)
-   * - Other modes: Go back to browse view
+   * - Other modes: Go back to detail (from edit) or browse
    */
   onBackClick(): void {
     if (this.mode() === 'browse') {
       // In browse mode, navigate back to hub/previous page
       this.navigationService.back(this.backFallback);
+    } else if (this.mode() === 'edit') {
+      // From edit, go back to detail view
+      this.navigateToDetail(this._state().selectedId!);
+    } else if (this.mode() === 'add') {
+      // From add, go back to browse
+      this.navigateToBrowse();
     } else {
-      // In detail/edit/add mode, go back to browse
-      this.backToBrowse();
+      // From detail, go back to browse
+      this.navigateToBrowse();
     }
   }
 
+  /** Navigate to add mode */
   startAdd(): void {
-    this.setMode('add');
-    this._selectedItem.set(undefined);
+    if (this.useRouterNavigation && this.routeBasePath) {
+      this.router.navigate([this.routeBasePath, 'new']);
+    } else {
+      this.setModeInternal('add');
+      this._selectedItem.set(undefined);
+    }
   }
 
+  /** Navigate to edit mode */
   startEdit(): void {
-    this.setMode('edit');
+    const id = this._state().selectedId;
+    if (this.useRouterNavigation && this.routeBasePath && id) {
+      this.router.navigate([this.routeBasePath, id, 'edit']);
+    } else {
+      this.setModeInternal('edit');
+    }
   }
 
+  /** Navigate to detail mode */
+  navigateToDetail(id: string): void {
+    if (this.useRouterNavigation && this.routeBasePath) {
+      this.router.navigate([this.routeBasePath, id]);
+    } else {
+      this._state.update(s => ({ ...s, selectedId: id }));
+      this.loadSelectedItem(id);
+      this.setModeInternal('detail');
+    }
+  }
+
+  /** Navigate to browse mode */
+  navigateToBrowse(): void {
+    if (this.useRouterNavigation && this.routeBasePath) {
+      this.router.navigate([this.routeBasePath]);
+    } else {
+      this.setModeInternal('browse');
+      this._selectedItem.set(undefined);
+      this._state.update(s => ({ ...s, selectedId: undefined }));
+    }
+  }
+
+  /** @deprecated Use navigateToBrowse instead */
   backToBrowse(): void {
-    this.setMode('browse');
-    this._selectedItem.set(undefined);
-    this._state.update(s => ({ ...s, selectedId: undefined }));
+    this.navigateToBrowse();
   }
 
-  private setMode(mode: CrudPageMode): void {
+  /** Internal state update (used when NOT using router navigation) */
+  private setModeInternal(mode: CrudPageMode): void {
     this._state.update(s => ({ ...s, mode }));
     this.modeChange.emit(mode);
     this.stateChange.emit(this._state());
@@ -625,9 +659,8 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
 
   onItemSelect(event: EntityBrowseItemEvent<T>): void {
     const id = String(event.item['id'] || event.item['_id']);
-    this._state.update(s => ({ ...s, selectedId: id }));
     this._selectedItem.set(event.item);
-    this.setMode('detail');
+    this.navigateToDetail(id);
   }
 
   onItemAction(event: EntityBrowseActionEvent<T>): void {
@@ -637,7 +670,11 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
       case 'edit':
         this._state.update(s => ({ ...s, selectedId: id }));
         this._selectedItem.set(event.item);
-        this.setMode('edit');
+        if (this.useRouterNavigation && this.routeBasePath) {
+          this.router.navigate([this.routeBasePath, id, 'edit']);
+        } else {
+          this.setModeInternal('edit');
+        }
         break;
       case 'delete':
         this._state.update(s => ({ ...s, selectedId: id }));
@@ -646,9 +683,8 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
         break;
       case 'view':
       case 'detail':
-        this._state.update(s => ({ ...s, selectedId: id }));
         this._selectedItem.set(event.item);
-        this.setMode('detail');
+        this.navigateToDetail(id);
         break;
     }
   }

@@ -66,27 +66,73 @@ import { AstronomyService } from './services/astronomy.service';
       
       // ================================================================
       // SCHEMA-DRIVEN ROUTES (NEW - using EntityCrudPageComponent)
+      // URL-based CRUD: /entity, /entity/new, /entity/:id, /entity/:id/edit
       // ================================================================
       
       // Star Systems - schema-driven BREAD
       { 
         path: 'star-systems-v2', 
         component: AstronomyEntityPageComponent,
-        data: { entityType: 'starSystem' }
+        data: { entityType: 'starSystem', mode: 'browse' }
+      },
+      { 
+        path: 'star-systems-v2/new', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'starSystem', mode: 'add' }
+      },
+      { 
+        path: 'star-systems-v2/:id', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'starSystem', mode: 'detail' }
+      },
+      { 
+        path: 'star-systems-v2/:id/edit', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'starSystem', mode: 'edit' }
       },
       
       // Planets - schema-driven BREAD
       { 
         path: 'planets-v2', 
         component: AstronomyEntityPageComponent,
-        data: { entityType: 'planet' }
+        data: { entityType: 'planet', mode: 'browse' }
+      },
+      { 
+        path: 'planets-v2/new', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'planet', mode: 'add' }
+      },
+      { 
+        path: 'planets-v2/:id', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'planet', mode: 'detail' }
+      },
+      { 
+        path: 'planets-v2/:id/edit', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'planet', mode: 'edit' }
       },
       
       // Astronomers - schema-driven BREAD
       { 
         path: 'astronomers', 
         component: AstronomyEntityPageComponent,
-        data: { entityType: 'astronomer' }
+        data: { entityType: 'astronomer', mode: 'browse' }
+      },
+      { 
+        path: 'astronomers/new', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'astronomer', mode: 'add' }
+      },
+      { 
+        path: 'astronomers/:id', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'astronomer', mode: 'detail' }
+      },
+      { 
+        path: 'astronomers/:id/edit', 
+        component: AstronomyEntityPageComponent,
+        data: { entityType: 'astronomer', mode: 'edit' }
       },
       
       // ================================================================
