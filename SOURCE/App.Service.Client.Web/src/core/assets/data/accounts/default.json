@@ -78,6 +78,16 @@
       "navOrder": 3,
       "features": {}
     },
+    "astronomy": {
+      "enabled": true,
+      "showInNav": true,
+      "navOrder": 2,
+      "features": {
+        "starSystems": true,
+        "planets": true,
+        "astronomers": true
+      }
+    },
     "people": {
       "enabled": false,
       "showInNav": true,
