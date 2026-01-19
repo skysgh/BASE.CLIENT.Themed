@@ -30,20 +30,20 @@ import {
   CrudUpdateEvent,
   CrudDeleteEvent,
   CrudPageState,
-} from '../../../../core.ag/ui/widgets/entity-crud-page';
+} from '../../../../../core.ag/ui/widgets/entity-crud-page';
 
 // Schemas
-import { EntitySchema } from '../../../../core/models/schema/entity-schema.model';
+import { EntitySchema } from '../../../../../core/models/schema/entity-schema.model';
 import { 
   STAR_SYSTEM_ENTITY_SCHEMA, 
   PLANET_ENTITY_SCHEMA, 
   ASTRONOMER_ENTITY_SCHEMA 
-} from '../../schemas';
+} from '../../../schemas';
 
 // Services
-import { ToastService } from '../../../../core/services/toast.service';
-import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
-import { AstronomyService } from '../../services/astronomy.service';
+import { ToastService } from '../../../../../core/services/toast.service';
+import { SystemDiagnosticsTraceService } from '../../../../../core/services/system.diagnostics-trace.service';
+import { AstronomyService } from '../../../services/astronomy.service';
 
 // Entity type map
 const ENTITY_SCHEMAS: Record<string, EntitySchema> = {
