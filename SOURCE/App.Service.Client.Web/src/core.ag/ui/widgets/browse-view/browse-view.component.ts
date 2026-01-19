@@ -39,11 +39,13 @@ import {
   OnChanges,
   SimpleChanges,
   inject,
+  TemplateRef,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbOffcanvas, NgbOffcanvasModule, NgbOffcanvasRef } from '@ng-bootstrap/ng-bootstrap';
 
 import { IUniversalCardData, ICardAction } from '../../../../core/models/presentation/universal-card.model';
 import { IColumnDefinition } from '../../../../core/models/presentation/presentation-profile.model';
@@ -82,8 +84,7 @@ import { TableRendererComponent } from './renderers/table-renderer.component';
 import { ListRendererComponent } from './renderers/list-renderer.component';
 import { ChartRendererComponent } from './renderers/chart-renderer.component';
 
-// Responsive editor for flyout mode
-import { ResponsiveEditorHostComponent, ResponsiveEditorContentDirective } from '../responsive-editor';
+// Options panel for flyout
 import { BrowseViewOptionsPanelComponent } from './browse-options-panel.component';
 
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
@@ -117,6 +118,7 @@ export interface CardClickEvent {
     RouterModule,
     FormsModule,
     NgbDropdownModule,
+    NgbOffcanvasModule,
     BrowseSearchPanelComponent,
     BrowseFilterPanelComponent,
     BrowseOrderPanelComponent,
@@ -129,8 +131,6 @@ export interface CardClickEvent {
     TableRendererComponent,
     ListRendererComponent,
     ChartRendererComponent,
-    ResponsiveEditorHostComponent,
-    ResponsiveEditorContentDirective,
     BrowseViewOptionsPanelComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -338,21 +338,19 @@ export interface CardClickEvent {
             [pageSize]="pageSize"
             [totalCount]="totalCount"
             [totalPages]="totalPages"
-            (pageChange)="onPageChange($event)">
-          </app-browse-pagination>
-        }
-              </div>
-            </div>
+                    (pageChange)="onPageChange($event)">
+                  </app-browse-pagination>
+                }
+                      </div>
+                    </div>
     
-            <!-- Options Flyout (for flyout mode) -->
-            <app-responsive-editor-host
-              [title]="'Configure View'"
-              [isOpen]="isOptionsOpen"
-              [config]="flyoutConfig"
-              (closed)="closeOptions()"
-              (saved)="applyOptions()">
-      
-              <ng-template responsiveEditorContent>
+            <!-- Options Flyout Template (used by NgbOffcanvas) -->
+            <ng-template #optionsPanel let-offcanvas>
+              <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title">Configure View</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss()"></button>
+              </div>
+              <div class="offcanvas-body p-0">
                 <app-browse-options-panel
                   [fields]="fields"
                   [filters]="filters"
@@ -360,23 +358,31 @@ export interface CardClickEvent {
                   [viewMode]="viewMode"
                   [chartDefinitions]="chartDefinitions"
                   [selectedChartId]="selectedChartId"
-                  [showApplyButton]="true"
+                  [showApplyButton]="false"
                   (filtersChange)="onFiltersChange($event)"
                   (sortsChange)="onSortsChange($event)"
                   (viewModeChange)="onViewModeChange($event)"
                   (chartDefinitionChange)="onChartDefinitionChange($event)"
-                  (apply)="applyOptions()"
+                  (apply)="applyOptions(); offcanvas.close()"
                   (reset)="resetOptions()">
                 </app-browse-options-panel>
-              </ng-template>
-            </app-responsive-editor-host>
-          `,
-          styles: [`
-            .current-view-label {
-              font-size: 0.8125rem;
-              color: var(--vz-secondary-color);
-              white-space: nowrap;
-            }
+              </div>
+              <div class="offcanvas-footer border-top p-3 d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-secondary btn-sm" (click)="resetOptions()">
+                  Reset
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="applyOptions(); offcanvas.close()">
+                  Apply
+                </button>
+              </div>
+            </ng-template>
+                  `,
+                  styles: [`
+                    .current-view-label {
+                      font-size: 0.8125rem;
+                      color: var(--vz-secondary-color);
+                      white-space: nowrap;
+                    }
     
             .view-panel-area {
               // Full width panel area
@@ -397,39 +403,38 @@ export interface CardClickEvent {
     
             .results-count {
               font-size: 0.8125rem;
-            }
-          `]
-        })
-export class BrowseViewComponent implements OnChanges {
-  private diagnostics = inject(SystemDiagnosticsTraceService);
-  private savedViewService = inject(SavedViewService);
+                          }
+            
+                          .offcanvas-footer {
+                            background-color: var(--vz-card-bg);
+                          }
+                        `]
+                      })
+              export class BrowseViewComponent implements OnChanges {
+                private diagnostics = inject(SystemDiagnosticsTraceService);
+                private savedViewService = inject(SavedViewService);
+                private offcanvasService = inject(NgbOffcanvas);
   
-  // ═══════════════════════════════════════════════════════════════════
-  // View Mode Options (for template)
-  // ═══════════════════════════════════════════════════════════════════
+                /** Reference to the options panel template */
+                @ViewChild('optionsPanel') optionsPanelTemplate!: TemplateRef<unknown>;
   
-  viewModeOptions = [
-    { id: 'cards' as ViewMode, icon: 'bx bx-grid-alt', label: 'Cards' },
-    { id: 'tiles' as ViewMode, icon: 'bx bx-menu', label: 'Tiles' },
-    { id: 'table' as ViewMode, icon: 'bx bx-table', label: 'Table' },
-    { id: 'list' as ViewMode, icon: 'bx bx-list-ul', label: 'List' },
-  ];
+                /** Current offcanvas reference */
+                private offcanvasRef?: NgbOffcanvasRef;
   
-  /** 
-   * Configuration for the flyout panel
-   * Always uses panel mode (never route mode) since we handle mobile inline
-   */
-  flyoutConfig = {
-    panelWidth: '360px',
-    panelPosition: 'end' as const,
-    showBackdrop: true,
-    closeOnBackdrop: true,
-    routeModeBreakpoint: undefined,  // Never use route mode - always panel
-  };
+                // ═══════════════════════════════════════════════════════════════════
+                // View Mode Options (for template)
+                // ═══════════════════════════════════════════════════════════════════
+  
+                viewModeOptions = [
+                  { id: 'cards' as ViewMode, icon: 'bx bx-grid-alt', label: 'Cards' },
+                  { id: 'tiles' as ViewMode, icon: 'bx bx-menu', label: 'Tiles' },
+                  { id: 'table' as ViewMode, icon: 'bx bx-table', label: 'Table' },
+                  { id: 'list' as ViewMode, icon: 'bx bx-list-ul', label: 'List' },
+                ];
 
-  // ═══════════════════════════════════════════════════════════════════
-  // Lifecycle
-  // ═══════════════════════════════════════════════════════════════════
+                // ═══════════════════════════════════════════════════════════════════
+                // Lifecycle
+                // ═══════════════════════════════════════════════════════════════════
   
   ngOnChanges(changes: SimpleChanges): void {
     // When schema changes, apply it
@@ -815,9 +820,6 @@ export class BrowseViewComponent implements OnChanges {
   /** Dirty state for current view */
   isDirty = false;
   
-  /** Flyout panel open state */
-  isOptionsOpen = false;
-  
   /** Current view name for display */
   get currentViewName(): string {
     if (!this.entityType) return 'All Items';
@@ -833,20 +835,37 @@ export class BrowseViewComponent implements OnChanges {
     }
   }
   
-  /** Open the options flyout */
+  /** Open the options flyout using NgbOffcanvas directly */
   openOptions(): void {
-    this.isOptionsOpen = true;
+    if (this.offcanvasRef) {
+      return; // Already open
+    }
+    
+    this.offcanvasRef = this.offcanvasService.open(this.optionsPanelTemplate, {
+      position: 'end',
+      backdrop: true,
+      keyboard: true,
+      panelClass: 'browse-options-panel',
+    });
+    
+    // Clean up reference when closed
+    this.offcanvasRef.dismissed.subscribe(() => {
+      this.offcanvasRef = undefined;
+    });
+    this.offcanvasRef.hidden.subscribe(() => {
+      this.offcanvasRef = undefined;
+    });
   }
   
   /** Close the options flyout */
   closeOptions(): void {
-    this.isOptionsOpen = false;
+    this.offcanvasRef?.dismiss();
+    this.offcanvasRef = undefined;
   }
   
-  /** Apply options from flyout and close */
+  /** Apply options from flyout */
   applyOptions(): void {
     this.onApply();
-    this.closeOptions();
   }
   
   /** Reset options to defaults */
