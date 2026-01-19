@@ -154,16 +154,17 @@ template: `
           @case ('browse') {
             <app-entity-browse
               [entitySchema]="entitySchema"
-              [data]="data"
+              [data]="filteredAndSortedData()"
               [loading]="loading"
               [page]="state().page"
               [pageSize]="state().pageSize"
-              [totalCount]="totalCount"
+              [totalCount]="filteredAndSortedData().length"
               [filters]="state().filters"
               [sorts]="state().sorts"
               [batchActions]="batchActions"
               [showAddButton]="showAddButton"
               [addButtonLabel]="'Add ' + entityName()"
+              [controlsLayout]="controlsLayout"
               (itemSelect)="onItemSelect($event)"
               (itemAction)="onItemAction($event)"
               (batchActionTrigger)="onBatchAction($event)"
@@ -350,6 +351,9 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
   /** Fallback route when back is clicked with no history */
   @Input() backFallback = 'system/hub';
 
+  /** Controls layout mode: 'panels' (inline) or 'flyout' (compact with flyout) */
+  @Input() controlsLayout: 'panels' | 'flyout' = 'panels';
+
   // ─────────────────────────────────────────────────────────────────
   // Outputs
   // ─────────────────────────────────────────────────────────────────
@@ -444,6 +448,88 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
     if (color.includes('dc3') || color.includes('danger')) return 'text-danger';
     if (color.includes('198') || color.includes('success')) return 'text-success';
     return 'text-secondary';
+  });
+
+  /**
+   * Client-side filtered and sorted data
+   * Applies search query, filters, and sorts to the input data
+   */
+  filteredAndSortedData = computed(() => {
+    let result = [...this.data];
+    const state = this._state();
+    
+    // Apply search query
+    if (state.searchQuery) {
+      const query = state.searchQuery.toLowerCase();
+      const searchableFields = this.entitySchema?.fields
+        ?.filter(f => f.searchable)
+        .map(f => f.field) || ['name', 'title', 'description'];
+      
+      result = result.filter(item => 
+        searchableFields.some(field => {
+          const value = item[field];
+          return value && String(value).toLowerCase().includes(query);
+        })
+      );
+    }
+    
+    // Apply filters
+    for (const filter of state.filters) {
+      result = result.filter(item => {
+        const value = item[filter.field];
+        const filterValue = filter.value;
+        
+        switch (filter.operator) {
+          case 'eq':
+            return String(value).toLowerCase() === String(filterValue).toLowerCase();
+          case 'ne':
+            return String(value).toLowerCase() !== String(filterValue).toLowerCase();
+          case 'contains':
+            return String(value).toLowerCase().includes(String(filterValue).toLowerCase());
+          case 'startsWith':
+            return String(value).toLowerCase().startsWith(String(filterValue).toLowerCase());
+          case 'endsWith':
+            return String(value).toLowerCase().endsWith(String(filterValue).toLowerCase());
+          case 'gt':
+            return Number(value) > Number(filterValue);
+          case 'gte':
+            return Number(value) >= Number(filterValue);
+          case 'lt':
+            return Number(value) < Number(filterValue);
+          case 'lte':
+            return Number(value) <= Number(filterValue);
+          default:
+            return true;
+        }
+      });
+    }
+    
+    // Apply sorts
+    if (state.sorts.length > 0) {
+      result.sort((a, b) => {
+        for (const sort of state.sorts) {
+          const aVal = a[sort.field];
+          const bVal = b[sort.field];
+          
+          let comparison = 0;
+          if (aVal == null && bVal == null) comparison = 0;
+          else if (aVal == null) comparison = 1;
+          else if (bVal == null) comparison = -1;
+          else if (typeof aVal === 'string' && typeof bVal === 'string') {
+            comparison = aVal.localeCompare(bVal);
+          } else {
+            comparison = aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+          }
+          
+          if (comparison !== 0) {
+            return sort.direction === 'desc' ? -comparison : comparison;
+          }
+        }
+        return 0;
+      });
+    }
+    
+    return result;
   });
 
   // ─────────────────────────────────────────────────────────────────

@@ -82,6 +82,10 @@ import { TableRendererComponent } from './renderers/table-renderer.component';
 import { ListRendererComponent } from './renderers/list-renderer.component';
 import { ChartRendererComponent } from './renderers/chart-renderer.component';
 
+// Responsive editor for flyout mode
+import { ResponsiveEditorHostComponent, ResponsiveEditorContentDirective } from '../responsive-editor';
+import { BrowseViewOptionsPanelComponent } from './browse-options-panel.component';
+
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 import { SavedView } from '../../../../core/models/view/saved-view.model';
 import { SavedViewService } from '../../../../core/services/saved-view.service';
@@ -125,6 +129,9 @@ export interface CardClickEvent {
     TableRendererComponent,
     ListRendererComponent,
     ChartRendererComponent,
+    ResponsiveEditorHostComponent,
+    ResponsiveEditorContentDirective,
+    BrowseViewOptionsPanelComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -184,39 +191,89 @@ export interface CardClickEvent {
       
       <!-- Row 3+: Filter/Order/Display Panels (only when view panel collapsed) -->
       @if (viewPanelMode === 'collapsed') {
-        <div class="browse-panels mb-2">
-          @if (showFilterPanel) {
-            <app-browse-filter-panel
-              [filters]="filters"
-              [fields]="fields"
-              [expanded]="filtersExpanded"
-              (filtersChange)="onFiltersChange($event)"
-              (expandedChange)="filtersExpanded = $event"
-              (apply)="onApply()">
-            </app-browse-filter-panel>
-          }
-          
-          @if (showOrderPanel) {
-            <app-browse-order-panel
-              [sorts]="sorts"
-              [fields]="fields"
-              [expanded]="orderExpanded"
-              (sortsChange)="onSortsChange($event)"
-              (expandedChange)="orderExpanded = $event"
-              (apply)="onApply()">
-            </app-browse-order-panel>
-          }
-          
-          @if (showDisplayPanel) {
-            <app-browse-display-panel
-              [viewMode]="viewMode"
-              [chartDefinitions]="chartDefinitions"
-              [selectedChartId]="selectedChartId"
-              (viewModeChange)="onViewModeChange($event)"
-              (chartDefinitionChange)="onChartDefinitionChange($event)">
-            </app-browse-display-panel>
-          }
-        </div>
+        <!-- Panels mode: Show inline panels -->
+        @if (controlsLayout === 'panels') {
+          <div class="browse-panels mb-2">
+            @if (showFilterPanel) {
+              <app-browse-filter-panel
+                [filters]="filters"
+                [fields]="fields"
+                [expanded]="filtersExpanded"
+                (filtersChange)="onFiltersChange($event)"
+                (expandedChange)="filtersExpanded = $event"
+                (apply)="onApply()">
+              </app-browse-filter-panel>
+            }
+            
+            @if (showOrderPanel) {
+              <app-browse-order-panel
+                [sorts]="sorts"
+                [fields]="fields"
+                [expanded]="orderExpanded"
+                (sortsChange)="onSortsChange($event)"
+                (expandedChange)="orderExpanded = $event"
+                (apply)="onApply()">
+              </app-browse-order-panel>
+            }
+            
+            @if (showDisplayPanel) {
+              <app-browse-display-panel
+                [viewMode]="viewMode"
+                [chartDefinitions]="chartDefinitions"
+                [selectedChartId]="selectedChartId"
+                (viewModeChange)="onViewModeChange($event)"
+                (chartDefinitionChange)="onChartDefinitionChange($event)">
+              </app-browse-display-panel>
+            }
+          </div>
+        }
+        
+        <!-- Flyout mode: Show Configure button + summary -->
+        @if (controlsLayout === 'flyout') {
+          <div class="browse-flyout-bar d-flex align-items-center gap-2 mb-2">
+            <button 
+              type="button" 
+              class="btn btn-soft-secondary btn-sm d-flex align-items-center gap-2"
+              (click)="openOptions()">
+              <i class="bx bx-slider-alt"></i>
+              <span>Configure View</span>
+              @if (filters.length > 0 || sorts.length > 0) {
+                <span class="badge bg-primary ms-1">{{ filters.length + sorts.length }}</span>
+              }
+            </button>
+            
+            <!-- Quick summary of active filters/sorts -->
+            @if (filters.length > 0 || sorts.length > 0) {
+              <div class="active-criteria text-muted small">
+                @if (filters.length > 0) {
+                  <span class="me-2">
+                    <i class="bx bx-filter-alt"></i> {{ filters.length }} filter{{ filters.length > 1 ? 's' : '' }}
+                  </span>
+                }
+                @if (sorts.length > 0) {
+                  <span>
+                    <i class="bx bx-sort-alt-2"></i> {{ sorts.length }} sort{{ sorts.length > 1 ? 's' : '' }}
+                  </span>
+                }
+              </div>
+            }
+            
+            <!-- View mode buttons (always visible in flyout mode) -->
+            <div class="ms-auto d-flex gap-1">
+              @for (mode of viewModeOptions; track mode.id) {
+                <button 
+                  type="button" 
+                  class="btn btn-sm"
+                  [class.btn-soft-primary]="viewMode === mode.id"
+                  [class.btn-soft-secondary]="viewMode !== mode.id"
+                  [title]="mode.label"
+                  (click)="onViewModeChange(mode.id)">
+                  <i [class]="mode.icon"></i>
+                </button>
+              }
+            </div>
+          </div>
+        }
       }
       
       <!-- Results Count -->
@@ -301,31 +358,64 @@ export interface CardClickEvent {
             (pageChange)="onPageChange($event)">
           </app-browse-pagination>
         }
-      </div>
-    </div>
-  `,
-  styles: [`
-    .current-view-label {
-      font-size: 0.8125rem;
-      color: var(--vz-secondary-color);
-      white-space: nowrap;
-    }
+              </div>
+            </div>
     
-    .view-panel-area {
-      // Full width panel area
-    }
+            <!-- Options Flyout (for flyout mode) -->
+            <app-responsive-editor-host
+              [title]="'Configure View'"
+              [isOpen]="isOptionsOpen"
+              (closed)="closeOptions()"
+              (saved)="applyOptions()">
+      
+              <ng-template responsiveEditorContent>
+                <app-browse-options-panel
+                  [fields]="fields"
+                  [filters]="filters"
+                  [sorts]="sorts"
+                  [viewMode]="viewMode"
+                  [chartDefinitions]="chartDefinitions"
+                  [selectedChartId]="selectedChartId"
+                  [showApplyButton]="true"
+                  (filtersChange)="onFiltersChange($event)"
+                  (sortsChange)="onSortsChange($event)"
+                  (viewModeChange)="onViewModeChange($event)"
+                  (chartDefinitionChange)="onChartDefinitionChange($event)"
+                  (apply)="applyOptions()"
+                  (reset)="resetOptions()">
+                </app-browse-options-panel>
+              </ng-template>
+            </app-responsive-editor-host>
+          `,
+          styles: [`
+            .current-view-label {
+              font-size: 0.8125rem;
+              color: var(--vz-secondary-color);
+              white-space: nowrap;
+            }
     
-    .browse-panels {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
+            .view-panel-area {
+              // Full width panel area
+            }
     
-    .results-count {
-      font-size: 0.8125rem;
-    }
-  `]
-})
+            .browse-panels {
+              display: flex;
+              flex-direction: column;
+              gap: 0.25rem;
+            }
+    
+            .browse-flyout-bar {
+              background: var(--vz-light);
+              border: 1px solid var(--vz-border-color);
+              border-radius: 0.25rem;
+              padding: 0.5rem 0.75rem;
+            }
+    
+            .results-count {
+              font-size: 0.8125rem;
+            }
+          `]
+        })
 export class BrowseViewComponent implements OnChanges {
   private diagnostics = inject(SystemDiagnosticsTraceService);
   private savedViewService = inject(SavedViewService);
@@ -656,6 +746,13 @@ export class BrowseViewComponent implements OnChanges {
   /** Show display panel */
   @Input() showDisplayPanel = true;
   
+  /** 
+   * Controls layout mode
+   * - 'panels': Traditional inline collapsible panels
+   * - 'flyout': Compact search bar + flyout for options
+   */
+  @Input() controlsLayout: 'panels' | 'flyout' = 'panels';
+  
   /** Current view mode */
   @Input() viewMode: ViewMode = 'tiles';
   
@@ -722,6 +819,9 @@ export class BrowseViewComponent implements OnChanges {
   /** Dirty state for current view */
   isDirty = false;
   
+  /** Flyout panel open state */
+  isOptionsOpen = false;
+  
   /** Current view name for display */
   get currentViewName(): string {
     if (!this.entityType) return 'All Items';
@@ -735,6 +835,31 @@ export class BrowseViewComponent implements OnChanges {
     } else {
       this.viewPanelMode = 'collapsed';
     }
+  }
+  
+  /** Open the options flyout */
+  openOptions(): void {
+    this.isOptionsOpen = true;
+  }
+  
+  /** Close the options flyout */
+  closeOptions(): void {
+    this.isOptionsOpen = false;
+  }
+  
+  /** Apply options from flyout and close */
+  applyOptions(): void {
+    this.onApply();
+    this.closeOptions();
+  }
+  
+  /** Reset options to defaults */
+  resetOptions(): void {
+    this.filters = [];
+    this.sorts = [];
+    this.filtersChange.emit([]);
+    this.sortsChange.emit([]);
+    this.onApply();
   }
 
   // ═══════════════════════════════════════════════════════════════════

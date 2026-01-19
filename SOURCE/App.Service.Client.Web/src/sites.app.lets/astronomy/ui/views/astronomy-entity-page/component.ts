@@ -60,24 +60,25 @@ const ENTITY_SCHEMAS: Record<string, EntitySchema> = {
     EntityCrudPageComponent,
   ],
   template: `
-    <div class="astronomy-entity-page">
-      @if (entitySchema()) {
-        <app-entity-crud-page
-          [entitySchema]="entitySchema()!"
-          [data]="data()"
-          [loading]="loading()"
-          [totalCount]="totalCount()"
-          (create)="onCreate($event)"
-          (update)="onUpdate($event)"
-          (delete)="onDelete($event)"
-          (loadData)="onLoadData($event)"
-          (stateChange)="onStateChange($event)">
-        </app-entity-crud-page>
-      } @else {
-        <div class="alert alert-warning">
-          <i class="bx bx-error me-2"></i>
-          Unknown entity type: {{ entityType() }}
-        </div>
+  <div class="astronomy-entity-page">
+    @if (entitySchema()) {
+      <app-entity-crud-page
+        [entitySchema]="entitySchema()!"
+        [data]="data()"
+        [loading]="loading()"
+        [totalCount]="totalCount()"
+        [controlsLayout]="'flyout'"
+        (create)="onCreate($event)"
+        (update)="onUpdate($event)"
+        (delete)="onDelete($event)"
+        (loadData)="onLoadData($event)"
+        (stateChange)="onStateChange($event)">
+      </app-entity-crud-page>
+    } @else {
+      <div class="alert alert-warning">
+        <i class="bx bx-error me-2"></i>
+        Unknown entity type: {{ entityType() }}
+      </div>
       }
     </div>
   `,

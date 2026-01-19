@@ -88,36 +88,37 @@ export interface EntityBrowseBatchEvent<T = Record<string, unknown>> {
   ],
   template: `
     <app-browse-view
-      [schema]="browseSchema()"
-      [cards]="cardData()"
-      [columns]="columns()"
-      [fields]="filterFields()"
-      [filters]="filters"
-      [sorts]="sorts"
-      [loading]="loading"
-      [page]="page"
-      [pageSize]="pageSize"
-      [totalCount]="totalCount"
-      [batchActions]="batchActions"
-      [emptyMessage]="emptyMessage"
-      [emptyIcon]="emptyIcon"
-      [showSearch]="showSearch"
-      [showFilterPanel]="showFilterPanel"
-      [showOrderPanel]="showOrderPanel"
-      [showDisplayPanel]="showDisplayPanel"
-      [showActionsBar]="showActionsBar"
-      [viewMode]="viewMode"
-      (searchChange)="searchChange.emit($event)"
-      (searchSubmit)="searchSubmit.emit($event)"
-      (filtersChange)="onFiltersChange($event)"
-      (sortsChange)="onSortsChange($event)"
-      (apply)="apply.emit()"
-      (viewModeChange)="viewModeChange.emit($event)"
-      (pageChange)="pageChange.emit($event)"
-      (cardClick)="onCardClick($event)"
-      (cardAction)="onCardAction($event)"
-      (selectionChange)="onSelectionChange($event)"
-      (batchAction)="onBatchAction($event)">
+    [schema]="browseSchema()"
+    [cards]="cardData()"
+    [columns]="columns()"
+    [fields]="filterFields()"
+    [filters]="filters"
+    [sorts]="sorts"
+    [loading]="loading"
+    [page]="page"
+    [pageSize]="pageSize"
+    [totalCount]="totalCount"
+    [batchActions]="batchActions"
+    [emptyMessage]="emptyMessage"
+    [emptyIcon]="emptyIcon"
+    [showSearch]="showSearch"
+    [showFilterPanel]="showFilterPanel"
+    [showOrderPanel]="showOrderPanel"
+    [showDisplayPanel]="showDisplayPanel"
+    [showActionsBar]="showActionsBar"
+    [viewMode]="viewMode"
+    [controlsLayout]="controlsLayout"
+    (searchChange)="searchChange.emit($event)"
+    (searchSubmit)="searchSubmit.emit($event)"
+    (filtersChange)="onFiltersChange($event)"
+    (sortsChange)="onSortsChange($event)"
+    (apply)="apply.emit()"
+    (viewModeChange)="viewModeChange.emit($event)"
+    (pageChange)="pageChange.emit($event)"
+    (cardClick)="onCardClick($event)"
+    (cardAction)="onCardAction($event)"
+    (selectionChange)="onSelectionChange($event)"
+    (batchAction)="onBatchAction($event)">
       
       <!-- Empty state actions slot -->
       <ng-container emptyActions>
@@ -185,6 +186,9 @@ export class EntityBrowseComponent<T extends Record<string, unknown> = Record<st
 
   /** Show actions bar */
   @Input() showActionsBar = true;
+
+  /** Controls layout mode: 'panels' (inline) or 'flyout' (compact) */
+  @Input() controlsLayout: 'panels' | 'flyout' = 'panels';
 
   /** Batch actions */
   @Input() batchActions: BatchAction[] = [];
