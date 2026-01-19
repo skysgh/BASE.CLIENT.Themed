@@ -2049,14 +2049,88 @@
               "isSystemRole": true
             },
             {
-              "id": "viewer",
-              "name": "Viewer",
-              "description": "Can view group content only",
-              "icon": "ri-eye-line",
-              "color": "#6c757d",
-              "permissions": ["view"],
-              "sortOrder": 3,
-              "isSystemRole": true
+                  "id": "viewer",
+                  "name": "Viewer",
+                  "description": "Can view group content only",
+                  "icon": "ri-eye-line",
+                  "color": "#6c757d",
+                  "permissions": ["view"],
+                  "sortOrder": 3,
+                  "isSystemRole": true
+                }
+              ],
+              "media_Files": [
+                {
+                  "id": "media-001",
+                  "filename": "profile-avatar-001.jpg",
+                  "originalFilename": "my-photo.jpg",
+                  "extension": "jpg",
+                  "mimeType": "image/jpeg",
+                  "sizeBytes": 245760,
+                  "storageUrl": "/uploads/profile-avatar-001.jpg",
+                  "storageProvider": "local",
+                  "uploadedUtc": "2024-06-15T10:30:00.000Z",
+                  "uploadedByUserId": "user-001",
+                  "description": "Profile picture",
+                  "tags": ["avatar", "profile"],
+                  "malwareScan": {
+                    "status": "clean",
+                    "scannedUtc": "2024-06-15T10:31:00.000Z",
+                    "engine": "ClamAV",
+                    "threatName": null,
+                    "errorMessage": null
+                  },
+                  "createdUtc": "2024-06-15T10:30:00.000Z",
+                  "modifiedUtc": "2024-06-15T10:31:00.000Z",
+                  "isDeleted": false
+                },
+                {
+                  "id": "media-002",
+                  "filename": "report-q4-2024.pdf",
+                  "originalFilename": "Q4 Financial Report.pdf",
+                  "extension": "pdf",
+                  "mimeType": "application/pdf",
+                  "sizeBytes": 1048576,
+                  "storageUrl": "/uploads/report-q4-2024.pdf",
+                  "storageProvider": "local",
+                  "uploadedUtc": "2024-12-01T14:00:00.000Z",
+                  "uploadedByUserId": "user-002",
+                  "description": "Q4 2024 Financial Report",
+                  "tags": ["report", "financial", "q4"],
+                  "malwareScan": {
+                    "status": "clean",
+                    "scannedUtc": "2024-12-01T14:02:00.000Z",
+                    "engine": "ClamAV",
+                    "threatName": null,
+                    "errorMessage": null
+                  },
+                  "createdUtc": "2024-12-01T14:00:00.000Z",
+                  "modifiedUtc": "2024-12-01T14:02:00.000Z",
+                  "isDeleted": false
+                },
+                {
+                  "id": "media-003",
+                  "filename": "presentation-draft.pptx",
+                  "originalFilename": "Project Kickoff.pptx",
+                  "extension": "pptx",
+                  "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                  "sizeBytes": 5242880,
+                  "storageUrl": "/uploads/presentation-draft.pptx",
+                  "storageProvider": "local",
+                  "uploadedUtc": "2024-12-20T09:15:00.000Z",
+                  "uploadedByUserId": "user-001",
+                  "description": null,
+                  "tags": ["presentation", "draft"],
+                  "malwareScan": {
+                    "status": "pending",
+                    "scannedUtc": null,
+                    "engine": null,
+                    "threatName": null,
+                    "errorMessage": null
+                  },
+                  "createdUtc": "2024-12-20T09:15:00.000Z",
+                  "modifiedUtc": "2024-12-20T09:15:00.000Z",
+                  "isDeleted": false
+                }
+              ]
             }
-          ]
-        }
