@@ -306,14 +306,14 @@ export class EntityBrowseComponent<T extends Record<string, unknown> = Record<st
     const columns: IColumnDefinition[] = [];
     const browseView = schema.views?.browse;
 
-    // Auto-generate from fields
-    for (const [key, field] of Object.entries(schema.fields)) {
+    // Auto-generate from fields (fields is an array of EntityFieldDefinition)
+    for (const field of schema.fields) {
       // Skip hidden fields and system fields
-      if (field.hidden || key.startsWith('_')) continue;
+      if (field.hidden || field.field.startsWith('_')) continue;
 
       columns.push({
-        field: key,
-        label: field.label || key,
+        field: field.field,
+        label: field.label || field.field,
         type: this.mapFieldTypeToCellType(field.type),
         sortable: field.sortable ?? true,
       });
@@ -325,15 +325,16 @@ export class EntityBrowseComponent<T extends Record<string, unknown> = Record<st
   private buildFilterFields(schema: EntitySchema): FieldDefinition[] {
     const fields: FieldDefinition[] = [];
 
-    for (const [key, field] of Object.entries(schema.fields)) {
+    // fields is an array of EntityFieldDefinition
+    for (const field of schema.fields) {
       // Skip fields that aren't filterable
       if (field.hidden || !field.filterable) continue;
 
       const options = this.extractOptions(field);
 
       fields.push({
-        field: key,
-        label: field.label || key,
+        field: field.field,
+        label: field.label || field.field,
         type: this.mapFieldTypeToQueryType(field.type),
         sortable: field.sortable ?? true,
         filterable: field.filterable ?? true,
@@ -418,25 +419,29 @@ export class EntityBrowseComponent<T extends Record<string, unknown> = Record<st
     // Auto-transform based on schema
     const schema = this.entitySchema;
     const id = String(item['id'] || item['_id'] || crypto.randomUUID());
+    
+    // Get field names from schema (fields is an array)
+    const fieldNames = (schema?.fields || []).map(f => f.field);
 
-    // Find title field
-    const titleField = Object.keys(schema?.fields || {}).find(k =>
-        ['title', 'name', 'label', 'displayName'].includes(k.toLowerCase())
-      ) || 'title';
+    // Find title field - look for isPrimary first, then common names
+    const primaryField = (schema?.fields || []).find(f => f.isPrimary);
+    const titleField = primaryField?.field || 
+      fieldNames.find(name => ['title', 'name', 'label', 'displayName'].includes(name.toLowerCase())) || 
+      'title';
 
     // Find subtitle field
-    const subtitleField = Object.keys(schema?.fields || {}).find(k =>
-        ['description', 'subtitle', 'summary'].includes(k.toLowerCase())
+    const subtitleField = fieldNames.find(name =>
+        ['description', 'subtitle', 'summary'].includes(name.toLowerCase())
       );
 
     // Find image field
-    const imageField = Object.keys(schema?.fields || {}).find(k =>
-      ['image', 'imageUrl', 'avatar', 'photo', 'thumbnail'].includes(k)
+    const imageField = fieldNames.find(name =>
+      ['image', 'imageUrl', 'avatar', 'photo', 'thumbnail'].includes(name)
     );
 
     // Find badge/status field
-    const badgeField = Object.keys(schema?.fields || {}).find(k =>
-      ['status', 'state', 'badge', 'type'].includes(k.toLowerCase())
+    const badgeField = fieldNames.find(name =>
+      ['status', 'state', 'badge', 'type'].includes(name.toLowerCase())
     );
 
     return {
