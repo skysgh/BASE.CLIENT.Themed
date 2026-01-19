@@ -66,15 +66,35 @@ const STAR_SYSTEM_FIELDS: EntityFieldDefinition[] = [
     layout: { colSpan: 6 },
   },
   {
-    field: 'discoveredAt',
-    type: 'date',
-    label: 'Discovery Date',
-    browsable: true,
-    sortable: true,
-    filterable: true,
-    layout: { colSpan: 6 },
-  },
-];
+      field: 'discoveredAt',
+      type: 'date',
+      label: 'Discovery Date',
+      browsable: true,
+      sortable: true,
+      filterable: true,
+      layout: { colSpan: 6 },
+    },
+    {
+      field: 'starType',
+      type: 'select',
+      label: 'Star Type',
+      browsable: true,
+      sortable: true,
+      filterable: true,
+      summary: true,
+      helpText: 'The spectral classification of the primary star',
+      options: [
+        { value: 'red-dwarf', label: 'Red Dwarf (M-type)' },
+        { value: 'yellow-dwarf', label: 'Yellow Dwarf (G-type, like our Sun)' },
+        { value: 'orange-dwarf', label: 'Orange Dwarf (K-type)' },
+        { value: 'blue-giant', label: 'Blue Giant (O/B-type)' },
+        { value: 'white-dwarf', label: 'White Dwarf' },
+        { value: 'red-giant', label: 'Red Giant' },
+        { value: 'neutron', label: 'Neutron Star' },
+      ],
+      layout: { colSpan: 6 },
+    },
+  ];
 
 export const STAR_SYSTEM_ENTITY_SCHEMA: EntitySchema = {
   dslVersion: '1.0.0',
@@ -145,7 +165,7 @@ export const STAR_SYSTEM_ENTITY_SCHEMA: EntitySchema = {
           id: 'details', 
           label: 'Details', 
           icon: 'bx-info-circle', 
-          fields: ['name', 'description', 'distanceFromEarth', 'discoveredAt'] 
+          fields: ['name', 'description', 'starType', 'distanceFromEarth', 'discoveredAt'] 
         },
       ],
     },

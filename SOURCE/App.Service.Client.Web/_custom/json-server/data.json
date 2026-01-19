@@ -1894,13 +1894,169 @@
           "modifiedUtc": "2024-01-01T00:00:00.000Z"
         },
         {
-          "id": "gillon",
-          "name": "Michaël Gillon",
-          "affiliation": "University of Liège",
-          "country": "Belgium",
-          "specialization": "Exoplanets",
-          "createdUtc": "2024-01-01T00:00:00.000Z",
-          "modifiedUtc": "2024-01-01T00:00:00.000Z"
+              "id": "gillon",
+              "name": "Michaël Gillon",
+              "affiliation": "University of Liège",
+              "country": "Belgium",
+              "specialization": "Exoplanets",
+              "createdUtc": "2024-01-01T00:00:00.000Z",
+              "modifiedUtc": "2024-01-01T00:00:00.000Z"
+            }
+          ],
+          "social_People": [
+            {
+              "id": "person-001",
+              "firstName": "John",
+              "lastName": "Doe",
+              "preferredName": "Johnny",
+              "email": "john.doe@example.com",
+              "emailVerified": true,
+              "phone": "+1-555-0101",
+              "title": "Software Engineer",
+              "organization": "Acme Corp",
+              "department": "Engineering",
+              "bio": "Passionate about building great software.",
+              "avatarUrl": null,
+              "timezone": "America/New_York",
+              "locale": "en-US",
+              "isActive": true,
+              "createdUtc": "2024-01-01T00:00:00.000Z",
+              "modifiedUtc": "2024-01-01T00:00:00.000Z"
+            },
+            {
+              "id": "person-002",
+              "firstName": "Jane",
+              "lastName": "Smith",
+              "preferredName": null,
+              "email": "jane.smith@example.com",
+              "emailVerified": true,
+              "phone": "+1-555-0102",
+              "title": "Product Manager",
+              "organization": "Acme Corp",
+              "department": "Product",
+              "bio": "Turning ideas into products.",
+              "avatarUrl": null,
+              "timezone": "America/Los_Angeles",
+              "locale": "en-US",
+              "isActive": true,
+              "createdUtc": "2024-01-01T00:00:00.000Z",
+              "modifiedUtc": "2024-01-01T00:00:00.000Z"
+            },
+            {
+              "id": "person-003",
+              "firstName": "Bob",
+              "lastName": "Wilson",
+              "preferredName": "Bobby",
+              "email": "bob.wilson@example.com",
+              "emailVerified": false,
+              "phone": null,
+              "title": "Designer",
+              "organization": "Acme Corp",
+              "department": "Design",
+              "bio": null,
+              "avatarUrl": null,
+              "timezone": "Europe/London",
+              "locale": "en-GB",
+              "isActive": true,
+              "createdUtc": "2024-01-01T00:00:00.000Z",
+              "modifiedUtc": "2024-01-01T00:00:00.000Z"
+            }
+          ],
+          "social_Groups": [
+            {
+              "id": "group-001",
+              "name": "Engineering Team",
+              "description": "The core engineering team building the platform.",
+              "type": "team",
+              "parentGroupId": null,
+              "isPublic": false,
+              "allowJoinRequests": false,
+              "avatarUrl": null,
+              "isActive": true,
+              "createdUtc": "2024-01-01T00:00:00.000Z",
+              "modifiedUtc": "2024-01-01T00:00:00.000Z",
+              "createdByPersonId": "person-001"
+            },
+            {
+              "id": "group-002",
+              "name": "Product Team",
+              "description": "Product management and strategy.",
+              "type": "team",
+              "parentGroupId": null,
+              "isPublic": false,
+              "allowJoinRequests": true,
+              "avatarUrl": null,
+              "isActive": true,
+              "createdUtc": "2024-01-01T00:00:00.000Z",
+              "modifiedUtc": "2024-01-01T00:00:00.000Z",
+              "createdByPersonId": "person-002"
+            }
+          ],
+          "social_GroupMembers": [
+            {
+              "id": "gm-001",
+              "personId": "person-001",
+              "groupId": "group-001",
+              "roleId": "admin",
+              "status": "active",
+              "joinedUtc": "2024-01-01T00:00:00.000Z",
+              "invitedByPersonId": null,
+              "createdUtc": "2024-01-01T00:00:00.000Z",
+              "modifiedUtc": "2024-01-01T00:00:00.000Z"
+            },
+            {
+              "id": "gm-002",
+              "personId": "person-003",
+              "groupId": "group-001",
+              "roleId": "member",
+              "status": "active",
+              "joinedUtc": "2024-01-15T00:00:00.000Z",
+              "invitedByPersonId": "person-001",
+              "createdUtc": "2024-01-15T00:00:00.000Z",
+              "modifiedUtc": "2024-01-15T00:00:00.000Z"
+            },
+            {
+              "id": "gm-003",
+              "personId": "person-002",
+              "groupId": "group-002",
+              "roleId": "admin",
+              "status": "active",
+              "joinedUtc": "2024-01-01T00:00:00.000Z",
+              "invitedByPersonId": null,
+              "createdUtc": "2024-01-01T00:00:00.000Z",
+              "modifiedUtc": "2024-01-01T00:00:00.000Z"
+            }
+          ],
+          "social_GroupRoles": [
+            {
+              "id": "admin",
+              "name": "Administrator",
+              "description": "Full access to manage the group",
+              "icon": "ri-shield-user-line",
+              "color": "#dc3545",
+              "permissions": ["view", "edit", "delete", "invite", "remove_member", "change_roles", "manage_settings", "admin"],
+              "sortOrder": 1,
+              "isSystemRole": true
+            },
+            {
+              "id": "member",
+              "name": "Member",
+              "description": "Can view and contribute to the group",
+              "icon": "ri-user-line",
+              "color": "#0d6efd",
+              "permissions": ["view", "edit"],
+              "sortOrder": 2,
+              "isSystemRole": true
+            },
+            {
+              "id": "viewer",
+              "name": "Viewer",
+              "description": "Can view group content only",
+              "icon": "ri-eye-line",
+              "color": "#6c757d",
+              "permissions": ["view"],
+              "sortOrder": 3,
+              "isSystemRole": true
+            }
+          ]
         }
-      ]
-    }
