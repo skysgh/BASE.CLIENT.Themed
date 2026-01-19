@@ -28,76 +28,78 @@
  * │ (cards/tiles/table/list/chart)                     │
  * └────────────────────────────────────────────────────────────┘
  */
-import { 
-  Component, 
-  Input, 
-  Output, 
-  EventEmitter, 
-  ChangeDetectionStrategy,
-  signal,
-  computed,
-  OnChanges,
-  SimpleChanges,
-  inject,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { NgbDropdownModule, NgbOffcanvas, NgbOffcanvasModule, NgbOffcanvasRef } from '@ng-bootstrap/ng-bootstrap';
+ import { 
+   Component, 
+   Input, 
+   Output, 
+   EventEmitter, 
+   ChangeDetectionStrategy,
+   signal,
+   computed,
+   OnChanges,
+   OnDestroy,
+   SimpleChanges,
+   inject,
+   TemplateRef,
+   ViewChild,
+ } from '@angular/core';
+ import { CommonModule } from '@angular/common';
+ import { RouterModule } from '@angular/router';
+ import { FormsModule } from '@angular/forms';
+ import { NgbDropdownModule, NgbOffcanvas, NgbOffcanvasModule, NgbOffcanvasRef } from '@ng-bootstrap/ng-bootstrap';
 
-import { IUniversalCardData, ICardAction } from '../../../../core/models/presentation/universal-card.model';
-import { IColumnDefinition } from '../../../../core/models/presentation/presentation-profile.model';
-import { 
-  FilterCriteria, 
-  SortCriteria, 
-  FieldDefinition,
-} from '../../../../core/models/query/query-criteria.model';
-import {
-  SelectionState,
-  SelectionEvent,
-  createSelectionState,
-  handleSelection,
-} from '../../../../core/models/query/selection.model';
-import { ChartDefinition, ChartType } from '../../../../core/models/query/chart-definition.model';
-import { BatchAction, BatchActionEvent } from '../../../../core/models/query/batch-action.model';
+ import { IUniversalCardData, ICardAction } from '../../../../core/models/presentation/universal-card.model';
+ import { IColumnDefinition } from '../../../../core/models/presentation/presentation-profile.model';
+ import { 
+   FilterCriteria, 
+   SortCriteria, 
+   FieldDefinition,
+ } from '../../../../core/models/query/query-criteria.model';
+ import {
+   SelectionState,
+   SelectionEvent,
+   createSelectionState,
+   handleSelection,
+ } from '../../../../core/models/query/selection.model';
+ import { ChartDefinition, ChartType } from '../../../../core/models/query/chart-definition.model';
+ import { BatchAction, BatchActionEvent } from '../../../../core/models/query/batch-action.model';
 
-// Schema imports
-import { 
-  BrowseViewSchema,
-  parseBrowseViewSchema,
-  mergeBrowseViewSchema,
-  ViewMode,
-} from './browse-view-schema.model';
+ // Schema imports
+ import { 
+   BrowseViewSchema,
+   parseBrowseViewSchema,
+   mergeBrowseViewSchema,
+   ViewMode,
+ } from './browse-view-schema.model';
 
-import { BrowseSearchPanelComponent } from './browse-search-panel.component';
-import { BrowseFilterPanelComponent } from './browse-filter-panel.component';
-import { BrowseOrderPanelComponent } from './browse-order-panel.component';
-import { BrowseDisplayPanelComponent } from './browse-display-panel.component';
-import { BrowseActionsBarComponent } from './browse-actions-bar.component';
-import { BrowsePaginationComponent } from './browse-pagination.component';
-import { ViewPanelComponent } from './view-panel.component';
-import { CardsRendererComponent } from './renderers/cards-renderer.component';
-import { TilesRendererComponent } from './renderers/tiles-renderer.component';
-import { TableRendererComponent } from './renderers/table-renderer.component';
-import { ListRendererComponent } from './renderers/list-renderer.component';
-import { ChartRendererComponent } from './renderers/chart-renderer.component';
+ import { BrowseSearchPanelComponent } from './browse-search-panel.component';
+ import { BrowseFilterPanelComponent } from './browse-filter-panel.component';
+ import { BrowseOrderPanelComponent } from './browse-order-panel.component';
+ import { BrowseDisplayPanelComponent } from './browse-display-panel.component';
+ import { BrowseActionsBarComponent } from './browse-actions-bar.component';
+ import { BrowsePaginationComponent } from './browse-pagination.component';
+ import { ViewPanelComponent } from './view-panel.component';
+ import { CardsRendererComponent } from './renderers/cards-renderer.component';
+ import { TilesRendererComponent } from './renderers/tiles-renderer.component';
+ import { TableRendererComponent } from './renderers/table-renderer.component';
+ import { ListRendererComponent } from './renderers/list-renderer.component';
+ import { ChartRendererComponent } from './renderers/chart-renderer.component';
 
-// Options panel for flyout
-import { BrowseViewOptionsPanelComponent } from './browse-options-panel.component';
+ // Options panel for flyout
+ import { BrowseViewOptionsPanelComponent } from './browse-options-panel.component';
 
-import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
-import { SavedView } from '../../../../core/models/view/saved-view.model';
-import { SavedViewService } from '../../../../core/services/saved-view.service';
+ import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
+ import { SavedView } from '../../../../core/models/view/saved-view.model';
+ import { SavedViewService } from '../../../../core/services/saved-view.service';
+ import { PanelHistoryService } from '../../../../core/services/panel-history.service';
 
-// Re-export for consumers
-export { ViewMode } from './browse-view-schema.model';
-export { BrowseViewSchema } from './browse-view-schema.model';
-export { SavedView } from '../../../../core/models/view/saved-view.model';
+ // Re-export for consumers
+ export { ViewMode } from './browse-view-schema.model';
+ export { BrowseViewSchema } from './browse-view-schema.model';
+ export { SavedView } from '../../../../core/models/view/saved-view.model';
 
-/** Sort change event (legacy compatibility) */
-export interface SortChangeEvent {
+ /** Sort change event (legacy compatibility) */
+ export interface SortChangeEvent {
   column: string;
   direction: 'asc' | 'desc';
 }
@@ -402,50 +404,60 @@ export interface CardClickEvent {
             }
     
             .results-count {
-              font-size: 0.8125rem;
-                          }
+                          font-size: 0.8125rem;
+                                      }
             
-                          .offcanvas-footer {
-                            background-color: var(--vz-card-bg);
-                          }
-                        `]
-                      })
-              export class BrowseViewComponent implements OnChanges {
-                private diagnostics = inject(SystemDiagnosticsTraceService);
-                private savedViewService = inject(SavedViewService);
-                private offcanvasService = inject(NgbOffcanvas);
+                                      .offcanvas-footer {
+                                        background-color: var(--vz-card-bg);
+                                      }
+                                    `]
+                                  })
+            export class BrowseViewComponent implements OnChanges, OnDestroy {
+              private diagnostics = inject(SystemDiagnosticsTraceService);
+              private savedViewService = inject(SavedViewService);
+              private offcanvasService = inject(NgbOffcanvas);
+              private panelHistoryService = inject(PanelHistoryService);
   
-                /** Reference to the options panel template */
-                @ViewChild('optionsPanel') optionsPanelTemplate!: TemplateRef<unknown>;
+              /** Unique ID for this component's options panel (for history tracking) */
+              private readonly PANEL_ID = `browse-view-options-${Math.random().toString(36).substr(2, 9)}`;
   
-                /** Current offcanvas reference */
-                private offcanvasRef?: NgbOffcanvasRef;
+              /** Reference to the options panel template */
+              @ViewChild('optionsPanel') optionsPanelTemplate!: TemplateRef<unknown>;
   
-                // ═══════════════════════════════════════════════════════════════════
-                // View Mode Options (for template)
-                // ═══════════════════════════════════════════════════════════════════
-  
-                viewModeOptions = [
-                  { id: 'cards' as ViewMode, icon: 'bx bx-grid-alt', label: 'Cards' },
-                  { id: 'tiles' as ViewMode, icon: 'bx bx-menu', label: 'Tiles' },
-                  { id: 'table' as ViewMode, icon: 'bx bx-table', label: 'Table' },
-                  { id: 'list' as ViewMode, icon: 'bx bx-list-ul', label: 'List' },
-                ];
+              /** Current offcanvas reference */
+              private offcanvasRef?: NgbOffcanvasRef;
 
-                // ═══════════════════════════════════════════════════════════════════
-                // Lifecycle
-                // ═══════════════════════════════════════════════════════════════════
+              // ═══════════════════════════════════════════════════════════════════
+              // View Mode Options (for template)
+              // ═══════════════════════════════════════════════════════════════════
+
+              viewModeOptions = [
+                { id: 'cards' as ViewMode, icon: 'bx bx-grid-alt', label: 'Cards' },
+                { id: 'tiles' as ViewMode, icon: 'bx bx-menu', label: 'Tiles' },
+                { id: 'table' as ViewMode, icon: 'bx bx-table', label: 'Table' },
+                { id: 'list' as ViewMode, icon: 'bx bx-list-ul', label: 'List' },
+              ];
+
+              // ═══════════════════════════════════════════════════════════════════
+              // Lifecycle
+              // ═══════════════════════════════════════════════════════════════════
   
-  ngOnChanges(changes: SimpleChanges): void {
-    // When schema changes, apply it
-    if (changes['schema'] && this.schema) {
-      this.applySchema(this.schema);
-    }
+              ngOnDestroy(): void {
+                // Clean up panel history if component is destroyed while panel is open
+                this.panelHistoryService.removePanelState(this.PANEL_ID);
+                this.offcanvasRef?.dismiss();
+              }
+
+              ngOnChanges(changes: SimpleChanges): void {
+                // When schema changes, apply it
+                if (changes['schema'] && this.schema) {
+                  this.applySchema(this.schema);
+                }
     
-    // When serialisedSchema changes, parse and apply it
-    if (changes['serialisedSchema'] && this.serialisedSchema) {
-      const parsed = parseBrowseViewSchema(this.serialisedSchema);
-      if (parsed) {
+                // When serialisedSchema changes, parse and apply it
+                if (changes['serialisedSchema'] && this.serialisedSchema) {
+                  const parsed = parseBrowseViewSchema(this.serialisedSchema);
+                  if (parsed) {
         this._schema = parsed;
         this.applySchema(parsed);
       } else {
@@ -835,32 +847,68 @@ export interface CardClickEvent {
     }
   }
   
-  /** Open the options flyout using NgbOffcanvas directly */
+  /**
+   * Open the options flyout with browser history integration.
+   * 
+   * HISTORY INTEGRATION:
+   * We push a history state so that browser back (or mobile swipe)
+   * will close the flyout instead of navigating away from the page.
+   * See PanelHistoryService for full documentation of this pattern.
+   */
   openOptions(): void {
     if (this.offcanvasRef) {
       return; // Already open
     }
     
+    // 1. Register with history service BEFORE opening the panel
+    //    The callback will be invoked if user presses browser back
+    this.panelHistoryService.pushPanelState(this.PANEL_ID, () => {
+      // This is called when browser back closes the panel
+      // Just dismiss the offcanvas - don't call closeOptions() which would double-back
+      this.dismissOffcanvasOnly();
+    });
+    
+    // 2. Open the offcanvas panel
     this.offcanvasRef = this.offcanvasService.open(this.optionsPanelTemplate, {
       position: 'end',
       backdrop: true,
       keyboard: true,
-      panelClass: 'browse-options-panel',
+      panelClass: 'browse-options-panel browse-options-panel--fullwidth-mobile',
     });
     
-    // Clean up reference when closed
+    // 3. Handle offcanvas dismissal (X button, backdrop click, Escape key)
+    //    These are UI-triggered closes, so we need to clean up history
     this.offcanvasRef.dismissed.subscribe(() => {
-      this.offcanvasRef = undefined;
+      this.onOffcanvasClosed();
     });
     this.offcanvasRef.hidden.subscribe(() => {
-      this.offcanvasRef = undefined;
+      this.onOffcanvasClosed();
     });
   }
   
-  /** Close the options flyout */
-  closeOptions(): void {
+  /**
+   * Handle offcanvas being closed by UI interaction (not browser back).
+   * This cleans up the history state we pushed.
+   */
+  private onOffcanvasClosed(): void {
+    this.offcanvasRef = undefined;
+    // Tell history service we closed - it will call history.back() if needed
+    this.panelHistoryService.closePanelState(this.PANEL_ID);
+  }
+  
+  /**
+   * Dismiss the offcanvas without affecting history.
+   * Used by history service when browser back triggers close.
+   */
+  private dismissOffcanvasOnly(): void {
     this.offcanvasRef?.dismiss();
     this.offcanvasRef = undefined;
+  }
+  
+  /** Close the options flyout (called by Apply/Cancel buttons) */
+  closeOptions(): void {
+    // This dismisses the offcanvas, which triggers onOffcanvasClosed
+    this.offcanvasRef?.dismiss();
   }
   
   /** Apply options from flyout */
