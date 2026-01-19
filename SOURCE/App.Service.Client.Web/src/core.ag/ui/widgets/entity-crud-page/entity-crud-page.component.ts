@@ -735,10 +735,13 @@ private router = inject(Router);
   // ─────────────────────────────────────────────────────────────────
 
   onFormSubmit(event: DynamicFormSubmitEvent): void {
+    const id = this._state().selectedId;
+    
     if (event.mode === 'add') {
       this.create.emit({ data: event.data as T });
+      // After add, go to browse (or could go to detail if we get back the new ID)
+      this.navigateToBrowse();
     } else if (event.mode === 'edit') {
-      const id = this._state().selectedId;
       if (id) {
         this.update.emit({
           id,
@@ -746,10 +749,13 @@ private router = inject(Router);
           originalData: event.originalData as T,
         });
       }
+      // After edit, go back to detail view for the same item
+      if (id) {
+        this.navigateToDetail(id);
+      } else {
+        this.navigateToBrowse();
+      }
     }
-
-    // Return to browse after submit
-    this.backToBrowse();
   }
 
   // ─────────────────────────────────────────────────────────────────
