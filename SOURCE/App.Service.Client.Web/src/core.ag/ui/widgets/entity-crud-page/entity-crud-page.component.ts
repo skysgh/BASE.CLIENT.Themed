@@ -225,6 +225,7 @@ template: `
               [mode]="'add'"
               [showHeader]="false"
               [submitLabel]="'Create ' + entityName()"
+              [lockedFields]="lockedFields"
               (formSubmit)="onFormSubmit($event)"
               (formCancel)="navigateToBrowse()">
             </app-dynamic-form>
@@ -438,6 +439,13 @@ private router = inject(Router);
    * Displayed as sub-tables in detail view.
    */
   @Input() childEntities: ChildEntityConfig[] = [];
+
+  /**
+   * Locked/preset field values for add mode.
+   * Used when creating a child entity from parent context.
+   * Example: { starSystemId: 'sol' } when adding planet from star system
+   */
+  @Input() lockedFields: Record<string, unknown> = {};
 
   // ─────────────────────────────────────────────────────────────────
   // Outputs

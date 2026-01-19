@@ -264,6 +264,14 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   /** Custom description (overrides schema description) */
   @Input() customDescription?: string;
 
+  /**
+   * Preset field values that are locked (read-only).
+   * Use when creating a child entity from parent context.
+   * 
+   * Example: { starSystemId: 'sol' } when adding planet from star system detail
+   */
+  @Input() lockedFields: Record<string, unknown> = {};
+
   // ─────────────────────────────────────────────────────────────────
   // Outputs
   // ─────────────────────────────────────────────────────────────────
@@ -366,6 +374,9 @@ export class DynamicFormComponent implements OnInit, OnChanges {
         throw new Error('Either entitySchema or formViewSchema must be provided');
       }
 
+      // Apply locked fields (disable + preset)
+      fields = this.applyLockedFields(fields);
+
       this._formlyFields.set(fields);
       this.formlyOptions.formState.mode = this.mode;
       this.updateFormModel();
@@ -380,24 +391,69 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   private updateFormModel(): void {
     if (this.mode === 'add') {
-      this.formModel = this.getDefaultValues();
+      this.formModel = { ...this.getDefaultValues(), ...this.lockedFields };
     } else if (this.data) {
-      this.formModel = { ...this.data };
+      this.formModel = { ...this.data, ...this.lockedFields };
     } else {
-      this.formModel = {};
+      this.formModel = { ...this.lockedFields };
     }
   }
 
   private getDefaultValues(): Record<string, unknown> {
     const defaults: Record<string, unknown> = {};
     if (this.entitySchema?.fields) {
-      for (const [key, field] of Object.entries(this.entitySchema.fields)) {
-        if (field.defaultValue !== undefined) {
-          defaults[key] = field.defaultValue;
+      for (const field of this.entitySchema.fields) {
+        if ((field as any).defaultValue !== undefined) {
+          defaults[field.field] = (field as any).defaultValue;
         }
       }
     }
     return defaults;
+  }
+
+  /**
+   * Apply locked field configuration to Formly fields
+   */
+  private applyLockedFields(fields: FormlyFieldConfig[]): FormlyFieldConfig[] {
+    if (!this.lockedFields || Object.keys(this.lockedFields).length === 0) {
+      return fields;
+    }
+
+    const lockedKeys = Object.keys(this.lockedFields);
+    
+    const processField = (field: FormlyFieldConfig): FormlyFieldConfig => {
+      // Check if this field should be locked
+      if (field.key && lockedKeys.includes(String(field.key))) {
+        return {
+          ...field,
+          props: {
+            ...field.props,
+            disabled: true,
+            readonly: true,
+            // Add visual indicator that field is locked
+            addonLeft: {
+              icon: 'ri-lock-line',
+            },
+          },
+          expressions: {
+            ...field.expressions,
+            'props.disabled': 'true',
+          },
+        };
+      }
+      
+      // Process nested fields (for field groups)
+      if (field.fieldGroup) {
+        return {
+          ...field,
+          fieldGroup: field.fieldGroup.map(f => processField(f)),
+        };
+      }
+      
+      return field;
+    };
+
+    return fields.map(f => processField(f));
   }
 
   private setupFormSubscriptions(): void {

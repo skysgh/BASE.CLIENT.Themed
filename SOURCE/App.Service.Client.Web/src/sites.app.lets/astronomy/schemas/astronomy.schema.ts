@@ -238,8 +238,8 @@ const PLANET_FIELDS: EntityFieldDefinition[] = [
     label: 'Orbits Star',
     browsable: true,
     filterable: true,
-    required: true,
-    helpText: 'The star this planet orbits (*-1 relationship)',
+    required: false,
+    helpText: 'The specific star this planet orbits (*-1 relationship)',
     optionsSource: {
       api: {
         endpoint: '/api/astronomy/stars',
@@ -247,7 +247,25 @@ const PLANET_FIELDS: EntityFieldDefinition[] = [
         labelField: 'name',
       },
     },
-    layout: { colSpan: 12 },
+    layout: { colSpan: 6 },
+  },
+  // *-1 relationship to StarSystem (parent aggregate)
+  {
+    field: 'starSystemId',
+    type: 'select',
+    label: 'Star System',
+    browsable: true,
+    filterable: true,
+    required: true,
+    helpText: 'The star system this planet belongs to',
+    optionsSource: {
+      api: {
+        endpoint: '/api/rest/app_astronomy_StarSystems',
+        valueField: 'id',
+        labelField: 'name',
+      },
+    },
+    layout: { colSpan: 6 },
   },
   {
     field: 'distanceFromStar',
@@ -357,28 +375,34 @@ export const PLANET_ENTITY_SCHEMA: EntitySchema = {
       },
     },
     edit: {
-      version: '1.0',
-      id: 'planet-edit',
-      name: 'Edit Planet',
-      titleTemplate: 'Edit: {{name}}',
-      icon: 'bx-pencil',
-      fields: PLANET_FIELDS.filter(f => !f.systemManaged),
-      tabs: [
-        { 
-          id: 'orbital', 
-          label: 'Orbital (*-1)', 
-          icon: 'bx-sun', 
-          fields: ['name', 'orbitsStarId', 'distanceFromStar', 'orbitalPeriod'] 
-        },
-        { 
-          id: 'physical', 
-          label: 'Physical', 
-          icon: 'bx-planet', 
-          fields: ['type', 'habitableZone', 'rings', 'radius', 'mass'] 
-        },
-      ],
+        version: '1.0',
+        id: 'planet-edit',
+        name: 'Edit Planet',
+        titleTemplate: 'Edit: {{name}}',
+        icon: 'bx-pencil',
+        fields: PLANET_FIELDS.filter(f => !f.systemManaged),
+        tabs: [
+          { 
+            id: 'location', 
+            label: 'Location', 
+            icon: 'bx-map', 
+            fields: ['name', 'starSystemId', 'orbitsStarId'] 
+          },
+          { 
+            id: 'orbital', 
+            label: 'Orbital', 
+            icon: 'bx-sun', 
+            fields: ['distanceFromStar', 'orbitalPeriod'] 
+          },
+          { 
+            id: 'physical', 
+            label: 'Physical', 
+            icon: 'bx-planet', 
+            fields: ['type', 'habitableZone', 'rings', 'radius', 'mass'] 
+          },
+        ],
+      },
     },
-  },
   
   dataSource: {
     endpoint: '/api/astronomy/planets',

@@ -86,6 +86,7 @@ const ENTITY_ROUTES: Record<string, string> = {
         [useRouterNavigation]="true"
         [routeBasePath]="routeBasePath()"
         [childEntities]="childEntities()"
+        [lockedFields]="lockedFields()"
         (create)="onCreate($event)"
         (update)="onUpdate($event)"
         (delete)="onDelete($event)"
@@ -138,6 +139,11 @@ export class AstronomyEntityPageComponent implements OnInit, OnDestroy {
   data = signal<any[]>([]);
   loading = signal(false);
   totalCount = signal(0);
+  
+  // Locked fields from query params (for contextual creation)
+  // e.g., when adding Planet from StarSystem, starSystemId is locked
+  private _lockedFields = signal<Record<string, unknown>>({});
+  lockedFields = this._lockedFields.asReadonly();
   
   // Child entities for detail view (planets within a star system)
   private _planets = signal<Planet[]>([]);
@@ -218,40 +224,57 @@ export class AstronomyEntityPageComponent implements OnInit, OnDestroy {
       this.diagnostics.info(`Route params: id=${id}`);
     });
     
-    // Load initial data
-      this.loadData();
-    }
-  
-    ngOnDestroy(): void {
-      this.destroy$.next();
-      this.destroy$.complete();
-    }
-
-    private loadData(): void {
-      const type = this.entityType();
-      this.loading.set(true);
-    
-      if (type === 'starSystem') {
-        this.astronomyService.getStarSystems().subscribe({
-          next: () => this.loading.set(false),
-          error: () => {
-            this.loading.set(false);
-            this.toastService.showError('Failed to load star systems');
-          }
-        });
+    // Subscribe to query params for parent context (locked fields)
+    this.route.queryParamMap.pipe(takeUntil(this.destroy$)).subscribe(queryParams => {
+      const locked: Record<string, unknown> = {};
+      
+      // Check for starSystemId (when adding planet from star system)
+      const starSystemId = queryParams.get('starSystemId');
+      if (starSystemId) {
+        locked['starSystemId'] = starSystemId;
+        this.diagnostics.info(`Query param: starSystemId=${starSystemId} (will be locked)`);
       }
-    }
+      
+      // Could add more parent context params here as needed
+      // e.g., groupId, personId, etc.
+      
+      this._lockedFields.set(locked);
+    });
+    
+    // Load initial data
+    this.loadData();
+  }
   
-    private loadPlanets(starSystemId: string): void {
-      this.astronomyService.getPlanetsInSystem(starSystemId).subscribe({
-        next: (planets) => {
-          this._planets.set(planets);
-          this.diagnostics.info(`Loaded ${planets.length} planets for star system ${starSystemId}`);
-        },
-        error: (err) => {
-          this.diagnostics.error(`Failed to load planets: ${err.message}`);
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private loadData(): void {
+    const type = this.entityType();
+    this.loading.set(true);
+    
+    if (type === 'starSystem') {
+      this.astronomyService.getStarSystems().subscribe({
+        next: () => this.loading.set(false),
+        error: () => {
+          this.loading.set(false);
+          this.toastService.showError('Failed to load star systems');
         }
       });
+    }
+  }
+  
+  private loadPlanets(starSystemId: string): void {
+    this.astronomyService.getPlanetsInSystem(starSystemId).subscribe({
+      next: (planets) => {
+        this._planets.set(planets);
+        this.diagnostics.info(`Loaded ${planets.length} planets for star system ${starSystemId}`);
+      },
+      error: (err) => {
+        this.diagnostics.error(`Failed to load planets: ${err.message}`);
+      }
+    });
     }
 
     // ─────────────────────────────────────────────────────────────────
