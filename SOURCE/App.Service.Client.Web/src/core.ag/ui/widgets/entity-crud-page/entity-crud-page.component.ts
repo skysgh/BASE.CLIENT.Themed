@@ -103,7 +103,7 @@ template: `
     <!-- Page Header - Using standard PageHeaderComponent -->
     <app-page-header
       [title]="pageTitle()"
-      [subtitle]="pageDescription()"
+      [subtitle]="pageDescription() || ''"
       [icon]="entitySchema?.icon || 'bx-data'"
       [iconBackground]="iconBackground()"
       [iconClass]="iconClass()"
