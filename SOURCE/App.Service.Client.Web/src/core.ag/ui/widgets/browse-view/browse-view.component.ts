@@ -166,34 +166,19 @@ export interface CardClickEvent {
       }
         
       <!-- Configure View button (flyout mode only - on same line as search) -->
-      @if (controlsLayout === 'flyout' && viewPanelMode === 'collapsed') {
-        <button 
-          type="button" 
-          class="btn btn-soft-secondary btn-sm d-flex align-items-center gap-2 flex-shrink-0"
-          (click)="openOptions()">
-          <i class="bx bx-slider-alt"></i>
-          <span class="d-none d-sm-inline">Configure</span>
-          @if (filters.length > 0 || sorts.length > 0) {
-            <span class="badge bg-primary">{{ filters.length + sorts.length }}</span>
-          }
-        </button>
-          
-        <!-- View mode buttons -->
-        <div class="d-flex gap-1 flex-shrink-0">
-          @for (mode of viewModeOptions; track mode.id) {
-            <button 
-              type="button" 
-              class="btn btn-sm"
-              [class.btn-soft-primary]="viewMode === mode.id"
-              [class.btn-soft-secondary]="viewMode !== mode.id"
-              [title]="mode.label"
-              (click)="onViewModeChange(mode.id)">
-              <i [class]="mode.icon"></i>
-            </button>
-          }
-        </div>
-      }
-    </div>
+        @if (controlsLayout === 'flyout' && viewPanelMode === 'collapsed') {
+          <button 
+            type="button" 
+            class="btn btn-soft-secondary btn-sm d-flex align-items-center gap-2 flex-shrink-0"
+            (click)="openOptions()">
+            <i class="bx bx-slider-alt"></i>
+            <span class="d-none d-sm-inline">Configure</span>
+            @if (filters.length > 0 || sorts.length > 0) {
+              <span class="badge bg-primary">{{ filters.length + sorts.length }}</span>
+            }
+          </button>
+        }
+      </div>
       
     <!-- Row 2: View Panel (full width, shows list OR editor) -->
     @if (viewPanelMode !== 'collapsed') {

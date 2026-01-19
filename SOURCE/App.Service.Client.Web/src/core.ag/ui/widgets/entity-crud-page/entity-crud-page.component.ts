@@ -480,11 +480,21 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
       );
     }
     
-    // Apply filters
+    // Apply filters (skip filters with empty/null/undefined values)
     for (const filter of state.filters) {
+      // Skip this filter if value is empty, null, or undefined
+      if (filter.value === null || filter.value === undefined || filter.value === '') {
+        continue;
+      }
+      
       result = result.filter(item => {
         const value = item[filter.field];
         const filterValue = filter.value;
+        
+        // Handle null/undefined item values
+        if (value === null || value === undefined) {
+          return filter.operator === 'ne'; // Only 'not equals' matches null
+        }
         
         switch (filter.operator) {
           case 'eq':
