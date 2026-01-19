@@ -193,20 +193,62 @@ export class AstronomyEntityPageComponent implements OnInit, OnDestroy {
 
   onCreate(event: CrudCreateEvent): void {
     const type = this.entityType();
-    this.diagnostics.info(`Creating ${type}`);
-    this.toastService.showInfo(`Create ${type} - not yet implemented`);
+    this.diagnostics.info(`Creating ${type}: ${JSON.stringify(event.data)}`);
+    
+    if (type === 'starSystem') {
+      this.astronomyService.createStarSystem(event.data as any).subscribe({
+        next: (created) => {
+          this.toastService.showSuccess(`Star System "${(created as any).name}" created`);
+          this.loadData();
+        },
+        error: (err) => {
+          this.toastService.showError(`Failed to create: ${err.message}`);
+        }
+      });
+    } else {
+      this.toastService.showInfo(`Create ${type} - not yet implemented`);
+    }
   }
 
   onUpdate(event: CrudUpdateEvent): void {
     const type = this.entityType();
     this.diagnostics.info(`Updating ${type}: ${event.id}`);
-    this.toastService.showInfo(`Update ${type} - not yet implemented`);
+    
+    if (type === 'starSystem') {
+      this.astronomyService.updateStarSystem(event.id, event.data as any).subscribe({
+        next: (updated) => {
+          if (updated) {
+            this.toastService.showSuccess(`Star System "${(updated as any).name}" updated`);
+          } else {
+            this.toastService.showError('Star System not found');
+          }
+        },
+        error: (err) => {
+          this.toastService.showError(`Failed to update: ${err.message}`);
+        }
+      });
+    } else {
+      this.toastService.showInfo(`Update ${type} - not yet implemented`);
+    }
   }
 
   onDelete(event: CrudDeleteEvent): void {
     const type = this.entityType();
     this.diagnostics.info(`Deleting ${type}: ${event.id}`);
-    this.toastService.showInfo(`Delete ${type} - not yet implemented`);
+    
+    if (type === 'starSystem') {
+      this.astronomyService.deleteStarSystem(event.id).subscribe({
+        next: () => {
+          this.toastService.showSuccess('Star System deleted');
+          this.loadData();
+        },
+        error: (err) => {
+          this.toastService.showError(`Failed to delete: ${err.message}`);
+        }
+      });
+    } else {
+      this.toastService.showInfo(`Delete ${type} - not yet implemented`);
+    }
   }
 
   onLoadData(state: CrudPageState): void {

@@ -85,18 +85,19 @@ import { NavigationService } from '../../../../core/services/navigation.service'
     }
     
     .type-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.75rem;
+      font-size: 1.25rem;
     }
     
     .icon-img {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
       object-fit: contain;
     }
     
@@ -118,14 +119,15 @@ import { NavigationService } from '../../../../core/services/navigation.service'
       }
       
       .type-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5rem;
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 1.125rem;
       }
       
       .icon-img {
-        width: 28px;
-        height: 28px;
+        width: 22px;
+        height: 22px;
       }
     }
   `]

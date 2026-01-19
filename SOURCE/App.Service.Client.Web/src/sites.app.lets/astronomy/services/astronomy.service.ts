@@ -63,6 +63,47 @@ export class AstronomyService {
     return of(this._starSystems().find(s => s.id === id)).pipe(delay(100));
   }
   
+  /**
+   * Update a star system (in-memory for demo)
+   */
+  updateStarSystem(id: string, updates: Partial<StarSystem>): Observable<StarSystem | undefined> {
+    const systems = this._starSystems();
+    const index = systems.findIndex(s => s.id === id);
+    
+    if (index === -1) {
+      return of(undefined);
+    }
+    
+    const updated = { ...systems[index], ...updates };
+    const newSystems = [...systems];
+    newSystems[index] = updated;
+    this._starSystems.set(newSystems);
+    
+    return of(updated).pipe(delay(200));
+  }
+  
+  /**
+   * Create a new star system (in-memory for demo)
+   */
+  createStarSystem(data: Omit<StarSystem, 'id'>): Observable<StarSystem> {
+    const newSystem: StarSystem = {
+      ...data,
+      id: `sys-${Date.now()}`, // Generate simple ID
+    } as StarSystem;
+    
+    this._starSystems.update(systems => [...systems, newSystem]);
+    
+    return of(newSystem).pipe(delay(200));
+  }
+  
+  /**
+   * Delete a star system (in-memory for demo)
+   */
+  deleteStarSystem(id: string): Observable<boolean> {
+    this._starSystems.update(systems => systems.filter(s => s.id !== id));
+    return of(true).pipe(delay(200));
+  }
+  
   // ========================================
   // Planets
   // ========================================
