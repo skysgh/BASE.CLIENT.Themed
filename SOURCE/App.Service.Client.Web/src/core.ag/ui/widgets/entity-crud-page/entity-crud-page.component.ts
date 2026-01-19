@@ -47,6 +47,9 @@ import { DynamicFormComponent, DynamicFormSubmitEvent, DynamicFormMode } from '.
 // Standard page framing
 import { PageHeaderComponent } from '../../../../sites/ui/widgets/page-header';
 
+// Navigation
+import { NavigationService } from '../../../../core/services/navigation.service';
+
 // Schema imports
 import { EntitySchema } from '../../../../core/models/schema/entity-schema.model';
 
@@ -99,18 +102,18 @@ imports: [
   PageHeaderComponent,
 ],
 template: `
-  <div class="entity-crud-page">
-    <!-- Page Header - Using standard PageHeaderComponent -->
-    <app-page-header
-      [title]="pageTitle()"
-      [subtitle]="pageDescription() || ''"
-      [icon]="entitySchema?.icon || 'bx-data'"
-      [iconBackground]="iconBackground()"
-      [iconClass]="iconClass()"
-      [showBack]="mode() !== 'browse'"
-      [backFallback]="backFallback"
-      (backClick)="backToBrowse()">
-      <ng-container actions>
+<div class="entity-crud-page">
+  <!-- Page Header - Using standard PageHeaderComponent -->
+  <app-page-header
+    [title]="pageTitle()"
+    [subtitle]="pageDescription() || ''"
+    [icon]="entitySchema?.icon || 'bx-data'"
+    [iconBackground]="iconBackground()"
+    [iconClass]="iconClass()"
+    [showBack]="true"
+    [backFallback]="backFallback"
+    (backClick)="onBackClick()">
+    <ng-container actions>
         @switch (mode()) {
           @case ('browse') {
             @if (showAddButton) {
@@ -291,6 +294,8 @@ template: `
 })
 export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<string, unknown>>
   implements OnInit, OnChanges {
+
+  private navigationService = inject(NavigationService);
 
   // ─────────────────────────────────────────────────────────────────
   // Inputs - Schema
@@ -492,6 +497,21 @@ export class EntityCrudPageComponent<T extends Record<string, unknown> = Record<
   // ─────────────────────────────────────────────────────────────────
   // Mode Navigation
   // ─────────────────────────────────────────────────────────────────
+
+  /**
+   * Handle back button click based on current mode
+   * - Browse mode: Navigate back (to Hub or previous page)
+   * - Other modes: Go back to browse view
+   */
+  onBackClick(): void {
+    if (this.mode() === 'browse') {
+      // In browse mode, navigate back to hub/previous page
+      this.navigationService.back(this.backFallback);
+    } else {
+      // In detail/edit/add mode, go back to browse
+      this.backToBrowse();
+    }
+  }
 
   startAdd(): void {
     this.setMode('add');
