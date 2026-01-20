@@ -27,14 +27,51 @@ export class HubService {
   // Public signals
   readonly loading = this._loading.asReadonly();
   
-  // Computed
+  // Computed - filters by both widget enabled AND applet enabled in account
   readonly enabledWidgets = computed(() => {
     const registry = this._registeredWidgets();
     const enabledIds = this._enabledWidgetIds();
+    const accountConfig = this.accountService.getCurrentConfig();
+    
+    // Get enabled applet IDs from account config
+    const enabledAppletIds = new Set<string>();
+    if (accountConfig?.applets) {
+      for (const [appletId, appletConfig] of Object.entries(accountConfig.applets)) {
+        if (typeof appletConfig === 'object' && appletConfig && (appletConfig as any).enabled) {
+          enabledAppletIds.add(appletId);
+        }
+      }
+    }
     
     return enabledIds
       .map(id => registry.get(id))
-      .filter((w): w is HubWidgetConfig => !!w && w.enabled)
+      .filter((w): w is HubWidgetConfig => {
+        if (!w || !w.enabled) return false;
+        // Also check if the widget's applet is enabled in account config
+        return enabledAppletIds.has(w.appletId);
+      })
+      .sort((a, b) => a.order - b.order);
+  });
+  
+  /**
+   * Get all widgets for enabled applets (for dynamic rendering)
+   */
+  readonly appletWidgets = computed(() => {
+    const registry = this._registeredWidgets();
+    const accountConfig = this.accountService.getCurrentConfig();
+    
+    // Get enabled applet IDs from account config
+    const enabledAppletIds = new Set<string>();
+    if (accountConfig?.applets) {
+      for (const [appletId, appletConfig] of Object.entries(accountConfig.applets)) {
+        if (typeof appletConfig === 'object' && appletConfig && (appletConfig as any).enabled) {
+          enabledAppletIds.add(appletId);
+        }
+      }
+    }
+    
+    return Array.from(registry.values())
+      .filter(w => w.enabled && enabledAppletIds.has(w.appletId))
       .sort((a, b) => a.order - b.order);
   });
 
