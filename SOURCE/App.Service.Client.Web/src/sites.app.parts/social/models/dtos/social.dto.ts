@@ -4,27 +4,34 @@
  * Data Transfer Objects for API communication.
  */
 
+import { PersonIdentifier, PersonLocation } from '../social.model';
+
 /**
  * Person DTO - Matches json-server/API shape
+ * 
+ * Person is THIN: id + identifiers[] + location
  */
 export interface PersonDto {
   id: string;
-  firstName: string;
-  lastName: string;
-  preferredName?: string;
-  email: string;
-  emailVerified?: boolean;
-  phone?: string;
-  title?: string;
-  organization?: string;
-  department?: string;
-  bio?: string;
-  avatarUrl?: string;
-  timezone?: string;
-  locale?: string;
+  identifiers: PersonIdentifier[];
+  location?: PersonLocation;
   isActive?: boolean;
   createdUtc?: string;
   modifiedUtc?: string;
+}
+
+/**
+ * PersonIdentifierType DTO - Reference data
+ */
+export interface PersonIdentifierTypeDto {
+  id: string;
+  name: string;
+  category: 'name' | 'contact' | 'social' | 'official' | 'other';
+  icon: string;
+  description?: string;
+  validationPattern?: string;
+  isActive: boolean;
+  sortOrder: number;
 }
 
 /**

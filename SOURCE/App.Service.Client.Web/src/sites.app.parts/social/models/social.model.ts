@@ -2,57 +2,178 @@
  * Social Domain Models
  * 
  * Core entities for the Social domain:
- * - Person: Real-world human being
+ * - Person: Real-world human being (thin - just identifiers + location)
+ * - PersonIdentifier: Value object for names, emails, phones, etc.
+ * - PersonIdentifierType: Reference data for identifier types
+ * - PersonLocation: Value object for current location
  * - Group: Collection of people
  * - GroupMember: Links Person to Group with Role
  * - GroupRole: Reference data for roles
+ * 
+ * Key distinction:
+ * - User (System domain) = Authentication identity
+ * - Person (Social domain) = Real-world human with identifiers
+ * - Profile (various) = Context-specific views of a Person
  */
 
 // ═══════════════════════════════════════════════════════════════════
-// Person
+// PersonIdentifierType (Reference Data Entity)
 // ═══════════════════════════════════════════════════════════════════
 
 /**
- * Person - The real-world human being
+ * PersonIdentifierType - Reference data for types of identifiers
+ * 
+ * This is a REFERENCE TABLE, not a hardcoded enum.
+ * Can be extended over time (fax is out, ESP is in...)
+ */
+export interface PersonIdentifierType {
+  id: string;
+  
+  /** Display name */
+  name: string;
+  
+  /** Category for grouping */
+  category: 'name' | 'contact' | 'social' | 'official' | 'other';
+  
+  /** Icon for UI */
+  icon: string;
+  
+  /** Description */
+  description?: string;
+  
+  /** Validation pattern (regex) */
+  validationPattern?: string;
+  
+  /** Is this type still active/usable? */
+  isActive: boolean;
+  
+  /** Display order within category */
+  sortOrder: number;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// PersonIdentifier (Value Object of Person)
+// ═══════════════════════════════════════════════════════════════════
+
+/**
+ * PersonIdentifier - Value object for identifying a person
+ * 
+ * This is a VALUE OBJECT because:
+ * - No identity of its own (part of Person aggregate)
+ * - Immutable - changing it creates a new identifier
+ * - Describes the Person
+ */
+export interface PersonIdentifier {
+  /** Reference to identifier type */
+  typeId: string;
+  
+  /** The type details (populated from reference data) */
+  type?: PersonIdentifierType;
+  
+  /** The identifier value */
+  value: string;
+  
+  /** Is this the preferred identifier of this type? (e.g., preferred phone) */
+  isPreferred: boolean;
+  
+  /** Is this a legal/official identifier? (e.g., legal name vs nickname) */
+  isLegal: boolean;
+  
+  /** Is this verified? */
+  isVerified: boolean;
+  
+  /** When was it verified? */
+  verifiedUtc?: Date;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// PersonLocation (Value Object of Person)
+// ═══════════════════════════════════════════════════════════════════
+
+/**
+ * PersonLocation - Value object for current location
+ * 
+ * A person can only be in one location at a time.
+ * This is their CURRENT location (not address history).
+ */
+export interface PersonLocation {
+  /** Coordinates */
+  latitude?: number;
+  longitude?: number;
+  
+  /** Human-readable location */
+  displayName?: string;
+  
+  /** Accuracy in meters */
+  accuracyMeters?: number;
+  
+  /** When this location was recorded */
+  recordedUtc: Date;
+  
+  /** Source of location data */
+  source?: 'gps' | 'ip' | 'manual' | 'checkin';
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// Person (Thin Entity)
+// ═══════════════════════════════════════════════════════════════════
+
+/**
+ * Person - The real-world human being (THIN)
  * 
  * Distinct from User (System domain):
- * - User is the authentication identity
- * - Person is the actual human with all their attributes
+ * - User is the authentication identity (has displayName, avatarMediaId via SystemProfile)
+ * - Person is the actual human with identifiers
  * - User.personId references Person.id
+ * 
+ * Person is THIN:
+ * - Just id + identifiers[] + location
+ * - All other attributes (bio, avatar, job) live in PROFILES
  */
 export interface Person {
   id: string;
   
-  // Name
-  firstName: string;
-  lastName: string;
-  preferredName?: string;  // How they want to be addressed
-  fullName?: string;       // Computed: firstName + lastName
+  /** 
+   * Identifiers (Value Objects)
+   * Names, emails, phones, handles, etc.
+   */
+  identifiers: PersonIdentifier[];
   
-  // Contact
-  email: string;
-  emailVerified?: boolean;
-  phone?: string;
-  phoneVerified?: boolean;
-  
-  // Profile
-  title?: string;          // Job title
-  organization?: string;   // Company/org name
-  department?: string;
-  bio?: string;
-  
-  // Media
-  avatarUrl?: string;
-  avatarMediaId?: string;  // FK to Media domain (when implemented)
-  
-  // Preferences
-  timezone?: string;
-  locale?: string;
+  /**
+   * Current location (Value Object)
+   * Optional - only if tracking is enabled
+   */
+  location?: PersonLocation;
   
   // Metadata
   createdUtc?: Date;
   modifiedUtc?: Date;
   isActive?: boolean;
+}
+
+/**
+ * Helper: Get preferred identifier of a specific type
+ */
+export function getPreferredIdentifier(
+  person: Person, 
+  typeId: string
+): PersonIdentifier | undefined {
+  return person.identifiers.find(i => i.typeId === typeId && i.isPreferred);
+}
+
+/**
+ * Helper: Get display name (preferred name identifier, or first name found)
+ */
+export function getPersonDisplayName(person: Person): string {
+  const preferredName = person.identifiers.find(
+    i => (i.type?.category === 'name' || i.typeId.includes('name')) && i.isPreferred
+  );
+  if (preferredName) return preferredName.value;
+  
+  const anyName = person.identifiers.find(
+    i => i.type?.category === 'name' || i.typeId.includes('name')
+  );
+  return anyName?.value || 'Unknown';
 }
 
 // ═══════════════════════════════════════════════════════════════════

@@ -2129,8 +2129,150 @@
                     "errorMessage": null
                   },
                   "createdUtc": "2024-12-20T09:15:00.000Z",
-                  "modifiedUtc": "2024-12-20T09:15:00.000Z",
-                  "isDeleted": false
-                }
-              ]
-            }
+                        "modifiedUtc": "2024-12-20T09:15:00.000Z",
+                        "isDeleted": false
+                      }
+                    ],
+                    "social_PersonIdentifierTypes": [
+                      {
+                        "id": "full-name",
+                        "name": "Full Name",
+                        "category": "name",
+                        "icon": "ri-user-line",
+                        "description": "Complete name (first + last)",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 1
+                      },
+                      {
+                        "id": "given-name",
+                        "name": "Given Name",
+                        "category": "name",
+                        "icon": "ri-user-line",
+                        "description": "First name / given name",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 2
+                      },
+                      {
+                        "id": "family-name",
+                        "name": "Family Name",
+                        "category": "name",
+                        "icon": "ri-user-line",
+                        "description": "Last name / surname / family name",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 3
+                      },
+                      {
+                        "id": "preferred-name",
+                        "name": "Preferred Name",
+                        "category": "name",
+                        "icon": "ri-heart-line",
+                        "description": "How they prefer to be addressed",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 4
+                      },
+                      {
+                        "id": "email",
+                        "name": "Email",
+                        "category": "contact",
+                        "icon": "ri-mail-line",
+                        "description": "Email address",
+                        "validationPattern": "^[^@]+@[^@]+\\.[^@]+$",
+                        "isActive": true,
+                        "sortOrder": 10
+                      },
+                      {
+                        "id": "phone-mobile",
+                        "name": "Mobile Phone",
+                        "category": "contact",
+                        "icon": "ri-smartphone-line",
+                        "description": "Mobile/cell phone number",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 11
+                      },
+                      {
+                        "id": "phone-work",
+                        "name": "Work Phone",
+                        "category": "contact",
+                        "icon": "ri-phone-line",
+                        "description": "Office/work phone number",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 12
+                      },
+                      {
+                        "id": "twitter",
+                        "name": "Twitter/X",
+                        "category": "social",
+                        "icon": "ri-twitter-x-line",
+                        "description": "Twitter/X handle",
+                        "validationPattern": "^@?[A-Za-z0-9_]+$",
+                        "isActive": true,
+                        "sortOrder": 20
+                      },
+                      {
+                        "id": "linkedin",
+                        "name": "LinkedIn",
+                        "category": "social",
+                        "icon": "ri-linkedin-line",
+                        "description": "LinkedIn profile URL",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 21
+                      },
+                      {
+                        "id": "github",
+                        "name": "GitHub",
+                        "category": "social",
+                        "icon": "ri-github-line",
+                        "description": "GitHub username",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 22
+                      },
+                      {
+                        "id": "national-id",
+                        "name": "National ID",
+                        "category": "official",
+                        "icon": "ri-id-card-line",
+                        "description": "Government-issued ID number",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 30
+                      },
+                      {
+                        "id": "passport",
+                        "name": "Passport",
+                        "category": "official",
+                        "icon": "ri-passport-line",
+                        "description": "Passport number",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 31
+                      },
+                      {
+                        "id": "employee-id",
+                        "name": "Employee ID",
+                        "category": "official",
+                        "icon": "ri-building-line",
+                        "description": "Employer-issued ID",
+                        "validationPattern": null,
+                        "isActive": true,
+                        "sortOrder": 32
+                      },
+                      {
+                        "id": "fax",
+                        "name": "Fax",
+                        "category": "contact",
+                        "icon": "ri-printer-line",
+                        "description": "Fax number (legacy)",
+                        "validationPattern": null,
+                        "isActive": false,
+                        "sortOrder": 99
+                      }
+                    ]
+                  }

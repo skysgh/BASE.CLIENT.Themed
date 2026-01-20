@@ -2,12 +2,18 @@
  * Person Service
  * 
  * Signal-based service for Person entity management.
+ * 
+ * Person is THIN:
+ * - id
+ * - identifiers[] (Value Objects)
+ * - location (Value Object)
+ * 
  * Architecture: Repository (HTTP) → Service (signals) → Component
  */
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { Observable, tap, map, catchError, of } from 'rxjs';
 import { PersonRepository } from '../repositories';
-import { Person } from '../models';
+import { Person, PersonIdentifier, PersonIdentifierType, getPersonDisplayName } from '../models';
 import { PersonDto } from '../models/dtos';
 import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
 
@@ -18,12 +24,14 @@ export class PersonService {
   
   // Signals
   private _people = signal<Person[]>([]);
+  private _identifierTypes = signal<PersonIdentifierType[]>([]);
   private _loading = signal(false);
   private _saving = signal(false);
   private _error = signal<string | null>(null);
   
   // Public readonly
   readonly people = this._people.asReadonly();
+  readonly identifierTypes = this._identifierTypes.asReadonly();
   readonly loading = this._loading.asReadonly();
   readonly saving = this._saving.asReadonly();
   readonly error = this._error.asReadonly();
@@ -80,7 +88,7 @@ export class PersonService {
   }
   
   /**
-   * Get person by email
+   * Get person by email identifier
    */
   getByEmail(email: string): Observable<Person | undefined> {
     return this.repository.getByEmail(email).pipe(
@@ -98,18 +106,8 @@ export class PersonService {
     const now = new Date().toISOString();
     const dto: PersonDto = {
       id: `person-${Date.now()}`,
-      firstName: data.firstName || '',
-      lastName: data.lastName || '',
-      preferredName: data.preferredName,
-      email: data.email || '',
-      phone: data.phone,
-      title: data.title,
-      organization: data.organization,
-      department: data.department,
-      bio: data.bio,
-      avatarUrl: data.avatarUrl,
-      timezone: data.timezone,
-      locale: data.locale,
+      identifiers: data.identifiers || [],
+      location: data.location,
       isActive: true,
       createdUtc: now,
       modifiedUtc: now,
@@ -121,7 +119,7 @@ export class PersonService {
         next: (created) => {
           this._people.update(people => [...people, created]);
           this._saving.set(false);
-          this.logger.debug(`Created person: ${created.firstName} ${created.lastName}`);
+          this.logger.debug(`Created person: ${getPersonDisplayName(created)}`);
         },
         error: (err) => {
           this._error.set('Failed to create person');
@@ -135,31 +133,35 @@ export class PersonService {
   /**
    * Update an existing person
    */
-  update(id: string, updates: Partial<Person>): Observable<Person | undefined> {
-    this._saving.set(true);
+   update(id: string, updates: Partial<Person>): Observable<Person | undefined> {
+     this._saving.set(true);
     
-    const existing = this._people().find(p => p.id === id);
-    if (!existing) {
-      this._saving.set(false);
-      return of(undefined);
-    }
+     const existing = this._people().find(p => p.id === id);
+     if (!existing) {
+       this._saving.set(false);
+       return of(undefined);
+     }
     
-    const dto: PersonDto = {
-      ...this.mapPersonToDto(existing),
-      ...this.mapPartialToDto(updates),
-      modifiedUtc: new Date().toISOString(),
-    };
+     const baseDto = this.mapPersonToDto(existing);
+     const dto: PersonDto = {
+       id: baseDto.id,
+       identifiers: updates.identifiers ?? baseDto.identifiers,
+       location: updates.location ?? baseDto.location,
+       isActive: updates.isActive ?? baseDto.isActive,
+       createdUtc: baseDto.createdUtc,
+       modifiedUtc: new Date().toISOString(),
+     };
     
-    return this.repository.update(id, dto).pipe(
-      map(savedDto => this.mapDtoToPerson(savedDto)),
-      tap({
-        next: (updated) => {
-          this._people.update(people => 
-            people.map(p => p.id === id ? updated : p)
-          );
-          this._saving.set(false);
-          this.logger.debug(`Updated person: ${updated.firstName} ${updated.lastName}`);
-        },
+     return this.repository.update(id, dto).pipe(
+       map(savedDto => this.mapDtoToPerson(savedDto)),
+       tap({
+         next: (updated) => {
+           this._people.update(people => 
+             people.map(p => p.id === id ? updated : p)
+           );
+           this._saving.set(false);
+           this.logger.debug(`Updated person: ${getPersonDisplayName(updated)}`);
+         },
         error: (err) => {
           this._error.set('Failed to update person');
           this._saving.set(false);
@@ -195,26 +197,49 @@ export class PersonService {
   }
   
   // ─────────────────────────────────────────────────────────────────
+  // Identifier Operations
+  // ─────────────────────────────────────────────────────────────────
+  
+  /**
+   * Add an identifier to a person
+   */
+  addIdentifier(personId: string, identifier: PersonIdentifier): Observable<Person | undefined> {
+    const person = this._people().find(p => p.id === personId);
+    if (!person) return of(undefined);
+    
+    const updatedIdentifiers = [...person.identifiers, identifier];
+    return this.update(personId, { identifiers: updatedIdentifiers });
+  }
+  
+  /**
+   * Remove an identifier from a person
+   */
+  removeIdentifier(personId: string, typeId: string, value: string): Observable<Person | undefined> {
+    const person = this._people().find(p => p.id === personId);
+    if (!person) return of(undefined);
+    
+    const updatedIdentifiers = person.identifiers.filter(
+      i => !(i.typeId === typeId && i.value === value)
+    );
+    return this.update(personId, { identifiers: updatedIdentifiers });
+  }
+  
+  /**
+   * Get display name for a person
+   */
+  getDisplayName(person: Person): string {
+    return getPersonDisplayName(person);
+  }
+  
+  // ─────────────────────────────────────────────────────────────────
   // Mappers
   // ─────────────────────────────────────────────────────────────────
   
   private mapDtoToPerson(dto: PersonDto): Person {
     return {
       id: dto.id,
-      firstName: dto.firstName,
-      lastName: dto.lastName,
-      preferredName: dto.preferredName,
-      fullName: `${dto.firstName} ${dto.lastName}`.trim(),
-      email: dto.email,
-      emailVerified: dto.emailVerified,
-      phone: dto.phone,
-      title: dto.title,
-      organization: dto.organization,
-      department: dto.department,
-      bio: dto.bio,
-      avatarUrl: dto.avatarUrl,
-      timezone: dto.timezone,
-      locale: dto.locale,
+      identifiers: dto.identifiers || [],
+      location: dto.location,
       isActive: dto.isActive,
       createdUtc: dto.createdUtc ? new Date(dto.createdUtc) : undefined,
       modifiedUtc: dto.modifiedUtc ? new Date(dto.modifiedUtc) : undefined,
@@ -224,39 +249,11 @@ export class PersonService {
   private mapPersonToDto(person: Person): PersonDto {
     return {
       id: person.id,
-      firstName: person.firstName,
-      lastName: person.lastName,
-      preferredName: person.preferredName,
-      email: person.email,
-      emailVerified: person.emailVerified,
-      phone: person.phone,
-      title: person.title,
-      organization: person.organization,
-      department: person.department,
-      bio: person.bio,
-      avatarUrl: person.avatarUrl,
-      timezone: person.timezone,
-      locale: person.locale,
+      identifiers: person.identifiers,
+      location: person.location,
       isActive: person.isActive,
       createdUtc: person.createdUtc?.toISOString(),
       modifiedUtc: person.modifiedUtc?.toISOString(),
     };
-  }
-  
-  private mapPartialToDto(updates: Partial<Person>): Partial<PersonDto> {
-    const dto: Partial<PersonDto> = {};
-    if (updates.firstName !== undefined) dto.firstName = updates.firstName;
-    if (updates.lastName !== undefined) dto.lastName = updates.lastName;
-    if (updates.preferredName !== undefined) dto.preferredName = updates.preferredName;
-    if (updates.email !== undefined) dto.email = updates.email;
-    if (updates.phone !== undefined) dto.phone = updates.phone;
-    if (updates.title !== undefined) dto.title = updates.title;
-    if (updates.organization !== undefined) dto.organization = updates.organization;
-    if (updates.department !== undefined) dto.department = updates.department;
-    if (updates.bio !== undefined) dto.bio = updates.bio;
-    if (updates.avatarUrl !== undefined) dto.avatarUrl = updates.avatarUrl;
-    if (updates.timezone !== undefined) dto.timezone = updates.timezone;
-    if (updates.locale !== undefined) dto.locale = updates.locale;
-    return dto;
   }
 }
