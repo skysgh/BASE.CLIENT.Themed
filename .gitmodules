@@ -1,0 +1,3 @@
+[submodule "_submodules/i18n"]
+	path = _submodules/i18n
+	url = https://github.com/skysgh/sys.i18n.git
