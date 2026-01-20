@@ -42,7 +42,9 @@ import { ServiceAccountService } from './service.account.service';
   providedIn: 'root'
 })
 export class AccountService {
-  private readonly CONFIG_BASE_PATH = '/assets/core/data/accounts';
+  // ✅ Bootstrap file paths
+  // Future: Will use /api/system/bootstrap-service and /api/system/bootstrap-account endpoints
+  private readonly SERVICE_CONFIG_PATH = '/assets/core/data/bootstrap-service.json';
   private readonly ACCOUNTS_CONFIG_BASE_PATH = '/assets/core/data/accounts';
   
   /** Current account configuration (reactive) */
@@ -135,7 +137,11 @@ export class AccountService {
 
   /**
    * Load account configuration from JSON files
-   * Cascades: default.json → {accountId}.json
+   * 
+   * Currently loads only bootstrap-account.json (or {accountId}.json)
+   * 
+   * Future: bootstrap-service.json contains the applet registry (array format)
+   * which will be used separately for widget registration, not merged into account config.
    * 
    * @param accountId Account identifier
    */
@@ -144,38 +150,28 @@ export class AccountService {
       // ✅ Set current account ID immediately
       this.currentAccountId = accountId;
       
-      // Load default config first
-      const defaultConfig = await this.http
-        .get<Partial<AccountConfig>>(`${this.CONFIG_BASE_PATH}/default.json`)
-        .pipe(
-          catchError(() => {
-            console.warn('[AccountService] Default config not found, using hardcoded defaults');
-            return of(DEFAULT_ACCOUNT_CONFIG);
-          })
-        )
-        .toPromise();
+      // NOTE: bootstrap-service.json is NOT merged here because it has a different schema
+      // (applets as array for registry, vs applets as object for account config)
+      // Service config will be used separately for widget/applet registration
 
-      // Only load account-specific config if accountId is NOT 'default'
+      // Load account config (bootstrap-account.json for 'default', or {accountId}.json)
+      const accountFileName = accountId === 'default' ? 'bootstrap-account.json' : `${accountId}.json`;
       let accountConfig: Partial<AccountConfig> = {};
       let accountNotFound = false;
       
-      if (accountId !== 'default') {
-        accountConfig = await this.http
-          .get<Partial<AccountConfig>>(`${this.ACCOUNTS_CONFIG_BASE_PATH}/${accountId}.json`)
-          .pipe(
-            catchError((error) => {
-              console.warn(`[AccountService] Account config not found for '${accountId}', using defaults only`, error);
-              accountNotFound = true;
-              return of({} as Partial<AccountConfig>);
-            })
-          )
-          .toPromise() || {};
-      } else {
-        console.log('[AccountService] Using default account, no account-specific overrides loaded');
-      }
+      accountConfig = await this.http
+        .get<Partial<AccountConfig>>(`${this.ACCOUNTS_CONFIG_BASE_PATH}/${accountFileName}`)
+        .pipe(
+          catchError((error) => {
+            console.warn(`[AccountService] Account config not found for '${accountId}', using defaults`, error);
+            accountNotFound = true;
+            return of(DEFAULT_ACCOUNT_CONFIG as Partial<AccountConfig>);
+          })
+        )
+        .toPromise() || {};
 
-      // Deep merge: default → account (account overrides default)
-      const mergedConfig = this.deepMerge(defaultConfig || {}, accountConfig) as AccountConfig;
+      // Use account config directly (no merge with service config for now)
+      const mergedConfig = { ...DEFAULT_ACCOUNT_CONFIG, ...accountConfig } as AccountConfig;
       
       // Ensure accountId is set
       mergedConfig.accountId = accountId;

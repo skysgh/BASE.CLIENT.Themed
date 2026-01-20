@@ -57,9 +57,9 @@
                 <a [routerLink]="homeUrl" class="btn btn-outline-secondary">
                   <i class="mdi mdi-home me-1"></i>
                   @if (isAuthenticated) {
-                    {{ 'BASE.HUB.SINGULAR' | baseTranslate }}
+                  {{ 'BASE.HUBS.OBJECTS.INCLUSIVE.SINGULAR' | baseTranslate }}
                   } @else {
-                    {{ 'BASE.HOMES.SINGULAR' | baseTranslate }}
+                  {{ 'BASE.HOMES.SINGULAR' | baseTranslate }}
                   }
                 </a>
               </div>

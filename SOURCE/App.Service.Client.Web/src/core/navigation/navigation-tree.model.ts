@@ -76,3 +76,23 @@ export interface NavigationEntry {
   timestamp: number;
   title?: string;
 }
+
+/**
+ * Breadcrumb item for display
+ */
+export interface BreadcrumbItem {
+  /** Display label (translated if possible) */
+  label: string;
+  
+  /** i18n key for translation */
+  labelKey?: string;
+  
+  /** Route path to navigate to */
+  path: string;
+  
+  /** Icon class (optional) */
+  icon?: string;
+  
+  /** Is this the current/active item? */
+  active: boolean;
+}

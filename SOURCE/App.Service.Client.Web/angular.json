@@ -33,6 +33,11 @@
               "src/assets",
               {
                 "glob": "**/*",
+                "input": "../../_submodules/i18n/Data",
+                "output": "/assets/data"
+              },
+              {
+                "glob": "**/*",
                 "input": "src/core/assets",
                 "output": "/assets/core"
               },

@@ -1,0 +1,181 @@
+{
+"_comment": "Account-specific overrides. Inherits from bootstrap-service.json defaults.",
+"accountId": "default",
+  "accountGuid": "00000000-0000-0000-0000-000000000001",
+  "name": "Default Account",
+  "title": "BASE.ACCOUNTS.DEFAULT.TITLE",
+  "subtitle": "BASE.ACCOUNTS.DEFAULT.SUBTITLE",
+  "description": "BASE.ACCOUNTS.DEFAULT.DESCRIPTION",
+  "branding": {
+    "logo": "/assets/core/media/open/accounts/default/logo-dark.svg",
+    "logoDark": "/assets/core/media/open/accounts/default/logo-dark.svg",
+    "logoSm": "/assets/core/media/open/accounts/default/logo-sm.png",
+    "theme": {
+      "primaryColor": "#007bff",
+      "secondaryColor": "#6c757d",
+      "accentColor": "#28a745"
+    }
+  },
+  "context": {
+    "sponsor": {
+      "title": "Default Sponsor",
+      "description": "Default sponsor organization",
+      "channels": {
+        "email": "sponsor@example.com",
+        "tel": "+1-555-0100",
+        "postal": {
+          "street": "123 Main Street",
+          "city": "Springfield",
+          "region": "IL",
+          "code": "62701",
+          "country": "USA"
+        }
+      }
+    }
+  },
+  "applets": {
+    "default": "spike",
+    "_comment": "Applet IDs should match APPLET_IDS from core/constants/applet.constants.ts",
+    
+    "spike": {
+      "enabled": true,
+      "showInNav": true,
+      "navOrder": 1,
+      "features": {
+        "categories": true,
+        "classifications": true,
+        "workflow": true
+      }
+    },
+    "service.settings": {
+      "enabled": true,
+      "showInNav": false,
+      "features": {
+        "serviceSettings": false,
+        "accountSettings": true,
+        "userSettings": true
+      }
+    },
+    "service.search": {
+      "enabled": true,
+      "showInNav": true,
+      "navOrder": 99,
+      "features": {}
+    },
+    "service.theme": {
+      "enabled": false,
+      "showInNav": false,
+      "features": {}
+    },
+    "education": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 2,
+      "features": {}
+    },
+    "architecture": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 3,
+      "features": {}
+    },
+    "astronomy": {
+      "enabled": true,
+      "showInNav": true,
+      "navOrder": 2,
+      "features": {
+        "starSystems": true,
+        "planets": true,
+        "astronomers": true
+      }
+    },
+    "activity": {
+      "enabled": true,
+      "showInNav": false,
+      "features": {}
+    },
+    "people": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 4,
+      "features": {}
+    },
+    "products": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 5,
+      "features": {
+        "inventory": true,
+        "variants": false
+      }
+    },
+    "places": {
+      "enabled": false,
+      "showInNav": true,
+      "navOrder": 6,
+      "features": {}
+    }
+  },
+  "resources": {
+    "images": {
+      "root": "/assets/core/media/open/accounts/default/",
+      "trustedBy": "/assets/core/media/open/accounts/default/trustedBy/",
+      "backgrounds": "/assets/core/media/open/accounts/default/backgrounds/"
+    },
+    "files": {
+      "root": "/assets/media/accounts/open/default/files/"
+    },
+    "i18n": {
+      "path": "/assets/data"
+    }
+  },
+  "features": {
+    "_comment_toolbar": "Toolbar icon visibility flags",
+    "showSettingsIcon": false,
+    "showThemeSwitcher": true,
+    "showFullscreenToggle": true,
+    "showNotifications": true,
+    "showLanguageSelector": true,
+    "showShoppingCart": false,
+    "showTrashIcon": false,
+    "showHelpIcon": true,
+    
+    "_comment_usermenu": "User menu item visibility flags",
+    "showUserMenuFinances": true,
+    "showUserMenuMessages": true,
+    "showUserMenuTasks": true,
+    "showUserMenuHelp": true,
+    
+    "_comment_features": "Other feature flags",
+    "enableAnalytics": true,
+    "enableChat": true,
+    "enableNotifications": true,
+    "enableSearchIcon": true,
+    
+    "_comment_legacy": "Legacy flags (deprecated - kept for backward compatibility)",
+    "enableSettingsIcon": false
+  },
+  "preferences": {
+    "_comment": "Default UI preferences (can be overridden at account/user level)",
+    "spacing": "compact",
+    "appearance": {
+      "mode": "light",
+      "layout": "vertical",
+      "layoutWidth": "fluid",
+      "layoutPosition": "fixed",
+      "topbarColor": "light",
+      "sidebarSize": "default",
+      "sidebarView": "default",
+      "sidebarColor": "dark",
+      "sidebarImage": "none",
+      "preloader": "disable",
+      "sidebarVisibility": "show"
+    }
+  },
+  "_comments": {
+    "i18n": "Text values can be i18n keys (e.g., BASE.ACCOUNTS.DEFAULT.TITLE) or plain text.",
+    "applets": "Each applet has enabled, showInNav, navOrder, and features. Use APPLET_IDS constants for IDs.",
+    "features": "Top-level features are global UI toggles. Applet-specific features are under applets.{name}.features",
+    "preferences": "UI preferences like spacing. Hierarchy: service → account → user (user wins)"
+  }
+}

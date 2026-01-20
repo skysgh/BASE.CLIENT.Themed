@@ -169,8 +169,8 @@ export class NavigationDataService {
       // Hub (central landing page) - now under /system/
       {
         id: 'hub',
-        label: 'BASE.HUB.SINGULAR',
-        description: 'BASE.HUB.DESCRIPTION',
+        label: 'BASE.HUBS.OBJECTS.INCLUSIVE.SINGULAR',
+        description: 'BASE.HUBS.PHRASES.DESCRIPTION',
         icon: 'home',
         route: this.buildRoute(ROUTE_SEGMENTS.SYSTEM, ROUTE_SEGMENTS.HUB)
       },

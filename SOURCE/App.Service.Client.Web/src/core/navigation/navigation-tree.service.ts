@@ -26,9 +26,9 @@
  */
 import { Injectable, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
-import { NavigationNode, NavigationContext, NavigationEntry } from './navigation-tree.model';
+import { NavigationNode, NavigationContext, NavigationEntry, BreadcrumbItem } from './navigation-tree.model';
 import { ROOT_NAV_TREE } from './navigation-tree.data';
 import { AccountService } from '../services/account.service';
 
@@ -112,7 +112,7 @@ export class NavigationTreeService {
     // Fallback to hub
     return {
       path: 'apps/system/hub',
-      labelKey: 'BASE.HUB.SINGULAR',
+      labelKey: 'BASE.HUBS.OBJECTS.INCLUSIVE.SINGULAR',
       labelDefault: 'Hub',
     };
   }
@@ -267,16 +267,100 @@ export class NavigationTreeService {
       });
     }
     
-    return params;
-  }
+      return params;
+    }
 
-  // ─────────────────────────────────────────────────────────────
-  // Private Methods
-  // ─────────────────────────────────────────────────────────────
-  
-  /**
-   * Subscribe to router events to track navigation
-   */
+    // ─────────────────────────────────────────────────────────────
+    // Breadcrumb Support
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Get breadcrumb trail for current location
+     * 
+     * Returns array from root to current, each with label and path.
+     * The last item is marked as active.
+     * 
+     * @param includeHome Whether to include "Home/Hub" as first item (default: true)
+     */
+    getBreadcrumbs(includeHome = true): BreadcrumbItem[] {
+      const currentPath = this.getCurrentPathWithoutAccount();
+      const breadcrumbs: BreadcrumbItem[] = [];
+    
+      // Optionally add Home/Hub as root
+      if (includeHome) {
+        breadcrumbs.push({
+          label: 'Hub',
+          labelKey: 'BASE.HUBS.OBJECTS.INCLUSIVE.SINGULAR',
+          path: '/system/hub',
+          icon: 'bx bx-home-alt',
+          active: false,
+        });
+      }
+    
+      // Walk the path segments and build breadcrumb trail
+      const segments = currentPath.split('/').filter(s => s && !s.startsWith(':'));
+      let accumulatedPath = '';
+    
+      for (let i = 0; i < segments.length; i++) {
+        const segment = segments[i];
+        accumulatedPath = accumulatedPath ? `${accumulatedPath}/${segment}` : segment;
+      
+        // Skip reserved route prefixes for first segment (apps, system, etc.)
+        if (i === 0 && this.isReservedRoutePrefix(segment)) {
+          continue;
+        }
+      
+        // Look up node in tree for label info
+        const nodeInfo = this.findNodeForPath(accumulatedPath);
+        const isLast = i === segments.length - 1;
+      
+        breadcrumbs.push({
+          label: nodeInfo?.node?.labelDefault || this.formatSegmentAsLabel(segment),
+          labelKey: nodeInfo?.node?.labelKey,
+          path: `/${accumulatedPath}`,
+          icon: nodeInfo?.node?.icon,
+          active: isLast,
+        });
+      }
+    
+      return breadcrumbs;
+    }
+
+    /**
+     * Get breadcrumbs as observable (reactive updates on navigation)
+     */
+    getBreadcrumbs$(includeHome = true): import('rxjs').Observable<BreadcrumbItem[]> {
+      return this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => this.getBreadcrumbs(includeHome))
+      );
+    }
+
+    /**
+     * Check if segment is a reserved route prefix
+     */
+    private isReservedRoutePrefix(segment: string): boolean {
+      const reserved = ['apps', 'system', 'auth', 'errors', 'pages', 'dev'];
+      return reserved.includes(segment);
+    }
+
+    /**
+     * Format a path segment as a human-readable label
+     * e.g., 'star-systems' -> 'Star Systems'
+     */
+    private formatSegmentAsLabel(segment: string): string {
+      return segment
+        .replace(/[-_]/g, ' ')
+        .replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Private Methods
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Subscribe to router events to track navigation
+     */
   private subscribeToRouterEvents(): void {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)

@@ -1,5 +1,122 @@
 {
-  "env-config": {
+"system_BootstrapService": {
+  "_comment": "Service-level defaults. Account configs override these values.",
+  "serviceId": "base",
+  "serviceName": "BASE Platform",
+  "defaultAccountId": "default",
+  "applets": [
+    {
+      "id": "spike",
+      "name": "Spikes",
+      "description": "Discovery and ideation tracking",
+      "icon": "bx bx-bulb",
+      "defaultEnabled": true,
+      "hubWidget": { "size": "medium", "order": 1 },
+      "routes": { "hub": "/apps/spike", "browse": "/apps/spike/spikes" }
+    },
+    {
+      "id": "astronomy",
+      "name": "Astronomy",
+      "description": "Star systems, planets, and celestial objects",
+      "icon": "bx bx-planet",
+      "defaultEnabled": false,
+      "hubWidget": { "size": "medium", "order": 2 },
+      "routes": { "hub": "/apps/astronomy" }
+    },
+    {
+      "id": "activity",
+      "name": "Activity",
+      "description": "Recent activity feed",
+      "icon": "bx bx-time",
+      "defaultEnabled": true,
+      "hubWidget": { "size": "medium", "order": 10 },
+      "routes": { "hub": "/activity" }
+    },
+    {
+      "id": "service.settings",
+      "name": "Settings",
+      "description": "System and user preferences",
+      "icon": "bx bx-cog",
+      "defaultEnabled": true,
+      "hubWidget": null,
+      "routes": { "hub": "/settings" }
+    }
+  ],
+  "featureFlags": {
+    "enableAnalytics": true,
+    "enableChat": false,
+    "enableNotifications": true
+  }
+},
+"service_Activities": [
+  {
+    "id": "act-001",
+    "title": "Created new spike \"Search Sync\"",
+    "description": "New spike created for search synchronization feature",
+    "type": "created",
+    "entityType": "spike",
+    "entityId": "spike-001",
+    "entityRoute": "/apps/spike/spikes/spike-001",
+    "createdUtc": "2025-01-20T12:30:00.000Z",
+    "createdByUserId": "user-001",
+    "createdByUserName": "John Doe"
+  },
+  {
+    "id": "act-002",
+    "title": "Updated spike status to In Progress",
+    "description": "Status changed from Draft to In Progress",
+    "type": "status_changed",
+    "entityType": "spike",
+    "entityId": "spike-002",
+    "entityRoute": "/apps/spike/spikes/spike-002",
+    "createdUtc": "2025-01-20T09:15:00.000Z",
+    "createdByUserId": "user-001",
+    "createdByUserName": "John Doe"
+  },
+  {
+    "id": "act-003",
+    "title": "Submitted feedback request",
+    "description": "Feedback requested for API design review",
+    "type": "submitted",
+    "entityType": "feedback",
+    "entityId": "feedback-001",
+    "createdUtc": "2025-01-19T14:00:00.000Z",
+    "createdByUserId": "user-001",
+    "createdByUserName": "John Doe"
+  },
+  {
+    "id": "act-004",
+    "title": "Added star system Alpha Centauri",
+    "description": "New star system added to astronomy catalog",
+    "type": "created",
+    "entityType": "starSystem",
+    "entityId": "ss-002",
+    "entityRoute": "/apps/astronomy/star-systems/ss-002",
+    "createdUtc": "2025-01-19T10:00:00.000Z",
+    "createdByUserId": "user-001",
+    "createdByUserName": "John Doe"
+  },
+  {
+    "id": "act-005",
+    "title": "Completed spike \"Performance Testing\"",
+    "description": "Spike marked as completed",
+    "type": "completed",
+    "entityType": "spike",
+    "entityId": "spike-003",
+    "entityRoute": "/apps/spike/spikes/spike-003",
+    "createdUtc": "2025-01-18T16:30:00.000Z",
+    "createdByUserId": "user-001",
+    "createdByUserName": "John Doe"
+  }
+],
+"system_BootstrapAccounts": [
+  {
+    "id": "default",
+    "accountGuid": "00000000-0000-0000-0000-000000000001",
+    "name": "Default Account"
+  }
+],
+"env-config": {
     "version": "1.0.0-mock",
     "timestamp": "2024-12-30T00:00:00.000Z",
     "app": {

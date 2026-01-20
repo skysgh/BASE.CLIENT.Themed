@@ -23,7 +23,7 @@ export const SYSTEM_NAV_TREE: NavigationNode = {
     // Hub - central landing
     {
       path: 'hub',
-      labelKey: 'BASE.HUB.SINGULAR',
+      labelKey: 'BASE.HUBS.OBJECTS.INCLUSIVE.SINGULAR',
       labelDefault: 'Hub',
       icon: 'bx-home',
       navType: 'hub',

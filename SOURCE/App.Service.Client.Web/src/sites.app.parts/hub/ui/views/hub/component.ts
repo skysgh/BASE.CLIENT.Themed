@@ -18,7 +18,7 @@ import { SpikeWidgetComponent, ActivityWidgetComponent, AstronomyWidgetComponent
   imports: [CommonModule, RouterModule, NgComponentOutlet, SpikeWidgetComponent, ActivityWidgetComponent, AstronomyWidgetComponent],
   template: `
     <div class="hub-page">
-      <!-- Header with Quick Actions on Right -->
+      <!-- Header -->
       <div class="hub-header mb-4">
         <div class="d-flex justify-content-between align-items-start">
           <!-- Title -->
@@ -32,22 +32,59 @@ import { SpikeWidgetComponent, ActivityWidgetComponent, AstronomyWidgetComponent
             </p>
           </div>
           
-          <!-- Quick Actions (Right Side) -->
+          <!-- Config Button -->
           <div class="d-flex gap-2 align-items-center">
-            <!-- Dynamic quick action based on default applet -->
-            @if (defaultApplet()) {
-              <a [routerLink]="defaultApplet()!.quickActionRoute" class="btn btn-primary">
-                <i class="bx bx-plus me-1"></i>
-                {{ defaultApplet()!.quickActionLabel }}
-              </a>
-            }
-            <!-- Customize (future) -->
-            <button class="btn btn-outline-secondary" disabled title="Coming soon">
+            <button class="btn btn-outline-secondary" 
+                    (click)="toggleConfigPanel()"
+                    [class.active]="showConfigPanel()"
+                    title="Configure hub widgets">
               <i class="bx bx-cog"></i>
             </button>
           </div>
         </div>
       </div>
+
+      <!-- Config Panel (Pullout) -->
+      @if (showConfigPanel()) {
+        <div class="hub-config-panel card mb-4">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h6 class="mb-0">
+              <i class="bx bx-slider me-2"></i>
+              Configure Hub Widgets
+            </h6>
+            <button class="btn-close" (click)="toggleConfigPanel()"></button>
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-3">
+              Drag to reorder. Toggle visibility for each widget.
+            </p>
+            <div class="widget-config-list">
+              @for (widget of allWidgets(); track widget.id) {
+                <div class="widget-config-item d-flex align-items-center gap-3 p-2 border rounded mb-2">
+                  <i class="bx bx-grid-vertical text-muted drag-handle"></i>
+                  <div class="widget-icon-sm" [class]="'bg-' + getWidgetColor(widget) + '-subtle'">
+                    <i [class]="widget.icon"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <span class="fw-medium">{{ widget.title }}</span>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" 
+                           [checked]="widget.enabled"
+                           (change)="toggleWidget(widget.id)">
+                  </div>
+                </div>
+              }
+            </div>
+            <div class="mt-3 text-end">
+              <small class="text-muted">
+                <i class="bx bx-info-circle me-1"></i>
+                For advanced options, go to <a routerLink="/settings/hub">Hub Settings</a>
+              </small>
+            </div>
+          </div>
+        </div>
+      }
 
       <!-- Widget Grid - Dynamic from registered widgets -->
       <div class="row g-4">
@@ -82,49 +119,108 @@ import { SpikeWidgetComponent, ActivityWidgetComponent, AstronomyWidgetComponent
       </div>
     </div>
   `,
-  styles: [`
-    .hub-page {
-      padding: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    styles: [`
+      .hub-page {
+        padding: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
     
-    .widget-card {
-      border: 1px solid var(--vz-border-color);
-    }
+      .widget-card {
+        border: 1px solid var(--vz-border-color);
+      }
     
-    .widget-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
+      .widget-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+    
+      .hub-config-panel {
+        border: 1px solid var(--vz-primary);
+        background: var(--vz-card-bg);
+      }
+    
+      .widget-icon-sm {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+    
+      .widget-config-item {
+        background: var(--vz-card-bg);
+        transition: background 0.2s;
+      }
+    
+      .widget-config-item:hover {
+        background: var(--vz-light);
+      }
+    
+      .drag-handle {
+        cursor: grab;
+      }
+    
+      .btn.active {
+        background-color: var(--vz-primary);
+        color: white;
+      }
+    `]
+  })
+  export class HubComponent implements OnInit {
+    private hubService = inject(HubService);
+
+    // Get widgets from service (filtered by account config)
+    widgets = computed(() => this.hubService.appletWidgets());
+  
+    // All registered widgets (for config panel)
+    allWidgets = computed(() => this.hubService.getAllWidgets());
+  
+    // Config panel visibility
+    showConfigPanel = signal(false);
+
+    ngOnInit(): void {
+      // Register built-in widgets if not already registered
+      this.registerBuiltInWidgets();
     }
-  `]
-})
-export class HubComponent implements OnInit {
-  private hubService = inject(HubService);
-
-  // Get widgets from service (filtered by account config)
-  widgets = computed(() => this.hubService.appletWidgets());
   
-  // Default applet for quick action
-  defaultApplet = signal<{ quickActionRoute: string; quickActionLabel: string } | null>({
-    quickActionRoute: '/apps/spike/spikes/add',
-    quickActionLabel: 'New Spike',
-  });
-
-  ngOnInit(): void {
-    // Register built-in widgets if not already registered
-    this.registerBuiltInWidgets();
-  }
+    /**
+     * Toggle config panel visibility
+     */
+    toggleConfigPanel(): void {
+      this.showConfigPanel.update(v => !v);
+    }
   
-  /**
-   * Register the built-in widgets
-   */
-  private registerBuiltInWidgets(): void {
+    /**
+     * Toggle widget enabled state
+     */
+    toggleWidget(widgetId: string): void {
+      this.hubService.toggleWidgetEnabled(widgetId);
+    }
+  
+    /**
+     * Get widget color based on applet
+     */
+    getWidgetColor(widget: HubWidgetConfig): string {
+      const colors: Record<string, string> = {
+        'spike': 'primary',
+        'astronomy': 'warning',
+        'activity': 'info',
+      };
+      return colors[widget.appletId] || 'secondary';
+    }
+  
+    /**
+     * Register the built-in widgets
+     */
+    private registerBuiltInWidgets(): void {
     // Spike widget
     this.hubService.registerWidget({
       id: 'spike-summary',
@@ -151,22 +247,22 @@ export class HubComponent implements OnInit {
       component: AstronomyWidgetComponent,
     });
     
-    // Activity widget (always enabled - part of core)
-    this.hubService.registerWidget({
-      id: 'activity-feed',
-      appletId: 'spike', // Tied to spike for now, could be 'core'
-      title: 'Recent Activity',
-      icon: 'bx bx-time',
-      size: 'medium',
-      order: 10,
-      enabled: true,
-      component: ActivityWidgetComponent,
-    });
-  }
+      // Activity widget - now its own applet
+      this.hubService.registerWidget({
+        id: 'activity-feed',
+        appletId: 'activity',
+        title: 'Recent Activity',
+        icon: 'bx bx-time',
+        size: 'medium',
+        order: 10,
+        enabled: true,
+        component: ActivityWidgetComponent,
+      });
+    }
   
-  /**
-   * Get Bootstrap column class based on widget size
-   */
+    /**
+     * Get Bootstrap column class based on widget size
+     */
   getWidgetColumnClass(widget: HubWidgetConfig): string {
     switch (widget.size) {
       case 'small':

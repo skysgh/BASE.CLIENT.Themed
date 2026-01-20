@@ -173,19 +173,46 @@ export class HubService {
   /**
    * Save preferences to account
    */
-  private savePreferences(): void {
-    // In real impl, save to account service
-    this.logger.debug(`[HubService] Saving widget preferences: ${this._enabledWidgetIds().join(', ')}`);
-  }
+     private savePreferences(): void {
+       // In real impl, save to account service
+       this.logger.debug(`[HubService] Saving widget preferences: ${this._enabledWidgetIds().join(', ')}`);
+     }
 
-  // ─────────────────────────────────────────────────────────────
-  // Helpers
-  // ─────────────────────────────────────────────────────────────
+     // ─────────────────────────────────────────────────────────────
+     // Config Panel Methods
+     // ─────────────────────────────────────────────────────────────
 
-  /**
-   * Get CSS class for widget size
-   */
-  getWidgetSizeClass(size: WidgetSize): string {
-    return WIDGET_SIZE_CLASSES[size];
-  }
-}
+     /**
+      * Get all widgets (for config panel)
+      */
+     getAllWidgets(): HubWidgetConfig[] {
+       return Array.from(this._registeredWidgets().values())
+         .sort((a, b) => a.order - b.order);
+     }
+
+     /**
+      * Toggle widget enabled state
+      */
+     toggleWidgetEnabled(widgetId: string): void {
+       this._registeredWidgets.update(registry => {
+         const updated = new Map(registry);
+         const widget = updated.get(widgetId);
+         if (widget) {
+           updated.set(widgetId, { ...widget, enabled: !widget.enabled });
+         }
+         return updated;
+       });
+       this.savePreferences();
+     }
+
+     // ─────────────────────────────────────────────────────────────
+     // Helpers
+     // ─────────────────────────────────────────────────────────────
+
+     /**
+      * Get CSS class for widget size
+      */
+     getWidgetSizeClass(size: WidgetSize): string {
+       return WIDGET_SIZE_CLASSES[size];
+     }
+   }

@@ -178,20 +178,22 @@ function getLanguageCode() {
  * Note: MultiTranslateLoader is fault-tolerant - missing files return empty object (no error)
  * 
  * @param http HttpClient for loading translation files
- * @returns TranslateLoader instance configured with convention-based paths
- */
-export function createTranslateLoader(http: HttpClient): any {
+  * @returns TranslateLoader instance configured with convention-based paths
+  */
+ export function createTranslateLoader(http: HttpClient): any {
 
-  // ✅ Convention-based paths (no configuration imports needed!)
-  // These paths match the angular.json asset mappings
-  const paths: string[] = [
-    '/assets/core/deployed/i18n',           // Core tier (base translations)
-    '/assets/deployed/i18n',                 // Theme tier (theme-specific translations)
-    '/assets/sites.anon/deployed/i18n',     // Sites.anon tier (public site translations)
-    '/assets/sites.app/deployed/i18n'      // Sites.app tier (authenticated site translations)
-  ];
+ // ✅ Convention-based paths (no configuration imports needed!)
+ // These paths match the angular.json asset mappings
+ // NOTE: /assets/data/i18n disabled - submodule has different structure (linguistic source, not runtime)
+ const paths: string[] = [
+   // '/assets/data/i18n',                    // Data tier - DISABLED: submodule format incompatible
+   '/assets/core/deployed/i18n',           // Core tier (base translations)
+   '/assets/deployed/i18n',                 // Theme tier (theme-specific translations)
+   '/assets/sites.anon/deployed/i18n',     // Sites.anon tier (public site translations)
+   '/assets/sites.app/deployed/i18n'      // Sites.app tier (authenticated site translations)
+ ];
 
-  // Call static method on service that will be part of all services later.
-  return TranslationService.createTranslateLoader(http, paths);
+   // Call static method on service that will be part of all services later.
+   return TranslationService.createTranslateLoader(http, paths);
 
 }

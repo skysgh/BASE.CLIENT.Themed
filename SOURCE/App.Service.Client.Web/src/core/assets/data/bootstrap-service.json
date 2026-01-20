@@ -1,0 +1,158 @@
+{
+  "_comment": "Service-level defaults. Account configs override these values.",
+  "serviceId": "base",
+  "serviceName": "BASE Platform",
+  "defaultAccountId": "default",
+  
+  "applets": [
+    {
+      "id": "spike",
+      "name": "Spikes",
+      "description": "Discovery and ideation tracking",
+      "icon": "bx bx-bulb",
+      "defaultEnabled": true,
+      "hubWidget": {
+        "size": "medium",
+        "order": 1
+      },
+      "routes": {
+        "hub": "/apps/spike",
+        "browse": "/apps/spike/spikes"
+      }
+    },
+    {
+      "id": "astronomy",
+      "name": "Astronomy",
+      "description": "Star systems, planets, and celestial objects",
+      "icon": "bx bx-planet",
+      "defaultEnabled": false,
+      "hubWidget": {
+        "size": "medium",
+        "order": 2
+      },
+      "routes": {
+        "hub": "/apps/astronomy",
+        "browse": "/apps/astronomy/star-systems"
+      }
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "description": "Courses, learners, and curriculum",
+      "icon": "bx bx-book-open",
+      "defaultEnabled": false,
+      "hubWidget": {
+        "size": "medium",
+        "order": 3
+      },
+      "routes": {
+        "hub": "/apps/education"
+      }
+    },
+    {
+      "id": "architecture",
+      "name": "Architecture",
+      "description": "System design and documentation",
+      "icon": "bx bx-building-house",
+      "defaultEnabled": false,
+      "hubWidget": {
+        "size": "medium",
+        "order": 4
+      },
+      "routes": {
+        "hub": "/apps/architecture"
+      }
+    },
+    {
+      "id": "people",
+      "name": "People",
+      "description": "Contacts and relationships",
+      "icon": "bx bx-user",
+      "defaultEnabled": false,
+      "hubWidget": {
+        "size": "medium",
+        "order": 5
+      },
+      "routes": {
+        "hub": "/apps/people"
+      }
+    },
+    {
+      "id": "products",
+      "name": "Products",
+      "description": "Product catalog and inventory",
+      "icon": "bx bx-package",
+      "defaultEnabled": false,
+      "hubWidget": {
+        "size": "medium",
+        "order": 6
+      },
+      "routes": {
+        "hub": "/apps/products"
+      }
+    },
+    {
+      "id": "places",
+      "name": "Places",
+      "description": "Locations and venues",
+      "icon": "bx bx-map",
+      "defaultEnabled": false,
+      "hubWidget": {
+        "size": "medium",
+        "order": 7
+      },
+      "routes": {
+        "hub": "/apps/places"
+      }
+    },
+    {
+      "id": "service.settings",
+      "name": "Settings",
+      "description": "System and user preferences",
+      "icon": "bx bx-cog",
+      "defaultEnabled": true,
+      "hubWidget": null,
+      "routes": {
+        "hub": "/settings"
+      }
+    },
+    {
+      "id": "service.search",
+      "name": "Search",
+      "description": "Global search",
+      "icon": "bx bx-search",
+      "defaultEnabled": true,
+      "hubWidget": null,
+      "routes": {
+        "hub": "/search"
+      }
+    },
+    {
+      "id": "service.theme",
+      "name": "Theme",
+      "description": "Appearance customization",
+      "icon": "bx bx-palette",
+      "defaultEnabled": false,
+      "hubWidget": null,
+      "routes": {
+        "hub": "/theme"
+      }
+    }
+  ],
+  
+  "featureFlags": {
+    "_comment": "Service-wide feature flags (accounts can override)",
+    "enableAnalytics": true,
+    "enableChat": false,
+    "enableNotifications": true
+  },
+  
+  "defaults": {
+    "_comment": "Default preferences when account doesn't specify",
+    "spacing": "compact",
+    "appearance": {
+      "mode": "light",
+      "layout": "vertical"
+    }
+  }
+}
