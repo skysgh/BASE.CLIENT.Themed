@@ -34,34 +34,11 @@ import { CommonModule, Location } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-responsive-editor-page',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
-    <div class="responsive-editor-page">
-      <!-- Header -->
-      <div class="editor-header">
-        <button type="button" class="btn btn-link text-muted p-0 me-3" (click)="onBack()">
-          <i class="bx bx-arrow-back fs-4"></i>
-        </button>
-        <h5 class="mb-0 flex-grow-1">{{ title }}</h5>
-        <div class="header-actions" *ngIf="showActions">
-          <button type="button" class="btn btn-outline-secondary btn-sm me-2" (click)="onCancel()">
-            {{ cancelLabel }}
-          </button>
-          <button type="button" class="btn btn-primary btn-sm" (click)="onSave()">
-            {{ saveLabel }}
-          </button>
-        </div>
-      </div>
-      
-      <!-- Content -->
-      <div class="editor-content">
-        <ng-content></ng-content>
-      </div>
-    </div>
-  `,
-  styles: [`
+selector: 'app-responsive-editor-page',
+standalone: true,
+imports: [CommonModule, RouterModule],
+templateUrl: './responsive-editor-page.component.html',
+styles: [`
     .responsive-editor-page {
       display: flex;
       flex-direction: column;

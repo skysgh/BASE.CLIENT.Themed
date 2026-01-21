@@ -17,80 +17,12 @@ import {
 } from '../../../../core/models/query/query-criteria.model';
 
 @Component({
-  selector: 'app-browse-order-panel',
-  standalone: true,
-  imports: [CommonModule, SortRowComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <div class="browse-order-panel" [class.expanded]="expanded">
-      <!-- Read Mode: Compact summary -->
-      <div class="order-read-mode d-flex align-items-center gap-2">
-        <button 
-          type="button" 
-          class="btn btn-sm btn-link p-0 text-muted"
-          (click)="toggleExpanded()"
-          [title]="expanded ? 'Collapse sort' : 'Expand sort'">
-          <i class="bx" [class.bx-sort-alt-2]="!expanded" [class.bx-x]="expanded"></i>
-        </button>
-        
-        <div class="order-summary flex-grow-1" (click)="toggleExpanded()">
-          @if (sorts.length === 0) {
-            <span class="order-label">Default order</span>
-          } @else {
-            @for (sort of sorts; track sort.id; let last = $last) {
-              <span class="sort-item">
-                {{ getSortDisplay(sort) }}
-              </span>
-              @if (!last) {
-                <span class="sort-separator">, then</span>
-              }
-            }
-          }
-        </div>
-      </div>
-      
-      <!-- Write Mode: Dynamic sort rows -->
-      @if (expanded) {
-        <div class="order-write-mode mt-3 pt-3 border-top">
-          <!-- Sort Rows -->
-          @for (sort of sorts; track sort.id; let i = $index) {
-            <div class="d-flex align-items-center gap-2 mb-2">
-              @if (i > 0) {
-                <span class="text-muted small">then</span>
-              }
-              <app-sort-row
-                [criteria]="sort"
-                [fields]="sortableFields"
-                (criteriaChange)="onSortChange($event)"
-                (remove)="onRemoveSort(sort)"
-                class="flex-grow-1">
-              </app-sort-row>
-            </div>
-          }
-          
-          <!-- Add Button + Apply -->
-          <div class="d-flex justify-content-between align-items-center mt-3">
-            <button 
-              type="button" 
-              class="btn btn-sm btn-outline-primary"
-              (click)="onAddSort()"
-              [disabled]="sorts.length >= sortableFields.length">
-              <i class="bx bx-plus me-1"></i>
-              Add Sort
-            </button>
-            
-            <button 
-              type="button" 
-              class="btn btn-sm btn-primary"
-              (click)="onApply()">
-              Apply
-            </button>
-          </div>
-        </div>
-      }
-    </div>
-  `,
-  styles: [`
+selector: 'app-browse-order-panel',
+standalone: true,
+imports: [CommonModule, SortRowComponent],
+changeDetection: ChangeDetectionStrategy.OnPush,
+templateUrl: './browse-order-panel.component.html',
+styles: [`
     .browse-order-panel {
       background: var(--vz-light);
       border: 1px solid var(--vz-border-color);

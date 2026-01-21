@@ -42,30 +42,11 @@ const DEFAULT_CONFIG: ResponsiveEditorConfig = {
 };
 
 @Component({
-  selector: 'app-responsive-editor-host',
-  standalone: true,
-  imports: [CommonModule, NgbOffcanvasModule],
-  template: `
-    <!-- Panel template for desktop/tablet -->
-    <ng-template #panelTemplate let-offcanvas>
-      <div class="offcanvas-header border-bottom">
-        <h5 class="offcanvas-title">{{ title }}</h5>
-        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss()"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-      </div>
-      <div class="offcanvas-footer border-top p-3 d-flex justify-content-end gap-2" *ngIf="showActions">
-        <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onCancel()">
-          {{ cancelLabel }}
-        </button>
-        <button type="button" class="btn btn-primary btn-sm" (click)="onSave()">
-          {{ saveLabel }}
-        </button>
-      </div>
-    </ng-template>
-  `,
-  styles: [`
+selector: 'app-responsive-editor-host',
+standalone: true,
+imports: [CommonModule, NgbOffcanvasModule],
+templateUrl: './responsive-editor-host.component.html',
+styles: [`
     :host {
       display: contents;
     }

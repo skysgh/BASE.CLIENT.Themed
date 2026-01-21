@@ -1,0 +1,59 @@
+<div class="browse-search-panel">
+  <div class="input-group search-input-group">
+    <!-- Entity/Context Icon (optional) -->
+    @if (entityIcon) {
+      <span class="input-group-text entity-icon-wrapper bg-primary-subtle border-end-0">
+        <i class="bx {{ entityIcon }} text-primary"></i>
+      </span>
+    }
+    
+    <!-- Search Icon -->
+    <span class="input-group-text search-icon-wrapper bg-transparent" 
+          [class.border-start-0]="entityIcon"
+          [class.border-end-0]="true">
+      <i class="bx bx-search text-muted"></i>
+    </span>
+    
+    <!-- Search Input -->
+    <input 
+      type="text" 
+      class="form-control border-start-0 ps-0"
+      [placeholder]="placeholder"
+      [ngModel]="query"
+      (ngModelChange)="onQueryChange($event)"
+      (keyup.enter)="onSearch()"
+      [attr.aria-label]="ariaLabel || placeholder">
+    
+    <!-- Clear Button -->
+    @if (query) {
+      <button 
+        type="button" 
+        class="btn btn-link text-muted px-2 clear-btn"
+        (click)="onClear()"
+        title="Clear search"
+        aria-label="Clear search">
+        <i class="bx bx-x fs-18"></i>
+      </button>
+    }
+    
+    <!-- Search Button (optional) -->
+    @if (showSearchButton) {
+      <button 
+        type="button" 
+        class="btn btn-primary"
+        (click)="onSearch()"
+        [disabled]="!query"
+        title="Search">
+        <i class="bx bx-search-alt-2"></i>
+        @if (searchButtonText) {
+          <span class="ms-1">{{ searchButtonText }}</span>
+        }
+      </button>
+    }
+  </div>
+  
+  <!-- Search hint (optional) -->
+  @if (hint) {
+    <small class="text-muted d-block mt-1">{{ hint }}</small>
+  }
+</div>

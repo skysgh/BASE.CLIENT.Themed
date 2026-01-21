@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 
 import { MessageService } from '../../../services/message.service';
 import { FolderStats } from '../../../models/message.model';
-import { PageHeaderComponent } from '../../../../../../sites/ui/widgets/page-header/component';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
   selector: 'app-messages-hub',

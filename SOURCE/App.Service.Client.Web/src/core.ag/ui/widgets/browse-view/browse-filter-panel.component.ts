@@ -17,73 +17,12 @@ import {
 } from '../../../../core/models/query/query-criteria.model';
 
 @Component({
-  selector: 'app-browse-filter-panel',
-  standalone: true,
-  imports: [CommonModule, FilterRowComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <div class="browse-filter-panel" [class.expanded]="expanded">
-      <!-- Read Mode: Compact summary -->
-      <div class="filter-read-mode d-flex align-items-center gap-2">
-        <button 
-          type="button" 
-          class="btn btn-sm btn-link p-0 text-muted"
-          (click)="toggleExpanded()"
-          [title]="expanded ? 'Collapse filters' : 'Expand filters'">
-          <i class="bx" [class.bx-filter]="!expanded" [class.bx-x]="expanded"></i>
-        </button>
-        
-        <div class="filter-summary flex-grow-1" (click)="toggleExpanded()">
-          @if (filters.length === 0) {
-            <span class="filter-label">No filters applied</span>
-          } @else {
-            @for (filter of filters; track filter.id; let last = $last) {
-              <span class="filter-item">
-                {{ getFilterDisplay(filter) }}
-              </span>
-              @if (!last) {
-                <span class="filter-separator">•</span>
-              }
-            }
-          }
-        </div>
-      </div>
-      
-      <!-- Write Mode: Dynamic filter rows -->
-      @if (expanded) {
-        <div class="filter-write-mode mt-3 pt-3 border-top">
-          <!-- Filter Rows -->
-          @for (filter of filters; track filter.id) {
-            <app-filter-row
-              [criteria]="filter"
-              [fields]="filterableFields"
-              (criteriaChange)="onFilterChange($event)"
-              (remove)="onRemoveFilter(filter)">
-            </app-filter-row>
-          }
-          
-          <!-- Add Button + Apply -->
-          <div class="d-flex justify-content-between align-items-center mt-3">
-            <button 
-              type="button" 
-              class="btn btn-sm btn-outline-primary"
-              (click)="onAddFilter()">
-              <i class="bx bx-plus me-1"></i>
-              Add Filter
-            </button>
-            
-            <button 
-              type="button" 
-              class="btn btn-sm btn-primary"
-              (click)="onApply()">
-              Apply
-            </button>
-          </div>
-        </div>
-      }
-    </div>
-  `,
-  styles: [`
+selector: 'app-browse-filter-panel',
+standalone: true,
+imports: [CommonModule, FilterRowComponent],
+changeDetection: ChangeDetectionStrategy.OnPush,
+templateUrl: './browse-filter-panel.component.html',
+styles: [`
     .browse-filter-panel {
       background: var(--vz-light);
       border: 1px solid var(--vz-border-color);

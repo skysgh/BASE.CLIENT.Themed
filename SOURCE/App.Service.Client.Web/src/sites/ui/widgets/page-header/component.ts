@@ -22,78 +22,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 selector: 'app-page-header',
 standalone: true,
 imports: [CommonModule, RouterModule],
-template: `
-<div class="page-header mb-4">
-  <!-- Breadcrumb trail -->
-  @if (showBreadcrumb && breadcrumbs().length > 1) {
-    <nav class="breadcrumb-nav mb-2" aria-label="breadcrumb">
-      <ol class="breadcrumb mb-0">
-        @for (crumb of breadcrumbs(); track crumb.path) {
-          @if (crumb.active) {
-            <li class="breadcrumb-item active" aria-current="page">
-              {{ crumb.label }}
-            </li>
-          } @else {
-            <li class="breadcrumb-item">
-              <a [routerLink]="crumb.path">
-                @if (crumb.icon) {
-                  <i [class]="getBreadcrumbIconClasses(crumb.icon)"></i>
-                }
-                {{ crumb.label }}
-              </a>
-            </li>
-          }
-        }
-      </ol>
-    </nav>
-  }
-      
-      
-    <div class="d-flex justify-content-between align-items-start">
-      <!-- Left side: Back + Icon + Title -->
-      <div class="d-flex align-items-center gap-3">
-        <!-- Back button -->
-        @if (showBack) {
-          <button 
-            type="button" 
-            class="btn btn-soft-primary rounded-circle back-btn"
-            (click)="goBack()"
-            [title]="backLabel">
-            <i class="bx bx-arrow-back"></i>
-          </button>
-        }
-          
-        <!-- Icon (font-based or image URL) -->
-        @if (icon || iconUrl) {
-          <div class="type-icon {{ iconBackground }}">
-            @if (iconUrl) {
-              <img [src]="iconUrl" [alt]="title" class="icon-img">
-            } @else {
-              <i class="{{ getIconClasses() }}"></i>
-            }
-          </div>
-        }
-          
-        <!-- Title & Subtitle -->
-        <div>
-          <h4 class="mb-1">{{ title }}</h4>
-          @if (subtitle) {
-            <p class="text-muted mb-0">{{ subtitle }}</p>
-          } @else {
-            <p class="text-muted mb-0">
-              <ng-content select="[subtitle]"></ng-content>
-            </p>
-          }
-        </div>
-      </div>
-        
-      <!-- Right side: Actions -->
-      <div class="d-flex gap-2 align-items-center page-actions">
-        <ng-content select="[actions]"></ng-content>
-      </div>
-    </div>
-  </div>
-`,
+templateUrl: './component.html',
   styles: [`
     .page-header {
       padding: 0;
