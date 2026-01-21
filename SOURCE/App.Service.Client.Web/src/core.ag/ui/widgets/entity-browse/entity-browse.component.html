@@ -1,0 +1,43 @@
+<app-browse-view
+[schema]="browseSchema()"
+[cards]="cardData()"
+[columns]="columns()"
+[fields]="filterFields()"
+[filters]="filters"
+[sorts]="sorts"
+[loading]="loading"
+[page]="page"
+[pageSize]="pageSize"
+[totalCount]="totalCount"
+[batchActions]="batchActions"
+[emptyMessage]="emptyMessage"
+[emptyIcon]="emptyIcon"
+[showSearch]="showSearch"
+[showFilterPanel]="showFilterPanel"
+[showOrderPanel]="showOrderPanel"
+[showDisplayPanel]="showDisplayPanel"
+[showActionsBar]="showActionsBar"
+[viewMode]="viewMode"
+[controlsLayout]="controlsLayout"
+(searchChange)="searchChange.emit($event)"
+(searchSubmit)="searchSubmit.emit($event)"
+(filtersChange)="onFiltersChange($event)"
+(sortsChange)="onSortsChange($event)"
+(apply)="apply.emit()"
+(viewModeChange)="viewModeChange.emit($event)"
+(pageChange)="pageChange.emit($event)"
+(cardClick)="onCardClick($event)"
+(cardAction)="onCardAction($event)"
+(selectionChange)="onSelectionChange($event)"
+(batchAction)="onBatchAction($event)">
+  
+  <!-- Empty state actions slot -->
+  <ng-container emptyActions>
+    @if (showAddButton) {
+      <button class="btn btn-primary mt-3" (click)="addClick.emit()">
+        <i class="ri-add-line me-1"></i>
+        {{ addButtonLabel }}
+      </button>
+    }
+  </ng-container>
+</app-browse-view>

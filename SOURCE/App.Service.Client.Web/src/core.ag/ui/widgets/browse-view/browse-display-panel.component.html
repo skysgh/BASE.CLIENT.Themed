@@ -1,0 +1,49 @@
+<div class="browse-display-panel">
+  <div class="d-flex align-items-center">
+    <!-- Label -->
+    <div class="display-label flex-grow-1">
+      <i class="bx bx-show me-2 text-muted"></i>
+      <span>{{ getModeLabel() }}</span>
+    </div>
+    
+    <!-- View mode icons -->
+    <div class="view-mode-icons d-flex align-items-center gap-1">
+      @for (mode of viewModeOptions; track mode.id) {
+        <button 
+          type="button" 
+          class="btn btn-sm"
+          [class.btn-soft-primary]="viewMode === mode.id"
+          [class.btn-soft-secondary]="viewMode !== mode.id"
+          [title]="mode.label"
+          (click)="onModeSelect(mode.id)">
+          <i [class]="mode.icon"></i>
+        </button>
+      }
+      
+      <!-- Chart dropdown if available -->
+      @if (chartDefinitions.length > 0) {
+        <div ngbDropdown class="d-inline-block">
+          <button 
+            type="button" 
+            class="btn btn-sm"
+            [class.btn-soft-primary]="viewMode === 'chart'"
+            [class.btn-soft-secondary]="viewMode !== 'chart'"
+            ngbDropdownToggle
+            title="Charts">
+            <i class="bx bx-bar-chart-alt-2"></i>
+          </button>
+          <div ngbDropdownMenu class="dropdown-menu-end">
+            @for (chart of chartDefinitions; track chart.id) {
+              <button 
+                ngbDropdownItem
+                [class.active]="selectedChartId === chart.id"
+                (click)="onChartSelect(chart)">
+                {{ chart.label }}
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

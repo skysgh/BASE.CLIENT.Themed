@@ -30,66 +30,17 @@ import { BrowseOrderPanelComponent } from './browse-order-panel.component';
 import { BrowseDisplayPanelComponent } from './browse-display-panel.component';
 
 @Component({
-  selector: 'app-browse-options-panel',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    BrowseFilterPanelComponent,
-    BrowseOrderPanelComponent,
-    BrowseDisplayPanelComponent,
-  ],
-  template: `
-    <div class="browse-options-panel">
-      <!-- Filter Panel -->
-      @if (showFilter && schema?.filter?.enabled !== false) {
-        <app-browse-filter-panel
-          [fields]="fields"
-          [filters]="filters"
-          [expanded]="filterExpanded"
-          (filtersChange)="onFiltersChange($event)"
-          (expandedChange)="filterExpanded = $event">
-        </app-browse-filter-panel>
-      }
-
-      <!-- Order Panel -->
-      @if (showOrder && schema?.order?.enabled !== false) {
-        <app-browse-order-panel
-          [fields]="sortableFields"
-          [sorts]="sorts"
-          [expanded]="orderExpanded"
-          (sortsChange)="onSortsChange($event)"
-          (expandedChange)="orderExpanded = $event">
-        </app-browse-order-panel>
-      }
-
-      <!-- Display Panel -->
-      @if (showDisplay && schema?.display?.enabled !== false) {
-        <app-browse-display-panel
-          [viewMode]="viewMode"
-          [chartDefinitions]="chartDefinitions"
-          [selectedChartId]="selectedChartId"
-          (viewModeChange)="onViewModeChange($event)"
-          (chartDefinitionChange)="onChartDefinitionChange($event)">
-        </app-browse-display-panel>
-      }
-
-      <!-- Apply Button (for flyout mode) -->
-      @if (showApplyButton) {
-        <div class="d-grid gap-2 mt-3">
-          <button class="btn btn-primary" (click)="onApply()">
-            <i class="bx bx-check me-1"></i>
-            Apply
-          </button>
-          <button class="btn btn-outline-secondary" (click)="onReset()">
-            <i class="bx bx-reset me-1"></i>
-            Reset
-          </button>
-        </div>
-      }
-    </div>
-  `,
-  styles: [`
+selector: 'app-browse-options-panel',
+standalone: true,
+imports: [
+  CommonModule,
+  FormsModule,
+  BrowseFilterPanelComponent,
+  BrowseOrderPanelComponent,
+  BrowseDisplayPanelComponent,
+],
+templateUrl: './browse-options-panel.component.html',
+styles: [`
     .browse-options-panel {
       display: flex;
       flex-direction: column;

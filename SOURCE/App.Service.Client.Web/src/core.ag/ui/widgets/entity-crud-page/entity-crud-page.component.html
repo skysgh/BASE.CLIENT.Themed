@@ -1,0 +1,196 @@
+<div class="entity-crud-page">
+  <!-- Page Header - Using standard PageHeaderComponent -->
+  <app-page-header
+    [title]="pageTitle()"
+    [subtitle]="pageDescription() || ''"
+    [icon]="entitySchema?.icon || 'bx-data'"
+    [iconBackground]="iconBackground()"
+    [iconClass]="iconClass()"
+    [showBack]="true"
+    [backFallback]="backFallback"
+    (backClick)="onBackClick()">
+    <ng-container actions>
+        @switch (mode()) {
+          @case ('browse') {
+            @if (showAddButton) {
+              <button class="btn btn-primary" (click)="startAdd()">
+                <i class="ri-add-line me-1"></i>
+                Add {{ entityName() }}
+              </button>
+            }
+          }
+          @case ('add') {
+            <!-- Actions handled by form -->
+          }
+          @case ('edit') {
+            <!-- Back handled by PageHeader -->
+          }
+          @case ('detail') {
+            @if (showEditButton) {
+              <button class="btn btn-primary" (click)="startEdit()">
+                <i class="ri-edit-line me-1"></i>
+                Edit
+              </button>
+            }
+            @if (showDeleteButton) {
+              <button class="btn btn-danger" (click)="confirmDelete()">
+                <i class="ri-delete-bin-line me-1"></i>
+                Delete
+              </button>
+            }
+          }
+        }
+      </ng-container>
+    </app-page-header>
+
+      <!-- Content Area -->
+      <div class="entity-crud-page__content">
+        @switch (mode()) {
+          <!-- Browse Mode -->
+          @case ('browse') {
+            <app-entity-browse
+              [entitySchema]="entitySchema"
+              [data]="filteredAndSortedData()"
+              [loading]="loading"
+              [page]="state().page"
+              [pageSize]="state().pageSize"
+              [totalCount]="filteredAndSortedData().length"
+              [filters]="state().filters"
+              [sorts]="state().sorts"
+              [batchActions]="batchActions"
+              [showAddButton]="showAddButton"
+              [addButtonLabel]="'Add ' + entityName()"
+              [controlsLayout]="controlsLayout"
+              (itemSelect)="onItemSelect($event)"
+              (itemAction)="onItemAction($event)"
+              (batchActionTrigger)="onBatchAction($event)"
+              (searchChange)="onSearchChange($event)"
+              (searchSubmit)="onSearchSubmit($event)"
+              (filtersChange)="onFiltersChange($event)"
+              (sortsChange)="onSortsChange($event)"
+              (apply)="onApply()"
+              (pageChange)="onPageChange($event)"
+              (addClick)="startAdd()">
+            </app-entity-browse>
+          }
+
+          <!-- Add Mode -->
+          @case ('add') {
+            <app-dynamic-form
+              [entitySchema]="entitySchema"
+              [mode]="'add'"
+              [showHeader]="false"
+              [submitLabel]="'Create ' + entityName()"
+              [lockedFields]="lockedFields"
+              (formSubmit)="onFormSubmit($event)"
+              (formCancel)="navigateToBrowse()">
+            </app-dynamic-form>
+          }
+
+          <!-- Edit Mode -->
+          @case ('edit') {
+            <app-dynamic-form
+              [entitySchema]="entitySchema"
+              [mode]="'edit'"
+              [data]="selectedItem()"
+              [showHeader]="false"
+              [submitLabel]="'Save Changes'"
+              (formSubmit)="onFormSubmit($event)"
+              (formCancel)="navigateToDetail(state().selectedId!)">
+            </app-dynamic-form>
+          }
+
+          <!-- Detail Mode -->
+              @case ('detail') {
+                <app-dynamic-form
+                  [entitySchema]="entitySchema"
+                  [mode]="'detail'"
+                  [data]="selectedItem()"
+                  [showHeader]="false"
+                  [showActions]="false">
+                </app-dynamic-form>
+            
+                <!-- Child Entities (1-to-many relationships) -->
+                @for (child of childEntities; track child.id) {
+                  <div class="card mt-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">
+                        @if (child.icon) {
+                          <i class="{{ child.icon }} me-2"></i>
+                        }
+                        {{ child.title }} ({{ child.data.length }})
+                      </h5>
+                      @if (child.canAdd) {
+                        <button 
+                          type="button" 
+                          class="btn btn-sm btn-primary"
+                          (click)="onChildAdd(child)">
+                          <i class="ri-add-line me-1"></i>
+                          {{ child.addLabel || 'Add' }}
+                        </button>
+                      }
+                    </div>
+                    <div class="card-body p-0">
+                      @if (child.data.length > 0) {
+                        <div class="table-responsive">
+                          <table class="table table-hover mb-0">
+                            <thead>
+                              <tr>
+                                @for (col of child.columns; track col.field) {
+                                  <th>{{ col.label }}</th>
+                                }
+                                <th style="width: 80px;"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @for (item of child.data; track item['id']) {
+                                <tr class="cursor-pointer" (click)="onChildView(child, item)">
+                                  @for (col of child.columns; track col.field) {
+                                    <td>{{ item[col.field] }}</td>
+                                  }
+                                  <td class="text-end">
+                                    <i class="ri-arrow-right-s-line text-muted"></i>
+                                  </td>
+                                </tr>
+                              }
+                            </tbody>
+                          </table>
+                        </div>
+                      } @else {
+                        <div class="text-center py-4">
+                          <i class="{{ child.icon || 'ri-folder-line' }} fs-48 text-muted"></i>
+                          <p class="text-muted mt-2 mb-0">No {{ child.title.toLowerCase() }} yet</p>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                }
+              }
+            }
+          </div>
+
+      <!-- Delete Confirmation Modal -->
+      @if (showDeleteConfirm()) {
+        <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5)">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" (click)="cancelDelete()"></button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to delete this {{ entityName() }}?</p>
+                <p class="text-danger mb-0">
+                  <i class="ri-error-warning-line me-1"></i>
+                  This action cannot be undone.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="cancelDelete()">Cancel</button>
+                <button type="button" class="btn btn-danger" (click)="executeDelete()">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>

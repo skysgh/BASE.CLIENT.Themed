@@ -31,116 +31,12 @@ import { ViewMode } from './browse-view-schema.model';
 export type ViewPanelMode = 'collapsed' | 'list' | 'edit';
 
 @Component({
-  selector: 'app-view-panel',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <!-- LIST MODE -->
-    @if (mode === 'list') {
-      <div class="view-panel">
-        <div class="view-list-scroll">
-          @for (view of savedViews; track view.id) {
-            <div class="view-list-item d-flex align-items-center gap-2"
-                 [class.selected]="isActiveView(view)"
-                 (click)="selectView(view)">
-              <i [class]="getViewIcon(view)" class="view-icon text-primary"></i>
-              <span class="view-name">{{ view.title }}</span>
-              <span class="view-summary flex-grow-1 text-muted small fst-italic text-truncate">
-                {{ getViewSummary(view) }}
-              </span>
-              @if (!view.isDefault) {
-                <button 
-                  class="btn btn-sm btn-link p-0 edit-btn"
-                  title="Edit view"
-                  (click)="editView(view); $event.stopPropagation()">
-                  <i class="bx bx-edit-alt"></i>
-                </button>
-              }
-            </div>
-          }
-        </div>
-        <div class="mt-2 pt-2 border-top text-end">
-          <button class="btn btn-sm btn-outline-primary" (click)="startNewView()">
-            <i class="bx bx-plus me-1"></i>New View
-          </button>
-        </div>
-      </div>
-    }
-    
-    <!-- EDIT MODE -->
-    @if (mode === 'edit') {
-      <div class="view-panel">
-        <!-- Title Section -->
-        <div class="edit-section mb-2">
-          <div class="section-label">Title</div>
-          <div class="d-flex align-items-center gap-2">
-            <input type="text" class="form-control form-control-sm" style="max-width: 180px;"
-              placeholder="View name..." [(ngModel)]="editTitle" [disabled]="isDefaultView">
-            <button class="btn btn-sm btn-outline-secondary" (click)="cancelEdit()">Cancel</button>
-            <button class="btn btn-sm btn-success" [disabled]="!editTitle.trim() || isDefaultView" (click)="saveView()">Save</button>
-            <button class="btn btn-sm btn-outline-primary" (click)="saveAsNewView()">Save As...</button>
-            <button class="btn btn-sm btn-outline-danger" [disabled]="isDefaultView || !editingView" (click)="deleteCurrentView()">Delete</button>
-          </div>
-        </div>
-        
-        <!-- Filter Section -->
-        <div class="edit-section mb-2" [class.disabled-section]="isDefaultView">
-          <div class="section-label">Filter</div>
-          <div class="section-summary text-muted small fst-italic mb-1">{{ getFilterSummary() }}</div>
-          <div class="d-flex align-items-center gap-2">
-            <select class="form-select form-select-sm" style="max-width: 120px;" [(ngModel)]="newFilterField" [disabled]="isDefaultView">
-              <option value="">Field...</option>
-              @for (field of filterableFields; track field.field) {
-                <option [value]="field.field">{{ field.label }}</option>
-              }
-            </select>
-            <select class="form-select form-select-sm" style="max-width: 120px;" [(ngModel)]="newFilterValue" [disabled]="isDefaultView || !newFilterField">
-              <option value="">Value...</option>
-              @for (opt of getFieldOptions(newFilterField); track opt.value) {
-                <option [value]="opt.value">{{ opt.label }}</option>
-              }
-            </select>
-            <button class="btn btn-sm btn-outline-secondary" [disabled]="isDefaultView || editFilters.length === 0" (click)="removeLastFilter()"><i class="bx bx-minus"></i></button>
-            <button class="btn btn-sm btn-outline-primary" [disabled]="isDefaultView || !newFilterField || !newFilterValue" (click)="addFilterFromInputs()"><i class="bx bx-plus"></i></button>
-          </div>
-        </div>
-        
-        <!-- Sort Section -->
-        <div class="edit-section mb-2" [class.disabled-section]="isDefaultView">
-          <div class="section-label">Sort</div>
-          <div class="section-summary text-muted small fst-italic mb-1">{{ getSortSummary() }}</div>
-          <div class="d-flex align-items-center gap-2">
-            <select class="form-select form-select-sm" style="max-width: 120px;" [(ngModel)]="newSortField" [disabled]="isDefaultView">
-              <option value="">Field...</option>
-              @for (field of sortableFields; track field.field) {
-                <option [value]="field.field">{{ field.label }}</option>
-              }
-            </select>
-            <select class="form-select form-select-sm" style="max-width: 100px;" [(ngModel)]="newSortDirection" [disabled]="isDefaultView || !newSortField">
-              <option value="asc">A → Z</option>
-              <option value="desc">Z → A</option>
-            </select>
-            <button class="btn btn-sm btn-outline-secondary" [disabled]="isDefaultView || editSorts.length === 0" (click)="removeLastSort()"><i class="bx bx-minus"></i></button>
-            <button class="btn btn-sm btn-outline-primary" [disabled]="isDefaultView || !newSortField" (click)="addSortFromInputs()"><i class="bx bx-plus"></i></button>
-          </div>
-        </div>
-        
-        <!-- Display Section -->
-        <div class="edit-section">
-          <div class="section-label">Display</div>
-          <div class="d-flex align-items-center gap-2 mt-1">
-            @for (opt of viewModeOptions; track opt.id) {
-              <button type="button" class="btn btn-sm display-btn" [class.active]="editViewMode === opt.id" [title]="opt.label" (click)="setViewMode(opt.id)">
-                <i [class]="opt.icon"></i>
-              </button>
-            }
-          </div>
-        </div>
-      </div>
-    }
-  `,
-  styles: [`
+selector: 'app-view-panel',
+standalone: true,
+imports: [CommonModule, FormsModule],
+changeDetection: ChangeDetectionStrategy.OnPush,
+templateUrl: './view-panel.component.html',
+styles: [`
     .view-panel {
       background: var(--vz-light);
       border: 1px solid var(--vz-border-color);
