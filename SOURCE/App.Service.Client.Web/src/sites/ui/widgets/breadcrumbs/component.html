@@ -1,0 +1,25 @@
+@if (shouldShow) {
+  <nav class="breadcrumb-nav" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      @for (crumb of breadcrumbs; track crumb.path ?? crumb.label) {
+        @if (crumb.active) {
+          <li class="breadcrumb-item active" aria-current="page">
+            @if (crumb.icon) {
+              <i [class]="getIconClasses(crumb.icon)"></i>
+            }
+            {{ crumb.label }}
+          </li>
+        } @else {
+          <li class="breadcrumb-item">
+            <a [routerLink]="crumb.path">
+              @if (crumb.icon) {
+                <i [class]="getIconClasses(crumb.icon)"></i>
+              }
+              {{ crumb.label }}
+            </a>
+          </li>
+        }
+      }
+    </ol>
+  </nav>
+}

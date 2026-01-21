@@ -3,28 +3,31 @@
  * 
  * Displays information about the service distributor/reseller.
  * This may be empty if the creator sells directly.
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component, inject } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
 import { AboutService } from '../../../services/about.service';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
     selector: 'app-distributor-info',
-    imports: [RouterModule],
+    standalone: true,
+    imports: [CommonModule, RouterModule, PageHeaderComponent],
     template: `
     <div class="distributor-page">
-      <div class="page-header d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
-            <i class="bx bx-arrow-back"></i>
-          </a>
-          <h4 class="d-inline-block mb-0">
-            <i class="bx bx-store me-2 text-success"></i>
-            Distributor Information
-          </h4>
-        </div>
-      </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Distributor Information"
+        icon="bx-store"
+        iconBackground="bg-success-subtle"
+        iconClass="text-success"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Authorized reseller/partner details</ng-container>
+      </app-page-header>
     
       <!-- Has Distributor -->
       @if (aboutService.hasDistributor() && aboutService.distributor()?.name !== 'Direct') {
@@ -40,8 +43,7 @@ import { AboutService } from '../../../services/about.service';
                         [alt]="distributor.name"
                         class="img-fluid"
                         style="max-height: 80px;">
-                    }
-                    @if (!distributor.logo) {
+                    } @else {
                       <div class="logo-placeholder">
                         <i class="bx bx-store fs-48"></i>
                       </div>
@@ -52,17 +54,13 @@ import { AboutService } from '../../../services/about.service';
                     <p class="text-muted mb-0">
                       Authorized Distributor
                       @if (distributor.partnerTier) {
-                        <span class="badge bg-success ms-2">
-                          {{ distributor.partnerTier }}
-                        </span>
+                        <span class="badge bg-success ms-2">{{ distributor.partnerTier }}</span>
                       }
                     </p>
                   </div>
                 </div>
                 @if (distributor.description) {
-                  <p class="mb-4">
-                    {{ distributor.description }}
-                  </p>
+                  <p class="mb-4">{{ distributor.description }}</p>
                 }
                 <div class="row">
                   <div class="col-md-6">
@@ -130,23 +128,17 @@ import { AboutService } from '../../../services/about.service';
         <div class="card-body">
           <div class="chain-diagram">
             <div class="chain-step">
-              <div class="chain-icon creator">
-                <i class="bx bx-code-alt"></i>
-              </div>
+              <div class="chain-icon creator"><i class="bx bx-code-alt"></i></div>
               <div class="chain-label">Creator</div>
             </div>
             <div class="chain-arrow">→</div>
             <div class="chain-step" [class.muted]="!aboutService.hasDistributor() || aboutService.distributor()?.name === 'Direct'">
-              <div class="chain-icon distributor">
-                <i class="bx bx-store"></i>
-              </div>
+              <div class="chain-icon distributor"><i class="bx bx-store"></i></div>
               <div class="chain-label">Distributor</div>
             </div>
             <div class="chain-arrow">→</div>
             <div class="chain-step">
-              <div class="chain-icon account">
-                <i class="bx bx-building"></i>
-              </div>
+              <div class="chain-icon account"><i class="bx bx-building"></i></div>
               <div class="chain-label">Your Account</div>
             </div>
           </div>
@@ -167,63 +159,67 @@ import { AboutService } from '../../../services/about.service';
     </div>
     `,
     styles: [`
-    .distributor-page { padding: 1.5rem; max-width: 800px; margin: 0 auto; }
-    
-    .logo-placeholder {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #11998e, #38ef7d);
-      color: white;
-      border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .icon-circle {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .chain-diagram {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-    }
-    
-    .chain-step { text-align: center; }
-    .chain-step.muted { opacity: 0.3; }
-    
-    .chain-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.5rem;
-      margin: 0 auto 0.5rem;
-    }
-    .chain-icon.creator { background: linear-gradient(135deg, #667eea, #764ba2); }
-    .chain-icon.distributor { background: linear-gradient(135deg, #11998e, #38ef7d); }
-    .chain-icon.account { background: linear-gradient(135deg, #ee0979, #ff6a00); }
-    
-    .chain-arrow {
-      font-size: 1.5rem;
-      color: var(--vz-secondary-color);
-    }
-    
-    .chain-label {
-      font-size: 0.875rem;
-      color: var(--vz-secondary-color);
-    }
-  `]
+      .distributor-page { 
+        padding: 1.5rem; 
+        max-width: 800px; 
+        margin: 0 auto; 
+      }
+      
+      .logo-placeholder {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #11998e, #38ef7d);
+        color: white;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .icon-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .chain-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+      
+      .chain-step { text-align: center; }
+      .chain-step.muted { opacity: 0.3; }
+      
+      .chain-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 auto 0.5rem;
+      }
+      .chain-icon.creator { background: linear-gradient(135deg, #667eea, #764ba2); }
+      .chain-icon.distributor { background: linear-gradient(135deg, #11998e, #38ef7d); }
+      .chain-icon.account { background: linear-gradient(135deg, #ee0979, #ff6a00); }
+      
+      .chain-arrow {
+        font-size: 1.5rem;
+        color: var(--vz-secondary-color);
+      }
+      
+      .chain-label {
+        font-size: 0.875rem;
+        color: var(--vz-secondary-color);
+      }
+    `]
 })
 export class DistributorInfoComponent {
   aboutService = inject(AboutService);

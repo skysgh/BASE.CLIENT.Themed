@@ -2,28 +2,31 @@
  * Creator Info Component
  * 
  * Displays information about the service creator/developer.
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component, inject } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
 import { AboutService } from '../../../services/about.service';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
     selector: 'app-creator-info',
-    imports: [RouterModule],
+    standalone: true,
+    imports: [CommonModule, RouterModule, PageHeaderComponent],
     template: `
     <div class="creator-page">
-      <div class="page-header d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
-            <i class="bx bx-arrow-back"></i>
-          </a>
-          <h4 class="d-inline-block mb-0">
-            <i class="bx bx-code-alt me-2 text-primary"></i>
-            Creator Information
-          </h4>
-        </div>
-      </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Creator Information"
+        icon="bx-code-alt"
+        iconBackground="bg-purple-subtle"
+        iconClass="text-purple"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Platform creator & developer details</ng-container>
+      </app-page-header>
     
       @if (aboutService.creator(); as creator) {
         <div>
@@ -38,8 +41,7 @@ import { AboutService } from '../../../services/about.service';
                       [alt]="creator.name"
                       class="img-fluid"
                       style="max-height: 80px;">
-                  }
-                  @if (!creator.logo) {
+                  } @else {
                     <div class="logo-placeholder">
                       <i class="bx bx-code-alt fs-48"></i>
                     </div>
@@ -51,9 +53,7 @@ import { AboutService } from '../../../services/about.service';
                 </div>
               </div>
               @if (creator.description) {
-                <p class="mb-4">
-                  {{ creator.description }}
-                </p>
+                <p class="mb-4">{{ creator.description }}</p>
               }
               <div class="row">
                 <div class="col-md-6">
@@ -81,26 +81,17 @@ import { AboutService } from '../../../services/about.service';
                   <h6 class="text-muted mb-3">Social</h6>
                   <div class="d-flex gap-3">
                     @if (creator.social?.github) {
-                      <a
-                        [href]="creator.social!.github"
-                        target="_blank"
-                        class="social-link">
+                      <a [href]="creator.social!.github" target="_blank" class="social-link">
                         <i class="bx bxl-github fs-24"></i>
                       </a>
                     }
                     @if (creator.social?.twitter) {
-                      <a
-                        [href]="creator.social!.twitter"
-                        target="_blank"
-                        class="social-link">
+                      <a [href]="creator.social!.twitter" target="_blank" class="social-link">
                         <i class="bx bxl-twitter fs-24"></i>
                       </a>
                     }
                     @if (creator.social?.linkedin) {
-                      <a
-                        [href]="creator.social!.linkedin"
-                        target="_blank"
-                        class="social-link">
+                      <a [href]="creator.social!.linkedin" target="_blank" class="social-link">
                         <i class="bx bxl-linkedin fs-24"></i>
                       </a>
                     }
@@ -109,6 +100,7 @@ import { AboutService } from '../../../services/about.service';
               </div>
             </div>
           </div>
+          
           <!-- Copyright -->
           <div class="card">
             <div class="card-body text-center">
@@ -120,11 +112,7 @@ import { AboutService } from '../../../services/about.service';
       }
     
       <!-- Navigation -->
-      <div class="d-flex justify-content-between mt-4">
-        <a routerLink="../" class="btn btn-outline-secondary">
-          <i class="bx bx-arrow-back me-1"></i>
-          Back to About
-        </a>
+      <div class="d-flex justify-content-end mt-4">
         <a routerLink="../distributor" class="btn btn-outline-primary">
           Next: Distributor
           <i class="bx bx-arrow-right ms-1"></i>
@@ -133,35 +121,44 @@ import { AboutService } from '../../../services/about.service';
     </div>
     `,
     styles: [`
-    .creator-page { padding: 1.5rem; max-width: 800px; margin: 0 auto; }
-    
-    .logo-placeholder {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-      border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .social-link {
-      width: 40px;
-      height: 40px;
-      background: var(--vz-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--vz-secondary-color);
-      transition: all 0.2s;
-    }
-    .social-link:hover {
-      background: var(--vz-primary);
-      color: white;
-    }
-  `]
+      .creator-page { 
+        padding: 1.5rem; 
+        max-width: 800px; 
+        margin: 0 auto; 
+      }
+      
+      .logo-placeholder {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .social-link {
+        width: 40px;
+        height: 40px;
+        background: var(--vz-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--vz-secondary-color);
+        transition: all 0.2s;
+        
+        &:hover {
+          background: var(--vz-primary);
+          color: white;
+        }
+      }
+      
+      /* Custom purple */
+      .bg-purple-subtle { background-color: rgba(135, 114, 249, 0.1) !important; }
+      .text-purple { color: #8772f9 !important; }
+    `]
 })
 export class CreatorInfoComponent {
   aboutService = inject(AboutService);

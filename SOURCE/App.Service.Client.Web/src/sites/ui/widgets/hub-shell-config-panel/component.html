@@ -1,0 +1,99 @@
+<div class="config-panel">
+  <!-- Header -->
+  <div class="config-header">
+    <h5 class="config-title">{{ title }}</h5>
+    @if (subtitle) {
+      <p class="config-subtitle">{{ subtitle }}</p>
+    }
+  </div>
+  
+  <!-- Tile list with drag-drop -->
+  <ul 
+    class="tile-list" 
+    cdkDropList 
+    (cdkDropListDropped)="onDrop($event)">
+    
+    @for (tile of editingTiles(); track tile.id) {
+      <li 
+        class="tile-item"
+        [class.tile-item--locked]="tile.config.locked"
+        [class.tile-item--hidden]="!tile.config.visible"
+        cdkDrag
+        [cdkDragDisabled]="tile.config.locked">
+        
+        <!-- Drag handle -->
+        @if (!tile.config.locked) {
+          <span class="drag-handle" cdkDragHandle>
+            <i class="ri-draggable"></i>
+          </span>
+        } @else {
+          <span class="lock-indicator">
+            <i class="ri-lock-line"></i>
+          </span>
+        }
+        
+        <!-- Icon -->
+        <div class="tile-icon-mini" [class]="getIconBackgroundClass(tile)">
+          <i [class]="getIconClasses(tile)"></i>
+        </div>
+        
+        <!-- Info -->
+        <div class="tile-info">
+          <p class="tile-name">{{ tile.title }}</p>
+          @if (tile.description || tile.subtitle) {
+            <p class="tile-desc">{{ tile.description || tile.subtitle }}</p>
+          }
+        </div>
+        
+        <!-- Visibility toggle -->
+        <div class="tile-actions">
+          <button 
+            type="button"
+            class="visibility-toggle"
+            [class.visibility-toggle--visible]="tile.config.visible"
+            [class.visibility-toggle--hidden]="!tile.config.visible"
+            [disabled]="tile.config.locked"
+            (click)="toggleVisibility(tile)"
+            [title]="tile.config.visible ? 'Hide tile' : 'Show tile'">
+            @if (tile.config.visible) {
+              <i class="ri-eye-line"></i>
+            } @else {
+              <i class="ri-eye-off-line"></i>
+            }
+          </button>
+        </div>
+      </li>
+    }
+  </ul>
+  
+  <!-- Footer with actions -->
+  <div class="config-footer">
+    @if (showReset) {
+      <button 
+        type="button" 
+        class="btn btn-soft-secondary btn-sm"
+        (click)="onReset()">
+        <i class="ri-refresh-line me-1"></i>
+        Reset
+      </button>
+    } @else {
+      <span></span>
+    }
+    
+    <div class="btn-group-end">
+      <button 
+        type="button" 
+        class="btn btn-light btn-sm"
+        (click)="onCancel()">
+        Cancel
+      </button>
+      <button 
+        type="button" 
+        class="btn btn-primary btn-sm"
+        (click)="onSave()">
+        <i class="ri-check-line me-1"></i>
+        Save
+      </button>
+    </div>
+  </div>
+</div>

@@ -3,26 +3,34 @@
  * 
  * Main hub showing the Creator → Distributor → Account hierarchy
  * with links to detailed views for licenses, version info, etc.
+ * Uses standard PageHeader and HubTileHeader for consistent styling.
  */
 import { Component, inject, OnInit } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
 import { AboutService } from '../../../services/about.service';
 import { AccountService } from '../../../../../core/services/account.service';
 import { ABOUT_CONSTANTS } from '../../../constants';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
+import { HubTileHeaderComponent } from '../../../../../sites/ui/widgets/hub-tile-header';
 
 @Component({
     selector: 'app-about-hub',
-    imports: [RouterModule],
+    standalone: true,
+    imports: [CommonModule, RouterModule, PageHeaderComponent, HubTileHeaderComponent],
     template: `
     <div class="about-hub">
-      <div class="page-header mb-4">
-        <h4 class="mb-1">
-          <i class="bx bx-info-circle me-2 text-primary"></i>
-          About
-        </h4>
-        <p class="text-muted mb-0">Service information and attributions</p>
-      </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="About"
+        icon="bx-info-circle"
+        iconBackground="bg-primary-subtle"
+        iconClass="text-primary"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Service information and attributions</ng-container>
+      </app-page-header>
     
       <!-- Loading State -->
       @if (aboutService.loading()) {
@@ -35,191 +43,158 @@ import { ABOUT_CONSTANTS } from '../../../constants';
       <!-- Content -->
       @if (!aboutService.loading()) {
         <div>
-          <!-- Distribution Hierarchy -->
-          <div class="card mb-4">
-            <div class="card-header">
-              <h5 class="mb-0">
-                <i class="bx bx-sitemap me-2"></i>
-                Service Hierarchy
-              </h5>
-            </div>
-            <div class="card-body">
-              <div class="hierarchy-chain">
-                <!-- Creator -->
-                <div class="hierarchy-item" routerLink="creator" style="cursor: pointer;">
-                  <div class="hierarchy-icon creator">
-                    <i class="bx bx-code-alt fs-24"></i>
-                  </div>
-                  <div class="hierarchy-content">
-                    <div class="hierarchy-label">Creator</div>
-                    <div class="hierarchy-value">
-                      {{ aboutService.creator()?.name || 'Unknown' }}
-                    </div>
-                    <div class="hierarchy-desc text-muted small">
-                      Original developer/platform owner
-                    </div>
-                  </div>
-                  <i class="bx bx-chevron-right text-muted"></i>
-                </div>
-                <div class="hierarchy-arrow">
-                  <i class="bx bx-chevron-down"></i>
-                </div>
-                <!-- Distributor -->
-                <div class="hierarchy-item"
-                  [class.muted]="!aboutService.hasDistributor()"
-                  routerLink="distributor"
-                  style="cursor: pointer;">
-                  <div class="hierarchy-icon distributor">
-                    <i class="bx bx-store fs-24"></i>
-                  </div>
-                  <div class="hierarchy-content">
-                    <div class="hierarchy-label">Distributor</div>
-                    <div class="hierarchy-value">
-                      {{ aboutService.distributor()?.name || 'Direct' }}
-                    </div>
-                    <div class="hierarchy-desc text-muted small">
-                      {{ aboutService.hasDistributor() ? 'Reseller/partner' : 'No reseller in chain' }}
-                    </div>
-                  </div>
-                  <i class="bx bx-chevron-right text-muted"></i>
-                </div>
-                <div class="hierarchy-arrow">
-                  <i class="bx bx-chevron-down"></i>
-                </div>
-                <!-- Account -->
-                <div class="hierarchy-item" routerLink="account" style="cursor: pointer;">
-                  <div class="hierarchy-icon account">
-                    <i class="bx bx-building fs-24"></i>
-                  </div>
-                  <div class="hierarchy-content">
-                    <div class="hierarchy-label">Account</div>
-                    <div class="hierarchy-value">
-                      {{ accountName || 'Current Organization' }}
-                    </div>
-                    <div class="hierarchy-desc text-muted small">
-                      Your organization/tenant
-                    </div>
-                  </div>
-                  <i class="bx bx-chevron-right text-muted"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Quick Links Row -->
-          <div class="row">
-            <!-- Version Info Card -->
-            <div class="col-md-6 col-lg-3 mb-4">
-              <div class="card h-100 link-card" routerLink="version" style="cursor: pointer;">
-                <div class="card-body text-center">
-                  <div class="icon-circle bg-primary-subtle mb-3">
-                    <i class="bx bx-chip text-primary fs-32"></i>
-                  </div>
-                  <h5>Version Info</h5>
-                  <p class="text-muted mb-2">{{ aboutService.version()?.version || '1.0.0' }}</p>
-                  <span class="badge"
-                    [class.bg-success]="aboutService.version()?.environment === 'production'"
-                    [class.bg-warning]="aboutService.version()?.environment !== 'production'">
-                    {{ aboutService.version()?.environment || 'development' }}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <!-- Licenses Card -->
-            <div class="col-md-6 col-lg-3 mb-4">
-              <div class="card h-100 link-card" routerLink="licenses" style="cursor: pointer;">
-                <div class="card-body text-center">
-                  <div class="icon-circle bg-info-subtle mb-3">
-                    <i class="bx bx-file text-info fs-32"></i>
-                  </div>
-                  <h5>Open Source Licenses</h5>
-                  <p class="text-muted mb-2">Third-party attributions</p>
-                  <span class="badge bg-info">
-                    {{ aboutService.licenseCount() }} packages
-                  </span>
-                </div>
-              </div>
-            </div>
-            <!-- Theme Info Card -->
-            <div class="col-md-6 col-lg-3 mb-4">
-              <div class="card h-100">
-                <div class="card-body text-center">
-                  <div class="icon-circle bg-purple-subtle mb-3" style="background: rgba(135, 114, 249, 0.1);">
-                    <i class="bx bx-palette fs-32" style="color: #8772f9;"></i>
-                  </div>
-                  <h5>UI Theme</h5>
-                  <p class="text-muted mb-2">{{ aboutService.theme()?.name || 'Unknown' }}</p>
-                  <div class="small text-muted">
-                    @if (aboutService.theme()?.style) {
-                      <span>{{ aboutService.theme()?.style }}</span>
-                    }
-                    @if (aboutService.theme()?.style && aboutService.theme()?.layout) {
-                      <span> · </span>
-                    }
-                    @if (aboutService.theme()?.layout) {
-                      <span>{{ aboutService.theme()?.layout }}</span>
-                    }
-                  </div>
-                  <div class="mt-2">
-                    <span class="badge"
-                      [class.bg-success]="aboutService.theme()?.version"
-                      [class.bg-secondary]="!aboutService.theme()?.version">
-                      {{ aboutService.theme()?.version || 'Version unknown' }}
-                    </span>
+          <!-- Distribution Hierarchy - as tiles using hub-tile-header -->
+          <div class="row g-4 mb-4">
+            <!-- Creator Tile -->
+            <div class="col-md-6 col-lg-4">
+              <div class="hierarchy-tile card h-100" routerLink="creator">
+                <div class="card-body">
+                  <app-hub-tile-header
+                    icon="bx-code-alt"
+                    iconBackground="bg-purple-subtle text-purple"
+                    title="Creator"
+                    [subtitle]="aboutService.creator()?.name || 'Unknown'"
+                    [showValue]="false">
+                  </app-hub-tile-header>
+                  <p class="text-muted small mt-2 mb-0">Original developer/platform owner</p>
+                  <div class="tile-arrow mt-2 text-end">
+                    <span class="text-primary small">View details <i class="bx bx-chevron-right"></i></span>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Copyright Card -->
-            <div class="col-md-6 col-lg-3 mb-4">
-              <div class="card h-100">
-                <div class="card-body text-center">
-                  <div class="icon-circle bg-secondary-subtle mb-3">
-                    <i class="bx bx-copyright text-secondary fs-32"></i>
-                  </div>
-                  <h5>Copyright</h5>
-                  <p class="text-muted mb-0">
-                    {{ aboutService.creator()?.copyright || '© ' + currentYear + ' All rights reserved.' }}
+            
+            <!-- Distributor Tile -->
+            <div class="col-md-6 col-lg-4">
+              <div class="hierarchy-tile card h-100" 
+                   [class.muted]="!aboutService.hasDistributor()"
+                   routerLink="distributor">
+                <div class="card-body">
+                  <app-hub-tile-header
+                    icon="bx-store"
+                    iconBackground="bg-success-subtle text-success"
+                    title="Distributor"
+                    [subtitle]="aboutService.distributor()?.name || 'Direct'"
+                    [showValue]="false">
+                  </app-hub-tile-header>
+                  <p class="text-muted small mt-2 mb-0">
+                    {{ aboutService.hasDistributor() ? 'Reseller/partner' : 'No reseller in chain' }}
                   </p>
+                  <div class="tile-arrow mt-2 text-end">
+                    <span class="text-success small">View details <i class="bx bx-chevron-right"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Account Tile -->
+            <div class="col-md-6 col-lg-4">
+              <div class="hierarchy-tile card h-100" routerLink="account">
+                <div class="card-body">
+                  <app-hub-tile-header
+                    icon="bx-building"
+                    iconBackground="bg-warning-subtle text-warning"
+                    title="Account"
+                    [subtitle]="accountName || 'Current Organization'"
+                    [showValue]="false">
+                  </app-hub-tile-header>
+                  <p class="text-muted small mt-2 mb-0">Your organization/tenant</p>
+                  <div class="tile-arrow mt-2 text-end">
+                    <span class="text-warning small">View details <i class="bx bx-chevron-right"></i></span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          
+          <!-- Quick Links Row -->
+          <div class="row g-4">
+            <!-- Version Info -->
+            <div class="col-md-6 col-lg-3">
+              <div class="hierarchy-tile card h-100" routerLink="version">
+                <div class="card-body">
+                  <app-hub-tile-header
+                    icon="bx-chip"
+                    iconBackground="bg-primary-subtle text-primary"
+                    title="Version"
+                    [subtitle]="aboutService.version()?.version || '1.0.0'"
+                    [showValue]="false"
+                    [badges]="[{ text: aboutService.version()?.environment || 'development', class: aboutService.version()?.environment === 'production' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning' }]">
+                  </app-hub-tile-header>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Licenses -->
+            <div class="col-md-6 col-lg-3">
+              <div class="hierarchy-tile card h-100" routerLink="licenses">
+                <div class="card-body">
+                  <app-hub-tile-header
+                    icon="bx-file"
+                    iconBackground="bg-info-subtle text-info"
+                    title="Open Source"
+                    subtitle="Third-party licenses"
+                    [value]="aboutService.licenseCount()"
+                    valueLabel="packages">
+                  </app-hub-tile-header>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Theme Info -->
+            <div class="col-md-6 col-lg-3">
+              <div class="card h-100">
+                <div class="card-body">
+            <app-hub-tile-header
+                    icon="bx-palette"
+                    iconBackground="bg-purple-subtle text-purple"
+                    title="UI Theme"
+                    [subtitle]="aboutService.theme()?.name || 'Unknown'"
+                    [showValue]="false"
+                    [badges]="getThemeBadges()">
+                  </app-hub-tile-header>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="col-md-6 col-lg-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <app-hub-tile-header
+                    icon="bx-copyright"
+                    iconBackground="bg-secondary-subtle text-secondary"
+                    title="Copyright"
+                    [subtitle]="aboutService.creator()?.copyright || '© ' + currentYear + ' All rights reserved.'"
+                    [showValue]="false">
+                  </app-hub-tile-header>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <!-- Footer Links -->
-          <div class="d-flex gap-3 flex-wrap justify-content-center text-muted small mt-4">
+          <div class="d-flex gap-3 flex-wrap justify-content-center text-muted small mt-4 pt-4 border-top">
             @if (aboutService.creator()?.website) {
-              <a
-                [href]="aboutService.creator()?.website"
-                target="_blank"
-                class="text-muted">
-                <i class="bx bx-globe me-1"></i>
-                Website
+              <a [href]="aboutService.creator()?.website" target="_blank" class="text-muted">
+                <i class="bx bx-globe me-1"></i> Website
               </a>
             }
             @if (aboutService.creator()?.social?.github) {
-              <a
-                [href]="aboutService.creator()?.social?.github"
-                target="_blank"
-                class="text-muted">
-                <i class="bx bxl-github me-1"></i>
-                GitHub
+              <a [href]="aboutService.creator()?.social?.github" target="_blank" class="text-muted">
+                <i class="bx bxl-github me-1"></i> GitHub
               </a>
             }
             @if (aboutService.theme()?.urls?.themeForest) {
-              <a
-                [href]="aboutService.theme()?.urls?.themeForest"
-                target="_blank"
-                class="text-muted">
-                <i class="bx bx-palette me-1"></i>
-                Theme
+              <a [href]="aboutService.theme()?.urls?.themeForest" target="_blank" class="text-muted">
+                <i class="bx bx-palette me-1"></i> Theme
               </a>
             }
             <a routerLink="/system/compliance/privacy-policy" class="text-muted">
-              <i class="bx bx-lock me-1"></i>
-              Privacy Policy
+              <i class="bx bx-lock me-1"></i> Privacy Policy
             </a>
             <a routerLink="/system/compliance/terms-conditions" class="text-muted">
-              <i class="bx bx-file me-1"></i>
-              Terms & Conditions
+              <i class="bx bx-file me-1"></i> Terms & Conditions
             </a>
           </div>
         </div>
@@ -227,65 +202,32 @@ import { ABOUT_CONSTANTS } from '../../../constants';
     </div>
     `,
     styles: [`
-    .about-hub { padding: 1.5rem; max-width: 1000px; margin: 0 auto; }
-    
-    .hierarchy-chain { display: flex; flex-direction: column; align-items: center; }
-    
-    .hierarchy-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.5rem;
-      background: var(--vz-light);
-      border-radius: 0.5rem;
-      width: 100%;
-      max-width: 400px;
-      transition: all 0.2s;
-    }
-    .hierarchy-item:hover {
-      background: var(--vz-primary-bg-subtle);
-      transform: translateX(4px);
-    }
-    .hierarchy-item.muted { opacity: 0.6; }
-    
-    .hierarchy-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
-    .hierarchy-icon.creator { background: linear-gradient(135deg, #667eea, #764ba2); }
-    .hierarchy-icon.distributor { background: linear-gradient(135deg, #11998e, #38ef7d); }
-    .hierarchy-icon.account { background: linear-gradient(135deg, #ee0979, #ff6a00); }
-    
-    .hierarchy-content { flex: 1; }
-    .hierarchy-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--vz-secondary-color); }
-    .hierarchy-value { font-weight: 600; font-size: 1.1rem; }
-    
-    .hierarchy-arrow {
-      color: var(--vz-secondary-color);
-      padding: 0.5rem;
-    }
-    
-    .icon-circle {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-    }
-    
-    .link-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    .link-card { transition: all 0.2s; }
-  `]
+      .about-hub { 
+        padding: 1.5rem; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+      }
+      
+      .hierarchy-tile {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: 1px solid var(--vz-border-color);
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(var(--vz-primary-rgb), 0.15);
+          border-color: var(--vz-primary);
+        }
+        
+        &.muted {
+          opacity: 0.6;
+        }
+      }
+      
+      /* Custom purple color support */
+      .bg-purple-subtle { background-color: rgba(135, 114, 249, 0.1) !important; }
+      .text-purple { color: #8772f9 !important; }
+    `]
 })
 export class AboutHubComponent implements OnInit {
   aboutService = inject(AboutService);
@@ -297,5 +239,11 @@ export class AboutHubComponent implements OnInit {
   ngOnInit(): void {
     this.accountService.getConfigValue<string>('account.name')
       .subscribe(name => this.accountName = name || 'Current Organization');
+  }
+
+  /** Helper to create type-safe badge array for theme version */
+  getThemeBadges(): { text: string; class: string }[] {
+    const version = this.aboutService.theme()?.version;
+    return version ? [{ text: version, class: 'bg-secondary-subtle text-secondary' }] : [];
   }
 }

@@ -1,9 +1,25 @@
 /**
- * Responsive Editor Host
+ * Responsive Panel Shell Component
  * 
- * A universal container that presents editor content differently based on viewport:
+ * A universal container that presents content differently based on viewport:
  * - Desktop/Tablet: Slide-in panel (offcanvas)
  * - Mobile: Full-page route navigation
+ * 
+ * This is NOT specific to editors - it can host any content that needs
+ * responsive presentation (messages, forms, details, etc.)
+ * 
+ * Usage:
+ * ```html
+ * <app-responsive-panel-shell
+ *   [isOpen]="showPanel"
+ *   title="Message Details"
+ *   [showActions]="false"
+ *   (closed)="onPanelClosed()">
+ *   <ng-template responsivePanelContent>
+ *     <app-message-viewer [message]="selectedMessage"></app-message-viewer>
+ *   </ng-template>
+ * </app-responsive-panel-shell>
+ * ```
  */
 import { 
   Component, 
@@ -23,9 +39,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgbOffcanvas, NgbOffcanvasRef, NgbOffcanvasModule } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { BreakpointService, BreakpointMode } from '../../../../core/services/breakpoint.service';
-import { ResponsiveEditorContentDirective } from './responsive-editor-content.directive';
+import { ResponsivePanelContentDirective } from './content.directive';
 
-export interface ResponsiveEditorConfig {
+/**
+ * Configuration for responsive panel behavior
+ */
+export interface ResponsivePanelConfig {
   panelWidth?: string;
   panelPosition?: 'start' | 'end';
   showBackdrop?: boolean;
@@ -33,7 +52,10 @@ export interface ResponsiveEditorConfig {
   routeModeBreakpoint?: BreakpointMode;
 }
 
-const DEFAULT_CONFIG: ResponsiveEditorConfig = {
+/** @deprecated Use ResponsivePanelConfig instead */
+export type ResponsiveEditorConfig = ResponsivePanelConfig;
+
+const DEFAULT_CONFIG: ResponsivePanelConfig = {
   panelWidth: '400px',
   panelPosition: 'end',
   showBackdrop: true,
@@ -41,8 +63,13 @@ const DEFAULT_CONFIG: ResponsiveEditorConfig = {
   routeModeBreakpoint: 'mobile',
 };
 
+/**
+ * @deprecated Use ResponsivePanelShellComponent instead
+ */
+export { ResponsivePanelShellComponent as ResponsiveEditorHostComponent };
+
 @Component({
-  selector: 'app-responsive-editor-host',
+  selector: 'app-responsive-panel-shell',
   standalone: true,
   imports: [CommonModule, NgbOffcanvasModule],
   template: `
@@ -74,9 +101,9 @@ const DEFAULT_CONFIG: ResponsiveEditorConfig = {
     }
   `]
 })
-export class ResponsiveEditorHostComponent implements OnChanges, OnDestroy, AfterViewInit {
+export class ResponsivePanelShellComponent implements OnChanges, OnDestroy, AfterViewInit {
   /** Title shown in panel header */
-  @Input() title = 'Edit';
+  @Input() title = 'Details';
   
   /** Route to navigate to on mobile (relative to current route) */
   @Input() mobileRoute: any[] = [];
@@ -105,14 +132,14 @@ export class ResponsiveEditorHostComponent implements OnChanges, OnDestroy, Afte
   /** Emitted when cancel is clicked */
   @Output() cancelled = new EventEmitter<void>();
 
-  @ContentChild(ResponsiveEditorContentDirective, { read: TemplateRef }) 
+  @ContentChild(ResponsivePanelContentDirective, { read: TemplateRef }) 
   contentTemplate!: TemplateRef<any>;
 
   @ViewChild('panelTemplate') panelTemplate!: TemplateRef<any>;
 
   private offcanvasRef?: NgbOffcanvasRef;
   private breakpointSub?: Subscription;
-  private mergedConfig: ResponsiveEditorConfig = DEFAULT_CONFIG;
+  private mergedConfig: ResponsivePanelConfig = DEFAULT_CONFIG;
   private viewInitialized = false;
   private pendingOpen = false;
 

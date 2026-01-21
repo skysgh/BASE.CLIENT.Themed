@@ -144,7 +144,8 @@
     "_comment": "Service-wide feature flags (accounts can override)",
     "enableAnalytics": true,
     "enableChat": false,
-    "enableNotifications": true
+    "enableNotifications": true,
+    "showThemeSwitcher": false
   },
   
   "defaults": {

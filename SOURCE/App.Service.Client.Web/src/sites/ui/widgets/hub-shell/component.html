@@ -5,9 +5,14 @@
     [icon]="icon"
     [iconBackground]="iconBackground"
     [iconClass]="iconClass"
-    [showBack]="showBack">
+    [showBack]="showBack"
+    [showBreadcrumb]="showBreadcrumbs">
     <ng-container subtitle>
-      <ng-content select="[subtitle]"></ng-content>
+      @if (subtitle) {
+        {{ subtitle }}
+      } @else {
+        <ng-content select="[subtitle]"></ng-content>
+      }
     </ng-container>
     <ng-container actions>
       <!-- Config Button in header actions -->
@@ -21,44 +26,35 @@
     </ng-container>
   </app-page-header>
 
-  <!-- Tile Grid (content projection or rendered from [tiles]) -->
-  <div class="row g-3">
-    @if (tiles && tiles.length > 0) {
+  <!-- Tile Grid - supports both default and custom tile components -->
+  @if (visibleTiles().length > 0) {
+    <div class="row g-4">
       @for (tile of visibleTiles(); track tile.id) {
-        <div class="col-md-4">
-          <a [routerLink]="tile.route" class="entity-tile card h-100">
-            <div class="card-body">
-              <div class="d-flex align-items-center">
-                <div class="tile-icon me-3" [class]="'bg-' + tile.iconColor + '-subtle'">
-                  <i class="bx {{ tile.icon }}" [class]="'text-' + tile.iconColor"></i>
-                </div>
-                <div class="flex-grow-1">
-                  <div class="d-flex align-items-baseline gap-2">
-                    <h5 class="mb-0">{{ tile.title }}</h5>
-                    @if (getTileCount(tile) !== undefined) {
-                      <span class="badge" [class]="'bg-' + tile.iconColor + '-subtle text-' + tile.iconColor">
-                        {{ getTileCount(tile) }}
-                      </span>
-                    }
-                  </div>
-                  @if (tile.subtitle) {
-                    <p class="text-muted mb-0 small">{{ tile.subtitle }}</p>
-                  }
-                </div>
-                <i class="bx bx-chevron-right text-muted"></i>
-              </div>
-            </div>
-          </a>
+        <div [class]="tileColumnClass">
+          @if (hasCustomComponent(tile)) {
+            <!-- Custom component rendering with injected tile data -->
+            <ng-container 
+              *ngComponentOutlet="getCustomComponent(tile); injector: getTileInjector(tile)">
+            </ng-container>
+          } @else {
+            <!-- Default HubTile rendering -->
+            <app-hub-tile [tile]="tile"></app-hub-tile>
+          }
         </div>
       }
-    } @else {
-      <!-- Content projection for custom tile rendering -->
-      <ng-content></ng-content>
-    }
-  </div>
+    </div>
+  } @else if (!hasContent) {
+    <!-- Content projection for fully custom rendering -->
+    <ng-content></ng-content>
+  }
 
   <!-- Empty state -->
-  @if (visibleTiles().length === 0 && !hasContent) {
+  @if (visibleTiles().length === 0 && workingTiles().length > 0) {
+    <div class="alert alert-info text-center mt-4">
+      <i class="bx bx-eye-off me-2"></i>
+      All tiles are hidden. Click the gear icon to show tiles.
+    </div>
+  } @else if (workingTiles().length === 0 && !hasContent) {
     <div class="alert alert-info text-center mt-4">
       <i class="bx bx-info-circle me-2"></i>
       No tiles configured for this hub.
@@ -75,36 +71,15 @@
     </h5>
     <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss()"></button>
   </div>
-  <div class="offcanvas-body">
-    <p class="text-muted small mb-3">
-      Drag to reorder. Toggle visibility for each tile.
-    </p>
-    <div class="tile-config-list" cdkDropList (cdkDropListDropped)="onTileDrop($event)">
-      @for (tile of configTiles(); track tile.id) {
-        <div class="tile-config-item d-flex align-items-center gap-3 p-2 border rounded mb-2" 
-             cdkDrag 
-             [cdkDragDisabled]="tile.locked">
-          <i class="bx bx-grid-vertical drag-handle" 
-             [class.text-muted]="!tile.locked"
-             [class.text-secondary]="tile.locked"
-             cdkDragHandle></i>
-          <div class="tile-icon-sm" [class]="'bg-' + tile.iconColor + '-subtle'">
-            <i class="bx {{ tile.icon }}" [class]="'text-' + tile.iconColor"></i>
-          </div>
-          <div class="flex-grow-1">
-            <span class="fw-medium">{{ tile.title }}</span>
-            @if (tile.locked) {
-              <i class="bx bx-lock-alt text-warning ms-1" title="Locked by administrator"></i>
-            }
-          </div>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" 
-                   [checked]="tile.visible"
-                   [disabled]="tile.locked"
-                   (change)="toggleTileVisibility(tile.id)">
-          </div>
-        </div>
-      }
-    </div>
+  <div class="offcanvas-body p-0">
+    <app-hub-shell-config-panel
+      [tiles]="workingTiles()"
+      [title]="'Tile Settings'"
+      [subtitle]="'Drag to reorder. Toggle visibility for each tile.'"
+      (tilesChange)="onConfigTilesChange($event)"
+      (save)="onConfigSave($event)"
+      (cancel)="onConfigCancel()"
+      (reset)="onConfigReset()">
+    </app-hub-shell-config-panel>
   </div>
 </ng-template>

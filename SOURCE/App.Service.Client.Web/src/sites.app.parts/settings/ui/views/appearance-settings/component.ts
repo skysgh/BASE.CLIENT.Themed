@@ -2,7 +2,7 @@
  * Appearance Settings Panel Component
  * 
  * Settings page for appearance/theme preferences.
- * Uses ResponsiveEditorHost for color editing (panel on desktop, page on mobile).
+ * Uses ResponsivePanelShell for color editing (panel on desktop, page on mobile).
  */
 import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
@@ -15,7 +15,7 @@ import { SettingsLockComponent } from '../../widgets/settings-lock';
 import { SettingsLevel } from '../../../services/applet-settings-registry.service';
 import { themesT1Constants } from '../../../../../themes/t1/constants/implementations/themes.t1.constants';
 import { ThemeColorService, ThemeColorConfig, DEFAULT_THEME_COLORS } from '../../../../../core/services/theme-color.service';
-import { ResponsiveEditorHostComponent, ResponsiveEditorContentDirective } from '../../../../../core.ag/ui/widgets/responsive-editor';
+import { ResponsivePanelShellComponent, ResponsivePanelContentDirective } from '../../../../../sites/ui/widgets/responsive-panel-shell';
 import { ColorTierEditorComponent, ColorTier } from '../../widgets/color-tier-editor';
 
 // NgRx actions and selectors
@@ -82,7 +82,7 @@ const DEFAULT_SETTINGS: AppearanceSettings = {
   imports: [
     CommonModule, FormsModule, BaseCoreAgPipesModule,
     SettingsPageShellComponent, SettingsLockComponent,
-    ResponsiveEditorHostComponent, ResponsiveEditorContentDirective,
+    ResponsivePanelShellComponent, ResponsivePanelContentDirective,
     ColorTierEditorComponent
   ],
   templateUrl: './component.html',

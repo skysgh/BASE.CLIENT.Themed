@@ -1,36 +1,52 @@
 /**
  * Hub Shell Component
  * 
- * A reusable container for any hub (System Hub, Applet Hub, etc.).
+ * A reusable container for any hub (Main Hub, Applet Hub, etc.).
  * Provides:
  * - Standard PageHeader with back button, title, icon
  * - Gear icon for configuration
  * - Pullout panel for tile ordering/visibility
- * - Content projection for tiles
+ * - Support for default tiles OR custom tile components
  * 
- * Usage:
+ * Usage with default HubTile rendering:
  * ```html
  * <app-hub-shell 
  *   title="Astronomy" 
  *   icon="bx-planet"
  *   hubId="astronomy-hub"
- *   [tiles]="entityTiles">
+ *   [tiles]="entityTiles"
+ *   (tilesChange)="onTilesSaved($event)">
  *   <ng-container subtitle>Explore star systems and planets</ng-container>
- *   
- *   <!-- Tiles rendered via content projection or [tiles] input -->
+ * </app-hub-shell>
+ * ```
+ * 
+ * Usage with custom tile component:
+ * ```html
+ * <app-hub-shell 
+ *   title="Hub" 
+ *   icon="bx-home-alt"
+ *   hubId="main-hub"
+ *   [tiles]="mainHubTiles"
+ *   [tileComponents]="widgetComponentMap"
+ *   [showBack]="false">
+ *   <ng-container subtitle>Welcome back!</ng-container>
  * </app-hub-shell>
  * ```
  */
-import { Component, Input, Output, EventEmitter, inject, signal, TemplateRef, ViewChild, ContentChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter, inject, signal, TemplateRef, ViewChild, OnChanges, SimpleChanges, Type, Injector } from '@angular/core';
+import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbOffcanvas, NgbOffcanvasModule } from '@ng-bootstrap/ng-bootstrap';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { PageHeaderComponent } from '../page-header';
+import { HubTileComponent } from '../hub-tile';
+import { HubShellConfigPanelComponent } from '../hub-shell-config-panel';
+import { IUniversalTile, IHubTilePreferences, applyTilePreferences, extractTilePreferences, HUB_TILE_DATA } from '../../../../core/models/presentation';
 
 /**
- * Tile configuration for hub display
+ * Legacy tile configuration for backward compatibility
+ * @deprecated Use IUniversalTile instead
  */
 export interface HubTileConfig {
   id: string;
@@ -44,10 +60,44 @@ export interface HubTileConfig {
   locked?: boolean;
 }
 
+/**
+ * Map of tile IDs to custom component types
+ * Used when tiles need custom rendering (e.g., main hub widgets)
+ */
+export type TileComponentMap = Map<string, Type<any>>;
+
+/**
+ * Convert legacy HubTileConfig to IUniversalTile
+ */
+function convertLegacyTile(legacy: HubTileConfig): IUniversalTile {
+  return {
+    id: legacy.id,
+    title: legacy.title,
+    icon: legacy.icon,
+    iconColor: legacy.iconColor,
+    subtitle: legacy.subtitle,
+    value: typeof legacy.count === 'function' ? legacy.count() : legacy.count,
+    config: {
+      route: legacy.route,
+      visible: legacy.visible,
+      locked: legacy.locked,
+    },
+  };
+}
+
 @Component({
 selector: 'app-hub-shell',
 standalone: true,
-imports: [CommonModule, RouterModule, NgbOffcanvasModule, DragDropModule, PageHeaderComponent],
+imports: [
+  CommonModule, 
+  RouterModule, 
+  NgComponentOutlet,
+  NgbOffcanvasModule, 
+  DragDropModule, 
+  PageHeaderComponent,
+  HubTileComponent,
+  HubShellConfigPanelComponent
+],
 templateUrl: './component.html',
 styles: [`
     .hub-shell {
@@ -56,6 +106,13 @@ styles: [`
       margin: 0 auto;
     }
     
+    .tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    
+    /* Legacy tile styling (backward compatibility) */
     .entity-tile {
       text-decoration: none;
       color: inherit;
@@ -83,96 +140,131 @@ styles: [`
       font-size: 1.5rem;
       transition: transform 0.2s ease;
     }
-    
-    .tile-icon-sm {
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
-    
-    .tile-config-item {
-      background: var(--vz-card-bg);
-      transition: all 0.2s;
-      
-      &:hover {
-        background: var(--vz-light);
-      }
-      
-      &.cdk-drag-preview {
-        box-shadow: 0 5px 5px -3px rgba(0,0,0,.2);
-      }
-    }
-    
-    .tile-config-list.cdk-drop-list-dragging .tile-config-item:not(.cdk-drag-placeholder) {
-      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-    }
-    
-    .drag-handle {
-      cursor: grab;
-      
-      &:active {
-        cursor: grabbing;
-      }
-    }
   `]
 })
-export class HubShellComponent {
-  private offcanvasService = inject(NgbOffcanvas);
+export class HubShellComponent implements OnChanges {
+private offcanvasService = inject(NgbOffcanvas);
+private injector = inject(Injector);
 
-  @ViewChild('configPanel') configPanelTemplate!: TemplateRef<any>;
+@ViewChild('configPanel') configPanelTemplate!: TemplateRef<any>;
 
-  /** Hub identifier for saving preferences */
-  @Input() hubId = '';
+/** Hub identifier for saving preferences */
+@Input() hubId = '';
   
-  /** Hub title */
-  @Input() title = '';
+/** Hub title */
+@Input() title = '';
   
-  /** Hub icon (BoxIcons class, e.g., 'bx-planet') */
-  @Input() icon = 'bx-grid-alt';
+/** Hub subtitle (alternative to content projection) */
+@Input() subtitle = '';
   
-  /** Icon background class (e.g., 'bg-primary-subtle') */
-  @Input() iconBackground = 'bg-primary-subtle';
+/** Hub icon (BoxIcons class, e.g., 'bx-planet') */
+@Input() icon = 'bx-grid-alt';
   
-  /** Icon CSS class (e.g., 'text-primary') */
-  @Input() iconClass = 'text-primary';
+/** Icon background class (e.g., 'bg-primary-subtle') */
+@Input() iconBackground = 'bg-primary-subtle';
   
-  /** Show back button in header */
-  @Input() showBack = true;
+/** Icon CSS class (e.g., 'text-primary') */
+@Input() iconClass = 'text-primary';
   
-  /** Show config gear icon */
-  @Input() showConfig = true;
+/** Show back button in header */
+@Input() showBack = true;
   
-  /** Tile configurations */
-  @Input() tiles: HubTileConfig[] = [];
+/** Show config gear icon */
+@Input() showConfig = true;
   
-  /** Emits when tile order changes */
-  @Output() tilesReordered = new EventEmitter<string[]>();
+/** Show breadcrumbs (default true, set false for main hub) */
+@Input() showBreadcrumbs = true;
   
-  /** Emits when tile visibility changes */
-  @Output() tileVisibilityChanged = new EventEmitter<{ id: string; visible: boolean }>();
+/** Tiles using new IUniversalTile model */
+@Input() tiles: IUniversalTile[] = [];
+  
+/**
+ * Map of tile IDs to custom component types
+ * When provided, tiles matching an ID use the custom component instead of HubTileComponent
+ * Custom components receive IUniversalTile via HUB_TILE_DATA injection token
+ */
+@Input() tileComponents?: TileComponentMap;
+  
+/** 
+ * Grid column class for tiles (Bootstrap grid class)
+ * Default: 'col-md-6 col-lg-4' for 3 columns on large screens
+ */
+@Input() tileColumnClass = 'col-md-6 col-lg-4';
+  
+/** 
+ * Legacy tile configurations (backward compatibility)
+ * @deprecated Use [tiles] with IUniversalTile instead
+ */
+@Input() legacyTiles: HubTileConfig[] = [];
+  
+/** Emits when tiles are saved (after config panel save) */
+@Output() tilesChange = new EventEmitter<IUniversalTile[]>();
+  
+/** Emits tile preferences for persistence */
+@Output() preferencesChange = new EventEmitter<IHubTilePreferences>();
+  
+/** 
+ * Legacy: Emits when tile order changes 
+ * @deprecated Use tilesChange or preferencesChange instead
+ */
+@Output() tilesReordered = new EventEmitter<string[]>();
+  
+/** 
+ * Legacy: Emits when tile visibility changes 
+ * @deprecated Use tilesChange or preferencesChange instead
+ */
+@Output() tileVisibilityChanged = new EventEmitter<{ id: string; visible: boolean }>();
 
-  // Internal state for config panel
-  configTiles = signal<HubTileConfig[]>([]);
+// Internal state
+private offcanvasRef: any;
+workingTiles = signal<IUniversalTile[]>([]);
   
-  // Check if content was projected
-  hasContent = false;
+// Check if content was projected
+hasContent = false;
 
-  /** Get visible tiles in order */
-  visibleTiles = signal<HubTileConfig[]>([]);
+/** Get visible tiles in order */
+visibleTiles = signal<IUniversalTile[]>([]);
+  
+/** Cache of injectors for custom components */
+private tileInjectorCache = new Map<string, Injector>();
 
-  ngOnChanges(): void {
+/** Use legacy mode if legacyTiles provided but tiles empty */
+get isLegacyMode(): boolean {
+  return this.legacyTiles.length > 0 && this.tiles.length === 0;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['tiles'] || changes['legacyTiles']) {
+      this.clearInjectorCache();
+      this.initializeTiles();
+    }
+  }
+
+  private initializeTiles(): void {
+    let allTiles: IUniversalTile[];
+    
+    if (this.isLegacyMode) {
+      // Convert legacy tiles
+      allTiles = this.legacyTiles.map(convertLegacyTile);
+    } else {
+      allTiles = [...this.tiles];
+    }
+    
+    this.workingTiles.set(allTiles);
     this.updateVisibleTiles();
   }
 
   private updateVisibleTiles(): void {
-    this.visibleTiles.set(this.tiles.filter(t => t.visible));
+    const visible = this.workingTiles()
+      .filter(t => t.config.visible)
+      .sort((a, b) => (a.config.order ?? 0) - (b.config.order ?? 0));
+    this.visibleTiles.set(visible);
   }
 
-  /** Get tile count (supports both static number and function) */
+  /** 
+   * Get tile count (supports both static number and function) 
+   * Legacy support for HubTileConfig
+   */
   getTileCount(tile: HubTileConfig): number | undefined {
     if (tile.count === undefined) return undefined;
     return typeof tile.count === 'function' ? tile.count() : tile.count;
@@ -180,39 +272,88 @@ export class HubShellComponent {
 
   /** Open configuration panel */
   openConfigPanel(): void {
-    this.configTiles.set([...this.tiles]);
-    this.offcanvasService.open(this.configPanelTemplate, {
+    this.offcanvasRef = this.offcanvasService.open(this.configPanelTemplate, {
       position: 'end',
       panelClass: 'hub-config-offcanvas'
     });
   }
 
-  /** Handle drag-drop reorder */
-  onTileDrop(event: CdkDragDrop<HubTileConfig[]>): void {
-    const tiles = [...this.configTiles()];
-    moveItemInArray(tiles, event.previousIndex, event.currentIndex);
-    this.configTiles.set(tiles);
-    
-    // Update main tiles and emit
-    this.tiles = tiles;
+  /** Handle tiles changed from config panel (live preview) */
+  onConfigTilesChange(tiles: IUniversalTile[]): void {
+    this.workingTiles.set(tiles);
     this.updateVisibleTiles();
-    this.tilesReordered.emit(tiles.map(t => t.id));
   }
 
-  /** Toggle tile visibility */
-  toggleTileVisibility(tileId: string): void {
-    const tiles = this.configTiles().map(t => 
-      t.id === tileId ? { ...t, visible: !t.visible } : t
-    );
-    this.configTiles.set(tiles);
-    
-    // Update main tiles and emit
-    this.tiles = tiles;
+  /** Handle save from config panel */
+  onConfigSave(tiles: IUniversalTile[]): void {
+    this.workingTiles.set(tiles);
     this.updateVisibleTiles();
     
-    const tile = tiles.find(t => t.id === tileId);
-    if (tile) {
-      this.tileVisibilityChanged.emit({ id: tileId, visible: tile.visible });
+    // Emit events
+    this.tilesChange.emit(tiles);
+    this.preferencesChange.emit(extractTilePreferences(this.hubId, tiles));
+    
+    // Legacy events
+    this.tilesReordered.emit(tiles.map(t => t.id));
+    
+    // Close panel
+    this.offcanvasRef?.close();
+  }
+
+  /** Handle cancel from config panel */
+  onConfigCancel(): void {
+    // Reset to original
+    this.initializeTiles();
+    this.offcanvasRef?.close();
+  }
+
+  /** Handle reset from config panel */
+  onConfigReset(): void {
+    // Tiles already reset by the config panel component
+  }
+
+  // ─────────────────────────────────────────────────────────────────────
+  // Custom Component Rendering Support
+  // ─────────────────────────────────────────────────────────────────────
+
+  /**
+   * Check if a tile has a custom component
+   */
+  hasCustomComponent(tile: IUniversalTile): boolean {
+    return this.tileComponents?.has(tile.id) ?? false;
+  }
+
+  /**
+   * Get the custom component type for a tile
+   */
+  getCustomComponent(tile: IUniversalTile): Type<any> | null {
+    return this.tileComponents?.get(tile.id) ?? null;
+  }
+
+  /**
+   * Get injector for a tile that provides HUB_TILE_DATA
+   * Caches injectors to avoid recreation on each render
+   */
+  getTileInjector(tile: IUniversalTile): Injector {
+    let tileInjector = this.tileInjectorCache.get(tile.id);
+    
+    if (!tileInjector) {
+      tileInjector = Injector.create({
+        providers: [
+          { provide: HUB_TILE_DATA, useValue: tile }
+        ],
+        parent: this.injector
+      });
+      this.tileInjectorCache.set(tile.id, tileInjector);
     }
+    
+    return tileInjector;
+  }
+
+  /**
+   * Clear injector cache (call when tiles change significantly)
+   */
+  private clearInjectorCache(): void {
+    this.tileInjectorCache.clear();
   }
 }

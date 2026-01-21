@@ -1,0 +1,54 @@
+<div class="tile-header">
+  <!-- Top row: Icon + Title/Subtitle -->
+  <div class="tile-header__top">
+    <!-- Icon -->
+    @if (resolvedIcon) {
+      <div class="tile-header__icon" [class]="resolvedIconBackground">
+        <i [class]="iconClasses"></i>
+      </div>
+    }
+    
+    <!-- Title & Subtitle -->
+    <div class="tile-header__text">
+      @if (resolvedTitle) {
+        <h6 class="tile-header__title mb-0">{{ resolvedTitle }}</h6>
+      }
+      @if (resolvedSubtitle) {
+        <p class="tile-header__subtitle">{{ resolvedSubtitle }}</p>
+      }
+    </div>
+  </div>
+  
+  <!-- Stats row: Value + Badges -->
+  @if (hasStats) {
+    <div class="tile-header__stats">
+      <!-- Value with CountUp -->
+      @if (hasValue) {
+        <app-stat-counter 
+          [value]="resolvedValue!" 
+          [label]="resolvedValueLabel"
+          size="medium">
+        </app-stat-counter>
+      } @else {
+        <div></div> <!-- Spacer for flex justify-content -->
+      }
+      
+      <!-- Badges -->
+      @if (hasBadges) {
+        <div class="tile-header__badges">
+          @for (badge of resolvedBadges; track badge.text) {
+            <span class="tile-header__badge badge" [class]="badge.class || 'bg-secondary-subtle text-secondary'">
+              @if (badge.icon) {
+                <i [class]="badge.icon" class="me-1"></i>
+              }
+              {{ badge.text }}
+            </span>
+          }
+        </div>
+      }
+    </div>
+  }
+  
+  <!-- Content projection for custom additions -->
+  <ng-content></ng-content>
+</div>

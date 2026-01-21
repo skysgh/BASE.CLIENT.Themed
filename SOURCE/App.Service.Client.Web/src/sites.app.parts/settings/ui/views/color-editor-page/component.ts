@@ -7,16 +7,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { ResponsiveEditorPageComponent } from '../../../../../core.ag/ui/widgets/responsive-editor';
+import { ResponsivePanelPageComponent } from '../../../../../sites/ui/widgets/responsive-panel-shell';
 import { ColorTierEditorComponent, ColorTier } from '../../widgets/color-tier-editor';
 import { ThemeColorService, ThemeColorConfig, DEFAULT_THEME_COLORS } from '../../../../../core/services/theme-color.service';
 
 @Component({
   selector: 'app-color-editor-page',
   standalone: true,
-  imports: [CommonModule, ResponsiveEditorPageComponent, ColorTierEditorComponent],
+  imports: [CommonModule, ResponsivePanelPageComponent, ColorTierEditorComponent],
   template: `
-    <app-responsive-editor-page
+    <app-responsive-panel-page
       [title]="title"
       (saved)="onSave()"
       (cancelled)="onCancel()">
@@ -27,7 +27,7 @@ import { ThemeColorService, ThemeColorConfig, DEFAULT_THEME_COLORS } from '../..
         (colorChange)="onColorChange($event)">
       </app-color-tier-editor>
       
-    </app-responsive-editor-page>
+    </app-responsive-panel-page>
   `
 })
 export class ColorEditorPageComponent implements OnInit {

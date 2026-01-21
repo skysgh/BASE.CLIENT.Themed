@@ -451,14 +451,14 @@
 </app-settings-page-shell>
 
 <!-- Responsive Color Editor Host -->
-<app-responsive-editor-host
+<app-responsive-panel-shell
   [title]="colorEditorTitle"
   [mobileRoute]="['./colors', editingColorTier]"
   [isOpen]="isColorEditorOpen"
   (closed)="onColorEditorClosed()"
   (saved)="onColorEditorSaved()">
   
-  <ng-template responsiveEditorContent>
+  <ng-template responsivePanelContent>
     <app-color-tier-editor
       [tier]="editingColorTier"
       [(color)]="editingColor"
@@ -466,4 +466,4 @@
     </app-color-tier-editor>
   </ng-template>
   
-</app-responsive-editor-host>
+</app-responsive-panel-shell>

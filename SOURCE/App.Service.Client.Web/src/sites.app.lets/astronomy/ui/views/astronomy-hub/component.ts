@@ -19,7 +19,7 @@ import { AstronomyService } from '../../../services/astronomy.service';
       hubId="astronomy-hub"
       title="Astronomy"
       icon="bx-planet"
-      [tiles]="entityTiles()"
+      [legacyTiles]="entityTiles()"
       (tilesReordered)="onTilesReordered($event)"
       (tileVisibilityChanged)="onTileVisibilityChanged($event)">
       <ng-container subtitle>

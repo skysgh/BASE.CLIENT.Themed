@@ -1,0 +1,25 @@
+<a 
+  class="hub-tile h-100"
+  [class.hub-tile--locked]="isLocked"
+  [routerLink]="getRouterLink()"
+  [queryParams]="getQueryParams()"
+  (click)="onClick($event)">
+  
+  <!-- Lock indicator -->
+  @if (isLocked) {
+    <span class="tile-lock-indicator">
+      <i class="ri-lock-line"></i>
+    </span>
+  }
+  
+  <!-- Arrow indicator (shows on hover) -->
+  <span class="tile-arrow">
+    <i class="bx bx-chevron-right"></i>
+  </span>
+  
+  <!-- Tile Header with icon, title, value, badges -->
+  <app-hub-tile-header
+    [tile]="tile"
+    [badges]="badges">
+  </app-hub-tile-header>
+</a>
