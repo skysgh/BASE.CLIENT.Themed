@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location } from '@angular/common';
-import { filter } from 'rxjs/operators';
+import { filter, pairwise, startWith } from 'rxjs/operators';
 import { AccountService } from './account.service';
 
 /**
@@ -16,6 +16,11 @@ import { AccountService } from './account.service';
  * 
  * ACCOUNT CONTEXT:
  * Automatically prefixes routes with current account ID.
+ * 
+ * HISTORY TRACKING:
+ * - Tracks only unique pages (base path without query params) to avoid
+ *   polluting history when saved views or filters change query params.
+ * - When browser back() is used, we pop from our internal history.
  */
 @Injectable({
   providedIn: 'root'
@@ -25,51 +30,91 @@ export class NavigationService {
   private router = inject(Router);
   private location = inject(Location);
 
-  /** Track navigation history within the app */
+  /** Track navigation history within the app (base paths only, no query params) */
   private navigationHistory: string[] = [];
   private readonly MAX_HISTORY = 50;
+  
+  /** Flag to detect popstate (browser back/forward) */
+  private isPopstate = false;
 
   constructor() {
     this.trackNavigationHistory();
+    this.trackPopstate();
+  }
+
+  /**
+   * Track browser back/forward button presses (popstate)
+   */
+  private trackPopstate(): void {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+    ).subscribe((event: NavigationStart) => {
+      // 'popstate' navigationTrigger indicates browser back/forward
+      this.isPopstate = event.navigationTrigger === 'popstate';
+    });
   }
 
   /**
    * Track navigation events to build internal history
+   * Only tracks base paths (without query params) to avoid history pollution.
    */
   private trackNavigationHistory(): void {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      // Don't add duplicates
-      if (this.navigationHistory[this.navigationHistory.length - 1] !== event.urlAfterRedirects) {
-        this.navigationHistory.push(event.urlAfterRedirects);
+      // Extract base path (without query params)
+      const basePath = this.getBasePath(event.urlAfterRedirects);
+      const lastBasePath = this.navigationHistory.length > 0 
+        ? this.navigationHistory[this.navigationHistory.length - 1] 
+        : null;
+      
+      // If this was a popstate (browser back/forward), remove from our history
+      if (this.isPopstate) {
+        // Pop the current page from history since we navigated away from it
+        if (this.navigationHistory.length > 0) {
+          this.navigationHistory.pop();
+        }
+        this.isPopstate = false;
+        console.log(`[NavigationService] Popstate detected, history:`, [...this.navigationHistory]);
+        return;
+      }
+      
+      // Don't add duplicates (same base path)
+      if (lastBasePath !== basePath) {
+        this.navigationHistory.push(basePath);
         
         // Keep history bounded
         if (this.navigationHistory.length > this.MAX_HISTORY) {
           this.navigationHistory.shift();
         }
+        
+        console.log(`[NavigationService] History updated:`, [...this.navigationHistory]);
       }
     });
   }
 
   /**
+   * Extract base path from URL (removes query params and fragment)
+   */
+  private getBasePath(url: string): string {
+    return url.split('?')[0].split('#')[0];
+  }
+
+  /**
    * Smart back navigation
    * 
-   * - If we have history within the app → go back
+   * - If we have history within the app → go back using browser history
    * - If this is the first page (deep link) → go to appropriate default
    * 
    * @param fallbackPath Optional fallback path if no history (default: auto-detect)
    */
   async back(fallbackPath?: string): Promise<boolean> {
-    // If we have more than 1 entry, we can go back
+    // If we have more than 1 entry, we can go back using browser history
     if (this.navigationHistory.length > 1) {
-      // Remove current page from history
-      this.navigationHistory.pop();
-      // Get the previous page
-      const previousUrl = this.navigationHistory[this.navigationHistory.length - 1];
-      
-      console.log(`[NavigationService] Going back to: ${previousUrl}`);
-      return this.router.navigateByUrl(previousUrl);
+      console.log(`[NavigationService] Going back in browser history`);
+      // Use browser's back which properly replaces state
+      this.location.back();
+      return true;
     }
     
     // No history - user came from external/deep link

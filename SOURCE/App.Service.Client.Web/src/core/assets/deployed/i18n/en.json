@@ -5573,9 +5573,31 @@
       "[DIV_05]": "[-----]",
       "THIRD_PERSON_PRESENT": "Homes",
       "[DIV_06]": "[------]",
-      "NEGATIVE_PAST": "Unhomed"
-    },
-    "HOUSES": {
+        "NEGATIVE_PAST": "Unhomed"
+      },
+      "HUBS": {
+        "[LAST_EDITED]": "[v25.01.21.00]",
+        "[RELATED]": "[See DASHBOARDS, HOMES]",
+        "[ABOUT]": "[Central navigation landing page]",
+        "[DIV_01]": "[------]",
+        "EXPLANATION": "A central point for navigation within the app.",
+        "INSTRUCTIONS": "",
+        "PLACEHOLDER": "",
+        "[DIV_02]": "[------]",
+        "OBJECTS": {
+          "INCLUSIVE": {
+            "SINGULAR": "Hub",
+            "PLURAL": "Hubs"
+          }
+        },
+        "PHRASES": {
+          "DESCRIPTION": "Central point to navigate from."
+        },
+        "[DIV_03]": "[------]",
+        "SINGULAR": "Hub",
+        "PLURAL": "Hubs"
+      },
+      "HOUSES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
       "[RELATED]": "[See SPACES, BUILDINGS]",
       "[ABOUT]": "[]",
@@ -7115,9 +7137,16 @@
       "[DIV_05]": "[-----]",
       "THIRD_PERSON_PRESENT": "Merges",
       "[DIV_06]": "[------]",
-      "NEGATIVE_PAST": "Unmerged"
-    },
-    "MESSAGES": {
+        "NEGATIVE_PAST": "Unmerged"
+      },
+      "MENU": {
+        "[LAST_EDITED]": "[v25.01.21.00]",
+        "[RELATED]": "[See NAVIGATION]",
+        "[ABOUT]": "[Navigation menu sections]",
+        "MAIN": "Menu",
+        "APPS": "Applications"
+      },
+      "MESSAGES": {
       "[LAST_EDITED]": "[v24.12.19.00]",
       "[RELATED]": "[See also NOTIFICATIONS, ALERTS, EMAILS, SUBJECTS.]",
       "[ABOUT]": "[]",

@@ -23,9 +23,9 @@ export const appletsSpikesConstantsApis: TAppletsSpikesConstantsApis =  {
   root: `${API_ROOT}`,
 
   /** Spikes collection endpoint */
-  spike: "/api/rest/app_spike_Spikes",
+  spike: "/api/rest/base_system_spike_Spikes",
   
   /** SubSpikes collection endpoint */
-  spikes: "/api/rest/app_spike_SubSpikes",
+  spikes: "/api/rest/base_system_spike_SubSpikes",
 
 };

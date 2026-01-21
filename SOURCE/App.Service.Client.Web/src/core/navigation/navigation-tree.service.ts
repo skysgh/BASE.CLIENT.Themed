@@ -26,7 +26,7 @@
  */
 import { Injectable, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, startWith } from 'rxjs/operators';
 
 import { NavigationNode, NavigationContext, NavigationEntry, BreadcrumbItem } from './navigation-tree.model';
 import { ROOT_NAV_TREE } from './navigation-tree.data';
@@ -328,10 +328,12 @@ export class NavigationTreeService {
 
     /**
      * Get breadcrumbs as observable (reactive updates on navigation)
+     * Emits immediately with current breadcrumbs, then on every navigation
      */
     getBreadcrumbs$(includeHome = true): import('rxjs').Observable<BreadcrumbItem[]> {
       return this.router.events.pipe(
         filter(event => event instanceof NavigationEnd),
+        startWith(null), // Emit immediately on subscription
         map(() => this.getBreadcrumbs(includeHome))
       );
     }

@@ -10,11 +10,11 @@ const API_ROOT = StringService.replaceTemplate(environment.custom.urls.apis.sect
 export const appletsArchitectureConstantsApis: TAppletsArchitectureConstantsApis = {
   root: `${API_ROOT}`,
 
-  values: `${API_ROOT}app_architecture_Values`,
-  qualityCategories: `${API_ROOT}app_architecture_QualityCategories`,
-  qualityTypes: `${API_ROOT}app_architecture_QualityTypes`,
-  qualities: `${API_ROOT}app_architecture_Qualities`,
-  principleType: `${API_ROOT}app_architecture_PrincipleTypes`,
-  principles: `${API_ROOT}app_architecture_Principles`,
+  values: `${API_ROOT}base_system_architecture_Values`,
+  qualityCategories: `${API_ROOT}base_system_architecture_QualityCategories`,
+  qualityTypes: `${API_ROOT}base_system_architecture_QualityTypes`,
+  qualities: `${API_ROOT}base_system_architecture_Qualities`,
+  principleType: `${API_ROOT}base_system_architecture_PrincipleTypes`,
+  principles: `${API_ROOT}base_system_architecture_Principles`,
 
 }

@@ -19,19 +19,21 @@ import {
   PlanetType,
   AtmosphereType 
 } from '../models';
-import { StarSystemRepository, PlanetRepository } from '../repositories';
-import { StarSystemDto, PlanetDto } from '../models/dtos';
+import { StarSystemRepository, PlanetRepository, AstronomerRepository } from '../repositories';
+import { StarSystemDto, PlanetDto, AstronomerDto } from '../models/dtos';
 import { SystemDiagnosticsTraceService } from '../../../core/services/system.diagnostics-trace.service';
 
 @Injectable({ providedIn: 'root' })
 export class AstronomyService {
   private repository = inject(StarSystemRepository);
   private planetRepository = inject(PlanetRepository);
+  private astronomerRepository = inject(AstronomerRepository);
   private logger = inject(SystemDiagnosticsTraceService);
   
   // Signals for reactive state
   private _starSystems = signal<StarSystem[]>([]);
   private _planets = signal<Planet[]>([]);
+  private _astronomers = signal<Astronomer[]>([]);
   private _loading = signal(false);
   private _saving = signal(false);
   private _error = signal<string | null>(null);
@@ -39,17 +41,23 @@ export class AstronomyService {
   // Public readonly
   readonly starSystems = this._starSystems.asReadonly();
   readonly planets = this._planets.asReadonly();
+  readonly astronomers = this._astronomers.asReadonly();
   readonly loading = this._loading.asReadonly();
   readonly saving = this._saving.asReadonly();
   readonly error = this._error.asReadonly();
   
-  // Computed
+  // Computed counts for tiles
   readonly starSystemCount = computed(() => this._starSystems().length);
   readonly planetCount = computed(() => this._planets().length);
+  readonly astronomerCount = computed(() => this._astronomers().length);
+  readonly habitableCount = computed(() => 
+    this._planets().filter(p => p.habitableZone).length
+  );
   
   constructor() {
     this.logger.debug('AstronomyService initialized');
     this.loadStarSystems();
+    this.loadAstronomers();
   }
   
   // ========================================
@@ -78,11 +86,29 @@ export class AstronomyService {
         }
       })
     ).subscribe();
-  }
+    }
   
-  /**
-   * Get star systems (returns current signal value)
-   */
+    /**
+     * Load all astronomers from API
+     */
+    loadAstronomers(): void {
+      this.astronomerRepository.getAll().pipe(
+        tap({
+          next: (dtos) => {
+            const astronomers = dtos.map(dto => this.mapDtoToAstronomer(dto));
+            this._astronomers.set(astronomers);
+            this.logger.debug(`Loaded ${astronomers.length} astronomers from API`);
+          },
+          error: (err) => {
+            this.logger.error(`Error loading astronomers: ${err?.message || err}`);
+          }
+        })
+      ).subscribe();
+    }
+  
+    /**
+     * Get star systems (returns current signal value)
+     */
   getStarSystems(): Observable<StarSystem[]> {
     // If already loaded, return signal value
     if (this._starSystems().length > 0) {
@@ -293,6 +319,16 @@ export class AstronomyService {
       moons: [],
       rings: false,
       habitableZone: false,
+    };
+  }
+  
+  private mapDtoToAstronomer(dto: AstronomerDto): Astronomer {
+    return {
+      id: dto.id,
+      name: dto.name,
+      affiliation: dto.affiliation || '',
+      country: dto.country || '',
+      specialization: dto.specialization || '',
     };
   }
   

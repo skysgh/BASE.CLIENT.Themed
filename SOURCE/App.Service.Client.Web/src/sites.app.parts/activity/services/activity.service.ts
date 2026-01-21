@@ -12,7 +12,7 @@ import { Activity, ACTIVITY_TYPE_ICONS } from '../models';
 @Injectable({ providedIn: 'root' })
 export class ActivityService {
   private http = inject(HttpClient);
-  private readonly API_URL = '/api/service_Activities';
+  private readonly API_URL = '/api/base_system_Activities';
 
   /**
    * Get recent activities

@@ -1,5 +1,51 @@
 {
-"system_BootstrapService": {
+"base_system_HubSettings_Service": {
+  "_comment": "Service-level Hub view settings (platform defaults)",
+  "id": "service",
+  "displayMode": "tiles",
+  "widgets": [
+    { "id": "spike-summary", "visible": true },
+    { "id": "astronomy-summary", "visible": true },
+    { "id": "activity-feed", "visible": true }
+  ],
+  "locked": {
+    "displayMode": false,
+    "widgetOrder": false,
+    "widgetVisibility": false,
+    "lockedWidgets": []
+  }
+},
+"base_system_HubSettings_Account": [
+  {
+    "id": "default",
+    "_comment": "Account-level Hub view settings (organization overrides)",
+    "displayMode": "tiles",
+    "widgets": [
+      { "id": "spike-summary", "visible": true },
+      { "id": "activity-feed", "visible": true },
+      { "id": "astronomy-summary", "visible": true }
+    ],
+    "locked": {
+      "displayMode": false,
+      "widgetOrder": false,
+      "widgetVisibility": false,
+      "lockedWidgets": []
+    }
+  }
+],
+"base_system_HubSettings_User": [
+  {
+    "id": "current-user",
+    "_comment": "User-level Hub view settings (personal preferences)",
+    "displayMode": "tiles",
+    "widgets": [
+      { "id": "spike-summary", "visible": true },
+      { "id": "activity-feed", "visible": true },
+      { "id": "astronomy-summary", "visible": true }
+    ]
+  }
+],
+"base_system_BootstrapService": {
   "_comment": "Service-level defaults. Account configs override these values.",
   "serviceId": "base",
   "serviceName": "BASE Platform",
@@ -48,7 +94,7 @@
     "enableNotifications": true
   }
 },
-"service_Activities": [
+"base_system_Activities": [
   {
     "id": "act-001",
     "title": "Created new spike \"Search Sync\"",
@@ -109,7 +155,7 @@
     "createdByUserName": "John Doe"
   }
 ],
-"system_BootstrapAccounts": [
+"base_system_BootstrapAccounts": [
   {
     "id": "default",
     "accountGuid": "00000000-0000-0000-0000-000000000001",
@@ -938,7 +984,7 @@
       "identityFK": "00000000-0000-0000-0000-000000000003"
     }
   ],
-  "app_persons": [
+  "base_system_persons": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "dob": null,
@@ -965,7 +1011,7 @@
       "height": 185
     }
   ],
-  "app_personIdentities": [
+  "base_system_personIdentities": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "parentFK": "00000000-0000-0000-0000-000000000001",
@@ -997,7 +1043,7 @@
       "genderFK": "00000000-0000-0000-0000-000000000001"
     }
   ],
-  "app_personIdentityNames": [
+  "base_system_personIdentityNames": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "parentFK": "00000000-0000-0000-0000-000000000001",
@@ -1515,7 +1561,7 @@
       "currency": "USD"
     }
   ],
-  "app_spike_Spikes": [
+  "base_system_spike_Spikes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "Spike.Foo",
@@ -1618,7 +1664,7 @@
       "modifiedUtc": "2026-01-03T03:09:15.621Z"
     }
   ],
-  "app_spike_SubSpikes": [
+  "base_system_spike_SubSpikes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "parentFK": "00000000-0000-0000-0000-000000000001",
@@ -1700,7 +1746,7 @@
       "description": "..."
     }
   ],
-  "app_architecture_Values": [
+  "base_system_architecture_Values": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "honesty",
@@ -1747,7 +1793,7 @@
       "description": "..."
     }
   ],
-  "app_architecture_PrincipleTypes": [
+  "base_system_architecture_PrincipleTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "business",
@@ -1794,7 +1840,7 @@
       "description": "..."
     }
   ],
-  "app_architecture_Principles": [
+  "base_system_architecture_Principles": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "typeFk": "00000000-0000-0000-0000-000000000008",
@@ -1826,7 +1872,7 @@
       "description": "Ensuring the design is not narrowly focused on today's problems forgetting what could be done if there were no problems to focus on today."
     }
   ],
-  "app_architecture_QualityTypes": [
+  "base_system_architecture_QualityTypes": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "title": "ISO-25010",
@@ -1843,7 +1889,7 @@
       "description": "Sytem User Experience Qualities"
     }
   ],
-  "app_architecture_QualityCategories": [
+  "base_system_architecture_QualityCategories": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "typeFk": "00000000-0000-0000-0000-000000000001",
@@ -1869,7 +1915,7 @@
       "description": "etc..."
     }
   ],
-  "app_architecture_Qualities": [
+  "base_system_architecture_Qualities": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
       "categoryFk": "00000000-0000-0000-0000-000000000001",
@@ -1889,7 +1935,7 @@
           "description": "etc..."
         }
       ],
-      "app_astronomy_StarSystems": [
+      "base_system_astronomy_StarSystems": [
         {
           "id": "sol",
           "name": "Solar System",
@@ -1924,7 +1970,7 @@
           "modifiedUtc": "2024-01-01T00:00:00.000Z"
         }
       ],
-      "app_astronomy_Planets": [
+      "base_system_astronomy_Planets": [
         {
           "id": "earth",
           "starSystemId": "sol",
@@ -1991,7 +2037,7 @@
           "modifiedUtc": "2024-01-01T00:00:00.000Z"
         }
       ],
-      "app_astronomy_Astronomers": [
+      "base_system_astronomy_Astronomers": [
         {
           "id": "copernicus",
           "name": "Nicolaus Copernicus",

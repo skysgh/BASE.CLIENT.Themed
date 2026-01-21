@@ -7,15 +7,15 @@ export const socialConstants = {
   
   apis: {
     /** People collection endpoint */
-    people: '/api/rest/social_People',
+    people: '/api/rest/base_system_social_People',
     
     /** Groups collection endpoint */
-    groups: '/api/rest/social_Groups',
+    groups: '/api/rest/base_system_social_Groups',
     
     /** Group members collection endpoint */
-    groupMembers: '/api/rest/social_GroupMembers',
+    groupMembers: '/api/rest/base_system_social_GroupMembers',
     
     /** Group roles collection endpoint (reference data) */
-    groupRoles: '/api/rest/social_GroupRoles',
+    groupRoles: '/api/rest/base_system_social_GroupRoles',
   }
 };

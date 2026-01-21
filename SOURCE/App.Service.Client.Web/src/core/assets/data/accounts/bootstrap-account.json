@@ -172,10 +172,29 @@
       "sidebarVisibility": "show"
     }
   },
+  "hub": {
+    "_comment": "Account-level Hub view settings (overrides service defaults)",
+    "viewSettings": {
+      "displayMode": "tiles",
+      "widgets": [
+        { "id": "spike-summary", "visible": true },
+        { "id": "activity-feed", "visible": true },
+        { "id": "astronomy-summary", "visible": true }
+      ],
+      "locked": {
+        "_comment": "Account can lock settings to prevent users from changing",
+        "displayMode": false,
+        "widgetOrder": false,
+        "widgetVisibility": false,
+        "lockedWidgets": []
+      }
+    }
+  },
   "_comments": {
     "i18n": "Text values can be i18n keys (e.g., BASE.ACCOUNTS.DEFAULT.TITLE) or plain text.",
     "applets": "Each applet has enabled, showInNav, navOrder, and features. Use APPLET_IDS constants for IDs.",
     "features": "Top-level features are global UI toggles. Applet-specific features are under applets.{name}.features",
-    "preferences": "UI preferences like spacing. Hierarchy: service → account → user (user wins)"
+    "preferences": "UI preferences like spacing. Hierarchy: service → account → user (user wins)",
+    "hub": "Hub view settings: displayMode, widget order/visibility, locks. Hierarchy: service → account → user"
   }
 }

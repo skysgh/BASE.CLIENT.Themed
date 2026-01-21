@@ -275,6 +275,7 @@ export const APPLETS_NAV_TREE: NavigationNode = {
   labelDefault: 'Apps',
   icon: 'bx-grid-alt',
   children: [
+    // Spike applet
     {
       path: 'spike',
       labelKey: 'BASE.SPIKE.SINGULAR',
@@ -293,6 +294,78 @@ export const APPLETS_NAV_TREE: NavigationNode = {
           labelKey: 'BASE.SPIKE.SINGULAR',
           labelDefault: 'Item',
           navType: 'read',
+        },
+      ],
+    },
+    
+    // Astronomy applet
+    {
+      path: 'astronomy',
+      labelKey: 'BASE.ASTRONOMY.SINGULAR',
+      labelDefault: 'Astronomy',
+      icon: 'bx-planet',
+      navType: 'hub',
+      children: [
+        // Star Systems (V2 schema-driven)
+        {
+          path: 'star-systems-v2',
+          labelKey: 'BASE.STAR_SYSTEMS.PLURAL',
+          labelDefault: 'Star Systems',
+          icon: 'bx-sun',
+          navType: 'browse',
+          children: [
+            {
+              path: ':id',
+              labelKey: 'BASE.STAR_SYSTEMS.SINGULAR',
+              labelDefault: 'Star System',
+              navType: 'read',
+            },
+          ],
+        },
+        // Planets (V2 schema-driven)
+        {
+          path: 'planets-v2',
+          labelKey: 'BASE.PLANETS.PLURAL',
+          labelDefault: 'Planets',
+          icon: 'bx-planet',
+          navType: 'browse',
+          children: [
+            {
+              path: ':id',
+              labelKey: 'BASE.PLANETS.SINGULAR',
+              labelDefault: 'Planet',
+              navType: 'read',
+            },
+          ],
+        },
+        // Astronomers
+        {
+          path: 'astronomers',
+          labelKey: 'BASE.ASTRONOMERS.PLURAL',
+          labelDefault: 'Astronomers',
+          icon: 'bx-user',
+          navType: 'browse',
+          children: [
+            {
+              path: ':id',
+              labelKey: 'BASE.ASTRONOMERS.SINGULAR',
+              labelDefault: 'Astronomer',
+              navType: 'read',
+            },
+          ],
+        },
+        // Legacy routes
+        {
+          path: 'star-systems',
+          labelKey: 'BASE.STAR_SYSTEMS.PLURAL',
+          labelDefault: 'Star Systems',
+          navType: 'browse',
+        },
+        {
+          path: 'planets',
+          labelKey: 'BASE.PLANETS.PLURAL',
+          labelDefault: 'Planets',
+          navType: 'browse',
         },
       ],
     },

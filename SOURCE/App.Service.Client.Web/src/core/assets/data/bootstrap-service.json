@@ -148,11 +148,29 @@
   },
   
   "defaults": {
-    "_comment": "Default preferences when account doesn't specify",
-    "spacing": "compact",
-    "appearance": {
-      "mode": "light",
-      "layout": "vertical"
+      "_comment": "Default preferences when account doesn't specify",
+      "spacing": "compact",
+      "appearance": {
+        "mode": "light",
+        "layout": "vertical"
+      }
+    },
+  
+    "hub": {
+      "_comment": "Service-level Hub view settings (defaults for all accounts)",
+      "viewSettings": {
+        "displayMode": "tiles",
+        "widgets": [
+          { "id": "spike-summary", "visible": true },
+          { "id": "astronomy-summary", "visible": true },
+          { "id": "activity-feed", "visible": true }
+        ],
+        "locked": {
+          "displayMode": false,
+          "widgetOrder": false,
+          "widgetVisibility": false,
+          "lockedWidgets": []
+        }
+      }
     }
   }
-}

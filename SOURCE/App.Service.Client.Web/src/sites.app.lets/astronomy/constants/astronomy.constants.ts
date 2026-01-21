@@ -11,12 +11,12 @@ export const astronomyConstants = {
   
   apis: {
     /** Star Systems collection endpoint */
-    starSystems: '/api/rest/app_astronomy_StarSystems',
+    starSystems: '/api/rest/base_system_astronomy_StarSystems',
     
     /** Planets collection endpoint */
-    planets: '/api/rest/app_astronomy_Planets',
+    planets: '/api/rest/base_system_astronomy_Planets',
     
     /** Astronomers collection endpoint */
-    astronomers: '/api/rest/app_astronomy_Astronomers',
+    astronomers: '/api/rest/base_system_astronomy_Astronomers',
   }
 };

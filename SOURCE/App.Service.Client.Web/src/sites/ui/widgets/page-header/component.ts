@@ -23,30 +23,31 @@ selector: 'app-page-header',
 standalone: true,
 imports: [CommonModule, RouterModule],
 template: `
-  <div class="page-header mb-4">
-    <!-- Breadcrumb trail -->
-    @if (showBreadcrumb && breadcrumbs().length > 1) {
-      <nav class="breadcrumb-nav mb-2" aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0">
-          @for (crumb of breadcrumbs(); track crumb.path) {
-            @if (crumb.active) {
-              <li class="breadcrumb-item active" aria-current="page">
+<div class="page-header mb-4">
+  <!-- Breadcrumb trail -->
+  @if (showBreadcrumb && breadcrumbs().length > 1) {
+    <nav class="breadcrumb-nav mb-2" aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        @for (crumb of breadcrumbs(); track crumb.path) {
+          @if (crumb.active) {
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ crumb.label }}
+            </li>
+          } @else {
+            <li class="breadcrumb-item">
+              <a [routerLink]="crumb.path">
+                @if (crumb.icon) {
+                  <i [class]="getBreadcrumbIconClasses(crumb.icon)"></i>
+                }
                 {{ crumb.label }}
-              </li>
-            } @else {
-              <li class="breadcrumb-item">
-                <a [routerLink]="crumb.path">
-                  @if (crumb.icon) {
-                    <i [class]="crumb.icon + ' me-1'"></i>
-                  }
-                  {{ crumb.label }}
-                </a>
-              </li>
-            }
+              </a>
+            </li>
           }
-        </ol>
-      </nav>
-    }
+        }
+      </ol>
+    </nav>
+  }
+      
       
     <div class="d-flex justify-content-between align-items-start">
       <!-- Left side: Back + Icon + Title -->
@@ -251,6 +252,31 @@ template: `
     
     classes.push(this.icon);
     classes.push(this.iconClass);
+    
+    return classes.join(' ');
+  }
+
+  /**
+   * Get icon classes for breadcrumb items
+   * Similar to getIconClasses but for breadcrumb icons
+   */
+  getBreadcrumbIconClasses(icon: string): string {
+    const classes: string[] = [];
+    
+    // Determine icon library and add base class if needed
+    if (icon.startsWith('bx-') || icon.startsWith('bxs-') || icon.startsWith('bxl-')) {
+      classes.push('bx');
+    } else if (icon.startsWith('bx ')) {
+      // Already has base class
+      return icon + ' me-1';
+    } else if (icon.startsWith('ri-')) {
+      // RemixIcons don't need a base class
+    } else if (icon.startsWith('mdi-')) {
+      classes.push('mdi');
+    }
+    
+    classes.push(icon);
+    classes.push('me-1');
     
     return classes.join(' ');
   }

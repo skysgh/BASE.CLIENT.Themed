@@ -81,21 +81,21 @@
       </ul>
 
       <!-- Language selector (public - no auth required) -->
-      <app-base-common-components-topbar-languagelanguage></app-base-common-components-topbar-languagelanguage>
+        <app-base-common-components-topbar-languagelanguage></app-base-common-components-topbar-languagelanguage>
 
-      <!-- ✅ Authentication links (using PUBLIC_NAVIGATION) -->
-      <div class="">
-        <a [routerLink]="nav.auth.signin"
-          class="btn btn-link fw-medium text-decoration-none text-body">
-          {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
-        </a>
-        <a [routerLink]="nav.auth.signup"
-          class="btn btn-primary">
-          {{'BASE.SIGN_UPS.SINGULAR'| baseTranslate}}
-        </a>
+        <!-- ✅ Authentication links (using PUBLIC_NAVIGATION) -->
+        <div class="d-flex gap-2">
+          <a [routerLink]="nav.auth.signin"
+            class="btn btn-outline-primary">
+            {{'BASE.SIGN_INS.SINGULAR'| baseTranslate}}
+          </a>
+          <a [routerLink]="nav.auth.signup"
+            class="btn btn-primary">
+            {{'BASE.SIGN_UPS.SINGULAR'| baseTranslate}}
+          </a>
+        </div>
+
       </div>
-
-    </div>
 
   </div>
 </nav>

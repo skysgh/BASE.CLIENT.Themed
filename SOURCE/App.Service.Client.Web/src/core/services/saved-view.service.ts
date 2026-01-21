@@ -222,8 +222,13 @@ export class SavedViewService {
   
   /**
    * Apply a saved view by navigating to its URL params
+   * 
+   * @param view The saved view to apply
+   * @param route The activated route context
+   * @param replaceUrl If true (default), replaces current history entry instead of adding new one.
+   *                   This prevents polluting browser history when auto-applying saved views.
    */
-  applyView(view: SavedView, route: ActivatedRoute): void {
+  applyView(view: SavedView, route: ActivatedRoute, replaceUrl: boolean = true): void {
     // Update last used timestamp
     this.markViewUsed(view.entityType, view.id);
     
@@ -233,16 +238,18 @@ export class SavedViewService {
       this.router.navigate([], {
         relativeTo: route,
         queryParams: {},
+        replaceUrl,  // Replace history entry to avoid back button pollution
       });
     } else {
       // Navigate with the view's URL params, replacing all existing
       this.router.navigate([], {
         relativeTo: route,
         queryParams: view.urlParams,
+        replaceUrl,  // Replace history entry to avoid back button pollution
       });
     }
     
-    console.log(`[SavedViewService] Applied view "${view.title}":`, view.urlParams);
+    console.log(`[SavedViewService] Applied view "${view.title}" (replaceUrl=${replaceUrl}):`, view.urlParams);
   }
   
   /**

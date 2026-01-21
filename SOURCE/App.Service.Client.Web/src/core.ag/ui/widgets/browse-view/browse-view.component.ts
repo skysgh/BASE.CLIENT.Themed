@@ -139,7 +139,7 @@ export interface CardClickEvent {
   template: `
   <div class="browse-view">
     <!-- Row 1: Search + Configure (flyout mode puts configure here) -->
-    <div class="browse-toolbar d-flex align-items-center gap-2 mb-2">
+    <div class="browse-toolbar d-flex align-items-start gap-2 mb-2">
       <!-- View Selector Button (icon + current view name) - only when entityType set -->
       @if (entityType && controlsLayout === 'panels') {
         <button 
@@ -167,16 +167,18 @@ export interface CardClickEvent {
         </div>
       }
         
-      <!-- Configure View button (flyout mode only - on same line as search) -->
+      <!-- Configure View button (flyout mode only - gear icon to match Hub style) -->
         @if (controlsLayout === 'flyout' && viewPanelMode === 'collapsed') {
           <button 
             type="button" 
-            class="btn btn-soft-secondary btn-sm d-flex align-items-center gap-2 flex-shrink-0"
-            (click)="openOptions()">
-            <i class="bx bx-slider-alt"></i>
-            <span class="d-none d-sm-inline">Configure</span>
+            class="btn btn-outline-secondary config-btn"
+            (click)="openOptions()"
+            title="Configure view">
+            <i class="bx bx-cog"></i>
             @if (filters.length > 0 || sorts.length > 0) {
-              <span class="badge bg-primary">{{ filters.length + sorts.length }}</span>
+              <span class="badge bg-primary position-absolute top-0 start-100 translate-middle badge-count">
+                {{ filters.length + sorts.length }}
+              </span>
             }
           </button>
         }
@@ -403,6 +405,28 @@ export interface CardClickEvent {
               padding: 0.5rem 0.75rem;
             }
     
+            .config-btn {
+              position: relative;
+              width: 38px;
+              height: 38px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+              align-self: flex-start;
+              
+              i {
+                font-size: 1.25rem;
+              }
+            }
+            
+            .badge-count {
+              font-size: 0.65rem;
+              padding: 0.2em 0.45em;
+              min-width: 1.2rem;
+            }
+
             .results-count {
                           font-size: 0.8125rem;
                                       }
