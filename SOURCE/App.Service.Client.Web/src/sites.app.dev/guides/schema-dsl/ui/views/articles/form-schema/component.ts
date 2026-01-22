@@ -2,22 +2,24 @@
  * Form Schema Article Component
  * 
  * Building edit, add, and view forms with Formly integration.
+ * Uses standard PageHeader for consistent navigation.
  * 
  * Route: /dev/guides/schema-dsl/forms
  */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PageHeaderComponent } from '../../../../../../../sites/ui/widgets/page-header';
 
 @Component({
   selector: 'app-form-schema-article',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageHeaderComponent],
   templateUrl: './component.html',
   styles: [`
     .article-container {
       padding: 1.5rem;
-      max-width: 900px;
+      max-width: 1000px;
     }
     
     pre {

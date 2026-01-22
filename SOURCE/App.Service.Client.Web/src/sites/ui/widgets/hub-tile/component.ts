@@ -19,100 +19,212 @@
 import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { IUniversalTile, ITileBadge } from '../../../../core/models/presentation';
+import { IUniversalTile, ITileBadge, TileDisplayStyle } from '../../../../core/models/presentation';
 import { HubTileHeaderComponent } from '../hub-tile-header';
 
 @Component({
-  selector: 'app-hub-tile',
-  standalone: true,
-  imports: [CommonModule, RouterModule, HubTileHeaderComponent],
-  templateUrl: './component.html',
-  styles: [`
-    :host {
-      display: block;
-    }
-    
-    .hub-tile {
+selector: 'app-hub-tile',
+standalone: true,
+imports: [CommonModule, RouterModule, HubTileHeaderComponent],
+templateUrl: './component.html',
+styles: [`
+  :host {
     display: block;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.2s ease;
-    border: 1px solid var(--vz-border-color);
-    border-radius: 0.25rem;  /* Matches theme $border-radius */
-    padding: 1rem;
-    background: var(--vz-card-bg);
-    height: 100%;
-    position: relative;
+  }
+    
+  .hub-tile {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  border: 1px solid var(--vz-border-color);
+  border-radius: 0.25rem;  /* Matches theme $border-radius */
+  padding: 1rem;
+  background: var(--vz-card-bg);
+  height: 100%;
+  position: relative;
       
-    &:hover {
-      border-color: var(--vz-primary);
-      transform: translateY(-2px);
-      /* Colored shadow matching primary - same as main hub widgets */
-      box-shadow: 0 4px 12px rgba(var(--vz-primary-rgb), 0.15);
+  &:hover {
+    border-color: var(--vz-primary);
+    transform: translateY(-2px);
+    /* Colored shadow matching primary - same as main hub widgets */
+    box-shadow: 0 4px 12px rgba(var(--vz-primary-rgb), 0.15);
         
-      .tile-icon {
-        transform: scale(1.05);
-      }
-        
-      .tile-arrow {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    .tile-icon {
+      transform: scale(1.05);
     }
+        
+    .tile-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
       
-    &--locked {
-      opacity: 0.85;
-    }
+  &--locked {
+    opacity: 0.85;
   }
+}
     
-  /* TileHeader icon scaling on hover */
-  .hub-tile:hover ::ng-deep .tile-header__icon {
-    transform: scale(1.05);
-  }
+/* TileHeader icon scaling on hover */
+.hub-tile:hover ::ng-deep .tile-header__icon {
+  transform: scale(1.05);
+}
     
-  .tile-lock-indicator {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 0.75rem;
-    color: var(--vz-secondary-color);
-    opacity: 0.5;
-  }
+.tile-lock-indicator {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--vz-secondary-color);
+  opacity: 0.5;
+}
     
-  /* Arrow indicator on hover - like main hub */
-  .tile-arrow {
-    position: absolute;
-    right: 0.75rem;
-    bottom: 0.75rem;
-    opacity: 0;
-    transition: all 0.2s ease;
-    color: var(--vz-secondary-color);
+/* Arrow indicator on hover - like main hub */
+.tile-arrow {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  opacity: 0;
+  transition: all 0.2s ease;
+  color: var(--vz-secondary-color);
+  font-size: 1rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+ * SIZE VARIANTS
+ * ───────────────────────────────────────────────────────────── */
+:host(.tile-small) .hub-tile {
+  padding: 0.75rem;
+      
+  .tile-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
     font-size: 1rem;
   }
-
-  /* Size variants */
-  :host(.tile-small) .hub-tile {
-    padding: 0.75rem;
-      
-    .tile-icon {
-      width: 32px;
-      height: 32px;
-      min-width: 32px;
-      font-size: 1rem;
-    }
-  }
+}
     
-  :host(.tile-large) .hub-tile {
-    padding: 1.25rem;
+:host(.tile-large) .hub-tile {
+  padding: 1.25rem;
       
-    .tile-icon {
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
-      font-size: 1.75rem;
-    }
+  .tile-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    font-size: 1.75rem;
   }
-  `]
+}
+
+/* ─────────────────────────────────────────────────────────────
+ * DISPLAY STYLE: COMPACT
+ * Smaller, condensed layout like settings navigation tiles
+ * ───────────────────────────────────────────────────────────── */
+:host(.tile-style-compact) .hub-tile {
+  padding: 0.75rem 1rem;
+    
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+  
+:host(.tile-style-compact) ::ng-deep .tile-header {
+  gap: 0.75rem;
+}
+  
+:host(.tile-style-compact) ::ng-deep .tile-header__icon-wrapper {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  font-size: 1.125rem;
+}
+  
+:host(.tile-style-compact) ::ng-deep .tile-header__title {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+  
+:host(.tile-style-compact) ::ng-deep .tile-header__subtitle {
+  font-size: 0.8rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+ * DISPLAY STYLE: LIST
+ * Horizontal list-item style with icon and text inline
+ * ───────────────────────────────────────────────────────────── */
+:host(.tile-style-list) .hub-tile {
+  padding: 0.625rem 1rem;
+  display: flex;
+  align-items: center;
+    
+  &:hover {
+    transform: none;
+    background: var(--vz-light);
+  }
+}
+  
+:host(.tile-style-list) ::ng-deep .tile-header {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+  
+:host(.tile-style-list) ::ng-deep .tile-header__icon-wrapper {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+  
+:host(.tile-style-list) ::ng-deep .tile-header__content {
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+  
+:host(.tile-style-list) ::ng-deep .tile-header__title {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+  
+:host(.tile-style-list) ::ng-deep .tile-header__subtitle {
+  display: none;
+}
+  
+:host(.tile-style-list) .tile-arrow {
+  position: static;
+  opacity: 0.5;
+  font-size: 0.875rem;
+}
+  
+:host(.tile-style-list):hover .tile-arrow {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────
+ * DISPLAY STYLE: CARD
+ * Full card style with more detailed content area
+ * ───────────────────────────────────────────────────────────── */
+:host(.tile-style-card) .hub-tile {
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(var(--vz-primary-rgb), 0.2);
+  }
+}
+  
+:host(.tile-style-card) ::ng-deep .tile-header__icon-wrapper {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  font-size: 1.5rem;
+}
+`]
 })
 export class HubTileComponent {
   /**
@@ -121,9 +233,45 @@ export class HubTileComponent {
   @Input({ required: true }) tile!: IUniversalTile;
 
   /**
+   * Override display style from hub (takes precedence over tile.config.displayStyle)
+   * Allows hub to enforce a consistent style across all tiles
+   */
+  @Input() displayStyle?: TileDisplayStyle;
+
+  /**
    * Emitted when tile is clicked (for custom handling)
    */
   @Output() tileClick = new EventEmitter<IUniversalTile>();
+
+  /**
+   * Get effective display style (hub override > tile config > default)
+   */
+  get effectiveDisplayStyle(): TileDisplayStyle {
+    return this.displayStyle ?? this.tile?.config?.displayStyle ?? 'standard';
+  }
+
+  /**
+   * Add display style class to host element
+   */
+  @HostBinding('class.tile-style-standard')
+  get isStandardStyle(): boolean {
+    return this.effectiveDisplayStyle === 'standard';
+  }
+
+  @HostBinding('class.tile-style-compact')
+  get isCompactStyle(): boolean {
+    return this.effectiveDisplayStyle === 'compact';
+  }
+
+  @HostBinding('class.tile-style-list')
+  get isListStyle(): boolean {
+    return this.effectiveDisplayStyle === 'list';
+  }
+
+  @HostBinding('class.tile-style-card')
+  get isCardStyle(): boolean {
+    return this.effectiveDisplayStyle === 'card';
+  }
 
   /**
    * Add size class to host element based on tile config

@@ -3,45 +3,47 @@
  * 
  * Full FAQ page within the Help section.
  * Uses the reusable FaqViewerComponent from core.ag.
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-// ✅ UPDATED: Path changed after moving to core.ag/ui/widgets
 import { FaqViewerComponent, FaqCategoryConfig } from '../../../../../core.ag/ui/widgets/faq-viewer';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
   selector: 'app-help-faq-page',
   standalone: true,
-  imports: [CommonModule, RouterModule, FaqViewerComponent],
+  imports: [CommonModule, RouterModule, FaqViewerComponent, PageHeaderComponent],
   template: `
     <div class="faq-page">
-      <!-- Top Navigation Bar (Primary: Back to Help) -->
-      <div class="top-nav-bar mb-4 d-flex justify-content-between align-items-center">
-        <a routerLink=".." class="btn btn-primary">
-          <i class="bx bx-arrow-back me-1"></i>
-          Back to Help
-        </a>
-      </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Frequently Asked Questions"
+        icon="bx-message-square-dots"
+        iconBackground="bg-primary-subtle"
+        iconClass="text-primary"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Find answers to common questions about using the platform</ng-container>
+      </app-page-header>
 
       <!-- FAQ Viewer Component -->
       <app-faq-viewer
-        [showHeader]="true"
-        title="Frequently Asked Questions"
-        description="Find answers to common questions about using the platform."
+        [showHeader]="false"
         [showCategories]="true"
         [categories]="categories"
         [columns]="2"
         [showContactLink]="true"
-        contactLink="/system/settings/support">
+        contactLink="/system/support">
       </app-faq-viewer>
     </div>
   `,
   styles: [`
     .faq-page {
       padding: 1.5rem;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
     }
   `]

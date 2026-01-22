@@ -2,6 +2,7 @@
  * Account Info Component
  * 
  * Displays information about the current account/organization/tenant.
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component, inject, OnInit, signal } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { AccountService } from '../../../../../core/services/account.service';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 interface AccountInfo {
   name?: string;
@@ -25,20 +27,20 @@ interface AccountInfo {
 
 @Component({
     selector: 'app-account-info',
-    imports: [RouterModule],
+    standalone: true,
+    imports: [RouterModule, PageHeaderComponent],
     template: `
     <div class="account-page">
-      <div class="page-header d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
-            <i class="bx bx-arrow-back"></i>
-          </a>
-          <h4 class="d-inline-block mb-0">
-            <i class="bx bx-building me-2 text-warning"></i>
-            Account Information
-          </h4>
-        </div>
-      </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Account Information"
+        icon="bx-building"
+        iconBackground="bg-warning-subtle"
+        iconClass="text-warning"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Your organization details and subscription</ng-container>
+      </app-page-header>
     
       <!-- Loading -->
       @if (loading()) {
@@ -176,22 +178,10 @@ interface AccountInfo {
           </div>
         </div>
       }
-    
-      <!-- Navigation -->
-      <div class="d-flex justify-content-between mt-4">
-        <a routerLink="../distributor" class="btn btn-outline-secondary">
-          <i class="bx bx-arrow-back me-1"></i>
-          Previous: Distributor
-        </a>
-        <a routerLink="../" class="btn btn-outline-primary">
-          Back to About
-          <i class="bx bx-arrow-right ms-1"></i>
-        </a>
-      </div>
     </div>
     `,
     styles: [`
-    .account-page { padding: 1.5rem; max-width: 800px; margin: 0 auto; }
+    .account-page { padding: 1.5rem; max-width: 1000px; margin: 0 auto; }
     
     .logo-placeholder {
       width: 80px;

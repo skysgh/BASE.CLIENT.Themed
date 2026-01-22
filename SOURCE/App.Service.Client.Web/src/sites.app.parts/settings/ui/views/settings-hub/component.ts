@@ -6,6 +6,7 @@ import { filter } from 'rxjs/operators';
 import { SettingsNavigationService, SettingsNavItem } from '../../../services/settings-navigation.service';
 import { SystemDiagnosticsTraceService } from '../../../../../core/services/system.diagnostics-trace.service';
 import { BaseCoreAgPipesModule } from '../../../../../core.ag/pipes/module';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 interface SettingsNavItemWithRoute extends SettingsNavItem {
   route: string;
@@ -14,7 +15,7 @@ interface SettingsNavItemWithRoute extends SettingsNavItem {
 /**
  * Settings Hub Component
  * 
- * Unified settings view with inline level selector.
+ * Unified settings view with standard PageHeader and inline level selector.
  * 
  * KEY BEHAVIOR: When switching levels (Service/Account/User), 
  * the component preserves the current sub-path (e.g., /appearance)
@@ -22,7 +23,7 @@ interface SettingsNavItemWithRoute extends SettingsNavItem {
  */
 @Component({
     selector: 'app-settings-hub',
-    imports: [RouterModule, BaseCoreAgPipesModule],
+    imports: [RouterModule, BaseCoreAgPipesModule, PageHeaderComponent],
     templateUrl: './component.html',
     styleUrls: ['./component.scss']
 })

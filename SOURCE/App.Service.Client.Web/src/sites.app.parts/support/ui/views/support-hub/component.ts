@@ -3,6 +3,7 @@
  * 
  * Main entry point for the support module.
  * Shows overview, quick stats, and navigation to submit/view items.
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,31 +12,24 @@ import { RouterModule } from '@angular/router';
 import { SupportItemService } from '../../../services';
 import { NavigationService } from '../../../../../core/services/navigation.service';
 import { SUPPORT_ITEM_TYPES } from '../../../constants';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
   selector: 'app-support-hub',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageHeaderComponent],
   template: `
     <div class="support-hub">
-      <!-- Top Navigation Bar -->
-      <div class="top-nav-bar mb-4 d-flex justify-content-between align-items-center">
-        <button type="button" class="btn btn-primary" (click)="goToHub()">
-          <i class="bx bx-arrow-back me-1"></i>
-          Back to Hub
-        </button>
-      </div>
-
-      <!-- Header -->
-      <div class="support-header text-center mb-5">
-        <div class="support-icon-large mb-3">
-          <i class="bx bx-support"></i>
-        </div>
-        <h2 class="mb-2">Support Center</h2>
-        <p class="text-muted mb-0">
-          Report issues, share ideas, and track your requests
-        </p>
-      </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Support Center"
+        icon="bx-support"
+        iconBackground="bg-info-subtle"
+        iconClass="text-info"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Report issues, share ideas, and track your requests</ng-container>
+      </app-page-header>
 
       <!-- Stats Cards -->
       <div class="row g-3 mb-5">
@@ -224,22 +218,9 @@ import { SUPPORT_ITEM_TYPES } from '../../../constants';
   `,
   styles: [`
     .support-hub {
-      padding: 2rem;
-      max-width: 1000px;
+      padding: 1.5rem;
+      max-width: 1200px;
       margin: 0 auto;
-    }
-    
-    .support-icon-large {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #17a2b8, #0d6efd);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      font-size: 2.5rem;
     }
     
     .action-card {
@@ -283,10 +264,6 @@ export class SupportHubComponent implements OnInit {
     
     // Refresh items
     this.supportService.refresh();
-  }
-
-  goToHub(): void {
-    this.navigationService.navigate('apps/system/hub');
   }
 
   getStatusVariant(status: string): string {

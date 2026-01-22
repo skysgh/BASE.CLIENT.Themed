@@ -3,85 +3,47 @@
   flex-direction: column;
   min-height: calc(100vh - 70px);
   background-color: var(--vz-body-bg);
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-// Compact header with inline level selector
-.settings-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--vz-card-bg);
-  border-bottom: 1px solid var(--vz-border-color);
-}
-
-.settings-title {
-  color: var(--vz-heading-color);
-  display: flex;
-  align-items: center;
-  margin: 0;
-  white-space: nowrap;
+// Level selector buttons in header actions
+.btn-group .btn {
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.75rem;
+  
+  &.active {
+    background-color: var(--vz-primary);
+    border-color: var(--vz-primary);
+    color: #fff;
+  }
   
   i {
-    font-size: 1.25rem;
-  }
-}
-
-// Segmented button group for level selection
-.settings-level-selector {
-  flex-shrink: 0;
-  
-  .level-btn {
-    font-size: 0.8125rem;
-    padding: 0.375rem 0.75rem;
-    
-    &.active {
-      background-color: var(--vz-primary);
-      border-color: var(--vz-primary);
-      color: #fff;
-    }
-    
-    i {
-      font-size: 1rem;
-    }
+    font-size: 1rem;
   }
 }
 
 .settings-content {
   flex: 1;
-  padding: 1.5rem;
+  padding-top: 1rem;
   overflow-y: auto;
 }
 
 // Responsive adjustments
 @media (max-width: 575.98px) {
-  .settings-header {
-    padding: 0.5rem 1rem;
+  .settings-container {
+    padding: 1rem;
   }
   
-  .settings-level-selector .level-btn {
+  .btn-group .btn {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
-    
-    // On very small screens, abbreviate or hide label
-    .level-label {
-      // Labels stay but are smaller
-    }
-  }
-  
-  .settings-content {
-    padding: 1rem;
   }
 }
 
 @media (min-width: 768px) {
-  .settings-header {
-    padding: 1rem 1.5rem;
-  }
-  
-  .settings-level-selector .level-btn {
+  .btn-group .btn {
     padding: 0.5rem 1rem;
   }
 }

@@ -28,6 +28,90 @@
 import { IUniversalCardData } from './universal-card.model';
 
 // ─────────────────────────────────────────────────────────────────────────────
+// TILE DISPLAY STYLES
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Display style for tiles
+ * 
+ * - 'standard': Default tile with icon, title, description, value (e.g., hub tiles)
+ * - 'compact': Smaller tile, condensed layout (e.g., settings navigation)
+ * - 'list': Horizontal list-item style with icon and text
+ * - 'card': Full card style with more detailed content area
+ */
+export type TileDisplayStyle = 'standard' | 'compact' | 'list' | 'card';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TILE GROUPING
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Group definition for organizing tiles
+ * 
+ * Groups allow tiles to be categorized and rendered in sections
+ * (e.g., "System" vs "Apps" in settings, or "Entities" vs "Tools" in a hub)
+ */
+export interface ITileGroup {
+  /** Unique group identifier */
+  id: string;
+  
+  /** Display label for the group header */
+  label: string;
+  
+  /** Optional translation key for the label */
+  labelKey?: string;
+  
+  /** Optional icon for the group header */
+  icon?: string;
+  
+  /** Order for sorting groups (lower = first) */
+  order?: number;
+  
+  /** Optional CSS class for group-specific styling */
+  cssClass?: string;
+  
+  /** Optional description shown under the group header */
+  description?: string;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TILE FILTERING
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Filter definition for hub tile filtering
+ * 
+ * Filters allow showing/hiding tiles based on tag matching.
+ * Used for things like Service/Account/User level switching in Settings.
+ */
+export interface IHubFilter {
+  /** Unique filter identifier */
+  id: string;
+  
+  /** Display label for the filter button */
+  label: string;
+  
+  /** Optional translation key for the label */
+  labelKey?: string;
+  
+  /** Optional icon for the filter button */
+  icon?: string;
+  
+  /** 
+   * Criteria to match against tile.config.filterTags
+   * All criteria must match (AND logic)
+   * Values can be string or string[] (OR within a key)
+   */
+  match: Record<string, string | string[]>;
+  
+  /** Optional CSS class for the filter button */
+  buttonClass?: string;
+  
+  /** Order for sorting filters (lower = first) */
+  order?: number;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // TILE CONFIGURATION
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -68,8 +152,22 @@ export interface ITileConfig {
   /** Size variant for responsive layouts */
   size?: 'small' | 'medium' | 'large';
   
+  /** 
+   * Display style for this tile
+   * If not set, hub's defaultDisplayStyle is used
+   */
+  displayStyle?: TileDisplayStyle;
+  
   /** Badges to display in tile header (max 4) */
   badges?: ITileBadge[];
+  
+  /**
+   * Filter tags for tile filtering
+   * Keys are filter dimensions, values are what to match
+   * e.g., { level: 'user', category: 'platform' }
+   * or { level: ['service', 'account', 'user'] } for multiple matches
+   */
+  filterTags?: Record<string, string | string[]>;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -138,6 +236,84 @@ export interface IUniversalTile extends Partial<IUniversalCardData> {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// HUB CONFIGURATION
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Hub-level configuration for tile display
+ * 
+ * Controls how the hub renders tiles collectively - styles, grouping, config panel visibility.
+ */
+export interface IHubDisplayConfig {
+  /** 
+   * Default display style for tiles in this hub
+   * Individual tiles can override with their own displayStyle
+   */
+  defaultDisplayStyle?: TileDisplayStyle;
+  
+  /**
+   * Enable grouping of tiles by their groupId
+   * When true, tiles are rendered in sections with group headers
+   */
+  enableGrouping?: boolean;
+  
+  /**
+   * Group definitions for this hub
+   * Defines available groups with labels, icons, order
+   */
+  groups?: ITileGroup[];
+  
+  /**
+   * Label for tiles that have no groupId (ungrouped section)
+   * Only used when enableGrouping is true
+   */
+  ungroupedLabel?: string;
+  
+  /**
+   * Show configuration button (gear icon) in hub header
+   * Default: true
+   */
+  showConfigButton?: boolean;
+  
+  /**
+   * Grid column class for tiles (Bootstrap grid class)
+   * Default: 'col-md-6 col-lg-4' for 3 columns on large screens
+   * Compact: 'col-md-6 col-lg-4 col-xl-3' for 4 columns
+   */
+  tileColumnClass?: string;
+  
+  // ─────────────────────────────────────────────────────────────
+  // Filtering
+  // ─────────────────────────────────────────────────────────────
+  
+  /**
+   * Filter definitions for this hub
+   * When provided, tiles can be filtered by matching their filterTags
+   */
+  filters?: IHubFilter[];
+  
+  /**
+   * Show filter buttons in hub header
+   * Default: true (when filters are defined)
+   */
+  showFilterButtons?: boolean;
+  
+  /**
+   * Default active filter ID
+   * If not set, first filter is active by default
+   */
+  defaultFilterId?: string;
+  
+  /**
+   * Filter button style
+   * - 'segmented': Bootstrap btn-group with segmented buttons (default)
+   * - 'pills': Pill-style nav buttons
+   * - 'tabs': Tab-style buttons
+   */
+  filterButtonStyle?: 'segmented' | 'pills' | 'tabs';
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // TILE PREFERENCES (persisted state)
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -172,6 +348,17 @@ export interface IHubTilePreferences {
 // ─────────────────────────────────────────────────────────────────────────────
 // TILE COLLECTION
 // ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * A grouped set of tiles with group metadata
+ */
+export interface ITileGroupedSet {
+  /** The group definition (null for ungrouped tiles) */
+  group: ITileGroup | null;
+  
+  /** Tiles in this group, sorted by order */
+  tiles: IUniversalTile[];
+}
 
 /**
  * Collection of tiles for a hub
@@ -296,4 +483,156 @@ export interface IHubTileRenderer {
    * Custom components use this for the standard header portion
    */
   tile: IUniversalTile;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// GROUPING UTILITIES
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Group tiles by their groupId property
+ * 
+ * @param tiles - Array of tiles to group
+ * @param groups - Available group definitions
+ * @param ungroupedLabel - Label for tiles without a groupId
+ * @returns Array of grouped tile sets, sorted by group order
+ */
+export function groupTiles(
+  tiles: IUniversalTile[],
+  groups: ITileGroup[] = [],
+  ungroupedLabel = 'Other'
+): ITileGroupedSet[] {
+  // Create a map of group IDs to group definitions
+  const groupMap = new Map(groups.map(g => [g.id, g]));
+  
+  // Group tiles by their groupId
+  const grouped = new Map<string | null, IUniversalTile[]>();
+  
+  tiles.forEach(tile => {
+    const groupId = tile.config.groupId ?? null;
+    if (!grouped.has(groupId)) {
+      grouped.set(groupId, []);
+    }
+    grouped.get(groupId)!.push(tile);
+  });
+  
+  // Convert to ITileGroupedSet array
+  const result: ITileGroupedSet[] = [];
+  
+  // Add defined groups in order
+  groups
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+    .forEach(group => {
+      const tilesInGroup = grouped.get(group.id);
+      if (tilesInGroup && tilesInGroup.length > 0) {
+        result.push({
+          group,
+          tiles: tilesInGroup.sort((a, b) => (a.config.order ?? 0) - (b.config.order ?? 0))
+        });
+        grouped.delete(group.id);
+      }
+    });
+  
+  // Add any tiles with undefined group IDs or group IDs not in definitions
+  const remainingTiles: IUniversalTile[] = [];
+  grouped.forEach((tiles, groupId) => {
+    if (groupId === null) {
+      remainingTiles.push(...tiles);
+    } else {
+      // GroupId exists but no definition - create ad-hoc group
+      result.push({
+        group: { id: groupId, label: groupId, order: 999 },
+        tiles: tiles.sort((a, b) => (a.config.order ?? 0) - (b.config.order ?? 0))
+      });
+    }
+  });
+  
+  // Add ungrouped tiles at the end if any
+  if (remainingTiles.length > 0) {
+    result.push({
+      group: { id: '__ungrouped__', label: ungroupedLabel, order: 9999 },
+      tiles: remainingTiles.sort((a, b) => (a.config.order ?? 0) - (b.config.order ?? 0))
+    });
+  }
+  
+  return result;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FILTERING UTILITIES
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Check if a tile matches a filter's criteria
+ * 
+ * @param tile - The tile to check
+ * @param filter - The filter with match criteria
+ * @returns true if tile matches all filter criteria
+ */
+export function tileMatchesFilter(tile: IUniversalTile, filter: IHubFilter): boolean {
+  const tileTags = tile.config.filterTags;
+  
+  // If tile has no filter tags, it doesn't match any filter
+  if (!tileTags) {
+    return false;
+  }
+  
+  // All filter criteria must match (AND logic between keys)
+  for (const [key, filterValue] of Object.entries(filter.match)) {
+    const tileValue = tileTags[key];
+    
+    // If tile doesn't have this tag, no match
+    if (tileValue === undefined) {
+      return false;
+    }
+    
+    // Normalize to arrays for comparison
+    const filterValues = Array.isArray(filterValue) ? filterValue : [filterValue];
+    const tileValues = Array.isArray(tileValue) ? tileValue : [tileValue];
+    
+    // Check if any tile value matches any filter value (OR within a key)
+    const hasMatch = tileValues.some(tv => filterValues.includes(tv));
+    
+    if (!hasMatch) {
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+/**
+ * Filter tiles based on active filter
+ * 
+ * @param tiles - Array of tiles to filter
+ * @param filter - Active filter to apply (or null for no filtering)
+ * @returns Filtered array of tiles
+ */
+export function filterTiles(
+  tiles: IUniversalTile[],
+  filter: IHubFilter | null
+): IUniversalTile[] {
+  // No filter = show all tiles
+  if (!filter) {
+    return tiles;
+  }
+  
+  return tiles.filter(tile => tileMatchesFilter(tile, filter));
+}
+
+/**
+ * Get filter by ID from filter array
+ * 
+ * @param filters - Available filters
+ * @param filterId - Filter ID to find
+ * @returns The filter or null if not found
+ */
+export function getFilterById(
+  filters: IHubFilter[],
+  filterId: string | undefined
+): IHubFilter | null {
+  if (!filterId || !filters.length) {
+    return null;
+  }
+  return filters.find(f => f.id === filterId) ?? null;
 }

@@ -1,24 +1,28 @@
 <div class="settings-container">
-  <!-- Compact Header with inline level selector -->
-  <div class="settings-header">
-    <h5 class="settings-title mb-0">
-      <i class="bx bx-cog me-2"></i>
-      {{ 'BASE.SETTINGS.PLURAL' | baseTranslate }}
-    </h5>
-    
-    <!-- Level selector as segmented buttons - preserves current sub-path -->
-    <div class="settings-level-selector btn-group" role="group" aria-label="Settings level">
-      @for (item of visibleCoreItems; track item.id) {
-        <button type="button"
-                class="btn btn-outline-primary btn-sm level-btn"
-                [class.active]="isLevelActive(item.id)"
-                (click)="switchLevel(item.id)">
-          <i class="bx {{item.icon}} d-none d-md-inline-block me-md-1"></i>
-          <span class="level-label">{{item.label}}</span>
-        </button>
-      }
-    </div>
-  </div>
+  <!-- Standard Page Header with level selector in actions -->
+  <app-page-header 
+    [title]="'BASE.SETTINGS.PLURAL' | baseTranslate"
+    icon="bx-cog"
+    iconBackground="bg-primary-subtle"
+    iconClass="text-primary"
+    [showBack]="true"
+    [showBreadcrumb]="true">
+    <ng-container subtitle>{{ 'BASE.SETTINGS.DESCRIPTION' | baseTranslate }}</ng-container>
+    <ng-container actions>
+      <!-- Level selector as segmented buttons - preserves current sub-path -->
+      <div class="btn-group" role="group" aria-label="Settings level">
+        @for (item of visibleCoreItems; track item.id) {
+          <button type="button"
+                  class="btn btn-outline-primary btn-sm"
+                  [class.active]="isLevelActive(item.id)"
+                  (click)="switchLevel(item.id)">
+            <i class="bx {{item.icon}} d-none d-md-inline-block me-md-1"></i>
+            <span class="level-label">{{item.label}}</span>
+          </button>
+        }
+      </div>
+    </ng-container>
+  </app-page-header>
 
   <!-- Content Area -->
   <div class="settings-content">

@@ -3,6 +3,7 @@
  * 
  * Displays open source license attributions for third-party libraries.
  * Grouped by license type with search capability.
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component, inject, signal, computed } from '@angular/core';
 
@@ -10,24 +11,27 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AboutService } from '../../../services/about.service';
 import { LicenseDto } from '../../../models/about.dto';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
     selector: 'app-licenses',
-    imports: [RouterModule, FormsModule],
+    standalone: true,
+    imports: [RouterModule, FormsModule, PageHeaderComponent],
     template: `
     <div class="licenses-page">
-      <div class="page-header d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
-            <i class="bx bx-arrow-back"></i>
-          </a>
-          <h4 class="d-inline-block mb-0">
-            <i class="bx bx-file me-2 text-info"></i>
-            Open Source Licenses
-          </h4>
-        </div>
-        <span class="badge bg-info">{{ filteredLicenses().length }} packages</span>
-      </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Open Source Licenses"
+        icon="bx-file"
+        iconBackground="bg-info-subtle"
+        iconClass="text-info"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Third-party libraries and their licenses</ng-container>
+        <ng-container actions>
+          <span class="badge bg-info">{{ filteredLicenses().length }} packages</span>
+        </ng-container>
+      </app-page-header>
     
       <p class="text-muted mb-4">
         This application uses the following open source software.
@@ -135,18 +139,10 @@ import { LicenseDto } from '../../../models/about.dto';
             </div>
           }
         </div>
-    
-        <!-- Back Button -->
-        <div class="mt-4">
-          <a routerLink="../" class="btn btn-outline-secondary">
-            <i class="bx bx-arrow-back me-1"></i>
-            Back to About
-          </a>
-        </div>
       </div>
     `,
     styles: [`
-    .licenses-page { padding: 1.5rem; max-width: 900px; margin: 0 auto; }
+    .licenses-page { padding: 1.5rem; max-width: 1000px; margin: 0 auto; }
     .license-card { transition: all 0.2s; }
     .license-card:hover { 
       transform: translateX(4px); 

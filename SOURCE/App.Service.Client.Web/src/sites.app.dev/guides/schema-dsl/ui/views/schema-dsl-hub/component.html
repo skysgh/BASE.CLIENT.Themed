@@ -1,55 +1,39 @@
 <div class="schema-dsl-hub container-fluid">
-  <!-- Top Navigation -->
-  <div class="top-nav-bar mb-3">
-    <a routerLink="/dev" class="btn btn-soft-primary">
-      <i class="ri-arrow-left-line me-1"></i>
-      Back to Developer Hub
-    </a>
-  </div>
+<!-- Standard Page Header -->
+<app-page-header 
+  title="Entity Schema DSL Guide"
+  icon="bx-data"
+  iconBackground="bg-primary-subtle"
+  iconClass="text-primary"
+  [showBack]="true"
+  [showBreadcrumb]="true">
+  <ng-container subtitle>Learn how to define schema-driven aggregates with the BREAD pattern</ng-container>
+</app-page-header>
 
-  <!-- Header -->
-  <div class="page-header mb-4">
+<!-- Introduction Card -->
+<div class="card bg-primary-subtle border-0 mb-4">
+  <div class="card-body">
     <div class="row align-items-center">
-      <div class="col-auto">
-        <div class="avatar-md">
-          <div class="avatar-title bg-primary-subtle text-primary rounded">
-            <i class="ri-database-2-line fs-24"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <h4 class="mb-1">Entity Schema DSL Guide</h4>
-        <p class="text-muted mb-0">
-          Learn how to define schema-driven aggregates with the BREAD pattern
+      <div class="col-lg-8">
+        <h5 class="text-primary mb-2">
+          <i class="bx bx-bulb me-2"></i>
+          What is the Entity Schema DSL?
+        </h5>
+        <p class="mb-0">
+          The Entity Schema DSL (Domain-Specific Language) allows you to define your 
+          domain entities in a declarative JSON format. This schema drives the entire 
+          UI rendering pipeline — from browse views with filters and sorting, to 
+          edit forms with validation, to detail views — all from a single source of truth.
         </p>
       </div>
-    </div>
-  </div>
-
-  <!-- Introduction Card -->
-  <div class="card bg-primary-subtle border-0 mb-4">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-lg-8">
-          <h5 class="text-primary mb-2">
-            <i class="ri-lightbulb-flash-line me-2"></i>
-            What is the Entity Schema DSL?
-          </h5>
-          <p class="mb-0">
-            The Entity Schema DSL (Domain-Specific Language) allows you to define your 
-            domain entities in a declarative JSON format. This schema drives the entire 
-            UI rendering pipeline — from browse views with filters and sorting, to 
-            edit forms with validation, to detail views — all from a single source of truth.
-          </p>
-        </div>
-        <div class="col-lg-4 text-center d-none d-lg-block">
-          <i class="ri-file-code-line display-1 text-primary opacity-50"></i>
-        </div>
+      <div class="col-lg-4 text-center d-none d-lg-block">
+        <i class="bx bx-code-block display-1 text-primary opacity-50"></i>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- BREAD Pattern Overview -->
+<!-- BREAD Pattern Overview -->
   <div class="card mb-4">
     <div class="card-header">
       <h5 class="mb-0">

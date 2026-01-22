@@ -1,63 +1,57 @@
 <div class="article-container container-fluid">
-  <!-- Navigation -->
-  <div class="top-nav-bar mb-3 d-flex justify-content-between">
-    <a routerLink=".." class="btn btn-soft-primary">
-      <i class="ri-arrow-left-line me-1"></i>
-      Back to Schema DSL Guide
-    </a>
-    <a routerLink="../entity" class="btn btn-primary">
+<!-- Standard Page Header -->
+<app-page-header 
+  title="Overview & Concepts"
+  icon="bx-bulb"
+  iconBackground="bg-success-subtle"
+  iconClass="text-success"
+  [showBack]="true"
+  [showBreadcrumb]="true">
+  <ng-container subtitle>Understanding the Schema DSL architecture and how it enables schema-driven UI rendering</ng-container>
+  <ng-container actions>
+    <span class="badge bg-success me-2">Start Here</span>
+    <a routerLink="../entity" class="btn btn-primary btn-sm">
       Next: Entity Definition
-      <i class="ri-arrow-right-line ms-1"></i>
+      <i class="bx bx-right-arrow-alt ms-1"></i>
     </a>
-  </div>
+  </ng-container>
+</app-page-header>
 
-  <!-- Article Header -->
-  <div class="article-header mb-4">
-    <div class="d-flex align-items-center mb-2">
-      <span class="badge bg-success me-2">Start Here</span>
-      <span class="text-muted small">Article 1 of 6</span>
-    </div>
-    <h2 class="mb-2">Overview & Concepts</h2>
-    <p class="lead text-muted">
-      Understanding the Schema DSL architecture and how it enables schema-driven UI rendering.
-    </p>
+<!-- Table of Contents -->
+<div class="card mb-4">
+  <div class="card-header bg-light">
+    <h6 class="mb-0"><i class="bx bx-list-ul me-2"></i>In This Article</h6>
   </div>
-
-  <!-- Table of Contents -->
-  <div class="card mb-4">
-    <div class="card-header bg-light">
-      <h6 class="mb-0"><i class="ri-list-unordered me-2"></i>In This Article</h6>
-    </div>
-    <div class="card-body">
-      <ul class="mb-0">
-        <li><a href="#what-is" class="text-body">What is the Entity Schema DSL?</a></li>
-        <li><a href="#bread-pattern" class="text-body">The BREAD Pattern Explained</a></li>
-        <li><a href="#architecture" class="text-body">Architecture Overview</a></li>
-        <li><a href="#benefits" class="text-body">Benefits of Schema-Driven UI</a></li>
-        <li><a href="#when-to-use" class="text-body">When to Use This Approach</a></li>
-      </ul>
-    </div>
+  <div class="card-body">
+    <ul class="mb-0">
+      <li><a href="#what-is" class="text-body">What is the Entity Schema DSL?</a></li>
+      <li><a href="#bread-pattern" class="text-body">The BREAD Pattern Explained</a></li>
+      <li><a href="#architecture" class="text-body">Architecture Overview</a></li>
+      <li><a href="#benefits" class="text-body">Benefits of Schema-Driven UI</a></li>
+      <li><a href="#when-to-use" class="text-body">When to Use This Approach</a></li>
+    </ul>
   </div>
+</div>
 
-  <!-- Content -->
-  <div class="article-content">
+<!-- Content -->
+<div class="article-content">
     
-    <!-- What Is Section -->
-    <section id="what-is" class="mb-5">
-      <h4 class="border-bottom pb-2 mb-3">
-        <i class="ri-question-line me-2 text-info"></i>
-        What is the Entity Schema DSL?
-      </h4>
+  <!-- What Is Section -->
+  <section id="what-is" class="mb-5">
+    <h4 class="border-bottom pb-2 mb-3">
+      <i class="bx bx-question-mark me-2 text-info"></i>
+      What is the Entity Schema DSL?
+    </h4>
       
-      <p>
-        The Entity Schema DSL (Domain-Specific Language) is a declarative way to define 
-        the structure, behavior, and presentation of domain entities in your application. 
-        Instead of writing separate code for list views, forms, and detail pages, you 
-        define a single schema that describes:
-      </p>
+    <p>
+      The Entity Schema DSL (Domain-Specific Language) is a declarative way to define 
+      the structure, behavior, and presentation of domain entities in your application. 
+      Instead of writing separate code for list views, forms, and detail pages, you 
+      define a single schema that describes:
+    </p>
       
-      <ul>
-        <li><strong>Fields</strong> — What data the entity contains</li>
+    <ul>
+      <li><strong>Fields</strong> — What data the entity contains</li>
         <li><strong>Lookups</strong> — How to load reference data (dropdowns, selects)</li>
         <li><strong>Views</strong> — How to present the entity in Browse, Edit, Add, and Detail modes</li>
         <li><strong>Permissions</strong> — Who can do what with the entity</li>

@@ -3,6 +3,7 @@
  * 
  * Documentation hub - shows categories and articles.
  * This is the "wiki" subsection of Help.
+ * Uses standard PageHeader for consistent navigation.
  * 
  * Culture-aware: /help/wiki/{culture}/...
  */
@@ -11,37 +12,31 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { HelpService } from '../../../services/help.service';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
   selector: 'app-wiki-hub',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageHeaderComponent],
   template: `
     <div class="wiki-hub">
-      <!-- Top Navigation Bar (Primary: Back to Help) -->
-      <div class="top-nav-bar mb-3 d-flex justify-content-between align-items-center">
-        <a routerLink=".." class="btn btn-primary">
-          <i class="bx bx-arrow-back me-1"></i>
-          Back to Help
-        </a>
-        
-        <!-- Culture Selector (future) -->
-        <div class="d-flex gap-2 align-items-center">
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Documentation & Guides"
+        icon="bx-book-open"
+        iconBackground="bg-info-subtle"
+        iconClass="text-info"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Browse our knowledge base for detailed guides and tutorials</ng-container>
+        <ng-container actions>
+          <!-- Culture Selector (future) -->
           <span class="badge bg-light text-secondary">
             <i class="bx bx-globe me-1"></i>
             {{ helpService.currentCulture() }}
           </span>
-        </div>
-      </div>
-
-      <!-- Header -->
-      <div class="wiki-header mb-4">
-        <h4 class="mb-1">
-          <i class="bx bx-book-open me-2 text-info"></i>
-          Documentation & Guides
-        </h4>
-        <p class="text-muted mb-0">Browse our knowledge base for detailed guides and tutorials.</p>
-      </div>
+        </ng-container>
+      </app-page-header>
 
       <!-- Loading -->
       @if (helpService.loading()) {
@@ -112,7 +107,7 @@ import { HelpService } from '../../../services/help.service';
   styles: [`
     .wiki-hub {
       padding: 1.5rem;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
     }
     

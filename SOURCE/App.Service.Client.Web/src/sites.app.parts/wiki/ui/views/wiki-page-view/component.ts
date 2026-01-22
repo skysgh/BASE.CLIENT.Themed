@@ -3,6 +3,7 @@
  * 
  * Container component for displaying a wiki page.
  * Shows content, table of contents, and page metadata.
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component, inject, OnInit, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,32 +13,40 @@ import { Subject, takeUntil } from 'rxjs';
 import { WikiService } from '../../../services/wiki.service';
 import { WikiViewerComponent } from '../../widgets/wiki-viewer/component';
 import { WikiSidebarComponent } from '../../widgets/wiki-sidebar/component';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
   selector: 'app-wiki-page-view',
   standalone: true,
-  imports: [CommonModule, RouterModule, WikiViewerComponent, WikiSidebarComponent],
+  imports: [CommonModule, RouterModule, WikiViewerComponent, WikiSidebarComponent, PageHeaderComponent],
   template: `
     <div class="wiki-page-view">
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb" class="mb-3">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a routerLink="../../">
-              <i class="bx bx-book-open me-1"></i>
-              Wiki
-            </a>
-          </li>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        [title]="wikiService.currentPage()?.title || 'Wiki Page'"
+        icon="bx-file-blank"
+        iconBackground="bg-primary-subtle"
+        iconClass="text-primary"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>
           @if (wikiService.currentPage(); as page) {
-            <li class="breadcrumb-item">
-              <a [routerLink]="['../', page.namespace]">
-                {{ getNamespaceName(page.namespace) }}
-              </a>
-            </li>
-            <li class="breadcrumb-item active">{{ page.title }}</li>
+            {{ getNamespaceName(page.namespace) }}
           }
-        </ol>
-      </nav>
+        </ng-container>
+        <ng-container actions>
+          @if (wikiService.currentPage(); as page) {
+            @if (wikiService.canEditPage(page)) {
+              <a 
+                [routerLink]="['../../edit', page.namespace, page.slug]"
+                class="btn btn-outline-primary btn-sm">
+                <i class="bx bx-edit me-1"></i>
+                Edit
+              </a>
+            }
+          }
+        </ng-container>
+      </app-page-header>
 
       <div class="row">
         <!-- Sidebar -->
@@ -76,62 +85,42 @@ import { WikiSidebarComponent } from '../../widgets/wiki-sidebar/component';
           <!-- Page Content -->
           @if (wikiService.currentPage(); as page) {
             <article class="wiki-page">
-              <!-- Header -->
-              <header class="page-header mb-4">
-                <div class="d-flex justify-content-between align-items-start">
-                  <div>
-                    @if (page.icon) {
-                      <i class="bx {{ page.icon }} fs-24 text-primary me-2"></i>
-                    }
-                    <h1 class="page-title d-inline">{{ page.title }}</h1>
-                  </div>
-                  @if (wikiService.canEditPage(page)) {
-                    <a 
-                      [routerLink]="['../../edit', page.namespace, page.slug]"
-                      class="btn btn-outline-primary btn-sm">
-                      <i class="bx bx-edit me-1"></i>
-                      Edit
-                    </a>
-                  }
-                </div>
-
-                <!-- Meta info -->
-                <div class="page-meta mt-3 d-flex gap-3 flex-wrap text-muted small">
-                  @if (page.authorName) {
-                    <span>
-                      <i class="bx bx-user me-1"></i>
-                      {{ page.authorName }}
-                    </span>
-                  }
-                  @if (page.updatedUtc) {
-                    <span>
-                      <i class="bx bx-calendar me-1"></i>
-                      Updated {{ page.updatedUtc | date }}
-                    </span>
-                  }
-                  @if (page.readingTime) {
-                    <span>
-                      <i class="bx bx-time me-1"></i>
-                      {{ page.readingTime }} min read
-                    </span>
-                  }
-                  <span class="badge bg-{{ getStatusBadge(page.status) }}">
-                    {{ page.status }}
+              <!-- Meta info -->
+              <div class="page-meta mb-4 d-flex gap-3 flex-wrap text-muted small">
+                @if (page.authorName) {
+                  <span>
+                    <i class="bx bx-user me-1"></i>
+                    {{ page.authorName }}
                   </span>
-                </div>
-
-                <!-- Tags -->
-                @if (page.tags && page.tags.length > 0) {
-                  <div class="page-tags mt-3">
-                    @for (tag of page.tags; track tag) {
-                      <span class="badge bg-light text-secondary me-1">
-                        <i class="bx bx-tag-alt me-1"></i>
-                        {{ tag }}
-                      </span>
-                    }
-                  </div>
                 }
-              </header>
+                @if (page.updatedUtc) {
+                  <span>
+                    <i class="bx bx-calendar me-1"></i>
+                    Updated {{ page.updatedUtc | date }}
+                  </span>
+                }
+                @if (page.readingTime) {
+                  <span>
+                    <i class="bx bx-time me-1"></i>
+                    {{ page.readingTime }} min read
+                  </span>
+                }
+                <span class="badge bg-{{ getStatusBadge(page.status) }}">
+                  {{ page.status }}
+                </span>
+              </div>
+
+              <!-- Tags -->
+              @if (page.tags && page.tags.length > 0) {
+                <div class="page-tags mb-4">
+                  @for (tag of page.tags; track tag) {
+                    <span class="badge bg-light text-secondary me-1">
+                      <i class="bx bx-tag-alt me-1"></i>
+                      {{ tag }}
+                    </span>
+                  }
+                </div>
+              }
 
               <!-- Table of Contents (if exists) -->
               @if (page.toc && page.toc.length > 2) {
@@ -173,7 +162,7 @@ import { WikiSidebarComponent } from '../../widgets/wiki-sidebar/component';
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                   <a routerLink="../" class="btn btn-outline-secondary btn-sm">
                     <i class="bx bx-arrow-back me-1"></i>
-                    Back to Wiki
+                    Back to Namespace
                   </a>
                   <div class="d-flex gap-2 align-items-center">
                     <span class="text-muted small me-2">Was this helpful?</span>
@@ -195,12 +184,8 @@ import { WikiSidebarComponent } from '../../widgets/wiki-sidebar/component';
   styles: [`
     .wiki-page-view {
       padding: 1.5rem;
-    }
-
-    .page-title {
-      font-size: 2rem;
-      font-weight: 600;
-      margin: 0;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     .toc-list li {

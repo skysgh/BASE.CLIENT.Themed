@@ -1,55 +1,159 @@
 <div class="hub-shell">
-  <!-- Standard Page Header with back button -->
-  <app-page-header 
-    [title]="title"
-    [icon]="icon"
-    [iconBackground]="iconBackground"
-    [iconClass]="iconClass"
-    [showBack]="showBack"
-    [showBreadcrumb]="showBreadcrumbs">
-    <ng-container subtitle>
-      @if (subtitle) {
-        {{ subtitle }}
-      } @else {
-        <ng-content select="[subtitle]"></ng-content>
+<!-- Standard Page Header with back button -->
+<app-page-header 
+  [title]="title"
+  [icon]="icon"
+  [iconBackground]="iconBackground"
+  [iconClass]="iconClass"
+  [showBack]="showBack"
+  [showBreadcrumb]="showBreadcrumbs">
+  <ng-container subtitle>
+    @if (subtitle) {
+      {{ subtitle }}
+    } @else {
+      <ng-content select="[subtitle]"></ng-content>
+    }
+  </ng-container>
+  <ng-container actions>
+    <!-- Filter Buttons (when filters defined and showFilterButtons=true) -->
+    @if (effectiveShowFilterButtons) {
+      @switch (effectiveFilterButtonStyle) {
+        @case ('segmented') {
+          <div class="btn-group me-2" role="group" aria-label="Filter tiles">
+            @for (filter of effectiveFilters; track filter.id) {
+              <button type="button"
+                      class="btn btn-outline-primary btn-sm"
+                      [class.active]="isFilterActive(filter.id)"
+                      [class]="filter.buttonClass"
+                      (click)="onFilterClick(filter.id)">
+                @if (filter.icon) {
+                  <i class="bx {{ filter.icon }} d-none d-md-inline-block me-md-1"></i>
+                }
+                <span>{{ filter.labelKey ? (filter.labelKey | baseTranslate) : filter.label }}</span>
+              </button>
+            }
+          </div>
+        }
+        @case ('pills') {
+          <ul class="nav nav-pills nav-sm me-2">
+            @for (filter of effectiveFilters; track filter.id) {
+              <li class="nav-item">
+                <button class="nav-link"
+                        [class.active]="isFilterActive(filter.id)"
+                        (click)="onFilterClick(filter.id)">
+                  @if (filter.icon) {
+                    <i class="bx {{ filter.icon }} me-1"></i>
+                  }
+                  {{ filter.labelKey ? (filter.labelKey | baseTranslate) : filter.label }}
+                </button>
+              </li>
+            }
+          </ul>
+        }
+        @case ('tabs') {
+          <ul class="nav nav-tabs nav-sm me-2">
+            @for (filter of effectiveFilters; track filter.id) {
+              <li class="nav-item">
+                <button class="nav-link"
+                        [class.active]="isFilterActive(filter.id)"
+                        (click)="onFilterClick(filter.id)">
+                  @if (filter.icon) {
+                    <i class="bx {{ filter.icon }} me-1"></i>
+                  }
+                  {{ filter.labelKey ? (filter.labelKey | baseTranslate) : filter.label }}
+                </button>
+              </li>
+            }
+          </ul>
+        }
       }
-    </ng-container>
-    <ng-container actions>
-      <!-- Config Button in header actions -->
-      @if (showConfig) {
-        <button class="btn btn-outline-secondary btn-sm" 
-                (click)="openConfigPanel()"
-                title="Configure hub tiles">
-          <i class="bx bx-cog"></i>
-        </button>
-      }
-    </ng-container>
-  </app-page-header>
+    }
+      
+    <!-- Config Button in header actions (respects effectiveShowConfig) -->
+    @if (effectiveShowConfig) {
+      <button class="btn btn-outline-secondary btn-sm" 
+              (click)="openConfigPanel()"
+              title="Configure hub tiles">
+        <i class="bx bx-cog"></i>
+      </button>
+    }
+  </ng-container>
+</app-page-header>
 
-  <!-- Tile Grid - supports both default and custom tile components -->
-  @if (visibleTiles().length > 0) {
-    <div class="row g-4">
-      @for (tile of visibleTiles(); track tile.id) {
-        <div [class]="tileColumnClass">
-          @if (hasCustomComponent(tile)) {
-            <!-- Custom component rendering with injected tile data -->
-            <ng-container 
-              *ngComponentOutlet="getCustomComponent(tile); injector: getTileInjector(tile)">
-            </ng-container>
-          } @else {
-            <!-- Default HubTile rendering -->
-            <app-hub-tile [tile]="tile"></app-hub-tile>
+<!-- Tile Grid - supports grouped, ungrouped, and custom tile components -->
+@if (filteredTiles().length > 0) {
+    
+  <!-- GROUPED RENDERING: Tiles organized by groups with headers -->
+  @if (effectiveEnableGrouping && groupedTiles().length > 0) {
+    @for (groupSet of groupedTiles(); track groupSet.group?.id ?? '__ungrouped__') {
+      <div class="tile-group mb-4" [class]="groupSet.group?.cssClass ?? ''">
+        <!-- Group Header -->
+        @if (groupSet.group) {
+          <h6 class="text-uppercase text-muted mb-3">
+            @if (groupSet.group.icon) {
+              <i class="bx {{ groupSet.group.icon }} me-1"></i>
+            }
+            {{ groupSet.group.labelKey ? (groupSet.group.labelKey | baseTranslate) : groupSet.group.label }}
+          </h6>
+          @if (groupSet.group.description) {
+            <p class="text-muted small mb-3">{{ groupSet.group.description }}</p>
           }
+        }
+          
+        <!-- Tiles in this group -->
+        <div class="row g-3">
+            @for (tile of groupSet.tiles; track tile.id) {
+              <div [class]="effectiveTileColumnClass">
+                @if (hasCustomComponent(tile)) {
+                  <!-- Custom component rendering with injected tile data -->
+                  <ng-container 
+                    *ngComponentOutlet="getCustomComponent(tile); injector: getTileInjector(tile)">
+                  </ng-container>
+                } @else {
+                  <!-- Default HubTile rendering with display style -->
+                  <app-hub-tile 
+                    [tile]="tile"
+                    [displayStyle]="effectiveDisplayStyle">
+                  </app-hub-tile>
+                }
+              </div>
+            }
+          </div>
         </div>
       }
-    </div>
+    } @else {
+      <!-- FLAT RENDERING: Standard ungrouped tile grid -->
+      <div class="row g-4">
+        @for (tile of filteredTiles(); track tile.id) {
+          <div [class]="effectiveTileColumnClass">
+            @if (hasCustomComponent(tile)) {
+              <!-- Custom component rendering with injected tile data -->
+              <ng-container 
+                *ngComponentOutlet="getCustomComponent(tile); injector: getTileInjector(tile)">
+              </ng-container>
+            } @else {
+              <!-- Default HubTile rendering with display style -->
+              <app-hub-tile 
+                [tile]="tile"
+                [displayStyle]="effectiveDisplayStyle">
+              </app-hub-tile>
+            }
+          </div>
+        }
+      </div>
+    }
   } @else if (!hasContent) {
     <!-- Content projection for fully custom rendering -->
     <ng-content></ng-content>
   }
 
   <!-- Empty state -->
-  @if (visibleTiles().length === 0 && workingTiles().length > 0) {
+  @if (filteredTiles().length === 0 && visibleTiles().length > 0 && effectiveFilters.length > 0) {
+    <div class="alert alert-info text-center mt-4">
+      <i class="bx bx-filter-alt me-2"></i>
+      No tiles match the current filter.
+    </div>
+  } @else if (filteredTiles().length === 0 && workingTiles().length > 0) {
     <div class="alert alert-info text-center mt-4">
       <i class="bx bx-eye-off me-2"></i>
       All tiles are hidden. Click the gear icon to show tiles.

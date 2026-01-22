@@ -3,6 +3,7 @@
  * 
  * Main entry point for the wiki - shows available namespaces
  * and recent/featured pages.
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,31 +11,32 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { WikiService } from '../../../services/wiki.service';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
   selector: 'app-wiki-hub',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, PageHeaderComponent],
   template: `
     <div class="wiki-hub">
-      <!-- Header -->
-      <div class="hub-header mb-4">
-        <div class="d-flex justify-content-between align-items-start">
-          <div>
-            <h4 class="mb-1">
-              <i class="bx bx-book-open me-2 text-primary"></i>
-              Wiki
-            </h4>
-            <p class="text-muted mb-0">Browse documentation and knowledge base articles.</p>
-          </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Wiki"
+        icon="bx-book-open"
+        iconBackground="bg-primary-subtle"
+        iconClass="text-primary"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Browse documentation and knowledge base articles</ng-container>
+        <ng-container actions>
           @if (wikiService.editingEnabled()) {
             <a routerLink="edit/public" class="btn btn-primary btn-sm">
               <i class="bx bx-plus me-1"></i>
               New Page
             </a>
           }
-        </div>
-      </div>
+        </ng-container>
+      </app-page-header>
 
       <!-- Search -->
       <div class="search-section mb-4">
@@ -190,7 +192,7 @@ import { WikiService } from '../../../services/wiki.service';
   styles: [`
     .wiki-hub {
       padding: 1.5rem;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 

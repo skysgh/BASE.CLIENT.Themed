@@ -2,28 +2,30 @@
  * Version Info Component
  * 
  * Displays version, build, and environment information.
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AboutService } from '../../../services/about.service';
+import { PageHeaderComponent } from '../../../../../sites/ui/widgets/page-header';
 
 @Component({
     selector: 'app-version-info',
-    imports: [CommonModule, RouterModule],
+    standalone: true,
+    imports: [CommonModule, RouterModule, PageHeaderComponent],
     template: `
     <div class="version-page">
-      <div class="page-header d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <a routerLink="../" class="btn btn-outline-secondary btn-sm me-3">
-            <i class="bx bx-arrow-back"></i>
-          </a>
-          <h4 class="d-inline-block mb-0">
-            <i class="bx bx-chip me-2 text-primary"></i>
-            Version Information
-          </h4>
-        </div>
-      </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Version Information"
+        icon="bx-chip"
+        iconBackground="bg-primary-subtle"
+        iconClass="text-primary"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Build, version, and environment details</ng-container>
+      </app-page-header>
     
       @if (aboutService.version(); as version) {
         <div>
@@ -131,18 +133,10 @@ import { AboutService } from '../../../services/about.service';
           </div>
         </div>
       }
-    
-      <!-- Back Button -->
-      <div class="mt-4">
-        <a routerLink="../" class="btn btn-outline-secondary">
-          <i class="bx bx-arrow-back me-1"></i>
-          Back to About
-        </a>
-      </div>
     </div>
     `,
     styles: [`
-    .version-page { padding: 1.5rem; max-width: 800px; margin: 0 auto; }
+    .version-page { padding: 1.5rem; max-width: 1000px; margin: 0 auto; }
     
     .version-badge {
       display: inline-block;

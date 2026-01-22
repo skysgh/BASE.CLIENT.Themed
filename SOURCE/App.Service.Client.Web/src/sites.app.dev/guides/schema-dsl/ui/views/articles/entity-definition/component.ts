@@ -2,22 +2,24 @@
  * Entity Definition Article Component
  * 
  * How to define entity schemas with fields, lookups, and data sources.
+ * Uses standard PageHeader for consistent navigation.
  * 
  * Route: /dev/guides/schema-dsl/entity
  */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PageHeaderComponent } from '../../../../../../../sites/ui/widgets/page-header';
 
 @Component({
   selector: 'app-entity-definition-article',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageHeaderComponent],
   templateUrl: './component.html',
   styles: [`
     .article-container {
       padding: 1.5rem;
-      max-width: 900px;
+      max-width: 1000px;
     }
     
     pre {

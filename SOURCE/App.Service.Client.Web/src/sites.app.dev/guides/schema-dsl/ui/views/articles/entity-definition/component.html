@@ -1,36 +1,30 @@
 <div class="article-container container-fluid">
-  <!-- Navigation -->
-  <div class="top-nav-bar mb-3 d-flex justify-content-between">
-    <a routerLink="../overview" class="btn btn-soft-secondary">
-      <i class="ri-arrow-left-line me-1"></i>
-      Previous: Overview
-    </a>
-    <a routerLink="../cards" class="btn btn-primary">
+<!-- Standard Page Header -->
+<app-page-header 
+  title="Entity Definition"
+  icon="bx-data"
+  iconBackground="bg-info-subtle"
+  iconClass="text-info"
+  [showBack]="true"
+  [showBreadcrumb]="true">
+  <ng-container subtitle>Defining fields, data types, lookups, permissions, and data source configuration</ng-container>
+  <ng-container actions>
+    <a routerLink="../cards" class="btn btn-primary btn-sm">
       Next: UniversalCard Mapping
-      <i class="ri-arrow-right-line ms-1"></i>
+      <i class="bx bx-right-arrow-alt ms-1"></i>
     </a>
-  </div>
+  </ng-container>
+</app-page-header>
 
-  <!-- Article Header -->
-  <div class="article-header mb-4">
-    <div class="d-flex align-items-center mb-2">
-      <span class="text-muted small">Article 2 of 6</span>
-    </div>
-    <h2 class="mb-2">Entity Definition</h2>
-    <p class="lead text-muted">
-      Defining fields, data types, lookups, permissions, and data source configuration.
-    </p>
-  </div>
-
-  <!-- Content -->
-  <div class="article-content">
+<!-- Content -->
+<div class="article-content">
     
-    <!-- EntitySchema Structure -->
-    <section id="structure" class="mb-5">
-      <h4 class="border-bottom pb-2 mb-3">
-        <i class="ri-layout-line me-2 text-info"></i>
-        EntitySchema Structure
-      </h4>
+  <!-- EntitySchema Structure -->
+  <section id="structure" class="mb-5">
+    <h4 class="border-bottom pb-2 mb-3">
+      <i class="bx bx-layout me-2 text-info"></i>
+      EntitySchema Structure
+    </h4>
       
       <p>
         An EntitySchema is the top-level definition for an entity/aggregate type. 

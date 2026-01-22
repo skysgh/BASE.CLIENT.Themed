@@ -1,1 +1,1 @@
-export { HubShellComponent, HubTileConfig } from './component';
+export { HubShellComponent, HubTileConfig, TileComponentMap } from './component';

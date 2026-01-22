@@ -33,7 +33,7 @@
  * </app-hub-shell>
  * ```
  */
-import { Component, Input, Output, EventEmitter, inject, signal, TemplateRef, ViewChild, OnChanges, SimpleChanges, Type, Injector } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject, signal, TemplateRef, ViewChild, OnChanges, SimpleChanges, Type, Injector, computed } from '@angular/core';
 import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbOffcanvas, NgbOffcanvasModule } from '@ng-bootstrap/ng-bootstrap';
@@ -42,7 +42,22 @@ import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-
 import { PageHeaderComponent } from '../page-header';
 import { HubTileComponent } from '../hub-tile';
 import { HubShellConfigPanelComponent } from '../hub-shell-config-panel';
-import { IUniversalTile, IHubTilePreferences, applyTilePreferences, extractTilePreferences, HUB_TILE_DATA } from '../../../../core/models/presentation';
+import { BaseCoreAgPipesModule } from '../../../../core.ag/pipes/module';
+import { 
+  IUniversalTile, 
+  IHubTilePreferences, 
+  IHubDisplayConfig,
+  ITileGroup,
+  ITileGroupedSet,
+  IHubFilter,
+  TileDisplayStyle,
+  applyTilePreferences, 
+  extractTilePreferences, 
+  groupTiles,
+  filterTiles,
+  getFilterById,
+  HUB_TILE_DATA 
+} from '../../../../core/models/presentation';
 
 /**
  * Legacy tile configuration for backward compatibility
@@ -96,7 +111,8 @@ imports: [
   DragDropModule, 
   PageHeaderComponent,
   HubTileComponent,
-  HubShellConfigPanelComponent
+  HubShellConfigPanelComponent,
+  BaseCoreAgPipesModule
 ],
 templateUrl: './component.html',
 styles: [`
@@ -139,6 +155,59 @@ styles: [`
       justify-content: center;
       font-size: 1.5rem;
       transition: transform 0.2s ease;
+    }
+    
+    /* ─────────────────────────────────────────────────────────────
+     * FILTER BUTTON STYLES
+     * ───────────────────────────────────────────────────────────── */
+    
+    /* Segmented button style (default) - like Settings level selector */
+    .btn-group .btn.active {
+      background-color: var(--vz-primary);
+      border-color: var(--vz-primary);
+      color: #fff;
+    }
+    
+    /* Pill nav style */
+    .nav-pills .nav-link {
+      font-size: 0.875rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 50rem;
+      color: var(--vz-body-color);
+      
+      &.active {
+        background-color: var(--vz-primary);
+        color: #fff;
+      }
+      
+      &:hover:not(.active) {
+        background-color: var(--vz-light);
+      }
+    }
+    
+    /* Tab nav style */
+    .nav-tabs .nav-link {
+      font-size: 0.875rem;
+      padding: 0.375rem 0.75rem;
+      color: var(--vz-body-color);
+      border: none;
+      border-bottom: 2px solid transparent;
+      
+      &.active {
+        color: var(--vz-primary);
+        border-bottom-color: var(--vz-primary);
+        background: transparent;
+      }
+      
+      &:hover:not(.active) {
+        border-bottom-color: var(--vz-border-color);
+      }
+    }
+    
+    /* Small nav variant */
+    .nav-sm .nav-link {
+      font-size: 0.8125rem;
+      padding: 0.25rem 0.5rem;
     }
   `]
 })
@@ -190,6 +259,70 @@ private injector = inject(Injector);
  * Default: 'col-md-6 col-lg-4' for 3 columns on large screens
  */
 @Input() tileColumnClass = 'col-md-6 col-lg-4';
+
+// ─────────────────────────────────────────────────────────────────────
+// NEW: Display Configuration Options
+// ─────────────────────────────────────────────────────────────────────
+
+/**
+ * Default display style for all tiles in this hub
+ * Individual tiles can override via tile.config.displayStyle
+ */
+@Input() defaultDisplayStyle: TileDisplayStyle = 'standard';
+
+/**
+ * Enable grouping of tiles by their groupId
+ * When true, tiles are rendered in sections with group headers
+ */
+@Input() enableGrouping = false;
+
+/**
+ * Group definitions for this hub
+ * Defines available groups with labels, icons, order
+ */
+@Input() groups: ITileGroup[] = [];
+
+/**
+ * Label for tiles that have no groupId (ungrouped section)
+ * Only used when enableGrouping is true
+ */
+@Input() ungroupedLabel = 'Other';
+
+/**
+ * Hub display configuration (alternative to individual inputs)
+ * When provided, overrides individual display-related inputs
+ */
+@Input() displayConfig?: IHubDisplayConfig;
+
+// ─────────────────────────────────────────────────────────────────────
+// NEW: Filtering Options
+// ─────────────────────────────────────────────────────────────────────
+
+/**
+ * Filter definitions for this hub
+ * When provided, tiles can be filtered by matching their filterTags
+ */
+@Input() filters: IHubFilter[] = [];
+
+/**
+ * Show filter buttons in hub header
+ * Default: true (when filters are defined)
+ */
+@Input() showFilterButtons = true;
+
+/**
+ * Currently active filter ID
+ * When set externally, controls which filter is active
+ */
+@Input() activeFilterId?: string;
+
+/**
+ * Filter button style
+ * - 'segmented': Bootstrap btn-group with segmented buttons (default)
+ * - 'pills': Pill-style nav buttons
+ * - 'tabs': Tab-style buttons
+ */
+@Input() filterButtonStyle: 'segmented' | 'pills' | 'tabs' = 'segmented';
   
 /** 
  * Legacy tile configurations (backward compatibility)
@@ -215,28 +348,132 @@ private injector = inject(Injector);
  */
 @Output() tileVisibilityChanged = new EventEmitter<{ id: string; visible: boolean }>();
 
+/**
+ * Emits when active filter changes
+ * Parent component can handle routing, permissions, etc.
+ */
+@Output() filterChange = new EventEmitter<string>();
+
 // Internal state
 private offcanvasRef: any;
 workingTiles = signal<IUniversalTile[]>([]);
+
+/** Internal active filter ID (can be controlled externally via activeFilterId input) */
+private internalActiveFilterId = signal<string | undefined>(undefined);
   
 // Check if content was projected
 hasContent = false;
 
-/** Get visible tiles in order */
+/** Get visible tiles in order (before filtering) */
 visibleTiles = signal<IUniversalTile[]>([]);
+
+/** Get filtered tiles (after applying active filter) */
+filteredTiles = signal<IUniversalTile[]>([]);
+
+/** Get grouped tiles (computed from filteredTiles when grouping enabled) */
+groupedTiles = signal<ITileGroupedSet[]>([]);
   
 /** Cache of injectors for custom components */
 private tileInjectorCache = new Map<string, Injector>();
 
+// ─────────────────────────────────────────────────────────────────────
+// Effective Configuration (applies displayConfig overrides)
+// ─────────────────────────────────────────────────────────────────────
+
+/** Get effective showConfig setting */
+get effectiveShowConfig(): boolean {
+  return this.displayConfig?.showConfigButton ?? this.showConfig;
+}
+
+/** Get effective tile column class */
+get effectiveTileColumnClass(): string {
+  return this.displayConfig?.tileColumnClass ?? this.tileColumnClass;
+}
+
+/** Get effective display style */
+get effectiveDisplayStyle(): TileDisplayStyle {
+  return this.displayConfig?.defaultDisplayStyle ?? this.defaultDisplayStyle;
+}
+
+/** Get effective grouping setting */
+get effectiveEnableGrouping(): boolean {
+  return this.displayConfig?.enableGrouping ?? this.enableGrouping;
+}
+
+/** Get effective groups */
+get effectiveGroups(): ITileGroup[] {
+  return this.displayConfig?.groups ?? this.groups;
+}
+
+/** Get effective ungrouped label */
+get effectiveUngroupedLabel(): string {
+  return this.displayConfig?.ungroupedLabel ?? this.ungroupedLabel;
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Effective Filter Configuration
+// ─────────────────────────────────────────────────────────────────────
+
+/** Get effective filters */
+get effectiveFilters(): IHubFilter[] {
+  return this.displayConfig?.filters ?? this.filters;
+}
+
+/** Get effective showFilterButtons */
+get effectiveShowFilterButtons(): boolean {
+  // Only show if we have filters AND showFilterButtons is true
+  const hasFilters = this.effectiveFilters.length > 0;
+  const showButtons = this.displayConfig?.showFilterButtons ?? this.showFilterButtons;
+  return hasFilters && showButtons;
+}
+
+/** Get effective filter button style */
+get effectiveFilterButtonStyle(): 'segmented' | 'pills' | 'tabs' {
+  return this.displayConfig?.filterButtonStyle ?? this.filterButtonStyle;
+}
+
+/** Get current active filter ID */
+get currentActiveFilterId(): string | undefined {
+  // External input takes precedence over internal state
+  return this.activeFilterId ?? this.internalActiveFilterId() ?? this.displayConfig?.defaultFilterId ?? this.effectiveFilters[0]?.id;
+}
+
+/** Get current active filter object */
+get activeFilter(): IHubFilter | null {
+  return getFilterById(this.effectiveFilters, this.currentActiveFilterId);
+}
+
+/** Check if a filter is active */
+isFilterActive(filterId: string): boolean {
+  return this.currentActiveFilterId === filterId;
+}
+
+/** Handle filter button click */
+onFilterClick(filterId: string): void {
+  if (filterId === this.currentActiveFilterId) return;
+  
+  this.internalActiveFilterId.set(filterId);
+  this.updateFilteredTiles();
+  this.filterChange.emit(filterId);
+}
+
 /** Use legacy mode if legacyTiles provided but tiles empty */
 get isLegacyMode(): boolean {
   return this.legacyTiles.length > 0 && this.tiles.length === 0;
-  }
+}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tiles'] || changes['legacyTiles']) {
       this.clearInjectorCache();
       this.initializeTiles();
+    }
+    // Re-filter if filter settings change
+    if (changes['activeFilterId'] || changes['filters'] || changes['displayConfig']) {
+      this.updateFilteredTiles();
+    }
+    // Re-group if grouping settings change
+    if (changes['enableGrouping'] || changes['groups'] || changes['displayConfig']) {
+      this.updateGroupedTiles();
     }
   }
 
@@ -259,6 +496,28 @@ get isLegacyMode(): boolean {
       .filter(t => t.config.visible)
       .sort((a, b) => (a.config.order ?? 0) - (b.config.order ?? 0));
     this.visibleTiles.set(visible);
+    this.updateFilteredTiles();
+  }
+
+  /** Update filtered tiles based on active filter */
+  private updateFilteredTiles(): void {
+    const filtered = filterTiles(this.visibleTiles(), this.activeFilter);
+    this.filteredTiles.set(filtered);
+    this.updateGroupedTiles();
+  }
+
+  /** Update grouped tiles signal based on current filtered tiles and grouping config */
+  private updateGroupedTiles(): void {
+    if (this.effectiveEnableGrouping && this.filteredTiles().length > 0) {
+      const grouped = groupTiles(
+        this.filteredTiles(), 
+        this.effectiveGroups, 
+        this.effectiveUngroupedLabel
+      );
+      this.groupedTiles.set(grouped);
+    } else {
+      this.groupedTiles.set([]);
+    }
   }
 
   /** 

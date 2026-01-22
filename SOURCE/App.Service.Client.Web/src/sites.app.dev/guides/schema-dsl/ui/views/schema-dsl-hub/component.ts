@@ -3,12 +3,14 @@
  * 
  * Landing page for Entity Schema DSL documentation.
  * Shows navigation to all documentation articles with descriptions.
+ * Uses standard PageHeader for consistent navigation.
  * 
  * Route: /dev/guides/schema-dsl
  */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PageHeaderComponent } from '../../../../../../sites/ui/widgets/page-header';
 
 interface Article {
   id: string;
@@ -24,7 +26,7 @@ interface Article {
 @Component({
   selector: 'app-schema-dsl-hub',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageHeaderComponent],
   templateUrl: './component.html',
   styles: [`
     .schema-dsl-hub {

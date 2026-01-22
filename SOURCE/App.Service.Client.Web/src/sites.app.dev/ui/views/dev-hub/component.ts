@@ -10,10 +10,12 @@
  * - API documentation (future)
  * 
  * Route: /dev
+ * Uses standard PageHeader for consistent navigation.
  */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PageHeaderComponent } from '../../../../sites/ui/widgets/page-header';
 
 interface DevSection {
   id: string;
@@ -29,29 +31,29 @@ interface DevSection {
 @Component({
   selector: 'app-dev-hub',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PageHeaderComponent],
   template: `
     <div class="dev-hub container-fluid">
-      <!-- Header -->
-      <div class="page-header mb-4">
-        <div class="row align-items-center">
-          <div class="col-auto">
-            <div class="avatar-sm">
-              <div class="avatar-title bg-dark rounded">
-                <i class="ri-code-s-slash-line fs-20 text-white"></i>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <h4 class="mb-1">Developer Hub</h4>
-            <p class="text-muted mb-0">Documentation, guides, and reference materials</p>
-          </div>
-        </div>
-      </div>
+      <!-- Standard Page Header -->
+      <app-page-header 
+        title="Developer Hub"
+        icon="bx-code-alt"
+        iconBackground="bg-dark"
+        iconClass="text-white"
+        [showBack]="true"
+        [showBreadcrumb]="true">
+        <ng-container subtitle>Documentation, guides, and reference materials</ng-container>
+        <ng-container actions>
+          <a href="https://github.com/skysgh/BASE.CLIENT.Themed" target="_blank" class="btn btn-outline-dark btn-sm">
+            <i class="bx bxl-github me-1"></i>
+            GitHub
+          </a>
+        </ng-container>
+      </app-page-header>
 
       <!-- Warning -->
       <div class="alert alert-warning border-0 d-flex align-items-center mb-4" role="alert">
-        <i class="ri-tools-line fs-20 me-2"></i>
+        <i class="bx bx-wrench fs-20 me-2"></i>
         <div>
           <strong>Developer Tools</strong> - These pages are for development reference only 
           and should not be used in production features.
@@ -82,21 +84,21 @@ interface DevSection {
                   @for (item of section.items; track item.route) {
                     <a [routerLink]="section.route + '/' + item.route" 
                        class="list-group-item list-group-item-action d-flex align-items-center">
-                      <i class="ri-arrow-right-s-line text-muted me-2"></i>
+                      <i class="bx bx-chevron-right text-muted me-2"></i>
                       <div class="flex-grow-1">
                         <span>{{ item.title }}</span>
                         @if (item.description) {
                           <small class="text-muted d-block">{{ item.description }}</small>
                         }
                       </div>
-                      <i class="ri-external-link-line text-muted"></i>
+                      <i class="bx bx-link-external text-muted"></i>
                     </a>
                   }
                 </div>
                 <div class="mt-3 text-end">
                   <a [routerLink]="section.route" class="link-primary">
                     View all {{ section.title.toLowerCase() }}
-                    <i class="ri-arrow-right-line ms-1"></i>
+                    <i class="bx bx-right-arrow-alt ms-1"></i>
                   </a>
                 </div>
               </div>
@@ -108,28 +110,28 @@ interface DevSection {
       <!-- Quick Links -->
       <div class="card">
         <div class="card-header">
-          <h5 class="mb-0"><i class="ri-links-line me-2"></i>Quick Links</h5>
+          <h5 class="mb-0"><i class="bx bx-link me-2"></i>Quick Links</h5>
         </div>
         <div class="card-body">
           <div class="row g-3">
             <div class="col-md-3">
               <a routerLink="/dev/theme/t1/minimal" class="btn btn-soft-primary w-100">
-                <i class="ri-palette-line me-2"></i>Theme Reference
+                <i class="bx bx-palette me-2"></i>Theme Reference
               </a>
             </div>
             <div class="col-md-3">
               <a routerLink="/dev/guides/schema-dsl" class="btn btn-soft-info w-100">
-                <i class="ri-database-2-line me-2"></i>Schema DSL Guide
+                <i class="bx bx-data me-2"></i>Schema DSL Guide
               </a>
             </div>
             <div class="col-md-3">
               <a routerLink="/dev/wiki" class="btn btn-soft-success w-100">
-                <i class="ri-book-open-line me-2"></i>Wiki Preview
+                <i class="bx bx-book-open me-2"></i>Wiki Preview
               </a>
             </div>
             <div class="col-md-3">
               <a href="https://github.com/skysgh/BASE.CLIENT.Themed" target="_blank" class="btn btn-soft-dark w-100">
-                <i class="ri-github-line me-2"></i>GitHub Repo
+                <i class="bx bxl-github me-2"></i>GitHub Repo
               </a>
             </div>
           </div>
