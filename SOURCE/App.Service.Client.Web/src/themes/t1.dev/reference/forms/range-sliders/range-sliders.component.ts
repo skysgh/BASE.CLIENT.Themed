@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // Range Slider
-import { Options } from '@angular-slider/ngx-slider';
+import { Options } from 'ngx-slider-v2';
 
 @Component({
     selector: 'app-range-sliders',
