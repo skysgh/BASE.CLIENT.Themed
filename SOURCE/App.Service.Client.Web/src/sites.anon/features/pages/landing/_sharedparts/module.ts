@@ -42,7 +42,6 @@ import { ScrollspyDirective } from '../../../../../themes/t1/directives/scrollsp
 import { SystemDiagnosticsTraceService } from '../../../../../core/services/system.diagnostics-trace.service';
 
 // import { BaseCoreCommonComponentsModule } from '../../../common/components/module';
-import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { BaseAppsPagesLandingIndexHeaderComponent } from './ui/viewsections/header/component';
 //import { BaseAppsPagesLandingIndexScrollBackToTopComponent } from '_root';
 import { BaseThemesModule } from '../../../../../themes/module';
@@ -104,11 +103,10 @@ import { BaseAppsPagesLandingIndexWorkProcessComponent } from './ui/viewsections
     NgbCollapseModule,
     SlickCarouselModule,
     CountUpModule,
-    //WidgetLibraryModule // Include WidgetLibraryModule here
-  //  LandingScrollspyDirective,
-    //  ScrollspyDirective
-    ScrollToModule.forRoot(),
-    // Import Base of Upstream Column: THemes, which depends on Core.Ag:
+      //WidgetLibraryModule // Include WidgetLibraryModule here
+    //  LandingScrollspyDirective,
+      //  ScrollspyDirective
+      // Import Base of Upstream Column: THemes, which depends on Core.Ag:
     //BaseThemesModule,
     BaseThemesV1Module,
     // Dependencies:

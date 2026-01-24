@@ -39,43 +39,43 @@
         <li class="nav-item">
           <a class="nav-link active"
             [ngClass]="{'active':sectionId === sectionsInfo.intro.id}"
-            [ngxScrollTo]="'#'+sectionsInfo.intro.id"
+            (click)="scrollToSection(sectionsInfo.intro.id)"
           href="javascript:void(0);">{{'BASE.HOMES.SINGULAR'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
             [ngClass]="{'active':sectionId === sectionsInfo.capabilities.id}"
-            [ngxScrollTo]="'#'+sectionsInfo.capabilities.id"
+            (click)="scrollToSection(sectionsInfo.capabilities.id)"
           href="javascript:void(0);">{{'BASE.CAPABILITIES.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
             [ngClass]="{'active':sectionId === sectionsInfo.endorsements.id}"
-            [ngxScrollTo]="'#'+sectionsInfo.endorsements.id"
+            (click)="scrollToSection(sectionsInfo.endorsements.id)"
           href="javascript:void(0);">{{'BASE.REVIEWS.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
             [ngClass]="{'active':sectionId === sectionsInfo.faqs.id}"
-            [ngxScrollTo]="'#'+sectionsInfo.faqs.id"
+            (click)="scrollToSection(sectionsInfo.faqs.id)"
           href="javascript:void(0);">{{'BASE.FAQS.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
             [ngClass]="{'active':sectionId === sectionsInfo.plans.id}"
-            [ngxScrollTo]="'#'+sectionsInfo.plans.id"
+            (click)="scrollToSection(sectionsInfo.plans.id)"
           href="javascript:void(0);">{{'BASE.PLANS.PLURAL'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
             [ngClass]="{'active':sectionId === sectionsInfo.team.id}"
-            [ngxScrollTo]="'#'+sectionsInfo.team.id"
+            (click)="scrollToSection(sectionsInfo.team.id)"
           href="javascript:void(0);">{{'BASE.TEAMS.SINGULAR'| baseTranslate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
             [ngClass]="{'active':sectionId === sectionsInfo.contact.id}"
-            [ngxScrollTo]="'#'+sectionsInfo.contact.id"
+            (click)="scrollToSection(sectionsInfo.contact.id)"
           href="javascript:void(0);">{{'BASE.CONTACTS.SINGULAR'| baseTranslate}}</a>
         </li>
       </ul>

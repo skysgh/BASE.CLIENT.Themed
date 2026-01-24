@@ -13,6 +13,7 @@ import { sitesConfiguration } from '../../../../../../../configuration/implement
 // Services:
 import { DefaultComponentServices } from '../../../../../../../../core/services/default-controller-services';
 import { AccountService } from '../../../../../../../../core/services/account.service';
+import { ScrollService } from '../../../../../../../../core/services/scroll.service';
 // Data/Models:
 import { sectionsInfo as importedSectionsInfo } from '../../sectionsInfo.data';
 import { ViewModel } from './vm';
@@ -72,7 +73,8 @@ export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
   constructor(
     @Inject(PUBLIC_NAVIGATION) nav: PublicNavigationPaths,
     private defaultControllerServices: DefaultComponentServices,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private scrollService: ScrollService
   ) {
     // Store injected navigation
     this.nav = nav;
@@ -103,5 +105,13 @@ export class BaseAppsPagesLandingIndexHeaderComponent implements OnInit {
     else {
       navbar?.classList.remove('is-sticky');
     }
+  }
+
+  /**
+   * Scroll to section by ID
+   * Replaces ngxScrollTo directive functionality
+   */
+  scrollToSection(sectionId: string): void {
+    this.scrollService.scrollToElement(sectionId, 80); // 80px offset for fixed header
   }
 }
