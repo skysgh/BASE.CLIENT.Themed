@@ -104,6 +104,50 @@ export class LogService {
       topSources
     };
   });
+
+  // Public accessor for logs (computed)
+  readonly logs = computed(() => this._logs());
+
+  // Total count (computed)
+  readonly totalCount = computed(() => this._logs().length);
+
+  // Summary statistics (computed)
+  readonly summary = computed(() => {
+    const logs = this._logs();
+    const errors = logs.filter(l => l.level === 'error' || l.level === 'fatal').length;
+    const warnings = logs.filter(l => l.level === 'warn').length;
+    const total = logs.length;
+    const errorRate = total > 0 ? Math.round((errors / total) * 100) : 0;
+
+    // Level breakdown for charts with percentages
+    const levels: LogLevel[] = ['trace', 'debug', 'info', 'warn', 'error', 'fatal'];
+    const levelBreakdown = levels.map(level => {
+      const count = logs.filter(l => l.level === level).length;
+      const percentage = total > 0 ? Math.round((count / total) * 100) : 0;
+      return { level, count, percentage };
+    });
+
+    // Top sources with percentages
+    const sourceCounts: Record<string, number> = {};
+    for (const log of logs) {
+      sourceCounts[log.source] = (sourceCounts[log.source] || 0) + 1;
+    }
+    const topSources = Object.entries(sourceCounts)
+      .map(([source, count]) => {
+        const percentage = total > 0 ? Math.round((count / total) * 100) : 0;
+        return { source, count, percentage };
+      })
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 5);
+
+    return {
+      errors,
+      warnings,
+      errorRate,
+      levelBreakdown,
+      topSources
+    };
+  });
   
   constructor() {
     // Load logs on service init
