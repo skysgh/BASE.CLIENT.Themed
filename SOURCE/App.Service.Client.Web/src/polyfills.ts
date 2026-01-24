@@ -51,8 +51,6 @@ import '@angular/localize/init';
  */
 import 'zone.js';  // Included with Angular CLI.
 
-import 'intersection-observer';
-
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
