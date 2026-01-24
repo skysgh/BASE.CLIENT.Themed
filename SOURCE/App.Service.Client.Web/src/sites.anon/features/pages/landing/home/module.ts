@@ -20,7 +20,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SystemDiagnosticsTraceService } from '../../../../../core/services/system.diagnostics-trace.service';
 import { NgbAccordionModule, NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbNavModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CountUpModule } from 'ngx-countup';
-import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 //NO: import { ScrollspyDirective } from '../../common/scrollspy.directive';
 //import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 

@@ -15,7 +15,6 @@ import { sitesConfiguration } from '../../../configuration/implementation/sites.
 // Services:
 import { SystemDiagnosticsTraceService } from '../../../../core/services/system.diagnostics-trace.service';
 // Modules:
-import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 // NO: Parent Module:
 // NO: import { BaseCoreSitesFeaturesPagesModule } from '../module';
