@@ -858,20 +858,20 @@
       "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PEOPLE.DESCRIPTION",
       "imageId": " ri-user-line"
     },
-    {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "enabled": true,
-      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.GROUPS.TITLE",
-      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.GROUPS.DESCRIPTION",
-      "imageId": "ri-group-line"
-    },
-    {
-      "id": "00000000-0000-0000-0000-000000000004",
-      "enabled": true,
-      "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PLACES.TITLE",
-      "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PLACES.DESCRIPTION",
-      "imageId": "ri-map-pin-2-line"
-    },
+      {
+        "id": "00000000-0000-0000-0000-000000000004",
+        "enabled": true,
+        "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.GROUPS.TITLE",
+        "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.GROUPS.DESCRIPTION",
+        "imageId": "ri-group-line"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000005",
+        "enabled": true,
+        "title": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PLACES.TITLE",
+        "description": "CUSTOM.SITE.ANON.HOME.CAPABILITIES.PLACES.DESCRIPTION",
+        "imageId": "ri-map-pin-2-line"
+      },
     {
       "id": "00000000-0000-0000-0000-000000000005",
       "enabled": true,
