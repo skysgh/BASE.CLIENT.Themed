@@ -22,7 +22,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 // Mask
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 // Ngx Sliders
-import { NgxSliderModule } from 'ngx-slider-v2';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 // Wizard
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { NgStepperModule } from 'angular-ng-stepper';
